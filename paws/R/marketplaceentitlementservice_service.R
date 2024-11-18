@@ -16,7 +16,7 @@ NULL
 #' 
 #' **Getting Entitlement Records**
 #' 
-#' -   *GetEntitlements*- Gets the entitlements for a Marketplace product.
+#' - *GetEntitlements*- Gets the entitlements for a Marketplace product.
 #'
 #' @param
 #' config

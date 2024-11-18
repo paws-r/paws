@@ -23,13 +23,13 @@ API is being called from.}
 \item{RehydrationType}{[required] The contactId chosen for rehydration depends on the type chosen.
 \itemize{
 \item \code{ENTIRE_PAST_SESSION}: Rehydrates a chat from the most recently
-terminated past chat contact of the specified past ended chat
-session. To use this type, provide the \code{initialContactId} of the
-past ended chat session in the \code{sourceContactId} field. In this
-type, Amazon Connect determines what the most recent chat contact on
-the past ended chat session and uses it to start a persistent chat.
-\item \code{FROM_SEGMENT}: Rehydrates a chat from the specified past chat
-contact provided in the \code{sourceContactId} field.
+terminated past chat contact of the specified past ended chat session.
+To use this type, provide the \code{initialContactId} of the past ended
+chat session in the \code{sourceContactId} field. In this type, Amazon
+Connect determines what the most recent chat contact on the past ended
+chat session and uses it to start a persistent chat.
+\item \code{FROM_SEGMENT}: Rehydrates a chat from the specified past chat contact
+provided in the \code{sourceContactId} field.
 }
 
 The actual contactId used for rehydration is provided in the response of
@@ -47,8 +47,8 @@ resume their past chat session. At this point, the customer can have
 following use cases:
 \itemize{
 \item \strong{Use Case 1}: The customer wants to continue the past chat session
-but they want to hide the post chat survey. For this they will use
-the following configuration:
+but they want to hide the post chat survey. For this they will use the
+following configuration:
 \itemize{
 \item \strong{Configuration}
 \itemize{
@@ -57,17 +57,15 @@ the following configuration:
 }
 \item \strong{Expected behavior}
 \itemize{
-\item This starts a persistent chat session from the specified
-past ended contact (C2). Transcripts of past chat sessions
-C2 and C1 are accessible in the current persistent chat
-session. Note that chat segment C3 is dropped from the
-persistent chat session.
+\item This starts a persistent chat session from the specified past
+ended contact (C2). Transcripts of past chat sessions C2 and C1
+are accessible in the current persistent chat session. Note that
+chat segment C3 is dropped from the persistent chat session.
 }
 }
 \item \strong{Use Case 2}: The customer wants to continue the past chat session
 and see the transcript of the entire past engagement, including the
-post chat survey. For this they will use the following
-configuration:
+post chat survey. For this they will use the following configuration:
 \itemize{
 \item \strong{Configuration}
 \itemize{
@@ -76,10 +74,9 @@ configuration:
 }
 \item \strong{Expected behavior}
 \itemize{
-\item This starts a persistent chat session from the most recently
-ended chat contact (C3). Transcripts of past chat sessions
-C3, C2 and C1 are accessible in the current persistent chat
-session.
+\item This starts a persistent chat session from the most recently ended
+chat contact (C3). Transcripts of past chat sessions C3, C2 and C1
+are accessible in the current persistent chat session.
 }
 }
 }}

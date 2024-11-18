@@ -47,7 +47,8 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
     http_method = "DELETE",
     http_path = "/ledgers/{name}/journal-kinesis-streams/{streamId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$cancel_journal_kinesis_stream_input(LedgerName = LedgerName, StreamId = StreamId)
   output <- .qldb$cancel_journal_kinesis_stream_output()
@@ -83,27 +84,27 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' @param PermissionsMode &#91;required&#93; The permissions mode to assign to the ledger that you want to create.
 #' This parameter can have one of the following values:
 #' 
-#' -   `ALLOW_ALL`: A legacy permissions mode that enables access control
-#'     with API-level granularity for ledgers.
+#' - `ALLOW_ALL`: A legacy permissions mode that enables access control
+#'   with API-level granularity for ledgers.
 #' 
-#'     This mode allows users who have the `SendCommand` API permission for
-#'     this ledger to run all PartiQL commands (hence, `ALLOW_ALL`) on any
-#'     tables in the specified ledger. This mode disregards any table-level
-#'     or command-level IAM permissions policies that you create for the
-#'     ledger.
+#'   This mode allows users who have the `SendCommand` API permission for
+#'   this ledger to run all PartiQL commands (hence, `ALLOW_ALL`) on any
+#'   tables in the specified ledger. This mode disregards any table-level
+#'   or command-level IAM permissions policies that you create for the
+#'   ledger.
 #' 
-#' -   `STANDARD`: (*Recommended*) A permissions mode that enables access
-#'     control with finer granularity for ledgers, tables, and PartiQL
-#'     commands.
+#' - `STANDARD`: (*Recommended*) A permissions mode that enables access
+#'   control with finer granularity for ledgers, tables, and PartiQL
+#'   commands.
 #' 
-#'     By default, this mode denies all user requests to run any PartiQL
-#'     commands on any tables in this ledger. To allow PartiQL commands to
-#'     run, you must create IAM permissions policies for specific table
-#'     resources and PartiQL actions, in addition to the `SendCommand` API
-#'     permission for the ledger. For information, see [Getting started
-#'     with the standard permissions
-#'     mode](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-standard-mode.html)
-#'     in the *Amazon QLDB Developer Guide*.
+#'   By default, this mode denies all user requests to run any PartiQL
+#'   commands on any tables in this ledger. To allow PartiQL commands to
+#'   run, you must create IAM permissions policies for specific table
+#'   resources and PartiQL actions, in addition to the `SendCommand` API
+#'   permission for the ledger. For information, see [Getting started with
+#'   the standard permissions
+#'   mode](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-standard-mode.html)
+#'   in the *Amazon QLDB Developer Guide*.
 #' 
 #' We strongly recommend using the `STANDARD` permissions mode to maximize
 #' the security of your ledger data.
@@ -122,19 +123,19 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' 
 #' Use one of the following options to specify this parameter:
 #' 
-#' -   `AWS_OWNED_KMS_KEY`: Use an KMS key that is owned and managed by
-#'     Amazon Web Services on your behalf.
+#' - `AWS_OWNED_KMS_KEY`: Use an KMS key that is owned and managed by
+#'   Amazon Web Services on your behalf.
 #' 
-#' -   **Undefined**: By default, use an Amazon Web Services owned KMS key.
+#' - **Undefined**: By default, use an Amazon Web Services owned KMS key.
 #' 
-#' -   **A valid symmetric customer managed KMS key**: Use the specified
-#'     symmetric encryption KMS key in your account that you create, own,
-#'     and manage.
+#' - **A valid symmetric customer managed KMS key**: Use the specified
+#'   symmetric encryption KMS key in your account that you create, own, and
+#'   manage.
 #' 
-#'     Amazon QLDB does not support asymmetric keys. For more information,
-#'     see [Using symmetric and asymmetric
-#'     keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-#'     in the *Key Management Service Developer Guide*.
+#'   Amazon QLDB does not support asymmetric keys. For more information,
+#'   see [Using symmetric and asymmetric
+#'   keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'   in the *Key Management Service Developer Guide*.
 #' 
 #' To specify a customer managed KMS key, you can use its key ID, Amazon
 #' Resource Name (ARN), alias name, or alias ARN. When using an alias name,
@@ -143,14 +144,14 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' 
 #' For example:
 #' 
-#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' - Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' - Key ARN:
+#'   `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Alias name: `alias/ExampleAlias`
+#' - Alias name: `alias/ExampleAlias`
 #' 
-#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' - Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' For more information, see [Key identifiers
 #' (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id)
@@ -196,7 +197,8 @@ qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProte
     http_method = "POST",
     http_path = "/ledgers",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$create_ledger_input(Name = Name, Tags = Tags, PermissionsMode = PermissionsMode, DeletionProtection = DeletionProtection, KmsKey = KmsKey)
   output <- .qldb$create_ledger_output()
@@ -244,7 +246,8 @@ qldb_delete_ledger <- function(Name) {
     http_method = "DELETE",
     http_path = "/ledgers/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$delete_ledger_input(Name = Name)
   output <- .qldb$delete_ledger_output()
@@ -324,7 +327,8 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-kinesis-streams/{streamId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$describe_journal_kinesis_stream_input(LedgerName = LedgerName, StreamId = StreamId)
   output <- .qldb$describe_journal_kinesis_stream_output()
@@ -413,7 +417,8 @@ qldb_describe_journal_s3_export <- function(Name, ExportId) {
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-s3-exports/{exportId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$describe_journal_s3_export_input(Name = Name, ExportId = ExportId)
   output <- .qldb$describe_journal_s3_export_output()
@@ -477,7 +482,8 @@ qldb_describe_ledger <- function(Name) {
     http_method = "GET",
     http_path = "/ledgers/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$describe_ledger_input(Name = Name)
   output <- .qldb$describe_ledger_output()
@@ -538,10 +544,10 @@ qldb_describe_ledger <- function(Name) {
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants QLDB
 #' permissions for a journal export job to do the following:
 #' 
-#' -   Write objects into your Amazon S3 bucket.
+#' - Write objects into your Amazon S3 bucket.
 #' 
-#' -   (Optional) Use your customer managed key in Key Management Service
-#'     (KMS) for server-side encryption of your exported data.
+#' - (Optional) Use your customer managed key in Key Management Service
+#'   (KMS) for server-side encryption of your exported data.
 #' 
 #' To pass a role to QLDB when requesting a journal export, you must have
 #' permissions to perform the `iam:PassRole` action on the IAM role
@@ -602,7 +608,8 @@ qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime
     http_method = "POST",
     http_path = "/ledgers/{name}/journal-s3-exports",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$export_journal_to_s3_input(Name = Name, InclusiveStartTime = InclusiveStartTime, ExclusiveEndTime = ExclusiveEndTime, S3ExportConfiguration = S3ExportConfiguration, RoleArn = RoleArn, OutputFormat = OutputFormat)
   output <- .qldb$export_journal_to_s3_output()
@@ -685,7 +692,8 @@ qldb_get_block <- function(Name, BlockAddress, DigestTipAddress = NULL) {
     http_method = "POST",
     http_path = "/ledgers/{name}/block",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$get_block_input(Name = Name, BlockAddress = BlockAddress, DigestTipAddress = DigestTipAddress)
   output <- .qldb$get_block_output()
@@ -738,7 +746,8 @@ qldb_get_digest <- function(Name) {
     http_method = "POST",
     http_path = "/ledgers/{name}/digest",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$get_digest_input(Name = Name)
   output <- .qldb$get_digest_output()
@@ -813,7 +822,8 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
     http_method = "POST",
     http_path = "/ledgers/{name}/revision",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$get_revision_input(Name = Name, BlockAddress = BlockAddress, DocumentId = DocumentId, DigestTipAddress = DigestTipAddress)
   output <- .qldb$get_revision_output()
@@ -906,7 +916,8 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-kinesis-streams",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .qldb$list_journal_kinesis_streams_for_ledger_input(LedgerName = LedgerName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .qldb$list_journal_kinesis_streams_for_ledger_output()
@@ -999,7 +1010,8 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/journal-s3-exports",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .qldb$list_journal_s3_exports_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .qldb$list_journal_s3_exports_output()
@@ -1093,7 +1105,8 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
     http_method = "GET",
     http_path = "/ledgers/{name}/journal-s3-exports",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .qldb$list_journal_s3_exports_for_ledger_input(Name = Name, MaxResults = MaxResults, NextToken = NextToken)
   output <- .qldb$list_journal_s3_exports_for_ledger_output()
@@ -1163,7 +1176,8 @@ qldb_list_ledgers <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/ledgers",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .qldb$list_ledgers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .qldb$list_ledgers_output()
@@ -1215,7 +1229,8 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .qldb$list_tags_for_resource_output()
@@ -1319,7 +1334,8 @@ qldb_stream_journal_to_kinesis <- function(LedgerName, RoleArn, Tags = NULL, Inc
     http_method = "POST",
     http_path = "/ledgers/{name}/journal-kinesis-streams",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$stream_journal_to_kinesis_input(LedgerName = LedgerName, RoleArn = RoleArn, Tags = Tags, InclusiveStartTime = InclusiveStartTime, ExclusiveEndTime = ExclusiveEndTime, KinesisConfiguration = KinesisConfiguration, StreamName = StreamName)
   output <- .qldb$stream_journal_to_kinesis_output()
@@ -1375,7 +1391,8 @@ qldb_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .qldb$tag_resource_output()
@@ -1426,7 +1443,8 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .qldb$untag_resource_output()
@@ -1462,19 +1480,19 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' Use one of the following options to specify this parameter:
 #' 
-#' -   `AWS_OWNED_KMS_KEY`: Use an KMS key that is owned and managed by
-#'     Amazon Web Services on your behalf.
+#' - `AWS_OWNED_KMS_KEY`: Use an KMS key that is owned and managed by
+#'   Amazon Web Services on your behalf.
 #' 
-#' -   **Undefined**: Make no changes to the KMS key of the ledger.
+#' - **Undefined**: Make no changes to the KMS key of the ledger.
 #' 
-#' -   **A valid symmetric customer managed KMS key**: Use the specified
-#'     symmetric encryption KMS key in your account that you create, own,
-#'     and manage.
+#' - **A valid symmetric customer managed KMS key**: Use the specified
+#'   symmetric encryption KMS key in your account that you create, own, and
+#'   manage.
 #' 
-#'     Amazon QLDB does not support asymmetric keys. For more information,
-#'     see [Using symmetric and asymmetric
-#'     keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
-#'     in the *Key Management Service Developer Guide*.
+#'   Amazon QLDB does not support asymmetric keys. For more information,
+#'   see [Using symmetric and asymmetric
+#'   keys](https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+#'   in the *Key Management Service Developer Guide*.
 #' 
 #' To specify a customer managed KMS key, you can use its key ID, Amazon
 #' Resource Name (ARN), alias name, or alias ARN. When using an alias name,
@@ -1483,14 +1501,14 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' For example:
 #' 
-#' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
+#' - Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Key ARN:
-#'     `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
+#' - Key ARN:
+#'   `arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
 #' 
-#' -   Alias name: `alias/ExampleAlias`
+#' - Alias name: `alias/ExampleAlias`
 #' 
-#' -   Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
+#' - Alias ARN: `arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias`
 #' 
 #' For more information, see [Key identifiers
 #' (KeyId)](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id)
@@ -1537,7 +1555,8 @@ qldb_update_ledger <- function(Name, DeletionProtection = NULL, KmsKey = NULL) {
     http_method = "PATCH",
     http_path = "/ledgers/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$update_ledger_input(Name = Name, DeletionProtection = DeletionProtection, KmsKey = KmsKey)
   output <- .qldb$update_ledger_output()
@@ -1567,27 +1586,27 @@ qldb_update_ledger <- function(Name, DeletionProtection = NULL, KmsKey = NULL) {
 #' @param PermissionsMode &#91;required&#93; The permissions mode to assign to the ledger. This parameter can have
 #' one of the following values:
 #' 
-#' -   `ALLOW_ALL`: A legacy permissions mode that enables access control
-#'     with API-level granularity for ledgers.
+#' - `ALLOW_ALL`: A legacy permissions mode that enables access control
+#'   with API-level granularity for ledgers.
 #' 
-#'     This mode allows users who have the `SendCommand` API permission for
-#'     this ledger to run all PartiQL commands (hence, `ALLOW_ALL`) on any
-#'     tables in the specified ledger. This mode disregards any table-level
-#'     or command-level IAM permissions policies that you create for the
-#'     ledger.
+#'   This mode allows users who have the `SendCommand` API permission for
+#'   this ledger to run all PartiQL commands (hence, `ALLOW_ALL`) on any
+#'   tables in the specified ledger. This mode disregards any table-level
+#'   or command-level IAM permissions policies that you create for the
+#'   ledger.
 #' 
-#' -   `STANDARD`: (*Recommended*) A permissions mode that enables access
-#'     control with finer granularity for ledgers, tables, and PartiQL
-#'     commands.
+#' - `STANDARD`: (*Recommended*) A permissions mode that enables access
+#'   control with finer granularity for ledgers, tables, and PartiQL
+#'   commands.
 #' 
-#'     By default, this mode denies all user requests to run any PartiQL
-#'     commands on any tables in this ledger. To allow PartiQL commands to
-#'     run, you must create IAM permissions policies for specific table
-#'     resources and PartiQL actions, in addition to the `SendCommand` API
-#'     permission for the ledger. For information, see [Getting started
-#'     with the standard permissions
-#'     mode](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-standard-mode.html)
-#'     in the *Amazon QLDB Developer Guide*.
+#'   By default, this mode denies all user requests to run any PartiQL
+#'   commands on any tables in this ledger. To allow PartiQL commands to
+#'   run, you must create IAM permissions policies for specific table
+#'   resources and PartiQL actions, in addition to the `SendCommand` API
+#'   permission for the ledger. For information, see [Getting started with
+#'   the standard permissions
+#'   mode](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-standard-mode.html)
+#'   in the *Amazon QLDB Developer Guide*.
 #' 
 #' We strongly recommend using the `STANDARD` permissions mode to maximize
 #' the security of your ledger data.
@@ -1621,7 +1640,8 @@ qldb_update_ledger_permissions_mode <- function(Name, PermissionsMode) {
     http_method = "PATCH",
     http_path = "/ledgers/{name}/permissions-mode",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .qldb$update_ledger_permissions_mode_input(Name = Name, PermissionsMode = PermissionsMode)
   output <- .qldb$update_ledger_permissions_mode_output()

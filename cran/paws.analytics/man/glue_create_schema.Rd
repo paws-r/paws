@@ -36,33 +36,33 @@ accepted without undergoing a compatibility check.
 \item \emph{DISABLED}: This compatibility choice prevents versioning for a
 particular schema. You can use this choice to prevent future
 versioning of a schema.
-\item \emph{BACKWARD}: This compatibility choice is recommended as it allows
-data receivers to read both the current and one previous schema
-version. This means that for instance, a new schema version cannot
-drop data fields or change the type of these fields, so they can't
-be read by readers using the previous version.
+\item \emph{BACKWARD}: This compatibility choice is recommended as it allows data
+receivers to read both the current and one previous schema version.
+This means that for instance, a new schema version cannot drop data
+fields or change the type of these fields, so they can't be read by
+readers using the previous version.
 \item \emph{BACKWARD_ALL}: This compatibility choice allows data receivers to
 read both the current and all previous schema versions. You can use
-this choice when you need to delete fields or add optional fields,
-and check compatibility against all previous schema versions.
+this choice when you need to delete fields or add optional fields, and
+check compatibility against all previous schema versions.
 \item \emph{FORWARD}: This compatibility choice allows data receivers to read
 both the current and one next schema version, but not necessarily
-later versions. You can use this choice when you need to add fields
-or delete optional fields, but only check compatibility against the
-last schema version.
-\item \emph{FORWARD_ALL}: This compatibility choice allows data receivers to
-read written by producers of any new registered schema. You can use
-this choice when you need to add fields or delete optional fields,
-and check compatibility against all previous schema versions.
+later versions. You can use this choice when you need to add fields or
+delete optional fields, but only check compatibility against the last
+schema version.
+\item \emph{FORWARD_ALL}: This compatibility choice allows data receivers to read
+written by producers of any new registered schema. You can use this
+choice when you need to add fields or delete optional fields, and
+check compatibility against all previous schema versions.
 \item \emph{FULL}: This compatibility choice allows data receivers to read data
-written by producers using the previous or next version of the
-schema, but not necessarily earlier or later versions. You can use
-this choice when you need to add or remove optional fields, but only
-check compatibility against the last schema version.
+written by producers using the previous or next version of the schema,
+but not necessarily earlier or later versions. You can use this choice
+when you need to add or remove optional fields, but only check
+compatibility against the last schema version.
 \item \emph{FULL_ALL}: This compatibility choice allows data receivers to read
-data written by producers using all previous schema versions. You
-can use this choice when you need to add or remove optional fields,
-and check compatibility against all previous schema versions.
+data written by producers using all previous schema versions. You can
+use this choice when you need to add or remove optional fields, and
+check compatibility against all previous schema versions.
 }}
 
 \item{Description}{An optional description of the schema. If description is not provided,

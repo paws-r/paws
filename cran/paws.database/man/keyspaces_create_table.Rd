@@ -37,10 +37,10 @@ in the \emph{Amazon Keyspaces Developer Guide}.
 
 The primary key of the table consists of the following columns:
 \itemize{
-\item \code{partitionKeys} - The partition key can be a single column, or it
-can be a compound value composed of two or more columns. The
-partition key portion of the primary key is required and determines
-how Amazon Keyspaces stores your data.
+\item \code{partitionKeys} - The partition key can be a single column, or it can
+be a compound value composed of two or more columns. The partition key
+portion of the primary key is required and determines how Amazon
+Keyspaces stores your data.
 \item \code{name} - The name of each partition key column.
 \item \code{clusteringKeys} - The optional clustering column portion of your
 primary key determines how the data is clustered and sorted within
@@ -154,8 +154,8 @@ Region, you can do so by configuring the following parameters.
 \itemize{
 \item \code{region}: The Region where these settings are applied. (Required)
 \item \code{readCapacityUnits}: The provisioned read capacity units. (Optional)
-\item \code{readCapacityAutoScaling}: The read capacity auto scaling settings
-for the table. (Optional)
+\item \code{readCapacityAutoScaling}: The read capacity auto scaling settings for
+the table. (Optional)
 }}
 }
 \description{

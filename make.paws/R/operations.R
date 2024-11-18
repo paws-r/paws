@@ -38,7 +38,8 @@ operation_template <- template(
       http_method = ${http_method},
       http_path = ${http_path},
       host_prefix = ${host_prefix},
-      paginator = ${paginator}
+      paginator = ${paginator},
+      stream_api = ${stream_api}
     )
     input <- .${service}$${operation_input}
     output <- .${service}$${operation_output}
@@ -66,7 +67,8 @@ make_operation <- function(operation, api, doc_maker) {
     http_method = quoted(operation$http$method),
     http_path = quoted(operation$http$requestUri),
     host_prefix = quoted(operation[["endpoint"]][["hostPrefix"]] %||% ""),
-    paginator = set_paginator(operation$paginators)
+    paginator = set_paginator(operation$paginators),
+    stream_api = set_stream_api(operation)
   )
 }
 
@@ -88,6 +90,15 @@ set_paginator <- function(paginator) {
     paste(trimws(deparse(paginator)), collapse = " ")
   } else {
     "list()"
+  }
+}
+
+# TODO: double check this is correct method
+set_stream_api <- function(operation) {
+  if (endsWith(operation$http$requestUri, "stream")) {
+    "TRUE"
+  } else {
+    "FALSE"
   }
 }
 

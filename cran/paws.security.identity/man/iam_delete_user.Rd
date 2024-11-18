@@ -14,7 +14,7 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \description{
-Deletes the specified IAM user. Unlike the Amazon Web Services Management Console, when you delete a user programmatically, you must delete the items attached to the user manually, or the deletion fails. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_rename.html#id_users_deleting_cli}{Deleting an IAM user}. Before attempting to delete a user, remove the following items:
+Deletes the specified IAM user. Unlike the Amazon Web Services Management Console, when you delete a user programmatically, you must delete the items attached to the user manually, or the deletion fails. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli}{Deleting an IAM user}. Before attempting to delete a user, remove the following items:
 
 See \url{https://www.paws-r-sdk.com/docs/iam_delete_user/} for full documentation.
 }

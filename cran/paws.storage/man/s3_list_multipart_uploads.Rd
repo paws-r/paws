@@ -69,9 +69,9 @@ delimiter.}
 \item{KeyMarker}{Specifies the multipart upload after which listing should begin.
 \itemize{
 \item \strong{General purpose buckets} - For general purpose buckets,
-\code{key-marker} is an object key. Together with \code{upload-id-marker},
-this parameter specifies the multipart upload after which listing
-should begin.
+\code{key-marker} is an object key. Together with \code{upload-id-marker}, this
+parameter specifies the multipart upload after which listing should
+begin.
 
 If \code{upload-id-marker} is not specified, only the keys
 lexicographically greater than the specified \code{key-marker} will be
@@ -83,14 +83,13 @@ multipart uploads have upload IDs lexicographically greater than the
 specified \code{upload-id-marker}.
 \item \strong{Directory buckets} - For directory buckets, \code{key-marker} is
 obfuscated and isn't a real object key. The \code{upload-id-marker}
-parameter isn't supported by directory buckets. To list the
-additional multipart uploads, you only need to set the value of
-\code{key-marker} to the \code{NextKeyMarker} value from the previous
-response.
+parameter isn't supported by directory buckets. To list the additional
+multipart uploads, you only need to set the value of \code{key-marker} to
+the \code{NextKeyMarker} value from the previous response.
 
-In the \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}}
-response, the multipart uploads aren't sorted lexicographically
-based on the object keys.
+In the \code{\link[=s3_list_multipart_uploads]{list_multipart_uploads}} response,
+the multipart uploads aren't sorted lexicographically based on the
+object keys.
 }}
 
 \item{MaxUploads}{Sets the maximum number of multipart uploads, from 1 to 1,000, to return

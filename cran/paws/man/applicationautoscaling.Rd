@@ -84,10 +84,10 @@ To learn more about Application Auto Scaling, see the \href{https://docs.aws.ama
 The Application Auto Scaling service API includes three key sets of
 actions:
 \itemize{
-\item Register and manage scalable targets - Register Amazon Web Services
-or custom resources as scalable targets (a resource that Application
-Auto Scaling can scale), set minimum and maximum capacity limits,
-and retrieve information on existing scalable targets.
+\item Register and manage scalable targets - Register Amazon Web Services or
+custom resources as scalable targets (a resource that Application Auto
+Scaling can scale), set minimum and maximum capacity limits, and
+retrieve information on existing scalable targets.
 \item Configure and manage automatic scaling - Define scaling policies to
 dynamically scale your resources in response to CloudWatch alarms,
 schedule one-time or recurring scaling actions, and retrieve your
@@ -97,9 +97,8 @@ automatic scaling by calling the
 \code{register_scalable_target}
 API action for any Application Auto Scaling scalable target. You can
 suspend and resume (individually or in combination) scale-out
-activities that are triggered by a scaling policy, scale-in
-activities that are triggered by a scaling policy, and scheduled
-scaling.
+activities that are triggered by a scaling policy, scale-in activities
+that are triggered by a scaling policy, and scheduled scaling.
 }
 }
 \section{Service syntax}{

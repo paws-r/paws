@@ -68,8 +68,7 @@ Constraints:
 \itemize{
 \item Must match the identifier of an existing DB snapshot.
 \item Can't be specified when \code{DBClusterSnapshotIdentifier} is specified.
-\item Must be specified when \code{DBClusterSnapshotIdentifier} isn't
-specified.
+\item Must be specified when \code{DBClusterSnapshotIdentifier} isn't specified.
 \item If you are restoring from a shared manual DB snapshot, the
 \code{DBSnapshotIdentifier} must be the ARN of the shared DB snapshot.
 }}
@@ -378,8 +377,8 @@ following requirements:
 \item The profile must exist in your account.
 \item The profile must have an IAM role that Amazon EC2 has permissions to
 assume.
-\item The instance profile name and the associated IAM role name must
-start with the prefix \code{AWSRDSCustom}.
+\item The instance profile name and the associated IAM role name must start
+with the prefix \code{AWSRDSCustom}.
 }
 
 For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
@@ -422,8 +421,7 @@ in the \emph{Amazon RDS User Guide}.
 
 Constraints:
 \itemize{
-\item Must match the identifier of an existing Multi-AZ DB cluster
-snapshot.
+\item Must match the identifier of an existing Multi-AZ DB cluster snapshot.
 \item Can't be specified when \code{DBSnapshotIdentifier} is specified.
 \item Must be specified when \code{DBSnapshotIdentifier} isn't specified.
 \item If you are restoring from a shared manual Multi-AZ DB cluster

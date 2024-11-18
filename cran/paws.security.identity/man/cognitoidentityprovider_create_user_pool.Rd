@@ -56,7 +56,7 @@ extra call to add permission for these event sources to invoke your
 Lambda function.
 
 For more information on using the Lambda API to add permission, see
-\href{https://docs.aws.amazon.com/lambda/latest/api/API_AddPermission.html}{AddPermission}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html}{AddPermission}
 .
 
 For adding permission using the CLI, see

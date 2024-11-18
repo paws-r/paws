@@ -8,8 +8,9 @@ NULL
 #' Health
 #' 
 #' The Health API provides access to the Health information that appears in
-#' the Health Dashboard. You can use the API operations to get information
-#' about events that might affect your Amazon Web Services and resources.
+#' the [Health Dashboard](https://health.aws.amazon.com/health/home). You
+#' can use the API operations to get information about events that might
+#' affect your Amazon Web Services and resources.
 #' 
 #' You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 #' from [Amazon Web Services
@@ -54,17 +55,17 @@ NULL
 #' When you use the Health API operations to return Health events, see the
 #' following recommendations:
 #' 
-#' -   Use the
-#'     [eventScopeCode](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode)
-#'     parameter to specify whether to return Health events that are public
-#'     or account-specific.
+#' - Use the
+#'   [eventScopeCode](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode)
+#'   parameter to specify whether to return Health events that are public
+#'   or account-specific.
 #' 
-#' -   Use pagination to view all events from the response. For example, if
-#'     you call the
-#'     [`describe_events_for_organization`][health_describe_events_for_organization]
-#'     operation to get all events in your organization, you might receive
-#'     several page results. Specify the `nextToken` in the next request to
-#'     return more results.
+#' - Use pagination to view all events from the response. For example, if
+#'   you call the
+#'   [`describe_events_for_organization`][health_describe_events_for_organization]
+#'   operation to get all events in your organization, you might receive
+#'   several page results. Specify the `nextToken` in the next request to
+#'   return more results.
 #'
 #' @param
 #' config

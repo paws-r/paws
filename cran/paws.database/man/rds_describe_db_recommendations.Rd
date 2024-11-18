@@ -44,24 +44,24 @@ Valid values:
 Supported Filters:
 \itemize{
 \item \code{recommendation-id} - Accepts a list of recommendation identifiers.
-The results list only includes the recommendations whose identifier
-is one of the specified filter values.
+The results list only includes the recommendations whose identifier is
+one of the specified filter values.
 \item \code{status} - Accepts a list of recommendation statuses.
 
 Valid values:
 \itemize{
 \item \code{active} - The recommendations which are ready for you to apply.
-\item \code{pending} - The applied or scheduled recommendations which are
-in progress.
+\item \code{pending} - The applied or scheduled recommendations which are in
+progress.
 \item \code{resolved} - The recommendations which are completed.
 \item \code{dismissed} - The recommendations that you dismissed.
 }
 
-The results list only includes the recommendations whose status is
-one of the specified filter values.
-\item \code{severity} - Accepts a list of recommendation severities. The
-results list only includes the recommendations whose severity is one
+The results list only includes the recommendations whose status is one
 of the specified filter values.
+\item \code{severity} - Accepts a list of recommendation severities. The results
+list only includes the recommendations whose severity is one of the
+specified filter values.
 
 Valid values:
 \itemize{
@@ -74,17 +74,17 @@ Valid values:
 results list only includes the recommendations whose type is one of
 the specified filter values.
 \item \code{dbi-resource-id} - Accepts a list of database resource identifiers.
-The results list only includes the recommendations that generated
-for the specified databases.
+The results list only includes the recommendations that generated for
+the specified databases.
 \item \code{cluster-resource-id} - Accepts a list of cluster resource
 identifiers. The results list only includes the recommendations that
 generated for the specified clusters.
 \item \code{pg-arn} - Accepts a list of parameter group ARNs. The results list
 only includes the recommendations that generated for the specified
 parameter groups.
-\item \code{cluster-pg-arn} - Accepts a list of cluster parameter group ARNs.
-The results list only includes the recommendations that generated
-for the specified cluster parameter groups.
+\item \code{cluster-pg-arn} - Accepts a list of cluster parameter group ARNs. The
+results list only includes the recommendations that generated for the
+specified cluster parameter groups.
 }}
 
 \item{MaxRecords}{The maximum number of recommendations to include in the response. If

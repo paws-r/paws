@@ -27,28 +27,25 @@ you are modifying.
 example, \verb{2014-09-15T17:15:20.000Z}).
 \item \code{event.not-before} - The earliest start time for the scheduled event
 (for example, \verb{2014-09-15T17:15:20.000Z}).
-\item \code{event.not-before-deadline} - The deadline for starting the event
-(for example, \verb{2014-09-15T17:15:20.000Z}).
+\item \code{event.not-before-deadline} - The deadline for starting the event (for
+example, \verb{2014-09-15T17:15:20.000Z}).
 \item \code{instance-state-code} - The code for the instance state, as a 16-bit
 unsigned integer. The high byte is used for internal purposes and
-should be ignored. The low byte is set based on the state
-represented. The valid values are 0 (pending), 16 (running), 32
-(shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
+should be ignored. The low byte is set based on the state represented.
+The valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
+(terminated), 64 (stopping), and 80 (stopped).
 \item \code{instance-state-name} - The state of the instance (\code{pending} |
-\code{running} | \code{shutting-down} | \code{terminated} | \code{stopping} |
-\code{stopped}).
-\item \code{instance-status.reachability} - Filters on instance status where
-the name is \code{reachability} (\code{passed} | \code{failed} | \code{initializing} |
-\code{insufficient-data}).
-\item \code{instance-status.status} - The status of the instance (\code{ok} |
-\code{impaired} | \code{initializing} | \code{insufficient-data} |
-\code{not-applicable}).
-\item \code{system-status.reachability} - Filters on system status where the
+\code{running} | \code{shutting-down} | \code{terminated} | \code{stopping} | \code{stopped}).
+\item \code{instance-status.reachability} - Filters on instance status where the
 name is \code{reachability} (\code{passed} | \code{failed} | \code{initializing} |
 \code{insufficient-data}).
+\item \code{instance-status.status} - The status of the instance (\code{ok} |
+\code{impaired} | \code{initializing} | \code{insufficient-data} | \code{not-applicable}).
+\item \code{system-status.reachability} - Filters on system status where the name
+is \code{reachability} (\code{passed} | \code{failed} | \code{initializing} |
+\code{insufficient-data}).
 \item \code{system-status.status} - The system status of the instance (\code{ok} |
-\code{impaired} | \code{initializing} | \code{insufficient-data} |
-\code{not-applicable}).
+\code{impaired} | \code{initializing} | \code{insufficient-data} | \code{not-applicable}).
 \item \code{attached-ebs-status.status} - The status of the attached EBS volume
 for the instance (\code{ok} | \code{impaired} | \code{initializing} |
 \code{insufficient-data} | \code{not-applicable}).

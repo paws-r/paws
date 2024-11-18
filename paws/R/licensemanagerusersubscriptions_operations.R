@@ -72,7 +72,8 @@ licensemanagerusersubscriptions_associate_user <- function(Domain = NULL, Identi
     http_method = "POST",
     http_path = "/user/AssociateUser",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$associate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, Username = Username)
   output <- .licensemanagerusersubscriptions$associate_user_output()
@@ -144,7 +145,8 @@ licensemanagerusersubscriptions_deregister_identity_provider <- function(Identit
     http_method = "POST",
     http_path = "/identity-provider/DeregisterIdentityProvider",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$deregister_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product)
   output <- .licensemanagerusersubscriptions$deregister_identity_provider_output()
@@ -218,7 +220,8 @@ licensemanagerusersubscriptions_disassociate_user <- function(Domain = NULL, Ide
     http_method = "POST",
     http_path = "/user/DisassociateUser",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$disassociate_user_input(Domain = Domain, IdentityProvider = IdentityProvider, InstanceId = InstanceId, Username = Username)
   output <- .licensemanagerusersubscriptions$disassociate_user_output()
@@ -287,7 +290,8 @@ licensemanagerusersubscriptions_list_identity_providers <- function(MaxResults =
     http_method = "POST",
     http_path = "/identity-provider/ListIdentityProviders",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IdentityProviderSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IdentityProviderSummaries"),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$list_identity_providers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_identity_providers_output()
@@ -358,7 +362,8 @@ licensemanagerusersubscriptions_list_instances <- function(Filters = NULL, MaxRe
     http_method = "POST",
     http_path = "/instance/ListInstances",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceSummaries"),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$list_instances_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_instances_output()
@@ -444,7 +449,8 @@ licensemanagerusersubscriptions_list_product_subscriptions <- function(Filters =
     http_method = "POST",
     http_path = "/user/ListProductSubscriptions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductUserSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProductUserSummaries"),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$list_product_subscriptions_input(Filters = Filters, IdentityProvider = IdentityProvider, MaxResults = MaxResults, NextToken = NextToken, Product = Product)
   output <- .licensemanagerusersubscriptions$list_product_subscriptions_output()
@@ -528,7 +534,8 @@ licensemanagerusersubscriptions_list_user_associations <- function(Filters = NUL
     http_method = "POST",
     http_path = "/user/ListUserAssociations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceUserSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InstanceUserSummaries"),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$list_user_associations_input(Filters = Filters, IdentityProvider = IdentityProvider, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerusersubscriptions$list_user_associations_output()
@@ -606,7 +613,8 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
     http_method = "POST",
     http_path = "/identity-provider/RegisterIdentityProvider",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$register_identity_provider_input(IdentityProvider = IdentityProvider, Product = Product, Settings = Settings)
   output <- .licensemanagerusersubscriptions$register_identity_provider_output()
@@ -687,7 +695,8 @@ licensemanagerusersubscriptions_start_product_subscription <- function(Domain = 
     http_method = "POST",
     http_path = "/user/StartProductSubscription",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$start_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, Username = Username)
   output <- .licensemanagerusersubscriptions$start_product_subscription_output()
@@ -761,7 +770,8 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
     http_method = "POST",
     http_path = "/user/StopProductSubscription",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$stop_product_subscription_input(Domain = Domain, IdentityProvider = IdentityProvider, Product = Product, Username = Username)
   output <- .licensemanagerusersubscriptions$stop_product_subscription_output()
@@ -790,11 +800,11 @@ licensemanagerusersubscriptions_stop_product_subscription <- function(Domain = N
 #' settings. You can update any combination of settings in a single
 #' operation such as the:
 #' 
-#' -   Subnets which you want to add to provision VPC endpoints.
+#' - Subnets which you want to add to provision VPC endpoints.
 #' 
-#' -   Subnets which you want to remove the VPC endpoints from.
+#' - Subnets which you want to remove the VPC endpoints from.
 #' 
-#' -   Security group ID which permits traffic to the VPC endpoints.
+#' - Security group ID which permits traffic to the VPC endpoints.
 #'
 #' @return
 #' A list with the following syntax:
@@ -851,7 +861,8 @@ licensemanagerusersubscriptions_update_identity_provider_settings <- function(Id
     http_method = "POST",
     http_path = "/identity-provider/UpdateIdentityProviderSettings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanagerusersubscriptions$update_identity_provider_settings_input(IdentityProvider = IdentityProvider, Product = Product, UpdateSettings = UpdateSettings)
   output <- .licensemanagerusersubscriptions$update_identity_provider_settings_output()

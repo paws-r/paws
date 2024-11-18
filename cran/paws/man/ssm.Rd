@@ -61,14 +61,17 @@ To get started, see \href{https://docs.aws.amazon.com/systems-manager/latest/use
 \item For information about each of the capabilities that comprise Systems
 Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html#systems-manager-capabilities}{Systems Manager capabilities}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
-\item For details about predefined runbooks for Automation, a capability
-of Amazon Web Services Systems Manager, see the \emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{SystemsManager Automation runbook reference}} .
-\item For information about AppConfig, a capability of Systems Manager,
-see the \emph{\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfigUser Guide}} and the \emph{
-\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfigAPI Reference}} .
+\item For details about predefined runbooks for Automation, a capability of
+Amazon Web Services Systems Manager, see the
+\emph{\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{SystemsManager Automation runbook reference}} .
+\item For information about AppConfig, a capability of Systems Manager, see
+the
+\emph{\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfigUser Guide}} and the
+\emph{\href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfigAPI Reference}} .
 \item For information about Incident Manager, a capability of Systems
-Manager, see the \emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{SystemsManager Incident Manager User Guide}} and the \emph{
-\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{SystemsManager Incident Manager API Reference}} .
+Manager, see the
+\emph{\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{SystemsManager Incident Manager User Guide}} and the
+\emph{\href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{SystemsManager Incident Manager API Reference}} .
 }
 }
 \section{Service syntax}{

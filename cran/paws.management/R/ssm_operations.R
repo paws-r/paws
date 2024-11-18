@@ -56,7 +56,8 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$add_tags_to_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, Tags = Tags)
   output <- .ssm$add_tags_to_resource_output()
@@ -98,7 +99,8 @@ ssm_associate_ops_item_related_item <- function(OpsItemId, AssociationType, Reso
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$associate_ops_item_related_item_input(OpsItemId = OpsItemId, AssociationType = AssociationType, ResourceType = ResourceType, ResourceUri = ResourceUri)
   output <- .ssm$associate_ops_item_related_item_output()
@@ -131,7 +133,8 @@ ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$cancel_command_input(CommandId = CommandId, InstanceIds = InstanceIds)
   output <- .ssm$cancel_command_output()
@@ -162,7 +165,8 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$cancel_maintenance_window_execution_input(WindowExecutionId = WindowExecutionId)
   output <- .ssm$cancel_maintenance_window_execution_output()
@@ -179,7 +183,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' Amazon Web Services Systems Manager
 #'
 #' @description
-#' Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager capabilities. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see [Setting up Amazon Web Services Systems Manager for hybrid and multicloud environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-hybrid-multicloud.html) in the *Amazon Web Services Systems Manager User Guide*.
+#' Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager capabilities. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see [Setting up Amazon Web Services Systems Manager for hybrid and multicloud environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_create_activation/](https://www.paws-r-sdk.com/docs/ssm_create_activation/) for full documentation.
 #'
@@ -197,7 +201,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' permissions for the Amazon Web Services Systems Manager service
 #' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
 #' service role for a hybrid and multicloud
-#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
+#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can't specify an IAM service-linked role for this parameter. You
@@ -215,9 +219,9 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' environment you intend to activate. In this case, you could specify the
 #' following key-value pairs:
 #' 
-#' -   `Key=OS,Value=Windows`
+#' - `Key=OS,Value=Windows`
 #' 
-#' -   `Key=Environment,Value=Production`
+#' - `Key=Environment,Value=Production`
 #' 
 #' When you install SSM Agent on your on-premises servers and VMs, you
 #' specify an activation ID and code. When you specify the activation ID
@@ -244,7 +248,8 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_activation_input(Description = Description, DefaultInstanceName = DefaultInstanceName, IamRole = IamRole, RegistrationLimit = RegistrationLimit, ExpirationDate = ExpirationDate, Tags = Tags, RegistrationMetadata = RegistrationMetadata)
   output <- .ssm$create_activation_output()
@@ -397,13 +402,13 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' The `Duration` parameter applies only when both these conditions are
 #' true:
 #' 
-#' -   The association for which you specify a duration is cancelable
-#'     according to the parameters of the SSM command document or
-#'     Automation runbook associated with this execution.
+#' - The association for which you specify a duration is cancelable
+#'   according to the parameters of the SSM command document or Automation
+#'   runbook associated with this execution.
 #' 
-#' -   The command specifies the ` ApplyOnlyAtCronInterval ` parameter,
-#'     which means that the association doesn't run immediately after it is
-#'     created, but only according to the specified schedule.
+#' - The command specifies the ` ApplyOnlyAtCronInterval ` parameter, which
+#'   means that the association doesn't run immediately after it is
+#'   created, but only according to the specified schedule.
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
 #' Targets and TargetMaps can't be specified together.
 #' @param Tags Adds or overwrites one or more tags for a State Manager association.
@@ -422,7 +427,8 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_association_input(Name = Name, DocumentVersion = DocumentVersion, InstanceId = InstanceId, Parameters = Parameters, Targets = Targets, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, AssociationName = AssociationName, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, Duration = Duration, TargetMaps = TargetMaps, Tags = Tags, AlarmConfiguration = AlarmConfiguration)
   output <- .ssm$create_association_output()
@@ -453,7 +459,8 @@ ssm_create_association_batch <- function(Entries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_association_batch_input(Entries = Entries)
   output <- .ssm$create_association_batch_output()
@@ -481,14 +488,14 @@ ssm_create_association_batch <- function(Entries) {
 #' For examples, see the following topics in the *Amazon Web Services
 #' Systems Manager User Guide*.
 #' 
-#' -   [Create an SSM document
-#'     (console)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-console)
+#' - [Create an SSM document
+#'   (console)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-console)
 #' 
-#' -   [Create an SSM document (command
-#'     line)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-document-cli)
+#' - [Create an SSM document (command
+#'   line)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-document-cli)
 #' 
-#' -   [Create an SSM document
-#'     (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-document-api)
+#' - [Create an SSM document
+#'   (API)](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents-using.html#create-ssm-document-api)
 #' @param Requires A list of SSM documents required by a document. This parameter is used
 #' exclusively by AppConfig. When a user creates an AppConfig configuration
 #' in an SSM document, the user must also specify a required document for
@@ -504,17 +511,17 @@ ssm_create_association_batch <- function(Entries) {
 #' You can't use the following strings as document name prefixes. These are
 #' reserved by Amazon Web Services for use as document name prefixes:
 #' 
-#' -   `aws`
+#' - `aws`
 #' 
-#' -   `amazon`
+#' - `amazon`
 #' 
-#' -   `amzn`
+#' - `amzn`
 #' 
-#' -   `AWSEC2`
+#' - `AWSEC2`
 #' 
-#' -   `AWSConfigRemediation`
+#' - `AWSConfigRemediation`
 #' 
-#' -   `AWSSupport`
+#' - `AWSSupport`
 #' @param DisplayName An optional field where you can specify a friendly name for the SSM
 #' document. This value can differ for each version of the document. You
 #' can update this value at a later time using the
@@ -542,9 +549,9 @@ ssm_create_association_batch <- function(Entries) {
 #' identify the types of targets or the environment where it will run. In
 #' this case, you could specify the following key-value pairs:
 #' 
-#' -   `Key=OS,Value=Windows`
+#' - `Key=OS,Value=Windows`
 #' 
-#' -   `Key=Environment,Value=Production`
+#' - `Key=Environment,Value=Production`
 #' 
 #' To add tags to an existing SSM document, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
@@ -558,7 +565,8 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_document_input(Content = Content, Requires = Requires, Attachments = Attachments, Name = Name, DisplayName = DisplayName, VersionName = VersionName, DocumentType = DocumentType, DocumentFormat = DocumentFormat, TargetType = TargetType, Tags = Tags)
   output <- .ssm$create_document_output()
@@ -626,11 +634,11 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' environment it will run in. In this case, you could specify the
 #' following key-value pairs:
 #' 
-#' -   `Key=TaskType,Value=AgentUpdate`
+#' - `Key=TaskType,Value=AgentUpdate`
 #' 
-#' -   `Key=OS,Value=Windows`
+#' - `Key=OS,Value=Windows`
 #' 
-#' -   `Key=Environment,Value=Production`
+#' - `Key=Environment,Value=Production`
 #' 
 #' To add tags to an existing maintenance window, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
@@ -644,7 +652,8 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_maintenance_window_input(Name = Name, Description = Description, StartDate = StartDate, EndDate = EndDate, Schedule = Schedule, ScheduleTimezone = ScheduleTimezone, ScheduleOffset = ScheduleOffset, Duration = Duration, Cutoff = Cutoff, AllowUnassociatedTargets = AllowUnassociatedTargets, ClientToken = ClientToken, Tags = Tags)
   output <- .ssm$create_maintenance_window_output()
@@ -671,20 +680,20 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' @param OpsItemType The type of OpsItem to create. Systems Manager supports the following
 #' types of OpsItems:
 #' 
-#' -   `/aws/issue`
+#' - `/aws/issue`
 #' 
-#'     This type of OpsItem is used for default OpsItems created by
-#'     OpsCenter.
+#'   This type of OpsItem is used for default OpsItems created by
+#'   OpsCenter.
 #' 
-#' -   `/aws/changerequest`
+#' - `/aws/changerequest`
 #' 
-#'     This type of OpsItem is used by Change Manager for reviewing and
-#'     approving or rejecting change requests.
+#'   This type of OpsItem is used by Change Manager for reviewing and
+#'   approving or rejecting change requests.
 #' 
-#' -   `/aws/insight`
+#' - `/aws/insight`
 #' 
-#'     This type of OpsItem is used by OpsCenter for aggregating and
-#'     reporting on duplicate OpsItems.
+#'   This type of OpsItem is used by OpsCenter for aggregating and
+#'   reporting on duplicate OpsItems.
 #' @param OperationalData Operational data is custom data that provides useful reference details
 #' about the OpsItem. For example, you can specify log files, error
 #' strings, license keys, troubleshooting tips, or other relevant data. You
@@ -758,7 +767,8 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_ops_item_input(Description = Description, OpsItemType = OpsItemType, OperationalData = OperationalData, Notifications = Notifications, Priority = Priority, RelatedOpsItems = RelatedOpsItems, Source = Source, Title = Title, Tags = Tags, Category = Category, Severity = Severity, ActualStartTime = ActualStartTime, ActualEndTime = ActualEndTime, PlannedStartTime = PlannedStartTime, PlannedEndTime = PlannedEndTime, AccountId = AccountId)
   output <- .ssm$create_ops_item_output()
@@ -788,9 +798,9 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #' identify an environment or target Amazon Web Services Region. In this
 #' case, you could specify the following key-value pairs:
 #' 
-#' -   `Key=Environment,Value=Production`
+#' - `Key=Environment,Value=Production`
 #' 
-#' -   `Key=Region,Value=us-east-2`
+#' - `Key=Region,Value=us-east-2`
 #'
 #' @keywords internal
 #'
@@ -801,7 +811,8 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_ops_metadata_input(ResourceId = ResourceId, Metadata = Metadata, Tags = Tags)
   output <- .ssm$create_ops_metadata_output()
@@ -881,9 +892,9 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' system family it applies to. In this case, you could specify the
 #' following key-value pairs:
 #' 
-#' -   `Key=PatchSeverity,Value=Critical`
+#' - `Key=PatchSeverity,Value=Critical`
 #' 
-#' -   `Key=OS,Value=Windows`
+#' - `Key=OS,Value=Windows`
 #' 
 #' To add tags to an existing patch baseline, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
@@ -897,7 +908,8 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_patch_baseline_input(OperatingSystem = OperatingSystem, Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, Description = Description, Sources = Sources, ClientToken = ClientToken, Tags = Tags)
   output <- .ssm$create_patch_baseline_output()
@@ -940,7 +952,8 @@ ssm_create_resource_data_sync <- function(SyncName, S3Destination = NULL, SyncTy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$create_resource_data_sync_input(SyncName = SyncName, S3Destination = S3Destination, SyncType = SyncType, SyncSource = SyncSource)
   output <- .ssm$create_resource_data_sync_output()
@@ -970,7 +983,8 @@ ssm_delete_activation <- function(ActivationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_activation_input(ActivationId = ActivationId)
   output <- .ssm$delete_activation_output()
@@ -1012,7 +1026,8 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_association_input(Name = Name, InstanceId = InstanceId, AssociationId = AssociationId)
   output <- .ssm$delete_association_output()
@@ -1052,7 +1067,8 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_document_input(Name = Name, DocumentVersion = DocumentVersion, VersionName = VersionName, Force = Force)
   output <- .ssm$delete_document_output()
@@ -1103,7 +1119,8 @@ ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_inventory_input(TypeName = TypeName, SchemaDeleteOption = SchemaDeleteOption, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ssm$delete_inventory_output()
@@ -1133,7 +1150,8 @@ ssm_delete_maintenance_window <- function(WindowId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_maintenance_window_input(WindowId = WindowId)
   output <- .ssm$delete_maintenance_window_output()
@@ -1163,7 +1181,8 @@ ssm_delete_ops_item <- function(OpsItemId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_ops_item_input(OpsItemId = OpsItemId)
   output <- .ssm$delete_ops_item_output()
@@ -1193,7 +1212,8 @@ ssm_delete_ops_metadata <- function(OpsMetadataArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_ops_metadata_input(OpsMetadataArn = OpsMetadataArn)
   output <- .ssm$delete_ops_metadata_output()
@@ -1226,7 +1246,8 @@ ssm_delete_parameter <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_parameter_input(Name = Name)
   output <- .ssm$delete_parameter_output()
@@ -1260,7 +1281,8 @@ ssm_delete_parameters <- function(Names) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_parameters_input(Names = Names)
   output <- .ssm$delete_parameters_output()
@@ -1290,7 +1312,8 @@ ssm_delete_patch_baseline <- function(BaselineId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_patch_baseline_input(BaselineId = BaselineId)
   output <- .ssm$delete_patch_baseline_output()
@@ -1321,7 +1344,8 @@ ssm_delete_resource_data_sync <- function(SyncName, SyncType = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_resource_data_sync_input(SyncName = SyncName, SyncType = SyncType)
   output <- .ssm$delete_resource_data_sync_output()
@@ -1355,7 +1379,8 @@ ssm_delete_resource_policy <- function(ResourceArn, PolicyId, PolicyHash) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$delete_resource_policy_input(ResourceArn = ResourceArn, PolicyId = PolicyId, PolicyHash = PolicyHash)
   output <- .ssm$delete_resource_policy_output()
@@ -1387,7 +1412,8 @@ ssm_deregister_managed_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$deregister_managed_instance_input(InstanceId = InstanceId)
   output <- .ssm$deregister_managed_instance_output()
@@ -1419,7 +1445,8 @@ ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$deregister_patch_baseline_for_patch_group_input(BaselineId = BaselineId, PatchGroup = PatchGroup)
   output <- .ssm$deregister_patch_baseline_for_patch_group_output()
@@ -1453,7 +1480,8 @@ ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTarget
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$deregister_target_from_maintenance_window_input(WindowId = WindowId, WindowTargetId = WindowTargetId, Safe = Safe)
   output <- .ssm$deregister_target_from_maintenance_window_output()
@@ -1484,7 +1512,8 @@ ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$deregister_task_from_maintenance_window_input(WindowId = WindowId, WindowTaskId = WindowTaskId)
   output <- .ssm$deregister_task_from_maintenance_window_output()
@@ -1522,7 +1551,8 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActivationList")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActivationList"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_activations_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_activations_output()
@@ -1560,7 +1590,8 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$describe_association_input(Name = Name, InstanceId = InstanceId, AssociationId = AssociationId, AssociationVersion = AssociationVersion)
   output <- .ssm$describe_association_output()
@@ -1605,7 +1636,8 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutionTargets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutionTargets"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_association_execution_targets_input(AssociationId = AssociationId, ExecutionId = ExecutionId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_association_execution_targets_output()
@@ -1648,7 +1680,8 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutions"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_association_executions_input(AssociationId = AssociationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_association_executions_output()
@@ -1683,7 +1716,8 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AutomationExecutionMetadataList")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AutomationExecutionMetadataList"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_automation_executions_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_automation_executions_output()
@@ -1724,7 +1758,8 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StepExecutions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StepExecutions"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_automation_step_executions_input(AutomationExecutionId = AutomationExecutionId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, ReverseOrder = ReverseOrder)
   output <- .ssm$describe_automation_step_executions_output()
@@ -1750,31 +1785,31 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #' Supported keys for Windows Server managed node patches include the
 #' following:
 #' 
-#' -   **`PATCH_SET`**
+#' - **`PATCH_SET`**
 #' 
-#'     Sample values: `OS` | `APPLICATION`
+#'   Sample values: `OS` | `APPLICATION`
 #' 
-#' -   **`PRODUCT`**
+#' - **`PRODUCT`**
 #' 
-#'     Sample values: `WindowsServer2012` | `Office 2010` |
-#'     `MicrosoftDefenderAntivirus`
+#'   Sample values: `WindowsServer2012` | `Office 2010` |
+#'   `MicrosoftDefenderAntivirus`
 #' 
-#' -   **`PRODUCT_FAMILY`**
+#' - **`PRODUCT_FAMILY`**
 #' 
-#'     Sample values: `Windows` | `Office`
+#'   Sample values: `Windows` | `Office`
 #' 
-#' -   **`MSRC_SEVERITY`**
+#' - **`MSRC_SEVERITY`**
 #' 
-#'     Sample values: `ServicePacks` | `Important` | `Moderate`
+#'   Sample values: `ServicePacks` | `Important` | `Moderate`
 #' 
-#' -   **`CLASSIFICATION`**
+#' - **`CLASSIFICATION`**
 #' 
-#'     Sample values: `ServicePacks` | `SecurityUpdates` |
-#'     `DefinitionUpdates`
+#'   Sample values: `ServicePacks` | `SecurityUpdates` |
+#'   `DefinitionUpdates`
 #' 
-#' -   **`PATCH_ID`**
+#' - **`PATCH_ID`**
 #' 
-#'     Sample values: `KB123456` | `KB4516046`
+#'   Sample values: `KB123456` | `KB4516046`
 #' 
 #' **Linux**
 #' 
@@ -1790,49 +1825,49 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #' 
 #' Supported keys for Linux managed node patches include the following:
 #' 
-#' -   **`PRODUCT`**
+#' - **`PRODUCT`**
 #' 
-#'     Sample values: `AmazonLinux2018.03` | `AmazonLinux2.0`
+#'   Sample values: `AmazonLinux2018.03` | `AmazonLinux2.0`
 #' 
-#' -   **`NAME`**
+#' - **`NAME`**
 #' 
-#'     Sample values: `kernel-headers` | `samba-python` | `php`
+#'   Sample values: `kernel-headers` | `samba-python` | `php`
 #' 
-#' -   **`SEVERITY`**
+#' - **`SEVERITY`**
 #' 
-#'     Sample values: `Critical` | `Important` | `Medium` | `Low`
+#'   Sample values: `Critical` | `Important` | `Medium` | `Low`
 #' 
-#' -   **`EPOCH`**
+#' - **`EPOCH`**
 #' 
-#'     Sample values: `0` | `1`
+#'   Sample values: `0` | `1`
 #' 
-#' -   **`VERSION`**
+#' - **`VERSION`**
 #' 
-#'     Sample values: `78.6.1` | `4.10.16`
+#'   Sample values: `78.6.1` | `4.10.16`
 #' 
-#' -   **`RELEASE`**
+#' - **`RELEASE`**
 #' 
-#'     Sample values: `9.56.amzn1` | `1.amzn2`
+#'   Sample values: `9.56.amzn1` | `1.amzn2`
 #' 
-#' -   **`ARCH`**
+#' - **`ARCH`**
 #' 
-#'     Sample values: `i686` | `x86_64`
+#'   Sample values: `i686` | `x86_64`
 #' 
-#' -   **`REPOSITORY`**
+#' - **`REPOSITORY`**
 #' 
-#'     Sample values: `Core` | `Updates`
+#'   Sample values: `Core` | `Updates`
 #' 
-#' -   **`ADVISORY_ID`**
+#' - **`ADVISORY_ID`**
 #' 
-#'     Sample values: `ALAS-2018-1058` | `ALAS2-2021-1594`
+#'   Sample values: `ALAS-2018-1058` | `ALAS2-2021-1594`
 #' 
-#' -   **`CVE_ID`**
+#' - **`CVE_ID`**
 #' 
-#'     Sample values: `CVE-2018-3615` | `CVE-2020-1472`
+#'   Sample values: `CVE-2018-3615` | `CVE-2020-1472`
 #' 
-#' -   **`BUGZILLA_ID`**
+#' - **`BUGZILLA_ID`**
 #' 
-#'     Sample values: `1463241`
+#'   Sample values: `1463241`
 #' @param MaxResults The maximum number of patches to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
@@ -1846,7 +1881,8 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Patches")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Patches"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_available_patches_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_available_patches_output()
@@ -1882,7 +1918,8 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$describe_document_input(Name = Name, DocumentVersion = DocumentVersion, VersionName = VersionName)
   output <- .ssm$describe_document_output()
@@ -1920,7 +1957,8 @@ ssm_describe_document_permission <- function(Name, PermissionType, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$describe_document_permission_input(Name = Name, PermissionType = PermissionType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_document_permission_output()
@@ -1955,7 +1993,8 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_effective_instance_associations_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_effective_instance_associations_output()
@@ -1989,7 +2028,8 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EffectivePatches")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EffectivePatches"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_effective_patches_for_patch_baseline_input(BaselineId = BaselineId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_effective_patches_for_patch_baseline_output()
@@ -2024,7 +2064,8 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceAssociationStatusInfos")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceAssociationStatusInfos"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_instance_associations_status_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_instance_associations_status_output()
@@ -2071,7 +2112,8 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceInformationList")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceInformationList"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_instance_information_input(InstanceInformationFilterList = InstanceInformationFilterList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_instance_information_output()
@@ -2105,7 +2147,8 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstancePatchStates")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstancePatchStates"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_instance_patch_states_input(InstanceIds = InstanceIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patch_states_output()
@@ -2129,11 +2172,11 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 #' be retrieved.
 #' @param Filters Each entry in the array is a structure containing:
 #' 
-#' -   Key (string between 1 and 200 characters)
+#' - Key (string between 1 and 200 characters)
 #' 
-#' -   Values (array containing a single string)
+#' - Values (array containing a single string)
 #' 
-#' -   Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")
+#' - Type (string "Equal", "NotEqual", "LessThan", "GreaterThan")
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxResults The maximum number of patches to return (per page).
@@ -2147,7 +2190,8 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstancePatchStates")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstancePatchStates"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_instance_patch_states_for_patch_group_input(PatchGroup = PatchGroup, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patch_states_for_patch_group_output()
@@ -2175,27 +2219,27 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #' [`describe_instance_patches`][ssm_describe_instance_patches]include the
 #' following:
 #' 
-#' -   **`Classification`**
+#' - **`Classification`**
 #' 
-#'     Sample values: `Security` | `SecurityUpdates`
+#'   Sample values: `Security` | `SecurityUpdates`
 #' 
-#' -   **`KBId`**
+#' - **`KBId`**
 #' 
-#'     Sample values: `KB4480056` | `java-1.7.0-openjdk.x86_64`
+#'   Sample values: `KB4480056` | `java-1.7.0-openjdk.x86_64`
 #' 
-#' -   **`Severity`**
+#' - **`Severity`**
 #' 
-#'     Sample values: `Important` | `Medium` | `Low`
+#'   Sample values: `Important` | `Medium` | `Low`
 #' 
-#' -   **`State`**
+#' - **`State`**
 #' 
-#'     Sample values: `Installed` | `InstalledOther` |
-#'     `InstalledPendingReboot`
+#'   Sample values: `Installed` | `InstalledOther` |
+#'   `InstalledPendingReboot`
 #' 
-#'     For lists of all `State` values, see [Understanding patch compliance
-#'     state
-#'     values](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-compliance-states.html)
-#'     in the *Amazon Web Services Systems Manager User Guide*.
+#'   For lists of all `State` values, see [Understanding patch compliance
+#'   state
+#'   values](https://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-compliance-states.html)
+#'   in the *Amazon Web Services Systems Manager User Guide*.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #' @param MaxResults The maximum number of patches to return (per page).
@@ -2209,7 +2253,8 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Patches")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Patches"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_instance_patches_input(InstanceId = InstanceId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patches_output()
@@ -2246,7 +2291,8 @@ ssm_describe_instance_properties <- function(InstancePropertyFilterList = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceProperties")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceProperties"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_instance_properties_input(InstancePropertyFilterList = InstancePropertyFilterList, FiltersWithOperator = FiltersWithOperator, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_instance_properties_output()
@@ -2283,7 +2329,8 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InventoryDeletions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InventoryDeletions"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_inventory_deletions_input(DeletionId = DeletionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_inventory_deletions_output()
@@ -2325,7 +2372,8 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutionTaskInvocationIdentities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutionTaskInvocationIdentities"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_maintenance_window_execution_task_invocations_input(WindowExecutionId = WindowExecutionId, TaskId = TaskId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_execution_task_invocations_output()
@@ -2365,7 +2413,8 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutionTaskIdentities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutionTaskIdentities"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_maintenance_window_execution_tasks_input(WindowExecutionId = WindowExecutionId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_execution_tasks_output()
@@ -2387,12 +2436,12 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 #' @param WindowId &#91;required&#93; The ID of the maintenance window whose executions should be retrieved.
 #' @param Filters Each entry in the array is a structure containing:
 #' 
-#' -   Key. A string between 1 and 128 characters. Supported keys include
-#'     `ExecutedBefore` and `ExecutedAfter`.
+#' - Key. A string between 1 and 128 characters. Supported keys include
+#'   `ExecutedBefore` and `ExecutedAfter`.
 #' 
-#' -   Values. An array of strings, each between 1 and 256 characters.
-#'     Supported values are date/time strings in a valid ISO 8601 date/time
-#'     format, such as `2021-11-04T05:00:00Z`.
+#' - Values. An array of strings, each between 1 and 256 characters.
+#'   Supported values are date/time strings in a valid ISO 8601 date/time
+#'   format, such as `2021-11-04T05:00:00Z`.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -2408,7 +2457,8 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutions"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_maintenance_window_executions_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_executions_output()
@@ -2449,7 +2499,8 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledWindowExecutions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledWindowExecutions"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_maintenance_window_schedule_input(WindowId = WindowId, Targets = Targets, ResourceType = ResourceType, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_schedule_output()
@@ -2487,7 +2538,8 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Targets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Targets"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_maintenance_window_targets_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_targets_output()
@@ -2525,7 +2577,8 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tasks"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_maintenance_window_tasks_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_tasks_output()
@@ -2562,7 +2615,8 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowIdentities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowIdentities"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_maintenance_windows_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_windows_output()
@@ -2600,7 +2654,8 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowIdentities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowIdentities"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_maintenance_windows_for_target_input(Targets = Targets, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_windows_for_target_output()
@@ -2621,61 +2676,61 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #'
 #' @param OpsItemFilters One or more filters to limit the response.
 #' 
-#' -   Key: CreatedTime
+#' - Key: CreatedTime
 #' 
-#'     Operations: GreaterThan, LessThan
+#'   Operations: GreaterThan, LessThan
 #' 
-#' -   Key: LastModifiedBy
+#' - Key: LastModifiedBy
 #' 
-#'     Operations: Contains, Equals
+#'   Operations: Contains, Equals
 #' 
-#' -   Key: LastModifiedTime
+#' - Key: LastModifiedTime
 #' 
-#'     Operations: GreaterThan, LessThan
+#'   Operations: GreaterThan, LessThan
 #' 
-#' -   Key: Priority
+#' - Key: Priority
 #' 
-#'     Operations: Equals
+#'   Operations: Equals
 #' 
-#' -   Key: Source
+#' - Key: Source
 #' 
-#'     Operations: Contains, Equals
+#'   Operations: Contains, Equals
 #' 
-#' -   Key: Status
+#' - Key: Status
 #' 
-#'     Operations: Equals
+#'   Operations: Equals
 #' 
-#' -   Key: Title*
+#' - Key: Title*
 #' 
-#'     Operations: Equals,Contains
+#'   Operations: Equals,Contains
 #' 
-#' -   Key: OperationalData**
+#' - Key: OperationalData**
 #' 
-#'     Operations: Equals
+#'   Operations: Equals
 #' 
-#' -   Key: OperationalDataKey
+#' - Key: OperationalDataKey
 #' 
-#'     Operations: Equals
+#'   Operations: Equals
 #' 
-#' -   Key: OperationalDataValue
+#' - Key: OperationalDataValue
 #' 
-#'     Operations: Equals, Contains
+#'   Operations: Equals, Contains
 #' 
-#' -   Key: OpsItemId
+#' - Key: OpsItemId
 #' 
-#'     Operations: Equals
+#'   Operations: Equals
 #' 
-#' -   Key: ResourceId
+#' - Key: ResourceId
 #' 
-#'     Operations: Contains
+#'   Operations: Contains
 #' 
-#' -   Key: AutomationId
+#' - Key: AutomationId
 #' 
-#'     Operations: Equals
+#'   Operations: Equals
 #' 
-#' -   Key: AccountId
+#' - Key: AccountId
 #' 
-#'     Operations: Equals
+#'   Operations: Equals
 #' 
 #' *The Equals operator for Title matches the first 100 characters. If you
 #' specify more than 100 characters, they system returns an error that the
@@ -2683,7 +2738,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' 
 #' **If you filter the response by using the OperationalData operator,
 #' specify a key-value pair by using the following JSON format:
-#' \{"key":"key_name","value":"a_value"\}
+#' \\"key":"key_name","value":"a_value"\\
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -2699,7 +2754,8 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OpsItemSummaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OpsItemSummaries"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_ops_items_input(OpsItemFilters = OpsItemFilters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_ops_items_output()
@@ -2750,7 +2806,8 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_parameters_input(Filters = Filters, ParameterFilters = ParameterFilters, MaxResults = MaxResults, NextToken = NextToken, Shared = Shared)
   output <- .ssm$describe_parameters_output()
@@ -2775,17 +2832,17 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
 #' [`describe_patch_baselines`][ssm_describe_patch_baselines] include the
 #' following:
 #' 
-#' -   **`NAME_PREFIX`**
+#' - **`NAME_PREFIX`**
 #' 
-#'     Sample values: `AWS-` | `My-`
+#'   Sample values: `AWS-` | `My-`
 #' 
-#' -   **`OWNER`**
+#' - **`OWNER`**
 #' 
-#'     Sample values: `AWS` | `Self`
+#'   Sample values: `AWS` | `Self`
 #' 
-#' -   **`OPERATING_SYSTEM`**
+#' - **`OPERATING_SYSTEM`**
 #' 
-#'     Sample values: `AMAZON_LINUX` | `SUSE` | `WINDOWS`
+#'   Sample values: `AMAZON_LINUX` | `SUSE` | `WINDOWS`
 #' @param MaxResults The maximum number of patch baselines to return (per page).
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
@@ -2799,7 +2856,8 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BaselineIdentities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BaselineIdentities"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_patch_baselines_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_patch_baselines_output()
@@ -2830,7 +2888,8 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$describe_patch_group_state_input(PatchGroup = PatchGroup)
   output <- .ssm$describe_patch_group_state_output()
@@ -2855,13 +2914,13 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #' Supported keys for [`describe_patch_groups`][ssm_describe_patch_groups]
 #' include the following:
 #' 
-#' -   **`NAME_PREFIX`**
+#' - **`NAME_PREFIX`**
 #' 
-#'     Sample values: `AWS-` | `My-`.
+#'   Sample values: `AWS-` | `My-`.
 #' 
-#' -   **`OPERATING_SYSTEM`**
+#' - **`OPERATING_SYSTEM`**
 #' 
-#'     Sample values: `AMAZON_LINUX` | `SUSE` | `WINDOWS`
+#'   Sample values: `AMAZON_LINUX` | `SUSE` | `WINDOWS`
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
@@ -2874,7 +2933,8 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Mappings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Mappings"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_patch_groups_input(MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .ssm$describe_patch_groups_output()
@@ -2915,7 +2975,8 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Properties")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Properties"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_patch_properties_input(OperatingSystem = OperatingSystem, Property = Property, PatchSet = PatchSet, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_patch_properties_output()
@@ -2954,7 +3015,8 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Sessions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Sessions"),
+    stream_api = FALSE
   )
   input <- .ssm$describe_sessions_input(State = State, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssm$describe_sessions_output()
@@ -2987,7 +3049,8 @@ ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$disassociate_ops_item_related_item_input(OpsItemId = OpsItemId, AssociationId = AssociationId)
   output <- .ssm$disassociate_ops_item_related_item_output()
@@ -3019,7 +3082,8 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_automation_execution_input(AutomationExecutionId = AutomationExecutionId)
   output <- .ssm$get_automation_execution_output()
@@ -3056,7 +3120,8 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_calendar_state_input(CalendarNames = CalendarNames, AtTime = AtTime)
   output <- .ssm$get_calendar_state_output()
@@ -3103,7 +3168,8 @@ ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_command_invocation_input(CommandId = CommandId, InstanceId = InstanceId, PluginName = PluginName)
   output <- .ssm$get_command_invocation_output()
@@ -3135,7 +3201,8 @@ ssm_get_connection_status <- function(Target) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_connection_status_input(Target = Target)
   output <- .ssm$get_connection_status_output()
@@ -3165,7 +3232,8 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_default_patch_baseline_input(OperatingSystem = OperatingSystem)
   output <- .ssm$get_default_patch_baseline_output()
@@ -3200,7 +3268,8 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_deployable_patch_snapshot_for_instance_input(InstanceId = InstanceId, SnapshotId = SnapshotId, BaselineOverride = BaselineOverride)
   output <- .ssm$get_deployable_patch_snapshot_for_instance_output()
@@ -3237,7 +3306,8 @@ ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_document_input(Name = Name, VersionName = VersionName, DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat)
   output <- .ssm$get_document_output()
@@ -3278,7 +3348,8 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities"),
+    stream_api = FALSE
   )
   input <- .ssm$get_inventory_input(Filters = Filters, Aggregators = Aggregators, ResultAttributes = ResultAttributes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_inventory_output()
@@ -3319,7 +3390,8 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas"),
+    stream_api = FALSE
   )
   input <- .ssm$get_inventory_schema_input(TypeName = TypeName, NextToken = NextToken, MaxResults = MaxResults, Aggregator = Aggregator, SubType = SubType)
   output <- .ssm$get_inventory_schema_output()
@@ -3350,7 +3422,8 @@ ssm_get_maintenance_window <- function(WindowId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_maintenance_window_input(WindowId = WindowId)
   output <- .ssm$get_maintenance_window_output()
@@ -3380,7 +3453,8 @@ ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_maintenance_window_execution_input(WindowExecutionId = WindowExecutionId)
   output <- .ssm$get_maintenance_window_execution_output()
@@ -3413,7 +3487,8 @@ ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_maintenance_window_execution_task_input(WindowExecutionId = WindowExecutionId, TaskId = TaskId)
   output <- .ssm$get_maintenance_window_execution_task_output()
@@ -3446,7 +3521,8 @@ ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecution
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_maintenance_window_execution_task_invocation_input(WindowExecutionId = WindowExecutionId, TaskId = TaskId, InvocationId = InvocationId)
   output <- .ssm$get_maintenance_window_execution_task_invocation_output()
@@ -3477,7 +3553,8 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_maintenance_window_task_input(WindowId = WindowId, WindowTaskId = WindowTaskId)
   output <- .ssm$get_maintenance_window_task_output()
@@ -3508,7 +3585,8 @@ ssm_get_ops_item <- function(OpsItemId, OpsItemArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_ops_item_input(OpsItemId = OpsItemId, OpsItemArn = OpsItemArn)
   output <- .ssm$get_ops_item_output()
@@ -3544,7 +3622,8 @@ ssm_get_ops_metadata <- function(OpsMetadataArn, MaxResults = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_ops_metadata_input(OpsMetadataArn = OpsMetadataArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$get_ops_metadata_output()
@@ -3584,7 +3663,8 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities"),
+    stream_api = FALSE
   )
   input <- .ssm$get_ops_summary_input(SyncName = SyncName, Filters = Filters, Aggregators = Aggregators, ResultAttributes = ResultAttributes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_ops_summary_output()
@@ -3626,7 +3706,8 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_parameter_input(Name = Name, WithDecryption = WithDecryption)
   output <- .ssm$get_parameter_output()
@@ -3665,7 +3746,8 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .ssm$get_parameter_history_input(Name = Name, WithDecryption = WithDecryption, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$get_parameter_history_output()
@@ -3711,7 +3793,8 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_parameters_input(Names = Names, WithDecryption = WithDecryption)
   output <- .ssm$get_parameters_output()
@@ -3769,7 +3852,8 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .ssm$get_parameters_by_path_input(Path = Path, Recursive = Recursive, ParameterFilters = ParameterFilters, WithDecryption = WithDecryption, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$get_parameters_by_path_output()
@@ -3806,7 +3890,8 @@ ssm_get_patch_baseline <- function(BaselineId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_patch_baseline_input(BaselineId = BaselineId)
   output <- .ssm$get_patch_baseline_output()
@@ -3839,7 +3924,8 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_patch_baseline_for_patch_group_input(PatchGroup = PatchGroup, OperatingSystem = OperatingSystem)
   output <- .ssm$get_patch_baseline_for_patch_group_output()
@@ -3875,7 +3961,8 @@ ssm_get_resource_policies <- function(ResourceArn, NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Policies")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Policies"),
+    stream_api = FALSE
   )
   input <- .ssm$get_resource_policies_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_resource_policies_output()
@@ -3898,21 +3985,21 @@ ssm_get_resource_policies <- function(ResourceArn, NextToken = NULL, MaxResults 
 #' @param SettingId &#91;required&#93; The ID of the service setting to get. The setting ID can be one of the
 #' following.
 #' 
-#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
+#' - `/ssm/managed-instance/default-ec2-instance-management-role`
 #' 
-#' -   `/ssm/automation/customer-script-log-destination`
+#' - `/ssm/automation/customer-script-log-destination`
 #' 
-#' -   `/ssm/automation/customer-script-log-group-name`
+#' - `/ssm/automation/customer-script-log-group-name`
 #' 
-#' -   `/ssm/documents/console/public-sharing-permission`
+#' - `/ssm/documents/console/public-sharing-permission`
 #' 
-#' -   `/ssm/managed-instance/activation-tier`
+#' - `/ssm/managed-instance/activation-tier`
 #' 
-#' -   `/ssm/opsinsights/opscenter`
+#' - `/ssm/opsinsights/opscenter`
 #' 
-#' -   `/ssm/parameter-store/default-parameter-tier`
+#' - `/ssm/parameter-store/default-parameter-tier`
 #' 
-#' -   `/ssm/parameter-store/high-throughput-enabled`
+#' - `/ssm/parameter-store/high-throughput-enabled`
 #'
 #' @keywords internal
 #'
@@ -3923,7 +4010,8 @@ ssm_get_service_setting <- function(SettingId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$get_service_setting_input(SettingId = SettingId)
   output <- .ssm$get_service_setting_output()
@@ -3961,7 +4049,8 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$label_parameter_version_input(Name = Name, ParameterVersion = ParameterVersion, Labels = Labels)
   output <- .ssm$label_parameter_version_output()
@@ -3996,7 +4085,8 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationVersions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationVersions"),
+    stream_api = FALSE
   )
   input <- .ssm$list_association_versions_input(AssociationId = AssociationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_association_versions_output()
@@ -4038,7 +4128,8 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations"),
+    stream_api = FALSE
   )
   input <- .ssm$list_associations_input(AssociationFilterList = AssociationFilterList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_associations_output()
@@ -4078,7 +4169,8 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CommandInvocations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CommandInvocations"),
+    stream_api = FALSE
   )
   input <- .ssm$list_command_invocations_input(CommandId = CommandId, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, Details = Details)
   output <- .ssm$list_command_invocations_output()
@@ -4120,7 +4212,8 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Commands")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Commands"),
+    stream_api = FALSE
   )
   input <- .ssm$list_commands_input(CommandId = CommandId, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssm$list_commands_output()
@@ -4161,7 +4254,8 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ComplianceItems")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ComplianceItems"),
+    stream_api = FALSE
   )
   input <- .ssm$list_compliance_items_input(Filters = Filters, ResourceIds = ResourceIds, ResourceTypes = ResourceTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_compliance_items_output()
@@ -4198,7 +4292,8 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ComplianceSummaryItems")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ComplianceSummaryItems"),
+    stream_api = FALSE
   )
   input <- .ssm$list_compliance_summaries_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_compliance_summaries_output()
@@ -4237,7 +4332,8 @@ ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Met
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$list_document_metadata_history_input(Name = Name, DocumentVersion = DocumentVersion, Metadata = Metadata, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_document_metadata_history_output()
@@ -4272,7 +4368,8 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentVersions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentVersions"),
+    stream_api = FALSE
   )
   input <- .ssm$list_document_versions_input(Name = Name, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_document_versions_output()
@@ -4319,7 +4416,8 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentIdentifiers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentIdentifiers"),
+    stream_api = FALSE
   )
   input <- .ssm$list_documents_input(DocumentFilterList = DocumentFilterList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_documents_output()
@@ -4357,7 +4455,8 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$list_inventory_entries_input(InstanceId = InstanceId, TypeName = TypeName, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_inventory_entries_output()
@@ -4394,7 +4493,8 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    stream_api = FALSE
   )
   input <- .ssm$list_ops_item_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_item_events_output()
@@ -4433,7 +4533,8 @@ ssm_list_ops_item_related_items <- function(OpsItemId = NULL, Filters = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    stream_api = FALSE
   )
   input <- .ssm$list_ops_item_related_items_input(OpsItemId = OpsItemId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_item_related_items_output()
@@ -4470,7 +4571,8 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OpsMetadataList")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OpsMetadataList"),
+    stream_api = FALSE
   )
   input <- .ssm$list_ops_metadata_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_metadata_output()
@@ -4506,7 +4608,8 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceComplianceSummaryItems")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceComplianceSummaryItems"),
+    stream_api = FALSE
   )
   input <- .ssm$list_resource_compliance_summaries_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_resource_compliance_summaries_output()
@@ -4544,7 +4647,8 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceDataSyncItems")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceDataSyncItems"),
+    stream_api = FALSE
   )
   input <- .ssm$list_resource_data_sync_input(SyncType = SyncType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_resource_data_sync_output()
@@ -4575,7 +4679,8 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$list_tags_for_resource_input(ResourceType = ResourceType, ResourceId = ResourceId)
   output <- .ssm$list_tags_for_resource_output()
@@ -4617,7 +4722,8 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$modify_document_permission_input(Name = Name, PermissionType = PermissionType, AccountIdsToAdd = AccountIdsToAdd, AccountIdsToRemove = AccountIdsToRemove, SharedDocumentVersion = SharedDocumentVersion)
   output <- .ssm$modify_document_permission_output()
@@ -4674,7 +4780,8 @@ ssm_put_compliance_items <- function(ResourceId, ResourceType, ComplianceType, E
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$put_compliance_items_input(ResourceId = ResourceId, ResourceType = ResourceType, ComplianceType = ComplianceType, ExecutionSummary = ExecutionSummary, Items = Items, ItemContentHash = ItemContentHash, UploadType = UploadType)
   output <- .ssm$put_compliance_items_output()
@@ -4705,7 +4812,8 @@ ssm_put_inventory <- function(InstanceId, Items) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$put_inventory_input(InstanceId = InstanceId, Items = Items)
   output <- .ssm$put_inventory_output()
@@ -4737,24 +4845,24 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' Naming Constraints:
 #' 
-#' -   Parameter names are case sensitive.
+#' - Parameter names are case sensitive.
 #' 
-#' -   A parameter name must be unique within an Amazon Web Services Region
+#' - A parameter name must be unique within an Amazon Web Services Region
 #' 
-#' -   A parameter name can't be prefixed with "`aws`" or "`ssm`"
-#'     (case-insensitive).
+#' - A parameter name can't be prefixed with "`aws`" or "`ssm`"
+#'   (case-insensitive).
 #' 
-#' -   Parameter names can include only the following symbols and letters:
-#'     `a-zA-Z0-9_.-`
+#' - Parameter names can include only the following symbols and letters:
+#'   `a-zA-Z0-9_.-`
 #' 
-#'     In addition, the slash character ( / ) is used to delineate
-#'     hierarchies in parameter names. For example:
-#'     `/Dev/Production/East/Project-ABC/MyParameter`
+#'   In addition, the slash character ( / ) is used to delineate
+#'   hierarchies in parameter names. For example:
+#'   `/Dev/Production/East/Project-ABC/MyParameter`
 #' 
-#' -   A parameter name can't include spaces.
+#' - A parameter name can't include spaces.
 #' 
-#' -   Parameter hierarchies are limited to a maximum depth of fifteen
-#'     levels.
+#' - Parameter hierarchies are limited to a maximum depth of fifteen
+#'   levels.
 #' 
 #' For additional information about valid values for parameter names, see
 #' [Creating Systems Manager
@@ -4796,8 +4904,8 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' associated with your Amazon Web Services account which is not as secure
 #' as using a custom key.
 #' 
-#' -   To use a custom KMS key, choose the `SecureString` data type with
-#'     the `Key ID` parameter.
+#' - To use a custom KMS key, choose the `SecureString` data type with the
+#'   `Key ID` parameter.
 #' @param Overwrite Overwrite an existing parameter. The default value is `false`.
 #' @param AllowedPattern A regular expression used to validate the parameter value. For example,
 #' for String types with values restricted to numbers, you can specify the
@@ -4810,11 +4918,11 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' parameter. In this case, you could specify the following key-value
 #' pairs:
 #' 
-#' -   `Key=Resource,Value=S3bucket`
+#' - `Key=Resource,Value=S3bucket`
 #' 
-#' -   `Key=OS,Value=Windows`
+#' - `Key=OS,Value=Windows`
 #' 
-#' -   `Key=ParameterType,Value=LicenseKey`
+#' - `Key=ParameterType,Value=LicenseKey`
 #' 
 #' To add tags to an existing Systems Manager parameter, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
@@ -4859,30 +4967,30 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' standard-parameter tier. If you use the advanced-parameter tier, you can
 #' specify one of the following as the default:
 #' 
-#' -   **Advanced**: With this option, Parameter Store evaluates all
-#'     requests as advanced parameters.
+#' - **Advanced**: With this option, Parameter Store evaluates all requests
+#'   as advanced parameters.
 #' 
-#' -   **Intelligent-Tiering**: With this option, Parameter Store evaluates
-#'     each request to determine if the parameter is standard or advanced.
+#' - **Intelligent-Tiering**: With this option, Parameter Store evaluates
+#'   each request to determine if the parameter is standard or advanced.
 #' 
-#'     If the request doesn't include any options that require an advanced
-#'     parameter, the parameter is created in the standard-parameter tier.
-#'     If one or more options requiring an advanced parameter are included
-#'     in the request, Parameter Store create a parameter in the
-#'     advanced-parameter tier.
+#'   If the request doesn't include any options that require an advanced
+#'   parameter, the parameter is created in the standard-parameter tier. If
+#'   one or more options requiring an advanced parameter are included in
+#'   the request, Parameter Store create a parameter in the
+#'   advanced-parameter tier.
 #' 
-#'     This approach helps control your parameter-related costs by always
-#'     creating standard parameters unless an advanced parameter is
-#'     necessary.
+#'   This approach helps control your parameter-related costs by always
+#'   creating standard parameters unless an advanced parameter is
+#'   necessary.
 #' 
 #' Options that require an advanced parameter include the following:
 #' 
-#' -   The content size of the parameter is more than 4 KB.
+#' - The content size of the parameter is more than 4 KB.
 #' 
-#' -   The parameter uses a parameter policy.
+#' - The parameter uses a parameter policy.
 #' 
-#' -   More than 10,000 parameters already exist in your Amazon Web
-#'     Services account in the current Amazon Web Services Region.
+#' - More than 10,000 parameters already exist in your Amazon Web Services
+#'   account in the current Amazon Web Services Region.
 #' 
 #' For more information about configuring the default tier option, see
 #' [Specifying a default parameter
@@ -4917,11 +5025,11 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' 
 #' **The following data type values are supported.**
 #' 
-#' -   `text`
+#' - `text`
 #' 
-#' -   `aws:ec2:image`
+#' - `aws:ec2:image`
 #' 
-#' -   `aws:ssm:integration`
+#' - `aws:ssm:integration`
 #' 
 #' When you create a `String` parameter and specify `aws:ec2:image`, Amazon
 #' Web Services Systems Manager validates the parameter value is in the
@@ -4955,7 +5063,8 @@ ssm_put_parameter <- function(Name, Description = NULL, Value, Type = NULL, KeyI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$put_parameter_input(Name = Name, Description = Description, Value = Value, Type = Type, KeyId = KeyId, Overwrite = Overwrite, AllowedPattern = AllowedPattern, Tags = Tags, Tier = Tier, Policies = Policies, DataType = DataType)
   output <- .ssm$put_parameter_output()
@@ -4991,7 +5100,8 @@ ssm_put_resource_policy <- function(ResourceArn, Policy, PolicyId = NULL, Policy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy, PolicyId = PolicyId, PolicyHash = PolicyHash)
   output <- .ssm$put_resource_policy_output()
@@ -5021,7 +5131,8 @@ ssm_register_default_patch_baseline <- function(BaselineId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$register_default_patch_baseline_input(BaselineId = BaselineId)
   output <- .ssm$register_default_patch_baseline_output()
@@ -5052,7 +5163,8 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$register_patch_baseline_for_patch_group_input(BaselineId = BaselineId, PatchGroup = PatchGroup)
   output <- .ssm$register_patch_baseline_for_patch_group_output()
@@ -5130,7 +5242,8 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$register_target_with_maintenance_window_input(WindowId = WindowId, ResourceType = ResourceType, Targets = Targets, OwnerInformation = OwnerInformation, Name = Name, Description = Description, ClientToken = ClientToken)
   output <- .ssm$register_target_with_maintenance_window_output()
@@ -5181,7 +5294,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' maintenance window tasks. The policy can be crafted to provide only the
 #' permissions needed for your particular maintenance window tasks. For
 #' more information, see [Setting up maintenance
-#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html)
 #' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskType &#91;required&#93; The type of task being registered.
 #' @param TaskParameters The parameters that should be passed to the task when it is run.
@@ -5236,22 +5349,22 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' @param CutoffBehavior Indicates whether tasks should continue to run after the cutoff time
 #' specified in the maintenance windows is reached.
 #' 
-#' -   `CONTINUE_TASK`: When the cutoff time is reached, any tasks that are
-#'     running continue. The default value.
+#' - `CONTINUE_TASK`: When the cutoff time is reached, any tasks that are
+#'   running continue. The default value.
 #' 
-#' -   `CANCEL_TASK`:
+#' - `CANCEL_TASK`:
 #' 
-#'     -   For Automation, Lambda, Step Functions tasks: When the cutoff
-#'         time is reached, any task invocations that are already running
-#'         continue, but no new task invocations are started.
+#'   - For Automation, Lambda, Step Functions tasks: When the cutoff time
+#'     is reached, any task invocations that are already running continue,
+#'     but no new task invocations are started.
 #' 
-#'     -   For Run Command tasks: When the cutoff time is reached, the
-#'         system sends a [`cancel_command`][ssm_cancel_command] operation
-#'         that attempts to cancel the command associated with the task.
-#'         However, there is no guarantee that the command will be
-#'         terminated and the underlying process stopped.
+#'   - For Run Command tasks: When the cutoff time is reached, the system
+#'     sends a [`cancel_command`][ssm_cancel_command] operation that
+#'     attempts to cancel the command associated with the task. However,
+#'     there is no guarantee that the command will be terminated and the
+#'     underlying process stopped.
 #' 
-#'     The status for tasks that are not completed is `TIMED_OUT`.
+#'   The status for tasks that are not completed is `TIMED_OUT`.
 #' @param AlarmConfiguration The CloudWatch alarm you want to apply to your maintenance window task.
 #'
 #' @keywords internal
@@ -5263,7 +5376,8 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$register_task_with_maintenance_window_input(WindowId = WindowId, Targets = Targets, TaskArn = TaskArn, ServiceRoleArn = ServiceRoleArn, TaskType = TaskType, TaskParameters = TaskParameters, TaskInvocationParameters = TaskInvocationParameters, Priority = Priority, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, LoggingInfo = LoggingInfo, Name = Name, Description = Description, ClientToken = ClientToken, CutoffBehavior = CutoffBehavior, AlarmConfiguration = AlarmConfiguration)
   output <- .ssm$register_task_with_maintenance_window_output()
@@ -5321,7 +5435,8 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$remove_tags_from_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .ssm$remove_tags_from_resource_output()
@@ -5344,21 +5459,21 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #' @param SettingId &#91;required&#93; The Amazon Resource Name (ARN) of the service setting to reset. The
 #' setting ID can be one of the following.
 #' 
-#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
+#' - `/ssm/managed-instance/default-ec2-instance-management-role`
 #' 
-#' -   `/ssm/automation/customer-script-log-destination`
+#' - `/ssm/automation/customer-script-log-destination`
 #' 
-#' -   `/ssm/automation/customer-script-log-group-name`
+#' - `/ssm/automation/customer-script-log-group-name`
 #' 
-#' -   `/ssm/documents/console/public-sharing-permission`
+#' - `/ssm/documents/console/public-sharing-permission`
 #' 
-#' -   `/ssm/managed-instance/activation-tier`
+#' - `/ssm/managed-instance/activation-tier`
 #' 
-#' -   `/ssm/opsinsights/opscenter`
+#' - `/ssm/opsinsights/opscenter`
 #' 
-#' -   `/ssm/parameter-store/default-parameter-tier`
+#' - `/ssm/parameter-store/default-parameter-tier`
 #' 
-#' -   `/ssm/parameter-store/high-throughput-enabled`
+#' - `/ssm/parameter-store/high-throughput-enabled`
 #'
 #' @keywords internal
 #'
@@ -5369,7 +5484,8 @@ ssm_reset_service_setting <- function(SettingId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$reset_service_setting_input(SettingId = SettingId)
   output <- .ssm$reset_service_setting_output()
@@ -5399,7 +5515,8 @@ ssm_resume_session <- function(SessionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$resume_session_input(SessionId = SessionId)
   output <- .ssm$resume_session_output()
@@ -5449,7 +5566,8 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$send_automation_signal_input(AutomationExecutionId = AutomationExecutionId, SignalType = SignalType, Payload = Payload)
   output <- .ssm$send_automation_signal_output()
@@ -5510,9 +5628,9 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' must escape the first two options by using a backslash. If you specify a
 #' version number, then you don't need to use the backslash. For example:
 #' 
-#' --document-version "$DEFAULT"
+#' --document-version "\\DEFAULT"
 #' 
-#' --document-version "$LATEST"
+#' --document-version "\\LATEST"
 #' 
 #' --document-version "3"
 #' @param DocumentHash The Sha256 or Sha1 hash created by the system when the document was
@@ -5573,7 +5691,8 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$send_command_input(InstanceIds = InstanceIds, Targets = Targets, DocumentName = DocumentName, DocumentVersion = DocumentVersion, DocumentHash = DocumentHash, DocumentHashType = DocumentHashType, TimeoutSeconds = TimeoutSeconds, Comment = Comment, Parameters = Parameters, OutputS3Region = OutputS3Region, OutputS3BucketName = OutputS3BucketName, OutputS3KeyPrefix = OutputS3KeyPrefix, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, ServiceRoleArn = ServiceRoleArn, NotificationConfig = NotificationConfig, CloudWatchOutputConfig = CloudWatchOutputConfig, AlarmConfiguration = AlarmConfiguration)
   output <- .ssm$send_command_output()
@@ -5603,7 +5722,8 @@ ssm_start_associations_once <- function(AssociationIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$start_associations_once_input(AssociationIds = AssociationIds)
   output <- .ssm$start_associations_once_output()
@@ -5674,9 +5794,9 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' environment or operating system. In this case, you could specify the
 #' following key-value pairs:
 #' 
-#' -   `Key=environment,Value=test`
+#' - `Key=environment,Value=test`
 #' 
-#' -   `Key=OS,Value=Windows`
+#' - `Key=OS,Value=Windows`
 #' 
 #' To add tags to an existing automation, use the
 #' [`add_tags_to_resource`][ssm_add_tags_to_resource] operation.
@@ -5691,7 +5811,8 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$start_automation_execution_input(DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ClientToken = ClientToken, Mode = Mode, TargetParameterName = TargetParameterName, Targets = Targets, TargetMaps = TargetMaps, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, TargetLocations = TargetLocations, Tags = Tags, AlarmConfiguration = AlarmConfiguration)
   output <- .ssm$start_automation_execution_output()
@@ -5750,9 +5871,9 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' environment or target Amazon Web Services Region. In this case, you
 #' could specify the following key-value pairs:
 #' 
-#' -   `Key=Environment,Value=Production`
+#' - `Key=Environment,Value=Production`
 #' 
-#' -   `Key=Region,Value=us-east-2`
+#' - `Key=Region,Value=us-east-2`
 #' @param ScheduledEndTime The time that the requester expects the runbook workflow related to the
 #' change request to complete. The time is an estimate only that the
 #' requester provides for reviewers.
@@ -5769,7 +5890,8 @@ ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$start_change_request_execution_input(ScheduledTime = ScheduledTime, DocumentName = DocumentName, DocumentVersion = DocumentVersion, Parameters = Parameters, ChangeRequestName = ChangeRequestName, ClientToken = ClientToken, AutoApprove = AutoApprove, Runbooks = Runbooks, Tags = Tags, ScheduledEndTime = ScheduledEndTime, ChangeDetails = ChangeDetails)
   output <- .ssm$start_change_request_execution_output()
@@ -5814,7 +5936,8 @@ ssm_start_session <- function(Target, DocumentName = NULL, Reason = NULL, Parame
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$start_session_input(Target = Target, DocumentName = DocumentName, Reason = Reason, Parameters = Parameters)
   output <- .ssm$start_session_output()
@@ -5846,7 +5969,8 @@ ssm_stop_automation_execution <- function(AutomationExecutionId, Type = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$stop_automation_execution_input(AutomationExecutionId = AutomationExecutionId, Type = Type)
   output <- .ssm$stop_automation_execution_output()
@@ -5877,7 +6001,8 @@ ssm_terminate_session <- function(SessionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$terminate_session_input(SessionId = SessionId)
   output <- .ssm$terminate_session_output()
@@ -5914,7 +6039,8 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$unlabel_parameter_version_input(Name = Name, ParameterVersion = ParameterVersion, Labels = Labels)
   output <- .ssm$unlabel_parameter_version_output()
@@ -6072,13 +6198,13 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' The `Duration` parameter applies only when both these conditions are
 #' true:
 #' 
-#' -   The association for which you specify a duration is cancelable
-#'     according to the parameters of the SSM command document or
-#'     Automation runbook associated with this execution.
+#' - The association for which you specify a duration is cancelable
+#'   according to the parameters of the SSM command document or Automation
+#'   runbook associated with this execution.
 #' 
-#' -   The command specifies the ` ApplyOnlyAtCronInterval ` parameter,
-#'     which means that the association doesn't run immediately after it is
-#'     updated, but only according to the specified schedule.
+#' - The command specifies the ` ApplyOnlyAtCronInterval ` parameter, which
+#'   means that the association doesn't run immediately after it is
+#'   updated, but only according to the specified schedule.
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
 #' Targets and TargetMaps can't be specified together.
 #' @param AlarmConfiguration 
@@ -6092,7 +6218,8 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_association_input(AssociationId = AssociationId, Parameters = Parameters, DocumentVersion = DocumentVersion, ScheduleExpression = ScheduleExpression, OutputLocation = OutputLocation, Name = Name, Targets = Targets, AssociationName = AssociationName, AssociationVersion = AssociationVersion, AutomationTargetParameterName = AutomationTargetParameterName, MaxErrors = MaxErrors, MaxConcurrency = MaxConcurrency, ComplianceSeverity = ComplianceSeverity, SyncCompliance = SyncCompliance, ApplyOnlyAtCronInterval = ApplyOnlyAtCronInterval, CalendarNames = CalendarNames, TargetLocations = TargetLocations, ScheduleOffset = ScheduleOffset, Duration = Duration, TargetMaps = TargetMaps, AlarmConfiguration = AlarmConfiguration)
   output <- .ssm$update_association_output()
@@ -6125,7 +6252,8 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_association_status_input(Name = Name, InstanceId = InstanceId, AssociationStatus = AssociationStatus)
   output <- .ssm$update_association_status_output()
@@ -6176,7 +6304,8 @@ ssm_update_document <- function(Content, Attachments = NULL, Name, DisplayName =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_document_input(Content = Content, Attachments = Attachments, Name = Name, DisplayName = DisplayName, VersionName = VersionName, DocumentVersion = DocumentVersion, DocumentFormat = DocumentFormat, TargetType = TargetType)
   output <- .ssm$update_document_output()
@@ -6209,7 +6338,8 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_document_default_version_input(Name = Name, DocumentVersion = DocumentVersion)
   output <- .ssm$update_document_default_version_output()
@@ -6243,7 +6373,8 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_document_metadata_input(Name = Name, DocumentVersion = DocumentVersion, DocumentReviews = DocumentReviews)
   output <- .ssm$update_document_metadata_output()
@@ -6312,7 +6443,8 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_maintenance_window_input(WindowId = WindowId, Name = Name, Description = Description, StartDate = StartDate, EndDate = EndDate, Schedule = Schedule, ScheduleTimezone = ScheduleTimezone, ScheduleOffset = ScheduleOffset, Duration = Duration, Cutoff = Cutoff, AllowUnassociatedTargets = AllowUnassociatedTargets, Enabled = Enabled, Replace = Replace)
   output <- .ssm$update_maintenance_window_output()
@@ -6353,7 +6485,8 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_maintenance_window_target_input(WindowId = WindowId, WindowTargetId = WindowTargetId, Targets = Targets, OwnerInformation = OwnerInformation, Name = Name, Description = Description, Replace = Replace)
   output <- .ssm$update_maintenance_window_target_output()
@@ -6400,7 +6533,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' maintenance window tasks. The policy can be crafted to provide only the
 #' permissions needed for your particular maintenance window tasks. For
 #' more information, see [Setting up maintenance
-#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' windows](https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html)
 #' in the in the *Amazon Web Services Systems Manager User Guide*.
 #' @param TaskParameters The parameters to modify.
 #' 
@@ -6471,22 +6604,22 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' @param CutoffBehavior Indicates whether tasks should continue to run after the cutoff time
 #' specified in the maintenance windows is reached.
 #' 
-#' -   `CONTINUE_TASK`: When the cutoff time is reached, any tasks that are
-#'     running continue. The default value.
+#' - `CONTINUE_TASK`: When the cutoff time is reached, any tasks that are
+#'   running continue. The default value.
 #' 
-#' -   `CANCEL_TASK`:
+#' - `CANCEL_TASK`:
 #' 
-#'     -   For Automation, Lambda, Step Functions tasks: When the cutoff
-#'         time is reached, any task invocations that are already running
-#'         continue, but no new task invocations are started.
+#'   - For Automation, Lambda, Step Functions tasks: When the cutoff time
+#'     is reached, any task invocations that are already running continue,
+#'     but no new task invocations are started.
 #' 
-#'     -   For Run Command tasks: When the cutoff time is reached, the
-#'         system sends a [`cancel_command`][ssm_cancel_command] operation
-#'         that attempts to cancel the command associated with the task.
-#'         However, there is no guarantee that the command will be
-#'         terminated and the underlying process stopped.
+#'   - For Run Command tasks: When the cutoff time is reached, the system
+#'     sends a [`cancel_command`][ssm_cancel_command] operation that
+#'     attempts to cancel the command associated with the task. However,
+#'     there is no guarantee that the command will be terminated and the
+#'     underlying process stopped.
 #' 
-#'     The status for tasks that are not completed is `TIMED_OUT`.
+#'   The status for tasks that are not completed is `TIMED_OUT`.
 #' @param AlarmConfiguration The CloudWatch alarm you want to apply to your maintenance window task.
 #'
 #' @keywords internal
@@ -6498,7 +6631,8 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_maintenance_window_task_input(WindowId = WindowId, WindowTaskId = WindowTaskId, Targets = Targets, TaskArn = TaskArn, ServiceRoleArn = ServiceRoleArn, TaskParameters = TaskParameters, TaskInvocationParameters = TaskInvocationParameters, Priority = Priority, MaxConcurrency = MaxConcurrency, MaxErrors = MaxErrors, LoggingInfo = LoggingInfo, Name = Name, Description = Description, Replace = Replace, CutoffBehavior = CutoffBehavior, AlarmConfiguration = AlarmConfiguration)
   output <- .ssm$update_maintenance_window_task_output()
@@ -6524,7 +6658,7 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' permissions for the Amazon Web Services Systems Manager service
 #' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
 #' service role for a hybrid and multicloud
-#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
+#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can't specify an IAM service-linked role for this parameter. You
@@ -6539,7 +6673,8 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_managed_instance_role_input(InstanceId = InstanceId, IamRole = IamRole)
   output <- .ssm$update_managed_instance_role_output()
@@ -6624,7 +6759,8 @@ ssm_update_ops_item <- function(Description = NULL, OperationalData = NULL, Oper
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_ops_item_input(Description = Description, OperationalData = OperationalData, OperationalDataToDelete = OperationalDataToDelete, Notifications = Notifications, Priority = Priority, RelatedOpsItems = RelatedOpsItems, Status = Status, OpsItemId = OpsItemId, Title = Title, Category = Category, Severity = Severity, ActualStartTime = ActualStartTime, ActualEndTime = ActualEndTime, PlannedStartTime = PlannedStartTime, PlannedEndTime = PlannedEndTime, OpsItemArn = OpsItemArn)
   output <- .ssm$update_ops_item_output()
@@ -6657,7 +6793,8 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_ops_metadata_input(OpsMetadataArn = OpsMetadataArn, MetadataToUpdate = MetadataToUpdate, KeysToDelete = KeysToDelete)
   output <- .ssm$update_ops_metadata_output()
@@ -6740,7 +6877,8 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_patch_baseline_input(BaselineId = BaselineId, Name = Name, GlobalFilters = GlobalFilters, ApprovalRules = ApprovalRules, ApprovedPatches = ApprovedPatches, ApprovedPatchesComplianceLevel = ApprovedPatchesComplianceLevel, ApprovedPatchesEnableNonSecurity = ApprovedPatchesEnableNonSecurity, RejectedPatches = RejectedPatches, RejectedPatchesAction = RejectedPatchesAction, Description = Description, Sources = Sources, Replace = Replace)
   output <- .ssm$update_patch_baseline_output()
@@ -6773,7 +6911,8 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_resource_data_sync_input(SyncName = SyncName, SyncType = SyncType, SyncSource = SyncSource)
   output <- .ssm$update_resource_data_sync_output()
@@ -6798,21 +6937,21 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' `arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled`.
 #' The setting ID can be one of the following.
 #' 
-#' -   `/ssm/managed-instance/default-ec2-instance-management-role`
+#' - `/ssm/managed-instance/default-ec2-instance-management-role`
 #' 
-#' -   `/ssm/automation/customer-script-log-destination`
+#' - `/ssm/automation/customer-script-log-destination`
 #' 
-#' -   `/ssm/automation/customer-script-log-group-name`
+#' - `/ssm/automation/customer-script-log-group-name`
 #' 
-#' -   `/ssm/documents/console/public-sharing-permission`
+#' - `/ssm/documents/console/public-sharing-permission`
 #' 
-#' -   `/ssm/managed-instance/activation-tier`
+#' - `/ssm/managed-instance/activation-tier`
 #' 
-#' -   `/ssm/opsinsights/opscenter`
+#' - `/ssm/opsinsights/opscenter`
 #' 
-#' -   `/ssm/parameter-store/default-parameter-tier`
+#' - `/ssm/parameter-store/default-parameter-tier`
 #' 
-#' -   `/ssm/parameter-store/high-throughput-enabled`
+#' - `/ssm/parameter-store/high-throughput-enabled`
 #' 
 #' Permissions to update the
 #' `/ssm/managed-instance/default-ec2-instance-management-role` setting
@@ -6822,28 +6961,28 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' @param SettingValue &#91;required&#93; The new value to specify for the service setting. The following list
 #' specifies the available values for each setting.
 #' 
-#' -   For `/ssm/managed-instance/default-ec2-instance-management-role`,
-#'     enter the name of an IAM role.
+#' - For `/ssm/managed-instance/default-ec2-instance-management-role`,
+#'   enter the name of an IAM role.
 #' 
-#' -   For `/ssm/automation/customer-script-log-destination`, enter
-#'     `CloudWatch`.
+#' - For `/ssm/automation/customer-script-log-destination`, enter
+#'   `CloudWatch`.
 #' 
-#' -   For `/ssm/automation/customer-script-log-group-name`, enter the name
-#'     of an Amazon CloudWatch Logs log group.
+#' - For `/ssm/automation/customer-script-log-group-name`, enter the name
+#'   of an Amazon CloudWatch Logs log group.
 #' 
-#' -   For `/ssm/documents/console/public-sharing-permission`, enter
-#'     `Enable` or `Disable`.
+#' - For `/ssm/documents/console/public-sharing-permission`, enter `Enable`
+#'   or `Disable`.
 #' 
-#' -   For `/ssm/managed-instance/activation-tier`, enter `standard` or
-#'     `advanced`.
+#' - For `/ssm/managed-instance/activation-tier`, enter `standard` or
+#'   `advanced`.
 #' 
-#' -   For `/ssm/opsinsights/opscenter`, enter `Enabled` or `Disabled`.
+#' - For `/ssm/opsinsights/opscenter`, enter `Enabled` or `Disabled`.
 #' 
-#' -   For `/ssm/parameter-store/default-parameter-tier`, enter `Standard`,
-#'     `Advanced`, or `Intelligent-Tiering`
+#' - For `/ssm/parameter-store/default-parameter-tier`, enter `Standard`,
+#'   `Advanced`, or `Intelligent-Tiering`
 #' 
-#' -   For `/ssm/parameter-store/high-throughput-enabled`, enter `true` or
-#'     `false`.
+#' - For `/ssm/parameter-store/high-throughput-enabled`, enter `true` or
+#'   `false`.
 #'
 #' @keywords internal
 #'
@@ -6854,7 +6993,8 @@ ssm_update_service_setting <- function(SettingId, SettingValue) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssm$update_service_setting_input(SettingId = SettingId, SettingValue = SettingValue)
   output <- .ssm$update_service_setting_output()

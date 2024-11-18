@@ -22,8 +22,8 @@ V2.}
 \item{v2BotName}{[required] The name of the Amazon Lex V2 bot that you are migrating the Amazon Lex
 V1 bot to.
 \itemize{
-\item If the Amazon Lex V2 bot doesn't exist, you must use the
-\code{CREATE_NEW} migration strategy.
+\item If the Amazon Lex V2 bot doesn't exist, you must use the \code{CREATE_NEW}
+migration strategy.
 \item If the Amazon Lex V2 bot exists, you must use the \code{UPDATE_EXISTING}
 migration strategy to change the contents of the Amazon Lex V2 bot.
 }}
@@ -32,12 +32,12 @@ migration strategy to change the contents of the Amazon Lex V2 bot.
 
 \item{migrationStrategy}{[required] The strategy used to conduct the migration.
 \itemize{
-\item \code{CREATE_NEW} - Creates a new Amazon Lex V2 bot and migrates the
-Amazon Lex V1 bot to the new bot.
-\item \code{UPDATE_EXISTING} - Overwrites the existing Amazon Lex V2 bot
-metadata and the locale being migrated. It doesn't change any other
-locales in the Amazon Lex V2 bot. If the locale doesn't exist, a new
-locale is created in the Amazon Lex V2 bot.
+\item \code{CREATE_NEW} - Creates a new Amazon Lex V2 bot and migrates the Amazon
+Lex V1 bot to the new bot.
+\item \code{UPDATE_EXISTING} - Overwrites the existing Amazon Lex V2 bot metadata
+and the locale being migrated. It doesn't change any other locales in
+the Amazon Lex V2 bot. If the locale doesn't exist, a new locale is
+created in the Amazon Lex V2 bot.
 }}
 }
 \description{

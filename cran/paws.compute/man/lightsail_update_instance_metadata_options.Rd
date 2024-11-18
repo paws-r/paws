@@ -48,7 +48,7 @@ This parameter is available only for instances in the Europe (Stockholm)
 Amazon Web Services Region (\code{eu-north-1}).}
 }
 \description{
-Modifies the Amazon Lightsail instance metadata parameters on a running or stopped instance. When you modify the parameters on a running instance, the \code{\link[=lightsail_get_instance]{get_instance}} or \code{\link[=lightsail_get_instances]{get_instances}} API operation initially responds with a state of \code{pending}. After the parameter modifications are successfully applied, the state changes to \code{applied} in subsequent \code{\link[=lightsail_get_instance]{get_instance}} or \code{\link[=lightsail_get_instances]{get_instances}} API calls. For more information, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-instance-metadata-service.html}{Use IMDSv2 with an Amazon Lightsail instance} in the \emph{Amazon Lightsail Developer Guide}.
+Modifies the Amazon Lightsail instance metadata parameters on a running or stopped instance. When you modify the parameters on a running instance, the \code{\link[=lightsail_get_instance]{get_instance}} or \code{\link[=lightsail_get_instances]{get_instances}} API operation initially responds with a state of \code{pending}. After the parameter modifications are successfully applied, the state changes to \code{applied} in subsequent \code{\link[=lightsail_get_instance]{get_instance}} or \code{\link[=lightsail_get_instances]{get_instances}} API calls. For more information, see Use IMDSv2 with an Amazon Lightsail instance in the \emph{Amazon Lightsail Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_update_instance_metadata_options/} for full documentation.
 }

@@ -104,19 +104,18 @@ Here are some examples of how you can use \code{OutputKey}:
 \item If you specify 'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName} and
 'my-transcript.json' as the \code{OutputKey}, your transcription output
 path is \verb{s3://DOC-EXAMPLE-BUCKET/my-transcript.json}.
-\item If you specify 'my-first-transcription' as the
-\code{TranscriptionJobName}, 'DOC-EXAMPLE-BUCKET' as the
-\code{OutputBucketName}, and 'my-transcript' as the \code{OutputKey}, your
-transcription output path is
+\item If you specify 'my-first-transcription' as the \code{TranscriptionJobName},
+'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName}, and 'my-transcript' as
+the \code{OutputKey}, your transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json}.
 \item If you specify 'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName} and
-'test-files/my-transcript.json' as the \code{OutputKey}, your
-transcription output path is
+'test-files/my-transcript.json' as the \code{OutputKey}, your transcription
+output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json}.
-\item If you specify 'my-first-transcription' as the
-\code{TranscriptionJobName}, 'DOC-EXAMPLE-BUCKET' as the
-\code{OutputBucketName}, and 'test-files/my-transcript' as the
-\code{OutputKey}, your transcription output path is
+\item If you specify 'my-first-transcription' as the \code{TranscriptionJobName},
+'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName}, and
+'test-files/my-transcript' as the \code{OutputKey}, your transcription
+output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json}.
 }
 
@@ -172,8 +171,8 @@ language identification, use \code{Settings} with the \code{VocabularyName} or
 
 If you're using automatic language identification with your request and
 want to include a custom language model, a custom vocabulary, or a
-custom vocabulary filter, use instead the `` parameter with the
-\code{LanguageModelName}, `VocabularyName` or `VocabularyFilterName`
+custom vocabulary filter, use instead the parameter with the
+\code{LanguageModelName}, \code{VocabularyName} or \code{VocabularyFilterName}
 sub-parameters.}
 
 \item{ModelSettings}{Specify the custom language model you want to include with your
@@ -285,8 +284,11 @@ to your transcription.
 
 If you want to include a custom language model with your request but
 \strong{do not} want to use automatic language identification, use instead
-the \verb{parameter with the `LanguageModelName` sub-parameter. If you want to include a custom vocabulary or a custom vocabulary filter (or both) with your request but **do not** want to use automatic language identification, use instead the} parameter with the \code{VocabularyName}
-or \code{VocabularyFilterName} (or both) sub-parameter.}
+the parameter with the \code{LanguageModelName} sub-parameter. If you want to
+include a custom vocabulary or a custom vocabulary filter (or both) with
+your request but \strong{do not} want to use automatic language
+identification, use instead the parameter with the \code{VocabularyName} or
+\code{VocabularyFilterName} (or both) sub-parameter.}
 
 \item{ToxicityDetection}{Enables toxic speech detection in your transcript. If you include
 \code{ToxicityDetection} in your request, you must also include

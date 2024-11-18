@@ -26,7 +26,7 @@ unique with your AWS account, and your account's AWS region.}
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
-error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
+error. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of an IAM service role that Amazon
 Bedrock can assume to perform tasks on your behalf. The service role

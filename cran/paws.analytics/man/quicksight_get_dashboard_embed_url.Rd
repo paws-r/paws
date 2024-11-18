@@ -53,9 +53,8 @@ of the following:
 \itemize{
 \item Active Directory (AD) users or group members
 \item Invited nonfederated users
-\item IAM users and IAM role-based sessions authenticated through
-Federated Single Sign-On using SAML, OpenID Connect, or IAM
-federation.
+\item IAM users and IAM role-based sessions authenticated through Federated
+Single Sign-On using SAML, OpenID Connect, or IAM federation.
 }
 
 Omit this parameter for users in the third group – IAM users and IAM

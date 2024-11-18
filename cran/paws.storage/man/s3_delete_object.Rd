@@ -77,7 +77,7 @@ provide does not match the actual owner of the bucket, the request fails
 with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-Removes an object from a bucket. The behavior depends on the bucket's versioning state:
+Removes an object from a bucket. The behavior depends on the bucket's versioning state. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/DeletingObjects.html#DeletingObjects-best-practices}{Best practices to consider before deleting an object}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_delete_object/} for full documentation.
 }

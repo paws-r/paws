@@ -34,8 +34,7 @@ Values for alias resource record sets:
 \itemize{
 \item \strong{API Gateway custom regional API or edge-optimized API}: A
 \item \strong{CloudFront distribution}: A or AAAA
-\item \strong{Elastic Beanstalk environment that has a regionalized subdomain}:
-A
+\item \strong{Elastic Beanstalk environment that has a regionalized subdomain}: A
 \item \strong{Elastic Load Balancing load balancer}: A | AAAA
 \item \strong{S3 bucket}: A
 \item \strong{VPC interface VPC endpoint}: A

@@ -55,7 +55,7 @@ Valid Values: \code{multi-node | single-node}}
 \item{NodeType}{The new node type of the cluster. If you specify a new node type, you
 must also specify the number of nodes parameter.
 
-For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html}{Resizing Clusters in Amazon Redshift}
+For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html}{Resizing Clusters in Amazon Redshift}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.xlplus} | \code{ra3.4xlarge}
@@ -64,7 +64,7 @@ Valid Values: \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.xlplus} | \code{
 \item{NumberOfNodes}{The new number of nodes of the cluster. If you specify a new number of
 nodes, you must also specify the node type parameter.
 
-For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/rs-resize-tutorial.html}{Resizing Clusters in Amazon Redshift}
+For more information about resizing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html}{Resizing Clusters in Amazon Redshift}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: Integer greater than \code{0}.}
@@ -193,8 +193,7 @@ Constraints:
 \item Alphabetic characters must be lowercase.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for all clusters within an Amazon Web Services
-account.
+\item Must be unique for all clusters within an Amazon Web Services account.
 }
 
 Example: \code{examplecluster}}
@@ -246,9 +245,8 @@ target Availability Zone.}
 Valid Values:
 \itemize{
 \item For clusters with ra3 nodes - Select a port within the ranges
-\code{5431-5455} or \code{8191-8215}. (If you have an existing cluster with
-ra3 nodes, it isn't required that you change the port to these
-ranges.)
+\code{5431-5455} or \code{8191-8215}. (If you have an existing cluster with ra3
+nodes, it isn't required that you change the port to these ranges.)
 \item For clusters with dc2 nodes - Select a port within the range
 \code{1150-65535}.
 }}

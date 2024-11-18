@@ -47,9 +47,8 @@ version of the secret then a new version of the secret is created.
 request then the request is ignored. The operation is idempotent.
 \item If a version with this value already exists and the version of the
 \code{SecretString} and \code{SecretBinary} values are different from those in
-the request, then the request fails because you can't modify a
-secret version. You can only create new versions to store new secret
-values.
+the request, then the request fails because you can't modify a secret
+version. You can only create new versions to store new secret values.
 }
 
 This value becomes the \code{VersionId} of the new version.}

@@ -52,12 +52,12 @@ sets parameter values during stack instance update operations:
 \itemize{
 \item To override the current value for a parameter, include the parameter
 and specify its value.
-\item To leave an overridden parameter set to its present value, include
-the parameter and specify \code{UsePreviousValue} as \code{true}. (You can't
-specify both a value and set \code{UsePreviousValue} to \code{true}.)
+\item To leave an overridden parameter set to its present value, include the
+parameter and specify \code{UsePreviousValue} as \code{true}. (You can't specify
+both a value and set \code{UsePreviousValue} to \code{true}.)
 \item To set an overridden parameter back to the value specified in the
-stack set, specify a parameter list but don't include the parameter
-in the list.
+stack set, specify a parameter list but don't include the parameter in
+the list.
 \item To leave all parameters set to their present values, don't specify
 this property at all.
 }

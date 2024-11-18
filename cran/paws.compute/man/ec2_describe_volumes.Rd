@@ -17,14 +17,14 @@ ec2_describe_volumes(
 \itemize{
 \item \code{attachment.attach-time} - The time stamp when the attachment
 initiated.
-\item \code{attachment.delete-on-termination} - Whether the volume is deleted
-on instance termination.
+\item \code{attachment.delete-on-termination} - Whether the volume is deleted on
+instance termination.
 \item \code{attachment.device} - The device name specified in the block device
 mapping (for example, \verb{/dev/sda1}).
 \item \code{attachment.instance-id} - The ID of the instance the volume is
 attached to.
-\item \code{attachment.status} - The attachment state (\code{attaching} | \code{attached}
-| \code{detaching}).
+\item \code{attachment.status} - The attachment state (\code{attaching} | \code{attached} |
+\code{detaching}).
 \item \code{availability-zone} - The Availability Zone in which the volume was
 created.
 \item \code{create-time} - The time stamp when the volume was created.
@@ -33,20 +33,19 @@ created.
 \item \code{multi-attach-enabled} - Indicates whether the volume is enabled for
 Multi-Attach (\code{true} | \code{false})
 \item \code{fast-restored} - Indicates whether the volume was created from a
-snapshot that is enabled for fast snapshot restore (\code{true} |
-\code{false}).
+snapshot that is enabled for fast snapshot restore (\code{true} | \code{false}).
 \item \code{size} - The size of the volume, in GiB.
 \item \code{snapshot-id} - The snapshot from which the volume was created.
 \item \code{status} - The state of the volume (\code{creating} | \code{available} |
 \verb{in-use} | \code{deleting} | \code{deleted} | \code{error}).
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this
-filter to find all resources assigned a tag with a specific key,
-regardless of the tag value.
+resource. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless
+of the tag value.
 \item \code{volume-id} - The volume ID.
 \item \code{volume-type} - The Amazon EBS volume type (\code{gp2} | \code{gp3} | \code{io1} |
 \code{io2} | \code{st1} | \code{sc1}| \code{standard})

@@ -17,8 +17,8 @@ ec2_describe_reserved_instances(
 \itemize{
 \item \code{availability-zone} - The Availability Zone where the Reserved
 Instance can be used.
-\item \code{duration} - The duration of the Reserved Instance (one year or
-three years), in seconds (\code{31536000} | \code{94608000}).
+\item \code{duration} - The duration of the Reserved Instance (one year or three
+years), in seconds (\code{31536000} | \code{94608000}).
 \item \code{end} - The time when the Reserved Instance expires (for example,
 2015-08-07T11:54:42.000Z).
 \item \code{fixed-price} - The purchase price of the Reserved Instance (for
@@ -35,18 +35,18 @@ description (\code{Linux/UNIX} | \verb{Linux with SQL Server Standard} |
 \verb{Windows with SQL Server Standard} | \verb{Windows with SQL Server Web} |
 \verb{Windows with SQL Server Enterprise}).
 \item \code{reserved-instances-id} - The ID of the Reserved Instance.
-\item \code{start} - The time at which the Reserved Instance purchase request
-was placed (for example, 2014-08-07T11:54:42.000Z).
+\item \code{start} - The time at which the Reserved Instance purchase request was
+placed (for example, 2014-08-07T11:54:42.000Z).
 \item \code{state} - The state of the Reserved Instance (\code{payment-pending} |
 \code{active} | \code{payment-failed} | \code{retired}).
 \item \verb{tag:<key>} - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this
-filter to find all resources assigned a tag with a specific key,
-regardless of the tag value.
+resource. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless
+of the tag value.
 \item \code{usage-price} - The usage price of the Reserved Instance, per hour
 (for example, 0.84).
 }}

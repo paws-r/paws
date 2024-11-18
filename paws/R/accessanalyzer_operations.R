@@ -40,7 +40,8 @@ accessanalyzer_apply_archive_rule <- function(analyzerArn, ruleName, clientToken
     http_method = "PUT",
     http_path = "/archive-rule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$apply_archive_rule_input(analyzerArn = analyzerArn, ruleName = ruleName, clientToken = clientToken)
   output <- .accessanalyzer$apply_archive_rule_output()
@@ -89,7 +90,8 @@ accessanalyzer_cancel_policy_generation <- function(jobId) {
     http_method = "PUT",
     http_path = "/policy/generation/{jobId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$cancel_policy_generation_input(jobId = jobId)
   output <- .accessanalyzer$cancel_policy_generation_output()
@@ -215,7 +217,8 @@ accessanalyzer_check_access_not_granted <- function(policyDocument, access, poli
     http_method = "POST",
     http_path = "/policy/check-access-not-granted",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$check_access_not_granted_input(policyDocument = policyDocument, access = access, policyType = policyType)
   output <- .accessanalyzer$check_access_not_granted_output()
@@ -293,7 +296,8 @@ accessanalyzer_check_no_new_access <- function(newPolicyDocument, existingPolicy
     http_method = "POST",
     http_path = "/policy/check-no-new-access",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$check_no_new_access_input(newPolicyDocument = newPolicyDocument, existingPolicyDocument = existingPolicyDocument, policyType = policyType)
   output <- .accessanalyzer$check_no_new_access_output()
@@ -373,7 +377,8 @@ accessanalyzer_check_no_public_access <- function(policyDocument, resourceType) 
     http_method = "POST",
     http_path = "/policy/check-no-public-access",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$check_no_public_access_input(policyDocument = policyDocument, resourceType = resourceType)
   output <- .accessanalyzer$check_no_public_access_output()
@@ -548,7 +553,8 @@ accessanalyzer_create_access_preview <- function(analyzerArn, configurations, cl
     http_method = "PUT",
     http_path = "/access-preview",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$create_access_preview_input(analyzerArn = analyzerArn, configurations = configurations, clientToken = clientToken)
   output <- .accessanalyzer$create_access_preview_output()
@@ -639,7 +645,8 @@ accessanalyzer_create_analyzer <- function(analyzerName, type, archiveRules = NU
     http_method = "PUT",
     http_path = "/analyzer",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$create_analyzer_input(analyzerName = analyzerName, type = type, archiveRules = archiveRules, tags = tags, clientToken = clientToken, configuration = configuration)
   output <- .accessanalyzer$create_analyzer_output()
@@ -709,7 +716,8 @@ accessanalyzer_create_archive_rule <- function(analyzerName, ruleName, filter, c
     http_method = "PUT",
     http_path = "/analyzer/{analyzerName}/archive-rule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$create_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, filter = filter, clientToken = clientToken)
   output <- .accessanalyzer$create_archive_rule_output()
@@ -757,7 +765,8 @@ accessanalyzer_delete_analyzer <- function(analyzerName, clientToken = NULL) {
     http_method = "DELETE",
     http_path = "/analyzer/{analyzerName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$delete_analyzer_input(analyzerName = analyzerName, clientToken = clientToken)
   output <- .accessanalyzer$delete_analyzer_output()
@@ -805,7 +814,8 @@ accessanalyzer_delete_archive_rule <- function(analyzerName, ruleName, clientTok
     http_method = "DELETE",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$delete_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, clientToken = clientToken)
   output <- .accessanalyzer$delete_archive_rule_output()
@@ -867,7 +877,8 @@ accessanalyzer_generate_finding_recommendation <- function(analyzerArn, id) {
     http_method = "POST",
     http_path = "/recommendation/{id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$generate_finding_recommendation_input(analyzerArn = analyzerArn, id = id)
   output <- .accessanalyzer$generate_finding_recommendation_output()
@@ -1045,7 +1056,8 @@ accessanalyzer_get_access_preview <- function(accessPreviewId, analyzerArn) {
     http_method = "GET",
     http_path = "/access-preview/{accessPreviewId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$get_access_preview_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn)
   output <- .accessanalyzer$get_access_preview_output()
@@ -1119,7 +1131,8 @@ accessanalyzer_get_analyzed_resource <- function(analyzerArn, resourceArn) {
     http_method = "GET",
     http_path = "/analyzed-resource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$get_analyzed_resource_input(analyzerArn = analyzerArn, resourceArn = resourceArn)
   output <- .accessanalyzer$get_analyzed_resource_output()
@@ -1190,7 +1203,8 @@ accessanalyzer_get_analyzer <- function(analyzerName) {
     http_method = "GET",
     http_path = "/analyzer/{analyzerName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$get_analyzer_input(analyzerName = analyzerName)
   output <- .accessanalyzer$get_analyzer_output()
@@ -1267,7 +1281,8 @@ accessanalyzer_get_archive_rule <- function(analyzerName, ruleName) {
     http_method = "GET",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$get_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName)
   output <- .accessanalyzer$get_archive_rule_output()
@@ -1357,7 +1372,8 @@ accessanalyzer_get_finding <- function(analyzerArn, id) {
     http_method = "GET",
     http_path = "/finding/{id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$get_finding_input(analyzerArn = analyzerArn, id = id)
   output <- .accessanalyzer$get_finding_output()
@@ -1472,7 +1488,8 @@ accessanalyzer_get_finding_recommendation <- function(analyzerArn, id, maxResult
     http_method = "GET",
     http_path = "/recommendation/{id}",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendedSteps")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendedSteps"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$get_finding_recommendation_input(analyzerArn = analyzerArn, id = id, maxResults = maxResults, nextToken = nextToken)
   output <- .accessanalyzer$get_finding_recommendation_output()
@@ -1602,7 +1619,8 @@ accessanalyzer_get_finding_v2 <- function(analyzerArn, id, maxResults = NULL, ne
     http_method = "GET",
     http_path = "/findingv2/{id}",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingDetails")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingDetails"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$get_finding_v2_input(analyzerArn = analyzerArn, id = id, maxResults = maxResults, nextToken = nextToken)
   output <- .accessanalyzer$get_finding_v2_output()
@@ -1713,7 +1731,8 @@ accessanalyzer_get_generated_policy <- function(jobId, includeResourcePlaceholde
     http_method = "GET",
     http_path = "/policy/generation/{jobId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$get_generated_policy_input(jobId = jobId, includeResourcePlaceholders = includeResourcePlaceholders, includeServiceLevelTemplate = includeServiceLevelTemplate)
   output <- .accessanalyzer$get_generated_policy_output()
@@ -1822,7 +1841,8 @@ accessanalyzer_list_access_preview_findings <- function(accessPreviewId, analyze
     http_method = "POST",
     http_path = "/access-preview/{accessPreviewId}",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_access_preview_findings_input(accessPreviewId = accessPreviewId, analyzerArn = analyzerArn, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_access_preview_findings_output()
@@ -1889,7 +1909,8 @@ accessanalyzer_list_access_previews <- function(analyzerArn, nextToken = NULL, m
     http_method = "GET",
     http_path = "/access-preview",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accessPreviews")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accessPreviews"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_access_previews_input(analyzerArn = analyzerArn, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_access_previews_output()
@@ -1956,7 +1977,8 @@ accessanalyzer_list_analyzed_resources <- function(analyzerArn, resourceType = N
     http_method = "POST",
     http_path = "/analyzed-resource",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "analyzedResources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "analyzedResources"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_analyzed_resources_input(analyzerArn = analyzerArn, resourceType = resourceType, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_analyzed_resources_output()
@@ -2034,7 +2056,8 @@ accessanalyzer_list_analyzers <- function(nextToken = NULL, maxResults = NULL, t
     http_method = "GET",
     http_path = "/analyzer",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "analyzers")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "analyzers"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_analyzers_input(nextToken = nextToken, maxResults = maxResults, type = type)
   output <- .accessanalyzer$list_analyzers_output()
@@ -2111,7 +2134,8 @@ accessanalyzer_list_archive_rules <- function(analyzerName, nextToken = NULL, ma
     http_method = "GET",
     http_path = "/analyzer/{analyzerName}/archive-rule",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "archiveRules")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "archiveRules"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_archive_rules_input(analyzerName = analyzerName, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_archive_rules_output()
@@ -2232,7 +2256,8 @@ accessanalyzer_list_findings <- function(analyzerArn, filter = NULL, sort = NULL
     http_method = "POST",
     http_path = "/finding",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_findings_input(analyzerArn = analyzerArn, filter = filter, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .accessanalyzer$list_findings_output()
@@ -2335,7 +2360,8 @@ accessanalyzer_list_findings_v2 <- function(analyzerArn, filter = NULL, maxResul
     http_method = "POST",
     http_path = "/findingv2",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_findings_v2_input(analyzerArn = analyzerArn, filter = filter, maxResults = maxResults, nextToken = nextToken, sort = sort)
   output <- .accessanalyzer$list_findings_v2_output()
@@ -2403,7 +2429,8 @@ accessanalyzer_list_policy_generations <- function(principalArn = NULL, maxResul
     http_method = "GET",
     http_path = "/policy/generation",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyGenerations")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyGenerations"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_policy_generations_input(principalArn = principalArn, maxResults = maxResults, nextToken = nextToken)
   output <- .accessanalyzer$list_policy_generations_output()
@@ -2453,7 +2480,8 @@ accessanalyzer_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .accessanalyzer$list_tags_for_resource_output()
@@ -2535,7 +2563,8 @@ accessanalyzer_start_policy_generation <- function(policyGenerationDetails, clou
     http_method = "PUT",
     http_path = "/policy/generation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$start_policy_generation_input(policyGenerationDetails = policyGenerationDetails, cloudTrailDetails = cloudTrailDetails, clientToken = clientToken)
   output <- .accessanalyzer$start_policy_generation_output()
@@ -2589,7 +2618,8 @@ accessanalyzer_start_resource_scan <- function(analyzerArn, resourceArn, resourc
     http_method = "POST",
     http_path = "/resource/scan",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$start_resource_scan_input(analyzerArn = analyzerArn, resourceArn = resourceArn, resourceOwnerAccount = resourceOwnerAccount)
   output <- .accessanalyzer$start_resource_scan_output()
@@ -2636,7 +2666,8 @@ accessanalyzer_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .accessanalyzer$tag_resource_output()
@@ -2683,7 +2714,8 @@ accessanalyzer_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .accessanalyzer$untag_resource_output()
@@ -2747,7 +2779,8 @@ accessanalyzer_update_archive_rule <- function(analyzerName, ruleName, filter, c
     http_method = "PUT",
     http_path = "/analyzer/{analyzerName}/archive-rule/{ruleName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$update_archive_rule_input(analyzerName = analyzerName, ruleName = ruleName, filter = filter, clientToken = clientToken)
   output <- .accessanalyzer$update_archive_rule_output()
@@ -2805,7 +2838,8 @@ accessanalyzer_update_findings <- function(analyzerArn, status, ids = NULL, reso
     http_method = "PUT",
     http_path = "/finding",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$update_findings_input(analyzerArn = analyzerArn, status = status, ids = ids, resourceArn = resourceArn, clientToken = clientToken)
   output <- .accessanalyzer$update_findings_output()
@@ -2924,7 +2958,8 @@ accessanalyzer_validate_policy <- function(locale = NULL, maxResults = NULL, nex
     http_method = "POST",
     http_path = "/policy/validation",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
+    stream_api = FALSE
   )
   input <- .accessanalyzer$validate_policy_input(locale = locale, maxResults = maxResults, nextToken = nextToken, policyDocument = policyDocument, policyType = policyType, validatePolicyResourceType = validatePolicyResourceType)
   output <- .accessanalyzer$validate_policy_output()

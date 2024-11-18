@@ -31,18 +31,18 @@ algorithm.
 \item The metrics that the algorithm emits to Amazon CloudWatch.
 \item Which metrics that the algorithm emits can be used as the objective
 metric for hyperparameter tuning jobs.
-\item The input channels that the algorithm supports for training data.
-For example, an algorithm might support \code{train}, \code{validation}, and
-\code{test} channels.
+\item The input channels that the algorithm supports for training data. For
+example, an algorithm might support \code{train}, \code{validation}, and \code{test}
+channels.
 }}
 
 \item{InferenceSpecification}{Specifies details about inference jobs that the algorithm runs,
 including the following:
 \itemize{
-\item The Amazon ECR paths of containers that contain the inference code
-and model artifacts.
-\item The instance types that the algorithm supports for transform jobs
-and real-time endpoints used for inference.
+\item The Amazon ECR paths of containers that contain the inference code and
+model artifacts.
+\item The instance types that the algorithm supports for transform jobs and
+real-time endpoints used for inference.
 \item The input and output content formats that the algorithm supports for
 inference.
 }}

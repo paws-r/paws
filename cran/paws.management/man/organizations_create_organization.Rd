@@ -18,9 +18,9 @@ in the \emph{Organizations User Guide}.
 The consolidated billing feature subset isn't available for
 organizations in the Amazon Web Services GovCloud (US) Region.
 \item \code{ALL}: In addition to all the features supported by the consolidated
-billing feature set, the management account can also apply any
-policy type to any member account in the organization. For more
-information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features}
+billing feature set, the management account can also apply any policy
+type to any member account in the organization. For more information,
+see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features}
 in the \emph{Organizations User Guide}.
 }}
 }

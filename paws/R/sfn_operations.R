@@ -31,20 +31,20 @@ NULL
 #' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your
 #' Amazon Web Services account and region for 90 days. For more
 #' information, see [Limits Related to State Machine
-#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:
 #' 
-#' -   white space
+#' - white space
 #' 
-#' -   brackets `< > { } [ ]`
+#' - brackets `< > { } [ ]`
 #' 
-#' -   wildcard characters `? *`
+#' - wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
+#' - special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
-#' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' - control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
 #' 0-9, A-Z, a-z, - and _.
@@ -101,7 +101,8 @@ sfn_create_activity <- function(name, tags = NULL, encryptionConfiguration = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$create_activity_input(name = name, tags = tags, encryptionConfiguration = encryptionConfiguration)
   output <- .sfn$create_activity_output()
@@ -157,15 +158,15 @@ sfn_create_activity <- function(name, tags = NULL, encryptionConfiguration = NUL
 #' 
 #' A name must *not* contain:
 #' 
-#' -   white space
+#' - white space
 #' 
-#' -   brackets `< > { } [ ]`
+#' - brackets `< > { } [ ]`
 #' 
-#' -   wildcard characters `? *`
+#' - wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
+#' - special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
-#' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' - control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
 #' 0-9, A-Z, a-z, - and _.
@@ -181,7 +182,7 @@ sfn_create_activity <- function(name, tags = NULL, encryptionConfiguration = NUL
 #' logged.
 #' 
 #' By default, the `level` is set to `OFF`. For more information see [Log
-#' Levels](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+#' Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html)
 #' in the Step Functions User Guide.
 #' @param tags Tags to be added when creating a state machine.
 #' 
@@ -263,7 +264,8 @@ sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, log
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$create_state_machine_input(name = name, definition = definition, roleArn = roleArn, type = type, loggingConfiguration = loggingConfiguration, tags = tags, tracingConfiguration = tracingConfiguration, publish = publish, versionDescription = versionDescription, encryptionConfiguration = encryptionConfiguration)
   output <- .sfn$create_state_machine_output()
@@ -312,13 +314,13 @@ sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, log
 #' 
 #' **Related operations:**
 #' 
-#' -   [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
+#' - [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
 #' 
-#' -   [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
+#' - [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
 #' 
-#' -   [`update_state_machine_alias`][sfn_update_state_machine_alias]
+#' - [`update_state_machine_alias`][sfn_update_state_machine_alias]
 #' 
-#' -   [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
+#' - [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
 #'
 #' @usage
 #' sfn_create_state_machine_alias(description, name, routingConfiguration)
@@ -371,7 +373,8 @@ sfn_create_state_machine_alias <- function(description = NULL, name, routingConf
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$create_state_machine_alias_input(description = description, name = name, routingConfiguration = routingConfiguration)
   output <- .sfn$create_state_machine_alias_output()
@@ -414,7 +417,8 @@ sfn_delete_activity <- function(activityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$delete_activity_input(activityArn = activityArn)
   output <- .sfn$delete_activity_output()
@@ -441,20 +445,19 @@ sfn_delete_activity <- function(activityArn) {
 #' The following are some examples of qualified and unqualified state
 #' machine ARNs:
 #' 
-#' -   The following qualified state machine ARN refers to a *Distributed
-#'     Map state* with a label `mapStateLabel` in a state machine named
-#'     `myStateMachine`.
+#' - The following qualified state machine ARN refers to a *Distributed Map
+#'   state* with a label `mapStateLabel` in a state machine named
+#'   `myStateMachine`.
 #' 
-#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
+#'   `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
 #' 
-#'     If you provide a qualified state machine ARN that refers to a
-#'     *Distributed Map state*, the request fails with
-#'     `ValidationException`.
+#'   If you provide a qualified state machine ARN that refers to a
+#'   *Distributed Map state*, the request fails with `ValidationException`.
 #' 
-#' -   The following unqualified state machine ARN refers to a state
-#'     machine named `myStateMachine`.
+#' - The following unqualified state machine ARN refers to a state machine
+#'   named `myStateMachine`.
 #' 
-#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine`
+#'   `arn:partition:states:region:account-id:stateMachine:myStateMachine`
 #' 
 #' This API action also deletes all
 #' [versions](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html)
@@ -492,7 +495,8 @@ sfn_delete_state_machine <- function(stateMachineArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$delete_state_machine_input(stateMachineArn = stateMachineArn)
   output <- .sfn$delete_state_machine_output()
@@ -516,13 +520,13 @@ sfn_delete_state_machine <- function(stateMachineArn) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_state_machine_alias`][sfn_create_state_machine_alias]
+#' - [`create_state_machine_alias`][sfn_create_state_machine_alias]
 #' 
-#' -   [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
+#' - [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
 #' 
-#' -   [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
+#' - [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
 #' 
-#' -   [`update_state_machine_alias`][sfn_update_state_machine_alias]
+#' - [`update_state_machine_alias`][sfn_update_state_machine_alias]
 #'
 #' @usage
 #' sfn_delete_state_machine_alias(stateMachineAliasArn)
@@ -550,7 +554,8 @@ sfn_delete_state_machine_alias <- function(stateMachineAliasArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$delete_state_machine_alias_input(stateMachineAliasArn = stateMachineAliasArn)
   output <- .sfn$delete_state_machine_alias_output()
@@ -581,9 +586,9 @@ sfn_delete_state_machine_alias <- function(stateMachineAliasArn) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`publish_state_machine_version`][sfn_publish_state_machine_version]
+#' - [`publish_state_machine_version`][sfn_publish_state_machine_version]
 #' 
-#' -   [`list_state_machine_versions`][sfn_list_state_machine_versions]
+#' - [`list_state_machine_versions`][sfn_list_state_machine_versions]
 #'
 #' @usage
 #' sfn_delete_state_machine_version(stateMachineVersionArn)
@@ -611,7 +616,8 @@ sfn_delete_state_machine_version <- function(stateMachineVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$delete_state_machine_version_input(stateMachineVersionArn = stateMachineVersionArn)
   output <- .sfn$delete_state_machine_version_output()
@@ -671,7 +677,8 @@ sfn_describe_activity <- function(activityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$describe_activity_input(activityArn = activityArn)
   output <- .sfn$describe_activity_output()
@@ -774,7 +781,8 @@ sfn_describe_execution <- function(executionArn, includedData = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$describe_execution_input(executionArn = executionArn, includedData = includedData)
   output <- .sfn$describe_execution_output()
@@ -868,7 +876,8 @@ sfn_describe_map_run <- function(mapRunArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$describe_map_run_input(mapRunArn = mapRunArn)
   output <- .sfn$describe_map_run_output()
@@ -893,29 +902,28 @@ sfn_describe_map_run <- function(mapRunArn) {
 #' The following are some examples of qualified and unqualified state
 #' machine ARNs:
 #' 
-#' -   The following qualified state machine ARN refers to a *Distributed
-#'     Map state* with a label `mapStateLabel` in a state machine named
-#'     `myStateMachine`.
+#' - The following qualified state machine ARN refers to a *Distributed Map
+#'   state* with a label `mapStateLabel` in a state machine named
+#'   `myStateMachine`.
 #' 
-#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
+#'   `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
 #' 
-#'     If you provide a qualified state machine ARN that refers to a
-#'     *Distributed Map state*, the request fails with
-#'     `ValidationException`.
+#'   If you provide a qualified state machine ARN that refers to a
+#'   *Distributed Map state*, the request fails with `ValidationException`.
 #' 
-#' -   The following qualified state machine ARN refers to an alias named
-#'     `PROD`.
+#' - The following qualified state machine ARN refers to an alias named
+#'   `PROD`.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
 #' 
-#'     If you provide a qualified state machine ARN that refers to a
-#'     version ARN or an alias ARN, the request starts execution for that
-#'     version or alias.
+#'   If you provide a qualified state machine ARN that refers to a version
+#'   ARN or an alias ARN, the request starts execution for that version or
+#'   alias.
 #' 
-#' -   The following unqualified state machine ARN refers to a state
-#'     machine named `myStateMachine`.
+#' - The following unqualified state machine ARN refers to a state machine
+#'   named `myStateMachine`.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
 #' 
 #' This API action returns the details for a state machine version if the
 #' `stateMachineArn` you specify is a state machine version ARN.
@@ -1001,7 +1009,8 @@ sfn_describe_state_machine <- function(stateMachineArn, includedData = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$describe_state_machine_input(stateMachineArn = stateMachineArn, includedData = includedData)
   output <- .sfn$describe_state_machine_output()
@@ -1021,13 +1030,13 @@ sfn_describe_state_machine <- function(stateMachineArn, includedData = NULL) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_state_machine_alias`][sfn_create_state_machine_alias]
+#' - [`create_state_machine_alias`][sfn_create_state_machine_alias]
 #' 
-#' -   [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
+#' - [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
 #' 
-#' -   [`update_state_machine_alias`][sfn_update_state_machine_alias]
+#' - [`update_state_machine_alias`][sfn_update_state_machine_alias]
 #' 
-#' -   [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
+#' - [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
 #'
 #' @usage
 #' sfn_describe_state_machine_alias(stateMachineAliasArn)
@@ -1074,7 +1083,8 @@ sfn_describe_state_machine_alias <- function(stateMachineAliasArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$describe_state_machine_alias_input(stateMachineAliasArn = stateMachineAliasArn)
   output <- .sfn$describe_state_machine_alias_output()
@@ -1166,7 +1176,8 @@ sfn_describe_state_machine_for_execution <- function(executionArn, includedData 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$describe_state_machine_for_execution_input(executionArn = executionArn, includedData = includedData)
   output <- .sfn$describe_state_machine_for_execution_output()
@@ -1199,7 +1210,7 @@ sfn_describe_state_machine_for_execution <- function(executionArn, includedData 
 #' Polling with [`get_activity_task`][sfn_get_activity_task] can cause
 #' latency in some implementations. See [Avoid Latency When Polling for
 #' Activity
-#' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+#' Tasks](https://docs.aws.amazon.com/step-functions/latest/dg/bp-activity-pollers.html)
 #' in the Step Functions Developer Guide.
 #'
 #' @usage
@@ -1240,7 +1251,8 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$get_activity_task_input(activityArn = activityArn, workerName = workerName)
   output <- .sfn$get_activity_task_output()
@@ -1522,7 +1534,8 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events"),
+    stream_api = FALSE
   )
   input <- .sfn$get_execution_history_input(executionArn = executionArn, maxResults = maxResults, reverseOrder = reverseOrder, nextToken = nextToken, includeExecutionData = includeExecutionData)
   output <- .sfn$get_execution_history_output()
@@ -1601,7 +1614,8 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "activities")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "activities"),
+    stream_api = FALSE
   )
   input <- .sfn$list_activities_input(maxResults = maxResults, nextToken = nextToken)
   output <- .sfn$list_activities_output()
@@ -1747,7 +1761,8 @@ sfn_list_executions <- function(stateMachineArn = NULL, statusFilter = NULL, max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "executions")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "executions"),
+    stream_api = FALSE
   )
   input <- .sfn$list_executions_input(stateMachineArn = stateMachineArn, statusFilter = statusFilter, maxResults = maxResults, nextToken = nextToken, mapRunArn = mapRunArn, redriveFilter = redriveFilter)
   output <- .sfn$list_executions_output()
@@ -1826,7 +1841,8 @@ sfn_list_map_runs <- function(executionArn, maxResults = NULL, nextToken = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "mapRuns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "mapRuns"),
+    stream_api = FALSE
   )
   input <- .sfn$list_map_runs_input(executionArn = executionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .sfn$list_map_runs_output()
@@ -1859,13 +1875,13 @@ sfn_list_map_runs <- function(executionArn, maxResults = NULL, nextToken = NULL)
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_state_machine_alias`][sfn_create_state_machine_alias]
+#' - [`create_state_machine_alias`][sfn_create_state_machine_alias]
 #' 
-#' -   [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
+#' - [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
 #' 
-#' -   [`update_state_machine_alias`][sfn_update_state_machine_alias]
+#' - [`update_state_machine_alias`][sfn_update_state_machine_alias]
 #' 
-#' -   [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
+#' - [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
 #'
 #' @usage
 #' sfn_list_state_machine_aliases(stateMachineArn, nextToken, maxResults)
@@ -1924,7 +1940,8 @@ sfn_list_state_machine_aliases <- function(stateMachineArn, nextToken = NULL, ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$list_state_machine_aliases_input(stateMachineArn = stateMachineArn, nextToken = nextToken, maxResults = maxResults)
   output <- .sfn$list_state_machine_aliases_output()
@@ -1955,9 +1972,9 @@ sfn_list_state_machine_aliases <- function(stateMachineArn, nextToken = NULL, ma
 #' 
 #' **Related operations:**
 #' 
-#' -   [`publish_state_machine_version`][sfn_publish_state_machine_version]
+#' - [`publish_state_machine_version`][sfn_publish_state_machine_version]
 #' 
-#' -   [`delete_state_machine_version`][sfn_delete_state_machine_version]
+#' - [`delete_state_machine_version`][sfn_delete_state_machine_version]
 #'
 #' @usage
 #' sfn_list_state_machine_versions(stateMachineArn, nextToken, maxResults)
@@ -2012,7 +2029,8 @@ sfn_list_state_machine_versions <- function(stateMachineArn, nextToken = NULL, m
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$list_state_machine_versions_input(stateMachineArn = stateMachineArn, nextToken = nextToken, maxResults = maxResults)
   output <- .sfn$list_state_machine_versions_output()
@@ -2092,7 +2110,8 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "stateMachines")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "stateMachines"),
+    stream_api = FALSE
   )
   input <- .sfn$list_state_machines_input(maxResults = maxResults, nextToken = nextToken)
   output <- .sfn$list_state_machines_output()
@@ -2149,7 +2168,8 @@ sfn_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .sfn$list_tags_for_resource_output()
@@ -2188,9 +2208,9 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`delete_state_machine_version`][sfn_delete_state_machine_version]
+#' - [`delete_state_machine_version`][sfn_delete_state_machine_version]
 #' 
-#' -   [`list_state_machine_versions`][sfn_list_state_machine_versions]
+#' - [`list_state_machine_versions`][sfn_list_state_machine_versions]
 #'
 #' @usage
 #' sfn_publish_state_machine_version(stateMachineArn, revisionId,
@@ -2243,7 +2263,8 @@ sfn_publish_state_machine_version <- function(stateMachineArn, revisionId = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$publish_state_machine_version_input(stateMachineArn = stateMachineArn, revisionId = revisionId, description = description)
   output <- .sfn$publish_state_machine_version_output()
@@ -2296,23 +2317,23 @@ sfn_publish_state_machine_version <- function(stateMachineArn, revisionId = NULL
 #' You can redrive executions if your original execution meets the
 #' following conditions:
 #' 
-#' -   The execution status isn't `SUCCEEDED`.
+#' - The execution status isn't `SUCCEEDED`.
 #' 
-#' -   Your workflow execution has not exceeded the redrivable period of 14
-#'     days. Redrivable period refers to the time during which you can
-#'     redrive a given execution. This period starts from the day a state
-#'     machine completes its execution.
+#' - Your workflow execution has not exceeded the redrivable period of 14
+#'   days. Redrivable period refers to the time during which you can
+#'   redrive a given execution. This period starts from the day a state
+#'   machine completes its execution.
 #' 
-#' -   The workflow execution has not exceeded the maximum open time of one
-#'     year. For more information about state machine quotas, see [Quotas
-#'     related to state machine
-#'     executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions).
+#' - The workflow execution has not exceeded the maximum open time of one
+#'   year. For more information about state machine quotas, see [Quotas
+#'   related to state machine
+#'   executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions).
 #' 
-#' -   The execution event history count is less than 24,999. Redriven
-#'     executions append their event history to the existing event history.
-#'     Make sure your workflow execution contains less than 24,999 events
-#'     to accommodate the `ExecutionRedriven` history event and at least
-#'     one other history event.
+#' - The execution event history count is less than 24,999. Redriven
+#'   executions append their event history to the existing event history.
+#'   Make sure your workflow execution contains less than 24,999 events to
+#'   accommodate the `ExecutionRedriven` history event and at least one
+#'   other history event.
 #'
 #' @usage
 #' sfn_redrive_execution(executionArn, clientToken)
@@ -2355,7 +2376,8 @@ sfn_redrive_execution <- function(executionArn, clientToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$redrive_execution_input(executionArn = executionArn, clientToken = clientToken)
   output <- .sfn$redrive_execution_output()
@@ -2419,7 +2441,8 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$send_task_failure_input(taskToken = taskToken, error = error, cause = cause)
   output <- .sfn$send_task_failure_output()
@@ -2490,7 +2513,8 @@ sfn_send_task_heartbeat <- function(taskToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$send_task_heartbeat_input(taskToken = taskToken)
   output <- .sfn$send_task_heartbeat_output()
@@ -2547,7 +2571,8 @@ sfn_send_task_success <- function(taskToken, output) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$send_task_success_input(taskToken = taskToken, output = output)
   output <- .sfn$send_task_success_output()
@@ -2570,29 +2595,28 @@ sfn_send_task_success <- function(taskToken, output) {
 #' The following are some examples of qualified and unqualified state
 #' machine ARNs:
 #' 
-#' -   The following qualified state machine ARN refers to a *Distributed
-#'     Map state* with a label `mapStateLabel` in a state machine named
-#'     `myStateMachine`.
+#' - The following qualified state machine ARN refers to a *Distributed Map
+#'   state* with a label `mapStateLabel` in a state machine named
+#'   `myStateMachine`.
 #' 
-#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
+#'   `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
 #' 
-#'     If you provide a qualified state machine ARN that refers to a
-#'     *Distributed Map state*, the request fails with
-#'     `ValidationException`.
+#'   If you provide a qualified state machine ARN that refers to a
+#'   *Distributed Map state*, the request fails with `ValidationException`.
 #' 
-#' -   The following qualified state machine ARN refers to an alias named
-#'     `PROD`.
+#' - The following qualified state machine ARN refers to an alias named
+#'   `PROD`.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
 #' 
-#'     If you provide a qualified state machine ARN that refers to a
-#'     version ARN or an alias ARN, the request starts execution for that
-#'     version or alias.
+#'   If you provide a qualified state machine ARN that refers to a version
+#'   ARN or an alias ARN, the request starts execution for that version or
+#'   alias.
 #' 
-#' -   The following unqualified state machine ARN refers to a state
-#'     machine named `myStateMachine`.
+#' - The following unqualified state machine ARN refers to a state machine
+#'   named `myStateMachine`.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
 #' 
 #' If you start an execution with an unqualified state machine ARN, Step
 #' Functions uses the latest revision of the state machine for the
@@ -2623,40 +2647,38 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' The `stateMachineArn` parameter accepts one of the following inputs:
 #' 
-#' -   **An unqualified state machine ARN** – Refers to a state machine ARN
-#'     that isn't qualified with a version or alias ARN. The following is
-#'     an example of an unqualified state machine ARN.
+#' - **An unqualified state machine ARN** – Refers to a state machine ARN
+#'   that isn't qualified with a version or alias ARN. The following is an
+#'   example of an unqualified state machine ARN.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
 #' 
-#'     Step Functions doesn't associate state machine executions that you
-#'     start with an unqualified ARN with a version. This is true even if
-#'     that version uses the same revision that the execution used.
+#'   Step Functions doesn't associate state machine executions that you
+#'   start with an unqualified ARN with a version. This is true even if
+#'   that version uses the same revision that the execution used.
 #' 
-#' -   **A state machine version ARN** – Refers to a version ARN, which is
-#'     a combination of state machine ARN and the version number separated
-#'     by a colon (:). The following is an example of the ARN for version
-#'     10.
+#' - **A state machine version ARN** – Refers to a version ARN, which is a
+#'   combination of state machine ARN and the version number separated by a
+#'   colon (:). The following is an example of the ARN for version 10.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>:10`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>:10`
 #' 
-#'     Step Functions doesn't associate executions that you start with a
-#'     version ARN with any aliases that point to that version.
+#'   Step Functions doesn't associate executions that you start with a
+#'   version ARN with any aliases that point to that version.
 #' 
-#' -   **A state machine alias ARN** – Refers to an alias ARN, which is a
-#'     combination of state machine ARN and the alias name separated by a
-#'     colon (:). The following is an example of the ARN for an alias named
-#'     `PROD`.
+#' - **A state machine alias ARN** – Refers to an alias ARN, which is a
+#'   combination of state machine ARN and the alias name separated by a
+#'   colon (:). The following is an example of the ARN for an alias named
+#'   `PROD`.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
 #' 
-#'     Step Functions associates executions that you start with an alias
-#'     ARN with that alias and the state machine version used for that
-#'     execution.
+#'   Step Functions associates executions that you start with an alias ARN
+#'   with that alias and the state machine version used for that execution.
 #' @param name Optional name of the execution. This name must be unique for your Amazon
 #' Web Services account, Region, and state machine for 90 days. For more
 #' information, see [Limits Related to State Machine
-#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
 #' 
 #' If you don't provide a name for the execution, Step Functions
@@ -2665,15 +2687,15 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' A name must *not* contain:
 #' 
-#' -   white space
+#' - white space
 #' 
-#' -   brackets `< > { } [ ]`
+#' - brackets `< > { } [ ]`
 #' 
-#' -   wildcard characters `? *`
+#' - wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
+#' - special characters `` \" # % \ ^ | ~ \` $ & , ; : / ``
 #' 
-#' -   control characters (`U+0000-001F`, `U+007F-009F`)
+#' - control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
 #' To enable logging with CloudWatch Logs, the name should only contain
 #' 0-9, A-Z, a-z, - and _.
@@ -2722,7 +2744,8 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$start_execution_input(stateMachineArn = stateMachineArn, name = name, input = input, traceHeader = traceHeader)
   output <- .sfn$start_execution_output()
@@ -2827,7 +2850,8 @@ sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "sync-",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$start_sync_execution_input(stateMachineArn = stateMachineArn, name = name, input = input, traceHeader = traceHeader, includedData = includedData)
   output <- .sfn$start_sync_execution_output()
@@ -2890,7 +2914,8 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$stop_execution_input(executionArn = executionArn, error = error, cause = cause)
   output <- .sfn$stop_execution_output()
@@ -2954,7 +2979,8 @@ sfn_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .sfn$tag_resource_output()
@@ -2973,35 +2999,35 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' state without creating a state machine or updating an existing state
 #' machine. Using this API, you can test the following:
 #' 
-#' -   A state's [input and output
-#'     processing](https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-input-output-dataflow)
-#'     data flow
+#' - A state's [input and output
+#'   processing](https://docs.aws.amazon.com/step-functions/latest/dg/test-state-isolation.html#test-state-input-output-dataflow)
+#'   data flow
 #' 
-#' -   An [Amazon Web Services service
-#'     integration](https://docs.aws.amazon.com/step-functions/latest/dg/integrate-services.html)
-#'     request and response
+#' - An [Amazon Web Services service
+#'   integration](https://docs.aws.amazon.com/step-functions/latest/dg/integrate-services.html)
+#'   request and response
 #' 
-#' -   An [HTTP
-#'     Task](https://docs.aws.amazon.com/step-functions/latest/dg/connect-third-party-apis.html)
-#'     request and response
+#' - An [HTTP
+#'   Task](https://docs.aws.amazon.com/step-functions/latest/dg/call-https-apis.html)
+#'   request and response
 #' 
 #' You can call this API on only one state at a time. The states that you
 #' can test include the following:
 #' 
-#' -   [All Task
-#'     types](https://docs.aws.amazon.com/step-functions/latest/dg/state-task.html#task-types)
-#'     except
-#'     [Activity](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html)
+#' - [All Task
+#'   types](https://docs.aws.amazon.com/step-functions/latest/dg/state-task.html#task-types)
+#'   except
+#'   [Activity](https://docs.aws.amazon.com/step-functions/latest/dg/concepts-activities.html)
 #' 
-#' -   [Pass](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
+#' - [Pass](https://docs.aws.amazon.com/step-functions/latest/dg/state-pass.html)
 #' 
-#' -   [Wait](https://docs.aws.amazon.com/step-functions/latest/dg/state-wait.html)
+#' - [Wait](https://docs.aws.amazon.com/step-functions/latest/dg/state-wait.html)
 #' 
-#' -   [Choice](https://docs.aws.amazon.com/step-functions/latest/dg/state-choice.html)
+#' - [Choice](https://docs.aws.amazon.com/step-functions/latest/dg/state-choice.html)
 #' 
-#' -   [Succeed](https://docs.aws.amazon.com/step-functions/latest/dg/state-succeed.html)
+#' - [Succeed](https://docs.aws.amazon.com/step-functions/latest/dg/state-succeed.html)
 #' 
-#' -   [Fail](https://docs.aws.amazon.com/step-functions/latest/dg/state-fail.html)
+#' - [Fail](https://docs.aws.amazon.com/step-functions/latest/dg/state-fail.html)
 #' 
 #' The [`test_state`][sfn_test_state] API assumes an IAM role which must
 #' contain the required IAM permissions for the resources your state is
@@ -3035,15 +3061,15 @@ sfn_tag_resource <- function(resourceArn, tags) {
 #' @param inspectionLevel Determines the values to return when a state is tested. You can specify
 #' one of the following types:
 #' 
-#' -   `INFO`: Shows the final state output. By default, Step Functions
-#'     sets `inspectionLevel` to `INFO` if you don't specify a level.
+#' - `INFO`: Shows the final state output. By default, Step Functions sets
+#'   `inspectionLevel` to `INFO` if you don't specify a level.
 #' 
-#' -   `DEBUG`: Shows the final state output along with the input and
-#'     output data processing result.
+#' - `DEBUG`: Shows the final state output along with the input and output
+#'   data processing result.
 #' 
-#' -   `TRACE`: Shows the HTTP request and response for an HTTP Task. This
-#'     level also shows the final state output along with the input and
-#'     output data processing result.
+#' - `TRACE`: Shows the HTTP request and response for an HTTP Task. This
+#'   level also shows the final state output along with the input and
+#'   output data processing result.
 #' 
 #' Each of these levels also provide information about the status of the
 #' state execution and the next state to transition to.
@@ -3119,7 +3145,8 @@ sfn_test_state <- function(definition, roleArn, input = NULL, inspectionLevel = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "sync-",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$test_state_input(definition = definition, roleArn = roleArn, input = input, inspectionLevel = inspectionLevel, revealSecrets = revealSecrets)
   output <- .sfn$test_state_output()
@@ -3167,7 +3194,8 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .sfn$untag_resource_output()
@@ -3220,7 +3248,8 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$update_map_run_input(mapRunArn = mapRunArn, maxConcurrency = maxConcurrency, toleratedFailurePercentage = toleratedFailurePercentage, toleratedFailureCount = toleratedFailureCount)
   output <- .sfn$update_map_run_output()
@@ -3255,29 +3284,28 @@ sfn_update_map_run <- function(mapRunArn, maxConcurrency = NULL, toleratedFailur
 #' The following are some examples of qualified and unqualified state
 #' machine ARNs:
 #' 
-#' -   The following qualified state machine ARN refers to a *Distributed
-#'     Map state* with a label `mapStateLabel` in a state machine named
-#'     `myStateMachine`.
+#' - The following qualified state machine ARN refers to a *Distributed Map
+#'   state* with a label `mapStateLabel` in a state machine named
+#'   `myStateMachine`.
 #' 
-#'     `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
+#'   `arn:partition:states:region:account-id:stateMachine:myStateMachine/mapStateLabel`
 #' 
-#'     If you provide a qualified state machine ARN that refers to a
-#'     *Distributed Map state*, the request fails with
-#'     `ValidationException`.
+#'   If you provide a qualified state machine ARN that refers to a
+#'   *Distributed Map state*, the request fails with `ValidationException`.
 #' 
-#' -   The following qualified state machine ARN refers to an alias named
-#'     `PROD`.
+#' - The following qualified state machine ARN refers to an alias named
+#'   `PROD`.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>`
 #' 
-#'     If you provide a qualified state machine ARN that refers to a
-#'     version ARN or an alias ARN, the request starts execution for that
-#'     version or alias.
+#'   If you provide a qualified state machine ARN that refers to a version
+#'   ARN or an alias ARN, the request starts execution for that version or
+#'   alias.
 #' 
-#' -   The following unqualified state machine ARN refers to a state
-#'     machine named `myStateMachine`.
+#' - The following unqualified state machine ARN refers to a state machine
+#'   named `myStateMachine`.
 #' 
-#'     `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
+#'   `arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>`
 #' 
 #' After you update your state machine, you can set the `publish` parameter
 #' to `true` in the same action to publish a new
@@ -3367,7 +3395,8 @@ sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$update_state_machine_input(stateMachineArn = stateMachineArn, definition = definition, roleArn = roleArn, loggingConfiguration = loggingConfiguration, tracingConfiguration = tracingConfiguration, publish = publish, versionDescription = versionDescription, encryptionConfiguration = encryptionConfiguration)
   output <- .sfn$update_state_machine_output()
@@ -3405,13 +3434,13 @@ sfn_update_state_machine <- function(stateMachineArn, definition = NULL, roleArn
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_state_machine_alias`][sfn_create_state_machine_alias]
+#' - [`create_state_machine_alias`][sfn_create_state_machine_alias]
 #' 
-#' -   [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
+#' - [`describe_state_machine_alias`][sfn_describe_state_machine_alias]
 #' 
-#' -   [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
+#' - [`list_state_machine_aliases`][sfn_list_state_machine_aliases]
 #' 
-#' -   [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
+#' - [`delete_state_machine_alias`][sfn_delete_state_machine_alias]
 #'
 #' @usage
 #' sfn_update_state_machine_alias(stateMachineAliasArn, description,
@@ -3459,7 +3488,8 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$update_state_machine_alias_input(stateMachineAliasArn = stateMachineAliasArn, description = description, routingConfiguration = routingConfiguration)
   output <- .sfn$update_state_machine_alias_output()
@@ -3489,13 +3519,12 @@ sfn_update_state_machine_alias <- function(stateMachineAliasArn, description = N
 #' Suggested uses for
 #' [`validate_state_machine_definition`][sfn_validate_state_machine_definition]:
 #' 
-#' -   Integrate automated checks into your code review or Continuous
-#'     Integration (CI) process to validate state machine definitions
-#'     before starting deployments.
+#' - Integrate automated checks into your code review or Continuous
+#'   Integration (CI) process to validate state machine definitions before
+#'   starting deployments.
 #' 
-#' -   Run the validation from a Git pre-commit hook to check your state
-#'     machine definitions before committing them to your source
-#'     repository.
+#' - Run the validation from a Git pre-commit hook to check your state
+#'   machine definitions before committing them to your source repository.
 #' 
 #' Errors found in the state machine definition will be returned in the
 #' response as a list of **diagnostic elements**, rather than raise an
@@ -3560,7 +3589,8 @@ sfn_validate_state_machine_definition <- function(definition, type = NULL, sever
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sfn$validate_state_machine_definition_input(definition = definition, type = type, severity = severity, maxResults = maxResults)
   output <- .sfn$validate_state_machine_definition_output()

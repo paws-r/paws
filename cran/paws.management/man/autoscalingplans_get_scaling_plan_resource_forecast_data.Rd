@@ -34,14 +34,13 @@ group (\code{my-asg}). Example: \code{autoScalingGroup/my-asg}.}
 \itemize{
 \item \code{LoadForecast}: The load metric forecast.
 \item \code{CapacityForecast}: The capacity forecast.
-\item \code{ScheduledActionMinCapacity}: The minimum capacity for each
-scheduled scaling action. This data is calculated as the larger of
-two values: the capacity forecast or the minimum capacity in the
-scaling instruction.
-\item \code{ScheduledActionMaxCapacity}: The maximum capacity for each
-scheduled scaling action. The calculation used is determined by the
-predictive scaling maximum capacity behavior setting in the scaling
+\item \code{ScheduledActionMinCapacity}: The minimum capacity for each scheduled
+scaling action. This data is calculated as the larger of two values:
+the capacity forecast or the minimum capacity in the scaling
 instruction.
+\item \code{ScheduledActionMaxCapacity}: The maximum capacity for each scheduled
+scaling action. The calculation used is determined by the predictive
+scaling maximum capacity behavior setting in the scaling instruction.
 }}
 
 \item{StartTime}{[required] The inclusive start time of the time range for the forecast data to get.

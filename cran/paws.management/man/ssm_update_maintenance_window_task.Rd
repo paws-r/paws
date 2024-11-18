@@ -54,7 +54,7 @@ However, for an improved security posture, we strongly recommend
 creating a custom policy and custom service role for running your
 maintenance window tasks. The policy can be crafted to provide only the
 permissions needed for your particular maintenance window tasks. For
-more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Setting up maintenance windows}
+more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/setting-up-maintenance-windows.html}{Setting up maintenance windows}
 in the in the \emph{Amazon Web Services Systems Manager User Guide}.}
 
 \item{TaskParameters}{The parameters to modify.
@@ -137,14 +137,14 @@ specified in the maintenance windows is reached.
 running continue. The default value.
 \item \code{CANCEL_TASK}:
 \itemize{
-\item For Automation, Lambda, Step Functions tasks: When the cutoff
-time is reached, any task invocations that are already running
-continue, but no new task invocations are started.
-\item For Run Command tasks: When the cutoff time is reached, the
-system sends a \code{\link[=ssm_cancel_command]{cancel_command}} operation
-that attempts to cancel the command associated with the task.
-However, there is no guarantee that the command will be
-terminated and the underlying process stopped.
+\item For Automation, Lambda, Step Functions tasks: When the cutoff time
+is reached, any task invocations that are already running continue,
+but no new task invocations are started.
+\item For Run Command tasks: When the cutoff time is reached, the system
+sends a \code{\link[=ssm_cancel_command]{cancel_command}} operation that
+attempts to cancel the command associated with the task. However,
+there is no guarantee that the command will be terminated and the
+underlying process stopped.
 }
 
 The status for tasks that are not completed is \code{TIMED_OUT}.

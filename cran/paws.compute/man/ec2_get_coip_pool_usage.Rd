@@ -17,8 +17,7 @@ ec2_get_coip_pool_usage(
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{coip-address-usage.allocation-id} - The allocation ID of the
-address.
+\item \code{coip-address-usage.allocation-id} - The allocation ID of the address.
 \item \code{coip-address-usage.aws-account-id} - The ID of the Amazon Web
 Services account that is using the customer-owned IP address.
 \item \code{coip-address-usage.aws-service} - The Amazon Web Services service

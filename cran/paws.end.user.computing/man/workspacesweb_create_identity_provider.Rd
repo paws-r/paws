@@ -55,12 +55,12 @@ detail keys for each identity provider type.
 \item \code{attributes_request_method}
 \item \code{oidc_issuer}
 \item \code{authorize_scopes}
-\item \code{authorize_url} \emph{if not available from discovery URL specified
-by oidc_issuer key}
+\item \code{authorize_url} \emph{if not available from discovery URL specified by
+oidc_issuer key}
 \item \code{token_url} \emph{if not available from discovery URL specified by
 oidc_issuer key}
-\item \code{attributes_url} \emph{if not available from discovery URL specified
-by oidc_issuer key}
+\item \code{attributes_url} \emph{if not available from discovery URL specified by
+oidc_issuer key}
 \item \code{jwks_uri} \emph{if not available from discovery URL specified by
 oidc_issuer key}
 }

@@ -22,7 +22,8 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$add_instance_fleet_input(ClusterId = ClusterId, InstanceFleet = InstanceFleet)
   output <- .emr$add_instance_fleet_output()
@@ -53,7 +54,8 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$add_instance_groups_input(InstanceGroups = InstanceGroups, JobFlowId = JobFlowId)
   output <- .emr$add_instance_groups_output()
@@ -93,7 +95,8 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps, ExecutionRoleArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$add_job_flow_steps_input(JobFlowId = JobFlowId, Steps = Steps, ExecutionRoleArn = ExecutionRoleArn)
   output <- .emr$add_job_flow_steps_output()
@@ -129,7 +132,8 @@ emr_add_tags <- function(ResourceId, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$add_tags_input(ResourceId = ResourceId, Tags = Tags)
   output <- .emr$add_tags_output()
@@ -165,7 +169,8 @@ emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$cancel_steps_input(ClusterId = ClusterId, StepIds = StepIds, StepCancellationOption = StepCancellationOption)
   output <- .emr$cancel_steps_output()
@@ -200,7 +205,8 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$create_security_configuration_input(Name = Name, SecurityConfiguration = SecurityConfiguration)
   output <- .emr$create_security_configuration_output()
@@ -278,7 +284,8 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$create_studio_input(Name = Name, Description = Description, AuthMode = AuthMode, VpcId = VpcId, SubnetIds = SubnetIds, ServiceRole = ServiceRole, UserRole = UserRole, WorkspaceSecurityGroupId = WorkspaceSecurityGroupId, EngineSecurityGroupId = EngineSecurityGroupId, DefaultS3Location = DefaultS3Location, IdpAuthUrl = IdpAuthUrl, IdpRelayStateParameterName = IdpRelayStateParameterName, Tags = Tags, TrustedIdentityPropagationEnabled = TrustedIdentityPropagationEnabled, IdcUserAssignment = IdcUserAssignment, IdcInstanceArn = IdcInstanceArn, EncryptionKeyArn = EncryptionKeyArn)
   output <- .emr$create_studio_output()
@@ -331,7 +338,8 @@ emr_create_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$create_studio_session_mapping_input(StudioId = StudioId, IdentityId = IdentityId, IdentityName = IdentityName, IdentityType = IdentityType, SessionPolicyArn = SessionPolicyArn)
   output <- .emr$create_studio_session_mapping_output()
@@ -361,7 +369,8 @@ emr_delete_security_configuration <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$delete_security_configuration_input(Name = Name)
   output <- .emr$delete_security_configuration_output()
@@ -391,7 +400,8 @@ emr_delete_studio <- function(StudioId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$delete_studio_input(StudioId = StudioId)
   output <- .emr$delete_studio_output()
@@ -437,7 +447,8 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$delete_studio_session_mapping_input(StudioId = StudioId, IdentityId = IdentityId, IdentityName = IdentityName, IdentityType = IdentityType)
   output <- .emr$delete_studio_session_mapping_output()
@@ -468,7 +479,8 @@ emr_describe_cluster <- function(ClusterId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$describe_cluster_input(ClusterId = ClusterId)
   output <- .emr$describe_cluster_output()
@@ -501,7 +513,8 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "JobFlows")
+    paginator = list(result_key = "JobFlows"),
+    stream_api = FALSE
   )
   input <- .emr$describe_job_flows_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, JobFlowIds = JobFlowIds, JobFlowStates = JobFlowStates)
   output <- .emr$describe_job_flows_output()
@@ -531,7 +544,8 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$describe_notebook_execution_input(NotebookExecutionId = NotebookExecutionId)
   output <- .emr$describe_notebook_execution_output()
@@ -565,7 +579,8 @@ emr_describe_release_label <- function(ReleaseLabel = NULL, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$describe_release_label_input(ReleaseLabel = ReleaseLabel, NextToken = NextToken, MaxResults = MaxResults)
   output <- .emr$describe_release_label_output()
@@ -596,7 +611,8 @@ emr_describe_security_configuration <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$describe_security_configuration_input(Name = Name)
   output <- .emr$describe_security_configuration_output()
@@ -627,7 +643,8 @@ emr_describe_step <- function(ClusterId, StepId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$describe_step_input(ClusterId = ClusterId, StepId = StepId)
   output <- .emr$describe_step_output()
@@ -658,7 +675,8 @@ emr_describe_studio <- function(StudioId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$describe_studio_input(StudioId = StudioId)
   output <- .emr$describe_studio_output()
@@ -689,7 +707,8 @@ emr_get_auto_termination_policy <- function(ClusterId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$get_auto_termination_policy_input(ClusterId = ClusterId)
   output <- .emr$get_auto_termination_policy_output()
@@ -720,7 +739,8 @@ emr_get_block_public_access_configuration <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$get_block_public_access_configuration_input()
   output <- .emr$get_block_public_access_configuration_output()
@@ -757,7 +777,8 @@ emr_get_cluster_session_credentials <- function(ClusterId, ExecutionRoleArn = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$get_cluster_session_credentials_input(ClusterId = ClusterId, ExecutionRoleArn = ExecutionRoleArn)
   output <- .emr$get_cluster_session_credentials_output()
@@ -788,7 +809,8 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$get_managed_scaling_policy_input(ClusterId = ClusterId)
   output <- .emr$get_managed_scaling_policy_output()
@@ -833,7 +855,8 @@ emr_get_studio_session_mapping <- function(StudioId, IdentityId = NULL, Identity
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$get_studio_session_mapping_input(StudioId = StudioId, IdentityId = IdentityId, IdentityName = IdentityName, IdentityType = IdentityType)
   output <- .emr$get_studio_session_mapping_output()
@@ -865,7 +888,8 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "BootstrapActions")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "BootstrapActions"),
+    stream_api = FALSE
   )
   input <- .emr$list_bootstrap_actions_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_bootstrap_actions_output()
@@ -901,7 +925,8 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Clusters")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Clusters"),
+    stream_api = FALSE
   )
   input <- .emr$list_clusters_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, ClusterStates = ClusterStates, Marker = Marker)
   output <- .emr$list_clusters_output()
@@ -932,7 +957,8 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceFleets")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceFleets"),
+    stream_api = FALSE
   )
   input <- .emr$list_instance_fleets_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_instance_fleets_output()
@@ -963,7 +989,8 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceGroups")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceGroups"),
+    stream_api = FALSE
   )
   input <- .emr$list_instance_groups_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_instance_groups_output()
@@ -1001,7 +1028,8 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Instances")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .emr$list_instances_input(ClusterId = ClusterId, InstanceGroupId = InstanceGroupId, InstanceGroupTypes = InstanceGroupTypes, InstanceFleetId = InstanceFleetId, InstanceFleetType = InstanceFleetType, InstanceStates = InstanceStates, Marker = Marker)
   output <- .emr$list_instances_output()
@@ -1023,34 +1051,34 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
 #' @param EditorId The unique ID of the editor associated with the notebook execution.
 #' @param Status The status filter for listing notebook executions.
 #' 
-#' -   `START_PENDING` indicates that the cluster has received the
-#'     execution request but execution has not begun.
+#' - `START_PENDING` indicates that the cluster has received the execution
+#'   request but execution has not begun.
 #' 
-#' -   `STARTING` indicates that the execution is starting on the cluster.
+#' - `STARTING` indicates that the execution is starting on the cluster.
 #' 
-#' -   `RUNNING` indicates that the execution is being processed by the
-#'     cluster.
+#' - `RUNNING` indicates that the execution is being processed by the
+#'   cluster.
 #' 
-#' -   `FINISHING` indicates that execution processing is in the final
-#'     stages.
+#' - `FINISHING` indicates that execution processing is in the final
+#'   stages.
 #' 
-#' -   `FINISHED` indicates that the execution has completed without error.
+#' - `FINISHED` indicates that the execution has completed without error.
 #' 
-#' -   `FAILING` indicates that the execution is failing and will not
-#'     finish successfully.
+#' - `FAILING` indicates that the execution is failing and will not finish
+#'   successfully.
 #' 
-#' -   `FAILED` indicates that the execution failed.
+#' - `FAILED` indicates that the execution failed.
 #' 
-#' -   `STOP_PENDING` indicates that the cluster has received a
-#'     [`stop_notebook_execution`][emr_stop_notebook_execution] request and
-#'     the stop is pending.
+#' - `STOP_PENDING` indicates that the cluster has received a
+#'   [`stop_notebook_execution`][emr_stop_notebook_execution] request and
+#'   the stop is pending.
 #' 
-#' -   `STOPPING` indicates that the cluster is in the process of stopping
-#'     the execution as a result of a
-#'     [`stop_notebook_execution`][emr_stop_notebook_execution] request.
+#' - `STOPPING` indicates that the cluster is in the process of stopping
+#'   the execution as a result of a
+#'   [`stop_notebook_execution`][emr_stop_notebook_execution] request.
 #' 
-#' -   `STOPPED` indicates that the execution stopped because of a
-#'     [`stop_notebook_execution`][emr_stop_notebook_execution] request.
+#' - `STOPPED` indicates that the execution stopped because of a
+#'   [`stop_notebook_execution`][emr_stop_notebook_execution] request.
 #' @param From The beginning of time range filter for listing notebook executions. The
 #' default is the timestamp of 30 days ago.
 #' @param To The end of time range filter for listing notebook executions. The
@@ -1070,7 +1098,8 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "NotebookExecutions")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "NotebookExecutions"),
+    stream_api = FALSE
   )
   input <- .emr$list_notebook_executions_input(EditorId = EditorId, Status = Status, From = From, To = To, Marker = Marker, ExecutionEngineId = ExecutionEngineId)
   output <- .emr$list_notebook_executions_output()
@@ -1113,7 +1142,8 @@ emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .emr$list_release_labels_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .emr$list_release_labels_output()
@@ -1144,7 +1174,8 @@ emr_list_security_configurations <- function(Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SecurityConfigurations")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SecurityConfigurations"),
+    stream_api = FALSE
   )
   input <- .emr$list_security_configurations_input(Marker = Marker)
   output <- .emr$list_security_configurations_output()
@@ -1184,7 +1215,8 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Steps")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Steps"),
+    stream_api = FALSE
   )
   input <- .emr$list_steps_input(ClusterId = ClusterId, StepStates = StepStates, StepIds = StepIds, Marker = Marker)
   output <- .emr$list_steps_output()
@@ -1219,7 +1251,8 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SessionMappings")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SessionMappings"),
+    stream_api = FALSE
   )
   input <- .emr$list_studio_session_mappings_input(StudioId = StudioId, IdentityType = IdentityType, Marker = Marker)
   output <- .emr$list_studio_session_mappings_output()
@@ -1250,7 +1283,8 @@ emr_list_studios <- function(Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Studios")
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Studios"),
+    stream_api = FALSE
   )
   input <- .emr$list_studios_input(Marker = Marker)
   output <- .emr$list_studios_output()
@@ -1275,7 +1309,8 @@ emr_list_studios <- function(Marker = NULL) {
 #' that Amazon EMR has installed on the cluster. Release labels are in the
 #' format `emr-x.x.x`, where x.x.x is an Amazon EMR release number such as
 #' `emr-6.10.0`. For more information about Amazon EMR releases and their
-#' included application versions and features, see the *\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}* .
+#' included application versions and features, see the
+#' *\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}* .
 #' @param Marker The pagination token that marks the next set of results to retrieve.
 #'
 #' @keywords internal
@@ -1287,7 +1322,8 @@ emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "Marker")
+    paginator = list(input_token = "Marker", output_token = "Marker"),
+    stream_api = FALSE
   )
   input <- .emr$list_supported_instance_types_input(ReleaseLabel = ReleaseLabel, Marker = Marker)
   output <- .emr$list_supported_instance_types_output()
@@ -1323,7 +1359,8 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$modify_cluster_input(ClusterId = ClusterId, StepConcurrencyLevel = StepConcurrencyLevel)
   output <- .emr$modify_cluster_output()
@@ -1356,7 +1393,8 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$modify_instance_fleet_input(ClusterId = ClusterId, InstanceFleet = InstanceFleet)
   output <- .emr$modify_instance_fleet_output()
@@ -1388,7 +1426,8 @@ emr_modify_instance_groups <- function(ClusterId = NULL, InstanceGroups = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$modify_instance_groups_input(ClusterId = ClusterId, InstanceGroups = InstanceGroups)
   output <- .emr$modify_instance_groups_output()
@@ -1423,7 +1462,8 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$put_auto_scaling_policy_input(ClusterId = ClusterId, InstanceGroupId = InstanceGroupId, AutoScalingPolicy = AutoScalingPolicy)
   output <- .emr$put_auto_scaling_policy_output()
@@ -1455,7 +1495,8 @@ emr_put_auto_termination_policy <- function(ClusterId, AutoTerminationPolicy = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$put_auto_termination_policy_input(ClusterId = ClusterId, AutoTerminationPolicy = AutoTerminationPolicy)
   output <- .emr$put_auto_termination_policy_output()
@@ -1502,7 +1543,8 @@ emr_put_block_public_access_configuration <- function(BlockPublicAccessConfigura
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$put_block_public_access_configuration_input(BlockPublicAccessConfiguration = BlockPublicAccessConfiguration)
   output <- .emr$put_block_public_access_configuration_output()
@@ -1534,7 +1576,8 @@ emr_put_managed_scaling_policy <- function(ClusterId, ManagedScalingPolicy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$put_managed_scaling_policy_input(ClusterId = ClusterId, ManagedScalingPolicy = ManagedScalingPolicy)
   output <- .emr$put_managed_scaling_policy_output()
@@ -1568,7 +1611,8 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$remove_auto_scaling_policy_input(ClusterId = ClusterId, InstanceGroupId = InstanceGroupId)
   output <- .emr$remove_auto_scaling_policy_output()
@@ -1599,7 +1643,8 @@ emr_remove_auto_termination_policy <- function(ClusterId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$remove_auto_termination_policy_input(ClusterId = ClusterId)
   output <- .emr$remove_auto_termination_policy_output()
@@ -1630,7 +1675,8 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$remove_managed_scaling_policy_input(ClusterId = ClusterId)
   output <- .emr$remove_managed_scaling_policy_output()
@@ -1663,7 +1709,8 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$remove_tags_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .emr$remove_tags_output()
@@ -1712,9 +1759,9 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-3x.html).
 #' Currently supported values are:
 #' 
-#' -   "mapr-m3" - launch the job flow using MapR M3 Edition.
+#' - "mapr-m3" - launch the job flow using MapR M3 Edition.
 #' 
-#' -   "mapr-m5" - launch the job flow using MapR M5 Edition.
+#' - "mapr-m5" - launch the job flow using MapR M5 Edition.
 #' @param NewSupportedProducts For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
 #' later, use Applications.
 #' 
@@ -1726,25 +1773,24 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-3x.html).
 #' Supported values are:
 #' 
-#' -   "mapr-m3" - launch the cluster using MapR M3 Edition.
+#' - "mapr-m3" - launch the cluster using MapR M3 Edition.
 #' 
-#' -   "mapr-m5" - launch the cluster using MapR M5 Edition.
+#' - "mapr-m5" - launch the cluster using MapR M5 Edition.
 #' 
-#' -   "mapr" with the user arguments specifying "--edition,m3" or
-#'     "--edition,m5" - launch the job flow using MapR M3 or M5 Edition
-#'     respectively.
+#' - "mapr" with the user arguments specifying "--edition,m3" or
+#'   "--edition,m5" - launch the job flow using MapR M3 or M5 Edition
+#'   respectively.
 #' 
-#' -   "mapr-m7" - launch the cluster using MapR M7 Edition.
+#' - "mapr-m7" - launch the cluster using MapR M7 Edition.
 #' 
-#' -   "hunk" - launch the cluster with the Hunk Big Data Analytics
-#'     Platform.
+#' - "hunk" - launch the cluster with the Hunk Big Data Analytics Platform.
 #' 
-#' -   "hue"- launch the cluster with Hue installed.
+#' - "hue"- launch the cluster with Hue installed.
 #' 
-#' -   "spark" - launch the cluster with Apache Spark installed.
+#' - "spark" - launch the cluster with Apache Spark installed.
 #' 
-#' -   "ganglia" - launch the cluster with the Ganglia Monitoring System
-#'     installed.
+#' - "ganglia" - launch the cluster with the Ganglia Monitoring System
+#'   installed.
 #' @param Applications Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of
 #' applications for Amazon EMR to install and configure when launching the
 #' cluster. For a list of applications available for each Amazon EMR
@@ -1852,7 +1898,8 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput)
   output <- .emr$run_job_flow_output()
@@ -1887,7 +1934,8 @@ emr_set_keep_job_flow_alive_when_no_steps <- function(JobFlowIds, KeepJobFlowAli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$set_keep_job_flow_alive_when_no_steps_input(JobFlowIds = JobFlowIds, KeepJobFlowAliveWhenNoSteps = KeepJobFlowAliveWhenNoSteps)
   output <- .emr$set_keep_job_flow_alive_when_no_steps_output()
@@ -1924,7 +1972,8 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$set_termination_protection_input(JobFlowIds = JobFlowIds, TerminationProtected = TerminationProtected)
   output <- .emr$set_termination_protection_output()
@@ -1961,7 +2010,8 @@ emr_set_unhealthy_node_replacement <- function(JobFlowIds, UnhealthyNodeReplacem
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$set_unhealthy_node_replacement_input(JobFlowIds = JobFlowIds, UnhealthyNodeReplacement = UnhealthyNodeReplacement)
   output <- .emr$set_unhealthy_node_replacement_output()
@@ -1997,7 +2047,8 @@ emr_set_visible_to_all_users <- function(JobFlowIds, VisibleToAllUsers) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$set_visible_to_all_users_input(JobFlowIds = JobFlowIds, VisibleToAllUsers = VisibleToAllUsers)
   output <- .emr$set_visible_to_all_users_output()
@@ -2053,7 +2104,8 @@ emr_start_notebook_execution <- function(EditorId = NULL, RelativePath = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$start_notebook_execution_input(EditorId = EditorId, RelativePath = RelativePath, NotebookExecutionName = NotebookExecutionName, NotebookParams = NotebookParams, ExecutionEngine = ExecutionEngine, ServiceRole = ServiceRole, NotebookInstanceSecurityGroupId = NotebookInstanceSecurityGroupId, Tags = Tags, NotebookS3Location = NotebookS3Location, OutputNotebookS3Location = OutputNotebookS3Location, OutputNotebookFormat = OutputNotebookFormat, EnvironmentVariables = EnvironmentVariables)
   output <- .emr$start_notebook_execution_output()
@@ -2083,7 +2135,8 @@ emr_stop_notebook_execution <- function(NotebookExecutionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$stop_notebook_execution_input(NotebookExecutionId = NotebookExecutionId)
   output <- .emr$stop_notebook_execution_output()
@@ -2113,7 +2166,8 @@ emr_terminate_job_flows <- function(JobFlowIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$terminate_job_flows_input(JobFlowIds = JobFlowIds)
   output <- .emr$terminate_job_flows_output()
@@ -2155,7 +2209,8 @@ emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$update_studio_input(StudioId = StudioId, Name = Name, Description = Description, SubnetIds = SubnetIds, DefaultS3Location = DefaultS3Location, EncryptionKeyArn = EncryptionKeyArn)
   output <- .emr$update_studio_output()
@@ -2202,7 +2257,8 @@ emr_update_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emr$update_studio_session_mapping_input(StudioId = StudioId, IdentityId = IdentityId, IdentityName = IdentityName, IdentityType = IdentityType, SessionPolicyArn = SessionPolicyArn)
   output <- .emr$update_studio_session_mapping_output()

@@ -16,10 +16,10 @@ ec2_describe_host_reservation_offerings(
 \arguments{
 \item{Filter}{The filters.
 \itemize{
-\item \code{instance-family} - The instance family of the offering (for
-example, \code{m4}).
-\item \code{payment-option} - The payment option (\code{NoUpfront} |
-\code{PartialUpfront} | \code{AllUpfront}).
+\item \code{instance-family} - The instance family of the offering (for example,
+\code{m4}).
+\item \code{payment-option} - The payment option (\code{NoUpfront} | \code{PartialUpfront}
+| \code{AllUpfront}).
 }}
 
 \item{MaxDuration}{This is the maximum duration of the reservation to purchase, specified

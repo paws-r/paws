@@ -40,8 +40,8 @@ type of data and that data is on your destination. For example, if you
 don’t include \code{DELETE_INTERMEDIATE_SNAPSHOTS} and there are intermediate
 snapshots on the destination, you can’t copy the snapshot.
 \itemize{
-\item \code{DELETE_INTERMEDIATE_SNAPSHOTS} - Deletes snapshots on the
-destination volume that aren’t on the source volume.
+\item \code{DELETE_INTERMEDIATE_SNAPSHOTS} - Deletes snapshots on the destination
+volume that aren’t on the source volume.
 \item \code{DELETE_CLONED_VOLUMES} - Deletes snapshot clones on the destination
 volume that aren't on the source volume.
 \item \code{DELETE_INTERMEDIATE_DATA} - Overwrites snapshots on the destination

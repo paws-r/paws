@@ -14,31 +14,31 @@ NULL
 #' 
 #' **Endpoints**
 #' 
-#' -   `api.airflow.{region}.amazonaws.com` - This endpoint is used for
-#'     environment management.
+#' - `api.airflow.{region}.amazonaws.com` - This endpoint is used for
+#'   environment management.
 #' 
-#'     -   [`create_environment`][mwaa_create_environment]
+#'   - [`create_environment`][mwaa_create_environment]
 #' 
-#'     -   [`delete_environment`][mwaa_delete_environment]
+#'   - [`delete_environment`][mwaa_delete_environment]
 #' 
-#'     -   [`get_environment`][mwaa_get_environment]
+#'   - [`get_environment`][mwaa_get_environment]
 #' 
-#'     -   [`list_environments`][mwaa_list_environments]
+#'   - [`list_environments`][mwaa_list_environments]
 #' 
-#'     -   [`list_tags_for_resource`][mwaa_list_tags_for_resource]
+#'   - [`list_tags_for_resource`][mwaa_list_tags_for_resource]
 #' 
-#'     -   [`tag_resource`][mwaa_tag_resource]
+#'   - [`tag_resource`][mwaa_tag_resource]
 #' 
-#'     -   [`untag_resource`][mwaa_untag_resource]
+#'   - [`untag_resource`][mwaa_untag_resource]
 #' 
-#'     -   [`update_environment`][mwaa_update_environment]
+#'   - [`update_environment`][mwaa_update_environment]
 #' 
-#' -   `env.airflow.{region}.amazonaws.com` - This endpoint is used to
-#'     operate the Airflow environment.
+#' - `env.airflow.{region}.amazonaws.com` - This endpoint is used to
+#'   operate the Airflow environment.
 #' 
-#'     -   [`create_cli_token`][mwaa_create_cli_token]
+#'   - [`create_cli_token`][mwaa_create_cli_token]
 #' 
-#'     -   [`create_web_login_token`][mwaa_create_web_login_token]
+#'   - [`create_web_login_token`][mwaa_create_web_login_token]
 #' 
 #' **Regions**
 #' 

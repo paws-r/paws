@@ -30,12 +30,12 @@ The default version might not be the latest version available.}
 
 \item{roleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that provides permissions
 for the Kubernetes control plane to make calls to Amazon Web Services
-API operations on your behalf. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/cluster-iam-role.html}{Amazon EKS Service IAM Role}
+API operations on your behalf. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html}{Amazon EKS Service IAM Role}
 in the \emph{Amazon EKS User Guide} .}
 
 \item{resourcesVpcConfig}{[required] The VPC configuration that's used by the cluster control plane. Amazon
 EKS VPC resources have specific requirements to work properly with
-Kubernetes. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/network-reqs.html}{Cluster VPC Considerations}
+Kubernetes. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html}{Cluster VPC Considerations}
 and \href{https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html}{Cluster Security Group Considerations}
 in the \emph{Amazon EKS User Guide}. You must specify at least two subnets.
 You can specify up to five security groups. However, we recommend that

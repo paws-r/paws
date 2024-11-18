@@ -34,13 +34,13 @@ NULL
 #' 
 #' **Related operations:**
 #' 
-#' -   [`delete_alias`][paymentcryptographycontrolplane_delete_alias]
+#' - [`delete_alias`][paymentcryptographycontrolplane_delete_alias]
 #' 
-#' -   [`get_alias`][paymentcryptographycontrolplane_get_alias]
+#' - [`get_alias`][paymentcryptographycontrolplane_get_alias]
 #' 
-#' -   [`list_aliases`][paymentcryptographycontrolplane_list_aliases]
+#' - [`list_aliases`][paymentcryptographycontrolplane_list_aliases]
 #' 
-#' -   [`update_alias`][paymentcryptographycontrolplane_update_alias]
+#' - [`update_alias`][paymentcryptographycontrolplane_update_alias]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_create_alias(AliasName, KeyArn)
@@ -85,7 +85,8 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$create_alias_input(AliasName = AliasName, KeyArn = KeyArn)
   output <- .paymentcryptographycontrolplane$create_alias_output()
@@ -135,11 +136,11 @@ paymentcryptographycontrolplane_create_alias <- function(AliasName, KeyArn = NUL
 #' 
 #' **Related operations:**
 #' 
-#' -   [`delete_key`][paymentcryptographycontrolplane_delete_key]
+#' - [`delete_key`][paymentcryptographycontrolplane_delete_key]
 #' 
-#' -   [`get_key`][paymentcryptographycontrolplane_get_key]
+#' - [`get_key`][paymentcryptographycontrolplane_get_key]
 #' 
-#' -   [`list_keys`][paymentcryptographycontrolplane_list_keys]
+#' - [`list_keys`][paymentcryptographycontrolplane_list_keys]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_create_key(KeyAttributes,
@@ -268,7 +269,8 @@ paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckVa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$create_key_input(KeyAttributes = KeyAttributes, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Exportable = Exportable, Enabled = Enabled, Tags = Tags)
   output <- .paymentcryptographycontrolplane$create_key_output()
@@ -299,13 +301,13 @@ paymentcryptographycontrolplane_create_key <- function(KeyAttributes, KeyCheckVa
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_alias`][paymentcryptographycontrolplane_create_alias]
+#' - [`create_alias`][paymentcryptographycontrolplane_create_alias]
 #' 
-#' -   [`get_alias`][paymentcryptographycontrolplane_get_alias]
+#' - [`get_alias`][paymentcryptographycontrolplane_get_alias]
 #' 
-#' -   [`list_aliases`][paymentcryptographycontrolplane_list_aliases]
+#' - [`list_aliases`][paymentcryptographycontrolplane_list_aliases]
 #' 
-#' -   [`update_alias`][paymentcryptographycontrolplane_update_alias]
+#' - [`update_alias`][paymentcryptographycontrolplane_update_alias]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_delete_alias(AliasName)
@@ -335,7 +337,8 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$delete_alias_input(AliasName = AliasName)
   output <- .paymentcryptographycontrolplane$delete_alias_output()
@@ -376,11 +379,11 @@ paymentcryptographycontrolplane_delete_alias <- function(AliasName) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`restore_key`][paymentcryptographycontrolplane_restore_key]
+#' - [`restore_key`][paymentcryptographycontrolplane_restore_key]
 #' 
-#' -   [`start_key_usage`][paymentcryptographycontrolplane_start_key_usage]
+#' - [`start_key_usage`][paymentcryptographycontrolplane_start_key_usage]
 #' 
-#' -   [`stop_key_usage`][paymentcryptographycontrolplane_stop_key_usage]
+#' - [`stop_key_usage`][paymentcryptographycontrolplane_stop_key_usage]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_delete_key(KeyIdentifier,
@@ -455,7 +458,8 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$delete_key_input(KeyIdentifier = KeyIdentifier, DeleteKeyInDays = DeleteKeyInDays)
   output <- .paymentcryptographycontrolplane$delete_key_output()
@@ -563,26 +567,26 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #' 
 #' Set the following parameters:
 #' 
-#' -   `ExportAttributes`: Specify export attributes in case of IPEK
-#'     export. This parameter is optional for KEK export.
+#' - `ExportAttributes`: Specify export attributes in case of IPEK export.
+#'   This parameter is optional for KEK export.
 #' 
-#' -   `ExportKeyIdentifier`: The `KeyARN` of the KEK or BDK (in case of
-#'     IPEK) under export.
+#' - `ExportKeyIdentifier`: The `KeyARN` of the KEK or BDK (in case of
+#'   IPEK) under export.
 #' 
-#' -   `KeyMaterial`: Use `Tr34KeyBlock` parameters.
+#' - `KeyMaterial`: Use `Tr34KeyBlock` parameters.
 #' 
-#' -   `CertificateAuthorityPublicKeyIdentifier`: The `KeyARN` of the
-#'     certificate chain that signed the KRD wrapping key certificate.
+#' - `CertificateAuthorityPublicKeyIdentifier`: The `KeyARN` of the
+#'   certificate chain that signed the KRD wrapping key certificate.
 #' 
-#' -   `ExportToken`: Obtained from KDH by calling
-#'     [`get_parameters_for_import`][paymentcryptographycontrolplane_get_parameters_for_import].
+#' - `ExportToken`: Obtained from KDH by calling
+#'   [`get_parameters_for_import`][paymentcryptographycontrolplane_get_parameters_for_import].
 #' 
-#' -   `WrappingKeyCertificate`: The public key certificate in PEM format
-#'     (base64 encoded) of the KRD wrapping key Amazon Web Services Payment
-#'     Cryptography uses for encryption of the TR-34 export payload. This
-#'     certificate must be signed by the root certificate
-#'     (CertificateAuthorityPublicKeyIdentifier) imported into Amazon Web
-#'     Services Payment Cryptography.
+#' - `WrappingKeyCertificate`: The public key certificate in PEM format
+#'   (base64 encoded) of the KRD wrapping key Amazon Web Services Payment
+#'   Cryptography uses for encryption of the TR-34 export payload. This
+#'   certificate must be signed by the root certificate
+#'   (CertificateAuthorityPublicKeyIdentifier) imported into Amazon Web
+#'   Services Payment Cryptography.
 #' 
 #' When this operation is successful, Amazon Web Services Payment
 #' Cryptography returns the KEK or IPEK as a TR-34 WrappedKeyBlock.
@@ -601,16 +605,16 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #' Next call [`export_key`][paymentcryptographycontrolplane_export_key] and
 #' set the following parameters:
 #' 
-#' -   `CertificateAuthorityPublicKeyIdentifier`: The `KeyARN` of the
-#'     certificate chain that signed wrapping key certificate.
+#' - `CertificateAuthorityPublicKeyIdentifier`: The `KeyARN` of the
+#'   certificate chain that signed wrapping key certificate.
 #' 
-#' -   `KeyMaterial`: Set to `KeyCryptogram`.
+#' - `KeyMaterial`: Set to `KeyCryptogram`.
 #' 
-#' -   `WrappingKeyCertificate`: The public key certificate in PEM format
-#'     (base64 encoded) obtained by the receiving HSM and signed by the
-#'     root certificate (CertificateAuthorityPublicKeyIdentifier) imported
-#'     into Amazon Web Services Payment Cryptography. The receiving HSM
-#'     uses its private key component to unwrap the WrappedKeyCryptogram.
+#' - `WrappingKeyCertificate`: The public key certificate in PEM format
+#'   (base64 encoded) obtained by the receiving HSM and signed by the root
+#'   certificate (CertificateAuthorityPublicKeyIdentifier) imported into
+#'   Amazon Web Services Payment Cryptography. The receiving HSM uses its
+#'   private key component to unwrap the WrappedKeyCryptogram.
 #' 
 #' When this operation is successful, Amazon Web Services Payment
 #' Cryptography returns the WrappedKeyCryptogram.
@@ -625,13 +629,13 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #' 
 #' Set the following parameters:
 #' 
-#' -   `ExportAttributes`: Specify export attributes in case of IPEK
-#'     export. This parameter is optional for KEK export.
+#' - `ExportAttributes`: Specify export attributes in case of IPEK export.
+#'   This parameter is optional for KEK export.
 #' 
-#' -   `ExportKeyIdentifier`: The `KeyARN` of the KEK or BDK (in case of
-#'     IPEK) under export.
+#' - `ExportKeyIdentifier`: The `KeyARN` of the KEK or BDK (in case of
+#'   IPEK) under export.
 #' 
-#' -   `KeyMaterial`: Use `Tr31KeyBlock` parameters.
+#' - `KeyMaterial`: Use `Tr31KeyBlock` parameters.
 #' 
 #' When this operation is successful, Amazon Web Services Payment
 #' Cryptography returns the working key or IPEK as a TR-31 WrappedKeyBlock.
@@ -641,9 +645,9 @@ paymentcryptographycontrolplane_delete_key <- function(KeyIdentifier, DeleteKeyI
 #' 
 #' **Related operations:**
 #' 
-#' -   [`get_parameters_for_export`][paymentcryptographycontrolplane_get_parameters_for_export]
+#' - [`get_parameters_for_export`][paymentcryptographycontrolplane_get_parameters_for_export]
 #' 
-#' -   [`import_key`][paymentcryptographycontrolplane_import_key]
+#' - [`import_key`][paymentcryptographycontrolplane_import_key]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_export_key(KeyMaterial,
@@ -746,7 +750,8 @@ paymentcryptographycontrolplane_export_key <- function(KeyMaterial, ExportKeyIde
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$export_key_input(KeyMaterial = KeyMaterial, ExportKeyIdentifier = ExportKeyIdentifier, ExportAttributes = ExportAttributes)
   output <- .paymentcryptographycontrolplane$export_key_output()
@@ -770,13 +775,13 @@ paymentcryptographycontrolplane_export_key <- function(KeyMaterial, ExportKeyIde
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_alias`][paymentcryptographycontrolplane_create_alias]
+#' - [`create_alias`][paymentcryptographycontrolplane_create_alias]
 #' 
-#' -   [`delete_alias`][paymentcryptographycontrolplane_delete_alias]
+#' - [`delete_alias`][paymentcryptographycontrolplane_delete_alias]
 #' 
-#' -   [`list_aliases`][paymentcryptographycontrolplane_list_aliases]
+#' - [`list_aliases`][paymentcryptographycontrolplane_list_aliases]
 #' 
-#' -   [`update_alias`][paymentcryptographycontrolplane_update_alias]
+#' - [`update_alias`][paymentcryptographycontrolplane_update_alias]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_get_alias(AliasName)
@@ -812,7 +817,8 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$get_alias_input(AliasName = AliasName)
   output <- .paymentcryptographycontrolplane$get_alias_output()
@@ -838,11 +844,11 @@ paymentcryptographycontrolplane_get_alias <- function(AliasName) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_key`][paymentcryptographycontrolplane_create_key]
+#' - [`create_key`][paymentcryptographycontrolplane_create_key]
 #' 
-#' -   [`delete_key`][paymentcryptographycontrolplane_delete_key]
+#' - [`delete_key`][paymentcryptographycontrolplane_delete_key]
 #' 
-#' -   [`list_keys`][paymentcryptographycontrolplane_list_keys]
+#' - [`list_keys`][paymentcryptographycontrolplane_list_keys]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_get_key(KeyIdentifier)
@@ -914,7 +920,8 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$get_key_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$get_key_output()
@@ -945,9 +952,9 @@ paymentcryptographycontrolplane_get_key <- function(KeyIdentifier) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`export_key`][paymentcryptographycontrolplane_export_key]
+#' - [`export_key`][paymentcryptographycontrolplane_export_key]
 #' 
-#' -   [`get_parameters_for_import`][paymentcryptographycontrolplane_get_parameters_for_import]
+#' - [`get_parameters_for_import`][paymentcryptographycontrolplane_get_parameters_for_import]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_get_parameters_for_export(
@@ -994,7 +1001,8 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$get_parameters_for_export_input(KeyMaterialType = KeyMaterialType, SigningKeyAlgorithm = SigningKeyAlgorithm)
   output <- .paymentcryptographycontrolplane$get_parameters_for_export_output()
@@ -1029,9 +1037,9 @@ paymentcryptographycontrolplane_get_parameters_for_export <- function(KeyMateria
 #' 
 #' **Related operations:**
 #' 
-#' -   [`get_parameters_for_export`][paymentcryptographycontrolplane_get_parameters_for_export]
+#' - [`get_parameters_for_export`][paymentcryptographycontrolplane_get_parameters_for_export]
 #' 
-#' -   [`import_key`][paymentcryptographycontrolplane_import_key]
+#' - [`import_key`][paymentcryptographycontrolplane_import_key]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_get_parameters_for_import(
@@ -1083,7 +1091,8 @@ paymentcryptographycontrolplane_get_parameters_for_import <- function(KeyMateria
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$get_parameters_for_import_input(KeyMaterialType = KeyMaterialType, WrappingKeyAlgorithm = WrappingKeyAlgorithm)
   output <- .paymentcryptographycontrolplane$get_parameters_for_import_output()
@@ -1146,7 +1155,8 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$get_public_key_certificate_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$get_public_key_certificate_output()
@@ -1210,16 +1220,16 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' 
 #' Set the following parameters:
 #' 
-#' -   `KeyMaterial`: `RootCertificatePublicKey`
+#' - `KeyMaterial`: `RootCertificatePublicKey`
 #' 
-#' -   `KeyClass`: `PUBLIC_KEY`
+#' - `KeyClass`: `PUBLIC_KEY`
 #' 
-#' -   `KeyModesOfUse`: `Verify`
+#' - `KeyModesOfUse`: `Verify`
 #' 
-#' -   `KeyUsage`: `TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE`
+#' - `KeyUsage`: `TR31_S0_ASYMMETRIC_KEY_FOR_DIGITAL_SIGNATURE`
 #' 
-#' -   `PublicKeyCertificate`: The public key certificate in PEM format
-#'     (base64 encoded) of the private root key under import.
+#' - `PublicKeyCertificate`: The public key certificate in PEM format
+#'   (base64 encoded) of the private root key under import.
 #' 
 #' **To import a trusted public key certificate**
 #' 
@@ -1227,17 +1237,17 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' you import a trusted public key certificate. Set the following
 #' parameters:
 #' 
-#' -   `KeyMaterial`: `TrustedCertificatePublicKey`
+#' - `KeyMaterial`: `TrustedCertificatePublicKey`
 #' 
-#' -   `CertificateAuthorityPublicKeyIdentifier`: `KeyArn` of the
-#'     `RootCertificatePublicKey`.
+#' - `CertificateAuthorityPublicKeyIdentifier`: `KeyArn` of the
+#'   `RootCertificatePublicKey`.
 #' 
-#' -   `KeyModesOfUse` and `KeyUsage`: Corresponding to the cryptographic
-#'     operations such as wrap, sign, or encrypt that you will allow the
-#'     trusted public key certificate to perform.
+#' - `KeyModesOfUse` and `KeyUsage`: Corresponding to the cryptographic
+#'   operations such as wrap, sign, or encrypt that you will allow the
+#'   trusted public key certificate to perform.
 #' 
-#' -   `PublicKeyCertificate`: The trusted public key certificate in PEM
-#'     format (base64 encoded) under import.
+#' - `PublicKeyCertificate`: The trusted public key certificate in PEM
+#'   format (base64 encoded) under import.
 #' 
 #' **To import initial keys (KEK or ZMK or similar) using TR-34**
 #' 
@@ -1271,24 +1281,24 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' 
 #' Set the following parameters:
 #' 
-#' -   `KeyMaterial`: Use `Tr34KeyBlock` parameters.
+#' - `KeyMaterial`: Use `Tr34KeyBlock` parameters.
 #' 
-#' -   `CertificateAuthorityPublicKeyIdentifier`: The `KeyARN` of the
-#'     certificate chain that signed the KDH signing key certificate.
+#' - `CertificateAuthorityPublicKeyIdentifier`: The `KeyARN` of the
+#'   certificate chain that signed the KDH signing key certificate.
 #' 
-#' -   `ImportToken`: Obtained from KRD by calling
-#'     [`get_parameters_for_import`][paymentcryptographycontrolplane_get_parameters_for_import].
+#' - `ImportToken`: Obtained from KRD by calling
+#'   [`get_parameters_for_import`][paymentcryptographycontrolplane_get_parameters_for_import].
 #' 
-#' -   `WrappedKeyBlock`: The TR-34 wrapped key material from KDH. It
-#'     contains the KDH key under import, wrapped with KRD wrapping
-#'     certificate and signed by KDH signing private key. This TR-34 key
-#'     block is typically generated by the KDH Hardware Security Module
-#'     (HSM) outside of Amazon Web Services Payment Cryptography.
+#' - `WrappedKeyBlock`: The TR-34 wrapped key material from KDH. It
+#'   contains the KDH key under import, wrapped with KRD wrapping
+#'   certificate and signed by KDH signing private key. This TR-34 key
+#'   block is typically generated by the KDH Hardware Security Module (HSM)
+#'   outside of Amazon Web Services Payment Cryptography.
 #' 
-#' -   `SigningKeyCertificate`: The public key certificate in PEM format
-#'     (base64 encoded) of the KDH signing key generated under the root
-#'     certificate (CertificateAuthorityPublicKeyIdentifier) imported in
-#'     Amazon Web Services Payment Cryptography.
+#' - `SigningKeyCertificate`: The public key certificate in PEM format
+#'   (base64 encoded) of the KDH signing key generated under the root
+#'   certificate (CertificateAuthorityPublicKeyIdentifier) imported in
+#'   Amazon Web Services Payment Cryptography.
 #' 
 #' **To import initial keys (KEK or ZMK or similar) using RSA Wrap and
 #' Unwrap**
@@ -1318,25 +1328,25 @@ paymentcryptographycontrolplane_get_public_key_certificate <- function(KeyIdenti
 #' using [`create_key`][paymentcryptographycontrolplane_create_key]. To
 #' initiate a TR-31 key import, set the following parameters:
 #' 
-#' -   `KeyMaterial`: Use `Tr31KeyBlock` parameters.
+#' - `KeyMaterial`: Use `Tr31KeyBlock` parameters.
 #' 
-#' -   `WrappedKeyBlock`: The TR-31 wrapped key material. It contains the
-#'     key under import, encrypted using KEK. The TR-31 key block is
-#'     typically generated by a HSM outside of Amazon Web Services Payment
-#'     Cryptography.
+#' - `WrappedKeyBlock`: The TR-31 wrapped key material. It contains the key
+#'   under import, encrypted using KEK. The TR-31 key block is typically
+#'   generated by a HSM outside of Amazon Web Services Payment
+#'   Cryptography.
 #' 
-#' -   `WrappingKeyIdentifier`: The `KeyArn` of the KEK that Amazon Web
-#'     Services Payment Cryptography uses to decrypt or unwrap the key
-#'     under import.
+#' - `WrappingKeyIdentifier`: The `KeyArn` of the KEK that Amazon Web
+#'   Services Payment Cryptography uses to decrypt or unwrap the key under
+#'   import.
 #' 
 #' **Cross-account use:** This operation can't be used across different
 #' Amazon Web Services accounts.
 #' 
 #' **Related operations:**
 #' 
-#' -   [`export_key`][paymentcryptographycontrolplane_export_key]
+#' - [`export_key`][paymentcryptographycontrolplane_export_key]
 #' 
-#' -   [`get_parameters_for_import`][paymentcryptographycontrolplane_get_parameters_for_import]
+#' - [`get_parameters_for_import`][paymentcryptographycontrolplane_get_parameters_for_import]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_import_key(KeyMaterial,
@@ -1521,7 +1531,8 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$import_key_input(KeyMaterial = KeyMaterial, KeyCheckValueAlgorithm = KeyCheckValueAlgorithm, Enabled = Enabled, Tags = Tags)
   output <- .paymentcryptographycontrolplane$import_key_output()
@@ -1556,13 +1567,13 @@ paymentcryptographycontrolplane_import_key <- function(KeyMaterial, KeyCheckValu
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_alias`][paymentcryptographycontrolplane_create_alias]
+#' - [`create_alias`][paymentcryptographycontrolplane_create_alias]
 #' 
-#' -   [`delete_alias`][paymentcryptographycontrolplane_delete_alias]
+#' - [`delete_alias`][paymentcryptographycontrolplane_delete_alias]
 #' 
-#' -   [`get_alias`][paymentcryptographycontrolplane_get_alias]
+#' - [`get_alias`][paymentcryptographycontrolplane_get_alias]
 #' 
-#' -   [`update_alias`][paymentcryptographycontrolplane_update_alias]
+#' - [`update_alias`][paymentcryptographycontrolplane_update_alias]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_list_aliases(NextToken, MaxResults)
@@ -1611,7 +1622,8 @@ paymentcryptographycontrolplane_list_aliases <- function(NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Aliases")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Aliases"),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$list_aliases_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_aliases_output()
@@ -1642,11 +1654,11 @@ paymentcryptographycontrolplane_list_aliases <- function(NextToken = NULL, MaxRe
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_key`][paymentcryptographycontrolplane_create_key]
+#' - [`create_key`][paymentcryptographycontrolplane_create_key]
 #' 
-#' -   [`delete_key`][paymentcryptographycontrolplane_delete_key]
+#' - [`delete_key`][paymentcryptographycontrolplane_delete_key]
 #' 
-#' -   [`get_key`][paymentcryptographycontrolplane_get_key]
+#' - [`get_key`][paymentcryptographycontrolplane_get_key]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_list_keys(KeyState, NextToken,
@@ -1717,7 +1729,8 @@ paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Keys")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Keys"),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$list_keys_input(KeyState = KeyState, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_keys_output()
@@ -1747,9 +1760,9 @@ paymentcryptographycontrolplane_list_keys <- function(KeyState = NULL, NextToken
 #' 
 #' **Related operations:**
 #' 
-#' -   [`tag_resource`][paymentcryptographycontrolplane_tag_resource]
+#' - [`tag_resource`][paymentcryptographycontrolplane_tag_resource]
 #' 
-#' -   [`untag_resource`][paymentcryptographycontrolplane_untag_resource]
+#' - [`untag_resource`][paymentcryptographycontrolplane_untag_resource]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_list_tags_for_resource(ResourceArn,
@@ -1801,7 +1814,8 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .paymentcryptographycontrolplane$list_tags_for_resource_output()
@@ -1830,11 +1844,11 @@ paymentcryptographycontrolplane_list_tags_for_resource <- function(ResourceArn, 
 #' 
 #' **Related operations:**
 #' 
-#' -   [`delete_key`][paymentcryptographycontrolplane_delete_key]
+#' - [`delete_key`][paymentcryptographycontrolplane_delete_key]
 #' 
-#' -   [`start_key_usage`][paymentcryptographycontrolplane_start_key_usage]
+#' - [`start_key_usage`][paymentcryptographycontrolplane_start_key_usage]
 #' 
-#' -   [`stop_key_usage`][paymentcryptographycontrolplane_stop_key_usage]
+#' - [`stop_key_usage`][paymentcryptographycontrolplane_stop_key_usage]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_restore_key(KeyIdentifier)
@@ -1907,7 +1921,8 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$restore_key_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$restore_key_output()
@@ -1933,7 +1948,7 @@ paymentcryptographycontrolplane_restore_key <- function(KeyIdentifier) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`stop_key_usage`][paymentcryptographycontrolplane_stop_key_usage]
+#' - [`stop_key_usage`][paymentcryptographycontrolplane_stop_key_usage]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_start_key_usage(KeyIdentifier)
@@ -2005,7 +2020,8 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$start_key_usage_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$start_key_usage_output()
@@ -2034,9 +2050,9 @@ paymentcryptographycontrolplane_start_key_usage <- function(KeyIdentifier) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`delete_key`][paymentcryptographycontrolplane_delete_key]
+#' - [`delete_key`][paymentcryptographycontrolplane_delete_key]
 #' 
-#' -   [`start_key_usage`][paymentcryptographycontrolplane_start_key_usage]
+#' - [`start_key_usage`][paymentcryptographycontrolplane_start_key_usage]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_stop_key_usage(KeyIdentifier)
@@ -2108,7 +2124,8 @@ paymentcryptographycontrolplane_stop_key_usage <- function(KeyIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$stop_key_usage_input(KeyIdentifier = KeyIdentifier)
   output <- .paymentcryptographycontrolplane$stop_key_usage_output()
@@ -2140,9 +2157,9 @@ paymentcryptographycontrolplane_stop_key_usage <- function(KeyIdentifier) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`list_tags_for_resource`][paymentcryptographycontrolplane_list_tags_for_resource]
+#' - [`list_tags_for_resource`][paymentcryptographycontrolplane_list_tags_for_resource]
 #' 
-#' -   [`untag_resource`][paymentcryptographycontrolplane_untag_resource]
+#' - [`untag_resource`][paymentcryptographycontrolplane_untag_resource]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_tag_resource(ResourceArn, Tags)
@@ -2194,7 +2211,8 @@ paymentcryptographycontrolplane_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .paymentcryptographycontrolplane$tag_resource_output()
@@ -2219,9 +2237,9 @@ paymentcryptographycontrolplane_tag_resource <- function(ResourceArn, Tags) {
 #' 
 #' **Related operations:**
 #' 
-#' -   [`list_tags_for_resource`][paymentcryptographycontrolplane_list_tags_for_resource]
+#' - [`list_tags_for_resource`][paymentcryptographycontrolplane_list_tags_for_resource]
 #' 
-#' -   [`tag_resource`][paymentcryptographycontrolplane_tag_resource]
+#' - [`tag_resource`][paymentcryptographycontrolplane_tag_resource]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_untag_resource(ResourceArn, TagKeys)
@@ -2260,7 +2278,8 @@ paymentcryptographycontrolplane_untag_resource <- function(ResourceArn, TagKeys)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .paymentcryptographycontrolplane$untag_resource_output()
@@ -2288,13 +2307,13 @@ paymentcryptographycontrolplane_untag_resource <- function(ResourceArn, TagKeys)
 #' 
 #' **Related operations:**
 #' 
-#' -   [`create_alias`][paymentcryptographycontrolplane_create_alias]
+#' - [`create_alias`][paymentcryptographycontrolplane_create_alias]
 #' 
-#' -   [`delete_alias`][paymentcryptographycontrolplane_delete_alias]
+#' - [`delete_alias`][paymentcryptographycontrolplane_delete_alias]
 #' 
-#' -   [`get_alias`][paymentcryptographycontrolplane_get_alias]
+#' - [`get_alias`][paymentcryptographycontrolplane_get_alias]
 #' 
-#' -   [`list_aliases`][paymentcryptographycontrolplane_list_aliases]
+#' - [`list_aliases`][paymentcryptographycontrolplane_list_aliases]
 #'
 #' @usage
 #' paymentcryptographycontrolplane_update_alias(AliasName, KeyArn)
@@ -2333,7 +2352,8 @@ paymentcryptographycontrolplane_update_alias <- function(AliasName, KeyArn = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .paymentcryptographycontrolplane$update_alias_input(AliasName = AliasName, KeyArn = KeyArn)
   output <- .paymentcryptographycontrolplane$update_alias_output()

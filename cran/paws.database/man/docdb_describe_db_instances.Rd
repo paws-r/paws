@@ -26,12 +26,12 @@ Constraints:
 Supported filters:
 \itemize{
 \item \code{db-cluster-id} - Accepts cluster identifiers and cluster Amazon
-Resource Names (ARNs). The results list includes only the
-information about the instances that are associated with the
-clusters that are identified by these ARNs.
-\item \code{db-instance-id} - Accepts instance identifiers and instance ARNs.
-The results list includes only the information about the instances
-that are identified by these ARNs.
+Resource Names (ARNs). The results list includes only the information
+about the instances that are associated with the clusters that are
+identified by these ARNs.
+\item \code{db-instance-id} - Accepts instance identifiers and instance ARNs. The
+results list includes only the information about the instances that
+are identified by these ARNs.
 }}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more

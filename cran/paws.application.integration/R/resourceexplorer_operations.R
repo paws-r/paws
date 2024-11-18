@@ -26,7 +26,8 @@ resourceexplorer_associate_default_view <- function(ViewArn) {
     http_method = "POST",
     http_path = "/AssociateDefaultView",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$associate_default_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$associate_default_view_output()
@@ -58,7 +59,8 @@ resourceexplorer_batch_get_view <- function(ViewArns = NULL) {
     http_method = "POST",
     http_path = "/BatchGetView",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$batch_get_view_input(ViewArns = ViewArns)
   output <- .resourceexplorer$batch_get_view_output()
@@ -96,7 +98,8 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
     http_method = "POST",
     http_path = "/CreateIndex",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$create_index_input(ClientToken = ClientToken, Tags = Tags)
   output <- .resourceexplorer$create_index_output()
@@ -164,7 +167,8 @@ resourceexplorer_create_view <- function(ClientToken = NULL, Filters = NULL, Inc
     http_method = "POST",
     http_path = "/CreateView",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$create_view_input(ClientToken = ClientToken, Filters = Filters, IncludedProperties = IncludedProperties, Scope = Scope, Tags = Tags, ViewName = ViewName)
   output <- .resourceexplorer$create_view_output()
@@ -197,7 +201,8 @@ resourceexplorer_delete_index <- function(Arn) {
     http_method = "POST",
     http_path = "/DeleteIndex",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$delete_index_input(Arn = Arn)
   output <- .resourceexplorer$delete_index_output()
@@ -229,7 +234,8 @@ resourceexplorer_delete_view <- function(ViewArn) {
     http_method = "POST",
     http_path = "/DeleteView",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$delete_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$delete_view_output()
@@ -260,7 +266,8 @@ resourceexplorer_disassociate_default_view <- function() {
     http_method = "POST",
     http_path = "/DisassociateDefaultView",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$disassociate_default_view_input()
   output <- .resourceexplorer$disassociate_default_view_output()
@@ -292,7 +299,8 @@ resourceexplorer_get_account_level_service_configuration <- function() {
     http_method = "POST",
     http_path = "/GetAccountLevelServiceConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$get_account_level_service_configuration_input()
   output <- .resourceexplorer$get_account_level_service_configuration_output()
@@ -323,7 +331,8 @@ resourceexplorer_get_default_view <- function() {
     http_method = "POST",
     http_path = "/GetDefaultView",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$get_default_view_input()
   output <- .resourceexplorer$get_default_view_output()
@@ -354,7 +363,8 @@ resourceexplorer_get_index <- function() {
     http_method = "POST",
     http_path = "/GetIndex",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$get_index_input()
   output <- .resourceexplorer$get_index_output()
@@ -386,7 +396,8 @@ resourceexplorer_get_view <- function(ViewArn) {
     http_method = "POST",
     http_path = "/GetView",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$get_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$get_view_output()
@@ -439,7 +450,8 @@ resourceexplorer_list_indexes <- function(MaxResults = NULL, NextToken = NULL, R
     http_method = "POST",
     http_path = "/ListIndexes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$list_indexes_input(MaxResults = MaxResults, NextToken = NextToken, Regions = Regions, Type = Type)
   output <- .resourceexplorer$list_indexes_output()
@@ -488,7 +500,8 @@ resourceexplorer_list_indexes_for_members <- function(AccountIdList, MaxResults 
     http_method = "POST",
     http_path = "/ListIndexesForMembers",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$list_indexes_for_members_input(AccountIdList = AccountIdList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_indexes_for_members_output()
@@ -534,7 +547,8 @@ resourceexplorer_list_supported_resource_types <- function(MaxResults = NULL, Ne
     http_method = "POST",
     http_path = "/ListSupportedResourceTypes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceTypes")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceTypes"),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$list_supported_resource_types_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_supported_resource_types_output()
@@ -566,7 +580,8 @@ resourceexplorer_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .resourceexplorer$list_tags_for_resource_output()
@@ -612,7 +627,8 @@ resourceexplorer_list_views <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/ListViews",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Views")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Views"),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$list_views_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_views_output()
@@ -679,7 +695,8 @@ resourceexplorer_search <- function(MaxResults = NULL, NextToken = NULL, QuerySt
     http_method = "POST",
     http_path = "/Search",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$search_input(MaxResults = MaxResults, NextToken = NextToken, QueryString = QueryString, ViewArn = ViewArn)
   output <- .resourceexplorer$search_output()
@@ -713,7 +730,8 @@ resourceexplorer_tag_resource <- function(Tags = NULL, resourceArn) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$tag_resource_input(Tags = Tags, resourceArn = resourceArn)
   output <- .resourceexplorer$tag_resource_output()
@@ -747,7 +765,8 @@ resourceexplorer_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .resourceexplorer$untag_resource_output()
@@ -784,7 +803,8 @@ resourceexplorer_update_index_type <- function(Arn, Type) {
     http_method = "POST",
     http_path = "/UpdateIndexType",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$update_index_type_input(Arn = Arn, Type = Type)
   output <- .resourceexplorer$update_index_type_output()
@@ -841,7 +861,8 @@ resourceexplorer_update_view <- function(Filters = NULL, IncludedProperties = NU
     http_method = "POST",
     http_path = "/UpdateView",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resourceexplorer$update_view_input(Filters = Filters, IncludedProperties = IncludedProperties, ViewArn = ViewArn)
   output <- .resourceexplorer$update_view_output()

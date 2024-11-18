@@ -20,7 +20,7 @@ bedrockruntime_invoke_model_with_response_stream(
 \code{contentType} in the header. You must provide the body in JSON format.
 To see the format and content of the request and response bodies for
 different models, refer to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.
-For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html}{Run inference}
+For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html}{Run inference}
 in the Bedrock User Guide.}
 
 \item{contentType}{The MIME type of the input data in the request. You must specify
@@ -34,18 +34,18 @@ value is \code{application/json}.}
 The \code{modelId} to provide depends on the type of model that you use:
 \itemize{
 \item If you use a base model, specify the model ID or its ARN. For a list
-of model IDs for base models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns}{Amazon Bedrock base model IDs (on-demand throughput)}
+of model IDs for base models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns}{Amazon Bedrock base model IDs (on-demand throughput)}
 in the Amazon Bedrock User Guide.
 \item If you use a provisioned model, specify the ARN of the Provisioned
 Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html}{Run inference using a Provisioned Throughput}
 in the Amazon Bedrock User Guide.
 \item If you use a custom model, first purchase Provisioned Throughput for
-it. Then specify the ARN of the resulting provisioned model. For
-more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html}{Use a custom model in Amazon Bedrock}
+it. Then specify the ARN of the resulting provisioned model. For more
+information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-use.html}{Use a custom model in Amazon Bedrock}
 in the Amazon Bedrock User Guide.
 \item If you use an \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-customization-import-model.html}{imported model},
-specify the ARN of the imported model. You can get the model ARN
-from a successful call to
+specify the ARN of the imported model. You can get the model ARN from
+a successful call to
 \href{https://docs.aws.amazon.com/bedrock/latest/APIReference/API_CreateModelImportJob.html}{CreateModelImportJob}
 or from the Imported models page in the Amazon Bedrock console.
 }}

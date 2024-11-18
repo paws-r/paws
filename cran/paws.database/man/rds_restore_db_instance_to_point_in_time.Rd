@@ -114,8 +114,8 @@ Default: A random, system-chosen Availability Zone.
 
 Constraints:
 \itemize{
-\item You can't specify the \code{AvailabilityZone} parameter if the DB
-instance is a Multi-AZ deployment.
+\item You can't specify the \code{AvailabilityZone} parameter if the DB instance
+is a Multi-AZ deployment.
 }
 
 Example: \verb{us-east-1a}}
@@ -135,8 +135,8 @@ This setting doesn't apply to RDS Custom.
 
 Constraints:
 \itemize{
-\item You can't specify the \code{AvailabilityZone} parameter if the DB
-instance is a Multi-AZ deployment.
+\item You can't specify the \code{AvailabilityZone} parameter if the DB instance
+is a Multi-AZ deployment.
 }}
 
 \item{PubliclyAccessible}{Specifies whether the DB instance is publicly accessible.
@@ -415,8 +415,8 @@ following requirements:
 \item The profile must exist in your account.
 \item The profile must have an IAM role that Amazon EC2 has permissions to
 assume.
-\item The instance profile name and the associated IAM role name must
-start with the prefix \code{AWSRDSCustom}.
+\item The instance profile name and the associated IAM role name must start
+with the prefix \code{AWSRDSCustom}.
 }
 
 For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}

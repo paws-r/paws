@@ -22,18 +22,16 @@ service.
 \item For ADM, \code{PlatformCredential}is client secret.
 \item For Apple Services using certificate credentials,
 \code{PlatformCredential} is private key.
-\item For Apple Services using token credentials, \code{PlatformCredential}
-is signing key.
-\item For GCM (Firebase Cloud Messaging) using key credentials, there
-is no \code{PlatformPrincipal}. The \code{PlatformCredential} is
-\verb{API key}.
-\item For GCM (Firebase Cloud Messaging) using token credentials,
-there is no \code{PlatformPrincipal}. The \code{PlatformCredential} is a
-JSON formatted private key file. When using the Amazon Web
-Services CLI, the file must be in string format and special
-characters must be ignored. To format the file correctly, Amazon
-SNS recommends using the following command:
-\code{SERVICE_JSON=`jq @json <<< cat service.json`}.
+\item For Apple Services using token credentials, \code{PlatformCredential} is
+signing key.
+\item For GCM (Firebase Cloud Messaging) using key credentials, there is
+no \code{PlatformPrincipal}. The \code{PlatformCredential} is \verb{API key}.
+\item For GCM (Firebase Cloud Messaging) using token credentials, there is
+no \code{PlatformPrincipal}. The \code{PlatformCredential} is a JSON formatted
+private key file. When using the Amazon Web Services CLI, the file
+must be in string format and special characters must be ignored. To
+format the file correctly, Amazon SNS recommends using the following
+command: \code{SERVICE_JSON=`jq @json <<< cat service.json`}.
 }
 \item \code{PlatformPrincipal} – The principal received from the notification
 service.
@@ -41,10 +39,9 @@ service.
 \item For ADM, \code{PlatformPrincipal}is client id.
 \item For Apple Services using certificate credentials,
 \code{PlatformPrincipal} is SSL certificate.
-\item For Apple Services using token credentials, \code{PlatformPrincipal}
-is signing key ID.
-\item For GCM (Firebase Cloud Messaging), there is no
-\code{PlatformPrincipal}.
+\item For Apple Services using token credentials, \code{PlatformPrincipal} is
+signing key ID.
+\item For GCM (Firebase Cloud Messaging), there is no \code{PlatformPrincipal}.
 }
 \item \code{EventEndpointCreated} – Topic ARN to which \code{EndpointCreated} event
 notifications are sent.
@@ -55,10 +52,10 @@ notifications are sent.
 \item \code{EventDeliveryFailure} – Topic ARN to which \code{DeliveryFailure} event
 notifications are sent upon Direct Publish delivery failure
 (permanent) to one of the application's endpoints.
-\item \code{SuccessFeedbackRoleArn} – IAM role ARN used to give Amazon SNS
-write access to use CloudWatch Logs on your behalf.
-\item \code{FailureFeedbackRoleArn} – IAM role ARN used to give Amazon SNS
-write access to use CloudWatch Logs on your behalf.
+\item \code{SuccessFeedbackRoleArn} – IAM role ARN used to give Amazon SNS write
+access to use CloudWatch Logs on your behalf.
+\item \code{FailureFeedbackRoleArn} – IAM role ARN used to give Amazon SNS write
+access to use CloudWatch Logs on your behalf.
 \item \code{SuccessFeedbackSampleRate} – Sample rate percentage (0-100) of
 successfully delivered messages.
 }

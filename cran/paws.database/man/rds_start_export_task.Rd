@@ -73,14 +73,14 @@ Valid Values:
 \itemize{
 \item \code{database} - Export all the data from a specified database.
 \item \code{database.table} \emph{table-name} - Export a table of the snapshot or
-cluster. This format is valid only for RDS for MySQL, RDS for
-MariaDB, and Aurora MySQL.
+cluster. This format is valid only for RDS for MySQL, RDS for MariaDB,
+and Aurora MySQL.
 \item \code{database.schema} \emph{schema-name} - Export a database schema of the
-snapshot or cluster. This format is valid only for RDS for
-PostgreSQL and Aurora PostgreSQL.
-\item \code{database.schema.table} \emph{table-name} - Export a table of the
-database schema. This format is valid only for RDS for PostgreSQL
+snapshot or cluster. This format is valid only for RDS for PostgreSQL
 and Aurora PostgreSQL.
+\item \code{database.schema.table} \emph{table-name} - Export a table of the database
+schema. This format is valid only for RDS for PostgreSQL and Aurora
+PostgreSQL.
 }}
 }
 \description{

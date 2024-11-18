@@ -22,20 +22,20 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{deliver-log-status} - The status of the logs delivery (\code{SUCCESS} |
 \code{FAILED}).
-\item \code{log-destination-type} - The type of destination for the flow log
-data (\code{cloud-watch-logs} | \code{s3} | \code{kinesis-data-firehose}).
+\item \code{log-destination-type} - The type of destination for the flow log data
+(\code{cloud-watch-logs} | \code{s3} | \code{kinesis-data-firehose}).
 \item \code{flow-log-id} - The ID of the flow log.
 \item \code{log-group-name} - The name of the log group.
 \item \code{resource-id} - The ID of the VPC, subnet, or network interface.
 \item \code{traffic-type} - The type of traffic (\code{ACCEPT} | \code{REJECT} | \code{ALL}).
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this
-filter to find all resources assigned a tag with a specific key,
-regardless of the tag value.
+resource. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless
+of the tag value.
 }}
 
 \item{FlowLogIds}{One or more flow log IDs.

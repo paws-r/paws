@@ -73,9 +73,8 @@ Each local secondary index in the array includes the following:
 \itemize{
 \item \code{IndexName} - The name of the local secondary index. Must be unique
 only for this table.
-\item \code{KeySchema} - Specifies the key schema for the local secondary
-index. The key schema must begin with the same partition key as the
-table.
+\item \code{KeySchema} - Specifies the key schema for the local secondary index.
+The key schema must begin with the same partition key as the table.
 \item \code{Projection} - Specifies attributes that are copied (projected) from
 the table into the index. These are in addition to the primary key
 attributes and index key attributes, which are automatically
@@ -83,20 +82,19 @@ projected. Each attribute specification is composed of:
 \itemize{
 \item \code{ProjectionType} - One of the following:
 \itemize{
-\item \code{KEYS_ONLY} - Only the index and primary keys are projected
-into the index.
-\item \code{INCLUDE} - Only the specified table attributes are
-projected into the index. The list of projected attributes
-is in \code{NonKeyAttributes}.
-\item \code{ALL} - All of the table attributes are projected into the
-index.
+\item \code{KEYS_ONLY} - Only the index and primary keys are projected into
+the index.
+\item \code{INCLUDE} - Only the specified table attributes are projected into
+the index. The list of projected attributes is in
+\code{NonKeyAttributes}.
+\item \code{ALL} - All of the table attributes are projected into the index.
 }
-\item \code{NonKeyAttributes} - A list of one or more non-key attribute
-names that are projected into the secondary index. The total
-count of attributes provided in \code{NonKeyAttributes}, summed
-across all of the secondary indexes, must not exceed 100. If you
-project the same attribute into two different indexes, this
-counts as two distinct attributes when determining the total.
+\item \code{NonKeyAttributes} - A list of one or more non-key attribute names
+that are projected into the secondary index. The total count of
+attributes provided in \code{NonKeyAttributes}, summed across all of the
+secondary indexes, must not exceed 100. If you project the same
+attribute into two different indexes, this counts as two distinct
+attributes when determining the total.
 }
 }}
 
@@ -106,8 +104,7 @@ following:
 \itemize{
 \item \code{IndexName} - The name of the global secondary index. Must be unique
 only for this table.
-\item \code{KeySchema} - Specifies the key schema for the global secondary
-index.
+\item \code{KeySchema} - Specifies the key schema for the global secondary index.
 \item \code{Projection} - Specifies attributes that are copied (projected) from
 the table into the index. These are in addition to the primary key
 attributes and index key attributes, which are automatically
@@ -115,24 +112,22 @@ projected. Each attribute specification is composed of:
 \itemize{
 \item \code{ProjectionType} - One of the following:
 \itemize{
-\item \code{KEYS_ONLY} - Only the index and primary keys are projected
-into the index.
-\item \code{INCLUDE} - Only the specified table attributes are
-projected into the index. The list of projected attributes
-is in \code{NonKeyAttributes}.
-\item \code{ALL} - All of the table attributes are projected into the
-index.
+\item \code{KEYS_ONLY} - Only the index and primary keys are projected into
+the index.
+\item \code{INCLUDE} - Only the specified table attributes are projected into
+the index. The list of projected attributes is in
+\code{NonKeyAttributes}.
+\item \code{ALL} - All of the table attributes are projected into the index.
 }
-\item \code{NonKeyAttributes} - A list of one or more non-key attribute
-names that are projected into the secondary index. The total
-count of attributes provided in \code{NonKeyAttributes}, summed
-across all of the secondary indexes, must not exceed 100. If you
-project the same attribute into two different indexes, this
-counts as two distinct attributes when determining the total.
+\item \code{NonKeyAttributes} - A list of one or more non-key attribute names
+that are projected into the secondary index. The total count of
+attributes provided in \code{NonKeyAttributes}, summed across all of the
+secondary indexes, must not exceed 100. If you project the same
+attribute into two different indexes, this counts as two distinct
+attributes when determining the total.
 }
-\item \code{ProvisionedThroughput} - The provisioned throughput settings for
-the global secondary index, consisting of read and write capacity
-units.
+\item \code{ProvisionedThroughput} - The provisioned throughput settings for the
+global secondary index, consisting of read and write capacity units.
 }}
 
 \item{BillingMode}{Controls how you are charged for read and write throughput and how you
@@ -160,20 +155,20 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 \item{StreamSpecification}{The settings for DynamoDB Streams on the table. These settings consist
 of:
 \itemize{
-\item \code{StreamEnabled} - Indicates whether DynamoDB Streams is to be
-enabled (true) or disabled (false).
+\item \code{StreamEnabled} - Indicates whether DynamoDB Streams is to be enabled
+(true) or disabled (false).
 \item \code{StreamViewType} - When an item in the table is modified,
-\code{StreamViewType} determines what information is written to the
-table's stream. Valid values for \code{StreamViewType} are:
+\code{StreamViewType} determines what information is written to the table's
+stream. Valid values for \code{StreamViewType} are:
 \itemize{
 \item \code{KEYS_ONLY} - Only the key attributes of the modified item are
 written to the stream.
-\item \code{NEW_IMAGE} - The entire item, as it appears after it was
-modified, is written to the stream.
+\item \code{NEW_IMAGE} - The entire item, as it appears after it was modified,
+is written to the stream.
 \item \code{OLD_IMAGE} - The entire item, as it appeared before it was
 modified, is written to the stream.
-\item \code{NEW_AND_OLD_IMAGES} - Both the new and the old item images of
-the item are written to the stream.
+\item \code{NEW_AND_OLD_IMAGES} - Both the new and the old item images of the
+item are written to the stream.
 }
 }}
 

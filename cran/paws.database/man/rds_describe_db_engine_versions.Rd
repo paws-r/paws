@@ -77,8 +77,8 @@ modes. Valid DB engine modes are the following:
 includes information about the DB engine versions for these engine
 versions.
 \item \code{status} - Accepts engine version statuses. The results list only
-includes information about the DB engine versions for these
-statuses. Valid statuses are the following:
+includes information about the DB engine versions for these statuses.
+Valid statuses are the following:
 \itemize{
 \item \code{available}
 \item \code{deprecated}

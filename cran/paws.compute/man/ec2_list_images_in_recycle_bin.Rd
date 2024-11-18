@@ -30,7 +30,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Lists one or more AMIs that are currently in the Recycle Bin. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html}{Recycle Bin} in the \emph{Amazon EC2 User Guide}.
+Lists one or more AMIs that are currently in the Recycle Bin. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html}{Recycle Bin} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_list_images_in_recycle_bin/} for full documentation.
 }

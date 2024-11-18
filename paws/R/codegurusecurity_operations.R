@@ -114,7 +114,8 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
     http_method = "POST",
     http_path = "/batchGetFindings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$batch_get_findings_input(findingIdentifiers = findingIdentifiers)
   output <- .codegurusecurity$batch_get_findings_output()
@@ -156,12 +157,12 @@ codegurusecurity_batch_get_findings <- function(findingIdentifiers) {
 #' @param tags An array of key-value pairs used to tag a scan. A tag is a custom
 #' attribute label with two parts:
 #' 
-#' -   A tag key. For example, `CostCenter`, `Environment`, or `Secret`.
-#'     Tag keys are case sensitive.
+#' - A tag key. For example, `CostCenter`, `Environment`, or `Secret`. Tag
+#'   keys are case sensitive.
 #' 
-#' -   An optional tag value field. For example, `111122223333`,
-#'     `Production`, or a team name. Omitting the tag value is the same as
-#'     using an empty string. Tag values are case sensitive.
+#' - An optional tag value field. For example, `111122223333`,
+#'   `Production`, or a team name. Omitting the tag value is the same as
+#'   using an empty string. Tag values are case sensitive.
 #'
 #' @return
 #' A list with the following syntax:
@@ -204,7 +205,8 @@ codegurusecurity_create_scan <- function(analysisType = NULL, clientToken = NULL
     http_method = "POST",
     http_path = "/scans",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$create_scan_input(analysisType = analysisType, clientToken = clientToken, resourceId = resourceId, scanName = scanName, scanType = scanType, tags = tags)
   output <- .codegurusecurity$create_scan_output()
@@ -265,7 +267,8 @@ codegurusecurity_create_upload_url <- function(scanName) {
     http_method = "POST",
     http_path = "/uploadUrl",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$create_upload_url_input(scanName = scanName)
   output <- .codegurusecurity$create_upload_url_output()
@@ -313,7 +316,8 @@ codegurusecurity_get_account_configuration <- function() {
     http_method = "GET",
     http_path = "/accountConfiguration/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$get_account_configuration_input()
   output <- .codegurusecurity$get_account_configuration_output()
@@ -436,7 +440,8 @@ codegurusecurity_get_findings <- function(maxResults = NULL, nextToken = NULL, s
     http_method = "GET",
     http_path = "/findings/{scanName}",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$get_findings_input(maxResults = maxResults, nextToken = nextToken, scanName = scanName, status = status)
   output <- .codegurusecurity$get_findings_output()
@@ -522,7 +527,8 @@ codegurusecurity_get_metrics_summary <- function(date) {
     http_method = "GET",
     http_path = "/metrics/summary",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$get_metrics_summary_input(date = date)
   output <- .codegurusecurity$get_metrics_summary_output()
@@ -589,7 +595,8 @@ codegurusecurity_get_scan <- function(runId = NULL, scanName) {
     http_method = "GET",
     http_path = "/scans/{scanName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$get_scan_input(runId = runId, scanName = scanName)
   output <- .codegurusecurity$get_scan_output()
@@ -694,7 +701,8 @@ codegurusecurity_list_findings_metrics <- function(endDate, maxResults = NULL, n
     http_method = "GET",
     http_path = "/metrics/findings",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsMetrics")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsMetrics"),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$list_findings_metrics_input(endDate = endDate, maxResults = maxResults, nextToken = nextToken, startDate = startDate)
   output <- .codegurusecurity$list_findings_metrics_output()
@@ -766,7 +774,8 @@ codegurusecurity_list_scans <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/scans",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "summaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "summaries"),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$list_scans_input(maxResults = maxResults, nextToken = nextToken)
   output <- .codegurusecurity$list_scans_output()
@@ -819,7 +828,8 @@ codegurusecurity_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codegurusecurity$list_tags_for_resource_output()
@@ -846,12 +856,12 @@ codegurusecurity_list_tags_for_resource <- function(resourceArn) {
 #' @param tags &#91;required&#93; An array of key-value pairs used to tag an existing scan. A tag is a
 #' custom attribute label with two parts:
 #' 
-#' -   A tag key. For example, `CostCenter`, `Environment`, or `Secret`.
-#'     Tag keys are case sensitive.
+#' - A tag key. For example, `CostCenter`, `Environment`, or `Secret`. Tag
+#'   keys are case sensitive.
 #' 
-#' -   An optional tag value field. For example, `111122223333`,
-#'     `Production`, or a team name. Omitting the tag value is the same as
-#'     using an empty string. Tag values are case sensitive.
+#' - An optional tag value field. For example, `111122223333`,
+#'   `Production`, or a team name. Omitting the tag value is the same as
+#'   using an empty string. Tag values are case sensitive.
 #'
 #' @return
 #' An empty list.
@@ -877,7 +887,8 @@ codegurusecurity_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codegurusecurity$tag_resource_output()
@@ -927,7 +938,8 @@ codegurusecurity_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codegurusecurity$untag_resource_output()
@@ -982,7 +994,8 @@ codegurusecurity_update_account_configuration <- function(encryptionConfig) {
     http_method = "PUT",
     http_path = "/updateAccountConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurusecurity$update_account_configuration_input(encryptionConfig = encryptionConfig)
   output <- .codegurusecurity$update_account_configuration_output()

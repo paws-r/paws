@@ -49,8 +49,8 @@ header must start with one of the following prefixes:
 \itemize{
 \item audio/l16; rate=16000; channels=1
 \item audio/x-l16; sample-rate=16000; channel-count=1
-\item audio/lpcm; sample-rate=8000; sample-size-bits=16;
-channel-count=1; is-big-endian=false
+\item audio/lpcm; sample-rate=8000; sample-size-bits=16; channel-count=1;
+is-big-endian=false
 }
 \item Opus format
 \itemize{
@@ -65,16 +65,15 @@ channel-count=1; is-big-endian=false
 \item{responseContentType}{The message that Amazon Lex V2 returns in the response can be either
 text or speech based on the \code{responseContentType} value.
 \itemize{
-\item If the value is \verb{text/plain;charset=utf-8}, Amazon Lex V2 returns
-text in the response.
-\item If the value begins with \verb{audio/}, Amazon Lex V2 returns speech in
-the response. Amazon Lex V2 uses Amazon Polly to generate the speech
-using the configuration that you specified in the
-\code{responseContentType} parameter. For example, if you specify
-\code{audio/mpeg} as the value, Amazon Lex V2 returns speech in the MPEG
-format.
-\item If the value is \code{audio/pcm}, the speech returned is \code{audio/pcm} at
-16 KHz in 16-bit, little-endian format.
+\item If the value is \verb{text/plain;charset=utf-8}, Amazon Lex V2 returns text
+in the response.
+\item If the value begins with \verb{audio/}, Amazon Lex V2 returns speech in the
+response. Amazon Lex V2 uses Amazon Polly to generate the speech using
+the configuration that you specified in the \code{responseContentType}
+parameter. For example, if you specify \code{audio/mpeg} as the value,
+Amazon Lex V2 returns speech in the MPEG format.
+\item If the value is \code{audio/pcm}, the speech returned is \code{audio/pcm} at 16
+KHz in 16-bit, little-endian format.
 \item The following are the accepted values:
 \itemize{
 \item audio/mpeg

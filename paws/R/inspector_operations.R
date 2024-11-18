@@ -73,7 +73,8 @@ inspector_add_attributes_to_findings <- function(findingArns, attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$add_attributes_to_findings_input(findingArns = findingArns, attributes = attributes)
   output <- .inspector$add_attributes_to_findings_output()
@@ -154,7 +155,8 @@ inspector_create_assessment_target <- function(assessmentTargetName, resourceGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$create_assessment_target_input(assessmentTargetName = assessmentTargetName, resourceGroupArn = resourceGroupArn)
   output <- .inspector$create_assessment_target_output()
@@ -253,7 +255,8 @@ inspector_create_assessment_template <- function(assessmentTargetArn, assessment
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$create_assessment_template_input(assessmentTargetArn = assessmentTargetArn, assessmentTemplateName = assessmentTemplateName, durationInSeconds = durationInSeconds, rulesPackageArns = rulesPackageArns, userAttributesForFindings = userAttributesForFindings)
   output <- .inspector$create_assessment_template_output()
@@ -306,7 +309,8 @@ inspector_create_exclusions_preview <- function(assessmentTemplateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$create_exclusions_preview_input(assessmentTemplateArn = assessmentTemplateArn)
   output <- .inspector$create_exclusions_preview_output()
@@ -334,9 +338,9 @@ inspector_create_exclusions_preview <- function(assessmentTemplateArn) {
 #' inspector_create_resource_group(resourceGroupTags)
 #'
 #' @param resourceGroupTags &#91;required&#93; A collection of keys and an array of possible values,
-#' '\[\{"key":"key1","values":\["Value1","Value2"\]\},\{"key":"Key2","values":\["Value3"\]\}\]'.
+#' '\[\\"key":"key1","values":\["Value1","Value2"\]\\,\\"key":"Key2","values":\["Value3"\]\\]'.
 #' 
-#' For example,'\[\{"key":"Name","values":\["TestEC2Instance"\]\}\]'.
+#' For example,'\[\\"key":"Name","values":\["TestEC2Instance"\]\\]'.
 #'
 #' @return
 #' A list with the following syntax:
@@ -385,7 +389,8 @@ inspector_create_resource_group <- function(resourceGroupTags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$create_resource_group_input(resourceGroupTags = resourceGroupTags)
   output <- .inspector$create_resource_group_output()
@@ -439,7 +444,8 @@ inspector_delete_assessment_run <- function(assessmentRunArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$delete_assessment_run_input(assessmentRunArn = assessmentRunArn)
   output <- .inspector$delete_assessment_run_output()
@@ -493,7 +499,8 @@ inspector_delete_assessment_target <- function(assessmentTargetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$delete_assessment_target_input(assessmentTargetArn = assessmentTargetArn)
   output <- .inspector$delete_assessment_target_output()
@@ -547,7 +554,8 @@ inspector_delete_assessment_template <- function(assessmentTemplateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$delete_assessment_template_input(assessmentTemplateArn = assessmentTemplateArn)
   output <- .inspector$delete_assessment_template_output()
@@ -669,7 +677,8 @@ inspector_describe_assessment_runs <- function(assessmentRunArns) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$describe_assessment_runs_input(assessmentRunArns = assessmentRunArns)
   output <- .inspector$describe_assessment_runs_output()
@@ -751,7 +760,8 @@ inspector_describe_assessment_targets <- function(assessmentTargetArns) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$describe_assessment_targets_input(assessmentTargetArns = assessmentTargetArns)
   output <- .inspector$describe_assessment_targets_output()
@@ -841,7 +851,8 @@ inspector_describe_assessment_templates <- function(assessmentTemplateArns) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$describe_assessment_templates_input(assessmentTemplateArns = assessmentTemplateArns)
   output <- .inspector$describe_assessment_templates_output()
@@ -897,7 +908,8 @@ inspector_describe_cross_account_access_role <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$describe_cross_account_access_role_input()
   output <- .inspector$describe_cross_account_access_role_output()
@@ -975,7 +987,8 @@ inspector_describe_exclusions <- function(exclusionArns, locale = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$describe_exclusions_input(exclusionArns = exclusionArns, locale = locale)
   output <- .inspector$describe_exclusions_output()
@@ -1124,7 +1137,8 @@ inspector_describe_findings <- function(findingArns, locale = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$describe_findings_input(findingArns = findingArns, locale = locale)
   output <- .inspector$describe_findings_output()
@@ -1206,7 +1220,8 @@ inspector_describe_resource_groups <- function(resourceGroupArns) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$describe_resource_groups_input(resourceGroupArns = resourceGroupArns)
   output <- .inspector$describe_resource_groups_output()
@@ -1285,7 +1300,8 @@ inspector_describe_rules_packages <- function(rulesPackageArns, locale = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$describe_rules_packages_input(rulesPackageArns = rulesPackageArns, locale = locale)
   output <- .inspector$describe_rules_packages_output()
@@ -1346,7 +1362,8 @@ inspector_get_assessment_report <- function(assessmentRunArn, reportFileFormat, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$get_assessment_report_input(assessmentRunArn = assessmentRunArn, reportFileFormat = reportFileFormat, reportType = reportType)
   output <- .inspector$get_assessment_report_output()
@@ -1434,7 +1451,8 @@ inspector_get_exclusions_preview <- function(assessmentTemplateArn, previewToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$get_exclusions_preview_input(assessmentTemplateArn = assessmentTemplateArn, previewToken = previewToken, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .inspector$get_exclusions_preview_output()
@@ -1500,7 +1518,8 @@ inspector_get_telemetry_metadata <- function(assessmentRunArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$get_telemetry_metadata_input(assessmentRunArn = assessmentRunArn)
   output <- .inspector$get_telemetry_metadata_output()
@@ -1602,7 +1621,8 @@ inspector_list_assessment_run_agents <- function(assessmentRunArn, filter = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$list_assessment_run_agents_input(assessmentRunArn = assessmentRunArn, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_run_agents_output()
@@ -1724,7 +1744,8 @@ inspector_list_assessment_runs <- function(assessmentTemplateArns = NULL, filter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$list_assessment_runs_input(assessmentTemplateArns = assessmentTemplateArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_runs_output()
@@ -1802,7 +1823,8 @@ inspector_list_assessment_targets <- function(filter = NULL, nextToken = NULL, m
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$list_assessment_targets_input(filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_targets_output()
@@ -1896,7 +1918,8 @@ inspector_list_assessment_templates <- function(assessmentTargetArns = NULL, fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$list_assessment_templates_input(assessmentTargetArns = assessmentTargetArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_assessment_templates_output()
@@ -1982,7 +2005,8 @@ inspector_list_event_subscriptions <- function(resourceArn = NULL, nextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$list_event_subscriptions_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_event_subscriptions_output()
@@ -2044,7 +2068,8 @@ inspector_list_exclusions <- function(assessmentRunArn, nextToken = NULL, maxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$list_exclusions_input(assessmentRunArn = assessmentRunArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_exclusions_output()
@@ -2165,7 +2190,8 @@ inspector_list_findings <- function(assessmentRunArns = NULL, filter = NULL, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$list_findings_input(assessmentRunArns = assessmentRunArns, filter = filter, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_findings_output()
@@ -2231,7 +2257,8 @@ inspector_list_rules_packages <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$list_rules_packages_input(nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$list_rules_packages_output()
@@ -2293,7 +2320,8 @@ inspector_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .inspector$list_tags_for_resource_output()
@@ -2374,7 +2402,8 @@ inspector_preview_agents <- function(previewAgentsArn, nextToken = NULL, maxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .inspector$preview_agents_input(previewAgentsArn = previewAgentsArn, nextToken = nextToken, maxResults = maxResults)
   output <- .inspector$preview_agents_output()
@@ -2430,7 +2459,8 @@ inspector_register_cross_account_access_role <- function(roleArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$register_cross_account_access_role_input(roleArn = roleArn)
   output <- .inspector$register_cross_account_access_role_output()
@@ -2510,7 +2540,8 @@ inspector_remove_attributes_from_findings <- function(findingArns, attributeKeys
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$remove_attributes_from_findings_input(findingArns = findingArns, attributeKeys = attributeKeys)
   output <- .inspector$remove_attributes_from_findings_output()
@@ -2578,7 +2609,8 @@ inspector_set_tags_for_resource <- function(resourceArn, tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$set_tags_for_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .inspector$set_tags_for_resource_output()
@@ -2645,7 +2677,8 @@ inspector_start_assessment_run <- function(assessmentTemplateArn, assessmentRunN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$start_assessment_run_input(assessmentTemplateArn = assessmentTemplateArn, assessmentRunName = assessmentRunName)
   output <- .inspector$start_assessment_run_output()
@@ -2705,7 +2738,8 @@ inspector_stop_assessment_run <- function(assessmentRunArn, stopAction = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$stop_assessment_run_input(assessmentRunArn = assessmentRunArn, stopAction = stopAction)
   output <- .inspector$stop_assessment_run_output()
@@ -2766,7 +2800,8 @@ inspector_subscribe_to_event <- function(resourceArn, event, topicArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$subscribe_to_event_input(resourceArn = resourceArn, event = event, topicArn = topicArn)
   output <- .inspector$subscribe_to_event_output()
@@ -2827,7 +2862,8 @@ inspector_unsubscribe_from_event <- function(resourceArn, event, topicArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$unsubscribe_from_event_input(resourceArn = resourceArn, event = event, topicArn = topicArn)
   output <- .inspector$unsubscribe_from_event_output()
@@ -2892,7 +2928,8 @@ inspector_update_assessment_target <- function(assessmentTargetArn, assessmentTa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector$update_assessment_target_input(assessmentTargetArn = assessmentTargetArn, assessmentTargetName = assessmentTargetName, resourceGroupArn = resourceGroupArn)
   output <- .inspector$update_assessment_target_output()

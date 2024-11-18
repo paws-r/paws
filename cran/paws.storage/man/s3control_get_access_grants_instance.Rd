@@ -7,7 +7,7 @@
 s3control_get_access_grants_instance(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
+\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
 }
 \description{
 Retrieves the S3 Access Grants instance for a Region in your account.

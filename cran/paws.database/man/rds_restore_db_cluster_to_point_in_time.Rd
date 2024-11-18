@@ -146,8 +146,8 @@ following occurs:
 \item If the DB cluster is encrypted, then the restored DB cluster is
 encrypted using the KMS key that was used to encrypt the source DB
 cluster.
-\item If the DB cluster isn't encrypted, then the restored DB cluster
-isn't encrypted.
+\item If the DB cluster isn't encrypted, then the restored DB cluster isn't
+encrypted.
 }
 
 If \code{DBClusterIdentifier} refers to a DB cluster that isn't encrypted,
@@ -171,8 +171,8 @@ Default: 0
 
 Constraints:
 \itemize{
-\item If specified, this value must be set to a number from 0 to 259,200
-(72 hours).
+\item If specified, this value must be set to a number from 0 to 259,200 (72
+hours).
 }
 
 Valid for: Aurora MySQL DB clusters only}
@@ -314,10 +314,10 @@ attached to it, the DB cluster is public.
 If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the subnets are part of a VPC that doesn’t have an internet
-gateway attached to it, the DB cluster is private.
-\item If the subnets are part of a VPC that has an internet gateway
-attached to it, the DB cluster is public.
+\item If the subnets are part of a VPC that doesn’t have an internet gateway
+attached to it, the DB cluster is private.
+\item If the subnets are part of a VPC that has an internet gateway attached
+to it, the DB cluster is public.
 }
 
 Valid for: Multi-AZ DB clusters only}

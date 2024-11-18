@@ -26,10 +26,10 @@ Note the following when deciding how to use Filters:
 \itemize{
 \item If you don't specify a Filter, the response includes all timeline
 events.
-\item If you specify more than one filter in a single request, the
-response returns timeline events that match all filters.
-\item If you specify a filter with more than one value, the response
-returns timeline events that match any of the values provided.
+\item If you specify more than one filter in a single request, the response
+returns timeline events that match all filters.
+\item If you specify a filter with more than one value, the response returns
+timeline events that match any of the values provided.
 }}
 
 \item{incidentRecordArn}{[required] The Amazon Resource Name (ARN) of the incident that includes the

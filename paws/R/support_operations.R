@@ -13,14 +13,14 @@ NULL
 #' it's created. The `expiryTime` returned in the response is when the set
 #' expires.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_add_attachments_to_set(attachmentSetId, attachments)
@@ -71,7 +71,8 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$add_attachments_to_set_input(attachmentSetId = attachmentSetId, attachments = attachments)
   output <- .support$add_attachments_to_set_output()
@@ -93,14 +94,14 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #' communication by using the `ccEmailAddresses` parameter. The
 #' `communicationBody` value contains the text of the communication.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_add_communication_to_case(caseId, communicationBody,
@@ -147,7 +148,8 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$add_communication_to_case_input(caseId = caseId, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, attachmentSetId = attachmentSetId)
   output <- .support$add_communication_to_case_output()
@@ -170,12 +172,12 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' limit increases. You can submit a service limit increase in the
 #' following ways:
 #' 
-#' -   Submit a request from the Amazon Web Services Support Center Create
-#'     Case page.
+#' - Submit a request from the Amazon Web Services Support Center Create
+#'   Case page.
 #' 
-#' -   Use the Service Quotas
-#'     [RequestServiceQuotaIncrease](https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_RequestServiceQuotaIncrease.html)
-#'     operation.
+#' - Use the Service Quotas
+#'   [RequestServiceQuotaIncrease](https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_RequestServiceQuotaIncrease.html)
+#'   operation.
 #' 
 #' A successful [`create_case`][support_create_case] request returns an
 #' Amazon Web Services Support case number. You can use the
@@ -191,14 +193,14 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' [`describe_cases`][support_describe_cases] operation to get the
 #' `displayId`.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_create_case(subject, serviceCode, severityCode, categoryCode,
@@ -281,7 +283,8 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$create_case_input(subject = subject, serviceCode = serviceCode, severityCode = severityCode, categoryCode = categoryCode, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, language = language, issueType = issueType, attachmentSetId = attachmentSetId)
   output <- .support$create_case_output()
@@ -303,14 +306,14 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #' are returned in the AttachmentDetails objects that are returned by the
 #' [`describe_communications`][support_describe_communications] operation.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_attachment(attachmentId)
@@ -347,7 +350,8 @@ support_describe_attachment <- function(attachmentId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_attachment_input(attachmentId = attachmentId)
   output <- .support$describe_attachment_output()
@@ -370,24 +374,24 @@ support_describe_attachment <- function(attachmentId) {
 #' 
 #' The response returns the following in JSON format:
 #' 
-#' -   One or more
-#'     [CaseDetails](https://docs.aws.amazon.com/awssupport/latest/APIReference/API_CaseDetails.html)
-#'     data types.
+#' - One or more
+#'   [CaseDetails](https://docs.aws.amazon.com/awssupport/latest/APIReference/API_CaseDetails.html)
+#'   data types.
 #' 
-#' -   One or more `nextToken` values, which specify where to paginate the
-#'     returned records represented by the `CaseDetails` objects.
+#' - One or more `nextToken` values, which specify where to paginate the
+#'   returned records represented by the `CaseDetails` objects.
 #' 
 #' Case data is available for 12 months after creation. If a case was
 #' created more than 12 months ago, a request might return an error.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_cases(caseIdList, displayId, afterTime, beforeTime,
@@ -487,7 +491,8 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "cases")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "cases"),
+    stream_api = FALSE
   )
   input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications)
   output <- .support$describe_cases_output()
@@ -516,14 +521,14 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #' you want to display on each page, and use `nextToken` to specify the
 #' resumption of pagination.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_communications(caseId, beforeTime, afterTime,
@@ -584,7 +589,8 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "communications")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "communications"),
+    stream_api = FALSE
   )
   input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults)
   output <- .support$describe_communications_output()
@@ -605,14 +611,14 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #' `language` `categoryCode`, `issueType` and `serviceCode` used to
 #' retrieve the CreateCaseOptions.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_create_case_options(issueType, serviceCode, language,
@@ -679,7 +685,8 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_create_case_options_input(issueType = issueType, serviceCode = serviceCode, language = language, categoryCode = categoryCode)
   output <- .support$describe_create_case_options_output()
@@ -709,14 +716,14 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
 #' [`describe_services`][support_describe_services] operation returns, so
 #' that you have the most recent set of service and category codes.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_services(serviceCodeList, language)
@@ -769,7 +776,8 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "services")
+    paginator = list(result_key = "services"),
+    stream_api = FALSE
   )
   input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language)
   output <- .support$describe_services_output()
@@ -790,14 +798,14 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #' data type that you include for a [`create_case`][support_create_case]
 #' request.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_severity_levels(language)
@@ -839,7 +847,8 @@ support_describe_severity_levels <- function(language = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_severity_levels_input(language = language)
   output <- .support$describe_severity_levels_output()
@@ -860,14 +869,14 @@ support_describe_severity_levels <- function(language = NULL) {
 #' include a ISO 639-1 code for the `language`, and the language display
 #' name.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_supported_languages(issueType, serviceCode,
@@ -917,7 +926,8 @@ support_describe_supported_languages <- function(issueType, serviceCode, categor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_supported_languages_input(issueType = issueType, serviceCode = serviceCode, categoryCode = categoryCode)
   output <- .support$describe_supported_languages_output()
@@ -944,14 +954,14 @@ support_describe_supported_languages <- function(issueType, serviceCode, categor
 #' operation. If you call this operation for these checks, you might see an
 #' `InvalidParameterValue` error.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services
 #' Support API, you must use the US East (N. Virginia) endpoint. Currently,
@@ -1003,7 +1013,8 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "statuses")
+    paginator = list(result_key = "statuses"),
+    stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_check_refresh_statuses_input(checkIds = checkIds)
   output <- .support$describe_trusted_advisor_check_refresh_statuses_output()
@@ -1027,30 +1038,30 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' The response contains a TrustedAdvisorCheckResult object, which contains
 #' these three objects:
 #' 
-#' -   TrustedAdvisorCategorySpecificSummary
+#' - TrustedAdvisorCategorySpecificSummary
 #' 
-#' -   TrustedAdvisorResourceDetail
+#' - TrustedAdvisorResourceDetail
 #' 
-#' -   TrustedAdvisorResourcesSummary
+#' - TrustedAdvisorResourcesSummary
 #' 
 #' In addition, the response contains these fields:
 #' 
-#' -   **status** - The alert status of the check can be `ok` (green),
-#'     `warning` (yellow), `error` (red), or `not_available`.
+#' - **status** - The alert status of the check can be `ok` (green),
+#'   `warning` (yellow), `error` (red), or `not_available`.
 #' 
-#' -   **timestamp** - The time of the last refresh of the check.
+#' - **timestamp** - The time of the last refresh of the check.
 #' 
-#' -   **checkId** - The unique identifier for the check.
+#' - **checkId** - The unique identifier for the check.
 #' 
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services
 #' Support API, you must use the US East (N. Virginia) endpoint. Currently,
@@ -1070,27 +1081,27 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' The Amazon Web Services Support API currently supports the following
 #' languages for Trusted Advisor:
 #' 
-#' -   Chinese, Simplified - `zh`
+#' - Chinese, Simplified - `zh`
 #' 
-#' -   Chinese, Traditional - `zh_TW`
+#' - Chinese, Traditional - `zh_TW`
 #' 
-#' -   English - `en`
+#' - English - `en`
 #' 
-#' -   French - `fr`
+#' - French - `fr`
 #' 
-#' -   German - `de`
+#' - German - `de`
 #' 
-#' -   Indonesian - `id`
+#' - Indonesian - `id`
 #' 
-#' -   Italian - `it`
+#' - Italian - `it`
 #' 
-#' -   Japanese - `ja`
+#' - Japanese - `ja`
 #' 
-#' -   Korean - `ko`
+#' - Korean - `ko`
 #' 
-#' -   Portuguese, Brazilian - `pt_BR`
+#' - Portuguese, Brazilian - `pt_BR`
 #' 
-#' -   Spanish - `es`
+#' - Spanish - `es`
 #'
 #' @return
 #' A list with the following syntax:
@@ -1146,7 +1157,8 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_check_result_input(checkId = checkId, language = language)
   output <- .support$describe_trusted_advisor_check_result_output()
@@ -1169,14 +1181,14 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
 #' 
 #' The response contains an array of TrustedAdvisorCheckSummary objects.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services
 #' Support API, you must use the US East (N. Virginia) endpoint. Currently,
@@ -1238,7 +1250,8 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "summaries")
+    paginator = list(result_key = "summaries"),
+    stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_check_summaries_input(checkIds = checkIds)
   output <- .support$describe_trusted_advisor_check_summaries_output()
@@ -1261,18 +1274,18 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' The response contains a TrustedAdvisorCheckDescription object for each
 #' check. You must set the Amazon Web Services Region to us-east-1.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #' 
-#' -   The names and descriptions for Trusted Advisor checks are subject to
-#'     change. We recommend that you specify the check ID in your code to
-#'     uniquely identify a check.
+#' - The names and descriptions for Trusted Advisor checks are subject to
+#'   change. We recommend that you specify the check ID in your code to
+#'   uniquely identify a check.
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services
 #' Support API, you must use the US East (N. Virginia) endpoint. Currently,
@@ -1291,27 +1304,27 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' The Amazon Web Services Support API currently supports the following
 #' languages for Trusted Advisor:
 #' 
-#' -   Chinese, Simplified - `zh`
+#' - Chinese, Simplified - `zh`
 #' 
-#' -   Chinese, Traditional - `zh_TW`
+#' - Chinese, Traditional - `zh_TW`
 #' 
-#' -   English - `en`
+#' - English - `en`
 #' 
-#' -   French - `fr`
+#' - French - `fr`
 #' 
-#' -   German - `de`
+#' - German - `de`
 #' 
-#' -   Indonesian - `id`
+#' - Indonesian - `id`
 #' 
-#' -   Italian - `it`
+#' - Italian - `it`
 #' 
-#' -   Japanese - `ja`
+#' - Japanese - `ja`
 #' 
-#' -   Korean - `ko`
+#' - Korean - `ko`
 #' 
-#' -   Portuguese, Brazilian - `pt_BR`
+#' - Portuguese, Brazilian - `pt_BR`
 #' 
-#' -   Spanish - `es`
+#' - Spanish - `es`
 #'
 #' @return
 #' A list with the following syntax:
@@ -1349,7 +1362,8 @@ support_describe_trusted_advisor_checks <- function(language) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_checks_input(language = language)
   output <- .support$describe_trusted_advisor_checks_output()
@@ -1376,14 +1390,14 @@ support_describe_trusted_advisor_checks <- function(language) {
 #' 
 #' The response contains a TrustedAdvisorCheckRefreshStatus object.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' To call the Trusted Advisor operations in the Amazon Web Services
 #' Support API, you must use the US East (N. Virginia) endpoint. Currently,
@@ -1431,7 +1445,8 @@ support_refresh_trusted_advisor_check <- function(checkId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$refresh_trusted_advisor_check_input(checkId = checkId)
   output <- .support$refresh_trusted_advisor_check_output()
@@ -1449,14 +1464,14 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #' Resolves a support case. This operation takes a `caseId` and returns the
 #' initial and final state of the case.
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan to use the Amazon Web Services Support API.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan to use the Amazon Web Services Support API.
 #' 
-#' -   If you call the Amazon Web Services Support API from an account that
-#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan, the `SubscriptionRequiredException` error message appears. For
-#'     information about changing your support plan, see [Amazon Web
-#'     Services Support](https://aws.amazon.com/premiumsupport/).
+#' - If you call the Amazon Web Services Support API from an account that
+#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan, the `SubscriptionRequiredException` error message appears. For
+#'   information about changing your support plan, see [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_resolve_case(caseId)
@@ -1492,7 +1507,8 @@ support_resolve_case <- function(caseId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$resolve_case_input(caseId = caseId)
   output <- .support$resolve_case_output()

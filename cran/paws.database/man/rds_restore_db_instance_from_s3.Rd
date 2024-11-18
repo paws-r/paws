@@ -111,17 +111,16 @@ Constraints:
 Constraints:
 \itemize{
 \item Can't be specified if \code{ManageMasterUserPassword} is turned on.
-\item Can include any printable ASCII character except "/", """, or "@".
-For RDS for Oracle, can't include the "&" (ampersand) or the "'"
-(single quotes) character.
+\item Can include any printable ASCII character except "/", """, or "@". For
+RDS for Oracle, can't include the "&" (ampersand) or the "'" (single
+quotes) character.
 }
 
 Length Constraints:
 \itemize{
 \item RDS for Db2 - Must contain from 8 to 128 characters.
 \item RDS for MariaDB - Must contain from 8 to 41 characters.
-\item RDS for Microsoft SQL Server - Must contain from 8 to 128
-characters.
+\item RDS for Microsoft SQL Server - Must contain from 8 to 128 characters.
 \item RDS for MySQL - Must contain from 8 to 41 characters.
 \item RDS for Oracle - Must contain from 8 to 30 characters.
 \item RDS for PostgreSQL - Must contain from 8 to 128 characters.
@@ -398,8 +397,8 @@ in the \emph{Amazon RDS User Guide.}
 
 Constraints:
 \itemize{
-\item Can't manage the master user password with Amazon Web Services
-Secrets Manager if \code{MasterUserPassword} is specified.
+\item Can't manage the master user password with Amazon Web Services Secrets
+Manager if \code{MasterUserPassword} is specified.
 }}
 
 \item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is

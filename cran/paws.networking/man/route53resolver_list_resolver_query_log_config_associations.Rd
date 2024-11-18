@@ -52,32 +52,31 @@ Valid values include the following elements:
 \item \code{Error}: If the value of \code{Status} is \code{FAILED}, the value of \code{Error}
 indicates the cause:
 \itemize{
-\item \code{DESTINATION_NOT_FOUND}: The specified destination (for example,
-an Amazon S3 bucket) was deleted.
+\item \code{DESTINATION_NOT_FOUND}: The specified destination (for example, an
+Amazon S3 bucket) was deleted.
 \item \code{ACCESS_DENIED}: Permissions don't allow sending logs to the
 destination.
 }
 
 If \code{Status} is a value other than \code{FAILED}, \code{ERROR} is null.
 \item \code{Id}: The ID of the query logging association
-\item \code{ResolverQueryLogConfigId}: The ID of the query logging
-configuration
+\item \code{ResolverQueryLogConfigId}: The ID of the query logging configuration
 \item \code{ResourceId}: The ID of the VPC that is associated with the query
 logging configuration
 \item \code{Status}: The current status of the configuration. Valid values
 include the following:
 \itemize{
-\item \code{CREATING}: Resolver is creating an association between an
-Amazon VPC and a query logging configuration.
-\item \code{CREATED}: The association between an Amazon VPC and a query
-logging configuration was successfully created. Resolver is
-logging queries that originate in the specified VPC.
+\item \code{CREATING}: Resolver is creating an association between an Amazon
+VPC and a query logging configuration.
+\item \code{CREATED}: The association between an Amazon VPC and a query logging
+configuration was successfully created. Resolver is logging queries
+that originate in the specified VPC.
 \item \code{DELETING}: Resolver is deleting this query logging association.
 \item \code{FAILED}: Resolver either couldn't create or couldn't delete the
 query logging association. Here are two common causes:
 \itemize{
-\item The specified destination (for example, an Amazon S3 bucket)
-was deleted.
+\item The specified destination (for example, an Amazon S3 bucket) was
+deleted.
 \item Permissions don't allow sending logs to the destination.
 }
 }

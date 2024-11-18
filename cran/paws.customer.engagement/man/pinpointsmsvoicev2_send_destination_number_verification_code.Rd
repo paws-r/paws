@@ -34,7 +34,7 @@ logged to the event destination.}
 
 \item{DestinationCountryParameters}{This field is used for any country-specific registration requirements.
 Currently, this setting is only used when you send messages to
-recipients in India using a sender ID. For more information see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html}{Special requirements for sending SMS messages to recipients in India}.}
+recipients in India using a sender ID. For more information see \href{https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-senderid-india.html}{Special requirements for sending SMS messages to recipients in India}.}
 }
 \description{
 Before you can send test messages to a verified destination phone number you need to opt-in the verified destination phone number. Creates a new text message with a verification code and send it to a verified destination phone number. Once you have the verification code use \code{\link[=pinpointsmsvoicev2_verify_destination_number]{verify_destination_number}} to opt-in the verified destination phone number to receive messages.

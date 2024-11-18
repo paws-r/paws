@@ -40,9 +40,9 @@ Reviewer to securely clone code in your repository.
 pull request notifications and source code access.
 \item \strong{Disassociated}: CodeGuru Reviewer successfully disassociated the
 repository. You can create a new association with this repository if
-you want to review source code in it later. You can control access
-to code reviews created in anassociated repository with tags after
-it has been disassociated. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html}{Using tags to control access to associated repositories}
+you want to review source code in it later. You can control access to
+code reviews created in anassociated repository with tags after it has
+been disassociated. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html}{Using tags to control access to associated repositories}
 in the \emph{Amazon CodeGuru Reviewer User Guide}.
 }}
 

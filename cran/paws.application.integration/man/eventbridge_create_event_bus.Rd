@@ -48,8 +48,8 @@ encrypted using a customer managed key. EventBridge returns an error if:
 bus set to use a customer managed key for encryption.
 \item You call \code{CreateDiscoverer} on an event bus set to use a customer
 managed key for encryption.
-\item You call \code{UpdatedEventBus} to set a customer managed key on an
-event bus with an archives or schema discovery enabled.
+\item You call \code{UpdatedEventBus} to set a customer managed key on an event
+bus with an archives or schema discovery enabled.
 }
 
 To enable archives or schema discovery on an event bus, choose to use an

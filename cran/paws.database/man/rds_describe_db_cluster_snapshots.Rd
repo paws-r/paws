@@ -43,10 +43,9 @@ parameter must also be specified.
 the following values:
 \itemize{
 \item \code{automated} - Return all DB cluster snapshots that have been
-automatically taken by Amazon RDS for my Amazon Web Services
-account.
-\item \code{manual} - Return all DB cluster snapshots that have been taken by
-my Amazon Web Services account.
+automatically taken by Amazon RDS for my Amazon Web Services account.
+\item \code{manual} - Return all DB cluster snapshots that have been taken by my
+Amazon Web Services account.
 \item \code{shared} - Return all manual DB cluster snapshots that have been
 shared to my Amazon Web Services account.
 \item \code{public} - Return all DB cluster snapshots that have been marked as
@@ -69,8 +68,8 @@ parameter doesn't apply when \code{SnapshotType} is set to \code{shared}. The
 
 Supported filters:
 \itemize{
-\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
-Amazon Resource Names (ARNs).
+\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster Amazon
+Resource Names (ARNs).
 \item \code{db-cluster-snapshot-id} - Accepts DB cluster snapshot identifiers.
 \item \code{snapshot-type} - Accepts types of DB cluster snapshots.
 \item \code{engine} - Accepts names of database engines.

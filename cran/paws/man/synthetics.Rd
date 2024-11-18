@@ -63,7 +63,7 @@ minute. The canaries help you check the availability and latency of your
 web services and troubleshoot anomalies by investigating load time data,
 screenshots of the UI, logs, and metrics. The canaries seamlessly
 integrate with CloudWatch ServiceLens to help you trace the causes of
-impacted nodes in your applications. For more information, see \href{https://docs.aws.amazon.com/xray/latest/devguide/xray-console-servicemap.html}{Using ServiceLens to Monitor the Health of Your Applications}
+impacted nodes in your applications. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ServiceLens.html}{Using ServiceLens to Monitor the Health of Your Applications}
 in the \emph{Amazon CloudWatch User Guide}.
 
 Before you create and manage canaries, be aware of the security

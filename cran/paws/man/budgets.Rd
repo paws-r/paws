@@ -59,9 +59,8 @@ Budgets provide you with a way to see the following information:
 limits
 \item Your usage-to-date, including how much you've used of your Reserved
 Instances (RIs)
-\item Your current estimated charges from Amazon Web Services, and how
-much your predicted usage will accrue in charges by the end of the
-month
+\item Your current estimated charges from Amazon Web Services, and how much
+your predicted usage will accrue in charges by the end of the month
 \item How much of your budget has been used
 }
 
@@ -76,9 +75,9 @@ services.
 receive alerts when your RI usage falls below that threshold. This
 lets you see if your RIs are unused or under-utilized.
 \item \strong{RI coverage budgets} - Define a coverage threshold, and receive
-alerts when the number of your instance hours that are covered by
-RIs fall below that threshold. This lets you see how much of your
-instance usage is covered by a reservation.
+alerts when the number of your instance hours that are covered by RIs
+fall below that threshold. This lets you see how much of your instance
+usage is covered by a reservation.
 }
 
 Service Endpoint

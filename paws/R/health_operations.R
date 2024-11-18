@@ -71,7 +71,8 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "eventScopeCode"), output_token = "nextToken", result_key = "affectedAccounts")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "eventScopeCode"), output_token = "nextToken", result_key = "affectedAccounts"),
+    stream_api = FALSE
   )
   input <- .health$describe_affected_accounts_for_organization_input(eventArn = eventArn, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_affected_accounts_for_organization_output()
@@ -96,14 +97,14 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' 
 #' At least one event ARN is required.
 #' 
-#' -   This API operation uses pagination. Specify the `nextToken`
-#'     parameter in the next request to return more results.
+#' - This API operation uses pagination. Specify the `nextToken` parameter
+#'   in the next request to return more results.
 #' 
-#' -   This operation supports resource-level permissions. You can use this
-#'     operation to allow or deny access to specific Health events. For
-#'     more information, see [Resource- and action-based
-#'     conditions](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
-#'     in the *Health User Guide*.
+#' - This operation supports resource-level permissions. You can use this
+#'   operation to allow or deny access to specific Health events. For more
+#'   information, see [Resource- and action-based
+#'   conditions](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+#'   in the *Health User Guide*.
 #'
 #' @usage
 #' health_describe_affected_entities(filter, locale, nextToken, maxResults)
@@ -193,7 +194,8 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "entities")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "entities"),
+    stream_api = FALSE
   )
   input <- .health$describe_affected_entities_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_affected_entities_output()
@@ -224,14 +226,14 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' [`enable_health_service_access_for_organization`][health_enable_health_service_access_for_organization]
 #' operation from your organization's management account.
 #' 
-#' -   This API operation uses pagination. Specify the `nextToken`
-#'     parameter in the next request to return more results.
+#' - This API operation uses pagination. Specify the `nextToken` parameter
+#'   in the next request to return more results.
 #' 
-#' -   This operation doesn't support resource-level permissions. You can't
-#'     use this operation to allow or deny access to specific Health
-#'     events. For more information, see [Resource- and action-based
-#'     conditions](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
-#'     in the *Health User Guide*.
+#' - This operation doesn't support resource-level permissions. You can't
+#'   use this operation to allow or deny access to specific Health events.
+#'   For more information, see [Resource- and action-based
+#'   conditions](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+#'   in the *Health User Guide*.
 #'
 #' @usage
 #' health_describe_affected_entities_for_organization(
@@ -318,7 +320,8 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "failedSet"), output_token = "nextToken", result_key = "entities")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "failedSet"), output_token = "nextToken", result_key = "entities"),
+    stream_api = FALSE
   )
   input <- .health$describe_affected_entities_for_organization_input(organizationEntityFilters = organizationEntityFilters, locale = locale, nextToken = nextToken, maxResults = maxResults, organizationEntityAccountFilters = organizationEntityAccountFilters)
   output <- .health$describe_affected_entities_for_organization_output()
@@ -379,7 +382,8 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "entityAggregates")
+    paginator = list(result_key = "entityAggregates"),
+    stream_api = FALSE
   )
   input <- .health$describe_entity_aggregates_input(eventArns = eventArns)
   output <- .health$describe_entity_aggregates_output()
@@ -455,7 +459,8 @@ health_describe_entity_aggregates_for_organization <- function(eventArns, awsAcc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .health$describe_entity_aggregates_for_organization_input(eventArns = eventArns, awsAccountIds = awsAccountIds)
   output <- .health$describe_entity_aggregates_for_organization_output()
@@ -590,7 +595,8 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventAggregates")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventAggregates"),
+    stream_api = FALSE
   )
   input <- .health$describe_event_aggregates_input(filter = filter, aggregateField = aggregateField, maxResults = maxResults, nextToken = nextToken)
   output <- .health$describe_event_aggregates_output()
@@ -696,7 +702,8 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .health$describe_event_details_input(eventArns = eventArns, locale = locale)
   output <- .health$describe_event_details_output()
@@ -733,16 +740,16 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' request. Depending on the Health event type, note the following
 #' differences:
 #' 
-#' -   To return event details for a public event, you must specify a null
-#'     value for the `awsAccountId` parameter. If you specify an account ID
-#'     for a public event, Health returns an error message because public
-#'     events aren't specific to an account.
+#' - To return event details for a public event, you must specify a null
+#'   value for the `awsAccountId` parameter. If you specify an account ID
+#'   for a public event, Health returns an error message because public
+#'   events aren't specific to an account.
 #' 
-#' -   To return event details for an event that is specific to an account
-#'     in your organization, you must specify the `awsAccountId` parameter
-#'     in the request. If you don't specify an account ID, Health returns
-#'     an error message because the event is specific to an account in your
-#'     organization.
+#' - To return event details for an event that is specific to an account in
+#'   your organization, you must specify the `awsAccountId` parameter in
+#'   the request. If you don't specify an account ID, Health returns an
+#'   error message because the event is specific to an account in your
+#'   organization.
 #' 
 #' For more information, see
 #' [Event](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
@@ -831,7 +838,8 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .health$describe_event_details_for_organization_input(organizationEventDetailFilters = organizationEventDetailFilters, locale = locale)
   output <- .health$describe_event_details_for_organization_output()
@@ -922,7 +930,8 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTypes")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTypes"),
+    stream_api = FALSE
   )
   input <- .health$describe_event_types_input(filter = filter, locale = locale, nextToken = nextToken, maxResults = maxResults)
   output <- .health$describe_event_types_output()
@@ -948,19 +957,19 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 #' If no filter criteria are specified, all events are returned. Results
 #' are sorted by `lastModifiedTime`, starting with the most recent event.
 #' 
-#' -   When you call the [`describe_events`][health_describe_events]
-#'     operation and specify an entity for the `entityValues` parameter,
-#'     Health might return public events that aren't specific to that
-#'     resource. For example, if you call
-#'     [`describe_events`][health_describe_events] and specify an ID for an
-#'     Amazon Elastic Compute Cloud (Amazon EC2) instance, Health might
-#'     return events that aren't specific to that resource or service. To
-#'     get events that are specific to a service, use the `services`
-#'     parameter in the `filter` object. For more information, see
-#'     [Event](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
+#' - When you call the [`describe_events`][health_describe_events]
+#'   operation and specify an entity for the `entityValues` parameter,
+#'   Health might return public events that aren't specific to that
+#'   resource. For example, if you call
+#'   [`describe_events`][health_describe_events] and specify an ID for an
+#'   Amazon Elastic Compute Cloud (Amazon EC2) instance, Health might
+#'   return events that aren't specific to that resource or service. To get
+#'   events that are specific to a service, use the `services` parameter in
+#'   the `filter` object. For more information, see
+#'   [Event](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
 #' 
-#' -   This API operation uses pagination. Specify the `nextToken`
-#'     parameter in the next request to return more results.
+#' - This API operation uses pagination. Specify the `nextToken` parameter
+#'   in the next request to return more results.
 #'
 #' @usage
 #' health_describe_events(filter, nextToken, maxResults, locale)
@@ -1089,7 +1098,8 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events"),
+    stream_api = FALSE
   )
   input <- .health$describe_events_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .health$describe_events_output()
@@ -1112,11 +1122,11 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' metadata that depends on the event type, or any affected resources. To
 #' retrieve that information, use the following operations:
 #' 
-#' -   [`describe_affected_accounts_for_organization`][health_describe_affected_accounts_for_organization]
+#' - [`describe_affected_accounts_for_organization`][health_describe_affected_accounts_for_organization]
 #' 
-#' -   [`describe_event_details_for_organization`][health_describe_event_details_for_organization]
+#' - [`describe_event_details_for_organization`][health_describe_event_details_for_organization]
 #' 
-#' -   [`describe_affected_entities_for_organization`][health_describe_affected_entities_for_organization]
+#' - [`describe_affected_entities_for_organization`][health_describe_affected_entities_for_organization]
 #' 
 #' If you don't specify a `filter`, the `DescribeEventsForOrganizations`
 #' returns all events across your organization. Results are sorted by
@@ -1246,7 +1256,8 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "events"),
+    stream_api = FALSE
   )
   input <- .health$describe_events_for_organization_input(filter = filter, nextToken = nextToken, maxResults = maxResults, locale = locale)
   output <- .health$describe_events_for_organization_output()
@@ -1292,7 +1303,8 @@ health_describe_health_service_status_for_organization <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .health$describe_health_service_status_for_organization_input()
   output <- .health$describe_health_service_status_for_organization_output()
@@ -1317,7 +1329,7 @@ health_describe_health_service_status_for_organization <- function() {
 #' management account in your organization. You must use the IAM console,
 #' API, or Command Line Interface (CLI) to remove the service-linked role.
 #' For more information, see [Deleting a Service-Linked
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html#delete-service-linked-role)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#delete-service-linked-role)
 #' in the *IAM User Guide*.
 #' 
 #' You can also disable the organizational feature by using the
@@ -1350,7 +1362,8 @@ health_disable_health_service_access_for_organization <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .health$disable_health_service_access_for_organization_input()
   output <- .health$disable_health_service_access_for_organization_output()
@@ -1374,17 +1387,17 @@ health_disable_health_service_access_for_organization <- function() {
 #' 
 #' To call this operation, you must meet the following requirements:
 #' 
-#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'     plan from [Amazon Web Services
-#'     Support](https://aws.amazon.com/premiumsupport/) to use the Health
-#'     API. If you call the Health API from an Amazon Web Services account
-#'     that doesn't have a Business, Enterprise On-Ramp, or Enterprise
-#'     Support plan, you receive a `SubscriptionRequiredException` error.
+#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'   plan from [Amazon Web Services
+#'   Support](https://aws.amazon.com/premiumsupport/) to use the Health
+#'   API. If you call the Health API from an Amazon Web Services account
+#'   that doesn't have a Business, Enterprise On-Ramp, or Enterprise
+#'   Support plan, you receive a `SubscriptionRequiredException` error.
 #' 
-#' -   You must have permission to call this operation from the
-#'     organization's management account. For example IAM policies, see
-#'     [Health identity-based policy
-#'     examples](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html).
+#' - You must have permission to call this operation from the
+#'   organization's management account. For example IAM policies, see
+#'   [Health identity-based policy
+#'   examples](https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html).
 #' 
 #' If you don't have the required support plan, you can instead use the
 #' Health console to enable the organizational view feature. For more
@@ -1413,7 +1426,8 @@ health_enable_health_service_access_for_organization <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .health$enable_health_service_access_for_organization_input()
   output <- .health$enable_health_service_access_for_organization_output()

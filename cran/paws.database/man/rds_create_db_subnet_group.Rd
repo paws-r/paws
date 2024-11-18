@@ -17,8 +17,8 @@ string.
 
 Constraints:
 \itemize{
-\item Must contain no more than 255 letters, numbers, periods,
-underscores, spaces, or hyphens.
+\item Must contain no more than 255 letters, numbers, periods, underscores,
+spaces, or hyphens.
 \item Must not be default.
 \item First character must be a letter.
 }

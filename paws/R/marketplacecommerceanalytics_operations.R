@@ -14,12 +14,12 @@ NULL
 #' request identifier that can be used to correlate requests with
 #' notifications from the SNS topic. Data sets will be published in
 #' comma-separated values (CSV) format with the file name
-#' \{data_set_type\}_YYYY-MM-DD.csv. If a file with the same name
-#' already exists (e.g. if the same data set is requested twice), the
-#' original file will be overwritten by the new file. Requires a Role with
-#' an attached permissions policy providing Allow permissions for the
-#' following actions: s3:PutObject, s3:GetBucketLocation,
-#' sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+#' \\data_set_type_YYYY-MM-DD.csv. If a file with the same name already
+#' exists (e.g. if the same data set is requested twice), the original file
+#' will be overwritten by the new file. Requires a Role with an attached
+#' permissions policy providing Allow permissions for the following
+#' actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes,
+#' sns:Publish, iam:GetRolePolicy.
 #'
 #' @usage
 #' marketplacecommerceanalytics_generate_data_set(dataSetType,
@@ -28,119 +28,119 @@ NULL
 #'
 #' @param dataSetType &#91;required&#93; The desired data set type.
 #' 
-#' -   **customer_subscriber_hourly_monthly_subscriptions**
+#' - **customer_subscriber_hourly_monthly_subscriptions**
 #' 
-#'     From 2017-09-15 to present: Available daily by 24:00 UTC.
+#'   From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **customer_subscriber_annual_subscriptions**
+#' - **customer_subscriber_annual_subscriptions**
 #' 
-#'     From 2017-09-15 to present: Available daily by 24:00 UTC.
+#'   From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily_business_usage_by_instance_type**
+#' - **daily_business_usage_by_instance_type**
 #' 
-#'     From 2017-09-15 to present: Available daily by 24:00 UTC.
+#'   From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily_business_fees**
+#' - **daily_business_fees**
 #' 
-#'     From 2017-09-15 to present: Available daily by 24:00 UTC.
+#'   From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily_business_free_trial_conversions**
+#' - **daily_business_free_trial_conversions**
 #' 
-#'     From 2017-09-15 to present: Available daily by 24:00 UTC.
+#'   From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily_business_new_instances**
+#' - **daily_business_new_instances**
 #' 
-#'     From 2017-09-15 to present: Available daily by 24:00 UTC.
+#'   From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily_business_new_product_subscribers**
+#' - **daily_business_new_product_subscribers**
 #' 
-#'     From 2017-09-15 to present: Available daily by 24:00 UTC.
+#'   From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **daily_business_canceled_product_subscribers**
+#' - **daily_business_canceled_product_subscribers**
 #' 
-#'     From 2017-09-15 to present: Available daily by 24:00 UTC.
+#'   From 2017-09-15 to present: Available daily by 24:00 UTC.
 #' 
-#' -   **monthly_revenue_billing_and_revenue_data**
+#' - **monthly_revenue_billing_and_revenue_data**
 #' 
-#'     From 2017-09-15 to present: Available monthly on the 15th day of the
-#'     month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
-#'     from one month prior.
+#'   From 2017-09-15 to present: Available monthly on the 15th day of the
+#'   month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
+#'   from one month prior.
 #' 
-#' -   **monthly_revenue_annual_subscriptions**
+#' - **monthly_revenue_annual_subscriptions**
 #' 
-#'     From 2017-09-15 to present: Available monthly on the 15th day of the
-#'     month by 24:00 UTC. Data includes up-front software charges (e.g.
-#'     annual) from one month prior.
+#'   From 2017-09-15 to present: Available monthly on the 15th day of the
+#'   month by 24:00 UTC. Data includes up-front software charges (e.g.
+#'   annual) from one month prior.
 #' 
-#' -   **monthly_revenue_field_demonstration_usage**
+#' - **monthly_revenue_field_demonstration_usage**
 #' 
-#'     From 2018-03-15 to present: Available monthly on the 15th day of the
-#'     month by 24:00 UTC.
+#'   From 2018-03-15 to present: Available monthly on the 15th day of the
+#'   month by 24:00 UTC.
 #' 
-#' -   **monthly_revenue_flexible_payment_schedule**
+#' - **monthly_revenue_flexible_payment_schedule**
 #' 
-#'     From 2018-11-15 to present: Available monthly on the 15th day of the
-#'     month by 24:00 UTC.
+#'   From 2018-11-15 to present: Available monthly on the 15th day of the
+#'   month by 24:00 UTC.
 #' 
-#' -   **disbursed_amount_by_product**
+#' - **disbursed_amount_by_product**
 #' 
-#'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
+#'   From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed_amount_by_instance_hours**
+#' - **disbursed_amount_by_instance_hours**
 #' 
-#'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
+#'   From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed_amount_by_customer_geo**
+#' - **disbursed_amount_by_customer_geo**
 #' 
-#'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
+#'   From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed_amount_by_age_of_uncollected_funds**
+#' - **disbursed_amount_by_age_of_uncollected_funds**
 #' 
-#'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
+#'   From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed_amount_by_age_of_disbursed_funds**
+#' - **disbursed_amount_by_age_of_disbursed_funds**
 #' 
-#'     From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
+#'   From 2017-09-15 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed_amount_by_age_of_past_due_funds**
+#' - **disbursed_amount_by_age_of_past_due_funds**
 #' 
-#'     From 2018-04-07 to present: Available every 30 days by 24:00 UTC.
+#'   From 2018-04-07 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **disbursed_amount_by_uncollected_funds_breakdown**
+#' - **disbursed_amount_by_uncollected_funds_breakdown**
 #' 
-#'     From 2019-10-04 to present: Available every 30 days by 24:00 UTC.
+#'   From 2019-10-04 to present: Available every 30 days by 24:00 UTC.
 #' 
-#' -   **sales_compensation_billed_revenue**
+#' - **sales_compensation_billed_revenue**
 #' 
-#'     From 2017-09-15 to present: Available monthly on the 15th day of the
-#'     month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
-#'     from one month prior, and up-front software charges (e.g. annual)
-#'     from one month prior.
+#'   From 2017-09-15 to present: Available monthly on the 15th day of the
+#'   month by 24:00 UTC. Data includes metered transactions (e.g. hourly)
+#'   from one month prior, and up-front software charges (e.g. annual) from
+#'   one month prior.
 #' 
-#' -   **us_sales_and_use_tax_records**
+#' - **us_sales_and_use_tax_records**
 #' 
-#'     From 2017-09-15 to present: Available monthly on the 15th day of the
-#'     month by 24:00 UTC.
+#'   From 2017-09-15 to present: Available monthly on the 15th day of the
+#'   month by 24:00 UTC.
 #' 
-#' -   **disbursed_amount_by_product_with_uncollected_funds**
+#' - **disbursed_amount_by_product_with_uncollected_funds**
 #' 
-#'     This data set is deprecated. Download related reports from AMMP
-#'     instead!
+#'   This data set is deprecated. Download related reports from AMMP
+#'   instead!
 #' 
-#' -   **customer_profile_by_industry**
+#' - **customer_profile_by_industry**
 #' 
-#'     This data set is deprecated. Download related reports from AMMP
-#'     instead!
+#'   This data set is deprecated. Download related reports from AMMP
+#'   instead!
 #' 
-#' -   **customer_profile_by_revenue**
+#' - **customer_profile_by_revenue**
 #' 
-#'     This data set is deprecated. Download related reports from AMMP
-#'     instead!
+#'   This data set is deprecated. Download related reports from AMMP
+#'   instead!
 #' 
-#' -   **customer_profile_by_geography**
+#' - **customer_profile_by_geography**
 #' 
-#'     This data set is deprecated. Download related reports from AMMP
-#'     instead!
+#'   This data set is deprecated. Download related reports from AMMP
+#'   instead!
 #' @param dataSetPublicationDate &#91;required&#93; The date a data set was published. For daily data sets, provide a date
 #' with day-level granularity for the desired day. For monthly data sets
 #' except those with prefix disbursed_amount, provide a date with
@@ -202,7 +202,8 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecommerceanalytics$generate_data_set_input(dataSetType = dataSetType, dataSetPublicationDate = dataSetPublicationDate, roleNameArn = roleNameArn, destinationS3BucketName = destinationS3BucketName, destinationS3Prefix = destinationS3Prefix, snsTopicArn = snsTopicArn, customerDefinedValues = customerDefinedValues)
   output <- .marketplacecommerceanalytics$generate_data_set_output()
@@ -223,11 +224,11 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
 #' data is available. Returns a unique request identifier that can be used
 #' to correlate requests with notifications from the SNS topic. Data sets
 #' will be published in comma-separated values (CSV) format with the file
-#' name \{data_set_type\}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with
-#' the same name already exists (e.g. if the same data set is requested
-#' twice), the original file will be overwritten by the new file. Requires
-#' a Role with an attached permissions policy providing Allow permissions
-#' for the following actions: s3:PutObject, s3:GetBucketLocation,
+#' name \\data_set_type_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the
+#' same name already exists (e.g. if the same data set is requested twice),
+#' the original file will be overwritten by the new file. Requires a Role
+#' with an attached permissions policy providing Allow permissions for the
+#' following actions: s3:PutObject, s3:GetBucketLocation,
 #' sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 #'
 #' @usage
@@ -244,13 +245,12 @@ marketplacecommerceanalytics_generate_data_set <- function(dataSetType, dataSetP
 #' Email, Title, Country Code, ZIP Code, Operation Type, and Operation
 #' Time.
 #' 
-#' -   *customer_support_contacts_data* Customer support contact data. The
-#'     data set will contain all changes (Creates, Updates, and Deletes) to
-#'     customer support contact data from the date specified in the
-#'     from_date parameter.
-#' -   *test_customer_support_contacts_data* An example data set containing
-#'     static test data in the same format as
-#'     customer_support_contacts_data
+#' - *customer_support_contacts_data* Customer support contact data. The
+#'   data set will contain all changes (Creates, Updates, and Deletes) to
+#'   customer support contact data from the date specified in the from_date
+#'   parameter.
+#' - *test_customer_support_contacts_data* An example data set containing
+#'   static test data in the same format as customer_support_contacts_data
 #' @param fromDate &#91;required&#93; *This target has been deprecated.* The start date from which to retrieve
 #' the data set in UTC. This parameter only affects the
 #' customer_support_contacts_data data set type.
@@ -309,7 +309,8 @@ marketplacecommerceanalytics_start_support_data_export <- function(dataSetType, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecommerceanalytics$start_support_data_export_input(dataSetType = dataSetType, fromDate = fromDate, roleNameArn = roleNameArn, destinationS3BucketName = destinationS3BucketName, destinationS3Prefix = destinationS3Prefix, snsTopicArn = snsTopicArn, customerDefinedValues = customerDefinedValues)
   output <- .marketplacecommerceanalytics$start_support_data_export_output()

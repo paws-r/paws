@@ -42,7 +42,8 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
     http_method = "DELETE",
     http_path = "/applications/{applicationId}/jobruns/{jobRunId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$cancel_job_run_input(applicationId = applicationId, jobRunId = jobRunId)
   output <- .emrserverless$cancel_job_run_output()
@@ -215,7 +216,8 @@ emrserverless_create_application <- function(name = NULL, releaseLabel, type, cl
     http_method = "POST",
     http_path = "/applications",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration, interactiveConfiguration = interactiveConfiguration)
   output <- .emrserverless$create_application_output()
@@ -259,7 +261,8 @@ emrserverless_delete_application <- function(applicationId) {
     http_method = "DELETE",
     http_path = "/applications/{applicationId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$delete_application_input(applicationId = applicationId)
   output <- .emrserverless$delete_application_output()
@@ -405,7 +408,8 @@ emrserverless_get_application <- function(applicationId) {
     http_method = "GET",
     http_path = "/applications/{applicationId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$get_application_input(applicationId = applicationId)
   output <- .emrserverless$get_application_output()
@@ -470,7 +474,8 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId, att
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns/{jobRunId}/dashboard",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$get_dashboard_for_job_run_input(applicationId = applicationId, jobRunId = jobRunId, attempt = attempt)
   output <- .emrserverless$get_dashboard_for_job_run_output()
@@ -623,7 +628,8 @@ emrserverless_get_job_run <- function(applicationId, jobRunId, attempt = NULL) {
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns/{jobRunId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$get_job_run_input(applicationId = applicationId, jobRunId = jobRunId, attempt = attempt)
   output <- .emrserverless$get_job_run_output()
@@ -697,7 +703,8 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
     http_method = "GET",
     http_path = "/applications",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "applications")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "applications"),
+    stream_api = FALSE
   )
   input <- .emrserverless$list_applications_input(nextToken = nextToken, maxResults = maxResults, states = states)
   output <- .emrserverless$list_applications_output()
@@ -777,7 +784,8 @@ emrserverless_list_job_run_attempts <- function(applicationId, jobRunId, nextTok
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns/{jobRunId}/attempts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRunAttempts")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRunAttempts"),
+    stream_api = FALSE
   )
   input <- .emrserverless$list_job_run_attempts_input(applicationId = applicationId, jobRunId = jobRunId, nextToken = nextToken, maxResults = maxResults)
   output <- .emrserverless$list_job_run_attempts_output()
@@ -873,7 +881,8 @@ emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResu
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns"),
+    stream_api = FALSE
   )
   input <- .emrserverless$list_job_runs_input(applicationId = applicationId, nextToken = nextToken, maxResults = maxResults, createdAtAfter = createdAtAfter, createdAtBefore = createdAtBefore, states = states, mode = mode)
   output <- .emrserverless$list_job_runs_output()
@@ -925,7 +934,8 @@ emrserverless_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .emrserverless$list_tags_for_resource_output()
@@ -970,7 +980,8 @@ emrserverless_start_application <- function(applicationId) {
     http_method = "POST",
     http_path = "/applications/{applicationId}/start",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$start_application_input(applicationId = applicationId)
   output <- .emrserverless$start_application_output()
@@ -1094,7 +1105,8 @@ emrserverless_start_job_run <- function(applicationId, clientToken, executionRol
     http_method = "POST",
     http_path = "/applications/{applicationId}/jobruns",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$start_job_run_input(applicationId = applicationId, clientToken = clientToken, executionRoleArn = executionRoleArn, jobDriver = jobDriver, configurationOverrides = configurationOverrides, tags = tags, executionTimeoutMinutes = executionTimeoutMinutes, name = name, mode = mode, retryPolicy = retryPolicy)
   output <- .emrserverless$start_job_run_output()
@@ -1140,7 +1152,8 @@ emrserverless_stop_application <- function(applicationId) {
     http_method = "POST",
     http_path = "/applications/{applicationId}/stop",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$stop_application_input(applicationId = applicationId)
   output <- .emrserverless$stop_application_output()
@@ -1194,7 +1207,8 @@ emrserverless_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .emrserverless$tag_resource_output()
@@ -1243,7 +1257,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .emrserverless$untag_resource_output()
@@ -1508,7 +1523,8 @@ emrserverless_update_application <- function(applicationId, clientToken, initial
     http_method = "PATCH",
     http_path = "/applications/{applicationId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, interactiveConfiguration = interactiveConfiguration, releaseLabel = releaseLabel, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration)
   output <- .emrserverless$update_application_output()

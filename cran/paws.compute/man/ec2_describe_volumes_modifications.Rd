@@ -29,15 +29,15 @@ optimizing | completed | failed).
 \item \code{original-size} - The original size of the volume, in GiB.
 \item \code{original-volume-type} - The original volume type of the volume
 (standard | io1 | io2 | gp2 | sc1 | st1).
-\item \code{originalMultiAttachEnabled} - Indicates whether Multi-Attach
-support was enabled (true | false).
+\item \code{originalMultiAttachEnabled} - Indicates whether Multi-Attach support
+was enabled (true | false).
 \item \code{start-time} - The modification start time.
 \item \code{target-iops} - The target IOPS rate of the volume.
 \item \code{target-size} - The target size of the volume, in GiB.
-\item \code{target-volume-type} - The target volume type of the volume
-(standard | io1 | io2 | gp2 | sc1 | st1).
-\item \code{targetMultiAttachEnabled} - Indicates whether Multi-Attach support
-is to be enabled (true | false).
+\item \code{target-volume-type} - The target volume type of the volume (standard
+| io1 | io2 | gp2 | sc1 | st1).
+\item \code{targetMultiAttachEnabled} - Indicates whether Multi-Attach support is
+to be enabled (true | false).
 \item \code{volume-id} - The ID of the volume.
 }}
 

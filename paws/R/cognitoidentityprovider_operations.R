@@ -15,11 +15,11 @@ NULL
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_add_custom_attributes(UserPoolId,
@@ -67,7 +67,8 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$add_custom_attributes_input(UserPoolId = UserPoolId, CustomAttributes = CustomAttributes)
   output <- .cognitoidentityprovider$add_custom_attributes_output()
@@ -93,11 +94,11 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_add_user_to_group(UserPoolId, Username,
@@ -134,7 +135,8 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_add_user_to_group_input(UserPoolId = UserPoolId, Username = Username, GroupName = GroupName)
   output <- .cognitoidentityprovider$admin_add_user_to_group_output()
@@ -170,11 +172,11 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_confirm_sign_up(UserPoolId, Username,
@@ -200,21 +202,21 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' An empty list.
@@ -241,7 +243,8 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_confirm_sign_up_input(UserPoolId = UserPoolId, Username = Username, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_confirm_sign_up_output()
@@ -272,7 +275,8 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -298,11 +302,11 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_create_user(UserPoolId, Username,
@@ -313,17 +317,17 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' @param Username &#91;required&#93; The value that you want to set as the username sign-in attribute. The
 #' following conditions apply to the username parameter.
 #' 
-#' -   The username can't be a duplicate of another username in the same
-#'     user pool.
+#' - The username can't be a duplicate of another username in the same user
+#'   pool.
 #' 
-#' -   You can't change the value of a username after you create it.
+#' - You can't change the value of a username after you create it.
 #' 
-#' -   You can only provide a value if usernames are a valid sign-in
-#'     attribute for your user pool. If your user pool only supports phone
-#'     numbers or email addresses as sign-in attributes, Amazon Cognito
-#'     automatically generates a username value. For more information, see
-#'     [Customizing sign-in
-#'     attributes](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-aliases).
+#' - You can only provide a value if usernames are a valid sign-in
+#'   attribute for your user pool. If your user pool only supports phone
+#'   numbers or email addresses as sign-in attributes, Amazon Cognito
+#'   automatically generates a username value. For more information, see
+#'   [Customizing sign-in
+#'   attributes](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-aliases).
 #' @param UserAttributes An array of name-value pairs that contain user attributes and attribute
 #' values to be set for the user to be created. You can create a user
 #' without specifying any attributes other than `Username`. However, any
@@ -349,15 +353,15 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' calling
 #' [`admin_update_user_attributes`][cognitoidentityprovider_admin_update_user_attributes].
 #' 
-#' -   **email**: The email address of the user to whom the message that
-#'     contains the code and username will be sent. Required if the
-#'     `email_verified` attribute is set to `True`, or if `"EMAIL"` is
-#'     specified in the `DesiredDeliveryMediums` parameter.
+#' - **email**: The email address of the user to whom the message that
+#'   contains the code and username will be sent. Required if the
+#'   `email_verified` attribute is set to `True`, or if `"EMAIL"` is
+#'   specified in the `DesiredDeliveryMediums` parameter.
 #' 
-#' -   **phone_number**: The phone number of the user to whom the message
-#'     that contains the code and username will be sent. Required if the
-#'     `phone_number_verified` attribute is set to `True`, or if `"SMS"` is
-#'     specified in the `DesiredDeliveryMediums` parameter.
+#' - **phone_number**: The phone number of the user to whom the message
+#'   that contains the code and username will be sent. Required if the
+#'   `phone_number_verified` attribute is set to `True`, or if `"SMS"` is
+#'   specified in the `DesiredDeliveryMediums` parameter.
 #' @param ValidationData Temporary user attributes that contribute to the outcomes of your pre
 #' sign-up Lambda trigger. This set of key-value pairs are for custom
 #' validation of information that you collect from your users but don't
@@ -421,21 +425,21 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -536,7 +540,8 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_create_user_input(UserPoolId = UserPoolId, Username = Username, UserAttributes = UserAttributes, ValidationData = ValidationData, TemporaryPassword = TemporaryPassword, ForceAliasCreation = ForceAliasCreation, MessageAction = MessageAction, DesiredDeliveryMediums = DesiredDeliveryMediums, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_create_user_output()
@@ -560,11 +565,11 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_delete_user(UserPoolId, Username)
@@ -598,7 +603,8 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_delete_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_delete_user_output()
@@ -623,11 +629,11 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_delete_user_attributes(UserPoolId,
@@ -671,7 +677,8 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_delete_user_attributes_input(UserPoolId = UserPoolId, Username = Username, UserAttributeNames = UserAttributeNames)
   output <- .cognitoidentityprovider$admin_delete_user_attributes_output()
@@ -726,11 +733,11 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_disable_provider_for_user(UserPoolId,
@@ -765,7 +772,8 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_disable_provider_for_user_input(UserPoolId = UserPoolId, User = User)
   output <- .cognitoidentityprovider$admin_disable_provider_for_user_output()
@@ -792,11 +800,11 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
@@ -830,7 +838,8 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_disable_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_disable_user_output()
@@ -854,11 +863,11 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_enable_user(UserPoolId, Username)
@@ -892,7 +901,8 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_enable_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_enable_user_output()
@@ -916,11 +926,11 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_forget_device(UserPoolId, Username,
@@ -957,7 +967,8 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_forget_device_input(UserPoolId = UserPoolId, Username = Username, DeviceKey = DeviceKey)
   output <- .cognitoidentityprovider$admin_forget_device_output()
@@ -981,11 +992,11 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_get_device(DeviceKey, UserPoolId,
@@ -1044,7 +1055,8 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_get_device_input(DeviceKey = DeviceKey, UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_get_device_output()
@@ -1069,11 +1081,11 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_get_user(UserPoolId, Username)
@@ -1137,7 +1149,8 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_get_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_get_user_output()
@@ -1165,7 +1178,8 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -1179,11 +1193,11 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_initiate_auth(UserPoolId, ClientId,
@@ -1195,55 +1209,55 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' @param AuthFlow &#91;required&#93; The authentication flow for this call to run. The API action will depend
 #' on this value. For example:
 #' 
-#' -   `REFRESH_TOKEN_AUTH` will take in a valid refresh token and return
-#'     new tokens.
+#' - `REFRESH_TOKEN_AUTH` will take in a valid refresh token and return new
+#'   tokens.
 #' 
-#' -   `USER_SRP_AUTH` will take in `USERNAME` and `SRP_A` and return the
-#'     Secure Remote Password (SRP) protocol variables to be used for next
-#'     challenge execution.
+#' - `USER_SRP_AUTH` will take in `USERNAME` and `SRP_A` and return the
+#'   Secure Remote Password (SRP) protocol variables to be used for next
+#'   challenge execution.
 #' 
-#' -   `ADMIN_USER_PASSWORD_AUTH` will take in `USERNAME` and `PASSWORD`
-#'     and return the next challenge or tokens.
+#' - `ADMIN_USER_PASSWORD_AUTH` will take in `USERNAME` and `PASSWORD` and
+#'   return the next challenge or tokens.
 #' 
 #' Valid values include:
 #' 
-#' -   `USER_SRP_AUTH`: Authentication flow for the Secure Remote Password
-#'     (SRP) protocol.
+#' - `USER_SRP_AUTH`: Authentication flow for the Secure Remote Password
+#'   (SRP) protocol.
 #' 
-#' -   `REFRESH_TOKEN_AUTH`/`REFRESH_TOKEN`: Authentication flow for
-#'     refreshing the access token and ID token by supplying a valid
-#'     refresh token.
+#' - `REFRESH_TOKEN_AUTH`/`REFRESH_TOKEN`: Authentication flow for
+#'   refreshing the access token and ID token by supplying a valid refresh
+#'   token.
 #' 
-#' -   `CUSTOM_AUTH`: Custom authentication flow.
+#' - `CUSTOM_AUTH`: Custom authentication flow.
 #' 
-#' -   `ADMIN_NO_SRP_AUTH`: Non-SRP authentication flow; you can pass in
-#'     the USERNAME and PASSWORD directly if the flow is enabled for
-#'     calling the app client.
+#' - `ADMIN_NO_SRP_AUTH`: Non-SRP authentication flow; you can pass in the
+#'   USERNAME and PASSWORD directly if the flow is enabled for calling the
+#'   app client.
 #' 
-#' -   `ADMIN_USER_PASSWORD_AUTH`: Admin-based user password
-#'     authentication. This replaces the `ADMIN_NO_SRP_AUTH` authentication
-#'     flow. In this flow, Amazon Cognito receives the password in the
-#'     request instead of using the SRP process to verify passwords.
+#' - `ADMIN_USER_PASSWORD_AUTH`: Admin-based user password authentication.
+#'   This replaces the `ADMIN_NO_SRP_AUTH` authentication flow. In this
+#'   flow, Amazon Cognito receives the password in the request instead of
+#'   using the SRP process to verify passwords.
 #' @param AuthParameters The authentication parameters. These are inputs corresponding to the
 #' `AuthFlow` that you're invoking. The required values depend on the value
 #' of `AuthFlow`:
 #' 
-#' -   For `USER_SRP_AUTH`: `USERNAME` (required), `SRP_A` (required),
-#'     `SECRET_HASH` (required if the app client is configured with a
-#'     client secret), `DEVICE_KEY`.
+#' - For `USER_SRP_AUTH`: `USERNAME` (required), `SRP_A` (required),
+#'   `SECRET_HASH` (required if the app client is configured with a client
+#'   secret), `DEVICE_KEY`.
 #' 
-#' -   For `ADMIN_USER_PASSWORD_AUTH`: `USERNAME` (required), `PASSWORD`
-#'     (required), `SECRET_HASH` (required if the app client is configured
-#'     with a client secret), `DEVICE_KEY`.
+#' - For `ADMIN_USER_PASSWORD_AUTH`: `USERNAME` (required), `PASSWORD`
+#'   (required), `SECRET_HASH` (required if the app client is configured
+#'   with a client secret), `DEVICE_KEY`.
 #' 
-#' -   For `REFRESH_TOKEN_AUTH/REFRESH_TOKEN`: `REFRESH_TOKEN` (required),
-#'     `SECRET_HASH` (required if the app client is configured with a
-#'     client secret), `DEVICE_KEY`.
+#' - For `REFRESH_TOKEN_AUTH/REFRESH_TOKEN`: `REFRESH_TOKEN` (required),
+#'   `SECRET_HASH` (required if the app client is configured with a client
+#'   secret), `DEVICE_KEY`.
 #' 
-#' -   For `CUSTOM_AUTH`: `USERNAME` (required), `SECRET_HASH` (if app
-#'     client is configured with client secret), `DEVICE_KEY`. To start the
-#'     authentication flow with password verification, include
-#'     `ChallengeName: SRP_A` and `SRP_A: (The SRP_A Value)`.
+#' - For `CUSTOM_AUTH`: `USERNAME` (required), `SECRET_HASH` (if app client
+#'   is configured with client secret), `DEVICE_KEY`. To start the
+#'   authentication flow with password verification, include
+#'   `ChallengeName: SRP_A` and `SRP_A: (The SRP_A Value)`.
 #' 
 #' For more information about `SECRET_HASH`, see [Computing secret hash
 #' values](https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash).
@@ -1259,11 +1273,11 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' The ClientMetadata value is passed as input to the functions for only
 #' the following triggers:
 #' 
-#' -   Pre signup
+#' - Pre signup
 #' 
-#' -   Pre authentication
+#' - Pre authentication
 #' 
-#' -   User migration
+#' - User migration
 #' 
 #' When Amazon Cognito invokes the functions for these triggers, it passes
 #' a JSON payload, which the function receives as input. This payload
@@ -1276,32 +1290,32 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' invokes the functions for the following triggers, but it doesn't provide
 #' the ClientMetadata value as input:
 #' 
-#' -   Post authentication
+#' - Post authentication
 #' 
-#' -   Custom message
+#' - Custom message
 #' 
-#' -   Pre token generation
+#' - Pre token generation
 #' 
-#' -   Create auth challenge
+#' - Create auth challenge
 #' 
-#' -   Define auth challenge
+#' - Define auth challenge
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #' @param AnalyticsMetadata The analytics metadata for collecting Amazon Pinpoint metrics for
 #' [`admin_initiate_auth`][cognitoidentityprovider_admin_initiate_auth]
 #' calls.
@@ -1374,7 +1388,8 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_initiate_auth_input(UserPoolId = UserPoolId, ClientId = ClientId, AuthFlow = AuthFlow, AuthParameters = AuthParameters, ClientMetadata = ClientMetadata, AnalyticsMetadata = AnalyticsMetadata, ContextData = ContextData)
   output <- .cognitoidentityprovider$admin_initiate_auth_output()
@@ -1417,11 +1432,11 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_link_provider_for_user(UserPoolId,
@@ -1510,7 +1525,8 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_link_provider_for_user_input(UserPoolId = UserPoolId, DestinationUser = DestinationUser, SourceUser = SourceUser)
   output <- .cognitoidentityprovider$admin_link_provider_for_user_output()
@@ -1534,11 +1550,11 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_list_devices(UserPoolId, Username, Limit,
@@ -1607,7 +1623,8 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_list_devices_input(UserPoolId = UserPoolId, Username = Username, Limit = Limit, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$admin_list_devices_output()
@@ -1631,11 +1648,11 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_list_groups_for_user(Username, UserPoolId,
@@ -1696,7 +1713,8 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_list_groups_for_user_input(Username = Username, UserPoolId = UserPoolId, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$admin_list_groups_for_user_output()
@@ -1722,11 +1740,11 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_list_user_auth_events(UserPoolId,
@@ -1807,7 +1825,8 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthEvents")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthEvents"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_list_user_auth_events_input(UserPoolId = UserPoolId, Username = Username, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$admin_list_user_auth_events_output()
@@ -1831,11 +1850,11 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_remove_user_from_group(UserPoolId,
@@ -1872,7 +1891,8 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_remove_user_from_group_input(UserPoolId = UserPoolId, Username = Username, GroupName = GroupName)
   output <- .cognitoidentityprovider$admin_remove_user_from_group_output()
@@ -1906,7 +1926,8 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -1930,11 +1951,11 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_reset_user_password(UserPoolId, Username,
@@ -1961,21 +1982,21 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' An empty list.
@@ -2002,7 +2023,8 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_reset_user_password_input(UserPoolId = UserPoolId, Username = Username, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_reset_user_password_output()
@@ -2042,7 +2064,8 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -2056,11 +2079,11 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_respond_to_auth_challenge(UserPoolId,
@@ -2163,21 +2186,21 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' Amazon Cognito invokes any functions that you have assigned to the
 #' following triggers:
 #' 
-#' -   pre sign-up
+#' - pre sign-up
 #' 
-#' -   custom message
+#' - custom message
 #' 
-#' -   post authentication
+#' - post authentication
 #' 
-#' -   user migration
+#' - user migration
 #' 
-#' -   pre token generation
+#' - pre token generation
 #' 
-#' -   define auth challenge
+#' - define auth challenge
 #' 
-#' -   create auth challenge
+#' - create auth challenge
 #' 
-#' -   verify auth challenge response
+#' - verify auth challenge response
 #' 
 #' When Amazon Cognito invokes any of these functions, it passes a JSON
 #' payload, which the function receives as input. This payload contains a
@@ -2187,21 +2210,21 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' `clientMetadata` value to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2268,7 +2291,8 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_respond_to_auth_challenge_input(UserPoolId = UserPoolId, ClientId = ClientId, ChallengeName = ChallengeName, ChallengeResponses = ChallengeResponses, Session = Session, AnalyticsMetadata = AnalyticsMetadata, ContextData = ContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_respond_to_auth_challenge_output()
@@ -2298,11 +2322,11 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_set_user_mfa_preference(SMSMfaSettings,
@@ -2347,7 +2371,8 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_set_user_mfa_preference_input(SMSMfaSettings = SMSMfaSettings, SoftwareTokenMfaSettings = SoftwareTokenMfaSettings, Username = Username, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$admin_set_user_mfa_preference_output()
@@ -2397,11 +2422,11 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_set_user_password(UserPoolId, Username,
@@ -2441,7 +2466,8 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_set_user_password_input(UserPoolId = UserPoolId, Username = Username, Password = Password, Permanent = Permanent)
   output <- .cognitoidentityprovider$admin_set_user_password_output()
@@ -2469,11 +2495,11 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_set_user_settings(UserPoolId, Username,
@@ -2517,7 +2543,8 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_set_user_settings_input(UserPoolId = UserPoolId, Username = Username, MFAOptions = MFAOptions)
   output <- .cognitoidentityprovider$admin_set_user_settings_output()
@@ -2544,11 +2571,11 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_update_auth_event_feedback(UserPoolId,
@@ -2592,7 +2619,8 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_update_auth_event_feedback_input(UserPoolId = UserPoolId, Username = Username, EventId = EventId, FeedbackValue = FeedbackValue)
   output <- .cognitoidentityprovider$admin_update_auth_event_feedback_output()
@@ -2616,11 +2644,11 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_update_device_status(UserPoolId, Username,
@@ -2659,7 +2687,8 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_update_device_status_input(UserPoolId = UserPoolId, Username = Username, DeviceKey = DeviceKey, DeviceRememberedStatus = DeviceRememberedStatus)
   output <- .cognitoidentityprovider$admin_update_device_status_output()
@@ -2685,7 +2714,8 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -2709,11 +2739,11 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_update_user_attributes(UserPoolId,
@@ -2759,21 +2789,21 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' value to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' An empty list.
@@ -2806,7 +2836,8 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_update_user_attributes_input(UserPoolId = UserPoolId, Username = Username, UserAttributes = UserAttributes, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_update_user_attributes_output()
@@ -2827,25 +2858,24 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #' credentials when your user signs out of your app. This results in the
 #' following behavior.
 #' 
-#' -   Amazon Cognito no longer accepts *token-authorized* user operations
-#'     that you authorize with a signed-out user's access tokens. For more
-#'     information, see [Using the Amazon Cognito user pools API and user
-#'     pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' - Amazon Cognito no longer accepts *token-authorized* user operations
+#'   that you authorize with a signed-out user's access tokens. For more
+#'   information, see [Using the Amazon Cognito user pools API and user
+#'   pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
-#'     Amazon Cognito returns an `Access Token has been revoked` error when
-#'     your app attempts to authorize a user pools API request with a
-#'     revoked access token that contains the scope
-#'     `aws.cognito.signin.user.admin`.
+#'   Amazon Cognito returns an `Access Token has been revoked` error when
+#'   your app attempts to authorize a user pools API request with a revoked
+#'   access token that contains the scope `aws.cognito.signin.user.admin`.
 #' 
-#' -   Amazon Cognito no longer accepts a signed-out user's ID token in a
-#'     [GetId](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html)
-#'     request to an identity pool with `ServerSideTokenCheck` enabled for
-#'     its user pool IdP configuration in
-#'     [CognitoIdentityProvider](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_CognitoIdentityProvider.html).
+#' - Amazon Cognito no longer accepts a signed-out user's ID token in a
+#'   [GetId](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html)
+#'   request to an identity pool with `ServerSideTokenCheck` enabled for
+#'   its user pool IdP configuration in
+#'   [CognitoIdentityProvider](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_CognitoIdentityProvider.html).
 #' 
-#' -   Amazon Cognito no longer accepts a signed-out user's refresh tokens
-#'     in refresh requests.
+#' - Amazon Cognito no longer accepts a signed-out user's refresh tokens in
+#'   refresh requests.
 #' 
 #' Other requests might be valid until your user's token expires.
 #' 
@@ -2856,11 +2886,11 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
@@ -2894,7 +2924,8 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_user_global_sign_out_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_user_global_sign_out_output()
@@ -2979,7 +3010,8 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$associate_software_token_input(AccessToken = AccessToken, Session = Session)
   output <- .cognitoidentityprovider$associate_software_token_output()
@@ -3039,7 +3071,8 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$change_password_input(PreviousPassword = PreviousPassword, ProposedPassword = ProposedPassword, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$change_password_output()
@@ -3112,7 +3145,8 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$confirm_device_input(AccessToken = AccessToken, DeviceKey = DeviceKey, DeviceSecretVerifierConfig = DeviceSecretVerifierConfig, DeviceName = DeviceName)
   output <- .cognitoidentityprovider$confirm_device_output()
@@ -3179,21 +3213,21 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' An empty list.
@@ -3230,7 +3264,8 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$confirm_forgot_password_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, ConfirmationCode = ConfirmationCode, Password = Password, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$confirm_forgot_password_output()
@@ -3313,21 +3348,21 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' An empty list.
@@ -3364,7 +3399,8 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$confirm_sign_up_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, ConfirmationCode = ConfirmationCode, ForceAliasCreation = ForceAliasCreation, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$confirm_sign_up_output()
@@ -3388,11 +3424,11 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_group(GroupName, UserPoolId, Description,
@@ -3462,7 +3498,8 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_group_input(GroupName = GroupName, UserPoolId = UserPoolId, Description = Description, RoleArn = RoleArn, Precedence = Precedence)
   output <- .cognitoidentityprovider$create_group_output()
@@ -3488,11 +3525,11 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_identity_provider(UserPoolId,
@@ -3623,7 +3660,8 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName, ProviderType = ProviderType, ProviderDetails = ProviderDetails, AttributeMapping = AttributeMapping, IdpIdentifiers = IdpIdentifiers)
   output <- .cognitoidentityprovider$create_identity_provider_output()
@@ -3648,11 +3686,11 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_resource_server(UserPoolId, Identifier,
@@ -3715,7 +3753,8 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier, Name = Name, Scopes = Scopes)
   output <- .cognitoidentityprovider$create_resource_server_output()
@@ -3739,11 +3778,11 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_import_job(JobName, UserPoolId,
@@ -3803,7 +3842,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_user_import_job_input(JobName = JobName, UserPoolId = UserPoolId, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn)
   output <- .cognitoidentityprovider$create_user_import_job_output()
@@ -3829,7 +3869,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -3849,11 +3890,11 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_pool(PoolName, Policies,
@@ -3887,7 +3928,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' Lambda function.
 #' 
 #' For more information on using the Lambda API to add permission, see
-#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/api/API_AddPermission.html)
+#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html)
 #' .
 #' 
 #' For adding permission using the CLI, see
@@ -4386,7 +4427,8 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, UserAttributeUpdateSettings = UserAttributeUpdateSettings, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, UsernameConfiguration = UsernameConfiguration, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$create_user_pool_output()
@@ -4417,11 +4459,11 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_pool_client(UserPoolId, ClientName,
@@ -4536,23 +4578,22 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' Valid values include:
 #' 
-#' -   `ALLOW_ADMIN_USER_PASSWORD_AUTH`: Enable admin based user password
-#'     authentication flow `ADMIN_USER_PASSWORD_AUTH`. This setting
-#'     replaces the `ADMIN_NO_SRP_AUTH` setting. With this authentication
-#'     flow, your app passes a user name and password to Amazon Cognito in
-#'     the request, instead of using the Secure Remote Password (SRP)
-#'     protocol to securely transmit the password.
+#' - `ALLOW_ADMIN_USER_PASSWORD_AUTH`: Enable admin based user password
+#'   authentication flow `ADMIN_USER_PASSWORD_AUTH`. This setting replaces
+#'   the `ADMIN_NO_SRP_AUTH` setting. With this authentication flow, your
+#'   app passes a user name and password to Amazon Cognito in the request,
+#'   instead of using the Secure Remote Password (SRP) protocol to securely
+#'   transmit the password.
 #' 
-#' -   `ALLOW_CUSTOM_AUTH`: Enable Lambda trigger based authentication.
+#' - `ALLOW_CUSTOM_AUTH`: Enable Lambda trigger based authentication.
 #' 
-#' -   `ALLOW_USER_PASSWORD_AUTH`: Enable user password-based
-#'     authentication. In this flow, Amazon Cognito receives the password
-#'     in the request instead of using the SRP protocol to verify
-#'     passwords.
+#' - `ALLOW_USER_PASSWORD_AUTH`: Enable user password-based authentication.
+#'   In this flow, Amazon Cognito receives the password in the request
+#'   instead of using the SRP protocol to verify passwords.
 #' 
-#' -   `ALLOW_USER_SRP_AUTH`: Enable SRP-based authentication.
+#' - `ALLOW_USER_SRP_AUTH`: Enable SRP-based authentication.
 #' 
-#' -   `ALLOW_REFRESH_TOKEN_AUTH`: Enable authflow to refresh tokens.
+#' - `ALLOW_REFRESH_TOKEN_AUTH`: Enable authflow to refresh tokens.
 #' 
 #' In some environments, you will see the values `ADMIN_NO_SRP_AUTH`,
 #' `CUSTOM_AUTH_FLOW_ONLY`, or `USER_PASSWORD_AUTH`. You can't assign these
@@ -4567,11 +4608,11 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' A redirect URI must:
 #' 
-#' -   Be an absolute URI.
+#' - Be an absolute URI.
 #' 
-#' -   Be registered with the authorization server.
+#' - Be registered with the authorization server.
 #' 
-#' -   Not include a fragment component.
+#' - Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
 #' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
@@ -4587,11 +4628,11 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' A redirect URI must:
 #' 
-#' -   Be an absolute URI.
+#' - Be an absolute URI.
 #' 
-#' -   Be registered with the authorization server.
+#' - Be registered with the authorization server.
 #' 
-#' -   Not include a fragment component.
+#' - Not include a fragment component.
 #' 
 #' For more information, see [Default redirect
 #' URI](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-client-apps.html#cognito-user-pools-app-idp-settings-about).
@@ -4628,14 +4669,14 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' `AllowedOAuthFlowsUserPoolClient` must be `true` before you can
 #' configure the following features in your app client.
 #' 
-#' -   `CallBackURLs`: Callback URLs.
+#' - `CallBackURLs`: Callback URLs.
 #' 
-#' -   `LogoutURLs`: Sign-out redirect URLs.
+#' - `LogoutURLs`: Sign-out redirect URLs.
 #' 
-#' -   `AllowedOAuthScopes`: OAuth 2.0 scopes.
+#' - `AllowedOAuthScopes`: OAuth 2.0 scopes.
 #' 
-#' -   `AllowedOAuthFlows`: Support for authorization code, implicit, and
-#'     client credentials OAuth 2.0 grants.
+#' - `AllowedOAuthFlows`: Support for authorization code, implicit, and
+#'   client credentials OAuth 2.0 grants.
 #' 
 #' To use OAuth 2.0 features, configure one of these features in the Amazon
 #' Cognito console or set `AllowedOAuthFlowsUserPoolClient` to `true` in a
@@ -4665,10 +4706,10 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' 
 #' Valid values include:
 #' 
-#' -   `ENABLED` - This prevents user existence-related errors.
+#' - `ENABLED` - This prevents user existence-related errors.
 #' 
-#' -   `LEGACY` - This represents the early behavior of Amazon Cognito
-#'     where user existence related errors aren't prevented.
+#' - `LEGACY` - This represents the early behavior of Amazon Cognito where
+#'   user existence related errors aren't prevented.
 #' 
 #' Defaults to `LEGACY` when you don't provide a value.
 #' @param EnableTokenRevocation Activates or deactivates token revocation. For more information about
@@ -4883,7 +4924,8 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_user_pool_client_input(UserPoolId = UserPoolId, ClientName = ClientName, GenerateSecret = GenerateSecret, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData, AuthSessionValidity = AuthSessionValidity)
   output <- .cognitoidentityprovider$create_user_pool_client_output()
@@ -4907,11 +4949,11 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_pool_domain(Domain, UserPoolId,
@@ -4962,7 +5004,8 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, CustomDomainConfig = CustomDomainConfig)
   output <- .cognitoidentityprovider$create_user_pool_domain_output()
@@ -5009,7 +5052,8 @@ cognitoidentityprovider_delete_group <- function(GroupName, UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_group_input(GroupName = GroupName, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_group_output()
@@ -5055,7 +5099,8 @@ cognitoidentityprovider_delete_identity_provider <- function(UserPoolId, Provide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName)
   output <- .cognitoidentityprovider$delete_identity_provider_output()
@@ -5100,7 +5145,8 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier)
   output <- .cognitoidentityprovider$delete_resource_server_output()
@@ -5155,7 +5201,8 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$delete_user_output()
@@ -5219,7 +5266,8 @@ cognitoidentityprovider_delete_user_attributes <- function(UserAttributeNames, A
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_attributes_input(UserAttributeNames = UserAttributeNames, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$delete_user_attributes_output()
@@ -5262,7 +5310,8 @@ cognitoidentityprovider_delete_user_pool <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_pool_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_user_pool_output()
@@ -5307,7 +5356,8 @@ cognitoidentityprovider_delete_user_pool_client <- function(UserPoolId, ClientId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$delete_user_pool_client_output()
@@ -5354,7 +5404,8 @@ cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_user_pool_domain_output()
@@ -5424,7 +5475,8 @@ cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, Provi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName)
   output <- .cognitoidentityprovider$describe_identity_provider_output()
@@ -5491,7 +5543,8 @@ cognitoidentityprovider_describe_resource_server <- function(UserPoolId, Identif
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier)
   output <- .cognitoidentityprovider$describe_resource_server_output()
@@ -5600,7 +5653,8 @@ cognitoidentityprovider_describe_risk_configuration <- function(UserPoolId, Clie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_risk_configuration_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$describe_risk_configuration_output()
@@ -5671,7 +5725,8 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$describe_user_import_job_output()
@@ -5697,11 +5752,11 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_describe_user_pool(UserPoolId)
@@ -5876,7 +5931,8 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_user_pool_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$describe_user_pool_output()
@@ -5902,11 +5958,11 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_describe_user_pool_client(UserPoolId, ClientId)
@@ -5997,7 +6053,8 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$describe_user_pool_client_output()
@@ -6058,7 +6115,8 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_user_pool_domain_input(Domain = Domain)
   output <- .cognitoidentityprovider$describe_user_pool_domain_output()
@@ -6117,7 +6175,8 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$forget_device_input(AccessToken = AccessToken, DeviceKey = DeviceKey)
   output <- .cognitoidentityprovider$forget_device_output()
@@ -6173,7 +6232,8 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -6214,21 +6274,21 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6272,7 +6332,8 @@ cognitoidentityprovider_forgot_password <- function(ClientId, SecretHash = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$forgot_password_input(ClientId = ClientId, SecretHash = SecretHash, UserContextData = UserContextData, Username = Username, AnalyticsMetadata = AnalyticsMetadata, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$forgot_password_output()
@@ -6326,7 +6387,8 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_csv_header_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_csv_header_output()
@@ -6407,7 +6469,8 @@ cognitoidentityprovider_get_device <- function(DeviceKey, AccessToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_device_input(DeviceKey = DeviceKey, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$get_device_output()
@@ -6471,7 +6534,8 @@ cognitoidentityprovider_get_group <- function(GroupName, UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_group_input(GroupName = GroupName, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_group_output()
@@ -6541,7 +6605,8 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_identity_provider_by_identifier_input(UserPoolId = UserPoolId, IdpIdentifier = IdpIdentifier)
   output <- .cognitoidentityprovider$get_identity_provider_by_identifier_output()
@@ -6607,7 +6672,8 @@ cognitoidentityprovider_get_log_delivery_configuration <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_log_delivery_configuration_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_log_delivery_configuration_output()
@@ -6661,7 +6727,8 @@ cognitoidentityprovider_get_signing_certificate <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_signing_certificate_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_signing_certificate_output()
@@ -6728,7 +6795,8 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_ui_customization_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$get_ui_customization_output()
@@ -6804,7 +6872,8 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_user_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$get_user_output()
@@ -6846,7 +6915,8 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -6876,21 +6946,21 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6926,7 +6996,8 @@ cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_user_attribute_verification_code_input(AccessToken = AccessToken, AttributeName = AttributeName, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$get_user_attribute_verification_code_output()
@@ -6985,7 +7056,8 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_user_pool_mfa_config_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_user_pool_mfa_config_output()
@@ -7005,25 +7077,24 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #' issued to a user. Call this operation when your user signs out of your
 #' app. This results in the following behavior.
 #' 
-#' -   Amazon Cognito no longer accepts *token-authorized* user operations
-#'     that you authorize with a signed-out user's access tokens. For more
-#'     information, see [Using the Amazon Cognito user pools API and user
-#'     pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' - Amazon Cognito no longer accepts *token-authorized* user operations
+#'   that you authorize with a signed-out user's access tokens. For more
+#'   information, see [Using the Amazon Cognito user pools API and user
+#'   pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
 #' 
-#'     Amazon Cognito returns an `Access Token has been revoked` error when
-#'     your app attempts to authorize a user pools API request with a
-#'     revoked access token that contains the scope
-#'     `aws.cognito.signin.user.admin`.
+#'   Amazon Cognito returns an `Access Token has been revoked` error when
+#'   your app attempts to authorize a user pools API request with a revoked
+#'   access token that contains the scope `aws.cognito.signin.user.admin`.
 #' 
-#' -   Amazon Cognito no longer accepts a signed-out user's ID token in a
-#'     [GetId](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html)
-#'     request to an identity pool with `ServerSideTokenCheck` enabled for
-#'     its user pool IdP configuration in
-#'     [CognitoIdentityProvider](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_CognitoIdentityProvider.html).
+#' - Amazon Cognito no longer accepts a signed-out user's ID token in a
+#'   [GetId](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetId.html)
+#'   request to an identity pool with `ServerSideTokenCheck` enabled for
+#'   its user pool IdP configuration in
+#'   [CognitoIdentityProvider](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_CognitoIdentityProvider.html).
 #' 
-#' -   Amazon Cognito no longer accepts a signed-out user's refresh tokens
-#'     in refresh requests.
+#' - Amazon Cognito no longer accepts a signed-out user's refresh tokens in
+#'   refresh requests.
 #' 
 #' Other requests might be valid until your user's token expires.
 #' 
@@ -7065,7 +7136,8 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$global_sign_out_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$global_sign_out_output()
@@ -7105,7 +7177,8 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -7119,52 +7192,52 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' @param AuthFlow &#91;required&#93; The authentication flow for this call to run. The API action will depend
 #' on this value. For example:
 #' 
-#' -   `REFRESH_TOKEN_AUTH` takes in a valid refresh token and returns new
-#'     tokens.
+#' - `REFRESH_TOKEN_AUTH` takes in a valid refresh token and returns new
+#'   tokens.
 #' 
-#' -   `USER_SRP_AUTH` takes in `USERNAME` and `SRP_A` and returns the SRP
-#'     variables to be used for next challenge execution.
+#' - `USER_SRP_AUTH` takes in `USERNAME` and `SRP_A` and returns the SRP
+#'   variables to be used for next challenge execution.
 #' 
-#' -   `USER_PASSWORD_AUTH` takes in `USERNAME` and `PASSWORD` and returns
-#'     the next challenge or tokens.
+#' - `USER_PASSWORD_AUTH` takes in `USERNAME` and `PASSWORD` and returns
+#'   the next challenge or tokens.
 #' 
 #' Valid values include:
 #' 
-#' -   `USER_SRP_AUTH`: Authentication flow for the Secure Remote Password
-#'     (SRP) protocol.
+#' - `USER_SRP_AUTH`: Authentication flow for the Secure Remote Password
+#'   (SRP) protocol.
 #' 
-#' -   `REFRESH_TOKEN_AUTH`/`REFRESH_TOKEN`: Authentication flow for
-#'     refreshing the access token and ID token by supplying a valid
-#'     refresh token.
+#' - `REFRESH_TOKEN_AUTH`/`REFRESH_TOKEN`: Authentication flow for
+#'   refreshing the access token and ID token by supplying a valid refresh
+#'   token.
 #' 
-#' -   `CUSTOM_AUTH`: Custom authentication flow.
+#' - `CUSTOM_AUTH`: Custom authentication flow.
 #' 
-#' -   `USER_PASSWORD_AUTH`: Non-SRP authentication flow; user name and
-#'     password are passed directly. If a user migration Lambda trigger is
-#'     set, this flow will invoke the user migration Lambda if it doesn't
-#'     find the user name in the user pool.
+#' - `USER_PASSWORD_AUTH`: Non-SRP authentication flow; user name and
+#'   password are passed directly. If a user migration Lambda trigger is
+#'   set, this flow will invoke the user migration Lambda if it doesn't
+#'   find the user name in the user pool.
 #' 
 #' `ADMIN_NO_SRP_AUTH` isn't a valid value.
 #' @param AuthParameters The authentication parameters. These are inputs corresponding to the
 #' `AuthFlow` that you're invoking. The required values depend on the value
 #' of `AuthFlow`:
 #' 
-#' -   For `USER_SRP_AUTH`: `USERNAME` (required), `SRP_A` (required),
-#'     `SECRET_HASH` (required if the app client is configured with a
-#'     client secret), `DEVICE_KEY`.
+#' - For `USER_SRP_AUTH`: `USERNAME` (required), `SRP_A` (required),
+#'   `SECRET_HASH` (required if the app client is configured with a client
+#'   secret), `DEVICE_KEY`.
 #' 
-#' -   For `USER_PASSWORD_AUTH`: `USERNAME` (required), `PASSWORD`
-#'     (required), `SECRET_HASH` (required if the app client is configured
-#'     with a client secret), `DEVICE_KEY`.
+#' - For `USER_PASSWORD_AUTH`: `USERNAME` (required), `PASSWORD`
+#'   (required), `SECRET_HASH` (required if the app client is configured
+#'   with a client secret), `DEVICE_KEY`.
 #' 
-#' -   For `REFRESH_TOKEN_AUTH/REFRESH_TOKEN`: `REFRESH_TOKEN` (required),
-#'     `SECRET_HASH` (required if the app client is configured with a
-#'     client secret), `DEVICE_KEY`.
+#' - For `REFRESH_TOKEN_AUTH/REFRESH_TOKEN`: `REFRESH_TOKEN` (required),
+#'   `SECRET_HASH` (required if the app client is configured with a client
+#'   secret), `DEVICE_KEY`.
 #' 
-#' -   For `CUSTOM_AUTH`: `USERNAME` (required), `SECRET_HASH` (if app
-#'     client is configured with client secret), `DEVICE_KEY`. To start the
-#'     authentication flow with password verification, include
-#'     `ChallengeName: SRP_A` and `SRP_A: (The SRP_A Value)`.
+#' - For `CUSTOM_AUTH`: `USERNAME` (required), `SECRET_HASH` (if app client
+#'   is configured with client secret), `DEVICE_KEY`. To start the
+#'   authentication flow with password verification, include
+#'   `ChallengeName: SRP_A` and `SRP_A: (The SRP_A Value)`.
 #' 
 #' For more information about `SECRET_HASH`, see [Computing secret hash
 #' values](https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash).
@@ -7180,11 +7253,11 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' The ClientMetadata value is passed as input to the functions for only
 #' the following triggers:
 #' 
-#' -   Pre signup
+#' - Pre signup
 #' 
-#' -   Pre authentication
+#' - Pre authentication
 #' 
-#' -   User migration
+#' - User migration
 #' 
 #' When Amazon Cognito invokes the functions for these triggers, it passes
 #' a JSON payload, which the function receives as input. This payload
@@ -7197,32 +7270,32 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' the functions for the following triggers, but it doesn't provide the
 #' ClientMetadata value as input:
 #' 
-#' -   Post authentication
+#' - Post authentication
 #' 
-#' -   Custom message
+#' - Custom message
 #' 
-#' -   Pre token generation
+#' - Pre token generation
 #' 
-#' -   Create auth challenge
+#' - Create auth challenge
 #' 
-#' -   Define auth challenge
+#' - Define auth challenge
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #' @param ClientId &#91;required&#93; The app client ID.
 #' @param AnalyticsMetadata The Amazon Pinpoint analytics metadata that contributes to your metrics
 #' for [`initiate_auth`][cognitoidentityprovider_initiate_auth] calls.
@@ -7311,7 +7384,8 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$initiate_auth_input(AuthFlow = AuthFlow, AuthParameters = AuthParameters, ClientMetadata = ClientMetadata, ClientId = ClientId, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData)
   output <- .cognitoidentityprovider$initiate_auth_output()
@@ -7405,7 +7479,8 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_devices_input(AccessToken = AccessToken, Limit = Limit, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$list_devices_output()
@@ -7429,11 +7504,11 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_groups(UserPoolId, Limit, NextToken)
@@ -7487,7 +7562,8 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_groups_input(UserPoolId = UserPoolId, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_groups_output()
@@ -7511,11 +7587,11 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_identity_providers(UserPoolId, MaxResults,
@@ -7565,7 +7641,8 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Providers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Providers"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_identity_providers_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_identity_providers_output()
@@ -7589,11 +7666,11 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_resource_servers(UserPoolId, MaxResults,
@@ -7644,7 +7721,8 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceServers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceServers"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_resource_servers_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_resource_servers_output()
@@ -7701,7 +7779,8 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cognitoidentityprovider$list_tags_for_resource_output()
@@ -7725,11 +7804,11 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_user_import_jobs(UserPoolId, MaxResults,
@@ -7796,7 +7875,8 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_user_import_jobs_input(UserPoolId = UserPoolId, MaxResults = MaxResults, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$list_user_import_jobs_output()
@@ -7820,11 +7900,11 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_user_pool_clients(UserPoolId, MaxResults,
@@ -7873,7 +7953,8 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPoolClients")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPoolClients"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_user_pool_clients_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_user_pool_clients_output()
@@ -7897,11 +7978,11 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_user_pools(NextToken, MaxResults)
@@ -7977,7 +8058,8 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPools"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_user_pools_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cognitoidentityprovider$list_user_pools_output()
@@ -8001,11 +8083,11 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_users(UserPoolId, AttributesToGet, Limit,
@@ -8036,15 +8118,15 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' escaped using the backslash (`\`) character. For example,
 #' `"family_name = \"Reddy\""`.
 #' 
-#' -   *AttributeName*: The name of the attribute to search for. You can
-#'     only search for one attribute at a time.
+#' - *AttributeName*: The name of the attribute to search for. You can only
+#'   search for one attribute at a time.
 #' 
-#' -   *Filter-Type*: For an exact match, use `=`, for example,
-#'     "`given_name = \"Jon\"`". For a prefix ("starts with") match, use
-#'     `^=`, for example, "`given_name ^= \"Jon\"`".
+#' - *Filter-Type*: For an exact match, use `=`, for example,
+#'   "`given_name = \"Jon\"`". For a prefix ("starts with") match, use
+#'   `^=`, for example, "`given_name ^= \"Jon\"`".
 #' 
-#' -   *AttributeValue*: The attribute value that must be matched for each
-#'     user.
+#' - *AttributeValue*: The attribute value that must be matched for each
+#'   user.
 #' 
 #' If the filter string is empty,
 #' [`list_users`][cognitoidentityprovider_list_users] returns all users in
@@ -8052,26 +8134,26 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' 
 #' You can only search for the following standard attributes:
 #' 
-#' -   `username` (case-sensitive)
+#' - `username` (case-sensitive)
 #' 
-#' -   `email`
+#' - `email`
 #' 
-#' -   `phone_number`
+#' - `phone_number`
 #' 
-#' -   `name`
+#' - `name`
 #' 
-#' -   `given_name`
+#' - `given_name`
 #' 
-#' -   `family_name`
+#' - `family_name`
 #' 
-#' -   `preferred_username`
+#' - `preferred_username`
 #' 
-#' -   `cognito:user_status` (called **Status** in the Console)
-#'     (case-insensitive)
+#' - `cognito:user_status` (called **Status** in the Console)
+#'   (case-insensitive)
 #' 
-#' -   `status (called Enabled in the Console) (case-sensitive)`
+#' - `status (called Enabled in the Console) (case-sensitive)`
 #' 
-#' -   `sub`
+#' - `sub`
 #' 
 #' Custom attributes aren't searchable.
 #' 
@@ -8170,7 +8252,8 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", limit_key = "Limit", output_token = "PaginationToken", result_key = "Users")
+    paginator = list(input_token = "PaginationToken", limit_key = "Limit", output_token = "PaginationToken", result_key = "Users"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_users_input(UserPoolId = UserPoolId, AttributesToGet = AttributesToGet, Limit = Limit, PaginationToken = PaginationToken, Filter = Filter)
   output <- .cognitoidentityprovider$list_users_output()
@@ -8194,11 +8277,11 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_users_in_group(UserPoolId, GroupName,
@@ -8265,7 +8348,8 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Users")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Users"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_users_in_group_input(UserPoolId = UserPoolId, GroupName = GroupName, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_users_in_group_output()
@@ -8303,7 +8387,8 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -8345,21 +8430,21 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8403,7 +8488,8 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$resend_confirmation_code_input(ClientId = ClientId, SecretHash = SecretHash, UserContextData = UserContextData, Username = Username, AnalyticsMetadata = AnalyticsMetadata, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$resend_confirmation_code_output()
@@ -8451,7 +8537,8 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -8569,21 +8656,21 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8641,7 +8728,8 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$respond_to_auth_challenge_input(ClientId = ClientId, ChallengeName = ChallengeName, Session = Session, ChallengeResponses = ChallengeResponses, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$respond_to_auth_challenge_output()
@@ -8701,7 +8789,8 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$revoke_token_input(Token = Token, ClientId = ClientId, ClientSecret = ClientSecret)
   output <- .cognitoidentityprovider$revoke_token_output()
@@ -8785,7 +8874,8 @@ cognitoidentityprovider_set_log_delivery_configuration <- function(UserPoolId, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_log_delivery_configuration_input(UserPoolId = UserPoolId, LogConfigurations = LogConfigurations)
   output <- .cognitoidentityprovider$set_log_delivery_configuration_output()
@@ -8961,7 +9051,8 @@ cognitoidentityprovider_set_risk_configuration <- function(UserPoolId, ClientId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_risk_configuration_input(UserPoolId = UserPoolId, ClientId = ClientId, CompromisedCredentialsRiskConfiguration = CompromisedCredentialsRiskConfiguration, AccountTakeoverRiskConfiguration = AccountTakeoverRiskConfiguration, RiskExceptionConfiguration = RiskExceptionConfiguration)
   output <- .cognitoidentityprovider$set_risk_configuration_output()
@@ -9041,7 +9132,8 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_ui_customization_input(UserPoolId = UserPoolId, ClientId = ClientId, CSS = CSS, ImageFile = ImageFile)
   output <- .cognitoidentityprovider$set_ui_customization_output()
@@ -9118,7 +9210,8 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_user_mfa_preference_input(SMSMfaSettings = SMSMfaSettings, SoftwareTokenMfaSettings = SoftwareTokenMfaSettings, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$set_user_mfa_preference_output()
@@ -9146,7 +9239,8 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -9166,12 +9260,12 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-mfa.html).
 #' Valid values include:
 #' 
-#' -   `OFF` MFA won't be used for any users.
+#' - `OFF` MFA won't be used for any users.
 #' 
-#' -   `ON` MFA is required for all users to sign in.
+#' - `ON` MFA is required for all users to sign in.
 #' 
-#' -   `OPTIONAL` MFA will be required only for individual users who have
-#'     an MFA factor activated.
+#' - `OPTIONAL` MFA will be required only for individual users who have an
+#'   MFA factor activated.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9222,7 +9316,8 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_user_pool_mfa_config_input(UserPoolId = UserPoolId, SmsMfaConfiguration = SmsMfaConfiguration, SoftwareTokenMfaConfiguration = SoftwareTokenMfaConfiguration, MfaConfiguration = MfaConfiguration)
   output <- .cognitoidentityprovider$set_user_pool_mfa_config_output()
@@ -9289,7 +9384,8 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_user_settings_input(AccessToken = AccessToken, MFAOptions = MFAOptions)
   output <- .cognitoidentityprovider$set_user_settings_output()
@@ -9327,7 +9423,8 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -9387,21 +9484,21 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -9460,7 +9557,8 @@ cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Usernam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$sign_up_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, Password = Password, UserAttributes = UserAttributes, ValidationData = ValidationData, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$sign_up_output()
@@ -9531,7 +9629,8 @@ cognitoidentityprovider_start_user_import_job <- function(UserPoolId, JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$start_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$start_user_import_job_output()
@@ -9602,7 +9701,8 @@ cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$stop_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$stop_user_import_job_output()
@@ -9667,7 +9767,8 @@ cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cognitoidentityprovider$tag_resource_output()
@@ -9716,7 +9817,8 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cognitoidentityprovider$untag_resource_output()
@@ -9789,7 +9891,8 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_auth_event_feedback_input(UserPoolId = UserPoolId, Username = Username, EventId = EventId, FeedbackToken = FeedbackToken, FeedbackValue = FeedbackValue)
   output <- .cognitoidentityprovider$update_auth_event_feedback_output()
@@ -9851,7 +9954,8 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_device_status_input(AccessToken = AccessToken, DeviceKey = DeviceKey, DeviceRememberedStatus = DeviceRememberedStatus)
   output <- .cognitoidentityprovider$update_device_status_output()
@@ -9875,11 +9979,11 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_group(GroupName, UserPoolId, Description,
@@ -9936,7 +10040,8 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_group_input(GroupName = GroupName, UserPoolId = UserPoolId, Description = Description, RoleArn = RoleArn, Precedence = Precedence)
   output <- .cognitoidentityprovider$update_group_output()
@@ -9960,11 +10065,11 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_identity_provider(UserPoolId,
@@ -10092,7 +10197,8 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName, ProviderDetails = ProviderDetails, AttributeMapping = AttributeMapping, IdpIdentifiers = IdpIdentifiers)
   output <- .cognitoidentityprovider$update_identity_provider_output()
@@ -10120,11 +10226,11 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_resource_server(UserPoolId, Identifier,
@@ -10186,7 +10292,8 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier, Name = Name, Scopes = Scopes)
   output <- .cognitoidentityprovider$update_resource_server_output()
@@ -10230,7 +10337,8 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -10268,21 +10376,21 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
 #' won't do the following:
 #' 
-#' -   Store the ClientMetadata value. This data is available only to
-#'     Lambda triggers that are assigned to a user pool to support custom
-#'     workflows. If your user pool configuration doesn't include triggers,
-#'     the ClientMetadata parameter serves no purpose.
+#' - Store the ClientMetadata value. This data is available only to Lambda
+#'   triggers that are assigned to a user pool to support custom workflows.
+#'   If your user pool configuration doesn't include triggers, the
+#'   ClientMetadata parameter serves no purpose.
 #' 
-#' -   Validate the ClientMetadata value.
+#' - Validate the ClientMetadata value.
 #' 
-#' -   Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-#'     provide sensitive information.
+#' - Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+#'   sensitive information.
 #'
 #' @return
 #' A list with the following syntax:
@@ -10325,7 +10433,8 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_user_attributes_input(UserAttributes = UserAttributes, AccessToken = AccessToken, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$update_user_attributes_output()
@@ -10351,7 +10460,8 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' 
 #' If you have never used SMS text messages with Amazon Cognito or any
 #' other Amazon Web Services service, Amazon Simple Notification Service
-#' might place your account in the SMS sandbox. In *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
+#' might place your account in the SMS sandbox. In
+#' *\href{https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html}{sandbox mode}* , you can send messages only to verified phone numbers.
 #' After you test your app while in the sandbox environment, you can move
 #' out of the sandbox and into production. For more information, see [SMS
 #' message settings for Amazon Cognito user
@@ -10372,11 +10482,11 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool(UserPoolId, Policies,
@@ -10421,17 +10531,17 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' numbers](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-email-phone-verification.html#user-pool-settings-verifications-verify-attribute-updates).
 #' @param MfaConfiguration Possible values include:
 #' 
-#' -   `OFF` - MFA tokens aren't required and can't be specified during
-#'     user registration.
+#' - `OFF` - MFA tokens aren't required and can't be specified during user
+#'   registration.
 #' 
-#' -   `ON` - MFA tokens are required for all user registrations. You can
-#'     only specify ON when you're initially creating a user pool. You can
-#'     use the
-#'     [`set_user_pool_mfa_config`][cognitoidentityprovider_set_user_pool_mfa_config]
-#'     API operation to turn MFA "ON" for existing user pools.
+#' - `ON` - MFA tokens are required for all user registrations. You can
+#'   only specify ON when you're initially creating a user pool. You can
+#'   use the
+#'   [`set_user_pool_mfa_config`][cognitoidentityprovider_set_user_pool_mfa_config]
+#'   API operation to turn MFA "ON" for existing user pools.
 #' 
-#' -   `OPTIONAL` - Users have the option when registering to create an MFA
-#'     token.
+#' - `OPTIONAL` - Users have the option when registering to create an MFA
+#'   token.
 #' @param DeviceConfiguration The device-remembering configuration for a user pool. A null value
 #' indicates that you have deactivated device remembering in your user
 #' pool.
@@ -10592,7 +10702,8 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_user_pool_input(UserPoolId = UserPoolId, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, UserAttributeUpdateSettings = UserAttributeUpdateSettings, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, UserPoolAddOns = UserPoolAddOns, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$update_user_pool_output()
@@ -10626,11 +10737,11 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool_client(UserPoolId, ClientId,
@@ -10744,23 +10855,22 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' Valid values include:
 #' 
-#' -   `ALLOW_ADMIN_USER_PASSWORD_AUTH`: Enable admin based user password
-#'     authentication flow `ADMIN_USER_PASSWORD_AUTH`. This setting
-#'     replaces the `ADMIN_NO_SRP_AUTH` setting. With this authentication
-#'     flow, your app passes a user name and password to Amazon Cognito in
-#'     the request, instead of using the Secure Remote Password (SRP)
-#'     protocol to securely transmit the password.
+#' - `ALLOW_ADMIN_USER_PASSWORD_AUTH`: Enable admin based user password
+#'   authentication flow `ADMIN_USER_PASSWORD_AUTH`. This setting replaces
+#'   the `ADMIN_NO_SRP_AUTH` setting. With this authentication flow, your
+#'   app passes a user name and password to Amazon Cognito in the request,
+#'   instead of using the Secure Remote Password (SRP) protocol to securely
+#'   transmit the password.
 #' 
-#' -   `ALLOW_CUSTOM_AUTH`: Enable Lambda trigger based authentication.
+#' - `ALLOW_CUSTOM_AUTH`: Enable Lambda trigger based authentication.
 #' 
-#' -   `ALLOW_USER_PASSWORD_AUTH`: Enable user password-based
-#'     authentication. In this flow, Amazon Cognito receives the password
-#'     in the request instead of using the SRP protocol to verify
-#'     passwords.
+#' - `ALLOW_USER_PASSWORD_AUTH`: Enable user password-based authentication.
+#'   In this flow, Amazon Cognito receives the password in the request
+#'   instead of using the SRP protocol to verify passwords.
 #' 
-#' -   `ALLOW_USER_SRP_AUTH`: Enable SRP-based authentication.
+#' - `ALLOW_USER_SRP_AUTH`: Enable SRP-based authentication.
 #' 
-#' -   `ALLOW_REFRESH_TOKEN_AUTH`: Enable authflow to refresh tokens.
+#' - `ALLOW_REFRESH_TOKEN_AUTH`: Enable authflow to refresh tokens.
 #' 
 #' In some environments, you will see the values `ADMIN_NO_SRP_AUTH`,
 #' `CUSTOM_AUTH_FLOW_ONLY`, or `USER_PASSWORD_AUTH`. You can't assign these
@@ -10774,11 +10884,11 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' A redirect URI must:
 #' 
-#' -   Be an absolute URI.
+#' - Be an absolute URI.
 #' 
-#' -   Be registered with the authorization server.
+#' - Be registered with the authorization server.
 #' 
-#' -   Not include a fragment component.
+#' - Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
 #' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
@@ -10792,11 +10902,11 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' A redirect URI must:
 #' 
-#' -   Be an absolute URI.
+#' - Be an absolute URI.
 #' 
-#' -   Be registered with the authorization server.
+#' - Be registered with the authorization server.
 #' 
-#' -   Not include a fragment component.
+#' - Not include a fragment component.
 #' 
 #' See [OAuth 2.0 - Redirection
 #' Endpoint](https://datatracker.ietf.org/doc/html/rfc6749#section-3.1.2).
@@ -10831,14 +10941,14 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' `AllowedOAuthFlowsUserPoolClient` must be `true` before you can
 #' configure the following features in your app client.
 #' 
-#' -   `CallBackURLs`: Callback URLs.
+#' - `CallBackURLs`: Callback URLs.
 #' 
-#' -   `LogoutURLs`: Sign-out redirect URLs.
+#' - `LogoutURLs`: Sign-out redirect URLs.
 #' 
-#' -   `AllowedOAuthScopes`: OAuth 2.0 scopes.
+#' - `AllowedOAuthScopes`: OAuth 2.0 scopes.
 #' 
-#' -   `AllowedOAuthFlows`: Support for authorization code, implicit, and
-#'     client credentials OAuth 2.0 grants.
+#' - `AllowedOAuthFlows`: Support for authorization code, implicit, and
+#'   client credentials OAuth 2.0 grants.
 #' 
 #' To use OAuth 2.0 features, configure one of these features in the Amazon
 #' Cognito console or set `AllowedOAuthFlowsUserPoolClient` to `true` in a
@@ -10868,10 +10978,10 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' 
 #' Valid values include:
 #' 
-#' -   `ENABLED` - This prevents user existence-related errors.
+#' - `ENABLED` - This prevents user existence-related errors.
 #' 
-#' -   `LEGACY` - This represents the early behavior of Amazon Cognito
-#'     where user existence related errors aren't prevented.
+#' - `LEGACY` - This represents the early behavior of Amazon Cognito where
+#'   user existence related errors aren't prevented.
 #' 
 #' Defaults to `LEGACY` when you don't provide a value.
 #' @param EnableTokenRevocation Activates or deactivates token revocation. For more information about
@@ -11020,7 +11130,8 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId, ClientName = ClientName, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData, AuthSessionValidity = AuthSessionValidity)
   output <- .cognitoidentityprovider$update_user_pool_client_output()
@@ -11075,11 +11186,11 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' 
 #' **Learn more**
 #' 
-#' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' - [Signing Amazon Web Services API
+#'   Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' 
-#' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' - [Using the Amazon Cognito user pools API and user pool
+#'   endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool_domain(Domain, UserPoolId,
@@ -11127,7 +11238,8 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, CustomDomainConfig = CustomDomainConfig)
   output <- .cognitoidentityprovider$update_user_pool_domain_output()
@@ -11199,7 +11311,8 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$verify_software_token_input(AccessToken = AccessToken, Session = Session, UserCode = UserCode, FriendlyDeviceName = FriendlyDeviceName)
   output <- .cognitoidentityprovider$verify_software_token_output()
@@ -11264,7 +11377,8 @@ cognitoidentityprovider_verify_user_attribute <- function(AccessToken, Attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$verify_user_attribute_input(AccessToken = AccessToken, AttributeName = AttributeName, Code = Code)
   output <- .cognitoidentityprovider$verify_user_attribute_output()

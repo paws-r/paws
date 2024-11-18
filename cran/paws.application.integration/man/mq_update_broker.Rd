@@ -43,7 +43,7 @@ When upgrading to ActiveMQ version 5.18 and above or RabbitMQ version
 the broker.}
 
 \item{HostInstanceType}{The broker's host instance type to upgrade to. For a list of supported
-instance types, see \href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/#broker-instance-types}{Broker instance types}.}
+instance types, see \href{https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker.html#broker-instance-types}{Broker instance types}.}
 
 \item{LdapServerMetadata}{Optional. The metadata of the LDAP server used to authenticate and
 authorize connections to the broker. Does not apply to RabbitMQ brokers.}

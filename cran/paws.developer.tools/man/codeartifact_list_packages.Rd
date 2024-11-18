@@ -41,8 +41,8 @@ Each package format uses namespace as follows:
 \item The namespace of an npm or Swift package version is its \code{scope}.
 \item The namespace of a generic package is its \code{namespace}.
 \item Python, NuGet, Ruby, and Cargo package versions do not contain a
-corresponding component, package versions of those formats do not
-have a namespace.
+corresponding component, package versions of those formats do not have
+a namespace.
 }}
 
 \item{packagePrefix}{A prefix used to filter requested packages. Only packages with names

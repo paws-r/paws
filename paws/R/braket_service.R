@@ -10,8 +10,8 @@ NULL
 #' 
 #' Additional Resources:
 #' 
-#' -   [Amazon Braket Developer
-#'     Guide](https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html)
+#' - [Amazon Braket Developer
+#'   Guide](https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html)
 #'
 #' @param
 #' config

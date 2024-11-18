@@ -23,8 +23,8 @@ you only want to update few of the feature values, do the following:
 retrieve the latest record.
 \item Update the record returned from
 \code{\link[=sagemakerfeaturestoreruntime_get_record]{get_record}}.
-\item Use \code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} to
-update feature values.
+\item Use \code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} to update
+feature values.
 }}
 
 \item{TargetStores}{A list of stores to which you're adding the record. By default, Feature

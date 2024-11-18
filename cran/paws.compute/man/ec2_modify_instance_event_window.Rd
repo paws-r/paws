@@ -33,8 +33,8 @@ Constraints:
 \item For day of the week values, you can specify either integers \code{0}
 through \code{6}, or alternative single values \code{SUN} through \code{SAT}.
 \item The minute, month, and year must be specified by \code{*}.
-\item The hour value must be one or a multiple range, for example, \code{0-4}
-or \verb{0-4,20-23}.
+\item The hour value must be one or a multiple range, for example, \code{0-4} or
+\verb{0-4,20-23}.
 \item Each hour range must be \>= 2 hours, for example, \code{0-2} or \code{20-23}.
 \item The event window must be \>= 4 hours. The combined total time ranges
 in the event window must be \>= 4 hours.

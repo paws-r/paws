@@ -35,11 +35,11 @@ NULL
 #' @param ScheduleExpression &#91;required&#93; The expression that defines when the schedule runs. The following
 #' formats are supported.
 #' 
-#' -   `at` expression - `at(yyyy-mm-ddThh:mm:ss)`
+#' - `at` expression - `at(yyyy-mm-ddThh:mm:ss)`
 #' 
-#' -   `rate` expression - `rate(value unit)`
+#' - `rate` expression - `rate(value unit)`
 #' 
-#' -   `cron` expression - `cron(fields)`
+#' - `cron` expression - `cron(fields)`
 #' 
 #' You can use `at` expressions to create one-time schedules that invoke a
 #' target once, at the time and in the time zone, that you specify. You can
@@ -188,7 +188,8 @@ eventbridgescheduler_create_schedule <- function(ActionAfterCompletion = NULL, C
     http_method = "POST",
     http_path = "/schedules/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$create_schedule_input(ActionAfterCompletion = ActionAfterCompletion, ClientToken = ClientToken, Description = Description, EndDate = EndDate, FlexibleTimeWindow = FlexibleTimeWindow, GroupName = GroupName, KmsKeyArn = KmsKeyArn, Name = Name, ScheduleExpression = ScheduleExpression, ScheduleExpressionTimezone = ScheduleExpressionTimezone, StartDate = StartDate, State = State, Target = Target)
   output <- .eventbridgescheduler$create_schedule_output()
@@ -248,7 +249,8 @@ eventbridgescheduler_create_schedule_group <- function(ClientToken = NULL, Name,
     http_method = "POST",
     http_path = "/schedule-groups/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$create_schedule_group_input(ClientToken = ClientToken, Name = Name, Tags = Tags)
   output <- .eventbridgescheduler$create_schedule_group_output()
@@ -299,7 +301,8 @@ eventbridgescheduler_delete_schedule <- function(ClientToken = NULL, GroupName =
     http_method = "DELETE",
     http_path = "/schedules/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$delete_schedule_input(ClientToken = ClientToken, GroupName = GroupName, Name = Name)
   output <- .eventbridgescheduler$delete_schedule_output()
@@ -355,7 +358,8 @@ eventbridgescheduler_delete_schedule_group <- function(ClientToken = NULL, Name)
     http_method = "DELETE",
     http_path = "/schedule-groups/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$delete_schedule_group_input(ClientToken = ClientToken, Name = Name)
   output <- .eventbridgescheduler$delete_schedule_group_output()
@@ -507,7 +511,8 @@ eventbridgescheduler_get_schedule <- function(GroupName = NULL, Name) {
     http_method = "GET",
     http_path = "/schedules/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$get_schedule_input(GroupName = GroupName, Name = Name)
   output <- .eventbridgescheduler$get_schedule_output()
@@ -563,7 +568,8 @@ eventbridgescheduler_get_schedule_group <- function(Name) {
     http_method = "GET",
     http_path = "/schedule-groups/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$get_schedule_group_input(Name = Name)
   output <- .eventbridgescheduler$get_schedule_group_output()
@@ -633,7 +639,8 @@ eventbridgescheduler_list_schedule_groups <- function(MaxResults = NULL, NamePre
     http_method = "GET",
     http_path = "/schedule-groups",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ScheduleGroups")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ScheduleGroups"),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$list_schedule_groups_input(MaxResults = MaxResults, NamePrefix = NamePrefix, NextToken = NextToken)
   output <- .eventbridgescheduler$list_schedule_groups_output()
@@ -712,7 +719,8 @@ eventbridgescheduler_list_schedules <- function(GroupName = NULL, MaxResults = N
     http_method = "GET",
     http_path = "/schedules",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Schedules")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Schedules"),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$list_schedules_input(GroupName = GroupName, MaxResults = MaxResults, NamePrefix = NamePrefix, NextToken = NextToken, State = State)
   output <- .eventbridgescheduler$list_schedules_output()
@@ -766,7 +774,8 @@ eventbridgescheduler_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .eventbridgescheduler$list_tags_for_resource_output()
@@ -819,7 +828,8 @@ eventbridgescheduler_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .eventbridgescheduler$tag_resource_output()
@@ -869,7 +879,8 @@ eventbridgescheduler_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .eventbridgescheduler$untag_resource_output()
@@ -925,11 +936,11 @@ eventbridgescheduler_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param ScheduleExpression &#91;required&#93; The expression that defines when the schedule runs. The following
 #' formats are supported.
 #' 
-#' -   `at` expression - `at(yyyy-mm-ddThh:mm:ss)`
+#' - `at` expression - `at(yyyy-mm-ddThh:mm:ss)`
 #' 
-#' -   `rate` expression - `rate(value unit)`
+#' - `rate` expression - `rate(value unit)`
 #' 
-#' -   `cron` expression - `cron(fields)`
+#' - `cron` expression - `cron(fields)`
 #' 
 #' You can use `at` expressions to create one-time schedules that invoke a
 #' target once, at the time and in the time zone, that you specify. You can
@@ -1079,7 +1090,8 @@ eventbridgescheduler_update_schedule <- function(ActionAfterCompletion = NULL, C
     http_method = "PUT",
     http_path = "/schedules/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridgescheduler$update_schedule_input(ActionAfterCompletion = ActionAfterCompletion, ClientToken = ClientToken, Description = Description, EndDate = EndDate, FlexibleTimeWindow = FlexibleTimeWindow, GroupName = GroupName, KmsKeyArn = KmsKeyArn, Name = Name, ScheduleExpression = ScheduleExpression, ScheduleExpressionTimezone = ScheduleExpressionTimezone, StartDate = StartDate, State = State, Target = Target)
   output <- .eventbridgescheduler$update_schedule_output()

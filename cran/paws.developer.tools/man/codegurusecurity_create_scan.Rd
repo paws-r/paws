@@ -40,8 +40,8 @@ your code.}
 \item{tags}{An array of key-value pairs used to tag a scan. A tag is a custom
 attribute label with two parts:
 \itemize{
-\item A tag key. For example, \code{CostCenter}, \code{Environment}, or \code{Secret}.
-Tag keys are case sensitive.
+\item A tag key. For example, \code{CostCenter}, \code{Environment}, or \code{Secret}. Tag
+keys are case sensitive.
 \item An optional tag value field. For example, \code{111122223333},
 \code{Production}, or a team name. Omitting the tag value is the same as
 using an empty string. Tag values are case sensitive.

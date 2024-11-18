@@ -17,8 +17,8 @@ ec2_describe_route_tables(
 \itemize{
 \item \code{association.gateway-id} - The ID of the gateway involved in the
 association.
-\item \code{association.route-table-association-id} - The ID of an association
-ID for the route table.
+\item \code{association.route-table-association-id} - The ID of an association ID
+for the route table.
 \item \code{association.route-table-id} - The ID of the route table involved in
 the association.
 \item \code{association.subnet-id} - The ID of the subnet involved in the
@@ -31,10 +31,10 @@ route table.
 \item \code{route-table-id} - The ID of the route table.
 \item \code{route.destination-cidr-block} - The IPv4 CIDR range specified in a
 route in the table.
-\item \code{route.destination-ipv6-cidr-block} - The IPv6 CIDR range specified
-in a route in the route table.
-\item \code{route.destination-prefix-list-id} - The ID (prefix) of the Amazon
-Web Services service specified in a route in the table.
+\item \code{route.destination-ipv6-cidr-block} - The IPv6 CIDR range specified in
+a route in the route table.
+\item \code{route.destination-prefix-list-id} - The ID (prefix) of the Amazon Web
+Services service specified in a route in the table.
 \item \code{route.egress-only-internet-gateway-id} - The ID of an egress-only
 Internet gateway specified in a route in the route table.
 \item \code{route.gateway-id} - The ID of a gateway specified in a route in the
@@ -52,19 +52,18 @@ manually added to the route table;
 indicates that the route was propagated by route propagation.
 \item \code{route.state} - The state of a route in the route table (\code{active} |
 \code{blackhole}). The blackhole state indicates that the route's target
-isn't available (for example, the specified gateway isn't attached
-to the VPC, the specified NAT instance has been terminated, and so
-on).
-\item \code{route.vpc-peering-connection-id} - The ID of a VPC peering
-connection specified in a route in the table.
+isn't available (for example, the specified gateway isn't attached to
+the VPC, the specified NAT instance has been terminated, and so on).
+\item \code{route.vpc-peering-connection-id} - The ID of a VPC peering connection
+specified in a route in the table.
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this
-filter to find all resources assigned a tag with a specific key,
-regardless of the tag value.
+resource. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless
+of the tag value.
 \item \code{vpc-id} - The ID of the VPC for the route table.
 }}
 

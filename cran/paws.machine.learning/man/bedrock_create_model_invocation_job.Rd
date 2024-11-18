@@ -25,7 +25,7 @@ a default service role or follow the steps at \href{https://docs.aws.amazon.com/
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
-error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
+error. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}.}
 
 \item{modelId}{[required] The unique identifier of the foundation model to use for the batch
 inference job.}

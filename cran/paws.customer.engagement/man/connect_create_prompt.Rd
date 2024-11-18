@@ -20,7 +20,7 @@ pre-signed URLs returned by the
 URIs.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
 }
 \description{
 Creates a prompt. For more information about prompts, such as supported file types and maximum length, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/prompts.html}{Create prompts} in the \emph{Amazon Connect Administrator Guide}.

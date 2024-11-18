@@ -19,20 +19,19 @@ ec2_describe_spot_price_history(
 \arguments{
 \item{Filters}{The filters.
 \itemize{
-\item \code{availability-zone} - The Availability Zone for which prices should
-be returned.
+\item \code{availability-zone} - The Availability Zone for which prices should be
+returned.
 \item \code{instance-type} - The type of instance (for example, \code{m3.medium}).
 \item \code{product-description} - The product description for the Spot price
-(\code{Linux/UNIX} | \verb{Red Hat Enterprise Linux} | \verb{SUSE Linux} |
-\code{Windows} | \verb{Linux/UNIX (Amazon VPC)} |
-\verb{Red Hat Enterprise Linux (Amazon VPC)} | \verb{SUSE Linux (Amazon VPC)}
-| \verb{Windows (Amazon VPC)}).
+(\code{Linux/UNIX} | \verb{Red Hat Enterprise Linux} | \verb{SUSE Linux} | \code{Windows}
+| \verb{Linux/UNIX (Amazon VPC)} | \verb{Red Hat Enterprise Linux (Amazon VPC)}
+| \verb{SUSE Linux (Amazon VPC)} | \verb{Windows (Amazon VPC)}).
 \item \code{spot-price} - The Spot price. The value must match exactly (or use
 wildcards; greater than or less than comparison is not supported).
-\item \code{timestamp} - The time stamp of the Spot price history, in UTC
-format (for example, \emph{ddd MMM dd HH}:\emph{mm}:\emph{ss} UTC \emph{YYYY}). You can
-use wildcards (\code{*} and \verb{?}). Greater than or less than comparison is
-not supported.
+\item \code{timestamp} - The time stamp of the Spot price history, in UTC format
+(for example, \emph{ddd MMM dd HH}:\emph{mm}:\emph{ss} UTC \emph{YYYY}). You can use
+wildcards (\code{*} and \verb{?}). Greater than or less than comparison is not
+supported.
 }}
 
 \item{AvailabilityZone}{Filters the results by the specified Availability Zone.}

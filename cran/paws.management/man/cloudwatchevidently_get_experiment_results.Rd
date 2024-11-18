@@ -39,23 +39,22 @@ want to see the results of.}
 
 \item{resultStats}{The statistics that you want to see in the returned results.
 \itemize{
-\item \code{PValue} specifies to use p-values for the results. A p-value is
-used in hypothesis testing to measure how often you are willing to
-make a mistake in rejecting the null hypothesis. A general practice
-is to reject the null hypothesis and declare that the results are
+\item \code{PValue} specifies to use p-values for the results. A p-value is used
+in hypothesis testing to measure how often you are willing to make a
+mistake in rejecting the null hypothesis. A general practice is to
+reject the null hypothesis and declare that the results are
 statistically significant when the p-value is less than 0.05.
-\item \code{ConfidenceInterval} specifies a confidence interval for the
-results. The confidence interval represents the range of values for
-the chosen metric that is likely to contain the true difference
-between the \code{baseStat} of a variation and the baseline. Evidently
-returns the 95\% confidence interval.
-\item \code{TreatmentEffect} is the difference in the statistic specified by
-the \code{baseStat} parameter between each variation and the default
-variation.
-\item \code{BaseStat} returns the statistical values collected for the metric
-for each variation. The statistic uses the same statistic specified
-in the \code{baseStat} parameter. Therefore, if \code{baseStat} is \code{mean},
-this returns the mean of the values collected for each variation.
+\item \code{ConfidenceInterval} specifies a confidence interval for the results.
+The confidence interval represents the range of values for the chosen
+metric that is likely to contain the true difference between the
+\code{baseStat} of a variation and the baseline. Evidently returns the 95\%
+confidence interval.
+\item \code{TreatmentEffect} is the difference in the statistic specified by the
+\code{baseStat} parameter between each variation and the default variation.
+\item \code{BaseStat} returns the statistical values collected for the metric for
+each variation. The statistic uses the same statistic specified in the
+\code{baseStat} parameter. Therefore, if \code{baseStat} is \code{mean}, this returns
+the mean of the values collected for each variation.
 }}
 
 \item{startTime}{The date and time that the experiment started.}

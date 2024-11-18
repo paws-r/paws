@@ -63,9 +63,9 @@ manage or upgrade instances.
 
 Amazon DocumentDB elastic-clusters were created to:
 \itemize{
-\item provide a solution for customers looking for a database that
-provides virtually limitless scale with rich query capabilities and
-MongoDB API compatibility.
+\item provide a solution for customers looking for a database that provides
+virtually limitless scale with rich query capabilities and MongoDB API
+compatibility.
 \item give customers higher connection limits, and to reduce downtime from
 patching.
 \item continue investing in a cloud-native, elastic, and class leading

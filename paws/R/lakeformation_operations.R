@@ -122,7 +122,8 @@ lakeformation_add_lf_tags_to_resource <- function(CatalogId = NULL, Resource, LF
     http_method = "POST",
     http_path = "/AddLFTagsToResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$add_lf_tags_to_resource_input(CatalogId = CatalogId, Resource = Resource, LFTags = LFTags)
   output <- .lakeformation$add_lf_tags_to_resource_output()
@@ -205,7 +206,8 @@ lakeformation_assume_decorated_role_with_saml <- function(SAMLAssertion, RoleArn
     http_method = "POST",
     http_path = "/AssumeDecoratedRoleWithSAML",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$assume_decorated_role_with_saml_input(SAMLAssertion = SAMLAssertion, RoleArn = RoleArn, PrincipalArn = PrincipalArn, DurationSeconds = DurationSeconds)
   output <- .lakeformation$assume_decorated_role_with_saml_output()
@@ -401,7 +403,8 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
     http_method = "POST",
     http_path = "/BatchGrantPermissions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$batch_grant_permissions_input(CatalogId = CatalogId, Entries = Entries)
   output <- .lakeformation$batch_grant_permissions_output()
@@ -597,7 +600,8 @@ lakeformation_batch_revoke_permissions <- function(CatalogId = NULL, Entries) {
     http_method = "POST",
     http_path = "/BatchRevokePermissions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$batch_revoke_permissions_input(CatalogId = CatalogId, Entries = Entries)
   output <- .lakeformation$batch_revoke_permissions_output()
@@ -641,7 +645,8 @@ lakeformation_cancel_transaction <- function(TransactionId) {
     http_method = "POST",
     http_path = "/CancelTransaction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$cancel_transaction_input(TransactionId = TransactionId)
   output <- .lakeformation$cancel_transaction_output()
@@ -691,7 +696,8 @@ lakeformation_commit_transaction <- function(TransactionId) {
     http_method = "POST",
     http_path = "/CommitTransaction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$commit_transaction_input(TransactionId = TransactionId)
   output <- .lakeformation$commit_transaction_output()
@@ -755,7 +761,8 @@ lakeformation_create_data_cells_filter <- function(TableData) {
     http_method = "POST",
     http_path = "/CreateDataCellsFilter",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$create_data_cells_filter_input(TableData = TableData)
   output <- .lakeformation$create_data_cells_filter_output()
@@ -807,7 +814,8 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
     http_method = "POST",
     http_path = "/CreateLFTag",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$create_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey, TagValues = TagValues)
   output <- .lakeformation$create_lf_tag_output()
@@ -888,7 +896,8 @@ lakeformation_create_lake_formation_identity_center_configuration <- function(Ca
     http_method = "POST",
     http_path = "/CreateLakeFormationIdentityCenterConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$create_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, InstanceArn = InstanceArn, ExternalFiltering = ExternalFiltering, ShareRecipients = ShareRecipients)
   output <- .lakeformation$create_lake_formation_identity_center_configuration_output()
@@ -991,7 +1000,8 @@ lakeformation_create_lake_formation_opt_in <- function(Principal, Resource) {
     http_method = "POST",
     http_path = "/CreateLakeFormationOptIn",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$create_lake_formation_opt_in_input(Principal = Principal, Resource = Resource)
   output <- .lakeformation$create_lake_formation_opt_in_output()
@@ -1041,7 +1051,8 @@ lakeformation_delete_data_cells_filter <- function(TableCatalogId = NULL, Databa
     http_method = "POST",
     http_path = "/DeleteDataCellsFilter",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$delete_data_cells_filter_input(TableCatalogId = TableCatalogId, DatabaseName = DatabaseName, TableName = TableName, Name = Name)
   output <- .lakeformation$delete_data_cells_filter_output()
@@ -1094,7 +1105,8 @@ lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
     http_method = "POST",
     http_path = "/DeleteLFTag",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$delete_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey)
   output <- .lakeformation$delete_lf_tag_output()
@@ -1141,7 +1153,8 @@ lakeformation_delete_lake_formation_identity_center_configuration <- function(Ca
     http_method = "POST",
     http_path = "/DeleteLakeFormationIdentityCenterConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$delete_lake_formation_identity_center_configuration_input(CatalogId = CatalogId)
   output <- .lakeformation$delete_lake_formation_identity_center_configuration_output()
@@ -1244,7 +1257,8 @@ lakeformation_delete_lake_formation_opt_in <- function(Principal, Resource) {
     http_method = "POST",
     http_path = "/DeleteLakeFormationOptIn",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$delete_lake_formation_opt_in_input(Principal = Principal, Resource = Resource)
   output <- .lakeformation$delete_lake_formation_opt_in_output()
@@ -1315,7 +1329,8 @@ lakeformation_delete_objects_on_cancel <- function(CatalogId = NULL, DatabaseNam
     http_method = "POST",
     http_path = "/DeleteObjectsOnCancel",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$delete_objects_on_cancel_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, TransactionId = TransactionId, Objects = Objects)
   output <- .lakeformation$delete_objects_on_cancel_output()
@@ -1362,7 +1377,8 @@ lakeformation_deregister_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/DeregisterResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$deregister_resource_input(ResourceArn = ResourceArn)
   output <- .lakeformation$deregister_resource_output()
@@ -1428,7 +1444,8 @@ lakeformation_describe_lake_formation_identity_center_configuration <- function(
     http_method = "POST",
     http_path = "/DescribeLakeFormationIdentityCenterConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$describe_lake_formation_identity_center_configuration_input(CatalogId = CatalogId)
   output <- .lakeformation$describe_lake_formation_identity_center_configuration_output()
@@ -1486,7 +1503,8 @@ lakeformation_describe_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/DescribeResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$describe_resource_input(ResourceArn = ResourceArn)
   output <- .lakeformation$describe_resource_output()
@@ -1543,7 +1561,8 @@ lakeformation_describe_transaction <- function(TransactionId) {
     http_method = "POST",
     http_path = "/DescribeTransaction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$describe_transaction_input(TransactionId = TransactionId)
   output <- .lakeformation$describe_transaction_output()
@@ -1591,7 +1610,8 @@ lakeformation_extend_transaction <- function(TransactionId = NULL) {
     http_method = "POST",
     http_path = "/ExtendTransaction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$extend_transaction_input(TransactionId = TransactionId)
   output <- .lakeformation$extend_transaction_output()
@@ -1664,7 +1684,8 @@ lakeformation_get_data_cells_filter <- function(TableCatalogId, DatabaseName, Ta
     http_method = "POST",
     http_path = "/GetDataCellsFilter",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_data_cells_filter_input(TableCatalogId = TableCatalogId, DatabaseName = DatabaseName, TableName = TableName, Name = Name)
   output <- .lakeformation$get_data_cells_filter_output()
@@ -1710,7 +1731,8 @@ lakeformation_get_data_lake_principal <- function() {
     http_method = "POST",
     http_path = "/GetDataLakePrincipal",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_data_lake_principal_input()
   output <- .lakeformation$get_data_lake_principal_output()
@@ -1810,7 +1832,8 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
     http_method = "POST",
     http_path = "/GetDataLakeSettings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_data_lake_settings_input(CatalogId = CatalogId)
   output <- .lakeformation$get_data_lake_settings_output()
@@ -1951,7 +1974,8 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
     http_method = "POST",
     http_path = "/GetEffectivePermissionsForPath",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_effective_permissions_for_path_input(CatalogId = CatalogId, ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lakeformation$get_effective_permissions_for_path_output()
@@ -2008,7 +2032,8 @@ lakeformation_get_lf_tag <- function(CatalogId = NULL, TagKey) {
     http_method = "POST",
     http_path = "/GetLFTag",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey)
   output <- .lakeformation$get_lf_tag_output()
@@ -2061,7 +2086,8 @@ lakeformation_get_query_state <- function(QueryId) {
     http_method = "POST",
     http_path = "/GetQueryState",
     host_prefix = "query-",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_query_state_input(QueryId = QueryId)
   output <- .lakeformation$get_query_state_output()
@@ -2122,7 +2148,8 @@ lakeformation_get_query_statistics <- function(QueryId) {
     http_method = "POST",
     http_path = "/GetQueryStatistics",
     host_prefix = "query-",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_query_statistics_input(QueryId = QueryId)
   output <- .lakeformation$get_query_statistics_output()
@@ -2264,7 +2291,8 @@ lakeformation_get_resource_lf_tags <- function(CatalogId = NULL, Resource, ShowA
     http_method = "POST",
     http_path = "/GetResourceLFTags",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_resource_lf_tags_input(CatalogId = CatalogId, Resource = Resource, ShowAssignedLFTags = ShowAssignedLFTags)
   output <- .lakeformation$get_resource_lf_tags_output()
@@ -2302,13 +2330,13 @@ lakeformation_get_resource_lf_tags <- function(CatalogId = NULL, Resource, ShowA
 #' @param PartitionPredicate A predicate to filter the objects returned based on the partition keys
 #' defined in the governed table.
 #' 
-#' -   The comparison operators supported are: =, \>, \<, \>=, \<=
+#' - The comparison operators supported are: =, \>, \<, \>=, \<=
 #' 
-#' -   The logical operators supported are: AND
+#' - The logical operators supported are: AND
 #' 
-#' -   The data types supported are integer, long, date(yyyy-MM-dd),
-#'     timestamp(yyyy-MM-dd HH:mm:ssXXX or yyyy-MM-dd HH:mm:ss"), string
-#'     and decimal.
+#' - The data types supported are integer, long, date(yyyy-MM-dd),
+#'   timestamp(yyyy-MM-dd HH:mm:ssXXX or yyyy-MM-dd HH:mm:ss"), string and
+#'   decimal.
 #' @param MaxResults Specifies how many values to return in a page.
 #' @param NextToken A continuation token if this is not the first call to retrieve these
 #' objects.
@@ -2362,7 +2390,8 @@ lakeformation_get_table_objects <- function(CatalogId = NULL, DatabaseName, Tabl
     http_method = "POST",
     http_path = "/GetTableObjects",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_table_objects_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, PartitionPredicate = PartitionPredicate, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$get_table_objects_output()
@@ -2446,7 +2475,8 @@ lakeformation_get_temporary_glue_partition_credentials <- function(TableArn, Par
     http_method = "POST",
     http_path = "/GetTemporaryGluePartitionCredentials",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_temporary_glue_partition_credentials_input(TableArn = TableArn, Partition = Partition, Permissions = Permissions, DurationSeconds = DurationSeconds, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes)
   output <- .lakeformation$get_temporary_glue_partition_credentials_output()
@@ -2544,7 +2574,8 @@ lakeformation_get_temporary_glue_table_credentials <- function(TableArn, Permiss
     http_method = "POST",
     http_path = "/GetTemporaryGlueTableCredentials",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_temporary_glue_table_credentials_input(TableArn = TableArn, Permissions = Permissions, DurationSeconds = DurationSeconds, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, S3Path = S3Path, QuerySessionContext = QuerySessionContext)
   output <- .lakeformation$get_temporary_glue_table_credentials_output()
@@ -2601,7 +2632,8 @@ lakeformation_get_work_unit_results <- function(QueryId, WorkUnitId, WorkUnitTok
     http_method = "POST",
     http_path = "/GetWorkUnitResults",
     host_prefix = "data-",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_work_unit_results_input(QueryId = QueryId, WorkUnitId = WorkUnitId, WorkUnitToken = WorkUnitToken)
   output <- .lakeformation$get_work_unit_results_output()
@@ -2666,7 +2698,8 @@ lakeformation_get_work_units <- function(NextToken = NULL, PageSize = NULL, Quer
     http_method = "POST",
     http_path = "/GetWorkUnits",
     host_prefix = "query-",
-    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken", result_key = "WorkUnitRanges")
+    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken", result_key = "WorkUnitRanges"),
+    stream_api = FALSE
   )
   input <- .lakeformation$get_work_units_input(NextToken = NextToken, PageSize = PageSize, QueryId = QueryId)
   output <- .lakeformation$get_work_units_output()
@@ -2800,7 +2833,8 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
     http_method = "POST",
     http_path = "/GrantPermissions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$grant_permissions_input(CatalogId = CatalogId, Principal = Principal, Resource = Resource, Permissions = Permissions, PermissionsWithGrantOption = PermissionsWithGrantOption)
   output <- .lakeformation$grant_permissions_output()
@@ -2878,7 +2912,8 @@ lakeformation_list_data_cells_filter <- function(Table = NULL, NextToken = NULL,
     http_method = "POST",
     http_path = "/ListDataCellsFilter",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCellsFilters")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCellsFilters"),
+    stream_api = FALSE
   )
   input <- .lakeformation$list_data_cells_filter_input(Table = Table, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lakeformation$list_data_cells_filter_output()
@@ -2950,7 +2985,8 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
     http_method = "POST",
     http_path = "/ListLFTags",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LFTags")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LFTags"),
+    stream_api = FALSE
   )
   input <- .lakeformation$list_lf_tags_input(CatalogId = CatalogId, ResourceShareType = ResourceShareType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_lf_tags_output()
@@ -3130,7 +3166,8 @@ lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource
     http_method = "POST",
     http_path = "/ListLakeFormationOptIns",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .lakeformation$list_lake_formation_opt_ins_input(Principal = Principal, Resource = Resource, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_lake_formation_opt_ins_output()
@@ -3343,7 +3380,8 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
     http_method = "POST",
     http_path = "/ListPermissions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .lakeformation$list_permissions_input(CatalogId = CatalogId, Principal = Principal, ResourceType = ResourceType, Resource = Resource, NextToken = NextToken, MaxResults = MaxResults, IncludeRelated = IncludeRelated)
   output <- .lakeformation$list_permissions_output()
@@ -3416,7 +3454,8 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
     http_method = "POST",
     http_path = "/ListResources",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .lakeformation$list_resources_input(FilterConditionList = FilterConditionList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_resources_output()
@@ -3489,7 +3528,8 @@ lakeformation_list_table_storage_optimizers <- function(CatalogId = NULL, Databa
     http_method = "POST",
     http_path = "/ListTableStorageOptimizers",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .lakeformation$list_table_storage_optimizers_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, StorageOptimizerType = StorageOptimizerType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_table_storage_optimizers_output()
@@ -3564,7 +3604,8 @@ lakeformation_list_transactions <- function(CatalogId = NULL, StatusFilter = NUL
     http_method = "POST",
     http_path = "/ListTransactions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .lakeformation$list_transactions_input(CatalogId = CatalogId, StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lakeformation$list_transactions_output()
@@ -3668,7 +3709,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
     http_method = "POST",
     http_path = "/PutDataLakeSettings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$put_data_lake_settings_input(CatalogId = CatalogId, DataLakeSettings = DataLakeSettings)
   output <- .lakeformation$put_data_lake_settings_output()
@@ -3747,7 +3789,8 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
     http_method = "POST",
     http_path = "/RegisterResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled)
   output <- .lakeformation$register_resource_output()
@@ -3881,7 +3924,8 @@ lakeformation_remove_lf_tags_from_resource <- function(CatalogId = NULL, Resourc
     http_method = "POST",
     http_path = "/RemoveLFTagsFromResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$remove_lf_tags_from_resource_input(CatalogId = CatalogId, Resource = Resource, LFTags = LFTags)
   output <- .lakeformation$remove_lf_tags_from_resource_output()
@@ -4002,7 +4046,8 @@ lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resour
     http_method = "POST",
     http_path = "/RevokePermissions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$revoke_permissions_input(CatalogId = CatalogId, Principal = Principal, Resource = Resource, Permissions = Permissions, PermissionsWithGrantOption = PermissionsWithGrantOption)
   output <- .lakeformation$revoke_permissions_output()
@@ -4091,7 +4136,8 @@ lakeformation_search_databases_by_lf_tags <- function(NextToken = NULL, MaxResul
     http_method = "POST",
     http_path = "/SearchDatabasesByLFTags",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList"),
+    stream_api = FALSE
   )
   input <- .lakeformation$search_databases_by_lf_tags_input(NextToken = NextToken, MaxResults = MaxResults, CatalogId = CatalogId, Expression = Expression)
   output <- .lakeformation$search_databases_by_lf_tags_output()
@@ -4205,7 +4251,8 @@ lakeformation_search_tables_by_lf_tags <- function(NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/SearchTablesByLFTags",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableList")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableList"),
+    stream_api = FALSE
   )
   input <- .lakeformation$search_tables_by_lf_tags_input(NextToken = NextToken, MaxResults = MaxResults, CatalogId = CatalogId, Expression = Expression)
   output <- .lakeformation$search_tables_by_lf_tags_output()
@@ -4269,7 +4316,8 @@ lakeformation_start_query_planning <- function(QueryPlanningContext, QueryString
     http_method = "POST",
     http_path = "/StartQueryPlanning",
     host_prefix = "query-",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$start_query_planning_input(QueryPlanningContext = QueryPlanningContext, QueryString = QueryString)
   output <- .lakeformation$start_query_planning_output()
@@ -4320,7 +4368,8 @@ lakeformation_start_transaction <- function(TransactionType = NULL) {
     http_method = "POST",
     http_path = "/StartTransaction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$start_transaction_input(TransactionType = TransactionType)
   output <- .lakeformation$start_transaction_output()
@@ -4382,7 +4431,8 @@ lakeformation_update_data_cells_filter <- function(TableData) {
     http_method = "POST",
     http_path = "/UpdateDataCellsFilter",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$update_data_cells_filter_input(TableData = TableData)
   output <- .lakeformation$update_data_cells_filter_output()
@@ -4444,7 +4494,8 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
     http_method = "POST",
     http_path = "/UpdateLFTag",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$update_lf_tag_input(CatalogId = CatalogId, TagKey = TagKey, TagValuesToDelete = TagValuesToDelete, TagValuesToAdd = TagValuesToAdd)
   output <- .lakeformation$update_lf_tag_output()
@@ -4519,7 +4570,8 @@ lakeformation_update_lake_formation_identity_center_configuration <- function(Ca
     http_method = "POST",
     http_path = "/UpdateLakeFormationIdentityCenterConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$update_lake_formation_identity_center_configuration_input(CatalogId = CatalogId, ShareRecipients = ShareRecipients, ApplicationStatus = ApplicationStatus, ExternalFiltering = ExternalFiltering)
   output <- .lakeformation$update_lake_formation_identity_center_configuration_output()
@@ -4573,7 +4625,8 @@ lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation =
     http_method = "POST",
     http_path = "/UpdateResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$update_resource_input(RoleArn = RoleArn, ResourceArn = ResourceArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled)
   output <- .lakeformation$update_resource_output()
@@ -4647,7 +4700,8 @@ lakeformation_update_table_objects <- function(CatalogId = NULL, DatabaseName, T
     http_method = "POST",
     http_path = "/UpdateTableObjects",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$update_table_objects_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, TransactionId = TransactionId, WriteOperations = WriteOperations)
   output <- .lakeformation$update_table_objects_output()
@@ -4706,7 +4760,8 @@ lakeformation_update_table_storage_optimizer <- function(CatalogId = NULL, Datab
     http_method = "POST",
     http_path = "/UpdateTableStorageOptimizer",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lakeformation$update_table_storage_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, StorageOptimizerConfig = StorageOptimizerConfig)
   output <- .lakeformation$update_table_storage_optimizer_output()

@@ -25,13 +25,12 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{LockMode}{[required] The mode in which to lock the snapshot. Specify one of the following:
 \itemize{
-\item \code{governance} - Locks the snapshot in governance mode. Snapshots
-locked in governance mode can't be deleted until one of the
-following conditions are met:
+\item \code{governance} - Locks the snapshot in governance mode. Snapshots locked
+in governance mode can't be deleted until one of the following
+conditions are met:
 \itemize{
 \item The lock duration expires.
-\item The snapshot is unlocked by a user with the appropriate
-permissions.
+\item The snapshot is unlocked by a user with the appropriate permissions.
 }
 
 Users with the appropriate IAM permissions can unlock the snapshot,
@@ -39,12 +38,12 @@ increase or decrease the lock duration, and change the lock mode to
 \code{compliance} at any time.
 
 If you lock a snapshot in \code{governance} mode, omit \strong{CoolOffPeriod}.
-\item \code{compliance} - Locks the snapshot in compliance mode. Snapshots
-locked in compliance mode can't be unlocked by any user. They can be
-deleted only after the lock duration expires. Users can't decrease
-the lock duration or change the lock mode to \code{governance}. However,
-users with appropriate IAM permissions can increase the lock
-duration at any time.
+\item \code{compliance} - Locks the snapshot in compliance mode. Snapshots locked
+in compliance mode can't be unlocked by any user. They can be deleted
+only after the lock duration expires. Users can't decrease the lock
+duration or change the lock mode to \code{governance}. However, users with
+appropriate IAM permissions can increase the lock duration at any
+time.
 
 If you lock a snapshot in \code{compliance} mode, you can optionally
 specify \strong{CoolOffPeriod}.

@@ -13,7 +13,7 @@ ssm_update_managed_instance_role(InstanceId, IamRole)
 \item{IamRole}{[required] The name of the Identity and Access Management (IAM) role that you want
 to assign to the managed node. This IAM role must provide AssumeRole
 permissions for the Amazon Web Services Systems Manager service
-principal \code{ssm.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html}{Create an IAM service role for a hybrid and multicloud environment}
+principal \code{ssm.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html}{Create an IAM service role for a hybrid and multicloud environment}
 in the \emph{Amazon Web Services Systems Manager User Guide}.
 
 You can't specify an IAM service-linked role for this parameter. You

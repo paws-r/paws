@@ -76,8 +76,7 @@ Constraints:
 \item Alphabetic characters must be lowercase.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for all clusters within an Amazon Web Services
-account.
+\item Must be unique for all clusters within an Amazon Web Services account.
 }
 
 Example: \code{myexamplecluster}}
@@ -212,9 +211,8 @@ Default: \code{5439}
 Valid Values:
 \itemize{
 \item For clusters with ra3 nodes - Select a port within the ranges
-\code{5431-5455} or \code{8191-8215}. (If you have an existing cluster with
-ra3 nodes, it isn't required that you change the port to these
-ranges.)
+\code{5431-5455} or \code{8191-8215}. (If you have an existing cluster with ra3
+nodes, it isn't required that you change the port to these ranges.)
 \item For clusters with dc2 nodes - Select a port within the range
 \code{1150-65535}.
 }}

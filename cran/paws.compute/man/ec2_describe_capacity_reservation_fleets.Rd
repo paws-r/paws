@@ -24,9 +24,9 @@ output. For more information, see
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{state} - The state of the Fleet (\code{submitted} | \code{modifying} |
-\code{active} | \code{partially_fulfilled} | \code{expiring} | \code{expired} |
-\code{cancelling} | \code{cancelled} | \code{failed}).
+\item \code{state} - The state of the Fleet (\code{submitted} | \code{modifying} | \code{active}
+| \code{partially_fulfilled} | \code{expiring} | \code{expired} | \code{cancelling} |
+\code{cancelled} | \code{failed}).
 \item \code{instance-match-criteria} - The instance matching criteria for the
 Fleet. Only \code{open} is supported.
 \item \code{tenancy} - The tenancy of the Fleet (\code{default} | \code{dedicated}).

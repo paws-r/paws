@@ -19,8 +19,7 @@ ram_get_resource_share_associations(
 \item{associationType}{[required] Specifies whether you want to retrieve the associations that involve a
 specified resource or principal.
 \itemize{
-\item \code{PRINCIPAL} – list the principals whose associations you want to
-see.
+\item \code{PRINCIPAL} – list the principals whose associations you want to see.
 \item \code{RESOURCE} – list the resources whose associations you want to see.
 }}
 

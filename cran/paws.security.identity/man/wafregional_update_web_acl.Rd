@@ -27,10 +27,10 @@ types:
 \itemize{
 \item WebACLUpdate: Contains \code{Action} and \code{ActivatedRule}
 \item ActivatedRule: Contains \code{Action}, \code{OverrideAction}, \code{Priority},
-\code{RuleId}, and \code{Type}. \code{ActivatedRule|OverrideAction} applies only
-when updating or adding a \code{RuleGroup} to a \code{WebACL}. In this case,
-you do not use \code{ActivatedRule|Action}. For all other update
-requests, \code{ActivatedRule|Action} is used instead of
+\code{RuleId}, and \code{Type}. \code{ActivatedRule|OverrideAction} applies only when
+updating or adding a \code{RuleGroup} to a \code{WebACL}. In this case, you do
+not use \code{ActivatedRule|Action}. For all other update requests,
+\code{ActivatedRule|Action} is used instead of
 \code{ActivatedRule|OverrideAction}.
 \item WafAction: Contains \code{Type}
 }}

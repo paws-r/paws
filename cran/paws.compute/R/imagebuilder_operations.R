@@ -14,7 +14,7 @@ NULL
 #' creation for.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -26,7 +26,8 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
     http_method = "PUT",
     http_path = "/CancelImageCreation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$cancel_image_creation_input(imageBuildVersionArn = imageBuildVersionArn, clientToken = clientToken)
   output <- .imagebuilder$cancel_image_creation_output()
@@ -49,7 +50,7 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' cancel.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -61,7 +62,8 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
     http_method = "PUT",
     http_path = "/CancelLifecycleExecution",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$cancel_lifecycle_execution_input(lifecycleExecutionId = lifecycleExecutionId, clientToken = clientToken)
   output <- .imagebuilder$cancel_lifecycle_execution_output()
@@ -120,7 +122,7 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
 #' @param tags The tags that apply to the component.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -132,7 +134,8 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
     http_method = "PUT",
     http_path = "/CreateComponent",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_component_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, platform = platform, supportedOsVersions = supportedOsVersions, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_component_output()
@@ -188,7 +191,7 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @param kmsKeyId Identifies which KMS key is used to encrypt the container image.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -200,7 +203,8 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
     http_method = "PUT",
     http_path = "/CreateContainerRecipe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_container_recipe_input(containerType = containerType, name = name, description = description, semanticVersion = semanticVersion, components = components, instanceConfiguration = instanceConfiguration, dockerfileTemplateData = dockerfileTemplateData, dockerfileTemplateUri = dockerfileTemplateUri, platformOverride = platformOverride, imageOsVersionOverride = imageOsVersionOverride, parentImage = parentImage, tags = tags, workingDirectory = workingDirectory, targetRepository = targetRepository, kmsKeyId = kmsKeyId, clientToken = clientToken)
   output <- .imagebuilder$create_container_recipe_output()
@@ -225,7 +229,7 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #' @param tags The tags of the distribution configuration.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -237,7 +241,8 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
     http_method = "PUT",
     http_path = "/CreateDistributionConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_distribution_configuration_input(name = name, description = description, distributions = distributions, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_distribution_configuration_output()
@@ -272,7 +277,7 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @param tags The tags of the image.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains an array of workflow configuration objects.
@@ -288,7 +293,8 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
     http_method = "PUT",
     http_path = "/CreateImage",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_image_input(imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, distributionConfigurationArn = distributionConfigurationArn, infrastructureConfigurationArn = infrastructureConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, tags = tags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole)
   output <- .imagebuilder$create_image_output()
@@ -328,7 +334,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @param tags The tags of the image pipeline.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains an array of workflow configuration objects.
@@ -344,7 +350,8 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
     http_method = "PUT",
     http_path = "/CreateImagePipeline",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_image_pipeline_input(name = name, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, tags = tags, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole)
   output <- .imagebuilder$create_image_pipeline_output()
@@ -396,7 +403,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @param additionalInstanceConfiguration Specify additional settings and launch scripts for your build instances.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -408,7 +415,8 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
     http_method = "PUT",
     http_path = "/CreateImageRecipe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_image_recipe_input(name = name, description = description, semanticVersion = semanticVersion, components = components, parentImage = parentImage, blockDeviceMappings = blockDeviceMappings, tags = tags, workingDirectory = workingDirectory, additionalInstanceConfiguration = additionalInstanceConfiguration, clientToken = clientToken)
   output <- .imagebuilder$create_image_recipe_output()
@@ -458,7 +466,7 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' @param tags The tags of the infrastructure configuration.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -470,7 +478,8 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
     http_method = "PUT",
     http_path = "/CreateInfrastructureConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_infrastructure_configuration_input(name = name, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_infrastructure_configuration_output()
@@ -501,7 +510,7 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 #' @param tags Tags to apply to the lifecycle policy resource.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -513,7 +522,8 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
     http_method = "PUT",
     http_path = "/CreateLifecyclePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_lifecycle_policy_input(name = name, description = description, status = status, executionRole = executionRole, resourceType = resourceType, policyDetails = policyDetails, resourceSelection = resourceSelection, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$create_lifecycle_policy_output()
@@ -566,7 +576,7 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
 #' @param tags Tags that apply to the workflow resource.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param type &#91;required&#93; The phase in the image build process for which the workflow resource is
 #' responsible.
@@ -580,7 +590,8 @@ imagebuilder_create_workflow <- function(name, semanticVersion, description = NU
     http_method = "PUT",
     http_path = "/CreateWorkflow",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$create_workflow_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken, type = type)
   output <- .imagebuilder$create_workflow_output()
@@ -610,7 +621,8 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
     http_method = "DELETE",
     http_path = "/DeleteComponent",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_component_input(componentBuildVersionArn = componentBuildVersionArn)
   output <- .imagebuilder$delete_component_output()
@@ -640,7 +652,8 @@ imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
     http_method = "DELETE",
     http_path = "/DeleteContainerRecipe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_container_recipe_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$delete_container_recipe_output()
@@ -671,7 +684,8 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
     http_method = "DELETE",
     http_path = "/DeleteDistributionConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn)
   output <- .imagebuilder$delete_distribution_configuration_output()
@@ -702,7 +716,8 @@ imagebuilder_delete_image <- function(imageBuildVersionArn) {
     http_method = "DELETE",
     http_path = "/DeleteImage",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_image_input(imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$delete_image_output()
@@ -732,7 +747,8 @@ imagebuilder_delete_image_pipeline <- function(imagePipelineArn) {
     http_method = "DELETE",
     http_path = "/DeleteImagePipeline",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_image_pipeline_input(imagePipelineArn = imagePipelineArn)
   output <- .imagebuilder$delete_image_pipeline_output()
@@ -762,7 +778,8 @@ imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
     http_method = "DELETE",
     http_path = "/DeleteImageRecipe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_image_recipe_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$delete_image_recipe_output()
@@ -793,7 +810,8 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
     http_method = "DELETE",
     http_path = "/DeleteInfrastructureConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn)
   output <- .imagebuilder$delete_infrastructure_configuration_output()
@@ -824,7 +842,8 @@ imagebuilder_delete_lifecycle_policy <- function(lifecyclePolicyArn) {
     http_method = "DELETE",
     http_path = "/DeleteLifecyclePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn)
   output <- .imagebuilder$delete_lifecycle_policy_output()
@@ -854,7 +873,8 @@ imagebuilder_delete_workflow <- function(workflowBuildVersionArn) {
     http_method = "DELETE",
     http_path = "/DeleteWorkflow",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$delete_workflow_input(workflowBuildVersionArn = workflowBuildVersionArn)
   output <- .imagebuilder$delete_workflow_output()
@@ -885,7 +905,8 @@ imagebuilder_get_component <- function(componentBuildVersionArn) {
     http_method = "GET",
     http_path = "/GetComponent",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_component_input(componentBuildVersionArn = componentBuildVersionArn)
   output <- .imagebuilder$get_component_output()
@@ -916,7 +937,8 @@ imagebuilder_get_component_policy <- function(componentArn) {
     http_method = "GET",
     http_path = "/GetComponentPolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_component_policy_input(componentArn = componentArn)
   output <- .imagebuilder$get_component_policy_output()
@@ -946,7 +968,8 @@ imagebuilder_get_container_recipe <- function(containerRecipeArn) {
     http_method = "GET",
     http_path = "/GetContainerRecipe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_container_recipe_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$get_container_recipe_output()
@@ -977,7 +1000,8 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
     http_method = "GET",
     http_path = "/GetContainerRecipePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_container_recipe_policy_input(containerRecipeArn = containerRecipeArn)
   output <- .imagebuilder$get_container_recipe_policy_output()
@@ -1008,7 +1032,8 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
     http_method = "GET",
     http_path = "/GetDistributionConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn)
   output <- .imagebuilder$get_distribution_configuration_output()
@@ -1038,7 +1063,8 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
     http_method = "GET",
     http_path = "/GetImage",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_image_input(imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$get_image_output()
@@ -1069,7 +1095,8 @@ imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
     http_method = "GET",
     http_path = "/GetImagePipeline",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_image_pipeline_input(imagePipelineArn = imagePipelineArn)
   output <- .imagebuilder$get_image_pipeline_output()
@@ -1100,7 +1127,8 @@ imagebuilder_get_image_policy <- function(imageArn) {
     http_method = "GET",
     http_path = "/GetImagePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_image_policy_input(imageArn = imageArn)
   output <- .imagebuilder$get_image_policy_output()
@@ -1131,7 +1159,8 @@ imagebuilder_get_image_recipe <- function(imageRecipeArn) {
     http_method = "GET",
     http_path = "/GetImageRecipe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_image_recipe_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$get_image_recipe_output()
@@ -1162,7 +1191,8 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
     http_method = "GET",
     http_path = "/GetImageRecipePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_image_recipe_policy_input(imageRecipeArn = imageRecipeArn)
   output <- .imagebuilder$get_image_recipe_policy_output()
@@ -1193,7 +1223,8 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
     http_method = "GET",
     http_path = "/GetInfrastructureConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn)
   output <- .imagebuilder$get_infrastructure_configuration_output()
@@ -1225,7 +1256,8 @@ imagebuilder_get_lifecycle_execution <- function(lifecycleExecutionId) {
     http_method = "GET",
     http_path = "/GetLifecycleExecution",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_lifecycle_execution_input(lifecycleExecutionId = lifecycleExecutionId)
   output <- .imagebuilder$get_lifecycle_execution_output()
@@ -1256,7 +1288,8 @@ imagebuilder_get_lifecycle_policy <- function(lifecyclePolicyArn) {
     http_method = "GET",
     http_path = "/GetLifecyclePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn)
   output <- .imagebuilder$get_lifecycle_policy_output()
@@ -1287,7 +1320,8 @@ imagebuilder_get_workflow <- function(workflowBuildVersionArn) {
     http_method = "GET",
     http_path = "/GetWorkflow",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_workflow_input(workflowBuildVersionArn = workflowBuildVersionArn)
   output <- .imagebuilder$get_workflow_output()
@@ -1319,7 +1353,8 @@ imagebuilder_get_workflow_execution <- function(workflowExecutionId) {
     http_method = "GET",
     http_path = "/GetWorkflowExecution",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_workflow_execution_input(workflowExecutionId = workflowExecutionId)
   output <- .imagebuilder$get_workflow_execution_output()
@@ -1351,7 +1386,8 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
     http_method = "GET",
     http_path = "/GetWorkflowStepExecution",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$get_workflow_step_execution_input(stepExecutionId = stepExecutionId)
   output <- .imagebuilder$get_workflow_step_execution_output()
@@ -1402,7 +1438,7 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
 #' @param tags The tags of the component.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -1414,7 +1450,8 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
     http_method = "PUT",
     http_path = "/ImportComponent",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$import_component_input(name = name, semanticVersion = semanticVersion, description = description, changeDescription = changeDescription, type = type, format = format, platform = platform, data = data, uri = uri, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$import_component_output()
@@ -1463,7 +1500,7 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' @param tags Tags that are attached to the import resources.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -1475,7 +1512,8 @@ imagebuilder_import_vm_image <- function(name, semanticVersion, description = NU
     http_method = "PUT",
     http_path = "/ImportVmImage",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$import_vm_image_input(name = name, semanticVersion = semanticVersion, description = description, platform = platform, osVersion = osVersion, vmImportTaskId = vmImportTaskId, tags = tags, clientToken = clientToken)
   output <- .imagebuilder$import_vm_image_output()
@@ -1510,7 +1548,8 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
     http_method = "POST",
     http_path = "/ListComponentBuildVersions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentSummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentSummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_component_build_versions_input(componentVersionArn = componentVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_component_build_versions_output()
@@ -1537,17 +1576,17 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' that other accounts have shared with you.
 #' @param filters Use the following filters to streamline results:
 #' 
-#' -   `description`
+#' - `description`
 #' 
-#' -   `name`
+#' - `name`
 #' 
-#' -   `platform`
+#' - `platform`
 #' 
-#' -   `supportedOsVersion`
+#' - `supportedOsVersion`
 #' 
-#' -   `type`
+#' - `type`
 #' 
-#' -   `version`
+#' - `version`
 #' @param byName Returns the list of components for the specified name.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the nextToken from
@@ -1562,7 +1601,8 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
     http_method = "POST",
     http_path = "/ListComponents",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentVersionList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "componentVersionList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_components_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_components_output()
@@ -1586,13 +1626,13 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 #' recipes belonging to your account.
 #' @param filters Use the following filters to streamline results:
 #' 
-#' -   `containerType`
+#' - `containerType`
 #' 
-#' -   `name`
+#' - `name`
 #' 
-#' -   `parentImage`
+#' - `parentImage`
 #' 
-#' -   `platform`
+#' - `platform`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
@@ -1606,7 +1646,8 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
     http_method = "POST",
     http_path = "/ListContainerRecipes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "containerRecipeSummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "containerRecipeSummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_container_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_container_recipes_output()
@@ -1639,7 +1680,8 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
     http_method = "POST",
     http_path = "/ListDistributionConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "distributionConfigurationSummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "distributionConfigurationSummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_distribution_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_distribution_configurations_output()
@@ -1662,15 +1704,15 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 #' want to retrieve.
 #' @param filters Use the following filters to streamline results:
 #' 
-#' -   `name`
+#' - `name`
 #' 
-#' -   `osVersion`
+#' - `osVersion`
 #' 
-#' -   `platform`
+#' - `platform`
 #' 
-#' -   `type`
+#' - `type`
 #' 
-#' -   `version`
+#' - `version`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
@@ -1684,7 +1726,8 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
     http_method = "POST",
     http_path = "/ListImageBuildVersions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_image_build_versions_input(imageVersionArn = imageVersionArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_build_versions_output()
@@ -1720,7 +1763,8 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
     http_method = "POST",
     http_path = "/ListImagePackages",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePackageList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePackageList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_image_packages_input(imageBuildVersionArn = imageBuildVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_packages_output()
@@ -1743,9 +1787,9 @@ imagebuilder_list_image_packages <- function(imageBuildVersionArn, maxResults = 
 #' want to view.
 #' @param filters Use the following filters to streamline results:
 #' 
-#' -   `name`
+#' - `name`
 #' 
-#' -   `version`
+#' - `version`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
@@ -1759,7 +1803,8 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
     http_method = "POST",
     http_path = "/ListImagePipelineImages",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageSummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_image_pipeline_images_input(imagePipelineArn = imagePipelineArn, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_pipeline_images_output()
@@ -1780,17 +1825,17 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 #'
 #' @param filters Use the following filters to streamline results:
 #' 
-#' -   `description`
+#' - `description`
 #' 
-#' -   `distributionConfigurationArn`
+#' - `distributionConfigurationArn`
 #' 
-#' -   `imageRecipeArn`
+#' - `imageRecipeArn`
 #' 
-#' -   `infrastructureConfigurationArn`
+#' - `infrastructureConfigurationArn`
 #' 
-#' -   `name`
+#' - `name`
 #' 
-#' -   `status`
+#' - `status`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
@@ -1804,7 +1849,8 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
     http_method = "POST",
     http_path = "/ListImagePipelines",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePipelineList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imagePipelineList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_image_pipelines_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_pipelines_output()
@@ -1830,11 +1876,11 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 #' you by other customers.
 #' @param filters Use the following filters to streamline results:
 #' 
-#' -   `name`
+#' - `name`
 #' 
-#' -   `parentImage`
+#' - `parentImage`
 #' 
-#' -   `platform`
+#' - `platform`
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
@@ -1848,7 +1894,8 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
     http_method = "POST",
     http_path = "/ListImageRecipes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageRecipeSummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageRecipeSummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_image_recipes_input(owner = owner, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_recipes_output()
@@ -1880,7 +1927,8 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
     http_method = "POST",
     http_path = "/ListImageScanFindingAggregations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "responses")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "responses"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_image_scan_finding_aggregations_input(filter = filter, nextToken = nextToken)
   output <- .imagebuilder$list_image_scan_finding_aggregations_output()
@@ -1902,13 +1950,13 @@ imagebuilder_list_image_scan_finding_aggregations <- function(filter = NULL, nex
 #' @param filters An array of name value pairs that you can use to filter your results.
 #' You can use the following filters to streamline results:
 #' 
-#' -   `imageBuildVersionArn`
+#' - `imageBuildVersionArn`
 #' 
-#' -   `imagePipelineArn`
+#' - `imagePipelineArn`
 #' 
-#' -   `vulnerabilityId`
+#' - `vulnerabilityId`
 #' 
-#' -   `severity`
+#' - `severity`
 #' 
 #' If you don't request a filter, then all findings in your account are
 #' listed.
@@ -1925,7 +1973,8 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
     http_method = "POST",
     http_path = "/ListImageScanFindings",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_image_scan_findings_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_image_scan_findings_output()
@@ -1951,15 +2000,15 @@ imagebuilder_list_image_scan_findings <- function(filters = NULL, maxResults = N
 #' customers.
 #' @param filters Use the following filters to streamline results:
 #' 
-#' -   `name`
+#' - `name`
 #' 
-#' -   `osVersion`
+#' - `osVersion`
 #' 
-#' -   `platform`
+#' - `platform`
 #' 
-#' -   `type`
+#' - `type`
 #' 
-#' -   `version`
+#' - `version`
 #' @param byName Requests a list of images with a specific recipe name.
 #' @param maxResults The maximum items to return in a request.
 #' @param nextToken A token to specify where to start paginating. This is the nextToken from
@@ -1975,7 +2024,8 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
     http_method = "POST",
     http_path = "/ListImages",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageVersionList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "imageVersionList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_images_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken, includeDeprecated = includeDeprecated)
   output <- .imagebuilder$list_images_output()
@@ -2008,7 +2058,8 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
     http_method = "POST",
     http_path = "/ListInfrastructureConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "infrastructureConfigurationSummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "infrastructureConfigurationSummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_infrastructure_configurations_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_infrastructure_configurations_output()
@@ -2051,7 +2102,8 @@ imagebuilder_list_lifecycle_execution_resources <- function(lifecycleExecutionId
     http_method = "POST",
     http_path = "/ListLifecycleExecutionResources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resources"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_lifecycle_execution_resources_input(lifecycleExecutionId = lifecycleExecutionId, parentResourceId = parentResourceId, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_lifecycle_execution_resources_output()
@@ -2085,7 +2137,8 @@ imagebuilder_list_lifecycle_executions <- function(maxResults = NULL, nextToken 
     http_method = "POST",
     http_path = "/ListLifecycleExecutions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecycleExecutions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecycleExecutions"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_lifecycle_executions_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .imagebuilder$list_lifecycle_executions_output()
@@ -2119,7 +2172,8 @@ imagebuilder_list_lifecycle_policies <- function(filters = NULL, maxResults = NU
     http_method = "POST",
     http_path = "/ListLifecyclePolicies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecyclePolicySummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lifecyclePolicySummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_lifecycle_policies_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_lifecycle_policies_output()
@@ -2150,7 +2204,8 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .imagebuilder$list_tags_for_resource_output()
@@ -2183,7 +2238,8 @@ imagebuilder_list_waiting_workflow_steps <- function(maxResults = NULL, nextToke
     http_method = "POST",
     http_path = "/ListWaitingWorkflowSteps",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_waiting_workflow_steps_input(maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_waiting_workflow_steps_output()
@@ -2217,7 +2273,8 @@ imagebuilder_list_workflow_build_versions <- function(workflowVersionArn, maxRes
     http_method = "POST",
     http_path = "/ListWorkflowBuildVersions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaryList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaryList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_workflow_build_versions_input(workflowVersionArn = workflowVersionArn, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_workflow_build_versions_output()
@@ -2252,7 +2309,8 @@ imagebuilder_list_workflow_executions <- function(maxResults = NULL, nextToken =
     http_method = "POST",
     http_path = "/ListWorkflowExecutions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowExecutions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowExecutions"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_workflow_executions_input(maxResults = maxResults, nextToken = nextToken, imageBuildVersionArn = imageBuildVersionArn)
   output <- .imagebuilder$list_workflow_executions_output()
@@ -2287,7 +2345,8 @@ imagebuilder_list_workflow_step_executions <- function(maxResults = NULL, nextTo
     http_method = "POST",
     http_path = "/ListWorkflowStepExecutions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "steps"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_workflow_step_executions_input(maxResults = maxResults, nextToken = nextToken, workflowExecutionId = workflowExecutionId)
   output <- .imagebuilder$list_workflow_step_executions_output()
@@ -2323,7 +2382,8 @@ imagebuilder_list_workflows <- function(owner = NULL, filters = NULL, byName = N
     http_method = "POST",
     http_path = "/ListWorkflows",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowVersionList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowVersionList"),
+    stream_api = FALSE
   )
   input <- .imagebuilder$list_workflows_input(owner = owner, filters = filters, byName = byName, maxResults = maxResults, nextToken = nextToken)
   output <- .imagebuilder$list_workflows_output()
@@ -2355,7 +2415,8 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
     http_method = "PUT",
     http_path = "/PutComponentPolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$put_component_policy_input(componentArn = componentArn, policy = policy)
   output <- .imagebuilder$put_component_policy_output()
@@ -2387,7 +2448,8 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
     http_method = "PUT",
     http_path = "/PutContainerRecipePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$put_container_recipe_policy_input(containerRecipeArn = containerRecipeArn, policy = policy)
   output <- .imagebuilder$put_container_recipe_policy_output()
@@ -2419,7 +2481,8 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
     http_method = "PUT",
     http_path = "/PutImagePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$put_image_policy_input(imageArn = imageArn, policy = policy)
   output <- .imagebuilder$put_image_policy_output()
@@ -2451,7 +2514,8 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
     http_method = "PUT",
     http_path = "/PutImageRecipePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$put_image_recipe_policy_input(imageRecipeArn = imageRecipeArn, policy = policy)
   output <- .imagebuilder$put_image_recipe_policy_output()
@@ -2479,7 +2543,7 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
 #' @param reason The reason why this action is sent.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2491,7 +2555,8 @@ imagebuilder_send_workflow_step_action <- function(stepExecutionId, imageBuildVe
     http_method = "PUT",
     http_path = "/SendWorkflowStepAction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$send_workflow_step_action_input(stepExecutionId = stepExecutionId, imageBuildVersionArn = imageBuildVersionArn, action = action, reason = reason, clientToken = clientToken)
   output <- .imagebuilder$send_workflow_step_action_output()
@@ -2514,7 +2579,7 @@ imagebuilder_send_workflow_step_action <- function(stepExecutionId, imageBuildVe
 #' manually invoke.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2526,7 +2591,8 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
     http_method = "PUT",
     http_path = "/StartImagePipelineExecution",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$start_image_pipeline_execution_input(imagePipelineArn = imagePipelineArn, clientToken = clientToken)
   output <- .imagebuilder$start_image_pipeline_execution_output()
@@ -2558,7 +2624,7 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 #' action.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2570,7 +2636,8 @@ imagebuilder_start_resource_state_update <- function(resourceArn, state, executi
     http_method = "PUT",
     http_path = "/StartResourceStateUpdate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$start_resource_state_update_input(resourceArn = resourceArn, state = state, executionRole = executionRole, includeResources = includeResources, exclusionRules = exclusionRules, updateAt = updateAt, clientToken = clientToken)
   output <- .imagebuilder$start_resource_state_update_output()
@@ -2601,7 +2668,8 @@ imagebuilder_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .imagebuilder$tag_resource_output()
@@ -2632,7 +2700,8 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .imagebuilder$untag_resource_output()
@@ -2657,7 +2726,7 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #' @param distributions &#91;required&#93; The distributions of the distribution configuration.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2669,7 +2738,8 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
     http_method = "PUT",
     http_path = "/UpdateDistributionConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$update_distribution_configuration_input(distributionConfigurationArn = distributionConfigurationArn, description = description, distributions = distributions, clientToken = clientToken)
   output <- .imagebuilder$update_distribution_configuration_output()
@@ -2708,7 +2778,7 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' @param status The status of the image pipeline.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains the workflows to run for the pipeline.
@@ -2724,7 +2794,8 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
     http_method = "PUT",
     http_path = "/UpdateImagePipeline",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$update_image_pipeline_input(imagePipelineArn = imagePipelineArn, description = description, imageRecipeArn = imageRecipeArn, containerRecipeArn = containerRecipeArn, infrastructureConfigurationArn = infrastructureConfigurationArn, distributionConfigurationArn = distributionConfigurationArn, imageTestsConfiguration = imageTestsConfiguration, enhancedImageMetadataEnabled = enhancedImageMetadataEnabled, schedule = schedule, status = status, clientToken = clientToken, imageScanningConfiguration = imageScanningConfiguration, workflows = workflows, executionRole = executionRole)
   output <- .imagebuilder$update_image_pipeline_output()
@@ -2771,7 +2842,7 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' service runs under.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param resourceTags The tags attached to the resource created by Image Builder.
 #' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests
@@ -2779,13 +2850,13 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' more information about instance metadata options, see one of the
 #' following links:
 #' 
-#' -   [Configure the instance metadata
-#'     options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
-#'     in the *Amazon EC2 User Guide* for Linux instances.
+#' - [Configure the instance metadata
+#'   options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+#'   in the *Amazon EC2 User Guide* for Linux instances.
 #' 
-#' -   [Configure the instance metadata
-#'     options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
-#'     in the *Amazon EC2 Windows Guide* for Windows instances.
+#' - [Configure the instance metadata
+#'   options](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-instance-metadata-options.html)
+#'   in the *Amazon EC2 Windows Guide* for Windows instances.
 #'
 #' @keywords internal
 #'
@@ -2796,7 +2867,8 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
     http_method = "PUT",
     http_path = "/UpdateInfrastructureConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$update_infrastructure_configuration_input(infrastructureConfigurationArn = infrastructureConfigurationArn, description = description, instanceTypes = instanceTypes, instanceProfileName = instanceProfileName, securityGroupIds = securityGroupIds, subnetId = subnetId, logging = logging, keyPair = keyPair, terminateInstanceOnFailure = terminateInstanceOnFailure, snsTopicArn = snsTopicArn, clientToken = clientToken, resourceTags = resourceTags, instanceMetadataOptions = instanceMetadataOptions)
   output <- .imagebuilder$update_infrastructure_configuration_output()
@@ -2825,7 +2897,7 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
 #' @param resourceSelection &#91;required&#93; Selection criteria for resources that the lifecycle policy applies to.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2837,7 +2909,8 @@ imagebuilder_update_lifecycle_policy <- function(lifecyclePolicyArn, description
     http_method = "PUT",
     http_path = "/UpdateLifecyclePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .imagebuilder$update_lifecycle_policy_input(lifecyclePolicyArn = lifecyclePolicyArn, description = description, status = status, executionRole = executionRole, resourceType = resourceType, policyDetails = policyDetails, resourceSelection = resourceSelection, clientToken = clientToken)
   output <- .imagebuilder$update_lifecycle_policy_output()

@@ -17,17 +17,16 @@ informs EFS Lifecycle management of the following:
 \item \strong{\code{TransitionToIA}} – When to move files in the file system from
 primary storage (Standard storage class) into the Infrequent Access
 (IA) storage.
-\item \strong{\code{TransitionToArchive}} – When to move files in the file system
-from their current storage class (either IA or Standard storage)
-into the Archive storage.
+\item \strong{\code{TransitionToArchive}} – When to move files in the file system from
+their current storage class (either IA or Standard storage) into the
+Archive storage.
 
 File systems cannot transition into Archive storage before
 transitioning into IA storage. Therefore, TransitionToArchive must
 either not be set or must be later than TransitionToIA.
 
-The Archive storage class is available only for file systems that
-use the Elastic Throughput mode and the General Purpose Performance
-mode.
+The Archive storage class is available only for file systems that use
+the Elastic Throughput mode and the General Purpose Performance mode.
 \item \strong{\code{TransitionToPrimaryStorageClass}} – Whether to move files in the
 file system back to primary storage (Standard storage class) after
 they are accessed in IA or Archive storage.

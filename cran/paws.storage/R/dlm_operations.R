@@ -24,13 +24,13 @@ NULL
 #' @param DefaultPolicy **\[Default policies only\]** Specify the type of default policy to
 #' create.
 #' 
-#' -   To create a default policy for EBS snapshots, that creates snapshots
-#'     of all volumes in the Region that do not have recent backups,
-#'     specify `VOLUME`.
+#' - To create a default policy for EBS snapshots, that creates snapshots
+#'   of all volumes in the Region that do not have recent backups, specify
+#'   `VOLUME`.
 #' 
-#' -   To create a default policy for EBS-backed AMIs, that creates
-#'     EBS-backed AMIs from all instances in the Region that do not have
-#'     recent backups, specify `INSTANCE`.
+#' - To create a default policy for EBS-backed AMIs, that creates
+#'   EBS-backed AMIs from all instances in the Region that do not have
+#'   recent backups, specify `INSTANCE`.
 #' @param CreateInterval **\[Default policies only\]** Specifies how often the policy should run
 #' and create snapshots or AMIs. The creation frequency can range from 1 to
 #' 7 days. If you do not specify a value, the default is 1.
@@ -54,17 +54,17 @@ NULL
 #' 
 #' By default (**ExtendDeletion=false**):
 #' 
-#' -   If a source resource is deleted, Amazon Data Lifecycle Manager will
-#'     continue to delete previously created snapshots or AMIs, up to but
-#'     not including the last one, based on the specified retention period.
-#'     If you want Amazon Data Lifecycle Manager to delete all snapshots or
-#'     AMIs, including the last one, specify `true`.
+#' - If a source resource is deleted, Amazon Data Lifecycle Manager will
+#'   continue to delete previously created snapshots or AMIs, up to but not
+#'   including the last one, based on the specified retention period. If
+#'   you want Amazon Data Lifecycle Manager to delete all snapshots or
+#'   AMIs, including the last one, specify `true`.
 #' 
-#' -   If a policy enters the error, disabled, or deleted state, Amazon
-#'     Data Lifecycle Manager stops deleting snapshots and AMIs. If you
-#'     want Amazon Data Lifecycle Manager to continue deleting snapshots or
-#'     AMIs, including the last one, if the policy enters one of these
-#'     states, specify `true`.
+#' - If a policy enters the error, disabled, or deleted state, Amazon Data
+#'   Lifecycle Manager stops deleting snapshots and AMIs. If you want
+#'   Amazon Data Lifecycle Manager to continue deleting snapshots or AMIs,
+#'   including the last one, if the policy enters one of these states,
+#'   specify `true`.
 #' 
 #' If you enable extended deletion (**ExtendDeletion=true**), you override
 #' both default behaviors simultaneously.
@@ -89,7 +89,8 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
     http_method = "POST",
     http_path = "/policies",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$create_lifecycle_policy_input(ExecutionRoleArn = ExecutionRoleArn, Description = Description, State = State, PolicyDetails = PolicyDetails, Tags = Tags, DefaultPolicy = DefaultPolicy, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$create_lifecycle_policy_output()
@@ -120,7 +121,8 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
     http_method = "DELETE",
     http_path = "/policies/{policyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$delete_lifecycle_policy_input(PolicyId = PolicyId)
   output <- .dlm$delete_lifecycle_policy_output()
@@ -155,11 +157,11 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' @param DefaultPolicyType **\[Default policies only\]** Specifies the type of default policy to
 #' get. Specify one of the following:
 #' 
-#' -   `VOLUME` - To get only the default policy for EBS snapshots
+#' - `VOLUME` - To get only the default policy for EBS snapshots
 #' 
-#' -   `INSTANCE` - To get only the default policy for EBS-backed AMIs
+#' - `INSTANCE` - To get only the default policy for EBS-backed AMIs
 #' 
-#' -   `ALL` - To get all default policies
+#' - `ALL` - To get all default policies
 #'
 #' @keywords internal
 #'
@@ -170,7 +172,8 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
     http_method = "GET",
     http_path = "/policies",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$get_lifecycle_policies_input(PolicyIds = PolicyIds, State = State, ResourceTypes = ResourceTypes, TargetTags = TargetTags, TagsToAdd = TagsToAdd, DefaultPolicyType = DefaultPolicyType)
   output <- .dlm$get_lifecycle_policies_output()
@@ -200,7 +203,8 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
     http_method = "GET",
     http_path = "/policies/{policyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$get_lifecycle_policy_input(PolicyId = PolicyId)
   output <- .dlm$get_lifecycle_policy_output()
@@ -230,7 +234,8 @@ dlm_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .dlm$list_tags_for_resource_output()
@@ -261,7 +266,8 @@ dlm_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .dlm$tag_resource_output()
@@ -292,7 +298,8 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .dlm$untag_resource_output()
@@ -334,17 +341,17 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' 
 #' By default (**ExtendDeletion=false**):
 #' 
-#' -   If a source resource is deleted, Amazon Data Lifecycle Manager will
-#'     continue to delete previously created snapshots or AMIs, up to but
-#'     not including the last one, based on the specified retention period.
-#'     If you want Amazon Data Lifecycle Manager to delete all snapshots or
-#'     AMIs, including the last one, specify `true`.
+#' - If a source resource is deleted, Amazon Data Lifecycle Manager will
+#'   continue to delete previously created snapshots or AMIs, up to but not
+#'   including the last one, based on the specified retention period. If
+#'   you want Amazon Data Lifecycle Manager to delete all snapshots or
+#'   AMIs, including the last one, specify `true`.
 #' 
-#' -   If a policy enters the error, disabled, or deleted state, Amazon
-#'     Data Lifecycle Manager stops deleting snapshots and AMIs. If you
-#'     want Amazon Data Lifecycle Manager to continue deleting snapshots or
-#'     AMIs, including the last one, if the policy enters one of these
-#'     states, specify `true`.
+#' - If a policy enters the error, disabled, or deleted state, Amazon Data
+#'   Lifecycle Manager stops deleting snapshots and AMIs. If you want
+#'   Amazon Data Lifecycle Manager to continue deleting snapshots or AMIs,
+#'   including the last one, if the policy enters one of these states,
+#'   specify `true`.
 #' 
 #' If you enable extended deletion (**ExtendDeletion=true**), you override
 #' both default behaviors simultaneously.
@@ -367,7 +374,8 @@ dlm_update_lifecycle_policy <- function(PolicyId, ExecutionRoleArn = NULL, State
     http_method = "PATCH",
     http_path = "/policies/{policyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$update_lifecycle_policy_input(PolicyId = PolicyId, ExecutionRoleArn = ExecutionRoleArn, State = State, Description = Description, PolicyDetails = PolicyDetails, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$update_lifecycle_policy_output()

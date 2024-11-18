@@ -31,10 +31,9 @@ configurations. This means you can do the following with the
 \item Delete the auto scaling configuration for which the App Runner
 \code{DefaultConfiguration} was created.
 \item If you delete the auto scaling configuration you can create another
-custom auto scaling configuration with the same
-\code{DefaultConfiguration} name. The original \code{DefaultConfiguration}
-resource provided by App Runner remains in your account unless you
-make changes to it.
+custom auto scaling configuration with the same \code{DefaultConfiguration}
+name. The original \code{DefaultConfiguration} resource provided by App
+Runner remains in your account unless you make changes to it.
 }}
 
 \item{MaxConcurrency}{The maximum number of concurrent requests that you want an instance to

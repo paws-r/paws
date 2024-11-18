@@ -15,8 +15,8 @@ ec2_describe_moving_addresses(
 \arguments{
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{moving-status} - The status of the Elastic IP address
-(\code{MovingToVpc} | \code{RestoringToClassic}).
+\item \code{moving-status} - The status of the Elastic IP address (\code{MovingToVpc}
+| \code{RestoringToClassic}).
 }}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

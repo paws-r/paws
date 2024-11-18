@@ -113,7 +113,7 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Region. To see the time blocks available,
-see \href{https://docs.aws.amazon.com/neptune/latest/userguide/#manage-console-maintaining-window}{Neptune Maintenance Window}
+see \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window}{Neptune Maintenance Window}
 in the \emph{Amazon Neptune User Guide.}
 
 Constraints:
@@ -131,7 +131,7 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Region, occurring on a random day of the
-week. To see the time blocks available, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/#manage-console-maintaining-window}{Neptune Maintenance Window}
+week. To see the time blocks available, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window}{Neptune Maintenance Window}
 in the \emph{Amazon Neptune User Guide.}
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -155,10 +155,9 @@ KMS encryption key.
 
 If an encryption key is not specified in \code{KmsKeyId}:
 \itemize{
-\item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
-then Amazon Neptune will use the encryption key used to encrypt the
-source. Otherwise, Amazon Neptune will use your default encryption
-key.
+\item If \code{ReplicationSourceIdentifier} identifies an encrypted source, then
+Amazon Neptune will use the encryption key used to encrypt the source.
+Otherwise, Amazon Neptune will use your default encryption key.
 \item If the \code{StorageEncrypted} parameter is true and
 \code{ReplicationSourceIdentifier} is not specified, then Amazon Neptune
 will use your default encryption key.

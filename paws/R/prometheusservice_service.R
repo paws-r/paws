@@ -21,13 +21,13 @@ NULL
 #' 
 #' Amazon Managed Service for Prometheus includes two APIs.
 #' 
-#' -   Use the Amazon Web Services API described in this guide to manage
-#'     Amazon Managed Service for Prometheus resources, such as workspaces,
-#'     rule groups, and alert managers.
+#' - Use the Amazon Web Services API described in this guide to manage
+#'   Amazon Managed Service for Prometheus resources, such as workspaces,
+#'   rule groups, and alert managers.
 #' 
-#' -   Use the [Prometheus-compatible
-#'     API](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-APIReference.html#AMP-APIReference-Prometheus-Compatible-Apis)
-#'     to work within your Prometheus workspace.
+#' - Use the [Prometheus-compatible
+#'   API](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-APIReference.html#AMP-APIReference-Prometheus-Compatible-Apis)
+#'   to work within your Prometheus workspace.
 #'
 #' @param
 #' config

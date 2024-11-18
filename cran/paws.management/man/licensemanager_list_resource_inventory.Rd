@@ -18,8 +18,8 @@ licensemanager_list_resource_inventory(
 \item{Filters}{Filters to scope the results. The following filters and logical
 operators are supported:
 \itemize{
-\item \code{account_id} - The ID of the Amazon Web Services account that owns
-the resource. Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
+\item \code{account_id} - The ID of the Amazon Web Services account that owns the
+resource. Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
 \item \code{application_name} - The name of the application. Logical operators
 are \code{EQUALS} | \code{BEGINS_WITH}.
 \item \code{license_included} - The type of license included. Logical operators
@@ -28,11 +28,11 @@ are \code{EQUALS} | \code{NOT_EQUALS}. Possible values are
 \code{windows-server-datacenter}.
 \item \code{platform} - The platform of the resource. Logical operators are
 \code{EQUALS} | \code{BEGINS_WITH}.
-\item \code{resource_id} - The ID of the resource. Logical operators are
-\code{EQUALS} | \code{NOT_EQUALS}.
+\item \code{resource_id} - The ID of the resource. Logical operators are \code{EQUALS}
+| \code{NOT_EQUALS}.
 \item \verb{tag:<key>} - The key/value combination of a tag assigned to the
-resource. Logical operators are \code{EQUALS} (single account) or
-\code{EQUALS} | \code{NOT_EQUALS} (cross account).
+resource. Logical operators are \code{EQUALS} (single account) or \code{EQUALS}
+| \code{NOT_EQUALS} (cross account).
 }}
 }
 \description{

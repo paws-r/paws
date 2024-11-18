@@ -30,7 +30,7 @@ GraphicsPro), specify \code{BYOL_REGULAR}, \code{BYOL_REGULAR_WSP}, or
 
 The \code{BYOL_REGULAR_BYOP} and \code{BYOL_GRAPHICS_G4DN_BYOP} values are only
 supported by Amazon WorkSpaces Core. Contact your account team to be
-allow-listed to use these values. For more information, see \href{https://aws.amazon.com/workspaces-family/core/}{Amazon WorkSpaces Core}.}
+allow-listed to use these values. For more information, see \href{https://aws.amazon.com/workspaces/core/}{Amazon WorkSpaces Core}.}
 
 \item{ImageName}{[required] The name of the WorkSpace image.}
 
@@ -42,8 +42,8 @@ allow-listed to use these values. For more information, see \href{https://aws.am
 only for Windows 10 and 11 BYOL images. For more information about
 subscribing to Office for BYOL images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html}{Bring Your Own Windows Desktop Licenses}.
 \itemize{
-\item Although this parameter is an array, only one item is allowed at
-this time.
+\item Although this parameter is an array, only one item is allowed at this
+time.
 \item During the image import process, non-GPU WSP WorkSpaces with Windows
 11 support only \code{Microsoft_Office_2019}. GPU WSP WorkSpaces with
 Windows 11 do not support Office installation.

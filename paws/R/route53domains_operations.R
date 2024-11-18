@@ -63,7 +63,8 @@ route53domains_accept_domain_transfer_from_another_aws_account <- function(Domai
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$accept_domain_transfer_from_another_aws_account_input(DomainName = DomainName, Password = Password)
   output <- .route53domains$accept_domain_transfer_from_another_aws_account_output()
@@ -129,7 +130,8 @@ route53domains_associate_delegation_signer_to_domain <- function(DomainName, Sig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$associate_delegation_signer_to_domain_input(DomainName = DomainName, SigningAttributes = SigningAttributes)
   output <- .route53domains$associate_delegation_signer_to_domain_output()
@@ -193,7 +195,8 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$cancel_domain_transfer_to_another_aws_account_input(DomainName = DomainName)
   output <- .route53domains$cancel_domain_transfer_to_another_aws_account_output()
@@ -224,15 +227,15 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' 
 #' The domain name can contain only the following characters:
 #' 
-#' -   Letters a through z. Domain names are not case sensitive.
+#' - Letters a through z. Domain names are not case sensitive.
 #' 
-#' -   Numbers 0 through 9.
+#' - Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
-#'     label.
+#' - Hyphen (-). You can't specify a hyphen at the beginning or end of a
+#'   label.
 #' 
-#' -   Period (.) to separate the labels in the name, such as the `.` in
-#'     `example.com`.
+#' - Period (.) to separate the labels in the name, such as the `.` in
+#'   `example.com`.
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
@@ -270,7 +273,8 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$check_domain_availability_input(DomainName = DomainName, IdnLangCode = IdnLangCode)
   output <- .route53domains$check_domain_availability_output()
@@ -299,15 +303,15 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' 
 #' The domain name can contain only the following characters:
 #' 
-#' -   Letters a through z. Domain names are not case sensitive.
+#' - Letters a through z. Domain names are not case sensitive.
 #' 
-#' -   Numbers 0 through 9.
+#' - Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
-#'     label.
+#' - Hyphen (-). You can't specify a hyphen at the beginning or end of a
+#'   label.
 #' 
-#' -   Period (.) to separate the labels in the name, such as the `.` in
-#'     `example.com`.
+#' - Period (.) to separate the labels in the name, such as the `.` in
+#'   `example.com`.
 #' @param AuthCode If the registrar for the top-level domain (TLD) requires an
 #' authorization code to transfer the domain, the code that you got from
 #' the current registrar for the domain.
@@ -342,7 +346,8 @@ route53domains_check_domain_transferability <- function(DomainName, AuthCode = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$check_domain_transferability_input(DomainName = DomainName, AuthCode = AuthCode)
   output <- .route53domains$check_domain_transferability_output()
@@ -408,7 +413,8 @@ route53domains_delete_domain <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$delete_domain_input(DomainName = DomainName)
   output <- .route53domains$delete_domain_output()
@@ -458,7 +464,8 @@ route53domains_delete_tags_for_domain <- function(DomainName, TagsToDelete) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$delete_tags_for_domain_input(DomainName = DomainName, TagsToDelete = TagsToDelete)
   output <- .route53domains$delete_tags_for_domain_output()
@@ -503,7 +510,8 @@ route53domains_disable_domain_auto_renew <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$disable_domain_auto_renew_input(DomainName = DomainName)
   output <- .route53domains$disable_domain_auto_renew_output()
@@ -558,7 +566,8 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$disable_domain_transfer_lock_input(DomainName = DomainName)
   output <- .route53domains$disable_domain_transfer_lock_output()
@@ -613,7 +622,8 @@ route53domains_disassociate_delegation_signer_from_domain <- function(DomainName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$disassociate_delegation_signer_from_domain_input(DomainName = DomainName, Id = Id)
   output <- .route53domains$disassociate_delegation_signer_from_domain_output()
@@ -668,7 +678,8 @@ route53domains_enable_domain_auto_renew <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$enable_domain_auto_renew_input(DomainName = DomainName)
   output <- .route53domains$enable_domain_auto_renew_output()
@@ -721,7 +732,8 @@ route53domains_enable_domain_transfer_lock <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$enable_domain_transfer_lock_input(DomainName = DomainName)
   output <- .route53domains$enable_domain_transfer_lock_output()
@@ -781,7 +793,8 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$get_contact_reachability_status_input(domainName = domainName)
   output <- .route53domains$get_contact_reachability_status_output()
@@ -960,7 +973,8 @@ route53domains_get_domain_detail <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$get_domain_detail_input(DomainName = DomainName)
   output <- .route53domains$get_domain_detail_output()
@@ -992,15 +1006,15 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' 
 #' The domain name can contain only the following characters:
 #' 
-#' -   Letters a through z. Domain names are not case sensitive.
+#' - Letters a through z. Domain names are not case sensitive.
 #' 
-#' -   Numbers 0 through 9.
+#' - Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
-#'     label.
+#' - Hyphen (-). You can't specify a hyphen at the beginning or end of a
+#'   label.
 #' 
-#' -   Period (.) to separate the labels in the name, such as the `.` in
-#'     `example.com`.
+#' - Period (.) to separate the labels in the name, such as the `.` in
+#'   `example.com`.
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
@@ -1048,7 +1062,8 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$get_domain_suggestions_input(DomainName = DomainName, SuggestionCount = SuggestionCount, OnlyAvailable = OnlyAvailable)
   output <- .route53domains$get_domain_suggestions_output()
@@ -1111,7 +1126,8 @@ route53domains_get_operation_detail <- function(OperationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$get_operation_detail_input(OperationId = OperationId)
   output <- .route53domains$get_operation_detail_output()
@@ -1205,7 +1221,8 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Domains")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Domains"),
+    stream_api = FALSE
   )
   input <- .route53domains$list_domains_input(FilterConditions = FilterConditions, SortCondition = SortCondition, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$list_domains_output()
@@ -1304,7 +1321,8 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Operations")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Operations"),
+    stream_api = FALSE
   )
   input <- .route53domains$list_operations_input(SubmittedSince = SubmittedSince, Marker = Marker, MaxItems = MaxItems, Status = Status, Type = Type, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53domains$list_operations_output()
@@ -1323,15 +1341,15 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
 #' Lists the following prices for either all the TLDs supported by
 #' Route 53, or the specified TLD:
 #' 
-#' -   Registration
+#' - Registration
 #' 
-#' -   Transfer
+#' - Transfer
 #' 
-#' -   Owner change
+#' - Owner change
 #' 
-#' -   Domain renewal
+#' - Domain renewal
 #' 
-#' -   Domain restoration
+#' - Domain restoration
 #'
 #' @usage
 #' route53domains_list_prices(Tld, Marker, MaxItems)
@@ -1407,7 +1425,8 @@ route53domains_list_prices <- function(Tld = NULL, Marker = NULL, MaxItems = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Prices")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Prices"),
+    stream_api = FALSE
   )
   input <- .route53domains$list_prices_input(Tld = Tld, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$list_prices_output()
@@ -1465,7 +1484,8 @@ route53domains_list_tags_for_domain <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$list_tags_for_domain_input(DomainName = DomainName)
   output <- .route53domains$list_tags_for_domain_output()
@@ -1484,9 +1504,9 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' Supported actions:
 #' 
-#' -   Changes the IPS tags of a .uk domain, and pushes it to transit.
-#'     Transit means that the domain is ready to be transferred to another
-#'     registrar.
+#' - Changes the IPS tags of a .uk domain, and pushes it to transit.
+#'   Transit means that the domain is ready to be transferred to another
+#'   registrar.
 #'
 #' @usage
 #' route53domains_push_domain(DomainName, Target)
@@ -1516,7 +1536,8 @@ route53domains_push_domain <- function(DomainName, Target) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$push_domain_input(DomainName = DomainName, Target = Target)
   output <- .route53domains$push_domain_output()
@@ -1536,32 +1557,32 @@ route53domains_push_domain <- function(DomainName, Target) {
 #' 
 #' When you register a domain, Amazon Route 53 does the following:
 #' 
-#' -   Creates a Route 53 hosted zone that has the same name as the domain.
-#'     Route 53 assigns four name servers to your hosted zone and
-#'     automatically updates your domain registration with the names of
-#'     these name servers.
+#' - Creates a Route 53 hosted zone that has the same name as the domain.
+#'   Route 53 assigns four name servers to your hosted zone and
+#'   automatically updates your domain registration with the names of these
+#'   name servers.
 #' 
-#' -   Enables auto renew, so your domain registration will renew
-#'     automatically each year. We'll notify you in advance of the renewal
-#'     date so you can choose whether to renew the registration.
+#' - Enables auto renew, so your domain registration will renew
+#'   automatically each year. We'll notify you in advance of the renewal
+#'   date so you can choose whether to renew the registration.
 #' 
-#' -   Optionally enables privacy protection, so WHOIS queries return
-#'     contact for the registrar or the phrase "REDACTED FOR PRIVACY", or
-#'     "On behalf of \<domain name\> owner." If you don't enable privacy
-#'     protection, WHOIS queries return the information that you entered
-#'     for the administrative, registrant, and technical contacts.
+#' - Optionally enables privacy protection, so WHOIS queries return contact
+#'   for the registrar or the phrase "REDACTED FOR PRIVACY", or "On behalf
+#'   of \<domain name\> owner." If you don't enable privacy protection,
+#'   WHOIS queries return the information that you entered for the
+#'   administrative, registrant, and technical contacts.
 #' 
-#'     While some domains may allow different privacy settings per contact,
-#'     we recommend specifying the same privacy setting for all contacts.
+#'   While some domains may allow different privacy settings per contact,
+#'   we recommend specifying the same privacy setting for all contacts.
 #' 
-#' -   If registration is successful, returns an operation ID that you can
-#'     use to track the progress and completion of the action. If the
-#'     request is not completed successfully, the domain registrant is
-#'     notified by email.
+#' - If registration is successful, returns an operation ID that you can
+#'   use to track the progress and completion of the action. If the request
+#'   is not completed successfully, the domain registrant is notified by
+#'   email.
 #' 
-#' -   Charges your Amazon Web Services account an amount based on the
-#'     top-level domain. For more information, see [Amazon Route 53
-#'     Pricing](https://aws.amazon.com/route53/pricing/).
+#' - Charges your Amazon Web Services account an amount based on the
+#'   top-level domain. For more information, see [Amazon Route 53
+#'   Pricing](https://aws.amazon.com/route53/pricing/).
 #'
 #' @usage
 #' route53domains_register_domain(DomainName, IdnLangCode, DurationInYears,
@@ -1577,15 +1598,15 @@ route53domains_push_domain <- function(DomainName, Target) {
 #' 
 #' The domain name can contain only the following characters:
 #' 
-#' -   Letters a through z. Domain names are not case sensitive.
+#' - Letters a through z. Domain names are not case sensitive.
 #' 
-#' -   Numbers 0 through 9.
+#' - Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
-#'     label.
+#' - Hyphen (-). You can't specify a hyphen at the beginning or end of a
+#'   label.
 #' 
-#' -   Period (.) to separate the labels in the name, such as the `.` in
-#'     `example.com`.
+#' - Period (.) to separate the labels in the name, such as the `.` in
+#'   `example.com`.
 #' 
 #' Internationalized domain names are not supported for some top-level
 #' domains. To determine whether the TLD that you want to use supports
@@ -1776,7 +1797,8 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$register_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact, BillingContact = BillingContact, PrivacyProtectBillingContact = PrivacyProtectBillingContact)
   output <- .route53domains$register_domain_output()
@@ -1839,7 +1861,8 @@ route53domains_reject_domain_transfer_from_another_aws_account <- function(Domai
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$reject_domain_transfer_from_another_aws_account_input(DomainName = DomainName)
   output <- .route53domains$reject_domain_transfer_from_another_aws_account_output()
@@ -1910,7 +1933,8 @@ route53domains_renew_domain <- function(DomainName, DurationInYears = NULL, Curr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$renew_domain_input(DomainName = DomainName, DurationInYears = DurationInYears, CurrentExpiryYear = CurrentExpiryYear)
   output <- .route53domains$renew_domain_output()
@@ -1967,7 +1991,8 @@ route53domains_resend_contact_reachability_email <- function(domainName = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$resend_contact_reachability_email_input(domainName = domainName)
   output <- .route53domains$resend_contact_reachability_email_output()
@@ -2010,7 +2035,8 @@ route53domains_resend_operation_authorization <- function(OperationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$resend_operation_authorization_input(OperationId = OperationId)
   output <- .route53domains$resend_operation_authorization_output()
@@ -2060,7 +2086,8 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$retrieve_domain_auth_code_input(DomainName = DomainName)
   output <- .route53domains$retrieve_domain_auth_code_output()
@@ -2080,22 +2107,20 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' For more information about transferring domains, see the following
 #' topics:
 #' 
-#' -   For transfer requirements, a detailed procedure, and information
-#'     about viewing the status of a domain that you're transferring to
-#'     Route 53, see [Transferring Registration for a Domain to Amazon
-#'     Route
-#'     53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html)
-#'     in the *Amazon Route 53 Developer Guide*.
+#' - For transfer requirements, a detailed procedure, and information about
+#'   viewing the status of a domain that you're transferring to Route 53,
+#'   see [Transferring Registration for a Domain to Amazon Route
+#'   53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-to-route-53.html)
+#'   in the *Amazon Route 53 Developer Guide*.
 #' 
-#' -   For information about how to transfer a domain from one Amazon Web
-#'     Services account to another, see
-#'     [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
+#' - For information about how to transfer a domain from one Amazon Web
+#'   Services account to another, see
+#'   [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #' 
-#' -   For information about how to transfer a domain to another domain
-#'     registrar, see [Transferring a Domain from Amazon Route 53 to
-#'     Another
-#'     Registrar](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html)
-#'     in the *Amazon Route 53 Developer Guide*.
+#' - For information about how to transfer a domain to another domain
+#'   registrar, see [Transferring a Domain from Amazon Route 53 to Another
+#'   Registrar](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-transfer-from-route-53.html)
+#'   in the *Amazon Route 53 Developer Guide*.
 #' 
 #' During the transfer of any country code top-level domains (ccTLDs) to
 #' Route 53, except for .cc and .tv, updates to the owner contact are
@@ -2138,15 +2163,15 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' 
 #' The domain name can contain only the following characters:
 #' 
-#' -   Letters a through z. Domain names are not case sensitive.
+#' - Letters a through z. Domain names are not case sensitive.
 #' 
-#' -   Numbers 0 through 9.
+#' - Numbers 0 through 9.
 #' 
-#' -   Hyphen (-). You can't specify a hyphen at the beginning or end of a
-#'     label.
+#' - Hyphen (-). You can't specify a hyphen at the beginning or end of a
+#'   label.
 #' 
-#' -   Period (.) to separate the labels in the name, such as the `.` in
-#'     `example.com`.
+#' - Period (.) to separate the labels in the name, such as the `.` in
+#'   `example.com`.
 #' @param IdnLangCode Reserved for future use.
 #' @param DurationInYears &#91;required&#93; The number of years that you want to register the domain for. Domains
 #' are registered for a minimum of one year. The maximum period depends on
@@ -2328,7 +2353,8 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$transfer_domain_input(DomainName = DomainName, IdnLangCode = IdnLangCode, DurationInYears = DurationInYears, Nameservers = Nameservers, AuthCode = AuthCode, AutoRenew = AutoRenew, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, PrivacyProtectAdminContact = PrivacyProtectAdminContact, PrivacyProtectRegistrantContact = PrivacyProtectRegistrantContact, PrivacyProtectTechContact = PrivacyProtectTechContact, BillingContact = BillingContact, PrivacyProtectBillingContact = PrivacyProtectBillingContact)
   output <- .route53domains$transfer_domain_output()
@@ -2347,16 +2373,16 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' Transfers a domain from the current Amazon Web Services account to
 #' another Amazon Web Services account. Note the following:
 #' 
-#' -   The Amazon Web Services account that you're transferring the domain
-#'     to must accept the transfer. If the other account doesn't accept the
-#'     transfer within 3 days, we cancel the transfer. See
-#'     [`accept_domain_transfer_from_another_aws_account`][route53domains_accept_domain_transfer_from_another_aws_account].
+#' - The Amazon Web Services account that you're transferring the domain to
+#'   must accept the transfer. If the other account doesn't accept the
+#'   transfer within 3 days, we cancel the transfer. See
+#'   [`accept_domain_transfer_from_another_aws_account`][route53domains_accept_domain_transfer_from_another_aws_account].
 #' 
-#' -   You can cancel the transfer before the other account accepts it. See
-#'     [`cancel_domain_transfer_to_another_aws_account`][route53domains_cancel_domain_transfer_to_another_aws_account].
+#' - You can cancel the transfer before the other account accepts it. See
+#'   [`cancel_domain_transfer_to_another_aws_account`][route53domains_cancel_domain_transfer_to_another_aws_account].
 #' 
-#' -   The other account can reject the transfer. See
-#'     [`reject_domain_transfer_from_another_aws_account`][route53domains_reject_domain_transfer_from_another_aws_account].
+#' - The other account can reject the transfer. See
+#'   [`reject_domain_transfer_from_another_aws_account`][route53domains_reject_domain_transfer_from_another_aws_account].
 #' 
 #' When you transfer a domain from one Amazon Web Services account to
 #' another, Route 53 doesn't transfer the hosted zone that is associated
@@ -2412,7 +2438,8 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$transfer_domain_to_another_aws_account_input(DomainName = DomainName, AccountId = AccountId)
   output <- .route53domains$transfer_domain_to_another_aws_account_output()
@@ -2562,7 +2589,8 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$update_domain_contact_input(DomainName = DomainName, AdminContact = AdminContact, RegistrantContact = RegistrantContact, TechContact = TechContact, Consent = Consent, BillingContact = BillingContact)
   output <- .route53domains$update_domain_contact_output()
@@ -2671,7 +2699,8 @@ route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$update_domain_contact_privacy_input(DomainName = DomainName, AdminPrivacy = AdminPrivacy, RegistrantPrivacy = RegistrantPrivacy, TechPrivacy = TechPrivacy, BillingPrivacy = BillingPrivacy)
   output <- .route53domains$update_domain_contact_privacy_output()
@@ -2740,7 +2769,8 @@ route53domains_update_domain_nameservers <- function(DomainName, FIAuthKey = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$update_domain_nameservers_input(DomainName = DomainName, FIAuthKey = FIAuthKey, Nameservers = Nameservers)
   output <- .route53domains$update_domain_nameservers_output()
@@ -2795,7 +2825,8 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53domains$update_tags_for_domain_input(DomainName = DomainName, TagsToUpdate = TagsToUpdate)
   output <- .route53domains$update_tags_for_domain_output()
@@ -2881,7 +2912,8 @@ route53domains_view_billing <- function(Start = NULL, End = NULL, Marker = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "BillingRecords")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "BillingRecords"),
+    stream_api = FALSE
   )
   input <- .route53domains$view_billing_input(Start = Start, End = End, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$view_billing_output()

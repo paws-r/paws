@@ -27,29 +27,29 @@ the VPC.
 \item \code{entry.icmp.code} - The ICMP code specified in the entry, if any.
 \item \code{entry.icmp.type} - The ICMP type specified in the entry, if any.
 \item \code{entry.ipv6-cidr} - The IPv6 CIDR range specified in the entry.
-\item \code{entry.port-range.from} - The start of the port range specified in
-the entry.
+\item \code{entry.port-range.from} - The start of the port range specified in the
+entry.
 \item \code{entry.port-range.to} - The end of the port range specified in the
 entry.
-\item \code{entry.protocol} - The protocol specified in the entry (\code{tcp} |
-\code{udp} | \code{icmp} or a protocol number).
-\item \code{entry.rule-action} - Allows or denies the matching traffic (\code{allow}
-| \code{deny}).
+\item \code{entry.protocol} - The protocol specified in the entry (\code{tcp} | \code{udp}
+| \code{icmp} or a protocol number).
+\item \code{entry.rule-action} - Allows or denies the matching traffic (\code{allow} |
+\code{deny}).
 \item \code{entry.egress} - A Boolean that indicates the type of rule. Specify
 \code{true} for egress rules, or \code{false} for ingress rules.
-\item \code{entry.rule-number} - The number of an entry (in other words, rule)
-in the set of ACL entries.
+\item \code{entry.rule-number} - The number of an entry (in other words, rule) in
+the set of ACL entries.
 \item \code{network-acl-id} - The ID of the network ACL.
 \item \code{owner-id} - The ID of the Amazon Web Services account that owns the
 network ACL.
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this
-filter to find all resources assigned a tag with a specific key,
-regardless of the tag value.
+resource. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless
+of the tag value.
 \item \code{vpc-id} - The ID of the VPC for the network ACL.
 }}
 

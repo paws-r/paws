@@ -46,7 +46,7 @@ Default: Instances are launched in any available Availability Zone.}
 \item{BlockDurationMinutes}{Deprecated.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency in Amazon EC2 API requests}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency in Amazon EC2 API requests}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -91,12 +91,12 @@ current date and time.}
 (\emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).
 \itemize{
 \item For a persistent request, the request remains active until the
-\code{ValidUntil} date and time is reached. Otherwise, the request
-remains active until you cancel it.
-\item For a one-time request, the request remains active until all
-instances launch, the request is canceled, or the \code{ValidUntil} date
-and time is reached. By default, the request is valid for 7 days
-from the date the request was created.
+\code{ValidUntil} date and time is reached. Otherwise, the request remains
+active until you cancel it.
+\item For a one-time request, the request remains active until all instances
+launch, the request is canceled, or the \code{ValidUntil} date and time is
+reached. By default, the request is valid for 7 days from the date the
+request was created.
 }}
 
 \item{TagSpecifications}{The key-value pair for tagging the Spot Instance request on creation.

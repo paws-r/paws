@@ -36,7 +36,8 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .secretsmanager$batch_get_secret_value_output()
@@ -71,7 +72,8 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$cancel_rotate_secret_input(SecretId = SecretId)
   output <- .secretsmanager$cancel_rotate_secret_output()
@@ -118,19 +120,19 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness of your versions within the specified secret.
 #' 
-#' -   If the `ClientRequestToken` value isn't already associated with a
-#'     version of the secret then a new version of the secret is created.
+#' - If the `ClientRequestToken` value isn't already associated with a
+#'   version of the secret then a new version of the secret is created.
 #' 
-#' -   If a version with this value already exists and the version
-#'     `SecretString` and `SecretBinary` values are the same as those in
-#'     the request, then the request is ignored.
+#' - If a version with this value already exists and the version
+#'   `SecretString` and `SecretBinary` values are the same as those in the
+#'   request, then the request is ignored.
 #' 
-#' -   If a version with this value already exists and that version's
-#'     `SecretString` and `SecretBinary` values are different from those in
-#'     the request, then the request fails because you cannot modify an
-#'     existing version. Instead, use
-#'     [`put_secret_value`][secretsmanager_put_secret_value] to create a
-#'     new version.
+#' - If a version with this value already exists and that version's
+#'   `SecretString` and `SecretBinary` values are different from those in
+#'   the request, then the request fails because you cannot modify an
+#'   existing version. Instead, use
+#'   [`put_secret_value`][secretsmanager_put_secret_value] to create a new
+#'   version.
 #' 
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
@@ -218,7 +220,8 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$create_secret_output()
@@ -253,7 +256,8 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$delete_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$delete_resource_policy_output()
@@ -310,7 +314,8 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$delete_secret_input(SecretId = SecretId, RecoveryWindowInDays = RecoveryWindowInDays, ForceDeleteWithoutRecovery = ForceDeleteWithoutRecovery)
   output <- .secretsmanager$delete_secret_output()
@@ -344,7 +349,8 @@ secretsmanager_describe_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$describe_secret_input(SecretId = SecretId)
   output <- .secretsmanager$describe_secret_output()
@@ -391,7 +397,8 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$get_random_password_input(PasswordLength = PasswordLength, ExcludeCharacters = ExcludeCharacters, ExcludeNumbers = ExcludeNumbers, ExcludePunctuation = ExcludePunctuation, ExcludeUppercase = ExcludeUppercase, ExcludeLowercase = ExcludeLowercase, IncludeSpace = IncludeSpace, RequireEachIncludedType = RequireEachIncludedType)
   output <- .secretsmanager$get_random_password_output()
@@ -427,7 +434,8 @@ secretsmanager_get_resource_policy <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$get_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$get_resource_policy_output()
@@ -480,7 +488,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$get_secret_value_input(SecretId = SecretId, VersionId = VersionId, VersionStage = VersionStage)
   output <- .secretsmanager$get_secret_value_output()
@@ -495,7 +504,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' Lists the versions of a secret
 #'
 #' @description
-#' Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see [Secrets Manager concepts: Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
+#' Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see [Secrets Manager concepts: Versions](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/](https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/) for full documentation.
 #'
@@ -528,7 +537,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .secretsmanager$list_secret_version_ids_input(SecretId = SecretId, MaxResults = MaxResults, NextToken = NextToken, IncludeDeprecated = IncludeDeprecated)
   output <- .secretsmanager$list_secret_version_ids_output()
@@ -571,7 +581,8 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
@@ -608,11 +619,11 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' secrets. In addition to using these features, carefully inspect the
 #' following policies to confirm that they do not grant public access:
 #' 
-#' -   Identity-based policies attached to associated Amazon Web Services
-#'     principals (for example, IAM roles)
+#' - Identity-based policies attached to associated Amazon Web Services
+#'   principals (for example, IAM roles)
 #' 
-#' -   Resource-based policies attached to associated Amazon Web Services
-#'     resources (for example, Key Management Service (KMS) keys)
+#' - Resource-based policies attached to associated Amazon Web Services
+#'   resources (for example, Key Management Service (KMS) keys)
 #' 
 #' To review permissions to your secrets, see [Determine who has
 #' permissions to your
@@ -627,7 +638,8 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$put_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy, BlockPublicPolicy = BlockPublicPolicy)
   output <- .secretsmanager$put_resource_policy_output()
@@ -672,18 +684,17 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness of your versions within the specified secret.
 #' 
-#' -   If the `ClientRequestToken` value isn't already associated with a
-#'     version of the secret then a new version of the secret is created.
+#' - If the `ClientRequestToken` value isn't already associated with a
+#'   version of the secret then a new version of the secret is created.
 #' 
-#' -   If a version with this value already exists and that version's
-#'     `SecretString` or `SecretBinary` values are the same as those in the
-#'     request then the request is ignored. The operation is idempotent.
+#' - If a version with this value already exists and that version's
+#'   `SecretString` or `SecretBinary` values are the same as those in the
+#'   request then the request is ignored. The operation is idempotent.
 #' 
-#' -   If a version with this value already exists and the version of the
-#'     `SecretString` and `SecretBinary` values are different from those in
-#'     the request, then the request fails because you can't modify a
-#'     secret version. You can only create new versions to store new secret
-#'     values.
+#' - If a version with this value already exists and the version of the
+#'   `SecretString` and `SecretBinary` values are different from those in
+#'   the request, then the request fails because you can't modify a secret
+#'   version. You can only create new versions to store new secret values.
 #' 
 #' This value becomes the `VersionId` of the new version.
 #' @param SecretBinary The binary data to encrypt and store in the new version of the secret.
@@ -742,7 +753,8 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$put_secret_value_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, SecretBinary = SecretBinary, SecretString = SecretString, VersionStages = VersionStages, RotationToken = RotationToken)
   output <- .secretsmanager$put_secret_value_output()
@@ -774,7 +786,8 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$remove_regions_from_replication_input(SecretId = SecretId, RemoveReplicaRegions = RemoveReplicaRegions)
   output <- .secretsmanager$remove_regions_from_replication_output()
@@ -789,7 +802,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' Replicates the secret to a new Regions
 #'
 #' @description
-#' Replicates the secret to a new Regions. See [Multi-Region secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/replicate-secrets.html).
+#' Replicates the secret to a new Regions. See [Multi-Region secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create-manage-multi-region-secrets.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_replicate_secret_to_regions/](https://www.paws-r-sdk.com/docs/secretsmanager_replicate_secret_to_regions/) for full documentation.
 #'
@@ -807,7 +820,8 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$replicate_secret_to_regions_input(SecretId = SecretId, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$replicate_secret_to_regions_output()
@@ -842,7 +856,8 @@ secretsmanager_restore_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$restore_secret_input(SecretId = SecretId)
   output <- .secretsmanager$restore_secret_output()
@@ -915,7 +930,8 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, RotateImmediately = RotateImmediately)
   output <- .secretsmanager$rotate_secret_output()
@@ -946,7 +962,8 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$stop_replication_to_replica_input(SecretId = SecretId)
   output <- .secretsmanager$stop_replication_to_replica_output()
@@ -989,7 +1006,8 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$tag_resource_input(SecretId = SecretId, Tags = Tags)
   output <- .secretsmanager$tag_resource_output()
@@ -1033,7 +1051,8 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$untag_resource_input(SecretId = SecretId, TagKeys = TagKeys)
   output <- .secretsmanager$untag_resource_output()
@@ -1083,7 +1102,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' don't have `kms:Encrypt` permission to the new key, Secrets Manager does
 #' not re-encrypt existing secret versions with the new key. For more
 #' information about versions and staging labels, see [Concepts:
-#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
+#' Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
 #' 
 #' A key alias is always prefixed by `alias/`, for example
 #' `alias/aws/secretsmanager`. For more information, see [About
@@ -1134,7 +1153,8 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString)
   output <- .secretsmanager$update_secret_output()
@@ -1149,7 +1169,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' Modifies the staging labels attached to a version of a secret
 #'
 #' @description
-#' Modifies the staging labels attached to a version of a secret. Secrets Manager uses staging labels to track a version as it progresses through the secret rotation process. Each staging label can be attached to only one version at a time. To add a staging label to a version when it is already attached to another version, Secrets Manager first removes it from the other version first and then attaches it to this one. For more information about versions and staging labels, see [Concepts: Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version).
+#' Modifies the staging labels attached to a version of a secret. Secrets Manager uses staging labels to track a version as it progresses through the secret rotation process. Each staging label can be attached to only one version at a time. To add a staging label to a version when it is already attached to another version, Secrets Manager first removes it from the other version first and then attaches it to this one. For more information about versions and staging labels, see [Concepts: Version](https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version).
 #'
 #' See [https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/](https://www.paws-r-sdk.com/docs/secretsmanager_update_secret_version_stage/) for full documentation.
 #'
@@ -1181,7 +1201,8 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$update_secret_version_stage_input(SecretId = SecretId, VersionStage = VersionStage, RemoveFromVersionId = RemoveFromVersionId, MoveToVersionId = MoveToVersionId)
   output <- .secretsmanager$update_secret_version_stage_output()
@@ -1218,7 +1239,8 @@ secretsmanager_validate_resource_policy <- function(SecretId = NULL, ResourcePol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$validate_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy)
   output <- .secretsmanager$validate_resource_policy_output()

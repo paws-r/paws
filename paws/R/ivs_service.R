@@ -26,34 +26,34 @@ NULL
 #' 
 #' **Allowed Header Values**
 #' 
-#' -   ` Accept: ` application/json
+#' - ` Accept: ` application/json
 #' 
-#' -   ` Accept-Encoding: ` gzip, deflate
+#' - ` Accept-Encoding: ` gzip, deflate
 #' 
-#' -   ` Content-Type: `application/json
+#' - ` Content-Type: `application/json
 #' 
 #' **Key Concepts**
 #' 
-#' -   **Channel** — Stores configuration data related to your live stream.
-#'     You first create a channel and then use the channel’s stream key to
-#'     start your live stream.
+#' - **Channel** — Stores configuration data related to your live stream.
+#'   You first create a channel and then use the channel’s stream key to
+#'   start your live stream.
 #' 
-#' -   **Stream key** — An identifier assigned by Amazon IVS when you
-#'     create a channel, which is then used to authorize streaming. *Treat
-#'     the stream key like a secret, since it allows anyone to stream to
-#'     the channel.*
+#' - **Stream key** — An identifier assigned by Amazon IVS when you create
+#'   a channel, which is then used to authorize streaming. *Treat the
+#'   stream key like a secret, since it allows anyone to stream to the
+#'   channel.*
 #' 
-#' -   **Playback key pair** — Video playback may be restricted using
-#'     playback-authorization tokens, which use public-key encryption. A
-#'     playback key pair is the public-private pair of keys used to sign
-#'     and validate the playback-authorization token.
+#' - **Playback key pair** — Video playback may be restricted using
+#'   playback-authorization tokens, which use public-key encryption. A
+#'   playback key pair is the public-private pair of keys used to sign and
+#'   validate the playback-authorization token.
 #' 
-#' -   **Recording configuration** — Stores configuration related to
-#'     recording a live stream and where to store the recorded content.
-#'     Multiple channels can reference the same recording configuration.
+#' - **Recording configuration** — Stores configuration related to
+#'   recording a live stream and where to store the recorded content.
+#'   Multiple channels can reference the same recording configuration.
 #' 
-#' -   **Playback restriction policy** — Restricts playback by countries
-#'     and/or origin sites.
+#' - **Playback restriction policy** — Restricts playback by countries
+#'   and/or origin sites.
 #' 
 #' For more information about your IVS live stream, also see [Getting
 #' Started with IVS Low-Latency
@@ -89,15 +89,15 @@ NULL
 #' 
 #' Note the differences between these concepts:
 #' 
-#' -   *Authentication* is about verifying identity. You need to be
-#'     authenticated to sign Amazon IVS API requests.
+#' - *Authentication* is about verifying identity. You need to be
+#'   authenticated to sign Amazon IVS API requests.
 #' 
-#' -   *Authorization* is about granting permissions. Your IAM roles need
-#'     to have permissions for Amazon IVS API requests. In addition,
-#'     authorization is needed to view [Amazon IVS private
-#'     channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html).
-#'     (Private channels are channels that are enabled for "playback
-#'     authorization.")
+#' - *Authorization* is about granting permissions. Your IAM roles need to
+#'   have permissions for Amazon IVS API requests. In addition,
+#'   authorization is needed to view [Amazon IVS private
+#'   channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html).
+#'   (Private channels are channels that are enabled for "playback
+#'   authorization.")
 #' 
 #' **Authentication**
 #' 
@@ -114,14 +114,14 @@ NULL
 #' 
 #' For more information:
 #' 
-#' -   Authentication and generating signatures — See [Authenticating
-#'     Requests (Amazon Web Services Signature Version
-#'     4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
-#'     in the *Amazon Web Services General Reference*.
+#' - Authentication and generating signatures — See [Authenticating
+#'   Requests (Amazon Web Services Signature Version
+#'   4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
+#'   in the *Amazon Web Services General Reference*.
 #' 
-#' -   Managing Amazon IVS permissions — See [Identity and Access
-#'     Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
-#'     on the Security page of the *Amazon IVS User Guide*.
+#' - Managing Amazon IVS permissions — See [Identity and Access
+#'   Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
+#'   on the Security page of the *Amazon IVS User Guide*.
 #' 
 #' **Amazon Resource Names (ARNs)**
 #' 

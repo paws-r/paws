@@ -23,21 +23,20 @@ machinelearning_describe_ml_models(
 \itemize{
 \item \code{CreatedAt} - Sets the search criteria to \code{MLModel} creation date.
 \item \code{Status} - Sets the search criteria to \code{MLModel} status.
-\item \code{Name} - Sets the search criteria to the contents of \code{MLModel}
-\code{Name}.
-\item \code{IAMUser} - Sets the search criteria to the user account that
-invoked the \code{MLModel} creation.
-\item \code{TrainingDataSourceId} - Sets the search criteria to the
-\code{DataSource} used to train one or more \code{MLModel}.
+\item \code{Name} - Sets the search criteria to the contents of \code{MLModel} \code{Name}.
+\item \code{IAMUser} - Sets the search criteria to the user account that invoked
+the \code{MLModel} creation.
+\item \code{TrainingDataSourceId} - Sets the search criteria to the \code{DataSource}
+used to train one or more \code{MLModel}.
 \item \code{RealtimeEndpointStatus} - Sets the search criteria to the \code{MLModel}
 real-time endpoint status.
 \item \code{MLModelType} - Sets the search criteria to \code{MLModel} type: binary,
 regression, or multi-class.
 \item \code{Algorithm} - Sets the search criteria to the algorithm that the
 \code{MLModel} uses.
-\item \code{TrainingDataURI} - Sets the search criteria to the data file(s)
-used in training a \code{MLModel}. The URL can identify either a file or
-an Amazon Simple Storage Service (Amazon S3) bucket or directory.
+\item \code{TrainingDataURI} - Sets the search criteria to the data file(s) used
+in training a \code{MLModel}. The URL can identify either a file or an
+Amazon Simple Storage Service (Amazon S3) bucket or directory.
 }}
 
 \item{EQ}{The equal to operator. The \code{MLModel} results will have \code{FilterVariable}

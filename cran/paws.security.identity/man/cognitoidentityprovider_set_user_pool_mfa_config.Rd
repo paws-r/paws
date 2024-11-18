@@ -25,8 +25,8 @@ Valid values include:
 \itemize{
 \item \code{OFF} MFA won't be used for any users.
 \item \code{ON} MFA is required for all users to sign in.
-\item \code{OPTIONAL} MFA will be required only for individual users who have
-an MFA factor activated.
+\item \code{OPTIONAL} MFA will be required only for individual users who have an
+MFA factor activated.
 }}
 }
 \description{

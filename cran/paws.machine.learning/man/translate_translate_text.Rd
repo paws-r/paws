@@ -49,8 +49,7 @@ following options:
 \item Brevity: reduces the length of the translated output for most
 translations.
 \item Formality: sets the formality level of the output text.
-\item Profanity: masks profane words and phrases in your translation
-output.
+\item Profanity: masks profane words and phrases in your translation output.
 }}
 }
 \description{

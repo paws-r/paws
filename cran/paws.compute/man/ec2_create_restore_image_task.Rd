@@ -26,9 +26,8 @@ the same name as the original AMI.}
 the AMI, the snapshots, or both.
 \itemize{
 \item To tag the AMI, the value for \code{ResourceType} must be \code{image}.
-\item To tag the snapshots, the value for \code{ResourceType} must be
-\code{snapshot}. The same tag is applied to all of the snapshots that are
-created.
+\item To tag the snapshots, the value for \code{ResourceType} must be \code{snapshot}.
+The same tag is applied to all of the snapshots that are created.
 }}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

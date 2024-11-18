@@ -85,8 +85,7 @@ domain in the redirection list to the domain list.}
 \item CAA: Restricts CAs that can create SSL/TLS certifications for the
 domain.
 \item CNAME: Returns another domain name.
-\item DS: Record that identifies the DNSSEC signing key of a delegated
-zone.
+\item DS: Record that identifies the DNSSEC signing key of a delegated zone.
 \item MX: Specifies mail servers.
 \item NAPTR: Regular-expression-based rewriting of domain names.
 \item NS: Authoritative name servers.

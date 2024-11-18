@@ -44,14 +44,14 @@ NULL
 #' You can make calls using the endpoints listed in [WAF endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/waf.html).
 #' 
-#' -   For regional applications, you can use any of the endpoints in the
-#'     list. A regional application can be an Application Load Balancer
-#'     (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an
-#'     Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#'     Services Verified Access instance.
+#' - For regional applications, you can use any of the endpoints in the
+#'   list. A regional application can be an Application Load Balancer
+#'   (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an
+#'   Amazon Cognito user pool, an App Runner service, or an Amazon Web
+#'   Services Verified Access instance.
 #' 
-#' -   For Amazon CloudFront applications, you must use the API endpoint
-#'     listed for US East (N. Virginia): us-east-1.
+#' - For Amazon CloudFront applications, you must use the API endpoint
+#'   listed for US East (N. Virginia): us-east-1.
 #' 
 #' Alternatively, you can use one of the Amazon Web Services SDKs to access
 #' an API that's tailored to the programming language or platform that
@@ -63,18 +63,18 @@ NULL
 #' functionality as the older versions, with the following major
 #' improvements:
 #' 
-#' -   You use one API for both global and regional applications. Where you
-#'     need to distinguish the scope, you specify a `Scope` parameter and
-#'     set it to `CLOUDFRONT` or `REGIONAL`.
+#' - You use one API for both global and regional applications. Where you
+#'   need to distinguish the scope, you specify a `Scope` parameter and set
+#'   it to `CLOUDFRONT` or `REGIONAL`.
 #' 
-#' -   You can define a web ACL or rule group with a single call, and
-#'     update it with a single call. You define all rule specifications in
-#'     JSON format, and pass them to your rule group or web ACL calls.
+#' - You can define a web ACL or rule group with a single call, and update
+#'   it with a single call. You define all rule specifications in JSON
+#'   format, and pass them to your rule group or web ACL calls.
 #' 
-#' -   The limits WAF places on the use of rules more closely reflects the
-#'     cost of running each type of rule. Rule groups include capacity
-#'     settings, so you know the maximum cost of a rule group when you use
-#'     it.
+#' - The limits WAF places on the use of rules more closely reflects the
+#'   cost of running each type of rule. Rule groups include capacity
+#'   settings, so you know the maximum cost of a rule group when you use
+#'   it.
 #'
 #' @param
 #' config

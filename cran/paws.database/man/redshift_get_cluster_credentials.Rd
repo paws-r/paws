@@ -32,8 +32,8 @@ Constraints:
 \itemize{
 \item Must be 1 to 64 alphanumeric characters or hyphens. The user name
 can't be \code{PUBLIC}.
-\item Must contain uppercase or lowercase letters, numbers, underscore,
-plus sign, period (dot), at symbol (@), or hyphen.
+\item Must contain uppercase or lowercase letters, numbers, underscore, plus
+sign, period (dot), at symbol (@), or hyphen.
 \item First character must be a letter.
 \item Must not contain a colon ( : ) or slash ( / ).
 \item Cannot be a reserved word. A list of reserved words can be found in
@@ -47,8 +47,8 @@ in the Amazon Redshift Database Developer Guide.
 Constraints:
 \itemize{
 \item Must be 1 to 64 alphanumeric characters or hyphens
-\item Must contain uppercase or lowercase letters, numbers, underscore,
-plus sign, period (dot), at symbol (@), or hyphen.
+\item Must contain uppercase or lowercase letters, numbers, underscore, plus
+sign, period (dot), at symbol (@), or hyphen.
 \item First character must be a letter.
 \item Must not contain a colon ( : ) or slash ( / ).
 \item Cannot be a reserved word. A list of reserved words can be found in

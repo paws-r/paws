@@ -57,9 +57,8 @@ appeared before they were updated with the
 \item \code{NONE} - If \code{ReturnValues} is not specified, or if its value is
 \code{NONE}, then nothing is returned. (This setting is the default for
 \code{ReturnValues}.)
-\item \code{ALL_OLD} - If \code{\link[=dynamodb_put_item]{put_item}} overwrote an
-attribute name-value pair, then the content of the old item is
-returned.
+\item \code{ALL_OLD} - If \code{\link[=dynamodb_put_item]{put_item}} overwrote an attribute
+name-value pair, then the content of the old item is returned.
 }
 
 The values returned are strongly consistent.
@@ -105,8 +104,8 @@ The following are some use cases for using \code{ExpressionAttributeNames}:
 \itemize{
 \item To access an attribute whose name conflicts with a DynamoDB reserved
 word.
-\item To create a placeholder for repeating occurrences of an attribute
-name in an expression.
+\item To create a placeholder for repeating occurrences of an attribute name
+in an expression.
 \item To prevent special characters in an attribute name from being
 misinterpreted in an expression.
 }

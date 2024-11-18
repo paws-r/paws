@@ -52,7 +52,8 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
     http_method = "POST",
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/activate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$activate_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$activate_key_signing_key_output()
@@ -88,11 +89,11 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' 
 #' The following are the supported partitions:
 #' 
-#' -   `aws` - Amazon Web Services Regions
+#' - `aws` - Amazon Web Services Regions
 #' 
-#' -   `aws-cn` - China Regions
+#' - `aws-cn` - China Regions
 #' 
-#' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
+#' - `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
 #' For more information, see [Access
 #' Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -162,7 +163,8 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/associatevpc",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$associate_vpc_with_hosted_zone_input(HostedZoneId = HostedZoneId, VPC = VPC, Comment = Comment)
   output <- .route53$associate_vpc_with_hosted_zone_output()
@@ -195,10 +197,10 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' Use [`change_cidr_collection`][route53_change_cidr_collection] to
 #' perform the following actions:
 #' 
-#' -   `PUT`: Create a CIDR block within the specified collection.
+#' - `PUT`: Create a CIDR block within the specified collection.
 #' 
-#' -   ` DELETE_IF_EXISTS`: Delete an existing CIDR block from the
-#'     collection.
+#' - ` DELETE_IF_EXISTS`: Delete an existing CIDR block from the
+#'   collection.
 #'
 #' @usage
 #' route53_change_cidr_collection(Id, CollectionVersion, Changes)
@@ -212,13 +214,13 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' then include that value with the change request. This prevents Route 53
 #' from overwriting an intervening update:
 #' 
-#' -   If the value in the request matches the value of `CollectionVersion`
-#'     in the collection, Route 53 updates the collection.
+#' - If the value in the request matches the value of `CollectionVersion`
+#'   in the collection, Route 53 updates the collection.
 #' 
-#' -   If the value of `CollectionVersion` in the collection is greater
-#'     than the value in the request, the collection was changed after you
-#'     got the version number. Route 53 does not update the collection, and
-#'     it returns a `CidrCollectionVersionMismatch` error.
+#' - If the value of `CollectionVersion` in the collection is greater than
+#'   the value in the request, the collection was changed after you got the
+#'   version number. Route 53 does not update the collection, and it
+#'   returns a `CidrCollectionVersionMismatch` error.
 #' @param Changes &#91;required&#93; Information about changes to a CIDR collection.
 #'
 #' @return
@@ -257,7 +259,8 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
     http_method = "POST",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$change_cidr_collection_input(Id = Id, CollectionVersion = CollectionVersion, Changes = Changes)
   output <- .route53$change_cidr_collection_output()
@@ -326,15 +329,14 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
 #' 
 #' Use `ChangeResourceRecordsSetsRequest` to perform the following actions:
 #' 
-#' -   `CREATE`: Creates a resource record set that has the specified
-#'     values.
+#' - `CREATE`: Creates a resource record set that has the specified values.
 #' 
-#' -   `DELETE`: Deletes an existing resource record set that has the
-#'     specified values.
+#' - `DELETE`: Deletes an existing resource record set that has the
+#'   specified values.
 #' 
-#' -   `UPSERT`: If a resource set doesn't exist, Route 53 creates it. If a
-#'     resource set exists Route 53 updates it with the values in the
-#'     request.
+#' - `UPSERT`: If a resource set doesn't exist, Route 53 creates it. If a
+#'   resource set exists Route 53 updates it with the values in the
+#'   request.
 #' 
 #' **Syntaxes for Creating, Updating, and Deleting Resource Record Sets**
 #' 
@@ -928,7 +930,8 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$change_resource_record_sets_input(HostedZoneId = HostedZoneId, ChangeBatch = ChangeBatch)
   output <- .route53$change_resource_record_sets_output()
@@ -956,9 +959,9 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' 
-#' -   The resource type for health checks is `healthcheck`.
+#' - The resource type for health checks is `healthcheck`.
 #' 
-#' -   The resource type for hosted zones is `hostedzone`.
+#' - The resource type for hosted zones is `hostedzone`.
 #' @param ResourceId &#91;required&#93; The ID of the resource for which you want to add, change, or delete
 #' tags.
 #' @param AddTags A complex type that contains a list of the tags that you want to add to
@@ -1024,7 +1027,8 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
     http_method = "POST",
     http_path = "/2013-04-01/tags/{ResourceType}/{ResourceId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$change_tags_for_resource_input(ResourceType = ResourceType, ResourceId = ResourceId, AddTags = AddTags, RemoveTagKeys = RemoveTagKeys)
   output <- .route53$change_tags_for_resource_output()
@@ -1083,7 +1087,8 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
     http_method = "POST",
     http_path = "/2013-04-01/cidrcollection",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_cidr_collection_input(Name = Name, CallerReference = CallerReference)
   output <- .route53$create_cidr_collection_output()
@@ -1117,23 +1122,22 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
 #' You can associate health checks with failover resource record sets in a
 #' private hosted zone. Note the following:
 #' 
-#' -   Route 53 health checkers are outside the VPC. To check the health of
-#'     an endpoint within a VPC by IP address, you must assign a public IP
-#'     address to the instance in the VPC.
+#' - Route 53 health checkers are outside the VPC. To check the health of
+#'   an endpoint within a VPC by IP address, you must assign a public IP
+#'   address to the instance in the VPC.
 #' 
-#' -   You can configure a health checker to check the health of an
-#'     external resource that the instance relies on, such as a database
-#'     server.
+#' - You can configure a health checker to check the health of an external
+#'   resource that the instance relies on, such as a database server.
 #' 
-#' -   You can create a CloudWatch metric, associate an alarm with the
-#'     metric, and then create a health check that is based on the state of
-#'     the alarm. For example, you might create a CloudWatch metric that
-#'     checks the status of the Amazon EC2 `StatusCheckFailed` metric, add
-#'     an alarm to the metric, and then create a health check that is based
-#'     on the state of the alarm. For information about creating CloudWatch
-#'     metrics and alarms by using the CloudWatch console, see the [Amazon
-#'     CloudWatch User
-#'     Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
+#' - You can create a CloudWatch metric, associate an alarm with the
+#'   metric, and then create a health check that is based on the state of
+#'   the alarm. For example, you might create a CloudWatch metric that
+#'   checks the status of the Amazon EC2 `StatusCheckFailed` metric, add an
+#'   alarm to the metric, and then create a health check that is based on
+#'   the state of the alarm. For information about creating CloudWatch
+#'   metrics and alarms by using the CloudWatch console, see the [Amazon
+#'   CloudWatch User
+#'   Guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
 #'
 #' @usage
 #' route53_create_health_check(CallerReference, HealthCheckConfig)
@@ -1142,25 +1146,25 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
 #' a failed [`create_health_check`][route53_create_health_check] request
 #' without the risk of creating two identical health checks:
 #' 
-#' -   If you send a [`create_health_check`][route53_create_health_check]
-#'     request with the same `CallerReference` and settings as a previous
-#'     request, and if the health check doesn't exist, Amazon Route 53
-#'     creates the health check. If the health check does exist, Route 53
-#'     returns the settings for the existing health check.
+#' - If you send a [`create_health_check`][route53_create_health_check]
+#'   request with the same `CallerReference` and settings as a previous
+#'   request, and if the health check doesn't exist, Amazon Route 53
+#'   creates the health check. If the health check does exist, Route 53
+#'   returns the settings for the existing health check.
 #' 
-#' -   If you send a [`create_health_check`][route53_create_health_check]
-#'     request with the same `CallerReference` as a deleted health check,
-#'     regardless of the settings, Route 53 returns a
-#'     `HealthCheckAlreadyExists` error.
+#' - If you send a [`create_health_check`][route53_create_health_check]
+#'   request with the same `CallerReference` as a deleted health check,
+#'   regardless of the settings, Route 53 returns a
+#'   `HealthCheckAlreadyExists` error.
 #' 
-#' -   If you send a [`create_health_check`][route53_create_health_check]
-#'     request with the same `CallerReference` as an existing health check
-#'     but with different settings, Route 53 returns a
-#'     `HealthCheckAlreadyExists` error.
+#' - If you send a [`create_health_check`][route53_create_health_check]
+#'   request with the same `CallerReference` as an existing health check
+#'   but with different settings, Route 53 returns a
+#'   `HealthCheckAlreadyExists` error.
 #' 
-#' -   If you send a [`create_health_check`][route53_create_health_check]
-#'     request with a unique `CallerReference` but settings identical to an
-#'     existing health check, Route 53 creates the health check.
+#' - If you send a [`create_health_check`][route53_create_health_check]
+#'   request with a unique `CallerReference` but settings identical to an
+#'   existing health check, Route 53 creates the health check.
 #' 
 #' Route 53 does not store the `CallerReference` for a deleted health check
 #' indefinitely. The `CallerReference` for a deleted health check will be
@@ -1271,7 +1275,8 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
     http_method = "POST",
     http_path = "/2013-04-01/healthcheck",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_health_check_input(CallerReference = CallerReference, HealthCheckConfig = HealthCheckConfig)
   output <- .route53$create_health_check_output()
@@ -1303,26 +1308,26 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' 
 #' Note the following:
 #' 
-#' -   You can't create a hosted zone for a top-level domain (TLD) such as
-#'     .com.
+#' - You can't create a hosted zone for a top-level domain (TLD) such as
+#'   .com.
 #' 
-#' -   For public hosted zones, Route 53 automatically creates a default
-#'     SOA record and four NS records for the zone. For more information
-#'     about SOA and NS records, see [NS and SOA Records that Route 53
-#'     Creates for a Hosted
-#'     Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
-#'     in the *Amazon Route 53 Developer Guide*.
+#' - For public hosted zones, Route 53 automatically creates a default SOA
+#'   record and four NS records for the zone. For more information about
+#'   SOA and NS records, see [NS and SOA Records that Route 53 Creates for
+#'   a Hosted
+#'   Zone](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/SOA-NSrecords.html)
+#'   in the *Amazon Route 53 Developer Guide*.
 #' 
-#'     If you want to use the same name servers for multiple public hosted
-#'     zones, you can optionally associate a reusable delegation set with
-#'     the hosted zone. See the `DelegationSetId` element.
+#'   If you want to use the same name servers for multiple public hosted
+#'   zones, you can optionally associate a reusable delegation set with the
+#'   hosted zone. See the `DelegationSetId` element.
 #' 
-#' -   If your domain is registered with a registrar other than Route 53,
-#'     you must update the name servers with your registrar to make Route
-#'     53 the DNS service for the domain. For more information, see
-#'     [Migrating DNS Service for an Existing Domain to Amazon
-#'     Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html)
-#'     in the *Amazon Route 53 Developer Guide*.
+#' - If your domain is registered with a registrar other than Route 53, you
+#'   must update the name servers with your registrar to make Route 53 the
+#'   DNS service for the domain. For more information, see [Migrating DNS
+#'   Service for an Existing Domain to Amazon
+#'   Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/MigratingDNS.html)
+#'   in the *Amazon Route 53 Developer Guide*.
 #' 
 #' When you submit a [`create_hosted_zone`][route53_create_hosted_zone]
 #' request, the initial status of the hosted zone is `PENDING`. For public
@@ -1340,11 +1345,11 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' 
 #' The following are the supported partitions:
 #' 
-#' -   `aws` - Amazon Web Services Regions
+#' - `aws` - Amazon Web Services Regions
 #' 
-#' -   `aws-cn` - China Regions
+#' - `aws-cn` - China Regions
 #' 
-#' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
+#' - `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
 #' For more information, see [Access
 #' Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1385,9 +1390,9 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' stamp.
 #' @param HostedZoneConfig (Optional) A complex type that contains the following optional values:
 #' 
-#' -   For public and private hosted zones, an optional comment
+#' - For public and private hosted zones, an optional comment
 #' 
-#' -   For private hosted zones, an optional `PrivateZone` element
+#' - For private hosted zones, an optional `PrivateZone` element
 #' 
 #' If you don't specify a comment or the `PrivateZone` element, omit
 #' `HostedZoneConfig` and the other elements.
@@ -1471,7 +1476,8 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_hosted_zone_input(Name = Name, VPC = VPC, CallerReference = CallerReference, HostedZoneConfig = HostedZoneConfig, DelegationSetId = DelegationSetId)
   output <- .route53$create_hosted_zone_output()
@@ -1519,16 +1525,16 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' 
 #' The key policy must give permission for the following actions:
 #' 
-#' -   DescribeKey
+#' - DescribeKey
 #' 
-#' -   GetPublicKey
+#' - GetPublicKey
 #' 
-#' -   Sign
+#' - Sign
 #' 
 #' The key policy must also include the Amazon Route 53 service in the
 #' principal for your account. Specify the following:
 #' 
-#' -   `"Service": "dnssec-route53.amazonaws.com"`
+#' - `"Service": "dnssec-route53.amazonaws.com"`
 #' 
 #' For more information about working with a customer managed key in KMS,
 #' see [Key Management Service
@@ -1599,7 +1605,8 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
     http_method = "POST",
     http_path = "/2013-04-01/keysigningkey",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_key_signing_key_input(CallerReference = CallerReference, HostedZoneId = HostedZoneId, KeyManagementServiceArn = KeyManagementServiceArn, Name = Name, Status = Status)
   output <- .route53$create_key_signing_key_output()
@@ -1621,13 +1628,13 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' DNS query logs contain information about the queries that Route 53
 #' receives for a specified public hosted zone, such as the following:
 #' 
-#' -   Route 53 edge location that responded to the DNS query
+#' - Route 53 edge location that responded to the DNS query
 #' 
-#' -   Domain or subdomain that was requested
+#' - Domain or subdomain that was requested
 #' 
-#' -   DNS record type, such as A or AAAA
+#' - DNS record type, such as A or AAAA
 #' 
-#' -   DNS response code, such as `NoError` or `ServFail`
+#' - DNS response code, such as `NoError` or `ServFail`
 #' 
 #' ### Log Group and Resource Policy
 #' 
@@ -1641,24 +1648,24 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #'     you specify when you create a query logging configuration. Note the
 #'     following:
 #' 
-#'     -   You must create the log group in the us-east-1 region.
+#'     - You must create the log group in the us-east-1 region.
 #' 
-#'     -   You must use the same Amazon Web Services account to create the
-#'         log group and the hosted zone that you want to configure query
-#'         logging for.
+#'     - You must use the same Amazon Web Services account to create the
+#'       log group and the hosted zone that you want to configure query
+#'       logging for.
 #' 
-#'     -   When you create log groups for query logging, we recommend that
-#'         you use a consistent prefix, for example:
+#'     - When you create log groups for query logging, we recommend that
+#'       you use a consistent prefix, for example:
 #' 
-#'         `/aws/route53/hosted zone name `
+#'       `/aws/route53/hosted zone name `
 #' 
-#'         In the next step, you'll create a resource policy, which
-#'         controls access to one or more log groups and the associated
-#'         Amazon Web Services resources, such as Route 53 hosted zones.
-#'         There's a limit on the number of resource policies that you can
-#'         create, so we recommend that you use a consistent prefix so you
-#'         can use the same resource policy for all the log groups that you
-#'         create for query logging.
+#'       In the next step, you'll create a resource policy, which controls
+#'       access to one or more log groups and the associated Amazon Web
+#'       Services resources, such as Route 53 hosted zones. There's a limit
+#'       on the number of resource policies that you can create, so we
+#'       recommend that you use a consistent prefix so you can use the same
+#'       resource policy for all the log groups that you create for query
+#'       logging.
 #' 
 #' 2.  Create a CloudWatch Logs resource policy, and give it the
 #'     permissions that Route 53 needs to create log streams and to send
@@ -1676,13 +1683,13 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #'     permissions that a service has to a resource in a resource-based
 #'     policy by supplying the following values:
 #' 
-#'     -   For `aws:SourceArn`, supply the hosted zone ARN used in creating
-#'         the query logging configuration. For example,
-#'         `aws:SourceArn: arn:aws:route53:::hostedzone/hosted zone ID`.
+#'     - For `aws:SourceArn`, supply the hosted zone ARN used in creating
+#'       the query logging configuration. For example,
+#'       `aws:SourceArn: arn:aws:route53:::hostedzone/hosted zone ID`.
 #' 
-#'     -   For `aws:SourceAccount`, supply the account ID for the account
-#'         that creates the query logging configuration. For example,
-#'         `aws:SourceAccount:111111111111`.
+#'     - For `aws:SourceAccount`, supply the account ID for the account
+#'       that creates the query logging configuration. For example,
+#'       `aws:SourceAccount:111111111111`.
 #' 
 #'     For more information, see [The confused deputy
 #'     problem](https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html)
@@ -1697,12 +1704,12 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' When Route 53 finishes creating the configuration for DNS query logging,
 #' it does the following:
 #' 
-#' -   Creates a log stream for an edge location the first time that the
-#'     edge location responds to DNS queries for the specified hosted zone.
-#'     That log stream is used to log all queries that Route 53 responds to
-#'     for that edge location.
+#' - Creates a log stream for an edge location the first time that the edge
+#'   location responds to DNS queries for the specified hosted zone. That
+#'   log stream is used to log all queries that Route 53 responds to for
+#'   that edge location.
 #' 
-#' -   Begins to send query logs to the applicable log stream.
+#' - Begins to send query logs to the applicable log stream.
 #' 
 #' The name of each log stream is in the following format:
 #' 
@@ -1800,7 +1807,8 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
     http_method = "POST",
     http_path = "/2013-04-01/queryloggingconfig",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_query_logging_config_input(HostedZoneId = HostedZoneId, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn)
   output <- .route53$create_query_logging_config_output()
@@ -1857,18 +1865,18 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' hosted zones do use one or more name servers that are assigned to the
 #' reusable delegation set, you can do one of the following:
 #' 
-#' -   For small numbers of hosted zones—up to a few hundred—it's
-#'     relatively easy to create reusable delegation sets until you get one
-#'     that has four name servers that don't overlap with any of the name
-#'     servers in your hosted zones.
+#' - For small numbers of hosted zones—up to a few hundred—it's relatively
+#'   easy to create reusable delegation sets until you get one that has
+#'   four name servers that don't overlap with any of the name servers in
+#'   your hosted zones.
 #' 
-#' -   For larger numbers of hosted zones, the easiest solution is to use
-#'     more than one reusable delegation set.
+#' - For larger numbers of hosted zones, the easiest solution is to use
+#'   more than one reusable delegation set.
 #' 
-#' -   For larger numbers of hosted zones, you can also migrate hosted
-#'     zones that have overlapping name servers to hosted zones that don't
-#'     have overlapping name servers, then migrate the hosted zones again
-#'     to use the reusable delegation set.
+#' - For larger numbers of hosted zones, you can also migrate hosted zones
+#'   that have overlapping name servers to hosted zones that don't have
+#'   overlapping name servers, then migrate the hosted zones again to use
+#'   the reusable delegation set.
 #'
 #' @usage
 #' route53_create_reusable_delegation_set(CallerReference, HostedZoneId)
@@ -1918,7 +1926,8 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
     http_method = "POST",
     http_path = "/2013-04-01/delegationset",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_reusable_delegation_set_input(CallerReference = CallerReference, HostedZoneId = HostedZoneId)
   output <- .route53$create_reusable_delegation_set_output()
@@ -1984,7 +1993,8 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_traffic_policy_input(Name = Name, Document = Document, Comment = Comment)
   output <- .route53$create_traffic_policy_output()
@@ -2079,7 +2089,8 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicyinstance",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_traffic_policy_instance_input(HostedZoneId = HostedZoneId, Name = Name, TTL = TTL, TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion)
   output <- .route53$create_traffic_policy_instance_output()
@@ -2152,7 +2163,8 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_traffic_policy_version_input(Id = Id, Document = Document, Comment = Comment)
   output <- .route53$create_traffic_policy_version_output()
@@ -2227,7 +2239,8 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/authorizevpcassociation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$create_vpc_association_authorization_input(HostedZoneId = HostedZoneId, VPC = VPC)
   output <- .route53$create_vpc_association_authorization_output()
@@ -2286,7 +2299,8 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
     http_method = "POST",
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}/deactivate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$deactivate_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$deactivate_key_signing_key_output()
@@ -2330,7 +2344,8 @@ route53_delete_cidr_collection <- function(Id) {
     http_method = "DELETE",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_cidr_collection_input(Id = Id)
   output <- .route53$delete_cidr_collection_output()
@@ -2390,7 +2405,8 @@ route53_delete_health_check <- function(HealthCheckId) {
     http_method = "DELETE",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_health_check_input(HealthCheckId = HealthCheckId)
   output <- .route53$delete_health_check_output()
@@ -2451,12 +2467,12 @@ route53_delete_health_check <- function(HealthCheckId) {
 #' To verify that the hosted zone has been deleted, do one of the
 #' following:
 #' 
-#' -   Use the [`get_hosted_zone`][route53_get_hosted_zone] action to
-#'     request information about the hosted zone.
+#' - Use the [`get_hosted_zone`][route53_get_hosted_zone] action to request
+#'   information about the hosted zone.
 #' 
-#' -   Use the [`list_hosted_zones`][route53_list_hosted_zones] action to
-#'     get a list of the hosted zones associated with the current Amazon
-#'     Web Services account.
+#' - Use the [`list_hosted_zones`][route53_list_hosted_zones] action to get
+#'   a list of the hosted zones associated with the current Amazon Web
+#'   Services account.
 #'
 #' @usage
 #' route53_delete_hosted_zone(Id)
@@ -2496,7 +2512,8 @@ route53_delete_hosted_zone <- function(Id) {
     http_method = "DELETE",
     http_path = "/2013-04-01/hostedzone/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_hosted_zone_input(Id = Id)
   output <- .route53$delete_hosted_zone_output()
@@ -2562,7 +2579,8 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
     http_method = "DELETE",
     http_path = "/2013-04-01/keysigningkey/{HostedZoneId}/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_key_signing_key_input(HostedZoneId = HostedZoneId, Name = Name)
   output <- .route53$delete_key_signing_key_output()
@@ -2611,7 +2629,8 @@ route53_delete_query_logging_config <- function(Id) {
     http_method = "DELETE",
     http_path = "/2013-04-01/queryloggingconfig/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_query_logging_config_input(Id = Id)
   output <- .route53$delete_query_logging_config_output()
@@ -2663,7 +2682,8 @@ route53_delete_reusable_delegation_set <- function(Id) {
     http_method = "DELETE",
     http_path = "/2013-04-01/delegationset/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_reusable_delegation_set_input(Id = Id)
   output <- .route53$delete_reusable_delegation_set_output()
@@ -2684,14 +2704,14 @@ route53_delete_reusable_delegation_set <- function(Id) {
 #' indicate that it has been deleted. However, Route 53 never fully deletes
 #' the traffic policy. Note the following:
 #' 
-#' -   Deleted traffic policies aren't listed if you run
-#'     [`list_traffic_policies`][route53_list_traffic_policies].
+#' - Deleted traffic policies aren't listed if you run
+#'   [`list_traffic_policies`][route53_list_traffic_policies].
 #' 
-#' -   There's no way to get a list of deleted policies.
+#' - There's no way to get a list of deleted policies.
 #' 
-#' -   If you retain the ID of the policy, you can get information about
-#'     the policy, including the traffic policy document, by running
-#'     [`get_traffic_policy`][route53_get_traffic_policy].
+#' - If you retain the ID of the policy, you can get information about the
+#'   policy, including the traffic policy document, by running
+#'   [`get_traffic_policy`][route53_get_traffic_policy].
 #'
 #' @usage
 #' route53_delete_traffic_policy(Id, Version)
@@ -2721,7 +2741,8 @@ route53_delete_traffic_policy <- function(Id, Version) {
     http_method = "DELETE",
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_traffic_policy_input(Id = Id, Version = Version)
   output <- .route53$delete_traffic_policy_output()
@@ -2773,7 +2794,8 @@ route53_delete_traffic_policy_instance <- function(Id) {
     http_method = "DELETE",
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_traffic_policy_instance_input(Id = Id)
   output <- .route53$delete_traffic_policy_instance_output()
@@ -2843,7 +2865,8 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/deauthorizevpcassociation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$delete_vpc_association_authorization_input(HostedZoneId = HostedZoneId, VPC = VPC)
   output <- .route53$delete_vpc_association_authorization_output()
@@ -2900,7 +2923,8 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/disable-dnssec",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$disable_hosted_zone_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$disable_hosted_zone_dnssec_output()
@@ -2919,29 +2943,28 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
 #' Amazon Route 53 private hosted zone. Note the following:
 #' 
-#' -   You can't disassociate the last Amazon VPC from a private hosted
-#'     zone.
+#' - You can't disassociate the last Amazon VPC from a private hosted zone.
 #' 
-#' -   You can't convert a private hosted zone into a public hosted zone.
+#' - You can't convert a private hosted zone into a public hosted zone.
 #' 
-#' -   You can submit a
-#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone]
-#'     request using either the account that created the hosted zone or the
-#'     account that created the Amazon VPC.
+#' - You can submit a
+#'   [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone]
+#'   request using either the account that created the hosted zone or the
+#'   account that created the Amazon VPC.
 #' 
-#' -   Some services, such as Cloud Map and Amazon Elastic File System
-#'     (Amazon EFS) automatically create hosted zones and associate VPCs
-#'     with the hosted zones. A service can create a hosted zone using your
-#'     account or using its own account. You can disassociate a VPC from a
-#'     hosted zone only if the service created the hosted zone using your
-#'     account.
+#' - Some services, such as Cloud Map and Amazon Elastic File System
+#'   (Amazon EFS) automatically create hosted zones and associate VPCs with
+#'   the hosted zones. A service can create a hosted zone using your
+#'   account or using its own account. You can disassociate a VPC from a
+#'   hosted zone only if the service created the hosted zone using your
+#'   account.
 #' 
-#'     When you run
-#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone],
-#'     if the hosted zone has a value for `OwningAccount`, you can use
-#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
-#'     If the hosted zone has a value for `OwningService`, you can't use
-#'     [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
+#'   When you run
+#'   [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone],
+#'   if the hosted zone has a value for `OwningAccount`, you can use
+#'   [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
+#'   If the hosted zone has a value for `OwningService`, you can't use
+#'   [`disassociate_vpc_from_hosted_zone`][route53_disassociate_vpc_from_hosted_zone].
 #' 
 #' When revoking access, the hosted zone and the Amazon VPC must belong to
 #' the same partition. A partition is a group of Amazon Web Services
@@ -2949,11 +2972,11 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' 
 #' The following are the supported partitions:
 #' 
-#' -   `aws` - Amazon Web Services Regions
+#' - `aws` - Amazon Web Services Regions
 #' 
-#' -   `aws-cn` - China Regions
+#' - `aws-cn` - China Regions
 #' 
-#' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
+#' - `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
 #' For more information, see [Access
 #' Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -3006,7 +3029,8 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/disassociatevpc",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$disassociate_vpc_from_hosted_zone_input(HostedZoneId = HostedZoneId, VPC = VPC, Comment = Comment)
   output <- .route53$disassociate_vpc_from_hosted_zone_output()
@@ -3061,7 +3085,8 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}/enable-dnssec",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$enable_hosted_zone_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$enable_hosted_zone_dnssec_output()
@@ -3096,23 +3121,23 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health checks
-#'     that you can create using the current account.
+#' - **MAX_HEALTH_CHECKS_BY_OWNER**: The maximum number of health checks
+#'   that you can create using the current account.
 #' 
-#' -   **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted zones
-#'     that you can create using the current account.
+#' - **MAX_HOSTED_ZONES_BY_OWNER**: The maximum number of hosted zones that
+#'   you can create using the current account.
 #' 
-#' -   **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number of
-#'     reusable delegation sets that you can create using the current
-#'     account.
+#' - **MAX_REUSABLE_DELEGATION_SETS_BY_OWNER**: The maximum number of
+#'   reusable delegation sets that you can create using the current
+#'   account.
 #' 
-#' -   **MAX_TRAFFIC_POLICIES_BY_OWNER**: The maximum number of traffic
-#'     policies that you can create using the current account.
+#' - **MAX_TRAFFIC_POLICIES_BY_OWNER**: The maximum number of traffic
+#'   policies that you can create using the current account.
 #' 
-#' -   **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number of
-#'     traffic policy instances that you can create using the current
-#'     account. (Traffic policy instances are referred to as traffic flow
-#'     policy records in the Amazon Route 53 console.)
+#' - **MAX_TRAFFIC_POLICY_INSTANCES_BY_OWNER**: The maximum number of
+#'   traffic policy instances that you can create using the current
+#'   account. (Traffic policy instances are referred to as traffic flow
+#'   policy records in the Amazon Route 53 console.)
 #'
 #' @return
 #' A list with the following syntax:
@@ -3144,7 +3169,8 @@ route53_get_account_limit <- function(Type) {
     http_method = "GET",
     http_path = "/2013-04-01/accountlimit/{Type}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_account_limit_input(Type = Type)
   output <- .route53$get_account_limit_output()
@@ -3162,12 +3188,12 @@ route53_get_account_limit <- function(Type) {
 #' Returns the current status of a change batch request. The status is one
 #' of the following values:
 #' 
-#' -   `PENDING` indicates that the changes in this request have not
-#'     propagated to all Amazon Route 53 DNS servers managing the hosted
-#'     zone. This is the initial status of all change batch requests.
+#' - `PENDING` indicates that the changes in this request have not
+#'   propagated to all Amazon Route 53 DNS servers managing the hosted
+#'   zone. This is the initial status of all change batch requests.
 #' 
-#' -   `INSYNC` indicates that the changes have propagated to all Route 53
-#'     DNS servers managing the hosted zone.
+#' - `INSYNC` indicates that the changes have propagated to all Route 53
+#'   DNS servers managing the hosted zone.
 #'
 #' @usage
 #' route53_get_change(Id)
@@ -3210,7 +3236,8 @@ route53_get_change <- function(Id) {
     http_method = "GET",
     http_path = "/2013-04-01/change/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_change_input(Id = Id)
   output <- .route53$get_change_output()
@@ -3267,7 +3294,8 @@ route53_get_checker_ip_ranges <- function() {
     http_method = "GET",
     http_path = "/2013-04-01/checkeripranges",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_checker_ip_ranges_input()
   output <- .route53$get_checker_ip_ranges_output()
@@ -3344,7 +3372,8 @@ route53_get_dnssec <- function(HostedZoneId) {
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/dnssec",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_dnssec_input(HostedZoneId = HostedZoneId)
   output <- .route53$get_dnssec_output()
@@ -3388,19 +3417,19 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' identifies a continent. Amazon Route 53 supports the following continent
 #' codes:
 #' 
-#' -   **AF**: Africa
+#' - **AF**: Africa
 #' 
-#' -   **AN**: Antarctica
+#' - **AN**: Antarctica
 #' 
-#' -   **AS**: Asia
+#' - **AS**: Asia
 #' 
-#' -   **EU**: Europe
+#' - **EU**: Europe
 #' 
-#' -   **OC**: Oceania
+#' - **OC**: Oceania
 #' 
-#' -   **NA**: North America
+#' - **NA**: North America
 #' 
-#' -   **SA**: South America
+#' - **SA**: South America
 #' @param CountryCode Amazon Route 53 uses the two-letter country codes that are specified in
 #' [ISO standard 3166-1
 #' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
@@ -3447,7 +3476,8 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
     http_method = "GET",
     http_path = "/2013-04-01/geolocation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_geo_location_input(ContinentCode = ContinentCode, CountryCode = CountryCode, SubdivisionCode = SubdivisionCode)
   output <- .route53$get_geo_location_output()
@@ -3548,7 +3578,8 @@ route53_get_health_check <- function(HealthCheckId) {
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_health_check_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_output()
@@ -3596,7 +3627,8 @@ route53_get_health_check_count <- function() {
     http_method = "GET",
     http_path = "/2013-04-01/healthcheckcount",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_health_check_count_input()
   output <- .route53$get_health_check_count_output()
@@ -3664,7 +3696,8 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}/lastfailurereason",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_health_check_last_failure_reason_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_last_failure_reason_output()
@@ -3735,7 +3768,8 @@ route53_get_health_check_status <- function(HealthCheckId) {
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}/status",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_health_check_status_input(HealthCheckId = HealthCheckId)
   output <- .route53$get_health_check_status_output()
@@ -3820,7 +3854,8 @@ route53_get_hosted_zone <- function(Id) {
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_hosted_zone_input(Id = Id)
   output <- .route53$get_hosted_zone_output()
@@ -3868,7 +3903,8 @@ route53_get_hosted_zone_count <- function() {
     http_method = "GET",
     http_path = "/2013-04-01/hostedzonecount",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_hosted_zone_count_input()
   output <- .route53$get_hosted_zone_count_output()
@@ -3897,11 +3933,11 @@ route53_get_hosted_zone_count <- function() {
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
-#' -   **MAX_RRSETS_BY_ZONE**: The maximum number of records that you can
-#'     create in the specified hosted zone.
+#' - **MAX_RRSETS_BY_ZONE**: The maximum number of records that you can
+#'   create in the specified hosted zone.
 #' 
-#' -   **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon VPCs
-#'     that you can associate with the specified private hosted zone.
+#' - **MAX_VPCS_ASSOCIATED_BY_ZONE**: The maximum number of Amazon VPCs
+#'   that you can associate with the specified private hosted zone.
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to get a limit for.
 #'
 #' @return
@@ -3935,7 +3971,8 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
     http_method = "GET",
     http_path = "/2013-04-01/hostedzonelimit/{Id}/{Type}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_hosted_zone_limit_input(Type = Type, HostedZoneId = HostedZoneId)
   output <- .route53$get_hosted_zone_limit_output()
@@ -3993,7 +4030,8 @@ route53_get_query_logging_config <- function(Id) {
     http_method = "GET",
     http_path = "/2013-04-01/queryloggingconfig/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_query_logging_config_input(Id = Id)
   output <- .route53$get_query_logging_config_output()
@@ -4050,7 +4088,8 @@ route53_get_reusable_delegation_set <- function(Id) {
     http_method = "GET",
     http_path = "/2013-04-01/delegationset/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_reusable_delegation_set_input(Id = Id)
   output <- .route53$get_reusable_delegation_set_output()
@@ -4113,7 +4152,8 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
     http_method = "GET",
     http_path = "/2013-04-01/reusabledelegationsetlimit/{Id}/{Type}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_reusable_delegation_set_limit_input(Type = Type, DelegationSetId = DelegationSetId)
   output <- .route53$get_reusable_delegation_set_limit_output()
@@ -4175,7 +4215,8 @@ route53_get_traffic_policy <- function(Id, Version) {
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_traffic_policy_input(Id = Id, Version = Version)
   output <- .route53$get_traffic_policy_output()
@@ -4245,7 +4286,8 @@ route53_get_traffic_policy_instance <- function(Id) {
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_traffic_policy_instance_input(Id = Id)
   output <- .route53$get_traffic_policy_instance_output()
@@ -4293,7 +4335,8 @@ route53_get_traffic_policy_instance_count <- function() {
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstancecount",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$get_traffic_policy_instance_count_input()
   output <- .route53$get_traffic_policy_instance_count_output()
@@ -4355,7 +4398,8 @@ route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToke
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}/cidrblocks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrBlocks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrBlocks"),
+    stream_api = FALSE
   )
   input <- .route53$list_cidr_blocks_input(CollectionId = CollectionId, LocationName = LocationName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_blocks_output()
@@ -4419,7 +4463,8 @@ route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrCollections")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrCollections"),
+    stream_api = FALSE
   )
   input <- .route53$list_cidr_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_collections_output()
@@ -4483,7 +4528,8 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrLocations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrLocations"),
+    stream_api = FALSE
   )
   input <- .route53$list_cidr_locations_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_locations_output()
@@ -4587,7 +4633,8 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
     http_method = "GET",
     http_path = "/2013-04-01/geolocations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_geo_locations_input(StartContinentCode = StartContinentCode, StartCountryCode = StartCountryCode, StartSubdivisionCode = StartSubdivisionCode, MaxItems = MaxItems)
   output <- .route53$list_geo_locations_output()
@@ -4708,7 +4755,8 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HealthChecks")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HealthChecks"),
+    stream_api = FALSE
   )
   input <- .route53$list_health_checks_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_health_checks_output()
@@ -4804,7 +4852,8 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones"),
+    stream_api = FALSE
   )
   input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId, HostedZoneType = HostedZoneType)
   output <- .route53$list_hosted_zones_output()
@@ -4835,7 +4884,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes the domain name using the escaped or Punycoded value, which
 #' is the format that Amazon Route 53 saves in its database. For example,
-#' to create a hosted zone for exämple.com, you specify ex\\344mple.com for
+#' to create a hosted zone for exämple.com, you specify ex\344mple.com for
 #' the domain name.
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name]
 #' alphabetizes it as:
@@ -4853,30 +4902,28 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' to 100. The response includes values that help navigate from one group
 #' of `MaxItems` hosted zones to the next:
 #' 
-#' -   The `DNSName` and `HostedZoneId` elements in the response contain
-#'     the values, if any, specified for the `dnsname` and `hostedzoneid`
-#'     parameters in the request that produced the current response.
+#' - The `DNSName` and `HostedZoneId` elements in the response contain the
+#'   values, if any, specified for the `dnsname` and `hostedzoneid`
+#'   parameters in the request that produced the current response.
 #' 
-#' -   The `MaxItems` element in the response contains the value, if any,
-#'     that you specified for the `maxitems` parameter in the request that
-#'     produced the current response.
+#' - The `MaxItems` element in the response contains the value, if any,
+#'   that you specified for the `maxitems` parameter in the request that
+#'   produced the current response.
 #' 
-#' -   If the value of `IsTruncated` in the response is true, there are
-#'     more hosted zones associated with the current Amazon Web Services
-#'     account.
+#' - If the value of `IsTruncated` in the response is true, there are more
+#'   hosted zones associated with the current Amazon Web Services account.
 #' 
-#'     If `IsTruncated` is false, this response includes the last hosted
-#'     zone that is associated with the current account. The `NextDNSName`
-#'     element and `NextHostedZoneId` elements are omitted from the
-#'     response.
+#'   If `IsTruncated` is false, this response includes the last hosted zone
+#'   that is associated with the current account. The `NextDNSName` element
+#'   and `NextHostedZoneId` elements are omitted from the response.
 #' 
-#' -   The `NextDNSName` and `NextHostedZoneId` elements in the response
-#'     contain the domain name and the hosted zone ID of the next hosted
-#'     zone that is associated with the current Amazon Web Services
-#'     account. If you want to list more hosted zones, make another call to
-#'     [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name],
-#'     and specify the value of `NextDNSName` and `NextHostedZoneId` in the
-#'     `dnsname` and `hostedzoneid` parameters, respectively.
+#' - The `NextDNSName` and `NextHostedZoneId` elements in the response
+#'   contain the domain name and the hosted zone ID of the next hosted zone
+#'   that is associated with the current Amazon Web Services account. If
+#'   you want to list more hosted zones, make another call to
+#'   [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name], and
+#'   specify the value of `NextDNSName` and `NextHostedZoneId` in the
+#'   `dnsname` and `hostedzoneid` parameters, respectively.
 #'
 #' @usage
 #' route53_list_hosted_zones_by_name(DNSName, HostedZoneId, MaxItems)
@@ -4957,7 +5004,8 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
     http_method = "GET",
     http_path = "/2013-04-01/hostedzonesbyname",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_hosted_zones_by_name_input(DNSName = DNSName, HostedZoneId = HostedZoneId, MaxItems = MaxItems)
   output <- .route53$list_hosted_zones_by_name_output()
@@ -4979,15 +5027,15 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' Services service owns the hosted zones. The `HostedZoneOwner` structure
 #' in the response contains one of the following values:
 #' 
-#' -   An `OwningAccount` element, which contains the account number of
-#'     either the current Amazon Web Services account or another Amazon Web
-#'     Services account. Some services, such as Cloud Map, create hosted
-#'     zones using the current account.
+#' - An `OwningAccount` element, which contains the account number of
+#'   either the current Amazon Web Services account or another Amazon Web
+#'   Services account. Some services, such as Cloud Map, create hosted
+#'   zones using the current account.
 #' 
-#' -   An `OwningService` element, which identifies the Amazon Web Services
-#'     service that created and owns the hosted zone. For example, if a
-#'     hosted zone was created by Amazon Elastic File System (Amazon EFS),
-#'     the value of `Owner` is `efs.amazonaws.com`.
+#' - An `OwningService` element, which identifies the Amazon Web Services
+#'   service that created and owns the hosted zone. For example, if a
+#'   hosted zone was created by Amazon Elastic File System (Amazon EFS),
+#'   the value of `Owner` is `efs.amazonaws.com`.
 #' 
 #' When listing private hosted zones, the hosted zone and the Amazon VPC
 #' must belong to the same partition where the hosted zones were created. A
@@ -4996,11 +5044,11 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' 
 #' The following are the supported partitions:
 #' 
-#' -   `aws` - Amazon Web Services Regions
+#' - `aws` - Amazon Web Services Regions
 #' 
-#' -   `aws-cn` - China Regions
+#' - `aws-cn` - China Regions
 #' 
-#' -   `aws-us-gov` - Amazon Web Services GovCloud (US) Region
+#' - `aws-us-gov` - Amazon Web Services GovCloud (US) Region
 #' 
 #' For more information, see [Access
 #' Management](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -5068,7 +5116,8 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
     http_method = "GET",
     http_path = "/2013-04-01/hostedzonesbyvpc",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_hosted_zones_by_vpc_input(VPCId = VPCId, VPCRegion = VPCRegion, MaxItems = MaxItems, NextToken = NextToken)
   output <- .route53$list_hosted_zones_by_vpc_output()
@@ -5162,7 +5211,8 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
     http_method = "GET",
     http_path = "/2013-04-01/queryloggingconfig",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueryLoggingConfigs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueryLoggingConfigs"),
+    stream_api = FALSE
   )
   input <- .route53$list_query_logging_configs_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_query_logging_configs_output()
@@ -5272,21 +5322,20 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' 
 #' Values for alias resource record sets:
 #' 
-#' -   **API Gateway custom regional API or edge-optimized API**: A
+#' - **API Gateway custom regional API or edge-optimized API**: A
 #' 
-#' -   **CloudFront distribution**: A or AAAA
+#' - **CloudFront distribution**: A or AAAA
 #' 
-#' -   **Elastic Beanstalk environment that has a regionalized subdomain**:
-#'     A
+#' - **Elastic Beanstalk environment that has a regionalized subdomain**: A
 #' 
-#' -   **Elastic Load Balancing load balancer**: A | AAAA
+#' - **Elastic Load Balancing load balancer**: A | AAAA
 #' 
-#' -   **S3 bucket**: A
+#' - **S3 bucket**: A
 #' 
-#' -   **VPC interface VPC endpoint**: A
+#' - **VPC interface VPC endpoint**: A
 #' 
-#' -   **Another resource record set in this hosted zone:** The type of the
-#'     resource record set that the alias references.
+#' - **Another resource record set in this hosted zone:** The type of the
+#'   resource record set that the alias references.
 #' 
 #' Constraint: Specifying `type` without specifying `name` returns an
 #' `InvalidInput` error.
@@ -5377,7 +5426,8 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset",
     host_prefix = "",
-    paginator = list(input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), limit_key = "MaxItems", more_results = "IsTruncated", output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier" ), result_key = "ResourceRecordSets")
+    paginator = list(input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), limit_key = "MaxItems", more_results = "IsTruncated", output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier" ), result_key = "ResourceRecordSets"),
+    stream_api = FALSE
   )
   input <- .route53$list_resource_record_sets_input(HostedZoneId = HostedZoneId, StartRecordName = StartRecordName, StartRecordType = StartRecordType, StartRecordIdentifier = StartRecordIdentifier, MaxItems = MaxItems)
   output <- .route53$list_resource_record_sets_output()
@@ -5453,7 +5503,8 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
     http_method = "GET",
     http_path = "/2013-04-01/delegationset",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_reusable_delegation_sets_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_reusable_delegation_sets_output()
@@ -5480,9 +5531,9 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' 
-#' -   The resource type for health checks is `healthcheck`.
+#' - The resource type for health checks is `healthcheck`.
 #' 
-#' -   The resource type for hosted zones is `hostedzone`.
+#' - The resource type for hosted zones is `hostedzone`.
 #' @param ResourceId &#91;required&#93; The ID of the resource for which you want to retrieve tags.
 #'
 #' @return
@@ -5521,7 +5572,8 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
     http_method = "GET",
     http_path = "/2013-04-01/tags/{ResourceType}/{ResourceId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_tags_for_resource_input(ResourceType = ResourceType, ResourceId = ResourceId)
   output <- .route53$list_tags_for_resource_output()
@@ -5548,9 +5600,9 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #'
 #' @param ResourceType &#91;required&#93; The type of the resources.
 #' 
-#' -   The resource type for health checks is `healthcheck`.
+#' - The resource type for health checks is `healthcheck`.
 #' 
-#' -   The resource type for hosted zones is `hostedzone`.
+#' - The resource type for hosted zones is `hostedzone`.
 #' @param ResourceIds &#91;required&#93; A complex type that contains the ResourceId element for each resource
 #' for which you want to get a list of tags.
 #'
@@ -5594,7 +5646,8 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
     http_method = "POST",
     http_path = "/2013-04-01/tags/{ResourceType}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_tags_for_resources_input(ResourceType = ResourceType, ResourceIds = ResourceIds)
   output <- .route53$list_tags_for_resources_output()
@@ -5677,7 +5730,8 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicies",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_traffic_policies_input(TrafficPolicyIdMarker = TrafficPolicyIdMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policies_output()
@@ -5799,7 +5853,8 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstances",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_traffic_policy_instances_input(HostedZoneIdMarker = HostedZoneIdMarker, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_output()
@@ -5912,7 +5967,8 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstances/hostedzone",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_traffic_policy_instances_by_hosted_zone_input(HostedZoneId = HostedZoneId, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_by_hosted_zone_output()
@@ -6049,7 +6105,8 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicyinstances/trafficpolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_traffic_policy_instances_by_policy_input(TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion, HostedZoneIdMarker = HostedZoneIdMarker, TrafficPolicyInstanceNameMarker = TrafficPolicyInstanceNameMarker, TrafficPolicyInstanceTypeMarker = TrafficPolicyInstanceTypeMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_instances_by_policy_output()
@@ -6135,7 +6192,8 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
     http_method = "GET",
     http_path = "/2013-04-01/trafficpolicies/{Id}/versions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_traffic_policy_versions_input(Id = Id, TrafficPolicyVersionMarker = TrafficPolicyVersionMarker, MaxItems = MaxItems)
   output <- .route53$list_traffic_policy_versions_output()
@@ -6212,7 +6270,8 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/authorizevpcassociation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$list_vpc_association_authorizations_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_vpc_association_authorizations_output()
@@ -6267,9 +6326,9 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' The range of valid values depends on whether `edns0clientsubnetip` is an
 #' IPv4 or an IPv6 address:
 #' 
-#' -   **IPv4**: Specify a value between 0 and 32
+#' - **IPv4**: Specify a value between 0 and 32
 #' 
-#' -   **IPv6**: Specify a value between 0 and 128
+#' - **IPv6**: Specify a value between 0 and 128
 #'
 #' @return
 #' A list with the following syntax:
@@ -6309,7 +6368,8 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
     http_method = "GET",
     http_path = "/2013-04-01/testdnsanswer",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$test_dns_answer_input(HostedZoneId = HostedZoneId, RecordName = RecordName, RecordType = RecordType, ResolverIP = ResolverIP, EDNS0ClientSubnetIP = EDNS0ClientSubnetIP, EDNS0ClientSubnetMask = EDNS0ClientSubnetMask)
   output <- .route53$test_dns_answer_output()
@@ -6354,15 +6414,15 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' [`update_health_check`][route53_update_health_check] request. This
 #' prevents Route 53 from overwriting an intervening update:
 #' 
-#' -   If the value in the
-#'     [`update_health_check`][route53_update_health_check] request matches
-#'     the value of `HealthCheckVersion` in the health check, Route 53
-#'     updates the health check with the new settings.
+#' - If the value in the
+#'   [`update_health_check`][route53_update_health_check] request matches
+#'   the value of `HealthCheckVersion` in the health check, Route 53
+#'   updates the health check with the new settings.
 #' 
-#' -   If the value of `HealthCheckVersion` in the health check is greater,
-#'     the health check was changed after you got the version number. Route
-#'     53 does not update the health check, and it returns a
-#'     `HealthCheckVersionMismatch` error.
+#' - If the value of `HealthCheckVersion` in the health check is greater,
+#'   the health check was changed after you got the version number. Route
+#'   53 does not update the health check, and it returns a
+#'   `HealthCheckVersionMismatch` error.
 #' @param IPAddress The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route
 #' 53 to perform health checks on. If you don't specify a value for
 #' `IPAddress`, Route 53 sends a DNS request to resolve the domain name
@@ -6372,14 +6432,13 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' 
 #' Use one of the following formats for the value of `IPAddress`:
 #' 
-#' -   **IPv4 address**: four values between 0 and 255, separated by
-#'     periods (.), for example, `192.0.2.44`.
+#' - **IPv4 address**: four values between 0 and 255, separated by periods
+#'   (.), for example, `192.0.2.44`.
 #' 
-#' -   **IPv6 address**: eight groups of four hexadecimal values, separated
-#'     by colons (:), for example,
-#'     `2001:0db8:85a3:0000:0000:abcd:0001:2345`. You can also shorten IPv6
-#'     addresses as described in RFC 5952, for example,
-#'     `2001:db8:85a3::abcd:1:2345`.
+#' - **IPv6 address**: eight groups of four hexadecimal values, separated
+#'   by colons (:), for example, `2001:0db8:85a3:0000:0000:abcd:0001:2345`.
+#'   You can also shorten IPv6 addresses as described in RFC 5952, for
+#'   example, `2001:db8:85a3::abcd:1:2345`.
 #' 
 #' If the endpoint is an EC2 instance, we recommend that you create an
 #' Elastic IP address, associate it with your EC2 instance, and specify the
@@ -6387,13 +6446,13 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' your instance never changes. For more information, see the applicable
 #' documentation:
 #' 
-#' -   Linux: [Elastic IP Addresses
-#'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
-#'     in the *Amazon EC2 User Guide for Linux Instances*
+#' - Linux: [Elastic IP Addresses
+#'   (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+#'   in the *Amazon EC2 User Guide for Linux Instances*
 #' 
-#' -   Windows: [Elastic IP Addresses
-#'     (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
-#'     in the *Amazon EC2 User Guide for Windows Instances*
+#' - Windows: [Elastic IP Addresses
+#'   (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
+#'   in the *Amazon EC2 User Guide for Windows Instances*
 #' 
 #' If a health check already has a value for `IPAddress`, you can change
 #' the value. However, you can't update an existing health check to add or
@@ -6407,14 +6466,14 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' more information about IP addresses for which you can't create health
 #' checks, see the following documents:
 #' 
-#' -   [RFC 5735, Special Use IPv4
-#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5735)
+#' - [RFC 5735, Special Use IPv4
+#'   Addresses](https://datatracker.ietf.org/doc/html/rfc5735)
 #' 
-#' -   [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
-#'     Space](https://datatracker.ietf.org/doc/html/rfc6598)
+#' - [RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address
+#'   Space](https://datatracker.ietf.org/doc/html/rfc6598)
 #' 
-#' -   [RFC 5156, Special-Use IPv6
-#'     Addresses](https://datatracker.ietf.org/doc/html/rfc5156)
+#' - [RFC 5156, Special-Use IPv6
+#'   Addresses](https://datatracker.ietf.org/doc/html/rfc5156)
 #' @param Port The port on the endpoint that you want Amazon Route 53 to perform health
 #' checks on.
 #' 
@@ -6445,17 +6504,17 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' When Route 53 checks the health of an endpoint, here is how it
 #' constructs the `Host` header:
 #' 
-#' -   If you specify a value of `80` for `Port` and `HTTP` or
-#'     `HTTP_STR_MATCH` for `Type`, Route 53 passes the value of
-#'     `FullyQualifiedDomainName` to the endpoint in the `Host` header.
+#' - If you specify a value of `80` for `Port` and `HTTP` or
+#'   `HTTP_STR_MATCH` for `Type`, Route 53 passes the value of
+#'   `FullyQualifiedDomainName` to the endpoint in the `Host` header.
 #' 
-#' -   If you specify a value of `443` for `Port` and `HTTPS` or
-#'     `HTTPS_STR_MATCH` for `Type`, Route 53 passes the value of
-#'     `FullyQualifiedDomainName` to the endpoint in the `Host` header.
+#' - If you specify a value of `443` for `Port` and `HTTPS` or
+#'   `HTTPS_STR_MATCH` for `Type`, Route 53 passes the value of
+#'   `FullyQualifiedDomainName` to the endpoint in the `Host` header.
 #' 
-#' -   If you specify another value for `Port` and any value except `TCP`
-#'     for `Type`, Route 53 passes *FullyQualifiedDomainName:Port* to the
-#'     endpoint in the `Host` header.
+#' - If you specify another value for `Port` and any value except `TCP` for
+#'   `Type`, Route 53 passes *FullyQualifiedDomainName:Port* to the
+#'   endpoint in the `Host` header.
 #' 
 #' If you don't specify a value for `FullyQualifiedDomainName`, Route 53
 #' substitutes the value of `IPAddress` in the `Host` header in each of the
@@ -6519,14 +6578,14 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' @param Disabled Stops Route 53 from performing health checks. When you disable a health
 #' check, here's what happens:
 #' 
-#' -   **Health checks that check the health of endpoints:** Route 53 stops
-#'     submitting requests to your application, server, or other resource.
+#' - **Health checks that check the health of endpoints:** Route 53 stops
+#'   submitting requests to your application, server, or other resource.
 #' 
-#' -   **Calculated health checks:** Route 53 stops aggregating the status
-#'     of the referenced health checks.
+#' - **Calculated health checks:** Route 53 stops aggregating the status of
+#'   the referenced health checks.
 #' 
-#' -   **Health checks that monitor CloudWatch alarms:** Route 53 stops
-#'     monitoring the corresponding CloudWatch metrics.
+#' - **Health checks that monitor CloudWatch alarms:** Route 53 stops
+#'   monitoring the corresponding CloudWatch metrics.
 #' 
 #' After you disable a health check, Route 53 considers the status of the
 #' health check to always be healthy. If you configured DNS failover, Route
@@ -6545,11 +6604,11 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' 
 #' Note the following:
 #' 
-#' -   If you specify a number greater than the number of child health
-#'     checks, Route 53 always considers this health check to be unhealthy.
+#' - If you specify a number greater than the number of child health
+#'   checks, Route 53 always considers this health check to be unhealthy.
 #' 
-#' -   If you specify `0`, Route 53 always considers this health check to
-#'     be healthy.
+#' - If you specify `0`, Route 53 always considers this health check to be
+#'   healthy.
 #' @param ChildHealthChecks A complex type that contains one `ChildHealthCheck` element for each
 #' health check that you want to associate with a `CALCULATED` health
 #' check.
@@ -6585,33 +6644,33 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' alarm state, the status that you want Amazon Route 53 to assign to the
 #' health check:
 #' 
-#' -   `Healthy`: Route 53 considers the health check to be healthy.
+#' - `Healthy`: Route 53 considers the health check to be healthy.
 #' 
-#' -   `Unhealthy`: Route 53 considers the health check to be unhealthy.
+#' - `Unhealthy`: Route 53 considers the health check to be unhealthy.
 #' 
-#' -   `LastKnownStatus`: By default, Route 53 uses the status of the
-#'     health check from the last time CloudWatch had sufficient data to
-#'     determine the alarm state. For new health checks that have no last
-#'     known status, the status for the health check is healthy.
+#' - `LastKnownStatus`: By default, Route 53 uses the status of the health
+#'   check from the last time CloudWatch had sufficient data to determine
+#'   the alarm state. For new health checks that have no last known status,
+#'   the status for the health check is healthy.
 #' @param ResetElements A complex type that contains one `ResettableElementName` element for
 #' each element that you want to reset to the default value. Valid values
 #' for `ResettableElementName` include the following:
 #' 
-#' -   `ChildHealthChecks`: Amazon Route 53 resets
-#'     [ChildHealthChecks](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks)
-#'     to null.
+#' - `ChildHealthChecks`: Amazon Route 53 resets
+#'   [ChildHealthChecks](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks)
+#'   to null.
 #' 
-#' -   `FullyQualifiedDomainName`: Route 53 resets
-#'     [FullyQualifiedDomainName](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
-#'     to null.
+#' - `FullyQualifiedDomainName`: Route 53 resets
+#'   [FullyQualifiedDomainName](https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
+#'   to null.
 #' 
-#' -   `Regions`: Route 53 resets the
-#'     [Regions](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions)
-#'     list to the default set of regions.
+#' - `Regions`: Route 53 resets the
+#'   [Regions](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions)
+#'   list to the default set of regions.
 #' 
-#' -   `ResourcePath`: Route 53 resets
-#'     [ResourcePath](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
-#'     to null.
+#' - `ResourcePath`: Route 53 resets
+#'   [ResourcePath](https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
+#'   to null.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6714,7 +6773,8 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
     http_method = "POST",
     http_path = "/2013-04-01/healthcheck/{HealthCheckId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$update_health_check_input(HealthCheckId = HealthCheckId, HealthCheckVersion = HealthCheckVersion, IPAddress = IPAddress, Port = Port, ResourcePath = ResourcePath, FullyQualifiedDomainName = FullyQualifiedDomainName, SearchString = SearchString, FailureThreshold = FailureThreshold, Inverted = Inverted, Disabled = Disabled, HealthThreshold = HealthThreshold, ChildHealthChecks = ChildHealthChecks, EnableSNI = EnableSNI, Regions = Regions, AlarmIdentifier = AlarmIdentifier, InsufficientDataHealthStatus = InsufficientDataHealthStatus, ResetElements = ResetElements)
   output <- .route53$update_health_check_output()
@@ -6779,7 +6839,8 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
     http_method = "POST",
     http_path = "/2013-04-01/hostedzone/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$update_hosted_zone_comment_input(Id = Id, Comment = Comment)
   output <- .route53$update_hosted_zone_comment_output()
@@ -6840,7 +6901,8 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicy/{Id}/{Version}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$update_traffic_policy_comment_input(Id = Id, Version = Version, Comment = Comment)
   output <- .route53$update_traffic_policy_comment_output()
@@ -6939,7 +7001,8 @@ route53_update_traffic_policy_instance <- function(Id, TTL, TrafficPolicyId, Tra
     http_method = "POST",
     http_path = "/2013-04-01/trafficpolicyinstance/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53$update_traffic_policy_instance_input(Id = Id, TTL = TTL, TrafficPolicyId = TrafficPolicyId, TrafficPolicyVersion = TrafficPolicyVersion)
   output <- .route53$update_traffic_policy_instance_output()

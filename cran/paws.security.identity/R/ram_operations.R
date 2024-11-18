@@ -38,7 +38,8 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
     http_method = "POST",
     http_path = "/acceptresourceshareinvitation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$accept_resource_share_invitation_input(resourceShareInvitationArn = resourceShareInvitationArn, clientToken = clientToken)
   output <- .ram$accept_resource_share_invitation_output()
@@ -74,20 +75,19 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' 
 #' You can include the following values:
 #' 
-#' -   An Amazon Web Services account ID, for example: `123456789012`
+#' - An Amazon Web Services account ID, for example: `123456789012`
 #' 
-#' -   An [Amazon Resource Name
-#'     (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#'     of an organization in Organizations, for example:
-#'     `organizations::123456789012:organization/o-exampleorgid`
+#' - An [Amazon Resource Name
+#'   (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#'   of an organization in Organizations, for example:
+#'   `organizations::123456789012:organization/o-exampleorgid`
 #' 
-#' -   An ARN of an organizational unit (OU) in Organizations, for example:
-#'     `organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123`
+#' - An ARN of an organizational unit (OU) in Organizations, for example:
+#'   `organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123`
 #' 
-#' -   An ARN of an IAM role, for example:
-#'     `iam::123456789012:role/rolename`
+#' - An ARN of an IAM role, for example: `iam::123456789012:role/rolename`
 #' 
-#' -   An ARN of an IAM user, for example: `iam::123456789012user/username`
+#' - An ARN of an IAM user, for example: `iam::123456789012user/username`
 #' 
 #' Not all resource types can be shared with IAM roles and users. For more
 #' information, see [Sharing with IAM roles and
@@ -119,7 +119,8 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
     http_method = "POST",
     http_path = "/associateresourceshare",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$associate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken, sources = sources)
   output <- .ram$associate_resource_share_output()
@@ -192,7 +193,8 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
     http_method = "POST",
     http_path = "/associateresourcesharepermission",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$associate_resource_share_permission_input(resourceShareArn = resourceShareArn, permissionArn = permissionArn, replace = replace, clientToken = clientToken, permissionVersion = permissionVersion)
   output <- .ram$associate_resource_share_permission_output()
@@ -224,22 +226,22 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 #' @param policyTemplate &#91;required&#93; A string in JSON format string that contains the following elements of a
 #' resource-based policy:
 #' 
-#' -   **Effect**: must be set to `ALLOW`.
+#' - **Effect**: must be set to `ALLOW`.
 #' 
-#' -   **Action**: specifies the actions that are allowed by this customer
-#'     managed permission. The list must contain only actions that are
-#'     supported by the specified resource type. For a list of all actions
-#'     supported by each resource type, see [Actions, resources, and
-#'     condition keys for Amazon Web Services
-#'     services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
-#'     in the *Identity and Access Management User Guide*.
+#' - **Action**: specifies the actions that are allowed by this customer
+#'   managed permission. The list must contain only actions that are
+#'   supported by the specified resource type. For a list of all actions
+#'   supported by each resource type, see [Actions, resources, and
+#'   condition keys for Amazon Web Services
+#'   services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
+#'   in the *Identity and Access Management User Guide*.
 #' 
-#' -   **Condition**: (optional) specifies conditional parameters that must
-#'     evaluate to true when a user attempts an action for that action to
-#'     be allowed. For more information about the Condition element, see
-#'     [IAM policies: Condition
-#'     element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html)
-#'     in the *Identity and Access Management User Guide*.
+#' - **Condition**: (optional) specifies conditional parameters that must
+#'   evaluate to true when a user attempts an action for that action to be
+#'   allowed. For more information about the Condition element, see [IAM
+#'   policies: Condition
+#'   element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html)
+#'   in the *Identity and Access Management User Guide*.
 #' 
 #' This template can't include either the `Resource` or `Principal`
 #' elements. Those are both filled in by RAM when it instantiates the
@@ -273,7 +275,8 @@ ram_create_permission <- function(name, resourceType, policyTemplate, clientToke
     http_method = "POST",
     http_path = "/createpermission",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$create_permission_input(name = name, resourceType = resourceType, policyTemplate = policyTemplate, clientToken = clientToken, tags = tags)
   output <- .ram$create_permission_output()
@@ -298,22 +301,22 @@ ram_create_permission <- function(name, resourceType, policyTemplate, clientToke
 #' @param policyTemplate &#91;required&#93; A string in JSON format string that contains the following elements of a
 #' resource-based policy:
 #' 
-#' -   **Effect**: must be set to `ALLOW`.
+#' - **Effect**: must be set to `ALLOW`.
 #' 
-#' -   **Action**: specifies the actions that are allowed by this customer
-#'     managed permission. The list must contain only actions that are
-#'     supported by the specified resource type. For a list of all actions
-#'     supported by each resource type, see [Actions, resources, and
-#'     condition keys for Amazon Web Services
-#'     services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
-#'     in the *Identity and Access Management User Guide*.
+#' - **Action**: specifies the actions that are allowed by this customer
+#'   managed permission. The list must contain only actions that are
+#'   supported by the specified resource type. For a list of all actions
+#'   supported by each resource type, see [Actions, resources, and
+#'   condition keys for Amazon Web Services
+#'   services](https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
+#'   in the *Identity and Access Management User Guide*.
 #' 
-#' -   **Condition**: (optional) specifies conditional parameters that must
-#'     evaluate to true when a user attempts an action for that action to
-#'     be allowed. For more information about the Condition element, see
-#'     [IAM policies: Condition
-#'     element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html)
-#'     in the *Identity and Access Management User Guide*.
+#' - **Condition**: (optional) specifies conditional parameters that must
+#'   evaluate to true when a user attempts an action for that action to be
+#'   allowed. For more information about the Condition element, see [IAM
+#'   policies: Condition
+#'   element](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html)
+#'   in the *Identity and Access Management User Guide*.
 #' 
 #' This template can't include either the `Resource` or `Principal`
 #' elements. Those are both filled in by RAM when it instantiates the
@@ -345,7 +348,8 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
     http_method = "POST",
     http_path = "/createpermissionversion",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$create_permission_version_input(permissionArn = permissionArn, policyTemplate = policyTemplate, clientToken = clientToken)
   output <- .ram$create_permission_version_output()
@@ -372,20 +376,19 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
 #' 
 #' You can include the following values:
 #' 
-#' -   An Amazon Web Services account ID, for example: `123456789012`
+#' - An Amazon Web Services account ID, for example: `123456789012`
 #' 
-#' -   An [Amazon Resource Name
-#'     (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#'     of an organization in Organizations, for example:
-#'     `organizations::123456789012:organization/o-exampleorgid`
+#' - An [Amazon Resource Name
+#'   (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#'   of an organization in Organizations, for example:
+#'   `organizations::123456789012:organization/o-exampleorgid`
 #' 
-#' -   An ARN of an organizational unit (OU) in Organizations, for example:
-#'     `organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123`
+#' - An ARN of an organizational unit (OU) in Organizations, for example:
+#'   `organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123`
 #' 
-#' -   An ARN of an IAM role, for example:
-#'     `iam::123456789012:role/rolename`
+#' - An ARN of an IAM role, for example: `iam::123456789012:role/rolename`
 #' 
-#' -   An ARN of an IAM user, for example: `iam::123456789012user/username`
+#' - An ARN of an IAM user, for example: `iam::123456789012user/username`
 #' 
 #' Not all resource types can be shared with IAM roles and users. For more
 #' information, see [Sharing with IAM roles and
@@ -433,7 +436,8 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
     http_method = "POST",
     http_path = "/createresourceshare",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns, sources = sources)
   output <- .ram$create_resource_share_output()
@@ -480,7 +484,8 @@ ram_delete_permission <- function(permissionArn, clientToken = NULL) {
     http_method = "DELETE",
     http_path = "/deletepermission",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$delete_permission_input(permissionArn = permissionArn, clientToken = clientToken)
   output <- .ram$delete_permission_output()
@@ -541,7 +546,8 @@ ram_delete_permission_version <- function(permissionArn, permissionVersion, clie
     http_method = "DELETE",
     http_path = "/deletepermissionversion",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$delete_permission_version_input(permissionArn = permissionArn, permissionVersion = permissionVersion, clientToken = clientToken)
   output <- .ram$delete_permission_version_output()
@@ -587,7 +593,8 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
     http_method = "DELETE",
     http_path = "/deleteresourceshare",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$delete_resource_share_input(resourceShareArn = resourceShareArn, clientToken = clientToken)
   output <- .ram$delete_resource_share_output()
@@ -621,20 +628,19 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' 
 #' You can include the following values:
 #' 
-#' -   An Amazon Web Services account ID, for example: `123456789012`
+#' - An Amazon Web Services account ID, for example: `123456789012`
 #' 
-#' -   An [Amazon Resource Name
-#'     (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#'     of an organization in Organizations, for example:
-#'     `organizations::123456789012:organization/o-exampleorgid`
+#' - An [Amazon Resource Name
+#'   (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#'   of an organization in Organizations, for example:
+#'   `organizations::123456789012:organization/o-exampleorgid`
 #' 
-#' -   An ARN of an organizational unit (OU) in Organizations, for example:
-#'     `organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123`
+#' - An ARN of an organizational unit (OU) in Organizations, for example:
+#'   `organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123`
 #' 
-#' -   An ARN of an IAM role, for example:
-#'     `iam::123456789012:role/rolename`
+#' - An ARN of an IAM role, for example: `iam::123456789012:role/rolename`
 #' 
-#' -   An ARN of an IAM user, for example: `iam::123456789012user/username`
+#' - An ARN of an IAM user, for example: `iam::123456789012user/username`
 #' 
 #' Not all resource types can be shared with IAM roles and users. For more
 #' information, see [Sharing with IAM roles and
@@ -666,7 +672,8 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
     http_method = "POST",
     http_path = "/disassociateresourceshare",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$disassociate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken, sources = sources)
   output <- .ram$disassociate_resource_share_output()
@@ -717,7 +724,8 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
     http_method = "POST",
     http_path = "/disassociateresourcesharepermission",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$disassociate_resource_share_permission_input(resourceShareArn = resourceShareArn, permissionArn = permissionArn, clientToken = clientToken)
   output <- .ram$disassociate_resource_share_permission_output()
@@ -747,7 +755,8 @@ ram_enable_sharing_with_aws_organization <- function() {
     http_method = "POST",
     http_path = "/enablesharingwithawsorganization",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$enable_sharing_with_aws_organization_input()
   output <- .ram$enable_sharing_with_aws_organization_output()
@@ -789,7 +798,8 @@ ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
     http_method = "POST",
     http_path = "/getpermission",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$get_permission_input(permissionArn = permissionArn, permissionVersion = permissionVersion)
   output <- .ram$get_permission_output()
@@ -838,7 +848,8 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
     http_method = "POST",
     http_path = "/getresourcepolicies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$get_resource_policies_input(resourceArns = resourceArns, principal = principal, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_policies_output()
@@ -861,10 +872,9 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 #' @param associationType &#91;required&#93; Specifies whether you want to retrieve the associations that involve a
 #' specified resource or principal.
 #' 
-#' -   `PRINCIPAL` – list the principals whose associations you want to
-#'     see.
+#' - `PRINCIPAL` – list the principals whose associations you want to see.
 #' 
-#' -   `RESOURCE` – list the resources whose associations you want to see.
+#' - `RESOURCE` – list the resources whose associations you want to see.
 #' @param resourceShareArns Specifies a list of [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' of the resource share whose associations you want to retrieve.
@@ -908,7 +918,8 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
     http_method = "POST",
     http_path = "/getresourceshareassociations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$get_resource_share_associations_input(associationType = associationType, resourceShareArns = resourceShareArns, resourceArn = resourceArn, principal = principal, associationStatus = associationStatus, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_share_associations_output()
@@ -959,7 +970,8 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
     http_method = "POST",
     http_path = "/getresourceshareinvitations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$get_resource_share_invitations_input(resourceShareInvitationArns = resourceShareInvitationArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_share_invitations_output()
@@ -987,11 +999,11 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #' @param resourceOwner &#91;required&#93; Specifies that you want to retrieve details of only those resource
 #' shares that match the following:
 #' 
-#' -   **`SELF`** – resource shares that your account shares with other
-#'     accounts
+#' - **`SELF`** – resource shares that your account shares with other
+#'   accounts
 #' 
-#' -   **`OTHER-ACCOUNTS`** – resource shares that other accounts share
-#'     with your account
+#' - **`OTHER-ACCOUNTS`** – resource shares that other accounts share with
+#'   your account
 #' @param name Specifies the name of an individual resource share that you want to
 #' retrieve details about.
 #' @param tagFilters Specifies that you want to retrieve details of only those resource
@@ -1026,7 +1038,8 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
     http_method = "POST",
     http_path = "/getresourceshares",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$get_resource_shares_input(resourceShareArns = resourceShareArns, resourceShareStatus = resourceShareStatus, resourceOwner = resourceOwner, name = name, tagFilters = tagFilters, nextToken = nextToken, maxResults = maxResults, permissionArn = permissionArn, permissionVersion = permissionVersion)
   output <- .ram$get_resource_shares_output()
@@ -1069,14 +1082,14 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 #' @param resourceRegionScope Specifies that you want the results to include only resources that have
 #' the specified scope.
 #' 
-#' -   `ALL` – the results include both global and regional resources or
-#'     resource types.
+#' - `ALL` – the results include both global and regional resources or
+#'   resource types.
 #' 
-#' -   `GLOBAL` – the results include only global resources or resource
-#'     types.
+#' - `GLOBAL` – the results include only global resources or resource
+#'   types.
 #' 
-#' -   `REGIONAL` – the results include only regional resources or resource
-#'     types.
+#' - `REGIONAL` – the results include only regional resources or resource
+#'   types.
 #' 
 #' The default value is `ALL`.
 #'
@@ -1089,7 +1102,8 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
     http_method = "POST",
     http_path = "/listpendinginvitationresources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_pending_invitation_resources_input(resourceShareInvitationArn = resourceShareInvitationArn, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_pending_invitation_resources_output()
@@ -1154,7 +1168,8 @@ ram_list_permission_associations <- function(permissionArn = NULL, permissionVer
     http_method = "POST",
     http_path = "/listpermissionassociations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_permission_associations_input(permissionArn = permissionArn, permissionVersion = permissionVersion, associationStatus = associationStatus, resourceType = resourceType, featureSet = featureSet, defaultVersion = defaultVersion, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_permission_associations_output()
@@ -1204,7 +1219,8 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
     http_method = "POST",
     http_path = "/listpermissionversions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_permission_versions_input(permissionArn = permissionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_permission_versions_output()
@@ -1248,12 +1264,12 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
 #' receive all of the results.
 #' @param permissionType Specifies that you want to list only permissions of this type:
 #' 
-#' -   `AWS` – returns only Amazon Web Services managed permissions.
+#' - `AWS` – returns only Amazon Web Services managed permissions.
 #' 
-#' -   `LOCAL` – returns only customer managed permissions
+#' - `LOCAL` – returns only customer managed permissions
 #' 
-#' -   `ALL` – returns both Amazon Web Services managed permissions and
-#'     customer managed permissions.
+#' - `ALL` – returns both Amazon Web Services managed permissions and
+#'   customer managed permissions.
 #' 
 #' If you don't specify this parameter, the default is `All`.
 #'
@@ -1266,7 +1282,8 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
     http_method = "POST",
     http_path = "/listpermissions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_permissions_input(resourceType = resourceType, nextToken = nextToken, maxResults = maxResults, permissionType = permissionType)
   output <- .ram$list_permissions_output()
@@ -1289,10 +1306,10 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' @param resourceOwner &#91;required&#93; Specifies that you want to list information for only resource shares
 #' that match the following:
 #' 
-#' -   **`SELF`** – principals that your account is sharing resources with
+#' - **`SELF`** – principals that your account is sharing resources with
 #' 
-#' -   **`OTHER-ACCOUNTS`** – principals that are sharing resources with
-#'     your account
+#' - **`OTHER-ACCOUNTS`** – principals that are sharing resources with your
+#'   account
 #' @param resourceArn Specifies that you want to list principal information for the resource
 #' share with the specified [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
@@ -1301,20 +1318,19 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' 
 #' You can include the following values:
 #' 
-#' -   An Amazon Web Services account ID, for example: `123456789012`
+#' - An Amazon Web Services account ID, for example: `123456789012`
 #' 
-#' -   An [Amazon Resource Name
-#'     (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#'     of an organization in Organizations, for example:
-#'     `organizations::123456789012:organization/o-exampleorgid`
+#' - An [Amazon Resource Name
+#'   (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
+#'   of an organization in Organizations, for example:
+#'   `organizations::123456789012:organization/o-exampleorgid`
 #' 
-#' -   An ARN of an organizational unit (OU) in Organizations, for example:
-#'     `organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123`
+#' - An ARN of an organizational unit (OU) in Organizations, for example:
+#'   `organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123`
 #' 
-#' -   An ARN of an IAM role, for example:
-#'     `iam::123456789012:role/rolename`
+#' - An ARN of an IAM role, for example: `iam::123456789012:role/rolename`
 #' 
-#' -   An ARN of an IAM user, for example: `iam::123456789012user/username`
+#' - An ARN of an IAM user, for example: `iam::123456789012user/username`
 #' 
 #' Not all resource types can be shared with IAM roles and users. For more
 #' information, see [Sharing with IAM roles and
@@ -1355,7 +1371,8 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
     http_method = "POST",
     http_path = "/listprincipals",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_principals_input(resourceOwner = resourceOwner, resourceArn = resourceArn, principals = principals, resourceType = resourceType, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_principals_output()
@@ -1406,7 +1423,8 @@ ram_list_replace_permission_associations_work <- function(workIds = NULL, status
     http_method = "POST",
     http_path = "/listreplacepermissionassociationswork",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_replace_permission_associations_work_input(workIds = workIds, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_replace_permission_associations_work_output()
@@ -1454,7 +1472,8 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
     http_method = "POST",
     http_path = "/listresourcesharepermissions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_resource_share_permissions_input(resourceShareArn = resourceShareArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_resource_share_permissions_output()
@@ -1491,14 +1510,14 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
 #' @param resourceRegionScope Specifies that you want the results to include only resources that have
 #' the specified scope.
 #' 
-#' -   `ALL` – the results include both global and regional resources or
-#'     resource types.
+#' - `ALL` – the results include both global and regional resources or
+#'   resource types.
 #' 
-#' -   `GLOBAL` – the results include only global resources or resource
-#'     types.
+#' - `GLOBAL` – the results include only global resources or resource
+#'   types.
 #' 
-#' -   `REGIONAL` – the results include only regional resources or resource
-#'     types.
+#' - `REGIONAL` – the results include only regional resources or resource
+#'   types.
 #' 
 #' The default value is `ALL`.
 #'
@@ -1511,7 +1530,8 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
     http_method = "POST",
     http_path = "/listresourcetypes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_resource_types_input(nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_resource_types_output()
@@ -1534,10 +1554,10 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
 #' @param resourceOwner &#91;required&#93; Specifies that you want to list only the resource shares that match the
 #' following:
 #' 
-#' -   **`SELF`** – resources that your account shares with other accounts
+#' - **`SELF`** – resources that your account shares with other accounts
 #' 
-#' -   **`OTHER-ACCOUNTS`** – resources that other accounts share with your
-#'     account
+#' - **`OTHER-ACCOUNTS`** – resources that other accounts share with your
+#'   account
 #' @param principal Specifies that you want to list only the resource shares that are
 #' associated with the specified principal.
 #' @param resourceType Specifies that you want to list only the resource shares that include
@@ -1569,14 +1589,14 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
 #' @param resourceRegionScope Specifies that you want the results to include only resources that have
 #' the specified scope.
 #' 
-#' -   `ALL` – the results include both global and regional resources or
-#'     resource types.
+#' - `ALL` – the results include both global and regional resources or
+#'   resource types.
 #' 
-#' -   `GLOBAL` – the results include only global resources or resource
-#'     types.
+#' - `GLOBAL` – the results include only global resources or resource
+#'   types.
 #' 
-#' -   `REGIONAL` – the results include only regional resources or resource
-#'     types.
+#' - `REGIONAL` – the results include only regional resources or resource
+#'   types.
 #' 
 #' The default value is `ALL`.
 #'
@@ -1589,7 +1609,8 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
     http_method = "POST",
     http_path = "/listresources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .ram$list_resources_input(resourceOwner = resourceOwner, principal = principal, resourceType = resourceType, resourceArns = resourceArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_resources_output()
@@ -1644,7 +1665,8 @@ ram_promote_permission_created_from_policy <- function(permissionArn, name, clie
     http_method = "POST",
     http_path = "/promotepermissioncreatedfrompolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$promote_permission_created_from_policy_input(permissionArn = permissionArn, name = name, clientToken = clientToken)
   output <- .ram$promote_permission_created_from_policy_output()
@@ -1679,7 +1701,8 @@ ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
     http_method = "POST",
     http_path = "/promoteresourcesharecreatedfrompolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$promote_resource_share_created_from_policy_input(resourceShareArn = resourceShareArn)
   output <- .ram$promote_resource_share_created_from_policy_output()
@@ -1726,7 +1749,8 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
     http_method = "POST",
     http_path = "/rejectresourceshareinvitation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$reject_resource_share_invitation_input(resourceShareInvitationArn = resourceShareInvitationArn, clientToken = clientToken)
   output <- .ram$reject_resource_share_invitation_output()
@@ -1782,7 +1806,8 @@ ram_replace_permission_associations <- function(fromPermissionArn, fromPermissio
     http_method = "POST",
     http_path = "/replacepermissionassociations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$replace_permission_associations_input(fromPermissionArn = fromPermissionArn, fromPermissionVersion = fromPermissionVersion, toPermissionArn = toPermissionArn, clientToken = clientToken)
   output <- .ram$replace_permission_associations_output()
@@ -1833,7 +1858,8 @@ ram_set_default_permission_version <- function(permissionArn, permissionVersion,
     http_method = "POST",
     http_path = "/setdefaultpermissionversion",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$set_default_permission_version_input(permissionArn = permissionArn, permissionVersion = permissionVersion, clientToken = clientToken)
   output <- .ram$set_default_permission_version_output()
@@ -1874,7 +1900,8 @@ ram_tag_resource <- function(resourceShareArn = NULL, tags, resourceArn = NULL) 
     http_method = "POST",
     http_path = "/tagresource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$tag_resource_input(resourceShareArn = resourceShareArn, tags = tags, resourceArn = resourceArn)
   output <- .ram$tag_resource_output()
@@ -1915,7 +1942,8 @@ ram_untag_resource <- function(resourceShareArn = NULL, tagKeys, resourceArn = N
     http_method = "POST",
     http_path = "/untagresource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$untag_resource_input(resourceShareArn = resourceShareArn, tagKeys = tagKeys, resourceArn = resourceArn)
   output <- .ram$untag_resource_output()
@@ -1965,7 +1993,8 @@ ram_update_resource_share <- function(resourceShareArn, name = NULL, allowExtern
     http_method = "POST",
     http_path = "/updateresourceshare",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ram$update_resource_share_input(resourceShareArn = resourceShareArn, name = name, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken)
   output <- .ram$update_resource_share_output()

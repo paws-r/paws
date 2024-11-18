@@ -66,7 +66,8 @@ ec2instanceconnect_send_ssh_public_key <- function(InstanceId, InstanceOSUser, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2instanceconnect$send_ssh_public_key_input(InstanceId = InstanceId, InstanceOSUser = InstanceOSUser, SSHPublicKey = SSHPublicKey, AvailabilityZone = AvailabilityZone)
   output <- .ec2instanceconnect$send_ssh_public_key_output()
@@ -131,7 +132,8 @@ ec2instanceconnect_send_serial_console_ssh_public_key <- function(InstanceId, Se
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2instanceconnect$send_serial_console_ssh_public_key_input(InstanceId = InstanceId, SerialPort = SerialPort, SSHPublicKey = SSHPublicKey)
   output <- .ec2instanceconnect$send_serial_console_ssh_public_key_output()

@@ -25,9 +25,9 @@ detect, mitigate, and report events.
 \item Sum - Use the total traffic across the group. This is a good choice
 for most cases. Examples include Elastic IP addresses for EC2
 instances that scale manually or automatically.
-\item Mean - Use the average of the traffic across the group. This is a
-good choice for resources that share traffic uniformly. Examples
-include accelerators and load balancers.
+\item Mean - Use the average of the traffic across the group. This is a good
+choice for resources that share traffic uniformly. Examples include
+accelerators and load balancers.
 \item Max - Use the highest traffic from each resource. This is useful for
 resources that don't share traffic and for resources that share that
 traffic in a non-uniform way. Examples include Amazon CloudFront and

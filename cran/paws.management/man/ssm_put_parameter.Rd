@@ -90,8 +90,8 @@ If you don't specify a key ID, the system uses the default key
 associated with your Amazon Web Services account which is not as secure
 as using a custom key.
 \itemize{
-\item To use a custom KMS key, choose the \code{SecureString} data type with
-the \verb{Key ID} parameter.
+\item To use a custom KMS key, choose the \code{SecureString} data type with the
+\verb{Key ID} parameter.
 }}
 
 \item{Overwrite}{Overwrite an existing parameter. The default value is \code{false}.}
@@ -156,15 +156,15 @@ The default tier when you begin using Parameter Store is the
 standard-parameter tier. If you use the advanced-parameter tier, you can
 specify one of the following as the default:
 \itemize{
-\item \strong{Advanced}: With this option, Parameter Store evaluates all
-requests as advanced parameters.
+\item \strong{Advanced}: With this option, Parameter Store evaluates all requests
+as advanced parameters.
 \item \strong{Intelligent-Tiering}: With this option, Parameter Store evaluates
 each request to determine if the parameter is standard or advanced.
 
 If the request doesn't include any options that require an advanced
-parameter, the parameter is created in the standard-parameter tier.
-If one or more options requiring an advanced parameter are included
-in the request, Parameter Store create a parameter in the
+parameter, the parameter is created in the standard-parameter tier. If
+one or more options requiring an advanced parameter are included in
+the request, Parameter Store create a parameter in the
 advanced-parameter tier.
 
 This approach helps control your parameter-related costs by always
@@ -176,8 +176,8 @@ Options that require an advanced parameter include the following:
 \itemize{
 \item The content size of the parameter is more than 4 KB.
 \item The parameter uses a parameter policy.
-\item More than 10,000 parameters already exist in your Amazon Web
-Services account in the current Amazon Web Services Region.
+\item More than 10,000 parameters already exist in your Amazon Web Services
+account in the current Amazon Web Services Region.
 }
 
 For more information about configuring the default tier option, see

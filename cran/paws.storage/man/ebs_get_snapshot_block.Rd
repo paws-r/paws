@@ -11,7 +11,7 @@ ebs_get_snapshot_block(SnapshotId, BlockIndex, BlockToken)
 
 If the specified snapshot is encrypted, you must have permission to use
 the KMS key that was used to encrypt the snapshot. For more information,
-see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebsapis-using-encryption.html}{Using encryption}
+see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebsapis-using-encryption.html}{Using encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{BlockIndex}{[required] The block index of the block in which to read the data. A block index is

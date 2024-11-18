@@ -22,13 +22,13 @@ cognitoidentityprovider_admin_initiate_auth(
 \item{AuthFlow}{[required] The authentication flow for this call to run. The API action will depend
 on this value. For example:
 \itemize{
-\item \code{REFRESH_TOKEN_AUTH} will take in a valid refresh token and return
-new tokens.
+\item \code{REFRESH_TOKEN_AUTH} will take in a valid refresh token and return new
+tokens.
 \item \code{USER_SRP_AUTH} will take in \code{USERNAME} and \code{SRP_A} and return the
 Secure Remote Password (SRP) protocol variables to be used for next
 challenge execution.
-\item \code{ADMIN_USER_PASSWORD_AUTH} will take in \code{USERNAME} and \code{PASSWORD}
-and return the next challenge or tokens.
+\item \code{ADMIN_USER_PASSWORD_AUTH} will take in \code{USERNAME} and \code{PASSWORD} and
+return the next challenge or tokens.
 }
 
 Valid values include:
@@ -36,16 +36,16 @@ Valid values include:
 \item \code{USER_SRP_AUTH}: Authentication flow for the Secure Remote Password
 (SRP) protocol.
 \item \code{REFRESH_TOKEN_AUTH}/\code{REFRESH_TOKEN}: Authentication flow for
-refreshing the access token and ID token by supplying a valid
-refresh token.
+refreshing the access token and ID token by supplying a valid refresh
+token.
 \item \code{CUSTOM_AUTH}: Custom authentication flow.
-\item \code{ADMIN_NO_SRP_AUTH}: Non-SRP authentication flow; you can pass in
-the USERNAME and PASSWORD directly if the flow is enabled for
-calling the app client.
-\item \code{ADMIN_USER_PASSWORD_AUTH}: Admin-based user password
-authentication. This replaces the \code{ADMIN_NO_SRP_AUTH} authentication
-flow. In this flow, Amazon Cognito receives the password in the
-request instead of using the SRP process to verify passwords.
+\item \code{ADMIN_NO_SRP_AUTH}: Non-SRP authentication flow; you can pass in the
+USERNAME and PASSWORD directly if the flow is enabled for calling the
+app client.
+\item \code{ADMIN_USER_PASSWORD_AUTH}: Admin-based user password authentication.
+This replaces the \code{ADMIN_NO_SRP_AUTH} authentication flow. In this
+flow, Amazon Cognito receives the password in the request instead of
+using the SRP process to verify passwords.
 }}
 
 \item{AuthParameters}{The authentication parameters. These are inputs corresponding to the
@@ -53,16 +53,16 @@ request instead of using the SRP process to verify passwords.
 of \code{AuthFlow}:
 \itemize{
 \item For \code{USER_SRP_AUTH}: \code{USERNAME} (required), \code{SRP_A} (required),
-\code{SECRET_HASH} (required if the app client is configured with a
-client secret), \code{DEVICE_KEY}.
+\code{SECRET_HASH} (required if the app client is configured with a client
+secret), \code{DEVICE_KEY}.
 \item For \code{ADMIN_USER_PASSWORD_AUTH}: \code{USERNAME} (required), \code{PASSWORD}
 (required), \code{SECRET_HASH} (required if the app client is configured
 with a client secret), \code{DEVICE_KEY}.
 \item For \code{REFRESH_TOKEN_AUTH/REFRESH_TOKEN}: \code{REFRESH_TOKEN} (required),
-\code{SECRET_HASH} (required if the app client is configured with a
-client secret), \code{DEVICE_KEY}.
-\item For \code{CUSTOM_AUTH}: \code{USERNAME} (required), \code{SECRET_HASH} (if app
-client is configured with client secret), \code{DEVICE_KEY}. To start the
+\code{SECRET_HASH} (required if the app client is configured with a client
+secret), \code{DEVICE_KEY}.
+\item For \code{CUSTOM_AUTH}: \code{USERNAME} (required), \code{SECRET_HASH} (if app client
+is configured with client secret), \code{DEVICE_KEY}. To start the
 authentication flow with password verification, include
 \code{ChallengeName: SRP_A} and \verb{SRP_A: (The SRP_A Value)}.
 }
@@ -102,19 +102,19 @@ the ClientMetadata value as input:
 \item Define auth challenge
 }
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the ClientMetadata parameter, remember that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
-Lambda triggers that are assigned to a user pool to support custom
-workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
+\item Store the ClientMetadata value. This data is available only to Lambda
+triggers that are assigned to a user pool to support custom workflows.
+If your user pool configuration doesn't include triggers, the
+ClientMetadata parameter serves no purpose.
 \item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+sensitive information.
 }}
 
 \item{AnalyticsMetadata}{The analytics metadata for collecting Amazon Pinpoint metrics for

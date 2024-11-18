@@ -12,20 +12,20 @@ NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PortfolioShareType The type of shared portfolios to accept. The default is to accept
 #' imported portfolios.
 #' 
-#' -   `AWS_ORGANIZATIONS` - Accept portfolios shared by the management
-#'     account of your organization.
+#' - `AWS_ORGANIZATIONS` - Accept portfolios shared by the management
+#'   account of your organization.
 #' 
-#' -   `IMPORTED` - Accept imported portfolios.
+#' - `IMPORTED` - Accept imported portfolios.
 #' 
-#' -   `AWS_SERVICECATALOG` - Not supported. (Throws
-#'     ResourceNotFoundException.)
+#' - `AWS_SERVICECATALOG` - Not supported. (Throws
+#'   ResourceNotFoundException.)
 #' 
 #' For example,
 #' `aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
@@ -39,7 +39,8 @@ servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$accept_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$accept_portfolio_share_output()
@@ -70,7 +71,8 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$associate_budget_with_resource_input(BudgetName = BudgetName, ResourceId = ResourceId)
   output <- .servicecatalog$associate_budget_with_resource_output()
@@ -91,9 +93,9 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). If the `PrincipalType`
 #' is `IAM`, the supported value is a fully defined [IAM Amazon Resource
@@ -106,28 +108,28 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' 
 #' The ARN resource-id can be either:
 #' 
-#' -   A fully formed resource-id. For example,
-#'     *arn:aws:iam:::role/resource-name* or
-#'     *arn:aws:iam:::role/resource-path/resource-name*
+#' - A fully formed resource-id. For example,
+#'   *arn:aws:iam:::role/resource-name* or
+#'   *arn:aws:iam:::role/resource-path/resource-name*
 #' 
-#' -   A wildcard ARN. The wildcard ARN accepts `IAM_PATTERN` values with a
-#'     "*" or "?" in the resource-id segment of the ARN. For example
-#'     *arn:partition:service:::resource-type/resource-path/resource-name*.
-#'     The new symbols are exclusive to the **resource-path** and
-#'     **resource-name** and cannot replace the **resource-type** or other
-#'     ARN values.
+#' - A wildcard ARN. The wildcard ARN accepts `IAM_PATTERN` values with a
+#'   "*" or "?" in the resource-id segment of the ARN. For example
+#'   *arn:partition:service:::resource-type/resource-path/resource-name*.
+#'   The new symbols are exclusive to the **resource-path** and
+#'   **resource-name** and cannot replace the **resource-type** or other
+#'   ARN values.
 #' 
-#'     The ARN path and principal name allow unlimited wildcard characters.
+#'   The ARN path and principal name allow unlimited wildcard characters.
 #' 
 #' Examples of an **acceptable** wildcard ARN:
 #' 
-#' -   arn:aws:iam:::role/ResourceName_*
+#' - arn:aws:iam:::role/ResourceName_*
 #' 
-#' -   arn:aws:iam:::role/*/ResourceName_?
+#' - arn:aws:iam:::role/*/ResourceName_?
 #' 
 #' Examples of an **unacceptable** wildcard ARN:
 #' 
-#' -   arn:aws:iam:::*/ResourceName
+#' - arn:aws:iam:::*/ResourceName
 #' 
 #' You can associate multiple `IAM_PATTERN`s even if the account has no
 #' principal with that name.
@@ -162,7 +164,8 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$associate_principal_with_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PrincipalARN = PrincipalARN, PrincipalType = PrincipalType)
   output <- .servicecatalog$associate_principal_with_portfolio_output()
@@ -183,9 +186,9 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param SourcePortfolioId The identifier of the source portfolio.
@@ -199,7 +202,8 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$associate_product_with_portfolio_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PortfolioId = PortfolioId, SourcePortfolioId = SourcePortfolioId)
   output <- .servicecatalog$associate_product_with_portfolio_output()
@@ -224,9 +228,9 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
 #' requests from the same Amazon Web Services account use the same
 #' idempotency token, the same response is returned for each repeated
@@ -241,7 +245,8 @@ servicecatalog_associate_service_action_with_provisioning_artifact <- function(P
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$associate_service_action_with_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$associate_service_action_with_provisioning_artifact_output()
@@ -273,7 +278,8 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$associate_tag_option_with_resource_input(ResourceId = ResourceId, TagOptionId = TagOptionId)
   output <- .servicecatalog$associate_tag_option_with_resource_output()
@@ -296,9 +302,9 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #' ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #'
 #' @keywords internal
 #'
@@ -309,7 +315,8 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$batch_associate_service_action_with_provisioning_artifact_input(ServiceActionAssociations = ServiceActionAssociations, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$batch_associate_service_action_with_provisioning_artifact_output()
@@ -333,9 +340,9 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #' ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #'
 #' @keywords internal
 #'
@@ -346,7 +353,8 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$batch_disassociate_service_action_from_provisioning_artifact_input(ServiceActionAssociations = ServiceActionAssociations, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$batch_disassociate_service_action_from_provisioning_artifact_output()
@@ -368,9 +376,9 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param SourceProductArn &#91;required&#93; The Amazon Resource Name (ARN) of the source product.
 #' @param TargetProductId The identifier of the target product. By default, a new product is
 #' created.
@@ -394,7 +402,8 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$copy_product_input(AcceptLanguage = AcceptLanguage, SourceProductArn = SourceProductArn, TargetProductId = TargetProductId, TargetProductName = TargetProductName, SourceProvisioningArtifactIdentifiers = SourceProvisioningArtifactIdentifiers, CopyOptions = CopyOptions, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$copy_product_output()
@@ -415,9 +424,9 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param Parameters &#91;required&#93; The constraint parameters, in JSON format. The syntax depends on the
@@ -486,15 +495,15 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
 #' @param Type &#91;required&#93; The type of constraint.
 #' 
-#' -   `LAUNCH`
+#' - `LAUNCH`
 #' 
-#' -   `NOTIFICATION`
+#' - `NOTIFICATION`
 #' 
-#' -   `RESOURCE_UPDATE`
+#' - `RESOURCE_UPDATE`
 #' 
-#' -   `STACKSET`
+#' - `STACKSET`
 #' 
-#' -   `TEMPLATE`
+#' - `TEMPLATE`
 #' @param Description The description of the constraint.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
@@ -509,7 +518,8 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$create_constraint_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, ProductId = ProductId, Parameters = Parameters, Type = Type, Description = Description, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$create_constraint_output()
@@ -530,9 +540,9 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param DisplayName &#91;required&#93; The name to use for display purposes.
 #' @param Description The description of the portfolio.
 #' @param ProviderName &#91;required&#93; The name of the portfolio provider.
@@ -550,7 +560,8 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$create_portfolio_input(AcceptLanguage = AcceptLanguage, DisplayName = DisplayName, Description = Description, ProviderName = ProviderName, Tags = Tags, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$create_portfolio_output()
@@ -572,9 +583,9 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param AccountId The Amazon Web Services account ID. For example, `123456789012`.
 #' @param OrganizationNode The organization node to whom you are going to share. When you pass
@@ -607,7 +618,8 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$create_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions, SharePrincipals = SharePrincipals)
   output <- .servicecatalog$create_portfolio_share_output()
@@ -628,9 +640,9 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Name &#91;required&#93; The name of the product.
 #' @param Owner &#91;required&#93; The owner of the product.
 #' @param Description The description of the product.
@@ -651,9 +663,9 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' the product's artifacts based on changes to the source. The
 #' `SourceConnection` parameter consists of the following sub-fields.
 #' 
-#' -   `Type`
+#' - `Type`
 #' 
-#' -   `ConnectionParamters`
+#' - `ConnectionParamters`
 #'
 #' @keywords internal
 #'
@@ -664,7 +676,8 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$create_product_input(AcceptLanguage = AcceptLanguage, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, ProductType = ProductType, Tags = Tags, ProvisioningArtifactParameters = ProvisioningArtifactParameters, IdempotencyToken = IdempotencyToken, SourceConnection = SourceConnection)
   output <- .servicecatalog$create_product_output()
@@ -685,9 +698,9 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PlanName &#91;required&#93; The name of the plan.
 #' @param PlanType &#91;required&#93; The plan type.
 #' @param NotificationArns Passed to CloudFormation. The SNS topic ARNs to which to publish
@@ -721,7 +734,8 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$create_provisioned_product_plan_input(AcceptLanguage = AcceptLanguage, PlanName = PlanName, PlanType = PlanType, NotificationArns = NotificationArns, PathId = PathId, ProductId = ProductId, ProvisionedProductName = ProvisionedProductName, ProvisioningArtifactId = ProvisioningArtifactId, ProvisioningParameters = ProvisioningParameters, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .servicecatalog$create_provisioned_product_plan_output()
@@ -743,9 +757,9 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param Parameters &#91;required&#93; The configuration for the provisioning artifact.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
@@ -761,7 +775,8 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$create_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, Parameters = Parameters, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$create_provisioning_artifact_output()
@@ -815,9 +830,9 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
@@ -831,7 +846,8 @@ servicecatalog_create_service_action <- function(Name, DefinitionType, Definitio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$create_service_action_input(Name = Name, DefinitionType = DefinitionType, Definition = Definition, Description = Description, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$create_service_action_output()
@@ -862,7 +878,8 @@ servicecatalog_create_tag_option <- function(Key, Value) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$create_tag_option_input(Key = Key, Value = Value)
   output <- .servicecatalog$create_tag_option_output()
@@ -883,9 +900,9 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
 #'
 #' @keywords internal
@@ -897,7 +914,8 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$delete_constraint_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$delete_constraint_output()
@@ -918,9 +936,9 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
 #'
 #' @keywords internal
@@ -932,7 +950,8 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$delete_portfolio_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$delete_portfolio_output()
@@ -954,9 +973,9 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param AccountId The Amazon Web Services account ID.
 #' @param OrganizationNode The organization node to whom you are going to stop sharing.
@@ -970,7 +989,8 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$delete_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode)
   output <- .servicecatalog$delete_portfolio_share_output()
@@ -991,9 +1011,9 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The product identifier.
 #'
 #' @keywords internal
@@ -1005,7 +1025,8 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$delete_product_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$delete_product_output()
@@ -1026,9 +1047,9 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
 #' product even if it cannot delete the underlying resources.
@@ -1042,7 +1063,8 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$delete_provisioned_product_plan_input(AcceptLanguage = AcceptLanguage, PlanId = PlanId, IgnoreErrors = IgnoreErrors)
   output <- .servicecatalog$delete_provisioned_product_plan_output()
@@ -1064,9 +1086,9 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #'
@@ -1079,7 +1101,8 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$delete_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId)
   output <- .servicecatalog$delete_provisioning_artifact_output()
@@ -1101,9 +1124,9 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param Id &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
 #' requests from the same Amazon Web Services account use the same
 #' idempotency token, the same response is returned for each repeated
@@ -1118,7 +1141,8 @@ servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL, Idem
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$delete_service_action_input(Id = Id, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$delete_service_action_output()
@@ -1148,7 +1172,8 @@ servicecatalog_delete_tag_option <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$delete_tag_option_input(Id = Id)
   output <- .servicecatalog$delete_tag_option_output()
@@ -1169,9 +1194,9 @@ servicecatalog_delete_tag_option <- function(Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
 #'
 #' @keywords internal
@@ -1183,7 +1208,8 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_constraint_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$describe_constraint_output()
@@ -1204,9 +1230,9 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param CopyProductToken &#91;required&#93; The token for the copy product operation. This token is returned by
 #' [`copy_product`][servicecatalog_copy_product].
 #'
@@ -1219,7 +1245,8 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_copy_product_status_input(AcceptLanguage = AcceptLanguage, CopyProductToken = CopyProductToken)
   output <- .servicecatalog$describe_copy_product_status_output()
@@ -1240,9 +1267,9 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
 #'
 #' @keywords internal
@@ -1254,7 +1281,8 @@ servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_portfolio_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$describe_portfolio_output()
@@ -1285,7 +1313,8 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_portfolio_share_status_input(PortfolioShareToken = PortfolioShareToken)
   output <- .servicecatalog$describe_portfolio_share_status_output()
@@ -1333,7 +1362,8 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_portfolio_shares_input(PortfolioId = PortfolioId, Type = Type, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$describe_portfolio_shares_output()
@@ -1354,9 +1384,9 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id The product identifier.
 #' @param Name The product name.
 #'
@@ -1369,7 +1399,8 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name)
   output <- .servicecatalog$describe_product_output()
@@ -1390,9 +1421,9 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id The product identifier.
 #' @param Name The product name.
 #' @param SourcePortfolioId The unique identifier of the shared portfolio that the specified product
@@ -1413,7 +1444,8 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_product_as_admin_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name, SourcePortfolioId = SourcePortfolioId)
   output <- .servicecatalog$describe_product_as_admin_output()
@@ -1434,9 +1466,9 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The product view identifier.
 #'
 #' @keywords internal
@@ -1448,7 +1480,8 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_product_view_input(AcceptLanguage = AcceptLanguage, Id = Id)
   output <- .servicecatalog$describe_product_view_output()
@@ -1469,9 +1502,9 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id The provisioned product identifier. You must provide the name or ID, but
 #' not both.
 #' 
@@ -1492,7 +1525,8 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_provisioned_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name)
   output <- .servicecatalog$describe_provisioned_product_output()
@@ -1513,9 +1547,9 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -1530,7 +1564,8 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_provisioned_product_plan_input(AcceptLanguage = AcceptLanguage, PlanId = PlanId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$describe_provisioned_product_plan_output()
@@ -1552,9 +1587,9 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProvisioningArtifactId The identifier of the provisioning artifact.
 #' @param ProductId The product identifier.
 #' @param ProvisioningArtifactName The provisioning artifact name.
@@ -1572,7 +1607,8 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProvisioningArtifactId = ProvisioningArtifactId, ProductId = ProductId, ProvisioningArtifactName = ProvisioningArtifactName, ProductName = ProductName, Verbose = Verbose, IncludeProvisioningArtifactParameters = IncludeProvisioningArtifactParameters)
   output <- .servicecatalog$describe_provisioning_artifact_output()
@@ -1594,9 +1630,9 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId The product identifier. You must provide the product name or ID, but not
 #' both.
 #' @param ProductName The name of the product. You must provide the name or ID, but not both.
@@ -1620,7 +1656,8 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_provisioning_parameters_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProductName = ProductName, ProvisioningArtifactId = ProvisioningArtifactId, ProvisioningArtifactName = ProvisioningArtifactName, PathId = PathId, PathName = PathName)
   output <- .servicecatalog$describe_provisioning_parameters_output()
@@ -1641,9 +1678,9 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The record identifier of the provisioned product. This identifier is
 #' returned by the request operation.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -1659,7 +1696,8 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_record_input(AcceptLanguage = AcceptLanguage, Id = Id, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$describe_record_output()
@@ -1681,9 +1719,9 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #' @param Id &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #'
 #' @keywords internal
 #'
@@ -1694,7 +1732,8 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_service_action_input(Id = Id, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$describe_service_action_output()
@@ -1719,9 +1758,9 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #'
 #' @keywords internal
 #'
@@ -1732,7 +1771,8 @@ servicecatalog_describe_service_action_execution_parameters <- function(Provisio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_service_action_execution_parameters_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$describe_service_action_execution_parameters_output()
@@ -1762,7 +1802,8 @@ servicecatalog_describe_tag_option <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$describe_tag_option_input(Id = Id)
   output <- .servicecatalog$describe_tag_option_output()
@@ -1792,7 +1833,8 @@ servicecatalog_disable_aws_organizations_access <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$disable_aws_organizations_access_input()
   output <- .servicecatalog$disable_aws_organizations_access_output()
@@ -1824,7 +1866,8 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$disassociate_budget_from_resource_input(BudgetName = BudgetName, ResourceId = ResourceId)
   output <- .servicecatalog$disassociate_budget_from_resource_output()
@@ -1846,9 +1889,9 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
 #' ARN with no `accountID` with or without wildcard characters if
@@ -1866,7 +1909,8 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$disassociate_principal_from_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PrincipalARN = PrincipalARN, PrincipalType = PrincipalType)
   output <- .servicecatalog$disassociate_principal_from_portfolio_output()
@@ -1887,9 +1931,9 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #'
@@ -1902,7 +1946,8 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$disassociate_product_from_portfolio_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PortfolioId = PortfolioId)
   output <- .servicecatalog$disassociate_product_from_portfolio_output()
@@ -1928,9 +1973,9 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param IdempotencyToken A unique identifier that you provide to ensure idempotency. If multiple
 #' requests from the same Amazon Web Services account use the same
 #' idempotency token, the same response is returned for each repeated
@@ -1945,7 +1990,8 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact <- functio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$disassociate_service_action_from_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ServiceActionId = ServiceActionId, AcceptLanguage = AcceptLanguage, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$disassociate_service_action_from_provisioning_artifact_output()
@@ -1976,7 +2022,8 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$disassociate_tag_option_from_resource_input(ResourceId = ResourceId, TagOptionId = TagOptionId)
   output <- .servicecatalog$disassociate_tag_option_from_resource_output()
@@ -2006,7 +2053,8 @@ servicecatalog_enable_aws_organizations_access <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$enable_aws_organizations_access_input()
   output <- .servicecatalog$enable_aws_organizations_access_output()
@@ -2028,9 +2076,9 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
@@ -2045,7 +2093,8 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$execute_provisioned_product_plan_input(AcceptLanguage = AcceptLanguage, PlanId = PlanId, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$execute_provisioned_product_plan_output()
@@ -2069,9 +2118,9 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' @param ExecuteToken &#91;required&#93; An idempotency token that uniquely identifies the execute request.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Parameters A map of all self-service action parameters and their values. If a
 #' provided parameter is of a special type, such as `TARGET`, the provided
 #' value will override the default value generated by Service Catalog. If
@@ -2088,7 +2137,8 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$execute_provisioned_product_service_action_input(ProvisionedProductId = ProvisionedProductId, ServiceActionId = ServiceActionId, ExecuteToken = ExecuteToken, AcceptLanguage = AcceptLanguage, Parameters = Parameters)
   output <- .servicecatalog$execute_provisioned_product_service_action_output()
@@ -2118,7 +2168,8 @@ servicecatalog_get_aws_organizations_access_status <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$get_aws_organizations_access_status_input()
   output <- .servicecatalog$get_aws_organizations_access_status_output()
@@ -2141,9 +2192,9 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProvisionedProductId The identifier of the provisioned product that you want the outputs
 #' from.
 #' @param ProvisionedProductName The name of the provisioned product that you want the outputs from.
@@ -2163,7 +2214,8 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$get_provisioned_product_outputs_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, ProvisionedProductName = ProvisionedProductName, OutputKeys = OutputKeys, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$get_provisioned_product_outputs_output()
@@ -2186,9 +2238,9 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #' @param ProvisionedProductName &#91;required&#93; The user-friendly name of the provisioned product. The value must be
@@ -2209,7 +2261,8 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$import_as_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, ProvisionedProductName = ProvisionedProductName, PhysicalId = PhysicalId, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$import_as_provisioned_product_output()
@@ -2231,23 +2284,23 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PortfolioShareType The type of shared portfolios to list. The default is to list imported
 #' portfolios.
 #' 
-#' -   `AWS_ORGANIZATIONS` - List portfolios accepted and shared via
-#'     organizational sharing by the management account or delegated
-#'     administrator of your organization.
+#' - `AWS_ORGANIZATIONS` - List portfolios accepted and shared via
+#'   organizational sharing by the management account or delegated
+#'   administrator of your organization.
 #' 
-#' -   `AWS_SERVICECATALOG` - Deprecated type.
+#' - `AWS_SERVICECATALOG` - Deprecated type.
 #' 
-#' -   `IMPORTED` - List imported portfolios that have been accepted and
-#'     shared through account-to-account sharing.
+#' - `IMPORTED` - List imported portfolios that have been accepted and
+#'   shared through account-to-account sharing.
 #'
 #' @keywords internal
 #'
@@ -2258,7 +2311,8 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_accepted_portfolio_shares_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$list_accepted_portfolio_shares_output()
@@ -2279,9 +2333,9 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2296,7 +2350,8 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_budgets_for_resource_input(AcceptLanguage = AcceptLanguage, ResourceId = ResourceId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_budgets_for_resource_output()
@@ -2317,9 +2372,9 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param ProductId The product identifier.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2335,7 +2390,8 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_constraints_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_constraints_for_portfolio_output()
@@ -2356,9 +2412,9 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2373,7 +2429,8 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_launch_paths_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_launch_paths_output()
@@ -2394,19 +2451,19 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier. For example, `port-2abcdext3y5fk`.
 #' @param OrganizationNodeType &#91;required&#93; The organization node type that will be returned in the output.
 #' 
-#' -   `ORGANIZATION` - Organization that has access to the portfolio.
+#' - `ORGANIZATION` - Organization that has access to the portfolio.
 #' 
-#' -   `ORGANIZATIONAL_UNIT` - Organizational unit that has access to the
-#'     portfolio within your organization.
+#' - `ORGANIZATIONAL_UNIT` - Organizational unit that has access to the
+#'   portfolio within your organization.
 #' 
-#' -   `ACCOUNT` - Account that has access to the portfolio within your
-#'     organization.
+#' - `ACCOUNT` - Account that has access to the portfolio within your
+#'   organization.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2420,7 +2477,8 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_organization_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationNodeType = OrganizationNodeType, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_organization_portfolio_access_output()
@@ -2441,9 +2499,9 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param OrganizationParentId The ID of an organization node the portfolio is shared with. All
 #' children of this node with an inherited portfolio share will be
@@ -2461,7 +2519,8 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationParentId = OrganizationParentId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolio_access_output()
@@ -2482,9 +2541,9 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2498,7 +2557,8 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_portfolios_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_output()
@@ -2519,9 +2579,9 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
@@ -2536,7 +2596,8 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_portfolios_for_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_for_product_output()
@@ -2558,9 +2619,9 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2575,7 +2636,8 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_principals_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_principals_for_portfolio_output()
@@ -2597,9 +2659,9 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProvisionProductId The product identifier.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2615,7 +2677,8 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_provisioned_product_plans_input(AcceptLanguage = AcceptLanguage, ProvisionProductId = ProvisionProductId, PageSize = PageSize, PageToken = PageToken, AccessLevelFilter = AccessLevelFilter)
   output <- .servicecatalog$list_provisioned_product_plans_output()
@@ -2637,9 +2700,9 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #'
 #' @keywords internal
@@ -2651,7 +2714,8 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_provisioning_artifacts_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId)
   output <- .servicecatalog$list_provisioning_artifacts_output()
@@ -2677,9 +2741,9 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #' results, use null.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #'
 #' @keywords internal
 #'
@@ -2690,7 +2754,8 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_provisioning_artifacts_for_service_action_input(ServiceActionId = ServiceActionId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_provisioning_artifacts_for_service_action_output()
@@ -2711,9 +2776,9 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #' @param SearchFilter The search filter to scope the results.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2729,7 +2794,8 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_record_history_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, SearchFilter = SearchFilter, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_record_history_output()
@@ -2751,9 +2817,9 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
 #' @param ResourceType The resource type.
 #' 
-#' -   `Portfolio`
+#' - `Portfolio`
 #' 
-#' -   `Product`
+#' - `Product`
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
@@ -2767,7 +2833,8 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_resources_for_tag_option_input(TagOptionId = TagOptionId, ResourceType = ResourceType, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_resources_for_tag_option_output()
@@ -2788,9 +2855,9 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
@@ -2804,7 +2871,8 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_service_actions_input(AcceptLanguage = AcceptLanguage, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_service_actions_output()
@@ -2832,9 +2900,9 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' results, use null.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #'
 #' @keywords internal
 #'
@@ -2845,7 +2913,8 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_service_actions_for_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_service_actions_for_provisioning_artifact_output()
@@ -2867,9 +2936,9 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
@@ -2884,7 +2953,8 @@ servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_stack_instances_for_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_stack_instances_for_provisioned_product_output()
@@ -2918,7 +2988,8 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$list_tag_options_input(Filters = Filters, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_tag_options_output()
@@ -2957,7 +3028,8 @@ servicecatalog_notify_provision_product_engine_workflow_result <- function(Workf
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$notify_provision_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, ResourceIdentifier = ResourceIdentifier, Outputs = Outputs, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$notify_provision_product_engine_workflow_result_output()
@@ -2993,7 +3065,8 @@ servicecatalog_notify_terminate_provisioned_product_engine_workflow_result <- fu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$notify_terminate_provisioned_product_engine_workflow_result_output()
@@ -3030,7 +3103,8 @@ servicecatalog_notify_update_provisioned_product_engine_workflow_result <- funct
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$notify_update_provisioned_product_engine_workflow_result_input(WorkflowToken = WorkflowToken, RecordId = RecordId, Status = Status, FailureReason = FailureReason, Outputs = Outputs, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$notify_update_provisioned_product_engine_workflow_result_output()
@@ -3051,9 +3125,9 @@ servicecatalog_notify_update_provisioned_product_engine_workflow_result <- funct
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId The product identifier. You must provide the name or ID, but not both.
 #' @param ProductName The name of the product. You must provide the name or ID, but not both.
 #' @param ProvisioningArtifactId The identifier of the provisioning artifact. You must provide the name
@@ -3087,7 +3161,8 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$provision_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProductName = ProductName, ProvisioningArtifactId = ProvisioningArtifactId, ProvisioningArtifactName = ProvisioningArtifactName, PathId = PathId, PathName = PathName, ProvisionedProductName = ProvisionedProductName, ProvisioningParameters = ProvisioningParameters, ProvisioningPreferences = ProvisioningPreferences, Tags = Tags, NotificationArns = NotificationArns, ProvisionToken = ProvisionToken)
   output <- .servicecatalog$provision_product_output()
@@ -3108,20 +3183,20 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PortfolioShareType The type of shared portfolios to reject. The default is to reject
 #' imported portfolios.
 #' 
-#' -   `AWS_ORGANIZATIONS` - Reject portfolios shared by the management
-#'     account of your organization.
+#' - `AWS_ORGANIZATIONS` - Reject portfolios shared by the management
+#'   account of your organization.
 #' 
-#' -   `IMPORTED` - Reject imported portfolios.
+#' - `IMPORTED` - Reject imported portfolios.
 #' 
-#' -   `AWS_SERVICECATALOG` - Not supported. (Throws
-#'     ResourceNotFoundException.)
+#' - `AWS_SERVICECATALOG` - Not supported. (Throws
+#'   ResourceNotFoundException.)
 #' 
 #' For example,
 #' `aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
@@ -3135,7 +3210,8 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$reject_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$reject_portfolio_share_output()
@@ -3156,9 +3232,9 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -3173,7 +3249,8 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$scan_provisioned_products_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$scan_provisioned_products_output()
@@ -3194,9 +3271,9 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Filters The search filters. If no search filters are specified, the output
 #' includes all products to which the caller has access.
 #' @param PageSize The maximum number of items to return with this call.
@@ -3214,7 +3291,8 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$search_products_input(AcceptLanguage = AcceptLanguage, Filters = Filters, PageSize = PageSize, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken)
   output <- .servicecatalog$search_products_output()
@@ -3236,9 +3314,9 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId The portfolio identifier.
 #' @param Filters The search filters. If no search filters are specified, the output
 #' includes all products to which the administrator has access.
@@ -3258,7 +3336,8 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$search_products_as_admin_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken, PageSize = PageSize, ProductSource = ProductSource)
   output <- .servicecatalog$search_products_as_admin_output()
@@ -3280,9 +3359,9 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #' @param Filters The search filters.
 #' 
@@ -3310,7 +3389,8 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize"),
+    stream_api = FALSE
   )
   input <- .servicecatalog$search_provisioned_products_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$search_provisioned_products_output()
@@ -3341,9 +3421,9 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' product even if it cannot delete the underlying resources.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param RetainPhysicalResources When this boolean parameter is set to true, the
 #' [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product]
 #' API deletes the Service Catalog provisioned product. However, it does
@@ -3360,7 +3440,8 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$terminate_provisioned_product_input(ProvisionedProductName = ProvisionedProductName, ProvisionedProductId = ProvisionedProductId, TerminateToken = TerminateToken, IgnoreErrors = IgnoreErrors, AcceptLanguage = AcceptLanguage, RetainPhysicalResources = RetainPhysicalResources)
   output <- .servicecatalog$terminate_provisioned_product_output()
@@ -3381,9 +3462,9 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
 #' @param Description The updated description of the constraint.
 #' @param Parameters The constraint parameters, in JSON format. The syntax depends on the
@@ -3460,7 +3541,8 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_constraint_input(AcceptLanguage = AcceptLanguage, Id = Id, Description = Description, Parameters = Parameters)
   output <- .servicecatalog$update_constraint_output()
@@ -3481,9 +3563,9 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
 #' @param DisplayName The name to use for display purposes.
 #' @param Description The updated description of the portfolio.
@@ -3500,7 +3582,8 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_portfolio_input(AcceptLanguage = AcceptLanguage, Id = Id, DisplayName = DisplayName, Description = Description, ProviderName = ProviderName, AddTags = AddTags, RemoveTags = RemoveTags)
   output <- .servicecatalog$update_portfolio_output()
@@ -3521,9 +3604,9 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which the share will be
 #' updated.
 #' @param AccountId The Amazon Web Services account Id of the recipient account. This field
@@ -3545,7 +3628,8 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_portfolio_share_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, AccountId = AccountId, OrganizationNode = OrganizationNode, ShareTagOptions = ShareTagOptions, SharePrincipals = SharePrincipals)
   output <- .servicecatalog$update_portfolio_share_output()
@@ -3566,9 +3650,9 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param Id &#91;required&#93; The product identifier.
 #' @param Name The updated product name.
 #' @param Owner The updated owner of the product.
@@ -3584,9 +3668,9 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' the product's artifacts based on changes to the source. The
 #' `SourceConnection` parameter consists of the following sub-fields.
 #' 
-#' -   `Type`
+#' - `Type`
 #' 
-#' -   `ConnectionParamters`
+#' - `ConnectionParamters`
 #'
 #' @keywords internal
 #'
@@ -3597,7 +3681,8 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_product_input(AcceptLanguage = AcceptLanguage, Id = Id, Name = Name, Owner = Owner, Description = Description, Distributor = Distributor, SupportDescription = SupportDescription, SupportEmail = SupportEmail, SupportUrl = SupportUrl, AddTags = AddTags, RemoveTags = RemoveTags, SourceConnection = SourceConnection)
   output <- .servicecatalog$update_product_output()
@@ -3619,9 +3704,9 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProvisionedProductName The name of the provisioned product. You cannot specify both
 #' `ProvisionedProductName` and `ProvisionedProductId`.
 #' @param ProvisionedProductId The identifier of the provisioned product. You must provide the name or
@@ -3654,7 +3739,8 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_provisioned_product_input(AcceptLanguage = AcceptLanguage, ProvisionedProductName = ProvisionedProductName, ProvisionedProductId = ProvisionedProductId, ProductId = ProductId, ProductName = ProductName, ProvisioningArtifactId = ProvisioningArtifactId, ProvisioningArtifactName = ProvisioningArtifactName, PathId = PathId, PathName = PathName, ProvisioningParameters = ProvisioningParameters, ProvisioningPreferences = ProvisioningPreferences, Tags = Tags, UpdateToken = UpdateToken)
   output <- .servicecatalog$update_provisioned_product_output()
@@ -3675,9 +3761,9 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ProvisionedProductProperties &#91;required&#93; A map that contains the provisioned product properties to be updated.
 #' 
@@ -3726,7 +3812,8 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_provisioned_product_properties_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, ProvisionedProductProperties = ProvisionedProductProperties, IdempotencyToken = IdempotencyToken)
   output <- .servicecatalog$update_provisioned_product_properties_output()
@@ -3748,9 +3835,9 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #'
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #' @param Name The updated name of the provisioning artifact.
@@ -3779,7 +3866,8 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, Name = Name, Description = Description, Active = Active, Guidance = Guidance)
   output <- .servicecatalog$update_provisioning_artifact_output()
@@ -3804,9 +3892,9 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
 #' 
-#' -   `jp` - Japanese
+#' - `jp` - Japanese
 #' 
-#' -   `zh` - Chinese
+#' - `zh` - Chinese
 #'
 #' @keywords internal
 #'
@@ -3817,7 +3905,8 @@ servicecatalog_update_service_action <- function(Id, Name = NULL, Definition = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_service_action_input(Id = Id, Name = Name, Definition = Definition, Description = Description, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$update_service_action_output()
@@ -3849,7 +3938,8 @@ servicecatalog_update_tag_option <- function(Id, Value = NULL, Active = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .servicecatalog$update_tag_option_input(Id = Id, Value = Value, Active = Active)
   output <- .servicecatalog$update_tag_option_output()

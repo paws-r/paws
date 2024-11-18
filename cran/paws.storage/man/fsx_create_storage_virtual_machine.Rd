@@ -43,9 +43,8 @@ data uses a UNIX user as the service account.
 administrator, the majority of users are SMB clients, and an
 application accessing the data uses a Microsoft Windows user as the
 service account.
-\item \code{MIXED} This is an advanced setting. For more information, see
-\href{https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/}{Volume security style} in the
-Amazon FSx for NetApp ONTAP User Guide.
+\item \code{MIXED} This is an advanced setting. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/}{Volume security style} in
+the Amazon FSx for NetApp ONTAP User Guide.
 }}
 }
 \description{

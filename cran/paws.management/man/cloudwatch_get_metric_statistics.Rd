@@ -46,9 +46,8 @@ minute. For example, 12:32:34 is rounded down to 12:32:00.
 \item Start time between 15 and 63 days ago - Round down to the nearest
 5-minute clock interval. For example, 12:32:34 is rounded down to
 12:30:00.
-\item Start time greater than 63 days ago - Round down to the nearest
-1-hour clock interval. For example, 12:32:34 is rounded down to
-12:00:00.
+\item Start time greater than 63 days ago - Round down to the nearest 1-hour
+clock interval. For example, 12:32:34 is rounded down to 12:00:00.
 }
 
 If you set \code{Period} to 5, 10, or 30, the start time of your request is
@@ -80,8 +79,8 @@ that time range is returned:
 \itemize{
 \item Start time between 3 hours and 15 days ago - Use a multiple of 60
 seconds (1 minute).
-\item Start time between 15 and 63 days ago - Use a multiple of 300
-seconds (5 minutes).
+\item Start time between 15 and 63 days ago - Use a multiple of 300 seconds
+(5 minutes).
 \item Start time greater than 63 days ago - Use a multiple of 3600 seconds
 (1 hour).
 }}

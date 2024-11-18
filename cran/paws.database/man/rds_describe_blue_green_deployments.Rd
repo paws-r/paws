@@ -26,9 +26,9 @@ Constraints:
 Valid Values:
 \itemize{
 \item \code{blue-green-deployment-identifier} - Accepts system-generated
-identifiers for blue/green deployments. The results list only
-includes information about the blue/green deployments with the
-specified identifiers.
+identifiers for blue/green deployments. The results list only includes
+information about the blue/green deployments with the specified
+identifiers.
 \item \code{blue-green-deployment-name} - Accepts user-supplied names for
 blue/green deployments. The results list only includes information
 about the blue/green deployments with the specified names.

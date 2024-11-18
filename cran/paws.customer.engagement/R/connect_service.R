@@ -5,11 +5,11 @@ NULL
 #' Amazon Connect Service
 #'
 #' @description
-#' -   [Amazon Connect
-#'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html)
+#' - [Amazon Connect
+#'   actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Service.html)
 #' 
-#' -   [Amazon Connect data
-#'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html)
+#' - [Amazon Connect data
+#'   types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Service.html)
 #' 
 #' Amazon Connect is a cloud-based contact center solution that you use to
 #' set up and manage a customer contact center and provide reliable

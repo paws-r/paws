@@ -35,7 +35,7 @@ considered deprecated and are subject to deletion by Secrets Manager. By
 default, versions without staging labels aren't included.}
 }
 \description{
-Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version}{Secrets Manager concepts: Versions}.
+Lists the versions of a secret. Secrets Manager uses staging labels to indicate the different versions of a secret. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Secrets Manager concepts: Versions}.
 
 See \url{https://www.paws-r-sdk.com/docs/secretsmanager_list_secret_version_ids/} for full documentation.
 }

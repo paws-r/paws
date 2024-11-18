@@ -40,10 +40,10 @@ index.
 \itemize{
 \item \code{ALL_ATTRIBUTES} - Returns all of the item attributes from the
 specified table or index. If you query a local secondary index, then
-for each matching item in the index, DynamoDB fetches the entire
-item from the parent table. If the index is configured to project
-all item attributes, then all of the data can be obtained from the
-local secondary index, and no fetching is required.
+for each matching item in the index, DynamoDB fetches the entire item
+from the parent table. If the index is configured to project all item
+attributes, then all of the data can be obtained from the local
+secondary index, and no fetching is required.
 \item \code{ALL_PROJECTED_ATTRIBUTES} - Allowed only when querying an index.
 Retrieves all attributes that have been projected into the index. If
 the index is configured to project all attributes, this return value
@@ -53,16 +53,15 @@ matching items themselves. Note that this uses the same quantity of
 read capacity units as getting the items, and is subject to the same
 item size calculations.
 \item \code{SPECIFIC_ATTRIBUTES} - Returns only the attributes listed in
-\code{ProjectionExpression}. This return value is equivalent to
-specifying \code{ProjectionExpression} without specifying any value for
-\code{Select}.
+\code{ProjectionExpression}. This return value is equivalent to specifying
+\code{ProjectionExpression} without specifying any value for \code{Select}.
 
 If you query or scan a local secondary index and request only
-attributes that are projected into that index, the operation will
-read only the index and not the table. If any of the requested
-attributes are not projected into the local secondary index,
-DynamoDB fetches each of these attributes from the parent table.
-This extra fetching incurs additional throughput cost and latency.
+attributes that are projected into that index, the operation will read
+only the index and not the table. If any of the requested attributes
+are not projected into the local secondary index, DynamoDB fetches
+each of these attributes from the parent table. This extra fetching
+incurs additional throughput cost and latency.
 
 If you query or scan a global secondary index, you can only request
 attributes that are projected into the index. Global secondary index
@@ -198,19 +197,19 @@ an example, using the \strong{=} comparison operator for the sort key:
 
 Valid comparisons for the sort key condition are as follows:
 \itemize{
-\item \code{sortKeyName} \code{=} \verb{:sortkeyval} - true if the sort key value is
-equal to \verb{:sortkeyval}.
+\item \code{sortKeyName} \code{=} \verb{:sortkeyval} - true if the sort key value is equal
+to \verb{:sortkeyval}.
 \item \code{sortKeyName} \code{<} \verb{:sortkeyval} - true if the sort key value is less
 than \verb{:sortkeyval}.
-\item \code{sortKeyName} \code{<=} \verb{:sortkeyval} - true if the sort key value is
-less than or equal to \verb{:sortkeyval}.
+\item \code{sortKeyName} \code{<=} \verb{:sortkeyval} - true if the sort key value is less
+than or equal to \verb{:sortkeyval}.
 \item \code{sortKeyName} \code{>} \verb{:sortkeyval} - true if the sort key value is
 greater than \verb{:sortkeyval}.
 \item \code{sortKeyName} \verb{>= } \verb{:sortkeyval} - true if the sort key value is
 greater than or equal to \verb{:sortkeyval}.
-\item \code{sortKeyName} \code{BETWEEN} \verb{:sortkeyval1} \code{AND} \verb{:sortkeyval2} - true
-if the sort key value is greater than or equal to \verb{:sortkeyval1},
-and less than or equal to \verb{:sortkeyval2}.
+\item \code{sortKeyName} \code{BETWEEN} \verb{:sortkeyval1} \code{AND} \verb{:sortkeyval2} - true if
+the sort key value is greater than or equal to \verb{:sortkeyval1}, and
+less than or equal to \verb{:sortkeyval2}.
 \item \verb{begins_with (} \code{sortKeyName}, \verb{:sortkeyval} \verb{)} - true if the sort
 key value begins with a particular operand. (You cannot use this
 function with a sort key that is of type Number.) Note that the
@@ -248,8 +247,8 @@ The following are some use cases for using \code{ExpressionAttributeNames}:
 \itemize{
 \item To access an attribute whose name conflicts with a DynamoDB reserved
 word.
-\item To create a placeholder for repeating occurrences of an attribute
-name in an expression.
+\item To create a placeholder for repeating occurrences of an attribute name
+in an expression.
 \item To prevent special characters in an attribute name from being
 misinterpreted in an expression.
 }

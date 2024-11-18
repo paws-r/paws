@@ -22,7 +22,7 @@ created at level one if the parent group ID is null.}
 in the Amazon Resource Name (ARN) of the instance.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
 }
 \description{
 Creates a new user hierarchy group.

@@ -69,8 +69,8 @@ value. This value can be between 1 and 200.}
 \item \code{create-time} - The time the launch template version was created.
 \item \code{ebs-optimized} - A boolean that indicates whether the instance is
 optimized for Amazon EBS I/O.
-\item \code{http-endpoint} - Indicates whether the HTTP metadata endpoint on
-your instances is enabled (\code{enabled} | \code{disabled}).
+\item \code{http-endpoint} - Indicates whether the HTTP metadata endpoint on your
+instances is enabled (\code{enabled} | \code{disabled}).
 \item \code{http-protocol-ipv4} - Indicates whether the IPv4 endpoint for the
 instance metadata service is enabled (\code{enabled} | \code{disabled}).
 \item \code{host-resource-group-arn} - The ARN of the host resource group in

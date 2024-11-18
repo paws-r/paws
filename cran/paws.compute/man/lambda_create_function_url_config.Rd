@@ -39,10 +39,10 @@ for your function URL.}
 
 \item{InvokeMode}{Use one of the following options:
 \itemize{
-\item \code{BUFFERED} – This is the default option. Lambda invokes your
-function using the \code{\link[=lambda_invoke]{invoke}} API operation.
-Invocation results are available when the payload is complete. The
-maximum payload size is 6 MB.
+\item \code{BUFFERED} – This is the default option. Lambda invokes your function
+using the \code{\link[=lambda_invoke]{invoke}} API operation. Invocation results
+are available when the payload is complete. The maximum payload size
+is 6 MB.
 \item \code{RESPONSE_STREAM} – Your function streams payload results as they
 become available. Lambda invokes your function using the
 \code{\link[=lambda_invoke_with_response_stream]{invoke_with_response_stream}}

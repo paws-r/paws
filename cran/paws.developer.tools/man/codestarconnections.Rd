@@ -81,43 +81,40 @@ as GitHub Enterprise Server, you create a \emph{host} for your connections.
 You can work with connections by calling:
 \itemize{
 \item \code{\link[=codestarconnections_create_connection]{create_connection}}, which
-creates a uniquely named connection that can be referenced by
-services such as CodePipeline.
+creates a uniquely named connection that can be referenced by services
+such as CodePipeline.
 \item \code{\link[=codestarconnections_delete_connection]{delete_connection}}, which
 deletes the specified connection.
-\item \code{\link[=codestarconnections_get_connection]{get_connection}}, which
-returns information about the connection, including the connection
-status.
+\item \code{\link[=codestarconnections_get_connection]{get_connection}}, which returns
+information about the connection, including the connection status.
 \item \code{\link[=codestarconnections_list_connections]{list_connections}}, which
 lists the connections associated with your account.
 }
 
 You can work with hosts by calling:
 \itemize{
-\item \code{\link[=codestarconnections_create_host]{create_host}}, which creates a
-host that represents the infrastructure where your provider is
-installed.
+\item \code{\link[=codestarconnections_create_host]{create_host}}, which creates a host
+that represents the infrastructure where your provider is installed.
 \item \code{\link[=codestarconnections_delete_host]{delete_host}}, which deletes the
 specified host.
-\item \code{\link[=codestarconnections_get_host]{get_host}}, which returns
-information about the host, including the setup status.
-\item \code{\link[=codestarconnections_list_hosts]{list_hosts}}, which lists the
-hosts associated with your account.
+\item \code{\link[=codestarconnections_get_host]{get_host}}, which returns information
+about the host, including the setup status.
+\item \code{\link[=codestarconnections_list_hosts]{list_hosts}}, which lists the hosts
+associated with your account.
 }
 
 You can work with tags in Amazon Web Services CodeStar Connections by
 calling the following:
 \itemize{
 \item \code{\link[=codestarconnections_list_tags_for_resource]{list_tags_for_resource}},
-which gets information about Amazon Web Services tags for a
-specified Amazon Resource Name (ARN) in Amazon Web Services CodeStar
+which gets information about Amazon Web Services tags for a specified
+Amazon Resource Name (ARN) in Amazon Web Services CodeStar
 Connections.
 \item \code{\link[=codestarconnections_tag_resource]{tag_resource}}, which adds or
 updates tags for a resource in Amazon Web Services CodeStar
 Connections.
-\item \code{\link[=codestarconnections_untag_resource]{untag_resource}}, which
-removes tags for a resource in Amazon Web Services CodeStar
-Connections.
+\item \code{\link[=codestarconnections_untag_resource]{untag_resource}}, which removes
+tags for a resource in Amazon Web Services CodeStar Connections.
 }
 
 For information about how to use Amazon Web Services CodeStar

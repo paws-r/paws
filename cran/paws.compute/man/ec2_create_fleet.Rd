@@ -29,7 +29,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}.}
 
 \item{SpotOptions}{Describes the configuration of Spot Instances in an EC2 Fleet.}
 
@@ -51,15 +51,15 @@ Fleet expires.}
 \item{Type}{The fleet type. The default value is \code{maintain}.
 \itemize{
 \item \code{maintain} - The EC2 Fleet places an asynchronous request for your
-desired capacity, and continues to maintain your desired Spot
-capacity by replenishing interrupted Spot Instances.
-\item \code{request} - The EC2 Fleet places an asynchronous one-time request
-for your desired capacity, but does submit Spot requests in
-alternative capacity pools if Spot capacity is unavailable, and does
-not maintain Spot capacity if Spot Instances are interrupted.
+desired capacity, and continues to maintain your desired Spot capacity
+by replenishing interrupted Spot Instances.
+\item \code{request} - The EC2 Fleet places an asynchronous one-time request for
+your desired capacity, but does submit Spot requests in alternative
+capacity pools if Spot capacity is unavailable, and does not maintain
+Spot capacity if Spot Instances are interrupted.
 \item \code{instant} - The EC2 Fleet places a synchronous one-time request for
-your desired capacity, and returns errors for any instances that
-could not be launched.
+your desired capacity, and returns errors for any instances that could
+not be launched.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-request-type.html}{EC2 Fleet request types}

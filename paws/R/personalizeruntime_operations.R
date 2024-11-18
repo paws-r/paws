@@ -15,9 +15,8 @@ NULL
 #' 
 #' For more information about PERSONALIZED_ACTIONS recipes, see
 #' [PERSONALIZED_ACTIONS
-#' recipes](https://docs.aws.amazon.com/personalize/latest/dg/nexts-best-action-recipes.html).
-#' For more information about getting action recommendations, see [Getting
-#' action
+#' recipes](https://docs.aws.amazon.com/personalize/latest/dg/). For more
+#' information about getting action recommendations, see [Getting action
 #' recommendations](https://docs.aws.amazon.com/personalize/latest/dg/get-action-recommendations.html).
 #'
 #' @usage
@@ -87,7 +86,8 @@ personalizeruntime_get_action_recommendations <- function(campaignArn = NULL, us
     http_method = "POST",
     http_path = "/action-recommendations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalizeruntime$get_action_recommendations_input(campaignArn = campaignArn, userId = userId, numResults = numResults, filterArn = filterArn, filterValues = filterValues)
   output <- .personalizeruntime$get_action_recommendations_output()
@@ -208,7 +208,8 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
     http_method = "POST",
     http_path = "/personalize-ranking",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalizeruntime$get_personalized_ranking_input(campaignArn = campaignArn, inputList = inputList, userId = userId, context = context, filterArn = filterArn, filterValues = filterValues, metadataColumns = metadataColumns)
   output <- .personalizeruntime$get_personalized_ranking_output()
@@ -228,9 +229,9 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 #' input depends on the recipe type used to create the solution backing the
 #' campaign as follows:
 #' 
-#' -   USER_PERSONALIZATION - `userId` required, `itemId` not used
+#' - USER_PERSONALIZATION - `userId` required, `itemId` not used
 #' 
-#' -   RELATED_ITEMS - `itemId` required, `userId` not used
+#' - RELATED_ITEMS - `itemId` required, `userId` not used
 #' 
 #' Campaigns that are backed by a solution created using a recipe of type
 #' PERSONALIZED_RANKING use the API.
@@ -364,7 +365,8 @@ personalizeruntime_get_recommendations <- function(campaignArn = NULL, itemId = 
     http_method = "POST",
     http_path = "/recommendations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalizeruntime$get_recommendations_input(campaignArn = campaignArn, itemId = itemId, userId = userId, numResults = numResults, context = context, filterArn = filterArn, filterValues = filterValues, recommenderArn = recommenderArn, promotions = promotions, metadataColumns = metadataColumns)
   output <- .personalizeruntime$get_recommendations_output()

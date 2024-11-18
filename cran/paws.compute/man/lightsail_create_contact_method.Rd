@@ -27,7 +27,7 @@ supported, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-supported-reg
 in the \emph{Amazon SNS Developer Guide}.
 
 For more information about notifications in Amazon Lightsail, see
-\href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-notifications.html}{Notifications in Amazon Lightsail}.}
+Notifications in Amazon Lightsail.}
 
 \item{contactEndpoint}{[required] The destination of the contact method, such as an email address or a
 mobile phone number.

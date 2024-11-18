@@ -59,9 +59,9 @@ modifications to the permissions of files.
 have additional security needs, such as antivirus or data loss
 prevention. The API actions, along with CloudTrail, allow these
 applications to detect when changes occur in Amazon WorkDocs. Then,
-the application can take the necessary actions and replace the
-target file. If the target file violates the policy, the application
-can also choose to email the user.
+the application can take the necessary actions and replace the target
+file. If the target file violates the policy, the application can also
+choose to email the user.
 \item eDiscovery/Analytics: General administrative applications are
 supported, such as eDiscovery and analytics. These applications can
 choose to mimic or record the actions in an Amazon WorkDocs site,

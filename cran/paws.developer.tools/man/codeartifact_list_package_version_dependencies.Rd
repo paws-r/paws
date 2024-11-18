@@ -37,8 +37,7 @@ versions of the following formats:
 \item The namespace of a Maven package version is its \code{groupId}.
 \item The namespace of an npm package version is its \code{scope}.
 \item Python and NuGet package versions do not contain a corresponding
-component, package versions of those formats do not have a
-namespace.
+component, package versions of those formats do not have a namespace.
 }}
 
 \item{package}{[required] The name of the package versions' package.}

@@ -8,41 +8,41 @@ NULL
 #' With Application Auto Scaling, you can configure automatic scaling for
 #' the following resources:
 #' 
-#' -   Amazon AppStream 2.0 fleets
+#' - Amazon AppStream 2.0 fleets
 #' 
-#' -   Amazon Aurora Replicas
+#' - Amazon Aurora Replicas
 #' 
-#' -   Amazon Comprehend document classification and entity recognizer
-#'     endpoints
+#' - Amazon Comprehend document classification and entity recognizer
+#'   endpoints
 #' 
-#' -   Amazon DynamoDB tables and global secondary indexes throughput
-#'     capacity
+#' - Amazon DynamoDB tables and global secondary indexes throughput
+#'   capacity
 #' 
-#' -   Amazon ECS services
+#' - Amazon ECS services
 #' 
-#' -   Amazon ElastiCache for Redis clusters (replication groups)
+#' - Amazon ElastiCache for Redis clusters (replication groups)
 #' 
-#' -   Amazon EMR clusters
+#' - Amazon EMR clusters
 #' 
-#' -   Amazon Keyspaces (for Apache Cassandra) tables
+#' - Amazon Keyspaces (for Apache Cassandra) tables
 #' 
-#' -   Lambda function provisioned concurrency
+#' - Lambda function provisioned concurrency
 #' 
-#' -   Amazon Managed Streaming for Apache Kafka broker storage
+#' - Amazon Managed Streaming for Apache Kafka broker storage
 #' 
-#' -   Amazon Neptune clusters
+#' - Amazon Neptune clusters
 #' 
-#' -   Amazon SageMaker endpoint variants
+#' - Amazon SageMaker endpoint variants
 #' 
-#' -   Amazon SageMaker inference components
+#' - Amazon SageMaker inference components
 #' 
-#' -   Amazon SageMaker serverless endpoint provisioned concurrency
+#' - Amazon SageMaker serverless endpoint provisioned concurrency
 #' 
-#' -   Spot Fleets (Amazon EC2)
+#' - Spot Fleets (Amazon EC2)
 #' 
-#' -   Pool of WorkSpaces
+#' - Pool of WorkSpaces
 #' 
-#' -   Custom resources provided by your own applications or services
+#' - Custom resources provided by your own applications or services
 #' 
 #' To learn more about Application Auto Scaling, see the [Application Auto
 #' Scaling User
@@ -53,24 +53,23 @@ NULL
 #' The Application Auto Scaling service API includes three key sets of
 #' actions:
 #' 
-#' -   Register and manage scalable targets - Register Amazon Web Services
-#'     or custom resources as scalable targets (a resource that Application
-#'     Auto Scaling can scale), set minimum and maximum capacity limits,
-#'     and retrieve information on existing scalable targets.
+#' - Register and manage scalable targets - Register Amazon Web Services or
+#'   custom resources as scalable targets (a resource that Application Auto
+#'   Scaling can scale), set minimum and maximum capacity limits, and
+#'   retrieve information on existing scalable targets.
 #' 
-#' -   Configure and manage automatic scaling - Define scaling policies to
-#'     dynamically scale your resources in response to CloudWatch alarms,
-#'     schedule one-time or recurring scaling actions, and retrieve your
-#'     recent scaling activity history.
+#' - Configure and manage automatic scaling - Define scaling policies to
+#'   dynamically scale your resources in response to CloudWatch alarms,
+#'   schedule one-time or recurring scaling actions, and retrieve your
+#'   recent scaling activity history.
 #' 
-#' -   Suspend and resume scaling - Temporarily suspend and later resume
-#'     automatic scaling by calling the
-#'     [`register_scalable_target`][applicationautoscaling_register_scalable_target]
-#'     API action for any Application Auto Scaling scalable target. You can
-#'     suspend and resume (individually or in combination) scale-out
-#'     activities that are triggered by a scaling policy, scale-in
-#'     activities that are triggered by a scaling policy, and scheduled
-#'     scaling.
+#' - Suspend and resume scaling - Temporarily suspend and later resume
+#'   automatic scaling by calling the
+#'   [`register_scalable_target`][applicationautoscaling_register_scalable_target]
+#'   API action for any Application Auto Scaling scalable target. You can
+#'   suspend and resume (individually or in combination) scale-out
+#'   activities that are triggered by a scaling policy, scale-in activities
+#'   that are triggered by a scaling policy, and scheduled scaling.
 #'
 #' @param
 #' config

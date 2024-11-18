@@ -21,8 +21,8 @@ properties.}
 Specify one of the following options:
 \itemize{
 \item \code{SAML_PROPERTIES_USER_ACCESS_URL} to delete the user access URL.
-\item \code{SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME} to delete the relay
-state parameter name.
+\item \code{SAML_PROPERTIES_RELAY_STATE_PARAMETER_NAME} to delete the relay state
+parameter name.
 }}
 }
 \description{

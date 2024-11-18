@@ -45,7 +45,8 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, Feature
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$add_role_to_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .neptune$add_role_to_db_cluster_output()
@@ -72,17 +73,17 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, Feature
 #' 
 #' Constraints:
 #' 
-#' -   If the source type is a DB instance, then a `DBInstanceIdentifier`
-#'     must be supplied.
+#' - If the source type is a DB instance, then a `DBInstanceIdentifier`
+#'   must be supplied.
 #' 
-#' -   If the source type is a DB security group, a `DBSecurityGroupName`
-#'     must be supplied.
+#' - If the source type is a DB security group, a `DBSecurityGroupName`
+#'   must be supplied.
 #' 
-#' -   If the source type is a DB parameter group, a `DBParameterGroupName`
-#'     must be supplied.
+#' - If the source type is a DB parameter group, a `DBParameterGroupName`
+#'   must be supplied.
 #' 
-#' -   If the source type is a DB snapshot, a `DBSnapshotIdentifier` must
-#'     be supplied.
+#' - If the source type is a DB snapshot, a `DBSnapshotIdentifier` must be
+#'   supplied.
 #'
 #' @return
 #' A list with the following syntax:
@@ -126,7 +127,8 @@ neptune_add_source_identifier_to_subscription <- function(SubscriptionName, Sour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$add_source_identifier_to_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .neptune$add_source_identifier_to_subscription_output()
@@ -182,7 +184,8 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .neptune$add_tags_to_resource_output()
@@ -217,13 +220,13 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
 #' 
 #' Valid values:
 #' 
-#' -   `immediate` - Apply the maintenance action immediately.
+#' - `immediate` - Apply the maintenance action immediately.
 #' 
-#' -   `next-maintenance` - Apply the maintenance action during the next
-#'     maintenance window for the resource.
+#' - `next-maintenance` - Apply the maintenance action during the next
+#'   maintenance window for the resource.
 #' 
-#' -   `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
-#'     requests.
+#' - `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
+#'   requests.
 #'
 #' @return
 #' A list with the following syntax:
@@ -271,7 +274,8 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$apply_pending_maintenance_action_input(ResourceIdentifier = ResourceIdentifier, ApplyAction = ApplyAction, OptInType = OptInType)
   output <- .neptune$apply_pending_maintenance_action_output()
@@ -301,27 +305,26 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 #' 
 #' Constraints:
 #' 
-#' -   Must specify a valid DB cluster parameter group.
+#' - Must specify a valid DB cluster parameter group.
 #' 
-#' -   If the source DB cluster parameter group is in the same Amazon
-#'     Region as the copy, specify a valid DB parameter group identifier,
-#'     for example `my-db-cluster-param-group`, or a valid ARN.
+#' - If the source DB cluster parameter group is in the same Amazon Region
+#'   as the copy, specify a valid DB parameter group identifier, for
+#'   example `my-db-cluster-param-group`, or a valid ARN.
 #' 
-#' -   If the source DB parameter group is in a different Amazon Region
-#'     than the copy, specify a valid DB cluster parameter group ARN, for
-#'     example
-#'     `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
+#' - If the source DB parameter group is in a different Amazon Region than
+#'   the copy, specify a valid DB cluster parameter group ARN, for example
+#'   `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
 #' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied DB cluster parameter group.
 #' 
 #' Constraints:
 #' 
-#' -   Cannot be null, empty, or blank
+#' - Cannot be null, empty, or blank
 #' 
-#' -   Must contain from 1 to 255 letters, numbers, or hyphens
+#' - Must contain from 1 to 255 letters, numbers, or hyphens
 #' 
-#' -   First character must be a letter
+#' - First character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-cluster-param-group1`
 #' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied DB cluster parameter group.
@@ -366,7 +369,8 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$copy_db_cluster_parameter_group_input(SourceDBClusterParameterGroupIdentifier = SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier = TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription = TargetDBClusterParameterGroupDescription, Tags = Tags)
   output <- .neptune$copy_db_cluster_parameter_group_output()
@@ -397,9 +401,9 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' 
 #' Constraints:
 #' 
-#' -   Must specify a valid system snapshot in the "available" state.
+#' - Must specify a valid system snapshot in the "available" state.
 #' 
-#' -   Specify a valid DB snapshot identifier.
+#' - Specify a valid DB snapshot identifier.
 #' 
 #' Example: `my-cluster-snapshot1`
 #' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new DB cluster snapshot to create from the source
@@ -407,11 +411,11 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
+#' - Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter.
+#' - First character must be a letter.
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' - Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot2`
 #' @param KmsKeyId The Amazon Amazon KMS key ID for an encrypted DB cluster snapshot. The
@@ -503,7 +507,8 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$copy_db_cluster_snapshot_input(SourceDBClusterSnapshotIdentifier = SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier = TargetDBClusterSnapshotIdentifier, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, CopyTags = CopyTags, Tags = Tags)
   output <- .neptune$copy_db_cluster_snapshot_output()
@@ -531,21 +536,21 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 #' 
 #' Constraints:
 #' 
-#' -   Must specify a valid DB parameter group.
+#' - Must specify a valid DB parameter group.
 #' 
-#' -   Must specify a valid DB parameter group identifier, for example
-#'     `my-db-param-group`, or a valid ARN.
+#' - Must specify a valid DB parameter group identifier, for example
+#'   `my-db-param-group`, or a valid ARN.
 #' @param TargetDBParameterGroupIdentifier &#91;required&#93; The identifier for the copied DB parameter group.
 #' 
 #' Constraints:
 #' 
-#' -   Cannot be null, empty, or blank.
+#' - Cannot be null, empty, or blank.
 #' 
-#' -   Must contain from 1 to 255 letters, numbers, or hyphens.
+#' - Must contain from 1 to 255 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter.
+#' - First character must be a letter.
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' - Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-db-parameter-group`
 #' @param TargetDBParameterGroupDescription &#91;required&#93; A description for the copied DB parameter group.
@@ -590,7 +595,8 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$copy_db_parameter_group_input(SourceDBParameterGroupIdentifier = SourceDBParameterGroupIdentifier, TargetDBParameterGroupIdentifier = TargetDBParameterGroupIdentifier, TargetDBParameterGroupDescription = TargetDBParameterGroupDescription, Tags = Tags)
   output <- .neptune$copy_db_parameter_group_output()
@@ -638,7 +644,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' Constraints:
 #' 
-#' -   Must be a value from 1 to 35
+#' - Must be a value from 1 to 35
 #' @param CharacterSetName *(Not supported by Neptune)*
 #' @param CopyTagsToSnapshot *If set to true, tags are copied to any snapshot of the DB cluster that
 #' is created.*
@@ -650,11 +656,11 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
+#' - Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter.
+#' - First character must be a letter.
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' - Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster1`
 #' @param DBClusterParameterGroupName The name of the DB cluster parameter group to associate with this DB
@@ -662,8 +668,8 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing
-#'     DBClusterParameterGroup.
+#' - If supplied, must match the name of an existing
+#'   DBClusterParameterGroup.
 #' @param VpcSecurityGroupIds A list of EC2 VPC security groups to associate with this DB cluster.
 #' @param DBSubnetGroupName A DB subnet group to associate with this DB cluster.
 #' 
@@ -691,18 +697,18 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each Amazon Region. To see the time blocks available,
 #' see [Neptune Maintenance
-#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/#manage-console-maintaining-window)
+#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window)
 #' in the *Amazon Neptune User Guide.*
 #' 
 #' Constraints:
 #' 
-#' -   Must be in the format `hh24:mi-hh24:mi`.
+#' - Must be in the format `hh24:mi-hh24:mi`.
 #' 
-#' -   Must be in Universal Coordinated Time (UTC).
+#' - Must be in Universal Coordinated Time (UTC).
 #' 
-#' -   Must not conflict with the preferred maintenance window.
+#' - Must not conflict with the preferred maintenance window.
 #' 
-#' -   Must be at least 30 minutes.
+#' - Must be at least 30 minutes.
 #' @param PreferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
@@ -711,7 +717,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each Amazon Region, occurring on a random day of the
 #' week. To see the time blocks available, see [Neptune Maintenance
-#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/#manage-console-maintaining-window)
+#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window)
 #' in the *Amazon Neptune User Guide.*
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
@@ -731,14 +737,13 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' If an encryption key is not specified in `KmsKeyId`:
 #' 
-#' -   If `ReplicationSourceIdentifier` identifies an encrypted source,
-#'     then Amazon Neptune will use the encryption key used to encrypt the
-#'     source. Otherwise, Amazon Neptune will use your default encryption
-#'     key.
+#' - If `ReplicationSourceIdentifier` identifies an encrypted source, then
+#'   Amazon Neptune will use the encryption key used to encrypt the source.
+#'   Otherwise, Amazon Neptune will use your default encryption key.
 #' 
-#' -   If the `StorageEncrypted` parameter is true and
-#'     `ReplicationSourceIdentifier` is not specified, then Amazon Neptune
-#'     will use your default encryption key.
+#' - If the `StorageEncrypted` parameter is true and
+#'   `ReplicationSourceIdentifier` is not specified, then Amazon Neptune
+#'   will use your default encryption key.
 #' 
 #' Amazon KMS creates the default encryption key for your Amazon account.
 #' Your Amazon account has a different default encryption key for each
@@ -773,11 +778,11 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' Valid Values:
 #' 
-#' -   `standard | iopt1`
+#' - `standard | iopt1`
 #' 
 #' Default:
 #' 
-#' -   `standard`
+#' - `standard`
 #' 
 #' When you create a Neptune cluster with the storage type set to `iopt1`,
 #' the storage type is returned in the response. The storage type isn't
@@ -954,7 +959,8 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, CopyTagsToSnapshot = CopyTagsToSnapshot, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType)
   output <- .neptune$create_db_cluster_output()
@@ -1043,7 +1049,8 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_db_cluster_endpoint_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, EndpointType = EndpointType, StaticMembers = StaticMembers, ExcludedMembers = ExcludedMembers, Tags = Tags)
   output <- .neptune$create_db_cluster_endpoint_output()
@@ -1097,7 +1104,7 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
 #' 
 #' Constraints:
 #' 
-#' -   Must match the name of an existing DBClusterParameterGroup.
+#' - Must match the name of an existing DBClusterParameterGroup.
 #' 
 #' This value is stored as a lowercase string.
 #' @param DBParameterGroupFamily &#91;required&#93; The DB cluster parameter group family name. A DB cluster parameter group
@@ -1147,7 +1154,8 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .neptune$create_db_cluster_parameter_group_output()
@@ -1173,11 +1181,11 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
+#' - Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter.
+#' - First character must be a letter.
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' - Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster1-snapshot1`
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the DB cluster to create a snapshot for. This
@@ -1185,7 +1193,7 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing DBCluster.
+#' - Must match the identifier of an existing DBCluster.
 #' 
 #' Example: `my-cluster1`
 #' @param Tags The tags to be assigned to the DB cluster snapshot.
@@ -1251,7 +1259,8 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, DBClusterIdentifier = DBClusterIdentifier, Tags = Tags)
   output <- .neptune$create_db_cluster_snapshot_output()
@@ -1290,11 +1299,11 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
+#' - Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter.
+#' - First character must be a letter.
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' - Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
 #' @param AllocatedStorage Not supported by Neptune.
@@ -1348,11 +1357,11 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' 
 #' Constraints:
 #' 
-#' -   Must be 1 to 255 letters, numbers, or hyphens.
+#' - Must be 1 to 255 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter
+#' - First character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #' @param BackupRetentionPeriod The number of days for which automated backups are retained.
 #' 
 #' Not applicable. The retention period for automated backups is managed by
@@ -1363,9 +1372,9 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 #' 
 #' Constraints:
 #' 
-#' -   Must be a value from 0 to 35
+#' - Must be a value from 0 to 35
 #' 
-#' -   Cannot be set to 0 if the DB instance is a source to Read Replicas
+#' - Cannot be set to 0 if the DB instance is a source to Read Replicas
 #' @param PreferredBackupWindow The daily time range during which automated backups are created.
 #' 
 #' Not applicable. The daily time range for creating automated backups is
@@ -1690,7 +1699,8 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_db_instance_input(DBName = DBName, DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, Engine = Engine, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, AvailabilityZone = AvailabilityZone, DBSubnetGroupName = DBSubnetGroupName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, Port = Port, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, CharacterSetName = CharacterSetName, PubliclyAccessible = PubliclyAccessible, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, Timezone = Timezone, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
   output <- .neptune$create_db_instance_output()
@@ -1736,11 +1746,11 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
 #' 
 #' Constraints:
 #' 
-#' -   Must be 1 to 255 letters, numbers, or hyphens.
+#' - Must be 1 to 255 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter
+#' - First character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #' 
 #' This value is stored as a lowercase string.
 #' @param DBParameterGroupFamily &#91;required&#93; The DB parameter group family name. A DB parameter group can be
@@ -1789,7 +1799,8 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .neptune$create_db_parameter_group_output()
@@ -1873,7 +1884,8 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .neptune$create_db_subnet_group_output()
@@ -1938,19 +1950,19 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 #' 
 #' Constraints:
 #' 
-#' -   If SourceIds are supplied, SourceType must also be provided.
+#' - If SourceIds are supplied, SourceType must also be provided.
 #' 
-#' -   If the source type is a DB instance, then a `DBInstanceIdentifier`
-#'     must be supplied.
+#' - If the source type is a DB instance, then a `DBInstanceIdentifier`
+#'   must be supplied.
 #' 
-#' -   If the source type is a DB security group, a `DBSecurityGroupName`
-#'     must be supplied.
+#' - If the source type is a DB security group, a `DBSecurityGroupName`
+#'   must be supplied.
 #' 
-#' -   If the source type is a DB parameter group, a `DBParameterGroupName`
-#'     must be supplied.
+#' - If the source type is a DB parameter group, a `DBParameterGroupName`
+#'   must be supplied.
 #' 
-#' -   If the source type is a DB snapshot, a `DBSnapshotIdentifier` must
-#'     be supplied.
+#' - If the source type is a DB snapshot, a `DBSnapshotIdentifier` must be
+#'   supplied.
 #' @param Enabled A Boolean value; set to **true** to activate the subscription, set to
 #' **false** to create the subscription but not active it.
 #' @param Tags The tags to be applied to the new event subscription.
@@ -2011,7 +2023,8 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, SourceIds = SourceIds, Enabled = Enabled, Tags = Tags)
   output <- .neptune$create_event_subscription_output()
@@ -2104,7 +2117,8 @@ neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClust
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, StorageEncrypted = StorageEncrypted)
   output <- .neptune$create_global_cluster_output()
@@ -2137,7 +2151,7 @@ neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClust
 #' 
 #' Constraints:
 #' 
-#' -   Must match an existing DBClusterIdentifier.
+#' - Must match an existing DBClusterIdentifier.
 #' @param SkipFinalSnapshot Determines whether a final DB cluster snapshot is created before the DB
 #' cluster is deleted. If `true` is specified, no DB cluster snapshot is
 #' created. If `false` is specified, a DB cluster snapshot is created
@@ -2155,11 +2169,11 @@ neptune_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBClust
 #' 
 #' Constraints:
 #' 
-#' -   Must be 1 to 255 letters, numbers, or hyphens.
+#' - Must be 1 to 255 letters, numbers, or hyphens.
 #' 
-#' -   First character must be a letter
+#' - First character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #'
 #' @return
 #' A list with the following syntax:
@@ -2293,7 +2307,8 @@ neptune_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
   output <- .neptune$delete_db_cluster_output()
@@ -2357,7 +2372,8 @@ neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_db_cluster_endpoint_input(DBClusterEndpointIdentifier = DBClusterEndpointIdentifier)
   output <- .neptune$delete_db_cluster_endpoint_output()
@@ -2382,11 +2398,11 @@ neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 #' 
 #' Constraints:
 #' 
-#' -   Must be the name of an existing DB cluster parameter group.
+#' - Must be the name of an existing DB cluster parameter group.
 #' 
-#' -   You can't delete a default DB cluster parameter group.
+#' - You can't delete a default DB cluster parameter group.
 #' 
-#' -   Cannot be associated with any DB clusters.
+#' - Cannot be associated with any DB clusters.
 #'
 #' @return
 #' An empty list.
@@ -2409,7 +2425,8 @@ neptune_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .neptune$delete_db_cluster_parameter_group_output()
@@ -2491,7 +2508,8 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .neptune$delete_db_cluster_snapshot_output()
@@ -2533,7 +2551,7 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' 
 #' Constraints:
 #' 
-#' -   Must match the name of an existing DB instance.
+#' - Must match the name of an existing DB instance.
 #' @param SkipFinalSnapshot Determines whether a final DB snapshot is created before the DB instance
 #' is deleted. If `true` is specified, no DBSnapshot is created. If `false`
 #' is specified, a DB snapshot is created before the DB instance is
@@ -2557,13 +2575,13 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' 
 #' Constraints:
 #' 
-#' -   Must be 1 to 255 letters or numbers.
+#' - Must be 1 to 255 letters or numbers.
 #' 
-#' -   First character must be a letter
+#' - First character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #' 
-#' -   Cannot be specified when deleting a Read Replica.
+#' - Cannot be specified when deleting a Read Replica.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2732,7 +2750,8 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
   output <- .neptune$delete_db_instance_output()
@@ -2757,11 +2776,11 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
 #' 
 #' Constraints:
 #' 
-#' -   Must be the name of an existing DB parameter group
+#' - Must be the name of an existing DB parameter group
 #' 
-#' -   You can't delete a default DB parameter group
+#' - You can't delete a default DB parameter group
 #' 
-#' -   Cannot be associated with any DB instances
+#' - Cannot be associated with any DB instances
 #'
 #' @return
 #' An empty list.
@@ -2784,7 +2803,8 @@ neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName)
   output <- .neptune$delete_db_parameter_group_output()
@@ -2839,7 +2859,8 @@ neptune_delete_db_subnet_group <- function(DBSubnetGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName)
   output <- .neptune$delete_db_subnet_group_output()
@@ -2902,7 +2923,8 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_event_subscription_input(SubscriptionName = SubscriptionName)
   output <- .neptune$delete_event_subscription_output()
@@ -2969,7 +2991,8 @@ neptune_delete_global_cluster <- function(GlobalClusterIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .neptune$delete_global_cluster_output()
@@ -3076,7 +3099,8 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterEndpoints")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterEndpoints"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_cluster_endpoints_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_endpoints_output()
@@ -3104,8 +3128,8 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing
-#'     DBClusterParameterGroup.
+#' - If supplied, must match the name of an existing
+#'   DBClusterParameterGroup.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -3164,7 +3188,8 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_cluster_parameter_groups_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_parameter_groups_output()
@@ -3192,8 +3217,8 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing
-#'     DBClusterParameterGroup.
+#' - If supplied, must match the name of an existing
+#'   DBClusterParameterGroup.
 #' @param Source A value that indicates to return only parameters for a specific source.
 #' Parameter sources can be `engine`, `service`, or `customer`.
 #' @param Filters This parameter is not currently supported.
@@ -3261,7 +3286,8 @@ neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_cluster_parameters_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_parameters_output()
@@ -3337,7 +3363,8 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_cluster_snapshot_attributes_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .neptune$describe_db_cluster_snapshot_attributes_output()
@@ -3367,32 +3394,32 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the identifier of an existing DBCluster.
+#' - If supplied, must match the identifier of an existing DBCluster.
 #' @param DBClusterSnapshotIdentifier A specific DB cluster snapshot identifier to describe. This parameter
 #' can't be used in conjunction with the `DBClusterIdentifier` parameter.
 #' This value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the identifier of an existing
-#'     DBClusterSnapshot.
+#' - If supplied, must match the identifier of an existing
+#'   DBClusterSnapshot.
 #' 
-#' -   If this identifier is for an automated snapshot, the `SnapshotType`
-#'     parameter must also be specified.
+#' - If this identifier is for an automated snapshot, the `SnapshotType`
+#'   parameter must also be specified.
 #' @param SnapshotType The type of DB cluster snapshots to be returned. You can specify one of
 #' the following values:
 #' 
-#' -   `automated` - Return all DB cluster snapshots that have been
-#'     automatically taken by Amazon Neptune for my Amazon account.
+#' - `automated` - Return all DB cluster snapshots that have been
+#'   automatically taken by Amazon Neptune for my Amazon account.
 #' 
-#' -   `manual` - Return all DB cluster snapshots that have been taken by
-#'     my Amazon account.
+#' - `manual` - Return all DB cluster snapshots that have been taken by my
+#'   Amazon account.
 #' 
-#' -   `shared` - Return all manual DB cluster snapshots that have been
-#'     shared to my Amazon account.
+#' - `shared` - Return all manual DB cluster snapshots that have been
+#'   shared to my Amazon account.
 #' 
-#' -   `public` - Return all DB cluster snapshots that have been marked as
-#'     public.
+#' - `public` - Return all DB cluster snapshots that have been marked as
+#'   public.
 #' 
 #' If you don't specify a `SnapshotType` value, then both automated and
 #' manual DB cluster snapshots are returned. You can include shared DB
@@ -3505,7 +3532,8 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic)
   output <- .neptune$describe_db_cluster_snapshots_output()
@@ -3537,17 +3565,17 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match an existing DBClusterIdentifier.
+#' - If supplied, must match an existing DBClusterIdentifier.
 #' @param Filters A filter that specifies one or more DB clusters to describe.
 #' 
 #' Supported filters:
 #' 
-#' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list will only include
-#'     information about the DB clusters identified by these ARNs.
+#' - `db-cluster-id` - Accepts DB cluster identifiers and DB cluster Amazon
+#'   Resource Names (ARNs). The results list will only include information
+#'   about the DB clusters identified by these ARNs.
 #' 
-#' -   `engine` - Accepts an engine name (such as `neptune`), and restricts
-#'     the results list to DB clusters created by that engine.
+#' - `engine` - Accepts an engine name (such as `neptune`), and restricts
+#'   the results list to DB clusters created by that engine.
 #' 
 #' For example, to invoke this API from the Amazon CLI and filter so that
 #' only Neptune DB clusters are returned, you could use the following
@@ -3708,7 +3736,8 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_clusters_input(DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_clusters_output()
@@ -3738,7 +3767,7 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match an existing DBParameterGroupFamily.
+#' - If supplied, must match an existing DBParameterGroupFamily.
 #' @param Filters Not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more than
 #' the `MaxRecords` value is available, a pagination token called a marker
@@ -3843,7 +3872,8 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones)
   output <- .neptune$describe_db_engine_versions_output()
@@ -3874,18 +3904,18 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the identifier of an existing DBInstance.
+#' - If supplied, must match the identifier of an existing DBInstance.
 #' @param Filters A filter that specifies one or more DB instances to describe.
 #' 
 #' Supported filters:
 #' 
-#' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list will only include
-#'     information about the DB instances associated with the DB clusters
-#'     identified by these ARNs.
+#' - `db-cluster-id` - Accepts DB cluster identifiers and DB cluster Amazon
+#'   Resource Names (ARNs). The results list will only include information
+#'   about the DB instances associated with the DB clusters identified by
+#'   these ARNs.
 #' 
-#' -   `engine` - Accepts an engine name (such as `neptune`), and restricts
-#'     the results list to DB instances created by that engine.
+#' - `engine` - Accepts an engine name (such as `neptune`), and restricts
+#'   the results list to DB instances created by that engine.
 #' 
 #' For example, to invoke this API from the Amazon CLI and filter so that
 #' only Neptune DB instances are returned, you could use the following
@@ -4081,7 +4111,8 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_instances_input(DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_instances_output()
@@ -4108,8 +4139,8 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing
-#'     DBClusterParameterGroup.
+#' - If supplied, must match the name of an existing
+#'   DBClusterParameterGroup.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -4168,7 +4199,8 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBParameterGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBParameterGroups"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_parameter_groups_input(DBParameterGroupName = DBParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_parameter_groups_output()
@@ -4193,7 +4225,7 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing DBParameterGroup.
+#' - If supplied, must match the name of an existing DBParameterGroup.
 #' @param Source The parameter types to return.
 #' 
 #' Default: All parameter types returned
@@ -4264,7 +4296,8 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_parameters_input(DBParameterGroupName = DBParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_parameters_output()
@@ -4359,7 +4392,8 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_db_subnet_groups_input(DBSubnetGroupName = DBSubnetGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_subnet_groups_output()
@@ -4451,7 +4485,8 @@ neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupF
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$describe_engine_default_cluster_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_engine_default_cluster_parameters_output()
@@ -4542,7 +4577,8 @@ neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, F
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_engine_default_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_engine_default_parameters_output()
@@ -4611,7 +4647,8 @@ neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$describe_event_categories_input(SourceType = SourceType, Filters = Filters)
   output <- .neptune$describe_event_categories_output()
@@ -4706,7 +4743,8 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_event_subscriptions_output()
@@ -4737,21 +4775,21 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
 #' 
 #' Constraints:
 #' 
-#' -   If SourceIdentifier is supplied, SourceType must also be provided.
+#' - If SourceIdentifier is supplied, SourceType must also be provided.
 #' 
-#' -   If the source type is `DBInstance`, then a `DBInstanceIdentifier`
-#'     must be supplied.
+#' - If the source type is `DBInstance`, then a `DBInstanceIdentifier` must
+#'   be supplied.
 #' 
-#' -   If the source type is `DBSecurityGroup`, a `DBSecurityGroupName`
-#'     must be supplied.
+#' - If the source type is `DBSecurityGroup`, a `DBSecurityGroupName` must
+#'   be supplied.
 #' 
-#' -   If the source type is `DBParameterGroup`, a `DBParameterGroupName`
-#'     must be supplied.
+#' - If the source type is `DBParameterGroup`, a `DBParameterGroupName`
+#'   must be supplied.
 #' 
-#' -   If the source type is `DBSnapshot`, a `DBSnapshotIdentifier` must be
-#'     supplied.
+#' - If the source type is `DBSnapshot`, a `DBSnapshotIdentifier` must be
+#'   supplied.
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' - Cannot end with a hyphen or contain two consecutive hyphens.
 #' @param SourceType The event source to retrieve events for. If no value is specified, all
 #' events are returned.
 #' @param StartTime The beginning of the time interval to retrieve events for, specified in
@@ -4843,7 +4881,8 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, EventCategories = EventCategories, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_events_output()
@@ -4932,7 +4971,8 @@ neptune_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_global_clusters_output()
@@ -5046,7 +5086,8 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_orderable_db_instance_options_input(Engine = Engine, EngineVersion = EngineVersion, DBInstanceClass = DBInstanceClass, LicenseModel = LicenseModel, Vpc = Vpc, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_orderable_db_instance_options_output()
@@ -5075,14 +5116,13 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
 #' 
 #' Supported filters:
 #' 
-#' -   `db-cluster-id` - Accepts DB cluster identifiers and DB cluster
-#'     Amazon Resource Names (ARNs). The results list will only include
-#'     pending maintenance actions for the DB clusters identified by these
-#'     ARNs.
+#' - `db-cluster-id` - Accepts DB cluster identifiers and DB cluster Amazon
+#'   Resource Names (ARNs). The results list will only include pending
+#'   maintenance actions for the DB clusters identified by these ARNs.
 #' 
-#' -   `db-instance-id` - Accepts DB instance identifiers and DB instance
-#'     ARNs. The results list will only include pending maintenance actions
-#'     for the DB instances identified by these ARNs.
+#' - `db-instance-id` - Accepts DB instance identifiers and DB instance
+#'   ARNs. The results list will only include pending maintenance actions
+#'   for the DB instances identified by these ARNs.
 #' @param Marker An optional pagination token provided by a previous
 #' [`describe_pending_maintenance_actions`][neptune_describe_pending_maintenance_actions]
 #' request. If this parameter is specified, the response includes only
@@ -5154,7 +5194,8 @@ neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions"),
+    stream_api = FALSE
   )
   input <- .neptune$describe_pending_maintenance_actions_input(ResourceIdentifier = ResourceIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .neptune$describe_pending_maintenance_actions_output()
@@ -5233,7 +5274,8 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$describe_valid_db_instance_modifications_input(DBInstanceIdentifier = DBInstanceIdentifier)
   output <- .neptune$describe_valid_db_instance_modifications_output()
@@ -5270,7 +5312,7 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing DBCluster.
+#' - Must match the identifier of an existing DBCluster.
 #' @param TargetDBInstanceIdentifier The name of the instance to promote to the primary instance.
 #' 
 #' You must specify the instance identifier for an Read Replica in the DB
@@ -5407,7 +5449,8 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$failover_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier)
   output <- .neptune$failover_db_cluster_output()
@@ -5496,7 +5539,8 @@ neptune_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
   output <- .neptune$failover_global_cluster_output()
@@ -5561,7 +5605,8 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "TagList")
+    paginator = list(result_key = "TagList"),
+    stream_api = FALSE
   )
   input <- .neptune$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)
   output <- .neptune$list_tags_for_resource_output()
@@ -5595,17 +5640,17 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing DBCluster.
+#' - Must match the identifier of an existing DBCluster.
 #' @param NewDBClusterIdentifier The new DB cluster identifier for the DB cluster when renaming a DB
 #' cluster. This value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens
+#' - Must contain from 1 to 63 letters, numbers, or hyphens
 #' 
-#' -   The first character must be a letter
+#' - The first character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-cluster2`
 #' @param ApplyImmediately A value that specifies whether the modifications in this request and any
@@ -5628,7 +5673,7 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraints:
 #' 
-#' -   Must be a value from 1 to 35
+#' - Must be a value from 1 to 35
 #' @param DBClusterParameterGroupName The name of the DB cluster parameter group to use for the DB cluster.
 #' @param VpcSecurityGroupIds A list of VPC security groups that the DB cluster will belong to.
 #' @param Port The port number on which the DB cluster accepts connections.
@@ -5647,13 +5692,13 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraints:
 #' 
-#' -   Must be in the format `hh24:mi-hh24:mi`.
+#' - Must be in the format `hh24:mi-hh24:mi`.
 #' 
-#' -   Must be in Universal Coordinated Time (UTC).
+#' - Must be in Universal Coordinated Time (UTC).
 #' 
-#' -   Must not conflict with the preferred maintenance window.
+#' - Must not conflict with the preferred maintenance window.
 #' 
-#' -   Must be at least 30 minutes.
+#' - Must be at least 30 minutes.
 #' @param PreferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
@@ -5700,11 +5745,11 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraints:
 #' 
-#' -   The DB parameter group must be in the same DB parameter group family
-#'     as the target DB cluster version.
+#' - The DB parameter group must be in the same DB parameter group family
+#'   as the target DB cluster version.
 #' 
-#' -   The `DBInstanceParameterGroupName` parameter is only valid in
-#'     combination with the `AllowMajorVersionUpgrade` parameter.
+#' - The `DBInstanceParameterGroupName` parameter is only valid in
+#'   combination with the `AllowMajorVersionUpgrade` parameter.
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is disabled.
@@ -5719,11 +5764,11 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Valid Values:
 #' 
-#' -   `standard | iopt1`
+#' - `standard | iopt1`
 #' 
 #' Default:
 #' 
-#' -   `standard`
+#' - `standard`
 #'
 #' @return
 #' A list with the following syntax:
@@ -5886,7 +5931,8 @@ neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DBInstanceParameterGroupName = DBInstanceParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType)
   output <- .neptune$modify_db_cluster_output()
@@ -5962,7 +6008,8 @@ neptune_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_db_cluster_endpoint_input(DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, EndpointType = EndpointType, StaticMembers = StaticMembers, ExcludedMembers = ExcludedMembers)
   output <- .neptune$modify_db_cluster_endpoint_output()
@@ -6046,7 +6093,8 @@ neptune_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Parameters = Parameters)
   output <- .neptune$modify_db_cluster_parameter_group_output()
@@ -6156,7 +6204,8 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_db_cluster_snapshot_attribute_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, AttributeName = AttributeName, ValuesToAdd = ValuesToAdd, ValuesToRemove = ValuesToRemove)
   output <- .neptune$modify_db_cluster_snapshot_attribute_output()
@@ -6197,7 +6246,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing DBInstance.
+#' - Must match the identifier of an existing DBInstance.
 #' @param AllocatedStorage Not supported by Neptune.
 #' @param DBInstanceClass The new compute and memory capacity of the DB instance, for example,
 #' `db.m4.large`. Not all DB instance classes are available in all Amazon
@@ -6225,7 +6274,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match existing DBSecurityGroups.
+#' - If supplied, must match existing DBSecurityGroups.
 #' @param VpcSecurityGroupIds A list of EC2 VPC security groups to authorize on this DB instance. This
 #' change is asynchronously applied as soon as possible.
 #' 
@@ -6235,7 +6284,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match existing VpcSecurityGroupIds.
+#' - If supplied, must match existing VpcSecurityGroupIds.
 #' @param ApplyImmediately Specifies whether the modifications in this request and any pending
 #' modifications are asynchronously applied as soon as possible, regardless
 #' of the `PreferredMaintenanceWindow` setting for the DB instance.
@@ -6273,13 +6322,13 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' 
 #' Constraints:
 #' 
-#' -   Must be in the format hh24:mi-hh24:mi
+#' - Must be in the format hh24:mi-hh24:mi
 #' 
-#' -   Must be in Universal Time Coordinated (UTC)
+#' - Must be in Universal Time Coordinated (UTC)
 #' 
-#' -   Must not conflict with the preferred maintenance window
+#' - Must not conflict with the preferred maintenance window
 #' 
-#' -   Must be at least 30 minutes
+#' - Must be at least 30 minutes
 #' @param PreferredMaintenanceWindow The weekly time range (in UTC) during which system maintenance can
 #' occur, which might result in an outage. Changing this parameter doesn't
 #' result in an outage, except in the following situation, and the change
@@ -6334,11 +6383,11 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
+#' - Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' -   The first character must be a letter.
+#' - The first character must be a letter.
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens.
+#' - Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
 #' @param StorageType Not supported.
@@ -6613,7 +6662,8 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, AllocatedStorage = AllocatedStorage, DBInstanceClass = DBInstanceClass, DBSubnetGroupName = DBSubnetGroupName, DBSecurityGroups = DBSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ApplyImmediately = ApplyImmediately, MasterUserPassword = MasterUserPassword, DBParameterGroupName = DBParameterGroupName, BackupRetentionPeriod = BackupRetentionPeriod, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, MultiAZ = MultiAZ, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, LicenseModel = LicenseModel, Iops = Iops, OptionGroupName = OptionGroupName, NewDBInstanceIdentifier = NewDBInstanceIdentifier, StorageType = StorageType, TdeCredentialArn = TdeCredentialArn, TdeCredentialPassword = TdeCredentialPassword, CACertificateIdentifier = CACertificateIdentifier, Domain = Domain, CopyTagsToSnapshot = CopyTagsToSnapshot, MonitoringInterval = MonitoringInterval, DBPortNumber = DBPortNumber, PubliclyAccessible = PubliclyAccessible, MonitoringRoleArn = MonitoringRoleArn, DomainIAMRoleName = DomainIAMRoleName, PromotionTier = PromotionTier, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, DeletionProtection = DeletionProtection)
   output <- .neptune$modify_db_instance_output()
@@ -6656,7 +6706,7 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing DBParameterGroup.
+#' - If supplied, must match the name of an existing DBParameterGroup.
 #' @param Parameters &#91;required&#93; An array of parameter names, values, and the apply method for the
 #' parameter update. At least one parameter name, value, and apply method
 #' must be supplied; subsequent arguments are optional. A maximum of 20
@@ -6708,7 +6758,8 @@ neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, Parameters = Parameters)
   output <- .neptune$modify_db_parameter_group_output()
@@ -6785,7 +6836,8 @@ neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .neptune$modify_db_subnet_group_output()
@@ -6878,7 +6930,8 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, Enabled = Enabled)
   output <- .neptune$modify_event_subscription_output()
@@ -6912,11 +6965,11 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
+#' - Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' -   The first character must be a letter.
+#' - The first character must be a letter.
 #' 
-#' -   Can't end with a hyphen or contain two consecutive hyphens
+#' - Can't end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-cluster2`
 #' @param DeletionProtection Indicates whether the global database has deletion protection enabled.
@@ -6987,7 +7040,8 @@ neptune_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalClus
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade)
   output <- .neptune$modify_global_cluster_output()
@@ -7139,7 +7193,8 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$promote_read_replica_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .neptune$promote_read_replica_db_cluster_output()
@@ -7172,7 +7227,7 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing DBInstance.
+#' - Must match the identifier of an existing DBInstance.
 #' @param ForceFailover When `true`, the reboot is conducted through a MultiAZ failover.
 #' 
 #' Constraint: You can't specify `true` if the instance is not configured
@@ -7344,7 +7399,8 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$reboot_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, ForceFailover = ForceFailover)
   output <- .neptune$reboot_db_instance_output()
@@ -7418,7 +7474,8 @@ neptune_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbCluste
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
   output <- .neptune$remove_from_global_cluster_output()
@@ -7472,7 +7529,8 @@ neptune_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Fe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$remove_role_from_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, RoleArn = RoleArn, FeatureName = FeatureName)
   output <- .neptune$remove_role_from_db_cluster_output()
@@ -7543,7 +7601,8 @@ neptune_remove_source_identifier_from_subscription <- function(SubscriptionName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$remove_source_identifier_from_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .neptune$remove_source_identifier_from_subscription_output()
@@ -7593,7 +7652,8 @@ neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .neptune$remove_tags_from_resource_output()
@@ -7677,7 +7737,8 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$reset_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .neptune$reset_db_cluster_parameter_group_output()
@@ -7710,7 +7771,7 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
 #' 
 #' Constraints:
 #' 
-#' -   Must match the name of an existing DBParameterGroup.
+#' - Must match the name of an existing DBParameterGroup.
 #' @param ResetAllParameters Specifies whether (`true`) or not (`false`) to reset all parameters in
 #' the DB parameter group to default values.
 #' 
@@ -7763,7 +7824,8 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$reset_db_parameter_group_input(DBParameterGroupName = DBParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .neptune$reset_db_parameter_group_output()
@@ -7805,11 +7867,11 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens
+#' - Must contain from 1 to 63 letters, numbers, or hyphens
 #' 
-#' -   First character must be a letter
+#' - First character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-snapshot-id`
 #' @param SnapshotIdentifier &#91;required&#93; The identifier for the DB snapshot or DB cluster snapshot to restore
@@ -7821,7 +7883,7 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing Snapshot.
+#' - Must match the identifier of an existing Snapshot.
 #' @param Engine &#91;required&#93; The database engine to use for the new DB cluster.
 #' 
 #' Default: The same as source
@@ -7855,12 +7917,12 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following will occur:
 #' 
-#' -   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is
-#'     encrypted, then the restored DB cluster is encrypted using the KMS
-#'     key that was used to encrypt the DB snapshot or DB cluster snapshot.
+#' - If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is
+#'   encrypted, then the restored DB cluster is encrypted using the KMS key
+#'   that was used to encrypt the DB snapshot or DB cluster snapshot.
 #' 
-#' -   If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is
-#'     not encrypted, then the restored DB cluster is not encrypted.
+#' - If the DB snapshot or DB cluster snapshot in `SnapshotIdentifier` is
+#'   not encrypted, then the restored DB cluster is not encrypted.
 #' @param EnableIAMDatabaseAuthentication True to enable mapping of Amazon Identity and Access Management (IAM)
 #' accounts to database accounts, and otherwise false.
 #' 
@@ -7872,8 +7934,8 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing
-#'     DBClusterParameterGroup.
+#' - If supplied, must match the name of an existing
+#'   DBClusterParameterGroup.
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is disabled.
@@ -8052,7 +8114,8 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, DatabaseName = DatabaseName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType)
   output <- .neptune$restore_db_cluster_from_snapshot_output()
@@ -8095,19 +8158,19 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' 
 #' Constraints:
 #' 
-#' -   Must contain from 1 to 63 letters, numbers, or hyphens
+#' - Must contain from 1 to 63 letters, numbers, or hyphens
 #' 
-#' -   First character must be a letter
+#' - First character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #' @param RestoreType The type of restore to be performed. You can specify one of the
 #' following values:
 #' 
-#' -   `full-copy` - The new DB cluster is restored as a full copy of the
-#'     source DB cluster.
+#' - `full-copy` - The new DB cluster is restored as a full copy of the
+#'   source DB cluster.
 #' 
-#' -   `copy-on-write` - The new DB cluster is restored as a clone of the
-#'     source DB cluster.
+#' - `copy-on-write` - The new DB cluster is restored as a clone of the
+#'   source DB cluster.
 #' 
 #' If you don't specify a `RestoreType` value, then the new DB cluster is
 #' restored as a full copy of the source DB cluster.
@@ -8115,7 +8178,7 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing DBCluster.
+#' - Must match the identifier of an existing DBCluster.
 #' @param RestoreToTime The date and time to restore the DB cluster to.
 #' 
 #' Valid Values: Value must be a time in Universal Coordinated Time (UTC)
@@ -8123,14 +8186,14 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' 
 #' Constraints:
 #' 
-#' -   Must be before the latest restorable time for the DB instance
+#' - Must be before the latest restorable time for the DB instance
 #' 
-#' -   Must be specified if `UseLatestRestorableTime` parameter is not
-#'     provided
+#' - Must be specified if `UseLatestRestorableTime` parameter is not
+#'   provided
 #' 
-#' -   Cannot be specified if `UseLatestRestorableTime` parameter is true
+#' - Cannot be specified if `UseLatestRestorableTime` parameter is true
 #' 
-#' -   Cannot be specified if `RestoreType` parameter is `copy-on-write`
+#' - Cannot be specified if `RestoreType` parameter is `copy-on-write`
 #' 
 #' Example: `2015-03-07T23:45:00Z`
 #' @param UseLatestRestorableTime A value that is set to `true` to restore the DB cluster to the latest
@@ -8171,12 +8234,12 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following will occur:
 #' 
-#' -   If the DB cluster is encrypted, then the restored DB cluster is
-#'     encrypted using the KMS key that was used to encrypt the source DB
-#'     cluster.
+#' - If the DB cluster is encrypted, then the restored DB cluster is
+#'   encrypted using the KMS key that was used to encrypt the source DB
+#'   cluster.
 #' 
-#' -   If the DB cluster is not encrypted, then the restored DB cluster is
-#'     not encrypted.
+#' - If the DB cluster is not encrypted, then the restored DB cluster is
+#'   not encrypted.
 #' 
 #' If `DBClusterIdentifier` refers to a DB cluster that is not encrypted,
 #' then the restore request is rejected.
@@ -8191,8 +8254,8 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' 
 #' Constraints:
 #' 
-#' -   If supplied, must match the name of an existing
-#'     DBClusterParameterGroup.
+#' - If supplied, must match the name of an existing
+#'   DBClusterParameterGroup.
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is disabled.
@@ -8367,7 +8430,8 @@ neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Res
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, StorageType = StorageType)
   output <- .neptune$restore_db_cluster_to_point_in_time_output()
@@ -8524,7 +8588,8 @@ neptune_start_db_cluster <- function(DBClusterIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$start_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .neptune$start_db_cluster_output()
@@ -8682,7 +8747,8 @@ neptune_stop_db_cluster <- function(DBClusterIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .neptune$stop_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .neptune$stop_db_cluster_output()

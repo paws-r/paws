@@ -42,7 +42,7 @@ respectively.}
 to apply to the batch segment job.}
 }
 \description{
-Creates a batch segment job. The operation can handle up to 50 million records and the input file must be in JSON format. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/}{Getting batch recommendations and user segments}.
+Creates a batch segment job. The operation can handle up to 50 million records and the input file must be in JSON format. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/recommendations-batch.html}{Getting batch recommendations and user segments}.
 
 See \url{https://www.paws-r-sdk.com/docs/personalize_create_batch_segment_job/} for full documentation.
 }

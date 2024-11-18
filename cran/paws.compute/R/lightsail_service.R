@@ -16,9 +16,8 @@ NULL
 #' 
 #' You can manage your Lightsail resources using the Lightsail console,
 #' Lightsail API, Command Line Interface (CLI), or SDKs. For more
-#' information about Lightsail concepts and tasks, see the [Amazon
-#' Lightsail Developer
-#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html).
+#' information about Lightsail concepts and tasks, see the Amazon Lightsail
+#' Developer Guide.
 #' 
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the Lightsail service. For more

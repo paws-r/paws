@@ -116,12 +116,12 @@ does not have a clarification prompt to send to the user to get an
 intent.
 \item Lambda function - When using a Lambda function, you return an
 \code{ElicitIntent} dialog type. Since Amazon Lex does not have a
-clarification prompt to get an intent from the user, it returns a
-400 Bad Request exception.
-\item PutSession operation - When using the \code{PutSession} operation, you
-send an \code{ElicitIntent} dialog type. Since Amazon Lex does not have a
-clarification prompt to get an intent from the user, it returns a
-400 Bad Request exception.
+clarification prompt to get an intent from the user, it returns a 400
+Bad Request exception.
+\item PutSession operation - When using the \code{PutSession} operation, you send
+an \code{ElicitIntent} dialog type. Since Amazon Lex does not have a
+clarification prompt to get an intent from the user, it returns a 400
+Bad Request exception.
 }}
 
 \item{abortStatement}{When Amazon Lex can't understand the user's input in context, it tries
@@ -166,8 +166,8 @@ The default is 300 seconds (5 minutes).}
 
 \item{voiceId}{The Amazon Polly voice ID that you want Amazon Lex to use for voice
 interactions with the user. The locale configured for the voice must
-match the locale of the bot. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/available-voices.html}{Voices in Amazon Polly}
-in the \emph{Amazon Polly Developer Guide}.}
+match the locale of the bot. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/voicelist.html}{Voices in Amazon Polly} in
+the \emph{Amazon Polly Developer Guide}.}
 
 \item{checksum}{Identifies a specific revision of the \verb{$LATEST} version.
 
@@ -230,7 +230,7 @@ operation to update the tags on a bot. To update tags, use the
 \code{\link[=lexmodelbuildingservice_tag_resource]{tag_resource}} operation.}
 }
 \description{
-Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the `` response \code{FAILED}. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works.
+Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the response \code{FAILED}. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works.
 
 See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot/} for full documentation.
 }

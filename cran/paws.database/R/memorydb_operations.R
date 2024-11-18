@@ -22,7 +22,8 @@ memorydb_batch_update_cluster <- function(ClusterNames, ServiceUpdate = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$batch_update_cluster_input(ClusterNames = ClusterNames, ServiceUpdate = ServiceUpdate)
   output <- .memorydb$batch_update_cluster_output()
@@ -64,7 +65,8 @@ memorydb_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Targe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$copy_snapshot_input(SourceSnapshotName = SourceSnapshotName, TargetSnapshotName = TargetSnapshotName, TargetBucket = TargetBucket, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .memorydb$copy_snapshot_output()
@@ -97,7 +99,8 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$create_acl_input(ACLName = ACLName, UserNames = UserNames, Tags = Tags)
   output <- .memorydb$create_acl_output()
@@ -133,19 +136,19 @@ memorydb_create_acl <- function(ACLName, UserNames = NULL, Tags = NULL) {
 #' 
 #' Valid values for `ddd` are:
 #' 
-#' -   `sun`
+#' - `sun`
 #' 
-#' -   `mon`
+#' - `mon`
 #' 
-#' -   `tue`
+#' - `tue`
 #' 
-#' -   `wed`
+#' - `wed`
 #' 
-#' -   `thu`
+#' - `thu`
 #' 
-#' -   `fri`
+#' - `fri`
 #' 
-#' -   `sat`
+#' - `sat`
 #' 
 #' Example: `sun:23:00-mon:01:30`
 #' @param Port The port number on which each of the nodes accepts connections.
@@ -193,7 +196,8 @@ memorydb_create_cluster <- function(ClusterName, NodeType, ParameterGroupName = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$create_cluster_input(ClusterName = ClusterName, NodeType = NodeType, ParameterGroupName = ParameterGroupName, Description = Description, NumShards = NumShards, NumReplicasPerShard = NumReplicasPerShard, SubnetGroupName = SubnetGroupName, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, Port = Port, SnsTopicArn = SnsTopicArn, TLSEnabled = TLSEnabled, KmsKeyId = KmsKeyId, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, SnapshotRetentionLimit = SnapshotRetentionLimit, Tags = Tags, SnapshotWindow = SnapshotWindow, ACLName = ACLName, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, DataTiering = DataTiering)
   output <- .memorydb$create_cluster_output()
@@ -228,7 +232,8 @@ memorydb_create_parameter_group <- function(ParameterGroupName, Family, Descript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$create_parameter_group_input(ParameterGroupName = ParameterGroupName, Family = Family, Description = Description, Tags = Tags)
   output <- .memorydb$create_parameter_group_output()
@@ -262,7 +267,8 @@ memorydb_create_snapshot <- function(ClusterName, SnapshotName, KmsKeyId = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$create_snapshot_input(ClusterName = ClusterName, SnapshotName = SnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .memorydb$create_snapshot_output()
@@ -296,7 +302,8 @@ memorydb_create_subnet_group <- function(SubnetGroupName, Description = NULL, Su
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$create_subnet_group_input(SubnetGroupName = SubnetGroupName, Description = Description, SubnetIds = SubnetIds, Tags = Tags)
   output <- .memorydb$create_subnet_group_output()
@@ -332,7 +339,8 @@ memorydb_create_user <- function(UserName, AuthenticationMode, AccessString, Tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$create_user_input(UserName = UserName, AuthenticationMode = AuthenticationMode, AccessString = AccessString, Tags = Tags)
   output <- .memorydb$create_user_output()
@@ -362,7 +370,8 @@ memorydb_delete_acl <- function(ACLName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$delete_acl_input(ACLName = ACLName)
   output <- .memorydb$delete_acl_output()
@@ -395,7 +404,8 @@ memorydb_delete_cluster <- function(ClusterName, FinalSnapshotName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$delete_cluster_input(ClusterName = ClusterName, FinalSnapshotName = FinalSnapshotName)
   output <- .memorydb$delete_cluster_output()
@@ -425,7 +435,8 @@ memorydb_delete_parameter_group <- function(ParameterGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$delete_parameter_group_input(ParameterGroupName = ParameterGroupName)
   output <- .memorydb$delete_parameter_group_output()
@@ -455,7 +466,8 @@ memorydb_delete_snapshot <- function(SnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$delete_snapshot_input(SnapshotName = SnapshotName)
   output <- .memorydb$delete_snapshot_output()
@@ -485,7 +497,8 @@ memorydb_delete_subnet_group <- function(SubnetGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$delete_subnet_group_input(SubnetGroupName = SubnetGroupName)
   output <- .memorydb$delete_subnet_group_output()
@@ -515,7 +528,8 @@ memorydb_delete_user <- function(UserName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$delete_user_input(UserName = UserName)
   output <- .memorydb$delete_user_output()
@@ -553,7 +567,8 @@ memorydb_describe_ac_ls <- function(ACLName = NULL, MaxResults = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ACLs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ACLs"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_ac_ls_input(ACLName = ACLName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_ac_ls_output()
@@ -595,7 +610,8 @@ memorydb_describe_clusters <- function(ClusterName = NULL, MaxResults = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Clusters")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Clusters"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_clusters_input(ClusterName = ClusterName, MaxResults = MaxResults, NextToken = NextToken, ShowShardDetails = ShowShardDetails)
   output <- .memorydb$describe_clusters_output()
@@ -636,7 +652,8 @@ memorydb_describe_engine_versions <- function(EngineVersion = NULL, ParameterGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EngineVersions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EngineVersions"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_engine_versions_input(EngineVersion = EngineVersion, ParameterGroupFamily = ParameterGroupFamily, MaxResults = MaxResults, NextToken = NextToken, DefaultOnly = DefaultOnly)
   output <- .memorydb$describe_engine_versions_output()
@@ -683,7 +700,8 @@ memorydb_describe_events <- function(SourceName = NULL, SourceType = NULL, Start
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_events_input(SourceName = SourceName, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_events_output()
@@ -721,7 +739,8 @@ memorydb_describe_parameter_groups <- function(ParameterGroupName = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ParameterGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ParameterGroups"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_parameter_groups_input(ParameterGroupName = ParameterGroupName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_parameter_groups_output()
@@ -759,7 +778,8 @@ memorydb_describe_parameters <- function(ParameterGroupName, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Parameters")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Parameters"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_parameters_input(ParameterGroupName = ParameterGroupName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_parameters_output()
@@ -809,7 +829,8 @@ memorydb_describe_reserved_nodes <- function(ReservationId = NULL, ReservedNodes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedNodes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedNodes"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_reserved_nodes_input(ReservationId = ReservationId, ReservedNodesOfferingId = ReservedNodesOfferingId, NodeType = NodeType, Duration = Duration, OfferingType = OfferingType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_reserved_nodes_output()
@@ -856,7 +877,8 @@ memorydb_describe_reserved_nodes_offerings <- function(ReservedNodesOfferingId =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedNodesOfferings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedNodesOfferings"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_reserved_nodes_offerings_input(ReservedNodesOfferingId = ReservedNodesOfferingId, NodeType = NodeType, Duration = Duration, OfferingType = OfferingType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_reserved_nodes_offerings_output()
@@ -896,7 +918,8 @@ memorydb_describe_service_updates <- function(ServiceUpdateName = NULL, ClusterN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceUpdates")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceUpdates"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ClusterNames = ClusterNames, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_service_updates_output()
@@ -943,7 +966,8 @@ memorydb_describe_snapshots <- function(ClusterName = NULL, SnapshotName = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_snapshots_input(ClusterName = ClusterName, SnapshotName = SnapshotName, Source = Source, NextToken = NextToken, MaxResults = MaxResults, ShowDetail = ShowDetail)
   output <- .memorydb$describe_snapshots_output()
@@ -981,7 +1005,8 @@ memorydb_describe_subnet_groups <- function(SubnetGroupName = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SubnetGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SubnetGroups"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_subnet_groups_input(SubnetGroupName = SubnetGroupName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_subnet_groups_output()
@@ -1020,7 +1045,8 @@ memorydb_describe_users <- function(UserName = NULL, Filters = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Users")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Users"),
+    stream_api = FALSE
   )
   input <- .memorydb$describe_users_input(UserName = UserName, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .memorydb$describe_users_output()
@@ -1051,7 +1077,8 @@ memorydb_failover_shard <- function(ClusterName, ShardName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$failover_shard_input(ClusterName = ClusterName, ShardName = ShardName)
   output <- .memorydb$failover_shard_output()
@@ -1084,7 +1111,8 @@ memorydb_list_allowed_node_type_updates <- function(ClusterName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$list_allowed_node_type_updates_input(ClusterName = ClusterName)
   output <- .memorydb$list_allowed_node_type_updates_output()
@@ -1115,7 +1143,8 @@ memorydb_list_tags <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$list_tags_input(ResourceArn = ResourceArn)
   output <- .memorydb$list_tags_output()
@@ -1149,7 +1178,8 @@ memorydb_purchase_reserved_nodes_offering <- function(ReservedNodesOfferingId, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$purchase_reserved_nodes_offering_input(ReservedNodesOfferingId = ReservedNodesOfferingId, ReservationId = ReservationId, NodeCount = NodeCount, Tags = Tags)
   output <- .memorydb$purchase_reserved_nodes_offering_output()
@@ -1186,7 +1216,8 @@ memorydb_reset_parameter_group <- function(ParameterGroupName, AllParameters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$reset_parameter_group_input(ParameterGroupName = ParameterGroupName, AllParameters = AllParameters, ParameterNames = ParameterNames)
   output <- .memorydb$reset_parameter_group_output()
@@ -1219,7 +1250,8 @@ memorydb_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .memorydb$tag_resource_output()
@@ -1251,7 +1283,8 @@ memorydb_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .memorydb$untag_resource_output()
@@ -1283,7 +1316,8 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$update_acl_input(ACLName = ACLName, UserNamesToAdd = UserNamesToAdd, UserNamesToRemove = UserNamesToRemove)
   output <- .memorydb$update_acl_output()
@@ -1312,19 +1346,19 @@ memorydb_update_acl <- function(ACLName, UserNamesToAdd = NULL, UserNamesToRemov
 #' 
 #' Valid values for `ddd` are:
 #' 
-#' -   `sun`
+#' - `sun`
 #' 
-#' -   `mon`
+#' - `mon`
 #' 
-#' -   `tue`
+#' - `tue`
 #' 
-#' -   `wed`
+#' - `wed`
 #' 
-#' -   `thu`
+#' - `thu`
 #' 
-#' -   `fri`
+#' - `fri`
 #' 
-#' -   `sat`
+#' - `sat`
 #' 
 #' Example: `sun:23:00-mon:01:30`
 #' @param SnsTopicArn The SNS topic ARN to update
@@ -1356,7 +1390,8 @@ memorydb_update_cluster <- function(ClusterName, Description = NULL, SecurityGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$update_cluster_input(ClusterName = ClusterName, Description = Description, SecurityGroupIds = SecurityGroupIds, MaintenanceWindow = MaintenanceWindow, SnsTopicArn = SnsTopicArn, SnsTopicStatus = SnsTopicStatus, ParameterGroupName = ParameterGroupName, SnapshotWindow = SnapshotWindow, SnapshotRetentionLimit = SnapshotRetentionLimit, NodeType = NodeType, EngineVersion = EngineVersion, ReplicaConfiguration = ReplicaConfiguration, ShardConfiguration = ShardConfiguration, ACLName = ACLName)
   output <- .memorydb$update_cluster_output()
@@ -1389,7 +1424,8 @@ memorydb_update_parameter_group <- function(ParameterGroupName, ParameterNameVal
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$update_parameter_group_input(ParameterGroupName = ParameterGroupName, ParameterNameValues = ParameterNameValues)
   output <- .memorydb$update_parameter_group_output()
@@ -1421,7 +1457,8 @@ memorydb_update_subnet_group <- function(SubnetGroupName, Description = NULL, Su
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$update_subnet_group_input(SubnetGroupName = SubnetGroupName, Description = Description, SubnetIds = SubnetIds)
   output <- .memorydb$update_subnet_group_output()
@@ -1454,7 +1491,8 @@ memorydb_update_user <- function(UserName, AuthenticationMode = NULL, AccessStri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .memorydb$update_user_input(UserName = UserName, AuthenticationMode = AuthenticationMode, AccessString = AccessString)
   output <- .memorydb$update_user_output()

@@ -82,22 +82,20 @@ double-quotes ("), but do not have to be.
 
 The following are some examples of \code{AlarmRule}:
 \itemize{
-\item \verb{ALARM(CPUUtilizationTooHigh) AND ALARM(DiskReadOpsTooHigh)}
-specifies that the composite alarm goes into ALARM state only if
-both CPUUtilizationTooHigh and DiskReadOpsTooHigh alarms are in
-ALARM state.
+\item \verb{ALARM(CPUUtilizationTooHigh) AND ALARM(DiskReadOpsTooHigh)} specifies
+that the composite alarm goes into ALARM state only if both
+CPUUtilizationTooHigh and DiskReadOpsTooHigh alarms are in ALARM
+state.
 \item \verb{ALARM(CPUUtilizationTooHigh) AND NOT ALARM(DeploymentInProgress)}
-specifies that the alarm goes to ALARM state if
-CPUUtilizationTooHigh is in ALARM state and DeploymentInProgress is
-not in ALARM state. This example reduces alarm noise during a known
-deployment window.
+specifies that the alarm goes to ALARM state if CPUUtilizationTooHigh
+is in ALARM state and DeploymentInProgress is not in ALARM state. This
+example reduces alarm noise during a known deployment window.
 \item \verb{(ALARM(CPUUtilizationTooHigh) OR ALARM(DiskReadOpsTooHigh)) AND OK(NetworkOutTooHigh)}
 goes into ALARM state if CPUUtilizationTooHigh OR DiskReadOpsTooHigh
 is in ALARM state, and if NetworkOutTooHigh is in OK state. This
-provides another example of using a composite alarm to prevent
-noise. This rule ensures that you are not notified with an alarm
-action on high CPU or disk usage if a known network problem is also
-occurring.
+provides another example of using a composite alarm to prevent noise.
+This rule ensures that you are not notified with an alarm action on
+high CPU or disk usage if a known network problem is also occurring.
 }
 
 The \code{AlarmRule} can specify as many as 100 "children" alarms. The

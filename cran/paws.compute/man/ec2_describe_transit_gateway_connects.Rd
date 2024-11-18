@@ -19,9 +19,9 @@ ec2_describe_transit_gateway_connects(
 \itemize{
 \item \code{options.protocol} - The tunnel protocol (\code{gre}).
 \item \code{state} - The state of the attachment (\code{initiating} |
-\code{initiatingRequest} | \code{pendingAcceptance} | \code{rollingBack} |
-\code{pending} | \code{available} | \code{modifying} | \code{deleting} | \code{deleted} |
-\code{failed} | \code{rejected} | \code{rejecting} | \code{failing}).
+\code{initiatingRequest} | \code{pendingAcceptance} | \code{rollingBack} | \code{pending}
+| \code{available} | \code{modifying} | \code{deleting} | \code{deleted} | \code{failed} |
+\code{rejected} | \code{rejecting} | \code{failing}).
 \item \code{transit-gateway-attachment-id} - The ID of the Connect attachment.
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 \item \code{transport-transit-gateway-attachment-id} - The ID of the transit

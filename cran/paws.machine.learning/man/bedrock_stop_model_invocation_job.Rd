@@ -10,7 +10,7 @@ bedrock_stop_model_invocation_job(jobIdentifier)
 \item{jobIdentifier}{[required] The Amazon Resource Name (ARN) of the batch inference job to stop.}
 }
 \description{
-Stops a batch inference job. You're only charged for tokens that were already processed. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-stop}{Stop a batch inference job}.
+Stops a batch inference job. You're only charged for tokens that were already processed. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/#batch-inference-stop}{Stop a batch inference job}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_stop_model_invocation_job/} for full documentation.
 }

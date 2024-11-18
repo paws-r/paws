@@ -102,11 +102,11 @@ functionality as the older versions, with the following major
 improvements:
 \itemize{
 \item You use one API for both global and regional applications. Where you
-need to distinguish the scope, you specify a \code{Scope} parameter and
-set it to \code{CLOUDFRONT} or \code{REGIONAL}.
-\item You can define a web ACL or rule group with a single call, and
-update it with a single call. You define all rule specifications in
-JSON format, and pass them to your rule group or web ACL calls.
+need to distinguish the scope, you specify a \code{Scope} parameter and set
+it to \code{CLOUDFRONT} or \code{REGIONAL}.
+\item You can define a web ACL or rule group with a single call, and update
+it with a single call. You define all rule specifications in JSON
+format, and pass them to your rule group or web ACL calls.
 \item The limits WAF places on the use of rules more closely reflects the
 cost of running each type of rule. Rule groups include capacity
 settings, so you know the maximum cost of a rule group when you use

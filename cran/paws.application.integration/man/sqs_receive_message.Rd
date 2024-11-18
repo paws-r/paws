@@ -28,10 +28,10 @@ A list of attributes that need to be returned along with each message.
 These attributes include:
 \itemize{
 \item \code{All} – Returns all values.
-\item \code{ApproximateFirstReceiveTimestamp} – Returns the time the message
-was first received from the queue (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
-\item \code{ApproximateReceiveCount} – Returns the number of times a message
-has been received across all queues but not deleted.
+\item \code{ApproximateFirstReceiveTimestamp} – Returns the time the message was
+first received from the queue (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
+\item \code{ApproximateReceiveCount} – Returns the number of times a message has
+been received across all queues but not deleted.
 \item \code{AWSTraceHeader} – Returns the X-Ray trace header string.
 \item \code{SenderId}
 \itemize{
@@ -49,11 +49,11 @@ supported per queue (for example,
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html}{SSE-KMS}
 or
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
-\item \code{MessageDeduplicationId} – Returns the value provided by the
-producer that calls the \code{\link[=sqs_send_message]{send_message}} action.
+\item \code{MessageDeduplicationId} – Returns the value provided by the producer
+that calls the \code{\link[=sqs_send_message]{send_message}} action.
 \item \code{MessageGroupId} – Returns the value provided by the producer that
-calls the \code{\link[=sqs_send_message]{send_message}} action. Messages with
-the same \code{MessageGroupId} are returned in sequence.
+calls the \code{\link[=sqs_send_message]{send_message}} action. Messages with the
+same \code{MessageGroupId} are returned in sequence.
 \item \code{SequenceNumber} – Returns the value provided by Amazon SQS.
 }}
 
@@ -61,10 +61,10 @@ the same \code{MessageGroupId} are returned in sequence.
 These attributes include:
 \itemize{
 \item \code{All} – Returns all values.
-\item \code{ApproximateFirstReceiveTimestamp} – Returns the time the message
-was first received from the queue (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
-\item \code{ApproximateReceiveCount} – Returns the number of times a message
-has been received across all queues but not deleted.
+\item \code{ApproximateFirstReceiveTimestamp} – Returns the time the message was
+first received from the queue (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time} in milliseconds).
+\item \code{ApproximateReceiveCount} – Returns the number of times a message has
+been received across all queues but not deleted.
 \item \code{AWSTraceHeader} – Returns the X-Ray trace header string.
 \item \code{SenderId}
 \itemize{
@@ -82,24 +82,24 @@ supported per queue (for example,
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html}{SSE-KMS}
 or
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
-\item \code{MessageDeduplicationId} – Returns the value provided by the
-producer that calls the \code{\link[=sqs_send_message]{send_message}} action.
+\item \code{MessageDeduplicationId} – Returns the value provided by the producer
+that calls the \code{\link[=sqs_send_message]{send_message}} action.
 \item \code{MessageGroupId} – Returns the value provided by the producer that
-calls the \code{\link[=sqs_send_message]{send_message}} action. Messages with
-the same \code{MessageGroupId} are returned in sequence.
+calls the \code{\link[=sqs_send_message]{send_message}} action. Messages with the
+same \code{MessageGroupId} are returned in sequence.
 \item \code{SequenceNumber} – Returns the value provided by Amazon SQS.
 }}
 
 \item{MessageAttributeNames}{The name of the message attribute, where \emph{N} is the index.
 \itemize{
-\item The name can contain alphanumeric characters and the underscore
-(\verb{_}), hyphen (\code{-}), and period (\code{.}).
+\item The name can contain alphanumeric characters and the underscore (\verb{_}),
+hyphen (\code{-}), and period (\code{.}).
 \item The name is case-sensitive and must be unique among all attribute
 names for the message.
 \item The name must not start with AWS-reserved prefixes such as \code{AWS.} or
 \code{Amazon.} (or any casing variants).
-\item The name must not start or end with a period (\code{.}), and it should
-not have periods in succession (\code{..}).
+\item The name must not start or end with a period (\code{.}), and it should not
+have periods in succession (\code{..}).
 \item The name can be up to 256 characters long.
 }
 
@@ -146,9 +146,8 @@ not yet expired.
 \code{\link[=sqs_receive_message]{receive_message}} action can provide a
 \code{ReceiveRequestAttemptId} explicitly.
 \item It is possible to retry the \code{\link[=sqs_receive_message]{receive_message}}
-action with the same \code{ReceiveRequestAttemptId} if none of the
-messages have been modified (deleted or had their visibility
-changes).
+action with the same \code{ReceiveRequestAttemptId} if none of the messages
+have been modified (deleted or had their visibility changes).
 \item During a visibility timeout, subsequent calls with the same
 \code{ReceiveRequestAttemptId} return the same messages and receipt
 handles. If a retry occurs within the deduplication interval, it
@@ -157,14 +156,14 @@ in the \emph{Amazon SQS Developer Guide}.
 
 If a caller of the \code{\link[=sqs_receive_message]{receive_message}} action
 still processes messages when the visibility timeout expires and
-messages become visible, another worker consuming from the same
-queue can receive the same messages and therefore process
-duplicates. Also, if a consumer whose message processing time is
-longer than the visibility timeout tries to delete the processed
-messages, the action fails with an error.
+messages become visible, another worker consuming from the same queue
+can receive the same messages and therefore process duplicates. Also,
+if a consumer whose message processing time is longer than the
+visibility timeout tries to delete the processed messages, the action
+fails with an error.
 
-To mitigate this effect, ensure that your application observes a
-safe threshold before the visibility timeout expires and extend the
+To mitigate this effect, ensure that your application observes a safe
+threshold before the visibility timeout expires and extend the
 visibility timeout as necessary.
 \item While messages with a particular \code{MessageGroupId} are invisible, no
 more messages belonging to the same \code{MessageGroupId} are returned

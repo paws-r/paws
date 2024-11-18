@@ -22,29 +22,29 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{dedicated-host-id} - The event windows associated with the
-specified Dedicated Host ID.
-\item \code{event-window-name} - The event windows associated with the
-specified names.
+\item \code{dedicated-host-id} - The event windows associated with the specified
+Dedicated Host ID.
+\item \code{event-window-name} - The event windows associated with the specified
+names.
 \item \code{instance-id} - The event windows associated with the specified
 instance ID.
 \item \code{instance-tag} - The event windows associated with the specified tag
 and value.
 \item \code{instance-tag-key} - The event windows associated with the specified
 tag key, regardless of the value.
-\item \code{instance-tag-value} - The event windows associated with the
-specified tag value, regardless of the key.
-\item \verb{tag:<key>} - The key/value combination of a tag assigned to the
-event window. Use the tag key in the filter name and the tag value
-as the filter value. For example, to find all resources that have a
-tag with the key \code{Owner} and the value \code{CMX}, specify \code{tag:Owner}
-for the filter name and \code{CMX} for the filter value.
+\item \code{instance-tag-value} - The event windows associated with the specified
+tag value, regardless of the key.
+\item \verb{tag:<key>} - The key/value combination of a tag assigned to the event
+window. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{CMX}, specify \code{tag:Owner} for the
+filter name and \code{CMX} for the filter value.
 \item \code{tag-key} - The key of a tag assigned to the event window. Use this
-filter to find all event windows that have a tag with a specific
-key, regardless of the tag value.
+filter to find all event windows that have a tag with a specific key,
+regardless of the tag value.
 \item \code{tag-value} - The value of a tag assigned to the event window. Use
-this filter to find all event windows that have a tag with a
-specific value, regardless of the tag key.
+this filter to find all event windows that have a tag with a specific
+value, regardless of the tag key.
 }}
 
 \item{MaxResults}{The maximum number of results to return in a single call. To retrieve

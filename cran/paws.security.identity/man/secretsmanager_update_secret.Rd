@@ -46,7 +46,7 @@ encrypt new secret versions as well as any existing versions with the
 staging labels \code{AWSCURRENT}, \code{AWSPENDING}, or \code{AWSPREVIOUS}. If you
 don't have \code{kms:Encrypt} permission to the new key, Secrets Manager does
 not re-encrypt existing secret versions with the new key. For more
-information about versions and staging labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version}{Concepts: Version}.
+information about versions and staging labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Concepts: Version}.
 
 A key alias is always prefixed by \verb{alias/}, for example
 \code{alias/aws/secretsmanager}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html}{About aliases}.

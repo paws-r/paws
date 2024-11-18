@@ -27,7 +27,8 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodbstreams$describe_stream_input(StreamArn = StreamArn, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId)
   output <- .dynamodbstreams$describe_stream_output()
@@ -61,7 +62,8 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodbstreams$get_records_input(ShardIterator = ShardIterator, Limit = Limit)
   output <- .dynamodbstreams$get_records_output()
@@ -86,21 +88,19 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
 #' @param ShardIteratorType &#91;required&#93; Determines how the shard iterator is used to start reading stream
 #' records from the shard:
 #' 
-#' -   `AT_SEQUENCE_NUMBER` - Start reading exactly from the position
-#'     denoted by a specific sequence number.
+#' - `AT_SEQUENCE_NUMBER` - Start reading exactly from the position denoted
+#'   by a specific sequence number.
 #' 
-#' -   `AFTER_SEQUENCE_NUMBER` - Start reading right after the position
-#'     denoted by a specific sequence number.
+#' - `AFTER_SEQUENCE_NUMBER` - Start reading right after the position
+#'   denoted by a specific sequence number.
 #' 
-#' -   `TRIM_HORIZON` - Start reading at the last (untrimmed) stream
-#'     record, which is the oldest record in the shard. In DynamoDB
-#'     Streams, there is a 24 hour limit on data retention. Stream records
-#'     whose age exceeds this limit are subject to removal (trimming) from
-#'     the stream.
+#' - `TRIM_HORIZON` - Start reading at the last (untrimmed) stream record,
+#'   which is the oldest record in the shard. In DynamoDB Streams, there is
+#'   a 24 hour limit on data retention. Stream records whose age exceeds
+#'   this limit are subject to removal (trimming) from the stream.
 #' 
-#' -   `LATEST` - Start reading just after the most recent stream record in
-#'     the shard, so that you always read the most recent data in the
-#'     shard.
+#' - `LATEST` - Start reading just after the most recent stream record in
+#'   the shard, so that you always read the most recent data in the shard.
 #' @param SequenceNumber The sequence number of a stream record in the shard from which to start
 #' reading.
 #'
@@ -113,7 +113,8 @@ dynamodbstreams_get_shard_iterator <- function(StreamArn, ShardId, ShardIterator
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodbstreams$get_shard_iterator_input(StreamArn = StreamArn, ShardId = ShardId, ShardIteratorType = ShardIteratorType, SequenceNumber = SequenceNumber)
   output <- .dynamodbstreams$get_shard_iterator_output()
@@ -149,7 +150,8 @@ dynamodbstreams_list_streams <- function(TableName = NULL, Limit = NULL, Exclusi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodbstreams$list_streams_input(TableName = TableName, Limit = Limit, ExclusiveStartStreamArn = ExclusiveStartStreamArn)
   output <- .dynamodbstreams$list_streams_output()

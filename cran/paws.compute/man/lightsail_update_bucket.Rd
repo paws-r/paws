@@ -24,8 +24,8 @@ bucket.
 The following options can be specified:
 \itemize{
 \item \code{Enabled} - Enables versioning of objects in the specified bucket.
-\item \code{Suspended} - Suspends versioning of objects in the specified
-bucket. Existing object versions are retained.
+\item \code{Suspended} - Suspends versioning of objects in the specified bucket.
+Existing object versions are retained.
 }}
 
 \item{readonlyAccessAccounts}{An array of strings to specify the Amazon Web Services account IDs that

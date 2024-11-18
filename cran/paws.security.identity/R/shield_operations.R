@@ -23,7 +23,8 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$associate_drt_log_bucket_input(LogBucket = LogBucket)
   output <- .shield$associate_drt_log_bucket_output()
@@ -61,7 +62,8 @@ shield_associate_drt_role <- function(RoleArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$associate_drt_role_input(RoleArn = RoleArn)
   output <- .shield$associate_drt_role_output()
@@ -95,7 +97,8 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$associate_health_check_input(ProtectionId = ProtectionId, HealthCheckArn = HealthCheckArn)
   output <- .shield$associate_health_check_output()
@@ -137,7 +140,8 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$associate_proactive_engagement_details_input(EmergencyContactList = EmergencyContactList)
   output <- .shield$associate_proactive_engagement_details_output()
@@ -161,22 +165,22 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' 
 #' The ARN should be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' - For an Application Load Balancer:
+#'   `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Elastic Load Balancer (Classic Load Balancer):
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name `
+#' - For an Elastic Load Balancer (Classic Load Balancer):
+#'   `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/load-balancer-name `
 #' 
-#' -   For an Amazon CloudFront distribution:
-#'     `arn:aws:cloudfront::account-id:distribution/distribution-id `
+#' - For an Amazon CloudFront distribution:
+#'   `arn:aws:cloudfront::account-id:distribution/distribution-id `
 #' 
-#' -   For an Global Accelerator standard accelerator:
-#'     `arn:aws:globalaccelerator::account-id:accelerator/accelerator-id `
+#' - For an Global Accelerator standard accelerator:
+#'   `arn:aws:globalaccelerator::account-id:accelerator/accelerator-id `
 #' 
-#' -   For Amazon Route 53: `arn:aws:route53:::hostedzone/hosted-zone-id `
+#' - For Amazon Route 53: `arn:aws:route53:::hostedzone/hosted-zone-id `
 #' 
-#' -   For an Elastic IP address:
-#'     `arn:aws:ec2:region:account-id:eip-allocation/allocation-id `
+#' - For an Elastic IP address:
+#'   `arn:aws:ec2:region:account-id:eip-allocation/allocation-id `
 #' @param Tags One or more tag key-value pairs for the Protection object that is
 #' created.
 #'
@@ -189,7 +193,8 @@ shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$create_protection_input(Name = Name, ResourceArn = ResourceArn, Tags = Tags)
   output <- .shield$create_protection_output()
@@ -215,18 +220,18 @@ shield_create_protection <- function(Name, ResourceArn, Tags = NULL) {
 #' @param Aggregation &#91;required&#93; Defines how Shield combines resource data for the group in order to
 #' detect, mitigate, and report events.
 #' 
-#' -   Sum - Use the total traffic across the group. This is a good choice
-#'     for most cases. Examples include Elastic IP addresses for EC2
-#'     instances that scale manually or automatically.
+#' - Sum - Use the total traffic across the group. This is a good choice
+#'   for most cases. Examples include Elastic IP addresses for EC2
+#'   instances that scale manually or automatically.
 #' 
-#' -   Mean - Use the average of the traffic across the group. This is a
-#'     good choice for resources that share traffic uniformly. Examples
-#'     include accelerators and load balancers.
+#' - Mean - Use the average of the traffic across the group. This is a good
+#'   choice for resources that share traffic uniformly. Examples include
+#'   accelerators and load balancers.
 #' 
-#' -   Max - Use the highest traffic from each resource. This is useful for
-#'     resources that don't share traffic and for resources that share that
-#'     traffic in a non-uniform way. Examples include Amazon CloudFront and
-#'     origin resources for CloudFront distributions.
+#' - Max - Use the highest traffic from each resource. This is useful for
+#'   resources that don't share traffic and for resources that share that
+#'   traffic in a non-uniform way. Examples include Amazon CloudFront and
+#'   origin resources for CloudFront distributions.
 #' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in
 #' the group. You can include all resources that have protections, provide
 #' a list of resource Amazon Resource Names (ARNs), or include all
@@ -250,7 +255,8 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$create_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members, Tags = Tags)
   output <- .shield$create_protection_group_output()
@@ -280,7 +286,8 @@ shield_create_subscription <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$create_subscription_input()
   output <- .shield$create_subscription_output()
@@ -310,7 +317,8 @@ shield_delete_protection <- function(ProtectionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$delete_protection_input(ProtectionId = ProtectionId)
   output <- .shield$delete_protection_output()
@@ -342,7 +350,8 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$delete_protection_group_input(ProtectionGroupId = ProtectionGroupId)
   output <- .shield$delete_protection_group_output()
@@ -372,7 +381,8 @@ shield_delete_subscription <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$delete_subscription_input()
   output <- .shield$delete_subscription_output()
@@ -402,7 +412,8 @@ shield_describe_attack <- function(AttackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$describe_attack_input(AttackId = AttackId)
   output <- .shield$describe_attack_output()
@@ -434,7 +445,8 @@ shield_describe_attack_statistics <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$describe_attack_statistics_input()
   output <- .shield$describe_attack_statistics_output()
@@ -466,7 +478,8 @@ shield_describe_drt_access <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$describe_drt_access_input()
   output <- .shield$describe_drt_access_output()
@@ -499,7 +512,8 @@ shield_describe_emergency_contact_settings <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$describe_emergency_contact_settings_input()
   output <- .shield$describe_emergency_contact_settings_output()
@@ -534,7 +548,8 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$describe_protection_input(ProtectionId = ProtectionId, ResourceArn = ResourceArn)
   output <- .shield$describe_protection_output()
@@ -566,7 +581,8 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$describe_protection_group_input(ProtectionGroupId = ProtectionGroupId)
   output <- .shield$describe_protection_group_output()
@@ -596,7 +612,8 @@ shield_describe_subscription <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$describe_subscription_input()
   output <- .shield$describe_subscription_output()
@@ -627,7 +644,8 @@ shield_disable_application_layer_automatic_response <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$disable_application_layer_automatic_response_input(ResourceArn = ResourceArn)
   output <- .shield$disable_application_layer_automatic_response_output()
@@ -659,7 +677,8 @@ shield_disable_proactive_engagement <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$disable_proactive_engagement_input()
   output <- .shield$disable_proactive_engagement_output()
@@ -690,7 +709,8 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$disassociate_drt_log_bucket_input(LogBucket = LogBucket)
   output <- .shield$disassociate_drt_log_bucket_output()
@@ -721,7 +741,8 @@ shield_disassociate_drt_role <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$disassociate_drt_role_input()
   output <- .shield$disassociate_drt_role_output()
@@ -755,7 +776,8 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$disassociate_health_check_input(ProtectionId = ProtectionId, HealthCheckArn = HealthCheckArn)
   output <- .shield$disassociate_health_check_output()
@@ -793,7 +815,8 @@ shield_enable_application_layer_automatic_response <- function(ResourceArn, Acti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$enable_application_layer_automatic_response_input(ResourceArn = ResourceArn, Action = Action)
   output <- .shield$enable_application_layer_automatic_response_output()
@@ -825,7 +848,8 @@ shield_enable_proactive_engagement <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$enable_proactive_engagement_input()
   output <- .shield$enable_proactive_engagement_output()
@@ -855,7 +879,8 @@ shield_get_subscription_state <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$get_subscription_state_input()
   output <- .shield$get_subscription_state_output()
@@ -920,7 +945,8 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AttackSummaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AttackSummaries"),
+    stream_api = FALSE
   )
   input <- .shield$list_attacks_input(ResourceArns = ResourceArns, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults)
   output <- .shield$list_attacks_output()
@@ -977,7 +1003,8 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .shield$list_protection_groups_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
   output <- .shield$list_protection_groups_output()
@@ -1034,7 +1061,8 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL, Inclusi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Protections")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Protections"),
+    stream_api = FALSE
   )
   input <- .shield$list_protections_input(NextToken = NextToken, MaxResults = MaxResults, InclusionFilters = InclusionFilters)
   output <- .shield$list_protections_output()
@@ -1088,7 +1116,8 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .shield$list_resources_in_protection_group_input(ProtectionGroupId = ProtectionGroupId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .shield$list_resources_in_protection_group_output()
@@ -1119,7 +1148,8 @@ shield_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .shield$list_tags_for_resource_output()
@@ -1151,7 +1181,8 @@ shield_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .shield$tag_resource_output()
@@ -1183,7 +1214,8 @@ shield_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .shield$untag_resource_output()
@@ -1221,7 +1253,8 @@ shield_update_application_layer_automatic_response <- function(ResourceArn, Acti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$update_application_layer_automatic_response_input(ResourceArn = ResourceArn, Action = Action)
   output <- .shield$update_application_layer_automatic_response_output()
@@ -1260,7 +1293,8 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$update_emergency_contact_settings_input(EmergencyContactList = EmergencyContactList)
   output <- .shield$update_emergency_contact_settings_output()
@@ -1285,18 +1319,18 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 #' @param Aggregation &#91;required&#93; Defines how Shield combines resource data for the group in order to
 #' detect, mitigate, and report events.
 #' 
-#' -   Sum - Use the total traffic across the group. This is a good choice
-#'     for most cases. Examples include Elastic IP addresses for EC2
-#'     instances that scale manually or automatically.
+#' - Sum - Use the total traffic across the group. This is a good choice
+#'   for most cases. Examples include Elastic IP addresses for EC2
+#'   instances that scale manually or automatically.
 #' 
-#' -   Mean - Use the average of the traffic across the group. This is a
-#'     good choice for resources that share traffic uniformly. Examples
-#'     include accelerators and load balancers.
+#' - Mean - Use the average of the traffic across the group. This is a good
+#'   choice for resources that share traffic uniformly. Examples include
+#'   accelerators and load balancers.
 #' 
-#' -   Max - Use the highest traffic from each resource. This is useful for
-#'     resources that don't share traffic and for resources that share that
-#'     traffic in a non-uniform way. Examples include Amazon CloudFront
-#'     distributions and origin resources for CloudFront distributions.
+#' - Max - Use the highest traffic from each resource. This is useful for
+#'   resources that don't share traffic and for resources that share that
+#'   traffic in a non-uniform way. Examples include Amazon CloudFront
+#'   distributions and origin resources for CloudFront distributions.
 #' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in
 #' the group. You can include all resources that have protections, provide
 #' a list of resource Amazon Resource Names (ARNs), or include all
@@ -1318,7 +1352,8 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$update_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members)
   output <- .shield$update_protection_group_output()
@@ -1354,7 +1389,8 @@ shield_update_subscription <- function(AutoRenew = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .shield$update_subscription_input(AutoRenew = AutoRenew)
   output <- .shield$update_subscription_output()

@@ -22,16 +22,15 @@ machinelearning_describe_data_sources(
 \arguments{
 \item{FilterVariable}{Use one of the following variables to filter a list of \code{DataSource}:
 \itemize{
-\item \code{CreatedAt} - Sets the search criteria to \code{DataSource} creation
-dates.
+\item \code{CreatedAt} - Sets the search criteria to \code{DataSource} creation dates.
 \item \code{Status} - Sets the search criteria to \code{DataSource} statuses.
 \item \code{Name} - Sets the search criteria to the contents of \code{DataSource}
 \code{Name}.
-\item \code{DataUri} - Sets the search criteria to the URI of data files used
-to create the \code{DataSource}. The URI can identify either a file or an
+\item \code{DataUri} - Sets the search criteria to the URI of data files used to
+create the \code{DataSource}. The URI can identify either a file or an
 Amazon Simple Storage Service (Amazon S3) bucket or directory.
-\item \code{IAMUser} - Sets the search criteria to the user account that
-invoked the \code{DataSource} creation.
+\item \code{IAMUser} - Sets the search criteria to the user account that invoked
+the \code{DataSource} creation.
 }}
 
 \item{EQ}{The equal to operator. The \code{DataSource} results will have

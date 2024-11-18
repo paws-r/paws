@@ -25,7 +25,7 @@ information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov
 in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
 }
 \description{
-Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Foundation models} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
+Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html}{Foundation models} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/} for full documentation.
 }

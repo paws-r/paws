@@ -27,7 +27,8 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_input(CustomerManagedPolicyReference = CustomerManagedPolicyReference, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$attach_customer_managed_policy_reference_to_permission_set_output()
@@ -64,7 +65,8 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Manage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$attach_managed_policy_to_permission_set_input(InstanceArn = InstanceArn, ManagedPolicyArn = ManagedPolicyArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$attach_managed_policy_to_permission_set_output()
@@ -109,7 +111,8 @@ ssoadmin_create_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$create_account_assignment_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, TargetId = TargetId, TargetType = TargetType)
   output <- .ssoadmin$create_account_assignment_output()
@@ -164,7 +167,8 @@ ssoadmin_create_application <- function(ApplicationProviderArn, ClientToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$create_application_input(ApplicationProviderArn = ApplicationProviderArn, ClientToken = ClientToken, Description = Description, InstanceArn = InstanceArn, Name = Name, PortalOptions = PortalOptions, Status = Status, Tags = Tags)
   output <- .ssoadmin$create_application_output()
@@ -200,7 +204,8 @@ ssoadmin_create_application_assignment <- function(ApplicationArn, PrincipalId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$create_application_assignment_input(ApplicationArn = ApplicationArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
   output <- .ssoadmin$create_application_assignment_output()
@@ -247,7 +252,8 @@ ssoadmin_create_instance <- function(ClientToken = NULL, Name = NULL, Tags = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$create_instance_input(ClientToken = ClientToken, Name = Name, Tags = Tags)
   output <- .ssoadmin$create_instance_output()
@@ -286,7 +292,8 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$create_instance_access_control_attribute_configuration_input(InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration, InstanceArn = InstanceArn)
   output <- .ssoadmin$create_instance_access_control_attribute_configuration_output()
@@ -326,7 +333,8 @@ ssoadmin_create_permission_set <- function(Description = NULL, InstanceArn, Name
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$create_permission_set_input(Description = Description, InstanceArn = InstanceArn, Name = Name, RelayState = RelayState, SessionDuration = SessionDuration, Tags = Tags)
   output <- .ssoadmin$create_permission_set_output()
@@ -379,7 +387,8 @@ ssoadmin_create_trusted_token_issuer <- function(ClientToken = NULL, InstanceArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$create_trusted_token_issuer_input(ClientToken = ClientToken, InstanceArn = InstanceArn, Name = Name, Tags = Tags, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration, TrustedTokenIssuerType = TrustedTokenIssuerType)
   output <- .ssoadmin$create_trusted_token_issuer_output()
@@ -423,7 +432,8 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, PermissionSetArn, Pr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_account_assignment_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType, TargetId = TargetId, TargetType = TargetType)
   output <- .ssoadmin$delete_account_assignment_output()
@@ -455,7 +465,8 @@ ssoadmin_delete_application <- function(ApplicationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_application_input(ApplicationArn = ApplicationArn)
   output <- .ssoadmin$delete_application_output()
@@ -486,7 +497,8 @@ ssoadmin_delete_application_access_scope <- function(ApplicationArn, Scope) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_application_access_scope_input(ApplicationArn = ApplicationArn, Scope = Scope)
   output <- .ssoadmin$delete_application_access_scope_output()
@@ -523,7 +535,8 @@ ssoadmin_delete_application_assignment <- function(ApplicationArn, PrincipalId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_application_assignment_input(ApplicationArn = ApplicationArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
   output <- .ssoadmin$delete_application_assignment_output()
@@ -555,7 +568,8 @@ ssoadmin_delete_application_authentication_method <- function(ApplicationArn, Au
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_application_authentication_method_input(ApplicationArn = ApplicationArn, AuthenticationMethodType = AuthenticationMethodType)
   output <- .ssoadmin$delete_application_authentication_method_output()
@@ -586,7 +600,8 @@ ssoadmin_delete_application_grant <- function(ApplicationArn, GrantType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_application_grant_input(ApplicationArn = ApplicationArn, GrantType = GrantType)
   output <- .ssoadmin$delete_application_grant_output()
@@ -620,7 +635,8 @@ ssoadmin_delete_inline_policy_from_permission_set <- function(InstanceArn, Permi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_inline_policy_from_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$delete_inline_policy_from_permission_set_output()
@@ -651,7 +667,8 @@ ssoadmin_delete_instance <- function(InstanceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_instance_input(InstanceArn = InstanceArn)
   output <- .ssoadmin$delete_instance_output()
@@ -684,7 +701,8 @@ ssoadmin_delete_instance_access_control_attribute_configuration <- function(Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_instance_access_control_attribute_configuration_input(InstanceArn = InstanceArn)
   output <- .ssoadmin$delete_instance_access_control_attribute_configuration_output()
@@ -718,7 +736,8 @@ ssoadmin_delete_permission_set <- function(InstanceArn, PermissionSetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$delete_permission_set_output()
@@ -750,7 +769,8 @@ ssoadmin_delete_permissions_boundary_from_permission_set <- function(InstanceArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_permissions_boundary_from_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$delete_permissions_boundary_from_permission_set_output()
@@ -781,7 +801,8 @@ ssoadmin_delete_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$delete_trusted_token_issuer_input(TrustedTokenIssuerArn = TrustedTokenIssuerArn)
   output <- .ssoadmin$delete_trusted_token_issuer_output()
@@ -815,7 +836,8 @@ ssoadmin_describe_account_assignment_creation_status <- function(AccountAssignme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_account_assignment_creation_status_input(AccountAssignmentCreationRequestId = AccountAssignmentCreationRequestId, InstanceArn = InstanceArn)
   output <- .ssoadmin$describe_account_assignment_creation_status_output()
@@ -849,7 +871,8 @@ ssoadmin_describe_account_assignment_deletion_status <- function(AccountAssignme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_account_assignment_deletion_status_input(AccountAssignmentDeletionRequestId = AccountAssignmentDeletionRequestId, InstanceArn = InstanceArn)
   output <- .ssoadmin$describe_account_assignment_deletion_status_output()
@@ -882,7 +905,8 @@ ssoadmin_describe_application <- function(ApplicationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_application_input(ApplicationArn = ApplicationArn)
   output <- .ssoadmin$describe_application_output()
@@ -920,7 +944,8 @@ ssoadmin_describe_application_assignment <- function(ApplicationArn, PrincipalId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_application_assignment_input(ApplicationArn = ApplicationArn, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
   output <- .ssoadmin$describe_application_assignment_output()
@@ -953,7 +978,8 @@ ssoadmin_describe_application_provider <- function(ApplicationProviderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_application_provider_input(ApplicationProviderArn = ApplicationProviderArn)
   output <- .ssoadmin$describe_application_provider_output()
@@ -984,7 +1010,8 @@ ssoadmin_describe_instance <- function(InstanceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_instance_input(InstanceArn = InstanceArn)
   output <- .ssoadmin$describe_instance_output()
@@ -1017,7 +1044,8 @@ ssoadmin_describe_instance_access_control_attribute_configuration <- function(In
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_instance_access_control_attribute_configuration_input(InstanceArn = InstanceArn)
   output <- .ssoadmin$describe_instance_access_control_attribute_configuration_output()
@@ -1051,7 +1079,8 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$describe_permission_set_output()
@@ -1087,7 +1116,8 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_permission_set_provisioning_status_input(InstanceArn = InstanceArn, ProvisionPermissionSetRequestId = ProvisionPermissionSetRequestId)
   output <- .ssoadmin$describe_permission_set_provisioning_status_output()
@@ -1119,7 +1149,8 @@ ssoadmin_describe_trusted_token_issuer <- function(TrustedTokenIssuerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$describe_trusted_token_issuer_input(TrustedTokenIssuerArn = TrustedTokenIssuerArn)
   output <- .ssoadmin$describe_trusted_token_issuer_output()
@@ -1155,7 +1186,8 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$detach_customer_managed_policy_reference_from_permission_set_input(CustomerManagedPolicyReference = CustomerManagedPolicyReference, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$detach_customer_managed_policy_reference_from_permission_set_output()
@@ -1192,7 +1224,8 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Mana
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$detach_managed_policy_from_permission_set_input(InstanceArn = InstanceArn, ManagedPolicyArn = ManagedPolicyArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$detach_managed_policy_from_permission_set_output()
@@ -1226,7 +1259,8 @@ ssoadmin_get_application_access_scope <- function(ApplicationArn, Scope) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$get_application_access_scope_input(ApplicationArn = ApplicationArn, Scope = Scope)
   output <- .ssoadmin$get_application_access_scope_output()
@@ -1258,7 +1292,8 @@ ssoadmin_get_application_assignment_configuration <- function(ApplicationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$get_application_assignment_configuration_input(ApplicationArn = ApplicationArn)
   output <- .ssoadmin$get_application_assignment_configuration_output()
@@ -1289,7 +1324,8 @@ ssoadmin_get_application_authentication_method <- function(ApplicationArn, Authe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$get_application_authentication_method_input(ApplicationArn = ApplicationArn, AuthenticationMethodType = AuthenticationMethodType)
   output <- .ssoadmin$get_application_authentication_method_output()
@@ -1320,7 +1356,8 @@ ssoadmin_get_application_grant <- function(ApplicationArn, GrantType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$get_application_grant_input(ApplicationArn = ApplicationArn, GrantType = GrantType)
   output <- .ssoadmin$get_application_grant_output()
@@ -1354,7 +1391,8 @@ ssoadmin_get_inline_policy_for_permission_set <- function(InstanceArn, Permissio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$get_inline_policy_for_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$get_inline_policy_for_permission_set_output()
@@ -1386,7 +1424,8 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$get_permissions_boundary_for_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$get_permissions_boundary_for_permission_set_output()
@@ -1424,7 +1463,8 @@ ssoadmin_list_account_assignment_creation_status <- function(Filter = NULL, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignmentsCreationStatus")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignmentsCreationStatus"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_account_assignment_creation_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_account_assignment_creation_status_output()
@@ -1462,7 +1502,8 @@ ssoadmin_list_account_assignment_deletion_status <- function(Filter = NULL, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignmentsDeletionStatus")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignmentsDeletionStatus"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_account_assignment_deletion_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_account_assignment_deletion_status_output()
@@ -1502,7 +1543,8 @@ ssoadmin_list_account_assignments <- function(AccountId, InstanceArn, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignments")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignments"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_account_assignments_input(AccountId = AccountId, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$list_account_assignments_output()
@@ -1552,7 +1594,8 @@ ssoadmin_list_account_assignments_for_principal <- function(Filter = NULL, Insta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignments")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAssignments"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_account_assignments_for_principal_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
   output <- .ssoadmin$list_account_assignments_for_principal_output()
@@ -1593,7 +1636,8 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountIds")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountIds"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_accounts_for_provisioned_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn, ProvisioningStatus = ProvisioningStatus)
   output <- .ssoadmin$list_accounts_for_provisioned_permission_set_output()
@@ -1637,7 +1681,8 @@ ssoadmin_list_application_access_scopes <- function(ApplicationArn, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scopes")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Scopes"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_application_access_scopes_input(ApplicationArn = ApplicationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_application_access_scopes_output()
@@ -1681,7 +1726,8 @@ ssoadmin_list_application_assignments <- function(ApplicationArn, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ApplicationAssignments")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ApplicationAssignments"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_application_assignments_input(ApplicationArn = ApplicationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_application_assignments_output()
@@ -1731,7 +1777,8 @@ ssoadmin_list_application_assignments_for_principal <- function(Filter = NULL, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ApplicationAssignments")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ApplicationAssignments"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_application_assignments_for_principal_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
   output <- .ssoadmin$list_application_assignments_for_principal_output()
@@ -1768,7 +1815,8 @@ ssoadmin_list_application_authentication_methods <- function(ApplicationArn, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AuthenticationMethods")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AuthenticationMethods"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_application_authentication_methods_input(ApplicationArn = ApplicationArn, NextToken = NextToken)
   output <- .ssoadmin$list_application_authentication_methods_output()
@@ -1803,7 +1851,8 @@ ssoadmin_list_application_grants <- function(ApplicationArn, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Grants")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Grants"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_application_grants_input(ApplicationArn = ApplicationArn, NextToken = NextToken)
   output <- .ssoadmin$list_application_grants_output()
@@ -1846,7 +1895,8 @@ ssoadmin_list_application_providers <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ApplicationProviders")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ApplicationProviders"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_application_providers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_application_providers_output()
@@ -1894,7 +1944,8 @@ ssoadmin_list_applications <- function(Filter = NULL, InstanceArn, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Applications")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Applications"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_applications_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_applications_output()
@@ -1930,7 +1981,8 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CustomerManagedPolicyReferences")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CustomerManagedPolicyReferences"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_output()
@@ -1964,7 +2016,8 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Instances")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_instances_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_instances_output()
@@ -2002,7 +2055,8 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AttachedManagedPolicies")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AttachedManagedPolicies"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_managed_policies_in_permission_set_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$list_managed_policies_in_permission_set_output()
@@ -2040,7 +2094,8 @@ ssoadmin_list_permission_set_provisioning_status <- function(Filter = NULL, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PermissionSetsProvisioningStatus")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PermissionSetsProvisioningStatus"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_permission_set_provisioning_status_input(Filter = Filter, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_permission_set_provisioning_status_output()
@@ -2076,7 +2131,8 @@ ssoadmin_list_permission_sets <- function(InstanceArn, MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PermissionSets")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PermissionSets"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_permission_sets_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_permission_sets_output()
@@ -2116,7 +2172,8 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(AccountId, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PermissionSets")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PermissionSets"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_permission_sets_provisioned_to_account_input(AccountId = AccountId, InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, ProvisioningStatus = ProvisioningStatus)
   output <- .ssoadmin$list_permission_sets_provisioned_to_account_output()
@@ -2152,7 +2209,8 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_tags_for_resource_input(InstanceArn = InstanceArn, NextToken = NextToken, ResourceArn = ResourceArn)
   output <- .ssoadmin$list_tags_for_resource_output()
@@ -2197,7 +2255,8 @@ ssoadmin_list_trusted_token_issuers <- function(InstanceArn, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrustedTokenIssuers")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrustedTokenIssuers"),
+    stream_api = FALSE
   )
   input <- .ssoadmin$list_trusted_token_issuers_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_trusted_token_issuers_output()
@@ -2235,7 +2294,8 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$provision_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, TargetId = TargetId, TargetType = TargetType)
   output <- .ssoadmin$provision_permission_set_output()
@@ -2271,7 +2331,8 @@ ssoadmin_put_application_access_scope <- function(ApplicationArn, AuthorizedTarg
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$put_application_access_scope_input(ApplicationArn = ApplicationArn, AuthorizedTargets = AuthorizedTargets, Scope = Scope)
   output <- .ssoadmin$put_application_access_scope_output()
@@ -2308,7 +2369,8 @@ ssoadmin_put_application_assignment_configuration <- function(ApplicationArn, As
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$put_application_assignment_configuration_input(ApplicationArn = ApplicationArn, AssignmentRequired = AssignmentRequired)
   output <- .ssoadmin$put_application_assignment_configuration_output()
@@ -2344,7 +2406,8 @@ ssoadmin_put_application_authentication_method <- function(ApplicationArn, Authe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$put_application_authentication_method_input(ApplicationArn = ApplicationArn, AuthenticationMethod = AuthenticationMethod, AuthenticationMethodType = AuthenticationMethodType)
   output <- .ssoadmin$put_application_authentication_method_output()
@@ -2376,7 +2439,8 @@ ssoadmin_put_application_grant <- function(ApplicationArn, Grant, GrantType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$put_application_grant_input(ApplicationArn = ApplicationArn, Grant = Grant, GrantType = GrantType)
   output <- .ssoadmin$put_application_grant_output()
@@ -2411,7 +2475,8 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InlinePolicy, InstanceA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$put_inline_policy_to_permission_set_input(InlinePolicy = InlinePolicy, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn)
   output <- .ssoadmin$put_inline_policy_to_permission_set_output()
@@ -2445,7 +2510,8 @@ ssoadmin_put_permissions_boundary_to_permission_set <- function(InstanceArn, Per
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$put_permissions_boundary_to_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, PermissionsBoundary = PermissionsBoundary)
   output <- .ssoadmin$put_permissions_boundary_to_permission_set_output()
@@ -2480,7 +2546,8 @@ ssoadmin_tag_resource <- function(InstanceArn = NULL, ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$tag_resource_input(InstanceArn = InstanceArn, ResourceArn = ResourceArn, Tags = Tags)
   output <- .ssoadmin$tag_resource_output()
@@ -2515,7 +2582,8 @@ ssoadmin_untag_resource <- function(InstanceArn = NULL, ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$untag_resource_input(InstanceArn = InstanceArn, ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .ssoadmin$untag_resource_output()
@@ -2552,7 +2620,8 @@ ssoadmin_update_application <- function(ApplicationArn, Description = NULL, Name
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$update_application_input(ApplicationArn = ApplicationArn, Description = Description, Name = Name, PortalOptions = PortalOptions, Status = Status)
   output <- .ssoadmin$update_application_output()
@@ -2587,7 +2656,8 @@ ssoadmin_update_instance <- function(InstanceArn, Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$update_instance_input(InstanceArn = InstanceArn, Name = Name)
   output <- .ssoadmin$update_instance_output()
@@ -2621,7 +2691,8 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$update_instance_access_control_attribute_configuration_input(InstanceAccessControlAttributeConfiguration = InstanceAccessControlAttributeConfiguration, InstanceArn = InstanceArn)
   output <- .ssoadmin$update_instance_access_control_attribute_configuration_output()
@@ -2660,7 +2731,8 @@ ssoadmin_update_permission_set <- function(Description = NULL, InstanceArn, Perm
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$update_permission_set_input(Description = Description, InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, RelayState = RelayState, SessionDuration = SessionDuration)
   output <- .ssoadmin$update_permission_set_output()
@@ -2698,7 +2770,8 @@ ssoadmin_update_trusted_token_issuer <- function(Name = NULL, TrustedTokenIssuer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssoadmin$update_trusted_token_issuer_input(Name = Name, TrustedTokenIssuerArn = TrustedTokenIssuerArn, TrustedTokenIssuerConfiguration = TrustedTokenIssuerConfiguration)
   output <- .ssoadmin$update_trusted_token_issuer_output()

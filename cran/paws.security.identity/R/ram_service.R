@@ -16,10 +16,10 @@ NULL
 #' 
 #' To learn more about RAM, see the following resources:
 #' 
-#' -   [Resource Access Manager product page](https://aws.amazon.com/ram/)
+#' - [Resource Access Manager product page](https://aws.amazon.com/ram/)
 #' 
-#' -   [Resource Access Manager User
-#'     Guide](https://docs.aws.amazon.com/ram/latest/userguide/)
+#' - [Resource Access Manager User
+#'   Guide](https://docs.aws.amazon.com/ram/latest/userguide/)
 #'
 #' @param
 #' config

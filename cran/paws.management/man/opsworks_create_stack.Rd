@@ -54,8 +54,8 @@ in the stack's region. All instances are launched into this VPC. You
 cannot change the ID later.
 \itemize{
 \item If your account supports EC2-Classic, the default value is \verb{no VPC}.
-\item If your account does not support EC2-Classic, the default value is
-the default VPC for the specified region.
+\item If your account does not support EC2-Classic, the default value is the
+default VPC for the specified region.
 }
 
 If the VPC ID corresponds to a default VPC and you have specified either
@@ -179,14 +179,14 @@ security groups. \code{UseOpsworksSecurityGroups} has the following settings:
 \itemize{
 \item True - OpsWorks Stacks automatically associates the appropriate
 built-in security group with each layer (default setting). You can
-associate additional security groups with a layer after you create
-it, but you cannot delete the built-in security group.
+associate additional security groups with a layer after you create it,
+but you cannot delete the built-in security group.
 \item False - OpsWorks Stacks does not associate built-in security groups
 with layers. You must create appropriate EC2 security groups and
 associate a security group with each layer that you create. However,
 you can still manually associate a built-in security group with a
-layer on creation; custom security groups are required only for
-those layers that need custom settings.
+layer on creation; custom security groups are required only for those
+layers that need custom settings.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html}{Create a New Stack}.}
@@ -212,12 +212,12 @@ see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.htm
 options:
 \itemize{
 \item Auto-update - Set this parameter to \code{LATEST}. OpsWorks Stacks
-automatically installs new agent versions on the stack's instances
-as soon as they are available.
-\item Fixed version - Set this parameter to your preferred agent version.
-To update the agent version, you must edit the stack configuration
-and specify a new version. OpsWorks Stacks installs that version on
-the stack's instances.
+automatically installs new agent versions on the stack's instances as
+soon as they are available.
+\item Fixed version - Set this parameter to your preferred agent version. To
+update the agent version, you must edit the stack configuration and
+specify a new version. OpsWorks Stacks installs that version on the
+stack's instances.
 }
 
 The default setting is the most recent release of the agent. To specify

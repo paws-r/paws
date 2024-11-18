@@ -23,9 +23,8 @@ snapshots.}
 \item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost on which to create the
 local snapshots.
 \itemize{
-\item To create snapshots from an instance in a Region, omit this
-parameter. The snapshots are created in the same Region as the
-instance.
+\item To create snapshots from an instance in a Region, omit this parameter.
+The snapshots are created in the same Region as the instance.
 \item To create snapshots from an instance on an Outpost and store the
 snapshots in the Region, omit this parameter. The snapshots are
 created in the Region for the Outpost.

@@ -49,7 +49,7 @@ latest \code{ACTIVE} revision is used.
 A task definition must be specified if the service uses either the \code{ECS}
 or \code{CODE_DEPLOY} deployment controllers.
 
-For more information about deployment types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Amazon ECS deployment types}.}
+For more information about deployment types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS deployment types}.}
 
 \item{loadBalancers}{A load balancer object representing the load balancers to use with your
 service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html}{Service load balancing}
@@ -150,7 +150,7 @@ providers.}
 \item{platformVersion}{The platform version that your tasks in the service are running on. A
 platform version is specified only for tasks using the Fargate launch
 type. If one isn't specified, the \code{LATEST} platform version is used. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Fargate platform versions}
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{Fargate platform versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{role}{The name or full Amazon Resource Name (ARN) of the IAM role that allows
@@ -221,20 +221,20 @@ There are two service scheduler strategies available:
 desired number of tasks across your cluster. By default, the service
 scheduler spreads tasks across Availability Zones. You can use task
 placement strategies and constraints to customize task placement
-decisions. This scheduler strategy is required if the service uses
-the \code{CODE_DEPLOY} or \code{EXTERNAL} deployment controller types.
+decisions. This scheduler strategy is required if the service uses the
+\code{CODE_DEPLOY} or \code{EXTERNAL} deployment controller types.
 \item \code{DAEMON}-The daemon scheduling strategy deploys exactly one task on
 each active container instance that meets all of the task placement
 constraints that you specify in your cluster. The service scheduler
 also evaluates the task placement constraints for running tasks and
-will stop tasks that don't meet the placement constraints. When
-you're using this strategy, you don't need to specify a desired
-number of tasks, a task placement strategy, or use Service Auto
-Scaling policies.
+will stop tasks that don't meet the placement constraints. When you're
+using this strategy, you don't need to specify a desired number of
+tasks, a task placement strategy, or use Service Auto Scaling
+policies.
 
-Tasks using the Fargate launch type or the \code{CODE_DEPLOY} or
-\code{EXTERNAL} deployment controller types don't support the \code{DAEMON}
-scheduling strategy.
+Tasks using the Fargate launch type or the \code{CODE_DEPLOY} or \code{EXTERNAL}
+deployment controller types don't support the \code{DAEMON} scheduling
+strategy.
 }}
 
 \item{deploymentController}{The deployment controller to use for the service. If no deployment
@@ -252,17 +252,17 @@ The following basic restrictions apply to tags:
 have only one value.
 \item Maximum key length - 128 Unicode characters in UTF-8
 \item Maximum value length - 256 Unicode characters in UTF-8
-\item If your tagging schema is used across multiple services and
-resources, remember that other services may have restrictions on
-allowed characters. Generally allowed characters are: letters,
-numbers, and spaces representable in UTF-8, and the following
-characters: + - = . _ : / @.
+\item If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = .
+_ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
 such as a prefix for either keys or values as it is reserved for
-Amazon Web Services use. You cannot edit or delete tag keys or
-values with this prefix. Tags with this prefix do not count against
-your tags per resource limit.
+Amazon Web Services use. You cannot edit or delete tag keys or values
+with this prefix. Tags with this prefix do not count against your tags
+per resource limit.
 }}
 
 \item{enableECSManagedTags}{Specifies whether to turn on Amazon ECS managed tags for the tasks

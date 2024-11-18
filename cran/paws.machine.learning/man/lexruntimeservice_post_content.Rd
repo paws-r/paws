@@ -31,8 +31,8 @@ following factors.
 \item The \code{userID} field must not contain any personally identifiable
 information of the user, for example, name, personal identification
 numbers, or other end user personal information.
-\item If you want a user to start a conversation on one device and
-continue on another device, use a user-specific identifier.
+\item If you want a user to start a conversation on one device and continue
+on another device, use a user-specific identifier.
 \item If you want the same user to be able to have two independent
 conversations on two different devices, choose a device-specific
 identifier.
@@ -40,8 +40,8 @@ identifier.
 versions of the same bot. For example, a user can't have a
 conversation with the PROD and BETA versions of the same bot. If you
 anticipate that a user will need to have conversation with two
-different versions, for example, while testing, include the bot
-alias in the user ID to separate the two conversations.
+different versions, for example, while testing, include the bot alias
+in the user ID to separate the two conversations.
 }}
 
 \item{sessionAttributes}{You pass this value as the \code{x-amz-lex-session-attributes} HTTP header.
@@ -74,13 +74,13 @@ of the following prefixes:
 \itemize{
 \item audio/l16; rate=16000; channels=1
 \item audio/x-l16; sample-rate=16000; channel-count=1
-\item audio/lpcm; sample-rate=8000; sample-size-bits=16;
-channel-count=1; is-big-endian=false
+\item audio/lpcm; sample-rate=8000; sample-size-bits=16; channel-count=1;
+is-big-endian=false
 }
 \item Opus format
 \itemize{
-\item audio/x-cbr-opus-with-preamble; preamble-size=0;
-bit-rate=256000; frame-size-milliseconds=4
+\item audio/x-cbr-opus-with-preamble; preamble-size=0; bit-rate=256000;
+frame-size-milliseconds=4
 }
 \item Text format
 \itemize{
@@ -97,9 +97,9 @@ speech based on the \code{Accept} HTTP header value in the request.
 in the response.
 \item If the value begins with \verb{audio/}, Amazon Lex returns speech in the
 response. Amazon Lex uses Amazon Polly to generate the speech (using
-the configuration you specified in the \code{Accept} header). For
-example, if you specify \code{audio/mpeg} as the value, Amazon Lex
-returns speech in the MPEG format.
+the configuration you specified in the \code{Accept} header). For example,
+if you specify \code{audio/mpeg} as the value, Amazon Lex returns speech in
+the MPEG format.
 \item If the value is \code{audio/pcm}, the speech returned is \code{audio/pcm} in
 16-bit, little endian format.
 \item The following are the accepted values:

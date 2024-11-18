@@ -18,8 +18,8 @@ ec2_modify_instance_metadata_defaults(
 \itemize{
 \item \code{optional} – IMDSv2 is optional, which means that you can use either
 IMDSv2 or IMDSv1.
-\item \code{required} – IMDSv2 is required, which means that IMDSv1 is
-disabled, and you must use IMDSv2.
+\item \code{required} – IMDSv2 is required, which means that IMDSv1 is disabled,
+and you must use IMDSv2.
 }}
 
 \item{HttpPutResponseHopLimit}{The maximum number of hops that the metadata token can travel. To

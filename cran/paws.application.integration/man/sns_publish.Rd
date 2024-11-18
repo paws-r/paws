@@ -43,41 +43,40 @@ and use a JSON object for the \code{Message} parameter.
 
 Constraints:
 \itemize{
-\item With the exception of SMS, messages must be UTF-8 encoded strings
-and at most 256 KB in size (262,144 bytes, not 262,144 characters).
-\item For SMS, each message can contain up to 140 characters. This
-character limit depends on the encoding schema. For example, an SMS
-message can contain 160 GSM characters, 140 ASCII characters, or 70
-UCS-2 characters.
+\item With the exception of SMS, messages must be UTF-8 encoded strings and
+at most 256 KB in size (262,144 bytes, not 262,144 characters).
+\item For SMS, each message can contain up to 140 characters. This character
+limit depends on the encoding schema. For example, an SMS message can
+contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2
+characters.
 
 If you publish a message that exceeds this size limit, Amazon SNS
 sends the message as multiple messages, each fitting within the size
 limit. Messages aren't truncated mid-word but are cut off at
 whole-word boundaries.
 
-The total size limit for a single SMS \code{\link[=sns_publish]{publish}}
-action is 1,600 characters.
+The total size limit for a single SMS \code{\link[=sns_publish]{publish}} action
+is 1,600 characters.
 }
 
 JSON-specific constraints:
 \itemize{
 \item Keys in the JSON object that correspond to supported transport
 protocols must have simple JSON string values.
-\item The values will be parsed (unescaped) before they are used in
-outgoing messages.
+\item The values will be parsed (unescaped) before they are used in outgoing
+messages.
 \item Outbound notifications are JSON encoded (meaning that the characters
 will be reescaped for sending).
-\item Values have a minimum length of 0 (the empty string, "", is
-allowed).
-\item Values have a maximum length bounded by the overall message size
-(so, including multiple protocols may limit message sizes).
+\item Values have a minimum length of 0 (the empty string, "", is allowed).
+\item Values have a maximum length bounded by the overall message size (so,
+including multiple protocols may limit message sizes).
 \item Non-string values will cause the key to be ignored.
 \item Keys that do not correspond to supported transport protocols are
 ignored.
 \item Duplicate keys are not allowed.
 \item Failure to parse or validate any key or value in the message will
-cause the \code{\link[=sns_publish]{publish}} call to return an error (no
-partial delivery).
+cause the \code{\link[=sns_publish]{publish}} call to return an error (no partial
+delivery).
 }}
 
 \item{Subject}{Optional parameter to be used as the "Subject" line when the message is

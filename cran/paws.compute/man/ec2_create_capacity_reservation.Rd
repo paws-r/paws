@@ -25,7 +25,7 @@ ec2_create_capacity_reservation(
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensure Idempotency}.}
 
 \item{InstanceType}{[required] The instance type for which to reserve capacity. For more information,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html}{Instance types}
@@ -76,8 +76,8 @@ between 13:30:55 and 14:30:55 on 5/31/2019.}
 Reservation can have one of the following end types:
 \itemize{
 \item \code{unlimited} - The Capacity Reservation remains active until you
-explicitly cancel it. Do not provide an \code{EndDate} if the
-\code{EndDateType} is \code{unlimited}.
+explicitly cancel it. Do not provide an \code{EndDate} if the \code{EndDateType}
+is \code{unlimited}.
 \item \code{limited} - The Capacity Reservation expires automatically at a
 specified date and time. You must provide an \code{EndDate} value if the
 \code{EndDateType} value is \code{limited}.
@@ -86,15 +86,15 @@ specified date and time. You must provide an \code{EndDate} value if the
 \item{InstanceMatchCriteria}{Indicates the type of instance launches that the Capacity Reservation
 accepts. The options include:
 \itemize{
-\item \code{open} - The Capacity Reservation automatically matches all
-instances that have matching attributes (instance type, platform,
-and Availability Zone). Instances that have matching attributes run
-in the Capacity Reservation automatically without specifying any
-additional parameters.
-\item \code{targeted} - The Capacity Reservation only accepts instances that
-have matching attributes (instance type, platform, and Availability
-Zone), and explicitly target the Capacity Reservation. This ensures
-that only permitted instances can use the reserved capacity.
+\item \code{open} - The Capacity Reservation automatically matches all instances
+that have matching attributes (instance type, platform, and
+Availability Zone). Instances that have matching attributes run in the
+Capacity Reservation automatically without specifying any additional
+parameters.
+\item \code{targeted} - The Capacity Reservation only accepts instances that have
+matching attributes (instance type, platform, and Availability Zone),
+and explicitly target the Capacity Reservation. This ensures that only
+permitted instances can use the reserved capacity.
 }
 
 Default: \code{open}}

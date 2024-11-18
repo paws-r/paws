@@ -42,7 +42,8 @@ cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthen
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$create_identity_pool_input(IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, AllowClassicFlow = AllowClassicFlow, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs, IdentityPoolTags = IdentityPoolTags)
   output <- .cognitoidentity$create_identity_pool_output()
@@ -72,7 +73,8 @@ cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$delete_identities_input(IdentityIdsToDelete = IdentityIdsToDelete)
   output <- .cognitoidentity$delete_identities_output()
@@ -102,7 +104,8 @@ cognitoidentity_delete_identity_pool <- function(IdentityPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$delete_identity_pool_input(IdentityPoolId = IdentityPoolId)
   output <- .cognitoidentity$delete_identity_pool_output()
@@ -133,7 +136,8 @@ cognitoidentity_describe_identity <- function(IdentityId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$describe_identity_input(IdentityId = IdentityId)
   output <- .cognitoidentity$describe_identity_output()
@@ -164,7 +168,8 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$describe_identity_pool_input(IdentityPoolId = IdentityPoolId)
   output <- .cognitoidentity$describe_identity_pool_output()
@@ -210,7 +215,8 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$get_credentials_for_identity_input(IdentityId = IdentityId, Logins = Logins, CustomRoleArn = CustomRoleArn)
   output <- .cognitoidentity$get_credentials_for_identity_output()
@@ -234,19 +240,19 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 #' @param Logins A set of optional name-value pairs that map provider names to provider
 #' tokens. The available provider names for `Logins` are as follows:
 #' 
-#' -   Facebook: `graph.facebook.com`
+#' - Facebook: `graph.facebook.com`
 #' 
-#' -   Amazon Cognito user pool:
-#'     `cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>`, for
-#'     example, `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
+#' - Amazon Cognito user pool:
+#'   `cognito-idp.<region>.amazonaws.com/<YOUR_USER_POOL_ID>`, for example,
+#'   `cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789`.
 #' 
-#' -   Google: `accounts.google.com`
+#' - Google: `accounts.google.com`
 #' 
-#' -   Amazon: `www.amazon.com`
+#' - Amazon: `www.amazon.com`
 #' 
-#' -   Twitter: `api.twitter.com`
+#' - Twitter: `api.twitter.com`
 #' 
-#' -   Digits: `www.digits.com`
+#' - Digits: `www.digits.com`
 #'
 #' @keywords internal
 #'
@@ -257,7 +263,8 @@ cognitoidentity_get_id <- function(AccountId = NULL, IdentityPoolId, Logins = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$get_id_input(AccountId = AccountId, IdentityPoolId = IdentityPoolId, Logins = Logins)
   output <- .cognitoidentity$get_id_output()
@@ -287,7 +294,8 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$get_identity_pool_roles_input(IdentityPoolId = IdentityPoolId)
   output <- .cognitoidentity$get_identity_pool_roles_output()
@@ -322,7 +330,8 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$get_open_id_token_input(IdentityId = IdentityId, Logins = Logins)
   output <- .cognitoidentity$get_open_id_token_output()
@@ -377,7 +386,8 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$get_open_id_token_for_developer_identity_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, Logins = Logins, PrincipalTags = PrincipalTags, TokenDuration = TokenDuration)
   output <- .cognitoidentity$get_open_id_token_for_developer_identity_output()
@@ -410,7 +420,8 @@ cognitoidentity_get_principal_tag_attribute_map <- function(IdentityPoolId, Iden
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$get_principal_tag_attribute_map_input(IdentityPoolId = IdentityPoolId, IdentityProviderName = IdentityProviderName)
   output <- .cognitoidentity$get_principal_tag_attribute_map_output()
@@ -445,7 +456,8 @@ cognitoidentity_list_identities <- function(IdentityPoolId, MaxResults, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$list_identities_input(IdentityPoolId = IdentityPoolId, MaxResults = MaxResults, NextToken = NextToken, HideDisabled = HideDisabled)
   output <- .cognitoidentity$list_identities_output()
@@ -476,7 +488,8 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IdentityPools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IdentityPools"),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$list_identity_pools_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentity$list_identity_pools_output()
@@ -507,7 +520,8 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cognitoidentity$list_tags_for_resource_output()
@@ -550,7 +564,8 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$lookup_developer_identity_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, DeveloperUserIdentifier = DeveloperUserIdentifier, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentity$lookup_developer_identity_output()
@@ -591,7 +606,8 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$merge_developer_identities_input(SourceUserIdentifier = SourceUserIdentifier, DestinationUserIdentifier = DestinationUserIdentifier, DeveloperProviderName = DeveloperProviderName, IdentityPoolId = IdentityPoolId)
   output <- .cognitoidentity$merge_developer_identities_output()
@@ -630,7 +646,8 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$set_identity_pool_roles_input(IdentityPoolId = IdentityPoolId, Roles = Roles, RoleMappings = RoleMappings)
   output <- .cognitoidentity$set_identity_pool_roles_output()
@@ -665,7 +682,8 @@ cognitoidentity_set_principal_tag_attribute_map <- function(IdentityPoolId, Iden
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$set_principal_tag_attribute_map_input(IdentityPoolId = IdentityPoolId, IdentityProviderName = IdentityProviderName, UseDefaults = UseDefaults, PrincipalTags = PrincipalTags)
   output <- .cognitoidentity$set_principal_tag_attribute_map_output()
@@ -696,7 +714,8 @@ cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cognitoidentity$tag_resource_output()
@@ -730,7 +749,8 @@ cognitoidentity_unlink_developer_identity <- function(IdentityId, IdentityPoolId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$unlink_developer_identity_input(IdentityId = IdentityId, IdentityPoolId = IdentityPoolId, DeveloperProviderName = DeveloperProviderName, DeveloperUserIdentifier = DeveloperUserIdentifier)
   output <- .cognitoidentity$unlink_developer_identity_output()
@@ -763,7 +783,8 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$unlink_identity_input(IdentityId = IdentityId, Logins = Logins, LoginsToRemove = LoginsToRemove)
   output <- .cognitoidentity$unlink_identity_output()
@@ -795,7 +816,8 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cognitoidentity$untag_resource_output()
@@ -841,7 +863,8 @@ cognitoidentity_update_identity_pool <- function(IdentityPoolId, IdentityPoolNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentity$update_identity_pool_input(IdentityPoolId = IdentityPoolId, IdentityPoolName = IdentityPoolName, AllowUnauthenticatedIdentities = AllowUnauthenticatedIdentities, AllowClassicFlow = AllowClassicFlow, SupportedLoginProviders = SupportedLoginProviders, DeveloperProviderName = DeveloperProviderName, OpenIdConnectProviderARNs = OpenIdConnectProviderARNs, CognitoIdentityProviders = CognitoIdentityProviders, SamlProviderARNs = SamlProviderARNs, IdentityPoolTags = IdentityPoolTags)
   output <- .cognitoidentity$update_identity_pool_output()

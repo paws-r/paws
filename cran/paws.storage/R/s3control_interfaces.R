@@ -33,7 +33,7 @@ NULL
 
 .s3control$create_access_grants_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), AccessGrantsInstanceId = structure(logical(0), tags = list(type = "string")), AccessGrantsInstanceArn = structure(logical(0), tags = list(type = "string")), IdentityCenterArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CreatedAt = structure(logical(0), tags = list(type = "timestamp")), AccessGrantsInstanceId = structure(logical(0), tags = list(type = "string")), AccessGrantsInstanceArn = structure(logical(0), tags = list(type = "string")), IdentityCenterArn = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "IdentityCenterArn has been deprecated. Use IdentityCenterInstanceArn or IdentityCenterApplicationArn.", type = "string")), IdentityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -369,7 +369,7 @@ NULL
 
 .s3control$get_access_grants_instance_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(AccessGrantsInstanceArn = structure(logical(0), tags = list(type = "string")), AccessGrantsInstanceId = structure(logical(0), tags = list(type = "string")), IdentityCenterArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(AccessGrantsInstanceArn = structure(logical(0), tags = list(type = "string")), AccessGrantsInstanceId = structure(logical(0), tags = list(type = "string")), IdentityCenterArn = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "IdentityCenterArn has been deprecated. Use IdentityCenterInstanceArn or IdentityCenterApplicationArn.", type = "string")), IdentityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -705,7 +705,7 @@ NULL
 
 .s3control$list_access_grants_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), AccessGrantsInstancesList = structure(list(structure(list(AccessGrantsInstanceId = structure(logical(0), tags = list(type = "string")), AccessGrantsInstanceArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), IdentityCenterArn = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AccessGrantsInstance", type = "structure"))), tags = list(locationNameList = "AccessGrantsInstance", type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), AccessGrantsInstancesList = structure(list(structure(list(AccessGrantsInstanceId = structure(logical(0), tags = list(type = "string")), AccessGrantsInstanceArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), IdentityCenterArn = structure(logical(0), tags = list(deprecated = TRUE, deprecatedMessage = "IdentityCenterArn has been deprecated. Use IdentityCenterInstanceArn or IdentityCenterApplicationArn.", type = "string")), IdentityCenterInstanceArn = structure(logical(0), tags = list(type = "string")), IdentityCenterApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AccessGrantsInstance", type = "structure"))), tags = list(locationNameList = "AccessGrantsInstance", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -742,6 +742,18 @@ NULL
 .s3control$list_access_points_for_object_lambda_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ObjectLambdaAccessPointList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), ObjectLambdaAccessPointArn = structure(logical(0), tags = list(type = "string")), Alias = structure(list(Value = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(locationName = "ObjectLambdaAccessPoint", type = "structure"))), tags = list(locationNameList = "ObjectLambdaAccessPoint", type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$list_caller_access_grants_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AccountId = structure(logical(0), tags = list(hostLabel = TRUE, location = "header", locationName = "x-amz-account-id", type = "string")), GrantScope = structure(logical(0), tags = list(location = "querystring", locationName = "grantscope", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer")), AllowedByApplication = structure(logical(0), tags = list(location = "querystring", locationName = "allowedByApplication", type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.s3control$list_caller_access_grants_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CallerAccessGrantsList = structure(list(structure(list(Permission = structure(logical(0), tags = list(type = "string")), GrantScope = structure(logical(0), tags = list(type = "string")), ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(locationName = "AccessGrant", type = "structure"))), tags = list(locationNameList = "AccessGrant", type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

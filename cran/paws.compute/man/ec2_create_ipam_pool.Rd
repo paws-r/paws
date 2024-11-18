@@ -38,8 +38,7 @@ you have the required permissions, the error response is
 available for allocations.
 \item The network border group for an Amazon Web Services Local Zone where
 you want this IPAM pool to be available for allocations (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail}{supported Local Zones}).
-This option is only available for IPAM IPv4 pools in the public
-scope.
+This option is only available for IPAM IPv4 pools in the public scope.
 }
 
 If you do not choose a locale, resources in Regions others than the

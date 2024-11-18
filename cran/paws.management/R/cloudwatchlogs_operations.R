@@ -26,19 +26,19 @@ NULL
 #' @param resourceIdentifier Specifies the target for this operation. You must specify one of the
 #' following:
 #' 
-#' -   Specify the following ARN to have future
-#'     [`get_query_results`][cloudwatchlogs_get_query_results] operations
-#'     in this account encrypt the results with the specified KMS key.
-#'     Replace *REGION* and *ACCOUNT_ID* with your Region and account ID.
+#' - Specify the following ARN to have future
+#'   [`get_query_results`][cloudwatchlogs_get_query_results] operations in
+#'   this account encrypt the results with the specified KMS key. Replace
+#'   *REGION* and *ACCOUNT_ID* with your Region and account ID.
 #' 
-#'     `arn:aws:logs:REGION:ACCOUNT_ID:query-result:*`
+#'   `arn:aws:logs:REGION:ACCOUNT_ID:query-result:*`
 #' 
-#' -   Specify the ARN of a log group to have CloudWatch Logs use the KMS
-#'     key to encrypt log events that are ingested and stored by that log
-#'     group. The log group ARN must be in the following format. Replace
-#'     *REGION* and *ACCOUNT_ID* with your Region and account ID.
+#' - Specify the ARN of a log group to have CloudWatch Logs use the KMS key
+#'   to encrypt log events that are ingested and stored by that log group.
+#'   The log group ARN must be in the following format. Replace *REGION*
+#'   and *ACCOUNT_ID* with your Region and account ID.
 #' 
-#'     `arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME `
+#'   `arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME `
 #' 
 #' In your [`associate_kms_key`][cloudwatchlogs_associate_kms_key]
 #' operation, you must specify either the `resourceIdentifier` parameter or
@@ -53,7 +53,8 @@ cloudwatchlogs_associate_kms_key <- function(logGroupName = NULL, kmsKeyId, reso
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$associate_kms_key_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, resourceIdentifier = resourceIdentifier)
   output <- .cloudwatchlogs$associate_kms_key_output()
@@ -83,7 +84,8 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$cancel_export_task_input(taskId = taskId)
   output <- .cloudwatchlogs$cancel_export_task_output()
@@ -104,6 +106,13 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #'
 #' @param deliverySourceName &#91;required&#93; The name of the delivery source to use for this delivery.
 #' @param deliveryDestinationArn &#91;required&#93; The ARN of the delivery destination to use for this delivery.
+#' @param recordFields The list of record fields to be delivered to the destination, in order.
+#' If the delivery’s log source has mandatory fields, they must be included
+#' in this list.
+#' @param fieldDelimiter The field delimiter to use between record fields when the final output
+#' format of a delivery is in `Plain`, `W3C`, or `Raw` format.
+#' @param s3DeliveryConfiguration This structure contains parameters that are valid only when the
+#' delivery’s delivery destination is an S3 bucket.
 #' @param tags An optional list of key-value pairs to associate with the resource.
 #' 
 #' For more information about tagging, see [Tagging Amazon Web Services
@@ -112,15 +121,16 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_create_delivery
-cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinationArn, tags = NULL) {
+cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinationArn, recordFields = NULL, fieldDelimiter = NULL, s3DeliveryConfiguration = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDelivery",
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
-  input <- .cloudwatchlogs$create_delivery_input(deliverySourceName = deliverySourceName, deliveryDestinationArn = deliveryDestinationArn, tags = tags)
+  input <- .cloudwatchlogs$create_delivery_input(deliverySourceName = deliverySourceName, deliveryDestinationArn = deliveryDestinationArn, recordFields = recordFields, fieldDelimiter = fieldDelimiter, s3DeliveryConfiguration = s3DeliveryConfiguration, tags = tags)
   output <- .cloudwatchlogs$create_delivery_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config, op)
@@ -165,7 +175,8 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$create_export_task_input(taskName = taskName, logGroupName = logGroupName, logStreamNamePrefix = logStreamNamePrefix, from = from, to = to, destination = destination, destinationPrefix = destinationPrefix)
   output <- .cloudwatchlogs$create_export_task_output()
@@ -227,7 +238,8 @@ cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detector
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$create_log_anomaly_detector_input(logGroupArnList = logGroupArnList, detectorName = detectorName, evaluationFrequency = evaluationFrequency, filterPattern = filterPattern, kmsKeyId = kmsKeyId, anomalyVisibilityTime = anomalyVisibilityTime, tags = tags)
   output <- .cloudwatchlogs$create_log_anomaly_detector_output()
@@ -265,10 +277,10 @@ cloudwatchlogs_create_log_anomaly_detector <- function(logGroupArnList, detector
 #' @param logGroupClass Use this parameter to specify the log group class for this log group.
 #' There are two classes:
 #' 
-#' -   The `Standard` log class supports all CloudWatch Logs features.
+#' - The `Standard` log class supports all CloudWatch Logs features.
 #' 
-#' -   The `Infrequent Access` log class supports a subset of CloudWatch
-#'     Logs features and incurs lower costs.
+#' - The `Infrequent Access` log class supports a subset of CloudWatch Logs
+#'   features and incurs lower costs.
 #' 
 #' If you omit this parameter, the default of `STANDARD` is used.
 #' 
@@ -287,7 +299,8 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$create_log_group_input(logGroupName = logGroupName, kmsKeyId = kmsKeyId, tags = tags, logGroupClass = logGroupClass)
   output <- .cloudwatchlogs$create_log_group_output()
@@ -318,7 +331,8 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$create_log_stream_input(logGroupName = logGroupName, logStreamName = logStreamName)
   output <- .cloudwatchlogs$create_log_stream_output()
@@ -349,7 +363,8 @@ cloudwatchlogs_delete_account_policy <- function(policyName, policyType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_account_policy_input(policyName = policyName, policyType = policyType)
   output <- .cloudwatchlogs$delete_account_policy_output()
@@ -380,7 +395,8 @@ cloudwatchlogs_delete_data_protection_policy <- function(logGroupIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier)
   output <- .cloudwatchlogs$delete_data_protection_policy_output()
@@ -412,7 +428,8 @@ cloudwatchlogs_delete_delivery <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_delivery_input(id = id)
   output <- .cloudwatchlogs$delete_delivery_output()
@@ -445,7 +462,8 @@ cloudwatchlogs_delete_delivery_destination <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_delivery_destination_input(name = name)
   output <- .cloudwatchlogs$delete_delivery_destination_output()
@@ -476,7 +494,8 @@ cloudwatchlogs_delete_delivery_destination_policy <- function(deliveryDestinatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName)
   output <- .cloudwatchlogs$delete_delivery_destination_policy_output()
@@ -506,7 +525,8 @@ cloudwatchlogs_delete_delivery_source <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_delivery_source_input(name = name)
   output <- .cloudwatchlogs$delete_delivery_source_output()
@@ -537,7 +557,8 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_destination_input(destinationName = destinationName)
   output <- .cloudwatchlogs$delete_destination_output()
@@ -570,7 +591,8 @@ cloudwatchlogs_delete_log_anomaly_detector <- function(anomalyDetectorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn)
   output <- .cloudwatchlogs$delete_log_anomaly_detector_output()
@@ -601,7 +623,8 @@ cloudwatchlogs_delete_log_group <- function(logGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_log_group_input(logGroupName = logGroupName)
   output <- .cloudwatchlogs$delete_log_group_output()
@@ -633,7 +656,8 @@ cloudwatchlogs_delete_log_stream <- function(logGroupName, logStreamName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_log_stream_input(logGroupName = logGroupName, logStreamName = logStreamName)
   output <- .cloudwatchlogs$delete_log_stream_output()
@@ -664,7 +688,8 @@ cloudwatchlogs_delete_metric_filter <- function(logGroupName, filterName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_metric_filter_input(logGroupName = logGroupName, filterName = filterName)
   output <- .cloudwatchlogs$delete_metric_filter_output()
@@ -696,7 +721,8 @@ cloudwatchlogs_delete_query_definition <- function(queryDefinitionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_query_definition_input(queryDefinitionId = queryDefinitionId)
   output <- .cloudwatchlogs$delete_query_definition_output()
@@ -726,7 +752,8 @@ cloudwatchlogs_delete_resource_policy <- function(policyName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_resource_policy_input(policyName = policyName)
   output <- .cloudwatchlogs$delete_resource_policy_output()
@@ -756,7 +783,8 @@ cloudwatchlogs_delete_retention_policy <- function(logGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_retention_policy_input(logGroupName = logGroupName)
   output <- .cloudwatchlogs$delete_retention_policy_output()
@@ -787,7 +815,8 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$delete_subscription_filter_input(logGroupName = logGroupName, filterName = filterName)
   output <- .cloudwatchlogs$delete_subscription_filter_output()
@@ -828,7 +857,8 @@ cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_account_policies_input(policyType = policyType, policyName = policyName, accountIdentifiers = accountIdentifiers)
   output <- .cloudwatchlogs$describe_account_policies_output()
@@ -839,6 +869,52 @@ cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NU
   return(response)
 }
 .cloudwatchlogs$operations$describe_account_policies <- cloudwatchlogs_describe_account_policies
+
+#' Use this operation to return the valid and default values that are used
+#' when creating delivery sources, delivery destinations, and deliveries
+#'
+#' @description
+#' Use this operation to return the valid and default values that are used when creating delivery sources, delivery destinations, and deliveries. For more information about deliveries, see [`create_delivery`][cloudwatchlogs_create_delivery].
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_configuration_templates/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_configuration_templates/) for full documentation.
+#'
+#' @param service Use this parameter to filter the response to include only the
+#' configuration templates that apply to the Amazon Web Services service
+#' that you specify here.
+#' @param logTypes Use this parameter to filter the response to include only the
+#' configuration templates that apply to the log types that you specify
+#' here.
+#' @param resourceTypes Use this parameter to filter the response to include only the
+#' configuration templates that apply to the resource types that you
+#' specify here.
+#' @param deliveryDestinationTypes Use this parameter to filter the response to include only the
+#' configuration templates that apply to the delivery destination types
+#' that you specify here.
+#' @param nextToken 
+#' @param limit Use this parameter to limit the number of configuration templates that
+#' are returned in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_configuration_templates
+cloudwatchlogs_describe_configuration_templates <- function(service = NULL, logTypes = NULL, resourceTypes = NULL, deliveryDestinationTypes = NULL, nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "DescribeConfigurationTemplates",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "configurationTemplates"),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$describe_configuration_templates_input(service = service, logTypes = logTypes, resourceTypes = resourceTypes, deliveryDestinationTypes = deliveryDestinationTypes, nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$describe_configuration_templates_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_configuration_templates <- cloudwatchlogs_describe_configuration_templates
 
 #' Retrieves a list of the deliveries that have been created in the account
 #'
@@ -860,7 +936,8 @@ cloudwatchlogs_describe_deliveries <- function(nextToken = NULL, limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveries")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveries"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_deliveries_input(nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_deliveries_output()
@@ -893,7 +970,8 @@ cloudwatchlogs_describe_delivery_destinations <- function(nextToken = NULL, limi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveryDestinations")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveryDestinations"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_delivery_destinations_input(nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_delivery_destinations_output()
@@ -926,7 +1004,8 @@ cloudwatchlogs_describe_delivery_sources <- function(nextToken = NULL, limit = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliverySources")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliverySources"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_delivery_sources_input(nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_delivery_sources_output()
@@ -961,7 +1040,8 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "destinations")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "destinations"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_destinations_input(DestinationNamePrefix = DestinationNamePrefix, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_destinations_output()
@@ -998,7 +1078,8 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_export_tasks_input(taskId = taskId, statusCode = statusCode, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_export_tasks_output()
@@ -1049,10 +1130,10 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 #' monitoring account.
 #' @param logGroupClass Specifies the log group class for this log group. There are two classes:
 #' 
-#' -   The `Standard` log class supports all CloudWatch Logs features.
+#' - The `Standard` log class supports all CloudWatch Logs features.
 #' 
-#' -   The `Infrequent Access` log class supports a subset of CloudWatch
-#'     Logs features and incurs lower costs.
+#' - The `Infrequent Access` log class supports a subset of CloudWatch Logs
+#'   features and incurs lower costs.
 #' 
 #' For details about the features supported by each class, see [Log
 #' classes](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html)
@@ -1066,7 +1147,8 @@ cloudwatchlogs_describe_log_groups <- function(accountIdentifiers = NULL, logGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logGroups")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logGroups"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_log_groups_input(accountIdentifiers = accountIdentifiers, logGroupNamePrefix = logGroupNamePrefix, logGroupNamePattern = logGroupNamePattern, nextToken = nextToken, limit = limit, includeLinkedAccounts = includeLinkedAccounts, logGroupClass = logGroupClass)
   output <- .cloudwatchlogs$describe_log_groups_output()
@@ -1128,7 +1210,8 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName = NULL, logGroupIde
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logStreams")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "logStreams"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_log_streams_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNamePrefix = logStreamNamePrefix, orderBy = orderBy, descending = descending, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_log_streams_output()
@@ -1170,7 +1253,8 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "metricFilters")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "metricFilters"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_metric_filters_input(logGroupName = logGroupName, filterNamePrefix = filterNamePrefix, nextToken = nextToken, limit = limit, metricName = metricName, metricNamespace = metricNamespace)
   output <- .cloudwatchlogs$describe_metric_filters_output()
@@ -1206,7 +1290,8 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_queries_input(logGroupName = logGroupName, status = status, maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchlogs$describe_queries_output()
@@ -1240,7 +1325,8 @@ cloudwatchlogs_describe_query_definitions <- function(queryDefinitionNamePrefix 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_query_definitions_input(queryDefinitionNamePrefix = queryDefinitionNamePrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchlogs$describe_query_definitions_output()
@@ -1272,7 +1358,8 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_resource_policies_input(nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_resource_policies_output()
@@ -1308,7 +1395,8 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "subscriptionFilters")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "subscriptionFilters"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$describe_subscription_filters_input(logGroupName = logGroupName, filterNamePrefix = filterNamePrefix, nextToken = nextToken, limit = limit)
   output <- .cloudwatchlogs$describe_subscription_filters_output()
@@ -1336,21 +1424,21 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
 #' @param resourceIdentifier Specifies the target for this operation. You must specify one of the
 #' following:
 #' 
-#' -   Specify the ARN of a log group to stop having CloudWatch Logs use
-#'     the KMS key to encrypt log events that are ingested and stored by
-#'     that log group. After you run this operation, CloudWatch Logs
-#'     encrypts ingested log events with the default CloudWatch Logs
-#'     method. The log group ARN must be in the following format. Replace
-#'     *REGION* and *ACCOUNT_ID* with your Region and account ID.
+#' - Specify the ARN of a log group to stop having CloudWatch Logs use the
+#'   KMS key to encrypt log events that are ingested and stored by that log
+#'   group. After you run this operation, CloudWatch Logs encrypts ingested
+#'   log events with the default CloudWatch Logs method. The log group ARN
+#'   must be in the following format. Replace *REGION* and *ACCOUNT_ID*
+#'   with your Region and account ID.
 #' 
-#'     `arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME `
+#'   `arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME `
 #' 
-#' -   Specify the following ARN to stop using this key to encrypt the
-#'     results of future [`start_query`][cloudwatchlogs_start_query]
-#'     operations in this account. Replace *REGION* and *ACCOUNT_ID* with
-#'     your Region and account ID.
+#' - Specify the following ARN to stop using this key to encrypt the
+#'   results of future [`start_query`][cloudwatchlogs_start_query]
+#'   operations in this account. Replace *REGION* and *ACCOUNT_ID* with
+#'   your Region and account ID.
 #' 
-#'     `arn:aws:logs:REGION:ACCOUNT_ID:query-result:*`
+#'   `arn:aws:logs:REGION:ACCOUNT_ID:query-result:*`
 #' 
 #' In your `DisssociateKmsKey` operation, you must specify either the
 #' `resourceIdentifier` parameter or the `logGroup` parameter, but you
@@ -1365,7 +1453,8 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName = NULL, resourceIde
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$disassociate_kms_key_input(logGroupName = logGroupName, resourceIdentifier = resourceIdentifier)
   output <- .cloudwatchlogs$disassociate_kms_key_output()
@@ -1442,7 +1531,8 @@ cloudwatchlogs_filter_log_events <- function(logGroupName = NULL, logGroupIdenti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = list("events", "searchedLogStreams"))
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = list("events", "searchedLogStreams")),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$filter_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamNames = logStreamNames, logStreamNamePrefix = logStreamNamePrefix, startTime = startTime, endTime = endTime, filterPattern = filterPattern, nextToken = nextToken, limit = limit, interleaved = interleaved, unmask = unmask)
   output <- .cloudwatchlogs$filter_log_events_output()
@@ -1473,7 +1563,8 @@ cloudwatchlogs_get_data_protection_policy <- function(logGroupIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier)
   output <- .cloudwatchlogs$get_data_protection_policy_output()
@@ -1503,7 +1594,8 @@ cloudwatchlogs_get_delivery <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_delivery_input(id = id)
   output <- .cloudwatchlogs$get_delivery_output()
@@ -1533,7 +1625,8 @@ cloudwatchlogs_get_delivery_destination <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_delivery_destination_input(name = name)
   output <- .cloudwatchlogs$get_delivery_destination_output()
@@ -1565,7 +1658,8 @@ cloudwatchlogs_get_delivery_destination_policy <- function(deliveryDestinationNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName)
   output <- .cloudwatchlogs$get_delivery_destination_policy_output()
@@ -1595,7 +1689,8 @@ cloudwatchlogs_get_delivery_source <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_delivery_source_input(name = name)
   output <- .cloudwatchlogs$get_delivery_source_output()
@@ -1628,7 +1723,8 @@ cloudwatchlogs_get_log_anomaly_detector <- function(anomalyDetectorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn)
   output <- .cloudwatchlogs$get_log_anomaly_detector_output()
@@ -1691,7 +1787,8 @@ cloudwatchlogs_get_log_events <- function(logGroupName = NULL, logGroupIdentifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextForwardToken", result_key = "events")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextForwardToken", result_key = "events"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_log_events_input(logGroupName = logGroupName, logGroupIdentifier = logGroupIdentifier, logStreamName = logStreamName, startTime = startTime, endTime = endTime, nextToken = nextToken, limit = limit, startFromHead = startFromHead, unmask = unmask)
   output <- .cloudwatchlogs$get_log_events_output()
@@ -1737,7 +1834,8 @@ cloudwatchlogs_get_log_group_fields <- function(logGroupName = NULL, time = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_log_group_fields_input(logGroupName = logGroupName, time = time, logGroupIdentifier = logGroupIdentifier)
   output <- .cloudwatchlogs$get_log_group_fields_output()
@@ -1777,7 +1875,8 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer, unmask = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_log_record_input(logRecordPointer = logRecordPointer, unmask = unmask)
   output <- .cloudwatchlogs$get_log_record_output()
@@ -1807,7 +1906,8 @@ cloudwatchlogs_get_query_results <- function(queryId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$get_query_results_input(queryId = queryId)
   output <- .cloudwatchlogs$get_query_results_output()
@@ -1843,7 +1943,8 @@ cloudwatchlogs_list_anomalies <- function(anomalyDetectorArn = NULL, suppression
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalies")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalies"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$list_anomalies_input(anomalyDetectorArn = anomalyDetectorArn, suppressionState = suppressionState, limit = limit, nextToken = nextToken)
   output <- .cloudwatchlogs$list_anomalies_output()
@@ -1877,7 +1978,8 @@ cloudwatchlogs_list_log_anomaly_detectors <- function(filterLogGroupArn = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalyDetectors")
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "anomalyDetectors"),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$list_log_anomaly_detectors_input(filterLogGroupArn = filterLogGroupArn, limit = limit, nextToken = nextToken)
   output <- .cloudwatchlogs$list_log_anomaly_detectors_output()
@@ -1917,7 +2019,8 @@ cloudwatchlogs_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .cloudwatchlogs$list_tags_for_resource_output()
@@ -1947,7 +2050,8 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$list_tags_log_group_input(logGroupName = logGroupName)
   output <- .cloudwatchlogs$list_tags_log_group_output()
@@ -1975,28 +2079,27 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' 
 #' A data protection policy must include two JSON blocks:
 #' 
-#' -   The first block must include both a `DataIdentifer` array and an
-#'     `Operation` property with an `Audit` action. The `DataIdentifer`
-#'     array lists the types of sensitive data that you want to mask. For
-#'     more information about the available options, see [Types of data
-#'     that you can
-#'     mask](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/).
+#' - The first block must include both a `DataIdentifer` array and an
+#'   `Operation` property with an `Audit` action. The `DataIdentifer` array
+#'   lists the types of sensitive data that you want to mask. For more
+#'   information about the available options, see [Types of data that you
+#'   can mask](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/).
 #' 
-#'     The `Operation` property with an `Audit` action is required to find
-#'     the sensitive data terms. This `Audit` action must contain a
-#'     `FindingsDestination` object. You can optionally use that
-#'     `FindingsDestination` object to list one or more destinations to
-#'     send audit findings to. If you specify destinations such as log
-#'     groups, Firehose streams, and S3 buckets, they must already exist.
+#'   The `Operation` property with an `Audit` action is required to find
+#'   the sensitive data terms. This `Audit` action must contain a
+#'   `FindingsDestination` object. You can optionally use that
+#'   `FindingsDestination` object to list one or more destinations to send
+#'   audit findings to. If you specify destinations such as log groups,
+#'   Firehose streams, and S3 buckets, they must already exist.
 #' 
-#' -   The second block must include both a `DataIdentifer` array and an
-#'     `Operation` property with an `Deidentify` action. The
-#'     `DataIdentifer` array must exactly match the `DataIdentifer` array
-#'     in the first block of the policy.
+#' - The second block must include both a `DataIdentifer` array and an
+#'   `Operation` property with an `Deidentify` action. The `DataIdentifer`
+#'   array must exactly match the `DataIdentifer` array in the first block
+#'   of the policy.
 #' 
-#'     The `Operation` property with the `Deidentify` action is what
-#'     actually masks the data, and it must contain the ` "MaskConfig": {}`
-#'     object. The ` "MaskConfig": {}` object must be empty.
+#'   The `Operation` property with the `Deidentify` action is what actually
+#'   masks the data, and it must contain the ` "MaskConfig": {}` object.
+#'   The ` "MaskConfig": {}` object must be empty.
 #' 
 #' For an example data protection policy, see the **Examples** section on
 #' this page.
@@ -2017,36 +2120,36 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 #' A subscription filter policy can include the following attributes in a
 #' JSON block:
 #' 
-#' -   **DestinationArn** The ARN of the destination to deliver log events
-#'     to. Supported destinations are:
+#' - **DestinationArn** The ARN of the destination to deliver log events
+#'   to. Supported destinations are:
 #' 
-#'     -   An Kinesis Data Streams data stream in the same account as the
-#'         subscription policy, for same-account delivery.
+#'   - An Kinesis Data Streams data stream in the same account as the
+#'     subscription policy, for same-account delivery.
 #' 
-#'     -   An Firehose data stream in the same account as the subscription
-#'         policy, for same-account delivery.
+#'   - An Firehose data stream in the same account as the subscription
+#'     policy, for same-account delivery.
 #' 
-#'     -   A Lambda function in the same account as the subscription
-#'         policy, for same-account delivery.
+#'   - A Lambda function in the same account as the subscription policy,
+#'     for same-account delivery.
 #' 
-#'     -   A logical destination in a different account created with
-#'         [`put_destination`][cloudwatchlogs_put_destination], for
-#'         cross-account delivery. Kinesis Data Streams and Firehose are
-#'         supported as logical destinations.
+#'   - A logical destination in a different account created with
+#'     [`put_destination`][cloudwatchlogs_put_destination], for
+#'     cross-account delivery. Kinesis Data Streams and Firehose are
+#'     supported as logical destinations.
 #' 
-#' -   **RoleArn** The ARN of an IAM role that grants CloudWatch Logs
-#'     permissions to deliver ingested log events to the destination
-#'     stream. You don't need to provide the ARN when you are working with
-#'     a logical destination for cross-account delivery.
+#' - **RoleArn** The ARN of an IAM role that grants CloudWatch Logs
+#'   permissions to deliver ingested log events to the destination stream.
+#'   You don't need to provide the ARN when you are working with a logical
+#'   destination for cross-account delivery.
 #' 
-#' -   **FilterPattern** A filter pattern for subscribing to a filtered
-#'     stream of log events.
+#' - **FilterPattern** A filter pattern for subscribing to a filtered
+#'   stream of log events.
 #' 
-#' -   **Distribution** The method used to distribute log data to the
-#'     destination. By default, log data is grouped by log stream, but the
-#'     grouping can be set to `Random` for a more even distribution. This
-#'     property is only applicable when the destination is an Kinesis Data
-#'     Streams data stream.
+#' - **Distribution** The method used to distribute log data to the
+#'   destination. By default, log data is grouped by log stream, but the
+#'   grouping can be set to `Random` for a more even distribution. This
+#'   property is only applicable when the destination is an Kinesis Data
+#'   Streams data stream.
 #' @param policyType &#91;required&#93; The type of policy that you're creating or updating.
 #' @param scope Currently the only valid value for this parameter is `ALL`, which
 #' specifies that the data protection policy applies to all log groups in
@@ -2072,7 +2175,8 @@ cloudwatchlogs_put_account_policy <- function(policyName, policyDocument, policy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_account_policy_input(policyName = policyName, policyDocument = policyDocument, policyType = policyType, scope = scope, selectionCriteria = selectionCriteria)
   output <- .cloudwatchlogs$put_account_policy_output()
@@ -2096,28 +2200,27 @@ cloudwatchlogs_put_account_policy <- function(policyName, policyDocument, policy
 #' 
 #' This policy must include two JSON blocks:
 #' 
-#' -   The first block must include both a `DataIdentifer` array and an
-#'     `Operation` property with an `Audit` action. The `DataIdentifer`
-#'     array lists the types of sensitive data that you want to mask. For
-#'     more information about the available options, see [Types of data
-#'     that you can
-#'     mask](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/).
+#' - The first block must include both a `DataIdentifer` array and an
+#'   `Operation` property with an `Audit` action. The `DataIdentifer` array
+#'   lists the types of sensitive data that you want to mask. For more
+#'   information about the available options, see [Types of data that you
+#'   can mask](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/).
 #' 
-#'     The `Operation` property with an `Audit` action is required to find
-#'     the sensitive data terms. This `Audit` action must contain a
-#'     `FindingsDestination` object. You can optionally use that
-#'     `FindingsDestination` object to list one or more destinations to
-#'     send audit findings to. If you specify destinations such as log
-#'     groups, Firehose streams, and S3 buckets, they must already exist.
+#'   The `Operation` property with an `Audit` action is required to find
+#'   the sensitive data terms. This `Audit` action must contain a
+#'   `FindingsDestination` object. You can optionally use that
+#'   `FindingsDestination` object to list one or more destinations to send
+#'   audit findings to. If you specify destinations such as log groups,
+#'   Firehose streams, and S3 buckets, they must already exist.
 #' 
-#' -   The second block must include both a `DataIdentifer` array and an
-#'     `Operation` property with an `Deidentify` action. The
-#'     `DataIdentifer` array must exactly match the `DataIdentifer` array
-#'     in the first block of the policy.
+#' - The second block must include both a `DataIdentifer` array and an
+#'   `Operation` property with an `Deidentify` action. The `DataIdentifer`
+#'   array must exactly match the `DataIdentifer` array in the first block
+#'   of the policy.
 #' 
-#'     The `Operation` property with the `Deidentify` action is what
-#'     actually masks the data, and it must contain the ` "MaskConfig": {}`
-#'     object. The ` "MaskConfig": {}` object must be empty.
+#'   The `Operation` property with the `Deidentify` action is what actually
+#'   masks the data, and it must contain the ` "MaskConfig": {}` object.
+#'   The ` "MaskConfig": {}` object must be empty.
 #' 
 #' For an example data protection policy, see the **Examples** section on
 #' this page.
@@ -2140,7 +2243,8 @@ cloudwatchlogs_put_data_protection_policy <- function(logGroupIdentifier, policy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_data_protection_policy_input(logGroupIdentifier = logGroupIdentifier, policyDocument = policyDocument)
   output <- .cloudwatchlogs$put_data_protection_policy_output()
@@ -2178,7 +2282,8 @@ cloudwatchlogs_put_delivery_destination <- function(name, outputFormat = NULL, d
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_delivery_destination_input(name = name, outputFormat = outputFormat, deliveryDestinationConfiguration = deliveryDestinationConfiguration, tags = tags)
   output <- .cloudwatchlogs$put_delivery_destination_output()
@@ -2211,7 +2316,8 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName, deliveryDestinationPolicy = deliveryDestinationPolicy)
   output <- .cloudwatchlogs$put_delivery_destination_policy_output()
@@ -2237,15 +2343,15 @@ cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationNa
 #' `arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234`
 #' @param logType &#91;required&#93; Defines the type of log that the source is sending.
 #' 
-#' -   For Amazon Bedrock, the valid value is `APPLICATION_LOGS`.
+#' - For Amazon Bedrock, the valid value is `APPLICATION_LOGS`.
 #' 
-#' -   For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`.
+#' - For Amazon CodeWhisperer, the valid value is `EVENT_LOGS`.
 #' 
-#' -   For IAM Identity Center, the valid value is `ERROR_LOGS`.
+#' - For IAM Identity Center, the valid value is `ERROR_LOGS`.
 #' 
-#' -   For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`,
-#'     `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and
-#'     `WORKMAIL_MAILBOX_ACCESS_LOGS`.
+#' - For Amazon WorkMail, the valid values are `ACCESS_CONTROL_LOGS`,
+#'   `AUTHENTICATION_LOGS`, `WORKMAIL_AVAILABILITY_PROVIDER_LOGS`, and
+#'   `WORKMAIL_MAILBOX_ACCESS_LOGS`.
 #' @param tags An optional list of key-value pairs to associate with the resource.
 #' 
 #' For more information about tagging, see [Tagging Amazon Web Services
@@ -2260,7 +2366,8 @@ cloudwatchlogs_put_delivery_source <- function(name, resourceArn, logType, tags 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_delivery_source_input(name = name, resourceArn = resourceArn, logType = logType, tags = tags)
   output <- .cloudwatchlogs$put_delivery_source_output()
@@ -2298,7 +2405,8 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_destination_input(destinationName = destinationName, targetArn = targetArn, roleArn = roleArn, tags = tags)
   output <- .cloudwatchlogs$put_destination_output()
@@ -2344,7 +2452,8 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_destination_policy_input(destinationName = destinationName, accessPolicy = accessPolicy, forceUpdate = forceUpdate)
   output <- .cloudwatchlogs$put_destination_policy_output()
@@ -2374,7 +2483,7 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy,
 #' [`put_log_events`][cloudwatchlogs_put_log_events] actions are now
 #' accepted and never return `InvalidSequenceTokenException` or
 #' `DataAlreadyAcceptedException` even if the sequence token is not valid.
-#' @param entity Reserved for future use.
+#' @param entity Reserved for internal use.
 #'
 #' @keywords internal
 #'
@@ -2385,7 +2494,8 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_log_events_input(logGroupName = logGroupName, logStreamName = logStreamName, logEvents = logEvents, sequenceToken = sequenceToken, entity = entity)
   output <- .cloudwatchlogs$put_log_events_output()
@@ -2419,7 +2529,8 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_metric_filter_input(logGroupName = logGroupName, filterName = filterName, filterPattern = filterPattern, metricTransformations = metricTransformations)
   output <- .cloudwatchlogs$put_metric_filter_output()
@@ -2471,7 +2582,8 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_query_definition_input(name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString, clientToken = clientToken)
   output <- .cloudwatchlogs$put_query_definition_output()
@@ -2523,7 +2635,8 @@ cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_resource_policy_input(policyName = policyName, policyDocument = policyDocument)
   output <- .cloudwatchlogs$put_resource_policy_output()
@@ -2554,7 +2667,8 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_retention_policy_input(logGroupName = logGroupName, retentionInDays = retentionInDays)
   output <- .cloudwatchlogs$put_retention_policy_output()
@@ -2583,23 +2697,22 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' @param destinationArn &#91;required&#93; The ARN of the destination to deliver matching log events to. Currently,
 #' the supported destinations are:
 #' 
-#' -   An Amazon Kinesis stream belonging to the same account as the
-#'     subscription filter, for same-account delivery.
+#' - An Amazon Kinesis stream belonging to the same account as the
+#'   subscription filter, for same-account delivery.
 #' 
-#' -   A logical destination (specified using an ARN) belonging to a
-#'     different account, for cross-account delivery.
+#' - A logical destination (specified using an ARN) belonging to a
+#'   different account, for cross-account delivery.
 #' 
-#'     If you're setting up a cross-account subscription, the destination
-#'     must have an IAM policy associated with it. The IAM policy must
-#'     allow the sender to send logs to the destination. For more
-#'     information, see
-#'     [`put_destination_policy`][cloudwatchlogs_put_destination_policy].
+#'   If you're setting up a cross-account subscription, the destination
+#'   must have an IAM policy associated with it. The IAM policy must allow
+#'   the sender to send logs to the destination. For more information, see
+#'   [`put_destination_policy`][cloudwatchlogs_put_destination_policy].
 #' 
-#' -   A Kinesis Data Firehose delivery stream belonging to the same
-#'     account as the subscription filter, for same-account delivery.
+#' - A Kinesis Data Firehose delivery stream belonging to the same account
+#'   as the subscription filter, for same-account delivery.
 #' 
-#' -   A Lambda function belonging to the same account as the subscription
-#'     filter, for same-account delivery.
+#' - A Lambda function belonging to the same account as the subscription
+#'   filter, for same-account delivery.
 #' @param roleArn The ARN of an IAM role that grants CloudWatch Logs permissions to
 #' deliver ingested log events to the destination stream. You don't need to
 #' provide the ARN when you are working with a logical destination for
@@ -2618,7 +2731,8 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$put_subscription_filter_input(logGroupName = logGroupName, filterName = filterName, filterPattern = filterPattern, destinationArn = destinationArn, roleArn = roleArn, distribution = distribution)
   output <- .cloudwatchlogs$put_subscription_filter_output()
@@ -2682,7 +2796,8 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
     http_method = "POST",
     http_path = "/",
     host_prefix = "streaming-",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$start_live_tail_input(logGroupIdentifiers = logGroupIdentifiers, logStreamNames = logStreamNames, logStreamNamePrefixes = logStreamNamePrefixes, logEventFilterPattern = logEventFilterPattern)
   output <- .cloudwatchlogs$start_live_tail_output()
@@ -2746,7 +2861,8 @@ cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$start_query_input(logGroupName = logGroupName, logGroupNames = logGroupNames, logGroupIdentifiers = logGroupIdentifiers, startTime = startTime, endTime = endTime, queryString = queryString, limit = limit)
   output <- .cloudwatchlogs$start_query_output()
@@ -2777,7 +2893,8 @@ cloudwatchlogs_stop_query <- function(queryId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$stop_query_input(queryId = queryId)
   output <- .cloudwatchlogs$stop_query_output()
@@ -2808,7 +2925,8 @@ cloudwatchlogs_tag_log_group <- function(logGroupName, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$tag_log_group_input(logGroupName = logGroupName, tags = tags)
   output <- .cloudwatchlogs$tag_log_group_output()
@@ -2850,7 +2968,8 @@ cloudwatchlogs_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .cloudwatchlogs$tag_resource_output()
@@ -2882,7 +3001,8 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$test_metric_filter_input(filterPattern = filterPattern, logEventMessages = logEventMessages)
   output <- .cloudwatchlogs$test_metric_filter_output()
@@ -2913,7 +3033,8 @@ cloudwatchlogs_untag_log_group <- function(logGroupName, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$untag_log_group_input(logGroupName = logGroupName, tags = tags)
   output <- .cloudwatchlogs$untag_log_group_output()
@@ -2954,7 +3075,8 @@ cloudwatchlogs_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .cloudwatchlogs$untag_resource_output()
@@ -2996,7 +3118,8 @@ cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, an
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$update_anomaly_input(anomalyId = anomalyId, patternId = patternId, anomalyDetectorArn = anomalyDetectorArn, suppressionType = suppressionType, suppressionPeriod = suppressionPeriod)
   output <- .cloudwatchlogs$update_anomaly_output()
@@ -3007,6 +3130,45 @@ cloudwatchlogs_update_anomaly <- function(anomalyId = NULL, patternId = NULL, an
   return(response)
 }
 .cloudwatchlogs$operations$update_anomaly <- cloudwatchlogs_update_anomaly
+
+#' Use this operation to update the configuration of a delivery to change
+#' either the S3 path pattern or the format of the delivered logs
+#'
+#' @description
+#' Use this operation to update the configuration of a [delivery](https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_Delivery.html) to change either the S3 path pattern or the format of the delivered logs. You can't use this operation to change the source or destination of the delivery.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_delivery_configuration/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_update_delivery_configuration/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the delivery to be updated by this request.
+#' @param recordFields The list of record fields to be delivered to the destination, in order.
+#' If the delivery’s log source has mandatory fields, they must be included
+#' in this list.
+#' @param fieldDelimiter The field delimiter to use between record fields when the final output
+#' format of a delivery is in `Plain`, `W3C`, or `Raw` format.
+#' @param s3DeliveryConfiguration This structure contains parameters that are valid only when the
+#' delivery’s delivery destination is an S3 bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_update_delivery_configuration
+cloudwatchlogs_update_delivery_configuration <- function(id, recordFields = NULL, fieldDelimiter = NULL, s3DeliveryConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateDeliveryConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    host_prefix = "",
+    paginator = list(),
+    stream_api = FALSE
+  )
+  input <- .cloudwatchlogs$update_delivery_configuration_input(id = id, recordFields = recordFields, fieldDelimiter = fieldDelimiter, s3DeliveryConfiguration = s3DeliveryConfiguration)
+  output <- .cloudwatchlogs$update_delivery_configuration_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config, op)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$update_delivery_configuration <- cloudwatchlogs_update_delivery_configuration
 
 #' Updates an existing log anomaly detector
 #'
@@ -3038,7 +3200,8 @@ cloudwatchlogs_update_log_anomaly_detector <- function(anomalyDetectorArn, evalu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchlogs$update_log_anomaly_detector_input(anomalyDetectorArn = anomalyDetectorArn, evaluationFrequency = evaluationFrequency, filterPattern = filterPattern, anomalyVisibilityTime = anomalyVisibilityTime, enabled = enabled)
   output <- .cloudwatchlogs$update_log_anomaly_detector_output()

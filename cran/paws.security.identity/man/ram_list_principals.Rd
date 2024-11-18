@@ -20,8 +20,8 @@ ram_list_principals(
 that match the following:
 \itemize{
 \item \strong{\code{SELF}} – principals that your account is sharing resources with
-\item \strong{\code{OTHER-ACCOUNTS}} – principals that are sharing resources with
-your account
+\item \strong{\code{OTHER-ACCOUNTS}} – principals that are sharing resources with your
+account
 }}
 
 \item{resourceArn}{Specifies that you want to list principal information for the resource
@@ -38,8 +38,7 @@ of an organization in Organizations, for example:
 \verb{organizations::123456789012:organization/o-exampleorgid}
 \item An ARN of an organizational unit (OU) in Organizations, for example:
 \verb{organizations::123456789012:ou/o-exampleorgid/ou-examplerootid-exampleouid123}
-\item An ARN of an IAM role, for example:
-\verb{iam::123456789012:role/rolename}
+\item An ARN of an IAM role, for example: \verb{iam::123456789012:role/rolename}
 \item An ARN of an IAM user, for example: \verb{iam::123456789012user/username}
 }
 

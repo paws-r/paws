@@ -6,7 +6,7 @@ NULL
 #' Assigns a Grafana Enterprise license to a workspace
 #'
 #' @description
-#' Assigns a Grafana Enterprise license to a workspace. To upgrade, you must use `ENTERPRISE` for the `licenseType`, and pass in a valid Grafana Labs token for the `grafanaToken`. Upgrading to Grafana Enterprise incurs additional fees. For more information, see [Upgrade a workspace to Grafana Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-enterprise-plugins.html).
+#' Assigns a Grafana Enterprise license to a workspace. To upgrade, you must use `ENTERPRISE` for the `licenseType`, and pass in a valid Grafana Labs token for the `grafanaToken`. Upgrading to Grafana Enterprise incurs additional fees. For more information, see [Upgrade a workspace to Grafana Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/managedgrafana_associate_license/](https://www.paws-r-sdk.com/docs/managedgrafana_associate_license/) for full documentation.
 #'
@@ -29,7 +29,8 @@ managedgrafana_associate_license <- function(grafanaToken = NULL, licenseType, w
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/licenses/{licenseType}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$associate_license_input(grafanaToken = grafanaToken, licenseType = licenseType, workspaceId = workspaceId)
   output <- .managedgrafana$associate_license_output()
@@ -137,7 +138,8 @@ managedgrafana_create_workspace <- function(accountAccessType, authenticationPro
     http_method = "POST",
     http_path = "/workspaces",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$create_workspace_input(accountAccessType = accountAccessType, authenticationProviders = authenticationProviders, clientToken = clientToken, configuration = configuration, grafanaVersion = grafanaVersion, networkAccessControl = networkAccessControl, organizationRoleName = organizationRoleName, permissionType = permissionType, stackSetName = stackSetName, tags = tags, vpcConfiguration = vpcConfiguration, workspaceDataSources = workspaceDataSources, workspaceDescription = workspaceDescription, workspaceName = workspaceName, workspaceNotificationDestinations = workspaceNotificationDestinations, workspaceOrganizationalUnits = workspaceOrganizationalUnits, workspaceRoleArn = workspaceRoleArn)
   output <- .managedgrafana$create_workspace_output()
@@ -173,7 +175,8 @@ managedgrafana_create_workspace_api_key <- function(keyName, keyRole, secondsToL
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/apikeys",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$create_workspace_api_key_input(keyName = keyName, keyRole = keyRole, secondsToLive = secondsToLive, workspaceId = workspaceId)
   output <- .managedgrafana$create_workspace_api_key_output()
@@ -211,7 +214,8 @@ managedgrafana_create_workspace_service_account <- function(grafanaRole, name, w
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/serviceaccounts",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$create_workspace_service_account_input(grafanaRole = grafanaRole, name = name, workspaceId = workspaceId)
   output <- .managedgrafana$create_workspace_service_account_output()
@@ -246,7 +250,8 @@ managedgrafana_create_workspace_service_account_token <- function(name, secondsT
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/serviceaccounts/{serviceAccountId}/tokens",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$create_workspace_service_account_token_input(name = name, secondsToLive = secondsToLive, serviceAccountId = serviceAccountId, workspaceId = workspaceId)
   output <- .managedgrafana$create_workspace_service_account_token_output()
@@ -276,7 +281,8 @@ managedgrafana_delete_workspace <- function(workspaceId) {
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$delete_workspace_input(workspaceId = workspaceId)
   output <- .managedgrafana$delete_workspace_output()
@@ -307,7 +313,8 @@ managedgrafana_delete_workspace_api_key <- function(keyName, workspaceId) {
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/apikeys/{keyName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$delete_workspace_api_key_input(keyName = keyName, workspaceId = workspaceId)
   output <- .managedgrafana$delete_workspace_api_key_output()
@@ -338,7 +345,8 @@ managedgrafana_delete_workspace_service_account <- function(serviceAccountId, wo
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/serviceaccounts/{serviceAccountId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$delete_workspace_service_account_input(serviceAccountId = serviceAccountId, workspaceId = workspaceId)
   output <- .managedgrafana$delete_workspace_service_account_output()
@@ -370,7 +378,8 @@ managedgrafana_delete_workspace_service_account_token <- function(serviceAccount
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/serviceaccounts/{serviceAccountId}/tokens/{tokenId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$delete_workspace_service_account_token_input(serviceAccountId = serviceAccountId, tokenId = tokenId, workspaceId = workspaceId)
   output <- .managedgrafana$delete_workspace_service_account_token_output()
@@ -400,7 +409,8 @@ managedgrafana_describe_workspace <- function(workspaceId) {
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$describe_workspace_input(workspaceId = workspaceId)
   output <- .managedgrafana$describe_workspace_output()
@@ -431,7 +441,8 @@ managedgrafana_describe_workspace_authentication <- function(workspaceId) {
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/authentication",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$describe_workspace_authentication_input(workspaceId = workspaceId)
   output <- .managedgrafana$describe_workspace_authentication_output()
@@ -461,7 +472,8 @@ managedgrafana_describe_workspace_configuration <- function(workspaceId) {
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/configuration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$describe_workspace_configuration_input(workspaceId = workspaceId)
   output <- .managedgrafana$describe_workspace_configuration_output()
@@ -492,7 +504,8 @@ managedgrafana_disassociate_license <- function(licenseType, workspaceId) {
     http_method = "DELETE",
     http_path = "/workspaces/{workspaceId}/licenses/{licenseType}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$disassociate_license_input(licenseType = licenseType, workspaceId = workspaceId)
   output <- .managedgrafana$disassociate_license_output()
@@ -533,7 +546,8 @@ managedgrafana_list_permissions <- function(groupId = NULL, maxResults = NULL, n
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/permissions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions"),
+    stream_api = FALSE
   )
   input <- .managedgrafana$list_permissions_input(groupId = groupId, maxResults = maxResults, nextToken = nextToken, userId = userId, userType = userType, workspaceId = workspaceId)
   output <- .managedgrafana$list_permissions_output()
@@ -565,7 +579,8 @@ managedgrafana_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .managedgrafana$list_tags_for_resource_output()
@@ -601,7 +616,8 @@ managedgrafana_list_versions <- function(maxResults = NULL, nextToken = NULL, wo
     http_method = "GET",
     http_path = "/versions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grafanaVersions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grafanaVersions"),
+    stream_api = FALSE
   )
   input <- .managedgrafana$list_versions_input(maxResults = maxResults, nextToken = nextToken, workspaceId = workspaceId)
   output <- .managedgrafana$list_versions_output()
@@ -637,7 +653,8 @@ managedgrafana_list_workspace_service_account_tokens <- function(maxResults = NU
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/serviceaccounts/{serviceAccountId}/tokens",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceAccountTokens")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceAccountTokens"),
+    stream_api = FALSE
   )
   input <- .managedgrafana$list_workspace_service_account_tokens_input(maxResults = maxResults, nextToken = nextToken, serviceAccountId = serviceAccountId, workspaceId = workspaceId)
   output <- .managedgrafana$list_workspace_service_account_tokens_output()
@@ -672,7 +689,8 @@ managedgrafana_list_workspace_service_accounts <- function(maxResults = NULL, ne
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/serviceaccounts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceAccounts")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceAccounts"),
+    stream_api = FALSE
   )
   input <- .managedgrafana$list_workspace_service_accounts_input(maxResults = maxResults, nextToken = nextToken, workspaceId = workspaceId)
   output <- .managedgrafana$list_workspace_service_accounts_output()
@@ -706,7 +724,8 @@ managedgrafana_list_workspaces <- function(maxResults = NULL, nextToken = NULL) 
     http_method = "GET",
     http_path = "/workspaces",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces"),
+    stream_api = FALSE
   )
   input <- .managedgrafana$list_workspaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .managedgrafana$list_workspaces_output()
@@ -740,7 +759,8 @@ managedgrafana_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .managedgrafana$tag_resource_output()
@@ -772,7 +792,8 @@ managedgrafana_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .managedgrafana$untag_resource_output()
@@ -804,7 +825,8 @@ managedgrafana_update_permissions <- function(updateInstructionBatch, workspaceI
     http_method = "PATCH",
     http_path = "/workspaces/{workspaceId}/permissions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$update_permissions_input(updateInstructionBatch = updateInstructionBatch, workspaceId = workspaceId)
   output <- .managedgrafana$update_permissions_output()
@@ -909,7 +931,8 @@ managedgrafana_update_workspace <- function(accountAccessType = NULL, networkAcc
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$update_workspace_input(accountAccessType = accountAccessType, networkAccessControl = networkAccessControl, organizationRoleName = organizationRoleName, permissionType = permissionType, removeNetworkAccessConfiguration = removeNetworkAccessConfiguration, removeVpcConfiguration = removeVpcConfiguration, stackSetName = stackSetName, vpcConfiguration = vpcConfiguration, workspaceDataSources = workspaceDataSources, workspaceDescription = workspaceDescription, workspaceId = workspaceId, workspaceName = workspaceName, workspaceNotificationDestinations = workspaceNotificationDestinations, workspaceOrganizationalUnits = workspaceOrganizationalUnits, workspaceRoleArn = workspaceRoleArn)
   output <- .managedgrafana$update_workspace_output()
@@ -949,7 +972,8 @@ managedgrafana_update_workspace_authentication <- function(authenticationProvide
     http_method = "POST",
     http_path = "/workspaces/{workspaceId}/authentication",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$update_workspace_authentication_input(authenticationProviders = authenticationProviders, samlConfiguration = samlConfiguration, workspaceId = workspaceId)
   output <- .managedgrafana$update_workspace_authentication_output()
@@ -992,7 +1016,8 @@ managedgrafana_update_workspace_configuration <- function(configuration, grafana
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/configuration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .managedgrafana$update_workspace_configuration_input(configuration = configuration, grafanaVersion = grafanaVersion, workspaceId = workspaceId)
   output <- .managedgrafana$update_workspace_configuration_output()

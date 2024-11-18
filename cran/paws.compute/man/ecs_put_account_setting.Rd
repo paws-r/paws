@@ -11,72 +11,71 @@ ecs_put_account_setting(name, value, principalArn = NULL)
 
 The following are the valid values for the account setting name.
 \itemize{
-\item \code{serviceLongArnFormat} - When modified, the Amazon Resource Name
-(ARN) and resource ID format of the resource type for a specified
-user, role, or the root user for an account is affected. The opt-in
-and opt-out account setting must be set for each Amazon ECS resource
-separately. The ARN and resource ID format of a resource is defined
-by the opt-in status of the user or role that created the resource.
-You must turn on this setting to use Amazon ECS features such as
-resource tagging.
+\item \code{serviceLongArnFormat} - When modified, the Amazon Resource Name (ARN)
+and resource ID format of the resource type for a specified user,
+role, or the root user for an account is affected. The opt-in and
+opt-out account setting must be set for each Amazon ECS resource
+separately. The ARN and resource ID format of a resource is defined by
+the opt-in status of the user or role that created the resource. You
+must turn on this setting to use Amazon ECS features such as resource
+tagging.
 \item \code{taskLongArnFormat} - When modified, the Amazon Resource Name (ARN)
 and resource ID format of the resource type for a specified user,
 role, or the root user for an account is affected. The opt-in and
 opt-out account setting must be set for each Amazon ECS resource
-separately. The ARN and resource ID format of a resource is defined
-by the opt-in status of the user or role that created the resource.
-You must turn on this setting to use Amazon ECS features such as
-resource tagging.
-\item \code{containerInstanceLongArnFormat} - When modified, the Amazon
-Resource Name (ARN) and resource ID format of the resource type for
-a specified user, role, or the root user for an account is affected.
-The opt-in and opt-out account setting must be set for each Amazon
-ECS resource separately. The ARN and resource ID format of a
-resource is defined by the opt-in status of the user or role that
-created the resource. You must turn on this setting to use Amazon
-ECS features such as resource tagging.
-\item \code{awsvpcTrunking} - When modified, the elastic network interface
-(ENI) limit for any new container instances that support the feature
-is changed. If \code{awsvpcTrunking} is turned on, any new container
-instances that support the feature are launched have the increased
-ENI limits available to them. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html}{Elastic Network Interface Trunking}
+separately. The ARN and resource ID format of a resource is defined by
+the opt-in status of the user or role that created the resource. You
+must turn on this setting to use Amazon ECS features such as resource
+tagging.
+\item \code{containerInstanceLongArnFormat} - When modified, the Amazon Resource
+Name (ARN) and resource ID format of the resource type for a specified
+user, role, or the root user for an account is affected. The opt-in
+and opt-out account setting must be set for each Amazon ECS resource
+separately. The ARN and resource ID format of a resource is defined by
+the opt-in status of the user or role that created the resource. You
+must turn on this setting to use Amazon ECS features such as resource
+tagging.
+\item \code{awsvpcTrunking} - When modified, the elastic network interface (ENI)
+limit for any new container instances that support the feature is
+changed. If \code{awsvpcTrunking} is turned on, any new container instances
+that support the feature are launched have the increased ENI limits
+available to them. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html}{Elastic Network Interface Trunking}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 \item \code{containerInsights} - When modified, the default setting indicating
-whether Amazon Web Services CloudWatch Container Insights is turned
-on for your clusters is changed. If \code{containerInsights} is turned
-on, any new clusters that are created will have Container Insights
-turned on unless you disable it during cluster creation. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html}{CloudWatch Container Insights}
+whether Amazon Web Services CloudWatch Container Insights is turned on
+for your clusters is changed. If \code{containerInsights} is turned on, any
+new clusters that are created will have Container Insights turned on
+unless you disable it during cluster creation. For more information,
+see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html}{CloudWatch Container Insights}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
-\item \code{dualStackIPv6} - When turned on, when using a VPC in dual stack
-mode, your tasks using the \code{awsvpc} network mode can have an IPv6
-address assigned. For more information on using IPv6 with tasks
-launched on Amazon EC2 instances, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking-awsvpc.html#task-networking-vpc-dual-stack}{Using a VPC in dual-stack mode}.
-For more information on using IPv6 with tasks launched on Fargate,
-see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack}{Using a VPC in dual-stack mode}.
-\item \code{fargateFIPSMode} - If you specify \code{fargateFIPSMode}, Fargate FIPS
-140 compliance is affected.
+\item \code{dualStackIPv6} - When turned on, when using a VPC in dual stack mode,
+your tasks using the \code{awsvpc} network mode can have an IPv6 address
+assigned. For more information on using IPv6 with tasks launched on
+Amazon EC2 instances, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking-awsvpc.html#task-networking-vpc-dual-stack}{Using a VPC in dual-stack mode}.
+For more information on using IPv6 with tasks launched on Fargate, see
+\href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack}{Using a VPC in dual-stack mode}.
+\item \code{fargateFIPSMode} - If you specify \code{fargateFIPSMode}, Fargate FIPS 140
+compliance is affected.
 \item \code{fargateTaskRetirementWaitPeriod} - When Amazon Web Services
 determines that a security or infrastructure update is needed for an
 Amazon ECS task hosted on Fargate, the tasks need to be stopped and
 new tasks launched to replace them. Use
-\code{fargateTaskRetirementWaitPeriod} to configure the wait time to
-retire a Fargate task. For information about the Fargate tasks
-maintenance, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html}{Amazon Web Services Fargate task maintenance}
+\code{fargateTaskRetirementWaitPeriod} to configure the wait time to retire
+a Fargate task. For information about the Fargate tasks maintenance,
+see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html}{Amazon Web Services Fargate task maintenance}
 in the \emph{Amazon ECS Developer Guide}.
 \item \code{tagResourceAuthorization} - Amazon ECS is introducing tagging
 authorization for resource creation. Users must have permissions for
-actions that create the resource, such as \code{ecsCreateCluster}. If
-tags are specified when you create a resource, Amazon Web Services
-performs additional authorization to verify if users or roles have
-permissions to create tags. Therefore, you must grant explicit
-permissions to use the \code{ecs:TagResource} action. For more
-information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html}{Grant permission to tag resources on creation}
+actions that create the resource, such as \code{ecsCreateCluster}. If tags
+are specified when you create a resource, Amazon Web Services performs
+additional authorization to verify if users or roles have permissions
+to create tags. Therefore, you must grant explicit permissions to use
+the \code{ecs:TagResource} action. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html}{Grant permission to tag resources on creation}
 in the \emph{Amazon ECS Developer Guide}.
 \item \code{guardDutyActivate} - The \code{guardDutyActivate} parameter is read-only
 in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
-enabled or disabled by your security administrator in your Amazon
-ECS account. Amazon GuardDuty controls this account setting on your
+enabled or disabled by your security administrator in your Amazon ECS
+account. Amazon GuardDuty controls this account setting on your
 behalf. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html}{Protecting Amazon ECS workloads with Amazon ECS Runtime Monitoring}.
 }}
 
@@ -88,8 +87,8 @@ following are the valid values:
 \itemize{
 \item \code{0} - Amazon Web Services sends the notification, and immediately
 retires the affected tasks.
-\item \code{7} - Amazon Web Services sends the notification, and waits 7
-calendar days to retire the tasks.
+\item \code{7} - Amazon Web Services sends the notification, and waits 7 calendar
+days to retire the tasks.
 \item \code{14} - Amazon Web Services sends the notification, and waits 14
 calendar days to retire the tasks.
 }}

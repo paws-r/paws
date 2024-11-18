@@ -31,8 +31,8 @@ policy.}
 cross-account access to Data Catalog resources:
 \itemize{
 \item By directly updating the resource policy with \code{PutResourePolicy}
-\item By using the \strong{Grant permissions} command on the Amazon Web
-Services Management Console.
+\item By using the \strong{Grant permissions} command on the Amazon Web Services
+Management Console.
 }
 
 Must be set to \code{'TRUE'} if you have already used the Management Console

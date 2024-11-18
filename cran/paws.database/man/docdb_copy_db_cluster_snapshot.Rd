@@ -82,14 +82,14 @@ that can be executed in the source Amazon Web Services Region that
 contains the cluster snapshot to be copied. The presigned URL request
 must contain the following parameter values:
 \itemize{
-\item \code{SourceRegion} - The ID of the region that contains the snapshot to
-be copied.
+\item \code{SourceRegion} - The ID of the region that contains the snapshot to be
+copied.
 \item \code{SourceDBClusterSnapshotIdentifier} - The identifier for the the
 encrypted cluster snapshot to be copied. This identifier must be in
 the Amazon Resource Name (ARN) format for the source Amazon Web
-Services Region. For example, if you are copying an encrypted
-cluster snapshot from the us-east-1 Amazon Web Services Region, then
-your \code{SourceDBClusterSnapshotIdentifier} looks something like the
+Services Region. For example, if you are copying an encrypted cluster
+snapshot from the us-east-1 Amazon Web Services Region, then your
+\code{SourceDBClusterSnapshotIdentifier} looks something like the
 following:
 \code{arn:aws:rds:us-east-1:12345678012:sample-cluster:sample-cluster-snapshot}.
 \item \code{TargetDBClusterSnapshotIdentifier} - The identifier for the new

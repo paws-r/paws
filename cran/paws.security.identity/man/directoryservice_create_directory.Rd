@@ -30,7 +30,7 @@ can use the
 The regex pattern for this string is made up of the following
 conditions:
 \itemize{
-\item Length (?=^.\{8,64\}$) – Must be between 8 and 64 characters
+\item Length (?=^.\\8,64$) – Must be between 8 and 64 characters
 }
 
 AND any 3 of the following password complexity rules required by Active
@@ -47,7 +47,7 @@ Directory:
 }
 
 For additional information about how Active Directory passwords are
-enforced, see \href{https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements}{Password must meet complexity requirements}
+enforced, see \href{https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements}{Password must meet complexity requirements}
 on the Microsoft website.}
 
 \item{Description}{A description for the directory.}

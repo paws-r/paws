@@ -44,8 +44,7 @@ setting for the rules in a rule group at any time.}
 one of the domains in the rule's domain list:
 \itemize{
 \item \code{ALLOW} - Permit the request to go through.
-\item \code{ALERT} - Permit the request and send metrics and logs to Cloud
-Watch.
+\item \code{ALERT} - Permit the request and send metrics and logs to Cloud Watch.
 \item \code{BLOCK} - Disallow the request. This option requires additional
 details in the rule's \code{BlockResponse}.
 }}
@@ -101,8 +100,7 @@ domain in the redirection list to the domain list.}
 \item CAA: Restricts CAs that can create SSL/TLS certifications for the
 domain.
 \item CNAME: Returns another domain name.
-\item DS: Record that identifies the DNSSEC signing key of a delegated
-zone.
+\item DS: Record that identifies the DNSSEC signing key of a delegated zone.
 \item MX: Specifies mail servers.
 \item NAPTR: Regular-expression-based rewriting of domain names.
 \item NS: Authoritative name servers.

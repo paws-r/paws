@@ -27,10 +27,10 @@ returned.}
 \item{snapshotType}{The type of cluster snapshots to be returned. You can specify one of the
 following values:
 \itemize{
-\item \code{automated} - Return all cluster snapshots that Amazon DocumentDB
-has automatically created for your Amazon Web Services account.
-\item \code{manual} - Return all cluster snapshots that you have manually
-created for your Amazon Web Services account.
+\item \code{automated} - Return all cluster snapshots that Amazon DocumentDB has
+automatically created for your Amazon Web Services account.
+\item \code{manual} - Return all cluster snapshots that you have manually created
+for your Amazon Web Services account.
 }}
 }
 \description{

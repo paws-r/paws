@@ -14,7 +14,7 @@ NULL
 #' OpsWorks Stacks is an application management service that provides an
 #' integrated experience for managing the complete application lifecycle.
 #' For information about OpsWorks, see the
-#' [OpsWorks](https://aws.amazon.com/) information page.
+#' [OpsWorks](https://aws.amazon.com/opsworks/) information page.
 #' 
 #' **SDKs and CLI**
 #' 
@@ -22,24 +22,24 @@ NULL
 #' by using one of the Amazon Web Services SDKs to implement applications
 #' in your preferred language. For more information, see:
 #' 
-#' -   [CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
+#' - [CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
 #' 
-#' -   [SDK for
-#'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
+#' - [SDK for
+#'   Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
 #' 
-#' -   [SDK for
-#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/OpsWorks/NOpsWorks.html)
+#' - [SDK for
+#'   .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/OpsWorks/NOpsWorks.html)
 #' 
-#' -   [SDK for
-#'     PHP](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html)
+#' - [SDK for
+#'   PHP](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html)
 #' 
-#' -   [SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/)
+#' - [SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/)
 #' 
-#' -   [Amazon Web Services SDK for
-#'     Node.js](https://docs.aws.amazon.com/sdk-for-javascript/)
+#' - [Amazon Web Services SDK for
+#'   Node.js](https://docs.aws.amazon.com/sdk-for-javascript/)
 #' 
-#' -   [SDK for Python
-#'     (Boto)](http://docs.pythonboto.org/en/latest/ref/opsworks.html)
+#' - [SDK for Python
+#'   (Boto)](http://docs.pythonboto.org/en/latest/ref/opsworks.html)
 #' 
 #' **Endpoints**
 #' 
@@ -47,36 +47,36 @@ NULL
 #' connect to one of the following endpoints. Stacks can only be accessed
 #' or managed within the endpoint in which they are created.
 #' 
-#' -   opsworks.us-east-1.amazonaws.com
+#' - opsworks.us-east-1.amazonaws.com
 #' 
-#' -   opsworks.us-east-2.amazonaws.com
+#' - opsworks.us-east-2.amazonaws.com
 #' 
-#' -   opsworks.us-west-1.amazonaws.com
+#' - opsworks.us-west-1.amazonaws.com
 #' 
-#' -   opsworks.us-west-2.amazonaws.com
+#' - opsworks.us-west-2.amazonaws.com
 #' 
-#' -   opsworks.ca-central-1.amazonaws.com (API only; not available in the
-#'     Amazon Web Services Management Console)
+#' - opsworks.ca-central-1.amazonaws.com (API only; not available in the
+#'   Amazon Web Services Management Console)
 #' 
-#' -   opsworks.eu-west-1.amazonaws.com
+#' - opsworks.eu-west-1.amazonaws.com
 #' 
-#' -   opsworks.eu-west-2.amazonaws.com
+#' - opsworks.eu-west-2.amazonaws.com
 #' 
-#' -   opsworks.eu-west-3.amazonaws.com
+#' - opsworks.eu-west-3.amazonaws.com
 #' 
-#' -   opsworks.eu-central-1.amazonaws.com
+#' - opsworks.eu-central-1.amazonaws.com
 #' 
-#' -   opsworks.ap-northeast-1.amazonaws.com
+#' - opsworks.ap-northeast-1.amazonaws.com
 #' 
-#' -   opsworks.ap-northeast-2.amazonaws.com
+#' - opsworks.ap-northeast-2.amazonaws.com
 #' 
-#' -   opsworks.ap-south-1.amazonaws.com
+#' - opsworks.ap-south-1.amazonaws.com
 #' 
-#' -   opsworks.ap-southeast-1.amazonaws.com
+#' - opsworks.ap-southeast-1.amazonaws.com
 #' 
-#' -   opsworks.ap-southeast-2.amazonaws.com
+#' - opsworks.ap-southeast-2.amazonaws.com
 #' 
-#' -   opsworks.sa-east-1.amazonaws.com
+#' - opsworks.sa-east-1.amazonaws.com
 #' 
 #' **Chef Versions**
 #' 

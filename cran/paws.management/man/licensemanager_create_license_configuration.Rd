@@ -35,8 +35,8 @@ dimension, as follows.
 \item \code{Cores} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
 \code{maximumCores} | \code{minimumCores}
 \item \code{Instances} dimension: \code{allowedTenancy} | \code{maximumCores} |
-\code{minimumCores} | \code{maximumSockets} | \code{minimumSockets} |
-\code{maximumVcpus} | \code{minimumVcpus}
+\code{minimumCores} | \code{maximumSockets} | \code{minimumSockets} | \code{maximumVcpus}
+| \code{minimumVcpus}
 \item \code{Sockets} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
 \code{maximumSockets} | \code{minimumSockets}
 \item \code{vCPUs} dimension: \code{allowedTenancy} | \code{honorVcpuOptimization} |

@@ -22,7 +22,8 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
     http_method = "POST",
     http_path = "/Traces",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("UnprocessedTraceIds"), output_token = "NextToken", result_key = "Traces")
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("UnprocessedTraceIds"), output_token = "NextToken", result_key = "Traces"),
+    stream_api = FALSE
   )
   input <- .xray$batch_get_traces_input(TraceIds = TraceIds, NextToken = NextToken)
   output <- .xray$batch_get_traces_output()
@@ -46,12 +47,12 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' @param FilterExpression The filter expression defining criteria by which to group traces.
 #' @param InsightsConfiguration The structure containing configurations related to insights.
 #' 
-#' -   The InsightsEnabled boolean can be set to true to enable insights
-#'     for the new group or false to disable insights for the new group.
+#' - The InsightsEnabled boolean can be set to true to enable insights for
+#'   the new group or false to disable insights for the new group.
 #' 
-#' -   The NotificationsEnabled boolean can be set to true to enable
-#'     insights notifications for the new group. Notifications may only be
-#'     enabled on a group with InsightsEnabled set to true.
+#' - The NotificationsEnabled boolean can be set to true to enable insights
+#'   notifications for the new group. Notifications may only be enabled on
+#'   a group with InsightsEnabled set to true.
 #' @param Tags A map that contains one or more tag keys and tag values to attach to an
 #' X-Ray group. For more information about ways to use tags, see [Tagging
 #' Amazon Web Services
@@ -60,19 +61,19 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' 
 #' The following restrictions apply to tags:
 #' 
-#' -   Maximum number of user-applied tags per resource: 50
+#' - Maximum number of user-applied tags per resource: 50
 #' 
-#' -   Maximum tag key length: 128 Unicode characters
+#' - Maximum tag key length: 128 Unicode characters
 #' 
-#' -   Maximum tag value length: 256 Unicode characters
+#' - Maximum tag value length: 256 Unicode characters
 #' 
-#' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
-#'     following characters: _ . : / = + - and @@
+#' - Valid values for key and value: a-z, A-Z, 0-9, space, and the
+#'   following characters: _ . : / = + - and @@
 #' 
-#' -   Tag keys and values are case sensitive.
+#' - Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
-#'     Services use.
+#' - Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'   Services use.
 #'
 #' @keywords internal
 #'
@@ -83,7 +84,8 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
     http_method = "POST",
     http_path = "/CreateGroup",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$create_group_input(GroupName = GroupName, FilterExpression = FilterExpression, InsightsConfiguration = InsightsConfiguration, Tags = Tags)
   output <- .xray$create_group_output()
@@ -112,19 +114,19 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' 
 #' The following restrictions apply to tags:
 #' 
-#' -   Maximum number of user-applied tags per resource: 50
+#' - Maximum number of user-applied tags per resource: 50
 #' 
-#' -   Maximum tag key length: 128 Unicode characters
+#' - Maximum tag key length: 128 Unicode characters
 #' 
-#' -   Maximum tag value length: 256 Unicode characters
+#' - Maximum tag value length: 256 Unicode characters
 #' 
-#' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
-#'     following characters: _ . : / = + - and @@
+#' - Valid values for key and value: a-z, A-Z, 0-9, space, and the
+#'   following characters: _ . : / = + - and @@
 #' 
-#' -   Tag keys and values are case sensitive.
+#' - Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
-#'     Services use.
+#' - Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'   Services use.
 #'
 #' @keywords internal
 #'
@@ -135,7 +137,8 @@ xray_create_sampling_rule <- function(SamplingRule, Tags = NULL) {
     http_method = "POST",
     http_path = "/CreateSamplingRule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$create_sampling_rule_input(SamplingRule = SamplingRule, Tags = Tags)
   output <- .xray$create_sampling_rule_output()
@@ -166,7 +169,8 @@ xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
     http_method = "POST",
     http_path = "/DeleteGroup",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$delete_group_input(GroupName = GroupName, GroupARN = GroupARN)
   output <- .xray$delete_group_output()
@@ -200,7 +204,8 @@ xray_delete_resource_policy <- function(PolicyName, PolicyRevisionId = NULL) {
     http_method = "POST",
     http_path = "/DeleteResourcePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$delete_resource_policy_input(PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId)
   output <- .xray$delete_resource_policy_output()
@@ -233,7 +238,8 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
     http_method = "POST",
     http_path = "/DeleteSamplingRule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$delete_sampling_rule_input(RuleName = RuleName, RuleARN = RuleARN)
   output <- .xray$delete_sampling_rule_output()
@@ -263,7 +269,8 @@ xray_get_encryption_config <- function() {
     http_method = "POST",
     http_path = "/EncryptionConfig",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$get_encryption_config_input()
   output <- .xray$get_encryption_config_output()
@@ -294,7 +301,8 @@ xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
     http_method = "POST",
     http_path = "/GetGroup",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$get_group_input(GroupName = GroupName, GroupARN = GroupARN)
   output <- .xray$get_group_output()
@@ -324,7 +332,8 @@ xray_get_groups <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/Groups",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Groups")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Groups"),
+    stream_api = FALSE
   )
   input <- .xray$get_groups_input(NextToken = NextToken)
   output <- .xray$get_groups_output()
@@ -355,7 +364,8 @@ xray_get_insight <- function(InsightId) {
     http_method = "POST",
     http_path = "/Insight",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$get_insight_input(InsightId = InsightId)
   output <- .xray$get_insight_output()
@@ -390,7 +400,8 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/InsightEvents",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .xray$get_insight_events_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .xray$get_insight_events_output()
@@ -429,7 +440,8 @@ xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextTok
     http_method = "POST",
     http_path = "/InsightImpactGraph",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$get_insight_impact_graph_input(InsightId = InsightId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken)
   output <- .xray$get_insight_impact_graph_output()
@@ -469,7 +481,8 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
     http_method = "POST",
     http_path = "/InsightSummaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .xray$get_insight_summaries_input(States = States, GroupARN = GroupARN, GroupName = GroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .xray$get_insight_summaries_output()
@@ -499,7 +512,8 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/GetSamplingRules",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "SamplingRuleRecords")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "SamplingRuleRecords"),
+    stream_api = FALSE
   )
   input <- .xray$get_sampling_rules_input(NextToken = NextToken)
   output <- .xray$get_sampling_rules_output()
@@ -530,7 +544,8 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/SamplingStatisticSummaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "SamplingStatisticSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "SamplingStatisticSummaries"),
+    stream_api = FALSE
   )
   input <- .xray$get_sampling_statistic_summaries_input(NextToken = NextToken)
   output <- .xray$get_sampling_statistic_summaries_output()
@@ -561,7 +576,8 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
     http_method = "POST",
     http_path = "/SamplingTargets",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$get_sampling_targets_input(SamplingStatisticsDocuments = SamplingStatisticsDocuments)
   output <- .xray$get_sampling_targets_output()
@@ -597,7 +613,8 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
     http_method = "POST",
     http_path = "/ServiceGraph",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("StartTime", "EndTime", "ContainsOldGroupVersions"), output_token = "NextToken", result_key = "Services")
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("StartTime", "EndTime", "ContainsOldGroupVersions"), output_token = "NextToken", result_key = "Services"),
+    stream_api = FALSE
   )
   input <- .xray$get_service_graph_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, NextToken = NextToken)
   output <- .xray$get_service_graph_output()
@@ -639,7 +656,8 @@ xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupNam
     http_method = "POST",
     http_path = "/TimeSeriesServiceStatistics",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("ContainsOldGroupVersions"), output_token = "NextToken", result_key = "TimeSeriesServiceStatistics")
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("ContainsOldGroupVersions"), output_token = "NextToken", result_key = "TimeSeriesServiceStatistics"),
+    stream_api = FALSE
   )
   input <- .xray$get_time_series_service_statistics_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, EntitySelectorExpression = EntitySelectorExpression, Period = Period, ForecastStatistics = ForecastStatistics, NextToken = NextToken)
   output <- .xray$get_time_series_service_statistics_output()
@@ -670,7 +688,8 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
     http_method = "POST",
     http_path = "/TraceGraph",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Services")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Services"),
+    stream_api = FALSE
   )
   input <- .xray$get_trace_graph_input(TraceIds = TraceIds, NextToken = NextToken)
   output <- .xray$get_trace_graph_output()
@@ -711,7 +730,8 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
     http_method = "POST",
     http_path = "/TraceSummaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("TracesProcessedCount", "ApproximateTime"), output_token = "NextToken", result_key = "TraceSummaries")
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("TracesProcessedCount", "ApproximateTime"), output_token = "NextToken", result_key = "TraceSummaries"),
+    stream_api = FALSE
   )
   input <- .xray$get_trace_summaries_input(StartTime = StartTime, EndTime = EndTime, TimeRangeType = TimeRangeType, Sampling = Sampling, SamplingStrategy = SamplingStrategy, FilterExpression = FilterExpression, NextToken = NextToken)
   output <- .xray$get_trace_summaries_output()
@@ -742,7 +762,8 @@ xray_list_resource_policies <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/ListResourcePolicies",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ResourcePolicies")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ResourcePolicies"),
+    stream_api = FALSE
   )
   input <- .xray$list_resource_policies_input(NextToken = NextToken)
   output <- .xray$list_resource_policies_output()
@@ -776,7 +797,8 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
     http_method = "POST",
     http_path = "/ListTagsForResource",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .xray$list_tags_for_resource_input(ResourceARN = ResourceARN, NextToken = NextToken)
   output <- .xray$list_tags_for_resource_output()
@@ -797,16 +819,16 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
 #'
 #' @param KeyId An Amazon Web Services KMS key in one of the following formats:
 #' 
-#' -   **Alias** - The name of the key. For example, `alias/MyKey`.
+#' - **Alias** - The name of the key. For example, `alias/MyKey`.
 #' 
-#' -   **Key ID** - The KMS key ID of the key. For example,
-#'     `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`. Amazon Web Services X-Ray
-#'     does not support asymmetric KMS keys.
+#' - **Key ID** - The KMS key ID of the key. For example,
+#'   `ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`. Amazon Web Services X-Ray
+#'   does not support asymmetric KMS keys.
 #' 
-#' -   **ARN** - The full Amazon Resource Name of the key ID or alias. For
-#'     example,
-#'     `arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`.
-#'     Use this format to specify a key in a different account.
+#' - **ARN** - The full Amazon Resource Name of the key ID or alias. For
+#'   example,
+#'   `arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456`.
+#'   Use this format to specify a key in a different account.
 #' 
 #' Omit this key if you set `Type` to `NONE`.
 #' @param Type &#91;required&#93; The type of encryption. Set to `KMS` to use your own key for encryption.
@@ -821,7 +843,8 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
     http_method = "POST",
     http_path = "/PutEncryptionConfig",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$put_encryption_config_input(KeyId = KeyId, Type = Type)
   output <- .xray$put_encryption_config_output()
@@ -875,7 +898,8 @@ xray_put_resource_policy <- function(PolicyName, PolicyDocument, PolicyRevisionI
     http_method = "POST",
     http_path = "/PutResourcePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$put_resource_policy_input(PolicyName = PolicyName, PolicyDocument = PolicyDocument, PolicyRevisionId = PolicyRevisionId, BypassPolicyLockoutCheck = BypassPolicyLockoutCheck)
   output <- .xray$put_resource_policy_output()
@@ -908,7 +932,8 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
     http_method = "POST",
     http_path = "/TelemetryRecords",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$put_telemetry_records_input(TelemetryRecords = TelemetryRecords, EC2InstanceId = EC2InstanceId, Hostname = Hostname, ResourceARN = ResourceARN)
   output <- .xray$put_telemetry_records_output()
@@ -939,7 +964,8 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
     http_method = "POST",
     http_path = "/TraceSegments",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$put_trace_segments_input(TraceSegmentDocuments = TraceSegmentDocuments)
   output <- .xray$put_trace_segments_output()
@@ -968,19 +994,19 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 #' 
 #' The following restrictions apply to tags:
 #' 
-#' -   Maximum number of user-applied tags per resource: 50
+#' - Maximum number of user-applied tags per resource: 50
 #' 
-#' -   Maximum tag key length: 128 Unicode characters
+#' - Maximum tag key length: 128 Unicode characters
 #' 
-#' -   Maximum tag value length: 256 Unicode characters
+#' - Maximum tag value length: 256 Unicode characters
 #' 
-#' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
-#'     following characters: _ . : / = + - and @@
+#' - Valid values for key and value: a-z, A-Z, 0-9, space, and the
+#'   following characters: _ . : / = + - and @@
 #' 
-#' -   Tag keys and values are case sensitive.
+#' - Tag keys and values are case sensitive.
 #' 
-#' -   Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
-#'     Services use. You cannot edit or delete system tags.
+#' - Don't use `aws:` as a prefix for keys; it's reserved for Amazon Web
+#'   Services use. You cannot edit or delete system tags.
 #'
 #' @keywords internal
 #'
@@ -991,7 +1017,8 @@ xray_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/TagResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .xray$tag_resource_output()
@@ -1023,7 +1050,8 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/UntagResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .xray$untag_resource_output()
@@ -1048,12 +1076,12 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
 #' traces.
 #' @param InsightsConfiguration The structure containing configurations related to insights.
 #' 
-#' -   The InsightsEnabled boolean can be set to true to enable insights
-#'     for the group or false to disable insights for the group.
+#' - The InsightsEnabled boolean can be set to true to enable insights for
+#'   the group or false to disable insights for the group.
 #' 
-#' -   The NotificationsEnabled boolean can be set to true to enable
-#'     insights notifications for the group. Notifications can only be
-#'     enabled on a group with InsightsEnabled set to true.
+#' - The NotificationsEnabled boolean can be set to true to enable insights
+#'   notifications for the group. Notifications can only be enabled on a
+#'   group with InsightsEnabled set to true.
 #'
 #' @keywords internal
 #'
@@ -1064,7 +1092,8 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
     http_method = "POST",
     http_path = "/UpdateGroup",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$update_group_input(GroupName = GroupName, GroupARN = GroupARN, FilterExpression = FilterExpression, InsightsConfiguration = InsightsConfiguration)
   output <- .xray$update_group_output()
@@ -1094,7 +1123,8 @@ xray_update_sampling_rule <- function(SamplingRuleUpdate) {
     http_method = "POST",
     http_path = "/UpdateSamplingRule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .xray$update_sampling_rule_input(SamplingRuleUpdate = SamplingRuleUpdate)
   output <- .xray$update_sampling_rule_output()

@@ -23,8 +23,8 @@ name with "AMAZON." removed. For example, because there is a built-in
 slot type called \code{AMAZON.DATE}, you can't create a custom slot type
 called \code{DATE}.
 
-For a list of built-in slot types, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html}{Slot Type Reference}
-in the \emph{Alexa Skills Kit}.}
+For a list of built-in slot types, see Slot Type Reference in the \emph{Alexa
+Skills Kit}.}
 
 \item{description}{A description of the slot type.}
 
@@ -58,11 +58,11 @@ exception.}
 \item{valueSelectionStrategy}{Determines the slot resolution strategy that Amazon Lex uses to return
 slot type values. The field can be set to one of the following values:
 \itemize{
-\item \code{ORIGINAL_VALUE} - Returns the value entered by the user, if the
-user value is similar to the slot value.
-\item \code{TOP_RESOLUTION} - If there is a resolution list for the slot,
-return the first value in the resolution list as the slot type
-value. If there is no resolution list, null is returned.
+\item \code{ORIGINAL_VALUE} - Returns the value entered by the user, if the user
+value is similar to the slot value.
+\item \code{TOP_RESOLUTION} - If there is a resolution list for the slot, return
+the first value in the resolution list as the slot type value. If
+there is no resolution list, null is returned.
 }
 
 If you don't specify the \code{valueSelectionStrategy}, the default is

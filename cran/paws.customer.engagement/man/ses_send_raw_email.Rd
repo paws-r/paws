@@ -47,8 +47,8 @@ criteria:
 line.
 \item All of the required header fields must be present in the message.
 \item Each part of a multipart MIME message must be formatted properly.
-\item Attachments must be of a content type that Amazon SES supports. For
-a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/dg/mime-types.html}{Unsupported Attachment Types} in
+\item Attachments must be of a content type that Amazon SES supports. For a
+list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/dg/mime-types.html}{Unsupported Attachment Types} in
 the \emph{Amazon SES Developer Guide}.
 \item The entire message must be base64-encoded.
 \item If any of the MIME parts in your message contain content that is
@@ -56,8 +56,8 @@ outside of the 7-bit ASCII character range, we highly recommend that
 you encode that content. For more information, see \href{https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html}{Sending Raw Email}
 in the \emph{Amazon SES Developer Guide}.
 \item Per \href{https://datatracker.ietf.org/doc/html/rfc5321#section-4.5.3.1.6}{RFC 5321},
-the maximum length of each line of text, including the \<CRLF\>,
-must not exceed 1,000 characters.
+the maximum length of each line of text, including the \<CRLF\>, must
+not exceed 1,000 characters.
 }}
 
 \item{FromArn}{This parameter is used only for sending authorization. It is the ARN of

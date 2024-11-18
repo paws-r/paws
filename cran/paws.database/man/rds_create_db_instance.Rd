@@ -225,8 +225,7 @@ following:
 to 65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
 Server.
 \item Provisioned IOPS storage (io1, io2): Must be an integer from 40 to
-65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL
-Server.
+65536 for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
 }
 
 \strong{RDS for Db2}
@@ -373,17 +372,16 @@ for the master user is managed by the DB cluster.
 Constraints:
 \itemize{
 \item Can't be specified if \code{ManageMasterUserPassword} is turned on.
-\item Can include any printable ASCII character except "/", """, or "@".
-For RDS for Oracle, can't include the "&" (ampersand) or the "'"
-(single quotes) character.
+\item Can include any printable ASCII character except "/", """, or "@". For
+RDS for Oracle, can't include the "&" (ampersand) or the "'" (single
+quotes) character.
 }
 
 Length Constraints:
 \itemize{
 \item RDS for Db2 - Must contain from 8 to 255 characters.
 \item RDS for MariaDB - Must contain from 8 to 41 characters.
-\item RDS for Microsoft SQL Server - Must contain from 8 to 128
-characters.
+\item RDS for Microsoft SQL Server - Must contain from 8 to 128 characters.
 \item RDS for MySQL - Must contain from 8 to 41 characters.
 \item RDS for Oracle - Must contain from 8 to 30 characters.
 \item RDS for PostgreSQL - Must contain from 8 to 128 characters.
@@ -418,8 +416,8 @@ Amazon Web Services Region.
 
 Constraints:
 \itemize{
-\item The \code{AvailabilityZone} parameter can't be specified if the DB
-instance is a Multi-AZ deployment.
+\item The \code{AvailabilityZone} parameter can't be specified if the DB instance
+is a Multi-AZ deployment.
 \item The specified Availability Zone must be in the same Amazon Web
 Services Region as the current endpoint.
 }
@@ -529,8 +527,8 @@ deployment.
 
 This setting doesn't apply to the following DB instances:
 \itemize{
-\item Amazon Aurora (DB instance Availability Zones (AZs) are managed by
-the DB cluster.)
+\item Amazon Aurora (DB instance Availability Zones (AZs) are managed by the
+DB cluster.)
 \item RDS Custom
 }}
 
@@ -632,8 +630,7 @@ managed by the DB cluster.
 Constraints:
 \itemize{
 \item For RDS for Db2, MariaDB, MySQL, Oracle, and PostgreSQL - Must be a
-multiple between .5 and 50 of the storage amount for the DB
-instance.
+multiple between .5 and 50 of the storage amount for the DB instance.
 \item For RDS for SQL Server - Must be a multiple between 1 and 50 of the
 storage amount for the DB instance.
 }}
@@ -654,8 +651,8 @@ This setting doesn't apply to the following DB instances:
 \itemize{
 \item Amazon Aurora - The character set is managed by the DB cluster. For
 more information, see \code{\link[=rds_create_db_cluster]{create_db_cluster}}.
-\item RDS Custom - However, if you need to change the character set, you
-can change it on the database itself.
+\item RDS Custom - However, if you need to change the character set, you can
+change it on the database itself.
 }}
 
 \item{NcharCharacterSetName}{The name of the NCHAR character set for the Oracle DB instance.
@@ -690,10 +687,10 @@ attached to it, the DB instance is public.
 If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the subnets are part of a VPC that doesn’t have an internet
-gateway attached to it, the DB instance is private.
-\item If the subnets are part of a VPC that has an internet gateway
-attached to it, the DB instance is public.
+\item If the subnets are part of a VPC that doesn’t have an internet gateway
+attached to it, the DB instance is private.
+\item If the subnets are part of a VPC that has an internet gateway attached
+to it, the DB instance is public.
 }}
 
 \item{Tags}{Tags to assign to the DB instance.}
@@ -918,8 +915,7 @@ in the \emph{Amazon RDS User Guide}.
 
 This setting doesn't apply to the following DB instances:
 \itemize{
-\item Amazon Aurora (CloudWatch Logs exports are managed by the DB
-cluster.)
+\item Amazon Aurora (CloudWatch Logs exports are managed by the DB cluster.)
 \item RDS Custom
 }
 
@@ -986,8 +982,8 @@ Constraints:
 \item The profile must exist in your account.
 \item The profile must have an IAM role that Amazon EC2 has permissions to
 assume.
-\item The instance profile name and the associated IAM role name must
-start with the prefix \code{AWSRDSCustom}.
+\item The instance profile name and the associated IAM role name must start
+with the prefix \code{AWSRDSCustom}.
 }
 
 For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
@@ -1031,8 +1027,8 @@ in the \emph{Amazon RDS User Guide.}
 
 Constraints:
 \itemize{
-\item Can't manage the master user password with Amazon Web Services
-Secrets Manager if \code{MasterUserPassword} is specified.
+\item Can't manage the master user password with Amazon Web Services Secrets
+Manager if \code{MasterUserPassword} is specified.
 }}
 
 \item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
@@ -1082,11 +1078,11 @@ RDS for Oracle container database (CDB) engines.
 Note the following restrictions:
 \itemize{
 \item The DB engine that you specify in the request must support the
-multi-tenant configuration. If you attempt to enable the
-multi-tenant configuration on a DB engine that doesn't support it,
-the request fails.
-\item If you specify the multi-tenant configuration when you create your
-DB instance, you can't later modify this DB instance to use the
+multi-tenant configuration. If you attempt to enable the multi-tenant
+configuration on a DB engine that doesn't support it, the request
+fails.
+\item If you specify the multi-tenant configuration when you create your DB
+instance, you can't later modify this DB instance to use the
 single-tenant configuration.
 }}
 

@@ -105,21 +105,21 @@ The following basic restrictions apply to tags:
 have only one value.
 \item Maximum key length - 128 Unicode characters in UTF-8
 \item Maximum value length - 256 Unicode characters in UTF-8
-\item If your tagging schema is used across multiple services and
-resources, remember that other services may have restrictions on
-allowed characters. Generally allowed characters are: letters,
-numbers, and spaces representable in UTF-8, and the following
-characters: + - = . _ : / @.
+\item If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = .
+_ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
 such as a prefix for either keys or values as it is reserved for
-Amazon Web Services use. You cannot edit or delete tag keys or
-values with this prefix. Tags with this prefix do not count against
-your tags per resource limit.
+Amazon Web Services use. You cannot edit or delete tag keys or values
+with this prefix. Tags with this prefix do not count against your tags
+per resource limit.
 }}
 }
 \description{
-Create a task set in the specified cluster and service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Amazon ECS deployment types} in the \emph{Amazon Elastic Container Service Developer Guide}.
+Create a task set in the specified cluster and service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS deployment types} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ecs_create_task_set/} for full documentation.
 }

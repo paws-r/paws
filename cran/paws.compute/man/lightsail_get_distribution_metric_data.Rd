@@ -27,44 +27,44 @@ Valid distribution metric names are listed below, along with the most
 useful \code{statistics} to include in your request, and the published \code{unit}
 value.
 \itemize{
-\item \strong{\code{Requests}} - The total number of viewer requests received by
-your Lightsail distribution, for all HTTP methods, and for both HTTP
-and HTTPS requests.
+\item \strong{\code{Requests}} - The total number of viewer requests received by your
+Lightsail distribution, for all HTTP methods, and for both HTTP and
+HTTPS requests.
 
 \code{Statistics}: The most useful statistic is \code{Sum}.
 
 \code{Unit}: The published unit is \code{None}.
-\item \strong{\code{BytesDownloaded}} - The number of bytes downloaded by viewers
-for GET, HEAD, and OPTIONS requests.
+\item \strong{\code{BytesDownloaded}} - The number of bytes downloaded by viewers for
+GET, HEAD, and OPTIONS requests.
 
 \code{Statistics}: The most useful statistic is \code{Sum}.
 
 \code{Unit}: The published unit is \code{None}.
-\item \strong{\code{BytesUploaded }} - The number of bytes uploaded to your origin
-by your Lightsail distribution, using POST and PUT requests.
+\item \strong{\code{BytesUploaded }} - The number of bytes uploaded to your origin by
+your Lightsail distribution, using POST and PUT requests.
 
 \code{Statistics}: The most useful statistic is \code{Sum}.
 
 \code{Unit}: The published unit is \code{None}.
-\item \strong{\code{TotalErrorRate}} - The percentage of all viewer requests for
-which the response's HTTP status code was 4xx or 5xx.
+\item \strong{\code{TotalErrorRate}} - The percentage of all viewer requests for which
+the response's HTTP status code was 4xx or 5xx.
 
 \code{Statistics}: The most useful statistic is \code{Average}.
 
 \code{Unit}: The published unit is \code{Percent}.
 \item \strong{\verb{4xxErrorRate}} - The percentage of all viewer requests for which
-the response's HTTP status cod was 4xx. In these cases, the client
-or client viewer may have made an error. For example, a status code
-of 404 (Not Found) means that the client requested an object that
-could not be found.
+the response's HTTP status cod was 4xx. In these cases, the client or
+client viewer may have made an error. For example, a status code of
+404 (Not Found) means that the client requested an object that could
+not be found.
 
 \code{Statistics}: The most useful statistic is \code{Average}.
 
 \code{Unit}: The published unit is \code{Percent}.
 \item \strong{\verb{5xxErrorRate}} - The percentage of all viewer requests for which
 the response's HTTP status code was 5xx. In these cases, the origin
-server did not satisfy the requests. For example, a status code of
-503 (Service Unavailable) means that the origin server is currently
+server did not satisfy the requests. For example, a status code of 503
+(Service Unavailable) means that the origin server is currently
 unavailable.
 
 \code{Statistics}: The most useful statistic is \code{Average}.
@@ -79,8 +79,8 @@ Constraints:
 \item Specified in Coordinated Universal Time (UTC).
 \item Specified in the Unix time format.
 
-For example, if you wish to use a start time of October 1, 2018, at
-8 PM UTC, specify \code{1538424000} as the start time.
+For example, if you wish to use a start time of October 1, 2018, at 8
+PM UTC, specify \code{1538424000} as the start time.
 }
 
 You can convert a human-friendly time to Unix time format using a
@@ -112,21 +112,18 @@ units with each available metric, see the \code{metricName} parameter.}
 
 The following statistics are available:
 \itemize{
-\item \code{Minimum} - The lowest value observed during the specified period.
-Use this value to determine low volumes of activity for your
-application.
+\item \code{Minimum} - The lowest value observed during the specified period. Use
+this value to determine low volumes of activity for your application.
 \item \code{Maximum} - The highest value observed during the specified period.
 Use this value to determine high volumes of activity for your
 application.
 \item \code{Sum} - All values submitted for the matching metric added together.
-You can use this statistic to determine the total volume of a
-metric.
+You can use this statistic to determine the total volume of a metric.
 \item \code{Average} - The value of Sum / SampleCount during the specified
 period. By comparing this statistic with the Minimum and Maximum
-values, you can determine the full scope of a metric and how close
-the average use is to the Minimum and Maximum values. This
-comparison helps you to know when to increase or decrease your
-resources.
+values, you can determine the full scope of a metric and how close the
+average use is to the Minimum and Maximum values. This comparison
+helps you to know when to increase or decrease your resources.
 \item \code{SampleCount} - The count, or number, of data points used for the
 statistical calculation.
 }}

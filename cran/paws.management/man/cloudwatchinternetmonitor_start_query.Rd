@@ -26,18 +26,18 @@ data for with your query.}
 \item{QueryType}{[required] The type of query to run. The following are the three types of queries
 that you can run using the Internet Monitor query interface:
 \itemize{
-\item \code{MEASUREMENTS}: Provides availability score, performance score,
-total traffic, and round-trip times, at 5 minute intervals.
-\item \code{TOP_LOCATIONS}: Provides availability score, performance score,
-total traffic, and time to first byte (TTFB) information, for the
-top location and ASN combinations that you're monitoring, by traffic
+\item \code{MEASUREMENTS}: Provides availability score, performance score, total
+traffic, and round-trip times, at 5 minute intervals.
+\item \code{TOP_LOCATIONS}: Provides availability score, performance score, total
+traffic, and time to first byte (TTFB) information, for the top
+location and ASN combinations that you're monitoring, by traffic
 volume.
 \item \code{TOP_LOCATION_DETAILS}: Provides TTFB for Amazon CloudFront, your
-current configuration, and the best performing EC2 configuration, at
-1 hour intervals.
-\item \code{OVERALL_TRAFFIC_SUGGESTIONS}: Provides TTFB, using a 30-day
-weighted average, for all traffic in each Amazon Web Services
-location that is monitored.
+current configuration, and the best performing EC2 configuration, at 1
+hour intervals.
+\item \code{OVERALL_TRAFFIC_SUGGESTIONS}: Provides TTFB, using a 30-day weighted
+average, for all traffic in each Amazon Web Services location that is
+monitored.
 \item \code{OVERALL_TRAFFIC_SUGGESTIONS_DETAILS}: Provides TTFB, using a 30-day
 weighted average, for each top location, for a proposed Amazon Web
 Services location. Must provide a Amazon Web Services location to

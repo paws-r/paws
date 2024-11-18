@@ -74,7 +74,8 @@ eks_associate_access_policy <- function(clusterName, principalArn, policyArn, ac
     http_method = "POST",
     http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$associate_access_policy_input(clusterName = clusterName, principalArn = principalArn, policyArn = policyArn, accessScope = accessScope)
   output <- .eks$associate_access_policy_output()
@@ -90,7 +91,7 @@ eks_associate_access_policy <- function(clusterName, principalArn, policyArn, ac
 #'
 #' @description
 #' Associates an encryption configuration to an existing cluster.
-#'
+#' 
 #' Use this API to enable encryption on existing clusters that don't
 #' already have encryption enabled. This allows you to implement a
 #' defense-in-depth security strategy without migrating applications to new
@@ -164,7 +165,8 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
     http_method = "POST",
     http_path = "/clusters/{name}/encryption-config/associate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$associate_encryption_config_input(clusterName = clusterName, encryptionConfig = encryptionConfig, clientRequestToken = clientRequestToken)
   output <- .eks$associate_encryption_config_output()
@@ -180,7 +182,7 @@ eks_associate_encryption_config <- function(clusterName, encryptionConfig, clien
 #'
 #' @description
 #' Associates an identity provider configuration to a cluster.
-#'
+#' 
 #' If you want to authenticate identities using an identity provider, you
 #' can create an identity provider configuration and associate it to your
 #' cluster. After configuring authentication to your cluster you can create
@@ -270,7 +272,8 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
     http_method = "POST",
     http_path = "/clusters/{name}/identity-provider-configs/associate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$associate_identity_provider_config_input(clusterName = clusterName, oidc = oidc, tags = tags, clientRequestToken = clientRequestToken)
   output <- .eks$associate_identity_provider_config_output()
@@ -286,7 +289,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #'
 #' @description
 #' Creates an access entry.
-#'
+#' 
 #' An access entry allows an IAM principal to access your cluster. Access
 #' entries can replace the need to maintain entries in the `aws-auth`
 #' `ConfigMap` for authentication. You have the following options for
@@ -298,7 +301,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' you use Amazon EKS authorization exclusively, you don't need to create
 #' and manage Kubernetes `Role`, `ClusterRole`, `RoleBinding`, and
 #' `ClusterRoleBinding` objects.
-#'
+#' 
 #' For more information about access entries, see [Access
 #' entries](https://docs.aws.amazon.com/eks/latest/userguide/access-entries.html)
 #' in the *Amazon EKS User Guide*.
@@ -312,14 +315,14 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' ARN for each access entry. You can't specify the same ARN in more than
 #' one access entry. This value can't be changed after access entry
 #' creation.
-#'
+#' 
 #' The valid principals differ depending on the type of the access entry in
 #' the `type` field. The only valid ARN is IAM roles for the types of
-#' access entries for nodes: `` ``. You can use every IAM principal type
-#' for `STANDARD` access entries. You can't use the STS session principal
-#' type with access entries because this is a temporary principal for each
+#' access entries for nodes: . You can use every IAM principal type for
+#' `STANDARD` access entries. You can't use the STS session principal type
+#' with access entries because this is a temporary principal for each
 #' session and not a permanent identity that can be assigned permissions.
-#'
+#' 
 #' [IAM best
 #' practices](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp)
 #' recommend using IAM roles with temporary credentials, rather than IAM
@@ -328,7 +331,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' `subject` in a Kubernetes `RoleBinding` or `ClusterRoleBinding` object.
 #' Amazon EKS doesn't confirm that the value for `name` exists in any
 #' bindings on your cluster. You can specify one or more names.
-#'
+#' 
 #' Kubernetes authorizes the `principalArn` of the access entry to access
 #' any cluster objects that you've specified in a Kubernetes `Role` or
 #' `ClusterRole` object that is also specified in a binding's `roleRef`.
@@ -336,7 +339,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' `ClusterRoleBinding`, `Role`, or `ClusterRole` objects, see [Using RBAC
 #' Authorization in the Kubernetes
 #' documentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
-#'
+#' 
 #' If you want Amazon EKS to authorize the `principalArn` (instead of, or
 #' in addition to Kubernetes authorizing the `principalArn`), you can
 #' associate one or more access policies to the access entry using
@@ -358,7 +361,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' in the *Amazon EKS User Guide*.
 #' @param type The type of the new access entry. Valid values are `Standard`,
 #' `FARGATE_LINUX`, `EC2_LINUX`, and `EC2_WINDOWS`.
-#'
+#' 
 #' If the `principalArn` is for an IAM role that's used for self-managed
 #' Amazon EC2 nodes, specify `EC2_LINUX` or `EC2_WINDOWS`. Amazon EKS
 #' grants the necessary permissions to the node for you. If the
@@ -368,7 +371,7 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #' profiles or managed Amazon EC2 nodes, because Amazon EKS creates entries
 #' in the `aws-auth` `ConfigMap` for the roles. You can't change this value
 #' once you've created the access entry.
-#'
+#' 
 #' If you set the value to `EC2_LINUX` or `EC2_WINDOWS`, you can't specify
 #' values for `kubernetesGroups`, or associate an `AccessPolicy` to the
 #' access entry.
@@ -427,7 +430,8 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
     http_method = "POST",
     http_path = "/clusters/{name}/access-entries",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$create_access_entry_input(clusterName = clusterName, principalArn = principalArn, kubernetesGroups = kubernetesGroups, tags = tags, clientRequestToken = clientRequestToken, username = username, type = type)
   output <- .eks$create_access_entry_output()
@@ -443,7 +447,7 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #'
 #' @description
 #' Creates an Amazon EKS add-on.
-#'
+#' 
 #' Amazon EKS add-ons help to automate the provisioning and lifecycle
 #' management of common operational software for Amazon EKS clusters. For
 #' more information, see [Amazon EKS
@@ -469,7 +473,7 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' information, see [Amazon EKS node IAM
 #' role](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
 #' in the *Amazon EKS User Guide*.
-#'
+#' 
 #' To specify an existing IAM role, you must have an IAM OpenID Connect
 #' (OIDC) provider created for your cluster. For more information, see
 #' [Enabling IAM roles for service accounts on your
@@ -477,23 +481,23 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' in the *Amazon EKS User Guide*.
 #' @param resolveConflicts How to resolve field value conflicts for an Amazon EKS add-on. Conflicts
 #' are handled based on the value you choose:
-#'
-#' -   **None** – If the self-managed version of the add-on is installed on
-#'     your cluster, Amazon EKS doesn't change the value. Creation of the
-#'     add-on might fail.
-#'
-#' -   **Overwrite** – If the self-managed version of the add-on is
-#'     installed on your cluster and the Amazon EKS default value is
-#'     different than the existing value, Amazon EKS changes the value to
-#'     the Amazon EKS default value.
-#'
-#' -   **Preserve** – This is similar to the NONE option. If the
-#'     self-managed version of the add-on is installed on your cluster
-#'     Amazon EKS doesn't change the add-on resource properties. Creation
-#'     of the add-on might fail if conflicts are detected. This option
-#'     works differently during the update operation. For more information,
-#'     see [`update_addon`][eks_update_addon].
-#'
+#' 
+#' - **None** – If the self-managed version of the add-on is installed on
+#'   your cluster, Amazon EKS doesn't change the value. Creation of the
+#'   add-on might fail.
+#' 
+#' - **Overwrite** – If the self-managed version of the add-on is installed
+#'   on your cluster and the Amazon EKS default value is different than the
+#'   existing value, Amazon EKS changes the value to the Amazon EKS default
+#'   value.
+#' 
+#' - **Preserve** – This is similar to the NONE option. If the self-managed
+#'   version of the add-on is installed on your cluster Amazon EKS doesn't
+#'   change the add-on resource properties. Creation of the add-on might
+#'   fail if conflicts are detected. This option works differently during
+#'   the update operation. For more information, see
+#'   [`update_addon`][eks_update_addon].
+#' 
 #' If you don't currently have the self-managed version of the add-on
 #' installed on your cluster, the Amazon EKS add-on is installed. Amazon
 #' EKS sets all values to default values, regardless of the option that you
@@ -508,7 +512,7 @@ eks_create_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' [`describe_addon_configuration`][eks_describe_addon_configuration].
 #' @param podIdentityAssociations An array of Pod Identity Assocations to be created. Each EKS Pod
 #' Identity association maps a Kubernetes service account to an IAM Role.
-#'
+#' 
 #' For more information, see [Attach an IAM Role to an Amazon EKS add-on
 #' using Pod
 #' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
@@ -592,7 +596,8 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
     http_method = "POST",
     http_path = "/clusters/{name}/addons",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$create_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, tags = tags, configurationValues = configurationValues, podIdentityAssociations = podIdentityAssociations)
   output <- .eks$create_addon_output()
@@ -608,25 +613,25 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'
 #' @description
 #' Creates an Amazon EKS control plane.
-#'
+#' 
 #' The Amazon EKS control plane consists of control plane instances that
 #' run the Kubernetes software, such as `etcd` and the API server. The
 #' control plane runs in an account managed by Amazon Web Services, and the
 #' Kubernetes API is exposed by the Amazon EKS API server endpoint. Each
 #' Amazon EKS cluster control plane is single tenant and unique. It runs on
 #' its own set of Amazon EC2 instances.
-#'
+#' 
 #' The cluster control plane is provisioned across multiple Availability
 #' Zones and fronted by an Elastic Load Balancing Network Load Balancer.
 #' Amazon EKS also provisions elastic network interfaces in your VPC
 #' subnets to provide connectivity from the control plane instances to the
 #' nodes (for example, to support `kubectl exec`, `logs`, and `proxy` data
 #' flows).
-#'
+#' 
 #' Amazon EKS nodes run in your Amazon Web Services account and connect to
 #' your cluster's control plane over the Kubernetes API server endpoint and
 #' a certificate file that is created for your cluster.
-#'
+#' 
 #' You can use the `endpointPublicAccess` and `endpointPrivateAccess`
 #' parameters to enable or disable public and private access to your
 #' cluster's Kubernetes API server endpoint. By default, public access is
@@ -634,18 +639,18 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' [Amazon EKS Cluster Endpoint Access
 #' Control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 #' in the *Amazon EKS User Guide* .
-#'
+#' 
 #' You can use the `logging` parameter to enable or disable exporting the
 #' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
 #' default, cluster control plane logs aren't exported to CloudWatch Logs.
 #' For more information, see [Amazon EKS Cluster Control Plane
 #' Logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the *Amazon EKS User Guide* .
-#'
+#' 
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
 #' apply to exported control plane logs. For more information, see
 #' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
-#'
+#' 
 #' In most cases, it takes several minutes to create a cluster. After you
 #' create an Amazon EKS cluster, you must configure your Kubernetes tooling
 #' to communicate with the API server and launch nodes into your cluster.
@@ -664,18 +669,18 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param name &#91;required&#93; The unique name to give to your cluster.
 #' @param version The desired Kubernetes version for your cluster. If you don't specify a
 #' value here, the default version available in Amazon EKS is used.
-#'
+#' 
 #' The default version might not be the latest version available.
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that provides permissions
 #' for the Kubernetes control plane to make calls to Amazon Web Services
 #' API operations on your behalf. For more information, see [Amazon EKS
 #' Service IAM
-#' Role](https://docs.aws.amazon.com/eks/latest/userguide/cluster-iam-role.html)
+#' Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
 #' in the *Amazon EKS User Guide* .
 #' @param resourcesVpcConfig &#91;required&#93; The VPC configuration that's used by the cluster control plane. Amazon
 #' EKS VPC resources have specific requirements to work properly with
 #' Kubernetes. For more information, see [Cluster VPC
-#' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network-reqs.html)
+#' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
 #' and [Cluster Security Group
 #' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 #' in the *Amazon EKS User Guide*. You must specify at least two subnets.
@@ -688,7 +693,7 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' EKS Cluster control plane
 #' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the *Amazon EKS User Guide* .
-#'
+#' 
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
 #' apply to exported control plane logs. For more information, see
 #' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
@@ -708,9 +713,9 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' @param accessConfig The access configuration for the cluster.
 #' @param bootstrapSelfManagedAddons If you set this value to `False` when creating a cluster, the default
 #' networking add-ons will not be installed.
-#'
+#' 
 #' The default networking addons include vpc-cni, coredns, and kube-proxy.
-#'
+#' 
 #' Use this option when you plan to install third-party alternative add-ons
 #' or self-manage the default networking add-ons.
 #' @param upgradePolicy New clusters, by default, have extended support enabled. You can disable
@@ -923,7 +928,8 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
     http_method = "POST",
     http_path = "/clusters",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$create_cluster_input(name = name, version = version, roleArn = roleArn, resourcesVpcConfig = resourcesVpcConfig, kubernetesNetworkConfig = kubernetesNetworkConfig, logging = logging, clientRequestToken = clientRequestToken, tags = tags, encryptionConfig = encryptionConfig, outpostConfig = outpostConfig, accessConfig = accessConfig, bootstrapSelfManagedAddons = bootstrapSelfManagedAddons, upgradePolicy = upgradePolicy)
   output <- .eks$create_cluster_output()
@@ -1036,7 +1042,8 @@ eks_create_eks_anywhere_subscription <- function(name, term, licenseQuantity = N
     http_method = "POST",
     http_path = "/eks-anywhere-subscriptions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$create_eks_anywhere_subscription_input(name = name, term = term, licenseQuantity = licenseQuantity, licenseType = licenseType, autoRenew = autoRenew, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$create_eks_anywhere_subscription_output()
@@ -1054,7 +1061,7 @@ eks_create_eks_anywhere_subscription <- function(name, term, licenseQuantity = N
 #' Creates an Fargate profile for your Amazon EKS cluster. You must have at
 #' least one Fargate profile in a cluster to be able to run pods on
 #' Fargate.
-#'
+#' 
 #' The Fargate profile allows an administrator to declare which pods run on
 #' Fargate and specify which pods run on which Fargate profile. This
 #' declaration is done through the profile’s selectors. Each profile can
@@ -1063,7 +1070,7 @@ eks_create_eks_anywhere_subscription <- function(name, term, licenseQuantity = N
 #' multiple optional key-value pairs. Pods that match the selectors are
 #' scheduled on Fargate. If a to-be-scheduled pod matches any of the
 #' selectors in the Fargate profile, then that pod is run on Fargate.
-#'
+#' 
 #' When you create a Fargate profile, you must specify a pod execution role
 #' to use with the pods that are scheduled with the profile. This role is
 #' added to the cluster's Kubernetes [Role Based Access
@@ -1076,15 +1083,15 @@ eks_create_eks_anywhere_subscription <- function(name, term, licenseQuantity = N
 #' Execution
 #' Role](https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html)
 #' in the *Amazon EKS User Guide*.
-#'
+#' 
 #' Fargate profiles are immutable. However, you can create a new updated
 #' profile to replace an existing profile and then delete the original
 #' after the updated profile has finished creating.
-#'
+#' 
 #' If any Fargate profiles in a cluster are in the `DELETING` status, you
 #' must wait for that Fargate profile to finish deleting before you can
 #' create any other profiles in that cluster.
-#'
+#' 
 #' For more information, see [Fargate
 #' profile](https://docs.aws.amazon.com/eks/latest/userguide/fargate-profile.html)
 #' in the *Amazon EKS User Guide*.
@@ -1192,7 +1199,8 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
     http_method = "POST",
     http_path = "/clusters/{name}/fargate-profiles",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$create_fargate_profile_input(fargateProfileName = fargateProfileName, clusterName = clusterName, podExecutionRoleArn = podExecutionRoleArn, subnets = subnets, selectors = selectors, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$create_fargate_profile_output()
@@ -1208,7 +1216,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #'
 #' @description
 #' Creates a managed node group for an Amazon EKS cluster.
-#'
+#' 
 #' You can only create a node group for your cluster that is equal to the
 #' current Kubernetes version for the cluster. All node groups are created
 #' with the latest AMI release version for the respective minor Kubernetes
@@ -1216,13 +1224,13 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' template. For more information about using launch templates, see
 #' [Customizing managed nodes with launch
 #' templates](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
-#'
+#' 
 #' An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 #' associated Amazon EC2 instances that are managed by Amazon Web Services
 #' for an Amazon EKS cluster. For more information, see [Managed node
 #' groups](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
 #' in the *Amazon EKS User Guide*.
-#'
+#' 
 #' Windows AMI types are only supported for commercial Amazon Web Services
 #' Regions that support Windows on Amazon EKS.
 #'
@@ -1334,7 +1342,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' AMI
 #' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html)
 #' in the *Amazon EKS User Guide*.
-#'
+#' 
 #' If you specify `launchTemplate`, and your launch template uses a custom
 #' AMI, then don't specify `releaseVersion`, or the node group deployment
 #' will fail. For more information about using launch templates with Amazon
@@ -1490,7 +1498,8 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$create_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName, scalingConfig = scalingConfig, diskSize = diskSize, subnets = subnets, instanceTypes = instanceTypes, amiType = amiType, remoteAccess = remoteAccess, nodeRole = nodeRole, labels = labels, taints = taints, tags = tags, clientRequestToken = clientRequestToken, launchTemplate = launchTemplate, updateConfig = updateConfig, capacityType = capacityType, version = version, releaseVersion = releaseVersion)
   output <- .eks$create_nodegroup_output()
@@ -1510,16 +1519,16 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' Amazon EKS cluster and an IAM role with *EKS Pod Identity*. Use EKS Pod
 #' Identity to give temporary IAM credentials to pods and the credentials
 #' are rotated automatically.
-#'
+#' 
 #' Amazon EKS Pod Identity associations provide the ability to manage
 #' credentials for your applications, similar to the way that Amazon EC2
 #' instance profiles provide credentials to Amazon EC2 instances.
-#'
+#' 
 #' If a pod uses a service account that has an association, Amazon EKS sets
 #' environment variables in the containers of the pod. The environment
 #' variables configure the Amazon Web Services SDKs, including the Command
 #' Line Interface, to use the EKS Pod Identity credentials.
-#'
+#' 
 #' Pod Identity is a simpler method than *IAM roles for service accounts*,
 #' as this method doesn't use OIDC identity providers. Additionally, you
 #' can configure a role for Pod Identity once, and reuse it across
@@ -1544,31 +1553,31 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 #' @param tags Metadata that assists with categorization and organization. Each tag
 #' consists of a key and an optional value. You define both. Tags don't
 #' propagate to any other cluster or Amazon Web Services resources.
-#'
+#' 
 #' The following basic restrictions apply to tags:
-#'
-#' -   Maximum number of tags per resource – 50
-#'
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
-#'
-#' -   Maximum key length – 128 Unicode characters in UTF-8
-#'
-#' -   Maximum value length – 256 Unicode characters in UTF-8
-#'
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
-#'
-#' -   Tag keys and values are case-sensitive.
-#'
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' 
+#' - Maximum number of tags per resource – 50
+#' 
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
+#' 
+#' - Maximum key length – 128 Unicode characters in UTF-8
+#' 
+#' - Maximum value length – 256 Unicode characters in UTF-8
+#' 
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
+#' 
+#' - Tag keys and values are case-sensitive.
+#' 
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1620,7 +1629,8 @@ eks_create_pod_identity_association <- function(clusterName, namespace, serviceA
     http_method = "POST",
     http_path = "/clusters/{name}/pod-identity-associations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$create_pod_identity_association_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, roleArn = roleArn, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$create_pod_identity_association_output()
@@ -1636,7 +1646,7 @@ eks_create_pod_identity_association <- function(clusterName, namespace, serviceA
 #'
 #' @description
 #' Deletes an access entry.
-#'
+#' 
 #' Deleting an access entry of a type other than `Standard` can cause your
 #' cluster to function improperly. If you delete an access entry in error,
 #' you can recreate it.
@@ -1669,7 +1679,8 @@ eks_delete_access_entry <- function(clusterName, principalArn) {
     http_method = "DELETE",
     http_path = "/clusters/{name}/access-entries/{principalArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$delete_access_entry_input(clusterName = clusterName, principalArn = principalArn)
   output <- .eks$delete_access_entry_output()
@@ -1685,7 +1696,7 @@ eks_delete_access_entry <- function(clusterName, principalArn) {
 #'
 #' @description
 #' Deletes an Amazon EKS add-on.
-#'
+#' 
 #' When you remove an add-on, it's deleted from the cluster. You can always
 #' manually start an add-on on the cluster using the Kubernetes API.
 #'
@@ -1765,7 +1776,8 @@ eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
     http_method = "DELETE",
     http_path = "/clusters/{name}/addons/{addonName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$delete_addon_input(clusterName = clusterName, addonName = addonName, preserve = preserve)
   output <- .eks$delete_addon_output()
@@ -1781,7 +1793,7 @@ eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
 #'
 #' @description
 #' Deletes an Amazon EKS cluster control plane.
-#'
+#' 
 #' If you have active services in your cluster that are associated with a
 #' load balancer, you must delete those services before deleting the
 #' cluster so that the load balancers are deleted properly. Otherwise, you
@@ -1789,7 +1801,7 @@ eks_delete_addon <- function(clusterName, addonName, preserve = NULL) {
 #' to delete the VPC. For more information, see [Deleting a
 #' cluster](https://docs.aws.amazon.com/eks/latest/userguide/delete-cluster.html)
 #' in the *Amazon EKS User Guide*.
-#'
+#' 
 #' If you have managed node groups or Fargate profiles attached to the
 #' cluster, you must delete them first. For more information, see
 #' `DeleteNodgroup` and
@@ -1935,7 +1947,8 @@ eks_delete_cluster <- function(name) {
     http_method = "DELETE",
     http_path = "/clusters/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$delete_cluster_input(name = name)
   output <- .eks$delete_cluster_output()
@@ -2013,7 +2026,8 @@ eks_delete_eks_anywhere_subscription <- function(id) {
     http_method = "DELETE",
     http_path = "/eks-anywhere-subscriptions/{id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$delete_eks_anywhere_subscription_input(id = id)
   output <- .eks$delete_eks_anywhere_subscription_output()
@@ -2029,13 +2043,13 @@ eks_delete_eks_anywhere_subscription <- function(id) {
 #'
 #' @description
 #' Deletes an Fargate profile.
-#'
+#' 
 #' When you delete a Fargate profile, any `Pod` running on Fargate that was
 #' created with the profile is deleted. If the `Pod` matches another
 #' Fargate profile, then it is scheduled on Fargate with that profile. If
 #' it no longer matches any Fargate profiles, then it's not scheduled on
 #' Fargate and may remain in a pending state.
-#'
+#' 
 #' Only one Fargate profile in a cluster can be in the `DELETING` status at
 #' a time. You must wait for a Fargate profile to finish deleting before
 #' you can delete any other profiles in that cluster.
@@ -2107,7 +2121,8 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
     http_method = "DELETE",
     http_path = "/clusters/{name}/fargate-profiles/{fargateProfileName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$delete_fargate_profile_input(clusterName = clusterName, fargateProfileName = fargateProfileName)
   output <- .eks$delete_fargate_profile_output()
@@ -2232,7 +2247,8 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
     http_method = "DELETE",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$delete_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName)
   output <- .eks$delete_nodegroup_output()
@@ -2248,7 +2264,7 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 #'
 #' @description
 #' Deletes a EKS Pod Identity association.
-#'
+#' 
 #' The temporary Amazon Web Services credentials from the previous IAM role
 #' session might still be valid until the session expiry. If you need to
 #' immediately revoke the temporary session credentials, then go to the
@@ -2304,7 +2320,8 @@ eks_delete_pod_identity_association <- function(clusterName, associationId) {
     http_method = "DELETE",
     http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$delete_pod_identity_association_input(clusterName = clusterName, associationId = associationId)
   output <- .eks$delete_pod_identity_association_output()
@@ -2322,7 +2339,7 @@ eks_delete_pod_identity_association <- function(clusterName, associationId) {
 #' @description
 #' Deregisters a connected cluster to remove it from the Amazon EKS control
 #' plane.
-#'
+#' 
 #' A connected cluster is a Kubernetes cluster that you've connected to
 #' your control plane using the [Amazon EKS
 #' Connector](https://docs.aws.amazon.com/eks/latest/userguide/eks-connector.html).
@@ -2458,7 +2475,8 @@ eks_deregister_cluster <- function(name) {
     http_method = "DELETE",
     http_path = "/cluster-registrations/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$deregister_cluster_input(name = name)
   output <- .eks$deregister_cluster_output()
@@ -2526,7 +2544,8 @@ eks_describe_access_entry <- function(clusterName, principalArn) {
     http_method = "GET",
     http_path = "/clusters/{name}/access-entries/{principalArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_access_entry_input(clusterName = clusterName, principalArn = principalArn)
   output <- .eks$describe_access_entry_output()
@@ -2615,7 +2634,8 @@ eks_describe_addon <- function(clusterName, addonName) {
     http_method = "GET",
     http_path = "/clusters/{name}/addons/{addonName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_addon_input(clusterName = clusterName, addonName = addonName)
   output <- .eks$describe_addon_output()
@@ -2679,7 +2699,8 @@ eks_describe_addon_configuration <- function(addonName, addonVersion) {
     http_method = "GET",
     http_path = "/addons/configuration-schemas",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_addon_configuration_input(addonName = addonName, addonVersion = addonVersion)
   output <- .eks$describe_addon_configuration_output()
@@ -2695,7 +2716,7 @@ eks_describe_addon_configuration <- function(addonName, addonVersion) {
 #'
 #' @description
 #' Describes the versions for an add-on.
-#'
+#' 
 #' Information such as the Kubernetes versions that you can use the add-on
 #' with, the `owner`, `publisher`, and the `type` of the add-on are
 #' returned.
@@ -2716,7 +2737,7 @@ eks_describe_addon_configuration <- function(addonName, addonVersion) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -2799,7 +2820,8 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
     http_method = "GET",
     http_path = "/addons/supported-versions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "addons")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "addons"),
+    stream_api = FALSE
   )
   input <- .eks$describe_addon_versions_input(kubernetesVersion = kubernetesVersion, maxResults = maxResults, nextToken = nextToken, addonName = addonName, types = types, publishers = publishers, owners = owners)
   output <- .eks$describe_addon_versions_output()
@@ -2815,13 +2837,13 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
 #'
 #' @description
 #' Describes an Amazon EKS cluster.
-#'
+#' 
 #' The API server endpoint and certificate authority data returned by this
 #' operation are required for `kubelet` and `kubectl` to communicate with
 #' your Kubernetes API server. For more information, see [Creating or
 #' updating a `kubeconfig` file for an Amazon EKS
 #' cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html).
-#'
+#' 
 #' The API server endpoint and certificate authority data aren't available
 #' until the cluster reaches the `ACTIVE` state.
 #'
@@ -2965,7 +2987,8 @@ eks_describe_cluster <- function(name) {
     http_method = "GET",
     http_path = "/clusters/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_cluster_input(name = name)
   output <- .eks$describe_cluster_output()
@@ -3039,7 +3062,8 @@ eks_describe_eks_anywhere_subscription <- function(id) {
     http_method = "GET",
     http_path = "/eks-anywhere-subscriptions/{id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_eks_anywhere_subscription_input(id = id)
   output <- .eks$describe_eks_anywhere_subscription_output()
@@ -3123,7 +3147,8 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
     http_method = "GET",
     http_path = "/clusters/{name}/fargate-profiles/{fargateProfileName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_fargate_profile_input(clusterName = clusterName, fargateProfileName = fargateProfileName)
   output <- .eks$describe_fargate_profile_output()
@@ -3196,7 +3221,8 @@ eks_describe_identity_provider_config <- function(clusterName, identityProviderC
     http_method = "POST",
     http_path = "/clusters/{name}/identity-provider-configs/describe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_identity_provider_config_input(clusterName = clusterName, identityProviderConfig = identityProviderConfig)
   output <- .eks$describe_identity_provider_config_output()
@@ -3295,7 +3321,8 @@ eks_describe_insight <- function(clusterName, id) {
     http_method = "GET",
     http_path = "/clusters/{name}/insights/{id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_insight_input(clusterName = clusterName, id = id)
   output <- .eks$describe_insight_output()
@@ -3420,7 +3447,8 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
     http_method = "GET",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_nodegroup_input(clusterName = clusterName, nodegroupName = nodegroupName)
   output <- .eks$describe_nodegroup_output()
@@ -3436,7 +3464,7 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #'
 #' @description
 #' Returns descriptive information about an EKS Pod Identity association.
-#'
+#' 
 #' This action requires the ID of the association. You can get the ID from
 #' the response to the `CreatePodIdentityAssocation` for newly created
 #' associations. Or, you can list the IDs for associations with
@@ -3493,7 +3521,8 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
     http_method = "GET",
     http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_pod_identity_association_input(clusterName = clusterName, associationId = associationId)
   output <- .eks$describe_pod_identity_association_output()
@@ -3509,7 +3538,7 @@ eks_describe_pod_identity_association <- function(clusterName, associationId) {
 #'
 #' @description
 #' Describes an update to an Amazon EKS resource.
-#'
+#' 
 #' When the status of the update is `Succeeded`, the update is complete. If
 #' an update fails, the status is `Failed`, and an error detail explains
 #' the reason for the failure.
@@ -3576,7 +3605,8 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
     http_method = "GET",
     http_path = "/clusters/{name}/updates/{updateId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$describe_update_input(name = name, updateId = updateId, nodegroupName = nodegroupName, addonName = addonName)
   output <- .eks$describe_update_output()
@@ -3625,7 +3655,8 @@ eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn)
     http_method = "DELETE",
     http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies/{policyArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$disassociate_access_policy_input(clusterName = clusterName, principalArn = principalArn, policyArn = policyArn)
   output <- .eks$disassociate_access_policy_output()
@@ -3641,7 +3672,7 @@ eks_disassociate_access_policy <- function(clusterName, principalArn, policyArn)
 #'
 #' @description
 #' Disassociates an identity provider configuration from a cluster.
-#'
+#' 
 #' If you disassociate an identity provider from your cluster, users
 #' included in the provider can no longer access the cluster. However, you
 #' can still access the cluster with IAM principals.
@@ -3708,7 +3739,8 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
     http_method = "POST",
     http_path = "/clusters/{name}/identity-provider-configs/disassociate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$disassociate_identity_provider_config_input(clusterName = clusterName, identityProviderConfig = identityProviderConfig, clientRequestToken = clientRequestToken)
   output <- .eks$disassociate_identity_provider_config_output()
@@ -3745,7 +3777,7 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -3782,7 +3814,8 @@ eks_list_access_entries <- function(clusterName, associatedPolicyArn = NULL, max
     http_method = "GET",
     http_path = "/clusters/{name}/access-entries",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "accessEntries")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "accessEntries"),
+    stream_api = FALSE
   )
   input <- .eks$list_access_entries_input(clusterName = clusterName, associatedPolicyArn = associatedPolicyArn, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_access_entries_output()
@@ -3813,7 +3846,7 @@ eks_list_access_entries <- function(clusterName, associatedPolicyArn = NULL, max
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -3851,7 +3884,8 @@ eks_list_access_policies <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/access-policies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "accessPolicies")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "accessPolicies"),
+    stream_api = FALSE
   )
   input <- .eks$list_access_policies_input(maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_access_policies_output()
@@ -3883,7 +3917,7 @@ eks_list_access_policies <- function(maxResults = NULL, nextToken = NULL) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -3919,7 +3953,8 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/clusters/{name}/addons",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "addons")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "addons"),
+    stream_api = FALSE
   )
   input <- .eks$list_addons_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_addons_output()
@@ -3953,7 +3988,7 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -4006,7 +4041,8 @@ eks_list_associated_access_policies <- function(clusterName, principalArn, maxRe
     http_method = "GET",
     http_path = "/clusters/{name}/access-entries/{principalArn}/access-policies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list("clusterName", "principalArn"), output_token = "nextToken", result_key = "associatedAccessPolicies")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", non_aggregate_keys = list( "clusterName", "principalArn"), output_token = "nextToken", result_key = "associatedAccessPolicies"),
+    stream_api = FALSE
   )
   input <- .eks$list_associated_access_policies_input(clusterName = clusterName, principalArn = principalArn, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_associated_access_policies_output()
@@ -4039,7 +4075,7 @@ eks_list_associated_access_policies <- function(clusterName, principalArn, maxRe
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -4089,7 +4125,8 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NUL
     http_method = "GET",
     http_path = "/clusters",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusters")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusters"),
+    stream_api = FALSE
   )
   input <- .eks$list_clusters_input(maxResults = maxResults, nextToken = nextToken, include = include)
   output <- .eks$list_clusters_output()
@@ -4185,7 +4222,8 @@ eks_list_eks_anywhere_subscriptions <- function(maxResults = NULL, nextToken = N
     http_method = "GET",
     http_path = "/eks-anywhere-subscriptions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "subscriptions")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "subscriptions"),
+    stream_api = FALSE
   )
   input <- .eks$list_eks_anywhere_subscriptions_input(maxResults = maxResults, nextToken = nextToken, includeStatus = includeStatus)
   output <- .eks$list_eks_anywhere_subscriptions_output()
@@ -4219,7 +4257,7 @@ eks_list_eks_anywhere_subscriptions <- function(maxResults = NULL, nextToken = N
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -4255,7 +4293,8 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
     http_method = "GET",
     http_path = "/clusters/{name}/fargate-profiles",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "fargateProfileNames")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "fargateProfileNames"),
+    stream_api = FALSE
   )
   input <- .eks$list_fargate_profiles_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_fargate_profiles_output()
@@ -4287,7 +4326,7 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -4326,7 +4365,8 @@ eks_list_identity_provider_configs <- function(clusterName, maxResults = NULL, n
     http_method = "GET",
     http_path = "/clusters/{name}/identity-provider-configs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "identityProviderConfigs")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "identityProviderConfigs"),
+    stream_api = FALSE
   )
   input <- .eks$list_identity_provider_configs_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_identity_provider_configs_output()
@@ -4425,7 +4465,8 @@ eks_list_insights <- function(clusterName, filter = NULL, maxResults = NULL, nex
     http_method = "POST",
     http_path = "/clusters/{name}/insights",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "insights")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "insights"),
+    stream_api = FALSE
   )
   input <- .eks$list_insights_input(clusterName = clusterName, filter = filter, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_insights_output()
@@ -4461,7 +4502,7 @@ eks_list_insights <- function(clusterName, filter = NULL, maxResults = NULL, nex
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -4497,7 +4538,8 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
     http_method = "GET",
     http_path = "/clusters/{name}/node-groups",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "nodegroups")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "nodegroups"),
+    stream_api = FALSE
   )
   input <- .eks$list_nodegroups_input(clusterName = clusterName, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_nodegroups_output()
@@ -4541,7 +4583,7 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 #' and the results exceeded the value of that parameter. Pagination
 #' continues from the end of the previous results that returned the
 #' `nextToken` value.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -4586,7 +4628,8 @@ eks_list_pod_identity_associations <- function(clusterName, namespace = NULL, se
     http_method = "GET",
     http_path = "/clusters/{name}/pod-identity-associations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "associations")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "associations"),
+    stream_api = FALSE
   )
   input <- .eks$list_pod_identity_associations_input(clusterName = clusterName, namespace = namespace, serviceAccount = serviceAccount, maxResults = maxResults, nextToken = nextToken)
   output <- .eks$list_pod_identity_associations_output()
@@ -4645,7 +4688,8 @@ eks_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .eks$list_tags_for_resource_output()
@@ -4675,7 +4719,7 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' parameter. Pagination continues from the end of the previous results
 #' that returned the `nextToken` value. This value is null when there are
 #' no more results to return.
-#'
+#' 
 #' This token should be treated as an opaque identifier that is used only
 #' to retrieve the next items in a list and not for other programmatic
 #' purposes.
@@ -4719,7 +4763,8 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
     http_method = "GET",
     http_path = "/clusters/{name}/updates",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "updateIds")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "updateIds"),
+    stream_api = FALSE
   )
   input <- .eks$list_updates_input(name = name, nodegroupName = nodegroupName, addonName = addonName, nextToken = nextToken, maxResults = maxResults)
   output <- .eks$list_updates_output()
@@ -4735,19 +4780,19 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
 #'
 #' @description
 #' Connects a Kubernetes cluster to the Amazon EKS control plane.
-#'
+#' 
 #' Any Kubernetes cluster can be connected to the Amazon EKS control plane
 #' to view current information about the cluster and its nodes.
-#'
+#' 
 #' Cluster connection requires two steps. First, send a
 #' ` RegisterClusterRequest ` to add it to the Amazon EKS control plane.
-#'
+#' 
 #' Second, a
 #' [Manifest](https://amazon-eks.s3.us-west-2.amazonaws.com/eks-connector/manifests/eks-connector/latest/eks-connector.yaml)
 #' containing the `activationID` and `activationCode` must be applied to
 #' the Kubernetes cluster through it's native provider to provide
 #' visibility.
-#'
+#' 
 #' After the manifest is updated and applied, the connected cluster is
 #' visible to the Amazon EKS control plane. If the manifest isn't applied
 #' within three days, the connected cluster will no longer be visible and
@@ -4900,7 +4945,8 @@ eks_register_cluster <- function(name, connectorConfig, clientRequestToken = NUL
     http_method = "POST",
     http_path = "/cluster-registrations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$register_cluster_input(name = name, connectorConfig = connectorConfig, clientRequestToken = clientRequestToken, tags = tags)
   output <- .eks$register_cluster_output()
@@ -4957,7 +5003,8 @@ eks_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .eks$tag_resource_output()
@@ -5004,7 +5051,8 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .eks$untag_resource_output()
@@ -5031,7 +5079,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' `subject` in a Kubernetes `RoleBinding` or `ClusterRoleBinding` object.
 #' Amazon EKS doesn't confirm that the value for `name` exists in any
 #' bindings on your cluster. You can specify one or more names.
-#'
+#' 
 #' Kubernetes authorizes the `principalArn` of the access entry to access
 #' any cluster objects that you've specified in a Kubernetes `Role` or
 #' `ClusterRole` object that is also specified in a binding's `roleRef`.
@@ -5039,7 +5087,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 #' `ClusterRoleBinding`, `Role`, or `ClusterRole` objects, see [Using RBAC
 #' Authorization in the Kubernetes
 #' documentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
-#'
+#' 
 #' If you want Amazon EKS to authorize the `principalArn` (instead of, or
 #' in addition to Kubernetes authorizing the `principalArn`), you can
 #' associate one or more access policies to the access entry using
@@ -5107,7 +5155,8 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
     http_method = "POST",
     http_path = "/clusters/{name}/access-entries/{principalArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$update_access_entry_input(clusterName = clusterName, principalArn = principalArn, kubernetesGroups = kubernetesGroups, clientRequestToken = clientRequestToken, username = username)
   output <- .eks$update_access_entry_output()
@@ -5144,7 +5193,7 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' information, see [Amazon EKS node IAM
 #' role](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html)
 #' in the *Amazon EKS User Guide*.
-#'
+#' 
 #' To specify an existing IAM role, you must have an IAM OpenID Connect
 #' (OIDC) provider created for your cluster. For more information, see
 #' [Enabling IAM roles for service accounts on your
@@ -5153,17 +5202,16 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' @param resolveConflicts How to resolve field value conflicts for an Amazon EKS add-on if you've
 #' changed a value from the Amazon EKS default value. Conflicts are handled
 #' based on the option you choose:
-#'
-#' -   **None** – Amazon EKS doesn't change the value. The update might
-#'     fail.
-#'
-#' -   **Overwrite** – Amazon EKS overwrites the changed value back to the
-#'     Amazon EKS default value.
-#'
-#' -   **Preserve** – Amazon EKS preserves the value. If you choose this
-#'     option, we recommend that you test any field and value changes on a
-#'     non-production cluster before updating the add-on on your production
-#'     cluster.
+#' 
+#' - **None** – Amazon EKS doesn't change the value. The update might fail.
+#' 
+#' - **Overwrite** – Amazon EKS overwrites the changed value back to the
+#'   Amazon EKS default value.
+#' 
+#' - **Preserve** – Amazon EKS preserves the value. If you choose this
+#'   option, we recommend that you test any field and value changes on a
+#'   non-production cluster before updating the add-on on your production
+#'   cluster.
 #' @param clientRequestToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
 #' @param configurationValues The set of configuration values for the add-on that's created. The
@@ -5173,7 +5221,7 @@ eks_update_access_entry <- function(clusterName, principalArn, kubernetesGroups 
 #' Identity association maps a Kubernetes service account to an IAM Role.
 #' If this value is left blank, no change. If an empty array is provided,
 #' existing Pod Identity Assocations owned by the Addon are deleted.
-#'
+#' 
 #' For more information, see [Attach an IAM Role to an Amazon EKS add-on
 #' using Pod
 #' Identity](https://docs.aws.amazon.com/eks/latest/userguide/add-ons-iam.html)
@@ -5239,7 +5287,8 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
     http_method = "POST",
     http_path = "/clusters/{name}/addons/{addonName}/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$update_addon_input(clusterName = clusterName, addonName = addonName, addonVersion = addonVersion, serviceAccountRoleArn = serviceAccountRoleArn, resolveConflicts = resolveConflicts, clientRequestToken = clientRequestToken, configurationValues = configurationValues, podIdentityAssociations = podIdentityAssociations)
   output <- .eks$update_addon_output()
@@ -5258,34 +5307,34 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' function during the update. The response output includes an update ID
 #' that you can use to track the status of your cluster update with
 #' [`describe_update`][eks_describe_update]"/\>.
-#'
+#' 
 #' You can use this API operation to enable or disable exporting the
 #' Kubernetes control plane logs for your cluster to CloudWatch Logs. By
 #' default, cluster control plane logs aren't exported to CloudWatch Logs.
 #' For more information, see [Amazon EKS Cluster control plane
 #' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the *Amazon EKS User Guide* .
-#'
+#' 
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
 #' apply to exported control plane logs. For more information, see
 #' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
-#'
+#' 
 #' You can also use this API operation to enable or disable public and
 #' private access to your cluster's Kubernetes API server endpoint. By
 #' default, public access is enabled, and private access is disabled. For
 #' more information, see [Amazon EKS cluster endpoint access
 #' control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 #' in the *Amazon EKS User Guide* .
-#'
+#' 
 #' You can also use this API operation to choose different subnets and
 #' security groups for the cluster. You must specify at least two subnets
 #' that are in different Availability Zones. You can't change which VPC the
 #' subnets are from, the subnets must be in the same VPC as the subnets
 #' that the cluster was created with. For more information about the VPC
 #' requirements, see
-#' <https://docs.aws.amazon.com/eks/latest/userguide/network-reqs.html> in
+#' <https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html> in
 #' the *Amazon EKS User Guide* .
-#'
+#' 
 #' Cluster updates are asynchronous, and they should finish within a few
 #' minutes. During an update, the cluster status moves to `UPDATING` (this
 #' status transition is eventually consistent). When the update is complete
@@ -5296,14 +5345,14 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #'   clientRequestToken, accessConfig, upgradePolicy)
 #'
 #' @param name &#91;required&#93; The name of the Amazon EKS cluster to update.
-#' @param resourcesVpcConfig
+#' @param resourcesVpcConfig 
 #' @param logging Enable or disable exporting the Kubernetes control plane logs for your
 #' cluster to CloudWatch Logs. By default, cluster control plane logs
 #' aren't exported to CloudWatch Logs. For more information, see [Amazon
 #' EKS cluster control plane
 #' logs](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
 #' in the *Amazon EKS User Guide* .
-#'
+#' 
 #' CloudWatch Logs ingestion, archive storage, and data scanning rates
 #' apply to exported control plane logs. For more information, see
 #' [CloudWatch Pricing](https://aws.amazon.com/cloudwatch/pricing/).
@@ -5393,7 +5442,8 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
     http_method = "POST",
     http_path = "/clusters/{name}/update-config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$update_cluster_config_input(name = name, resourcesVpcConfig = resourcesVpcConfig, logging = logging, clientRequestToken = clientRequestToken, accessConfig = accessConfig, upgradePolicy = upgradePolicy)
   output <- .eks$update_cluster_config_output()
@@ -5413,12 +5463,12 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 #' includes an update ID that you can use to track the status of your
 #' cluster update with the [`describe_update`][eks_describe_update] API
 #' operation.
-#'
+#' 
 #' Cluster updates are asynchronous, and they should finish within a few
 #' minutes. During an update, the cluster status moves to `UPDATING` (this
 #' status transition is eventually consistent). When the update is complete
 #' (either `Failed` or `Successful`), the cluster status moves to `Active`.
-#'
+#' 
 #' If your cluster has managed node groups attached to it, all of your node
 #' groups’ Kubernetes versions must match the cluster’s Kubernetes version
 #' in order to update the cluster to a new Kubernetes version.
@@ -5481,7 +5531,8 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
     http_method = "POST",
     http_path = "/clusters/{name}/updates",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$update_cluster_version_input(name = name, version = version, clientRequestToken = clientRequestToken)
   output <- .eks$update_cluster_version_output()
@@ -5562,7 +5613,8 @@ eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestTok
     http_method = "POST",
     http_path = "/eks-anywhere-subscriptions/{id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$update_eks_anywhere_subscription_input(id = id, autoRenew = autoRenew, clientRequestToken = clientRequestToken)
   output <- .eks$update_eks_anywhere_subscription_output()
@@ -5684,7 +5736,8 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}/update-config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$update_nodegroup_config_input(clusterName = clusterName, nodegroupName = nodegroupName, labels = labels, taints = taints, scalingConfig = scalingConfig, updateConfig = updateConfig, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_config_output()
@@ -5702,14 +5755,14 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' @description
 #' Updates the Kubernetes version or AMI version of an Amazon EKS managed
 #' node group.
-#'
+#' 
 #' You can update a node group using a launch template only if the node
 #' group was originally deployed with a launch template. If you need to
 #' update a custom AMI in a node group that was deployed with a launch
 #' template, then update your custom AMI, specify the new ID in a new
 #' version of the launch template, and then update the node group to the
 #' new version of the launch template.
-#'
+#' 
 #' If you update without a launch template, then you can update to the
 #' latest available AMI version of a node group's current Kubernetes
 #' version by not specifying a Kubernetes version in the request. You can
@@ -5722,10 +5775,10 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' see [Amazon EKS optimized Windows AMI
 #' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html)
 #' in the *Amazon EKS User Guide*.
-#'
+#' 
 #' You cannot roll back a node group to an earlier Kubernetes version or
 #' AMI version.
-#'
+#' 
 #' When a node in a managed node group is terminated due to a scaling
 #' action or update, every `Pod` on that node is drained first. Amazon EKS
 #' attempts to drain the nodes gracefully and will fail if it is unable to
@@ -5759,7 +5812,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' AMI
 #' versions](https://docs.aws.amazon.com/eks/latest/userguide/eks-ami-versions-windows.html)
 #' in the *Amazon EKS User Guide*.
-#'
+#' 
 #' If you specify `launchTemplate`, and your launch template uses a custom
 #' AMI, then don't specify `releaseVersion`, or the node group update will
 #' fail. For more information about using launch templates with Amazon EKS,
@@ -5835,7 +5888,8 @@ eks_update_nodegroup_version <- function(clusterName, nodegroupName, version = N
     http_method = "POST",
     http_path = "/clusters/{name}/node-groups/{nodegroupName}/update-version",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$update_nodegroup_version_input(clusterName = clusterName, nodegroupName = nodegroupName, version = version, releaseVersion = releaseVersion, launchTemplate = launchTemplate, force = force, clientRequestToken = clientRequestToken)
   output <- .eks$update_nodegroup_version_output()
@@ -5912,7 +5966,8 @@ eks_update_pod_identity_association <- function(clusterName, associationId, role
     http_method = "POST",
     http_path = "/clusters/{name}/pod-identity-associations/{associationId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eks$update_pod_identity_association_input(clusterName = clusterName, associationId = associationId, roleArn = roleArn, clientRequestToken = clientRequestToken)
   output <- .eks$update_pod_identity_association_output()

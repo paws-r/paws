@@ -32,50 +32,47 @@ NULL
 #' 
 #' You can work with connections by calling:
 #' 
-#' -   [`create_connection`][codestarconnections_create_connection], which
-#'     creates a uniquely named connection that can be referenced by
-#'     services such as CodePipeline.
+#' - [`create_connection`][codestarconnections_create_connection], which
+#'   creates a uniquely named connection that can be referenced by services
+#'   such as CodePipeline.
 #' 
-#' -   [`delete_connection`][codestarconnections_delete_connection], which
-#'     deletes the specified connection.
+#' - [`delete_connection`][codestarconnections_delete_connection], which
+#'   deletes the specified connection.
 #' 
-#' -   [`get_connection`][codestarconnections_get_connection], which
-#'     returns information about the connection, including the connection
-#'     status.
+#' - [`get_connection`][codestarconnections_get_connection], which returns
+#'   information about the connection, including the connection status.
 #' 
-#' -   [`list_connections`][codestarconnections_list_connections], which
-#'     lists the connections associated with your account.
+#' - [`list_connections`][codestarconnections_list_connections], which
+#'   lists the connections associated with your account.
 #' 
 #' You can work with hosts by calling:
 #' 
-#' -   [`create_host`][codestarconnections_create_host], which creates a
-#'     host that represents the infrastructure where your provider is
-#'     installed.
+#' - [`create_host`][codestarconnections_create_host], which creates a host
+#'   that represents the infrastructure where your provider is installed.
 #' 
-#' -   [`delete_host`][codestarconnections_delete_host], which deletes the
-#'     specified host.
+#' - [`delete_host`][codestarconnections_delete_host], which deletes the
+#'   specified host.
 #' 
-#' -   [`get_host`][codestarconnections_get_host], which returns
-#'     information about the host, including the setup status.
+#' - [`get_host`][codestarconnections_get_host], which returns information
+#'   about the host, including the setup status.
 #' 
-#' -   [`list_hosts`][codestarconnections_list_hosts], which lists the
-#'     hosts associated with your account.
+#' - [`list_hosts`][codestarconnections_list_hosts], which lists the hosts
+#'   associated with your account.
 #' 
 #' You can work with tags in Amazon Web Services CodeStar Connections by
 #' calling the following:
 #' 
-#' -   [`list_tags_for_resource`][codestarconnections_list_tags_for_resource],
-#'     which gets information about Amazon Web Services tags for a
-#'     specified Amazon Resource Name (ARN) in Amazon Web Services CodeStar
-#'     Connections.
+#' - [`list_tags_for_resource`][codestarconnections_list_tags_for_resource],
+#'   which gets information about Amazon Web Services tags for a specified
+#'   Amazon Resource Name (ARN) in Amazon Web Services CodeStar
+#'   Connections.
 #' 
-#' -   [`tag_resource`][codestarconnections_tag_resource], which adds or
-#'     updates tags for a resource in Amazon Web Services CodeStar
-#'     Connections.
+#' - [`tag_resource`][codestarconnections_tag_resource], which adds or
+#'   updates tags for a resource in Amazon Web Services CodeStar
+#'   Connections.
 #' 
-#' -   [`untag_resource`][codestarconnections_untag_resource], which
-#'     removes tags for a resource in Amazon Web Services CodeStar
-#'     Connections.
+#' - [`untag_resource`][codestarconnections_untag_resource], which removes
+#'   tags for a resource in Amazon Web Services CodeStar Connections.
 #' 
 #' For information about how to use Amazon Web Services CodeStar
 #' Connections, see the [Developer Tools User

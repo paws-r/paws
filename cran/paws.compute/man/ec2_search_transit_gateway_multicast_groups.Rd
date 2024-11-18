@@ -26,8 +26,8 @@ group.
 \code{true} | \code{false}.
 \item \code{member-type} - The member type. Valid values are \code{igmp} | \code{static}.
 \item \code{resource-id} - The ID of the resource.
-\item \code{resource-type} - The type of resource. Valid values are \code{vpc} |
-\code{vpn} | \code{direct-connect-gateway} | \code{tgw-peering}.
+\item \code{resource-type} - The type of resource. Valid values are \code{vpc} | \code{vpn}
+| \code{direct-connect-gateway} | \code{tgw-peering}.
 \item \code{source-type} - The source type. Valid values are \code{igmp} | \code{static}.
 \item \code{subnet-id} - The ID of the subnet.
 \item \code{transit-gateway-attachment-id} - The id of the transit gateway

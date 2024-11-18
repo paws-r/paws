@@ -22,14 +22,14 @@ ec2_describe_network_insights_paths(
 source.
 \item filter-at-source.source-port-range - The source port range at the
 source.
-\item filter-at-source.destination-address - The destination IPv4 address
-at the source.
+\item filter-at-source.destination-address - The destination IPv4 address at
+the source.
 \item filter-at-source.destination-port-range - The destination port range
 at the source.
-\item filter-at-destination.source-address - The source IPv4 address at
-the destination.
-\item filter-at-destination.source-port-range - The source port range at
-the destination.
+\item filter-at-destination.source-address - The source IPv4 address at the
+destination.
+\item filter-at-destination.source-port-range - The source port range at the
+destination.
 \item filter-at-destination.destination-address - The destination IPv4
 address at the destination.
 \item filter-at-destination.destination-port-range - The destination port

@@ -17,18 +17,17 @@ sfn_start_execution(
 The \code{stateMachineArn} parameter accepts one of the following inputs:
 \itemize{
 \item \strong{An unqualified state machine ARN} – Refers to a state machine ARN
-that isn't qualified with a version or alias ARN. The following is
-an example of an unqualified state machine ARN.
+that isn't qualified with a version or alias ARN. The following is an
+example of an unqualified state machine ARN.
 
 \verb{arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>}
 
 Step Functions doesn't associate state machine executions that you
 start with an unqualified ARN with a version. This is true even if
 that version uses the same revision that the execution used.
-\item \strong{A state machine version ARN} – Refers to a version ARN, which is
-a combination of state machine ARN and the version number separated
-by a colon (:). The following is an example of the ARN for version
-10.
+\item \strong{A state machine version ARN} – Refers to a version ARN, which is a
+combination of state machine ARN and the version number separated by a
+colon (:). The following is an example of the ARN for version 10.
 
 \verb{arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine>:10}
 
@@ -41,14 +40,13 @@ colon (:). The following is an example of the ARN for an alias named
 
 \verb{arn:<partition>:states:<region>:<account-id>:stateMachine:<myStateMachine:PROD>}
 
-Step Functions associates executions that you start with an alias
-ARN with that alias and the state machine version used for that
-execution.
+Step Functions associates executions that you start with an alias ARN
+with that alias and the state machine version used for that execution.
 }}
 
 \item{name}{Optional name of the execution. This name must be unique for your Amazon
 Web Services account, Region, and state machine for 90 days. For more
-information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
+information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions}{Limits Related to State Machine Executions}
 in the \emph{Step Functions Developer Guide}.
 
 If you don't provide a name for the execution, Step Functions

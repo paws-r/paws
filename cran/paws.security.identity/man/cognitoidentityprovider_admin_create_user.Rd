@@ -22,8 +22,8 @@ cognitoidentityprovider_admin_create_user(
 \item{Username}{[required] The value that you want to set as the username sign-in attribute. The
 following conditions apply to the username parameter.
 \itemize{
-\item The username can't be a duplicate of another username in the same
-user pool.
+\item The username can't be a duplicate of another username in the same user
+pool.
 \item You can't change the value of a username after you create it.
 \item You can only provide a value if usernames are a valid sign-in
 attribute for your user pool. If your user pool only supports phone
@@ -132,19 +132,19 @@ ClientMetadata parameter in your AdminCreateUser request. In your
 function code in Lambda, you can process the \code{clientMetadata} value to
 enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the ClientMetadata parameter, remember that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to
-Lambda triggers that are assigned to a user pool to support custom
-workflows. If your user pool configuration doesn't include triggers,
-the ClientMetadata parameter serves no purpose.
+\item Store the ClientMetadata value. This data is available only to Lambda
+triggers that are assigned to a user pool to support custom workflows.
+If your user pool configuration doesn't include triggers, the
+ClientMetadata parameter serves no purpose.
 \item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
-provide sensitive information.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
+sensitive information.
 }}
 }
 \description{

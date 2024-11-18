@@ -21,7 +21,7 @@ connect_create_user(
 \item{Username}{[required] The user name for the account. For instances not using SAML for identity
 management, the user name can include up to 20 characters. If you are
 using SAML for identity management, the user name can include up to 64
-characters from [a-zA-Z0-9_-.\\@]+.
+characters from [a-zA-Z0-9_-.\]+.
 
 Username can include @ only if used in an email format. For example:
 \itemize{
@@ -60,7 +60,7 @@ management and include this parameter, an error is returned.}
 in the Amazon Resource Name (ARN) of the instance.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
 }
 \description{
 Creates a user account for the specified Amazon Connect instance.

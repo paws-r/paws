@@ -20,7 +20,7 @@ delete.}
 to zero.}
 }
 \description{
-Deletes a specified task set within a service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Amazon ECS deployment types} in the \emph{Amazon Elastic Container Service Developer Guide}.
+Deletes a specified task set within a service. This is used when a service uses the \code{EXTERNAL} deployment controller type. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS deployment types} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ecs_delete_task_set/} for full documentation.
 }

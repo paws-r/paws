@@ -40,15 +40,14 @@ the results by time.}
 can group by the following criteria:
 \itemize{
 \item \code{UtteranceText} – The transcription of the utterance.
-\item \code{UtteranceState} – The state of the utterance. The possible states
-are detailed in Key definitions in the user guide.
+\item \code{UtteranceState} – The state of the utterance. The possible states are
+detailed in Key definitions in the user guide.
 }}
 
 \item{attributes}{A list containing attributes related to the utterance that you want the
 response to return. The following attributes are possible:
 \itemize{
-\item \code{LastUsedIntent} – The last used intent at the time of the
-utterance.
+\item \code{LastUsedIntent} – The last used intent at the time of the utterance.
 }}
 
 \item{filters}{A list of objects, each of which describes a condition by which you want

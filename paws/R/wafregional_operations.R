@@ -29,11 +29,11 @@ NULL
 #' 
 #' The ARN should be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' - For an Application Load Balancer:
+#'   `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway stage:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#' - For an Amazon API Gateway stage:
+#'   `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #'
 #' @return
 #' An empty list.
@@ -57,7 +57,8 @@ wafregional_associate_web_acl <- function(WebACLId, ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$associate_web_acl_input(WebACLId = WebACLId, ResourceArn = ResourceArn)
   output <- .wafregional$associate_web_acl_output()
@@ -167,7 +168,8 @@ wafregional_create_byte_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_byte_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_byte_match_set_output()
@@ -265,7 +267,8 @@ wafregional_create_geo_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_geo_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_geo_match_set_output()
@@ -372,7 +375,8 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_ip_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_ip_set_output()
@@ -410,9 +414,9 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
 #' conditions to be counted or blocked. For example, suppose you add the
 #' following to a `RateBasedRule`:
 #' 
-#' -   An `IPSet` that matches the IP address `192.0.2.44/32`
+#' - An `IPSet` that matches the IP address `192.0.2.44/32`
 #' 
-#' -   A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
+#' - A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
 #' 
 #' Further, you specify a `RateLimit` of 1,000.
 #' 
@@ -430,11 +434,11 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
 #' page on your site. To do this, you could add the following to a
 #' `RateBasedRule`:
 #' 
-#' -   A `ByteMatchSet` with `FieldToMatch` of `URI`
+#' - A `ByteMatchSet` with `FieldToMatch` of `URI`
 #' 
-#' -   A `PositionalConstraint` of `STARTS_WITH`
+#' - A `PositionalConstraint` of `STARTS_WITH`
 #' 
-#' -   A `TargetString` of `login`
+#' - A `TargetString` of `login`
 #' 
 #' Further, you specify a `RateLimit` of 1,000.
 #' 
@@ -553,7 +557,8 @@ wafregional_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_rate_based_rule_input(Name = Name, MetricName = MetricName, RateKey = RateKey, RateLimit = RateLimit, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rate_based_rule_output()
@@ -663,7 +668,8 @@ wafregional_create_regex_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_regex_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_regex_match_set_output()
@@ -762,7 +768,8 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_regex_pattern_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_regex_pattern_set_output()
@@ -794,9 +801,9 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' match all of the specifications to be allowed or blocked. For example,
 #' suppose that you add the following to a `Rule`:
 #' 
-#' -   An `IPSet` that matches the IP address `192.0.2.44/32`
+#' - An `IPSet` that matches the IP address `192.0.2.44/32`
 #' 
-#' -   A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
+#' - A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
 #' 
 #' You then add the `Rule` to a `WebACL` and specify that you want to
 #' blocks requests that satisfy the `Rule`. For a request to be blocked, it
@@ -901,7 +908,8 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_rule_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rule_output()
@@ -934,12 +942,12 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
 #' 
 #' Rule groups are subject to the following limits:
 #' 
-#' -   Three rule groups per account. You can request an increase to this
-#'     limit by contacting customer support.
+#' - Three rule groups per account. You can request an increase to this
+#'   limit by contacting customer support.
 #' 
-#' -   One rule group per web ACL.
+#' - One rule group per web ACL.
 #' 
-#' -   Ten rules per rule group.
+#' - Ten rules per rule group.
 #' 
 #' For more information about how to use the AWS WAF API to allow or block
 #' HTTP requests, see the [AWS WAF Developer
@@ -999,7 +1007,8 @@ wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_rule_group_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_rule_group_output()
@@ -1120,7 +1129,8 @@ wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_size_constraint_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_size_constraint_set_output()
@@ -1236,7 +1246,8 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_sql_injection_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_sql_injection_match_set_output()
@@ -1403,7 +1414,8 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_web_acl_input(Name = Name, MetricName = MetricName, DefaultAction = DefaultAction, ChangeToken = ChangeToken, Tags = Tags)
   output <- .wafregional$create_web_acl_output()
@@ -1442,16 +1454,16 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
 #' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket to store the CloudFormation template
 #' in. The S3 bucket must be configured as follows for the migration:
 #' 
-#' -   The bucket name must start with `aws-waf-migration-`. For example,
-#'     `aws-waf-migration-my-web-acl`.
+#' - The bucket name must start with `aws-waf-migration-`. For example,
+#'   `aws-waf-migration-my-web-acl`.
 #' 
-#' -   The bucket must be in the Region where you are deploying the
-#'     template. For example, for a web ACL in us-west-2, you must use an
-#'     Amazon S3 bucket in us-west-2 and you must deploy the template stack
-#'     to us-west-2.
+#' - The bucket must be in the Region where you are deploying the template.
+#'   For example, for a web ACL in us-west-2, you must use an Amazon S3
+#'   bucket in us-west-2 and you must deploy the template stack to
+#'   us-west-2.
 #' 
-#' -   The bucket policies must permit the migration process to write data.
-#'     For listings of the bucket policies, see the Examples section.
+#' - The bucket policies must permit the migration process to write data.
+#'   For listings of the bucket policies, see the Examples section.
 #' @param IgnoreUnsupportedType &#91;required&#93; Indicates whether to exclude entities that can't be migrated or to stop
 #' the migration. Set this to true to ignore unsupported entities in the
 #' web ACL during the migration. Otherwise, if AWS WAF encounters
@@ -1485,7 +1497,8 @@ wafregional_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_web_acl_migration_stack_input(WebACLId = WebACLId, S3BucketName = S3BucketName, IgnoreUnsupportedType = IgnoreUnsupportedType)
   output <- .wafregional$create_web_acl_migration_stack_output()
@@ -1595,7 +1608,8 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$create_xss_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .wafregional$create_xss_match_set_output()
@@ -1690,7 +1704,8 @@ wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_byte_match_set_output()
@@ -1773,7 +1788,8 @@ wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_geo_match_set_output()
@@ -1863,7 +1879,8 @@ wafregional_delete_ip_set <- function(IPSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_ip_set_output()
@@ -1918,7 +1935,8 @@ wafregional_delete_logging_configuration <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .wafregional$delete_logging_configuration_output()
@@ -1977,7 +1995,8 @@ wafregional_delete_permission_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafregional$delete_permission_policy_output()
@@ -2063,7 +2082,8 @@ wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rate_based_rule_output()
@@ -2148,7 +2168,8 @@ wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_regex_match_set_output()
@@ -2215,7 +2236,8 @@ wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_regex_pattern_set_output()
@@ -2305,7 +2327,8 @@ wafregional_delete_rule <- function(RuleId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rule_output()
@@ -2388,7 +2411,8 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_rule_group_input(RuleGroupId = RuleGroupId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_rule_group_output()
@@ -2485,7 +2509,8 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_size_constraint_set_output()
@@ -2583,7 +2608,8 @@ wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_sql_injection_match_set_output()
@@ -2669,7 +2695,8 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_web_acl_output()
@@ -2763,7 +2790,8 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$delete_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken)
   output <- .wafregional$delete_xss_match_set_output()
@@ -2801,11 +2829,11 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 #' 
 #' The ARN should be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' - For an Application Load Balancer:
+#'   `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway stage:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#' - For an Amazon API Gateway stage:
+#'   `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #'
 #' @return
 #' An empty list.
@@ -2828,7 +2856,8 @@ wafregional_disassociate_web_acl <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$disassociate_web_acl_input(ResourceArn = ResourceArn)
   output <- .wafregional$disassociate_web_acl_output()
@@ -2913,7 +2942,8 @@ wafregional_get_byte_match_set <- function(ByteMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_byte_match_set_input(ByteMatchSetId = ByteMatchSetId)
   output <- .wafregional$get_byte_match_set_output()
@@ -2995,7 +3025,8 @@ wafregional_get_change_token <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_change_token_input()
   output <- .wafregional$get_change_token_output()
@@ -3025,15 +3056,14 @@ wafregional_get_change_token <- function() {
 #' [`get_change_token`][wafregional_get_change_token]. `ChangeTokenStatus`
 #' is one of the following values:
 #' 
-#' -   `PROVISIONED`: You requested the change token by calling
-#'     [`get_change_token`][wafregional_get_change_token], but you haven't
-#'     used it yet in a call to create, update, or delete an AWS WAF
-#'     object.
+#' - `PROVISIONED`: You requested the change token by calling
+#'   [`get_change_token`][wafregional_get_change_token], but you haven't
+#'   used it yet in a call to create, update, or delete an AWS WAF object.
 #' 
-#' -   `PENDING`: AWS WAF is propagating the create, update, or delete
-#'     request to all AWS WAF servers.
+#' - `PENDING`: AWS WAF is propagating the create, update, or delete
+#'   request to all AWS WAF servers.
 #' 
-#' -   `INSYNC`: Propagation is complete.
+#' - `INSYNC`: Propagation is complete.
 #'
 #' @usage
 #' wafregional_get_change_token_status(ChangeToken)
@@ -3077,7 +3107,8 @@ wafregional_get_change_token_status <- function(ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_change_token_status_input(ChangeToken = ChangeToken)
   output <- .wafregional$get_change_token_status_output()
@@ -3148,7 +3179,8 @@ wafregional_get_geo_match_set <- function(GeoMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_geo_match_set_input(GeoMatchSetId = GeoMatchSetId)
   output <- .wafregional$get_geo_match_set_output()
@@ -3227,7 +3259,8 @@ wafregional_get_ip_set <- function(IPSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_ip_set_input(IPSetId = IPSetId)
   output <- .wafregional$get_ip_set_output()
@@ -3298,7 +3331,8 @@ wafregional_get_logging_configuration <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_logging_configuration_output()
@@ -3358,7 +3392,8 @@ wafregional_get_permission_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_permission_policy_output()
@@ -3435,7 +3470,8 @@ wafregional_get_rate_based_rule <- function(RuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_rate_based_rule_input(RuleId = RuleId)
   output <- .wafregional$get_rate_based_rule_output()
@@ -3507,7 +3543,8 @@ wafregional_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_rate_based_rule_managed_keys_input(RuleId = RuleId, NextMarker = NextMarker)
   output <- .wafregional$get_rate_based_rule_managed_keys_output()
@@ -3582,7 +3619,8 @@ wafregional_get_regex_match_set <- function(RegexMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_regex_match_set_input(RegexMatchSetId = RegexMatchSetId)
   output <- .wafregional$get_regex_match_set_output()
@@ -3650,7 +3688,8 @@ wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId)
   output <- .wafregional$get_regex_pattern_set_output()
@@ -3732,7 +3771,8 @@ wafregional_get_rule <- function(RuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_rule_input(RuleId = RuleId)
   output <- .wafregional$get_rule_output()
@@ -3801,7 +3841,8 @@ wafregional_get_rule_group <- function(RuleGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_rule_group_input(RuleGroupId = RuleGroupId)
   output <- .wafregional$get_rule_group_output()
@@ -3849,15 +3890,15 @@ wafregional_get_rule_group <- function(RuleGroupId) {
 #' sample of requests.
 #' @param RuleId &#91;required&#93; `RuleId` is one of three values:
 #' 
-#' -   The `RuleId` of the `Rule` or the `RuleGroupId` of the `RuleGroup`
-#'     for which you want
-#'     [`get_sampled_requests`][wafregional_get_sampled_requests] to return
-#'     a sample of requests.
+#' - The `RuleId` of the `Rule` or the `RuleGroupId` of the `RuleGroup` for
+#'   which you want
+#'   [`get_sampled_requests`][wafregional_get_sampled_requests] to return a
+#'   sample of requests.
 #' 
-#' -   `Default_Action`, which causes
-#'     [`get_sampled_requests`][wafregional_get_sampled_requests] to return
-#'     a sample of the requests that didn't match any of the rules in the
-#'     specified `WebACL`.
+#' - `Default_Action`, which causes
+#'   [`get_sampled_requests`][wafregional_get_sampled_requests] to return a
+#'   sample of the requests that didn't match any of the rules in the
+#'   specified `WebACL`.
 #' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
 #' you want [`get_sampled_requests`][wafregional_get_sampled_requests] to
 #' return a sample of requests. You must specify the times in Coordinated
@@ -3954,7 +3995,8 @@ wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxIt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_sampled_requests_input(WebAclId = WebAclId, RuleId = RuleId, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .wafregional$get_sampled_requests_output()
@@ -4040,7 +4082,8 @@ wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId)
   output <- .wafregional$get_size_constraint_set_output()
@@ -4125,7 +4168,8 @@ wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId)
   output <- .wafregional$get_sql_injection_match_set_output()
@@ -4221,7 +4265,8 @@ wafregional_get_web_acl <- function(WebACLId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_web_acl_input(WebACLId = WebACLId)
   output <- .wafregional$get_web_acl_output()
@@ -4258,11 +4303,11 @@ wafregional_get_web_acl <- function(WebACLId) {
 #' 
 #' The ARN should be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' - For an Application Load Balancer:
+#'   `arn:aws:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway stage:
-#'     `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
+#' - For an Amazon API Gateway stage:
+#'   `arn:aws:apigateway:region::/restapis/api-id/stages/stage-name `
 #'
 #' @return
 #' A list with the following syntax:
@@ -4293,7 +4338,8 @@ wafregional_get_web_acl_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_web_acl_for_resource_input(ResourceArn = ResourceArn)
   output <- .wafregional$get_web_acl_for_resource_output()
@@ -4376,7 +4422,8 @@ wafregional_get_xss_match_set <- function(XssMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$get_xss_match_set_input(XssMatchSetId = XssMatchSetId)
   output <- .wafregional$get_xss_match_set_output()
@@ -4468,7 +4515,8 @@ wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_activated_rules_in_rule_group_input(RuleGroupId = RuleGroupId, NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_activated_rules_in_rule_group_output()
@@ -4544,7 +4592,8 @@ wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_byte_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_byte_match_sets_output()
@@ -4620,7 +4669,8 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_geo_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_geo_match_sets_output()
@@ -4702,7 +4752,8 @@ wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_ip_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_ip_sets_output()
@@ -4788,7 +4839,8 @@ wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_logging_configurations_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_logging_configurations_output()
@@ -4863,7 +4915,8 @@ wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_rate_based_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rate_based_rules_output()
@@ -4939,7 +4992,8 @@ wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_regex_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_regex_match_sets_output()
@@ -5016,7 +5070,8 @@ wafregional_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_regex_pattern_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_regex_pattern_sets_output()
@@ -5081,7 +5136,8 @@ wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_resources_for_web_acl_input(WebACLId = WebACLId, ResourceType = ResourceType)
   output <- .wafregional$list_resources_for_web_acl_output()
@@ -5156,7 +5212,8 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rule_groups_output()
@@ -5239,7 +5296,8 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_rules_output()
@@ -5325,7 +5383,8 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_size_constraint_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_size_constraint_sets_output()
@@ -5410,7 +5469,8 @@ wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_sql_injection_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_sql_injection_match_sets_output()
@@ -5487,7 +5547,8 @@ wafregional_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_subscribed_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_subscribed_rule_groups_output()
@@ -5569,7 +5630,8 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .wafregional$list_tags_for_resource_output()
@@ -5653,7 +5715,8 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_web_ac_ls_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_web_ac_ls_output()
@@ -5737,7 +5800,8 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$list_xss_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .wafregional$list_xss_match_sets_output()
@@ -5847,7 +5911,8 @@ wafregional_put_logging_configuration <- function(LoggingConfiguration) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .wafregional$put_logging_configuration_output()
@@ -5879,27 +5944,26 @@ wafregional_put_logging_configuration <- function(LoggingConfiguration) {
 #' The [`put_permission_policy`][wafregional_put_permission_policy] is
 #' subject to the following restrictions:
 #' 
-#' -   You can attach only one policy with each
-#'     [`put_permission_policy`][wafregional_put_permission_policy]
-#'     request.
+#' - You can attach only one policy with each
+#'   [`put_permission_policy`][wafregional_put_permission_policy] request.
 #' 
-#' -   The policy must include an `Effect`, `Action` and `Principal`.
+#' - The policy must include an `Effect`, `Action` and `Principal`.
 #' 
-#' -   `Effect` must specify `Allow`.
+#' - `Effect` must specify `Allow`.
 #' 
-#' -   The `Action` in the policy must be `waf:UpdateWebACL`,
-#'     `waf-regional:UpdateWebACL`, `waf:GetRuleGroup` and
-#'     `waf-regional:GetRuleGroup` . Any extra or wildcard actions in the
-#'     policy will be rejected.
+#' - The `Action` in the policy must be `waf:UpdateWebACL`,
+#'   `waf-regional:UpdateWebACL`, `waf:GetRuleGroup` and
+#'   `waf-regional:GetRuleGroup` . Any extra or wildcard actions in the
+#'   policy will be rejected.
 #' 
-#' -   The policy cannot include a `Resource` parameter.
+#' - The policy cannot include a `Resource` parameter.
 #' 
-#' -   The ARN in the request must be a valid WAF RuleGroup ARN and the
-#'     RuleGroup must exist in the same region.
+#' - The ARN in the request must be a valid WAF RuleGroup ARN and the
+#'   RuleGroup must exist in the same region.
 #' 
-#' -   The user making the request must be the owner of the RuleGroup.
+#' - The user making the request must be the owner of the RuleGroup.
 #' 
-#' -   Your policy must be composed using IAM Policy version 2012-10-17.
+#' - Your policy must be composed using IAM Policy version 2012-10-17.
 #' 
 #' For more information, see [IAM
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
@@ -5936,7 +6000,8 @@ wafregional_put_permission_policy <- function(ResourceArn, Policy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .wafregional$put_permission_policy_output()
@@ -6006,7 +6071,8 @@ wafregional_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .wafregional$tag_resource_output()
@@ -6062,7 +6128,8 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .wafregional$untag_resource_output()
@@ -6091,24 +6158,22 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 #' Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
 #' For each `ByteMatchTuple` object, you specify the following values:
 #' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change a `ByteMatchSetUpdate` object, you delete the existing
-#'     object and add a new one.
+#' - Whether to insert or delete the object from the array. If you want to
+#'   change a `ByteMatchSetUpdate` object, you delete the existing object
+#'   and add a new one.
 #' 
-#' -   The part of a web request that you want AWS WAF to inspect, such as
-#'     a query string or the value of the `User-Agent` header.
+#' - The part of a web request that you want AWS WAF to inspect, such as a
+#'   query string or the value of the `User-Agent` header.
 #' 
-#' -   The bytes (typically a string that corresponds with ASCII
-#'     characters) that you want AWS WAF to look for. For more information,
-#'     including how you specify the values for the AWS WAF API and the AWS
-#'     CLI or SDKs, see `TargetString` in the ByteMatchTuple data type.
+#' - The bytes (typically a string that corresponds with ASCII characters)
+#'   that you want AWS WAF to look for. For more information, including how
+#'   you specify the values for the AWS WAF API and the AWS CLI or SDKs,
+#'   see `TargetString` in the ByteMatchTuple data type.
 #' 
-#' -   Where to look, such as at the beginning or the end of a query
-#'     string.
+#' - Where to look, such as at the beginning or the end of a query string.
 #' 
-#' -   Whether to perform any conversions on the request, such as
-#'     converting it to lowercase, before inspecting it for the specified
-#'     string.
+#' - Whether to perform any conversions on the request, such as converting
+#'   it to lowercase, before inspecting it for the specified string.
 #' 
 #' For example, you can add a `ByteMatchSetUpdate` object that matches web
 #' requests in which `User-Agent` headers contain the string `BadBot`. You
@@ -6147,12 +6212,12 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 #' delete from a ByteMatchSet. For more information, see the applicable
 #' data types:
 #' 
-#' -   ByteMatchSetUpdate: Contains `Action` and `ByteMatchTuple`
+#' - ByteMatchSetUpdate: Contains `Action` and `ByteMatchTuple`
 #' 
-#' -   ByteMatchTuple: Contains `FieldToMatch`, `PositionalConstraint`,
-#'     `TargetString`, and `TextTransformation`
+#' - ByteMatchTuple: Contains `FieldToMatch`, `PositionalConstraint`,
+#'   `TargetString`, and `TextTransformation`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -6219,7 +6284,8 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_byte_match_set_output()
@@ -6248,15 +6314,15 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
 #' Inserts or deletes GeoMatchConstraint objects in an `GeoMatchSet`. For
 #' each `GeoMatchConstraint` object, you specify the following values:
 #' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change an `GeoMatchConstraint` object, you delete the existing
-#'     object and add a new one.
+#' - Whether to insert or delete the object from the array. If you want to
+#'   change an `GeoMatchConstraint` object, you delete the existing object
+#'   and add a new one.
 #' 
-#' -   The `Type`. The only valid value for `Type` is `Country`.
+#' - The `Type`. The only valid value for `Type` is `Country`.
 #' 
-#' -   The `Value`, which is a two character code for the country to add to
-#'     the `GeoMatchConstraint` object. Valid codes are listed in
-#'     GeoMatchConstraint$Value.
+#' - The `Value`, which is a two character code for the country to add to
+#'   the `GeoMatchConstraint` object. Valid codes are listed in
+#'   GeoMatchConstraint$Value.
 #' 
 #' To create and configure an `GeoMatchSet`, perform the following steps:
 #' 
@@ -6291,13 +6357,13 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
 #' delete from an GeoMatchSet. For more information, see the applicable
 #' data types:
 #' 
-#' -   GeoMatchSetUpdate: Contains `Action` and `GeoMatchConstraint`
+#' - GeoMatchSetUpdate: Contains `Action` and `GeoMatchConstraint`
 #' 
-#' -   GeoMatchConstraint: Contains `Type` and `Value`
+#' - GeoMatchConstraint: Contains `Type` and `Value`
 #' 
-#'     You can have only one `Type` and `Value` per `GeoMatchConstraint`.
-#'     To add multiple countries, include multiple `GeoMatchSetUpdate`
-#'     objects in your request.
+#'   You can have only one `Type` and `Value` per `GeoMatchConstraint`. To
+#'   add multiple countries, include multiple `GeoMatchSetUpdate` objects
+#'   in your request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6335,7 +6401,8 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_geo_match_set_output()
@@ -6364,15 +6431,15 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #' Inserts or deletes IPSetDescriptor objects in an `IPSet`. For each
 #' `IPSetDescriptor` object, you specify the following values:
 #' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change an `IPSetDescriptor` object, you delete the existing
-#'     object and add a new one.
+#' - Whether to insert or delete the object from the array. If you want to
+#'   change an `IPSetDescriptor` object, you delete the existing object and
+#'   add a new one.
 #' 
-#' -   The IP address version, `IPv4` or `IPv6`.
+#' - The IP address version, `IPv4` or `IPv6`.
 #' 
-#' -   The IP address in CIDR notation, for example, `192.0.2.0/24` (for
-#'     the range of IP addresses from `192.0.2.0` to `192.0.2.255`) or
-#'     `192.0.2.44/32` (for the individual IP address `192.0.2.44`).
+#' - The IP address in CIDR notation, for example, `192.0.2.0/24` (for the
+#'   range of IP addresses from `192.0.2.0` to `192.0.2.255`) or
+#'   `192.0.2.44/32` (for the individual IP address `192.0.2.44`).
 #' 
 #' AWS WAF supports IPv4 address ranges: /8 and any range between /16
 #' through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56,
@@ -6382,13 +6449,13 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #' 
 #' IPv6 addresses can be represented using any of the following formats:
 #' 
-#' -   1111:0000:0000:0000:0000:0000:0000:0111/128
+#' - 1111:0000:0000:0000:0000:0000:0000:0111/128
 #' 
-#' -   1111:0:0:0:0:0:0:0111/128
+#' - 1111:0:0:0:0:0:0:0111/128
 #' 
-#' -   1111::0111/128
+#' - 1111::0111/128
 #' 
-#' -   1111::111/128
+#' - 1111::111/128
 #' 
 #' You use an `IPSet` to specify which web requests you want to allow or
 #' block based on the IP addresses that the requests originated from. For
@@ -6430,9 +6497,9 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 #' @param Updates &#91;required&#93; An array of `IPSetUpdate` objects that you want to insert into or delete
 #' from an IPSet. For more information, see the applicable data types:
 #' 
-#' -   IPSetUpdate: Contains `Action` and `IPSetDescriptor`
+#' - IPSetUpdate: Contains `Action` and `IPSetDescriptor`
 #' 
-#' -   IPSetDescriptor: Contains `Type` and `Value`
+#' - IPSetDescriptor: Contains `Type` and `Value`
 #' 
 #' You can insert a maximum of 1000 addresses in a single request.
 #'
@@ -6491,7 +6558,8 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_ip_set_output()
@@ -6530,9 +6598,9 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' blocked. For example, suppose you add the following to a
 #' `RateBasedRule`:
 #' 
-#' -   An `IPSet` that matches the IP address `192.0.2.44/32`
+#' - An `IPSet` that matches the IP address `192.0.2.44/32`
 #' 
-#' -   A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
+#' - A `ByteMatchSet` that matches `BadBot` in the `User-Agent` header
 #' 
 #' Further, you specify a `RateLimit` of 1,000.
 #' 
@@ -6548,11 +6616,11 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' page on your site. To do this, you could add the following to a
 #' `RateBasedRule`:
 #' 
-#' -   A `ByteMatchSet` with `FieldToMatch` of `URI`
+#' - A `ByteMatchSet` with `FieldToMatch` of `URI`
 #' 
-#' -   A `PositionalConstraint` of `STARTS_WITH`
+#' - A `PositionalConstraint` of `STARTS_WITH`
 #' 
-#' -   A `TargetString` of `login`
+#' - A `TargetString` of `login`
 #' 
 #' Further, you specify a `RateLimit` of 1,000.
 #' 
@@ -6615,7 +6683,8 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates, RateLimit = RateLimit)
   output <- .wafregional$update_rate_based_rule_output()
@@ -6644,19 +6713,18 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
 #' Inserts or deletes RegexMatchTuple objects (filters) in a RegexMatchSet.
 #' For each `RegexMatchSetUpdate` object, you specify the following values:
 #' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change a `RegexMatchSetUpdate` object, you delete the existing
-#'     object and add a new one.
+#' - Whether to insert or delete the object from the array. If you want to
+#'   change a `RegexMatchSetUpdate` object, you delete the existing object
+#'   and add a new one.
 #' 
-#' -   The part of a web request that you want AWS WAF to inspectupdate,
-#'     such as a query string or the value of the `User-Agent` header.
+#' - The part of a web request that you want AWS WAF to inspectupdate, such
+#'   as a query string or the value of the `User-Agent` header.
 #' 
-#' -   The identifier of the pattern (a regular expression) that you want
-#'     AWS WAF to look for. For more information, see RegexPatternSet.
+#' - The identifier of the pattern (a regular expression) that you want AWS
+#'   WAF to look for. For more information, see RegexPatternSet.
 #' 
-#' -   Whether to perform any conversions on the request, such as
-#'     converting it to lowercase, before inspecting it for the specified
-#'     string.
+#' - Whether to perform any conversions on the request, such as converting
+#'   it to lowercase, before inspecting it for the specified string.
 #' 
 #' For example, you can create a `RegexPatternSet` that matches any
 #' requests with `User-Agent` headers that contain the string
@@ -6737,7 +6805,8 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_regex_match_set_output()
@@ -6766,21 +6835,21 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
 #' Inserts or deletes `RegexPatternString` objects in a RegexPatternSet.
 #' For each `RegexPatternString` object, you specify the following values:
 #' 
-#' -   Whether to insert or delete the `RegexPatternString`.
+#' - Whether to insert or delete the `RegexPatternString`.
 #' 
-#' -   The regular expression pattern that you want to insert or delete.
-#'     For more information, see RegexPatternSet.
+#' - The regular expression pattern that you want to insert or delete. For
+#'   more information, see RegexPatternSet.
 #' 
 #' For example, you can create a `RegexPatternString` such as
 #' `B[a@@]dB[o0]t`. AWS WAF will match this `RegexPatternString` to:
 #' 
-#' -   BadBot
+#' - BadBot
 #' 
-#' -   BadB0t
+#' - BadB0t
 #' 
-#' -   B@@dBot
+#' - B@@dBot
 #' 
-#' -   B@@dB0t
+#' - B@@dB0t
 #' 
 #' To create and configure a `RegexPatternSet`, perform the following
 #' steps:
@@ -6848,7 +6917,8 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_regex_pattern_set_output()
@@ -6881,10 +6951,10 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 #' the specifications to be allowed, blocked, or counted. For example,
 #' suppose that you add the following to a `Rule`:
 #' 
-#' -   A `ByteMatchSet` that matches the value `BadBot` in the `User-Agent`
-#'     header
+#' - A `ByteMatchSet` that matches the value `BadBot` in the `User-Agent`
+#'   header
 #' 
-#' -   An `IPSet` that matches the IP address `192.0.2.44`
+#' - An `IPSet` that matches the IP address `192.0.2.44`
 #' 
 #' You then add the `Rule` to a `WebACL` and specify that you want to block
 #' requests that satisfy the `Rule`. For a request to be blocked, the
@@ -6926,11 +6996,11 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 #' @param Updates &#91;required&#93; An array of `RuleUpdate` objects that you want to insert into or delete
 #' from a Rule. For more information, see the applicable data types:
 #' 
-#' -   RuleUpdate: Contains `Action` and `Predicate`
+#' - RuleUpdate: Contains `Action` and `Predicate`
 #' 
-#' -   Predicate: Contains `DataId`, `Negated`, and `Type`
+#' - Predicate: Contains `DataId`, `Negated`, and `Type`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -6989,7 +7059,8 @@ wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_rule_output()
@@ -7111,7 +7182,8 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_rule_group_input(RuleGroupId = RuleGroupId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .wafregional$update_rule_group_output()
@@ -7141,29 +7213,28 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' SizeConstraintSet. For each `SizeConstraint` object, you specify the
 #' following values:
 #' 
-#' -   Whether to insert or delete the object from the array. If you want
-#'     to change a `SizeConstraintSetUpdate` object, you delete the
-#'     existing object and add a new one.
+#' - Whether to insert or delete the object from the array. If you want to
+#'   change a `SizeConstraintSetUpdate` object, you delete the existing
+#'   object and add a new one.
 #' 
-#' -   The part of a web request that you want AWS WAF to evaluate, such as
-#'     the length of a query string or the length of the `User-Agent`
-#'     header.
+#' - The part of a web request that you want AWS WAF to evaluate, such as
+#'   the length of a query string or the length of the `User-Agent` header.
 #' 
-#' -   Whether to perform any transformations on the request, such as
-#'     converting it to lowercase, before checking its length. Note that
-#'     transformations of the request body are not supported because the
-#'     AWS resource forwards only the first `8192` bytes of your request to
-#'     AWS WAF.
+#' - Whether to perform any transformations on the request, such as
+#'   converting it to lowercase, before checking its length. Note that
+#'   transformations of the request body are not supported because the AWS
+#'   resource forwards only the first `8192` bytes of your request to AWS
+#'   WAF.
 #' 
-#'     You can only specify a single type of TextTransformation.
+#'   You can only specify a single type of TextTransformation.
 #' 
-#' -   A `ComparisonOperator` used for evaluating the selected part of the
-#'     request against the specified `Size`, such as equals, greater than,
-#'     less than, and so on.
+#' - A `ComparisonOperator` used for evaluating the selected part of the
+#'   request against the specified `Size`, such as equals, greater than,
+#'   less than, and so on.
 #' 
-#' -   The length, in bytes, that you want AWS WAF to watch for in selected
-#'     part of the request. The length is computed after applying the
-#'     transformation.
+#' - The length, in bytes, that you want AWS WAF to watch for in selected
+#'   part of the request. The length is computed after applying the
+#'   transformation.
 #' 
 #' For example, you can add a `SizeConstraintSetUpdate` object that matches
 #' web requests in which the length of the `User-Agent` header is greater
@@ -7205,12 +7276,12 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' into or delete from a SizeConstraintSet. For more information, see the
 #' applicable data types:
 #' 
-#' -   SizeConstraintSetUpdate: Contains `Action` and `SizeConstraint`
+#' - SizeConstraintSetUpdate: Contains `Action` and `SizeConstraint`
 #' 
-#' -   SizeConstraint: Contains `FieldToMatch`, `TextTransformation`,
-#'     `ComparisonOperator`, and `Size`
+#' - SizeConstraint: Contains `FieldToMatch`, `TextTransformation`,
+#'   `ComparisonOperator`, and `Size`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -7277,7 +7348,8 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_size_constraint_set_output()
@@ -7307,19 +7379,19 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' SqlInjectionMatchSet. For each `SqlInjectionMatchTuple` object, you
 #' specify the following values:
 #' 
-#' -   `Action`: Whether to insert the object into or delete the object
-#'     from the array. To change a `SqlInjectionMatchTuple`, you delete the
-#'     existing object and add a new one.
+#' - `Action`: Whether to insert the object into or delete the object from
+#'   the array. To change a `SqlInjectionMatchTuple`, you delete the
+#'   existing object and add a new one.
 #' 
-#' -   `FieldToMatch`: The part of web requests that you want AWS WAF to
-#'     inspect and, if you want AWS WAF to inspect a header or custom query
-#'     parameter, the name of the header or parameter.
+#' - `FieldToMatch`: The part of web requests that you want AWS WAF to
+#'   inspect and, if you want AWS WAF to inspect a header or custom query
+#'   parameter, the name of the header or parameter.
 #' 
-#' -   `TextTransformation`: Which text transformation, if any, to perform
-#'     on the web request before inspecting the request for snippets of
-#'     malicious SQL code.
+#' - `TextTransformation`: Which text transformation, if any, to perform on
+#'   the web request before inspecting the request for snippets of
+#'   malicious SQL code.
 #' 
-#'     You can only specify a single type of TextTransformation.
+#'   You can only specify a single type of TextTransformation.
 #' 
 #' You use `SqlInjectionMatchSet` objects to specify which CloudFront
 #' requests that you want to allow, block, or count. For example, if you're
@@ -7363,13 +7435,13 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 #' into or delete from a SqlInjectionMatchSet. For more information, see
 #' the applicable data types:
 #' 
-#' -   SqlInjectionMatchSetUpdate: Contains `Action` and
-#'     `SqlInjectionMatchTuple`
+#' - SqlInjectionMatchSetUpdate: Contains `Action` and
+#'   `SqlInjectionMatchTuple`
 #' 
-#' -   SqlInjectionMatchTuple: Contains `FieldToMatch` and
-#'     `TextTransformation`
+#' - SqlInjectionMatchTuple: Contains `FieldToMatch` and
+#'   `TextTransformation`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -7432,7 +7504,8 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_sql_injection_match_set_output()
@@ -7462,26 +7535,25 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' identifies web requests that you want to allow, block, or count. When
 #' you update a `WebACL`, you specify the following values:
 #' 
-#' -   A default action for the `WebACL`, either `ALLOW` or `BLOCK`. AWS
-#'     WAF performs the default action if a request doesn't match the
-#'     criteria in any of the `Rules` in a `WebACL`.
+#' - A default action for the `WebACL`, either `ALLOW` or `BLOCK`. AWS WAF
+#'   performs the default action if a request doesn't match the criteria in
+#'   any of the `Rules` in a `WebACL`.
 #' 
-#' -   The `Rules` that you want to add or delete. If you want to replace
-#'     one `Rule` with another, you delete the existing `Rule` and add the
-#'     new one.
+#' - The `Rules` that you want to add or delete. If you want to replace one
+#'   `Rule` with another, you delete the existing `Rule` and add the new
+#'   one.
 #' 
-#' -   For each `Rule`, whether you want AWS WAF to allow requests, block
-#'     requests, or count requests that match the conditions in the `Rule`.
+#' - For each `Rule`, whether you want AWS WAF to allow requests, block
+#'   requests, or count requests that match the conditions in the `Rule`.
 #' 
-#' -   The order in which you want AWS WAF to evaluate the `Rules` in a
-#'     `WebACL`. If you add more than one `Rule` to a `WebACL`, AWS WAF
-#'     evaluates each request against the `Rules` in order based on the
-#'     value of `Priority`. (The `Rule` that has the lowest value for
-#'     `Priority` is evaluated first.) When a web request matches all the
-#'     predicates (such as `ByteMatchSets` and `IPSets`) in a `Rule`, AWS
-#'     WAF immediately takes the corresponding action, allow or block, and
-#'     doesn't evaluate the request against the remaining `Rules` in the
-#'     `WebACL`, if any.
+#' - The order in which you want AWS WAF to evaluate the `Rules` in a
+#'   `WebACL`. If you add more than one `Rule` to a `WebACL`, AWS WAF
+#'   evaluates each request against the `Rules` in order based on the value
+#'   of `Priority`. (The `Rule` that has the lowest value for `Priority` is
+#'   evaluated first.) When a web request matches all the predicates (such
+#'   as `ByteMatchSets` and `IPSets`) in a `Rule`, AWS WAF immediately
+#'   takes the corresponding action, allow or block, and doesn't evaluate
+#'   the request against the remaining `Rules` in the `WebACL`, if any.
 #' 
 #' To create and configure a `WebACL`, perform the following steps:
 #' 
@@ -7547,16 +7619,16 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 #' delete from a WebACL. For more information, see the applicable data
 #' types:
 #' 
-#' -   WebACLUpdate: Contains `Action` and `ActivatedRule`
+#' - WebACLUpdate: Contains `Action` and `ActivatedRule`
 #' 
-#' -   ActivatedRule: Contains `Action`, `OverrideAction`, `Priority`,
-#'     `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only
-#'     when updating or adding a `RuleGroup` to a `WebACL`. In this case,
-#'     you do not use `ActivatedRule|Action`. For all other update
-#'     requests, `ActivatedRule|Action` is used instead of
-#'     `ActivatedRule|OverrideAction`.
+#' - ActivatedRule: Contains `Action`, `OverrideAction`, `Priority`,
+#'   `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only when
+#'   updating or adding a `RuleGroup` to a `WebACL`. In this case, you do
+#'   not use `ActivatedRule|Action`. For all other update requests,
+#'   `ActivatedRule|Action` is used instead of
+#'   `ActivatedRule|OverrideAction`.
 #' 
-#' -   WafAction: Contains `Type`
+#' - WafAction: Contains `Type`
 #' @param DefaultAction A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
 #' performs the default action if a request doesn't match the criteria in
 #' any of the rules in a web ACL.
@@ -7637,7 +7709,8 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken, Updates = Updates, DefaultAction = DefaultAction)
   output <- .wafregional$update_web_acl_output()
@@ -7666,19 +7739,19 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 #' Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
 #' For each `XssMatchTuple` object, you specify the following values:
 #' 
-#' -   `Action`: Whether to insert the object into or delete the object
-#'     from the array. To change an `XssMatchTuple`, you delete the
-#'     existing object and add a new one.
+#' - `Action`: Whether to insert the object into or delete the object from
+#'   the array. To change an `XssMatchTuple`, you delete the existing
+#'   object and add a new one.
 #' 
-#' -   `FieldToMatch`: The part of web requests that you want AWS WAF to
-#'     inspect and, if you want AWS WAF to inspect a header or custom query
-#'     parameter, the name of the header or parameter.
+#' - `FieldToMatch`: The part of web requests that you want AWS WAF to
+#'   inspect and, if you want AWS WAF to inspect a header or custom query
+#'   parameter, the name of the header or parameter.
 #' 
-#' -   `TextTransformation`: Which text transformation, if any, to perform
-#'     on the web request before inspecting the request for cross-site
-#'     scripting attacks.
+#' - `TextTransformation`: Which text transformation, if any, to perform on
+#'   the web request before inspecting the request for cross-site scripting
+#'   attacks.
 #' 
-#'     You can only specify a single type of TextTransformation.
+#'   You can only specify a single type of TextTransformation.
 #' 
 #' You use `XssMatchSet` objects to specify which CloudFront requests that
 #' you want to allow, block, or count. For example, if you're receiving
@@ -7717,11 +7790,11 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 #' delete from an XssMatchSet. For more information, see the applicable
 #' data types:
 #' 
-#' -   XssMatchSetUpdate: Contains `Action` and `XssMatchTuple`
+#' - XssMatchSetUpdate: Contains `Action` and `XssMatchTuple`
 #' 
-#' -   XssMatchTuple: Contains `FieldToMatch` and `TextTransformation`
+#' - XssMatchTuple: Contains `FieldToMatch` and `TextTransformation`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -7783,7 +7856,8 @@ wafregional_update_xss_match_set <- function(XssMatchSetId, ChangeToken, Updates
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafregional$update_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .wafregional$update_xss_match_set_output()

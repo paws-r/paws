@@ -18,10 +18,10 @@ ec2_describe_security_group_rules(
 \item \code{group-id} - The ID of the security group.
 \item \code{security-group-rule-id} - The ID of the security group rule.
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
+resource. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
 }}
 
 \item{SecurityGroupRuleIds}{The IDs of the security group rules.}

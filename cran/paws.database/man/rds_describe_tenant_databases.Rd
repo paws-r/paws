@@ -29,11 +29,10 @@ Supported filters:
 \item \code{tenant-db-name} - Tenant database names. The results list only
 includes information about the tenant databases that match these
 tenant DB names.
-\item \code{tenant-database-resource-id} - Tenant database resource
-identifiers.
-\item \code{dbi-resource-id} - DB instance resource identifiers. The results
-list only includes information about the tenants contained within
-the DB instances identified by these resource identifiers.
+\item \code{tenant-database-resource-id} - Tenant database resource identifiers.
+\item \code{dbi-resource-id} - DB instance resource identifiers. The results list
+only includes information about the tenants contained within the DB
+instances identified by these resource identifiers.
 }}
 
 \item{Marker}{An optional pagination token provided by a previous

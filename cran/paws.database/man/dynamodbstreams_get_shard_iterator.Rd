@@ -20,18 +20,16 @@ shard ID.}
 \item{ShardIteratorType}{[required] Determines how the shard iterator is used to start reading stream
 records from the shard:
 \itemize{
-\item \code{AT_SEQUENCE_NUMBER} - Start reading exactly from the position
-denoted by a specific sequence number.
+\item \code{AT_SEQUENCE_NUMBER} - Start reading exactly from the position denoted
+by a specific sequence number.
 \item \code{AFTER_SEQUENCE_NUMBER} - Start reading right after the position
 denoted by a specific sequence number.
-\item \code{TRIM_HORIZON} - Start reading at the last (untrimmed) stream
-record, which is the oldest record in the shard. In DynamoDB
-Streams, there is a 24 hour limit on data retention. Stream records
-whose age exceeds this limit are subject to removal (trimming) from
-the stream.
+\item \code{TRIM_HORIZON} - Start reading at the last (untrimmed) stream record,
+which is the oldest record in the shard. In DynamoDB Streams, there is
+a 24 hour limit on data retention. Stream records whose age exceeds
+this limit are subject to removal (trimming) from the stream.
 \item \code{LATEST} - Start reading just after the most recent stream record in
-the shard, so that you always read the most recent data in the
-shard.
+the shard, so that you always read the most recent data in the shard.
 }}
 
 \item{SequenceNumber}{The sequence number of a stream record in the shard from which to start

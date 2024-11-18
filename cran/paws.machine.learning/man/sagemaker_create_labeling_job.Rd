@@ -36,24 +36,23 @@ the attribute name \emph{must} end with "-ref". If the task type you are
 using is not listed below, the attribute name \emph{must not} end with
 "-ref".
 \itemize{
-\item Image semantic segmentation (\verb{SemanticSegmentation)}, and
-adjustment (\code{AdjustmentSemanticSegmentation}) and verification
+\item Image semantic segmentation (\verb{SemanticSegmentation)}, and adjustment
+(\code{AdjustmentSemanticSegmentation}) and verification
 (\code{VerificationSemanticSegmentation}) labeling jobs for this task
 type.
 \item Video frame object detection (\code{VideoObjectDetection}), and
 adjustment and verification (\code{AdjustmentVideoObjectDetection})
 labeling jobs for this task type.
-\item Video frame object tracking (\code{VideoObjectTracking}), and
-adjustment and verification (\code{AdjustmentVideoObjectTracking})
-labeling jobs for this task type.
+\item Video frame object tracking (\code{VideoObjectTracking}), and adjustment
+and verification (\code{AdjustmentVideoObjectTracking}) labeling jobs for
+this task type.
 \item 3D point cloud semantic segmentation
 (\verb{3DPointCloudSemanticSegmentation}), and adjustment and
-verification (\code{Adjustment3DPointCloudSemanticSegmentation})
+verification (\code{Adjustment3DPointCloudSemanticSegmentation}) labeling
+jobs for this task type.
+\item 3D point cloud object tracking (\verb{3DPointCloudObjectTracking}), and
+adjustment and verification (\code{Adjustment3DPointCloudObjectTracking})
 labeling jobs for this task type.
-\item 3D point cloud object tracking (\verb{3DPointCloudObjectTracking}),
-and adjustment and verification
-(\code{Adjustment3DPointCloudObjectTracking}) labeling jobs for this
-task type.
 }
 }
 
@@ -128,12 +127,11 @@ Note the following about the label category configuration file:
 multi-label) you must specify at least two label categories. For all
 other task types, the minimum number of label categories required is
 one.
-\item Each label category must be unique, you cannot specify duplicate
-label categories.
+\item Each label category must be unique, you cannot specify duplicate label
+categories.
 \item If you create a 3D point cloud or video frame adjustment or
-verification labeling job, you must include
-\code{auditLabelAttributeName} in the label category configuration. Use
-this parameter to enter the
+verification labeling job, you must include \code{auditLabelAttributeName}
+in the label category configuration. Use this parameter to enter the
 \href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateLabelingJob.html#sagemaker-CreateLabelingJob-request-LabelAttributeName}{\code{LabelAttributeName}}
 of the labeling job you want to adjust or verify annotations of.
 }}

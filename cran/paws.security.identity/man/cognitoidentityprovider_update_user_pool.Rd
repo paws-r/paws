@@ -71,8 +71,8 @@ information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide
 
 \item{MfaConfiguration}{Possible values include:
 \itemize{
-\item \code{OFF} - MFA tokens aren't required and can't be specified during
-user registration.
+\item \code{OFF} - MFA tokens aren't required and can't be specified during user
+registration.
 \item \code{ON} - MFA tokens are required for all user registrations. You can
 only specify ON when you're initially creating a user pool. You can
 use the

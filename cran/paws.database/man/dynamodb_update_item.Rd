@@ -57,10 +57,10 @@ before or after they are successfully updated. For
 \code{ReturnValues}.)
 \item \code{ALL_OLD} - Returns all of the attributes of the item, as they
 appeared before the UpdateItem operation.
-\item \code{UPDATED_OLD} - Returns only the updated attributes, as they
-appeared before the UpdateItem operation.
-\item \code{ALL_NEW} - Returns all of the attributes of the item, as they
-appear after the UpdateItem operation.
+\item \code{UPDATED_OLD} - Returns only the updated attributes, as they appeared
+before the UpdateItem operation.
+\item \code{ALL_NEW} - Returns all of the attributes of the item, as they appear
+after the UpdateItem operation.
 \item \code{UPDATED_NEW} - Returns only the updated attributes, as they appear
 after the UpdateItem operation.
 }
@@ -85,20 +85,19 @@ The following action values are available for \code{UpdateExpression}.
 \itemize{
 \item \code{SET} - Adds one or more attributes and values to an item. If any of
 these attributes already exist, they are replaced by the new values.
-You can also use \code{SET} to add or subtract from an attribute that is
-of type Number. For example: \verb{SET myNum = myNum + :val}
+You can also use \code{SET} to add or subtract from an attribute that is of
+type Number. For example: \verb{SET myNum = myNum + :val}
 
 \code{SET} supports the following functions:
 \itemize{
-\item \code{if_not_exists (path, operand)} - if the item does not contain
-an attribute at the specified path, then \code{if_not_exists}
-evaluates to operand; otherwise, it evaluates to path. You can
-use this function to avoid overwriting an attribute that may
-already be present in the item.
-\item \code{list_append (operand, operand)} - evaluates to a list with a
-new element added to it. You can append the new element to the
-start or the end of the list by reversing the order of the
-operands.
+\item \code{if_not_exists (path, operand)} - if the item does not contain an
+attribute at the specified path, then \code{if_not_exists} evaluates to
+operand; otherwise, it evaluates to path. You can use this function
+to avoid overwriting an attribute that may already be present in the
+item.
+\item \code{list_append (operand, operand)} - evaluates to a list with a new
+element added to it. You can append the new element to the start or
+the end of the list by reversing the order of the operands.
 }
 
 These function names are case-sensitive.
@@ -109,44 +108,42 @@ not already exist. If the attribute does exist, then the behavior of
 \itemize{
 \item If the existing attribute is a number, and if \code{Value} is also a
 number, then \code{Value} is mathematically added to the existing
-attribute. If \code{Value} is a negative number, then it is
-subtracted from the existing attribute.
+attribute. If \code{Value} is a negative number, then it is subtracted
+from the existing attribute.
 
 If you use \code{ADD} to increment or decrement a number value for an
-item that doesn't exist before the update, DynamoDB uses \code{0} as
-the initial value.
+item that doesn't exist before the update, DynamoDB uses \code{0} as the
+initial value.
 
 Similarly, if you use \code{ADD} for an existing item to increment or
-decrement an attribute value that doesn't exist before the
-update, DynamoDB uses \code{0} as the initial value. For example,
-suppose that the item you want to update doesn't have an
-attribute named \code{itemcount}, but you decide to \code{ADD} the number
-\code{3} to this attribute anyway. DynamoDB will create the
-\code{itemcount} attribute, set its initial value to \code{0}, and finally
-add \code{3} to it. The result will be a new \code{itemcount} attribute in
-the item, with a value of \code{3}.
+decrement an attribute value that doesn't exist before the update,
+DynamoDB uses \code{0} as the initial value. For example, suppose that
+the item you want to update doesn't have an attribute named
+\code{itemcount}, but you decide to \code{ADD} the number \code{3} to this
+attribute anyway. DynamoDB will create the \code{itemcount} attribute,
+set its initial value to \code{0}, and finally add \code{3} to it. The result
+will be a new \code{itemcount} attribute in the item, with a value of
+\code{3}.
 \item If the existing data type is a set and if \code{Value} is also a set,
 then \code{Value} is added to the existing set. For example, if the
-attribute value is the set \verb{[1,2]}, and the \code{ADD} action
-specified \verb{[3]}, then the final attribute value is \verb{[1,2,3]}. An
-error occurs if an \code{ADD} action is specified for a set attribute
-and the attribute type specified does not match the existing set
-type.
+attribute value is the set \verb{[1,2]}, and the \code{ADD} action specified
+\verb{[3]}, then the final attribute value is \verb{[1,2,3]}. An error occurs
+if an \code{ADD} action is specified for a set attribute and the
+attribute type specified does not match the existing set type.
 
-Both sets must have the same primitive data type. For example,
-if the existing data type is a set of strings, the \code{Value} must
-also be a set of strings.
+Both sets must have the same primitive data type. For example, if
+the existing data type is a set of strings, the \code{Value} must also be
+a set of strings.
 }
 
-The \code{ADD} action only supports Number and set data types. In
-addition, \code{ADD} can only be used on top-level attributes, not nested
-attributes.
+The \code{ADD} action only supports Number and set data types. In addition,
+\code{ADD} can only be used on top-level attributes, not nested attributes.
 \item \code{DELETE} - Deletes an element from a set.
 
-If a set of values is specified, then those values are subtracted
-from the old set. For example, if the attribute value was the set
-\verb{[a,b,c]} and the \code{DELETE} action specifies \verb{[a,c]}, then the final
-attribute value is \verb{[b]}. Specifying an empty set is an error.
+If a set of values is specified, then those values are subtracted from
+the old set. For example, if the attribute value was the set \verb{[a,b,c]}
+and the \code{DELETE} action specifies \verb{[a,c]}, then the final attribute
+value is \verb{[b]}. Specifying an empty set is an error.
 
 The \code{DELETE} action only supports set data types. In addition,
 \code{DELETE} can only be used on top-level attributes, not nested
@@ -180,8 +177,8 @@ The following are some use cases for using \code{ExpressionAttributeNames}:
 \itemize{
 \item To access an attribute whose name conflicts with a DynamoDB reserved
 word.
-\item To create a placeholder for repeating occurrences of an attribute
-name in an expression.
+\item To create a placeholder for repeating occurrences of an attribute name
+in an expression.
 \item To prevent special characters in an attribute name from being
 misinterpreted in an expression.
 }

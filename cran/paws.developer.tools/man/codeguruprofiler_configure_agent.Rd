@@ -24,10 +24,10 @@ includes information about sampling and reporting. The valid fields are:
 running
 \item \code{AGENT_ID} - The ID for an agent instance.
 \item \code{AWS_REQUEST_ID} - The AWS request ID of a Lambda invocation.
-\item \code{EXECUTION_ENVIRONMENT} - The execution environment a Lambda
-function is running on.
-\item \code{LAMBDA_FUNCTION_ARN} - The Amazon Resource Name (ARN) that is used
-to invoke a Lambda function.
+\item \code{EXECUTION_ENVIRONMENT} - The execution environment a Lambda function
+is running on.
+\item \code{LAMBDA_FUNCTION_ARN} - The Amazon Resource Name (ARN) that is used to
+invoke a Lambda function.
 \item \code{LAMBDA_MEMORY_LIMIT_IN_MB} - The memory allocated to a Lambda
 function.
 \item \code{LAMBDA_REMAINING_TIME_IN_MILLISECONDS} - The time in milliseconds

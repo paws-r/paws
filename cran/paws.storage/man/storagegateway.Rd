@@ -69,8 +69,8 @@ Service API Reference}:
 Describes the required headers that you must send with every POST
 request to Storage Gateway.
 \item \href{https://docs.aws.amazon.com/storagegateway/#AWSStorageGatewaySigningRequests}{Signing requests}:
-Storage Gateway requires that you authenticate every request you
-send; this topic describes how sign such a request.
+Storage Gateway requires that you authenticate every request you send;
+this topic describes how sign such a request.
 \item \href{https://docs.aws.amazon.com/storagegateway/#APIErrorResponses}{Error responses}:
 Provides reference information about Storage Gateway errors.
 \item \href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html}{Operations in Storage Gateway}:

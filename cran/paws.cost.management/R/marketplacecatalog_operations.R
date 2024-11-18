@@ -21,7 +21,8 @@ marketplacecatalog_batch_describe_entities <- function(EntityRequestList) {
     http_method = "POST",
     http_path = "/BatchDescribeEntities",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$batch_describe_entities_input(EntityRequestList = EntityRequestList)
   output <- .marketplacecatalog$batch_describe_entities_output()
@@ -55,7 +56,8 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
     http_method = "PATCH",
     http_path = "/CancelChangeSet",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$cancel_change_set_input(Catalog = Catalog, ChangeSetId = ChangeSetId)
   output <- .marketplacecatalog$cancel_change_set_output()
@@ -87,7 +89,8 @@ marketplacecatalog_delete_resource_policy <- function(ResourceArn) {
     http_method = "DELETE",
     http_path = "/DeleteResourcePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .marketplacecatalog$delete_resource_policy_output()
@@ -121,7 +124,8 @@ marketplacecatalog_describe_change_set <- function(Catalog, ChangeSetId) {
     http_method = "GET",
     http_path = "/DescribeChangeSet",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$describe_change_set_input(Catalog = Catalog, ChangeSetId = ChangeSetId)
   output <- .marketplacecatalog$describe_change_set_output()
@@ -153,7 +157,8 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
     http_method = "GET",
     http_path = "/DescribeEntity",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$describe_entity_input(Catalog = Catalog, EntityId = EntityId)
   output <- .marketplacecatalog$describe_entity_output()
@@ -185,7 +190,8 @@ marketplacecatalog_get_resource_policy <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/GetResourcePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .marketplacecatalog$get_resource_policy_output()
@@ -223,7 +229,8 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
     http_method = "POST",
     http_path = "/ListChangeSets",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ChangeSetSummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ChangeSetSummaryList"),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$list_change_sets_input(Catalog = Catalog, FilterList = FilterList, Sort = Sort, MaxResults = MaxResults, NextToken = NextToken)
   output <- .marketplacecatalog$list_change_sets_output()
@@ -277,7 +284,8 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
     http_method = "POST",
     http_path = "/ListEntities",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EntitySummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EntitySummaryList"),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$list_entities_input(Catalog = Catalog, EntityType = EntityType, FilterList = FilterList, Sort = Sort, NextToken = NextToken, MaxResults = MaxResults, OwnershipType = OwnershipType, EntityTypeFilters = EntityTypeFilters, EntityTypeSort = EntityTypeSort)
   output <- .marketplacecatalog$list_entities_output()
@@ -309,7 +317,8 @@ marketplacecatalog_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/ListTagsForResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .marketplacecatalog$list_tags_for_resource_output()
@@ -341,7 +350,8 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
     http_method = "POST",
     http_path = "/PutResourcePolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .marketplacecatalog$put_resource_policy_output()
@@ -371,7 +381,7 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' request before applying changes to your entities, use `VALIDATE`. This
 #' feature is currently available for adding versions to single-AMI
 #' products. For more information, see [Add a new
-#' version](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/ami-products.html#ami-add-version).
+#' version](https://docs.aws.amazon.com/marketplace/latest/APIReference/work-with-single-ami-products.html#ami-add-version).
 #'
 #' @keywords internal
 #'
@@ -382,7 +392,8 @@ marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetNam
     http_method = "POST",
     http_path = "/StartChangeSet",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$start_change_set_input(Catalog = Catalog, ChangeSet = ChangeSet, ChangeSetName = ChangeSetName, ClientRequestToken = ClientRequestToken, ChangeSetTags = ChangeSetTags, Intent = Intent)
   output <- .marketplacecatalog$start_change_set_output()
@@ -415,7 +426,8 @@ marketplacecatalog_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/TagResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .marketplacecatalog$tag_resource_output()
@@ -449,7 +461,8 @@ marketplacecatalog_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/UntagResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacecatalog$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .marketplacecatalog$untag_resource_output()

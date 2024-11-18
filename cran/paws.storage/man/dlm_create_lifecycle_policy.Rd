@@ -40,8 +40,8 @@ but not both.}
 create.
 \itemize{
 \item To create a default policy for EBS snapshots, that creates snapshots
-of all volumes in the Region that do not have recent backups,
-specify \code{VOLUME}.
+of all volumes in the Region that do not have recent backups, specify
+\code{VOLUME}.
 \item To create a default policy for EBS-backed AMIs, that creates
 EBS-backed AMIs from all instances in the Region that do not have
 recent backups, specify \code{INSTANCE}.
@@ -74,15 +74,15 @@ if the policy enters the error, disabled, or deleted state.
 By default (\strong{ExtendDeletion=false}):
 \itemize{
 \item If a source resource is deleted, Amazon Data Lifecycle Manager will
-continue to delete previously created snapshots or AMIs, up to but
-not including the last one, based on the specified retention period.
-If you want Amazon Data Lifecycle Manager to delete all snapshots or
+continue to delete previously created snapshots or AMIs, up to but not
+including the last one, based on the specified retention period. If
+you want Amazon Data Lifecycle Manager to delete all snapshots or
 AMIs, including the last one, specify \code{true}.
-\item If a policy enters the error, disabled, or deleted state, Amazon
-Data Lifecycle Manager stops deleting snapshots and AMIs. If you
-want Amazon Data Lifecycle Manager to continue deleting snapshots or
-AMIs, including the last one, if the policy enters one of these
-states, specify \code{true}.
+\item If a policy enters the error, disabled, or deleted state, Amazon Data
+Lifecycle Manager stops deleting snapshots and AMIs. If you want
+Amazon Data Lifecycle Manager to continue deleting snapshots or AMIs,
+including the last one, if the policy enters one of these states,
+specify \code{true}.
 }
 
 If you enable extended deletion (\strong{ExtendDeletion=true}), you override

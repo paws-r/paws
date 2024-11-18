@@ -26,17 +26,17 @@ statistics to include in your request, and the published unit value.
 These bucket metrics are reported once per day.
 \itemize{
 \item \strong{\code{BucketSizeBytes}} - The amount of data in bytes stored in a
-bucket. This value is calculated by summing the size of all objects
-in the bucket (including object versions), including the size of all
+bucket. This value is calculated by summing the size of all objects in
+the bucket (including object versions), including the size of all
 parts for all incomplete multipart uploads to the bucket.
 
 Statistics: The most useful statistic is \code{Maximum}.
 
 Unit: The published unit is \code{Bytes}.
 \item \strong{\code{NumberOfObjects}} - The total number of objects stored in a
-bucket. This value is calculated by counting all objects in the
-bucket (including object versions) and the total number of parts for
-all incomplete multipart uploads to the bucket.
+bucket. This value is calculated by counting all objects in the bucket
+(including object versions) and the total number of parts for all
+incomplete multipart uploads to the bucket.
 
 Statistics: The most useful statistic is \code{Average}.
 
@@ -57,9 +57,8 @@ day.}
 
 The following statistics are available:
 \itemize{
-\item \code{Minimum} - The lowest value observed during the specified period.
-Use this value to determine low volumes of activity for your
-application.
+\item \code{Minimum} - The lowest value observed during the specified period. Use
+this value to determine low volumes of activity for your application.
 \item \code{Maximum} - The highest value observed during the specified period.
 Use this value to determine high volumes of activity for your
 application.
@@ -67,10 +66,9 @@ application.
 can use this statistic to determine the total volume of a metric.
 \item \code{Average} - The value of \code{Sum} / \code{SampleCount} during the specified
 period. By comparing this statistic with the \code{Minimum} and \code{Maximum}
-values, you can determine the full scope of a metric and how close
-the average use is to the \code{Minimum} and \code{Maximum} values. This
-comparison helps you to know when to increase or decrease your
-resources.
+values, you can determine the full scope of a metric and how close the
+average use is to the \code{Minimum} and \code{Maximum} values. This comparison
+helps you to know when to increase or decrease your resources.
 \item \code{SampleCount} - The count, or number, of data points used for the
 statistical calculation.
 }}

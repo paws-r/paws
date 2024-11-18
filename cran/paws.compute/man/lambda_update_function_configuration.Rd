@@ -54,7 +54,7 @@ information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-p
 before stopping it. The default is 3 seconds. The maximum allowed value
 is 900 seconds. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html}{Lambda execution environment}.}
 
-\item{MemorySize}{The amount of \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-functions.html#configuration-memory-console}{memory available to the function}
+\item{MemorySize}{The amount of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-memory-console}{memory available to the function}
 at runtime. Increasing the function memory also increases its CPU
 allocation. The default value is 128 MB. The value can be any multiple
 of 1 MB.}

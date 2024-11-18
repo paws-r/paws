@@ -143,9 +143,9 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
-\item Previous generation: (not recommended. Existing clusters are
-still supported but creation of new clusters is not supported
-for these types.)
+\item Previous generation: (not recommended. Existing clusters are still
+supported but creation of new clusters is not supported for these
+types.)
 
 \strong{T1 node types:} \code{cache.t1.micro}
 
@@ -157,9 +157,9 @@ for these types.)
 }
 \item Compute optimized:
 \itemize{
-\item Previous generation: (not recommended. Existing clusters are
-still supported but creation of new clusters is not supported
-for these types.)
+\item Previous generation: (not recommended. Existing clusters are still
+supported but creation of new clusters is not supported for these
+types.)
 
 \strong{C1 node types:} \code{cache.c1.xlarge}
 }
@@ -186,9 +186,9 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 \strong{R4 node types:} \code{cache.r4.large}, \code{cache.r4.xlarge},
 \code{cache.r4.2xlarge}, \code{cache.r4.4xlarge}, \code{cache.r4.8xlarge},
 \code{cache.r4.16xlarge}
-\item Previous generation: (not recommended. Existing clusters are
-still supported but creation of new clusters is not supported
-for these types.)
+\item Previous generation: (not recommended. Existing clusters are still
+supported but creation of new clusters is not supported for these
+types.)
 
 \strong{M2 node types:} \code{cache.m2.xlarge}, \code{cache.m2.2xlarge},
 \code{cache.m2.4xlarge}
@@ -313,7 +313,7 @@ length.
 the AUTH token.
 }
 
-For more information, see AUTH password at
+For more information, see \href{https://redis.io/commands/auth/}{AUTH password} at
 http://redis.io/commands/AUTH.}
 
 \item{OutpostMode}{Specifies whether the nodes in the cluster are created in a single

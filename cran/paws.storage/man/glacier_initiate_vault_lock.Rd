@@ -17,7 +17,7 @@ your account ID, do not include any hyphens ('-') in the ID.}
 
 \item{vaultName}{[required] The name of the vault.}
 
-\item{policy}{The vault lock policy as a JSON string, which uses "\\" as an escape
+\item{policy}{The vault lock policy as a JSON string, which uses "\\ as an escape
 character.}
 }
 \description{

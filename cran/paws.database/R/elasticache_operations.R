@@ -31,7 +31,8 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .elasticache$add_tags_to_resource_output()
@@ -66,7 +67,8 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$authorize_cache_security_group_ingress_input(CacheSecurityGroupName = CacheSecurityGroupName, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .elasticache$authorize_cache_security_group_ingress_output()
@@ -98,7 +100,8 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$batch_apply_update_action_input(ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, ServiceUpdateName = ServiceUpdateName)
   output <- .elasticache$batch_apply_update_action_output()
@@ -130,7 +133,8 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$batch_stop_update_action_input(ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, ServiceUpdateName = ServiceUpdateName)
   output <- .elasticache$batch_stop_update_action_output()
@@ -163,7 +167,8 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$complete_migration_input(ReplicationGroupId = ReplicationGroupId, Force = Force)
   output <- .elasticache$complete_migration_output()
@@ -201,7 +206,8 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$copy_serverless_cache_snapshot_input(SourceServerlessCacheSnapshotName = SourceServerlessCacheSnapshotName, TargetServerlessCacheSnapshotName = TargetServerlessCacheSnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_serverless_cache_snapshot_output()
@@ -249,7 +255,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$copy_snapshot_input(SourceSnapshotName = SourceSnapshotName, TargetSnapshotName = TargetSnapshotName, TargetBucket = TargetBucket, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_snapshot_output()
@@ -273,11 +280,11 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #' **Constraints:**
 #' 
-#' -   A name must contain from 1 to 50 alphanumeric characters or hyphens.
+#' - A name must contain from 1 to 50 alphanumeric characters or hyphens.
 #' 
-#' -   The first character must be a letter.
+#' - The first character must be a letter.
 #' 
-#' -   A name cannot end with a hyphen or contain two consecutive hyphens.
+#' - A name cannot end with a hyphen or contain two consecutive hyphens.
 #' @param ReplicationGroupId The ID of the replication group to which this cluster should belong. If
 #' this parameter is specified, the cluster is added to the specified
 #' replication group as a read replica; otherwise, the cluster is a
@@ -336,108 +343,108 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' computational power at lower cost when compared to their equivalent
 #' previous generation counterparts.
 #' 
-#' -   General purpose:
+#' - General purpose:
 #' 
-#'     -   Current generation:
+#'   - Current generation:
 #' 
-#'         **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
-#'         `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
-#'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
+#'     **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
+#'     `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
+#'     `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     For region availability, see [Supported Node
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
-#'         **M6g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
-#'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
-#'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
-#'         `cache.m6g.16xlarge`
+#'     **M6g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'     `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
+#'     `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
+#'     `cache.m6g.16xlarge`
 #' 
-#'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
-#'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
-#'         `cache.m5.24xlarge`
+#'     **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
+#'     `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
+#'     `cache.m5.24xlarge`
 #' 
-#'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
-#'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#'     **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
+#'     `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
-#'         **T4g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and Memcached engine version 1.5.16 onward):
-#'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
+#'     **T4g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and Memcached engine version 1.5.16 onward):
+#'     `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
 #' 
-#'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
-#'         `cache.t3.medium`
+#'     **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
+#'     `cache.t3.medium`
 #' 
-#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
-#'         `cache.t2.medium`
+#'     **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
+#'     `cache.t2.medium`
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **T1 node types:** `cache.t1.micro`
+#'     **T1 node types:** `cache.t1.micro`
 #' 
-#'         **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
-#'         `cache.m1.large`, `cache.m1.xlarge`
+#'     **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
+#'     `cache.m1.large`, `cache.m1.xlarge`
 #' 
-#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
-#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
+#'     **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
+#'     `cache.m3.xlarge`, `cache.m3.2xlarge`
 #' 
-#' -   Compute optimized:
+#' - Compute optimized:
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **C1 node types:** `cache.c1.xlarge`
+#'     **C1 node types:** `cache.c1.xlarge`
 #' 
-#' -   Memory optimized:
+#' - Memory optimized:
 #' 
-#'     -   Current generation:
+#'   - Current generation:
 #' 
-#'         **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
-#'         `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
-#'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
+#'     **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
+#'     `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
+#'     `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     For region availability, see [Supported Node
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
-#'         **R6g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
-#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
-#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
-#'         `cache.r6g.16xlarge`
+#'     **R6g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'     `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
+#'     `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
+#'     `cache.r6g.16xlarge`
 #' 
-#'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
-#'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
-#'         `cache.r5.24xlarge`
+#'     **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
+#'     `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
+#'     `cache.r5.24xlarge`
 #' 
-#'         **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
-#'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
-#'         `cache.r4.16xlarge`
+#'     **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
+#'     `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
+#'     `cache.r4.16xlarge`
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
-#'         `cache.m2.4xlarge`
+#'     **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
+#'     `cache.m2.4xlarge`
 #' 
-#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
-#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
+#'     **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
+#'     `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
 #' 
 #' **Additional node type info**
 #' 
-#' -   All current generation instance types are created in Amazon VPC by
-#'     default.
+#' - All current generation instance types are created in Amazon VPC by
+#'   default.
 #' 
-#' -   Redis OSS append-only files (AOF) are not supported for T1 or T2
-#'     instances.
+#' - Redis OSS append-only files (AOF) are not supported for T1 or T2
+#'   instances.
 #' 
-#' -   Redis OSS Multi-AZ with automatic failover is not supported on T1
-#'     instances.
+#' - Redis OSS Multi-AZ with automatic failover is not supported on T1
+#'   instances.
 #' 
-#' -   Redis OSS configuration variables `appendonly` and `appendfsync` are
-#'     not supported on Redis OSS version 2.8.22 and later.
+#' - Redis OSS configuration variables `appendonly` and `appendfsync` are
+#'   not supported on Redis OSS version 2.8.22 and later.
 #' @param Engine The name of the cache engine to be used for this cluster.
 #' 
 #' Valid values for this parameter are: `memcached` | `redis`
@@ -521,16 +528,17 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #' Password constraints:
 #' 
-#' -   Must be only printable ASCII characters.
+#' - Must be only printable ASCII characters.
 #' 
-#' -   Must be at least 16 characters and no more than 128 characters in
-#'     length.
+#' - Must be at least 16 characters and no more than 128 characters in
+#'   length.
 #' 
-#' -   The only permitted printable special characters are !, &, #, $, ^,
-#'     \<, \>, and -. Other printable special characters cannot be used in
-#'     the AUTH token.
+#' - The only permitted printable special characters are !, &, #, $, ^,
+#'   \<, \>, and -. Other printable special characters cannot be used in
+#'   the AUTH token.
 #' 
-#' For more information, see AUTH password at
+#' For more information, see [AUTH
+#' password](https://redis.io/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
@@ -556,7 +564,8 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_cache_cluster_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId, AZMode = AZMode, PreferredAvailabilityZone = PreferredAvailabilityZone, PreferredAvailabilityZones = PreferredAvailabilityZones, NumCacheNodes = NumCacheNodes, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, OutpostMode = OutpostMode, PreferredOutpostArn = PreferredOutpostArn, PreferredOutpostArns = PreferredOutpostArns, LogDeliveryConfigurations = LogDeliveryConfigurations, TransitEncryptionEnabled = TransitEncryptionEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery)
   output <- .elasticache$create_cache_cluster_output()
@@ -595,7 +604,8 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, CacheParameterGroupFamily = CacheParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_parameter_group_output()
@@ -634,7 +644,8 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_security_group_output()
@@ -674,7 +685,8 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .elasticache$create_cache_subnet_group_output()
@@ -719,7 +731,8 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_global_replication_group_input(GlobalReplicationGroupIdSuffix = GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
   output <- .elasticache$create_global_replication_group_output()
@@ -744,11 +757,11 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' Constraints:
 #' 
-#' -   A name must contain from 1 to 40 alphanumeric characters or hyphens.
+#' - A name must contain from 1 to 40 alphanumeric characters or hyphens.
 #' 
-#' -   The first character must be a letter.
+#' - The first character must be a letter.
 #' 
-#' -   A name cannot end with a hyphen or contain two consecutive hyphens.
+#' - A name cannot end with a hyphen or contain two consecutive hyphens.
 #' @param ReplicationGroupDescription &#91;required&#93; A user-created description for the replication group.
 #' @param GlobalReplicationGroupId The name of the Global datastore
 #' @param PrimaryClusterId The identifier of the cluster that serves as the primary for this
@@ -821,108 +834,108 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' computational power at lower cost when compared to their equivalent
 #' previous generation counterparts.
 #' 
-#' -   General purpose:
+#' - General purpose:
 #' 
-#'     -   Current generation:
+#'   - Current generation:
 #' 
-#'         **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
-#'         `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
-#'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
+#'     **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
+#'     `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
+#'     `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     For region availability, see [Supported Node
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
-#'         **M6g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
-#'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
-#'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
-#'         `cache.m6g.16xlarge`
+#'     **M6g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'     `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
+#'     `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
+#'     `cache.m6g.16xlarge`
 #' 
-#'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
-#'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
-#'         `cache.m5.24xlarge`
+#'     **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
+#'     `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
+#'     `cache.m5.24xlarge`
 #' 
-#'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
-#'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#'     **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
+#'     `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
-#'         **T4g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and Memcached engine version 1.5.16 onward):
-#'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
+#'     **T4g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and Memcached engine version 1.5.16 onward):
+#'     `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
 #' 
-#'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
-#'         `cache.t3.medium`
+#'     **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
+#'     `cache.t3.medium`
 #' 
-#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
-#'         `cache.t2.medium`
+#'     **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
+#'     `cache.t2.medium`
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **T1 node types:** `cache.t1.micro`
+#'     **T1 node types:** `cache.t1.micro`
 #' 
-#'         **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
-#'         `cache.m1.large`, `cache.m1.xlarge`
+#'     **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
+#'     `cache.m1.large`, `cache.m1.xlarge`
 #' 
-#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
-#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
+#'     **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
+#'     `cache.m3.xlarge`, `cache.m3.2xlarge`
 #' 
-#' -   Compute optimized:
+#' - Compute optimized:
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **C1 node types:** `cache.c1.xlarge`
+#'     **C1 node types:** `cache.c1.xlarge`
 #' 
-#' -   Memory optimized:
+#' - Memory optimized:
 #' 
-#'     -   Current generation:
+#'   - Current generation:
 #' 
-#'         **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
-#'         `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
-#'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
+#'     **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
+#'     `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
+#'     `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     For region availability, see [Supported Node
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
-#'         **R6g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
-#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
-#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
-#'         `cache.r6g.16xlarge`
+#'     **R6g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'     `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
+#'     `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
+#'     `cache.r6g.16xlarge`
 #' 
-#'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
-#'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
-#'         `cache.r5.24xlarge`
+#'     **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
+#'     `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
+#'     `cache.r5.24xlarge`
 #' 
-#'         **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
-#'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
-#'         `cache.r4.16xlarge`
+#'     **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
+#'     `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
+#'     `cache.r4.16xlarge`
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
-#'         `cache.m2.4xlarge`
+#'     **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
+#'     `cache.m2.4xlarge`
 #' 
-#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
-#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
+#'     **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
+#'     `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
 #' 
 #' **Additional node type info**
 #' 
-#' -   All current generation instance types are created in Amazon VPC by
-#'     default.
+#' - All current generation instance types are created in Amazon VPC by
+#'   default.
 #' 
-#' -   Redis OSS append-only files (AOF) are not supported for T1 or T2
-#'     instances.
+#' - Redis OSS append-only files (AOF) are not supported for T1 or T2
+#'   instances.
 #' 
-#' -   Redis OSS Multi-AZ with automatic failover is not supported on T1
-#'     instances.
+#' - Redis OSS Multi-AZ with automatic failover is not supported on T1
+#'   instances.
 #' 
-#' -   Redis OSS configuration variables `appendonly` and `appendfsync` are
-#'     not supported on Redis OSS version 2.8.22 and later.
+#' - Redis OSS configuration variables `appendonly` and `appendfsync` are
+#'   not supported on Redis OSS version 2.8.22 and later.
 #' @param Engine The name of the cache engine to be used for the clusters in this
 #' replication group. The value must be set to `Redis`.
 #' @param EngineVersion The version number of the cache engine to be used for the clusters in
@@ -946,11 +959,11 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' (shard), and want to use a default parameter group, we recommend that
 #' you specify the parameter group by name.
 #' 
-#' -   To create a Redis OSS (cluster mode disabled) replication group, use
-#'     `CacheParameterGroupName=default.redis3.2`.
+#' - To create a Redis OSS (cluster mode disabled) replication group, use
+#'   `CacheParameterGroupName=default.redis3.2`.
 #' 
-#' -   To create a Redis OSS (cluster mode enabled) replication group, use
-#'     `CacheParameterGroupName=default.redis3.2.cluster.on`.
+#' - To create a Redis OSS (cluster mode enabled) replication group, use
+#'   `CacheParameterGroupName=default.redis3.2.cluster.on`.
 #' @param CacheSubnetGroupName The name of the cache subnet group to be used for the replication group.
 #' 
 #' If you're going to launch your cluster in an Amazon VPC, you need to
@@ -989,19 +1002,19 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' Valid values for `ddd` are:
 #' 
-#' -   `sun`
+#' - `sun`
 #' 
-#' -   `mon`
+#' - `mon`
 #' 
-#' -   `tue`
+#' - `tue`
 #' 
-#' -   `wed`
+#' - `wed`
 #' 
-#' -   `thu`
+#' - `thu`
 #' 
-#' -   `fri`
+#' - `fri`
 #' 
-#' -   `sat`
+#' - `sat`
 #' 
 #' Example: `sun:23:00-mon:01:30`
 #' @param Port The port number on which each member of the replication group accepts
@@ -1037,17 +1050,17 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' Password constraints:
 #' 
-#' -   Must be only printable ASCII characters.
+#' - Must be only printable ASCII characters.
 #' 
-#' -   Must be at least 16 characters and no more than 128 characters in
-#'     length.
+#' - Must be at least 16 characters and no more than 128 characters in
+#'   length.
 #' 
-#' -   The only permitted printable special characters are !, &, #, $, ^,
-#'     \<, \>, and -. Other printable special characters cannot be used in
-#'     the AUTH token.
+#' - The only permitted printable special characters are !, &, #, $, ^,
+#'   \<, \>, and -. Other printable special characters cannot be used in
+#'   the AUTH token.
 #' 
 #' For more information, see [AUTH
-#' password](https://redis.io/docs/latest/commands/auth/) at
+#' password](https://redis.io/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
@@ -1123,7 +1136,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
   output <- .elasticache$create_replication_group_output()
@@ -1187,7 +1201,8 @@ elasticache_create_serverless_cache <- function(ServerlessCacheName, Description
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, Engine = Engine, MajorEngineVersion = MajorEngineVersion, CacheUsageLimits = CacheUsageLimits, KmsKeyId = KmsKeyId, SecurityGroupIds = SecurityGroupIds, SnapshotArnsToRestore = SnapshotArnsToRestore, Tags = Tags, UserGroupId = UserGroupId, SubnetIds = SubnetIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
   output <- .elasticache$create_serverless_cache_output()
@@ -1226,7 +1241,8 @@ elasticache_create_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, ServerlessCacheName = ServerlessCacheName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_serverless_cache_snapshot_output()
@@ -1264,7 +1280,8 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_snapshot_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_snapshot_output()
@@ -1303,7 +1320,8 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_user_input(UserId = UserId, UserName = UserName, Engine = Engine, Passwords = Passwords, AccessString = AccessString, NoPasswordRequired = NoPasswordRequired, Tags = Tags, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$create_user_output()
@@ -1338,7 +1356,8 @@ elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_user_group_input(UserGroupId = UserGroupId, Engine = Engine, UserIds = UserIds, Tags = Tags)
   output <- .elasticache$create_user_group_output()
@@ -1382,7 +1401,8 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$decrease_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, GlobalNodeGroupsToRemove = GlobalNodeGroupsToRemove, GlobalNodeGroupsToRetain = GlobalNodeGroupsToRetain, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$decrease_node_groups_in_global_replication_group_output()
@@ -1414,14 +1434,14 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #' 
 #' The minimum number of replicas in a shard or replication group is:
 #' 
-#' -   Redis OSS (cluster mode disabled)
+#' - Redis OSS (cluster mode disabled)
 #' 
-#'     -   If Multi-AZ is enabled: 1
+#'   - If Multi-AZ is enabled: 1
 #' 
-#'     -   If Multi-AZ is not enabled: 0
+#'   - If Multi-AZ is not enabled: 0
 #' 
-#' -   Redis OSS (cluster mode enabled): 0 (though you will not be able to
-#'     failover to a replica if your primary node fails)
+#' - Redis OSS (cluster mode enabled): 0 (though you will not be able to
+#'   failover to a replica if your primary node fails)
 #' @param ReplicaConfiguration A list of `ConfigureShard` objects that can be used to configure each
 #' shard in a Redis OSS (cluster mode enabled) replication group. The
 #' `ConfigureShard` has three members: `NewReplicaCount`, `NodeGroupId`,
@@ -1440,7 +1460,8 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$decrease_replica_count_input(ReplicationGroupId = ReplicationGroupId, NewReplicaCount = NewReplicaCount, ReplicaConfiguration = ReplicaConfiguration, ReplicasToRemove = ReplicasToRemove, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$decrease_replica_count_output()
@@ -1474,7 +1495,8 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_cache_cluster_input(CacheClusterId = CacheClusterId, FinalSnapshotIdentifier = FinalSnapshotIdentifier)
   output <- .elasticache$delete_cache_cluster_output()
@@ -1507,7 +1529,8 @@ elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName)
   output <- .elasticache$delete_cache_parameter_group_output()
@@ -1539,7 +1562,8 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName)
   output <- .elasticache$delete_cache_security_group_output()
@@ -1572,7 +1596,8 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName)
   output <- .elasticache$delete_cache_subnet_group_output()
@@ -1604,7 +1629,8 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, RetainPrimaryReplicationGroup = RetainPrimaryReplicationGroup)
   output <- .elasticache$delete_global_replication_group_output()
@@ -1642,7 +1668,8 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_replication_group_input(ReplicationGroupId = ReplicationGroupId, RetainPrimaryCluster = RetainPrimaryCluster, FinalSnapshotIdentifier = FinalSnapshotIdentifier)
   output <- .elasticache$delete_replication_group_output()
@@ -1675,7 +1702,8 @@ elasticache_delete_serverless_cache <- function(ServerlessCacheName, FinalSnapsh
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, FinalSnapshotName = FinalSnapshotName)
   output <- .elasticache$delete_serverless_cache_output()
@@ -1706,7 +1734,8 @@ elasticache_delete_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
   output <- .elasticache$delete_serverless_cache_snapshot_output()
@@ -1736,7 +1765,8 @@ elasticache_delete_snapshot <- function(SnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_snapshot_input(SnapshotName = SnapshotName)
   output <- .elasticache$delete_snapshot_output()
@@ -1766,7 +1796,8 @@ elasticache_delete_user <- function(UserId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_user_input(UserId = UserId)
   output <- .elasticache$delete_user_output()
@@ -1796,7 +1827,8 @@ elasticache_delete_user_group <- function(UserGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_user_group_input(UserGroupId = UserGroupId)
   output <- .elasticache$delete_user_group_output()
@@ -1847,7 +1879,8 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheClusters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheClusters"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_clusters_input(CacheClusterId = CacheClusterId, MaxRecords = MaxRecords, Marker = Marker, ShowCacheNodeInfo = ShowCacheNodeInfo, ShowCacheClustersNotInReplicationGroups = ShowCacheClustersNotInReplicationGroups)
   output <- .elasticache$describe_cache_clusters_output()
@@ -1879,11 +1912,11 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 #' 
 #' Constraints:
 #' 
-#' -   Must be 1 to 255 alphanumeric characters
+#' - Must be 1 to 255 alphanumeric characters
 #' 
-#' -   First character must be a letter
+#' - First character must be a letter
 #' 
-#' -   Cannot end with a hyphen or contain two consecutive hyphens
+#' - Cannot end with a hyphen or contain two consecutive hyphens
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a marker is
 #' included in the response so that the remaining results can be retrieved.
@@ -1907,7 +1940,8 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheEngineVersions")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheEngineVersions"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly)
   output <- .elasticache$describe_cache_engine_versions_output()
@@ -1948,7 +1982,8 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheParameterGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheParameterGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_parameter_groups_input(CacheParameterGroupName = CacheParameterGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameter_groups_output()
@@ -1993,7 +2028,8 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_parameters_input(CacheParameterGroupName = CacheParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameters_output()
@@ -2034,7 +2070,8 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSecurityGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSecurityGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_security_groups_input(CacheSecurityGroupName = CacheSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_security_groups_output()
@@ -2075,7 +2112,8 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSubnetGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSubnetGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_subnet_groups_input(CacheSubnetGroupName = CacheSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_subnet_groups_output()
@@ -2121,7 +2159,8 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_engine_default_parameters_input(CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_engine_default_parameters_output()
@@ -2175,7 +2214,8 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_events_output()
@@ -2213,7 +2253,8 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalReplicationGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalReplicationGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_global_replication_groups_input(GlobalReplicationGroupId = GlobalReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker, ShowMemberInfo = ShowMemberInfo)
   output <- .elasticache$describe_global_replication_groups_output()
@@ -2258,7 +2299,8 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReplicationGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReplicationGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_replication_groups_input(ReplicationGroupId = ReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_replication_groups_output()
@@ -2290,108 +2332,108 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' computational power at lower cost when compared to their equivalent
 #' previous generation counterparts.
 #' 
-#' -   General purpose:
+#' - General purpose:
 #' 
-#'     -   Current generation:
+#'   - Current generation:
 #' 
-#'         **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
-#'         `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
-#'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
+#'     **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
+#'     `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
+#'     `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     For region availability, see [Supported Node
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
-#'         **M6g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
-#'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
-#'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
-#'         `cache.m6g.16xlarge`
+#'     **M6g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'     `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
+#'     `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
+#'     `cache.m6g.16xlarge`
 #' 
-#'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
-#'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
-#'         `cache.m5.24xlarge`
+#'     **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
+#'     `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
+#'     `cache.m5.24xlarge`
 #' 
-#'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
-#'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#'     **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
+#'     `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
-#'         **T4g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and Memcached engine version 1.5.16 onward):
-#'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
+#'     **T4g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and Memcached engine version 1.5.16 onward):
+#'     `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
 #' 
-#'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
-#'         `cache.t3.medium`
+#'     **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
+#'     `cache.t3.medium`
 #' 
-#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
-#'         `cache.t2.medium`
+#'     **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
+#'     `cache.t2.medium`
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **T1 node types:** `cache.t1.micro`
+#'     **T1 node types:** `cache.t1.micro`
 #' 
-#'         **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
-#'         `cache.m1.large`, `cache.m1.xlarge`
+#'     **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
+#'     `cache.m1.large`, `cache.m1.xlarge`
 #' 
-#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
-#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
+#'     **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
+#'     `cache.m3.xlarge`, `cache.m3.2xlarge`
 #' 
-#' -   Compute optimized:
+#' - Compute optimized:
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **C1 node types:** `cache.c1.xlarge`
+#'     **C1 node types:** `cache.c1.xlarge`
 #' 
-#' -   Memory optimized:
+#' - Memory optimized:
 #' 
-#'     -   Current generation:
+#'   - Current generation:
 #' 
-#'         **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
-#'         `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
-#'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
+#'     **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
+#'     `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
+#'     `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     For region availability, see [Supported Node
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
-#'         **R6g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
-#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
-#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
-#'         `cache.r6g.16xlarge`
+#'     **R6g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'     `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
+#'     `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
+#'     `cache.r6g.16xlarge`
 #' 
-#'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
-#'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
-#'         `cache.r5.24xlarge`
+#'     **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
+#'     `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
+#'     `cache.r5.24xlarge`
 #' 
-#'         **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
-#'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
-#'         `cache.r4.16xlarge`
+#'     **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
+#'     `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
+#'     `cache.r4.16xlarge`
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
-#'         `cache.m2.4xlarge`
+#'     **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
+#'     `cache.m2.4xlarge`
 #' 
-#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
-#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
+#'     **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
+#'     `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
 #' 
 #' **Additional node type info**
 #' 
-#' -   All current generation instance types are created in Amazon VPC by
-#'     default.
+#' - All current generation instance types are created in Amazon VPC by
+#'   default.
 #' 
-#' -   Redis OSS append-only files (AOF) are not supported for T1 or T2
-#'     instances.
+#' - Redis OSS append-only files (AOF) are not supported for T1 or T2
+#'   instances.
 #' 
-#' -   Redis OSS Multi-AZ with automatic failover is not supported on T1
-#'     instances.
+#' - Redis OSS Multi-AZ with automatic failover is not supported on T1
+#'   instances.
 #' 
-#' -   Redis OSS configuration variables `appendonly` and `appendfsync` are
-#'     not supported on Redis OSS version 2.8.22 and later.
+#' - Redis OSS configuration variables `appendonly` and `appendfsync` are
+#'   not supported on Redis OSS version 2.8.22 and later.
 #' @param Duration The duration filter value, specified in years or seconds. Use this
 #' parameter to show only reservations for this duration.
 #' 
@@ -2424,7 +2466,8 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodes")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodes"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_reserved_cache_nodes_input(ReservedCacheNodeId = ReservedCacheNodeId, ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_output()
@@ -2456,108 +2499,108 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' computational power at lower cost when compared to their equivalent
 #' previous generation counterparts.
 #' 
-#' -   General purpose:
+#' - General purpose:
 #' 
-#'     -   Current generation:
+#'   - Current generation:
 #' 
-#'         **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
-#'         `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
-#'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
+#'     **M7g node types**: `cache.m7g.large`, `cache.m7g.xlarge`,
+#'     `cache.m7g.2xlarge`, `cache.m7g.4xlarge`, `cache.m7g.8xlarge`,
+#'     `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     For region availability, see [Supported Node
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
-#'         **M6g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
-#'         `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
-#'         `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
-#'         `cache.m6g.16xlarge`
+#'     **M6g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'     `cache.m6g.large`, `cache.m6g.xlarge`, `cache.m6g.2xlarge`,
+#'     `cache.m6g.4xlarge`, `cache.m6g.8xlarge`, `cache.m6g.12xlarge`,
+#'     `cache.m6g.16xlarge`
 #' 
-#'         **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
-#'         `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
-#'         `cache.m5.24xlarge`
+#'     **M5 node types:** `cache.m5.large`, `cache.m5.xlarge`,
+#'     `cache.m5.2xlarge`, `cache.m5.4xlarge`, `cache.m5.12xlarge`,
+#'     `cache.m5.24xlarge`
 #' 
-#'         **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
-#'         `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
+#'     **M4 node types:** `cache.m4.large`, `cache.m4.xlarge`,
+#'     `cache.m4.2xlarge`, `cache.m4.4xlarge`, `cache.m4.10xlarge`
 #' 
-#'         **T4g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and Memcached engine version 1.5.16 onward):
-#'         `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
+#'     **T4g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and Memcached engine version 1.5.16 onward):
+#'     `cache.t4g.micro`, `cache.t4g.small`, `cache.t4g.medium`
 #' 
-#'         **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
-#'         `cache.t3.medium`
+#'     **T3 node types:** `cache.t3.micro`, `cache.t3.small`,
+#'     `cache.t3.medium`
 #' 
-#'         **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
-#'         `cache.t2.medium`
+#'     **T2 node types:** `cache.t2.micro`, `cache.t2.small`,
+#'     `cache.t2.medium`
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **T1 node types:** `cache.t1.micro`
+#'     **T1 node types:** `cache.t1.micro`
 #' 
-#'         **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
-#'         `cache.m1.large`, `cache.m1.xlarge`
+#'     **M1 node types:** `cache.m1.small`, `cache.m1.medium`,
+#'     `cache.m1.large`, `cache.m1.xlarge`
 #' 
-#'         **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
-#'         `cache.m3.xlarge`, `cache.m3.2xlarge`
+#'     **M3 node types:** `cache.m3.medium`, `cache.m3.large`,
+#'     `cache.m3.xlarge`, `cache.m3.2xlarge`
 #' 
-#' -   Compute optimized:
+#' - Compute optimized:
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **C1 node types:** `cache.c1.xlarge`
+#'     **C1 node types:** `cache.c1.xlarge`
 #' 
-#' -   Memory optimized:
+#' - Memory optimized:
 #' 
-#'     -   Current generation:
+#'   - Current generation:
 #' 
-#'         **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
-#'         `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
-#'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
+#'     **R7g node types**: `cache.r7g.large`, `cache.r7g.xlarge`,
+#'     `cache.r7g.2xlarge`, `cache.r7g.4xlarge`, `cache.r7g.8xlarge`,
+#'     `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
-#'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     For region availability, see [Supported Node
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
-#'         **R6g node types** (available only for Redis OSS engine version
-#'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
-#'         `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
-#'         `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
-#'         `cache.r6g.16xlarge`
+#'     **R6g node types** (available only for Redis OSS engine version
+#'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
+#'     `cache.r6g.large`, `cache.r6g.xlarge`, `cache.r6g.2xlarge`,
+#'     `cache.r6g.4xlarge`, `cache.r6g.8xlarge`, `cache.r6g.12xlarge`,
+#'     `cache.r6g.16xlarge`
 #' 
-#'         **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
-#'         `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
-#'         `cache.r5.24xlarge`
+#'     **R5 node types:** `cache.r5.large`, `cache.r5.xlarge`,
+#'     `cache.r5.2xlarge`, `cache.r5.4xlarge`, `cache.r5.12xlarge`,
+#'     `cache.r5.24xlarge`
 #' 
-#'         **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
-#'         `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
-#'         `cache.r4.16xlarge`
+#'     **R4 node types:** `cache.r4.large`, `cache.r4.xlarge`,
+#'     `cache.r4.2xlarge`, `cache.r4.4xlarge`, `cache.r4.8xlarge`,
+#'     `cache.r4.16xlarge`
 #' 
-#'     -   Previous generation: (not recommended. Existing clusters are
-#'         still supported but creation of new clusters is not supported
-#'         for these types.)
+#'   - Previous generation: (not recommended. Existing clusters are still
+#'     supported but creation of new clusters is not supported for these
+#'     types.)
 #' 
-#'         **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
-#'         `cache.m2.4xlarge`
+#'     **M2 node types:** `cache.m2.xlarge`, `cache.m2.2xlarge`,
+#'     `cache.m2.4xlarge`
 #' 
-#'         **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
-#'         `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
+#'     **R3 node types:** `cache.r3.large`, `cache.r3.xlarge`,
+#'     `cache.r3.2xlarge`, `cache.r3.4xlarge`, `cache.r3.8xlarge`
 #' 
 #' **Additional node type info**
 #' 
-#' -   All current generation instance types are created in Amazon VPC by
-#'     default.
+#' - All current generation instance types are created in Amazon VPC by
+#'   default.
 #' 
-#' -   Redis OSS append-only files (AOF) are not supported for T1 or T2
-#'     instances.
+#' - Redis OSS append-only files (AOF) are not supported for T1 or T2
+#'   instances.
 #' 
-#' -   Redis OSS Multi-AZ with automatic failover is not supported on T1
-#'     instances.
+#' - Redis OSS Multi-AZ with automatic failover is not supported on T1
+#'   instances.
 #' 
-#' -   Redis OSS configuration variables `appendonly` and `appendfsync` are
-#'     not supported on Redis OSS version 2.8.22 and later.
+#' - Redis OSS configuration variables `appendonly` and `appendfsync` are
+#'   not supported on Redis OSS version 2.8.22 and later.
 #' @param Duration Duration filter value, specified in years or seconds. Use this parameter
 #' to show only reservations for a given duration.
 #' 
@@ -2590,7 +2633,8 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodesOfferings")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodesOfferings"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_reserved_cache_nodes_offerings_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_offerings_output()
@@ -2637,7 +2681,8 @@ elasticache_describe_serverless_cache_snapshots <- function(ServerlessCacheName 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCacheSnapshots")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCacheSnapshots"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_serverless_cache_snapshots_input(ServerlessCacheName = ServerlessCacheName, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, SnapshotType = SnapshotType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .elasticache$describe_serverless_cache_snapshots_output()
@@ -2676,7 +2721,8 @@ elasticache_describe_serverless_caches <- function(ServerlessCacheName = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCaches")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCaches"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_serverless_caches_input(ServerlessCacheName = ServerlessCacheName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticache$describe_serverless_caches_output()
@@ -2712,7 +2758,8 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServiceUpdates")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServiceUpdates"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ServiceUpdateStatus = ServiceUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_service_updates_output()
@@ -2765,7 +2812,8 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_snapshots_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, SnapshotSource = SnapshotSource, Marker = Marker, MaxRecords = MaxRecords, ShowNodeGroupConfig = ShowNodeGroupConfig)
   output <- .elasticache$describe_snapshots_output()
@@ -2809,7 +2857,8 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UpdateActions")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UpdateActions"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_update_actions_input(ServiceUpdateName = ServiceUpdateName, ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, Engine = Engine, ServiceUpdateStatus = ServiceUpdateStatus, ServiceUpdateTimeRange = ServiceUpdateTimeRange, UpdateActionStatus = UpdateActionStatus, ShowNodeLevelUpdateStatus = ShowNodeLevelUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_update_actions_output()
@@ -2846,7 +2895,8 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UserGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UserGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_user_groups_input(UserGroupId = UserGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_user_groups_output()
@@ -2885,7 +2935,8 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Users")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Users"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_users_input(Engine = Engine, UserId = UserId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_users_output()
@@ -2920,7 +2971,8 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$disassociate_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ReplicationGroupId = ReplicationGroupId, ReplicationGroupRegion = ReplicationGroupRegion)
   output <- .elasticache$disassociate_global_replication_group_output()
@@ -2955,7 +3007,8 @@ elasticache_export_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$export_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, S3BucketName = S3BucketName)
   output <- .elasticache$export_serverless_cache_snapshot_output()
@@ -2987,7 +3040,8 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$failover_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryRegion = PrimaryRegion, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
   output <- .elasticache$failover_global_replication_group_output()
@@ -3023,7 +3077,8 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$increase_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, RegionalConfigurations = RegionalConfigurations, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$increase_node_groups_in_global_replication_group_output()
@@ -3067,7 +3122,8 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$increase_replica_count_input(ReplicationGroupId = ReplicationGroupId, NewReplicaCount = NewReplicaCount, ReplicaConfiguration = ReplicaConfiguration, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$increase_replica_count_output()
@@ -3111,7 +3167,8 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$list_allowed_node_type_modifications_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId)
   output <- .elasticache$list_allowed_node_type_modifications_output()
@@ -3148,7 +3205,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$list_tags_for_resource_input(ResourceName = ResourceName)
   output <- .elasticache$list_tags_for_resource_output()
@@ -3241,17 +3299,17 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' 
 #' Scenarios:
 #' 
-#' -   **Scenario 1:** You have 3 active nodes and wish to add 2 nodes.
-#'     Specify `NumCacheNodes=5` (3 + 2) and optionally specify two
-#'     Availability Zones for the two new nodes.
+#' - **Scenario 1:** You have 3 active nodes and wish to add 2 nodes.
+#'   Specify `NumCacheNodes=5` (3 + 2) and optionally specify two
+#'   Availability Zones for the two new nodes.
 #' 
-#' -   **Scenario 2:** You have 3 active nodes and 2 nodes pending creation
-#'     (from the scenario 1 call) and want to add 1 more node. Specify
-#'     `NumCacheNodes=6` ((3 + 2) + 1) and optionally specify an
-#'     Availability Zone for the new node.
+#' - **Scenario 2:** You have 3 active nodes and 2 nodes pending creation
+#'   (from the scenario 1 call) and want to add 1 more node. Specify
+#'   `NumCacheNodes=6` ((3 + 2) + 1) and optionally specify an Availability
+#'   Zone for the new node.
 #' 
-#' -   **Scenario 3:** You want to cancel all pending operations. Specify
-#'     `NumCacheNodes=3` to cancel all pending operations.
+#' - **Scenario 3:** You want to cancel all pending operations. Specify
+#'   `NumCacheNodes=3` to cancel all pending operations.
 #' 
 #' The Availability Zone placement of nodes pending creation cannot be
 #' modified. If you wish to cancel any nodes pending creation, add 0 nodes
@@ -3266,45 +3324,44 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' 
 #' **Impact of new add/remove requests upon pending requests**
 #' 
-#' -   Scenario-1
+#' - Scenario-1
 #' 
-#'     -   Pending Action: Delete
+#'   - Pending Action: Delete
 #' 
-#'     -   New Request: Delete
+#'   - New Request: Delete
 #' 
-#'     -   Result: The new delete, pending or immediate, replaces the
-#'         pending delete.
+#'   - Result: The new delete, pending or immediate, replaces the pending
+#'     delete.
 #' 
-#' -   Scenario-2
+#' - Scenario-2
 #' 
-#'     -   Pending Action: Delete
+#'   - Pending Action: Delete
 #' 
-#'     -   New Request: Create
+#'   - New Request: Create
 #' 
-#'     -   Result: The new create, pending or immediate, replaces the
-#'         pending delete.
+#'   - Result: The new create, pending or immediate, replaces the pending
+#'     delete.
 #' 
-#' -   Scenario-3
+#' - Scenario-3
 #' 
-#'     -   Pending Action: Create
+#'   - Pending Action: Create
 #' 
-#'     -   New Request: Delete
+#'   - New Request: Delete
 #' 
-#'     -   Result: The new delete, pending or immediate, replaces the
-#'         pending create.
+#'   - Result: The new delete, pending or immediate, replaces the pending
+#'     create.
 #' 
-#' -   Scenario-4
+#' - Scenario-4
 #' 
-#'     -   Pending Action: Create
+#'   - Pending Action: Create
 #' 
-#'     -   New Request: Create
+#'   - New Request: Create
 #' 
-#'     -   Result: The new create is added to the pending create.
+#'   - Result: The new create is added to the pending create.
 #' 
-#'         **Important:** If the new create request is **Apply
-#'         Immediately - Yes**, all creates are performed immediately. If
-#'         the new create request is **Apply Immediately - No**, all
-#'         creates are pending.
+#'     **Important:** If the new create request is **Apply Immediately -
+#'     Yes**, all creates are performed immediately. If the new create
+#'     request is **Apply Immediately - No**, all creates are pending.
 #' @param CacheSecurityGroupNames A list of cache security group names to authorize on this cluster. This
 #' change is asynchronously applied as soon as possible.
 #' 
@@ -3324,19 +3381,19 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' 
 #' Valid values for `ddd` are:
 #' 
-#' -   `sun`
+#' - `sun`
 #' 
-#' -   `mon`
+#' - `mon`
 #' 
-#' -   `tue`
+#' - `tue`
 #' 
-#' -   `wed`
+#' - `wed`
 #' 
-#' -   `thu`
+#' - `thu`
 #' 
-#' -   `fri`
+#' - `fri`
 #' 
-#' -   `sat`
+#' - `sat`
 #' 
 #' Example: `sun:23:00-mon:01:30`
 #' @param NotificationTopicArn The Amazon Resource Name (ARN) of the Amazon SNS topic to which
@@ -3392,24 +3449,23 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' server. This parameter must be specified with the `auth-token-update`
 #' parameter. Password constraints:
 #' 
-#' -   Must be only printable ASCII characters
+#' - Must be only printable ASCII characters
 #' 
-#' -   Must be at least 16 characters and no more than 128 characters in
-#'     length
+#' - Must be at least 16 characters and no more than 128 characters in
+#'   length
 #' 
-#' -   Cannot contain any of the following characters: '/', '"', or '@@',
-#'     '%'
+#' - Cannot contain any of the following characters: '/', '"', or '@@', '%'
 #' 
 #' For more information, see AUTH password at
-#' [AUTH](https://redis.io/docs/latest/commands/auth/).
+#' [AUTH](https://redis.io/commands/auth/).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
-#' -   ROTATE - default, if no update strategy is provided
+#' - ROTATE - default, if no update strategy is provided
 #' 
-#' -   SET - allowed only after ROTATE
+#' - SET - allowed only after ROTATE
 #' 
-#' -   DELETE - allowed only when transitioning to RBAC
+#' - DELETE - allowed only when transitioning to RBAC
 #' 
 #' For more information, see [Authenticating Users with Redis OSS
 #' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
@@ -3428,7 +3484,8 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery)
   output <- .elasticache$modify_cache_cluster_output()
@@ -3461,7 +3518,8 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, ParameterNameValues = ParameterNameValues)
   output <- .elasticache$modify_cache_parameter_group_output()
@@ -3499,7 +3557,8 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .elasticache$modify_cache_subnet_group_output()
@@ -3542,7 +3601,8 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately, CacheNodeType = CacheNodeType, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, AutomaticFailoverEnabled = AutomaticFailoverEnabled)
   output <- .elasticache$modify_global_replication_group_output()
@@ -3599,19 +3659,19 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' Valid values for `ddd` are:
 #' 
-#' -   `sun`
+#' - `sun`
 #' 
-#' -   `mon`
+#' - `mon`
 #' 
-#' -   `tue`
+#' - `tue`
 #' 
-#' -   `wed`
+#' - `wed`
 #' 
-#' -   `thu`
+#' - `thu`
 #' 
-#' -   `fri`
+#' - `fri`
 #' 
-#' -   `sat`
+#' - `sat`
 #' 
 #' Example: `sun:23:00-mon:01:30`
 #' @param NotificationTopicArn The Amazon Resource Name (ARN) of the Amazon SNS topic to which
@@ -3671,24 +3731,23 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' server. This parameter must be specified with the
 #' `auth-token-update-strategy ` parameter. Password constraints:
 #' 
-#' -   Must be only printable ASCII characters
+#' - Must be only printable ASCII characters
 #' 
-#' -   Must be at least 16 characters and no more than 128 characters in
-#'     length
+#' - Must be at least 16 characters and no more than 128 characters in
+#'   length
 #' 
-#' -   Cannot contain any of the following characters: '/', '"', or '@@',
-#'     '%'
+#' - Cannot contain any of the following characters: '/', '"', or '@@', '%'
 #' 
 #' For more information, see AUTH password at
-#' [AUTH](https://redis.io/docs/latest/commands/auth/).
+#' [AUTH](https://redis.io/commands/auth/).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
-#' -   ROTATE - default, if no update strategy is provided
+#' - ROTATE - default, if no update strategy is provided
 #' 
-#' -   SET - allowed only after ROTATE
+#' - SET - allowed only after ROTATE
 #' 
-#' -   DELETE - allowed only when transitioning to RBAC
+#' - DELETE - allowed only when transitioning to RBAC
 #' 
 #' For more information, see [Authenticating Users with Redis OSS
 #' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
@@ -3734,7 +3793,8 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, UserGroupIdsToAdd = UserGroupIdsToAdd, UserGroupIdsToRemove = UserGroupIdsToRemove, RemoveUserGroups = RemoveUserGroups, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery, TransitEncryptionEnabled = TransitEncryptionEnabled, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode)
   output <- .elasticache$modify_replication_group_output()
@@ -3795,7 +3855,8 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_replication_group_shard_configuration_input(ReplicationGroupId = ReplicationGroupId, NodeGroupCount = NodeGroupCount, ApplyImmediately = ApplyImmediately, ReshardingConfiguration = ReshardingConfiguration, NodeGroupsToRemove = NodeGroupsToRemove, NodeGroupsToRetain = NodeGroupsToRetain)
   output <- .elasticache$modify_replication_group_shard_configuration_output()
@@ -3848,7 +3909,8 @@ elasticache_modify_serverless_cache <- function(ServerlessCacheName, Description
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, CacheUsageLimits = CacheUsageLimits, RemoveUserGroup = RemoveUserGroup, UserGroupId = UserGroupId, SecurityGroupIds = SecurityGroupIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
   output <- .elasticache$modify_serverless_cache_output()
@@ -3883,7 +3945,8 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_user_input(UserId = UserId, AccessString = AccessString, AppendAccessString = AppendAccessString, Passwords = Passwords, NoPasswordRequired = NoPasswordRequired, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$modify_user_output()
@@ -3915,7 +3978,8 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_user_group_input(UserGroupId = UserGroupId, UserIdsToAdd = UserIdsToAdd, UserIdsToRemove = UserIdsToRemove)
   output <- .elasticache$modify_user_group_output()
@@ -3959,7 +4023,8 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$purchase_reserved_cache_nodes_offering_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, ReservedCacheNodeId = ReservedCacheNodeId, CacheNodeCount = CacheNodeCount, Tags = Tags)
   output <- .elasticache$purchase_reserved_cache_nodes_offering_output()
@@ -3991,7 +4056,8 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$rebalance_slots_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$rebalance_slots_in_global_replication_group_output()
@@ -4024,7 +4090,8 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$reboot_cache_cluster_input(CacheClusterId = CacheClusterId, CacheNodeIdsToReboot = CacheNodeIdsToReboot)
   output <- .elasticache$reboot_cache_cluster_output()
@@ -4063,7 +4130,8 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .elasticache$remove_tags_from_resource_output()
@@ -4103,7 +4171,8 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$reset_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, ResetAllParameters = ResetAllParameters, ParameterNameValues = ParameterNameValues)
   output <- .elasticache$reset_cache_parameter_group_output()
@@ -4137,7 +4206,8 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$revoke_cache_security_group_ingress_input(CacheSecurityGroupName = CacheSecurityGroupName, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .elasticache$revoke_cache_security_group_ingress_output()
@@ -4169,7 +4239,8 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$start_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
   output <- .elasticache$start_migration_output()
@@ -4206,7 +4277,8 @@ elasticache_test_failover <- function(ReplicationGroupId, NodeGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$test_failover_input(ReplicationGroupId = ReplicationGroupId, NodeGroupId = NodeGroupId)
   output <- .elasticache$test_failover_output()
@@ -4238,7 +4310,8 @@ elasticache_test_migration <- function(ReplicationGroupId, CustomerNodeEndpointL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$test_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
   output <- .elasticache$test_migration_output()

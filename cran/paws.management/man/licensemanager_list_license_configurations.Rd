@@ -21,15 +21,15 @@ licensemanager_list_license_configurations(
 \item{Filters}{Filters to scope the results. The following filters and logical
 operators are supported:
 \itemize{
-\item \code{licenseCountingType} - The dimension for which licenses are
-counted. Possible values are \code{vCPU} | \code{Instance} | \code{Core} |
-\code{Socket}. Logical operators are \code{EQUALS} | \code{NOT_EQUALS}.
+\item \code{licenseCountingType} - The dimension for which licenses are counted.
+Possible values are \code{vCPU} | \code{Instance} | \code{Core} | \code{Socket}. Logical
+operators are \code{EQUALS} | \code{NOT_EQUALS}.
 \item \code{enforceLicenseCount} - A Boolean value that indicates whether hard
 license enforcement is used. Logical operators are \code{EQUALS} |
 \code{NOT_EQUALS}.
 \item \code{usagelimitExceeded} - A Boolean value that indicates whether the
-available licenses have been exceeded. Logical operators are
-\code{EQUALS} | \code{NOT_EQUALS}.
+available licenses have been exceeded. Logical operators are \code{EQUALS}
+| \code{NOT_EQUALS}.
 }}
 }
 \description{

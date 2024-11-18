@@ -19,7 +19,7 @@ operation.}
 set operation.
 
 For more information about maximum concurrent accounts and failure
-tolerance, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options}{Stack set operation options}.}
+tolerance, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{Stack set operation options}.}
 
 \item{OperationId}{\emph{The ID of the stack set operation.}}
 

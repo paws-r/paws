@@ -22,8 +22,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
-\item \code{auto-recovery-supported} - Indicates whether Amazon CloudWatch
-action based recovery is supported (\code{true} | \code{false}).
+\item \code{auto-recovery-supported} - Indicates whether Amazon CloudWatch action
+based recovery is supported (\code{true} | \code{false}).
 \item \code{bare-metal} - Indicates whether it is a bare metal instance type
 (\code{true} | \code{false}).
 \item \code{burstable-performance-supported} - Indicates whether the instance
@@ -32,32 +32,29 @@ type is a burstable performance T instance type (\code{true} | \code{false}).
 latest generation instance type of an instance family (\code{true} |
 \code{false}).
 \item \verb{ebs-info.ebs-optimized-info.baseline-bandwidth-in-mbps} - The
-baseline bandwidth performance for an EBS-optimized instance type,
-in Mbps.
+baseline bandwidth performance for an EBS-optimized instance type, in
+Mbps.
 \item \code{ebs-info.ebs-optimized-info.baseline-iops} - The baseline
 input/output storage operations per second for an EBS-optimized
 instance type.
 \item \verb{ebs-info.ebs-optimized-info.baseline-throughput-in-mbps} - The
-baseline throughput performance for an EBS-optimized instance type,
-in MB/s.
-\item \verb{ebs-info.ebs-optimized-info.maximum-bandwidth-in-mbps} - The
-maximum bandwidth performance for an EBS-optimized instance type, in
-Mbps.
-\item \code{ebs-info.ebs-optimized-info.maximum-iops} - The maximum
-input/output storage operations per second for an EBS-optimized
-instance type.
-\item \verb{ebs-info.ebs-optimized-info.maximum-throughput-in-mbps} - The
-maximum throughput performance for an EBS-optimized instance type,
-in MB/s.
-\item \code{ebs-info.ebs-optimized-support} - Indicates whether the instance
-type is EBS-optimized (\code{supported} | \code{unsupported} | \code{default}).
+baseline throughput performance for an EBS-optimized instance type, in
+MB/s.
+\item \verb{ebs-info.ebs-optimized-info.maximum-bandwidth-in-mbps} - The maximum
+bandwidth performance for an EBS-optimized instance type, in Mbps.
+\item \code{ebs-info.ebs-optimized-info.maximum-iops} - The maximum input/output
+storage operations per second for an EBS-optimized instance type.
+\item \verb{ebs-info.ebs-optimized-info.maximum-throughput-in-mbps} - The maximum
+throughput performance for an EBS-optimized instance type, in MB/s.
+\item \code{ebs-info.ebs-optimized-support} - Indicates whether the instance type
+is EBS-optimized (\code{supported} | \code{unsupported} | \code{default}).
 \item \code{ebs-info.encryption-support} - Indicates whether EBS encryption is
 supported (\code{supported} | \code{unsupported}).
 \item \code{ebs-info.nvme-support} - Indicates whether non-volatile memory
-express (NVMe) is supported for EBS volumes (\code{required} |
-\code{supported} | \code{unsupported}).
-\item \code{free-tier-eligible} - Indicates whether the instance type is
-eligible to use in the free tier (\code{true} | \code{false}).
+express (NVMe) is supported for EBS volumes (\code{required} | \code{supported}
+| \code{unsupported}).
+\item \code{free-tier-eligible} - Indicates whether the instance type is eligible
+to use in the free tier (\code{true} | \code{false}).
 \item \code{hibernation-supported} - Indicates whether On-Demand hibernation is
 supported (\code{true} | \code{false}).
 \item \code{hypervisor} - The hypervisor (\code{nitro} | \code{xen}).
@@ -66,27 +63,27 @@ supported (\code{true} | \code{false}).
 instance storage disk, in GB.
 \item \code{instance-storage-info.disk.type} - The storage technology for the
 local instance storage disks (\code{hdd} | \code{ssd}).
-\item \code{instance-storage-info.encryption-support} - Indicates whether data
-is encrypted at rest (\code{required} | \code{supported} | \code{unsupported}).
-\item \code{instance-storage-info.nvme-support} - Indicates whether
-non-volatile memory express (NVMe) is supported for instance store
-(\code{required} | \code{supported} | \code{unsupported}).
-\item \verb{instance-storage-info.total-size-in-gb} - The total amount of
-storage available from all local instance storage, in GB.
-\item \code{instance-storage-supported} - Indicates whether the instance type
-has local instance storage (\code{true} | \code{false}).
+\item \code{instance-storage-info.encryption-support} - Indicates whether data is
+encrypted at rest (\code{required} | \code{supported} | \code{unsupported}).
+\item \code{instance-storage-info.nvme-support} - Indicates whether non-volatile
+memory express (NVMe) is supported for instance store (\code{required} |
+\code{supported} | \code{unsupported}).
+\item \verb{instance-storage-info.total-size-in-gb} - The total amount of storage
+available from all local instance storage, in GB.
+\item \code{instance-storage-supported} - Indicates whether the instance type has
+local instance storage (\code{true} | \code{false}).
 \item \code{instance-type} - The instance type (for example \code{c5.2xlarge} or
 c5*).
 \item \verb{memory-info.size-in-mib} - The memory size.
-\item \code{network-info.efa-info.maximum-efa-interfaces} - The maximum number
-of Elastic Fabric Adapters (EFAs) per instance.
+\item \code{network-info.efa-info.maximum-efa-interfaces} - The maximum number of
+Elastic Fabric Adapters (EFAs) per instance.
 \item \code{network-info.efa-supported} - Indicates whether the instance type
 supports Elastic Fabric Adapter (EFA) (\code{true} | \code{false}).
-\item \code{network-info.ena-support} - Indicates whether Elastic Network
-Adapter (ENA) is supported or required (\code{required} | \code{supported} |
+\item \code{network-info.ena-support} - Indicates whether Elastic Network Adapter
+(ENA) is supported or required (\code{required} | \code{supported} |
 \code{unsupported}).
-\item \verb{network-info.encryption-in-transit-supported} - Indicates whether
-the instance type automatically encrypts in-transit traffic between
+\item \verb{network-info.encryption-in-transit-supported} - Indicates whether the
+instance type automatically encrypts in-transit traffic between
 instances (\code{true} | \code{false}).
 \item \code{network-info.ipv4-addresses-per-interface} - The maximum number of
 private IPv4 addresses per network interface.

@@ -18,23 +18,22 @@ NULL
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `tagFilter.tag`: String constraint. The key is
-#'         `swf:tagFilter.tag`.
+#'   - `tagFilter.tag`: String constraint. The key is `swf:tagFilter.tag`.
 #' 
-#'     -   `typeFilter.name`: String constraint. The key is
-#'         `swf:typeFilter.name`.
+#'   - `typeFilter.name`: String constraint. The key is
+#'     `swf:typeFilter.name`.
 #' 
-#'     -   `typeFilter.version`: String constraint. The key is
-#'         `swf:typeFilter.version`.
+#'   - `typeFilter.version`: String constraint. The key is
+#'     `swf:typeFilter.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -138,7 +137,8 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$count_closed_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, closeTimeFilter = closeTimeFilter, executionFilter = executionFilter, typeFilter = typeFilter, tagFilter = tagFilter, closeStatusFilter = closeStatusFilter)
   output <- .swf$count_closed_workflow_executions_output()
@@ -165,23 +165,22 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `tagFilter.tag`: String constraint. The key is
-#'         `swf:tagFilter.tag`.
+#'   - `tagFilter.tag`: String constraint. The key is `swf:tagFilter.tag`.
 #' 
-#'     -   `typeFilter.name`: String constraint. The key is
-#'         `swf:typeFilter.name`.
+#'   - `typeFilter.name`: String constraint. The key is
+#'     `swf:typeFilter.name`.
 #' 
-#'     -   `typeFilter.version`: String constraint. The key is
-#'         `swf:typeFilter.version`.
+#'   - `typeFilter.version`: String constraint. The key is
+#'     `swf:typeFilter.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -258,7 +257,8 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$count_open_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, typeFilter = typeFilter, tagFilter = tagFilter, executionFilter = executionFilter)
   output <- .swf$count_open_workflow_executions_output()
@@ -284,15 +284,15 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the `taskList.name` parameter by using a `Condition`
-#'     element with the `swf:taskList.name` key to allow the action to
-#'     access only certain task lists.
+#' - Constrain the `taskList.name` parameter by using a `Condition` element
+#'   with the `swf:taskList.name` key to allow the action to access only
+#'   certain task lists.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -338,7 +338,8 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$count_pending_activity_tasks_input(domain = domain, taskList = taskList)
   output <- .swf$count_pending_activity_tasks_output()
@@ -364,15 +365,15 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the `taskList.name` parameter by using a `Condition`
-#'     element with the `swf:taskList.name` key to allow the action to
-#'     access only certain task lists.
+#' - Constrain the `taskList.name` parameter by using a `Condition` element
+#'   with the `swf:taskList.name` key to allow the action to access only
+#'   certain task lists.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -418,7 +419,8 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$count_pending_decision_tasks_input(domain = domain, taskList = taskList)
   output <- .swf$count_pending_decision_tasks_output()
@@ -446,20 +448,20 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `activityType.name`: String constraint. The key is
-#'         `swf:activityType.name`.
+#'   - `activityType.name`: String constraint. The key is
+#'     `swf:activityType.name`.
 #' 
-#'     -   `activityType.version`: String constraint. The key is
-#'         `swf:activityType.version`.
+#'   - `activityType.version`: String constraint. The key is
+#'     `swf:activityType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -500,7 +502,8 @@ swf_delete_activity_type <- function(domain, activityType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$delete_activity_type_input(domain = domain, activityType = activityType)
   output <- .swf$delete_activity_type_output()
@@ -528,20 +531,20 @@ swf_delete_activity_type <- function(domain, activityType) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
+#'   - `workflowType.name`: String constraint. The key is
+#'     `swf:workflowType.name`.
 #' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
+#'   - `workflowType.version`: String constraint. The key is
+#'     `swf:workflowType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -582,7 +585,8 @@ swf_delete_workflow_type <- function(domain, workflowType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$delete_workflow_type_input(domain = domain, workflowType = workflowType)
   output <- .swf$delete_workflow_type_output()
@@ -607,20 +611,20 @@ swf_delete_workflow_type <- function(domain, workflowType) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `activityType.name`: String constraint. The key is
-#'         `swf:activityType.name`.
+#'   - `activityType.name`: String constraint. The key is
+#'     `swf:activityType.name`.
 #' 
-#'     -   `activityType.version`: String constraint. The key is
-#'         `swf:activityType.version`.
+#'   - `activityType.version`: String constraint. The key is
+#'     `swf:activityType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -661,7 +665,8 @@ swf_deprecate_activity_type <- function(domain, activityType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$deprecate_activity_type_input(domain = domain, activityType = activityType)
   output <- .swf$deprecate_activity_type_output()
@@ -691,13 +696,13 @@ swf_deprecate_activity_type <- function(domain, activityType) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -733,7 +738,8 @@ swf_deprecate_domain <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$deprecate_domain_input(name = name)
   output <- .swf$deprecate_domain_output()
@@ -762,20 +768,20 @@ swf_deprecate_domain <- function(name) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
+#'   - `workflowType.name`: String constraint. The key is
+#'     `swf:workflowType.name`.
 #' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
+#'   - `workflowType.version`: String constraint. The key is
+#'     `swf:workflowType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -816,7 +822,8 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$deprecate_workflow_type_input(domain = domain, workflowType = workflowType)
   output <- .swf$deprecate_workflow_type_output()
@@ -840,20 +847,20 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `activityType.name`: String constraint. The key is
-#'         `swf:activityType.name`.
+#'   - `activityType.name`: String constraint. The key is
+#'     `swf:activityType.name`.
 #' 
-#'     -   `activityType.version`: String constraint. The key is
-#'         `swf:activityType.version`.
+#'   - `activityType.version`: String constraint. The key is
+#'     `swf:activityType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -924,7 +931,8 @@ swf_describe_activity_type <- function(domain, activityType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$describe_activity_type_input(domain = domain, activityType = activityType)
   output <- .swf$describe_activity_type_output()
@@ -948,13 +956,13 @@ swf_describe_activity_type <- function(domain, activityType) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -1003,7 +1011,8 @@ swf_describe_domain <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$describe_domain_input(name = name)
   output <- .swf$describe_domain_output()
@@ -1030,13 +1039,13 @@ swf_describe_domain <- function(name) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -1128,7 +1137,8 @@ swf_describe_workflow_execution <- function(domain, execution) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$describe_workflow_execution_input(domain = domain, execution = execution)
   output <- .swf$describe_workflow_execution_output()
@@ -1152,20 +1162,20 @@ swf_describe_workflow_execution <- function(domain, execution) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
+#'   - `workflowType.name`: String constraint. The key is
+#'     `swf:workflowType.name`.
 #' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
+#'   - `workflowType.version`: String constraint. The key is
+#'     `swf:workflowType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -1234,7 +1244,8 @@ swf_describe_workflow_type <- function(domain, workflowType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$describe_workflow_type_input(domain = domain, workflowType = workflowType)
   output <- .swf$describe_workflow_type_output()
@@ -1261,13 +1272,13 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -1754,7 +1765,8 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events"),
+    stream_api = FALSE
   )
   input <- .swf$get_workflow_execution_history_input(domain = domain, execution = execution, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$get_workflow_execution_history_output()
@@ -1782,13 +1794,13 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -1867,7 +1879,8 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_activity_types_input(domain = domain, name = name, registrationStatus = registrationStatus, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_activity_types_output()
@@ -1896,23 +1909,22 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `tagFilter.tag`: String constraint. The key is
-#'         `swf:tagFilter.tag`.
+#'   - `tagFilter.tag`: String constraint. The key is `swf:tagFilter.tag`.
 #' 
-#'     -   `typeFilter.name`: String constraint. The key is
-#'         `swf:typeFilter.name`.
+#'   - `typeFilter.name`: String constraint. The key is
+#'     `swf:typeFilter.name`.
 #' 
-#'     -   `typeFilter.version`: String constraint. The key is
-#'         `swf:typeFilter.version`.
+#'   - `typeFilter.version`: String constraint. The key is
+#'     `swf:typeFilter.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -2063,7 +2075,8 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_closed_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, closeTimeFilter = closeTimeFilter, executionFilter = executionFilter, closeStatusFilter = closeStatusFilter, typeFilter = typeFilter, tagFilter = tagFilter, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_closed_workflow_executions_output()
@@ -2090,15 +2103,15 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains. The element must be set to
-#'     `arn:aws:swf::AccountID:domain/*`, where *AccountID* is the account
-#'     ID, with no dashes.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains. The element must be set to
+#'   `arn:aws:swf::AccountID:domain/*`, where *AccountID* is the account
+#'   ID, with no dashes.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -2165,7 +2178,8 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "domainInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "domainInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_domains_input(nextPageToken = nextPageToken, registrationStatus = registrationStatus, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_domains_output()
@@ -2194,23 +2208,22 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `tagFilter.tag`: String constraint. The key is
-#'         `swf:tagFilter.tag`.
+#'   - `tagFilter.tag`: String constraint. The key is `swf:tagFilter.tag`.
 #' 
-#'     -   `typeFilter.name`: String constraint. The key is
-#'         `swf:typeFilter.name`.
+#'   - `typeFilter.name`: String constraint. The key is
+#'     `swf:typeFilter.name`.
 #' 
-#'     -   `typeFilter.version`: String constraint. The key is
-#'         `swf:typeFilter.version`.
+#'   - `typeFilter.version`: String constraint. The key is
+#'     `swf:typeFilter.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -2332,7 +2345,8 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_open_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, typeFilter = typeFilter, tagFilter = tagFilter, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder, executionFilter = executionFilter)
   output <- .swf$list_open_workflow_executions_output()
@@ -2385,7 +2399,8 @@ swf_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .swf$list_tags_for_resource_output()
@@ -2409,13 +2424,13 @@ swf_list_tags_for_resource <- function(resourceArn) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -2494,7 +2509,8 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_workflow_types_input(domain = domain, name = name, registrationStatus = registrationStatus, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_workflow_types_output()
@@ -2529,15 +2545,15 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the `taskList.name` parameter by using a `Condition`
-#'     element with the `swf:taskList.name` key to allow the action to
-#'     access only certain task lists.
+#' - Constrain the `taskList.name` parameter by using a `Condition` element
+#'   with the `swf:taskList.name` key to allow the action to access only
+#'   certain task lists.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -2603,7 +2619,8 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$poll_for_activity_task_input(domain = domain, taskList = taskList, identity = identity)
   output <- .swf$poll_for_activity_task_output()
@@ -2651,15 +2668,15 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the `taskList.name` parameter by using a `Condition`
-#'     element with the `swf:taskList.name` key to allow the action to
-#'     access only certain task lists.
+#' - Constrain the `taskList.name` parameter by using a `Condition` element
+#'   with the `swf:taskList.name` key to allow the action to access only
+#'   certain task lists.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -3181,7 +3198,8 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events"),
+    stream_api = FALSE
   )
   input <- .swf$poll_for_decision_task_input(domain = domain, taskList = taskList, identity = identity, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder, startAtPreviousStartedEvent = startAtPreviousStartedEvent)
   output <- .swf$poll_for_decision_task_output()
@@ -3235,13 +3253,13 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -3289,7 +3307,8 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$record_activity_task_heartbeat_input(taskToken = taskToken, details = details)
   output <- .swf$record_activity_task_heartbeat_output()
@@ -3317,21 +3336,21 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `defaultTaskList.name`: String constraint. The key is
-#'         `swf:defaultTaskList.name`.
+#'   - `defaultTaskList.name`: String constraint. The key is
+#'     `swf:defaultTaskList.name`.
 #' 
-#'     -   `name`: String constraint. The key is `swf:name`.
+#'   - `name`: String constraint. The key is `swf:name`.
 #' 
-#'     -   `version`: String constraint. The key is `swf:version`.
+#'   - `version`: String constraint. The key is `swf:version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -3439,7 +3458,8 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$register_activity_type_input(domain = domain, name = name, version = version, description = description, defaultTaskStartToCloseTimeout = defaultTaskStartToCloseTimeout, defaultTaskHeartbeatTimeout = defaultTaskHeartbeatTimeout, defaultTaskList = defaultTaskList, defaultTaskPriority = defaultTaskPriority, defaultTaskScheduleToStartTimeout = defaultTaskScheduleToStartTimeout, defaultTaskScheduleToCloseTimeout = defaultTaskScheduleToCloseTimeout)
   output <- .swf$register_activity_type_output()
@@ -3461,14 +3481,14 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   You cannot use an IAM policy to control domain access for this
-#'     action. The name of the domain being registered is available as the
-#'     resource of this action.
+#' - You cannot use an IAM policy to control domain access for this action.
+#'   The name of the domain being registered is available as the resource
+#'   of this action.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -3537,7 +3557,8 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$register_domain_input(name = name, description = description, workflowExecutionRetentionPeriodInDays = workflowExecutionRetentionPeriodInDays, tags = tags)
   output <- .swf$register_domain_output()
@@ -3568,21 +3589,21 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `defaultTaskList.name`: String constraint. The key is
-#'         `swf:defaultTaskList.name`.
+#'   - `defaultTaskList.name`: String constraint. The key is
+#'     `swf:defaultTaskList.name`.
 #' 
-#'     -   `name`: String constraint. The key is `swf:name`.
+#'   - `name`: String constraint. The key is `swf:name`.
 #' 
-#'     -   `version`: String constraint. The key is `swf:version`.
+#'   - `version`: String constraint. The key is `swf:version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -3658,15 +3679,14 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' 
 #' The supported child policies are:
 #' 
-#' -   `TERMINATE` – The child executions are terminated.
+#' - `TERMINATE` – The child executions are terminated.
 #' 
-#' -   `REQUEST_CANCEL` – A request to cancel is attempted for each child
-#'     execution by recording a `WorkflowExecutionCancelRequested` event in
-#'     its history. It is up to the decider to take appropriate actions
-#'     when it receives an execution history with this event.
+#' - `REQUEST_CANCEL` – A request to cancel is attempted for each child
+#'   execution by recording a `WorkflowExecutionCancelRequested` event in
+#'   its history. It is up to the decider to take appropriate actions when
+#'   it receives an execution history with this event.
 #' 
-#' -   `ABANDON` – No action is taken. The child executions continue to
-#'     run.
+#' - `ABANDON` – No action is taken. The child executions continue to run.
 #' @param defaultLambdaRole The default IAM role attached to this workflow type.
 #' 
 #' Executions of this workflow type need IAM roles to invoke Lambda
@@ -3708,7 +3728,8 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$register_workflow_type_input(domain = domain, name = name, version = version, description = description, defaultTaskStartToCloseTimeout = defaultTaskStartToCloseTimeout, defaultExecutionStartToCloseTimeout = defaultExecutionStartToCloseTimeout, defaultTaskList = defaultTaskList, defaultTaskPriority = defaultTaskPriority, defaultChildPolicy = defaultChildPolicy, defaultLambdaRole = defaultLambdaRole)
   output <- .swf$register_workflow_type_output()
@@ -3745,13 +3766,13 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -3791,7 +3812,8 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$request_cancel_workflow_execution_input(domain = domain, workflowId = workflowId, runId = runId)
   output <- .swf$request_cancel_workflow_execution_output()
@@ -3833,13 +3855,13 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -3882,7 +3904,8 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$respond_activity_task_canceled_input(taskToken = taskToken, details = details)
   output <- .swf$respond_activity_task_canceled_output()
@@ -3925,13 +3948,13 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -3975,7 +3998,8 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$respond_activity_task_completed_input(taskToken = taskToken, result = result)
   output <- .swf$respond_activity_task_completed_output()
@@ -4009,13 +4033,13 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -4060,7 +4084,8 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$respond_activity_task_failed_input(taskToken = taskToken, reason = reason, details = details)
   output <- .swf$respond_activity_task_failed_output()
@@ -4253,7 +4278,8 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$respond_decision_task_completed_input(taskToken = taskToken, decisions = decisions, executionContext = executionContext, taskList = taskList, taskListScheduleToStartTimeout = taskListScheduleToStartTimeout)
   output <- .swf$respond_decision_task_completed_output()
@@ -4288,13 +4314,13 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -4341,7 +4367,8 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$signal_workflow_execution_input(domain = domain, workflowId = workflowId, runId = runId, signalName = signalName, input = input)
   output <- .swf$signal_workflow_execution_output()
@@ -4367,32 +4394,32 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `tagList.member.0`: The key is `swf:tagList.member.0`.
+#'   - `tagList.member.0`: The key is `swf:tagList.member.0`.
 #' 
-#'     -   `tagList.member.1`: The key is `swf:tagList.member.1`.
+#'   - `tagList.member.1`: The key is `swf:tagList.member.1`.
 #' 
-#'     -   `tagList.member.2`: The key is `swf:tagList.member.2`.
+#'   - `tagList.member.2`: The key is `swf:tagList.member.2`.
 #' 
-#'     -   `tagList.member.3`: The key is `swf:tagList.member.3`.
+#'   - `tagList.member.3`: The key is `swf:tagList.member.3`.
 #' 
-#'     -   `tagList.member.4`: The key is `swf:tagList.member.4`.
+#'   - `tagList.member.4`: The key is `swf:tagList.member.4`.
 #' 
-#'     -   `taskList`: String constraint. The key is `swf:taskList.name`.
+#'   - `taskList`: String constraint. The key is `swf:taskList.name`.
 #' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
+#'   - `workflowType.name`: String constraint. The key is
+#'     `swf:workflowType.name`.
 #' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
+#'   - `workflowType.version`: String constraint. The key is
+#'     `swf:workflowType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -4491,15 +4518,14 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' 
 #' The supported child policies are:
 #' 
-#' -   `TERMINATE` – The child executions are terminated.
+#' - `TERMINATE` – The child executions are terminated.
 #' 
-#' -   `REQUEST_CANCEL` – A request to cancel is attempted for each child
-#'     execution by recording a `WorkflowExecutionCancelRequested` event in
-#'     its history. It is up to the decider to take appropriate actions
-#'     when it receives an execution history with this event.
+#' - `REQUEST_CANCEL` – A request to cancel is attempted for each child
+#'   execution by recording a `WorkflowExecutionCancelRequested` event in
+#'   its history. It is up to the decider to take appropriate actions when
+#'   it receives an execution history with this event.
 #' 
-#' -   `ABANDON` – No action is taken. The child executions continue to
-#'     run.
+#' - `ABANDON` – No action is taken. The child executions continue to run.
 #' 
 #' A child policy for this workflow execution must be specified either as a
 #' default for the workflow type or through this parameter. If neither this
@@ -4557,7 +4583,8 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$start_workflow_execution_input(domain = domain, workflowId = workflowId, workflowType = workflowType, taskList = taskList, taskPriority = taskPriority, input = input, executionStartToCloseTimeout = executionStartToCloseTimeout, tagList = tagList, taskStartToCloseTimeout = taskStartToCloseTimeout, childPolicy = childPolicy, lambdaRole = lambdaRole)
   output <- .swf$start_workflow_execution_output()
@@ -4612,7 +4639,8 @@ swf_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .swf$tag_resource_output()
@@ -4652,13 +4680,13 @@ swf_tag_resource <- function(resourceArn, tags) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -4684,15 +4712,14 @@ swf_tag_resource <- function(resourceArn, tags) {
 #' 
 #' The supported child policies are:
 #' 
-#' -   `TERMINATE` – The child executions are terminated.
+#' - `TERMINATE` – The child executions are terminated.
 #' 
-#' -   `REQUEST_CANCEL` – A request to cancel is attempted for each child
-#'     execution by recording a `WorkflowExecutionCancelRequested` event in
-#'     its history. It is up to the decider to take appropriate actions
-#'     when it receives an execution history with this event.
+#' - `REQUEST_CANCEL` – A request to cancel is attempted for each child
+#'   execution by recording a `WorkflowExecutionCancelRequested` event in
+#'   its history. It is up to the decider to take appropriate actions when
+#'   it receives an execution history with this event.
 #' 
-#' -   `ABANDON` – No action is taken. The child executions continue to
-#'     run.
+#' - `ABANDON` – No action is taken. The child executions continue to run.
 #' 
 #' A child policy for this workflow execution must be specified either as a
 #' default for the workflow type or through this parameter. If neither this
@@ -4725,7 +4752,8 @@ swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, r
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$terminate_workflow_execution_input(domain = domain, workflowId = workflowId, runId = runId, reason = reason, details = details, childPolicy = childPolicy)
   output <- .swf$terminate_workflow_execution_output()
@@ -4752,20 +4780,20 @@ swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, r
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `activityType.name`: String constraint. The key is
-#'         `swf:activityType.name`.
+#'   - `activityType.name`: String constraint. The key is
+#'     `swf:activityType.name`.
 #' 
-#'     -   `activityType.version`: String constraint. The key is
-#'         `swf:activityType.version`.
+#'   - `activityType.version`: String constraint. The key is
+#'     `swf:activityType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -4806,7 +4834,8 @@ swf_undeprecate_activity_type <- function(domain, activityType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$undeprecate_activity_type_input(domain = domain, activityType = activityType)
   output <- .swf$undeprecate_activity_type_output()
@@ -4833,13 +4862,13 @@ swf_undeprecate_activity_type <- function(domain, activityType) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   You cannot use an IAM policy to constrain this action's parameters.
+#' - You cannot use an IAM policy to constrain this action's parameters.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -4875,7 +4904,8 @@ swf_undeprecate_domain <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$undeprecate_domain_input(name = name)
   output <- .swf$undeprecate_domain_output()
@@ -4901,20 +4931,20 @@ swf_undeprecate_domain <- function(name) {
 #' You can use IAM policies to control this action's access to Amazon SWF
 #' resources as follows:
 #' 
-#' -   Use a `Resource` element with the domain name to limit the action to
-#'     only specified domains.
+#' - Use a `Resource` element with the domain name to limit the action to
+#'   only specified domains.
 #' 
-#' -   Use an `Action` element to allow or deny permission to call this
-#'     action.
+#' - Use an `Action` element to allow or deny permission to call this
+#'   action.
 #' 
-#' -   Constrain the following parameters by using a `Condition` element
-#'     with the appropriate keys.
+#' - Constrain the following parameters by using a `Condition` element with
+#'   the appropriate keys.
 #' 
-#'     -   `workflowType.name`: String constraint. The key is
-#'         `swf:workflowType.name`.
+#'   - `workflowType.name`: String constraint. The key is
+#'     `swf:workflowType.name`.
 #' 
-#'     -   `workflowType.version`: String constraint. The key is
-#'         `swf:workflowType.version`.
+#'   - `workflowType.version`: String constraint. The key is
+#'     `swf:workflowType.version`.
 #' 
 #' If the caller doesn't have sufficient permissions to invoke the action,
 #' or the parameter values fall outside the specified constraints, the
@@ -4955,7 +4985,8 @@ swf_undeprecate_workflow_type <- function(domain, workflowType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$undeprecate_workflow_type_input(domain = domain, workflowType = workflowType)
   output <- .swf$undeprecate_workflow_type_output()
@@ -5002,7 +5033,8 @@ swf_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .swf$untag_resource_output()

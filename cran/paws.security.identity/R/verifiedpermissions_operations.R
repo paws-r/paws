@@ -31,7 +31,8 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$batch_is_authorized_input(policyStoreId = policyStoreId, entities = entities, requests = requests)
   output <- .verifiedpermissions$batch_is_authorized_output()
@@ -75,13 +76,13 @@ verifiedpermissions_batch_is_authorized <- function(policyStoreId, entities = NU
 #' matches the user or group entity types that you defined in your identity
 #' source.
 #' 
-#' -   The
-#'     [`batch_is_authorized_with_token`][verifiedpermissions_batch_is_authorized_with_token]
-#'     operation takes principal attributes from ***only*** the
-#'     `identityToken` or `accessToken` passed to the operation.
+#' - The
+#'   [`batch_is_authorized_with_token`][verifiedpermissions_batch_is_authorized_with_token]
+#'   operation takes principal attributes from ***only*** the
+#'   `identityToken` or `accessToken` passed to the operation.
 #' 
-#' -   For action entities, you can include only their `Identifier` and
-#'     `EntityType`.
+#' - For action entities, you can include only their `Identifier` and
+#'   `EntityType`.
 #' @param requests &#91;required&#93; An array of up to 30 requests that you want Verified Permissions to
 #' evaluate.
 #'
@@ -94,7 +95,8 @@ verifiedpermissions_batch_is_authorized_with_token <- function(policyStoreId, id
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$batch_is_authorized_with_token_input(policyStoreId = policyStoreId, identityToken = identityToken, accessToken = accessToken, entities = entities, requests = requests)
   output <- .verifiedpermissions$batch_is_authorized_with_token_output()
@@ -149,7 +151,8 @@ verifiedpermissions_create_identity_source <- function(clientToken = NULL, polic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$create_identity_source_input(clientToken = clientToken, policyStoreId = policyStoreId, configuration = configuration, principalEntityType = principalEntityType)
   output <- .verifiedpermissions$create_identity_source_output()
@@ -201,7 +204,8 @@ verifiedpermissions_create_policy <- function(clientToken = NULL, policyStoreId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$create_policy_input(clientToken = clientToken, policyStoreId = policyStoreId, definition = definition)
   output <- .verifiedpermissions$create_policy_output()
@@ -261,7 +265,8 @@ verifiedpermissions_create_policy_store <- function(clientToken = NULL, validati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$create_policy_store_input(clientToken = clientToken, validationSettings = validationSettings, description = description)
   output <- .verifiedpermissions$create_policy_store_output()
@@ -311,7 +316,8 @@ verifiedpermissions_create_policy_template <- function(clientToken = NULL, polic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$create_policy_template_input(clientToken = clientToken, policyStoreId = policyStoreId, description = description, statement = statement)
   output <- .verifiedpermissions$create_policy_template_output()
@@ -344,7 +350,8 @@ verifiedpermissions_delete_identity_source <- function(policyStoreId, identitySo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$delete_identity_source_input(policyStoreId = policyStoreId, identitySourceId = identitySourceId)
   output <- .verifiedpermissions$delete_identity_source_output()
@@ -376,7 +383,8 @@ verifiedpermissions_delete_policy <- function(policyStoreId, policyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$delete_policy_input(policyStoreId = policyStoreId, policyId = policyId)
   output <- .verifiedpermissions$delete_policy_output()
@@ -406,7 +414,8 @@ verifiedpermissions_delete_policy_store <- function(policyStoreId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$delete_policy_store_input(policyStoreId = policyStoreId)
   output <- .verifiedpermissions$delete_policy_store_output()
@@ -438,7 +447,8 @@ verifiedpermissions_delete_policy_template <- function(policyStoreId, policyTemp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$delete_policy_template_input(policyStoreId = policyStoreId, policyTemplateId = policyTemplateId)
   output <- .verifiedpermissions$delete_policy_template_output()
@@ -470,7 +480,8 @@ verifiedpermissions_get_identity_source <- function(policyStoreId, identitySourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$get_identity_source_input(policyStoreId = policyStoreId, identitySourceId = identitySourceId)
   output <- .verifiedpermissions$get_identity_source_output()
@@ -502,7 +513,8 @@ verifiedpermissions_get_policy <- function(policyStoreId, policyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$get_policy_input(policyStoreId = policyStoreId, policyId = policyId)
   output <- .verifiedpermissions$get_policy_output()
@@ -532,7 +544,8 @@ verifiedpermissions_get_policy_store <- function(policyStoreId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$get_policy_store_input(policyStoreId = policyStoreId)
   output <- .verifiedpermissions$get_policy_store_output()
@@ -565,7 +578,8 @@ verifiedpermissions_get_policy_template <- function(policyStoreId, policyTemplat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$get_policy_template_input(policyStoreId = policyStoreId, policyTemplateId = policyTemplateId)
   output <- .verifiedpermissions$get_policy_template_output()
@@ -596,7 +610,8 @@ verifiedpermissions_get_schema <- function(policyStoreId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$get_schema_input(policyStoreId = policyStoreId)
   output <- .verifiedpermissions$get_schema_output()
@@ -642,7 +657,8 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$is_authorized_input(policyStoreId = policyStoreId, principal = principal, action = action, resource = resource, context = context, entities = entities)
   output <- .verifiedpermissions$is_authorized_output()
@@ -692,13 +708,13 @@ verifiedpermissions_is_authorized <- function(policyStoreId, principal = NULL, a
 #' matches the user or group entity types that you defined in your identity
 #' source.
 #' 
-#' -   The
-#'     [`is_authorized_with_token`][verifiedpermissions_is_authorized_with_token]
-#'     operation takes principal attributes from ***only*** the
-#'     `identityToken` or `accessToken` passed to the operation.
+#' - The
+#'   [`is_authorized_with_token`][verifiedpermissions_is_authorized_with_token]
+#'   operation takes principal attributes from ***only*** the
+#'   `identityToken` or `accessToken` passed to the operation.
 #' 
-#' -   For action entities, you can include only their `Identifier` and
-#'     `EntityType`.
+#' - For action entities, you can include only their `Identifier` and
+#'   `EntityType`.
 #'
 #' @keywords internal
 #'
@@ -709,7 +725,8 @@ verifiedpermissions_is_authorized_with_token <- function(policyStoreId, identity
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$is_authorized_with_token_input(policyStoreId = policyStoreId, identityToken = identityToken, accessToken = accessToken, action = action, resource = resource, context = context, entities = entities)
   output <- .verifiedpermissions$is_authorized_with_token_output()
@@ -760,7 +777,8 @@ verifiedpermissions_list_identity_sources <- function(policyStoreId, nextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "identitySources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "identitySources"),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$list_identity_sources_input(policyStoreId = policyStoreId, nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .verifiedpermissions$list_identity_sources_output()
@@ -811,7 +829,8 @@ verifiedpermissions_list_policies <- function(policyStoreId, nextToken = NULL, m
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policies")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policies"),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$list_policies_input(policyStoreId = policyStoreId, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .verifiedpermissions$list_policies_output()
@@ -858,7 +877,8 @@ verifiedpermissions_list_policy_stores <- function(nextToken = NULL, maxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyStores")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyStores"),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$list_policy_stores_input(nextToken = nextToken, maxResults = maxResults)
   output <- .verifiedpermissions$list_policy_stores_output()
@@ -907,7 +927,8 @@ verifiedpermissions_list_policy_templates <- function(policyStoreId, nextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyTemplates")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "policyTemplates"),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$list_policy_templates_input(policyStoreId = policyStoreId, nextToken = nextToken, maxResults = maxResults)
   output <- .verifiedpermissions$list_policy_templates_output()
@@ -939,7 +960,8 @@ verifiedpermissions_put_schema <- function(policyStoreId, definition) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$put_schema_input(policyStoreId = policyStoreId, definition = definition)
   output <- .verifiedpermissions$put_schema_output()
@@ -982,7 +1004,8 @@ verifiedpermissions_update_identity_source <- function(policyStoreId, identitySo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$update_identity_source_input(policyStoreId = policyStoreId, identitySourceId = identitySourceId, updateConfiguration = updateConfiguration, principalEntityType = principalEntityType)
   output <- .verifiedpermissions$update_identity_source_output()
@@ -1010,19 +1033,19 @@ verifiedpermissions_update_identity_source <- function(policyStoreId, identitySo
 #' 
 #' You can change only the following elements from the policy definition:
 #' 
-#' -   The `action` referenced by the policy.
+#' - The `action` referenced by the policy.
 #' 
-#' -   Any conditional clauses, such as `when` or `unless` clauses.
+#' - Any conditional clauses, such as `when` or `unless` clauses.
 #' 
 #' You **can't** change the following elements:
 #' 
-#' -   Changing from `static` to `templateLinked`.
+#' - Changing from `static` to `templateLinked`.
 #' 
-#' -   Changing the effect of the policy from `permit` or `forbid`.
+#' - Changing the effect of the policy from `permit` or `forbid`.
 #' 
-#' -   The `principal` referenced by the policy.
+#' - The `principal` referenced by the policy.
 #' 
-#' -   The `resource` referenced by the policy.
+#' - The `resource` referenced by the policy.
 #'
 #' @keywords internal
 #'
@@ -1033,7 +1056,8 @@ verifiedpermissions_update_policy <- function(policyStoreId, policyId, definitio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$update_policy_input(policyStoreId = policyStoreId, policyId = policyId, definition = definition)
   output <- .verifiedpermissions$update_policy_output()
@@ -1067,7 +1091,8 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$update_policy_store_input(policyStoreId = policyStoreId, validationSettings = validationSettings, description = description)
   output <- .verifiedpermissions$update_policy_store_output()
@@ -1095,17 +1120,17 @@ verifiedpermissions_update_policy_store <- function(policyStoreId, validationSet
 #' 
 #' You can change only the following elements of the policy body:
 #' 
-#' -   The `action` referenced by the policy template.
+#' - The `action` referenced by the policy template.
 #' 
-#' -   Any conditional clauses, such as `when` or `unless` clauses.
+#' - Any conditional clauses, such as `when` or `unless` clauses.
 #' 
 #' You **can't** change the following elements:
 #' 
-#' -   The effect (`permit` or `forbid`) of the policy template.
+#' - The effect (`permit` or `forbid`) of the policy template.
 #' 
-#' -   The `principal` referenced by the policy template.
+#' - The `principal` referenced by the policy template.
 #' 
-#' -   The `resource` referenced by the policy template.
+#' - The `resource` referenced by the policy template.
 #'
 #' @keywords internal
 #'
@@ -1116,7 +1141,8 @@ verifiedpermissions_update_policy_template <- function(policyStoreId, policyTemp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .verifiedpermissions$update_policy_template_input(policyStoreId = policyStoreId, policyTemplateId = policyTemplateId, description = description, statement = statement)
   output <- .verifiedpermissions$update_policy_template_output()

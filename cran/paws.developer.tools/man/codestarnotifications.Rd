@@ -79,10 +79,10 @@ target from a notification rule.
 
 Targets, by calling the following:
 \itemize{
-\item \code{\link[=codestarnotifications_delete_target]{delete_target}}, which
-removes a notification rule target from a notification rule.
-\item \code{\link[=codestarnotifications_list_targets]{list_targets}}, which lists
-the targets associated with a notification rule.
+\item \code{\link[=codestarnotifications_delete_target]{delete_target}}, which removes
+a notification rule target from a notification rule.
+\item \code{\link[=codestarnotifications_list_targets]{list_targets}}, which lists the
+targets associated with a notification rule.
 }
 
 Events, by calling the following:
@@ -96,9 +96,8 @@ Tags, by calling the following:
 \item \code{\link[=codestarnotifications_list_tags_for_resource]{list_tags_for_resource}},
 which lists the tags already associated with a notification rule in
 your account.
-\item \code{\link[=codestarnotifications_tag_resource]{tag_resource}}, which
-associates a tag you provide with a notification rule in your
-account.
+\item \code{\link[=codestarnotifications_tag_resource]{tag_resource}}, which associates
+a tag you provide with a notification rule in your account.
 \item \code{\link[=codestarnotifications_untag_resource]{untag_resource}}, which
 removes a tag from a notification rule in your account.
 }

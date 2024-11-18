@@ -20,8 +20,8 @@ ec2_describe_client_vpn_connections(
 \item{Filters}{One or more filters. Filter names and values are case-sensitive.
 \itemize{
 \item \code{connection-id} - The ID of the connection.
-\item \code{username} - For Active Directory client authentication, the user
-name of the client who established the client connection.
+\item \code{username} - For Active Directory client authentication, the user name
+of the client who established the client connection.
 }}
 
 \item{NextToken}{The token to retrieve the next page of results.}

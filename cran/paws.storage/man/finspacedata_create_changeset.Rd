@@ -20,8 +20,8 @@ be created.}
 
 \item{changeType}{[required] The option to indicate how a Changeset will be applied to a Dataset.
 \itemize{
-\item \code{REPLACE} – Changeset will be considered as a replacement to all
-prior loaded Changesets.
+\item \code{REPLACE} – Changeset will be considered as a replacement to all prior
+loaded Changesets.
 \item \code{APPEND} – Changeset will be considered as an addition to the end of
 all prior loaded Changesets.
 \item \code{MODIFY} – Changeset is considered as a replacement to a specific

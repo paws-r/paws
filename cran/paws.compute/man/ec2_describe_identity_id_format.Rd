@@ -23,7 +23,7 @@ root user.}
 | \code{vpn-connection} | \code{vpn-gateway}}
 }
 \description{
-Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html}{Resource IDs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_describe_identity_id_format/} for full documentation.
 }

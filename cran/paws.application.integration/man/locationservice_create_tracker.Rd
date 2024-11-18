@@ -68,8 +68,8 @@ location updates are ignored. Location updates within this area are
 neither evaluated against linked geofence collections, nor stored.
 This helps control costs by reducing the number of geofence
 evaluations and historical device positions to paginate through.
-Distance-based filtering can also reduce the effects of GPS noise
-when displaying device trajectories on a map.
+Distance-based filtering can also reduce the effects of GPS noise when
+displaying device trajectories on a map.
 \item \code{AccuracyBased} - If the device has moved less than the measured
 accuracy, location updates are ignored. For example, if two
 consecutive updates from a device have a horizontal accuracy of 5 m

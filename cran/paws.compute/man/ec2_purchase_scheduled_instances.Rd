@@ -12,7 +12,7 @@ ec2_purchase_scheduled_instances(
 }
 \arguments{
 \item{ClientToken}{Unique, case-sensitive identifier that ensures the idempotency of the
-request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

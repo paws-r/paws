@@ -17,8 +17,8 @@ software.}
 
 \item{ScheduleAt}{When to start the service software update.
 \itemize{
-\item \code{NOW} - Immediately schedules the update to happen in the current
-hour if there's capacity available.
+\item \code{NOW} - Immediately schedules the update to happen in the current hour
+if there's capacity available.
 \item \code{TIMESTAMP} - Lets you specify a custom date and time to apply the
 update. If you specify this value, you must also provide a value for
 \code{DesiredStartTime}.

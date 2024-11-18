@@ -16,10 +16,9 @@ ec2_describe_reserved_instances_modifications(
 \item \code{client-token} - The idempotency token for the modification request.
 \item \code{create-date} - The time when the modification request was created.
 \item \code{effective-date} - The time when the modification becomes effective.
-\item \code{modification-result.reserved-instances-id} - The ID for the
-Reserved Instances created as part of the modification request. This
-ID is only available when the status of the modification is
-\code{fulfilled}.
+\item \code{modification-result.reserved-instances-id} - The ID for the Reserved
+Instances created as part of the modification request. This ID is only
+available when the status of the modification is \code{fulfilled}.
 \item \code{modification-result.target-configuration.availability-zone} - The
 Availability Zone for the new Reserved Instances.
 \item \code{modification-result.target-configuration.instance-count } - The

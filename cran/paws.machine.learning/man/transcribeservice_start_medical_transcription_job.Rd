@@ -88,13 +88,13 @@ path is \verb{s3://DOC-EXAMPLE-BUCKET/my-transcript.json}.
 transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json}.
 \item If you specify 'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName} and
-'test-files/my-transcript.json' as the \code{OutputKey}, your
-transcription output path is
+'test-files/my-transcript.json' as the \code{OutputKey}, your transcription
+output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json}.
 \item If you specify 'my-first-transcription' as the
 \code{MedicalTranscriptionJobName}, 'DOC-EXAMPLE-BUCKET' as the
-\code{OutputBucketName}, and 'test-files/my-transcript' as the
-\code{OutputKey}, your transcription output path is
+\code{OutputBucketName}, and 'test-files/my-transcript' as the \code{OutputKey},
+your transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json}.
 }
 

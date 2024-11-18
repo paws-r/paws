@@ -70,7 +70,8 @@ credentials retrieved with \href{https://docs.aws.amazon.com/cognitoidentity/lat
 
 If you want to use Cognito Sync in an Android or iOS application, you
 will probably want to make API calls via the AWS Mobile SDK. To learn
-more, see the \href{https://docs.amplify.aws/android/}{Developer Guide for Android} and the \href{https://docs.amplify.aws/swift/}{Developer Guide for iOS}.
+more, see the \href{https://docs.amplify.aws/start/q/integration/android/}{Developer Guide for Android} and the
+\href{https://docs.amplify.aws/start/q/integration/ios/}{Developer Guide for iOS}.
 }
 \section{Service syntax}{
 

@@ -23,7 +23,8 @@ polly_delete_lexicon <- function(Name) {
     http_method = "DELETE",
     http_path = "/v1/lexicons/{LexiconName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .polly$delete_lexicon_input(Name = Name)
   output <- .polly$delete_lexicon_output()
@@ -67,7 +68,8 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
     http_method = "GET",
     http_path = "/v1/voices",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .polly$describe_voices_input(Engine = Engine, LanguageCode = LanguageCode, IncludeAdditionalLanguageCodes = IncludeAdditionalLanguageCodes, NextToken = NextToken)
   output <- .polly$describe_voices_output()
@@ -98,7 +100,8 @@ polly_get_lexicon <- function(Name) {
     http_method = "GET",
     http_path = "/v1/lexicons/{LexiconName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .polly$get_lexicon_input(Name = Name)
   output <- .polly$get_lexicon_output()
@@ -128,7 +131,8 @@ polly_get_speech_synthesis_task <- function(TaskId) {
     http_method = "GET",
     http_path = "/v1/synthesisTasks/{TaskId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .polly$get_speech_synthesis_task_input(TaskId = TaskId)
   output <- .polly$get_speech_synthesis_task_output()
@@ -161,7 +165,8 @@ polly_list_lexicons <- function(NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/lexicons",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .polly$list_lexicons_input(NextToken = NextToken)
   output <- .polly$list_lexicons_output()
@@ -195,7 +200,8 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
     http_method = "GET",
     http_path = "/v1/synthesisTasks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .polly$list_speech_synthesis_tasks_input(MaxResults = MaxResults, NextToken = NextToken, Status = Status)
   output <- .polly$list_speech_synthesis_tasks_output()
@@ -215,7 +221,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 #' See [https://www.paws-r-sdk.com/docs/polly_put_lexicon/](https://www.paws-r-sdk.com/docs/polly_put_lexicon/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the lexicon. The name must follow the regular express format
-#' \[0-9A-Za-z\]\{1,20\}. That is, the name is a case-sensitive
+#' \[0-9A-Za-z\]\\1,20\\. That is, the name is a case-sensitive
 #' alphanumeric string up to 20 characters long.
 #' @param Content &#91;required&#93; Content of the PLS lexicon as string data.
 #'
@@ -228,7 +234,8 @@ polly_put_lexicon <- function(Name, Content) {
     http_method = "PUT",
     http_path = "/v1/lexicons/{LexiconName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .polly$put_lexicon_input(Name = Name, Content = Content)
   output <- .polly$put_lexicon_output()
@@ -298,7 +305,8 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
     http_method = "POST",
     http_path = "/v1/synthesisTasks",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .polly$start_speech_synthesis_task_input(Engine = Engine, LanguageCode = LanguageCode, LexiconNames = LexiconNames, OutputFormat = OutputFormat, OutputS3BucketName = OutputS3BucketName, OutputS3KeyPrefix = OutputS3KeyPrefix, SampleRate = SampleRate, SnsTopicArn = SnsTopicArn, SpeechMarkTypes = SpeechMarkTypes, Text = Text, TextType = TextType, VoiceId = VoiceId)
   output <- .polly$start_speech_synthesis_task_output()
@@ -324,7 +332,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' by default. If a chosen voice isn't supported by the standard engine,
 #' this will result in an error. For information on Amazon Polly voices and
 #' which voices are available for each engine, see [Available
-#' Voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html).
+#' Voices](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html).
 #' 
 #' Type: String
 #' 
@@ -379,7 +387,8 @@ polly_synthesize_speech <- function(Engine = NULL, LanguageCode = NULL, LexiconN
     http_method = "POST",
     http_path = "/v1/speech",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .polly$synthesize_speech_input(Engine = Engine, LanguageCode = LanguageCode, LexiconNames = LexiconNames, OutputFormat = OutputFormat, SampleRate = SampleRate, SpeechMarkTypes = SpeechMarkTypes, Text = Text, TextType = TextType, VoiceId = VoiceId)
   output <- .polly$synthesize_speech_output()

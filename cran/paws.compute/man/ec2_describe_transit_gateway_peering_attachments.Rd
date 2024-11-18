@@ -24,16 +24,16 @@ attachment.
 remote Region that owns the transit gateway.
 \item \code{state} - The state of the peering attachment. Valid values are
 \code{available} | \code{deleted} | \code{deleting} | \code{failed} | \code{failing} |
-\code{initiatingRequest} | \code{modifying} | \code{pendingAcceptance} | \code{pending}
-| \code{rollingBack} | \code{rejected} | \code{rejecting}).
+\code{initiatingRequest} | \code{modifying} | \code{pendingAcceptance} | \code{pending} |
+\code{rollingBack} | \code{rejected} | \code{rejecting}).
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this
-filter to find all resources that have a tag with a specific key,
-regardless of the tag value.
+resource. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
+to find all resources that have a tag with a specific key, regardless
+of the tag value.
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 }}
 

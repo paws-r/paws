@@ -95,11 +95,11 @@ be unique in the Amazon Web Services account and Region.
 the same \code{XksProxyUriEndpoint} value as an external key store with
 \code{VPC_ENDPOINT_SERVICE} connectivity in this Amazon Web Services
 Region.
-\item Each external key store with \code{VPC_ENDPOINT_SERVICE} connectivity
-must have its own private DNS name. The \code{XksProxyUriEndpoint} value
-for external key stores with \code{VPC_ENDPOINT_SERVICE} connectivity
-(private DNS name) must be unique in the Amazon Web Services account
-and Region.
+\item Each external key store with \code{VPC_ENDPOINT_SERVICE} connectivity must
+have its own private DNS name. The \code{XksProxyUriEndpoint} value for
+external key stores with \code{VPC_ENDPOINT_SERVICE} connectivity (private
+DNS name) must be unique in the Amazon Web Services account and
+Region.
 }}
 
 \item{XksProxyUriPath}{Specifies the base path to the proxy APIs for this external key store.
@@ -129,9 +129,9 @@ for use with an external key store.
 
 \strong{Uniqueness requirements:}
 \itemize{
-\item External key stores with \code{VPC_ENDPOINT_SERVICE} connectivity can
-share an Amazon VPC, but each external key store must have its own
-VPC endpoint service and private DNS name.
+\item External key stores with \code{VPC_ENDPOINT_SERVICE} connectivity can share
+an Amazon VPC, but each external key store must have its own VPC
+endpoint service and private DNS name.
 }}
 
 \item{XksProxyAuthenticationCredential}{Specifies an authentication credential for the external key store proxy

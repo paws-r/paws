@@ -57,7 +57,7 @@ data types, including common parameters and error codes.
 OpsWorks Stacks is an application management service that provides an
 integrated experience for managing the complete application lifecycle.
 For information about OpsWorks, see the
-\href{https://aws.amazon.com/}{OpsWorks} information page.
+\href{https://aws.amazon.com/opsworks/}{OpsWorks} information page.
 
 \strong{SDKs and CLI}
 

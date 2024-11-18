@@ -31,8 +31,8 @@ For more information about using tags to control access, see
 There are two classes:
 \itemize{
 \item The \code{Standard} log class supports all CloudWatch Logs features.
-\item The \verb{Infrequent Access} log class supports a subset of CloudWatch
-Logs features and incurs lower costs.
+\item The \verb{Infrequent Access} log class supports a subset of CloudWatch Logs
+features and incurs lower costs.
 }
 
 If you omit this parameter, the default of \code{STANDARD} is used.

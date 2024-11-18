@@ -39,11 +39,11 @@ Example: \verb{123e4567-e89b-12d3-a456-426655440000}}
 \item{Filters}{A filter that specifies one or more DB clusters to describe. Supported
 filters include the following:
 \itemize{
-\item \code{db-cluster-backtrack-id} - Accepts backtrack identifiers. The
-results list includes information about only the backtracks
-identified by these identifiers.
-\item \code{db-cluster-backtrack-status} - Accepts any of the following
-backtrack status values:
+\item \code{db-cluster-backtrack-id} - Accepts backtrack identifiers. The results
+list includes information about only the backtracks identified by
+these identifiers.
+\item \code{db-cluster-backtrack-status} - Accepts any of the following backtrack
+status values:
 \itemize{
 \item \code{applying}
 \item \code{completed}

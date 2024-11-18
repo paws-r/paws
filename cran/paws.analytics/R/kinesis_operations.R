@@ -23,7 +23,8 @@ kinesis_add_tags_to_stream <- function(StreamName = NULL, Tags, StreamARN = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$add_tags_to_stream_input(StreamName = StreamName, Tags = Tags, StreamARN = StreamARN)
   output <- .kinesis$add_tags_to_stream_output()
@@ -64,7 +65,8 @@ kinesis_create_stream <- function(StreamName, ShardCount = NULL, StreamModeDetai
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$create_stream_input(StreamName = StreamName, ShardCount = ShardCount, StreamModeDetails = StreamModeDetails)
   output <- .kinesis$create_stream_output()
@@ -99,7 +101,8 @@ kinesis_decrease_stream_retention_period <- function(StreamName = NULL, Retentio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$decrease_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours, StreamARN = StreamARN)
   output <- .kinesis$decrease_stream_retention_period_output()
@@ -129,7 +132,8 @@ kinesis_delete_resource_policy <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$delete_resource_policy_input(ResourceARN = ResourceARN)
   output <- .kinesis$delete_resource_policy_output()
@@ -164,7 +168,8 @@ kinesis_delete_stream <- function(StreamName = NULL, EnforceConsumerDeletion = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$delete_stream_input(StreamName = StreamName, EnforceConsumerDeletion = EnforceConsumerDeletion, StreamARN = StreamARN)
   output <- .kinesis$delete_stream_output()
@@ -204,7 +209,8 @@ kinesis_deregister_stream_consumer <- function(StreamARN = NULL, ConsumerName = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$deregister_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName, ConsumerARN = ConsumerARN)
   output <- .kinesis$deregister_stream_consumer_output()
@@ -234,7 +240,8 @@ kinesis_describe_limits <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$describe_limits_input()
   output <- .kinesis$describe_limits_output()
@@ -277,7 +284,8 @@ kinesis_describe_stream <- function(StreamName = NULL, Limit = NULL, ExclusiveSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards")
+    paginator = list(input_token = "ExclusiveStartShardId", limit_key = "Limit", more_results = "StreamDescription.HasMoreShards", output_token = "StreamDescription.Shards[-1].ShardId", result_key = "StreamDescription.Shards"),
+    stream_api = FALSE
   )
   input <- .kinesis$describe_stream_input(StreamName = StreamName, Limit = Limit, ExclusiveStartShardId = ExclusiveStartShardId, StreamARN = StreamARN)
   output <- .kinesis$describe_stream_output()
@@ -314,7 +322,8 @@ kinesis_describe_stream_consumer <- function(StreamARN = NULL, ConsumerName = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$describe_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName, ConsumerARN = ConsumerARN)
   output <- .kinesis$describe_stream_consumer_output()
@@ -346,7 +355,8 @@ kinesis_describe_stream_summary <- function(StreamName = NULL, StreamARN = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$describe_stream_summary_input(StreamName = StreamName, StreamARN = StreamARN)
   output <- .kinesis$describe_stream_summary_output()
@@ -372,21 +382,21 @@ kinesis_describe_stream_summary <- function(StreamName = NULL, StreamARN = NULL)
 #' The following are the valid shard-level metrics. The value "`ALL`"
 #' disables every metric.
 #' 
-#' -   `IncomingBytes`
+#' - `IncomingBytes`
 #' 
-#' -   `IncomingRecords`
+#' - `IncomingRecords`
 #' 
-#' -   `OutgoingBytes`
+#' - `OutgoingBytes`
 #' 
-#' -   `OutgoingRecords`
+#' - `OutgoingRecords`
 #' 
-#' -   `WriteProvisionedThroughputExceeded`
+#' - `WriteProvisionedThroughputExceeded`
 #' 
-#' -   `ReadProvisionedThroughputExceeded`
+#' - `ReadProvisionedThroughputExceeded`
 #' 
-#' -   `IteratorAgeMilliseconds`
+#' - `IteratorAgeMilliseconds`
 #' 
-#' -   `ALL`
+#' - `ALL`
 #' 
 #' For more information, see [Monitoring the Amazon Kinesis Data Streams
 #' Service with Amazon
@@ -403,7 +413,8 @@ kinesis_disable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMet
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$disable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics, StreamARN = StreamARN)
   output <- .kinesis$disable_enhanced_monitoring_output()
@@ -428,21 +439,21 @@ kinesis_disable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMet
 #' The following are the valid shard-level metrics. The value "`ALL`"
 #' enables every metric.
 #' 
-#' -   `IncomingBytes`
+#' - `IncomingBytes`
 #' 
-#' -   `IncomingRecords`
+#' - `IncomingRecords`
 #' 
-#' -   `OutgoingBytes`
+#' - `OutgoingBytes`
 #' 
-#' -   `OutgoingRecords`
+#' - `OutgoingRecords`
 #' 
-#' -   `WriteProvisionedThroughputExceeded`
+#' - `WriteProvisionedThroughputExceeded`
 #' 
-#' -   `ReadProvisionedThroughputExceeded`
+#' - `ReadProvisionedThroughputExceeded`
 #' 
-#' -   `IteratorAgeMilliseconds`
+#' - `IteratorAgeMilliseconds`
 #' 
-#' -   `ALL`
+#' - `ALL`
 #' 
 #' For more information, see [Monitoring the Amazon Kinesis Data Streams
 #' Service with Amazon
@@ -459,7 +470,8 @@ kinesis_enable_enhanced_monitoring <- function(StreamName = NULL, ShardLevelMetr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$enable_enhanced_monitoring_input(StreamName = StreamName, ShardLevelMetrics = ShardLevelMetrics, StreamARN = StreamARN)
   output <- .kinesis$enable_enhanced_monitoring_output()
@@ -496,7 +508,8 @@ kinesis_get_records <- function(ShardIterator, Limit = NULL, StreamARN = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$get_records_input(ShardIterator = ShardIterator, Limit = Limit, StreamARN = StreamARN)
   output <- .kinesis$get_records_output()
@@ -526,7 +539,8 @@ kinesis_get_resource_policy <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$get_resource_policy_input(ResourceARN = ResourceARN)
   output <- .kinesis$get_resource_policy_output()
@@ -552,22 +566,22 @@ kinesis_get_resource_policy <- function(ResourceARN) {
 #' 
 #' The following are the valid Amazon Kinesis shard iterator types:
 #' 
-#' -   AT_SEQUENCE_NUMBER - Start reading from the position denoted by a
-#'     specific sequence number, provided in the value
-#'     `StartingSequenceNumber`.
+#' - AT_SEQUENCE_NUMBER - Start reading from the position denoted by a
+#'   specific sequence number, provided in the value
+#'   `StartingSequenceNumber`.
 #' 
-#' -   AFTER_SEQUENCE_NUMBER - Start reading right after the position
-#'     denoted by a specific sequence number, provided in the value
-#'     `StartingSequenceNumber`.
+#' - AFTER_SEQUENCE_NUMBER - Start reading right after the position denoted
+#'   by a specific sequence number, provided in the value
+#'   `StartingSequenceNumber`.
 #' 
-#' -   AT_TIMESTAMP - Start reading from the position denoted by a specific
-#'     time stamp, provided in the value `Timestamp`.
+#' - AT_TIMESTAMP - Start reading from the position denoted by a specific
+#'   time stamp, provided in the value `Timestamp`.
 #' 
-#' -   TRIM_HORIZON - Start reading at the last untrimmed record in the
-#'     shard in the system, which is the oldest data record in the shard.
+#' - TRIM_HORIZON - Start reading at the last untrimmed record in the shard
+#'   in the system, which is the oldest data record in the shard.
 #' 
-#' -   LATEST - Start reading just after the most recent record in the
-#'     shard, so that you always read the most recent data in the shard.
+#' - LATEST - Start reading just after the most recent record in the shard,
+#'   so that you always read the most recent data in the shard.
 #' @param StartingSequenceNumber The sequence number of the data record in the shard from which to start
 #' reading. Used with shard iterator type AT_SEQUENCE_NUMBER and
 #' AFTER_SEQUENCE_NUMBER.
@@ -590,7 +604,8 @@ kinesis_get_shard_iterator <- function(StreamName = NULL, ShardId, ShardIterator
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$get_shard_iterator_input(StreamName = StreamName, ShardId = ShardId, ShardIteratorType = ShardIteratorType, StartingSequenceNumber = StartingSequenceNumber, Timestamp = Timestamp, StreamARN = StreamARN)
   output <- .kinesis$get_shard_iterator_output()
@@ -625,7 +640,8 @@ kinesis_increase_stream_retention_period <- function(StreamName = NULL, Retentio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$increase_stream_retention_period_input(StreamName = StreamName, RetentionPeriodHours = RetentionPeriodHours, StreamARN = StreamARN)
   output <- .kinesis$increase_stream_retention_period_output()
@@ -730,7 +746,8 @@ kinesis_list_shards <- function(StreamName = NULL, NextToken = NULL, ExclusiveSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$list_shards_input(StreamName = StreamName, NextToken = NextToken, ExclusiveStartShardId = ExclusiveStartShardId, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp, ShardFilter = ShardFilter, StreamARN = StreamARN)
   output <- .kinesis$list_shards_output()
@@ -801,7 +818,8 @@ kinesis_list_stream_consumers <- function(StreamARN, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .kinesis$list_stream_consumers_input(StreamARN = StreamARN, NextToken = NextToken, MaxResults = MaxResults, StreamCreationTimestamp = StreamCreationTimestamp)
   output <- .kinesis$list_stream_consumers_output()
@@ -834,7 +852,8 @@ kinesis_list_streams <- function(Limit = NULL, ExclusiveStartStreamName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", more_results = "HasMoreStreams", output_token = "NextToken", result_key = list("StreamNames", "StreamSummaries"))
+    paginator = list(input_token = "NextToken", limit_key = "Limit", more_results = "HasMoreStreams", output_token = "NextToken", result_key = list("StreamNames", "StreamSummaries")),
+    stream_api = FALSE
   )
   input <- .kinesis$list_streams_input(Limit = Limit, ExclusiveStartStreamName = ExclusiveStartStreamName, NextToken = NextToken)
   output <- .kinesis$list_streams_output()
@@ -872,7 +891,8 @@ kinesis_list_tags_for_stream <- function(StreamName = NULL, ExclusiveStartTagKey
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$list_tags_for_stream_input(StreamName = StreamName, ExclusiveStartTagKey = ExclusiveStartTagKey, Limit = Limit, StreamARN = StreamARN)
   output <- .kinesis$list_tags_for_stream_output()
@@ -908,7 +928,8 @@ kinesis_merge_shards <- function(StreamName = NULL, ShardToMerge, AdjacentShardT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$merge_shards_input(StreamName = StreamName, ShardToMerge = ShardToMerge, AdjacentShardToMerge = AdjacentShardToMerge, StreamARN = StreamARN)
   output <- .kinesis$merge_shards_output()
@@ -960,7 +981,8 @@ kinesis_put_record <- function(StreamName = NULL, Data, PartitionKey, ExplicitHa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$put_record_input(StreamName = StreamName, Data = Data, PartitionKey = PartitionKey, ExplicitHashKey = ExplicitHashKey, SequenceNumberForOrdering = SequenceNumberForOrdering, StreamARN = StreamARN)
   output <- .kinesis$put_record_output()
@@ -993,7 +1015,8 @@ kinesis_put_records <- function(Records, StreamName = NULL, StreamARN = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$put_records_input(Records = Records, StreamName = StreamName, StreamARN = StreamARN)
   output <- .kinesis$put_records_output()
@@ -1026,7 +1049,8 @@ kinesis_put_resource_policy <- function(ResourceARN, Policy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$put_resource_policy_input(ResourceARN = ResourceARN, Policy = Policy)
   output <- .kinesis$put_resource_policy_output()
@@ -1061,7 +1085,8 @@ kinesis_register_stream_consumer <- function(StreamARN, ConsumerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$register_stream_consumer_input(StreamARN = StreamARN, ConsumerName = ConsumerName)
   output <- .kinesis$register_stream_consumer_output()
@@ -1093,7 +1118,8 @@ kinesis_remove_tags_from_stream <- function(StreamName = NULL, TagKeys, StreamAR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$remove_tags_from_stream_input(StreamName = StreamName, TagKeys = TagKeys, StreamARN = StreamARN)
   output <- .kinesis$remove_tags_from_stream_output()
@@ -1134,7 +1160,8 @@ kinesis_split_shard <- function(StreamName = NULL, ShardToSplit, NewStartingHash
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$split_shard_input(StreamName = StreamName, ShardToSplit = ShardToSplit, NewStartingHashKey = NewStartingHashKey, StreamARN = StreamARN)
   output <- .kinesis$split_shard_output()
@@ -1162,18 +1189,17 @@ kinesis_split_shard <- function(StreamName = NULL, ShardToSplit, NewStartingHash
 #' alias name prefixed by "alias/".You can also use a master key owned by
 #' Kinesis Data Streams by specifying the alias `aws/kinesis`.
 #' 
-#' -   Key ARN example:
-#'     `arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012`
+#' - Key ARN example:
+#'   `arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
-#' -   Alias ARN example:
-#'     `arn:aws:kms:us-east-1:123456789012:alias/MyAliasName`
+#' - Alias ARN example:
+#'   `arn:aws:kms:us-east-1:123456789012:alias/MyAliasName`
 #' 
-#' -   Globally unique key ID example:
-#'     `12345678-1234-1234-1234-123456789012`
+#' - Globally unique key ID example: `12345678-1234-1234-1234-123456789012`
 #' 
-#' -   Alias name example: `alias/MyAliasName`
+#' - Alias name example: `alias/MyAliasName`
 #' 
-#' -   Master key owned by Kinesis Data Streams: `alias/aws/kinesis`
+#' - Master key owned by Kinesis Data Streams: `alias/aws/kinesis`
 #' @param StreamARN The ARN of the stream.
 #'
 #' @keywords internal
@@ -1185,7 +1211,8 @@ kinesis_start_stream_encryption <- function(StreamName = NULL, EncryptionType, K
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$start_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId, StreamARN = StreamARN)
   output <- .kinesis$start_stream_encryption_output()
@@ -1212,18 +1239,17 @@ kinesis_start_stream_encryption <- function(StreamName = NULL, EncryptionType, K
 #' alias name prefixed by "alias/".You can also use a master key owned by
 #' Kinesis Data Streams by specifying the alias `aws/kinesis`.
 #' 
-#' -   Key ARN example:
-#'     `arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012`
+#' - Key ARN example:
+#'   `arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
-#' -   Alias ARN example:
-#'     `arn:aws:kms:us-east-1:123456789012:alias/MyAliasName`
+#' - Alias ARN example:
+#'   `arn:aws:kms:us-east-1:123456789012:alias/MyAliasName`
 #' 
-#' -   Globally unique key ID example:
-#'     `12345678-1234-1234-1234-123456789012`
+#' - Globally unique key ID example: `12345678-1234-1234-1234-123456789012`
 #' 
-#' -   Alias name example: `alias/MyAliasName`
+#' - Alias name example: `alias/MyAliasName`
 #' 
-#' -   Master key owned by Kinesis Data Streams: `alias/aws/kinesis`
+#' - Master key owned by Kinesis Data Streams: `alias/aws/kinesis`
 #' @param StreamARN The ARN of the stream.
 #'
 #' @keywords internal
@@ -1235,7 +1261,8 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$stop_stream_encryption_input(StreamName = StreamName, EncryptionType = EncryptionType, KeyId = KeyId, StreamARN = StreamARN)
   output <- .kinesis$stop_stream_encryption_output()
@@ -1259,17 +1286,17 @@ kinesis_stop_stream_encryption <- function(StreamName = NULL, EncryptionType, Ke
 #' @param TargetShardCount &#91;required&#93; The new number of shards. This value has the following default limits.
 #' By default, you cannot do the following:
 #' 
-#' -   Set this value to more than double your current shard count for a
-#'     stream.
+#' - Set this value to more than double your current shard count for a
+#'   stream.
 #' 
-#' -   Set this value below half your current shard count for a stream.
+#' - Set this value below half your current shard count for a stream.
 #' 
-#' -   Set this value to more than 10000 shards in a stream (the default
-#'     limit for shard count per stream is 10000 per account per region),
-#'     unless you request a limit increase.
+#' - Set this value to more than 10000 shards in a stream (the default
+#'   limit for shard count per stream is 10000 per account per region),
+#'   unless you request a limit increase.
 #' 
-#' -   Scale a stream with more than 10000 shards down unless you set this
-#'     value to less than 10000 shards.
+#' - Scale a stream with more than 10000 shards down unless you set this
+#'   value to less than 10000 shards.
 #' @param ScalingType &#91;required&#93; The scaling type. Uniform scaling creates shards of equal size.
 #' @param StreamARN The ARN of the stream.
 #'
@@ -1282,7 +1309,8 @@ kinesis_update_shard_count <- function(StreamName = NULL, TargetShardCount, Scal
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$update_shard_count_input(StreamName = StreamName, TargetShardCount = TargetShardCount, ScalingType = ScalingType, StreamARN = StreamARN)
   output <- .kinesis$update_shard_count_output()
@@ -1317,7 +1345,8 @@ kinesis_update_stream_mode <- function(StreamARN, StreamModeDetails) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kinesis$update_stream_mode_input(StreamARN = StreamARN, StreamModeDetails = StreamModeDetails)
   output <- .kinesis$update_stream_mode_output()

@@ -21,8 +21,8 @@ The following are requirements for the resource policy:
 \item Contains only one action: cloudtrail-data:PutAuditEvents
 \item Contains at least one statement. The policy can have a maximum of 20
 statements.
-\item Each statement contains at least one principal. A statement can have
-a maximum of 50 principals.
+\item Each statement contains at least one principal. A statement can have a
+maximum of 50 principals.
 }}
 }
 \description{

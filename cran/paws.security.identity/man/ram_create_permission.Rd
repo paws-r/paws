@@ -35,9 +35,8 @@ supported by the specified resource type. For a list of all actions
 supported by each resource type, see \href{https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html}{Actions, resources, and condition keys for Amazon Web Services services}
 in the \emph{Identity and Access Management User Guide}.
 \item \strong{Condition}: (optional) specifies conditional parameters that must
-evaluate to true when a user attempts an action for that action to
-be allowed. For more information about the Condition element, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html}{IAM policies: Condition element}
+evaluate to true when a user attempts an action for that action to be
+allowed. For more information about the Condition element, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html}{IAM policies: Condition element}
 in the \emph{Identity and Access Management User Guide}.
 }
 

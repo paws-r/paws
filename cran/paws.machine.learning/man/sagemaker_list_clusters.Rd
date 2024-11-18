@@ -26,9 +26,9 @@ Acceptable formats include:
 \item \code{YYYY-MM-DDThh:mm:ss.sssTZD} (with offset), for example,
 \verb{2014-10-01T12:30:00.000-08:00}
 \item \code{YYYY-MM-DD}, for example, \code{2014-10-01}
-\item Unix time in seconds, for example, \code{1412195400}. This is also
-referred to as Unix Epoch time and represents the number of seconds
-since midnight, January 1, 1970 UTC.
+\item Unix time in seconds, for example, \code{1412195400}. This is also referred
+to as Unix Epoch time and represents the number of seconds since
+midnight, January 1, 1970 UTC.
 }
 
 For more information about the timestamp format, see

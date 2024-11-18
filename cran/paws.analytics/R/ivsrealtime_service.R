@@ -12,27 +12,26 @@ NULL
 #' 
 #' **Key Concepts**
 #' 
-#' -   **Stage** — A virtual space where participants can exchange video in
-#'     real time.
+#' - **Stage** — A virtual space where participants can exchange video in
+#'   real time.
 #' 
-#' -   **Participant token** — A token that authenticates a participant
-#'     when they join a stage.
+#' - **Participant token** — A token that authenticates a participant when
+#'   they join a stage.
 #' 
-#' -   **Participant object** — Represents participants (people) in the
-#'     stage and contains information about them. When a token is created,
-#'     it includes a participant ID; when a participant uses that token to
-#'     join a stage, the participant is associated with that participant
-#'     ID. There is a 1:1 mapping between participant tokens and
-#'     participants.
+#' - **Participant object** — Represents participants (people) in the stage
+#'   and contains information about them. When a token is created, it
+#'   includes a participant ID; when a participant uses that token to join
+#'   a stage, the participant is associated with that participant ID. There
+#'   is a 1:1 mapping between participant tokens and participants.
 #' 
 #' For server-side composition:
 #' 
-#' -   **Composition process** — Composites participants of a stage into a
-#'     single video and forwards it to a set of outputs (e.g., IVS
-#'     channels). Composition endpoints support this process.
+#' - **Composition process** — Composites participants of a stage into a
+#'   single video and forwards it to a set of outputs (e.g., IVS channels).
+#'   Composition endpoints support this process.
 #' 
-#' -   **Composition** — Controls the look of the outputs, including how
-#'     participants are positioned in the video.
+#' - **Composition** — Controls the look of the outputs, including how
+#'   participants are positioned in the video.
 #' 
 #' For more information about your IVS live stream, also see [Getting
 #' Started with Amazon IVS Real-Time

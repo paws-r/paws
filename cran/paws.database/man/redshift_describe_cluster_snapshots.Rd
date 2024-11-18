@@ -89,8 +89,7 @@ cluster. You can perform table-level restore only by using a snapshot of
 an existing cluster, that is, a cluster that has not been deleted.
 Values for this parameter work as follows:
 \itemize{
-\item If \code{ClusterExists} is set to \code{true}, \code{ClusterIdentifier} is
-required.
+\item If \code{ClusterExists} is set to \code{true}, \code{ClusterIdentifier} is required.
 \item If \code{ClusterExists} is set to \code{false} and \code{ClusterIdentifier} isn't
 specified, all snapshots associated with deleted clusters (orphaned
 snapshots) are returned.

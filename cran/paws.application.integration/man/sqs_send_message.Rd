@@ -53,8 +53,8 @@ consists of a \code{Name}, \code{Type}, and \code{Value}.
 \item Currently, the only supported message system attribute is
 \code{AWSTraceHeader}. Its type must be \code{String} and its value must be a
 correctly formatted X-Ray trace header string.
-\item The size of a message system attribute doesn't count towards the
-total size of a message.
+\item The size of a message system attribute doesn't count towards the total
+size of a message.
 }}
 
 \item{MessageDeduplicationId}{This parameter applies only to FIFO (first-in-first-out) queues.
@@ -70,24 +70,23 @@ in the \emph{Amazon SQS Developer Guide}.
 \itemize{
 \item You may provide a \code{MessageDeduplicationId} explicitly.
 \item If you aren't able to provide a \code{MessageDeduplicationId} and you
-enable \code{ContentBasedDeduplication} for your queue, Amazon SQS
-uses a SHA-256 hash to generate the \code{MessageDeduplicationId}
-using the body of the message (but not the attributes of the
-message).
+enable \code{ContentBasedDeduplication} for your queue, Amazon SQS uses a
+SHA-256 hash to generate the \code{MessageDeduplicationId} using the body
+of the message (but not the attributes of the message).
 \item If you don't provide a \code{MessageDeduplicationId} and the queue
-doesn't have \code{ContentBasedDeduplication} set, the action fails
-with an error.
+doesn't have \code{ContentBasedDeduplication} set, the action fails with
+an error.
 \item If the queue has \code{ContentBasedDeduplication} set, your
 \code{MessageDeduplicationId} overrides the generated one.
 }
-\item When \code{ContentBasedDeduplication} is in effect, messages with
-identical content sent within the deduplication interval are treated
-as duplicates and only one copy of the message is delivered.
+\item When \code{ContentBasedDeduplication} is in effect, messages with identical
+content sent within the deduplication interval are treated as
+duplicates and only one copy of the message is delivered.
 \item If you send one message with \code{ContentBasedDeduplication} enabled and
-then another message with a \code{MessageDeduplicationId} that is the
-same as the one generated for the first \code{MessageDeduplicationId},
-the two messages are treated as duplicates and only one copy of the
-message is delivered.
+then another message with a \code{MessageDeduplicationId} that is the same
+as the one generated for the first \code{MessageDeduplicationId}, the two
+messages are treated as duplicates and only one copy of the message is
+delivered.
 }
 
 The \code{MessageDeduplicationId} is available to the consumer of the message
@@ -123,8 +122,8 @@ single queue, use \code{MessageGroupId} values (for example, session data for
 multiple users). In this scenario, multiple consumers can process the
 queue, but the session data of each user is processed in a FIFO fashion.
 \itemize{
-\item You must associate a non-empty \code{MessageGroupId} with a message. If
-you don't provide a \code{MessageGroupId}, the action fails.
+\item You must associate a non-empty \code{MessageGroupId} with a message. If you
+don't provide a \code{MessageGroupId}, the action fails.
 \item \code{\link[=sqs_receive_message]{receive_message}} might return messages with
 multiple \code{MessageGroupId} values. For each \code{MessageGroupId}, the
 messages are sorted by time sent. The caller can't specify a

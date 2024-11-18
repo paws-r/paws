@@ -28,7 +28,8 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
     http_method = "POST",
     http_path = "/participant/complete-attachment-upload",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$complete_attachment_upload_input(AttachmentIds = AttachmentIds, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$complete_attachment_upload_output()
@@ -68,7 +69,8 @@ connectparticipant_create_participant_connection <- function(Type = NULL, Partic
     http_method = "POST",
     http_path = "/participant/connection",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$create_participant_connection_input(Type = Type, ParticipantToken = ParticipantToken, ConnectParticipant = ConnectParticipant)
   output <- .connectparticipant$create_participant_connection_output()
@@ -100,7 +102,8 @@ connectparticipant_describe_view <- function(ViewToken, ConnectionToken) {
     http_method = "GET",
     http_path = "/participant/views/{ViewToken}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$describe_view_input(ViewToken = ViewToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$describe_view_output()
@@ -135,7 +138,8 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
     http_method = "POST",
     http_path = "/participant/disconnect",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$disconnect_participant_input(ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$disconnect_participant_output()
@@ -166,7 +170,8 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
     http_method = "POST",
     http_path = "/participant/attachment",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$get_attachment_input(AttachmentId = AttachmentId, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$get_attachment_output()
@@ -207,7 +212,8 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/participant/transcript",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .connectparticipant$get_transcript_input(ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken, ScanDirection = ScanDirection, SortOrder = SortOrder, StartPosition = StartPosition, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$get_transcript_output()
@@ -228,20 +234,20 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #'
 #' @param ContentType &#91;required&#93; The content type of the request. Supported types are:
 #' 
-#' -   application/vnd.amazonaws.connect.event.typing
+#' - application/vnd.amazonaws.connect.event.typing
 #' 
-#' -   application/vnd.amazonaws.connect.event.connection.acknowledged
-#'     (will be deprecated on December 31, 2024)
+#' - application/vnd.amazonaws.connect.event.connection.acknowledged (will
+#'   be deprecated on December 31, 2024)
 #' 
-#' -   application/vnd.amazonaws.connect.event.message.delivered
+#' - application/vnd.amazonaws.connect.event.message.delivered
 #' 
-#' -   application/vnd.amazonaws.connect.event.message.read
+#' - application/vnd.amazonaws.connect.event.message.read
 #' @param Content The content of the event to be sent (for example, message text). For
 #' content related to message receipts, this is supported in the form of a
 #' JSON string.
 #' 
 #' Sample Content:
-#' "\{\\"messageId\\":\\"11111111-aaaa-bbbb-cccc-EXAMPLE01234\\"\}"
+#' "\\messageId\\:\\11111111-aaaa-bbbb-cccc-EXAMPLE01234\\"
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
 #' populates this field. For more information about idempotency, see
@@ -258,7 +264,8 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
     http_method = "POST",
     http_path = "/participant/event",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$send_event_input(ContentType = ContentType, Content = Content, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$send_event_output()
@@ -282,15 +289,14 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' `application/vnd.amazonaws.connect.message.interactive.response`.
 #' @param Content &#91;required&#93; The content of the message.
 #' 
-#' -   For `text/plain` and `text/markdown`, the Length Constraints are
-#'     Minimum of 1, Maximum of 1024.
+#' - For `text/plain` and `text/markdown`, the Length Constraints are
+#'   Minimum of 1, Maximum of 1024.
 #' 
-#' -   For `application/json`, the Length Constraints are Minimum of 1,
-#'     Maximum of 12000.
+#' - For `application/json`, the Length Constraints are Minimum of 1,
+#'   Maximum of 12000.
 #' 
-#' -   For
-#'     `application/vnd.amazonaws.connect.message.interactive.response`,
-#'     the Length Constraints are Minimum of 1, Maximum of 12288.
+#' - For `application/vnd.amazonaws.connect.message.interactive.response`,
+#'   the Length Constraints are Minimum of 1, Maximum of 12288.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
 #' populates this field. For more information about idempotency, see
@@ -307,7 +313,8 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
     http_method = "POST",
     http_path = "/participant/message",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$send_message_input(ContentType = ContentType, Content = Content, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$send_message_output()
@@ -349,7 +356,8 @@ connectparticipant_start_attachment_upload <- function(ContentType, AttachmentSi
     http_method = "POST",
     http_path = "/participant/start-attachment-upload",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$start_attachment_upload_input(ContentType = ContentType, AttachmentSizeInBytes = AttachmentSizeInBytes, AttachmentName = AttachmentName, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$start_attachment_upload_output()

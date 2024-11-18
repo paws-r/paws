@@ -45,10 +45,10 @@ incoming request parameters. Specify JWT to use JSON Web Tokens
 \item{AuthorizerUri}{The authorizer's Uniform Resource Identifier (URI). For REQUEST
 authorizers, this must be a well-formed Lambda function URI, for
 example,
-arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\{account_id\}:function:\{lambda_function_name\}/invocations.
+arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/arn:aws:lambda:us-west-2:\\account_id\\:function:\\lambda_function_name\\/invocations.
 In general, the URI has this form:
-arn:aws:apigateway:\{region\}:lambda:path/\{service_api\} , where
-\{region\} is the same as the region hosting the Lambda function, path
+arn:aws:apigateway:\\region\\:lambda:path/\\service_api\\ , where
+\\region\\ is the same as the region hosting the Lambda function, path
 indicates that the remaining substring in the URI should be treated as
 the path to the resource, including the initial /. For Lambda functions,
 this is usually of the form

@@ -42,8 +42,8 @@ SQL statement names to the prefix value you provide.}
 follows:
 \itemize{
 \item ABORTED - The query run was stopped by the user.
-\item ALL - A status value that includes all query statuses. This value
-can be used to filter results.
+\item ALL - A status value that includes all query statuses. This value can
+be used to filter results.
 \item FAILED - The query run failed.
 \item FINISHED - The query has finished running.
 \item PICKED - The query has been chosen to be run.

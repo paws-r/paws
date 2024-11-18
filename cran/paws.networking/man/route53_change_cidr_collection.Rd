@@ -19,10 +19,10 @@ from overwriting an intervening update:
 \itemize{
 \item If the value in the request matches the value of \code{CollectionVersion}
 in the collection, Route 53 updates the collection.
-\item If the value of \code{CollectionVersion} in the collection is greater
-than the value in the request, the collection was changed after you
-got the version number. Route 53 does not update the collection, and
-it returns a \code{CidrCollectionVersionMismatch} error.
+\item If the value of \code{CollectionVersion} in the collection is greater than
+the value in the request, the collection was changed after you got the
+version number. Route 53 does not update the collection, and it
+returns a \code{CidrCollectionVersionMismatch} error.
 }}
 
 \item{Changes}{[required] Information about changes to a CIDR collection.}

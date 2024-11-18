@@ -42,8 +42,8 @@ increments of 2400 GiB.
 \item For \code{PERSISTENT_1} HDD file systems, valid values are increments of
 6000 GiB for 12 MB/s/TiB file systems and increments of 1800 GiB for
 40 MB/s/TiB file systems.
-\item For \code{SCRATCH_1} deployment type, valid values are 1200 GiB, 2400
-GiB, and increments of 3600 GiB.
+\item For \code{SCRATCH_1} deployment type, valid values are 1200 GiB, 2400 GiB,
+and increments of 3600 GiB.
 }
 
 \strong{FSx for ONTAP file systems} - The amount of storage capacity that you
@@ -65,14 +65,14 @@ capacity that you can configure depends on the value that you set for
 \item{StorageType}{Sets the storage type for the file system that you're creating. Valid
 values are \code{SSD} and \code{HDD}.
 \itemize{
-\item Set to \code{SSD} to use solid state drive storage. SSD is supported on
-all Windows, Lustre, ONTAP, and OpenZFS deployment types.
+\item Set to \code{SSD} to use solid state drive storage. SSD is supported on all
+Windows, Lustre, ONTAP, and OpenZFS deployment types.
 \item Set to \code{HDD} to use hard disk drive storage. HDD is supported on
 \code{SINGLE_AZ_2} and \code{MULTI_AZ_1} Windows file system deployment types,
 and on \code{PERSISTENT_1} Lustre file system deployment types.
 }
 
-Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs}{Storage type options}
+Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options}{Storage type options}
 in the \emph{FSx for Windows File Server User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple storage options}
 in the \emph{FSx for Lustre User Guide}.}
 
@@ -113,20 +113,20 @@ created.}
 system that you're creating. Valid values are \code{2.10}, \code{2.12}, and
 \code{2.15}:
 \itemize{
-\item \code{2.10} is supported by the Scratch and Persistent_1 Lustre
-deployment types.
+\item \code{2.10} is supported by the Scratch and Persistent_1 Lustre deployment
+types.
 \item \code{2.12} is supported by all Lustre deployment types, except for
 \code{PERSISTENT_2} with a metadata configuration mode.
-\item \code{2.15} is supported by all Lustre deployment types and is
-recommended for all new file systems.
+\item \code{2.15} is supported by all Lustre deployment types and is recommended
+for all new file systems.
 }
 
 Default value is \code{2.10}, except for the following deployments:
 \itemize{
-\item Default value is \code{2.12} when \code{DeploymentType} is set to
-\code{PERSISTENT_2} without a metadata configuration mode.
-\item Default value is \code{2.15} when \code{DeploymentType} is set to
-\code{PERSISTENT_2} with a metadata configuration mode.
+\item Default value is \code{2.12} when \code{DeploymentType} is set to \code{PERSISTENT_2}
+without a metadata configuration mode.
+\item Default value is \code{2.15} when \code{DeploymentType} is set to \code{PERSISTENT_2}
+with a metadata configuration mode.
 }}
 
 \item{OpenZFSConfiguration}{The OpenZFS configuration for the file system that's being created.}

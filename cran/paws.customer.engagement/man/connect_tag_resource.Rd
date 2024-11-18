@@ -10,7 +10,7 @@ connect_tag_resource(resourceArn, tags)
 \item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
 
 \item{tags}{[required] The tags used to organize, track, or control access for this resource.
-For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
 }
 \description{
 Adds the specified tags to the specified resource.

@@ -42,8 +42,8 @@ tracking caused by security group, see \href{https://docs.aws.amazon.com/AWSEC2/
 
 \item{Direction}{[required] Specify the applicable value:
 \itemize{
-\item \code{INBOUND}: Resolver forwards DNS queries to the DNS service for a
-VPC from your network
+\item \code{INBOUND}: Resolver forwards DNS queries to the DNS service for a VPC
+from your network
 \item \code{OUTBOUND}: Resolver forwards DNS queries from the DNS service for a
 VPC to your network
 }}

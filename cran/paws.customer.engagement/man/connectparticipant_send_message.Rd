@@ -22,8 +22,7 @@ connectparticipant_send_message(
 Minimum of 1, Maximum of 1024.
 \item For \code{application/json}, the Length Constraints are Minimum of 1,
 Maximum of 12000.
-\item For
-\code{application/vnd.amazonaws.connect.message.interactive.response},
+\item For \code{application/vnd.amazonaws.connect.message.interactive.response},
 the Length Constraints are Minimum of 1, Maximum of 12288.
 }}
 

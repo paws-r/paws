@@ -23,9 +23,9 @@ Supported filters:
 \item \code{db-cluster-id} - Accepts cluster identifiers and cluster Amazon
 Resource Names (ARNs). The results list includes only pending
 maintenance actions for the clusters identified by these ARNs.
-\item \code{db-instance-id} - Accepts instance identifiers and instance ARNs.
-The results list includes only pending maintenance actions for the
-DB instances identified by these ARNs.
+\item \code{db-instance-id} - Accepts instance identifiers and instance ARNs. The
+results list includes only pending maintenance actions for the DB
+instances identified by these ARNs.
 }}
 
 \item{Marker}{An optional pagination token provided by a previous request. If this

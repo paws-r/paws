@@ -227,8 +227,8 @@ Default: 0
 
 Constraints:
 \itemize{
-\item If specified, this value must be set to a number from 0 to 259,200
-(72 hours).
+\item If specified, this value must be set to a number from 0 to 259,200 (72
+hours).
 }}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the restored DB cluster is to export to CloudWatch
@@ -286,8 +286,8 @@ in the \emph{Amazon Aurora User Guide.}
 
 Constraints:
 \itemize{
-\item Can't manage the master user password with Amazon Web Services
-Secrets Manager if \code{MasterUserPassword} is specified.
+\item Can't manage the master user password with Amazon Web Services Secrets
+Manager if \code{MasterUserPassword} is specified.
 }}
 
 \item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is

@@ -33,10 +33,10 @@ intent in lists.}
 \item{parentIntentSignature}{A unique identifier for the built-in intent to base this intent on.}
 
 \item{sampleUtterances}{An array of strings that a user might say to signal the intent. For
-example, "I want a pizza", or "I want a \{PizzaSize\} pizza".
+example, "I want a pizza", or "I want a \\PizzaSize\\ pizza".
 
-In an utterance, slot names are enclosed in curly braces ("\{", "\}")
-to indicate where they should be displayed in the utterance shown to the
+In an utterance, slot names are enclosed in curly braces ("\\", "\\") to
+indicate where they should be displayed in the utterance shown to the
 user..}
 
 \item{dialogCodeHook}{Specifies that Amazon Lex invokes the alias Lambda function for each

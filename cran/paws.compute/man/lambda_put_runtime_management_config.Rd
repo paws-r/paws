@@ -38,16 +38,16 @@ benefit from runtime updates.
 \item \strong{Function update} - Lambda updates the runtime of your function to
 the most recent and secure runtime version when you update your
 function. This approach synchronizes runtime updates with function
-deployments, giving you control over when runtime updates are
-applied and allowing you to detect and mitigate rare runtime update
+deployments, giving you control over when runtime updates are applied
+and allowing you to detect and mitigate rare runtime update
 incompatibilities early. When using this setting, you need to
 regularly update your functions to keep their runtime up-to-date.
 \item \strong{Manual} - You specify a runtime version in your function
 configuration. The function will use this runtime version
 indefinitely. In the rare case where a new runtime version is
 incompatible with an existing function, this allows you to roll back
-your function to an earlier runtime version. For more information,
-see \href{https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html#runtime-management-rollback}{Roll back a runtime version}.
+your function to an earlier runtime version. For more information, see
+\href{https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html#runtime-management-rollback}{Roll back a runtime version}.
 }}
 
 \item{RuntimeVersionArn}{The ARN of the runtime version you want the function to use.

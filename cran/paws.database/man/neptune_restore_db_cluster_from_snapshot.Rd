@@ -96,8 +96,8 @@ If you do not specify a value for the \code{KmsKeyId} parameter, then the
 following will occur:
 \itemize{
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier} is
-encrypted, then the restored DB cluster is encrypted using the KMS
-key that was used to encrypt the DB snapshot or DB cluster snapshot.
+encrypted, then the restored DB cluster is encrypted using the KMS key
+that was used to encrypt the DB snapshot or DB cluster snapshot.
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier} is
 not encrypted, then the restored DB cluster is not encrypted.
 }}

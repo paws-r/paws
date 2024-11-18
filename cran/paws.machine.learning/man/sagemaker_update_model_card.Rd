@@ -26,8 +26,8 @@ review and approval.
 \item \code{Draft}: The model card is a work in progress.
 \item \code{PendingReview}: The model card is pending review.
 \item \code{Approved}: The model card is approved.
-\item \code{Archived}: The model card is archived. No more updates should be
-made to the model card, but it can still be exported.
+\item \code{Archived}: The model card is archived. No more updates should be made
+to the model card, but it can still be exported.
 }}
 }
 \description{

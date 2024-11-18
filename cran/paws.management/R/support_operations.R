@@ -32,7 +32,8 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$add_attachments_to_set_input(attachmentSetId = attachmentSetId, attachments = attachments)
   output <- .support$add_attachments_to_set_output()
@@ -71,7 +72,8 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$add_communication_to_case_input(caseId = caseId, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, attachmentSetId = attachmentSetId)
   output <- .support$add_communication_to_case_output()
@@ -139,7 +141,8 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$create_case_input(subject = subject, serviceCode = serviceCode, severityCode = severityCode, categoryCode = categoryCode, communicationBody = communicationBody, ccEmailAddresses = ccEmailAddresses, language = language, issueType = issueType, attachmentSetId = attachmentSetId)
   output <- .support$create_case_output()
@@ -170,7 +173,8 @@ support_describe_attachment <- function(attachmentId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_attachment_input(attachmentId = attachmentId)
   output <- .support$describe_attachment_output()
@@ -221,7 +225,8 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "cases")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "cases"),
+    stream_api = FALSE
   )
   input <- .support$describe_cases_input(caseIdList = caseIdList, displayId = displayId, afterTime = afterTime, beforeTime = beforeTime, includeResolvedCases = includeResolvedCases, nextToken = nextToken, maxResults = maxResults, language = language, includeCommunications = includeCommunications)
   output <- .support$describe_cases_output()
@@ -260,7 +265,8 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "communications")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "communications"),
+    stream_api = FALSE
   )
   input <- .support$describe_communications_input(caseId = caseId, beforeTime = beforeTime, afterTime = afterTime, nextToken = nextToken, maxResults = maxResults)
   output <- .support$describe_communications_output()
@@ -304,7 +310,8 @@ support_describe_create_case_options <- function(issueType, serviceCode, languag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_create_case_options_input(issueType = issueType, serviceCode = serviceCode, language = language, categoryCode = categoryCode)
   output <- .support$describe_create_case_options_output()
@@ -341,7 +348,8 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "services")
+    paginator = list(result_key = "services"),
+    stream_api = FALSE
   )
   input <- .support$describe_services_input(serviceCodeList = serviceCodeList, language = language)
   output <- .support$describe_services_output()
@@ -376,7 +384,8 @@ support_describe_severity_levels <- function(language = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_severity_levels_input(language = language)
   output <- .support$describe_severity_levels_output()
@@ -415,7 +424,8 @@ support_describe_supported_languages <- function(issueType, serviceCode, categor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_supported_languages_input(issueType = issueType, serviceCode = serviceCode, categoryCode = categoryCode)
   output <- .support$describe_supported_languages_output()
@@ -449,7 +459,8 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "statuses")
+    paginator = list(result_key = "statuses"),
+    stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_check_refresh_statuses_input(checkIds = checkIds)
   output <- .support$describe_trusted_advisor_check_refresh_statuses_output()
@@ -476,27 +487,27 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #' The Amazon Web Services Support API currently supports the following
 #' languages for Trusted Advisor:
 #' 
-#' -   Chinese, Simplified - `zh`
+#' - Chinese, Simplified - `zh`
 #' 
-#' -   Chinese, Traditional - `zh_TW`
+#' - Chinese, Traditional - `zh_TW`
 #' 
-#' -   English - `en`
+#' - English - `en`
 #' 
-#' -   French - `fr`
+#' - French - `fr`
 #' 
-#' -   German - `de`
+#' - German - `de`
 #' 
-#' -   Indonesian - `id`
+#' - Indonesian - `id`
 #' 
-#' -   Italian - `it`
+#' - Italian - `it`
 #' 
-#' -   Japanese - `ja`
+#' - Japanese - `ja`
 #' 
-#' -   Korean - `ko`
+#' - Korean - `ko`
 #' 
-#' -   Portuguese, Brazilian - `pt_BR`
+#' - Portuguese, Brazilian - `pt_BR`
 #' 
-#' -   Spanish - `es`
+#' - Spanish - `es`
 #'
 #' @keywords internal
 #'
@@ -507,7 +518,8 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_check_result_input(checkId = checkId, language = language)
   output <- .support$describe_trusted_advisor_check_result_output()
@@ -538,7 +550,8 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "summaries")
+    paginator = list(result_key = "summaries"),
+    stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_check_summaries_input(checkIds = checkIds)
   output <- .support$describe_trusted_advisor_check_summaries_output()
@@ -564,27 +577,27 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #' The Amazon Web Services Support API currently supports the following
 #' languages for Trusted Advisor:
 #' 
-#' -   Chinese, Simplified - `zh`
+#' - Chinese, Simplified - `zh`
 #' 
-#' -   Chinese, Traditional - `zh_TW`
+#' - Chinese, Traditional - `zh_TW`
 #' 
-#' -   English - `en`
+#' - English - `en`
 #' 
-#' -   French - `fr`
+#' - French - `fr`
 #' 
-#' -   German - `de`
+#' - German - `de`
 #' 
-#' -   Indonesian - `id`
+#' - Indonesian - `id`
 #' 
-#' -   Italian - `it`
+#' - Italian - `it`
 #' 
-#' -   Japanese - `ja`
+#' - Japanese - `ja`
 #' 
-#' -   Korean - `ko`
+#' - Korean - `ko`
 #' 
-#' -   Portuguese, Brazilian - `pt_BR`
+#' - Portuguese, Brazilian - `pt_BR`
 #' 
-#' -   Spanish - `es`
+#' - Spanish - `es`
 #'
 #' @keywords internal
 #'
@@ -595,7 +608,8 @@ support_describe_trusted_advisor_checks <- function(language) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$describe_trusted_advisor_checks_input(language = language)
   output <- .support$describe_trusted_advisor_checks_output()
@@ -628,7 +642,8 @@ support_refresh_trusted_advisor_check <- function(checkId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$refresh_trusted_advisor_check_input(checkId = checkId)
   output <- .support$refresh_trusted_advisor_check_output()
@@ -660,7 +675,8 @@ support_resolve_case <- function(caseId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .support$resolve_case_input(caseId = caseId)
   output <- .support$resolve_case_output()

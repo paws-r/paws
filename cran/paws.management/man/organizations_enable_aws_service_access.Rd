@@ -13,7 +13,7 @@ you want to enable integration with your organization. This is typically
 in the form of a URL, such as \code{ service-abbreviation.amazonaws.com}.}
 }
 \description{
-Enables the integration of an Amazon Web Services service (the service that is specified by \code{ServicePrincipal}) with Organizations. When you enable integration, you allow the specified service to create a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html}{service-linked role} in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.
+Enables the integration of an Amazon Web Services service (the service that is specified by \code{ServicePrincipal}) with Organizations. When you enable integration, you allow the specified service to create a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role} in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.
 
 See \url{https://www.paws-r-sdk.com/docs/organizations_enable_aws_service_access/} for full documentation.
 }

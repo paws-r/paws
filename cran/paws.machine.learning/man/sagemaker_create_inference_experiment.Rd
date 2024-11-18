@@ -25,8 +25,8 @@ sagemaker_create_inference_experiment(
 \item{Type}{[required] The type of the inference experiment that you want to run. The following
 types of experiments are possible:
 \itemize{
-\item \code{ShadowMode}: You can use this type to validate a shadow variant.
-For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html}{Shadow tests}.
+\item \code{ShadowMode}: You can use this type to validate a shadow variant. For
+more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html}{Shadow tests}.
 }}
 
 \item{Schedule}{The duration for which you want the inference experiment to run. If you

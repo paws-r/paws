@@ -22,8 +22,8 @@ Valid values include:
 \itemize{
 \item \code{ASCENDING}: List the build identifiers in ascending order, by build
 number.
-\item \code{DESCENDING}: List the build identifiers in descending order, by
-build number.
+\item \code{DESCENDING}: List the build identifiers in descending order, by build
+number.
 }
 
 If the project has more than 100 builds, setting the sort order will

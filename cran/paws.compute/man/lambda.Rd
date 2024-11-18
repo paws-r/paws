@@ -93,14 +93,14 @@ shows minimum operating system and Java versions:
 later installed contain at least one of the required CAs in their
 trust list.
 \item Mac OS X 10.4 with Java for Mac OS X 10.4 Release 5 (February 2007),
-Mac OS X 10.5 (October 2007), and later versions contain at least
-one of the required CAs in their trust list.
-\item Red Hat Enterprise Linux 5 (March 2007), 6, and 7 and CentOS 5, 6,
-and 7 all contain at least one of the required CAs in their default
+Mac OS X 10.5 (October 2007), and later versions contain at least one
+of the required CAs in their trust list.
+\item Red Hat Enterprise Linux 5 (March 2007), 6, and 7 and CentOS 5, 6, and
+7 all contain at least one of the required CAs in their default
 trusted CA list.
 \item Java 1.4.2_12 (May 2006), 5 Update 2 (March 2005), and all later
-versions, including Java 6 (December 2006), 7, and 8, contain at
-least one of the required CAs in their default trusted CA list.
+versions, including Java 6 (December 2006), 7, and 8, contain at least
+one of the required CAs in their default trusted CA list.
 }
 
 When accessing the Lambda management console or Lambda API endpoints,

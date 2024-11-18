@@ -37,8 +37,8 @@ example, 9800.0).
 reservation.
 \item \code{marketplace} - Set to \code{true} to show only Reserved Instance
 Marketplace offerings. When this filter is not used, which is the
-default behavior, all offerings from both Amazon Web Services and
-the Reserved Instance Marketplace are listed.
+default behavior, all offerings from both Amazon Web Services and the
+Reserved Instance Marketplace are listed.
 \item \code{product-description} - The Reserved Instance product platform
 description (\code{Linux/UNIX} | \verb{Linux with SQL Server Standard} |
 \verb{Linux with SQL Server Web} | \verb{Linux with SQL Server Enterprise} |
@@ -46,8 +46,7 @@ description (\code{Linux/UNIX} | \verb{Linux with SQL Server Standard} |
 \verb{Red Hat Enterprise Linux with HA} | \code{Windows} |
 \verb{Windows with SQL Server Standard} | \verb{Windows with SQL Server Web} |
 \verb{Windows with SQL Server Enterprise}).
-\item \code{reserved-instances-offering-id} - The Reserved Instances offering
-ID.
+\item \code{reserved-instances-offering-id} - The Reserved Instances offering ID.
 \item \code{scope} - The scope of the Reserved Instance (\verb{Availability Zone} or
 \code{Region}).
 \item \code{usage-price} - The usage price of the Reserved Instance, per hour

@@ -21,7 +21,8 @@ licensemanager_accept_grant <- function(GrantArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$accept_grant_input(GrantArn = GrantArn)
   output <- .licensemanager$accept_grant_output()
@@ -52,7 +53,8 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$check_in_license_input(LicenseConsumptionToken = LicenseConsumptionToken, Beneficiary = Beneficiary)
   output <- .licensemanager$check_in_license_output()
@@ -92,7 +94,8 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$checkout_borrow_license_input(LicenseArn = LicenseArn, Entitlements = Entitlements, DigitalSignatureMethod = DigitalSignatureMethod, NodeId = NodeId, CheckoutMetadata = CheckoutMetadata, ClientToken = ClientToken)
   output <- .licensemanager$checkout_borrow_license_output()
@@ -129,7 +132,8 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$checkout_license_input(ProductSKU = ProductSKU, CheckoutType = CheckoutType, KeyFingerprint = KeyFingerprint, Entitlements = Entitlements, ClientToken = ClientToken, Beneficiary = Beneficiary, NodeId = NodeId)
   output <- .licensemanager$checkout_license_output()
@@ -155,15 +159,15 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #' @param Principals &#91;required&#93; The grant principals. You can specify one of the following as an Amazon
 #' Resource Name (ARN):
 #' 
-#' -   An Amazon Web Services account, which includes only the account
-#'     specified.
+#' - An Amazon Web Services account, which includes only the account
+#'   specified.
 #' 
 #' 
-#' -   An organizational unit (OU), which includes all accounts in the OU.
+#' - An organizational unit (OU), which includes all accounts in the OU.
 #' 
 #' 
-#' -   An organization, which will include all accounts across your
-#'     organization.
+#' - An organization, which will include all accounts across your
+#'   organization.
 #' @param HomeRegion &#91;required&#93; Home Region of the grant.
 #' @param AllowedOperations &#91;required&#93; Allowed operations for the grant.
 #'
@@ -176,7 +180,8 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$create_grant_input(ClientToken = ClientToken, GrantName = GrantName, LicenseArn = LicenseArn, Principals = Principals, HomeRegion = HomeRegion, AllowedOperations = AllowedOperations)
   output <- .licensemanager$create_grant_output()
@@ -214,7 +219,8 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$create_grant_version_input(ClientToken = ClientToken, GrantArn = GrantArn, GrantName = GrantName, AllowedOperations = AllowedOperations, Status = Status, StatusReason = StatusReason, SourceVersion = SourceVersion, Options = Options)
   output <- .licensemanager$create_grant_version_output()
@@ -258,7 +264,8 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$create_license_input(LicenseName = LicenseName, ProductName = ProductName, ProductSKU = ProductSKU, Issuer = Issuer, HomeRegion = HomeRegion, Validity = Validity, Entitlements = Entitlements, Beneficiary = Beneficiary, ConsumptionConfiguration = ConsumptionConfiguration, LicenseMetadata = LicenseMetadata, ClientToken = ClientToken)
   output <- .licensemanager$create_license_output()
@@ -287,18 +294,18 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' #allowedTenancy=EC2-DedicatedHost). The available rules vary by
 #' dimension, as follows.
 #' 
-#' -   `Cores` dimension: `allowedTenancy` | `licenseAffinityToHost` |
-#'     `maximumCores` | `minimumCores`
+#' - `Cores` dimension: `allowedTenancy` | `licenseAffinityToHost` |
+#'   `maximumCores` | `minimumCores`
 #' 
-#' -   `Instances` dimension: `allowedTenancy` | `maximumCores` |
-#'     `minimumCores` | `maximumSockets` | `minimumSockets` |
-#'     `maximumVcpus` | `minimumVcpus`
+#' - `Instances` dimension: `allowedTenancy` | `maximumCores` |
+#'   `minimumCores` | `maximumSockets` | `minimumSockets` | `maximumVcpus`
+#'   | `minimumVcpus`
 #' 
-#' -   `Sockets` dimension: `allowedTenancy` | `licenseAffinityToHost` |
-#'     `maximumSockets` | `minimumSockets`
+#' - `Sockets` dimension: `allowedTenancy` | `licenseAffinityToHost` |
+#'   `maximumSockets` | `minimumSockets`
 #' 
-#' -   `vCPUs` dimension: `allowedTenancy` | `honorVcpuOptimization` |
-#'     `maximumVcpus` | `minimumVcpus`
+#' - `vCPUs` dimension: `allowedTenancy` | `honorVcpuOptimization` |
+#'   `maximumVcpus` | `minimumVcpus`
 #' 
 #' The unit for `licenseAffinityToHost` is days and the range is 1 to 180.
 #' The possible values for `allowedTenancy` are `EC2-Default`,
@@ -317,7 +324,8 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$create_license_configuration_input(Name = Name, Description = Description, LicenseCountingType = LicenseCountingType, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, LicenseRules = LicenseRules, Tags = Tags, DisassociateWhenNotFound = DisassociateWhenNotFound, ProductInformationList = ProductInformationList)
   output <- .licensemanager$create_license_configuration_output()
@@ -358,7 +366,8 @@ licensemanager_create_license_conversion_task_for_resource <- function(ResourceA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$create_license_conversion_task_for_resource_input(ResourceArn = ResourceArn, SourceLicenseContext = SourceLicenseContext, DestinationLicenseContext = DestinationLicenseContext)
   output <- .licensemanager$create_license_conversion_task_for_resource_output()
@@ -380,11 +389,11 @@ licensemanager_create_license_conversion_task_for_resource <- function(ResourceA
 #' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
 #' @param Type &#91;required&#93; Type of reports to generate. The following report types an be generated:
 #' 
-#' -   License configuration report - Reports the number and details of
-#'     consumed licenses for a license configuration.
+#' - License configuration report - Reports the number and details of
+#'   consumed licenses for a license configuration.
 #' 
-#' -   Resource report - Reports the tracked licenses and resource
-#'     consumption for a license configuration.
+#' - Resource report - Reports the tracked licenses and resource
+#'   consumption for a license configuration.
 #' @param ReportContext &#91;required&#93; Defines the type of license configuration the report generator tracks.
 #' @param ReportFrequency &#91;required&#93; Frequency by which reports are generated. Reports can be generated
 #' daily, monthly, or weekly.
@@ -402,7 +411,8 @@ licensemanager_create_license_manager_report_generator <- function(ReportGenerat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$create_license_manager_report_generator_input(ReportGeneratorName = ReportGeneratorName, Type = Type, ReportContext = ReportContext, ReportFrequency = ReportFrequency, ClientToken = ClientToken, Description = Description, Tags = Tags)
   output <- .licensemanager$create_license_manager_report_generator_output()
@@ -447,7 +457,8 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$create_license_version_input(LicenseArn = LicenseArn, LicenseName = LicenseName, ProductName = ProductName, Issuer = Issuer, HomeRegion = HomeRegion, Validity = Validity, LicenseMetadata = LicenseMetadata, Entitlements = Entitlements, ConsumptionConfiguration = ConsumptionConfiguration, Status = Status, ClientToken = ClientToken, SourceVersion = SourceVersion)
   output <- .licensemanager$create_license_version_output()
@@ -485,7 +496,8 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$create_token_input(LicenseArn = LicenseArn, RoleArns = RoleArns, ExpirationInDays = ExpirationInDays, TokenProperties = TokenProperties, ClientToken = ClientToken)
   output <- .licensemanager$create_token_output()
@@ -517,7 +529,8 @@ licensemanager_delete_grant <- function(GrantArn, StatusReason = NULL, Version) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$delete_grant_input(GrantArn = GrantArn, StatusReason = StatusReason, Version = Version)
   output <- .licensemanager$delete_grant_output()
@@ -548,7 +561,8 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$delete_license_input(LicenseArn = LicenseArn, SourceVersion = SourceVersion)
   output <- .licensemanager$delete_license_output()
@@ -578,7 +592,8 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$delete_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn)
   output <- .licensemanager$delete_license_configuration_output()
@@ -608,7 +623,8 @@ licensemanager_delete_license_manager_report_generator <- function(LicenseManage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$delete_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn)
   output <- .licensemanager$delete_license_manager_report_generator_output()
@@ -638,7 +654,8 @@ licensemanager_delete_token <- function(TokenId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$delete_token_input(TokenId = TokenId)
   output <- .licensemanager$delete_token_output()
@@ -671,7 +688,8 @@ licensemanager_extend_license_consumption <- function(LicenseConsumptionToken, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$extend_license_consumption_input(LicenseConsumptionToken = LicenseConsumptionToken, DryRun = DryRun)
   output <- .licensemanager$extend_license_consumption_output()
@@ -702,7 +720,8 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$get_access_token_input(Token = Token, TokenProperties = TokenProperties)
   output <- .licensemanager$get_access_token_output()
@@ -733,7 +752,8 @@ licensemanager_get_grant <- function(GrantArn, Version = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$get_grant_input(GrantArn = GrantArn, Version = Version)
   output <- .licensemanager$get_grant_output()
@@ -764,7 +784,8 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$get_license_input(LicenseArn = LicenseArn, Version = Version)
   output <- .licensemanager$get_license_output()
@@ -794,7 +815,8 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$get_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn)
   output <- .licensemanager$get_license_configuration_output()
@@ -824,7 +846,8 @@ licensemanager_get_license_conversion_task <- function(LicenseConversionTaskId) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$get_license_conversion_task_input(LicenseConversionTaskId = LicenseConversionTaskId)
   output <- .licensemanager$get_license_conversion_task_output()
@@ -854,7 +877,8 @@ licensemanager_get_license_manager_report_generator <- function(LicenseManagerRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$get_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn)
   output <- .licensemanager$get_license_manager_report_generator_output()
@@ -884,7 +908,8 @@ licensemanager_get_license_usage <- function(LicenseArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$get_license_usage_input(LicenseArn = LicenseArn)
   output <- .licensemanager$get_license_usage_output()
@@ -914,7 +939,8 @@ licensemanager_get_service_settings <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$get_service_settings_input()
   output <- .licensemanager$get_service_settings_output()
@@ -946,7 +972,8 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_associations_for_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_associations_for_license_configuration_output()
@@ -968,15 +995,15 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `LicenseArn`
+#' - `LicenseArn`
 #' 
-#' -   `GrantStatus`
+#' - `GrantStatus`
 #' 
-#' -   `GranteePrincipalARN`
+#' - `GranteePrincipalARN`
 #' 
-#' -   `ProductSKU`
+#' - `ProductSKU`
 #' 
-#' -   `LicenseIssuerName`
+#' - `LicenseIssuerName`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -989,7 +1016,8 @@ licensemanager_list_distributed_grants <- function(GrantArns = NULL, Filters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_distributed_grants_input(GrantArns = GrantArns, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_distributed_grants_output()
@@ -1021,7 +1049,8 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_failures_for_license_configuration_operations_input(LicenseConfigurationArn = LicenseConfigurationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_failures_for_license_configuration_operations_output()
@@ -1046,17 +1075,17 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
 #' 
-#' -   `licenseCountingType` - The dimension for which licenses are
-#'     counted. Possible values are `vCPU` | `Instance` | `Core` |
-#'     `Socket`. Logical operators are `EQUALS` | `NOT_EQUALS`.
+#' - `licenseCountingType` - The dimension for which licenses are counted.
+#'   Possible values are `vCPU` | `Instance` | `Core` | `Socket`. Logical
+#'   operators are `EQUALS` | `NOT_EQUALS`.
 #' 
-#' -   `enforceLicenseCount` - A Boolean value that indicates whether hard
-#'     license enforcement is used. Logical operators are `EQUALS` |
-#'     `NOT_EQUALS`.
+#' - `enforceLicenseCount` - A Boolean value that indicates whether hard
+#'   license enforcement is used. Logical operators are `EQUALS` |
+#'   `NOT_EQUALS`.
 #' 
-#' -   `usagelimitExceeded` - A Boolean value that indicates whether the
-#'     available licenses have been exceeded. Logical operators are
-#'     `EQUALS` | `NOT_EQUALS`.
+#' - `usagelimitExceeded` - A Boolean value that indicates whether the
+#'   available licenses have been exceeded. Logical operators are `EQUALS`
+#'   | `NOT_EQUALS`.
 #'
 #' @keywords internal
 #'
@@ -1067,7 +1096,8 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_license_configurations_input(LicenseConfigurationArns = LicenseConfigurationArns, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanager$list_license_configurations_output()
@@ -1100,7 +1130,8 @@ licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_license_conversion_tasks_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .licensemanager$list_license_conversion_tasks_output()
@@ -1121,7 +1152,7 @@ licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxRe
 #'
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `LicenseConfigurationArn`
+#' - `LicenseConfigurationArn`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -1134,7 +1165,8 @@ licensemanager_list_license_manager_report_generators <- function(Filters = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_license_manager_report_generators_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_license_manager_report_generators_output()
@@ -1167,7 +1199,8 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_license_specifications_for_resource_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanager$list_license_specifications_for_resource_output()
@@ -1199,7 +1232,8 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_license_versions_input(LicenseArn = LicenseArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_license_versions_output()
@@ -1221,13 +1255,13 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 #' @param LicenseArns Amazon Resource Names (ARNs) of the licenses.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `Beneficiary`
+#' - `Beneficiary`
 #' 
-#' -   `ProductSKU`
+#' - `ProductSKU`
 #' 
-#' -   `Fingerprint`
+#' - `Fingerprint`
 #' 
-#' -   `Status`
+#' - `Status`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -1240,7 +1274,8 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_licenses_input(LicenseArns = LicenseArns, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_licenses_output()
@@ -1262,15 +1297,15 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `ProductSKU`
+#' - `ProductSKU`
 #' 
-#' -   `LicenseIssuerName`
+#' - `LicenseIssuerName`
 #' 
-#' -   `LicenseArn`
+#' - `LicenseArn`
 #' 
-#' -   `GrantStatus`
+#' - `GrantStatus`
 #' 
-#' -   `GranterAccountId`
+#' - `GranterAccountId`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -1283,7 +1318,8 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_received_grants_input(GrantArns = GrantArns, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_received_grants_output()
@@ -1305,9 +1341,9 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #' @param LicenseArn &#91;required&#93; The Amazon Resource Name (ARN) of the received license.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `ParentArn`
+#' - `ParentArn`
 #' 
-#' -   `GranteePrincipalArn`
+#' - `GranteePrincipalArn`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -1320,7 +1356,8 @@ licensemanager_list_received_grants_for_organization <- function(LicenseArn, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_received_grants_for_organization_input(LicenseArn = LicenseArn, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_received_grants_for_organization_output()
@@ -1342,15 +1379,15 @@ licensemanager_list_received_grants_for_organization <- function(LicenseArn, Fil
 #' @param LicenseArns Amazon Resource Names (ARNs) of the licenses.
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `ProductSKU`
+#' - `ProductSKU`
 #' 
-#' -   `Status`
+#' - `Status`
 #' 
-#' -   `Fingerprint`
+#' - `Fingerprint`
 #' 
-#' -   `IssuerName`
+#' - `IssuerName`
 #' 
-#' -   `Beneficiary`
+#' - `Beneficiary`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -1363,7 +1400,8 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_received_licenses_input(LicenseArns = LicenseArns, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_received_licenses_output()
@@ -1384,9 +1422,9 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #'
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
-#' -   `Beneficiary`
+#' - `Beneficiary`
 #' 
-#' -   `ProductSKU`
+#' - `ProductSKU`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -1399,7 +1437,8 @@ licensemanager_list_received_licenses_for_organization <- function(Filters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_received_licenses_for_organization_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_received_licenses_for_organization_output()
@@ -1423,26 +1462,26 @@ licensemanager_list_received_licenses_for_organization <- function(Filters = NUL
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
 #' 
-#' -   `account_id` - The ID of the Amazon Web Services account that owns
-#'     the resource. Logical operators are `EQUALS` | `NOT_EQUALS`.
+#' - `account_id` - The ID of the Amazon Web Services account that owns the
+#'   resource. Logical operators are `EQUALS` | `NOT_EQUALS`.
 #' 
-#' -   `application_name` - The name of the application. Logical operators
-#'     are `EQUALS` | `BEGINS_WITH`.
+#' - `application_name` - The name of the application. Logical operators
+#'   are `EQUALS` | `BEGINS_WITH`.
 #' 
-#' -   `license_included` - The type of license included. Logical operators
-#'     are `EQUALS` | `NOT_EQUALS`. Possible values are
-#'     `sql-server-enterprise` | `sql-server-standard` | `sql-server-web` |
-#'     `windows-server-datacenter`.
+#' - `license_included` - The type of license included. Logical operators
+#'   are `EQUALS` | `NOT_EQUALS`. Possible values are
+#'   `sql-server-enterprise` | `sql-server-standard` | `sql-server-web` |
+#'   `windows-server-datacenter`.
 #' 
-#' -   `platform` - The platform of the resource. Logical operators are
-#'     `EQUALS` | `BEGINS_WITH`.
+#' - `platform` - The platform of the resource. Logical operators are
+#'   `EQUALS` | `BEGINS_WITH`.
 #' 
-#' -   `resource_id` - The ID of the resource. Logical operators are
-#'     `EQUALS` | `NOT_EQUALS`.
+#' - `resource_id` - The ID of the resource. Logical operators are `EQUALS`
+#'   | `NOT_EQUALS`.
 #' 
-#' -   `tag:<key>` - The key/value combination of a tag assigned to the
-#'     resource. Logical operators are `EQUALS` (single account) or
-#'     `EQUALS` | `NOT_EQUALS` (cross account).
+#' - `tag:<key>` - The key/value combination of a tag assigned to the
+#'   resource. Logical operators are `EQUALS` (single account) or `EQUALS`
+#'   | `NOT_EQUALS` (cross account).
 #'
 #' @keywords internal
 #'
@@ -1453,7 +1492,8 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_resource_inventory_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanager$list_resource_inventory_output()
@@ -1483,7 +1523,8 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .licensemanager$list_tags_for_resource_output()
@@ -1505,7 +1546,7 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #' @param TokenIds Token IDs.
 #' @param Filters Filters to scope the results. The following filter is supported:
 #' 
-#' -   `LicenseArns`
+#' - `LicenseArns`
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
 #'
@@ -1518,7 +1559,8 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_tokens_input(TokenIds = TokenIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .licensemanager$list_tokens_output()
@@ -1544,15 +1586,15 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' @param Filters Filters to scope the results. The following filters and logical
 #' operators are supported:
 #' 
-#' -   `resourceArn` - The ARN of the license configuration resource.
-#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
+#' - `resourceArn` - The ARN of the license configuration resource. Logical
+#'   operators are `EQUALS` | `NOT_EQUALS`.
 #' 
-#' -   `resourceType` - The resource type (`EC2_INSTANCE` | `EC2_HOST` |
-#'     `EC2_AMI` | `SYSTEMS_MANAGER_MANAGED_INSTANCE`). Logical operators
-#'     are `EQUALS` | `NOT_EQUALS`.
+#' - `resourceType` - The resource type (`EC2_INSTANCE` | `EC2_HOST` |
+#'   `EC2_AMI` | `SYSTEMS_MANAGER_MANAGED_INSTANCE`). Logical operators are
+#'   `EQUALS` | `NOT_EQUALS`.
 #' 
-#' -   `resourceAccount` - The ID of the account that owns the resource.
-#'     Logical operators are `EQUALS` | `NOT_EQUALS`.
+#' - `resourceAccount` - The ID of the account that owns the resource.
+#'   Logical operators are `EQUALS` | `NOT_EQUALS`.
 #'
 #' @keywords internal
 #'
@@ -1563,7 +1605,8 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$list_usage_for_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .licensemanager$list_usage_for_license_configuration_output()
@@ -1593,7 +1636,8 @@ licensemanager_reject_grant <- function(GrantArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$reject_grant_input(GrantArn = GrantArn)
   output <- .licensemanager$reject_grant_output()
@@ -1624,7 +1668,8 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .licensemanager$tag_resource_output()
@@ -1655,7 +1700,8 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .licensemanager$untag_resource_output()
@@ -1694,7 +1740,8 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$update_license_configuration_input(LicenseConfigurationArn = LicenseConfigurationArn, LicenseConfigurationStatus = LicenseConfigurationStatus, LicenseRules = LicenseRules, LicenseCount = LicenseCount, LicenseCountHardLimit = LicenseCountHardLimit, Name = Name, Description = Description, ProductInformationList = ProductInformationList, DisassociateWhenNotFound = DisassociateWhenNotFound)
   output <- .licensemanager$update_license_configuration_output()
@@ -1717,11 +1764,11 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 #' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
 #' @param Type &#91;required&#93; Type of reports to generate. The following report types are supported:
 #' 
-#' -   License configuration report - Reports the number and details of
-#'     consumed licenses for a license configuration.
+#' - License configuration report - Reports the number and details of
+#'   consumed licenses for a license configuration.
 #' 
-#' -   Resource report - Reports the tracked licenses and resource
-#'     consumption for a license configuration.
+#' - Resource report - Reports the tracked licenses and resource
+#'   consumption for a license configuration.
 #' @param ReportContext &#91;required&#93; The report context.
 #' @param ReportFrequency &#91;required&#93; Frequency by which reports are generated.
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
@@ -1737,7 +1784,8 @@ licensemanager_update_license_manager_report_generator <- function(LicenseManage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$update_license_manager_report_generator_input(LicenseManagerReportGeneratorArn = LicenseManagerReportGeneratorArn, ReportGeneratorName = ReportGeneratorName, Type = Type, ReportContext = ReportContext, ReportFrequency = ReportFrequency, ClientToken = ClientToken, Description = Description)
   output <- .licensemanager$update_license_manager_report_generator_output()
@@ -1770,7 +1818,8 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$update_license_specifications_for_resource_input(ResourceArn = ResourceArn, AddLicenseSpecifications = AddLicenseSpecifications, RemoveLicenseSpecifications = RemoveLicenseSpecifications)
   output <- .licensemanager$update_license_specifications_for_resource_output()
@@ -1805,7 +1854,8 @@ licensemanager_update_service_settings <- function(S3BucketArn = NULL, SnsTopicA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .licensemanager$update_service_settings_input(S3BucketArn = S3BucketArn, SnsTopicArn = SnsTopicArn, OrganizationConfiguration = OrganizationConfiguration, EnableCrossAccountsDiscovery = EnableCrossAccountsDiscovery)
   output <- .licensemanager$update_service_settings_output()

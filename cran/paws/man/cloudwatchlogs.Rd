@@ -64,17 +64,16 @@ You can use CloudWatch Logs to:
 \itemize{
 \item \strong{Monitor logs from EC2 instances in real time}: You can use
 CloudWatch Logs to monitor applications and systems using log data.
-For example, CloudWatch Logs can track the number of errors that
-occur in your application logs. Then, it can send you a notification
+For example, CloudWatch Logs can track the number of errors that occur
+in your application logs. Then, it can send you a notification
 whenever the rate of errors exceeds a threshold that you specify.
 CloudWatch Logs uses your log data for monitoring so no code changes
 are required. For example, you can monitor application logs for
 specific literal terms (such as "NullReferenceException"). You can
-also count the number of occurrences of a literal term at a
-particular position in log data (such as "404" status codes in an
-Apache access log). When the term you are searching for is found,
-CloudWatch Logs reports the data to a CloudWatch metric that you
-specify.
+also count the number of occurrences of a literal term at a particular
+position in log data (such as "404" status codes in an Apache access
+log). When the term you are searching for is found, CloudWatch Logs
+reports the data to a CloudWatch metric that you specify.
 \item \strong{Monitor CloudTrail logged events}: You can create alarms in
 CloudWatch and receive notifications of particular API activity as
 captured by CloudTrail. You can use the notification to perform
@@ -82,10 +81,9 @@ troubleshooting.
 \item \strong{Archive log data}: You can use CloudWatch Logs to store your log
 data in highly durable storage. You can change the log retention
 setting so that any log events earlier than this setting are
-automatically deleted. The CloudWatch Logs agent helps to quickly
-send both rotated and non-rotated log data off of a host and into
-the log service. You can then access the raw log data when you need
-it.
+automatically deleted. The CloudWatch Logs agent helps to quickly send
+both rotated and non-rotated log data off of a host and into the log
+service. You can then access the raw log data when you need it.
 }
 }
 \section{Service syntax}{
@@ -150,6 +148,7 @@ it.
 \link[paws.management:cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy\cr
 \link[paws.management:cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter\cr
 \link[paws.management:cloudwatchlogs_describe_account_policies]{describe_account_policies} \tab Returns a list of all CloudWatch Logs account policies in the account\cr
+\link[paws.management:cloudwatchlogs_describe_configuration_templates]{describe_configuration_templates} \tab Use this operation to return the valid and default values that are used when creating delivery sources, delivery destinations, and deliveries\cr
 \link[paws.management:cloudwatchlogs_describe_deliveries]{describe_deliveries} \tab Retrieves a list of the deliveries that have been created in the account\cr
 \link[paws.management:cloudwatchlogs_describe_delivery_destinations]{describe_delivery_destinations} \tab Retrieves a list of the delivery destinations that have been created in the account\cr
 \link[paws.management:cloudwatchlogs_describe_delivery_sources]{describe_delivery_sources} \tab Retrieves a list of the delivery sources that have been created in the account\cr
@@ -200,6 +199,7 @@ it.
 \link[paws.management:cloudwatchlogs_untag_log_group]{untag_log_group} \tab The UntagLogGroup operation is on the path to deprecation\cr
 \link[paws.management:cloudwatchlogs_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 \link[paws.management:cloudwatchlogs_update_anomaly]{update_anomaly} \tab Use this operation to suppress anomaly detection for a specified anomaly or pattern\cr
+\link[paws.management:cloudwatchlogs_update_delivery_configuration]{update_delivery_configuration} \tab Use this operation to update the configuration of a delivery to change either the S3 path pattern or the format of the delivered logs\cr
 \link[paws.management:cloudwatchlogs_update_log_anomaly_detector]{update_log_anomaly_detector} \tab Updates an existing log anomaly detector
 }
 }

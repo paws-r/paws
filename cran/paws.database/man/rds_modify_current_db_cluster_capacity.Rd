@@ -28,10 +28,10 @@ cluster, it automatically resumes.
 
 Constraints:
 \itemize{
-\item For Aurora MySQL, valid capacity values are \code{1}, \code{2}, \code{4}, \code{8},
-\code{16}, \code{32}, \code{64}, \code{128}, and \code{256}.
-\item For Aurora PostgreSQL, valid capacity values are \code{2}, \code{4}, \code{8},
-\code{16}, \code{32}, \code{64}, \code{192}, and \code{384}.
+\item For Aurora MySQL, valid capacity values are \code{1}, \code{2}, \code{4}, \code{8}, \code{16},
+\code{32}, \code{64}, \code{128}, and \code{256}.
+\item For Aurora PostgreSQL, valid capacity values are \code{2}, \code{4}, \code{8}, \code{16},
+\code{32}, \code{64}, \code{192}, and \code{384}.
 }}
 
 \item{SecondsBeforeTimeout}{The amount of time, in seconds, that Aurora Serverless v1 tries to find

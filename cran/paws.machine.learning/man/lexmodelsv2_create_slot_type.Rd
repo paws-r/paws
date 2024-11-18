@@ -33,11 +33,11 @@ resolves for a slot.}
 list of possible values. The field can be set to one of the following
 values:
 \itemize{
-\item \code{ORIGINAL_VALUE} - Returns the value entered by the user, if the
-user value is similar to the slot value.
-\item \code{TOP_RESOLUTION} - If there is a resolution list for the slot,
-return the first value in the resolution list. If there is no
-resolution list, return null.
+\item \code{ORIGINAL_VALUE} - Returns the value entered by the user, if the user
+value is similar to the slot value.
+\item \code{TOP_RESOLUTION} - If there is a resolution list for the slot, return
+the first value in the resolution list. If there is no resolution
+list, return null.
 }
 
 If you don't specify the \code{valueSelectionSetting} parameter, the default

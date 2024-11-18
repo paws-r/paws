@@ -29,8 +29,7 @@ protect the job.}
 
 \item{EncryptionMode}{The encryption mode for the job, which can be one of the following:
 \itemize{
-\item \code{SSE-KMS} - \code{SSE-KMS} - Server-side encryption with KMS-managed
-keys.
+\item \code{SSE-KMS} - \code{SSE-KMS} - Server-side encryption with KMS-managed keys.
 \item \code{SSE-S3} - Server-side encryption with keys managed by Amazon S3.
 }}
 

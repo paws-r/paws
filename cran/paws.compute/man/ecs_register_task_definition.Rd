@@ -114,8 +114,8 @@ supported values for the \code{memory} parameter:
 The CPU units cannot be less than 1 vCPU when you use Windows containers
 on Fargate.
 \itemize{
-\item 256 (.25 vCPU) - Available \code{memory} values: 512 (0.5 GB), 1024 (1
-GB), 2048 (2 GB)
+\item 256 (.25 vCPU) - Available \code{memory} values: 512 (0.5 GB), 1024 (1 GB),
+2048 (2 GB)
 \item 512 (.5 vCPU) - Available \code{memory} values: 1024 (1 GB), 2048 (2 GB),
 3072 (3 GB), 4096 (4 GB)
 \item 1024 (1 vCPU) - Available \code{memory} values: 2048 (2 GB), 3072 (3 GB),
@@ -157,8 +157,8 @@ on Fargate.
 (.25 vCPU)
 \item 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available \code{cpu}
 values: 512 (.5 vCPU)
-\item 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB),
-7168 (7 GB), 8192 (8 GB) - Available \code{cpu} values: 1024 (1 vCPU)
+\item 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168
+(7 GB), 8192 (8 GB) - Available \code{cpu} values: 1024 (1 vCPU)
 \item Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) -
 Available \code{cpu} values: 2048 (2 vCPU)
 \item Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) -
@@ -184,17 +184,17 @@ The following basic restrictions apply to tags:
 have only one value.
 \item Maximum key length - 128 Unicode characters in UTF-8
 \item Maximum value length - 256 Unicode characters in UTF-8
-\item If your tagging schema is used across multiple services and
-resources, remember that other services may have restrictions on
-allowed characters. Generally allowed characters are: letters,
-numbers, and spaces representable in UTF-8, and the following
-characters: + - = . _ : / @.
+\item If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = .
+_ : / @.
 \item Tag keys and values are case-sensitive.
 \item Do not use \verb{aws:}, \verb{AWS:}, or any upper or lowercase combination of
 such as a prefix for either keys or values as it is reserved for
-Amazon Web Services use. You cannot edit or delete tag keys or
-values with this prefix. Tags with this prefix do not count against
-your tags per resource limit.
+Amazon Web Services use. You cannot edit or delete tag keys or values
+with this prefix. Tags with this prefix do not count against your tags
+per resource limit.
 }}
 
 \item{pidMode}{The process namespace to use for the containers in the task. The valid

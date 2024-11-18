@@ -23,7 +23,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{QuickConnectConfig}{[required] Configuration settings for the quick connect.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
+For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
 }
 \description{
 Creates a quick connect for the specified Amazon Connect instance.

@@ -67,8 +67,8 @@ delivered by your Amazon Web Services account:
 \item Message type
 \item Delivery status
 \item Message price (in USD)
-\item Part number (a message is split into multiple parts if it is too
-long for a single message)
+\item Part number (a message is split into multiple parts if it is too long
+for a single message)
 \item Total number of parts
 }
 

@@ -38,27 +38,27 @@ timestamp.}
 Valid \code{IntervalPeriod} values are: \code{FIFTEEN_MIN} | \code{THIRTY_MIN} |
 \code{HOUR} | \code{DAY} | \code{WEEK} | \code{TOTAL}.
 
-For example, if \code{IntervalPeriod} is selected \code{THIRTY_MIN},
-\code{StartTime} and \code{EndTime} differs by 1 day, then Amazon Connect
-returns 48 results in the response. Each result is aggregated by the
-THIRTY_MIN period. By default Amazon Connect aggregates results
-based on the \code{TOTAL} interval period.
+For example, if \code{IntervalPeriod} is selected \code{THIRTY_MIN}, \code{StartTime}
+and \code{EndTime} differs by 1 day, then Amazon Connect returns 48 results
+in the response. Each result is aggregated by the THIRTY_MIN period.
+By default Amazon Connect aggregates results based on the \code{TOTAL}
+interval period.
 
-The following list describes restrictions on \code{StartTime} and
-\code{EndTime} based on which \code{IntervalPeriod} is requested.
+The following list describes restrictions on \code{StartTime} and \code{EndTime}
+based on which \code{IntervalPeriod} is requested.
 \itemize{
-\item \code{FIFTEEN_MIN}: The difference between \code{StartTime} and \code{EndTime}
-must be less than 3 days.
-\item \code{THIRTY_MIN}: The difference between \code{StartTime} and \code{EndTime}
-must be less than 3 days.
+\item \code{FIFTEEN_MIN}: The difference between \code{StartTime} and \code{EndTime} must
+be less than 3 days.
+\item \code{THIRTY_MIN}: The difference between \code{StartTime} and \code{EndTime} must
+be less than 3 days.
 \item \code{HOUR}: The difference between \code{StartTime} and \code{EndTime} must be
 less than 3 days.
-\item \code{DAY}: The difference between \code{StartTime} and \code{EndTime} must be
-less than 35 days.
+\item \code{DAY}: The difference between \code{StartTime} and \code{EndTime} must be less
+than 35 days.
 \item \code{WEEK}: The difference between \code{StartTime} and \code{EndTime} must be
 less than 35 days.
-\item \code{TOTAL}: The difference between \code{StartTime} and \code{EndTime} must
-be less than 35 days.
+\item \code{TOTAL}: The difference between \code{StartTime} and \code{EndTime} must be
+less than 35 days.
 }
 \item \code{TimeZone}: The timezone applied to requested metrics.
 }}
@@ -87,12 +87,12 @@ in the \emph{Amazon Connect Administrator Guide}.
 
 Note the following limits:
 \itemize{
-\item \strong{Filter keys}: A maximum of 5 filter keys are supported in a
-single request. Valid filter keys: \code{AGENT} |
-\code{AGENT_HIERARCHY_LEVEL_ONE} | \code{AGENT_HIERARCHY_LEVEL_TWO} |
-\code{AGENT_HIERARCHY_LEVEL_THREE} | \code{AGENT_HIERARCHY_LEVEL_FOUR} |
-\code{AGENT_HIERARCHY_LEVEL_FIVE} | \code{ANSWERING_MACHINE_DETECTION_STATUS}
-| \code{CAMPAIGN} | \code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} |
+\item \strong{Filter keys}: A maximum of 5 filter keys are supported in a single
+request. Valid filter keys: \code{AGENT} | \code{AGENT_HIERARCHY_LEVEL_ONE} |
+\code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} |
+\code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} |
+\code{ANSWERING_MACHINE_DETECTION_STATUS} | \code{CAMPAIGN} |
+\code{CASE_TEMPLATE_ARN} | \code{CASE_STATUS} | \code{CHANNEL} |
 \code{contact/segmentAttributes/connect:Subtype} | \code{DISCONNECT_REASON} |
 \code{FEATURE} | \code{FLOW_TYPE} | \code{FLOWS_NEXT_RESOURCE_ID} |
 \code{FLOWS_NEXT_RESOURCE_QUEUE_ID} | \code{FLOWS_OUTCOME_TYPE} |
@@ -100,32 +100,32 @@ single request. Valid filter keys: \code{AGENT} |
 \code{RESOURCE_PUBLISHED_TIMESTAMP} | \code{ROUTING_PROFILE} |
 \code{ROUTING_STEP_EXPRESSION} | \code{QUEUE} | \code{Q_CONNECT_ENABLED} |
 \item \strong{Filter values}: A maximum of 100 filter values are supported in a
-single request. VOICE, CHAT, and TASK are valid \code{filterValue} for
-the CHANNEL filter key. They do not count towards limitation of 100
-filter values. For example, a GetMetricDataV2 request can filter by
-50 queues, 35 agents, and 15 routing profiles for a total of 100
-filter values, along with 3 channel filters.
+single request. VOICE, CHAT, and TASK are valid \code{filterValue} for the
+CHANNEL filter key. They do not count towards limitation of 100 filter
+values. For example, a GetMetricDataV2 request can filter by 50
+queues, 35 agents, and 15 routing profiles for a total of 100 filter
+values, along with 3 channel filters.
 
-\code{contact_lens_conversational_analytics} is a valid filterValue for
-the \code{FEATURE} filter key. It is available only to contacts analyzed
-by Contact Lens conversational analytics.
+\code{contact_lens_conversational_analytics} is a valid filterValue for the
+\code{FEATURE} filter key. It is available only to contacts analyzed by
+Contact Lens conversational analytics.
 
 \code{connect:Chat}, \code{connect:SMS}, \code{connect:Telephony}, and
-\code{connect:WebRTC} are valid \code{filterValue} examples (not exhaustive)
-for the \verb{contact/segmentAttributes/connect:Subtype filter} key.
+\code{connect:WebRTC} are valid \code{filterValue} examples (not exhaustive) for
+the \verb{contact/segmentAttributes/connect:Subtype filter} key.
 
-\code{ROUTING_STEP_EXPRESSION} is a valid filter key with a filter value
-up to 3000 length. This filter is case and order sensitive. JSON
-string fields must be sorted in ascending order and JSON array order
-should be kept as is.
+\code{ROUTING_STEP_EXPRESSION} is a valid filter key with a filter value up
+to 3000 length. This filter is case and order sensitive. JSON string
+fields must be sorted in ascending order and JSON array order should
+be kept as is.
 
 \code{Q_CONNECT_ENABLED}. TRUE and FALSE are the only valid filterValues
 for the \code{Q_CONNECT_ENABLED} filter key.
 \itemize{
-\item TRUE includes all contacts that had Amazon Q in Connect enabled
-as part of the flow.
-\item FALSE includes all contacts that did not have Amazon Q in
-Connect enabled as part of the flow
+\item TRUE includes all contacts that had Amazon Q in Connect enabled as
+part of the flow.
+\item FALSE includes all contacts that did not have Amazon Q in Connect
+enabled as part of the flow
 }
 
 This filter is available only for contact record-driven metrics.
@@ -1037,14 +1037,14 @@ UI name: \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-
 The \code{Negate} key in Metric Level Filters is not applicable for this
 metric.
 
-\strong{SUM_CONTACTS_ABANDONED}
+\strong{CONTACTS_ABANDONED}
 
 Unit: Count
 
 Metric filter:
 \itemize{
-\item Valid values: \code{API}| \code{Incoming} | \code{Outbound} | \code{Transfer} |
-\code{Callback} | \code{Queue_Transfer}| \code{Disconnect}
+\item Valid values: \code{API}| \code{Incoming} | \code{Outbound} | \code{Transfer} | \code{Callback}
+| \code{Queue_Transfer}| \code{Disconnect}
 }
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,

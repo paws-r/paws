@@ -31,16 +31,16 @@ have one value.
 \item Maximum number of tags per resource: 50.
 \item Maximum key length: 128 Unicode characters in UTF-8.
 \item Maximum value length: 256 Unicode characters in UTF-8.
-\item Accepted characters: all letters and numbers, spaces representable
-in UTF-8, and + - = . _ : / @. If your tagging schema is used
-across other services and resources, the character restrictions of
-those services also apply.
+\item Accepted characters: all letters and numbers, spaces representable in
+UTF-8, and + - = . _ : / @. If your tagging schema is used across
+other services and resources, the character restrictions of those
+services also apply.
 \item Key prefixes cannot include any upper or lowercase combination of
 \verb{aws:} or \verb{AWS:}. Values can have this prefix. If a tag value has
-\code{aws} as its prefix but the key does not, Forecast considers it to
-be a user tag and will count against the limit of 50 tags. Tags with
-only the key prefix of \code{aws} do not count against your tags per
-resource limit. You cannot edit or delete tag keys with this prefix.
+\code{aws} as its prefix but the key does not, Forecast considers it to be
+a user tag and will count against the limit of 50 tags. Tags with only
+the key prefix of \code{aws} do not count against your tags per resource
+limit. You cannot edit or delete tag keys with this prefix.
 }}
 
 \item{Format}{The format of the exported data, CSV or PARQUET.}

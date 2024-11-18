@@ -28,15 +28,15 @@ and \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymme
 following:
 \itemize{
 \item Specify the following ARN to have future
-\code{\link[=cloudwatchlogs_get_query_results]{get_query_results}} operations
-in this account encrypt the results with the specified KMS key.
-Replace \emph{REGION} and \emph{ACCOUNT_ID} with your Region and account ID.
+\code{\link[=cloudwatchlogs_get_query_results]{get_query_results}} operations in
+this account encrypt the results with the specified KMS key. Replace
+\emph{REGION} and \emph{ACCOUNT_ID} with your Region and account ID.
 
 \verb{arn:aws:logs:REGION:ACCOUNT_ID:query-result:*}
-\item Specify the ARN of a log group to have CloudWatch Logs use the KMS
-key to encrypt log events that are ingested and stored by that log
-group. The log group ARN must be in the following format. Replace
-\emph{REGION} and \emph{ACCOUNT_ID} with your Region and account ID.
+\item Specify the ARN of a log group to have CloudWatch Logs use the KMS key
+to encrypt log events that are ingested and stored by that log group.
+The log group ARN must be in the following format. Replace \emph{REGION}
+and \emph{ACCOUNT_ID} with your Region and account ID.
 
 \code{arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME }
 }

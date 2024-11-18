@@ -23,8 +23,8 @@ ec2_describe_snapshots(
 \code{false})
 \item \code{owner-alias} - The owner alias, from an Amazon-maintained list
 (\code{amazon}). This is not the user-configured Amazon Web Services
-account alias set using the IAM console. We recommend that you use
-the related parameter instead of this filter.
+account alias set using the IAM console. We recommend that you use the
+related parameter instead of this filter.
 \item \code{owner-id} - The Amazon Web Services account ID of the owner. We
 recommend that you use the related parameter instead of this filter.
 \item \code{progress} - The progress of the snapshot, as a percentage (for
@@ -36,13 +36,13 @@ example, 80\%).
 \item \code{storage-tier} - The storage tier of the snapshot (\code{archive} |
 \code{standard}).
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as
-the filter value. For example, to find all resources that have a tag
-with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
-the filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this
-filter to find all resources assigned a tag with a specific key,
-regardless of the tag value.
+resource. Use the tag key in the filter name and the tag value as the
+filter value. For example, to find all resources that have a tag with
+the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
+filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless
+of the tag value.
 \item \code{volume-id} - The ID of the volume the snapshot is for.
 \item \code{volume-size} - The size of the volume, in GiB.
 }}

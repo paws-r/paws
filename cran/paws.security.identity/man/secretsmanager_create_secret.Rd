@@ -49,14 +49,14 @@ value to ensure uniqueness of your versions within the specified secret.
 \item If the \code{ClientRequestToken} value isn't already associated with a
 version of the secret then a new version of the secret is created.
 \item If a version with this value already exists and the version
-\code{SecretString} and \code{SecretBinary} values are the same as those in
-the request, then the request is ignored.
+\code{SecretString} and \code{SecretBinary} values are the same as those in the
+request, then the request is ignored.
 \item If a version with this value already exists and that version's
 \code{SecretString} and \code{SecretBinary} values are different from those in
 the request, then the request fails because you cannot modify an
 existing version. Instead, use
-\code{\link[=secretsmanager_put_secret_value]{put_secret_value}} to create a
-new version.
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}} to create a new
+version.
 }
 
 This value becomes the \code{VersionId} of the new version.}

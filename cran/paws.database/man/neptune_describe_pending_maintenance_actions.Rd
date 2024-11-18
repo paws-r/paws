@@ -20,10 +20,9 @@ maintenance actions for.
 
 Supported filters:
 \itemize{
-\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
-Amazon Resource Names (ARNs). The results list will only include
-pending maintenance actions for the DB clusters identified by these
-ARNs.
+\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster Amazon
+Resource Names (ARNs). The results list will only include pending
+maintenance actions for the DB clusters identified by these ARNs.
 \item \code{db-instance-id} - Accepts DB instance identifiers and DB instance
 ARNs. The results list will only include pending maintenance actions
 for the DB instances identified by these ARNs.

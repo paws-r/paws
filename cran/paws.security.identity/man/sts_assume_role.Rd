@@ -109,7 +109,7 @@ parameter. You can specify a parameter value of up to 43200 seconds (12
 hours), depending on the maximum session duration setting for your role.
 However, if you assume a role using role chaining and provide a
 \code{DurationSeconds} parameter value greater than one hour, the operation
-fails. To learn how to view the maximum value for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
+fails. To learn how to view the maximum value for your role, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
 in the \emph{IAM User Guide}.
 
 By default, the value is set to \code{3600} seconds.
@@ -177,7 +177,7 @@ trust everyone in an account. Therefore, the administrator of the
 trusting account might send an external ID to the administrator of the
 trusted account. That way, only someone with the ID can assume the role,
 rather than everyone in the account. For more information about the
-external ID, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html}{How to Use an External ID When Granting Access to Your Amazon Web Services Resources to a Third Party}
+external ID, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html}{How to Use an External ID When Granting Access to Your Amazon Web Services Resources to a Third Party}
 in the \emph{IAM User Guide}.
 
 The regex used to validate this parameter is a string of characters

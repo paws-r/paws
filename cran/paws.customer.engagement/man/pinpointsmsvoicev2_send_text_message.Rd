@@ -51,7 +51,7 @@ logged to the event destination.}
 
 \item{DestinationCountryParameters}{This field is used for any country-specific registration requirements.
 Currently, this setting is only used when you send messages to
-recipients in India using a sender ID. For more information see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html}{Special requirements for sending SMS messages to recipients in India}.
+recipients in India using a sender ID. For more information see \href{https://docs.aws.amazon.com/pinpoint/latest/userguide/channels-sms-senderid-india.html}{Special requirements for sending SMS messages to recipients in India}.
 \itemize{
 \item \code{IN_ENTITY_ID} The entity ID or Principal Entity (PE) ID that you
 received after completing the sender ID registration process.
@@ -59,9 +59,9 @@ received after completing the sender ID registration process.
 the sender ID registration process.
 
 Make sure that the Template ID that you specify matches your message
-template exactly. If your message doesn't match the template that
-you provided during the registration process, the mobile carriers
-might reject your message.
+template exactly. If your message doesn't match the template that you
+provided during the registration process, the mobile carriers might
+reject your message.
 }}
 
 \item{DryRun}{When set to true, the message is checked and validated, but isn't sent

@@ -25,14 +25,13 @@ required if \code{DataSchemaUri} is specified.
 \item DataRearrangement - A JSON string that represents the splitting and
 rearrangement requirements for the \code{Datasource}.
 
-Sample -
-\verb{ "\{\\"splitting\\":\{\\"percentBegin\\":10,\\"percentEnd\\":60\}\}"}
+Sample - \verb{ "\{\\"splitting\\":\{\\"percentBegin\\":10,\\"percentEnd\\":60\}\}"}
 }}
 
 \item{ComputeStatistics}{The compute statistics for a \code{DataSource}. The statistics are generated
 from the observation data referenced by a \code{DataSource}. Amazon ML uses
 the statistics internally during \code{MLModel} training. This parameter must
-be set to \code{true} if the \code{DataSource} needs to be used for \code{MLModel}
+be set to \code{true} if the DataSource needs to be used for \code{MLModel}
 training.}
 }
 \description{

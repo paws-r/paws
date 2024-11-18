@@ -66,10 +66,10 @@ Repositories, by calling the following:
 \item \code{batch_get_repositories}, which
 returns information about one or more repositories associated with
 your Amazon Web Services account.
-\item \code{create_repository}, which creates
-an CodeCommit repository.
-\item \code{delete_repository}, which deletes
-an CodeCommit repository.
+\item \code{create_repository}, which creates an
+CodeCommit repository.
+\item \code{delete_repository}, which deletes an
+CodeCommit repository.
 \item \code{get_repository}, which returns
 information about a specified repository.
 \item \code{list_repositories}, which lists all
@@ -82,34 +82,34 @@ which updates the Key Management Service encryption key used to
 encrypt and decrypt a repository.
 \item \code{update_repository_name}, which
 changes the name of the repository. If you change the name of a
-repository, no other users of that repository can access it until
-you send them the new HTTPS or SSH URL to use.
+repository, no other users of that repository can access it until you
+send them the new HTTPS or SSH URL to use.
 }
 
 Branches, by calling the following:
 \itemize{
-\item \code{create_branch}, which creates a branch
-in a specified repository.
+\item \code{create_branch}, which creates a branch in
+a specified repository.
 \item \code{delete_branch}, which deletes the
 specified branch in a repository unless it is the default branch.
-\item \code{get_branch}, which returns information
-about a specified branch.
-\item \code{list_branches}, which lists all
-branches for a specified repository.
+\item \code{get_branch}, which returns information about
+a specified branch.
+\item \code{list_branches}, which lists all branches
+for a specified repository.
 \item \code{update_default_branch}, which
 changes the default branch for a repository.
 }
 
 Files, by calling the following:
 \itemize{
-\item \code{delete_file}, which deletes the content
-of a specified file from a specified branch.
+\item \code{delete_file}, which deletes the content of
+a specified file from a specified branch.
 \item \code{get_blob}, which returns the base-64 encoded
 content of an individual Git blob object in a repository.
 \item \code{get_file}, which returns the base-64 encoded
 content of a specified file.
-\item \code{get_folder}, which returns the contents of
-a specified folder or directory.
+\item \code{get_folder}, which returns the contents of a
+specified folder or directory.
 \item \code{list_file_commit_history},
 which retrieves a list of commits and changes to a specified file.
 \item \code{put_file}, which adds or modifies a single
@@ -122,13 +122,12 @@ Commits, by calling the following:
 information about one or more commits in a repository.
 \item \code{create_commit}, which creates a commit
 for changes to a repository.
-\item \code{get_commit}, which returns information
-about a commit, including commit messages and author and committer
+\item \code{get_commit}, which returns information about
+a commit, including commit messages and author and committer
 information.
 \item \code{get_differences}, which returns
-information about the differences in a valid commit specifier (such
-as a branch, tag, HEAD, commit ID, or other fully qualified
-reference).
+information about the differences in a valid commit specifier (such as
+a branch, tag, HEAD, commit ID, or other fully qualified reference).
 }
 
 Merges, by calling the following:
@@ -145,12 +144,12 @@ which returns information about merge conflicts between the base,
 source, and destination versions of a file in a potential merge.
 \item \code{get_merge_commit}, which returns
 information about the merge between a source and destination commit.
-\item \code{get_merge_conflicts}, which
-returns information about merge conflicts between the source and
-destination branch in a pull request.
+\item \code{get_merge_conflicts}, which returns
+information about merge conflicts between the source and destination
+branch in a pull request.
 \item \code{get_merge_options}, which returns
-information about the available merge options between two branches
-or commit specifiers.
+information about the available merge options between two branches or
+commit specifiers.
 \item \code{merge_branches_by_fast_forward},
 which merges two branches using the fast-forward merge option.
 \item \code{merge_branches_by_squash},
@@ -161,8 +160,8 @@ which merges two branches using the three-way merge option.
 
 Pull requests, by calling the following:
 \itemize{
-\item \code{create_pull_request}, which
-creates a pull request in a specified repository.
+\item \code{create_pull_request}, which creates
+a pull request in a specified repository.
 \item \code{create_pull_request_approval_rule},
 which creates an approval rule for a specified pull request.
 \item \code{delete_pull_request_approval_rule},
@@ -173,8 +172,7 @@ which returns information about one or more pull request events.
 which evaluates whether a pull request has met all the conditions
 specified in its associated approval rules.
 \item \code{get_comments_for_pull_request},
-which returns information about comments on a specified pull
-request.
+which returns information about comments on a specified pull request.
 \item \code{get_pull_request}, which returns
 information about a specified pull request.
 \item \code{get_pull_request_approval_states},
@@ -185,20 +183,20 @@ which returns information about whether approval rules have been set
 aside (overriden) for a pull request, and if so, the Amazon Resource
 Name (ARN) of the user or identity that overrode the rules and their
 requirements for the pull request.
-\item \code{list_pull_requests}, which lists
-all pull requests for a repository.
+\item \code{list_pull_requests}, which lists all
+pull requests for a repository.
 \item \code{merge_pull_request_by_fast_forward},
-which merges the source destination branch of a pull request into
-the specified destination branch for that pull request using the
+which merges the source destination branch of a pull request into the
+specified destination branch for that pull request using the
 fast-forward merge option.
 \item \code{merge_pull_request_by_squash},
-which merges the source destination branch of a pull request into
-the specified destination branch for that pull request using the
-squash merge option.
+which merges the source destination branch of a pull request into the
+specified destination branch for that pull request using the squash
+merge option.
 \item \code{merge_pull_request_by_three_way},
-which merges the source destination branch of a pull request into
-the specified destination branch for that pull request using the
-three-way merge option.
+which merges the source destination branch of a pull request into the
+specified destination branch for that pull request using the three-way
+merge option.
 \item \code{override_pull_request_approval_rules},
 which sets aside all approval rule requirements for a pull request.
 \item \code{post_comment_for_pull_request},
@@ -220,14 +218,14 @@ Approval rule templates, by calling the following:
 \itemize{
 \item \code{associate_approval_rule_template_with_repository},
 which associates a template with a specified repository. After the
-template is associated with a repository, CodeCommit creates
-approval rules that match the template conditions on every pull
-request created in the specified repository.
+template is associated with a repository, CodeCommit creates approval
+rules that match the template conditions on every pull request created
+in the specified repository.
 \item \code{batch_associate_approval_rule_template_with_repositories},
 which associates a template with one or more specified repositories.
-After the template is associated with a repository, CodeCommit
-creates approval rules that match the template conditions on every
-pull request created in the specified repositories.
+After the template is associated with a repository, CodeCommit creates
+approval rules that match the template conditions on every pull
+request created in the specified repositories.
 \item \code{batch_disassociate_approval_rule_template_from_repositories},
 which removes the association between a template and specified
 repositories so that approval rules based on the template are not
@@ -272,13 +270,13 @@ about a comment on a commit.
 \item \code{get_comment_reactions}, which
 returns information about emoji reactions to comments.
 \item \code{get_comments_for_compared_commit},
-which returns information about comments on the comparison between
-two commit specifiers in a repository.
+which returns information about comments on the comparison between two
+commit specifiers in a repository.
 \item \code{post_comment_for_compared_commit},
 which creates a comment on the comparison between two commit
 specifiers in a repository.
-\item \code{post_comment_reply}, which creates
-a reply to a comment.
+\item \code{post_comment_reply}, which creates a
+reply to a comment.
 \item \code{put_comment_reaction}, which
 creates or updates an emoji reaction to a comment.
 \item \code{update_comment}, which updates the
@@ -289,25 +287,24 @@ Tags used to tag resources in CodeCommit (not Git tags), by calling the
 following:
 \itemize{
 \item \code{list_tags_for_resource}, which
-gets information about Amazon Web Servicestags for a specified
-Amazon Resource Name (ARN) in CodeCommit.
-\item \code{tag_resource}, which adds or updates
-tags for a resource in CodeCommit.
-\item \code{untag_resource}, which removes tags
+gets information about Amazon Web Servicestags for a specified Amazon
+Resource Name (ARN) in CodeCommit.
+\item \code{tag_resource}, which adds or updates tags
 for a resource in CodeCommit.
+\item \code{untag_resource}, which removes tags for
+a resource in CodeCommit.
 }
 
 Triggers, by calling the following:
 \itemize{
-\item \code{get_repository_triggers},
-which returns information about triggers configured for a
-repository.
-\item \code{put_repository_triggers},
-which replaces all triggers for a repository and can be used to
-create or delete triggers.
+\item \code{get_repository_triggers}, which
+returns information about triggers configured for a repository.
+\item \code{put_repository_triggers}, which
+replaces all triggers for a repository and can be used to create or
+delete triggers.
 \item \code{test_repository_triggers},
-which tests the functionality of a repository trigger by sending
-data to the trigger target.
+which tests the functionality of a repository trigger by sending data
+to the trigger target.
 }
 
 For information about how to use CodeCommit, see the \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{CodeCommit User Guide}.

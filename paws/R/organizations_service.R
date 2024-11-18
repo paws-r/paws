@@ -28,38 +28,37 @@ NULL
 #' Amazon Web Services Regions in China, then specify `cn-northwest-1`. You
 #' can do this in the CLI by using these parameters and commands:
 #' 
-#' -   Use the following parameter with each command to specify both the
-#'     endpoint and its region:
+#' - Use the following parameter with each command to specify both the
+#'   endpoint and its region:
 #' 
-#'     `--endpoint-url https://organizations.us-east-1.amazonaws.com`
-#'     *(from commercial Amazon Web Services Regions outside of China)*
+#'   `--endpoint-url https://organizations.us-east-1.amazonaws.com` *(from
+#'   commercial Amazon Web Services Regions outside of China)*
 #' 
-#'     or
+#'   or
 #' 
-#'     `--endpoint-url https://organizations.cn-northwest-1.amazonaws.com.cn`
-#'     *(from Amazon Web Services Regions in China)*
+#'   `--endpoint-url https://organizations.cn-northwest-1.amazonaws.com.cn`
+#'   *(from Amazon Web Services Regions in China)*
 #' 
-#' -   Use the default endpoint, but configure your default region with
-#'     this command:
+#' - Use the default endpoint, but configure your default region with this
+#'   command:
 #' 
-#'     `aws configure set default.region us-east-1` *(from commercial
-#'     Amazon Web Services Regions outside of China)*
+#'   `aws configure set default.region us-east-1` *(from commercial Amazon
+#'   Web Services Regions outside of China)*
 #' 
-#'     or
+#'   or
 #' 
-#'     `aws configure set default.region cn-northwest-1` *(from Amazon Web
-#'     Services Regions in China)*
+#'   `aws configure set default.region cn-northwest-1` *(from Amazon Web
+#'   Services Regions in China)*
 #' 
-#' -   Use the following parameter with each command to specify the
-#'     endpoint:
+#' - Use the following parameter with each command to specify the endpoint:
 #' 
-#'     `--region us-east-1` *(from commercial Amazon Web Services Regions
-#'     outside of China)*
+#'   `--region us-east-1` *(from commercial Amazon Web Services Regions
+#'   outside of China)*
 #' 
-#'     or
+#'   or
 #' 
-#'     `--region cn-northwest-1` *(from Amazon Web Services Regions in
-#'     China)*
+#'   `--region cn-northwest-1` *(from Amazon Web Services Regions in
+#'   China)*
 #' 
 #' **Recording API Requests**
 #' 

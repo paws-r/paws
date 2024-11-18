@@ -125,14 +125,14 @@ The following throttling limits apply to Security Hub API operations.
 \item \code{batch_enable_standards} -
 \code{RateLimit} of 1 request per second. \code{BurstLimit} of 1 request per
 second.
-\item \code{get_findings} - \code{RateLimit} of 3
-requests per second. \code{BurstLimit} of 6 requests per second.
+\item \code{get_findings} - \code{RateLimit} of 3 requests
+per second. \code{BurstLimit} of 6 requests per second.
 \item \code{batch_import_findings} -
-\code{RateLimit} of 10 requests per second. \code{BurstLimit} of 30 requests
-per second.
+\code{RateLimit} of 10 requests per second. \code{BurstLimit} of 30 requests per
+second.
 \item \code{batch_update_findings} -
-\code{RateLimit} of 10 requests per second. \code{BurstLimit} of 30 requests
-per second.
+\code{RateLimit} of 10 requests per second. \code{BurstLimit} of 30 requests per
+second.
 \item \code{update_standards_control} -
 \code{RateLimit} of 1 request per second. \code{BurstLimit} of 5 requests per
 second.

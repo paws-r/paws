@@ -22,7 +22,7 @@ ec2_allocate_hosts(
 \item{AutoPlacement}{Indicates whether the host accepts any untargeted instance launches that
 match its instance type configuration, or if it only accepts Host
 tenancy instance launches that specify its unique host ID. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-understanding}{Understanding auto-placement and affinity}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding}{Understanding auto-placement and affinity}
 in the \emph{Amazon EC2 User Guide}.
 
 Default: \code{off}}
@@ -30,7 +30,7 @@ Default: \code{off}}
 \item{AvailabilityZone}{[required] The Availability Zone in which to allocate the Dedicated Host.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 
 \item{InstanceType}{Specifies the instance type to be supported by the Dedicated Hosts. If
 you specify an instance type, the Dedicated Hosts support instances of
@@ -85,10 +85,10 @@ supported only if you specify \strong{OutpostArn}. If you are allocating the
 Dedicated Hosts in a Region, omit this parameter.
 \itemize{
 \item If you specify this parameter, you can omit \strong{Quantity}. In this
-case, Amazon EC2 allocates a Dedicated Host on each specified
-hardware asset.
-\item If you specify both \strong{AssetIds} and \strong{Quantity}, then the value
-for \strong{Quantity} must be equal to the number of asset IDs specified.
+case, Amazon EC2 allocates a Dedicated Host on each specified hardware
+asset.
+\item If you specify both \strong{AssetIds} and \strong{Quantity}, then the value for
+\strong{Quantity} must be equal to the number of asset IDs specified.
 }}
 }
 \description{

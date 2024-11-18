@@ -21,7 +21,8 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
     http_method = "POST",
     http_path = "/evaluation-jobs/batch-delete",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$batch_delete_evaluation_job_input(jobIdentifiers = jobIdentifiers)
   output <- .bedrock$batch_delete_evaluation_job_output()
@@ -48,7 +49,7 @@ bedrock_batch_delete_evaluation_job <- function(jobIdentifiers) {
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param roleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM service role that Amazon
 #' Bedrock can assume to perform tasks on your behalf. The service role
 #' must have Amazon Bedrock as the service principal, and provide access to
@@ -77,7 +78,8 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
     http_method = "POST",
     http_path = "/evaluation-jobs",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$create_evaluation_job_input(jobName = jobName, jobDescription = jobDescription, clientRequestToken = clientRequestToken, roleArn = roleArn, customerEncryptionKeyId = customerEncryptionKeyId, jobTags = jobTags, evaluationConfig = evaluationConfig, inferenceConfig = inferenceConfig, outputDataConfig = outputDataConfig)
   output <- .bedrock$create_evaluation_job_output()
@@ -113,7 +115,7 @@ bedrock_create_evaluation_job <- function(jobName, jobDescription = NULL, client
 #' completes no more than once. If this token matches a previous request,
 #' Amazon Bedrock ignores the request, but does not return an error. For
 #' more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon S3 User Guide*.
 #'
 #' @keywords internal
@@ -125,7 +127,8 @@ bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig
     http_method = "POST",
     http_path = "/guardrails",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$create_guardrail_input(name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId, tags = tags, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_guardrail_output()
@@ -150,7 +153,7 @@ bedrock_create_guardrail <- function(name, description = NULL, topicPolicyConfig
 #' completes no more than once. If this token matches a previous request,
 #' Amazon Bedrock ignores the request, but does not return an error. For
 #' more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon S3 User Guide*.
 #'
 #' @keywords internal
@@ -162,7 +165,8 @@ bedrock_create_guardrail_version <- function(guardrailIdentifier, description = 
     http_method = "POST",
     http_path = "/guardrails/{guardrailIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$create_guardrail_version_input(guardrailIdentifier = guardrailIdentifier, description = description, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_guardrail_version_output()
@@ -192,7 +196,7 @@ bedrock_create_guardrail_version <- function(guardrailIdentifier, description = 
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #'
 #' @keywords internal
 #'
@@ -203,7 +207,8 @@ bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, model
     http_method = "POST",
     http_path = "/model-copy-jobs",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$create_model_copy_job_input(sourceModelArn = sourceModelArn, targetModelName = targetModelName, modelKmsKeyId = modelKmsKeyId, targetModelTags = targetModelTags, clientRequestToken = clientRequestToken)
   output <- .bedrock$create_model_copy_job_output()
@@ -234,7 +239,7 @@ bedrock_create_model_copy_job <- function(sourceModelArn, targetModelName, model
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param baseModelIdentifier &#91;required&#93; Name of the base model.
 #' @param customizationType The customization type.
 #' @param customModelKmsKeyId The custom model is encrypted at rest using this key.
@@ -259,7 +264,8 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
     http_method = "POST",
     http_path = "/model-customization-jobs",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$create_model_customization_job_input(jobName = jobName, customModelName = customModelName, roleArn = roleArn, clientRequestToken = clientRequestToken, baseModelIdentifier = baseModelIdentifier, customizationType = customizationType, customModelKmsKeyId = customModelKmsKeyId, jobTags = jobTags, customModelTags = customModelTags, trainingDataConfig = trainingDataConfig, validationDataConfig = validationDataConfig, outputDataConfig = outputDataConfig, hyperParameters = hyperParameters, vpcConfig = vpcConfig)
   output <- .bedrock$create_model_customization_job_output()
@@ -289,7 +295,7 @@ bedrock_create_model_customization_job <- function(jobName, customModelName, rol
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param vpcConfig VPC configuration parameters for the private Virtual Private Cloud (VPC)
 #' that contains the resources you are using for the import job.
 #' @param importedModelKmsKeyId The imported model is encrypted at rest using this key.
@@ -303,7 +309,8 @@ bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn,
     http_method = "POST",
     http_path = "/model-import-jobs",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$create_model_import_job_input(jobName = jobName, importedModelName = importedModelName, roleArn = roleArn, modelDataSource = modelDataSource, jobTags = jobTags, importedModelTags = importedModelTags, clientRequestToken = clientRequestToken, vpcConfig = vpcConfig, importedModelKmsKeyId = importedModelKmsKeyId)
   output <- .bedrock$create_model_import_job_output()
@@ -332,7 +339,7 @@ bedrock_create_model_import_job <- function(jobName, importedModelName, roleArn,
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param modelId &#91;required&#93; The unique identifier of the foundation model to use for the batch
 #' inference job.
 #' @param inputDataConfig &#91;required&#93; Details about the location of the input to the batch inference job.
@@ -352,7 +359,8 @@ bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestT
     http_method = "POST",
     http_path = "/model-invocation-job",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$create_model_invocation_job_input(jobName = jobName, roleArn = roleArn, clientRequestToken = clientRequestToken, modelId = modelId, inputDataConfig = inputDataConfig, outputDataConfig = outputDataConfig, timeoutDurationInHours = timeoutDurationInHours, tags = tags)
   output <- .bedrock$create_model_invocation_job_output()
@@ -376,7 +384,7 @@ bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestT
 #' completes no more than one time. If this token matches a previous
 #' request, Amazon Bedrock ignores the request, but does not return an
 #' error. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the Amazon S3 User Guide.
 #' @param modelUnits &#91;required&#93; Number of model units to allocate. A model unit delivers a specific
 #' throughput level for the specified model. The throughput level of a
@@ -398,7 +406,7 @@ bedrock_create_model_invocation_job <- function(jobName, roleArn, clientRequestT
 #' this Provisioned Throughput. For a list of models for which you can
 #' purchase Provisioned Throughput, see [Amazon Bedrock model IDs for
 #' purchasing Provisioned
-#' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#prov-throughput-models)
+#' Throughput](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#prov-throughput-models)
 #' in the [Amazon Bedrock User
 #' Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #' @param commitmentDuration The commitment duration requested for the Provisioned Throughput.
@@ -421,7 +429,8 @@ bedrock_create_provisioned_model_throughput <- function(clientRequestToken = NUL
     http_method = "POST",
     http_path = "/provisioned-model-throughput",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$create_provisioned_model_throughput_input(clientRequestToken = clientRequestToken, modelUnits = modelUnits, provisionedModelName = provisionedModelName, modelId = modelId, commitmentDuration = commitmentDuration, tags = tags)
   output <- .bedrock$create_provisioned_model_throughput_output()
@@ -451,7 +460,8 @@ bedrock_delete_custom_model <- function(modelIdentifier) {
     http_method = "DELETE",
     http_path = "/custom-models/{modelIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$delete_custom_model_input(modelIdentifier = modelIdentifier)
   output <- .bedrock$delete_custom_model_output()
@@ -482,7 +492,8 @@ bedrock_delete_guardrail <- function(guardrailIdentifier, guardrailVersion = NUL
     http_method = "DELETE",
     http_path = "/guardrails/{guardrailIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$delete_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrock$delete_guardrail_output()
@@ -512,7 +523,8 @@ bedrock_delete_imported_model <- function(modelIdentifier) {
     http_method = "DELETE",
     http_path = "/imported-models/{modelIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$delete_imported_model_input(modelIdentifier = modelIdentifier)
   output <- .bedrock$delete_imported_model_output()
@@ -542,7 +554,8 @@ bedrock_delete_model_invocation_logging_configuration <- function() {
     http_method = "DELETE",
     http_path = "/logging/modelinvocations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$delete_model_invocation_logging_configuration_input()
   output <- .bedrock$delete_model_invocation_logging_configuration_output()
@@ -572,7 +585,8 @@ bedrock_delete_provisioned_model_throughput <- function(provisionedModelId) {
     http_method = "DELETE",
     http_path = "/provisioned-model-throughput/{provisionedModelId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$delete_provisioned_model_throughput_input(provisionedModelId = provisionedModelId)
   output <- .bedrock$delete_provisioned_model_throughput_output()
@@ -603,7 +617,8 @@ bedrock_get_custom_model <- function(modelIdentifier) {
     http_method = "GET",
     http_path = "/custom-models/{modelIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_custom_model_input(modelIdentifier = modelIdentifier)
   output <- .bedrock$get_custom_model_output()
@@ -634,7 +649,8 @@ bedrock_get_evaluation_job <- function(jobIdentifier) {
     http_method = "GET",
     http_path = "/evaluation-jobs/{jobIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_evaluation_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$get_evaluation_job_output()
@@ -664,7 +680,8 @@ bedrock_get_foundation_model <- function(modelIdentifier) {
     http_method = "GET",
     http_path = "/foundation-models/{modelIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_foundation_model_input(modelIdentifier = modelIdentifier)
   output <- .bedrock$get_foundation_model_output()
@@ -697,7 +714,8 @@ bedrock_get_guardrail <- function(guardrailIdentifier, guardrailVersion = NULL) 
     http_method = "GET",
     http_path = "/guardrails/{guardrailIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrock$get_guardrail_output()
@@ -727,7 +745,8 @@ bedrock_get_imported_model <- function(modelIdentifier) {
     http_method = "GET",
     http_path = "/imported-models/{modelIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_imported_model_input(modelIdentifier = modelIdentifier)
   output <- .bedrock$get_imported_model_output()
@@ -757,7 +776,8 @@ bedrock_get_inference_profile <- function(inferenceProfileIdentifier) {
     http_method = "GET",
     http_path = "/inference-profiles/{inferenceProfileIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_inference_profile_input(inferenceProfileIdentifier = inferenceProfileIdentifier)
   output <- .bedrock$get_inference_profile_output()
@@ -787,7 +807,8 @@ bedrock_get_model_copy_job <- function(jobArn) {
     http_method = "GET",
     http_path = "/model-copy-jobs/{jobArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_model_copy_job_input(jobArn = jobArn)
   output <- .bedrock$get_model_copy_job_output()
@@ -818,7 +839,8 @@ bedrock_get_model_customization_job <- function(jobIdentifier) {
     http_method = "GET",
     http_path = "/model-customization-jobs/{jobIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_model_customization_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$get_model_customization_job_output()
@@ -849,7 +871,8 @@ bedrock_get_model_import_job <- function(jobIdentifier) {
     http_method = "GET",
     http_path = "/model-import-jobs/{jobIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_model_import_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$get_model_import_job_output()
@@ -864,7 +887,7 @@ bedrock_get_model_import_job <- function(jobIdentifier) {
 #' Gets details about a batch inference job
 #'
 #' @description
-#' Gets details about a batch inference job. For more information, see [View details about a batch inference job](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view)
+#' Gets details about a batch inference job. For more information, see [View details about a batch inference job](https://docs.aws.amazon.com/bedrock/latest/userguide/#batch-inference-view)
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_get_model_invocation_job/](https://www.paws-r-sdk.com/docs/bedrock_get_model_invocation_job/) for full documentation.
 #'
@@ -879,7 +902,8 @@ bedrock_get_model_invocation_job <- function(jobIdentifier) {
     http_method = "GET",
     http_path = "/model-invocation-job/{jobIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_model_invocation_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$get_model_invocation_job_output()
@@ -909,7 +933,8 @@ bedrock_get_model_invocation_logging_configuration <- function() {
     http_method = "GET",
     http_path = "/logging/modelinvocations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_model_invocation_logging_configuration_input()
   output <- .bedrock$get_model_invocation_logging_configuration_output()
@@ -939,7 +964,8 @@ bedrock_get_provisioned_model_throughput <- function(provisionedModelId) {
     http_method = "GET",
     http_path = "/provisioned-model-throughput/{provisionedModelId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$get_provisioned_model_throughput_input(provisionedModelId = provisionedModelId)
   output <- .bedrock$get_provisioned_model_throughput_output()
@@ -987,7 +1013,8 @@ bedrock_list_custom_models <- function(creationTimeBefore = NULL, creationTimeAf
     http_method = "GET",
     http_path = "/custom-models",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_custom_models_input(creationTimeBefore = creationTimeBefore, creationTimeAfter = creationTimeAfter, nameContains = nameContains, baseModelArnEquals = baseModelArnEquals, foundationModelArnEquals = foundationModelArnEquals, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder, isOwned = isOwned)
   output <- .bedrock$list_custom_models_output()
@@ -1027,7 +1054,8 @@ bedrock_list_evaluation_jobs <- function(creationTimeAfter = NULL, creationTimeB
     http_method = "GET",
     http_path = "/evaluation-jobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_evaluation_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_evaluation_jobs_output()
@@ -1042,7 +1070,7 @@ bedrock_list_evaluation_jobs <- function(creationTimeAfter = NULL, creationTimeB
 #' Lists Amazon Bedrock foundation models that you can use
 #'
 #' @description
-#' Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see [Foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
+#' Lists Amazon Bedrock foundation models that you can use. You can filter the results with the request parameters. For more information, see [Foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/foundation-models.html) in the [Amazon Bedrock User Guide](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/](https://www.paws-r-sdk.com/docs/bedrock_list_foundation_models/) for full documentation.
 #'
@@ -1068,7 +1096,8 @@ bedrock_list_foundation_models <- function(byProvider = NULL, byCustomizationTyp
     http_method = "GET",
     http_path = "/foundation-models",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$list_foundation_models_input(byProvider = byProvider, byCustomizationType = byCustomizationType, byOutputModality = byOutputModality, byInferenceType = byInferenceType)
   output <- .bedrock$list_foundation_models_output()
@@ -1103,7 +1132,8 @@ bedrock_list_guardrails <- function(guardrailIdentifier = NULL, maxResults = NUL
     http_method = "GET",
     http_path = "/guardrails",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "guardrails")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "guardrails"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_guardrails_input(guardrailIdentifier = guardrailIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .bedrock$list_guardrails_output()
@@ -1144,7 +1174,8 @@ bedrock_list_imported_models <- function(creationTimeBefore = NULL, creationTime
     http_method = "GET",
     http_path = "/imported-models",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_imported_models_input(creationTimeBefore = creationTimeBefore, creationTimeAfter = creationTimeAfter, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_imported_models_output()
@@ -1180,7 +1211,8 @@ bedrock_list_inference_profiles <- function(maxResults = NULL, nextToken = NULL)
     http_method = "GET",
     http_path = "/inference-profiles",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "inferenceProfileSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "inferenceProfileSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_inference_profiles_input(maxResults = maxResults, nextToken = nextToken)
   output <- .bedrock$list_inference_profiles_output()
@@ -1228,7 +1260,8 @@ bedrock_list_model_copy_jobs <- function(creationTimeAfter = NULL, creationTimeB
     http_method = "GET",
     http_path = "/model-copy-jobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelCopyJobSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelCopyJobSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_model_copy_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, sourceAccountEquals = sourceAccountEquals, sourceModelArnEquals = sourceModelArnEquals, targetModelNameContains = targetModelNameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_model_copy_jobs_output()
@@ -1271,7 +1304,8 @@ bedrock_list_model_customization_jobs <- function(creationTimeAfter = NULL, crea
     http_method = "GET",
     http_path = "/model-customization-jobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelCustomizationJobSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelCustomizationJobSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_model_customization_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_model_customization_jobs_output()
@@ -1313,7 +1347,8 @@ bedrock_list_model_import_jobs <- function(creationTimeAfter = NULL, creationTim
     http_method = "GET",
     http_path = "/model-import-jobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelImportJobSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "modelImportJobSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_model_import_jobs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_model_import_jobs_output()
@@ -1328,7 +1363,7 @@ bedrock_list_model_import_jobs <- function(creationTimeAfter = NULL, creationTim
 #' Lists all batch inference jobs in the account
 #'
 #' @description
-#' Lists all batch inference jobs in the account. For more information, see [View details about a batch inference job](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view).
+#' Lists all batch inference jobs in the account. For more information, see [View details about a batch inference job](https://docs.aws.amazon.com/bedrock/latest/userguide/#batch-inference-view).
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_list_model_invocation_jobs/](https://www.paws-r-sdk.com/docs/bedrock_list_model_invocation_jobs/) for full documentation.
 #'
@@ -1361,7 +1396,8 @@ bedrock_list_model_invocation_jobs <- function(submitTimeAfter = NULL, submitTim
     http_method = "GET",
     http_path = "/model-invocation-jobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationJobSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invocationJobSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_model_invocation_jobs_input(submitTimeAfter = submitTimeAfter, submitTimeBefore = submitTimeBefore, statusEquals = statusEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_model_invocation_jobs_output()
@@ -1409,7 +1445,8 @@ bedrock_list_provisioned_model_throughputs <- function(creationTimeAfter = NULL,
     http_method = "GET",
     http_path = "/provisioned-model-throughputs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "provisionedModelSummaries")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "provisionedModelSummaries"),
+    stream_api = FALSE
   )
   input <- .bedrock$list_provisioned_model_throughputs_input(creationTimeAfter = creationTimeAfter, creationTimeBefore = creationTimeBefore, statusEquals = statusEquals, modelArnEquals = modelArnEquals, nameContains = nameContains, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .bedrock$list_provisioned_model_throughputs_output()
@@ -1439,7 +1476,8 @@ bedrock_list_tags_for_resource <- function(resourceARN) {
     http_method = "POST",
     http_path = "/listTagsForResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$list_tags_for_resource_input(resourceARN = resourceARN)
   output <- .bedrock$list_tags_for_resource_output()
@@ -1469,7 +1507,8 @@ bedrock_put_model_invocation_logging_configuration <- function(loggingConfig) {
     http_method = "PUT",
     http_path = "/logging/modelinvocations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$put_model_invocation_logging_configuration_input(loggingConfig = loggingConfig)
   output <- .bedrock$put_model_invocation_logging_configuration_output()
@@ -1499,7 +1538,8 @@ bedrock_stop_evaluation_job <- function(jobIdentifier) {
     http_method = "POST",
     http_path = "/evaluation-job/{jobIdentifier}/stop",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$stop_evaluation_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$stop_evaluation_job_output()
@@ -1529,7 +1569,8 @@ bedrock_stop_model_customization_job <- function(jobIdentifier) {
     http_method = "POST",
     http_path = "/model-customization-jobs/{jobIdentifier}/stop",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$stop_model_customization_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$stop_model_customization_job_output()
@@ -1544,7 +1585,7 @@ bedrock_stop_model_customization_job <- function(jobIdentifier) {
 #' Stops a batch inference job
 #'
 #' @description
-#' Stops a batch inference job. You're only charged for tokens that were already processed. For more information, see [Stop a batch inference job](https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-stop).
+#' Stops a batch inference job. You're only charged for tokens that were already processed. For more information, see [Stop a batch inference job](https://docs.aws.amazon.com/bedrock/latest/userguide/#batch-inference-stop).
 #'
 #' See [https://www.paws-r-sdk.com/docs/bedrock_stop_model_invocation_job/](https://www.paws-r-sdk.com/docs/bedrock_stop_model_invocation_job/) for full documentation.
 #'
@@ -1559,7 +1600,8 @@ bedrock_stop_model_invocation_job <- function(jobIdentifier) {
     http_method = "POST",
     http_path = "/model-invocation-job/{jobIdentifier}/stop",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$stop_model_invocation_job_input(jobIdentifier = jobIdentifier)
   output <- .bedrock$stop_model_invocation_job_output()
@@ -1590,7 +1632,8 @@ bedrock_tag_resource <- function(resourceARN, tags) {
     http_method = "POST",
     http_path = "/tagResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$tag_resource_input(resourceARN = resourceARN, tags = tags)
   output <- .bedrock$tag_resource_output()
@@ -1621,7 +1664,8 @@ bedrock_untag_resource <- function(resourceARN, tagKeys) {
     http_method = "POST",
     http_path = "/untagResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
   output <- .bedrock$untag_resource_output()
@@ -1662,7 +1706,8 @@ bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NU
     http_method = "PUT",
     http_path = "/guardrails/{guardrailIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$update_guardrail_input(guardrailIdentifier = guardrailIdentifier, name = name, description = description, topicPolicyConfig = topicPolicyConfig, contentPolicyConfig = contentPolicyConfig, wordPolicyConfig = wordPolicyConfig, sensitiveInformationPolicyConfig = sensitiveInformationPolicyConfig, contextualGroundingPolicyConfig = contextualGroundingPolicyConfig, blockedInputMessaging = blockedInputMessaging, blockedOutputsMessaging = blockedOutputsMessaging, kmsKeyId = kmsKeyId)
   output <- .bedrock$update_guardrail_output()
@@ -1691,10 +1736,10 @@ bedrock_update_guardrail <- function(guardrailIdentifier, name, description = NU
 #' If this Provisioned Throughput is associated with a custom model, you
 #' can specify one of the following options:
 #' 
-#' -   The base model from which the custom model was customized.
+#' - The base model from which the custom model was customized.
 #' 
-#' -   Another custom model that was customized from the same base model as
-#'     the custom model.
+#' - Another custom model that was customized from the same base model as
+#'   the custom model.
 #'
 #' @keywords internal
 #'
@@ -1705,7 +1750,8 @@ bedrock_update_provisioned_model_throughput <- function(provisionedModelId, desi
     http_method = "PATCH",
     http_path = "/provisioned-model-throughput/{provisionedModelId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrock$update_provisioned_model_throughput_input(provisionedModelId = provisionedModelId, desiredProvisionedModelName = desiredProvisionedModelName, desiredModelId = desiredModelId)
   output <- .bedrock$update_provisioned_model_throughput_output()

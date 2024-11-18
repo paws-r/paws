@@ -37,12 +37,10 @@ was specified.
 \itemize{
 \item \code{True} - if the stack creation fails, do nothing. This is equivalent
 to specifying \code{DO_NOTHING} for the \code{OnStackFailure} parameter to the
-\code{\link[=cloudformation_create_change_set]{create_change_set}} API
-operation.
+\code{\link[=cloudformation_create_change_set]{create_change_set}} API operation.
 \item \code{False} - if the stack creation fails, roll back the stack. This is
-equivalent to specifying \code{ROLLBACK} for the \code{OnStackFailure}
-parameter to the
-\code{\link[=cloudformation_create_change_set]{create_change_set}} API
+equivalent to specifying \code{ROLLBACK} for the \code{OnStackFailure} parameter
+to the \code{\link[=cloudformation_create_change_set]{create_change_set}} API
 operation.
 }
 

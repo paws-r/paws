@@ -22,34 +22,34 @@ NULL
 #' using your favorite programming language. The SDKs perform tasks such as
 #' the following automatically:
 #' 
-#' -   Cryptographically sign your service requests
+#' - Cryptographically sign your service requests
 #' 
-#' -   Retry requests
+#' - Retry requests
 #' 
-#' -   Handle error responses
+#' - Handle error responses
 #' 
 #' **Additional information**
 #' 
-#' -   [Amazon SQS Product Page](https://aws.amazon.com/sqs/)
+#' - [Amazon SQS Product Page](https://aws.amazon.com/sqs/)
 #' 
-#' -   *Amazon SQS Developer Guide*
+#' - *Amazon SQS Developer Guide*
 #' 
-#'     -   [Making API
-#'         Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html)
+#'   - [Making API
+#'     Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html)
 #' 
-#'     -   [Amazon SQS Message
-#'         Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
+#'   - [Amazon SQS Message
+#'     Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
 #' 
-#'     -   [Amazon SQS Dead-Letter
-#'         Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#'   - [Amazon SQS Dead-Letter
+#'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
-#' -   [Amazon SQS in the *Command Line
-#'     Interface*](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
+#' - [Amazon SQS in the *Command Line
+#'   Interface*](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
 #' 
-#' -   *Amazon Web Services General Reference*
+#' - *Amazon Web Services General Reference*
 #' 
-#'     -   [Regions and
-#'         Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
+#'   - [Regions and
+#'     Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 #'
 #' @param
 #' config

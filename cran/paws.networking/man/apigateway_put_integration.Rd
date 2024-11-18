@@ -42,20 +42,19 @@ standard integration, where \code{connectionType} is not \code{VPC_LINK}, or
 private integration, where \code{connectionType} is \code{VPC_LINK}. For a private
 HTTP integration, the URI is not used for routing. For \code{AWS} or
 \code{AWS_PROXY} integrations, the URI is of the form
-\verb{arn:aws:apigateway:\\\{region\\\}:\\\{subdomain.service|service\\\}:path|action/\\\{service_api}\}.
-Here, \{Region\} is the API Gateway region (e.g., us-east-1);
-\{service\} is the name of the integrated Amazon Web Services service
-(e.g., s3); and \{subdomain\} is a designated subdomain supported by
+\verb{arn:aws:apigateway:\\\{region\\\}:\\\{subdomain.service|service\\\}:path|action/\\\{service_api}\\.
+Here, \\Region\\ is the API Gateway region (e.g., us-east-1);
+\\service\\ is the name of the integrated Amazon Web Services service
+(e.g., s3); and \\subdomain\\ is a designated subdomain supported by
 certain Amazon Web Services service for fast host-name lookup. action
 can be used for an Amazon Web Services service action-based API, using
-an Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}... query string. The
-ensuing \{service_api\} refers to a supported action \{name\} plus
-any required input parameters. Alternatively, path can be used for an
-Amazon Web Services service path-based API. The ensuing service_api
-refers to the path to an Amazon Web Services service resource, including
-the region of the integrated Amazon Web Services service, if applicable.
-For example, for integration with the S3 API of \code{GetObject}, the \code{uri}
-can be either
+an Action=\\name\\&\\p1\\=\\v1\\&p2=\\v2\\... query string. The ensuing
+\\service_api\\ refers to a supported action \\name\\ plus any required
+input parameters. Alternatively, path can be used for an Amazon Web
+Services service path-based API. The ensuing service_api refers to the
+path to an Amazon Web Services service resource, including the region of
+the integrated Amazon Web Services service, if applicable. For example,
+for integration with the S3 API of \code{GetObject}, the \code{uri} can be either
 \code{arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}}
 or \code{arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}}.}
 

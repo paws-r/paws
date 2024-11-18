@@ -23,7 +23,8 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$assign_instance_input(InstanceId = InstanceId, LayerIds = LayerIds)
   output <- .opsworks$assign_instance_output()
@@ -55,7 +56,8 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$assign_volume_input(VolumeId = VolumeId, InstanceId = InstanceId)
   output <- .opsworks$assign_volume_output()
@@ -87,7 +89,8 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$associate_elastic_ip_input(ElasticIp = ElasticIp, InstanceId = InstanceId)
   output <- .opsworks$associate_elastic_ip_output()
@@ -119,7 +122,8 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$attach_elastic_load_balancer_input(ElasticLoadBalancerName = ElasticLoadBalancerName, LayerId = LayerId)
   output <- .opsworks$attach_elastic_load_balancer_output()
@@ -147,10 +151,10 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' be in the specified region. All instances are launched into this VPC,
 #' and you cannot change the ID later.
 #' 
-#' -   If your account supports EC2 Classic, the default value is no VPC.
+#' - If your account supports EC2 Classic, the default value is no VPC.
 #' 
-#' -   If your account does not support EC2 Classic, the default value is
-#'     the default VPC for the specified region.
+#' - If your account does not support EC2 Classic, the default value is the
+#'   default VPC for the specified region.
 #' 
 #' If the VPC ID corresponds to a default VPC and you have specified either
 #' the `DefaultAvailabilityZone` or the `DefaultSubnetId` parameter only,
@@ -161,10 +165,10 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' 
 #' If you specify a nondefault VPC ID, note the following:
 #' 
-#' -   It must belong to a VPC in your account that is in the specified
-#'     region.
+#' - It must belong to a VPC in your account that is in the specified
+#'   region.
 #' 
-#' -   You must specify a value for `DefaultSubnetId`.
+#' - You must specify a value for `DefaultSubnetId`.
 #' 
 #' For more information about how to use OpsWorks Stacks with a VPC, see
 #' [Running a Stack in a
@@ -192,28 +196,28 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param DefaultOs The stack's operating system, which must be set to one of the following.
 #' 
-#' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
-#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
-#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
-#'     `Amazon Linux 2015.03`.
+#' - A supported Linux operating system: An Amazon Linux version, such as
+#'   `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'   `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'   `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'   `Amazon Linux 2015.03`.
 #' 
-#' -   A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
-#'     `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' - A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
+#'   `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 #' 
-#' -   `CentOS Linux 7`
+#' - `CentOS Linux 7`
 #' 
-#' -   `Red Hat Enterprise Linux 7`
+#' - `Red Hat Enterprise Linux 7`
 #' 
-#' -   `Microsoft Windows Server 2012 R2 Base`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Express`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' - `Microsoft Windows Server 2012 R2 Base`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Express`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Web`.
 #' 
-#' -   A custom AMI: `Custom`. You specify the custom AMI you want to use
-#'     when you create instances. For more information about how to use
-#'     custom AMIs with OpsWorks, see [Using Custom
-#'     AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' - A custom AMI: `Custom`. You specify the custom AMI you want to use
+#'   when you create instances. For more information about how to use
+#'   custom AMIs with OpsWorks, see [Using Custom
+#'   AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' The default option is the parent stack's operating system. Not all
 #' operating systems are supported with all versions of Chef. For more
@@ -229,27 +233,27 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' names by appending integers to the layer's short name. The other themes
 #' are:
 #' 
-#' -   `Baked_Goods`
+#' - `Baked_Goods`
 #' 
-#' -   `Clouds`
+#' - `Clouds`
 #' 
-#' -   `Europe_Cities`
+#' - `Europe_Cities`
 #' 
-#' -   `Fruits`
+#' - `Fruits`
 #' 
-#' -   `Greek_Deities_and_Titans`
+#' - `Greek_Deities_and_Titans`
 #' 
-#' -   `Legendary_creatures_from_Japan`
+#' - `Legendary_creatures_from_Japan`
 #' 
-#' -   `Planets_and_Moons`
+#' - `Planets_and_Moons`
 #' 
-#' -   `Roman_Deities`
+#' - `Roman_Deities`
 #' 
-#' -   `Scottish_Islands`
+#' - `Scottish_Islands`
 #' 
-#' -   `US_Cities`
+#' - `US_Cities`
 #' 
-#' -   `Wild_Cats`
+#' - `Wild_Cats`
 #' 
 #' To obtain a generated host name, call `GetHostNameSuggestion`, which
 #' returns a host name based on the current theme.
@@ -291,17 +295,17 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' `UseOpsworksSecurityGroups` you can instead provide your own custom
 #' security groups. `UseOpsworksSecurityGroups` has the following settings:
 #' 
-#' -   True - OpsWorks Stacks automatically associates the appropriate
-#'     built-in security group with each layer (default setting). You can
-#'     associate additional security groups with a layer after you create
-#'     it but you cannot delete the built-in security group.
+#' - True - OpsWorks Stacks automatically associates the appropriate
+#'   built-in security group with each layer (default setting). You can
+#'   associate additional security groups with a layer after you create it
+#'   but you cannot delete the built-in security group.
 #' 
-#' -   False - OpsWorks Stacks does not associate built-in security groups
-#'     with layers. You must create appropriate Amazon EC2 security groups
-#'     and associate a security group with each layer that you create.
-#'     However, you can still manually associate a built-in security group
-#'     with a layer on creation; custom security groups are required only
-#'     for those layers that need custom settings.
+#' - False - OpsWorks Stacks does not associate built-in security groups
+#'   with layers. You must create appropriate Amazon EC2 security groups
+#'   and associate a security group with each layer that you create.
+#'   However, you can still manually associate a built-in security group
+#'   with a layer on creation; custom security groups are required only for
+#'   those layers that need custom settings.
 #' 
 #' For more information, see [Create a New
 #' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
@@ -330,14 +334,14 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' @param AgentVersion The default OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
-#' -   Auto-update - Set this parameter to `LATEST`. OpsWorks Stacks
-#'     automatically installs new agent versions on the stack's instances
-#'     as soon as they are available.
+#' - Auto-update - Set this parameter to `LATEST`. OpsWorks Stacks
+#'   automatically installs new agent versions on the stack's instances as
+#'   soon as they are available.
 #' 
-#' -   Fixed version - Set this parameter to your preferred agent version.
-#'     To update the agent version, you must edit the stack configuration
-#'     and specify a new version. OpsWorks Stacks automatically installs
-#'     that version on the stack's instances.
+#' - Fixed version - Set this parameter to your preferred agent version. To
+#'   update the agent version, you must edit the stack configuration and
+#'   specify a new version. OpsWorks Stacks automatically installs that
+#'   version on the stack's instances.
 #' 
 #' The default setting is `LATEST`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
@@ -357,7 +361,8 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$clone_stack_input(SourceStackId = SourceStackId, Name = Name, Region = Region, VpcId = VpcId, Attributes = Attributes, ServiceRoleArn = ServiceRoleArn, DefaultInstanceProfileArn = DefaultInstanceProfileArn, DefaultOs = DefaultOs, HostnameTheme = HostnameTheme, DefaultAvailabilityZone = DefaultAvailabilityZone, DefaultSubnetId = DefaultSubnetId, CustomJson = CustomJson, ConfigurationManager = ConfigurationManager, ChefConfiguration = ChefConfiguration, UseCustomCookbooks = UseCustomCookbooks, UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, ClonePermissions = ClonePermissions, CloneAppIds = CloneAppIds, DefaultRootDeviceType = DefaultRootDeviceType, AgentVersion = AgentVersion)
   output <- .opsworks$clone_stack_output()
@@ -418,7 +423,8 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_app_input(StackId = StackId, Shortname = Shortname, Name = Name, Description = Description, DataSources = DataSources, Type = Type, AppSource = AppSource, Domains = Domains, EnableSsl = EnableSsl, SslConfiguration = SslConfiguration, Attributes = Attributes, Environment = Environment)
   output <- .opsworks$create_app_output()
@@ -466,7 +472,8 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_deployment_input(StackId = StackId, AppId = AppId, InstanceIds = InstanceIds, LayerIds = LayerIds, Command = Command, Comment = Comment, CustomJson = CustomJson)
   output <- .opsworks$create_deployment_output()
@@ -499,32 +506,32 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' @param Hostname The instance host name. The following are character limits for instance
 #' host names.
 #' 
-#' -   Linux-based instances: 63 characters
+#' - Linux-based instances: 63 characters
 #' 
-#' -   Windows-based instances: 15 characters
+#' - Windows-based instances: 15 characters
 #' @param Os The instance's operating system, which must be set to one of the
 #' following.
 #' 
-#' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
-#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
-#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
-#'     `Amazon Linux 2015.03`.
+#' - A supported Linux operating system: An Amazon Linux version, such as
+#'   `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'   `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'   `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'   `Amazon Linux 2015.03`.
 #' 
-#' -   A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
-#'     `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' - A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
+#'   `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 #' 
-#' -   `CentOS Linux 7`
+#' - `CentOS Linux 7`
 #' 
-#' -   `Red Hat Enterprise Linux 7`
+#' - `Red Hat Enterprise Linux 7`
 #' 
-#' -   A supported Windows operating system, such as
-#'     `Microsoft Windows Server 2012 R2 Base`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Express`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' - A supported Windows operating system, such as
+#'   `Microsoft Windows Server 2012 R2 Base`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Express`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Web`.
 #' 
-#' -   A custom AMI: `Custom`.
+#' - A custom AMI: `Custom`.
 #' 
 #' Not all operating systems are supported with all versions of Chef. For
 #' more information about the supported operating systems, see [OpsWorks
@@ -577,12 +584,12 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 #' @param AgentVersion The default OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
-#' -   `INHERIT` - Use the stack's default agent version setting.
+#' - `INHERIT` - Use the stack's default agent version setting.
 #' 
-#' -   *version_number* - Use the specified agent version. This value
-#'     overrides the stack's default setting. To update the agent version,
-#'     edit the instance configuration and specify a new version. OpsWorks
-#'     Stacks installs that version on the instance.
+#' - *version_number* - Use the specified agent version. This value
+#'   overrides the stack's default setting. To update the agent version,
+#'   edit the instance configuration and specify a new version. OpsWorks
+#'   Stacks installs that version on the instance.
 #' 
 #' The default setting is `INHERIT`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
@@ -612,7 +619,8 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_instance_input(StackId = StackId, LayerIds = LayerIds, InstanceType = InstanceType, AutoScalingType = AutoScalingType, Hostname = Hostname, Os = Os, AmiId = AmiId, SshKeyName = SshKeyName, AvailabilityZone = AvailabilityZone, VirtualizationType = VirtualizationType, SubnetId = SubnetId, Architecture = Architecture, RootDeviceType = RootDeviceType, BlockDeviceMappings = BlockDeviceMappings, InstallUpdatesOnBoot = InstallUpdatesOnBoot, EbsOptimized = EbsOptimized, AgentVersion = AgentVersion, Tenancy = Tenancy)
   output <- .opsworks$create_instance_output()
@@ -699,7 +707,8 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_layer_input(StackId = StackId, Type = Type, Name = Name, Shortname = Shortname, Attributes = Attributes, CloudWatchLogsConfiguration = CloudWatchLogsConfiguration, CustomInstanceProfileArn = CustomInstanceProfileArn, CustomJson = CustomJson, CustomSecurityGroupIds = CustomSecurityGroupIds, Packages = Packages, VolumeConfigurations = VolumeConfigurations, EnableAutoHealing = EnableAutoHealing, AutoAssignElasticIps = AutoAssignElasticIps, AutoAssignPublicIps = AutoAssignPublicIps, CustomRecipes = CustomRecipes, InstallUpdatesOnBoot = InstallUpdatesOnBoot, UseEbsOptimizedInstances = UseEbsOptimizedInstances, LifecycleEventConfiguration = LifecycleEventConfiguration)
   output <- .opsworks$create_layer_output()
@@ -743,10 +752,10 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' in the stack's region. All instances are launched into this VPC. You
 #' cannot change the ID later.
 #' 
-#' -   If your account supports EC2-Classic, the default value is `no VPC`.
+#' - If your account supports EC2-Classic, the default value is `no VPC`.
 #' 
-#' -   If your account does not support EC2-Classic, the default value is
-#'     the default VPC for the specified region.
+#' - If your account does not support EC2-Classic, the default value is the
+#'   default VPC for the specified region.
 #' 
 #' If the VPC ID corresponds to a default VPC and you have specified either
 #' the `DefaultAvailabilityZone` or the `DefaultSubnetId` parameter only,
@@ -757,10 +766,10 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' 
 #' If you specify a nondefault VPC ID, note the following:
 #' 
-#' -   It must belong to a VPC in your account that is in the specified
-#'     region.
+#' - It must belong to a VPC in your account that is in the specified
+#'   region.
 #' 
-#' -   You must specify a value for `DefaultSubnetId`.
+#' - You must specify a value for `DefaultSubnetId`.
 #' 
 #' For more information about how to use OpsWorks Stacks with a VPC, see
 #' [Running a Stack in a
@@ -782,28 +791,28 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' instance unless you specify a different operating system when you create
 #' the instance. You can specify one of the following.
 #' 
-#' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
-#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
-#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
-#'     `Amazon Linux 2015.03`.
+#' - A supported Linux operating system: An Amazon Linux version, such as
+#'   `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'   `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'   `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'   `Amazon Linux 2015.03`.
 #' 
-#' -   A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
-#'     `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' - A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
+#'   `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 #' 
-#' -   `CentOS Linux 7`
+#' - `CentOS Linux 7`
 #' 
-#' -   `Red Hat Enterprise Linux 7`
+#' - `Red Hat Enterprise Linux 7`
 #' 
-#' -   A supported Windows operating system, such as
-#'     `Microsoft Windows Server 2012 R2 Base`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Express`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' - A supported Windows operating system, such as
+#'   `Microsoft Windows Server 2012 R2 Base`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Express`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Web`.
 #' 
-#' -   A custom AMI: `Custom`. You specify the custom AMI you want to use
-#'     when you create instances. For more information, see [Using Custom
-#'     AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' - A custom AMI: `Custom`. You specify the custom AMI you want to use
+#'   when you create instances. For more information, see [Using Custom
+#'   AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' The default option is the current Amazon Linux version. Not all
 #' operating systems are supported with all versions of Chef. For more
@@ -816,27 +825,27 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' names by appending integers to the layer's short name. The other themes
 #' are:
 #' 
-#' -   `Baked_Goods`
+#' - `Baked_Goods`
 #' 
-#' -   `Clouds`
+#' - `Clouds`
 #' 
-#' -   `Europe_Cities`
+#' - `Europe_Cities`
 #' 
-#' -   `Fruits`
+#' - `Fruits`
 #' 
-#' -   `Greek_Deities_and_Titans`
+#' - `Greek_Deities_and_Titans`
 #' 
-#' -   `Legendary_creatures_from_Japan`
+#' - `Legendary_creatures_from_Japan`
 #' 
-#' -   `Planets_and_Moons`
+#' - `Planets_and_Moons`
 #' 
-#' -   `Roman_Deities`
+#' - `Roman_Deities`
 #' 
-#' -   `Scottish_Islands`
+#' - `Scottish_Islands`
 #' 
-#' -   `US_Cities`
+#' - `US_Cities`
 #' 
-#' -   `Wild_Cats`
+#' - `Wild_Cats`
 #' 
 #' To obtain a generated host name, call `GetHostNameSuggestion`, which
 #' returns a host name based on the current theme.
@@ -879,17 +888,17 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' `UseOpsworksSecurityGroups` you can instead provide your own custom
 #' security groups. `UseOpsworksSecurityGroups` has the following settings:
 #' 
-#' -   True - OpsWorks Stacks automatically associates the appropriate
-#'     built-in security group with each layer (default setting). You can
-#'     associate additional security groups with a layer after you create
-#'     it, but you cannot delete the built-in security group.
+#' - True - OpsWorks Stacks automatically associates the appropriate
+#'   built-in security group with each layer (default setting). You can
+#'   associate additional security groups with a layer after you create it,
+#'   but you cannot delete the built-in security group.
 #' 
-#' -   False - OpsWorks Stacks does not associate built-in security groups
-#'     with layers. You must create appropriate EC2 security groups and
-#'     associate a security group with each layer that you create. However,
-#'     you can still manually associate a built-in security group with a
-#'     layer on creation; custom security groups are required only for
-#'     those layers that need custom settings.
+#' - False - OpsWorks Stacks does not associate built-in security groups
+#'   with layers. You must create appropriate EC2 security groups and
+#'   associate a security group with each layer that you create. However,
+#'   you can still manually associate a built-in security group with a
+#'   layer on creation; custom security groups are required only for those
+#'   layers that need custom settings.
 #' 
 #' For more information, see [Create a New
 #' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
@@ -917,14 +926,14 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' @param AgentVersion The default OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
-#' -   Auto-update - Set this parameter to `LATEST`. OpsWorks Stacks
-#'     automatically installs new agent versions on the stack's instances
-#'     as soon as they are available.
+#' - Auto-update - Set this parameter to `LATEST`. OpsWorks Stacks
+#'   automatically installs new agent versions on the stack's instances as
+#'   soon as they are available.
 #' 
-#' -   Fixed version - Set this parameter to your preferred agent version.
-#'     To update the agent version, you must edit the stack configuration
-#'     and specify a new version. OpsWorks Stacks installs that version on
-#'     the stack's instances.
+#' - Fixed version - Set this parameter to your preferred agent version. To
+#'   update the agent version, you must edit the stack configuration and
+#'   specify a new version. OpsWorks Stacks installs that version on the
+#'   stack's instances.
 #' 
 #' The default setting is the most recent release of the agent. To specify
 #' an agent version, you must use the complete version number, not the
@@ -945,7 +954,8 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_stack_input(Name = Name, Region = Region, VpcId = VpcId, Attributes = Attributes, ServiceRoleArn = ServiceRoleArn, DefaultInstanceProfileArn = DefaultInstanceProfileArn, DefaultOs = DefaultOs, HostnameTheme = HostnameTheme, DefaultAvailabilityZone = DefaultAvailabilityZone, DefaultSubnetId = DefaultSubnetId, CustomJson = CustomJson, ConfigurationManager = ConfigurationManager, ChefConfiguration = ChefConfiguration, UseCustomCookbooks = UseCustomCookbooks, UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, DefaultRootDeviceType = DefaultRootDeviceType, AgentVersion = AgentVersion)
   output <- .opsworks$create_stack_output()
@@ -985,7 +995,8 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_user_profile_input(IamUserArn = IamUserArn, SshUsername = SshUsername, SshPublicKey = SshPublicKey, AllowSelfManagement = AllowSelfManagement)
   output <- .opsworks$create_user_profile_output()
@@ -1015,7 +1026,8 @@ opsworks_delete_app <- function(AppId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_app_input(AppId = AppId)
   output <- .opsworks$delete_app_output()
@@ -1048,7 +1060,8 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_instance_input(InstanceId = InstanceId, DeleteElasticIp = DeleteElasticIp, DeleteVolumes = DeleteVolumes)
   output <- .opsworks$delete_instance_output()
@@ -1078,7 +1091,8 @@ opsworks_delete_layer <- function(LayerId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_layer_input(LayerId = LayerId)
   output <- .opsworks$delete_layer_output()
@@ -1108,7 +1122,8 @@ opsworks_delete_stack <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_stack_input(StackId = StackId)
   output <- .opsworks$delete_stack_output()
@@ -1138,7 +1153,8 @@ opsworks_delete_user_profile <- function(IamUserArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_user_profile_input(IamUserArn = IamUserArn)
   output <- .opsworks$delete_user_profile_output()
@@ -1168,7 +1184,8 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_ecs_cluster_input(EcsClusterArn = EcsClusterArn)
   output <- .opsworks$deregister_ecs_cluster_output()
@@ -1198,7 +1215,8 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_elastic_ip_input(ElasticIp = ElasticIp)
   output <- .opsworks$deregister_elastic_ip_output()
@@ -1228,7 +1246,8 @@ opsworks_deregister_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_instance_input(InstanceId = InstanceId)
   output <- .opsworks$deregister_instance_output()
@@ -1258,7 +1277,8 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_rds_db_instance_input(RdsDbInstanceArn = RdsDbInstanceArn)
   output <- .opsworks$deregister_rds_db_instance_output()
@@ -1290,7 +1310,8 @@ opsworks_deregister_volume <- function(VolumeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_volume_input(VolumeId = VolumeId)
   output <- .opsworks$deregister_volume_output()
@@ -1321,7 +1342,8 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_agent_versions_input(StackId = StackId, ConfigurationManager = ConfigurationManager)
   output <- .opsworks$describe_agent_versions_output()
@@ -1357,7 +1379,8 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Apps")
+    paginator = list(result_key = "Apps"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_apps_input(StackId = StackId, AppIds = AppIds)
   output <- .opsworks$describe_apps_output()
@@ -1396,7 +1419,8 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Commands")
+    paginator = list(result_key = "Commands"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_commands_input(DeploymentId = DeploymentId, InstanceId = InstanceId, CommandIds = CommandIds)
   output <- .opsworks$describe_commands_output()
@@ -1432,7 +1456,8 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Deployments")
+    paginator = list(result_key = "Deployments"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_deployments_input(StackId = StackId, AppId = AppId, DeploymentIds = DeploymentIds)
   output <- .opsworks$describe_deployments_output()
@@ -1476,7 +1501,8 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EcsClusters")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EcsClusters"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_ecs_clusters_input(EcsClusterArns = EcsClusterArns, StackId = StackId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworks$describe_ecs_clusters_output()
@@ -1517,7 +1543,8 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ElasticIps")
+    paginator = list(result_key = "ElasticIps"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_elastic_ips_input(InstanceId = InstanceId, StackId = StackId, Ips = Ips)
   output <- .opsworks$describe_elastic_ips_output()
@@ -1550,7 +1577,8 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ElasticLoadBalancers")
+    paginator = list(result_key = "ElasticLoadBalancers"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_elastic_load_balancers_input(StackId = StackId, LayerIds = LayerIds)
   output <- .opsworks$describe_elastic_load_balancers_output()
@@ -1589,7 +1617,8 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Instances")
+    paginator = list(result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_instances_input(StackId = StackId, LayerId = LayerId, InstanceIds = InstanceIds)
   output <- .opsworks$describe_instances_output()
@@ -1622,7 +1651,8 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Layers")
+    paginator = list(result_key = "Layers"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_layers_input(StackId = StackId, LayerIds = LayerIds)
   output <- .opsworks$describe_layers_output()
@@ -1652,7 +1682,8 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "LoadBasedAutoScalingConfigurations")
+    paginator = list(result_key = "LoadBasedAutoScalingConfigurations"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_load_based_auto_scaling_input(LayerIds = LayerIds)
   output <- .opsworks$describe_load_based_auto_scaling_output()
@@ -1682,7 +1713,8 @@ opsworks_describe_my_user_profile <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_my_user_profile_input()
   output <- .opsworks$describe_my_user_profile_output()
@@ -1712,7 +1744,8 @@ opsworks_describe_operating_systems <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_operating_systems_input()
   output <- .opsworks$describe_operating_systems_output()
@@ -1745,7 +1778,8 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Permissions")
+    paginator = list(result_key = "Permissions"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_permissions_input(IamUserArn = IamUserArn, StackId = StackId)
   output <- .opsworks$describe_permissions_output()
@@ -1782,7 +1816,8 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "RaidArrays")
+    paginator = list(result_key = "RaidArrays"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_raid_arrays_input(InstanceId = InstanceId, StackId = StackId, RaidArrayIds = RaidArrayIds)
   output <- .opsworks$describe_raid_arrays_output()
@@ -1814,7 +1849,8 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_rds_db_instances_input(StackId = StackId, RdsDbInstanceArns = RdsDbInstanceArns)
   output <- .opsworks$describe_rds_db_instances_output()
@@ -1853,7 +1889,8 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ServiceErrors")
+    paginator = list(result_key = "ServiceErrors"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_service_errors_input(StackId = StackId, InstanceId = InstanceId, ServiceErrorIds = ServiceErrorIds)
   output <- .opsworks$describe_service_errors_output()
@@ -1883,7 +1920,8 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_stack_provisioning_parameters_input(StackId = StackId)
   output <- .opsworks$describe_stack_provisioning_parameters_output()
@@ -1914,7 +1952,8 @@ opsworks_describe_stack_summary <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_stack_summary_input(StackId = StackId)
   output <- .opsworks$describe_stack_summary_output()
@@ -1952,7 +1991,8 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Stacks")
+    paginator = list(result_key = "Stacks"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_stacks_input(StackIds = StackIds)
   output <- .opsworks$describe_stacks_output()
@@ -1982,7 +2022,8 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "TimeBasedAutoScalingConfigurations")
+    paginator = list(result_key = "TimeBasedAutoScalingConfigurations"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_time_based_auto_scaling_input(InstanceIds = InstanceIds)
   output <- .opsworks$describe_time_based_auto_scaling_output()
@@ -2013,7 +2054,8 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "UserProfiles")
+    paginator = list(result_key = "UserProfiles"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_user_profiles_input(IamUserArns = IamUserArns)
   output <- .opsworks$describe_user_profiles_output()
@@ -2054,7 +2096,8 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Volumes")
+    paginator = list(result_key = "Volumes"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_volumes_input(InstanceId = InstanceId, StackId = StackId, RaidArrayId = RaidArrayId, VolumeIds = VolumeIds)
   output <- .opsworks$describe_volumes_output()
@@ -2086,7 +2129,8 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$detach_elastic_load_balancer_input(ElasticLoadBalancerName = ElasticLoadBalancerName, LayerId = LayerId)
   output <- .opsworks$detach_elastic_load_balancer_output()
@@ -2116,7 +2160,8 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$disassociate_elastic_ip_input(ElasticIp = ElasticIp)
   output <- .opsworks$disassociate_elastic_ip_output()
@@ -2147,7 +2192,8 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$get_hostname_suggestion_input(LayerId = LayerId)
   output <- .opsworks$get_hostname_suggestion_output()
@@ -2181,7 +2227,8 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$grant_access_input(InstanceId = InstanceId, ValidForInMinutes = ValidForInMinutes)
   output <- .opsworks$grant_access_output()
@@ -2215,7 +2262,8 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$list_tags_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opsworks$list_tags_output()
@@ -2245,7 +2293,8 @@ opsworks_reboot_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$reboot_instance_input(InstanceId = InstanceId)
   output <- .opsworks$reboot_instance_output()
@@ -2276,7 +2325,8 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_ecs_cluster_input(EcsClusterArn = EcsClusterArn, StackId = StackId)
   output <- .opsworks$register_ecs_cluster_output()
@@ -2307,7 +2357,8 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_elastic_ip_input(ElasticIp = ElasticIp, StackId = StackId)
   output <- .opsworks$register_elastic_ip_output()
@@ -2331,9 +2382,9 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' @param Hostname The instance's host name. The following are character limits for
 #' instance host names.
 #' 
-#' -   Linux-based instances: 63 characters
+#' - Linux-based instances: 63 characters
 #' 
-#' -   Windows-based instances: 15 characters
+#' - Windows-based instances: 15 characters
 #' @param PublicIp The instance's public IP address.
 #' @param PrivateIp The instance's private IP address.
 #' @param RsaPublicKey The instances public RSA key. This key is used to encrypt communication
@@ -2350,7 +2401,8 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_instance_input(StackId = StackId, Hostname = Hostname, PublicIp = PublicIp, PrivateIp = PrivateIp, RsaPublicKey = RsaPublicKey, RsaPublicKeyFingerprint = RsaPublicKeyFingerprint, InstanceIdentity = InstanceIdentity)
   output <- .opsworks$register_instance_output()
@@ -2383,7 +2435,8 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_rds_db_instance_input(StackId = StackId, RdsDbInstanceArn = RdsDbInstanceArn, DbUser = DbUser, DbPassword = DbPassword)
   output <- .opsworks$register_rds_db_instance_output()
@@ -2414,7 +2467,8 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_volume_input(Ec2VolumeId = Ec2VolumeId, StackId = StackId)
   output <- .opsworks$register_volume_output()
@@ -2451,7 +2505,8 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$set_load_based_auto_scaling_input(LayerId = LayerId, Enable = Enable, UpScaling = UpScaling, DownScaling = DownScaling)
   output <- .opsworks$set_load_based_auto_scaling_output()
@@ -2477,15 +2532,15 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 #' @param Level The user's permission level, which must be set to one of the following
 #' strings. You cannot set your own permissions level.
 #' 
-#' -   `deny`
+#' - `deny`
 #' 
-#' -   `show`
+#' - `show`
 #' 
-#' -   `deploy`
+#' - `deploy`
 #' 
-#' -   `manage`
+#' - `manage`
 #' 
-#' -   `iam_only`
+#' - `iam_only`
 #' 
 #' For more information about the permissions associated with these levels,
 #' see [Managing User
@@ -2500,7 +2555,8 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$set_permission_input(StackId = StackId, IamUserArn = IamUserArn, AllowSsh = AllowSsh, AllowSudo = AllowSudo, Level = Level)
   output <- .opsworks$set_permission_output()
@@ -2532,7 +2588,8 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$set_time_based_auto_scaling_input(InstanceId = InstanceId, AutoScalingSchedule = AutoScalingSchedule)
   output <- .opsworks$set_time_based_auto_scaling_output()
@@ -2562,7 +2619,8 @@ opsworks_start_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$start_instance_input(InstanceId = InstanceId)
   output <- .opsworks$start_instance_output()
@@ -2592,7 +2650,8 @@ opsworks_start_stack <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$start_stack_input(StackId = StackId)
   output <- .opsworks$start_stack_output()
@@ -2629,7 +2688,8 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$stop_instance_input(InstanceId = InstanceId, Force = Force)
   output <- .opsworks$stop_instance_output()
@@ -2659,7 +2719,8 @@ opsworks_stop_stack <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$stop_stack_input(StackId = StackId)
   output <- .opsworks$stop_stack_output()
@@ -2683,20 +2744,20 @@ opsworks_stop_stack <- function(StackId) {
 #' @param Tags &#91;required&#93; A map that contains tag keys and tag values that are attached to a stack
 #' or layer.
 #' 
-#' -   The key cannot be empty.
+#' - The key cannot be empty.
 #' 
-#' -   The key can be a maximum of 127 characters, and can contain only
-#'     Unicode letters, numbers, or separators, or the following special
-#'     characters: `+ - = . _ : /`
+#' - The key can be a maximum of 127 characters, and can contain only
+#'   Unicode letters, numbers, or separators, or the following special
+#'   characters: `+ - = . _ : /`
 #' 
-#' -   The value can be a maximum 255 characters, and contain only Unicode
-#'     letters, numbers, or separators, or the following special
-#'     characters: `+ - = . _ : /`
+#' - The value can be a maximum 255 characters, and contain only Unicode
+#'   letters, numbers, or separators, or the following special characters:
+#'   `+ - = . _ : /`
 #' 
-#' -   Leading and trailing white spaces are trimmed from both the key and
-#'     value.
+#' - Leading and trailing white spaces are trimmed from both the key and
+#'   value.
 #' 
-#' -   A maximum of 40 tags is allowed for any resource.
+#' - A maximum of 40 tags is allowed for any resource.
 #'
 #' @keywords internal
 #'
@@ -2707,7 +2768,8 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .opsworks$tag_resource_output()
@@ -2738,7 +2800,8 @@ opsworks_unassign_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$unassign_instance_input(InstanceId = InstanceId)
   output <- .opsworks$unassign_instance_output()
@@ -2768,7 +2831,8 @@ opsworks_unassign_volume <- function(VolumeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$unassign_volume_input(VolumeId = VolumeId)
   output <- .opsworks$unassign_volume_output()
@@ -2799,7 +2863,8 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .opsworks$untag_resource_output()
@@ -2855,7 +2920,8 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_app_input(AppId = AppId, Name = Name, Description = Description, DataSources = DataSources, Type = Type, AppSource = AppSource, Domains = Domains, EnableSsl = EnableSsl, SslConfiguration = SslConfiguration, Attributes = Attributes, Environment = Environment)
   output <- .opsworks$update_app_output()
@@ -2886,7 +2952,8 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_elastic_ip_input(ElasticIp = ElasticIp, Name = Name)
   output <- .opsworks$update_elastic_ip_output()
@@ -2919,30 +2986,30 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' @param Hostname The instance host name. The following are character limits for instance
 #' host names.
 #' 
-#' -   Linux-based instances: 63 characters
+#' - Linux-based instances: 63 characters
 #' 
-#' -   Windows-based instances: 15 characters
+#' - Windows-based instances: 15 characters
 #' @param Os The instance's operating system, which must be set to one of the
 #' following. You cannot update an instance that is using a custom AMI.
 #' 
-#' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
-#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
-#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
-#'     `Amazon Linux 2015.03`.
+#' - A supported Linux operating system: An Amazon Linux version, such as
+#'   `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'   `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'   `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'   `Amazon Linux 2015.03`.
 #' 
-#' -   A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
-#'     `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' - A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
+#'   `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 #' 
-#' -   `CentOS Linux 7`
+#' - `CentOS Linux 7`
 #' 
-#' -   `Red Hat Enterprise Linux 7`
+#' - `Red Hat Enterprise Linux 7`
 #' 
-#' -   A supported Windows operating system, such as
-#'     `Microsoft Windows Server 2012 R2 Base`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Express`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' - A supported Windows operating system, such as
+#'   `Microsoft Windows Server 2012 R2 Base`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Express`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Web`.
 #' 
 #' Not all operating systems are supported with all versions of Chef. For
 #' more information about supported operating systems, see [OpsWorks Stacks
@@ -2981,12 +3048,12 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 #' @param AgentVersion The default OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
-#' -   `INHERIT` - Use the stack's default agent version setting.
+#' - `INHERIT` - Use the stack's default agent version setting.
 #' 
-#' -   *version_number* - Use the specified agent version. This value
-#'     overrides the stack's default setting. To update the agent version,
-#'     you must edit the instance configuration and specify a new version.
-#'     OpsWorks Stacks installs that version on the instance.
+#' - *version_number* - Use the specified agent version. This value
+#'   overrides the stack's default setting. To update the agent version,
+#'   you must edit the instance configuration and specify a new version.
+#'   OpsWorks Stacks installs that version on the instance.
 #' 
 #' The default setting is `INHERIT`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
@@ -3004,7 +3071,8 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_instance_input(InstanceId = InstanceId, LayerIds = LayerIds, InstanceType = InstanceType, AutoScalingType = AutoScalingType, Hostname = Hostname, Os = Os, AmiId = AmiId, SshKeyName = SshKeyName, Architecture = Architecture, InstallUpdatesOnBoot = InstallUpdatesOnBoot, EbsOptimized = EbsOptimized, AgentVersion = AgentVersion)
   output <- .opsworks$update_instance_output()
@@ -3030,7 +3098,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 #' name, which is used internally by OpsWorks Stacks and by Chef. The short
 #' name is also used as the name for the directory where your app files are
 #' installed. It can have a maximum of 32 characters and must be in the
-#' following format: /\\A\[a-z0-9\\-_\\.\]+\\Z/.
+#' following format: /\\A\[a-z0-9\\]+\\Z/.
 #' 
 #' Built-in layer short names are defined by OpsWorks Stacks. For more
 #' information, see the [Layer
@@ -3083,7 +3151,8 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_layer_input(LayerId = LayerId, Name = Name, Shortname = Shortname, Attributes = Attributes, CloudWatchLogsConfiguration = CloudWatchLogsConfiguration, CustomInstanceProfileArn = CustomInstanceProfileArn, CustomJson = CustomJson, CustomSecurityGroupIds = CustomSecurityGroupIds, Packages = Packages, VolumeConfigurations = VolumeConfigurations, EnableAutoHealing = EnableAutoHealing, AutoAssignElasticIps = AutoAssignElasticIps, AutoAssignPublicIps = AutoAssignPublicIps, CustomRecipes = CustomRecipes, InstallUpdatesOnBoot = InstallUpdatesOnBoot, UseEbsOptimizedInstances = UseEbsOptimizedInstances, LifecycleEventConfiguration = LifecycleEventConfiguration)
   output <- .opsworks$update_layer_output()
@@ -3113,7 +3182,8 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_my_user_profile_input(SshPublicKey = SshPublicKey)
   output <- .opsworks$update_my_user_profile_output()
@@ -3145,7 +3215,8 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_rds_db_instance_input(RdsDbInstanceArn = RdsDbInstanceArn, DbUser = DbUser, DbPassword = DbPassword)
   output <- .opsworks$update_rds_db_instance_output()
@@ -3174,29 +3245,29 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html).
 #' @param DefaultOs The stack's operating system, which must be set to one of the following:
 #' 
-#' -   A supported Linux operating system: An Amazon Linux version, such as
-#'     `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
-#'     `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
-#'     `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
-#'     `Amazon Linux 2015.03`.
+#' - A supported Linux operating system: An Amazon Linux version, such as
+#'   `Amazon Linux 2`, `Amazon Linux 2018.03`, `Amazon Linux 2017.09`,
+#'   `Amazon Linux 2017.03`, `Amazon Linux 2016.09`,
+#'   `Amazon Linux 2016.03`, `Amazon Linux 2015.09`, or
+#'   `Amazon Linux 2015.03`.
 #' 
-#' -   A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
-#'     `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
+#' - A supported Ubuntu operating system, such as `Ubuntu 18.04 LTS`,
+#'   `Ubuntu 16.04 LTS`, `Ubuntu 14.04 LTS`, or `Ubuntu 12.04 LTS`.
 #' 
-#' -   `CentOS Linux 7`
+#' - `CentOS Linux 7`
 #' 
-#' -   `Red Hat Enterprise Linux 7`
+#' - `Red Hat Enterprise Linux 7`
 #' 
-#' -   A supported Windows operating system, such as
-#'     `Microsoft Windows Server 2012 R2 Base`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Express`,
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
-#'     `Microsoft Windows Server 2012 R2 with SQL Server Web`.
+#' - A supported Windows operating system, such as
+#'   `Microsoft Windows Server 2012 R2 Base`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Express`,
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Standard`, or
+#'   `Microsoft Windows Server 2012 R2 with SQL Server Web`.
 #' 
-#' -   A custom AMI: `Custom`. You specify the custom AMI you want to use
-#'     when you create instances. For more information about how to use
-#'     custom AMIs with OpsWorks, see [Using Custom
-#'     AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
+#' - A custom AMI: `Custom`. You specify the custom AMI you want to use
+#'   when you create instances. For more information about how to use
+#'   custom AMIs with OpsWorks, see [Using Custom
+#'   AMIs](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-custom-ami.html).
 #' 
 #' The default option is the stack's current operating system. Not all
 #' operating systems are supported with all versions of Chef. For more
@@ -3209,27 +3280,27 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' names by appending integers to the layer's short name. The other themes
 #' are:
 #' 
-#' -   `Baked_Goods`
+#' - `Baked_Goods`
 #' 
-#' -   `Clouds`
+#' - `Clouds`
 #' 
-#' -   `Europe_Cities`
+#' - `Europe_Cities`
 #' 
-#' -   `Fruits`
+#' - `Fruits`
 #' 
-#' -   `Greek_Deities_and_Titans`
+#' - `Greek_Deities_and_Titans`
 #' 
-#' -   `Legendary_creatures_from_Japan`
+#' - `Legendary_creatures_from_Japan`
 #' 
-#' -   `Planets_and_Moons`
+#' - `Planets_and_Moons`
 #' 
-#' -   `Roman_Deities`
+#' - `Roman_Deities`
 #' 
-#' -   `Scottish_Islands`
+#' - `Scottish_Islands`
 #' 
-#' -   `US_Cities`
+#' - `US_Cities`
 #' 
-#' -   `Wild_Cats`
+#' - `Wild_Cats`
 #' 
 #' To obtain a generated host name, call `GetHostNameSuggestion`, which
 #' returns a host name based on the current theme.
@@ -3292,31 +3363,31 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 #' security groups instead of using the built-in groups.
 #' `UseOpsworksSecurityGroups` has the following settings:
 #' 
-#' -   True - OpsWorks Stacks automatically associates the appropriate
-#'     built-in security group with each layer (default setting). You can
-#'     associate additional security groups with a layer after you create
-#'     it, but you cannot delete the built-in security group.
+#' - True - OpsWorks Stacks automatically associates the appropriate
+#'   built-in security group with each layer (default setting). You can
+#'   associate additional security groups with a layer after you create it,
+#'   but you cannot delete the built-in security group.
 #' 
-#' -   False - OpsWorks Stacks does not associate built-in security groups
-#'     with layers. You must create appropriate EC2 security groups and
-#'     associate a security group with each layer that you create. However,
-#'     you can still manually associate a built-in security group with a
-#'     layer on. Custom security groups are required only for those layers
-#'     that need custom settings.
+#' - False - OpsWorks Stacks does not associate built-in security groups
+#'   with layers. You must create appropriate EC2 security groups and
+#'   associate a security group with each layer that you create. However,
+#'   you can still manually associate a built-in security group with a
+#'   layer on. Custom security groups are required only for those layers
+#'   that need custom settings.
 #' 
 #' For more information, see [Create a New
 #' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html).
 #' @param AgentVersion The default OpsWorks Stacks agent version. You have the following
 #' options:
 #' 
-#' -   Auto-update - Set this parameter to `LATEST`. OpsWorks Stacks
-#'     automatically installs new agent versions on the stack's instances
-#'     as soon as they are available.
+#' - Auto-update - Set this parameter to `LATEST`. OpsWorks Stacks
+#'   automatically installs new agent versions on the stack's instances as
+#'   soon as they are available.
 #' 
-#' -   Fixed version - Set this parameter to your preferred agent version.
-#'     To update the agent version, you must edit the stack configuration
-#'     and specify a new version. OpsWorks Stacks installs that version on
-#'     the stack's instances.
+#' - Fixed version - Set this parameter to your preferred agent version. To
+#'   update the agent version, you must edit the stack configuration and
+#'   specify a new version. OpsWorks Stacks installs that version on the
+#'   stack's instances.
 #' 
 #' The default setting is `LATEST`. To specify an agent version, you must
 #' use the complete version number, not the abbreviated number shown on the
@@ -3336,7 +3407,8 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_stack_input(StackId = StackId, Name = Name, Attributes = Attributes, ServiceRoleArn = ServiceRoleArn, DefaultInstanceProfileArn = DefaultInstanceProfileArn, DefaultOs = DefaultOs, HostnameTheme = HostnameTheme, DefaultAvailabilityZone = DefaultAvailabilityZone, DefaultSubnetId = DefaultSubnetId, CustomJson = CustomJson, ConfigurationManager = ConfigurationManager, ChefConfiguration = ChefConfiguration, UseCustomCookbooks = UseCustomCookbooks, CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, DefaultRootDeviceType = DefaultRootDeviceType, UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, AgentVersion = AgentVersion)
   output <- .opsworks$update_stack_output()
@@ -3375,7 +3447,8 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_user_profile_input(IamUserArn = IamUserArn, SshUsername = SshUsername, SshPublicKey = SshPublicKey, AllowSelfManagement = AllowSelfManagement)
   output <- .opsworks$update_user_profile_output()
@@ -3407,7 +3480,8 @@ opsworks_update_volume <- function(VolumeId, Name = NULL, MountPoint = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_volume_input(VolumeId = VolumeId, Name = Name, MountPoint = MountPoint)
   output <- .opsworks$update_volume_output()

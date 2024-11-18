@@ -18,8 +18,8 @@ are:
 \itemize{
 \item \code{ASCENDING}: return reports in chronological order based on their
 creation date.
-\item \code{DESCENDING}: return reports in the reverse chronological order
-based on their creation date.
+\item \code{DESCENDING}: return reports in the reverse chronological order based
+on their creation date.
 }}
 
 \item{nextToken}{During a previous call, the maximum number of items that can be returned

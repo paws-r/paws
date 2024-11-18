@@ -38,12 +38,11 @@ following:
 \item For \code{SCRATCH_2}, \code{PERSISTENT_1}, and \verb{PERSISTENT_2 SSD} deployment
 types, valid values are in multiples of 2400 GiB. The value must be
 greater than the current storage capacity.
-\item For \verb{PERSISTENT HDD} file systems, valid values are multiples of
-6000 GiB for 12-MBps throughput per TiB file systems and multiples
-of 1800 GiB for 40-MBps throughput per TiB file systems. The values
-must be greater than the current storage capacity.
-\item For \code{SCRATCH_1} file systems, you can't increase the storage
-capacity.
+\item For \verb{PERSISTENT HDD} file systems, valid values are multiples of 6000
+GiB for 12-MBps throughput per TiB file systems and multiples of 1800
+GiB for 40-MBps throughput per TiB file systems. The values must be
+greater than the current storage capacity.
+\item For \code{SCRATCH_1} file systems, you can't increase the storage capacity.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/managing-storage-capacity.html}{Managing storage and throughput capacity}
@@ -57,7 +56,7 @@ in the \emph{FSx for OpenZFS User Guide}.
 For Windows file systems, the storage capacity target value must be at
 least 10 percent greater than the current storage capacity value. To
 increase storage capacity, the file system must have at least 16 MBps of
-throughput capacity. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#managing-storage-capacity}{Managing storage capacity}
+throughput capacity. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html}{Managing storage capacity}
 in the \emph{Amazon FSxfor Windows File Server User Guide}.
 
 For ONTAP file systems, the storage capacity target value must be at

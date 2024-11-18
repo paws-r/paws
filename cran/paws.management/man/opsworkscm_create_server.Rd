@@ -47,16 +47,16 @@ certificate, you must also specify values for \code{CustomDomain} and
 \code{CustomPrivateKey}. The following are requirements for the
 \code{CustomCertificate} value:
 \itemize{
-\item You can provide either a self-signed, custom certificate, or the
-full certificate chain.
+\item You can provide either a self-signed, custom certificate, or the full
+certificate chain.
 \item The certificate must be a valid X509 certificate, or a certificate
 chain in PEM format.
 \item The certificate must be valid at the time of upload. A certificate
 can't be used before its validity period begins (the certificate's
 \code{NotBefore} date), or after it expires (the certificate's \code{NotAfter}
 date).
-\item The certificate’s common name or subject alternative names (SANs),
-if present, must match the value of \code{CustomDomain}.
+\item The certificate’s common name or subject alternative names (SANs), if
+present, must match the value of \code{CustomDomain}.
 \item The certificate must match the value of \code{CustomPrivateKey}.
 }}
 
@@ -83,30 +83,29 @@ server, valid values are \code{2019} or \code{2017}.}
 \strong{Attributes accepted in a Chef createServer request:}
 \itemize{
 \item \code{CHEF_AUTOMATE_PIVOTAL_KEY}: A base64-encoded RSA public key. The
-corresponding private key is required to access the Chef API. When
-no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+corresponding private key is required to access the Chef API. When no
+CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
 returned in the response.
 \item \code{CHEF_AUTOMATE_ADMIN_PASSWORD}: The password for the administrative
-user in the Chef Automate web-based dashboard. The password length
-is a minimum of eight characters, and a maximum of 32. The password
-can contain letters, numbers, and special characters (!/@#$\%^&+=_).
-The password must contain at least one lower case letter, one upper
-case letter, one number, and one special character. When no
-CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned
-in the response.
+user in the Chef Automate web-based dashboard. The password length is
+a minimum of eight characters, and a maximum of 32. The password can
+contain letters, numbers, and special characters (!/@#$\%^&+=_). The
+password must contain at least one lower case letter, one upper case
+letter, one number, and one special character. When no
+CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned in
+the response.
 }
 
 \strong{Attributes accepted in a Puppet createServer request:}
 \itemize{
-\item \code{PUPPET_ADMIN_PASSWORD}: To work with the Puppet Enterprise console,
-a password must use ASCII characters.
+\item \code{PUPPET_ADMIN_PASSWORD}: To work with the Puppet Enterprise console, a
+password must use ASCII characters.
 \item \code{PUPPET_R10K_REMOTE}: The r10k remote is the URL of your control
 repository (for example,
-ssh://git@your.git-repo.com:user/control-repo.git). Specifying an
-r10k remote opens TCP port 8170.
-\item \code{PUPPET_R10K_PRIVATE_KEY}: If you are using a private Git
-repository, add PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded
-private SSH key.
+ssh://git@your.git-repo.com:user/control-repo.git). Specifying an r10k
+remote opens TCP port 8170.
+\item \code{PUPPET_R10K_PRIVATE_KEY}: If you are using a private Git repository,
+add PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded private SSH key.
 }}
 
 \item{BackupRetentionCount}{The number of automated backups that you want to keep. Whenever a new
@@ -196,8 +195,8 @@ for Chef Automate or AWS OpsWorks for Puppet Enterprise server.
 Unicode letters, numbers, or separators, or the following special
 characters: \verb{+ - = . _ : / @}
 \item The value can be a maximum 255 characters, and contain only Unicode
-letters, numbers, or separators, or the following special
-characters: \verb{+ - = . _ : / @}
+letters, numbers, or separators, or the following special characters:
+\verb{+ - = . _ : / @}
 \item Leading and trailing white spaces are trimmed from both the key and
 value.
 \item A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM

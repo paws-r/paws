@@ -21,8 +21,8 @@ DNS aliases.}
 system. The alias name has to comply with the following formatting
 requirements:
 \itemize{
-\item Formatted as a fully-qualified domain name (FQDN), \emph{hostname.domain}
-, for example, \code{accounting.corp.example.com}.
+\item Formatted as a fully-qualified domain name (FQDN), \emph{hostname.domain} ,
+for example, \code{accounting.corp.example.com}.
 \item Can contain alphanumeric characters and the hyphen (-).
 \item Cannot start or end with a hyphen.
 \item Can start with a numeric.
@@ -34,7 +34,7 @@ uppercase letters, lowercase letters, or the corresponding letters in
 escape codes.}
 }
 \description{
-Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system. A file system can have a maximum of 50 DNS aliases associated with it at any one time. If you try to associate a DNS alias that is already associated with the file system, FSx takes no action on that alias in the request. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html}{Working with DNS Aliases} and \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/supported-fsx-clients.html#dns-aliases}{Walkthrough 5: Using DNS aliases to access your file system}, including additional steps you must take to be able to access your file system using a DNS alias.
+Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system. A file system can have a maximum of 50 DNS aliases associated with it at any one time. If you try to associate a DNS alias that is already associated with the file system, FSx takes no action on that alias in the request. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html}{Working with DNS Aliases} and \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/walkthrough05-file-system-custom-CNAME.html}{Walkthrough 5: Using DNS aliases to access your file system}, including additional steps you must take to be able to access your file system using a DNS alias.
 
 See \url{https://www.paws-r-sdk.com/docs/fsx_associate_file_system_aliases/} for full documentation.
 }

@@ -35,7 +35,7 @@ provide an optional suffix and the operation fails, try the operation
 again without the suffix.}
 }
 \description{
-Creates an IAM role that is linked to a specific Amazon Web Services service. The service controls the attached policies and when the role can be deleted. This helps ensure that the service is not broken by an unexpectedly changed or deleted role, which could put your Amazon Web Services resources into an unknown state. Allowing the service to control the role helps improve service stability and proper cleanup when a service and its role are no longer needed. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html}{Using service-linked roles} in the \emph{IAM User Guide}.
+Creates an IAM role that is linked to a specific Amazon Web Services service. The service controls the attached policies and when the role can be deleted. This helps ensure that the service is not broken by an unexpectedly changed or deleted role, which could put your Amazon Web Services resources into an unknown state. Allowing the service to control the role helps improve service stability and proper cleanup when a service and its role are no longer needed. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{Using service-linked roles} in the \emph{IAM User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/iam_create_service_linked_role/} for full documentation.
 }

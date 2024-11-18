@@ -59,10 +59,10 @@ in the \emph{Amazon S3 User Guide}.}
 supported delimiter.
 \item \strong{Directory buckets} - When you query
 \code{\link[=s3_list_objects_v2]{list_objects_v2}} with a delimiter during
-in-progress multipart uploads, the \code{CommonPrefixes} response
-parameter contains the prefixes that are associated with the
-in-progress multipart uploads. For more information about multipart
-uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview}
+in-progress multipart uploads, the \code{CommonPrefixes} response parameter
+contains the prefixes that are associated with the in-progress
+multipart uploads. For more information about multipart uploads, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview}
 in the \emph{Amazon S3 User Guide}.
 }}
 

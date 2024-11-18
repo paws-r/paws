@@ -96,9 +96,9 @@ event data store.
 The following are the possible values:
 \itemize{
 \item \code{EXTENDABLE_RETENTION_PRICING} - This billing mode is generally
-recommended if you want a flexible retention period of up to 3653
-days (about 10 years). The default retention period for this billing
-mode is 366 days.
+recommended if you want a flexible retention period of up to 3653 days
+(about 10 years). The default retention period for this billing mode
+is 366 days.
 \item \code{FIXED_RETENTION_PRICING} - This billing mode is recommended if you
 expect to ingest more than 25 TB of event data per month and need a
 retention period of up to 2557 days (about 7 years). The default

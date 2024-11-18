@@ -24,7 +24,8 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_byte_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_byte_match_set_output()
@@ -57,7 +58,8 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_geo_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_geo_match_set_output()
@@ -90,7 +92,8 @@ waf_create_ip_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_ip_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_ip_set_output()
@@ -143,7 +146,8 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_rate_based_rule_input(Name = Name, MetricName = MetricName, RateKey = RateKey, RateLimit = RateLimit, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rate_based_rule_output()
@@ -176,7 +180,8 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_regex_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_regex_match_set_output()
@@ -209,7 +214,8 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_regex_pattern_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_regex_pattern_set_output()
@@ -248,7 +254,8 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_rule_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rule_output()
@@ -288,7 +295,8 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_rule_group_input(Name = Name, MetricName = MetricName, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_rule_group_output()
@@ -321,7 +329,8 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_size_constraint_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_size_constraint_set_output()
@@ -355,7 +364,8 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_sql_injection_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_sql_injection_match_set_output()
@@ -398,7 +408,8 @@ waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_web_acl_input(Name = Name, MetricName = MetricName, DefaultAction = DefaultAction, ChangeToken = ChangeToken, Tags = Tags)
   output <- .waf$create_web_acl_output()
@@ -422,16 +433,16 @@ waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tag
 #' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket to store the CloudFormation template
 #' in. The S3 bucket must be configured as follows for the migration:
 #' 
-#' -   The bucket name must start with `aws-waf-migration-`. For example,
-#'     `aws-waf-migration-my-web-acl`.
+#' - The bucket name must start with `aws-waf-migration-`. For example,
+#'   `aws-waf-migration-my-web-acl`.
 #' 
-#' -   The bucket must be in the Region where you are deploying the
-#'     template. For example, for a web ACL in us-west-2, you must use an
-#'     Amazon S3 bucket in us-west-2 and you must deploy the template stack
-#'     to us-west-2.
+#' - The bucket must be in the Region where you are deploying the template.
+#'   For example, for a web ACL in us-west-2, you must use an Amazon S3
+#'   bucket in us-west-2 and you must deploy the template stack to
+#'   us-west-2.
 #' 
-#' -   The bucket policies must permit the migration process to write data.
-#'     For listings of the bucket policies, see the Examples section.
+#' - The bucket policies must permit the migration process to write data.
+#'   For listings of the bucket policies, see the Examples section.
 #' @param IgnoreUnsupportedType &#91;required&#93; Indicates whether to exclude entities that can't be migrated or to stop
 #' the migration. Set this to true to ignore unsupported entities in the
 #' web ACL during the migration. Otherwise, if AWS WAF encounters
@@ -446,7 +457,8 @@ waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUns
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_web_acl_migration_stack_input(WebACLId = WebACLId, S3BucketName = S3BucketName, IgnoreUnsupportedType = IgnoreUnsupportedType)
   output <- .waf$create_web_acl_migration_stack_output()
@@ -479,7 +491,8 @@ waf_create_xss_match_set <- function(Name, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$create_xss_match_set_input(Name = Name, ChangeToken = ChangeToken)
   output <- .waf$create_xss_match_set_output()
@@ -514,7 +527,8 @@ waf_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_byte_match_set_output()
@@ -549,7 +563,8 @@ waf_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_geo_match_set_output()
@@ -583,7 +598,8 @@ waf_delete_ip_set <- function(IPSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_ip_set_output()
@@ -614,7 +630,8 @@ waf_delete_logging_configuration <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .waf$delete_logging_configuration_output()
@@ -647,7 +664,8 @@ waf_delete_permission_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .waf$delete_permission_policy_output()
@@ -681,7 +699,8 @@ waf_delete_rate_based_rule <- function(RuleId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .waf$delete_rate_based_rule_output()
@@ -716,7 +735,8 @@ waf_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_regex_match_set_output()
@@ -751,7 +771,8 @@ waf_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_regex_pattern_set_output()
@@ -785,7 +806,8 @@ waf_delete_rule <- function(RuleId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_rule_input(RuleId = RuleId, ChangeToken = ChangeToken)
   output <- .waf$delete_rule_output()
@@ -820,7 +842,8 @@ waf_delete_rule_group <- function(RuleGroupId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_rule_group_input(RuleGroupId = RuleGroupId, ChangeToken = ChangeToken)
   output <- .waf$delete_rule_group_output()
@@ -855,7 +878,8 @@ waf_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_size_constraint_set_output()
@@ -891,7 +915,8 @@ waf_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_sql_injection_match_set_output()
@@ -925,7 +950,8 @@ waf_delete_web_acl <- function(WebACLId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken)
   output <- .waf$delete_web_acl_output()
@@ -960,7 +986,8 @@ waf_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$delete_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken)
   output <- .waf$delete_xss_match_set_output()
@@ -993,7 +1020,8 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_byte_match_set_input(ByteMatchSetId = ByteMatchSetId)
   output <- .waf$get_byte_match_set_output()
@@ -1023,7 +1051,8 @@ waf_get_change_token <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_change_token_input()
   output <- .waf$get_change_token_output()
@@ -1055,7 +1084,8 @@ waf_get_change_token_status <- function(ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_change_token_status_input(ChangeToken = ChangeToken)
   output <- .waf$get_change_token_status_output()
@@ -1088,7 +1118,8 @@ waf_get_geo_match_set <- function(GeoMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_geo_match_set_input(GeoMatchSetId = GeoMatchSetId)
   output <- .waf$get_geo_match_set_output()
@@ -1120,7 +1151,8 @@ waf_get_ip_set <- function(IPSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_ip_set_input(IPSetId = IPSetId)
   output <- .waf$get_ip_set_output()
@@ -1151,7 +1183,8 @@ waf_get_logging_configuration <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_logging_configuration_input(ResourceArn = ResourceArn)
   output <- .waf$get_logging_configuration_output()
@@ -1182,7 +1215,8 @@ waf_get_permission_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .waf$get_permission_policy_output()
@@ -1214,7 +1248,8 @@ waf_get_rate_based_rule <- function(RuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_rate_based_rule_input(RuleId = RuleId)
   output <- .waf$get_rate_based_rule_output()
@@ -1249,7 +1284,8 @@ waf_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_rate_based_rule_managed_keys_input(RuleId = RuleId, NextMarker = NextMarker)
   output <- .waf$get_rate_based_rule_managed_keys_output()
@@ -1282,7 +1318,8 @@ waf_get_regex_match_set <- function(RegexMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_regex_match_set_input(RegexMatchSetId = RegexMatchSetId)
   output <- .waf$get_regex_match_set_output()
@@ -1315,7 +1352,8 @@ waf_get_regex_pattern_set <- function(RegexPatternSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId)
   output <- .waf$get_regex_pattern_set_output()
@@ -1346,7 +1384,8 @@ waf_get_rule <- function(RuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_rule_input(RuleId = RuleId)
   output <- .waf$get_rule_output()
@@ -1378,7 +1417,8 @@ waf_get_rule_group <- function(RuleGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_rule_group_input(RuleGroupId = RuleGroupId)
   output <- .waf$get_rule_group_output()
@@ -1402,15 +1442,14 @@ waf_get_rule_group <- function(RuleGroupId) {
 #' requests.
 #' @param RuleId &#91;required&#93; `RuleId` is one of three values:
 #' 
-#' -   The `RuleId` of the `Rule` or the `RuleGroupId` of the `RuleGroup`
-#'     for which you want
-#'     [`get_sampled_requests`][waf_get_sampled_requests] to return a
-#'     sample of requests.
+#' - The `RuleId` of the `Rule` or the `RuleGroupId` of the `RuleGroup` for
+#'   which you want [`get_sampled_requests`][waf_get_sampled_requests] to
+#'   return a sample of requests.
 #' 
-#' -   `Default_Action`, which causes
-#'     [`get_sampled_requests`][waf_get_sampled_requests] to return a
-#'     sample of the requests that didn't match any of the rules in the
-#'     specified `WebACL`.
+#' - `Default_Action`, which causes
+#'   [`get_sampled_requests`][waf_get_sampled_requests] to return a sample
+#'   of the requests that didn't match any of the rules in the specified
+#'   `WebACL`.
 #' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
 #' you want [`get_sampled_requests`][waf_get_sampled_requests] to return a
 #' sample of requests. You must specify the times in Coordinated Universal
@@ -1432,7 +1471,8 @@ waf_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxItems) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_sampled_requests_input(WebAclId = WebAclId, RuleId = RuleId, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .waf$get_sampled_requests_output()
@@ -1465,7 +1505,8 @@ waf_get_size_constraint_set <- function(SizeConstraintSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId)
   output <- .waf$get_size_constraint_set_output()
@@ -1499,7 +1540,8 @@ waf_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId)
   output <- .waf$get_sql_injection_match_set_output()
@@ -1531,7 +1573,8 @@ waf_get_web_acl <- function(WebACLId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_web_acl_input(WebACLId = WebACLId)
   output <- .waf$get_web_acl_output()
@@ -1564,7 +1607,8 @@ waf_get_xss_match_set <- function(XssMatchSetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$get_xss_match_set_input(XssMatchSetId = XssMatchSetId)
   output <- .waf$get_xss_match_set_output()
@@ -1606,7 +1650,8 @@ waf_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_activated_rules_in_rule_group_input(RuleGroupId = RuleGroupId, NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_activated_rules_in_rule_group_output()
@@ -1646,7 +1691,8 @@ waf_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_byte_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_byte_match_sets_output()
@@ -1686,7 +1732,8 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_geo_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_geo_match_sets_output()
@@ -1724,7 +1771,8 @@ waf_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_ip_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_ip_sets_output()
@@ -1766,7 +1814,8 @@ waf_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_logging_configurations_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_logging_configurations_output()
@@ -1805,7 +1854,8 @@ waf_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_rate_based_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_rate_based_rules_output()
@@ -1845,7 +1895,8 @@ waf_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_regex_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_regex_match_sets_output()
@@ -1886,7 +1937,8 @@ waf_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_regex_pattern_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_regex_pattern_sets_output()
@@ -1925,7 +1977,8 @@ waf_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_rule_groups_output()
@@ -1964,7 +2017,8 @@ waf_list_rules <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_rules_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_rules_output()
@@ -2005,7 +2059,8 @@ waf_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_size_constraint_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_size_constraint_sets_output()
@@ -2045,7 +2100,8 @@ waf_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_sql_injection_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_sql_injection_match_sets_output()
@@ -2085,7 +2141,8 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_subscribed_rule_groups_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_subscribed_rule_groups_output()
@@ -2117,7 +2174,8 @@ waf_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .waf$list_tags_for_resource_output()
@@ -2157,7 +2215,8 @@ waf_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_web_ac_ls_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_web_ac_ls_output()
@@ -2197,7 +2256,8 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$list_xss_match_sets_input(NextMarker = NextMarker, Limit = Limit)
   output <- .waf$list_xss_match_sets_output()
@@ -2232,7 +2292,8 @@ waf_put_logging_configuration <- function(LoggingConfiguration) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .waf$put_logging_configuration_output()
@@ -2264,7 +2325,8 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .waf$put_permission_policy_output()
@@ -2295,7 +2357,8 @@ waf_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .waf$tag_resource_output()
@@ -2326,7 +2389,8 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .waf$untag_resource_output()
@@ -2355,12 +2419,12 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
 #' delete from a ByteMatchSet. For more information, see the applicable
 #' data types:
 #' 
-#' -   ByteMatchSetUpdate: Contains `Action` and `ByteMatchTuple`
+#' - ByteMatchSetUpdate: Contains `Action` and `ByteMatchTuple`
 #' 
-#' -   ByteMatchTuple: Contains `FieldToMatch`, `PositionalConstraint`,
-#'     `TargetString`, and `TextTransformation`
+#' - ByteMatchTuple: Contains `FieldToMatch`, `PositionalConstraint`,
+#'   `TargetString`, and `TextTransformation`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @keywords internal
 #'
@@ -2371,7 +2435,8 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_byte_match_set_input(ByteMatchSetId = ByteMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_byte_match_set_output()
@@ -2400,13 +2465,13 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 #' delete from an GeoMatchSet. For more information, see the applicable
 #' data types:
 #' 
-#' -   GeoMatchSetUpdate: Contains `Action` and `GeoMatchConstraint`
+#' - GeoMatchSetUpdate: Contains `Action` and `GeoMatchConstraint`
 #' 
-#' -   GeoMatchConstraint: Contains `Type` and `Value`
+#' - GeoMatchConstraint: Contains `Type` and `Value`
 #' 
-#'     You can have only one `Type` and `Value` per `GeoMatchConstraint`.
-#'     To add multiple countries, include multiple `GeoMatchSetUpdate`
-#'     objects in your request.
+#'   You can have only one `Type` and `Value` per `GeoMatchConstraint`. To
+#'   add multiple countries, include multiple `GeoMatchSetUpdate` objects
+#'   in your request.
 #'
 #' @keywords internal
 #'
@@ -2417,7 +2482,8 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_geo_match_set_input(GeoMatchSetId = GeoMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_geo_match_set_output()
@@ -2444,9 +2510,9 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 #' @param Updates &#91;required&#93; An array of `IPSetUpdate` objects that you want to insert into or delete
 #' from an IPSet. For more information, see the applicable data types:
 #' 
-#' -   IPSetUpdate: Contains `Action` and `IPSetDescriptor`
+#' - IPSetUpdate: Contains `Action` and `IPSetDescriptor`
 #' 
-#' -   IPSetDescriptor: Contains `Type` and `Value`
+#' - IPSetDescriptor: Contains `Type` and `Value`
 #' 
 #' You can insert a maximum of 1000 addresses in a single request.
 #'
@@ -2459,7 +2525,8 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_ip_set_input(IPSetId = IPSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_ip_set_output()
@@ -2500,7 +2567,8 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_rate_based_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates, RateLimit = RateLimit)
   output <- .waf$update_rate_based_rule_output()
@@ -2538,7 +2606,8 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_regex_match_set_input(RegexMatchSetId = RegexMatchSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .waf$update_regex_match_set_output()
@@ -2575,7 +2644,8 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_regex_pattern_set_input(RegexPatternSetId = RegexPatternSetId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .waf$update_regex_pattern_set_output()
@@ -2602,11 +2672,11 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
 #' @param Updates &#91;required&#93; An array of `RuleUpdate` objects that you want to insert into or delete
 #' from a Rule. For more information, see the applicable data types:
 #' 
-#' -   RuleUpdate: Contains `Action` and `Predicate`
+#' - RuleUpdate: Contains `Action` and `Predicate`
 #' 
-#' -   Predicate: Contains `DataId`, `Negated`, and `Type`
+#' - Predicate: Contains `DataId`, `Negated`, and `Type`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @keywords internal
 #'
@@ -2617,7 +2687,8 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_rule_input(RuleId = RuleId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_rule_output()
@@ -2662,7 +2733,8 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_rule_group_input(RuleGroupId = RuleGroupId, Updates = Updates, ChangeToken = ChangeToken)
   output <- .waf$update_rule_group_output()
@@ -2691,12 +2763,12 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' into or delete from a SizeConstraintSet. For more information, see the
 #' applicable data types:
 #' 
-#' -   SizeConstraintSetUpdate: Contains `Action` and `SizeConstraint`
+#' - SizeConstraintSetUpdate: Contains `Action` and `SizeConstraint`
 #' 
-#' -   SizeConstraint: Contains `FieldToMatch`, `TextTransformation`,
-#'     `ComparisonOperator`, and `Size`
+#' - SizeConstraint: Contains `FieldToMatch`, `TextTransformation`,
+#'   `ComparisonOperator`, and `Size`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @keywords internal
 #'
@@ -2707,7 +2779,8 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_size_constraint_set_input(SizeConstraintSetId = SizeConstraintSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_size_constraint_set_output()
@@ -2737,13 +2810,13 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 #' into or delete from a SqlInjectionMatchSet. For more information, see
 #' the applicable data types:
 #' 
-#' -   SqlInjectionMatchSetUpdate: Contains `Action` and
-#'     `SqlInjectionMatchTuple`
+#' - SqlInjectionMatchSetUpdate: Contains `Action` and
+#'   `SqlInjectionMatchTuple`
 #' 
-#' -   SqlInjectionMatchTuple: Contains `FieldToMatch` and
-#'     `TextTransformation`
+#' - SqlInjectionMatchTuple: Contains `FieldToMatch` and
+#'   `TextTransformation`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @keywords internal
 #'
@@ -2754,7 +2827,8 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_sql_injection_match_set_input(SqlInjectionMatchSetId = SqlInjectionMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_sql_injection_match_set_output()
@@ -2784,16 +2858,16 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' delete from a WebACL. For more information, see the applicable data
 #' types:
 #' 
-#' -   WebACLUpdate: Contains `Action` and `ActivatedRule`
+#' - WebACLUpdate: Contains `Action` and `ActivatedRule`
 #' 
-#' -   ActivatedRule: Contains `Action`, `OverrideAction`, `Priority`,
-#'     `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only
-#'     when updating or adding a `RuleGroup` to a `WebACL`. In this case,
-#'     you do not use `ActivatedRule|Action`. For all other update
-#'     requests, `ActivatedRule|Action` is used instead of
-#'     `ActivatedRule|OverrideAction`.
+#' - ActivatedRule: Contains `Action`, `OverrideAction`, `Priority`,
+#'   `RuleId`, and `Type`. `ActivatedRule|OverrideAction` applies only when
+#'   updating or adding a `RuleGroup` to a `WebACL`. In this case, you do
+#'   not use `ActivatedRule|Action`. For all other update requests,
+#'   `ActivatedRule|Action` is used instead of
+#'   `ActivatedRule|OverrideAction`.
 #' 
-#' -   WafAction: Contains `Type`
+#' - WafAction: Contains `Type`
 #' @param DefaultAction A default action for the web ACL, either ALLOW or BLOCK. AWS WAF
 #' performs the default action if a request doesn't match the criteria in
 #' any of the rules in a web ACL.
@@ -2807,7 +2881,8 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_web_acl_input(WebACLId = WebACLId, ChangeToken = ChangeToken, Updates = Updates, DefaultAction = DefaultAction)
   output <- .waf$update_web_acl_output()
@@ -2836,11 +2911,11 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 #' delete from an XssMatchSet. For more information, see the applicable
 #' data types:
 #' 
-#' -   XssMatchSetUpdate: Contains `Action` and `XssMatchTuple`
+#' - XssMatchSetUpdate: Contains `Action` and `XssMatchTuple`
 #' 
-#' -   XssMatchTuple: Contains `FieldToMatch` and `TextTransformation`
+#' - XssMatchTuple: Contains `FieldToMatch` and `TextTransformation`
 #' 
-#' -   FieldToMatch: Contains `Data` and `Type`
+#' - FieldToMatch: Contains `Data` and `Type`
 #'
 #' @keywords internal
 #'
@@ -2851,7 +2926,8 @@ waf_update_xss_match_set <- function(XssMatchSetId, ChangeToken, Updates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .waf$update_xss_match_set_input(XssMatchSetId = XssMatchSetId, ChangeToken = ChangeToken, Updates = Updates)
   output <- .waf$update_xss_match_set_output()

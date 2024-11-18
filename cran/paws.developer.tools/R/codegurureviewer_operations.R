@@ -19,21 +19,20 @@ NULL
 #' @param Tags An array of key-value pairs used to tag an associated repository. A tag
 #' is a custom attribute label with two parts:
 #' 
-#' -   A *tag key* (for example, `CostCenter`, `Environment`, `Project`, or
-#'     `Secret`). Tag keys are case sensitive.
+#' - A *tag key* (for example, `CostCenter`, `Environment`, `Project`, or
+#'   `Secret`). Tag keys are case sensitive.
 #' 
-#' -   An optional field known as a *tag value* (for example,
-#'     `111122223333`, `Production`, or a team name). Omitting the tag
-#'     value is the same as using an empty string. Like tag keys, tag
-#'     values are case sensitive.
+#' - An optional field known as a *tag value* (for example, `111122223333`,
+#'   `Production`, or a team name). Omitting the tag value is the same as
+#'   using an empty string. Like tag keys, tag values are case sensitive.
 #' @param KMSKeyDetails A `KMSKeyDetails` object that contains:
 #' 
-#' -   The encryption option for this repository association. It is either
-#'     owned by Amazon Web Services Key Management Service (KMS)
-#'     (`AWS_OWNED_CMK`) or customer managed (`CUSTOMER_MANAGED_CMK`).
+#' - The encryption option for this repository association. It is either
+#'   owned by Amazon Web Services Key Management Service (KMS)
+#'   (`AWS_OWNED_CMK`) or customer managed (`CUSTOMER_MANAGED_CMK`).
 #' 
-#' -   The ID of the Amazon Web Services KMS key that is associated with
-#'     this repository association.
+#' - The ID of the Amazon Web Services KMS key that is associated with this
+#'   repository association.
 #'
 #' @keywords internal
 #'
@@ -44,7 +43,8 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
     http_method = "POST",
     http_path = "/associations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$associate_repository_input(Repository = Repository, ClientRequestToken = ClientRequestToken, Tags = Tags, KMSKeyDetails = KMSKeyDetails)
   output <- .codegurureviewer$associate_repository_output()
@@ -87,7 +87,8 @@ codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, 
     http_method = "POST",
     http_path = "/codereviews",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$create_code_review_input(Name = Name, RepositoryAssociationArn = RepositoryAssociationArn, Type = Type, ClientRequestToken = ClientRequestToken)
   output <- .codegurureviewer$create_code_review_output()
@@ -120,7 +121,8 @@ codegurureviewer_describe_code_review <- function(CodeReviewArn) {
     http_method = "GET",
     http_path = "/codereviews/{CodeReviewArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$describe_code_review_input(CodeReviewArn = CodeReviewArn)
   output <- .codegurureviewer$describe_code_review_output()
@@ -162,7 +164,8 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
     http_method = "GET",
     http_path = "/feedback/{CodeReviewArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$describe_recommendation_feedback_input(CodeReviewArn = CodeReviewArn, RecommendationId = RecommendationId, UserId = UserId)
   output <- .codegurureviewer$describe_recommendation_feedback_output()
@@ -196,7 +199,8 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
     http_method = "GET",
     http_path = "/associations/{AssociationArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$describe_repository_association_input(AssociationArn = AssociationArn)
   output <- .codegurureviewer$describe_repository_association_output()
@@ -230,7 +234,8 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
     http_method = "DELETE",
     http_path = "/associations/{AssociationArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$disassociate_repository_input(AssociationArn = AssociationArn)
   output <- .codegurureviewer$disassociate_repository_output()
@@ -259,13 +264,13 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #' 
 #' The valid code review states are:
 #' 
-#' -   `Completed`: The code review is complete.
+#' - `Completed`: The code review is complete.
 #' 
-#' -   `Pending`: The code review started and has not completed or failed.
+#' - `Pending`: The code review started and has not completed or failed.
 #' 
-#' -   `Failed`: The code review failed.
+#' - `Failed`: The code review failed.
 #' 
-#' -   `Deleting`: The code review is being deleted.
+#' - `Deleting`: The code review is being deleted.
 #' @param RepositoryNames List of repository names for filtering that needs to be applied before
 #' displaying the result.
 #' @param Type &#91;required&#93; The type of code reviews to list in the response.
@@ -285,7 +290,8 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
     http_method = "GET",
     http_path = "/codereviews",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$list_code_reviews_input(ProviderTypes = ProviderTypes, States = States, RepositoryNames = RepositoryNames, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codegurureviewer$list_code_reviews_output()
@@ -334,7 +340,8 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
     http_method = "GET",
     http_path = "/feedback/{CodeReviewArn}/RecommendationFeedback",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$list_recommendation_feedback_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn, UserIds = UserIds, RecommendationIds = RecommendationIds)
   output <- .codegurureviewer$list_recommendation_feedback_output()
@@ -369,7 +376,8 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
     http_method = "GET",
     http_path = "/codereviews/{CodeReviewArn}/Recommendations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$list_recommendations_input(NextToken = NextToken, MaxResults = MaxResults, CodeReviewArn = CodeReviewArn)
   output <- .codegurureviewer$list_recommendations_output()
@@ -394,35 +402,35 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' 
 #' The valid repository association states are:
 #' 
-#' -   **Associated**: The repository association is complete.
+#' - **Associated**: The repository association is complete.
 #' 
-#' -   **Associating**: CodeGuru Reviewer is:
+#' - **Associating**: CodeGuru Reviewer is:
 #' 
-#'     -   Setting up pull request notifications. This is required for pull
-#'         requests to trigger a CodeGuru Reviewer review.
+#'   - Setting up pull request notifications. This is required for pull
+#'     requests to trigger a CodeGuru Reviewer review.
 #' 
-#'         If your repository `ProviderType` is `GitHub`,
-#'         `GitHub Enterprise Server`, or `Bitbucket`, CodeGuru Reviewer
-#'         creates webhooks in your repository to trigger CodeGuru Reviewer
-#'         reviews. If you delete these webhooks, reviews of code in your
-#'         repository cannot be triggered.
+#'     If your repository `ProviderType` is `GitHub`,
+#'     `GitHub Enterprise Server`, or `Bitbucket`, CodeGuru Reviewer
+#'     creates webhooks in your repository to trigger CodeGuru Reviewer
+#'     reviews. If you delete these webhooks, reviews of code in your
+#'     repository cannot be triggered.
 #' 
-#'     -   Setting up source code access. This is required for CodeGuru
-#'         Reviewer to securely clone code in your repository.
+#'   - Setting up source code access. This is required for CodeGuru
+#'     Reviewer to securely clone code in your repository.
 #' 
-#' -   **Failed**: The repository failed to associate or disassociate.
+#' - **Failed**: The repository failed to associate or disassociate.
 #' 
-#' -   **Disassociating**: CodeGuru Reviewer is removing the repository's
-#'     pull request notifications and source code access.
+#' - **Disassociating**: CodeGuru Reviewer is removing the repository's
+#'   pull request notifications and source code access.
 #' 
-#' -   **Disassociated**: CodeGuru Reviewer successfully disassociated the
-#'     repository. You can create a new association with this repository if
-#'     you want to review source code in it later. You can control access
-#'     to code reviews created in anassociated repository with tags after
-#'     it has been disassociated. For more information, see [Using tags to
-#'     control access to associated
-#'     repositories](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html)
-#'     in the *Amazon CodeGuru Reviewer User Guide*.
+#' - **Disassociated**: CodeGuru Reviewer successfully disassociated the
+#'   repository. You can create a new association with this repository if
+#'   you want to review source code in it later. You can control access to
+#'   code reviews created in anassociated repository with tags after it has
+#'   been disassociated. For more information, see [Using tags to control
+#'   access to associated
+#'   repositories](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html)
+#'   in the *Amazon CodeGuru Reviewer User Guide*.
 #' @param Names List of repository names to use as a filter.
 #' @param Owners List of owners to use as a filter. For Amazon Web Services CodeCommit,
 #' it is the name of the CodeCommit account that was used to associate the
@@ -459,7 +467,8 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
     http_method = "GET",
     http_path = "/associations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RepositoryAssociationSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RepositoryAssociationSummaries"),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$list_repository_associations_input(ProviderTypes = ProviderTypes, States = States, Names = Names, Owners = Owners, MaxResults = MaxResults, NextToken = NextToken)
   output <- .codegurureviewer$list_repository_associations_output()
@@ -493,7 +502,8 @@ codegurureviewer_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codegurureviewer$list_tags_for_resource_output()
@@ -529,7 +539,8 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
     http_method = "PUT",
     http_path = "/feedback",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$put_recommendation_feedback_input(CodeReviewArn = CodeReviewArn, RecommendationId = RecommendationId, Reactions = Reactions)
   output <- .codegurureviewer$put_recommendation_feedback_output()
@@ -555,13 +566,12 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
 #' @param Tags &#91;required&#93; An array of key-value pairs used to tag an associated repository. A tag
 #' is a custom attribute label with two parts:
 #' 
-#' -   A *tag key* (for example, `CostCenter`, `Environment`, `Project`, or
-#'     `Secret`). Tag keys are case sensitive.
+#' - A *tag key* (for example, `CostCenter`, `Environment`, `Project`, or
+#'   `Secret`). Tag keys are case sensitive.
 #' 
-#' -   An optional field known as a *tag value* (for example,
-#'     `111122223333`, `Production`, or a team name). Omitting the tag
-#'     value is the same as using an empty string. Like tag keys, tag
-#'     values are case sensitive.
+#' - An optional field known as a *tag value* (for example, `111122223333`,
+#'   `Production`, or a team name). Omitting the tag value is the same as
+#'   using an empty string. Like tag keys, tag values are case sensitive.
 #'
 #' @keywords internal
 #'
@@ -572,7 +582,8 @@ codegurureviewer_tag_resource <- function(resourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$tag_resource_input(resourceArn = resourceArn, Tags = Tags)
   output <- .codegurureviewer$tag_resource_output()
@@ -607,7 +618,8 @@ codegurureviewer_untag_resource <- function(resourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codegurureviewer$untag_resource_input(resourceArn = resourceArn, TagKeys = TagKeys)
   output <- .codegurureviewer$untag_resource_output()

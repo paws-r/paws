@@ -17,31 +17,31 @@ list of operations to be performed (\code{DeleteRequest} or \code{PutRequest}).
 Each element in the map consists of the following:
 \itemize{
 \item \code{DeleteRequest} - Perform a \code{\link[=dynamodb_delete_item]{delete_item}}
-operation on the specified item. The item to be deleted is
-identified by a \code{Key} subelement:
+operation on the specified item. The item to be deleted is identified
+by a \code{Key} subelement:
 \itemize{
-\item \code{Key} - A map of primary key attribute values that uniquely
-identify the item. Each entry in this map consists of an
-attribute name and an attribute value. For each primary key, you
-must provide \emph{all} of the key attributes. For example, with a
-simple primary key, you only need to provide a value for the
-partition key. For a composite primary key, you must provide
-values for \emph{both} the partition key and the sort key.
+\item \code{Key} - A map of primary key attribute values that uniquely identify
+the item. Each entry in this map consists of an attribute name and
+an attribute value. For each primary key, you must provide \emph{all} of
+the key attributes. For example, with a simple primary key, you only
+need to provide a value for the partition key. For a composite
+primary key, you must provide values for \emph{both} the partition key
+and the sort key.
 }
-\item \code{PutRequest} - Perform a \code{\link[=dynamodb_put_item]{put_item}} operation
-on the specified item. The item to be put is identified by an \code{Item}
+\item \code{PutRequest} - Perform a \code{\link[=dynamodb_put_item]{put_item}} operation on
+the specified item. The item to be put is identified by an \code{Item}
 subelement:
 \itemize{
-\item \code{Item} - A map of attributes and their values. Each entry in
-this map consists of an attribute name and an attribute value.
-Attribute values must not be null; string and binary type
-attributes must have lengths greater than zero; and set type
-attributes must not be empty. Requests that contain empty values
-are rejected with a \code{ValidationException} exception.
+\item \code{Item} - A map of attributes and their values. Each entry in this
+map consists of an attribute name and an attribute value. Attribute
+values must not be null; string and binary type attributes must have
+lengths greater than zero; and set type attributes must not be
+empty. Requests that contain empty values are rejected with a
+\code{ValidationException} exception.
 
-If you specify any attributes that are part of an index key,
-then the data types for those attributes must match those of the
-schema in the table's attribute definition.
+If you specify any attributes that are part of an index key, then
+the data types for those attributes must match those of the schema
+in the table's attribute definition.
 }
 }}
 

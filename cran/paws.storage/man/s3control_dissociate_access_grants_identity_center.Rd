@@ -8,7 +8,7 @@ the S3 Access Grants instance}
 s3control_dissociate_access_grants_identity_center(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
+\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
 }
 \description{
 Dissociates the Amazon Web Services IAM Identity Center instance from the S3 Access Grants instance.

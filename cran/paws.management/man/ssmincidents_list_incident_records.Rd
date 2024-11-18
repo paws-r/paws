@@ -24,10 +24,10 @@ Note the following when when you use Filters:
 \itemize{
 \item If you don't specify a Filter, the response includes all incident
 records.
-\item If you specify more than one filter in a single request, the
-response returns incident records that match all filters.
-\item If you specify a filter with more than one value, the response
-returns incident records that match any of the values provided.
+\item If you specify more than one filter in a single request, the response
+returns incident records that match all filters.
+\item If you specify a filter with more than one value, the response returns
+incident records that match any of the values provided.
 }}
 
 \item{maxResults}{The maximum number of results per page.}

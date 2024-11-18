@@ -30,7 +30,8 @@ ec2_accept_address_transfer <- function(Address, TagSpecifications = NULL, DryRu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_address_transfer_input(Address = Address, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$accept_address_transfer_output()
@@ -68,7 +69,8 @@ ec2_accept_reserved_instances_exchange_quote <- function(DryRun = NULL, Reserved
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_reserved_instances_exchange_quote_input(DryRun = DryRun, ReservedInstanceIds = ReservedInstanceIds, TargetConfigurations = TargetConfigurations)
   output <- .ec2$accept_reserved_instances_exchange_quote_output()
@@ -106,7 +108,8 @@ ec2_accept_transit_gateway_multicast_domain_associations <- function(TransitGate
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_transit_gateway_multicast_domain_associations_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, SubnetIds = SubnetIds, DryRun = DryRun)
   output <- .ec2$accept_transit_gateway_multicast_domain_associations_output()
@@ -140,7 +143,8 @@ ec2_accept_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_transit_gateway_peering_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$accept_transit_gateway_peering_attachment_output()
@@ -174,7 +178,8 @@ ec2_accept_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$accept_transit_gateway_vpc_attachment_output()
@@ -209,7 +214,8 @@ ec2_accept_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_vpc_endpoint_connections_input(DryRun = DryRun, ServiceId = ServiceId, VpcEndpointIds = VpcEndpointIds)
   output <- .ec2$accept_vpc_endpoint_connections_output()
@@ -244,7 +250,8 @@ ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_vpc_peering_connection_input(DryRun = DryRun, VpcPeeringConnectionId = VpcPeeringConnectionId)
   output <- .ec2$accept_vpc_peering_connection_output()
@@ -283,11 +290,11 @@ ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' You can provision BYOIP address ranges to and advertise them in the
 #' following Local Zone network border groups:
 #' 
-#' -   us-east-1-dfw-2
+#' - us-east-1-dfw-2
 #' 
-#' -   us-west-2-lax-1
+#' - us-west-2-lax-1
 #' 
-#' -   us-west-2-phx-2
+#' - us-west-2-phx-2
 #' 
 #' You cannot provision or advertise BYOIPv6 address ranges in Local Zones
 #' at this time.
@@ -301,7 +308,8 @@ ec2_advertise_byoip_cidr <- function(Cidr, Asn = NULL, DryRun = NULL, NetworkBor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$advertise_byoip_cidr_input(Cidr = Cidr, Asn = Asn, DryRun = DryRun, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$advertise_byoip_cidr_output()
@@ -349,7 +357,8 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$allocate_address_input(Domain = Domain, Address = Address, PublicIpv4Pool = PublicIpv4Pool, NetworkBorderGroup = NetworkBorderGroup, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, DryRun = DryRun, TagSpecifications = TagSpecifications, IpamPoolId = IpamPoolId)
   output <- .ec2$allocate_address_output()
@@ -372,14 +381,14 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' match its instance type configuration, or if it only accepts Host
 #' tenancy instance launches that specify its unique host ID. For more
 #' information, see [Understanding auto-placement and
-#' affinity](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-understanding)
+#' affinity](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding)
 #' in the *Amazon EC2 User Guide*.
 #' 
 #' Default: `off`
 #' @param AvailabilityZone &#91;required&#93; The Availability Zone in which to allocate the Dedicated Host.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param InstanceType Specifies the instance type to be supported by the Dedicated Hosts. If
 #' you specify an instance type, the Dedicated Hosts support instances of
 #' the specified instance type only.
@@ -427,12 +436,12 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' supported only if you specify **OutpostArn**. If you are allocating the
 #' Dedicated Hosts in a Region, omit this parameter.
 #' 
-#' -   If you specify this parameter, you can omit **Quantity**. In this
-#'     case, Amazon EC2 allocates a Dedicated Host on each specified
-#'     hardware asset.
+#' - If you specify this parameter, you can omit **Quantity**. In this
+#'   case, Amazon EC2 allocates a Dedicated Host on each specified hardware
+#'   asset.
 #' 
-#' -   If you specify both **AssetIds** and **Quantity**, then the value
-#'     for **Quantity** must be equal to the number of asset IDs specified.
+#' - If you specify both **AssetIds** and **Quantity**, then the value for
+#'   **Quantity** must be equal to the number of asset IDs specified.
 #'
 #' @keywords internal
 #'
@@ -443,7 +452,8 @@ ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$allocate_hosts_input(AutoPlacement = AutoPlacement, AvailabilityZone = AvailabilityZone, ClientToken = ClientToken, InstanceType = InstanceType, InstanceFamily = InstanceFamily, Quantity = Quantity, TagSpecifications = TagSpecifications, HostRecovery = HostRecovery, OutpostArn = OutpostArn, HostMaintenance = HostMaintenance, AssetIds = AssetIds)
   output <- .ec2$allocate_hosts_output()
@@ -470,23 +480,23 @@ ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientTok
 #' @param Cidr The CIDR you would like to allocate from the IPAM pool. Note the
 #' following:
 #' 
-#' -   If there is no DefaultNetmaskLength allocation rule set on the pool,
-#'     you must specify either the NetmaskLength or the CIDR.
+#' - If there is no DefaultNetmaskLength allocation rule set on the pool,
+#'   you must specify either the NetmaskLength or the CIDR.
 #' 
-#' -   If the DefaultNetmaskLength allocation rule is set on the pool, you
-#'     can specify either the NetmaskLength or the CIDR and the
-#'     DefaultNetmaskLength allocation rule will be ignored.
+#' - If the DefaultNetmaskLength allocation rule is set on the pool, you
+#'   can specify either the NetmaskLength or the CIDR and the
+#'   DefaultNetmaskLength allocation rule will be ignored.
 #' 
 #' Possible values: Any available IPv4 or IPv6 CIDR.
 #' @param NetmaskLength The netmask length of the CIDR you would like to allocate from the IPAM
 #' pool. Note the following:
 #' 
-#' -   If there is no DefaultNetmaskLength allocation rule set on the pool,
-#'     you must specify either the NetmaskLength or the CIDR.
+#' - If there is no DefaultNetmaskLength allocation rule set on the pool,
+#'   you must specify either the NetmaskLength or the CIDR.
 #' 
-#' -   If the DefaultNetmaskLength allocation rule is set on the pool, you
-#'     can specify either the NetmaskLength or the CIDR and the
-#'     DefaultNetmaskLength allocation rule will be ignored.
+#' - If the DefaultNetmaskLength allocation rule is set on the pool, you
+#'   can specify either the NetmaskLength or the CIDR and the
+#'   DefaultNetmaskLength allocation rule will be ignored.
 #' 
 #' Possible netmask lengths for IPv4 addresses are 0 - 32. Possible netmask
 #' lengths for IPv6 addresses are 0 - 128.
@@ -510,7 +520,8 @@ ec2_allocate_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$allocate_ipam_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr, NetmaskLength = NetmaskLength, ClientToken = ClientToken, Description = Description, PreviewNextCidr = PreviewNextCidr, AllowedCidrs = AllowedCidrs, DisallowedCidrs = DisallowedCidrs)
   output <- .ec2$allocate_ipam_pool_cidr_output()
@@ -549,7 +560,8 @@ ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$apply_security_groups_to_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, VpcId = VpcId, SecurityGroupIds = SecurityGroupIds, DryRun = DryRun)
   output <- .ec2$apply_security_groups_to_client_vpn_target_network_output()
@@ -592,7 +604,8 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$assign_ipv_6_addresses_input(Ipv6AddressCount = Ipv6AddressCount, Ipv6Addresses = Ipv6Addresses, Ipv6PrefixCount = Ipv6PrefixCount, Ipv6Prefixes = Ipv6Prefixes, NetworkInterfaceId = NetworkInterfaceId)
   output <- .ec2$assign_ipv_6_addresses_output()
@@ -640,7 +653,8 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$assign_private_ip_addresses_input(AllowReassignment = AllowReassignment, NetworkInterfaceId = NetworkInterfaceId, PrivateIpAddresses = PrivateIpAddresses, SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount, Ipv4Prefixes = Ipv4Prefixes, Ipv4PrefixCount = Ipv4PrefixCount)
   output <- .ec2$assign_private_ip_addresses_output()
@@ -678,7 +692,8 @@ ec2_assign_private_nat_gateway_address <- function(NatGatewayId, PrivateIpAddres
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$assign_private_nat_gateway_address_input(NatGatewayId = NatGatewayId, PrivateIpAddresses = PrivateIpAddresses, PrivateIpAddressCount = PrivateIpAddressCount, DryRun = DryRun)
   output <- .ec2$assign_private_nat_gateway_address_output()
@@ -729,7 +744,8 @@ ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, Public
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_address_input(AllocationId = AllocationId, InstanceId = InstanceId, PublicIp = PublicIp, AllowReassociation = AllowReassociation, DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId, PrivateIpAddress = PrivateIpAddress)
   output <- .ec2$associate_address_output()
@@ -767,7 +783,8 @@ ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, SubnetId = SubnetId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$associate_client_vpn_target_network_output()
@@ -804,7 +821,8 @@ ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_dhcp_options_input(DhcpOptionsId = DhcpOptionsId, VpcId = VpcId, DryRun = DryRun)
   output <- .ec2$associate_dhcp_options_output()
@@ -841,7 +859,8 @@ ec2_associate_enclave_certificate_iam_role <- function(CertificateArn, RoleArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_enclave_certificate_iam_role_input(CertificateArn = CertificateArn, RoleArn = RoleArn, DryRun = DryRun)
   output <- .ec2$associate_enclave_certificate_iam_role_output()
@@ -872,7 +891,8 @@ ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_iam_instance_profile_input(IamInstanceProfile = IamInstanceProfile, InstanceId = InstanceId)
   output <- .ec2$associate_iam_instance_profile_output()
@@ -907,7 +927,8 @@ ec2_associate_instance_event_window <- function(DryRun = NULL, InstanceEventWind
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_instance_event_window_input(DryRun = DryRun, InstanceEventWindowId = InstanceEventWindowId, AssociationTarget = AssociationTarget)
   output <- .ec2$associate_instance_event_window_output()
@@ -943,7 +964,8 @@ ec2_associate_ipam_byoasn <- function(DryRun = NULL, Asn, Cidr) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_ipam_byoasn_input(DryRun = DryRun, Asn = Asn, Cidr = Cidr)
   output <- .ec2$associate_ipam_byoasn_output()
@@ -980,7 +1002,8 @@ ec2_associate_ipam_resource_discovery <- function(DryRun = NULL, IpamId, IpamRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_ipam_resource_discovery_input(DryRun = DryRun, IpamId = IpamId, IpamResourceDiscoveryId = IpamResourceDiscoveryId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$associate_ipam_resource_discovery_output()
@@ -1018,7 +1041,8 @@ ec2_associate_nat_gateway_address <- function(NatGatewayId, AllocationIds, Priva
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_nat_gateway_address_input(NatGatewayId = NatGatewayId, AllocationIds = AllocationIds, PrivateIpAddresses = PrivateIpAddresses, DryRun = DryRun)
   output <- .ec2$associate_nat_gateway_address_output()
@@ -1055,7 +1079,8 @@ ec2_associate_route_table <- function(DryRun = NULL, RouteTableId, SubnetId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_route_table_input(DryRun = DryRun, RouteTableId = RouteTableId, SubnetId = SubnetId, GatewayId = GatewayId)
   output <- .ec2$associate_route_table_output()
@@ -1088,7 +1113,8 @@ ec2_associate_subnet_cidr_block <- function(Ipv6CidrBlock = NULL, SubnetId, Ipv6
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_subnet_cidr_block_input(Ipv6CidrBlock = Ipv6CidrBlock, SubnetId = SubnetId, Ipv6IpamPoolId = Ipv6IpamPoolId, Ipv6NetmaskLength = Ipv6NetmaskLength)
   output <- .ec2$associate_subnet_cidr_block_output()
@@ -1127,7 +1153,8 @@ ec2_associate_transit_gateway_multicast_domain <- function(TransitGatewayMultica
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_transit_gateway_multicast_domain_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, SubnetIds = SubnetIds, DryRun = DryRun)
   output <- .ec2$associate_transit_gateway_multicast_domain_output()
@@ -1165,7 +1192,8 @@ ec2_associate_transit_gateway_policy_table <- function(TransitGatewayPolicyTable
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_transit_gateway_policy_table_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$associate_transit_gateway_policy_table_output()
@@ -1201,7 +1229,8 @@ ec2_associate_transit_gateway_route_table <- function(TransitGatewayRouteTableId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$associate_transit_gateway_route_table_output()
@@ -1241,7 +1270,8 @@ ec2_associate_trunk_interface <- function(BranchInterfaceId, TrunkInterfaceId, V
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_trunk_interface_input(BranchInterfaceId = BranchInterfaceId, TrunkInterfaceId = TrunkInterfaceId, VlanId = VlanId, GreKey = GreKey, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$associate_trunk_interface_output()
@@ -1304,7 +1334,8 @@ ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, Cid
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_vpc_cidr_block_input(AmazonProvidedIpv6CidrBlock = AmazonProvidedIpv6CidrBlock, CidrBlock = CidrBlock, VpcId = VpcId, Ipv6CidrBlockNetworkBorderGroup = Ipv6CidrBlockNetworkBorderGroup, Ipv6Pool = Ipv6Pool, Ipv6CidrBlock = Ipv6CidrBlock, Ipv4IpamPoolId = Ipv4IpamPoolId, Ipv4NetmaskLength = Ipv4NetmaskLength, Ipv6IpamPoolId = Ipv6IpamPoolId, Ipv6NetmaskLength = Ipv6NetmaskLength)
   output <- .ec2$associate_vpc_cidr_block_output()
@@ -1341,7 +1372,8 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_classic_link_vpc_input(DryRun = DryRun, Groups = Groups, InstanceId = InstanceId, VpcId = VpcId)
   output <- .ec2$attach_classic_link_vpc_output()
@@ -1377,7 +1409,8 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_internet_gateway_input(DryRun = DryRun, InternetGatewayId = InternetGatewayId, VpcId = VpcId)
   output <- .ec2$attach_internet_gateway_output()
@@ -1418,7 +1451,8 @@ ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_network_interface_input(DeviceIndex = DeviceIndex, DryRun = DryRun, InstanceId = InstanceId, NetworkInterfaceId = NetworkInterfaceId, NetworkCardIndex = NetworkCardIndex, EnaSrdSpecification = EnaSrdSpecification)
   output <- .ec2$attach_network_interface_output()
@@ -1457,7 +1491,8 @@ ec2_attach_verified_access_trust_provider <- function(VerifiedAccessInstanceId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_verified_access_trust_provider_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, VerifiedAccessTrustProviderId = VerifiedAccessTrustProviderId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$attach_verified_access_trust_provider_output()
@@ -1495,7 +1530,8 @@ ec2_attach_volume <- function(Device, InstanceId, VolumeId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_volume_input(Device = Device, InstanceId = InstanceId, VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$attach_volume_output()
@@ -1530,7 +1566,8 @@ ec2_attach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_vpn_gateway_input(VpcId = VpcId, VpnGatewayId = VpnGatewayId, DryRun = DryRun)
   output <- .ec2$attach_vpn_gateway_output()
@@ -1576,7 +1613,8 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$authorize_client_vpn_ingress_input(ClientVpnEndpointId = ClientVpnEndpointId, TargetNetworkCidr = TargetNetworkCidr, AccessGroupId = AccessGroupId, AuthorizeAllGroups = AuthorizeAllGroups, Description = Description, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$authorize_client_vpn_ingress_output()
@@ -1618,7 +1656,8 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$authorize_security_group_egress_input(DryRun = DryRun, GroupId = GroupId, IpPermissions = IpPermissions, TagSpecifications = TagSpecifications, CidrIp = CidrIp, FromPort = FromPort, IpProtocol = IpProtocol, ToPort = ToPort, SourceSecurityGroupName = SourceSecurityGroupName, SourceSecurityGroupOwnerId = SourceSecurityGroupOwnerId)
   output <- .ec2$authorize_security_group_egress_output()
@@ -1698,7 +1737,8 @@ ec2_authorize_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$authorize_security_group_ingress_input(CidrIp = CidrIp, FromPort = FromPort, GroupId = GroupId, GroupName = GroupName, IpPermissions = IpPermissions, IpProtocol = IpProtocol, SourceSecurityGroupName = SourceSecurityGroupName, SourceSecurityGroupOwnerId = SourceSecurityGroupOwnerId, ToPort = ToPort, DryRun = DryRun, TagSpecifications = TagSpecifications)
   output <- .ec2$authorize_security_group_ingress_output()
@@ -1738,7 +1778,8 @@ ec2_bundle_instance <- function(InstanceId, Storage, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$bundle_instance_input(InstanceId = InstanceId, Storage = Storage, DryRun = DryRun)
   output <- .ec2$bundle_instance_output()
@@ -1773,7 +1814,8 @@ ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_bundle_task_input(BundleId = BundleId, DryRun = DryRun)
   output <- .ec2$cancel_bundle_task_output()
@@ -1808,7 +1850,8 @@ ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_capacity_reservation_input(CapacityReservationId = CapacityReservationId, DryRun = DryRun)
   output <- .ec2$cancel_capacity_reservation_output()
@@ -1842,7 +1885,8 @@ ec2_cancel_capacity_reservation_fleets <- function(DryRun = NULL, CapacityReserv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_capacity_reservation_fleets_input(DryRun = DryRun, CapacityReservationFleetIds = CapacityReservationFleetIds)
   output <- .ec2$cancel_capacity_reservation_fleets_output()
@@ -1877,7 +1921,8 @@ ec2_cancel_conversion_task <- function(ConversionTaskId, DryRun = NULL, ReasonMe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_conversion_task_input(ConversionTaskId = ConversionTaskId, DryRun = DryRun, ReasonMessage = ReasonMessage)
   output <- .ec2$cancel_conversion_task_output()
@@ -1909,7 +1954,8 @@ ec2_cancel_export_task <- function(ExportTaskId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_export_task_input(ExportTaskId = ExportTaskId)
   output <- .ec2$cancel_export_task_output()
@@ -1944,7 +1990,8 @@ ec2_cancel_image_launch_permission <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_image_launch_permission_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$cancel_image_launch_permission_output()
@@ -1979,7 +2026,8 @@ ec2_cancel_import_task <- function(CancelReason = NULL, DryRun = NULL, ImportTas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_import_task_input(CancelReason = CancelReason, DryRun = DryRun, ImportTaskId = ImportTaskId)
   output <- .ec2$cancel_import_task_output()
@@ -2010,7 +2058,8 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_reserved_instances_listing_input(ReservedInstancesListingId = ReservedInstancesListingId)
   output <- .ec2$cancel_reserved_instances_listing_output()
@@ -2051,7 +2100,8 @@ ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_spot_fleet_requests_input(DryRun = DryRun, SpotFleetRequestIds = SpotFleetRequestIds, TerminateInstances = TerminateInstances)
   output <- .ec2$cancel_spot_fleet_requests_output()
@@ -2085,7 +2135,8 @@ ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequest
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_spot_instance_requests_input(DryRun = DryRun, SpotInstanceRequestIds = SpotInstanceRequestIds)
   output <- .ec2$cancel_spot_instance_requests_output()
@@ -2120,7 +2171,8 @@ ec2_confirm_product_instance <- function(InstanceId, ProductCode, DryRun = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$confirm_product_instance_input(InstanceId = InstanceId, ProductCode = ProductCode, DryRun = DryRun)
   output <- .ec2$confirm_product_instance_output()
@@ -2160,7 +2212,8 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$copy_fpga_image_input(DryRun = DryRun, SourceFpgaImageId = SourceFpgaImageId, Description = Description, Name = Name, SourceRegion = SourceRegion, ClientToken = ClientToken)
   output <- .ec2$copy_fpga_image_output()
@@ -2181,7 +2234,7 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #'
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param Description A description for the new AMI in the destination Region.
 #' @param Encrypted Specifies whether the destination snapshots of the copied image should
@@ -2199,15 +2252,15 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' 
 #' You can specify a KMS key using any of the following:
 #' 
-#' -   Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
+#' - Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 #' 
-#' -   Key alias. For example, alias/ExampleAlias.
+#' - Key alias. For example, alias/ExampleAlias.
 #' 
-#' -   Key ARN. For example,
-#'     arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
+#' - Key ARN. For example,
+#'   arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 #' 
-#' -   Alias ARN. For example,
-#'     arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
+#' - Alias ARN. For example,
+#'   arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 #' 
 #' Amazon Web Services authenticates the KMS key asynchronously. Therefore,
 #' if you specify an identifier that is not valid, the action can appear to
@@ -2238,19 +2291,19 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' 
 #' The following tags will not be copied:
 #' 
-#' -   System tags (prefixed with `aws:`)
+#' - System tags (prefixed with `aws:`)
 #' 
-#' -   For public and shared AMIs, user-defined tags that are attached by
-#'     other Amazon Web Services accounts
+#' - For public and shared AMIs, user-defined tags that are attached by
+#'   other Amazon Web Services accounts
 #' 
 #' Default: Your user-defined AMI tags are not copied.
 #' @param TagSpecifications The tags to apply to the new AMI and new snapshots. You can tag the AMI,
 #' the snapshots, or both.
 #' 
-#' -   To tag the new AMI, the value for `ResourceType` must be `image`.
+#' - To tag the new AMI, the value for `ResourceType` must be `image`.
 #' 
-#' -   To tag the new snapshots, the value for `ResourceType` must be
-#'     `snapshot`. The same tag is applied to all the new snapshots.
+#' - To tag the new snapshots, the value for `ResourceType` must be
+#'   `snapshot`. The same tag is applied to all the new snapshots.
 #' 
 #' If you specify other values for `ResourceType`, the request fails.
 #' 
@@ -2266,7 +2319,8 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$copy_image_input(ClientToken = ClientToken, Description = Description, Encrypted = Encrypted, KmsKeyId = KmsKeyId, Name = Name, SourceImageId = SourceImageId, SourceRegion = SourceRegion, DestinationOutpostArn = DestinationOutpostArn, DryRun = DryRun, CopyImageTags = CopyImageTags, TagSpecifications = TagSpecifications)
   output <- .ec2$copy_image_output()
@@ -2319,15 +2373,15 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' 
 #' You can specify the KMS key using any of the following:
 #' 
-#' -   Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
+#' - Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 #' 
-#' -   Key alias. For example, alias/ExampleAlias.
+#' - Key alias. For example, alias/ExampleAlias.
 #' 
-#' -   Key ARN. For example,
-#'     arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
+#' - Key ARN. For example,
+#'   arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 #' 
-#' -   Alias ARN. For example,
-#'     arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
+#' - Alias ARN. For example,
+#'   arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 #' 
 #' Amazon Web Services authenticates the KMS key asynchronously. Therefore,
 #' if you specify an ID, alias, or ARN that is not valid, the action can
@@ -2366,7 +2420,8 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$copy_snapshot_input(Description = Description, DestinationOutpostArn = DestinationOutpostArn, DestinationRegion = DestinationRegion, Encrypted = Encrypted, KmsKeyId = KmsKeyId, PresignedUrl = PresignedUrl, SourceRegion = SourceRegion, SourceSnapshotId = SourceSnapshotId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$copy_snapshot_output()
@@ -2387,7 +2442,7 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, 
 #'
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param InstanceType &#91;required&#93; The instance type for which to reserve capacity. For more information,
 #' see [Instance
 #' types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
@@ -2399,11 +2454,11 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, 
 #' @param Tenancy Indicates the tenancy of the Capacity Reservation. A Capacity
 #' Reservation can have one of the following tenancy settings:
 #' 
-#' -   `default` - The Capacity Reservation is created on hardware that is
-#'     shared with other Amazon Web Services accounts.
+#' - `default` - The Capacity Reservation is created on hardware that is
+#'   shared with other Amazon Web Services accounts.
 #' 
-#' -   `dedicated` - The Capacity Reservation is created on single-tenant
-#'     hardware that is dedicated to a single Amazon Web Services account.
+#' - `dedicated` - The Capacity Reservation is created on single-tenant
+#'   hardware that is dedicated to a single Amazon Web Services account.
 #' @param InstanceCount &#91;required&#93; The number of instances for which to reserve capacity.
 #' 
 #' Valid range: 1 - 1000
@@ -2428,26 +2483,26 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, 
 #' @param EndDateType Indicates the way in which the Capacity Reservation ends. A Capacity
 #' Reservation can have one of the following end types:
 #' 
-#' -   `unlimited` - The Capacity Reservation remains active until you
-#'     explicitly cancel it. Do not provide an `EndDate` if the
-#'     `EndDateType` is `unlimited`.
+#' - `unlimited` - The Capacity Reservation remains active until you
+#'   explicitly cancel it. Do not provide an `EndDate` if the `EndDateType`
+#'   is `unlimited`.
 #' 
-#' -   `limited` - The Capacity Reservation expires automatically at a
-#'     specified date and time. You must provide an `EndDate` value if the
-#'     `EndDateType` value is `limited`.
+#' - `limited` - The Capacity Reservation expires automatically at a
+#'   specified date and time. You must provide an `EndDate` value if the
+#'   `EndDateType` value is `limited`.
 #' @param InstanceMatchCriteria Indicates the type of instance launches that the Capacity Reservation
 #' accepts. The options include:
 #' 
-#' -   `open` - The Capacity Reservation automatically matches all
-#'     instances that have matching attributes (instance type, platform,
-#'     and Availability Zone). Instances that have matching attributes run
-#'     in the Capacity Reservation automatically without specifying any
-#'     additional parameters.
+#' - `open` - The Capacity Reservation automatically matches all instances
+#'   that have matching attributes (instance type, platform, and
+#'   Availability Zone). Instances that have matching attributes run in the
+#'   Capacity Reservation automatically without specifying any additional
+#'   parameters.
 #' 
-#' -   `targeted` - The Capacity Reservation only accepts instances that
-#'     have matching attributes (instance type, platform, and Availability
-#'     Zone), and explicitly target the Capacity Reservation. This ensures
-#'     that only permitted instances can use the reserved capacity.
+#' - `targeted` - The Capacity Reservation only accepts instances that have
+#'   matching attributes (instance type, platform, and Availability Zone),
+#'   and explicitly target the Capacity Reservation. This ensures that only
+#'   permitted instances can use the reserved capacity.
 #' 
 #' Default: `open`
 #' @param TagSpecifications The tags to apply to the Capacity Reservation during launch.
@@ -2472,7 +2527,8 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_capacity_reservation_input(ClientToken = ClientToken, InstanceType = InstanceType, InstancePlatform = InstancePlatform, AvailabilityZone = AvailabilityZone, AvailabilityZoneId = AvailabilityZoneId, Tenancy = Tenancy, InstanceCount = InstanceCount, EbsOptimized = EbsOptimized, EphemeralStorage = EphemeralStorage, EndDate = EndDate, EndDateType = EndDateType, InstanceMatchCriteria = InstanceMatchCriteria, TagSpecifications = TagSpecifications, DryRun = DryRun, OutpostArn = OutpostArn, PlacementGroupArn = PlacementGroupArn)
   output <- .ec2$create_capacity_reservation_output()
@@ -2498,7 +2554,7 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param SourceCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation from which you want to split the
 #' available capacity.
 #' @param InstanceCount &#91;required&#93; The number of instances to split from the source Capacity Reservation.
@@ -2513,7 +2569,8 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_capacity_reservation_by_splitting_input(DryRun = DryRun, ClientToken = ClientToken, SourceCapacityReservationId = SourceCapacityReservationId, InstanceCount = InstanceCount, TagSpecifications = TagSpecifications)
   output <- .ec2$create_capacity_reservation_by_splitting_output()
@@ -2528,7 +2585,7 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
 #' Creates a Capacity Reservation Fleet
 #'
 #' @description
-#' Creates a Capacity Reservation Fleet. For more information, see [Create a Capacity Reservation Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/crfleet-concepts.html#create-crfleet) in the *Amazon EC2 User Guide*.
+#' Creates a Capacity Reservation Fleet. For more information, see [Create a Capacity Reservation Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/](https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/) for full documentation.
 #'
@@ -2542,17 +2599,17 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
 #' Valid values: `prioritized`
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param InstanceTypeSpecifications &#91;required&#93; Information about the instance types for which to reserve the capacity.
 #' @param Tenancy Indicates the tenancy of the Capacity Reservation Fleet. All Capacity
 #' Reservations in the Fleet inherit this tenancy. The Capacity Reservation
 #' Fleet can have one of the following tenancy settings:
 #' 
-#' -   `default` - The Capacity Reservation Fleet is created on hardware
-#'     that is shared with other Amazon Web Services accounts.
+#' - `default` - The Capacity Reservation Fleet is created on hardware that
+#'   is shared with other Amazon Web Services accounts.
 #' 
-#' -   `dedicated` - The Capacity Reservations are created on single-tenant
-#'     hardware that is dedicated to a single Amazon Web Services account.
+#' - `dedicated` - The Capacity Reservations are created on single-tenant
+#'   hardware that is dedicated to a single Amazon Web Services account.
 #' @param TotalTargetCapacity &#91;required&#93; The total number of capacity units to be reserved by the Capacity
 #' Reservation Fleet. This value, together with the instance type weights
 #' that you assign to each instance type used by the Fleet determine the
@@ -2594,7 +2651,8 @@ ec2_create_capacity_reservation_fleet <- function(AllocationStrategy = NULL, Cli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_capacity_reservation_fleet_input(AllocationStrategy = AllocationStrategy, ClientToken = ClientToken, InstanceTypeSpecifications = InstanceTypeSpecifications, Tenancy = Tenancy, TotalTargetCapacity = TotalTargetCapacity, EndDate = EndDate, InstanceMatchCriteria = InstanceMatchCriteria, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_capacity_reservation_fleet_output()
@@ -2632,7 +2690,8 @@ ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_carrier_gateway_input(VpcId = VpcId, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$create_carrier_gateway_output()
@@ -2668,13 +2727,13 @@ ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun =
 #' is sent to a Cloudwatch Logs log stream. The following information is
 #' logged:
 #' 
-#' -   Client connection requests
+#' - Client connection requests
 #' 
-#' -   Client connection results (successful and unsuccessful)
+#' - Client connection results (successful and unsuccessful)
 #' 
-#' -   Reasons for unsuccessful client connection requests
+#' - Reasons for unsuccessful client connection requests
 #' 
-#' -   Client connection termination time
+#' - Client connection termination time
 #' @param DnsServers Information about the DNS servers to be used for DNS resolution. A
 #' Client VPN endpoint can have up to two DNS servers. If no DNS server is
 #' specified, the DNS address configured on the device is used for the DNS
@@ -2735,7 +2794,8 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_client_vpn_endpoint_input(ClientCidrBlock = ClientCidrBlock, ServerCertificateArn = ServerCertificateArn, AuthenticationOptions = AuthenticationOptions, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, TransportProtocol = TransportProtocol, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, ClientToken = ClientToken, TagSpecifications = TagSpecifications, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions)
   output <- .ec2$create_client_vpn_endpoint_output()
@@ -2758,15 +2818,15 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
 #' @param DestinationCidrBlock &#91;required&#93; The IPv4 address range, in CIDR notation, of the route destination. For
 #' example:
 #' 
-#' -   To add a route for Internet access, enter `0.0.0.0/0`
+#' - To add a route for Internet access, enter `0.0.0.0/0`
 #' 
-#' -   To add a route for a peered VPC, enter the peered VPC's IPv4 CIDR
-#'     range
+#' - To add a route for a peered VPC, enter the peered VPC's IPv4 CIDR
+#'   range
 #' 
-#' -   To add a route for an on-premises network, enter the Amazon Web
-#'     Services Site-to-Site VPN connection's IPv4 CIDR range
+#' - To add a route for an on-premises network, enter the Amazon Web
+#'   Services Site-to-Site VPN connection's IPv4 CIDR range
 #' 
-#' -   To add a route for the local network, enter the client CIDR range
+#' - To add a route for the local network, enter the client CIDR range
 #' @param TargetVpcSubnetId &#91;required&#93; The ID of the subnet through which you want to route traffic. The
 #' specified subnet must be an existing target network of the Client VPN
 #' endpoint.
@@ -2791,7 +2851,8 @@ ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBloc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_client_vpn_route_input(ClientVpnEndpointId = ClientVpnEndpointId, DestinationCidrBlock = DestinationCidrBlock, TargetVpcSubnetId = TargetVpcSubnetId, Description = Description, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$create_client_vpn_route_output()
@@ -2826,7 +2887,8 @@ ec2_create_coip_cidr <- function(Cidr, CoipPoolId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_coip_cidr_input(Cidr = Cidr, CoipPoolId = CoipPoolId, DryRun = DryRun)
   output <- .ec2$create_coip_cidr_output()
@@ -2861,7 +2923,8 @@ ec2_create_coip_pool <- function(LocalGatewayRouteTableId, TagSpecifications = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_coip_pool_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_coip_pool_output()
@@ -2923,7 +2986,8 @@ ec2_create_customer_gateway <- function(BgpAsn = NULL, PublicIp = NULL, Certific
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_customer_gateway_input(BgpAsn = BgpAsn, PublicIp = PublicIp, CertificateArn = CertificateArn, Type = Type, TagSpecifications = TagSpecifications, DeviceName = DeviceName, IpAddress = IpAddress, DryRun = DryRun, BgpAsnExtended = BgpAsnExtended)
   output <- .ec2$create_customer_gateway_output()
@@ -2961,7 +3025,8 @@ ec2_create_default_subnet <- function(AvailabilityZone, DryRun = NULL, Ipv6Nativ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_default_subnet_input(AvailabilityZone = AvailabilityZone, DryRun = DryRun, Ipv6Native = Ipv6Native)
   output <- .ec2$create_default_subnet_output()
@@ -2995,7 +3060,8 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_default_vpc_input(DryRun = DryRun)
   output <- .ec2$create_default_vpc_output()
@@ -3030,7 +3096,8 @@ ec2_create_dhcp_options <- function(DhcpConfigurations, TagSpecifications = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_dhcp_options_input(DhcpConfigurations = DhcpConfigurations, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_dhcp_options_output()
@@ -3068,7 +3135,8 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_egress_only_internet_gateway_input(ClientToken = ClientToken, DryRun = DryRun, VpcId = VpcId, TagSpecifications = TagSpecifications)
   output <- .ec2$create_egress_only_internet_gateway_output()
@@ -3094,7 +3162,7 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param SpotOptions Describes the configuration of Spot Instances in an EC2 Fleet.
 #' @param OnDemandOptions Describes the configuration of On-Demand Instances in an EC2 Fleet.
 #' @param ExcessCapacityTerminationPolicy Indicates whether running instances should be terminated if the total
@@ -3108,18 +3176,18 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 #' Fleet expires.
 #' @param Type The fleet type. The default value is `maintain`.
 #' 
-#' -   `maintain` - The EC2 Fleet places an asynchronous request for your
-#'     desired capacity, and continues to maintain your desired Spot
-#'     capacity by replenishing interrupted Spot Instances.
+#' - `maintain` - The EC2 Fleet places an asynchronous request for your
+#'   desired capacity, and continues to maintain your desired Spot capacity
+#'   by replenishing interrupted Spot Instances.
 #' 
-#' -   `request` - The EC2 Fleet places an asynchronous one-time request
-#'     for your desired capacity, but does submit Spot requests in
-#'     alternative capacity pools if Spot capacity is unavailable, and does
-#'     not maintain Spot capacity if Spot Instances are interrupted.
+#' - `request` - The EC2 Fleet places an asynchronous one-time request for
+#'   your desired capacity, but does submit Spot requests in alternative
+#'   capacity pools if Spot capacity is unavailable, and does not maintain
+#'   Spot capacity if Spot Instances are interrupted.
 #' 
-#' -   `instant` - The EC2 Fleet places a synchronous one-time request for
-#'     your desired capacity, and returns errors for any instances that
-#'     could not be launched.
+#' - `instant` - The EC2 Fleet places a synchronous one-time request for
+#'   your desired capacity, and returns errors for any instances that could
+#'   not be launched.
 #' 
 #' For more information, see [EC2 Fleet request
 #' types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet-request-type.html)
@@ -3158,7 +3226,8 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_fleet_input(DryRun = DryRun, ClientToken = ClientToken, SpotOptions = SpotOptions, OnDemandOptions = OnDemandOptions, ExcessCapacityTerminationPolicy = ExcessCapacityTerminationPolicy, LaunchTemplateConfigs = LaunchTemplateConfigs, TargetCapacitySpecification = TargetCapacitySpecification, TerminateInstancesWithExpiration = TerminateInstancesWithExpiration, Type = Type, ValidFrom = ValidFrom, ValidUntil = ValidUntil, ReplaceUnhealthyInstances = ReplaceUnhealthyInstances, TagSpecifications = TagSpecifications, Context = Context)
   output <- .ec2$create_fleet_output()
@@ -3214,25 +3283,25 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
 #' @param LogDestination The destination for the flow log data. The meaning of this parameter
 #' depends on the destination type.
 #' 
-#' -   If the destination type is `cloud-watch-logs`, specify the ARN of a
-#'     CloudWatch Logs log group. For example:
+#' - If the destination type is `cloud-watch-logs`, specify the ARN of a
+#'   CloudWatch Logs log group. For example:
 #' 
-#'     arn:aws:logs:*region*:*account_id*:log-group:*my_group*
+#'   arn:aws:logs:*region*:*account_id*:log-group:*my_group*
 #' 
-#'     Alternatively, use the `LogGroupName` parameter.
+#'   Alternatively, use the `LogGroupName` parameter.
 #' 
-#' -   If the destination type is `s3`, specify the ARN of an S3 bucket.
-#'     For example:
+#' - If the destination type is `s3`, specify the ARN of an S3 bucket. For
+#'   example:
 #' 
-#'     arn:aws:s3:::*my_bucket*/*my_subfolder*/
+#'   arn:aws:s3:::*my_bucket*/*my_subfolder*/
 #' 
-#'     The subfolder is optional. Note that you can't use `AWSLogs` as a
-#'     subfolder name.
+#'   The subfolder is optional. Note that you can't use `AWSLogs` as a
+#'   subfolder name.
 #' 
-#' -   If the destination type is `kinesis-data-firehose`, specify the ARN
-#'     of a Kinesis Data Firehose delivery stream. For example:
+#' - If the destination type is `kinesis-data-firehose`, specify the ARN of
+#'   a Kinesis Data Firehose delivery stream. For example:
 #' 
-#'     arn:aws:firehose:*region*:*account_id*:deliverystream:*my_stream*
+#'   arn:aws:firehose:*region*:*account_id*:deliverystream:*my_stream*
 #' @param LogFormat The fields to include in the flow log record. List the fields in the
 #' order in which they should appear. If you omit this parameter, the flow
 #' log is created using the default format. If you specify this parameter,
@@ -3267,7 +3336,8 @@ ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_flow_logs_input(DryRun = DryRun, ClientToken = ClientToken, DeliverLogsPermissionArn = DeliverLogsPermissionArn, DeliverCrossAccountRole = DeliverCrossAccountRole, LogGroupName = LogGroupName, ResourceIds = ResourceIds, ResourceType = ResourceType, TrafficType = TrafficType, LogDestinationType = LogDestinationType, LogDestination = LogDestination, LogFormat = LogFormat, TagSpecifications = TagSpecifications, MaxAggregationInterval = MaxAggregationInterval, DestinationOptions = DestinationOptions)
   output <- .ec2$create_flow_logs_output()
@@ -3310,7 +3380,8 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_fpga_image_input(DryRun = DryRun, InputStorageLocation = InputStorageLocation, LogsStorageLocation = LogsStorageLocation, Description = Description, Name = Name, ClientToken = ClientToken, TagSpecifications = TagSpecifications)
   output <- .ec2$create_fpga_image_output()
@@ -3334,19 +3405,19 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' 
 #' When using the CreateImage action:
 #' 
-#' -   You can't change the volume size using the VolumeSize parameter. If
-#'     you want a different volume size, you must first change the volume
-#'     size of the source instance.
+#' - You can't change the volume size using the VolumeSize parameter. If
+#'   you want a different volume size, you must first change the volume
+#'   size of the source instance.
 #' 
-#' -   You can't modify the encryption status of existing volumes or
-#'     snapshots. To create an AMI with volumes or snapshots that have a
-#'     different encryption status (for example, where the source volume
-#'     and snapshots are unencrypted, and you want to create an AMI with
-#'     encrypted volumes or snapshots), use the
-#'     [`copy_image`][ec2_copy_image] action.
+#' - You can't modify the encryption status of existing volumes or
+#'   snapshots. To create an AMI with volumes or snapshots that have a
+#'   different encryption status (for example, where the source volume and
+#'   snapshots are unencrypted, and you want to create an AMI with
+#'   encrypted volumes or snapshots), use the
+#'   [`copy_image`][ec2_copy_image] action.
 #' 
-#' -   The only option that can be changed for existing mappings or
-#'     snapshots is `DeleteOnTermination`.
+#' - The only option that can be changed for existing mappings or snapshots
+#'   is `DeleteOnTermination`.
 #' @param Description A description for the new image.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -3361,26 +3432,26 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' @param NoReboot Indicates whether or not the instance should be automatically rebooted
 #' before creating the image. Specify one of the following values:
 #' 
-#' -   `true` - The instance is not rebooted before creating the image.
-#'     This creates crash-consistent snapshots that include only the data
-#'     that has been written to the volumes at the time the snapshots are
-#'     created. Buffered data and data in memory that has not yet been
-#'     written to the volumes is not included in the snapshots.
+#' - `true` - The instance is not rebooted before creating the image. This
+#'   creates crash-consistent snapshots that include only the data that has
+#'   been written to the volumes at the time the snapshots are created.
+#'   Buffered data and data in memory that has not yet been written to the
+#'   volumes is not included in the snapshots.
 #' 
-#' -   `false` - The instance is rebooted before creating the image. This
-#'     ensures that all buffered data and data in memory is written to the
-#'     volumes before the snapshots are created.
+#' - `false` - The instance is rebooted before creating the image. This
+#'   ensures that all buffered data and data in memory is written to the
+#'   volumes before the snapshots are created.
 #' 
 #' Default: `false`
 #' @param TagSpecifications The tags to apply to the AMI and snapshots on creation. You can tag the
 #' AMI, the snapshots, or both.
 #' 
-#' -   To tag the AMI, the value for `ResourceType` must be `image`.
+#' - To tag the AMI, the value for `ResourceType` must be `image`.
 #' 
-#' -   To tag the snapshots that are created of the root volume and of
-#'     other Amazon EBS volumes that are attached to the instance, the
-#'     value for `ResourceType` must be `snapshot`. The same tag is applied
-#'     to all of the snapshots that are created.
+#' - To tag the snapshots that are created of the root volume and of other
+#'   Amazon EBS volumes that are attached to the instance, the value for
+#'   `ResourceType` must be `snapshot`. The same tag is applied to all of
+#'   the snapshots that are created.
 #' 
 #' If you specify other values for `ResourceType`, the request fails.
 #' 
@@ -3396,7 +3467,8 @@ ec2_create_image <- function(BlockDeviceMappings = NULL, Description = NULL, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_image_input(BlockDeviceMappings = BlockDeviceMappings, Description = Description, DryRun = DryRun, InstanceId = InstanceId, Name = Name, NoReboot = NoReboot, TagSpecifications = TagSpecifications)
   output <- .ec2$create_image_output()
@@ -3427,9 +3499,9 @@ ec2_create_image <- function(BlockDeviceMappings = NULL, Description = NULL, Dry
 #' @param PreserveClientIp Indicates whether the client IP address is preserved as the source. The
 #' following are the possible values.
 #' 
-#' -   `true` - Use the client IP address as the source.
+#' - `true` - Use the client IP address as the source.
 #' 
-#' -   `false` - Use the network interface IP address as the source.
+#' - `false` - Use the network interface IP address as the source.
 #' 
 #' Default: `false`
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
@@ -3445,7 +3517,8 @@ ec2_create_instance_connect_endpoint <- function(DryRun = NULL, SubnetId, Securi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_instance_connect_endpoint_input(DryRun = DryRun, SubnetId = SubnetId, SecurityGroupIds = SecurityGroupIds, PreserveClientIp = PreserveClientIp, ClientToken = ClientToken, TagSpecifications = TagSpecifications)
   output <- .ec2$create_instance_connect_endpoint_output()
@@ -3478,20 +3551,20 @@ ec2_create_instance_connect_endpoint <- function(DryRun = NULL, SubnetId, Securi
 #' 
 #' Constraints:
 #' 
-#' -   Only hour and day of the week values are supported.
+#' - Only hour and day of the week values are supported.
 #' 
-#' -   For day of the week values, you can specify either integers `0`
-#'     through `6`, or alternative single values `SUN` through `SAT`.
+#' - For day of the week values, you can specify either integers `0`
+#'   through `6`, or alternative single values `SUN` through `SAT`.
 #' 
-#' -   The minute, month, and year must be specified by `*`.
+#' - The minute, month, and year must be specified by `*`.
 #' 
-#' -   The hour value must be one or a multiple range, for example, `0-4`
-#'     or `0-4,20-23`.
+#' - The hour value must be one or a multiple range, for example, `0-4` or
+#'   `0-4,20-23`.
 #' 
-#' -   Each hour range must be \>= 2 hours, for example, `0-2` or `20-23`.
+#' - Each hour range must be \>= 2 hours, for example, `0-2` or `20-23`.
 #' 
-#' -   The event window must be \>= 4 hours. The combined total time ranges
-#'     in the event window must be \>= 4 hours.
+#' - The event window must be \>= 4 hours. The combined total time ranges
+#'   in the event window must be \>= 4 hours.
 #' 
 #' For more information about cron expressions, see
 #' [cron](https://en.wikipedia.org/wiki/Cron) on the *Wikipedia website*.
@@ -3506,7 +3579,8 @@ ec2_create_instance_event_window <- function(DryRun = NULL, Name = NULL, TimeRan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_instance_event_window_input(DryRun = DryRun, Name = Name, TimeRanges = TimeRanges, CronExpression = CronExpression, TagSpecifications = TagSpecifications)
   output <- .ec2$create_instance_event_window_output()
@@ -3541,7 +3615,8 @@ ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_instance_export_task_input(Description = Description, ExportToS3Task = ExportToS3Task, InstanceId = InstanceId, TargetEnvironment = TargetEnvironment, TagSpecifications = TagSpecifications)
   output <- .ec2$create_instance_export_task_output()
@@ -3575,7 +3650,8 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_internet_gateway_input(TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_internet_gateway_output()
@@ -3631,7 +3707,8 @@ ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_input(DryRun = DryRun, Description = Description, OperatingRegions = OperatingRegions, TagSpecifications = TagSpecifications, ClientToken = ClientToken, Tier = Tier, EnablePrivateGua = EnablePrivateGua)
   output <- .ec2$create_ipam_output()
@@ -3669,7 +3746,8 @@ ec2_create_ipam_external_resource_verification_token <- function(DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_external_resource_verification_token_input(DryRun = DryRun, IpamId = IpamId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_ipam_external_resource_verification_token_output()
@@ -3695,15 +3773,14 @@ ec2_create_ipam_external_resource_verification_token <- function(DryRun = NULL, 
 #' @param IpamScopeId &#91;required&#93; The ID of the scope in which you would like to create the IPAM pool.
 #' @param Locale The locale for the pool should be one of the following:
 #' 
-#' -   An Amazon Web Services Region where you want this IPAM pool to be
-#'     available for allocations.
+#' - An Amazon Web Services Region where you want this IPAM pool to be
+#'   available for allocations.
 #' 
-#' -   The network border group for an Amazon Web Services Local Zone where
-#'     you want this IPAM pool to be available for allocations ([supported
-#'     Local
-#'     Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail)).
-#'     This option is only available for IPAM IPv4 pools in the public
-#'     scope.
+#' - The network border group for an Amazon Web Services Local Zone where
+#'   you want this IPAM pool to be available for allocations ([supported
+#'   Local
+#'   Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html#byoip-zone-avail)).
+#'   This option is only available for IPAM IPv4 pools in the public scope.
 #' 
 #' If you do not choose a locale, resources in Regions others than the
 #' IPAM's home region cannot use CIDRs from this pool.
@@ -3778,7 +3855,8 @@ ec2_create_ipam_pool <- function(DryRun = NULL, IpamScopeId, Locale = NULL, Sour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_pool_input(DryRun = DryRun, IpamScopeId = IpamScopeId, Locale = Locale, SourceIpamPoolId = SourceIpamPoolId, Description = Description, AddressFamily = AddressFamily, AutoImport = AutoImport, PubliclyAdvertisable = PubliclyAdvertisable, AllocationMinNetmaskLength = AllocationMinNetmaskLength, AllocationMaxNetmaskLength = AllocationMaxNetmaskLength, AllocationDefaultNetmaskLength = AllocationDefaultNetmaskLength, AllocationResourceTags = AllocationResourceTags, TagSpecifications = TagSpecifications, ClientToken = ClientToken, AwsService = AwsService, PublicIpSource = PublicIpSource, SourceResource = SourceResource)
   output <- .ec2$create_ipam_pool_output()
@@ -3818,7 +3896,8 @@ ec2_create_ipam_resource_discovery <- function(DryRun = NULL, Description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_resource_discovery_input(DryRun = DryRun, Description = Description, OperatingRegions = OperatingRegions, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_ipam_resource_discovery_output()
@@ -3861,7 +3940,8 @@ ec2_create_ipam_scope <- function(DryRun = NULL, IpamId, Description = NULL, Tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_scope_input(DryRun = DryRun, IpamId = IpamId, Description = Description, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_ipam_scope_output()
@@ -3906,7 +3986,8 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL, KeyType = NULL, TagSpeci
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_key_pair_input(KeyName = KeyName, DryRun = DryRun, KeyType = KeyType, TagSpecifications = TagSpecifications, KeyFormat = KeyFormat)
   output <- .ec2$create_key_pair_output()
@@ -3931,7 +4012,7 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL, KeyType = NULL, TagSpeci
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
 #' of the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
 #' @param LaunchTemplateName &#91;required&#93; A name for the launch template.
@@ -3955,7 +4036,8 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_launch_template_input(DryRun = DryRun, ClientToken = ClientToken, LaunchTemplateName = LaunchTemplateName, VersionDescription = VersionDescription, LaunchTemplateData = LaunchTemplateData, TagSpecifications = TagSpecifications)
   output <- .ec2$create_launch_template_output()
@@ -3980,7 +4062,7 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
 #' of the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
 #' @param LaunchTemplateId The ID of the launch template.
@@ -4021,7 +4103,8 @@ ec2_create_launch_template_version <- function(DryRun = NULL, ClientToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_launch_template_version_input(DryRun = DryRun, ClientToken = ClientToken, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, SourceVersion = SourceVersion, VersionDescription = VersionDescription, LaunchTemplateData = LaunchTemplateData, ResolveAlias = ResolveAlias)
   output <- .ec2$create_launch_template_version_output()
@@ -4062,7 +4145,8 @@ ec2_create_local_gateway_route <- function(DestinationCidrBlock = NULL, LocalGat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_local_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, LocalGatewayRouteTableId = LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId = LocalGatewayVirtualInterfaceGroupId, DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId, DestinationPrefixListId = DestinationPrefixListId)
   output <- .ec2$create_local_gateway_route_output()
@@ -4098,7 +4182,8 @@ ec2_create_local_gateway_route_table <- function(LocalGatewayId, Mode = NULL, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_local_gateway_route_table_input(LocalGatewayId = LocalGatewayId, Mode = Mode, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_local_gateway_route_table_output()
@@ -4136,7 +4221,8 @@ ec2_create_local_gateway_route_table_virtual_interface_group_association <- func
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_local_gateway_route_table_virtual_interface_group_association_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId = LocalGatewayVirtualInterfaceGroupId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_local_gateway_route_table_virtual_interface_group_association_output()
@@ -4173,7 +4259,8 @@ ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_local_gateway_route_table_vpc_association_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, VpcId = VpcId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_local_gateway_route_table_vpc_association_output()
@@ -4221,7 +4308,8 @@ ec2_create_managed_prefix_list <- function(DryRun = NULL, PrefixListName, Entrie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_managed_prefix_list_input(DryRun = DryRun, PrefixListName = PrefixListName, Entries = Entries, MaxEntries = MaxEntries, TagSpecifications = TagSpecifications, AddressFamily = AddressFamily, ClientToken = ClientToken)
   output <- .ec2$create_managed_prefix_list_output()
@@ -4282,7 +4370,8 @@ ec2_create_nat_gateway <- function(AllocationId = NULL, ClientToken = NULL, DryR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_nat_gateway_input(AllocationId = AllocationId, ClientToken = ClientToken, DryRun = DryRun, SubnetId = SubnetId, TagSpecifications = TagSpecifications, ConnectivityType = ConnectivityType, PrivateIpAddress = PrivateIpAddress, SecondaryAllocationIds = SecondaryAllocationIds, SecondaryPrivateIpAddresses = SecondaryPrivateIpAddresses, SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount)
   output <- .ec2$create_nat_gateway_output()
@@ -4320,7 +4409,8 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_acl_input(DryRun = DryRun, VpcId = VpcId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_network_acl_output()
@@ -4381,7 +4471,8 @@ ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_acl_entry_input(CidrBlock = CidrBlock, DryRun = DryRun, Egress = Egress, IcmpTypeCode = IcmpTypeCode, Ipv6CidrBlock = Ipv6CidrBlock, NetworkAclId = NetworkAclId, PortRange = PortRange, Protocol = Protocol, RuleAction = RuleAction, RuleNumber = RuleNumber)
   output <- .ec2$create_network_acl_entry_output()
@@ -4420,7 +4511,8 @@ ec2_create_network_insights_access_scope <- function(MatchPaths = NULL, ExcludeP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_insights_access_scope_input(MatchPaths = MatchPaths, ExcludePaths = ExcludePaths, ClientToken = ClientToken, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_network_insights_access_scope_output()
@@ -4471,7 +4563,8 @@ ec2_create_network_insights_path <- function(SourceIp = NULL, DestinationIp = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_insights_path_input(SourceIp = SourceIp, DestinationIp = DestinationIp, Source = Source, Destination = Destination, Protocol = Protocol, DestinationPort = DestinationPort, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken, FilterAtSource = FilterAtSource, FilterAtDestination = FilterAtDestination)
   output <- .ec2$create_network_insights_path_output()
@@ -4585,7 +4678,8 @@ ec2_create_network_interface <- function(Description = NULL, DryRun = NULL, Grou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_interface_input(Description = Description, DryRun = DryRun, Groups = Groups, Ipv6AddressCount = Ipv6AddressCount, Ipv6Addresses = Ipv6Addresses, PrivateIpAddress = PrivateIpAddress, PrivateIpAddresses = PrivateIpAddresses, SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount, Ipv4Prefixes = Ipv4Prefixes, Ipv4PrefixCount = Ipv4PrefixCount, Ipv6Prefixes = Ipv6Prefixes, Ipv6PrefixCount = Ipv6PrefixCount, InterfaceType = InterfaceType, SubnetId = SubnetId, TagSpecifications = TagSpecifications, ClientToken = ClientToken, EnablePrimaryIpv6 = EnablePrimaryIpv6, ConnectionTrackingSpecification = ConnectionTrackingSpecification)
   output <- .ec2$create_network_interface_output()
@@ -4623,7 +4717,8 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_interface_permission_input(NetworkInterfaceId = NetworkInterfaceId, AwsAccountId = AwsAccountId, AwsService = AwsService, Permission = Permission, DryRun = DryRun)
   output <- .ec2$create_network_interface_permission_output()
@@ -4656,9 +4751,9 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 #' @param TagSpecifications The tags to apply to the new placement group.
 #' @param SpreadLevel Determines how placement groups spread instances.
 #' 
-#' -   Host – You can use `host` only with Outpost placement groups.
+#' - Host – You can use `host` only with Outpost placement groups.
 #' 
-#' -   Rack – No usage restrictions.
+#' - Rack – No usage restrictions.
 #'
 #' @keywords internal
 #'
@@ -4669,7 +4764,8 @@ ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_placement_group_input(DryRun = DryRun, GroupName = GroupName, Strategy = Strategy, PartitionCount = PartitionCount, TagSpecifications = TagSpecifications, SpreadLevel = SpreadLevel)
   output <- .ec2$create_placement_group_output()
@@ -4713,7 +4809,8 @@ ec2_create_public_ipv_4_pool <- function(DryRun = NULL, TagSpecifications = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_public_ipv_4_pool_input(DryRun = DryRun, TagSpecifications = TagSpecifications, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$create_public_ipv_4_pool_output()
@@ -4775,7 +4872,8 @@ ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_replace_root_volume_task_input(InstanceId = InstanceId, SnapshotId = SnapshotId, ClientToken = ClientToken, DryRun = DryRun, TagSpecifications = TagSpecifications, ImageId = ImageId, DeleteReplacedRootVolume = DeleteReplacedRootVolume)
   output <- .ec2$create_replace_root_volume_task_output()
@@ -4798,7 +4896,7 @@ ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, C
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' your listings. This helps avoid duplicate listings. For more
 #' information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param InstanceCount &#91;required&#93; The number of instances that are a part of a Reserved Instance account
 #' to be listed in the Reserved Instance Marketplace. This number should be
 #' less than or equal to the instance count associated with the Reserved
@@ -4816,7 +4914,8 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_reserved_instances_listing_input(ClientToken = ClientToken, InstanceCount = InstanceCount, PriceSchedules = PriceSchedules, ReservedInstancesId = ReservedInstancesId)
   output <- .ec2$create_reserved_instances_listing_output()
@@ -4844,11 +4943,10 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
 #' @param TagSpecifications The tags to apply to the AMI and snapshots on restoration. You can tag
 #' the AMI, the snapshots, or both.
 #' 
-#' -   To tag the AMI, the value for `ResourceType` must be `image`.
+#' - To tag the AMI, the value for `ResourceType` must be `image`.
 #' 
-#' -   To tag the snapshots, the value for `ResourceType` must be
-#'     `snapshot`. The same tag is applied to all of the snapshots that are
-#'     created.
+#' - To tag the snapshots, the value for `ResourceType` must be `snapshot`.
+#'   The same tag is applied to all of the snapshots that are created.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -4863,7 +4961,8 @@ ec2_create_restore_image_task <- function(Bucket, ObjectKey, Name = NULL, TagSpe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_restore_image_task_input(Bucket = Bucket, ObjectKey = ObjectKey, Name = Name, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_restore_image_task_output()
@@ -4921,7 +5020,8 @@ ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_route_input(DestinationCidrBlock = DestinationCidrBlock, DestinationIpv6CidrBlock = DestinationIpv6CidrBlock, DestinationPrefixListId = DestinationPrefixListId, DryRun = DryRun, VpcEndpointId = VpcEndpointId, EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId, GatewayId = GatewayId, InstanceId = InstanceId, NatGatewayId = NatGatewayId, TransitGatewayId = TransitGatewayId, LocalGatewayId = LocalGatewayId, CarrierGatewayId = CarrierGatewayId, NetworkInterfaceId = NetworkInterfaceId, RouteTableId = RouteTableId, VpcPeeringConnectionId = VpcPeeringConnectionId, CoreNetworkArn = CoreNetworkArn)
   output <- .ec2$create_route_output()
@@ -4959,7 +5059,8 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_route_table_input(DryRun = DryRun, VpcId = VpcId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_route_table_output()
@@ -4982,14 +5083,12 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' 
 #' Constraints: Up to 255 characters in length
 #' 
-#' Valid characters: a-z, A-Z, 0-9, spaces, and
-#' ._-:/()#,@@\[\]+=&;\{\}!$*
+#' Valid characters: a-z, A-Z, 0-9, spaces, and ._-:/()#,@@\[\]+=&;\\!$*
 #' @param GroupName &#91;required&#93; The name of the security group.
 #' 
 #' Constraints: Up to 255 characters in length. Cannot start with `sg-`.
 #' 
-#' Valid characters: a-z, A-Z, 0-9, spaces, and
-#' ._-:/()#,@@\[\]+=&;\{\}!$*
+#' Valid characters: a-z, A-Z, 0-9, spaces, and ._-:/()#,@@\[\]+=&;\\!$*
 #' @param VpcId The ID of the VPC. Required for a nondefault VPC.
 #' @param TagSpecifications The tags to assign to the security group.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -5006,7 +5105,8 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_security_group_input(Description = Description, GroupName = GroupName, VpcId = VpcId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_security_group_output()
@@ -5029,16 +5129,16 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
 #' @param OutpostArn The Amazon Resource Name (ARN) of the Outpost on which to create a local
 #' snapshot.
 #' 
-#' -   To create a snapshot of a volume in a Region, omit this parameter.
-#'     The snapshot is created in the same Region as the volume.
+#' - To create a snapshot of a volume in a Region, omit this parameter. The
+#'   snapshot is created in the same Region as the volume.
 #' 
-#' -   To create a snapshot of a volume on an Outpost and store the
-#'     snapshot in the Region, omit this parameter. The snapshot is created
-#'     in the Region for the Outpost.
+#' - To create a snapshot of a volume on an Outpost and store the snapshot
+#'   in the Region, omit this parameter. The snapshot is created in the
+#'   Region for the Outpost.
 #' 
-#' -   To create a snapshot of a volume on an Outpost and store the
-#'     snapshot on an Outpost, specify the ARN of the destination Outpost.
-#'     The snapshot must be created on the same Outpost as the volume.
+#' - To create a snapshot of a volume on an Outpost and store the snapshot
+#'   on an Outpost, specify the ARN of the destination Outpost. The
+#'   snapshot must be created on the same Outpost as the volume.
 #' 
 #' For more information, see [Create local snapshots from volumes on an
 #' Outpost](https://docs.aws.amazon.com/ebs/latest/userguide/snapshots-outposts.html#create-snapshot)
@@ -5059,7 +5159,8 @@ ec2_create_snapshot <- function(Description = NULL, OutpostArn = NULL, VolumeId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_snapshot_input(Description = Description, OutpostArn = OutpostArn, VolumeId = VolumeId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_snapshot_output()
@@ -5085,17 +5186,16 @@ ec2_create_snapshot <- function(Description = NULL, OutpostArn = NULL, VolumeId,
 #' @param OutpostArn The Amazon Resource Name (ARN) of the Outpost on which to create the
 #' local snapshots.
 #' 
-#' -   To create snapshots from an instance in a Region, omit this
-#'     parameter. The snapshots are created in the same Region as the
-#'     instance.
+#' - To create snapshots from an instance in a Region, omit this parameter.
+#'   The snapshots are created in the same Region as the instance.
 #' 
-#' -   To create snapshots from an instance on an Outpost and store the
-#'     snapshots in the Region, omit this parameter. The snapshots are
-#'     created in the Region for the Outpost.
+#' - To create snapshots from an instance on an Outpost and store the
+#'   snapshots in the Region, omit this parameter. The snapshots are
+#'   created in the Region for the Outpost.
 #' 
-#' -   To create snapshots from an instance on an Outpost and store the
-#'     snapshots on an Outpost, specify the ARN of the destination Outpost.
-#'     The snapshots must be created on the same Outpost as the instance.
+#' - To create snapshots from an instance on an Outpost and store the
+#'   snapshots on an Outpost, specify the ARN of the destination Outpost.
+#'   The snapshots must be created on the same Outpost as the instance.
 #' 
 #' For more information, see [Create multi-volume local snapshots from
 #' instances on an
@@ -5117,7 +5217,8 @@ ec2_create_snapshots <- function(Description = NULL, InstanceSpecification, Outp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_snapshots_input(Description = Description, InstanceSpecification = InstanceSpecification, OutpostArn = OutpostArn, TagSpecifications = TagSpecifications, DryRun = DryRun, CopyTagsFromSource = CopyTagsFromSource)
   output <- .ec2$create_snapshots_output()
@@ -5157,7 +5258,8 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_spot_datafeed_subscription_input(Bucket = Bucket, DryRun = DryRun, Prefix = Prefix)
   output <- .ec2$create_spot_datafeed_subscription_output()
@@ -5197,7 +5299,8 @@ ec2_create_store_image_task <- function(ImageId, Bucket, S3ObjectTags = NULL, Dr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_store_image_task_input(ImageId = ImageId, Bucket = Bucket, S3ObjectTags = S3ObjectTags, DryRun = DryRun)
   output <- .ec2$create_store_image_task_output()
@@ -5261,7 +5364,8 @@ ec2_create_subnet <- function(TagSpecifications = NULL, AvailabilityZone = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_subnet_input(TagSpecifications = TagSpecifications, AvailabilityZone = AvailabilityZone, AvailabilityZoneId = AvailabilityZoneId, CidrBlock = CidrBlock, Ipv6CidrBlock = Ipv6CidrBlock, OutpostArn = OutpostArn, VpcId = VpcId, DryRun = DryRun, Ipv6Native = Ipv6Native, Ipv4IpamPoolId = Ipv4IpamPoolId, Ipv4NetmaskLength = Ipv4NetmaskLength, Ipv6IpamPoolId = Ipv6IpamPoolId, Ipv6NetmaskLength = Ipv6NetmaskLength)
   output <- .ec2$create_subnet_output()
@@ -5285,11 +5389,11 @@ ec2_create_subnet <- function(TagSpecifications = NULL, AvailabilityZone = NULL,
 #' @param ReservationType &#91;required&#93; The type of reservation. The reservation type determines how the
 #' reserved IP addresses are assigned to resources.
 #' 
-#' -   `prefix` - Amazon Web Services assigns the reserved IP addresses to
-#'     network interfaces.
+#' - `prefix` - Amazon Web Services assigns the reserved IP addresses to
+#'   network interfaces.
 #' 
-#' -   `explicit` - You assign the reserved IP addresses to network
-#'     interfaces.
+#' - `explicit` - You assign the reserved IP addresses to network
+#'   interfaces.
 #' @param Description The description to assign to the subnet CIDR reservation.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -5306,7 +5410,8 @@ ec2_create_subnet_cidr_reservation <- function(SubnetId, Cidr, ReservationType, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_subnet_cidr_reservation_input(SubnetId = SubnetId, Cidr = Cidr, ReservationType = ReservationType, Description = Description, DryRun = DryRun, TagSpecifications = TagSpecifications)
   output <- .ec2$create_subnet_cidr_reservation_output()
@@ -5347,7 +5452,8 @@ ec2_create_tags <- function(DryRun = NULL, Resources, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_tags_input(DryRun = DryRun, Resources = Resources, Tags = Tags)
   output <- .ec2$create_tags_output()
@@ -5385,7 +5491,8 @@ ec2_create_traffic_mirror_filter <- function(Description = NULL, TagSpecificatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_traffic_mirror_filter_input(Description = Description, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$create_traffic_mirror_filter_output()
@@ -5438,7 +5545,8 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_traffic_mirror_filter_rule_input(TrafficMirrorFilterId = TrafficMirrorFilterId, TrafficDirection = TrafficDirection, RuleNumber = RuleNumber, RuleAction = RuleAction, DestinationPortRange = DestinationPortRange, SourcePortRange = SourcePortRange, Protocol = Protocol, DestinationCidrBlock = DestinationCidrBlock, SourceCidrBlock = SourceCidrBlock, Description = Description, DryRun = DryRun, ClientToken = ClientToken, TagSpecifications = TagSpecifications)
   output <- .ec2$create_traffic_mirror_filter_rule_output()
@@ -5503,7 +5611,8 @@ ec2_create_traffic_mirror_session <- function(NetworkInterfaceId, TrafficMirrorT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_traffic_mirror_session_input(NetworkInterfaceId = NetworkInterfaceId, TrafficMirrorTargetId = TrafficMirrorTargetId, TrafficMirrorFilterId = TrafficMirrorFilterId, PacketLength = PacketLength, SessionNumber = SessionNumber, VirtualNetworkId = VirtualNetworkId, Description = Description, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$create_traffic_mirror_session_output()
@@ -5545,7 +5654,8 @@ ec2_create_traffic_mirror_target <- function(NetworkInterfaceId = NULL, NetworkL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_traffic_mirror_target_input(NetworkInterfaceId = NetworkInterfaceId, NetworkLoadBalancerArn = NetworkLoadBalancerArn, Description = Description, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken, GatewayLoadBalancerEndpointId = GatewayLoadBalancerEndpointId)
   output <- .ec2$create_traffic_mirror_target_output()
@@ -5581,7 +5691,8 @@ ec2_create_transit_gateway <- function(Description = NULL, Options = NULL, TagSp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_input(Description = Description, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_output()
@@ -5618,7 +5729,8 @@ ec2_create_transit_gateway_connect <- function(TransportTransitGatewayAttachment
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_connect_input(TransportTransitGatewayAttachmentId = TransportTransitGatewayAttachmentId, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_connect_output()
@@ -5666,7 +5778,8 @@ ec2_create_transit_gateway_connect_peer <- function(TransitGatewayAttachmentId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_connect_peer_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, TransitGatewayAddress = TransitGatewayAddress, PeerAddress = PeerAddress, BgpOptions = BgpOptions, InsideCidrBlocks = InsideCidrBlocks, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_connect_peer_output()
@@ -5702,7 +5815,8 @@ ec2_create_transit_gateway_multicast_domain <- function(TransitGatewayId, Option
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_multicast_domain_input(TransitGatewayId = TransitGatewayId, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_multicast_domain_output()
@@ -5744,7 +5858,8 @@ ec2_create_transit_gateway_peering_attachment <- function(TransitGatewayId, Peer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_peering_attachment_input(TransitGatewayId = TransitGatewayId, PeerTransitGatewayId = PeerTransitGatewayId, PeerAccountId = PeerAccountId, PeerRegion = PeerRegion, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_peering_attachment_output()
@@ -5780,7 +5895,8 @@ ec2_create_transit_gateway_policy_table <- function(TransitGatewayId, TagSpecifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_policy_table_input(TransitGatewayId = TransitGatewayId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_policy_table_output()
@@ -5818,7 +5934,8 @@ ec2_create_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_prefix_list_reference_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, PrefixListId = PrefixListId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, Blackhole = Blackhole, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_prefix_list_reference_output()
@@ -5856,7 +5973,8 @@ ec2_create_transit_gateway_route <- function(DestinationCidrBlock, TransitGatewa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, Blackhole = Blackhole, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_route_output()
@@ -5891,7 +6009,8 @@ ec2_create_transit_gateway_route_table <- function(TransitGatewayId, TagSpecific
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_route_table_input(TransitGatewayId = TransitGatewayId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_route_table_output()
@@ -5928,7 +6047,8 @@ ec2_create_transit_gateway_route_table_announcement <- function(TransitGatewayRo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_route_table_announcement_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, PeeringAttachmentId = PeeringAttachmentId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_route_table_announcement_output()
@@ -5969,7 +6089,8 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_vpc_attachment_input(TransitGatewayId = TransitGatewayId, VpcId = VpcId, SubnetIds = SubnetIds, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_vpc_attachment_output()
@@ -6026,7 +6147,8 @@ ec2_create_verified_access_endpoint <- function(VerifiedAccessGroupId, EndpointT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_verified_access_endpoint_input(VerifiedAccessGroupId = VerifiedAccessGroupId, EndpointType = EndpointType, AttachmentType = AttachmentType, DomainCertificateArn = DomainCertificateArn, ApplicationDomain = ApplicationDomain, EndpointDomainPrefix = EndpointDomainPrefix, SecurityGroupIds = SecurityGroupIds, LoadBalancerOptions = LoadBalancerOptions, NetworkInterfaceOptions = NetworkInterfaceOptions, Description = Description, PolicyDocument = PolicyDocument, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$create_verified_access_endpoint_output()
@@ -6069,7 +6191,8 @@ ec2_create_verified_access_group <- function(VerifiedAccessInstanceId, Descripti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_verified_access_group_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, Description = Description, PolicyDocument = PolicyDocument, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$create_verified_access_group_output()
@@ -6111,7 +6234,8 @@ ec2_create_verified_access_instance <- function(Description = NULL, TagSpecifica
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_verified_access_instance_input(Description = Description, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun, FIPSEnabled = FIPSEnabled)
   output <- .ec2$create_verified_access_instance_output()
@@ -6161,7 +6285,8 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_verified_access_trust_provider_input(TrustProviderType = TrustProviderType, UserTrustProviderType = UserTrustProviderType, DeviceTrustProviderType = DeviceTrustProviderType, OidcOptions = OidcOptions, DeviceOptions = DeviceOptions, PolicyReferenceName = PolicyReferenceName, Description = Description, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$create_verified_access_trust_provider_output()
@@ -6188,7 +6313,7 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
 #' a snapshot), starting encryption state, ownership, and whether
 #' encryption by default is enabled. For more information, see [Encryption
 #' by
-#' default](https://docs.aws.amazon.com/ebs/latest/userguide/work-with-ebs-encr.html#encryption-by-default)
+#' default](https://docs.aws.amazon.com/ebs/latest/userguide/#encryption-by-default)
 #' in the *Amazon EBS User Guide*.
 #' 
 #' Encrypted Amazon EBS volumes must be attached to instances that support
@@ -6202,11 +6327,11 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
 #' 
 #' The following are the supported values for each volume type:
 #' 
-#' -   `gp3`: 3,000 - 16,000 IOPS
+#' - `gp3`: 3,000 - 16,000 IOPS
 #' 
-#' -   `io1`: 100 - 64,000 IOPS
+#' - `io1`: 100 - 64,000 IOPS
 #' 
-#' -   `io2`: 100 - 256,000 IOPS
+#' - `io2`: 100 - 256,000 IOPS
 #' 
 #' For `io2` volumes, you can achieve up to 256,000 IOPS on [instances
 #' built on the Nitro
@@ -6222,15 +6347,15 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
 #' 
 #' You can specify the KMS key using any of the following:
 #' 
-#' -   Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
+#' - Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 #' 
-#' -   Key alias. For example, alias/ExampleAlias.
+#' - Key alias. For example, alias/ExampleAlias.
 #' 
-#' -   Key ARN. For example,
-#'     arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
+#' - Key ARN. For example,
+#'   arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 #' 
-#' -   Alias ARN. For example,
-#'     arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
+#' - Alias ARN. For example,
+#'   arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 #' 
 #' Amazon Web Services authenticates the KMS key asynchronously. Therefore,
 #' if you specify an ID, alias, or ARN that is not valid, the action can
@@ -6249,28 +6374,28 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
 #' 
 #' The following are the supported volumes sizes for each volume type:
 #' 
-#' -   `gp2` and `gp3`: 1 - 16,384 GiB
+#' - `gp2` and `gp3`: 1 - 16,384 GiB
 #' 
-#' -   `io1`: 4 - 16,384 GiB
+#' - `io1`: 4 - 16,384 GiB
 #' 
-#' -   `io2`: 4 - 65,536 GiB
+#' - `io2`: 4 - 65,536 GiB
 #' 
-#' -   `st1` and `sc1`: 125 - 16,384 GiB
+#' - `st1` and `sc1`: 125 - 16,384 GiB
 #' 
-#' -   `standard`: 1 - 1024 GiB
+#' - `standard`: 1 - 1024 GiB
 #' @param SnapshotId The snapshot from which to create the volume. You must specify either a
 #' snapshot ID or a volume size.
 #' @param VolumeType The volume type. This parameter can be one of the following values:
 #' 
-#' -   General Purpose SSD: `gp2` | `gp3`
+#' - General Purpose SSD: `gp2` | `gp3`
 #' 
-#' -   Provisioned IOPS SSD: `io1` | `io2`
+#' - Provisioned IOPS SSD: `io1` | `io2`
 #' 
-#' -   Throughput Optimized HDD: `st1`
+#' - Throughput Optimized HDD: `st1`
 #' 
-#' -   Cold HDD: `sc1`
+#' - Cold HDD: `sc1`
 #' 
-#' -   Magnetic: `standard`
+#' - Magnetic: `standard`
 #' 
 #' Throughput Optimized HDD (`st1`) and Cold HDD (`sc1`) volumes can't be
 #' used as boot volumes.
@@ -6311,7 +6436,8 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_volume_input(AvailabilityZone = AvailabilityZone, Encrypted = Encrypted, Iops = Iops, KmsKeyId = KmsKeyId, OutpostArn = OutpostArn, Size = Size, SnapshotId = SnapshotId, VolumeType = VolumeType, DryRun = DryRun, TagSpecifications = TagSpecifications, MultiAttachEnabled = MultiAttachEnabled, Throughput = Throughput, ClientToken = ClientToken)
   output <- .ec2$create_volume_output()
@@ -6396,7 +6522,8 @@ ec2_create_vpc <- function(CidrBlock = NULL, AmazonProvidedIpv6CidrBlock = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_input(CidrBlock = CidrBlock, AmazonProvidedIpv6CidrBlock = AmazonProvidedIpv6CidrBlock, Ipv6Pool = Ipv6Pool, Ipv6CidrBlock = Ipv6CidrBlock, Ipv4IpamPoolId = Ipv4IpamPoolId, Ipv4NetmaskLength = Ipv4NetmaskLength, Ipv6IpamPoolId = Ipv6IpamPoolId, Ipv6NetmaskLength = Ipv6NetmaskLength, DryRun = DryRun, InstanceTenancy = InstanceTenancy, Ipv6CidrBlockNetworkBorderGroup = Ipv6CidrBlockNetworkBorderGroup, TagSpecifications = TagSpecifications)
   output <- .ec2$create_vpc_output()
@@ -6467,7 +6594,8 @@ ec2_create_vpc_endpoint <- function(DryRun = NULL, VpcEndpointType = NULL, VpcId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_endpoint_input(DryRun = DryRun, VpcEndpointType = VpcEndpointType, VpcId = VpcId, ServiceName = ServiceName, PolicyDocument = PolicyDocument, RouteTableIds = RouteTableIds, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, IpAddressType = IpAddressType, DnsOptions = DnsOptions, ClientToken = ClientToken, PrivateDnsEnabled = PrivateDnsEnabled, TagSpecifications = TagSpecifications, SubnetConfigurations = SubnetConfigurations)
   output <- .ec2$create_vpc_endpoint_output()
@@ -6509,7 +6637,8 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_endpoint_connection_notification_input(DryRun = DryRun, ServiceId = ServiceId, VpcEndpointId = VpcEndpointId, ConnectionNotificationArn = ConnectionNotificationArn, ConnectionEvents = ConnectionEvents, ClientToken = ClientToken)
   output <- .ec2$create_vpc_endpoint_connection_notification_output()
@@ -6555,7 +6684,8 @@ ec2_create_vpc_endpoint_service_configuration <- function(DryRun = NULL, Accepta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_endpoint_service_configuration_input(DryRun = DryRun, AcceptanceRequired = AcceptanceRequired, PrivateDnsName = PrivateDnsName, NetworkLoadBalancerArns = NetworkLoadBalancerArns, GatewayLoadBalancerArns = GatewayLoadBalancerArns, SupportedIpAddressTypes = SupportedIpAddressTypes, ClientToken = ClientToken, TagSpecifications = TagSpecifications)
   output <- .ec2$create_vpc_endpoint_service_configuration_output()
@@ -6601,7 +6731,8 @@ ec2_create_vpc_peering_connection <- function(DryRun = NULL, PeerOwnerId = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_peering_connection_input(DryRun = DryRun, PeerOwnerId = PeerOwnerId, PeerVpcId = PeerVpcId, VpcId = VpcId, PeerRegion = PeerRegion, TagSpecifications = TagSpecifications)
   output <- .ec2$create_vpc_peering_connection_output()
@@ -6643,7 +6774,8 @@ ec2_create_vpn_connection <- function(CustomerGatewayId, Type, VpnGatewayId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpn_connection_input(CustomerGatewayId = CustomerGatewayId, Type = Type, VpnGatewayId = VpnGatewayId, TransitGatewayId = TransitGatewayId, DryRun = DryRun, Options = Options, TagSpecifications = TagSpecifications)
   output <- .ec2$create_vpn_connection_output()
@@ -6675,7 +6807,8 @@ ec2_create_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpn_connection_route_input(DestinationCidrBlock = DestinationCidrBlock, VpnConnectionId = VpnConnectionId)
   output <- .ec2$create_vpn_connection_route_output()
@@ -6717,7 +6850,8 @@ ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, TagSpecificati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpn_gateway_input(AvailabilityZone = AvailabilityZone, Type = Type, TagSpecifications = TagSpecifications, AmazonSideAsn = AmazonSideAsn, DryRun = DryRun)
   output <- .ec2$create_vpn_gateway_output()
@@ -6751,7 +6885,8 @@ ec2_delete_carrier_gateway <- function(CarrierGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_carrier_gateway_input(CarrierGatewayId = CarrierGatewayId, DryRun = DryRun)
   output <- .ec2$delete_carrier_gateway_output()
@@ -6785,7 +6920,8 @@ ec2_delete_client_vpn_endpoint <- function(ClientVpnEndpointId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun)
   output <- .ec2$delete_client_vpn_endpoint_output()
@@ -6821,7 +6957,8 @@ ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_client_vpn_route_input(ClientVpnEndpointId = ClientVpnEndpointId, TargetVpcSubnetId = TargetVpcSubnetId, DestinationCidrBlock = DestinationCidrBlock, DryRun = DryRun)
   output <- .ec2$delete_client_vpn_route_output()
@@ -6856,7 +6993,8 @@ ec2_delete_coip_cidr <- function(Cidr, CoipPoolId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_coip_cidr_input(Cidr = Cidr, CoipPoolId = CoipPoolId, DryRun = DryRun)
   output <- .ec2$delete_coip_cidr_output()
@@ -6890,7 +7028,8 @@ ec2_delete_coip_pool <- function(CoipPoolId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_coip_pool_input(CoipPoolId = CoipPoolId, DryRun = DryRun)
   output <- .ec2$delete_coip_pool_output()
@@ -6924,7 +7063,8 @@ ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_customer_gateway_input(CustomerGatewayId = CustomerGatewayId, DryRun = DryRun)
   output <- .ec2$delete_customer_gateway_output()
@@ -6958,7 +7098,8 @@ ec2_delete_dhcp_options <- function(DhcpOptionsId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_dhcp_options_input(DhcpOptionsId = DhcpOptionsId, DryRun = DryRun)
   output <- .ec2$delete_dhcp_options_output()
@@ -6992,7 +7133,8 @@ ec2_delete_egress_only_internet_gateway <- function(DryRun = NULL, EgressOnlyInt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_egress_only_internet_gateway_input(DryRun = DryRun, EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId)
   output <- .ec2$delete_egress_only_internet_gateway_output()
@@ -7038,7 +7180,8 @@ ec2_delete_fleets <- function(DryRun = NULL, FleetIds, TerminateInstances) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_fleets_input(DryRun = DryRun, FleetIds = FleetIds, TerminateInstances = TerminateInstances)
   output <- .ec2$delete_fleets_output()
@@ -7074,7 +7217,8 @@ ec2_delete_flow_logs <- function(DryRun = NULL, FlowLogIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_flow_logs_input(DryRun = DryRun, FlowLogIds = FlowLogIds)
   output <- .ec2$delete_flow_logs_output()
@@ -7108,7 +7252,8 @@ ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_fpga_image_input(DryRun = DryRun, FpgaImageId = FpgaImageId)
   output <- .ec2$delete_fpga_image_output()
@@ -7142,7 +7287,8 @@ ec2_delete_instance_connect_endpoint <- function(DryRun = NULL, InstanceConnectE
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_instance_connect_endpoint_input(DryRun = DryRun, InstanceConnectEndpointId = InstanceConnectEndpointId)
   output <- .ec2$delete_instance_connect_endpoint_output()
@@ -7178,7 +7324,8 @@ ec2_delete_instance_event_window <- function(DryRun = NULL, ForceDelete = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_instance_event_window_input(DryRun = DryRun, ForceDelete = ForceDelete, InstanceEventWindowId = InstanceEventWindowId)
   output <- .ec2$delete_instance_event_window_output()
@@ -7212,7 +7359,8 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_internet_gateway_input(DryRun = DryRun, InternetGatewayId = InternetGatewayId)
   output <- .ec2$delete_internet_gateway_output()
@@ -7241,21 +7389,21 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
 #' delete the IPAM with this option if there is a pool in your public
 #' scope. If you use this option, IPAM does the following:
 #' 
-#' -   Deallocates any CIDRs allocated to VPC resources (such as VPCs) in
-#'     pools in private scopes.
+#' - Deallocates any CIDRs allocated to VPC resources (such as VPCs) in
+#'   pools in private scopes.
 #' 
-#'     No VPC resources are deleted as a result of enabling this option.
-#'     The CIDR associated with the resource will no longer be allocated
-#'     from an IPAM pool, but the CIDR itself will remain unchanged.
+#'   No VPC resources are deleted as a result of enabling this option. The
+#'   CIDR associated with the resource will no longer be allocated from an
+#'   IPAM pool, but the CIDR itself will remain unchanged.
 #' 
-#' -   Deprovisions all IPv4 CIDRs provisioned to IPAM pools in private
-#'     scopes.
+#' - Deprovisions all IPv4 CIDRs provisioned to IPAM pools in private
+#'   scopes.
 #' 
-#' -   Deletes all IPAM pools in private scopes.
+#' - Deletes all IPAM pools in private scopes.
 #' 
-#' -   Deletes all non-default private scopes in the IPAM.
+#' - Deletes all non-default private scopes in the IPAM.
 #' 
-#' -   Deletes the default public and private scopes and the IPAM.
+#' - Deletes the default public and private scopes and the IPAM.
 #'
 #' @keywords internal
 #'
@@ -7266,7 +7414,8 @@ ec2_delete_ipam <- function(DryRun = NULL, IpamId, Cascade = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_input(DryRun = DryRun, IpamId = IpamId, Cascade = Cascade)
   output <- .ec2$delete_ipam_output()
@@ -7300,7 +7449,8 @@ ec2_delete_ipam_external_resource_verification_token <- function(DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_external_resource_verification_token_input(DryRun = DryRun, IpamExternalResourceVerificationTokenId = IpamExternalResourceVerificationTokenId)
   output <- .ec2$delete_ipam_external_resource_verification_token_output()
@@ -7340,7 +7490,8 @@ ec2_delete_ipam_pool <- function(DryRun = NULL, IpamPoolId, Cascade = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_pool_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cascade = Cascade)
   output <- .ec2$delete_ipam_pool_output()
@@ -7374,7 +7525,8 @@ ec2_delete_ipam_resource_discovery <- function(DryRun = NULL, IpamResourceDiscov
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_resource_discovery_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId)
   output <- .ec2$delete_ipam_resource_discovery_output()
@@ -7408,7 +7560,8 @@ ec2_delete_ipam_scope <- function(DryRun = NULL, IpamScopeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_scope_input(DryRun = DryRun, IpamScopeId = IpamScopeId)
   output <- .ec2$delete_ipam_scope_output()
@@ -7444,7 +7597,8 @@ ec2_delete_key_pair <- function(KeyName = NULL, KeyPairId = NULL, DryRun = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_key_pair_input(KeyName = KeyName, KeyPairId = KeyPairId, DryRun = DryRun)
   output <- .ec2$delete_key_pair_output()
@@ -7485,7 +7639,8 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_launch_template_input(DryRun = DryRun, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName)
   output <- .ec2$delete_launch_template_output()
@@ -7528,7 +7683,8 @@ ec2_delete_launch_template_versions <- function(DryRun = NULL, LaunchTemplateId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_launch_template_versions_input(DryRun = DryRun, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, Versions = Versions)
   output <- .ec2$delete_launch_template_versions_output()
@@ -7567,7 +7723,8 @@ ec2_delete_local_gateway_route <- function(DestinationCidrBlock = NULL, LocalGat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_local_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, LocalGatewayRouteTableId = LocalGatewayRouteTableId, DryRun = DryRun, DestinationPrefixListId = DestinationPrefixListId)
   output <- .ec2$delete_local_gateway_route_output()
@@ -7601,7 +7758,8 @@ ec2_delete_local_gateway_route_table <- function(LocalGatewayRouteTableId, DryRu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_local_gateway_route_table_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, DryRun = DryRun)
   output <- .ec2$delete_local_gateway_route_table_output()
@@ -7636,7 +7794,8 @@ ec2_delete_local_gateway_route_table_virtual_interface_group_association <- func
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_local_gateway_route_table_virtual_interface_group_association_input(LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = LocalGatewayRouteTableVirtualInterfaceGroupAssociationId, DryRun = DryRun)
   output <- .ec2$delete_local_gateway_route_table_virtual_interface_group_association_output()
@@ -7671,7 +7830,8 @@ ec2_delete_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_local_gateway_route_table_vpc_association_input(LocalGatewayRouteTableVpcAssociationId = LocalGatewayRouteTableVpcAssociationId, DryRun = DryRun)
   output <- .ec2$delete_local_gateway_route_table_vpc_association_output()
@@ -7705,7 +7865,8 @@ ec2_delete_managed_prefix_list <- function(DryRun = NULL, PrefixListId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_managed_prefix_list_input(DryRun = DryRun, PrefixListId = PrefixListId)
   output <- .ec2$delete_managed_prefix_list_output()
@@ -7739,7 +7900,8 @@ ec2_delete_nat_gateway <- function(DryRun = NULL, NatGatewayId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_nat_gateway_input(DryRun = DryRun, NatGatewayId = NatGatewayId)
   output <- .ec2$delete_nat_gateway_output()
@@ -7773,7 +7935,8 @@ ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_acl_input(DryRun = DryRun, NetworkAclId = NetworkAclId)
   output <- .ec2$delete_network_acl_output()
@@ -7810,7 +7973,8 @@ ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, Ru
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_acl_entry_input(DryRun = DryRun, Egress = Egress, NetworkAclId = NetworkAclId, RuleNumber = RuleNumber)
   output <- .ec2$delete_network_acl_entry_output()
@@ -7844,7 +8008,8 @@ ec2_delete_network_insights_access_scope <- function(DryRun = NULL, NetworkInsig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_insights_access_scope_input(DryRun = DryRun, NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId)
   output <- .ec2$delete_network_insights_access_scope_output()
@@ -7878,7 +8043,8 @@ ec2_delete_network_insights_access_scope_analysis <- function(NetworkInsightsAcc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_insights_access_scope_analysis_input(NetworkInsightsAccessScopeAnalysisId = NetworkInsightsAccessScopeAnalysisId, DryRun = DryRun)
   output <- .ec2$delete_network_insights_access_scope_analysis_output()
@@ -7912,7 +8078,8 @@ ec2_delete_network_insights_analysis <- function(DryRun = NULL, NetworkInsightsA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_insights_analysis_input(DryRun = DryRun, NetworkInsightsAnalysisId = NetworkInsightsAnalysisId)
   output <- .ec2$delete_network_insights_analysis_output()
@@ -7946,7 +8113,8 @@ ec2_delete_network_insights_path <- function(DryRun = NULL, NetworkInsightsPathI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_insights_path_input(DryRun = DryRun, NetworkInsightsPathId = NetworkInsightsPathId)
   output <- .ec2$delete_network_insights_path_output()
@@ -7980,7 +8148,8 @@ ec2_delete_network_interface <- function(DryRun = NULL, NetworkInterfaceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_interface_input(DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId)
   output <- .ec2$delete_network_interface_output()
@@ -8016,7 +8185,8 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_interface_permission_input(NetworkInterfacePermissionId = NetworkInterfacePermissionId, Force = Force, DryRun = DryRun)
   output <- .ec2$delete_network_interface_permission_output()
@@ -8050,7 +8220,8 @@ ec2_delete_placement_group <- function(DryRun = NULL, GroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_placement_group_input(DryRun = DryRun, GroupName = GroupName)
   output <- .ec2$delete_placement_group_output()
@@ -8090,7 +8261,8 @@ ec2_delete_public_ipv_4_pool <- function(DryRun = NULL, PoolId, NetworkBorderGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_public_ipv_4_pool_input(DryRun = DryRun, PoolId = PoolId, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$delete_public_ipv_4_pool_output()
@@ -8124,7 +8296,8 @@ ec2_delete_queued_reserved_instances <- function(DryRun = NULL, ReservedInstance
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_queued_reserved_instances_input(DryRun = DryRun, ReservedInstancesIds = ReservedInstancesIds)
   output <- .ec2$delete_queued_reserved_instances_output()
@@ -8163,7 +8336,8 @@ ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_route_input(DestinationCidrBlock = DestinationCidrBlock, DestinationIpv6CidrBlock = DestinationIpv6CidrBlock, DestinationPrefixListId = DestinationPrefixListId, DryRun = DryRun, RouteTableId = RouteTableId)
   output <- .ec2$delete_route_output()
@@ -8197,7 +8371,8 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_route_table_input(DryRun = DryRun, RouteTableId = RouteTableId)
   output <- .ec2$delete_route_table_output()
@@ -8234,7 +8409,8 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_security_group_input(GroupId = GroupId, GroupName = GroupName, DryRun = DryRun)
   output <- .ec2$delete_security_group_output()
@@ -8268,7 +8444,8 @@ ec2_delete_snapshot <- function(SnapshotId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_snapshot_input(SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$delete_snapshot_output()
@@ -8301,7 +8478,8 @@ ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_spot_datafeed_subscription_input(DryRun = DryRun)
   output <- .ec2$delete_spot_datafeed_subscription_output()
@@ -8335,7 +8513,8 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_subnet_input(SubnetId = SubnetId, DryRun = DryRun)
   output <- .ec2$delete_subnet_output()
@@ -8369,7 +8548,8 @@ ec2_delete_subnet_cidr_reservation <- function(SubnetCidrReservationId, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_subnet_cidr_reservation_input(SubnetCidrReservationId = SubnetCidrReservationId, DryRun = DryRun)
   output <- .ec2$delete_subnet_cidr_reservation_output()
@@ -8417,7 +8597,8 @@ ec2_delete_tags <- function(DryRun = NULL, Resources, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_tags_input(DryRun = DryRun, Resources = Resources, Tags = Tags)
   output <- .ec2$delete_tags_output()
@@ -8451,7 +8632,8 @@ ec2_delete_traffic_mirror_filter <- function(TrafficMirrorFilterId, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_traffic_mirror_filter_input(TrafficMirrorFilterId = TrafficMirrorFilterId, DryRun = DryRun)
   output <- .ec2$delete_traffic_mirror_filter_output()
@@ -8485,7 +8667,8 @@ ec2_delete_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_traffic_mirror_filter_rule_input(TrafficMirrorFilterRuleId = TrafficMirrorFilterRuleId, DryRun = DryRun)
   output <- .ec2$delete_traffic_mirror_filter_rule_output()
@@ -8519,7 +8702,8 @@ ec2_delete_traffic_mirror_session <- function(TrafficMirrorSessionId, DryRun = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_traffic_mirror_session_input(TrafficMirrorSessionId = TrafficMirrorSessionId, DryRun = DryRun)
   output <- .ec2$delete_traffic_mirror_session_output()
@@ -8553,7 +8737,8 @@ ec2_delete_traffic_mirror_target <- function(TrafficMirrorTargetId, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_traffic_mirror_target_input(TrafficMirrorTargetId = TrafficMirrorTargetId, DryRun = DryRun)
   output <- .ec2$delete_traffic_mirror_target_output()
@@ -8587,7 +8772,8 @@ ec2_delete_transit_gateway <- function(TransitGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_input(TransitGatewayId = TransitGatewayId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_output()
@@ -8621,7 +8807,8 @@ ec2_delete_transit_gateway_connect <- function(TransitGatewayAttachmentId, DryRu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_connect_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_connect_output()
@@ -8655,7 +8842,8 @@ ec2_delete_transit_gateway_connect_peer <- function(TransitGatewayConnectPeerId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_connect_peer_input(TransitGatewayConnectPeerId = TransitGatewayConnectPeerId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_connect_peer_output()
@@ -8689,7 +8877,8 @@ ec2_delete_transit_gateway_multicast_domain <- function(TransitGatewayMulticastD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_multicast_domain_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_multicast_domain_output()
@@ -8723,7 +8912,8 @@ ec2_delete_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_peering_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_peering_attachment_output()
@@ -8757,7 +8947,8 @@ ec2_delete_transit_gateway_policy_table <- function(TransitGatewayPolicyTableId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_policy_table_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_policy_table_output()
@@ -8793,7 +8984,8 @@ ec2_delete_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_prefix_list_reference_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, PrefixListId = PrefixListId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_prefix_list_reference_output()
@@ -8830,7 +9022,8 @@ ec2_delete_transit_gateway_route <- function(TransitGatewayRouteTableId, Destina
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_route_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, DestinationCidrBlock = DestinationCidrBlock, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_route_output()
@@ -8864,7 +9057,8 @@ ec2_delete_transit_gateway_route_table <- function(TransitGatewayRouteTableId, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_route_table_output()
@@ -8899,7 +9093,8 @@ ec2_delete_transit_gateway_route_table_announcement <- function(TransitGatewayRo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_route_table_announcement_input(TransitGatewayRouteTableAnnouncementId = TransitGatewayRouteTableAnnouncementId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_route_table_announcement_output()
@@ -8933,7 +9128,8 @@ ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_vpc_attachment_output()
@@ -8970,7 +9166,8 @@ ec2_delete_verified_access_endpoint <- function(VerifiedAccessEndpointId, Client
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_verified_access_endpoint_input(VerifiedAccessEndpointId = VerifiedAccessEndpointId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$delete_verified_access_endpoint_output()
@@ -9007,7 +9204,8 @@ ec2_delete_verified_access_group <- function(VerifiedAccessGroupId, ClientToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_verified_access_group_input(VerifiedAccessGroupId = VerifiedAccessGroupId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$delete_verified_access_group_output()
@@ -9044,7 +9242,8 @@ ec2_delete_verified_access_instance <- function(VerifiedAccessInstanceId, DryRun
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_verified_access_instance_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$delete_verified_access_instance_output()
@@ -9081,7 +9280,8 @@ ec2_delete_verified_access_trust_provider <- function(VerifiedAccessTrustProvide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_verified_access_trust_provider_input(VerifiedAccessTrustProviderId = VerifiedAccessTrustProviderId, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$delete_verified_access_trust_provider_output()
@@ -9115,7 +9315,8 @@ ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_volume_input(VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$delete_volume_output()
@@ -9149,7 +9350,8 @@ ec2_delete_vpc <- function(VpcId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_input(VpcId = VpcId, DryRun = DryRun)
   output <- .ec2$delete_vpc_output()
@@ -9183,7 +9385,8 @@ ec2_delete_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Conn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_endpoint_connection_notifications_input(DryRun = DryRun, ConnectionNotificationIds = ConnectionNotificationIds)
   output <- .ec2$delete_vpc_endpoint_connection_notifications_output()
@@ -9217,7 +9420,8 @@ ec2_delete_vpc_endpoint_service_configurations <- function(DryRun = NULL, Servic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_endpoint_service_configurations_input(DryRun = DryRun, ServiceIds = ServiceIds)
   output <- .ec2$delete_vpc_endpoint_service_configurations_output()
@@ -9251,7 +9455,8 @@ ec2_delete_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_endpoints_input(DryRun = DryRun, VpcEndpointIds = VpcEndpointIds)
   output <- .ec2$delete_vpc_endpoints_output()
@@ -9285,7 +9490,8 @@ ec2_delete_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_peering_connection_input(DryRun = DryRun, VpcPeeringConnectionId = VpcPeeringConnectionId)
   output <- .ec2$delete_vpc_peering_connection_output()
@@ -9319,7 +9525,8 @@ ec2_delete_vpn_connection <- function(VpnConnectionId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpn_connection_input(VpnConnectionId = VpnConnectionId, DryRun = DryRun)
   output <- .ec2$delete_vpn_connection_output()
@@ -9351,7 +9558,8 @@ ec2_delete_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpn_connection_route_input(DestinationCidrBlock = DestinationCidrBlock, VpnConnectionId = VpnConnectionId)
   output <- .ec2$delete_vpn_connection_route_output()
@@ -9385,7 +9593,8 @@ ec2_delete_vpn_gateway <- function(VpnGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpn_gateway_input(VpnGatewayId = VpnGatewayId, DryRun = DryRun)
   output <- .ec2$delete_vpn_gateway_output()
@@ -9422,7 +9631,8 @@ ec2_deprovision_byoip_cidr <- function(Cidr, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deprovision_byoip_cidr_input(Cidr = Cidr, DryRun = DryRun)
   output <- .ec2$deprovision_byoip_cidr_output()
@@ -9458,7 +9668,8 @@ ec2_deprovision_ipam_byoasn <- function(DryRun = NULL, IpamId, Asn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deprovision_ipam_byoasn_input(DryRun = DryRun, IpamId = IpamId, Asn = Asn)
   output <- .ec2$deprovision_ipam_byoasn_output()
@@ -9493,7 +9704,8 @@ ec2_deprovision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deprovision_ipam_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr)
   output <- .ec2$deprovision_ipam_pool_cidr_output()
@@ -9532,7 +9744,8 @@ ec2_deprovision_public_ipv_4_pool_cidr <- function(DryRun = NULL, PoolId, Cidr) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deprovision_public_ipv_4_pool_cidr_input(DryRun = DryRun, PoolId = PoolId, Cidr = Cidr)
   output <- .ec2$deprovision_public_ipv_4_pool_cidr_output()
@@ -9566,7 +9779,8 @@ ec2_deregister_image <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deregister_image_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$deregister_image_output()
@@ -9602,7 +9816,8 @@ ec2_deregister_instance_event_notification_attributes <- function(DryRun = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deregister_instance_event_notification_attributes_input(DryRun = DryRun, InstanceTagAttribute = InstanceTagAttribute)
   output <- .ec2$deregister_instance_event_notification_attributes_output()
@@ -9639,7 +9854,8 @@ ec2_deregister_transit_gateway_multicast_group_members <- function(TransitGatewa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deregister_transit_gateway_multicast_group_members_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, GroupIpAddress = GroupIpAddress, NetworkInterfaceIds = NetworkInterfaceIds, DryRun = DryRun)
   output <- .ec2$deregister_transit_gateway_multicast_group_members_output()
@@ -9676,7 +9892,8 @@ ec2_deregister_transit_gateway_multicast_group_sources <- function(TransitGatewa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deregister_transit_gateway_multicast_group_sources_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, GroupIpAddress = GroupIpAddress, NetworkInterfaceIds = NetworkInterfaceIds, DryRun = DryRun)
   output <- .ec2$deregister_transit_gateway_multicast_group_sources_output()
@@ -9710,7 +9927,8 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "AccountAttributes")
+    paginator = list(result_key = "AccountAttributes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_account_attributes_input(AttributeNames = AttributeNames, DryRun = DryRun)
   output <- .ec2$describe_account_attributes_output()
@@ -9748,7 +9966,8 @@ ec2_describe_address_transfers <- function(AllocationIds = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AddressTransfers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AddressTransfers"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_address_transfers_input(AllocationIds = AllocationIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_address_transfers_output()
@@ -9770,37 +9989,37 @@ ec2_describe_address_transfers <- function(AllocationIds = NULL, NextToken = NUL
 #'
 #' @param Filters One or more filters. Filter names and values are case-sensitive.
 #' 
-#' -   `allocation-id` - The allocation ID for the address.
+#' - `allocation-id` - The allocation ID for the address.
 #' 
-#' -   `association-id` - The association ID for the address.
+#' - `association-id` - The association ID for the address.
 #' 
-#' -   `instance-id` - The ID of the instance the address is associated
-#'     with, if any.
+#' - `instance-id` - The ID of the instance the address is associated with,
+#'   if any.
 #' 
-#' -   `network-border-group` - A unique set of Availability Zones, Local
-#'     Zones, or Wavelength Zones from where Amazon Web Services advertises
-#'     IP addresses.
+#' - `network-border-group` - A unique set of Availability Zones, Local
+#'   Zones, or Wavelength Zones from where Amazon Web Services advertises
+#'   IP addresses.
 #' 
-#' -   `network-interface-id` - The ID of the network interface that the
-#'     address is associated with, if any.
+#' - `network-interface-id` - The ID of the network interface that the
+#'   address is associated with, if any.
 #' 
-#' -   `network-interface-owner-id` - The Amazon Web Services account ID of
-#'     the owner.
+#' - `network-interface-owner-id` - The Amazon Web Services account ID of
+#'   the owner.
 #' 
-#' -   `private-ip-address` - The private IP address associated with the
-#'     Elastic IP address.
+#' - `private-ip-address` - The private IP address associated with the
+#'   Elastic IP address.
 #' 
-#' -   `public-ip` - The Elastic IP address, or the carrier IP address.
+#' - `public-ip` - The Elastic IP address, or the carrier IP address.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param PublicIps One or more Elastic IP addresses.
 #' 
 #' Default: Describes all your Elastic IP addresses.
@@ -9819,7 +10038,8 @@ ec2_describe_addresses <- function(Filters = NULL, PublicIps = NULL, AllocationI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Addresses")
+    paginator = list(result_key = "Addresses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_addresses_input(Filters = Filters, PublicIps = PublicIps, AllocationIds = AllocationIds, DryRun = DryRun)
   output <- .ec2$describe_addresses_output()
@@ -9858,7 +10078,8 @@ ec2_describe_addresses_attribute <- function(AllocationIds = NULL, Attribute = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Addresses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Addresses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_addresses_attribute_input(AllocationIds = AllocationIds, Attribute = Attribute, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_addresses_attribute_output()
@@ -9892,7 +10113,8 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_aggregate_id_format_input(DryRun = DryRun)
   output <- .ec2$describe_aggregate_id_format_output()
@@ -9914,41 +10136,39 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #'
 #' @param Filters The filters.
 #' 
-#' -   `group-name` - For Availability Zones, use the Region name. For
-#'     Local Zones, use the name of the group associated with the Local
-#'     Zone (for example, `us-west-2-lax-1`) For Wavelength Zones, use the
-#'     name of the group associated with the Wavelength Zone (for example,
-#'     `us-east-1-wl1`).
+#' - `group-name` - For Availability Zones, use the Region name. For Local
+#'   Zones, use the name of the group associated with the Local Zone (for
+#'   example, `us-west-2-lax-1`) For Wavelength Zones, use the name of the
+#'   group associated with the Wavelength Zone (for example,
+#'   `us-east-1-wl1`).
 #' 
-#' -   `message` - The Zone message.
+#' - `message` - The Zone message.
 #' 
-#' -   `opt-in-status` - The opt-in status (`opted-in` | `not-opted-in` |
-#'     `opt-in-not-required`).
+#' - `opt-in-status` - The opt-in status (`opted-in` | `not-opted-in` |
+#'   `opt-in-not-required`).
 #' 
-#' -   `parent-zone-id` - The ID of the zone that handles some of the Local
-#'     Zone and Wavelength Zone control plane operations, such as API
-#'     calls.
+#' - `parent-zone-id` - The ID of the zone that handles some of the Local
+#'   Zone and Wavelength Zone control plane operations, such as API calls.
 #' 
-#' -   `parent-zone-name` - The ID of the zone that handles some of the
-#'     Local Zone and Wavelength Zone control plane operations, such as API
-#'     calls.
+#' - `parent-zone-name` - The ID of the zone that handles some of the Local
+#'   Zone and Wavelength Zone control plane operations, such as API calls.
 #' 
-#' -   `region-name` - The name of the Region for the Zone (for example,
-#'     `us-east-1`).
+#' - `region-name` - The name of the Region for the Zone (for example,
+#'   `us-east-1`).
 #' 
-#' -   `state` - The state of the Availability Zone, the Local Zone, or the
-#'     Wavelength Zone (`available`).
+#' - `state` - The state of the Availability Zone, the Local Zone, or the
+#'   Wavelength Zone (`available`).
 #' 
-#' -   `zone-id` - The ID of the Availability Zone (for example,
-#'     `use1-az1`), the Local Zone (for example, `usw2-lax1-az1`), or the
-#'     Wavelength Zone (for example, `us-east-1-wl1-bos-wlz-1`).
+#' - `zone-id` - The ID of the Availability Zone (for example, `use1-az1`),
+#'   the Local Zone (for example, `usw2-lax1-az1`), or the Wavelength Zone
+#'   (for example, `us-east-1-wl1-bos-wlz-1`).
 #' 
-#' -   `zone-name` - The name of the Availability Zone (for example,
-#'     `us-east-1a`), the Local Zone (for example, `us-west-2-lax-1a`), or
-#'     the Wavelength Zone (for example, `us-east-1-wl1-bos-wlz-1`).
+#' - `zone-name` - The name of the Availability Zone (for example,
+#'   `us-east-1a`), the Local Zone (for example, `us-west-2-lax-1a`), or
+#'   the Wavelength Zone (for example, `us-east-1-wl1-bos-wlz-1`).
 #' 
-#' -   `zone-type` - The type of zone (`availability-zone` | `local-zone` |
-#'     `wavelength-zone`).
+#' - `zone-type` - The type of zone (`availability-zone` | `local-zone` |
+#'   `wavelength-zone`).
 #' @param ZoneNames The names of the Availability Zones, Local Zones, and Wavelength Zones.
 #' @param ZoneIds The IDs of the Availability Zones, Local Zones, and Wavelength Zones.
 #' @param AllAvailabilityZones Include all Availability Zones, Local Zones, and Wavelength Zones
@@ -9970,7 +10190,8 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "AvailabilityZones")
+    paginator = list(result_key = "AvailabilityZones"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_availability_zones_input(Filters = Filters, ZoneNames = ZoneNames, ZoneIds = ZoneIds, AllAvailabilityZones = AllAvailabilityZones, DryRun = DryRun)
   output <- .ec2$describe_availability_zones_output()
@@ -10008,7 +10229,8 @@ ec2_describe_aws_network_performance_metric_subscriptions <- function(MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscriptions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscriptions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_aws_network_performance_metric_subscriptions_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_aws_network_performance_metric_subscriptions_output()
@@ -10032,28 +10254,28 @@ ec2_describe_aws_network_performance_metric_subscriptions <- function(MaxResults
 #' Default: Describes all your bundle tasks.
 #' @param Filters The filters.
 #' 
-#' -   `bundle-id` - The ID of the bundle task.
+#' - `bundle-id` - The ID of the bundle task.
 #' 
-#' -   `error-code` - If the task failed, the error code returned.
+#' - `error-code` - If the task failed, the error code returned.
 #' 
-#' -   `error-message` - If the task failed, the error message returned.
+#' - `error-message` - If the task failed, the error message returned.
 #' 
-#' -   `instance-id` - The ID of the instance.
+#' - `instance-id` - The ID of the instance.
 #' 
-#' -   `progress` - The level of task completion, as a percentage (for
-#'     example, 20%).
+#' - `progress` - The level of task completion, as a percentage (for
+#'   example, 20%).
 #' 
-#' -   `s3-bucket` - The Amazon S3 bucket to store the AMI.
+#' - `s3-bucket` - The Amazon S3 bucket to store the AMI.
 #' 
-#' -   `s3-prefix` - The beginning of the AMI name.
+#' - `s3-prefix` - The beginning of the AMI name.
 #' 
-#' -   `start-time` - The time the task started (for example,
-#'     2013-09-15T17:15:20.000Z).
+#' - `start-time` - The time the task started (for example,
+#'   2013-09-15T17:15:20.000Z).
 #' 
-#' -   `state` - The state of the task (`pending` | `waiting-for-shutdown`
-#'     | `bundling` | `storing` | `cancelling` | `complete` | `failed`).
+#' - `state` - The state of the task (`pending` | `waiting-for-shutdown` |
+#'   `bundling` | `storing` | `cancelling` | `complete` | `failed`).
 #' 
-#' -   `update-time` - The time of the most recent update for the task.
+#' - `update-time` - The time of the most recent update for the task.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -10068,7 +10290,8 @@ ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "BundleTasks")
+    paginator = list(result_key = "BundleTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_bundle_tasks_input(BundleIds = BundleIds, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_bundle_tasks_output()
@@ -10106,7 +10329,8 @@ ec2_describe_byoip_cidrs <- function(DryRun = NULL, MaxResults, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ByoipCidrs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ByoipCidrs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_byoip_cidrs_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_byoip_cidrs_output()
@@ -10151,7 +10375,8 @@ ec2_describe_capacity_block_offerings <- function(DryRun = NULL, InstanceType, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityBlockOfferings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityBlockOfferings"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_capacity_block_offerings_input(DryRun = DryRun, InstanceType = InstanceType, InstanceCount = InstanceCount, StartDateRange = StartDateRange, EndDateRange = EndDateRange, CapacityDurationHours = CapacityDurationHours, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_capacity_block_offerings_output()
@@ -10178,17 +10403,17 @@ ec2_describe_capacity_block_offerings <- function(DryRun = NULL, InstanceType, I
 #' [Pagination](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination).
 #' @param Filters One or more filters.
 #' 
-#' -   `state` - The state of the Fleet (`submitted` | `modifying` |
-#'     `active` | `partially_fulfilled` | `expiring` | `expired` |
-#'     `cancelling` | `cancelled` | `failed`).
+#' - `state` - The state of the Fleet (`submitted` | `modifying` | `active`
+#'   | `partially_fulfilled` | `expiring` | `expired` | `cancelling` |
+#'   `cancelled` | `failed`).
 #' 
-#' -   `instance-match-criteria` - The instance matching criteria for the
-#'     Fleet. Only `open` is supported.
+#' - `instance-match-criteria` - The instance matching criteria for the
+#'   Fleet. Only `open` is supported.
 #' 
-#' -   `tenancy` - The tenancy of the Fleet (`default` | `dedicated`).
+#' - `tenancy` - The tenancy of the Fleet (`default` | `dedicated`).
 #' 
-#' -   `allocation-strategy` - The allocation strategy used by the Fleet.
-#'     Only `prioritized` is supported.
+#' - `allocation-strategy` - The allocation strategy used by the Fleet.
+#'   Only `prioritized` is supported.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -10203,7 +10428,8 @@ ec2_describe_capacity_reservation_fleets <- function(CapacityReservationFleetIds
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationFleets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationFleets"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_capacity_reservation_fleets_input(CapacityReservationFleetIds = CapacityReservationFleetIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_capacity_reservation_fleets_output()
@@ -10230,88 +10456,85 @@ ec2_describe_capacity_reservation_fleets <- function(CapacityReservationFleetIds
 #' [Pagination](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html#api-pagination).
 #' @param Filters One or more filters.
 #' 
-#' -   `instance-type` - The type of instance for which the Capacity
-#'     Reservation reserves capacity.
+#' - `instance-type` - The type of instance for which the Capacity
+#'   Reservation reserves capacity.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     Capacity Reservation.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   Capacity Reservation.
 #' 
-#' -   `instance-platform` - The type of operating system for which the
-#'     Capacity Reservation reserves capacity.
+#' - `instance-platform` - The type of operating system for which the
+#'   Capacity Reservation reserves capacity.
 #' 
-#' -   `availability-zone` - The Availability Zone of the Capacity
-#'     Reservation.
+#' - `availability-zone` - The Availability Zone of the Capacity
+#'   Reservation.
 #' 
-#' -   `tenancy` - Indicates the tenancy of the Capacity Reservation. A
-#'     Capacity Reservation can have one of the following tenancy settings:
+#' - `tenancy` - Indicates the tenancy of the Capacity Reservation. A
+#'   Capacity Reservation can have one of the following tenancy settings:
 #' 
-#'     -   `default` - The Capacity Reservation is created on hardware that
-#'         is shared with other Amazon Web Services accounts.
+#'   - `default` - The Capacity Reservation is created on hardware that is
+#'     shared with other Amazon Web Services accounts.
 #' 
-#'     -   `dedicated` - The Capacity Reservation is created on
-#'         single-tenant hardware that is dedicated to a single Amazon Web
-#'         Services account.
+#'   - `dedicated` - The Capacity Reservation is created on single-tenant
+#'     hardware that is dedicated to a single Amazon Web Services account.
 #' 
-#' -   `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost on
-#'     which the Capacity Reservation was created.
+#' - `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost on which
+#'   the Capacity Reservation was created.
 #' 
-#' -   `state` - The current state of the Capacity Reservation. A Capacity
-#'     Reservation can be in one of the following states:
+#' - `state` - The current state of the Capacity Reservation. A Capacity
+#'   Reservation can be in one of the following states:
 #' 
-#'     -   `active`- The Capacity Reservation is active and the capacity is
-#'         available for your use.
+#'   - `active`- The Capacity Reservation is active and the capacity is
+#'     available for your use.
 #' 
-#'     -   `expired` - The Capacity Reservation expired automatically at
-#'         the date and time specified in your request. The reserved
-#'         capacity is no longer available for your use.
+#'   - `expired` - The Capacity Reservation expired automatically at the
+#'     date and time specified in your request. The reserved capacity is no
+#'     longer available for your use.
 #' 
-#'     -   `cancelled` - The Capacity Reservation was cancelled. The
-#'         reserved capacity is no longer available for your use.
+#'   - `cancelled` - The Capacity Reservation was cancelled. The reserved
+#'     capacity is no longer available for your use.
 #' 
-#'     -   `pending` - The Capacity Reservation request was successful but
-#'         the capacity provisioning is still pending.
+#'   - `pending` - The Capacity Reservation request was successful but the
+#'     capacity provisioning is still pending.
 #' 
-#'     -   `failed` - The Capacity Reservation request has failed. A
-#'         request might fail due to invalid request parameters, capacity
-#'         constraints, or instance limit constraints. Failed requests are
-#'         retained for 60 minutes.
+#'   - `failed` - The Capacity Reservation request has failed. A request
+#'     might fail due to invalid request parameters, capacity constraints,
+#'     or instance limit constraints. Failed requests are retained for 60
+#'     minutes.
 #' 
-#' -   `start-date` - The date and time at which the Capacity Reservation
-#'     was started.
+#' - `start-date` - The date and time at which the Capacity Reservation was
+#'   started.
 #' 
-#' -   `end-date` - The date and time at which the Capacity Reservation
-#'     expires. When a Capacity Reservation expires, the reserved capacity
-#'     is released and you can no longer launch instances into it. The
-#'     Capacity Reservation's state changes to expired when it reaches its
-#'     end date and time.
+#' - `end-date` - The date and time at which the Capacity Reservation
+#'   expires. When a Capacity Reservation expires, the reserved capacity is
+#'   released and you can no longer launch instances into it. The Capacity
+#'   Reservation's state changes to expired when it reaches its end date
+#'   and time.
 #' 
-#' -   `end-date-type` - Indicates the way in which the Capacity
-#'     Reservation ends. A Capacity Reservation can have one of the
-#'     following end types:
+#' - `end-date-type` - Indicates the way in which the Capacity Reservation
+#'   ends. A Capacity Reservation can have one of the following end types:
 #' 
-#'     -   `unlimited` - The Capacity Reservation remains active until you
-#'         explicitly cancel it.
+#'   - `unlimited` - The Capacity Reservation remains active until you
+#'     explicitly cancel it.
 #' 
-#'     -   `limited` - The Capacity Reservation expires automatically at a
-#'         specified date and time.
+#'   - `limited` - The Capacity Reservation expires automatically at a
+#'     specified date and time.
 #' 
-#' -   `instance-match-criteria` - Indicates the type of instance launches
-#'     that the Capacity Reservation accepts. The options include:
+#' - `instance-match-criteria` - Indicates the type of instance launches
+#'   that the Capacity Reservation accepts. The options include:
 #' 
-#'     -   `open` - The Capacity Reservation accepts all instances that
-#'         have matching attributes (instance type, platform, and
-#'         Availability Zone). Instances that have matching attributes
-#'         launch into the Capacity Reservation automatically without
-#'         specifying any additional parameters.
+#'   - `open` - The Capacity Reservation accepts all instances that have
+#'     matching attributes (instance type, platform, and Availability
+#'     Zone). Instances that have matching attributes launch into the
+#'     Capacity Reservation automatically without specifying any additional
+#'     parameters.
 #' 
-#'     -   `targeted` - The Capacity Reservation only accepts instances
-#'         that have matching attributes (instance type, platform, and
-#'         Availability Zone), and explicitly target the Capacity
-#'         Reservation. This ensures that only permitted instances can use
-#'         the reserved capacity.
+#'   - `targeted` - The Capacity Reservation only accepts instances that
+#'     have matching attributes (instance type, platform, and Availability
+#'     Zone), and explicitly target the Capacity Reservation. This ensures
+#'     that only permitted instances can use the reserved capacity.
 #' 
-#' -   `placement-group-arn` - The ARN of the cluster placement group in
-#'     which the Capacity Reservation was created.
+#' - `placement-group-arn` - The ARN of the cluster placement group in
+#'   which the Capacity Reservation was created.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -10326,7 +10549,8 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_capacity_reservations_input(CapacityReservationIds = CapacityReservationIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_capacity_reservations_output()
@@ -10348,25 +10572,25 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
 #' @param CarrierGatewayIds One or more carrier gateway IDs.
 #' @param Filters One or more filters.
 #' 
-#' -   `carrier-gateway-id` - The ID of the carrier gateway.
+#' - `carrier-gateway-id` - The ID of the carrier gateway.
 #' 
-#' -   `state` - The state of the carrier gateway (`pending` | `failed` |
-#'     `available` | `deleting` | `deleted`).
+#' - `state` - The state of the carrier gateway (`pending` | `failed` |
+#'   `available` | `deleting` | `deleted`).
 #' 
-#' -   `owner-id` - The Amazon Web Services account ID of the owner of the
-#'     carrier gateway.
+#' - `owner-id` - The Amazon Web Services account ID of the owner of the
+#'   carrier gateway.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC associated with the carrier gateway.
+#' - `vpc-id` - The ID of the VPC associated with the carrier gateway.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -10385,7 +10609,8 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CarrierGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CarrierGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_carrier_gateways_input(CarrierGatewayIds = CarrierGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_carrier_gateways_output()
@@ -10406,22 +10631,22 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
 #'
 #' @param Filters The filters.
 #' 
-#' -   `group-id` - The ID of a VPC security group that's associated with
-#'     the instance.
+#' - `group-id` - The ID of a VPC security group that's associated with the
+#'   instance.
 #' 
-#' -   `instance-id` - The ID of the instance.
+#' - `instance-id` - The ID of the instance.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC to which the instance is linked.
+#' - `vpc-id` - The ID of the VPC to which the instance is linked.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -10446,7 +10671,8 @@ ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_classic_link_instances_input(Filters = Filters, DryRun = DryRun, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_classic_link_instances_output()
@@ -10473,13 +10699,13 @@ ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, I
 #' @param NextToken The token to retrieve the next page of results.
 #' @param Filters One or more filters. Filter names and values are case-sensitive.
 #' 
-#' -   `description` - The description of the authorization rule.
+#' - `description` - The description of the authorization rule.
 #' 
-#' -   `destination-cidr` - The CIDR of the network to which the
-#'     authorization rule applies.
+#' - `destination-cidr` - The CIDR of the network to which the
+#'   authorization rule applies.
 #' 
-#' -   `group-id` - The ID of the Active Directory group to which the
-#'     authorization rule grants access.
+#' - `group-id` - The ID of the Active Directory group to which the
+#'   authorization rule grants access.
 #' @param MaxResults The maximum number of results to return for the request in a single
 #' page. The remaining results can be seen by sending another request with
 #' the nextToken value.
@@ -10493,7 +10719,8 @@ ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthorizationRules")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthorizationRules"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_authorization_rules_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun, NextToken = NextToken, Filters = Filters, MaxResults = MaxResults)
   output <- .ec2$describe_client_vpn_authorization_rules_output()
@@ -10517,10 +10744,10 @@ ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, Dry
 #' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
 #' @param Filters One or more filters. Filter names and values are case-sensitive.
 #' 
-#' -   `connection-id` - The ID of the connection.
+#' - `connection-id` - The ID of the connection.
 #' 
-#' -   `username` - For Active Directory client authentication, the user
-#'     name of the client who established the client connection.
+#' - `username` - For Active Directory client authentication, the user name
+#'   of the client who established the client connection.
 #' @param NextToken The token to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return for the request in a single
 #' page. The remaining results can be seen by sending another request with
@@ -10539,7 +10766,8 @@ ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Connections")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Connections"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_connections_input(ClientVpnEndpointId = ClientVpnEndpointId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_connections_output()
@@ -10565,9 +10793,9 @@ ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = N
 #' @param NextToken The token to retrieve the next page of results.
 #' @param Filters One or more filters. Filter names and values are case-sensitive.
 #' 
-#' -   `endpoint-id` - The ID of the Client VPN endpoint.
+#' - `endpoint-id` - The ID of the Client VPN endpoint.
 #' 
-#' -   `transport-protocol` - The transport protocol (`tcp` | `udp`).
+#' - `transport-protocol` - The transport protocol (`tcp` | `udp`).
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -10582,7 +10810,8 @@ ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnEndpoints")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnEndpoints"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_endpoints_input(ClientVpnEndpointIds = ClientVpnEndpointIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_endpoints_output()
@@ -10604,13 +10833,13 @@ ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxRe
 #' @param ClientVpnEndpointId &#91;required&#93; The ID of the Client VPN endpoint.
 #' @param Filters One or more filters. Filter names and values are case-sensitive.
 #' 
-#' -   `destination-cidr` - The CIDR of the route destination.
+#' - `destination-cidr` - The CIDR of the route destination.
 #' 
-#' -   `origin` - How the route was associated with the Client VPN endpoint
-#'     (`associate` | `add-route`).
+#' - `origin` - How the route was associated with the Client VPN endpoint
+#'   (`associate` | `add-route`).
 #' 
-#' -   `target-subnet` - The ID of the subnet through which traffic is
-#'     routed.
+#' - `target-subnet` - The ID of the subnet through which traffic is
+#'   routed.
 #' @param MaxResults The maximum number of results to return for the request in a single
 #' page. The remaining results can be seen by sending another request with
 #' the nextToken value.
@@ -10629,7 +10858,8 @@ ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_routes_input(ClientVpnEndpointId = ClientVpnEndpointId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_routes_output()
@@ -10657,12 +10887,12 @@ ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, 
 #' @param NextToken The token to retrieve the next page of results.
 #' @param Filters One or more filters. Filter names and values are case-sensitive.
 #' 
-#' -   `association-id` - The ID of the association.
+#' - `association-id` - The ID of the association.
 #' 
-#' -   `target-network-id` - The ID of the subnet specified as the target
-#'     network.
+#' - `target-network-id` - The ID of the subnet specified as the target
+#'   network.
 #' 
-#' -   `vpc-id` - The ID of the VPC in which the target network is located.
+#' - `vpc-id` - The ID of the VPC in which the target network is located.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -10677,7 +10907,8 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnTargetNetworks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnTargetNetworks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_target_networks_input(ClientVpnEndpointId = ClientVpnEndpointId, AssociationIds = AssociationIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_target_networks_output()
@@ -10700,10 +10931,10 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
 #' @param PoolIds The IDs of the address pools.
 #' @param Filters One or more filters.
 #' 
-#' -   `coip-pool.local-gateway-route-table-id` - The ID of the local
-#'     gateway route table.
+#' - `coip-pool.local-gateway-route-table-id` - The ID of the local gateway
+#'   route table.
 #' 
-#' -   `coip-pool.pool-id` - The ID of the address pool.
+#' - `coip-pool.pool-id` - The ID of the address pool.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -10722,7 +10953,8 @@ ec2_describe_coip_pools <- function(PoolIds = NULL, Filters = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CoipPools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CoipPools"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_coip_pools_input(PoolIds = PoolIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_coip_pools_output()
@@ -10756,7 +10988,8 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ConversionTasks")
+    paginator = list(result_key = "ConversionTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_conversion_tasks_input(ConversionTaskIds = ConversionTaskIds, DryRun = DryRun)
   output <- .ec2$describe_conversion_tasks_output()
@@ -10780,29 +11013,29 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
 #' Default: Describes all your customer gateways.
 #' @param Filters One or more filters.
 #' 
-#' -   `bgp-asn` - The customer gateway's Border Gateway Protocol (BGP)
-#'     Autonomous System Number (ASN).
+#' - `bgp-asn` - The customer gateway's Border Gateway Protocol (BGP)
+#'   Autonomous System Number (ASN).
 #' 
-#' -   `customer-gateway-id` - The ID of the customer gateway.
+#' - `customer-gateway-id` - The ID of the customer gateway.
 #' 
-#' -   `ip-address` - The IP address of the customer gateway device's
-#'     external interface.
+#' - `ip-address` - The IP address of the customer gateway device's
+#'   external interface.
 #' 
-#' -   `state` - The state of the customer gateway (`pending` | `available`
-#'     | `deleting` | `deleted`).
+#' - `state` - The state of the customer gateway (`pending` | `available` |
+#'   `deleting` | `deleted`).
 #' 
-#' -   `type` - The type of customer gateway. Currently, the only supported
-#'     type is `ipsec.1`.
+#' - `type` - The type of customer gateway. Currently, the only supported
+#'   type is `ipsec.1`.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -10817,7 +11050,8 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "CustomerGateways")
+    paginator = list(result_key = "CustomerGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_customer_gateways_input(CustomerGatewayIds = CustomerGatewayIds, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_customer_gateways_output()
@@ -10839,24 +11073,24 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 #' @param DhcpOptionsIds The IDs of DHCP option sets.
 #' @param Filters The filters.
 #' 
-#' -   `dhcp-options-id` - The ID of a DHCP options set.
+#' - `dhcp-options-id` - The ID of a DHCP options set.
 #' 
-#' -   `key` - The key for one of the options (for example, `domain-name`).
+#' - `key` - The key for one of the options (for example, `domain-name`).
 #' 
-#' -   `value` - The value for one of the options.
+#' - `value` - The value for one of the options.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     DHCP options set.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   DHCP options set.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -10877,7 +11111,8 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DhcpOptions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DhcpOptions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_dhcp_options_input(DhcpOptionsIds = DhcpOptionsIds, Filters = Filters, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_dhcp_options_output()
@@ -10909,15 +11144,15 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
 #' continues from the end of the items returned by the previous request.
 #' @param Filters The filters.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #'
 #' @keywords internal
 #'
@@ -10928,7 +11163,8 @@ ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnly
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EgressOnlyInternetGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EgressOnlyInternetGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_egress_only_internet_gateways_input(DryRun = DryRun, EgressOnlyInternetGatewayIds = EgressOnlyInternetGatewayIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ec2$describe_egress_only_internet_gateways_output()
@@ -10954,20 +11190,20 @@ ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnly
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone` - The Availability Zone in which the Elastic
-#'     Graphics accelerator resides.
+#' - `availability-zone` - The Availability Zone in which the Elastic
+#'   Graphics accelerator resides.
 #' 
-#' -   `elastic-gpu-health` - The status of the Elastic Graphics
-#'     accelerator (`OK` | `IMPAIRED`).
+#' - `elastic-gpu-health` - The status of the Elastic Graphics accelerator
+#'   (`OK` | `IMPAIRED`).
 #' 
-#' -   `elastic-gpu-state` - The state of the Elastic Graphics accelerator
-#'     (`ATTACHED`).
+#' - `elastic-gpu-state` - The state of the Elastic Graphics accelerator
+#'   (`ATTACHED`).
 #' 
-#' -   `elastic-gpu-type` - The type of Elastic Graphics accelerator; for
-#'     example, `eg1.medium`.
+#' - `elastic-gpu-type` - The type of Elastic Graphics accelerator; for
+#'   example, `eg1.medium`.
 #' 
-#' -   `instance-id` - The ID of the instance to which the Elastic Graphics
-#'     accelerator is associated.
+#' - `instance-id` - The ID of the instance to which the Elastic Graphics
+#'   accelerator is associated.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value. This value can be between 5 and 1000.
@@ -10982,7 +11218,8 @@ ec2_describe_elastic_gpus <- function(ElasticGpuIds = NULL, DryRun = NULL, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_elastic_gpus_input(ElasticGpuIds = ElasticGpuIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_elastic_gpus_output()
@@ -11021,7 +11258,8 @@ ec2_describe_export_image_tasks <- function(DryRun = NULL, Filters = NULL, Expor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExportImageTasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExportImageTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_export_image_tasks_input(DryRun = DryRun, Filters = Filters, ExportImageTaskIds = ExportImageTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_export_image_tasks_output()
@@ -11053,7 +11291,8 @@ ec2_describe_export_tasks <- function(ExportTaskIds = NULL, Filters = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ExportTasks")
+    paginator = list(result_key = "ExportTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_export_tasks_input(ExportTaskIds = ExportTaskIds, Filters = Filters)
   output <- .ec2$describe_export_tasks_output()
@@ -11076,11 +11315,11 @@ ec2_describe_export_tasks <- function(ExportTaskIds = NULL, Filters = NULL) {
 #' @param ImageIds Specify one or more Windows AMI image IDs for the request.
 #' @param Filters Use the following filters to streamline results.
 #' 
-#' -   `resource-type` - The resource type for pre-provisioning.
+#' - `resource-type` - The resource type for pre-provisioning.
 #' 
-#' -   `owner-id` - The owner ID for the pre-provisioning resource.
+#' - `owner-id` - The owner ID for the pre-provisioning resource.
 #' 
-#' -   `state` - The current state of fast launching for the Windows AMI.
+#' - `state` - The current state of fast launching for the Windows AMI.
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -11101,7 +11340,8 @@ ec2_describe_fast_launch_images <- function(ImageIds = NULL, Filters = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastLaunchImages")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastLaunchImages"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fast_launch_images_input(ImageIds = ImageIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_fast_launch_images_output()
@@ -11122,15 +11362,15 @@ ec2_describe_fast_launch_images <- function(ImageIds = NULL, Filters = NULL, Max
 #'
 #' @param Filters The filters. The possible values are:
 #' 
-#' -   `availability-zone`: The Availability Zone of the snapshot.
+#' - `availability-zone`: The Availability Zone of the snapshot.
 #' 
-#' -   `owner-id`: The ID of the Amazon Web Services account that enabled
-#'     fast snapshot restore on the snapshot.
+#' - `owner-id`: The ID of the Amazon Web Services account that enabled
+#'   fast snapshot restore on the snapshot.
 #' 
-#' -   `snapshot-id`: The ID of the snapshot.
+#' - `snapshot-id`: The ID of the snapshot.
 #' 
-#' -   `state`: The state of fast snapshot restores for the snapshot
-#'     (`enabling` | `optimizing` | `enabled` | `disabling` | `disabled`).
+#' - `state`: The state of fast snapshot restores for the snapshot
+#'   (`enabling` | `optimizing` | `enabled` | `disabling` | `disabled`).
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -11151,7 +11391,8 @@ ec2_describe_fast_snapshot_restores <- function(Filters = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastSnapshotRestores")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastSnapshotRestores"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fast_snapshot_restores_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_fast_snapshot_restores_output()
@@ -11195,7 +11436,8 @@ ec2_describe_fleet_history <- function(DryRun = NULL, EventType = NULL, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fleet_history_input(DryRun = DryRun, EventType = EventType, MaxResults = MaxResults, NextToken = NextToken, FleetId = FleetId, StartTime = StartTime)
   output <- .ec2$describe_fleet_history_output()
@@ -11227,7 +11469,7 @@ ec2_describe_fleet_history <- function(DryRun = NULL, EventType = NULL, MaxResul
 #' @param FleetId &#91;required&#93; The ID of the EC2 Fleet.
 #' @param Filters The filters.
 #' 
-#' -   `instance-type` - The instance type.
+#' - `instance-type` - The instance type.
 #'
 #' @keywords internal
 #'
@@ -11238,7 +11480,8 @@ ec2_describe_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fleet_instances_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, FleetId = FleetId, Filters = Filters)
   output <- .ec2$describe_fleet_instances_output()
@@ -11273,21 +11516,21 @@ ec2_describe_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextT
 #' otherwise it does not appear in the response.
 #' @param Filters The filters.
 #' 
-#' -   `activity-status` - The progress of the EC2 Fleet ( `error` |
-#'     `pending-fulfillment` | `pending-termination` | `fulfilled`).
+#' - `activity-status` - The progress of the EC2 Fleet ( `error` |
+#'   `pending-fulfillment` | `pending-termination` | `fulfilled`).
 #' 
-#' -   `excess-capacity-termination-policy` - Indicates whether to
-#'     terminate running instances if the target capacity is decreased
-#'     below the current EC2 Fleet size (`true` | `false`).
+#' - `excess-capacity-termination-policy` - Indicates whether to terminate
+#'   running instances if the target capacity is decreased below the
+#'   current EC2 Fleet size (`true` | `false`).
 #' 
-#' -   `fleet-state` - The state of the EC2 Fleet (`submitted` | `active` |
-#'     `deleted` | `failed` | `deleted-running` | `deleted-terminating` |
-#'     `modifying`).
+#' - `fleet-state` - The state of the EC2 Fleet (`submitted` | `active` |
+#'   `deleted` | `failed` | `deleted-running` | `deleted-terminating` |
+#'   `modifying`).
 #' 
-#' -   `replace-unhealthy-instances` - Indicates whether EC2 Fleet should
-#'     replace unhealthy instances (`true` | `false`).
+#' - `replace-unhealthy-instances` - Indicates whether EC2 Fleet should
+#'   replace unhealthy instances (`true` | `false`).
 #' 
-#' -   `type` - The type of request (`instant` | `request` | `maintain`).
+#' - `type` - The type of request (`instant` | `request` | `maintain`).
 #'
 #' @keywords internal
 #'
@@ -11298,7 +11541,8 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Fleets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Fleets"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fleets_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, FleetIds = FleetIds, Filters = Filters)
   output <- .ec2$describe_fleets_output()
@@ -11323,29 +11567,29 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filter One or more filters.
 #' 
-#' -   `deliver-log-status` - The status of the logs delivery (`SUCCESS` |
-#'     `FAILED`).
+#' - `deliver-log-status` - The status of the logs delivery (`SUCCESS` |
+#'   `FAILED`).
 #' 
-#' -   `log-destination-type` - The type of destination for the flow log
-#'     data (`cloud-watch-logs` | `s3` | `kinesis-data-firehose`).
+#' - `log-destination-type` - The type of destination for the flow log data
+#'   (`cloud-watch-logs` | `s3` | `kinesis-data-firehose`).
 #' 
-#' -   `flow-log-id` - The ID of the flow log.
+#' - `flow-log-id` - The ID of the flow log.
 #' 
-#' -   `log-group-name` - The name of the log group.
+#' - `log-group-name` - The name of the log group.
 #' 
-#' -   `resource-id` - The ID of the VPC, subnet, or network interface.
+#' - `resource-id` - The ID of the VPC, subnet, or network interface.
 #' 
-#' -   `traffic-type` - The type of traffic (`ACCEPT` | `REJECT` | `ALL`).
+#' - `traffic-type` - The type of traffic (`ACCEPT` | `REJECT` | `ALL`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param FlowLogIds One or more flow log IDs.
 #' 
 #' Constraint: Maximum of 1000 flow log IDs.
@@ -11365,7 +11609,8 @@ ec2_describe_flow_logs <- function(DryRun = NULL, Filter = NULL, FlowLogIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FlowLogs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FlowLogs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_flow_logs_input(DryRun = DryRun, Filter = Filter, FlowLogIds = FlowLogIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_flow_logs_output()
@@ -11401,7 +11646,8 @@ ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attrib
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fpga_image_attribute_input(DryRun = DryRun, FpgaImageId = FpgaImageId, Attribute = Attribute)
   output <- .ec2$describe_fpga_image_attribute_output()
@@ -11430,35 +11676,35 @@ ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attrib
 #' owner alias (valid values are `amazon` | `aws-marketplace`).
 #' @param Filters The filters.
 #' 
-#' -   `create-time` - The creation time of the AFI.
+#' - `create-time` - The creation time of the AFI.
 #' 
-#' -   `fpga-image-id` - The FPGA image identifier (AFI ID).
+#' - `fpga-image-id` - The FPGA image identifier (AFI ID).
 #' 
-#' -   `fpga-image-global-id` - The global FPGA image identifier (AGFI ID).
+#' - `fpga-image-global-id` - The global FPGA image identifier (AGFI ID).
 #' 
-#' -   `name` - The name of the AFI.
+#' - `name` - The name of the AFI.
 #' 
-#' -   `owner-id` - The Amazon Web Services account ID of the AFI owner.
+#' - `owner-id` - The Amazon Web Services account ID of the AFI owner.
 #' 
-#' -   `product-code` - The product code.
+#' - `product-code` - The product code.
 #' 
-#' -   `shell-version` - The version of the Amazon Web Services Shell that
-#'     was used to create the bitstream.
+#' - `shell-version` - The version of the Amazon Web Services Shell that
+#'   was used to create the bitstream.
 #' 
-#' -   `state` - The state of the AFI (`pending` | `failed` | `available` |
-#'     `unavailable`).
+#' - `state` - The state of the AFI (`pending` | `failed` | `available` |
+#'   `unavailable`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `update-time` - The time of the most recent update.
+#' - `update-time` - The time of the most recent update.
 #' @param NextToken The token to retrieve the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call.
 #'
@@ -11471,7 +11717,8 @@ ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FpgaImages")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FpgaImages"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fpga_images_input(DryRun = DryRun, FpgaImageIds = FpgaImageIds, Owners = Owners, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_fpga_images_output()
@@ -11492,11 +11739,11 @@ ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners 
 #'
 #' @param Filter The filters.
 #' 
-#' -   `instance-family` - The instance family of the offering (for
-#'     example, `m4`).
+#' - `instance-family` - The instance family of the offering (for example,
+#'   `m4`).
 #' 
-#' -   `payment-option` - The payment option (`NoUpfront` |
-#'     `PartialUpfront` | `AllUpfront`).
+#' - `payment-option` - The payment option (`NoUpfront` | `PartialUpfront`
+#'   | `AllUpfront`).
 #' @param MaxDuration This is the maximum duration of the reservation to purchase, specified
 #' in seconds. Reservations are available in one-year and three-year terms.
 #' The number of seconds specified must be the number of seconds in a year
@@ -11523,7 +11770,8 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OfferingSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OfferingSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_host_reservation_offerings_input(Filter = Filter, MaxDuration = MaxDuration, MaxResults = MaxResults, MinDuration = MinDuration, NextToken = NextToken, OfferingId = OfferingId)
   output <- .ec2$describe_host_reservation_offerings_output()
@@ -11545,23 +11793,23 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
 #'
 #' @param Filter The filters.
 #' 
-#' -   `instance-family` - The instance family (for example, `m4`).
+#' - `instance-family` - The instance family (for example, `m4`).
 #' 
-#' -   `payment-option` - The payment option (`NoUpfront` |
-#'     `PartialUpfront` | `AllUpfront`).
+#' - `payment-option` - The payment option (`NoUpfront` | `PartialUpfront`
+#'   | `AllUpfront`).
 #' 
-#' -   `state` - The state of the reservation (`payment-pending` |
-#'     `payment-failed` | `active` | `retired`).
+#' - `state` - The state of the reservation (`payment-pending` |
+#'   `payment-failed` | `active` | `retired`).
 #' 
-#' -   `tag:<key>` - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag:<key>` - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param HostReservationIdSet The host reservation IDs.
 #' @param MaxResults The maximum number of results to return for the request in a single
 #' page. The remaining results can be seen by sending another request with
@@ -11578,7 +11826,8 @@ ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HostReservationSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HostReservationSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_host_reservations_input(Filter = Filter, HostReservationIdSet = HostReservationIdSet, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_host_reservations_output()
@@ -11599,27 +11848,27 @@ ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet =
 #'
 #' @param Filter The filters.
 #' 
-#' -   `auto-placement` - Whether auto-placement is enabled or disabled
-#'     (`on` | `off`).
+#' - `auto-placement` - Whether auto-placement is enabled or disabled (`on`
+#'   | `off`).
 #' 
-#' -   `availability-zone` - The Availability Zone of the host.
+#' - `availability-zone` - The Availability Zone of the host.
 #' 
-#' -   `client-token` - The idempotency token that you provided when you
-#'     allocated the host.
+#' - `client-token` - The idempotency token that you provided when you
+#'   allocated the host.
 #' 
-#' -   `host-reservation-id` - The ID of the reservation assigned to this
-#'     host.
+#' - `host-reservation-id` - The ID of the reservation assigned to this
+#'   host.
 #' 
-#' -   `instance-type` - The instance type size that the Dedicated Host is
-#'     configured to support.
+#' - `instance-type` - The instance type size that the Dedicated Host is
+#'   configured to support.
 #' 
-#' -   `state` - The allocation state of the Dedicated Host (`available` |
-#'     `under-assessment` | `permanent-failure` | `released` |
-#'     `released-permanent-failure`).
+#' - `state` - The allocation state of the Dedicated Host (`available` |
+#'   `under-assessment` | `permanent-failure` | `released` |
+#'   `released-permanent-failure`).
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param HostIds The IDs of the Dedicated Hosts. The IDs are used for targeted instance
 #' launches.
 #' @param MaxResults The maximum number of results to return for the request in a single
@@ -11640,7 +11889,8 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Hosts")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Hosts"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_hosts_input(Filter = Filter, HostIds = HostIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_hosts_output()
@@ -11662,10 +11912,10 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
 #' @param AssociationIds The IAM instance profile associations.
 #' @param Filters The filters.
 #' 
-#' -   `instance-id` - The ID of the instance.
+#' - `instance-id` - The ID of the instance.
 #' 
-#' -   `state` - The state of the association (`associating` | `associated`
-#'     | `disassociating`).
+#' - `state` - The state of the association (`associating` | `associated` |
+#'   `disassociating`).
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -11682,7 +11932,8 @@ ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IamInstanceProfileAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IamInstanceProfileAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_iam_instance_profile_associations_input(AssociationIds = AssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_iam_instance_profile_associations_output()
@@ -11723,7 +11974,8 @@ ec2_describe_id_format <- function(Resource = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_id_format_input(Resource = Resource)
   output <- .ec2$describe_id_format_output()
@@ -11739,7 +11991,7 @@ ec2_describe_id_format <- function(Resource = NULL) {
 #' user, IAM role, or root user
 #'
 #' @description
-#' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_identity_id_format/](https://www.paws-r-sdk.com/docs/ec2_describe_identity_id_format/) for full documentation.
 #'
@@ -11765,7 +12017,8 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_identity_id_format_input(PrincipalArn = PrincipalArn, Resource = Resource)
   output <- .ec2$describe_identity_id_format_output()
@@ -11805,7 +12058,8 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_image_attribute_input(Attribute = Attribute, ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$describe_image_attribute_output()
@@ -11829,118 +12083,116 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' Amazon Web Services account ID, `self` (the sender of the request), or
 #' `all` (public AMIs).
 #' 
-#' -   If you specify an Amazon Web Services account ID that is not your
-#'     own, only AMIs shared with that specific Amazon Web Services account
-#'     ID are returned. However, AMIs that are shared with the account’s
-#'     organization or organizational unit (OU) are not returned.
+#' - If you specify an Amazon Web Services account ID that is not your own,
+#'   only AMIs shared with that specific Amazon Web Services account ID are
+#'   returned. However, AMIs that are shared with the account’s
+#'   organization or organizational unit (OU) are not returned.
 #' 
-#' -   If you specify `self` or your own Amazon Web Services account ID,
-#'     AMIs shared with your account are returned. In addition, AMIs that
-#'     are shared with the organization or OU of which you are member are
-#'     also returned.
+#' - If you specify `self` or your own Amazon Web Services account ID, AMIs
+#'   shared with your account are returned. In addition, AMIs that are
+#'   shared with the organization or OU of which you are member are also
+#'   returned.
 #' 
-#' -   If you specify `all`, all public AMIs are returned.
+#' - If you specify `all`, all public AMIs are returned.
 #' @param Filters The filters.
 #' 
-#' -   `architecture` - The image architecture (`i386` | `x86_64` | `arm64`
-#'     | `x86_64_mac` | `arm64_mac`).
+#' - `architecture` - The image architecture (`i386` | `x86_64` | `arm64` |
+#'   `x86_64_mac` | `arm64_mac`).
 #' 
-#' -   `block-device-mapping.delete-on-termination` - A Boolean value that
-#'     indicates whether the Amazon EBS volume is deleted on instance
-#'     termination.
+#' - `block-device-mapping.delete-on-termination` - A Boolean value that
+#'   indicates whether the Amazon EBS volume is deleted on instance
+#'   termination.
 #' 
-#' -   `block-device-mapping.device-name` - The device name specified in
-#'     the block device mapping (for example, `/dev/sdh` or `xvdh`).
+#' - `block-device-mapping.device-name` - The device name specified in the
+#'   block device mapping (for example, `/dev/sdh` or `xvdh`).
 #' 
-#' -   `block-device-mapping.snapshot-id` - The ID of the snapshot used for
-#'     the Amazon EBS volume.
+#' - `block-device-mapping.snapshot-id` - The ID of the snapshot used for
+#'   the Amazon EBS volume.
 #' 
-#' -   `block-device-mapping.volume-size` - The volume size of the Amazon
-#'     EBS volume, in GiB.
+#' - `block-device-mapping.volume-size` - The volume size of the Amazon EBS
+#'   volume, in GiB.
 #' 
-#' -   `block-device-mapping.volume-type` - The volume type of the Amazon
-#'     EBS volume (`io1` | `io2` | `gp2` | `gp3` | `sc1 `| `st1` |
-#'     `standard`).
+#' - `block-device-mapping.volume-type` - The volume type of the Amazon EBS
+#'   volume (`io1` | `io2` | `gp2` | `gp3` | `sc1 `| `st1` | `standard`).
 #' 
-#' -   `block-device-mapping.encrypted` - A Boolean that indicates whether
-#'     the Amazon EBS volume is encrypted.
+#' - `block-device-mapping.encrypted` - A Boolean that indicates whether
+#'   the Amazon EBS volume is encrypted.
 #' 
-#' -   `creation-date` - The time when the image was created, in the ISO
-#'     8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for
-#'     example, `2021-09-29T11:04:43.305Z`. You can use a wildcard (`*`),
-#'     for example, `2021-09-29T*`, which matches an entire day.
+#' - `creation-date` - The time when the image was created, in the ISO 8601
+#'   format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example,
+#'   `2021-09-29T11:04:43.305Z`. You can use a wildcard (`*`), for example,
+#'   `2021-09-29T*`, which matches an entire day.
 #' 
-#' -   `description` - The description of the image (provided during image
-#'     creation).
+#' - `description` - The description of the image (provided during image
+#'   creation).
 #' 
-#' -   `ena-support` - A Boolean that indicates whether enhanced networking
-#'     with ENA is enabled.
+#' - `ena-support` - A Boolean that indicates whether enhanced networking
+#'   with ENA is enabled.
 #' 
-#' -   `hypervisor` - The hypervisor type (`ovm` | `xen`).
+#' - `hypervisor` - The hypervisor type (`ovm` | `xen`).
 #' 
-#' -   `image-id` - The ID of the image.
+#' - `image-id` - The ID of the image.
 #' 
-#' -   `image-type` - The image type (`machine` | `kernel` | `ramdisk`).
+#' - `image-type` - The image type (`machine` | `kernel` | `ramdisk`).
 #' 
-#' -   `is-public` - A Boolean that indicates whether the image is public.
+#' - `is-public` - A Boolean that indicates whether the image is public.
 #' 
-#' -   `kernel-id` - The kernel ID.
+#' - `kernel-id` - The kernel ID.
 #' 
-#' -   `manifest-location` - The location of the image manifest.
+#' - `manifest-location` - The location of the image manifest.
 #' 
-#' -   `name` - The name of the AMI (provided during image creation).
+#' - `name` - The name of the AMI (provided during image creation).
 #' 
-#' -   `owner-alias` - The owner alias (`amazon` | `aws-marketplace`). The
-#'     valid aliases are defined in an Amazon-maintained list. This is not
-#'     the Amazon Web Services account alias that can be set using the IAM
-#'     console. We recommend that you use the **Owner** request parameter
-#'     instead of this filter.
+#' - `owner-alias` - The owner alias (`amazon` | `aws-marketplace`). The
+#'   valid aliases are defined in an Amazon-maintained list. This is not
+#'   the Amazon Web Services account alias that can be set using the IAM
+#'   console. We recommend that you use the **Owner** request parameter
+#'   instead of this filter.
 #' 
-#' -   `owner-id` - The Amazon Web Services account ID of the owner. We
-#'     recommend that you use the **Owner** request parameter instead of
-#'     this filter.
+#' - `owner-id` - The Amazon Web Services account ID of the owner. We
+#'   recommend that you use the **Owner** request parameter instead of this
+#'   filter.
 #' 
-#' -   `platform` - The platform. The only supported value is `windows`.
+#' - `platform` - The platform. The only supported value is `windows`.
 #' 
-#' -   `product-code` - The product code.
+#' - `product-code` - The product code.
 #' 
-#' -   `product-code.type` - The type of the product code (`marketplace`).
+#' - `product-code.type` - The type of the product code (`marketplace`).
 #' 
-#' -   `ramdisk-id` - The RAM disk ID.
+#' - `ramdisk-id` - The RAM disk ID.
 #' 
-#' -   `root-device-name` - The device name of the root device volume (for
-#'     example, `/dev/sda1`).
+#' - `root-device-name` - The device name of the root device volume (for
+#'   example, `/dev/sda1`).
 #' 
-#' -   `root-device-type` - The type of the root device volume (`ebs` |
-#'     `instance-store`).
+#' - `root-device-type` - The type of the root device volume (`ebs` |
+#'   `instance-store`).
 #' 
-#' -   `source-instance-id` - The ID of the instance that the AMI was
-#'     created from if the AMI was created using CreateImage. This filter
-#'     is applicable only if the AMI was created using
-#'     [`create_image`][ec2_create_image].
+#' - `source-instance-id` - The ID of the instance that the AMI was created
+#'   from if the AMI was created using CreateImage. This filter is
+#'   applicable only if the AMI was created using
+#'   [`create_image`][ec2_create_image].
 #' 
-#' -   `state` - The state of the image (`available` | `pending` |
-#'     `failed`).
+#' - `state` - The state of the image (`available` | `pending` | `failed`).
 #' 
-#' -   `state-reason-code` - The reason code for the state change.
+#' - `state-reason-code` - The reason code for the state change.
 #' 
-#' -   `state-reason-message` - The message for the state change.
+#' - `state-reason-message` - The message for the state change.
 #' 
-#' -   `sriov-net-support` - A value of `simple` indicates that enhanced
-#'     networking with the Intel 82599 VF interface is enabled.
+#' - `sriov-net-support` - A value of `simple` indicates that enhanced
+#'   networking with the Intel 82599 VF interface is enabled.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `virtualization-type` - The virtualization type (`paravirtual` |
-#'     `hvm`).
+#' - `virtualization-type` - The virtualization type (`paravirtual` |
+#'   `hvm`).
 #' @param ImageIds The image IDs.
 #' 
 #' Default: Describes all images available to you.
@@ -11977,7 +12229,8 @@ ec2_describe_images <- function(ExecutableUsers = NULL, Filters = NULL, ImageIds
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_images_input(ExecutableUsers = ExecutableUsers, Filters = Filters, ImageIds = ImageIds, Owners = Owners, IncludeDeprecated = IncludeDeprecated, IncludeDisabled = IncludeDisabled, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_images_output()
@@ -12016,7 +12269,8 @@ ec2_describe_import_image_tasks <- function(DryRun = NULL, Filters = NULL, Impor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportImageTasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportImageTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_import_image_tasks_input(DryRun = DryRun, Filters = Filters, ImportTaskIds = ImportTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_import_image_tasks_output()
@@ -12055,7 +12309,8 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportSnapshotTasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportSnapshotTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_import_snapshot_tasks_input(DryRun = DryRun, Filters = Filters, ImportTaskIds = ImportTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_import_snapshot_tasks_output()
@@ -12092,7 +12347,8 @@ ec2_describe_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_attribute_input(Attribute = Attribute, DryRun = DryRun, InstanceId = InstanceId)
   output <- .ec2$describe_instance_attribute_output()
@@ -12124,32 +12380,32 @@ ec2_describe_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId
 #' continues from the end of the items returned by the previous request.
 #' @param Filters One or more filters.
 #' 
-#' -   `instance-connect-endpoint-id` - The ID of the EC2 Instance Connect
-#'     Endpoint.
+#' - `instance-connect-endpoint-id` - The ID of the EC2 Instance Connect
+#'   Endpoint.
 #' 
-#' -   `state` - The state of the EC2 Instance Connect Endpoint
-#'     (`create-in-progress` | `create-complete` | `create-failed` |
-#'     `delete-in-progress` | `delete-complete` | `delete-failed`).
+#' - `state` - The state of the EC2 Instance Connect Endpoint
+#'   (`create-in-progress` | `create-complete` | `create-failed` |
+#'   `delete-in-progress` | `delete-complete` | `delete-failed`).
 #' 
-#' -   `subnet-id` - The ID of the subnet in which the EC2 Instance Connect
-#'     Endpoint was created.
+#' - `subnet-id` - The ID of the subnet in which the EC2 Instance Connect
+#'   Endpoint was created.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `tag-value` - The value of a tag assigned to the resource. Use this
-#'     filter to find all resources that have a tag with a specific value,
-#'     regardless of tag key.
+#' - `tag-value` - The value of a tag assigned to the resource. Use this
+#'   filter to find all resources that have a tag with a specific value,
+#'   regardless of tag key.
 #' 
-#' -   `vpc-id` - The ID of the VPC in which the EC2 Instance Connect
-#'     Endpoint was created.
+#' - `vpc-id` - The ID of the VPC in which the EC2 Instance Connect
+#'   Endpoint was created.
 #' @param InstanceConnectEndpointIds One or more EC2 Instance Connect Endpoint IDs.
 #'
 #' @keywords internal
@@ -12161,7 +12417,8 @@ ec2_describe_instance_connect_endpoints <- function(DryRun = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceConnectEndpoints")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceConnectEndpoints"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_connect_endpoints_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, InstanceConnectEndpointIds = InstanceConnectEndpointIds)
   output <- .ec2$describe_instance_connect_endpoints_output()
@@ -12187,7 +12444,7 @@ ec2_describe_instance_connect_endpoints <- function(DryRun = NULL, MaxResults = 
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
 #' 
-#' -   `instance-id` - The ID of the instance.
+#' - `instance-id` - The ID of the instance.
 #' @param InstanceIds The instance IDs.
 #' 
 #' Default: Describes all your instances.
@@ -12212,7 +12469,8 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceCreditSpecifications")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceCreditSpecifications"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_credit_specifications_input(DryRun = DryRun, Filters = Filters, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_credit_specifications_output()
@@ -12246,7 +12504,8 @@ ec2_describe_instance_event_notification_attributes <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_event_notification_attributes_input(DryRun = DryRun)
   output <- .ec2$describe_instance_event_notification_attributes_output()
@@ -12272,37 +12531,37 @@ ec2_describe_instance_event_notification_attributes <- function(DryRun = NULL) {
 #' @param InstanceEventWindowIds The IDs of the event windows.
 #' @param Filters One or more filters.
 #' 
-#' -   `dedicated-host-id` - The event windows associated with the
-#'     specified Dedicated Host ID.
+#' - `dedicated-host-id` - The event windows associated with the specified
+#'   Dedicated Host ID.
 #' 
-#' -   `event-window-name` - The event windows associated with the
-#'     specified names.
+#' - `event-window-name` - The event windows associated with the specified
+#'   names.
 #' 
-#' -   `instance-id` - The event windows associated with the specified
-#'     instance ID.
+#' - `instance-id` - The event windows associated with the specified
+#'   instance ID.
 #' 
-#' -   `instance-tag` - The event windows associated with the specified tag
-#'     and value.
+#' - `instance-tag` - The event windows associated with the specified tag
+#'   and value.
 #' 
-#' -   `instance-tag-key` - The event windows associated with the specified
-#'     tag key, regardless of the value.
+#' - `instance-tag-key` - The event windows associated with the specified
+#'   tag key, regardless of the value.
 #' 
-#' -   `instance-tag-value` - The event windows associated with the
-#'     specified tag value, regardless of the key.
+#' - `instance-tag-value` - The event windows associated with the specified
+#'   tag value, regardless of the key.
 #' 
-#' -   `tag:<key>` - The key/value combination of a tag assigned to the
-#'     event window. Use the tag key in the filter name and the tag value
-#'     as the filter value. For example, to find all resources that have a
-#'     tag with the key `Owner` and the value `CMX`, specify `tag:Owner`
-#'     for the filter name and `CMX` for the filter value.
+#' - `tag:<key>` - The key/value combination of a tag assigned to the event
+#'   window. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `CMX`, specify `tag:Owner` for the
+#'   filter name and `CMX` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the event window. Use this
-#'     filter to find all event windows that have a tag with a specific
-#'     key, regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the event window. Use this
+#'   filter to find all event windows that have a tag with a specific key,
+#'   regardless of the tag value.
 #' 
-#' -   `tag-value` - The value of a tag assigned to the event window. Use
-#'     this filter to find all event windows that have a tag with a
-#'     specific value, regardless of the tag key.
+#' - `tag-value` - The value of a tag assigned to the event window. Use
+#'   this filter to find all event windows that have a tag with a specific
+#'   value, regardless of the tag key.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value. This value can be between 20 and 500. You cannot specify this
@@ -12318,7 +12577,8 @@ ec2_describe_instance_event_windows <- function(DryRun = NULL, InstanceEventWind
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceEventWindows")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceEventWindows"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_event_windows_input(DryRun = DryRun, InstanceEventWindowIds = InstanceEventWindowIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_event_windows_output()
@@ -12339,55 +12599,52 @@ ec2_describe_instance_event_windows <- function(DryRun = NULL, InstanceEventWind
 #'
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone` - The Availability Zone of the instance.
+#' - `availability-zone` - The Availability Zone of the instance.
 #' 
-#' -   `event.code` - The code for the scheduled event (`instance-reboot` |
-#'     `system-reboot` | `system-maintenance` | `instance-retirement` |
-#'     `instance-stop`).
+#' - `event.code` - The code for the scheduled event (`instance-reboot` |
+#'   `system-reboot` | `system-maintenance` | `instance-retirement` |
+#'   `instance-stop`).
 #' 
-#' -   `event.description` - A description of the event.
+#' - `event.description` - A description of the event.
 #' 
-#' -   `event.instance-event-id` - The ID of the event whose date and time
-#'     you are modifying.
+#' - `event.instance-event-id` - The ID of the event whose date and time
+#'   you are modifying.
 #' 
-#' -   `event.not-after` - The latest end time for the scheduled event (for
-#'     example, `2014-09-15T17:15:20.000Z`).
+#' - `event.not-after` - The latest end time for the scheduled event (for
+#'   example, `2014-09-15T17:15:20.000Z`).
 #' 
-#' -   `event.not-before` - The earliest start time for the scheduled event
-#'     (for example, `2014-09-15T17:15:20.000Z`).
+#' - `event.not-before` - The earliest start time for the scheduled event
+#'   (for example, `2014-09-15T17:15:20.000Z`).
 #' 
-#' -   `event.not-before-deadline` - The deadline for starting the event
-#'     (for example, `2014-09-15T17:15:20.000Z`).
+#' - `event.not-before-deadline` - The deadline for starting the event (for
+#'   example, `2014-09-15T17:15:20.000Z`).
 #' 
-#' -   `instance-state-code` - The code for the instance state, as a 16-bit
-#'     unsigned integer. The high byte is used for internal purposes and
-#'     should be ignored. The low byte is set based on the state
-#'     represented. The valid values are 0 (pending), 16 (running), 32
-#'     (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
+#' - `instance-state-code` - The code for the instance state, as a 16-bit
+#'   unsigned integer. The high byte is used for internal purposes and
+#'   should be ignored. The low byte is set based on the state represented.
+#'   The valid values are 0 (pending), 16 (running), 32 (shutting-down), 48
+#'   (terminated), 64 (stopping), and 80 (stopped).
 #' 
-#' -   `instance-state-name` - The state of the instance (`pending` |
-#'     `running` | `shutting-down` | `terminated` | `stopping` |
-#'     `stopped`).
+#' - `instance-state-name` - The state of the instance (`pending` |
+#'   `running` | `shutting-down` | `terminated` | `stopping` | `stopped`).
 #' 
-#' -   `instance-status.reachability` - Filters on instance status where
-#'     the name is `reachability` (`passed` | `failed` | `initializing` |
-#'     `insufficient-data`).
+#' - `instance-status.reachability` - Filters on instance status where the
+#'   name is `reachability` (`passed` | `failed` | `initializing` |
+#'   `insufficient-data`).
 #' 
-#' -   `instance-status.status` - The status of the instance (`ok` |
-#'     `impaired` | `initializing` | `insufficient-data` |
-#'     `not-applicable`).
+#' - `instance-status.status` - The status of the instance (`ok` |
+#'   `impaired` | `initializing` | `insufficient-data` | `not-applicable`).
 #' 
-#' -   `system-status.reachability` - Filters on system status where the
-#'     name is `reachability` (`passed` | `failed` | `initializing` |
-#'     `insufficient-data`).
+#' - `system-status.reachability` - Filters on system status where the name
+#'   is `reachability` (`passed` | `failed` | `initializing` |
+#'   `insufficient-data`).
 #' 
-#' -   `system-status.status` - The system status of the instance (`ok` |
-#'     `impaired` | `initializing` | `insufficient-data` |
-#'     `not-applicable`).
+#' - `system-status.status` - The system status of the instance (`ok` |
+#'   `impaired` | `initializing` | `insufficient-data` | `not-applicable`).
 #' 
-#' -   `attached-ebs-status.status` - The status of the attached EBS volume
-#'     for the instance (`ok` | `impaired` | `initializing` |
-#'     `insufficient-data` | `not-applicable`).
+#' - `attached-ebs-status.status` - The status of the attached EBS volume
+#'   for the instance (`ok` | `impaired` | `initializing` |
+#'   `insufficient-data` | `not-applicable`).
 #' @param InstanceIds The instance IDs.
 #' 
 #' Default: Describes all your instances.
@@ -12420,7 +12677,8 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceStatuses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_status_input(Filters = Filters, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun, IncludeAllInstances = IncludeAllInstances)
   output <- .ec2$describe_instance_status_output()
@@ -12466,18 +12724,17 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
 #' Constraints: Maximum 100 explicitly specified placement group names.
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone` - The name of the Availability Zone (for
-#'     example, `us-west-2a`) or Local Zone (for example,
-#'     `us-west-2-lax-1b`) that the instance is in.
+#' - `availability-zone` - The name of the Availability Zone (for example,
+#'   `us-west-2a`) or Local Zone (for example, `us-west-2-lax-1b`) that the
+#'   instance is in.
 #' 
-#' -   `instance-type` - The instance type (for example, `p4d.24xlarge`) or
-#'     instance family (for example, `p4d*`). You can use the `*` wildcard
-#'     to match zero or more characters, or the `?` wildcard to match zero
-#'     or one character.
+#' - `instance-type` - The instance type (for example, `p4d.24xlarge`) or
+#'   instance family (for example, `p4d*`). You can use the `*` wildcard to
+#'   match zero or more characters, or the `?` wildcard to match zero or
+#'   one character.
 #' 
-#' -   `zone-id` - The ID of the Availability Zone (for example,
-#'     `usw2-az2`) or Local Zone (for example, `usw2-lax1-az1`) that the
-#'     instance is in.
+#' - `zone-id` - The ID of the Availability Zone (for example, `usw2-az2`)
+#'   or Local Zone (for example, `usw2-lax1-az1`) that the instance is in.
 #'
 #' @keywords internal
 #'
@@ -12488,7 +12745,8 @@ ec2_describe_instance_topology <- function(DryRun = NULL, NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_topology_input(DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults, InstanceIds = InstanceIds, GroupNames = GroupNames, Filters = Filters)
   output <- .ec2$describe_instance_topology_output()
@@ -12513,27 +12771,27 @@ ec2_describe_instance_topology <- function(DryRun = NULL, NextToken = NULL, MaxR
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param LocationType The location type.
 #' 
-#' -   `availability-zone` - The Availability Zone. When you specify a
-#'     location filter, it must be an Availability Zone for the current
-#'     Region.
+#' - `availability-zone` - The Availability Zone. When you specify a
+#'   location filter, it must be an Availability Zone for the current
+#'   Region.
 #' 
-#' -   `availability-zone-id` - The AZ ID. When you specify a location
-#'     filter, it must be an AZ ID for the current Region.
+#' - `availability-zone-id` - The AZ ID. When you specify a location
+#'   filter, it must be an AZ ID for the current Region.
 #' 
-#' -   `outpost` - The Outpost ARN. When you specify a location filter, it
-#'     must be an Outpost ARN for the current Region.
+#' - `outpost` - The Outpost ARN. When you specify a location filter, it
+#'   must be an Outpost ARN for the current Region.
 #' 
-#' -   `region` - The current Region. If you specify a location filter, it
-#'     must match the current Region.
+#' - `region` - The current Region. If you specify a location filter, it
+#'   must match the current Region.
 #' @param Filters One or more filters. Filter names and values are case-sensitive.
 #' 
-#' -   `instance-type` - The instance type. For a list of possible values,
-#'     see
-#'     [Instance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html).
+#' - `instance-type` - The instance type. For a list of possible values,
+#'   see
+#'   [Instance](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Instance.html).
 #' 
-#' -   `location` - The location. For a list of possible identifiers, see
-#'     [Regions and
-#'     Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
+#' - `location` - The location. For a list of possible identifiers, see
+#'   [Regions and
+#'   Zones](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html).
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -12550,7 +12808,8 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypeOfferings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypeOfferings"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_type_offerings_input(DryRun = DryRun, LocationType = LocationType, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_type_offerings_output()
@@ -12576,162 +12835,159 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
 #' @param InstanceTypes The instance types.
 #' @param Filters One or more filters. Filter names and values are case-sensitive.
 #' 
-#' -   `auto-recovery-supported` - Indicates whether Amazon CloudWatch
-#'     action based recovery is supported (`true` | `false`).
+#' - `auto-recovery-supported` - Indicates whether Amazon CloudWatch action
+#'   based recovery is supported (`true` | `false`).
 #' 
-#' -   `bare-metal` - Indicates whether it is a bare metal instance type
-#'     (`true` | `false`).
+#' - `bare-metal` - Indicates whether it is a bare metal instance type
+#'   (`true` | `false`).
 #' 
-#' -   `burstable-performance-supported` - Indicates whether the instance
-#'     type is a burstable performance T instance type (`true` | `false`).
+#' - `burstable-performance-supported` - Indicates whether the instance
+#'   type is a burstable performance T instance type (`true` | `false`).
 #' 
-#' -   `current-generation` - Indicates whether this instance type is the
-#'     latest generation instance type of an instance family (`true` |
-#'     `false`).
+#' - `current-generation` - Indicates whether this instance type is the
+#'   latest generation instance type of an instance family (`true` |
+#'   `false`).
 #' 
-#' -   `ebs-info.ebs-optimized-info.baseline-bandwidth-in-mbps` - The
-#'     baseline bandwidth performance for an EBS-optimized instance type,
-#'     in Mbps.
+#' - `ebs-info.ebs-optimized-info.baseline-bandwidth-in-mbps` - The
+#'   baseline bandwidth performance for an EBS-optimized instance type, in
+#'   Mbps.
 #' 
-#' -   `ebs-info.ebs-optimized-info.baseline-iops` - The baseline
-#'     input/output storage operations per second for an EBS-optimized
-#'     instance type.
+#' - `ebs-info.ebs-optimized-info.baseline-iops` - The baseline
+#'   input/output storage operations per second for an EBS-optimized
+#'   instance type.
 #' 
-#' -   `ebs-info.ebs-optimized-info.baseline-throughput-in-mbps` - The
-#'     baseline throughput performance for an EBS-optimized instance type,
-#'     in MB/s.
+#' - `ebs-info.ebs-optimized-info.baseline-throughput-in-mbps` - The
+#'   baseline throughput performance for an EBS-optimized instance type, in
+#'   MB/s.
 #' 
-#' -   `ebs-info.ebs-optimized-info.maximum-bandwidth-in-mbps` - The
-#'     maximum bandwidth performance for an EBS-optimized instance type, in
-#'     Mbps.
+#' - `ebs-info.ebs-optimized-info.maximum-bandwidth-in-mbps` - The maximum
+#'   bandwidth performance for an EBS-optimized instance type, in Mbps.
 #' 
-#' -   `ebs-info.ebs-optimized-info.maximum-iops` - The maximum
-#'     input/output storage operations per second for an EBS-optimized
-#'     instance type.
+#' - `ebs-info.ebs-optimized-info.maximum-iops` - The maximum input/output
+#'   storage operations per second for an EBS-optimized instance type.
 #' 
-#' -   `ebs-info.ebs-optimized-info.maximum-throughput-in-mbps` - The
-#'     maximum throughput performance for an EBS-optimized instance type,
-#'     in MB/s.
+#' - `ebs-info.ebs-optimized-info.maximum-throughput-in-mbps` - The maximum
+#'   throughput performance for an EBS-optimized instance type, in MB/s.
 #' 
-#' -   `ebs-info.ebs-optimized-support` - Indicates whether the instance
-#'     type is EBS-optimized (`supported` | `unsupported` | `default`).
+#' - `ebs-info.ebs-optimized-support` - Indicates whether the instance type
+#'   is EBS-optimized (`supported` | `unsupported` | `default`).
 #' 
-#' -   `ebs-info.encryption-support` - Indicates whether EBS encryption is
-#'     supported (`supported` | `unsupported`).
+#' - `ebs-info.encryption-support` - Indicates whether EBS encryption is
+#'   supported (`supported` | `unsupported`).
 #' 
-#' -   `ebs-info.nvme-support` - Indicates whether non-volatile memory
-#'     express (NVMe) is supported for EBS volumes (`required` |
-#'     `supported` | `unsupported`).
+#' - `ebs-info.nvme-support` - Indicates whether non-volatile memory
+#'   express (NVMe) is supported for EBS volumes (`required` | `supported`
+#'   | `unsupported`).
 #' 
-#' -   `free-tier-eligible` - Indicates whether the instance type is
-#'     eligible to use in the free tier (`true` | `false`).
+#' - `free-tier-eligible` - Indicates whether the instance type is eligible
+#'   to use in the free tier (`true` | `false`).
 #' 
-#' -   `hibernation-supported` - Indicates whether On-Demand hibernation is
-#'     supported (`true` | `false`).
+#' - `hibernation-supported` - Indicates whether On-Demand hibernation is
+#'   supported (`true` | `false`).
 #' 
-#' -   `hypervisor` - The hypervisor (`nitro` | `xen`).
+#' - `hypervisor` - The hypervisor (`nitro` | `xen`).
 #' 
-#' -   `instance-storage-info.disk.count` - The number of local disks.
+#' - `instance-storage-info.disk.count` - The number of local disks.
 #' 
-#' -   `instance-storage-info.disk.size-in-gb` - The storage size of each
-#'     instance storage disk, in GB.
+#' - `instance-storage-info.disk.size-in-gb` - The storage size of each
+#'   instance storage disk, in GB.
 #' 
-#' -   `instance-storage-info.disk.type` - The storage technology for the
-#'     local instance storage disks (`hdd` | `ssd`).
+#' - `instance-storage-info.disk.type` - The storage technology for the
+#'   local instance storage disks (`hdd` | `ssd`).
 #' 
-#' -   `instance-storage-info.encryption-support` - Indicates whether data
-#'     is encrypted at rest (`required` | `supported` | `unsupported`).
+#' - `instance-storage-info.encryption-support` - Indicates whether data is
+#'   encrypted at rest (`required` | `supported` | `unsupported`).
 #' 
-#' -   `instance-storage-info.nvme-support` - Indicates whether
-#'     non-volatile memory express (NVMe) is supported for instance store
-#'     (`required` | `supported` | `unsupported`).
+#' - `instance-storage-info.nvme-support` - Indicates whether non-volatile
+#'   memory express (NVMe) is supported for instance store (`required` |
+#'   `supported` | `unsupported`).
 #' 
-#' -   `instance-storage-info.total-size-in-gb` - The total amount of
-#'     storage available from all local instance storage, in GB.
+#' - `instance-storage-info.total-size-in-gb` - The total amount of storage
+#'   available from all local instance storage, in GB.
 #' 
-#' -   `instance-storage-supported` - Indicates whether the instance type
-#'     has local instance storage (`true` | `false`).
+#' - `instance-storage-supported` - Indicates whether the instance type has
+#'   local instance storage (`true` | `false`).
 #' 
-#' -   `instance-type` - The instance type (for example `c5.2xlarge` or
-#'     c5*).
+#' - `instance-type` - The instance type (for example `c5.2xlarge` or
+#'   c5*).
 #' 
-#' -   `memory-info.size-in-mib` - The memory size.
+#' - `memory-info.size-in-mib` - The memory size.
 #' 
-#' -   `network-info.efa-info.maximum-efa-interfaces` - The maximum number
-#'     of Elastic Fabric Adapters (EFAs) per instance.
+#' - `network-info.efa-info.maximum-efa-interfaces` - The maximum number of
+#'   Elastic Fabric Adapters (EFAs) per instance.
 #' 
-#' -   `network-info.efa-supported` - Indicates whether the instance type
-#'     supports Elastic Fabric Adapter (EFA) (`true` | `false`).
+#' - `network-info.efa-supported` - Indicates whether the instance type
+#'   supports Elastic Fabric Adapter (EFA) (`true` | `false`).
 #' 
-#' -   `network-info.ena-support` - Indicates whether Elastic Network
-#'     Adapter (ENA) is supported or required (`required` | `supported` |
-#'     `unsupported`).
+#' - `network-info.ena-support` - Indicates whether Elastic Network Adapter
+#'   (ENA) is supported or required (`required` | `supported` |
+#'   `unsupported`).
 #' 
-#' -   `network-info.encryption-in-transit-supported` - Indicates whether
-#'     the instance type automatically encrypts in-transit traffic between
-#'     instances (`true` | `false`).
+#' - `network-info.encryption-in-transit-supported` - Indicates whether the
+#'   instance type automatically encrypts in-transit traffic between
+#'   instances (`true` | `false`).
 #' 
-#' -   `network-info.ipv4-addresses-per-interface` - The maximum number of
-#'     private IPv4 addresses per network interface.
+#' - `network-info.ipv4-addresses-per-interface` - The maximum number of
+#'   private IPv4 addresses per network interface.
 #' 
-#' -   `network-info.ipv6-addresses-per-interface` - The maximum number of
-#'     private IPv6 addresses per network interface.
+#' - `network-info.ipv6-addresses-per-interface` - The maximum number of
+#'   private IPv6 addresses per network interface.
 #' 
-#' -   `network-info.ipv6-supported` - Indicates whether the instance type
-#'     supports IPv6 (`true` | `false`).
+#' - `network-info.ipv6-supported` - Indicates whether the instance type
+#'   supports IPv6 (`true` | `false`).
 #' 
-#' -   `network-info.maximum-network-cards` - The maximum number of network
-#'     cards per instance.
+#' - `network-info.maximum-network-cards` - The maximum number of network
+#'   cards per instance.
 #' 
-#' -   `network-info.maximum-network-interfaces` - The maximum number of
-#'     network interfaces per instance.
+#' - `network-info.maximum-network-interfaces` - The maximum number of
+#'   network interfaces per instance.
 #' 
-#' -   `network-info.network-performance` - The network performance (for
-#'     example, "25 Gigabit").
+#' - `network-info.network-performance` - The network performance (for
+#'   example, "25 Gigabit").
 #' 
-#' -   `nitro-enclaves-support` - Indicates whether Nitro Enclaves is
-#'     supported (`supported` | `unsupported`).
+#' - `nitro-enclaves-support` - Indicates whether Nitro Enclaves is
+#'   supported (`supported` | `unsupported`).
 #' 
-#' -   `nitro-tpm-support` - Indicates whether NitroTPM is supported
-#'     (`supported` | `unsupported`).
+#' - `nitro-tpm-support` - Indicates whether NitroTPM is supported
+#'   (`supported` | `unsupported`).
 #' 
-#' -   `nitro-tpm-info.supported-versions` - The supported NitroTPM version
-#'     (`2.0`).
+#' - `nitro-tpm-info.supported-versions` - The supported NitroTPM version
+#'   (`2.0`).
 #' 
-#' -   `processor-info.supported-architecture` - The CPU architecture
-#'     (`arm64` | `i386` | `x86_64`).
+#' - `processor-info.supported-architecture` - The CPU architecture
+#'   (`arm64` | `i386` | `x86_64`).
 #' 
-#' -   `processor-info.sustained-clock-speed-in-ghz` - The CPU clock speed,
-#'     in GHz.
+#' - `processor-info.sustained-clock-speed-in-ghz` - The CPU clock speed,
+#'   in GHz.
 #' 
-#' -   `processor-info.supported-features` - The supported CPU features
-#'     (`amd-sev-snp`).
+#' - `processor-info.supported-features` - The supported CPU features
+#'   (`amd-sev-snp`).
 #' 
-#' -   `supported-boot-mode` - The boot mode (`legacy-bios` | `uefi`).
+#' - `supported-boot-mode` - The boot mode (`legacy-bios` | `uefi`).
 #' 
-#' -   `supported-root-device-type` - The root device type (`ebs` |
-#'     `instance-store`).
+#' - `supported-root-device-type` - The root device type (`ebs` |
+#'   `instance-store`).
 #' 
-#' -   `supported-usage-class` - The usage class (`on-demand` | `spot`).
+#' - `supported-usage-class` - The usage class (`on-demand` | `spot`).
 #' 
-#' -   `supported-virtualization-type` - The virtualization type (`hvm` |
-#'     `paravirtual`).
+#' - `supported-virtualization-type` - The virtualization type (`hvm` |
+#'   `paravirtual`).
 #' 
-#' -   `vcpu-info.default-cores` - The default number of cores for the
-#'     instance type.
+#' - `vcpu-info.default-cores` - The default number of cores for the
+#'   instance type.
 #' 
-#' -   `vcpu-info.default-threads-per-core` - The default number of threads
-#'     per core for the instance type.
+#' - `vcpu-info.default-threads-per-core` - The default number of threads
+#'   per core for the instance type.
 #' 
-#' -   `vcpu-info.default-vcpus` - The default number of vCPUs for the
-#'     instance type.
+#' - `vcpu-info.default-vcpus` - The default number of vCPUs for the
+#'   instance type.
 #' 
-#' -   `vcpu-info.valid-cores` - The number of cores that can be configured
-#'     for the instance type.
+#' - `vcpu-info.valid-cores` - The number of cores that can be configured
+#'   for the instance type.
 #' 
-#' -   `vcpu-info.valid-threads-per-core` - The number of threads per core
-#'     that can be configured for the instance type. For example, "1" or
-#'     "1,2".
+#' - `vcpu-info.valid-threads-per-core` - The number of threads per core
+#'   that can be configured for the instance type. For example, "1" or
+#'   "1,2".
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -12748,7 +13004,8 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_types_input(DryRun = DryRun, InstanceTypes = InstanceTypes, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_types_output()
@@ -12769,432 +13026,422 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
 #'
 #' @param Filters The filters.
 #' 
-#' -   `affinity` - The affinity setting for an instance running on a
-#'     Dedicated Host (`default` | `host`).
+#' - `affinity` - The affinity setting for an instance running on a
+#'   Dedicated Host (`default` | `host`).
 #' 
-#' -   `architecture` - The instance architecture (`i386` | `x86_64` |
-#'     `arm64`).
+#' - `architecture` - The instance architecture (`i386` | `x86_64` |
+#'   `arm64`).
 #' 
-#' -   `availability-zone` - The Availability Zone of the instance.
+#' - `availability-zone` - The Availability Zone of the instance.
 #' 
-#' -   `block-device-mapping.attach-time` - The attach time for an EBS
-#'     volume mapped to the instance, for example,
-#'     `2022-09-15T17:15:20.000Z`.
+#' - `block-device-mapping.attach-time` - The attach time for an EBS volume
+#'   mapped to the instance, for example, `2022-09-15T17:15:20.000Z`.
 #' 
-#' -   `block-device-mapping.delete-on-termination` - A Boolean that
-#'     indicates whether the EBS volume is deleted on instance termination.
+#' - `block-device-mapping.delete-on-termination` - A Boolean that
+#'   indicates whether the EBS volume is deleted on instance termination.
 #' 
-#' -   `block-device-mapping.device-name` - The device name specified in
-#'     the block device mapping (for example, `/dev/sdh` or `xvdh`).
+#' - `block-device-mapping.device-name` - The device name specified in the
+#'   block device mapping (for example, `/dev/sdh` or `xvdh`).
 #' 
-#' -   `block-device-mapping.status` - The status for the EBS volume
-#'     (`attaching` | `attached` | `detaching` | `detached`).
+#' - `block-device-mapping.status` - The status for the EBS volume
+#'   (`attaching` | `attached` | `detaching` | `detached`).
 #' 
-#' -   `block-device-mapping.volume-id` - The volume ID of the EBS volume.
+#' - `block-device-mapping.volume-id` - The volume ID of the EBS volume.
 #' 
-#' -   `boot-mode` - The boot mode that was specified by the AMI
-#'     (`legacy-bios` | `uefi` | `uefi-preferred`).
+#' - `boot-mode` - The boot mode that was specified by the AMI
+#'   (`legacy-bios` | `uefi` | `uefi-preferred`).
 #' 
-#' -   `capacity-reservation-id` - The ID of the Capacity Reservation into
-#'     which the instance was launched.
+#' - `capacity-reservation-id` - The ID of the Capacity Reservation into
+#'   which the instance was launched.
 #' 
-#' -   `capacity-reservation-specification.capacity-reservation-preference` -
-#'     The instance's Capacity Reservation preference (`open` | `none`).
+#' - `capacity-reservation-specification.capacity-reservation-preference` -
+#'   The instance's Capacity Reservation preference (`open` | `none`).
 #' 
-#' -   `capacity-reservation-specification.capacity-reservation-target.capacity-reservation-id` -
-#'     The ID of the targeted Capacity Reservation.
+#' - `capacity-reservation-specification.capacity-reservation-target.capacity-reservation-id` -
+#'   The ID of the targeted Capacity Reservation.
 #' 
-#' -   `capacity-reservation-specification.capacity-reservation-target.capacity-reservation-resource-group-arn` -
-#'     The ARN of the targeted Capacity Reservation group.
+#' - `capacity-reservation-specification.capacity-reservation-target.capacity-reservation-resource-group-arn` -
+#'   The ARN of the targeted Capacity Reservation group.
 #' 
-#' -   `client-token` - The idempotency token you provided when you
-#'     launched the instance.
+#' - `client-token` - The idempotency token you provided when you launched
+#'   the instance.
 #' 
-#' -   `current-instance-boot-mode` - The boot mode that is used to launch
-#'     the instance at launch or start (`legacy-bios` | `uefi`).
+#' - `current-instance-boot-mode` - The boot mode that is used to launch
+#'   the instance at launch or start (`legacy-bios` | `uefi`).
 #' 
-#' -   `dns-name` - The public DNS name of the instance.
+#' - `dns-name` - The public DNS name of the instance.
 #' 
-#' -   `ebs-optimized` - A Boolean that indicates whether the instance is
-#'     optimized for Amazon EBS I/O.
+#' - `ebs-optimized` - A Boolean that indicates whether the instance is
+#'   optimized for Amazon EBS I/O.
 #' 
-#' -   `ena-support` - A Boolean that indicates whether the instance is
-#'     enabled for enhanced networking with ENA.
+#' - `ena-support` - A Boolean that indicates whether the instance is
+#'   enabled for enhanced networking with ENA.
 #' 
-#' -   `enclave-options.enabled` - A Boolean that indicates whether the
-#'     instance is enabled for Amazon Web Services Nitro Enclaves.
+#' - `enclave-options.enabled` - A Boolean that indicates whether the
+#'   instance is enabled for Amazon Web Services Nitro Enclaves.
 #' 
-#' -   `hibernation-options.configured` - A Boolean that indicates whether
-#'     the instance is enabled for hibernation. A value of `true` means
-#'     that the instance is enabled for hibernation.
+#' - `hibernation-options.configured` - A Boolean that indicates whether
+#'   the instance is enabled for hibernation. A value of `true` means that
+#'   the instance is enabled for hibernation.
 #' 
-#' -   `host-id` - The ID of the Dedicated Host on which the instance is
-#'     running, if applicable.
+#' - `host-id` - The ID of the Dedicated Host on which the instance is
+#'   running, if applicable.
 #' 
-#' -   `hypervisor` - The hypervisor type of the instance (`ovm` | `xen`).
-#'     The value `xen` is used for both Xen and Nitro hypervisors.
+#' - `hypervisor` - The hypervisor type of the instance (`ovm` | `xen`).
+#'   The value `xen` is used for both Xen and Nitro hypervisors.
 #' 
-#' -   `iam-instance-profile.arn` - The instance profile associated with
-#'     the instance. Specified as an ARN.
+#' - `iam-instance-profile.arn` - The instance profile associated with the
+#'   instance. Specified as an ARN.
 #' 
-#' -   `iam-instance-profile.id` - The instance profile associated with the
-#'     instance. Specified as an ID.
+#' - `iam-instance-profile.id` - The instance profile associated with the
+#'   instance. Specified as an ID.
 #' 
-#' -   `iam-instance-profile.name` - The instance profile associated with
-#'     the instance. Specified as an name.
+#' - `iam-instance-profile.name` - The instance profile associated with the
+#'   instance. Specified as an name.
 #' 
-#' -   `image-id` - The ID of the image used to launch the instance.
+#' - `image-id` - The ID of the image used to launch the instance.
 #' 
-#' -   `instance-id` - The ID of the instance.
+#' - `instance-id` - The ID of the instance.
 #' 
-#' -   `instance-lifecycle` - Indicates whether this is a Spot Instance, a
-#'     Scheduled Instance, or a Capacity Block (`spot` | `scheduled` |
-#'     `capacity-block`).
+#' - `instance-lifecycle` - Indicates whether this is a Spot Instance, a
+#'   Scheduled Instance, or a Capacity Block (`spot` | `scheduled` |
+#'   `capacity-block`).
 #' 
-#' -   `instance-state-code` - The state of the instance, as a 16-bit
-#'     unsigned integer. The high byte is used for internal purposes and
-#'     should be ignored. The low byte is set based on the state
-#'     represented. The valid values are: 0 (pending), 16 (running), 32
-#'     (shutting-down), 48 (terminated), 64 (stopping), and 80 (stopped).
+#' - `instance-state-code` - The state of the instance, as a 16-bit
+#'   unsigned integer. The high byte is used for internal purposes and
+#'   should be ignored. The low byte is set based on the state represented.
+#'   The valid values are: 0 (pending), 16 (running), 32 (shutting-down),
+#'   48 (terminated), 64 (stopping), and 80 (stopped).
 #' 
-#' -   `instance-state-name` - The state of the instance (`pending` |
-#'     `running` | `shutting-down` | `terminated` | `stopping` |
-#'     `stopped`).
+#' - `instance-state-name` - The state of the instance (`pending` |
+#'   `running` | `shutting-down` | `terminated` | `stopping` | `stopped`).
 #' 
-#' -   `instance-type` - The type of instance (for example, `t2.micro`).
+#' - `instance-type` - The type of instance (for example, `t2.micro`).
 #' 
-#' -   `instance.group-id` - The ID of the security group for the instance.
+#' - `instance.group-id` - The ID of the security group for the instance.
 #' 
-#' -   `instance.group-name` - The name of the security group for the
-#'     instance.
+#' - `instance.group-name` - The name of the security group for the
+#'   instance.
 #' 
-#' -   `ip-address` - The public IPv4 address of the instance.
+#' - `ip-address` - The public IPv4 address of the instance.
 #' 
-#' -   `ipv6-address` - The IPv6 address of the instance.
+#' - `ipv6-address` - The IPv6 address of the instance.
 #' 
-#' -   `kernel-id` - The kernel ID.
+#' - `kernel-id` - The kernel ID.
 #' 
-#' -   `key-name` - The name of the key pair used when the instance was
-#'     launched.
+#' - `key-name` - The name of the key pair used when the instance was
+#'   launched.
 #' 
-#' -   `launch-index` - When launching multiple instances, this is the
-#'     index for the instance in the launch group (for example, 0, 1, 2,
-#'     and so on).
+#' - `launch-index` - When launching multiple instances, this is the index
+#'   for the instance in the launch group (for example, 0, 1, 2, and so
+#'   on).
 #' 
-#' -   `launch-time` - The time when the instance was launched, in the ISO
-#'     8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for
-#'     example, `2021-09-29T11:04:43.305Z`. You can use a wildcard (`*`),
-#'     for example, `2021-09-29T*`, which matches an entire day.
+#' - `launch-time` - The time when the instance was launched, in the ISO
+#'   8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for
+#'   example, `2021-09-29T11:04:43.305Z`. You can use a wildcard (`*`), for
+#'   example, `2021-09-29T*`, which matches an entire day.
 #' 
-#' -   `maintenance-options.auto-recovery` - The current automatic recovery
-#'     behavior of the instance (`disabled` | `default`).
+#' - `maintenance-options.auto-recovery` - The current automatic recovery
+#'   behavior of the instance (`disabled` | `default`).
 #' 
-#' -   `metadata-options.http-endpoint` - The status of access to the HTTP
-#'     metadata endpoint on your instance (`enabled` | `disabled`)
+#' - `metadata-options.http-endpoint` - The status of access to the HTTP
+#'   metadata endpoint on your instance (`enabled` | `disabled`)
 #' 
-#' -   `metadata-options.http-protocol-ipv4` - Indicates whether the IPv4
-#'     endpoint is enabled (`disabled` | `enabled`).
+#' - `metadata-options.http-protocol-ipv4` - Indicates whether the IPv4
+#'   endpoint is enabled (`disabled` | `enabled`).
 #' 
-#' -   `metadata-options.http-protocol-ipv6` - Indicates whether the IPv6
-#'     endpoint is enabled (`disabled` | `enabled`).
+#' - `metadata-options.http-protocol-ipv6` - Indicates whether the IPv6
+#'   endpoint is enabled (`disabled` | `enabled`).
 #' 
-#' -   `metadata-options.http-put-response-hop-limit` - The HTTP metadata
-#'     request put response hop limit (integer, possible values `1` to
-#'     `64`)
+#' - `metadata-options.http-put-response-hop-limit` - The HTTP metadata
+#'   request put response hop limit (integer, possible values `1` to `64`)
 #' 
-#' -   `metadata-options.http-tokens` - The metadata request authorization
-#'     state (`optional` | `required`)
+#' - `metadata-options.http-tokens` - The metadata request authorization
+#'   state (`optional` | `required`)
 #' 
-#' -   `metadata-options.instance-metadata-tags` - The status of access to
-#'     instance tags from the instance metadata (`enabled` | `disabled`)
+#' - `metadata-options.instance-metadata-tags` - The status of access to
+#'   instance tags from the instance metadata (`enabled` | `disabled`)
 #' 
-#' -   `metadata-options.state` - The state of the metadata option changes
-#'     (`pending` | `applied`).
+#' - `metadata-options.state` - The state of the metadata option changes
+#'   (`pending` | `applied`).
 #' 
-#' -   `monitoring-state` - Indicates whether detailed monitoring is
-#'     enabled (`disabled` | `enabled`).
+#' - `monitoring-state` - Indicates whether detailed monitoring is enabled
+#'   (`disabled` | `enabled`).
 #' 
-#' -   `network-interface.addresses.association.allocation-id` - The
-#'     allocation ID.
+#' - `network-interface.addresses.association.allocation-id` - The
+#'   allocation ID.
 #' 
-#' -   `network-interface.addresses.association.association-id` - The
-#'     association ID.
+#' - `network-interface.addresses.association.association-id` - The
+#'   association ID.
 #' 
-#' -   `network-interface.addresses.association.carrier-ip` - The carrier
-#'     IP address.
+#' - `network-interface.addresses.association.carrier-ip` - The carrier IP
+#'   address.
 #' 
-#' -   `network-interface.addresses.association.customer-owned-ip` - The
-#'     customer-owned IP address.
+#' - `network-interface.addresses.association.customer-owned-ip` - The
+#'   customer-owned IP address.
 #' 
-#' -   `network-interface.addresses.association.ip-owner-id` - The owner ID
-#'     of the private IPv4 address associated with the network interface.
+#' - `network-interface.addresses.association.ip-owner-id` - The owner ID
+#'   of the private IPv4 address associated with the network interface.
 #' 
-#' -   `network-interface.addresses.association.public-dns-name` - The
-#'     public DNS name.
+#' - `network-interface.addresses.association.public-dns-name` - The public
+#'   DNS name.
 #' 
-#' -   `network-interface.addresses.association.public-ip` - The ID of the
-#'     association of an Elastic IP address (IPv4) with a network
-#'     interface.
+#' - `network-interface.addresses.association.public-ip` - The ID of the
+#'   association of an Elastic IP address (IPv4) with a network interface.
 #' 
-#' -   `network-interface.addresses.primary` - Specifies whether the IPv4
-#'     address of the network interface is the primary private IPv4
-#'     address.
+#' - `network-interface.addresses.primary` - Specifies whether the IPv4
+#'   address of the network interface is the primary private IPv4 address.
 #' 
-#' -   `network-interface.addresses.private-dns-name` - The private DNS
-#'     name.
+#' - `network-interface.addresses.private-dns-name` - The private DNS name.
 #' 
-#' -   `network-interface.addresses.private-ip-address` - The private IPv4
-#'     address associated with the network interface.
+#' - `network-interface.addresses.private-ip-address` - The private IPv4
+#'   address associated with the network interface.
 #' 
-#' -   `network-interface.association.allocation-id` - The allocation ID
-#'     returned when you allocated the Elastic IP address (IPv4) for your
-#'     network interface.
+#' - `network-interface.association.allocation-id` - The allocation ID
+#'   returned when you allocated the Elastic IP address (IPv4) for your
+#'   network interface.
 #' 
-#' -   `network-interface.association.association-id` - The association ID
-#'     returned when the network interface was associated with an IPv4
-#'     address.
+#' - `network-interface.association.association-id` - The association ID
+#'   returned when the network interface was associated with an IPv4
+#'   address.
 #' 
-#' -   `network-interface.association.carrier-ip` - The customer-owned IP
-#'     address.
+#' - `network-interface.association.carrier-ip` - The customer-owned IP
+#'   address.
 #' 
-#' -   `network-interface.association.customer-owned-ip` - The
-#'     customer-owned IP address.
+#' - `network-interface.association.customer-owned-ip` - The customer-owned
+#'   IP address.
 #' 
-#' -   `network-interface.association.ip-owner-id` - The owner of the
-#'     Elastic IP address (IPv4) associated with the network interface.
+#' - `network-interface.association.ip-owner-id` - The owner of the Elastic
+#'   IP address (IPv4) associated with the network interface.
 #' 
-#' -   `network-interface.association.public-dns-name` - The public DNS
-#'     name.
+#' - `network-interface.association.public-dns-name` - The public DNS name.
 #' 
-#' -   `network-interface.association.public-ip` - The address of the
-#'     Elastic IP address (IPv4) bound to the network interface.
+#' - `network-interface.association.public-ip` - The address of the Elastic
+#'   IP address (IPv4) bound to the network interface.
 #' 
-#' -   `network-interface.attachment.attach-time` - The time that the
-#'     network interface was attached to an instance.
+#' - `network-interface.attachment.attach-time` - The time that the network
+#'   interface was attached to an instance.
 #' 
-#' -   `network-interface.attachment.attachment-id` - The ID of the
-#'     interface attachment.
+#' - `network-interface.attachment.attachment-id` - The ID of the interface
+#'   attachment.
 #' 
-#' -   `network-interface.attachment.delete-on-termination` - Specifies
-#'     whether the attachment is deleted when an instance is terminated.
+#' - `network-interface.attachment.delete-on-termination` - Specifies
+#'   whether the attachment is deleted when an instance is terminated.
 #' 
-#' -   `network-interface.attachment.device-index` - The device index to
-#'     which the network interface is attached.
+#' - `network-interface.attachment.device-index` - The device index to
+#'   which the network interface is attached.
 #' 
-#' -   `network-interface.attachment.instance-id` - The ID of the instance
-#'     to which the network interface is attached.
+#' - `network-interface.attachment.instance-id` - The ID of the instance to
+#'   which the network interface is attached.
 #' 
-#' -   `network-interface.attachment.instance-owner-id` - The owner ID of
-#'     the instance to which the network interface is attached.
+#' - `network-interface.attachment.instance-owner-id` - The owner ID of the
+#'   instance to which the network interface is attached.
 #' 
-#' -   `network-interface.attachment.network-card-index` - The index of the
-#'     network card.
+#' - `network-interface.attachment.network-card-index` - The index of the
+#'   network card.
 #' 
-#' -   `network-interface.attachment.status` - The status of the attachment
-#'     (`attaching` | `attached` | `detaching` | `detached`).
+#' - `network-interface.attachment.status` - The status of the attachment
+#'   (`attaching` | `attached` | `detaching` | `detached`).
 #' 
-#' -   `network-interface.availability-zone` - The Availability Zone for
-#'     the network interface.
+#' - `network-interface.availability-zone` - The Availability Zone for the
+#'   network interface.
 #' 
-#' -   `network-interface.deny-all-igw-traffic` - A Boolean that indicates
-#'     whether a network interface with an IPv6 address is unreachable from
-#'     the public internet.
+#' - `network-interface.deny-all-igw-traffic` - A Boolean that indicates
+#'   whether a network interface with an IPv6 address is unreachable from
+#'   the public internet.
 #' 
-#' -   `network-interface.description` - The description of the network
-#'     interface.
+#' - `network-interface.description` - The description of the network
+#'   interface.
 #' 
-#' -   `network-interface.group-id` - The ID of a security group associated
-#'     with the network interface.
+#' - `network-interface.group-id` - The ID of a security group associated
+#'   with the network interface.
 #' 
-#' -   `network-interface.group-name` - The name of a security group
-#'     associated with the network interface.
+#' - `network-interface.group-name` - The name of a security group
+#'   associated with the network interface.
 #' 
-#' -   `network-interface.ipv4-prefixes.ipv4-prefix` - The IPv4 prefixes
-#'     that are assigned to the network interface.
+#' - `network-interface.ipv4-prefixes.ipv4-prefix` - The IPv4 prefixes that
+#'   are assigned to the network interface.
 #' 
-#' -   `network-interface.ipv6-address` - The IPv6 address associated with
-#'     the network interface.
+#' - `network-interface.ipv6-address` - The IPv6 address associated with
+#'   the network interface.
 #' 
-#' -   `network-interface.ipv6-addresses.ipv6-address` - The IPv6 address
-#'     associated with the network interface.
+#' - `network-interface.ipv6-addresses.ipv6-address` - The IPv6 address
+#'   associated with the network interface.
 #' 
-#' -   `network-interface.ipv6-addresses.is-primary-ipv6` - A Boolean that
-#'     indicates whether this is the primary IPv6 address.
+#' - `network-interface.ipv6-addresses.is-primary-ipv6` - A Boolean that
+#'   indicates whether this is the primary IPv6 address.
 #' 
-#' -   `network-interface.ipv6-native` - A Boolean that indicates whether
-#'     this is an IPv6 only network interface.
+#' - `network-interface.ipv6-native` - A Boolean that indicates whether
+#'   this is an IPv6 only network interface.
 #' 
-#' -   `network-interface.ipv6-prefixes.ipv6-prefix` - The IPv6 prefix
-#'     assigned to the network interface.
+#' - `network-interface.ipv6-prefixes.ipv6-prefix` - The IPv6 prefix
+#'   assigned to the network interface.
 #' 
-#' -   `network-interface.mac-address` - The MAC address of the network
-#'     interface.
+#' - `network-interface.mac-address` - The MAC address of the network
+#'   interface.
 #' 
-#' -   `network-interface.network-interface-id` - The ID of the network
-#'     interface.
+#' - `network-interface.network-interface-id` - The ID of the network
+#'   interface.
 #' 
-#' -   `network-interface.outpost-arn` - The ARN of the Outpost.
+#' - `network-interface.outpost-arn` - The ARN of the Outpost.
 #' 
-#' -   `network-interface.owner-id` - The ID of the owner of the network
-#'     interface.
+#' - `network-interface.owner-id` - The ID of the owner of the network
+#'   interface.
 #' 
-#' -   `network-interface.private-dns-name` - The private DNS name of the
-#'     network interface.
+#' - `network-interface.private-dns-name` - The private DNS name of the
+#'   network interface.
 #' 
-#' -   `network-interface.private-ip-address` - The private IPv4 address.
+#' - `network-interface.private-ip-address` - The private IPv4 address.
 #' 
-#' -   `network-interface.public-dns-name` - The public DNS name.
+#' - `network-interface.public-dns-name` - The public DNS name.
 #' 
-#' -   `network-interface.requester-id` - The requester ID for the network
-#'     interface.
+#' - `network-interface.requester-id` - The requester ID for the network
+#'   interface.
 #' 
-#' -   `network-interface.requester-managed` - Indicates whether the
-#'     network interface is being managed by Amazon Web Services.
+#' - `network-interface.requester-managed` - Indicates whether the network
+#'   interface is being managed by Amazon Web Services.
 #' 
-#' -   `network-interface.status` - The status of the network interface
-#'     (`available`) | `in-use`).
+#' - `network-interface.status` - The status of the network interface
+#'   (`available`) | `in-use`).
 #' 
-#' -   `network-interface.source-dest-check` - Whether the network
-#'     interface performs source/destination checking. A value of `true`
-#'     means that checking is enabled, and `false` means that checking is
-#'     disabled. The value must be `false` for the network interface to
-#'     perform network address translation (NAT) in your VPC.
+#' - `network-interface.source-dest-check` - Whether the network interface
+#'   performs source/destination checking. A value of `true` means that
+#'   checking is enabled, and `false` means that checking is disabled. The
+#'   value must be `false` for the network interface to perform network
+#'   address translation (NAT) in your VPC.
 #' 
-#' -   `network-interface.subnet-id` - The ID of the subnet for the network
-#'     interface.
+#' - `network-interface.subnet-id` - The ID of the subnet for the network
+#'   interface.
 #' 
-#' -   `network-interface.tag-key` - The key of a tag assigned to the
-#'     network interface.
+#' - `network-interface.tag-key` - The key of a tag assigned to the network
+#'   interface.
 #' 
-#' -   `network-interface.tag-value` - The value of a tag assigned to the
-#'     network interface.
+#' - `network-interface.tag-value` - The value of a tag assigned to the
+#'   network interface.
 #' 
-#' -   `network-interface.vpc-id` - The ID of the VPC for the network
-#'     interface.
+#' - `network-interface.vpc-id` - The ID of the VPC for the network
+#'   interface.
 #' 
-#' -   `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost.
+#' - `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost.
 #' 
-#' -   `owner-id` - The Amazon Web Services account ID of the instance
-#'     owner.
+#' - `owner-id` - The Amazon Web Services account ID of the instance owner.
 #' 
-#' -   `placement-group-name` - The name of the placement group for the
-#'     instance.
+#' - `placement-group-name` - The name of the placement group for the
+#'   instance.
 #' 
-#' -   `placement-partition-number` - The partition in which the instance
-#'     is located.
+#' - `placement-partition-number` - The partition in which the instance is
+#'   located.
 #' 
-#' -   `platform` - The platform. To list only Windows instances, use
-#'     `windows`.
+#' - `platform` - The platform. To list only Windows instances, use
+#'   `windows`.
 #' 
-#' -   `platform-details` - The platform (`Linux/UNIX` |
-#'     `Red Hat BYOL Linux` | ` Red Hat Enterprise Linux` |
-#'     `Red Hat Enterprise Linux with HA` |
-#'     `Red Hat Enterprise Linux with SQL Server Standard and HA` |
-#'     `Red Hat Enterprise Linux with SQL Server Enterprise and HA` |
-#'     `Red Hat Enterprise Linux with SQL Server Standard` |
-#'     `Red Hat Enterprise Linux with SQL Server Web` |
-#'     `Red Hat Enterprise Linux with SQL Server Enterprise` |
-#'     `SQL Server Enterprise` | `SQL Server Standard` | `SQL Server Web` |
-#'     `SUSE Linux` | `Ubuntu Pro` | `Windows` | `Windows BYOL` |
-#'     `Windows with SQL Server Enterprise` |
-#'     `Windows with SQL Server Standard` | `Windows with SQL Server Web`).
+#' - `platform-details` - The platform (`Linux/UNIX` | `Red Hat BYOL Linux`
+#'   | ` Red Hat Enterprise Linux` | `Red Hat Enterprise Linux with HA` |
+#'   `Red Hat Enterprise Linux with SQL Server Standard and HA` |
+#'   `Red Hat Enterprise Linux with SQL Server Enterprise and HA` |
+#'   `Red Hat Enterprise Linux with SQL Server Standard` |
+#'   `Red Hat Enterprise Linux with SQL Server Web` |
+#'   `Red Hat Enterprise Linux with SQL Server Enterprise` |
+#'   `SQL Server Enterprise` | `SQL Server Standard` | `SQL Server Web` |
+#'   `SUSE Linux` | `Ubuntu Pro` | `Windows` | `Windows BYOL` |
+#'   `Windows with SQL Server Enterprise` |
+#'   `Windows with SQL Server Standard` | `Windows with SQL Server Web`).
 #' 
-#' -   `private-dns-name` - The private IPv4 DNS name of the instance.
+#' - `private-dns-name` - The private IPv4 DNS name of the instance.
 #' 
-#' -   `private-dns-name-options.enable-resource-name-dns-a-record` - A
-#'     Boolean that indicates whether to respond to DNS queries for
-#'     instance hostnames with DNS A records.
+#' - `private-dns-name-options.enable-resource-name-dns-a-record` - A
+#'   Boolean that indicates whether to respond to DNS queries for instance
+#'   hostnames with DNS A records.
 #' 
-#' -   `private-dns-name-options.enable-resource-name-dns-aaaa-record` - A
-#'     Boolean that indicates whether to respond to DNS queries for
-#'     instance hostnames with DNS AAAA records.
+#' - `private-dns-name-options.enable-resource-name-dns-aaaa-record` - A
+#'   Boolean that indicates whether to respond to DNS queries for instance
+#'   hostnames with DNS AAAA records.
 #' 
-#' -   `private-dns-name-options.hostname-type` - The type of hostname
-#'     (`ip-name` | `resource-name`).
+#' - `private-dns-name-options.hostname-type` - The type of hostname
+#'   (`ip-name` | `resource-name`).
 #' 
-#' -   `private-ip-address` - The private IPv4 address of the instance.
-#'     This can only be used to filter by the primary IP address of the
-#'     network interface attached to the instance. To filter by additional
-#'     IP addresses assigned to the network interface, use the filter
-#'     `network-interface.addresses.private-ip-address`.
+#' - `private-ip-address` - The private IPv4 address of the instance. This
+#'   can only be used to filter by the primary IP address of the network
+#'   interface attached to the instance. To filter by additional IP
+#'   addresses assigned to the network interface, use the filter
+#'   `network-interface.addresses.private-ip-address`.
 #' 
-#' -   `product-code` - The product code associated with the AMI used to
-#'     launch the instance.
+#' - `product-code` - The product code associated with the AMI used to
+#'   launch the instance.
 #' 
-#' -   `product-code.type` - The type of product code (`devpay` |
-#'     `marketplace`).
+#' - `product-code.type` - The type of product code (`devpay` |
+#'   `marketplace`).
 #' 
-#' -   `ramdisk-id` - The RAM disk ID.
+#' - `ramdisk-id` - The RAM disk ID.
 #' 
-#' -   `reason` - The reason for the current state of the instance (for
-#'     example, shows "User Initiated \[date\]" when you stop or terminate
-#'     the instance). Similar to the state-reason-code filter.
+#' - `reason` - The reason for the current state of the instance (for
+#'   example, shows "User Initiated \[date\]" when you stop or terminate
+#'   the instance). Similar to the state-reason-code filter.
 #' 
-#' -   `requester-id` - The ID of the entity that launched the instance on
-#'     your behalf (for example, Amazon Web Services Management Console,
-#'     Auto Scaling, and so on).
+#' - `requester-id` - The ID of the entity that launched the instance on
+#'   your behalf (for example, Amazon Web Services Management Console, Auto
+#'   Scaling, and so on).
 #' 
-#' -   `reservation-id` - The ID of the instance's reservation. A
-#'     reservation ID is created any time you launch an instance. A
-#'     reservation ID has a one-to-one relationship with an instance launch
-#'     request, but can be associated with more than one instance if you
-#'     launch multiple instances using the same launch request. For
-#'     example, if you launch one instance, you get one reservation ID. If
-#'     you launch ten instances using the same launch request, you also get
-#'     one reservation ID.
+#' - `reservation-id` - The ID of the instance's reservation. A reservation
+#'   ID is created any time you launch an instance. A reservation ID has a
+#'   one-to-one relationship with an instance launch request, but can be
+#'   associated with more than one instance if you launch multiple
+#'   instances using the same launch request. For example, if you launch
+#'   one instance, you get one reservation ID. If you launch ten instances
+#'   using the same launch request, you also get one reservation ID.
 #' 
-#' -   `root-device-name` - The device name of the root device volume (for
-#'     example, `/dev/sda1`).
+#' - `root-device-name` - The device name of the root device volume (for
+#'   example, `/dev/sda1`).
 #' 
-#' -   `root-device-type` - The type of the root device volume (`ebs` |
-#'     `instance-store`).
+#' - `root-device-type` - The type of the root device volume (`ebs` |
+#'   `instance-store`).
 #' 
-#' -   `source-dest-check` - Indicates whether the instance performs
-#'     source/destination checking. A value of `true` means that checking
-#'     is enabled, and `false` means that checking is disabled. The value
-#'     must be `false` for the instance to perform network address
-#'     translation (NAT) in your VPC.
+#' - `source-dest-check` - Indicates whether the instance performs
+#'   source/destination checking. A value of `true` means that checking is
+#'   enabled, and `false` means that checking is disabled. The value must
+#'   be `false` for the instance to perform network address translation
+#'   (NAT) in your VPC.
 #' 
-#' -   `spot-instance-request-id` - The ID of the Spot Instance request.
+#' - `spot-instance-request-id` - The ID of the Spot Instance request.
 #' 
-#' -   `state-reason-code` - The reason code for the state change.
+#' - `state-reason-code` - The reason code for the state change.
 #' 
-#' -   `state-reason-message` - A message that describes the state change.
+#' - `state-reason-message` - A message that describes the state change.
 #' 
-#' -   `subnet-id` - The ID of the subnet for the instance.
+#' - `subnet-id` - The ID of the subnet for the instance.
 #' 
-#' -   `tag:<key>` - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag:<key>` - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources that have a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources that have a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `tenancy` - The tenancy of an instance (`dedicated` | `default` |
-#'     `host`).
+#' - `tenancy` - The tenancy of an instance (`dedicated` | `default` |
+#'   `host`).
 #' 
-#' -   `tpm-support` - Indicates if the instance is configured for NitroTPM
-#'     support (`v2.0`).
+#' - `tpm-support` - Indicates if the instance is configured for NitroTPM
+#'   support (`v2.0`).
 #' 
-#' -   `usage-operation` - The usage operation value for the instance
-#'     ([`run_instances`][ec2_run_instances] | `RunInstances:00g0` |
-#'     `RunInstances:0010` | `RunInstances:1010` | `RunInstances:1014` |
-#'     `RunInstances:1110` | `RunInstances:0014` | `RunInstances:0210` |
-#'     `RunInstances:0110` | `RunInstances:0100` | `RunInstances:0004` |
-#'     `RunInstances:0200` | `RunInstances:000g` | `RunInstances:0g00` |
-#'     `RunInstances:0002` | `RunInstances:0800` | `RunInstances:0102` |
-#'     `RunInstances:0006` | `RunInstances:0202`).
+#' - `usage-operation` - The usage operation value for the instance
+#'   ([`run_instances`][ec2_run_instances] | `RunInstances:00g0` |
+#'   `RunInstances:0010` | `RunInstances:1010` | `RunInstances:1014` |
+#'   `RunInstances:1110` | `RunInstances:0014` | `RunInstances:0210` |
+#'   `RunInstances:0110` | `RunInstances:0100` | `RunInstances:0004` |
+#'   `RunInstances:0200` | `RunInstances:000g` | `RunInstances:0g00` |
+#'   `RunInstances:0002` | `RunInstances:0800` | `RunInstances:0102` |
+#'   `RunInstances:0006` | `RunInstances:0202`).
 #' 
-#' -   `usage-operation-update-time` - The time that the usage operation
-#'     was last updated, for example, `2022-09-15T17:15:20.000Z`.
+#' - `usage-operation-update-time` - The time that the usage operation was
+#'   last updated, for example, `2022-09-15T17:15:20.000Z`.
 #' 
-#' -   `virtualization-type` - The virtualization type of the instance
-#'     (`paravirtual` | `hvm`).
+#' - `virtualization-type` - The virtualization type of the instance
+#'   (`paravirtual` | `hvm`).
 #' 
-#' -   `vpc-id` - The ID of the VPC that the instance is running in.
+#' - `vpc-id` - The ID of the VPC that the instance is running in.
 #' @param InstanceIds The instance IDs.
 #' 
 #' Default: Describes all your instances.
@@ -13221,7 +13468,8 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Reservations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Reservations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instances_input(Filters = Filters, InstanceIds = InstanceIds, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instances_output()
@@ -13242,26 +13490,25 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 #'
 #' @param Filters The filters.
 #' 
-#' -   `attachment.state` - The current state of the attachment between the
-#'     gateway and the VPC (`available`). Present only if a VPC is
-#'     attached.
+#' - `attachment.state` - The current state of the attachment between the
+#'   gateway and the VPC (`available`). Present only if a VPC is attached.
 #' 
-#' -   `attachment.vpc-id` - The ID of an attached VPC.
+#' - `attachment.vpc-id` - The ID of an attached VPC.
 #' 
-#' -   `internet-gateway-id` - The ID of the Internet gateway.
+#' - `internet-gateway-id` - The ID of the Internet gateway.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     internet gateway.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   internet gateway.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -13285,7 +13532,8 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InternetGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InternetGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_internet_gateways_input(Filters = Filters, DryRun = DryRun, InternetGatewayIds = InternetGatewayIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_internet_gateways_output()
@@ -13323,7 +13571,8 @@ ec2_describe_ipam_byoasn <- function(DryRun = NULL, MaxResults = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_byoasn_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_ipam_byoasn_output()
@@ -13352,23 +13601,23 @@ ec2_describe_ipam_byoasn <- function(DryRun = NULL, MaxResults = NULL, NextToken
 #' 
 #' Available filters:
 #' 
-#' -   `ipam-arn`
+#' - `ipam-arn`
 #' 
-#' -   `ipam-external-resource-verification-token-arn`
+#' - `ipam-external-resource-verification-token-arn`
 #' 
-#' -   `ipam-external-resource-verification-token-id`
+#' - `ipam-external-resource-verification-token-id`
 #' 
-#' -   `ipam-id`
+#' - `ipam-id`
 #' 
-#' -   `ipam-region`
+#' - `ipam-region`
 #' 
-#' -   `state`
+#' - `state`
 #' 
-#' -   `status`
+#' - `status`
 #' 
-#' -   `token-name`
+#' - `token-name`
 #' 
-#' -   `token-value`
+#' - `token-value`
 #' @param NextToken The token for the next page of results.
 #' @param MaxResults The maximum number of tokens to return in one page of results.
 #' @param IpamExternalResourceVerificationTokenIds Verification token IDs.
@@ -13382,7 +13631,8 @@ ec2_describe_ipam_external_resource_verification_tokens <- function(DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_external_resource_verification_tokens_input(DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, IpamExternalResourceVerificationTokenIds = IpamExternalResourceVerificationTokenIds)
   output <- .ec2$describe_ipam_external_resource_verification_tokens_output()
@@ -13421,7 +13671,8 @@ ec2_describe_ipam_pools <- function(DryRun = NULL, Filters = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPools"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_pools_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamPoolIds = IpamPoolIds)
   output <- .ec2$describe_ipam_pools_output()
@@ -13460,7 +13711,8 @@ ec2_describe_ipam_resource_discoveries <- function(DryRun = NULL, IpamResourceDi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveries"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_resource_discoveries_input(DryRun = DryRun, IpamResourceDiscoveryIds = IpamResourceDiscoveryIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_ipam_resource_discoveries_output()
@@ -13499,7 +13751,8 @@ ec2_describe_ipam_resource_discovery_associations <- function(DryRun = NULL, Ipa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveryAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveryAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_resource_discovery_associations_input(DryRun = DryRun, IpamResourceDiscoveryAssociationIds = IpamResourceDiscoveryAssociationIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_ipam_resource_discovery_associations_output()
@@ -13538,7 +13791,8 @@ ec2_describe_ipam_scopes <- function(DryRun = NULL, Filters = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamScopes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamScopes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_scopes_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamScopeIds = IpamScopeIds)
   output <- .ec2$describe_ipam_scopes_output()
@@ -13577,7 +13831,8 @@ ec2_describe_ipams <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipams")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipams"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipams_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamIds = IpamIds)
   output <- .ec2$describe_ipams_output()
@@ -13607,15 +13862,15 @@ ec2_describe_ipams <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL,
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #'
 #' @keywords internal
 #'
@@ -13626,7 +13881,8 @@ ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6Pools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6Pools"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipv_6_pools_input(PoolIds = PoolIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun, Filters = Filters)
   output <- .ec2$describe_ipv_6_pools_output()
@@ -13647,21 +13903,21 @@ ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResult
 #'
 #' @param Filters The filters.
 #' 
-#' -   `key-pair-id` - The ID of the key pair.
+#' - `key-pair-id` - The ID of the key pair.
 #' 
-#' -   `fingerprint` - The fingerprint of the key pair.
+#' - `fingerprint` - The fingerprint of the key pair.
 #' 
-#' -   `key-name` - The name of the key pair.
+#' - `key-name` - The name of the key pair.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' @param KeyNames The key pair names.
 #' 
 #' Default: Describes all of your key pairs.
@@ -13683,7 +13939,8 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "KeyPairs")
+    paginator = list(result_key = "KeyPairs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_key_pairs_input(Filters = Filters, KeyNames = KeyNames, KeyPairIds = KeyPairIds, DryRun = DryRun, IncludePublicKey = IncludePublicKey)
   output <- .ec2$describe_key_pairs_output()
@@ -13742,39 +13999,39 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds =
 #' value. This value can be between 1 and 200.
 #' @param Filters One or more filters.
 #' 
-#' -   `create-time` - The time the launch template version was created.
+#' - `create-time` - The time the launch template version was created.
 #' 
-#' -   `ebs-optimized` - A boolean that indicates whether the instance is
-#'     optimized for Amazon EBS I/O.
+#' - `ebs-optimized` - A boolean that indicates whether the instance is
+#'   optimized for Amazon EBS I/O.
 #' 
-#' -   `http-endpoint` - Indicates whether the HTTP metadata endpoint on
-#'     your instances is enabled (`enabled` | `disabled`).
+#' - `http-endpoint` - Indicates whether the HTTP metadata endpoint on your
+#'   instances is enabled (`enabled` | `disabled`).
 #' 
-#' -   `http-protocol-ipv4` - Indicates whether the IPv4 endpoint for the
-#'     instance metadata service is enabled (`enabled` | `disabled`).
+#' - `http-protocol-ipv4` - Indicates whether the IPv4 endpoint for the
+#'   instance metadata service is enabled (`enabled` | `disabled`).
 #' 
-#' -   `host-resource-group-arn` - The ARN of the host resource group in
-#'     which to launch the instances.
+#' - `host-resource-group-arn` - The ARN of the host resource group in
+#'   which to launch the instances.
 #' 
-#' -   `http-tokens` - The state of token usage for your instance metadata
-#'     requests (`optional` | `required`).
+#' - `http-tokens` - The state of token usage for your instance metadata
+#'   requests (`optional` | `required`).
 #' 
-#' -   `iam-instance-profile` - The ARN of the IAM instance profile.
+#' - `iam-instance-profile` - The ARN of the IAM instance profile.
 #' 
-#' -   `image-id` - The ID of the AMI.
+#' - `image-id` - The ID of the AMI.
 #' 
-#' -   `instance-type` - The instance type.
+#' - `instance-type` - The instance type.
 #' 
-#' -   `is-default-version` - A boolean that indicates whether the launch
-#'     template version is the default version.
+#' - `is-default-version` - A boolean that indicates whether the launch
+#'   template version is the default version.
 #' 
-#' -   `kernel-id` - The kernel ID.
+#' - `kernel-id` - The kernel ID.
 #' 
-#' -   `license-configuration-arn` - The ARN of the license configuration.
+#' - `license-configuration-arn` - The ARN of the license configuration.
 #' 
-#' -   `network-card-index` - The index of the network card.
+#' - `network-card-index` - The index of the network card.
 #' 
-#' -   `ram-disk-id` - The RAM disk ID.
+#' - `ram-disk-id` - The RAM disk ID.
 #' @param ResolveAlias If `true`, and if a Systems Manager parameter is specified for
 #' `ImageId`, the AMI ID is displayed in the response for `imageId`.
 #' 
@@ -13797,7 +14054,8 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplateVersions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplateVersions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_launch_template_versions_input(DryRun = DryRun, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, Versions = Versions, MinVersion = MinVersion, MaxVersion = MaxVersion, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, ResolveAlias = ResolveAlias)
   output <- .ec2$describe_launch_template_versions_output()
@@ -13824,19 +14082,19 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
 #' @param LaunchTemplateNames One or more launch template names.
 #' @param Filters One or more filters.
 #' 
-#' -   `create-time` - The time the launch template was created.
+#' - `create-time` - The time the launch template was created.
 #' 
-#' -   `launch-template-name` - The name of the launch template.
+#' - `launch-template-name` - The name of the launch template.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param NextToken The token to request the next page of results.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
@@ -13851,7 +14109,8 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplates")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplates"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_launch_templates_input(DryRun = DryRun, LaunchTemplateIds = LaunchTemplateIds, LaunchTemplateNames = LaunchTemplateNames, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_launch_templates_output()
@@ -13874,24 +14133,24 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
 #' @param LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds The IDs of the associations.
 #' @param Filters One or more filters.
 #' 
-#' -   `local-gateway-id` - The ID of a local gateway.
+#' - `local-gateway-id` - The ID of a local gateway.
 #' 
-#' -   `local-gateway-route-table-arn` - The Amazon Resource Name (ARN) of
-#'     the local gateway route table for the virtual interface group.
+#' - `local-gateway-route-table-arn` - The Amazon Resource Name (ARN) of
+#'   the local gateway route table for the virtual interface group.
 #' 
-#' -   `local-gateway-route-table-id` - The ID of the local gateway route
-#'     table.
+#' - `local-gateway-route-table-id` - The ID of the local gateway route
+#'   table.
 #' 
-#' -   `local-gateway-route-table-virtual-interface-group-association-id` -
-#'     The ID of the association.
+#' - `local-gateway-route-table-virtual-interface-group-association-id` -
+#'   The ID of the association.
 #' 
-#' -   `local-gateway-route-table-virtual-interface-group-id` - The ID of
-#'     the virtual interface group.
+#' - `local-gateway-route-table-virtual-interface-group-id` - The ID of the
+#'   virtual interface group.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     local gateway virtual interface group association.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   local gateway virtual interface group association.
 #' 
-#' -   `state` - The state of the association.
+#' - `state` - The state of the association.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -13910,7 +14169,8 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations <- f
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVirtualInterfaceGroupAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVirtualInterfaceGroupAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_route_table_virtual_interface_group_associations_input(LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds = LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_table_virtual_interface_group_associations_output()
@@ -13933,23 +14193,23 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations <- f
 #' @param LocalGatewayRouteTableVpcAssociationIds The IDs of the associations.
 #' @param Filters One or more filters.
 #' 
-#' -   `local-gateway-id` - The ID of a local gateway.
+#' - `local-gateway-id` - The ID of a local gateway.
 #' 
-#' -   `local-gateway-route-table-arn` - The Amazon Resource Name (ARN) of
-#'     the local gateway route table for the association.
+#' - `local-gateway-route-table-arn` - The Amazon Resource Name (ARN) of
+#'   the local gateway route table for the association.
 #' 
-#' -   `local-gateway-route-table-id` - The ID of the local gateway route
-#'     table.
+#' - `local-gateway-route-table-id` - The ID of the local gateway route
+#'   table.
 #' 
-#' -   `local-gateway-route-table-vpc-association-id` - The ID of the
-#'     association.
+#' - `local-gateway-route-table-vpc-association-id` - The ID of the
+#'   association.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     local gateway route table for the association.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   local gateway route table for the association.
 #' 
-#' -   `state` - The state of the association.
+#' - `state` - The state of the association.
 #' 
-#' -   `vpc-id` - The ID of the VPC.
+#' - `vpc-id` - The ID of the VPC.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -13968,7 +14228,8 @@ ec2_describe_local_gateway_route_table_vpc_associations <- function(LocalGateway
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVpcAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVpcAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_route_table_vpc_associations_input(LocalGatewayRouteTableVpcAssociationIds = LocalGatewayRouteTableVpcAssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_table_vpc_associations_output()
@@ -13990,20 +14251,20 @@ ec2_describe_local_gateway_route_table_vpc_associations <- function(LocalGateway
 #' @param LocalGatewayRouteTableIds The IDs of the local gateway route tables.
 #' @param Filters One or more filters.
 #' 
-#' -   `local-gateway-id` - The ID of a local gateway.
+#' - `local-gateway-id` - The ID of a local gateway.
 #' 
-#' -   `local-gateway-route-table-arn` - The Amazon Resource Name (ARN) of
-#'     the local gateway route table.
+#' - `local-gateway-route-table-arn` - The Amazon Resource Name (ARN) of
+#'   the local gateway route table.
 #' 
-#' -   `local-gateway-route-table-id` - The ID of a local gateway route
-#'     table.
+#' - `local-gateway-route-table-id` - The ID of a local gateway route
+#'   table.
 #' 
-#' -   `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost.
+#' - `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     local gateway route table.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   local gateway route table.
 #' 
-#' -   `state` - The state of the local gateway route table.
+#' - `state` - The state of the local gateway route table.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -14022,7 +14283,8 @@ ec2_describe_local_gateway_route_tables <- function(LocalGatewayRouteTableIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTables")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTables"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_route_tables_input(LocalGatewayRouteTableIds = LocalGatewayRouteTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_tables_output()
@@ -14044,16 +14306,16 @@ ec2_describe_local_gateway_route_tables <- function(LocalGatewayRouteTableIds = 
 #' @param LocalGatewayVirtualInterfaceGroupIds The IDs of the virtual interface groups.
 #' @param Filters One or more filters.
 #' 
-#' -   `local-gateway-id` - The ID of a local gateway.
+#' - `local-gateway-id` - The ID of a local gateway.
 #' 
-#' -   `local-gateway-virtual-interface-group-id` - The ID of the virtual
-#'     interface group.
+#' - `local-gateway-virtual-interface-group-id` - The ID of the virtual
+#'   interface group.
 #' 
-#' -   `local-gateway-virtual-interface-id` - The ID of the virtual
-#'     interface.
+#' - `local-gateway-virtual-interface-id` - The ID of the virtual
+#'   interface.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     local gateway virtual interface group.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   local gateway virtual interface group.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -14072,7 +14334,8 @@ ec2_describe_local_gateway_virtual_interface_groups <- function(LocalGatewayVirt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaceGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaceGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_virtual_interface_groups_input(LocalGatewayVirtualInterfaceGroupIds = LocalGatewayVirtualInterfaceGroupIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_virtual_interface_groups_output()
@@ -14094,24 +14357,24 @@ ec2_describe_local_gateway_virtual_interface_groups <- function(LocalGatewayVirt
 #' @param LocalGatewayVirtualInterfaceIds The IDs of the virtual interfaces.
 #' @param Filters One or more filters.
 #' 
-#' -   `local-address` - The local address.
+#' - `local-address` - The local address.
 #' 
-#' -   `local-bgp-asn` - The Border Gateway Protocol (BGP) Autonomous
-#'     System Number (ASN) of the local gateway.
+#' - `local-bgp-asn` - The Border Gateway Protocol (BGP) Autonomous System
+#'   Number (ASN) of the local gateway.
 #' 
-#' -   `local-gateway-id` - The ID of the local gateway.
+#' - `local-gateway-id` - The ID of the local gateway.
 #' 
-#' -   `local-gateway-virtual-interface-id` - The ID of the virtual
-#'     interface.
+#' - `local-gateway-virtual-interface-id` - The ID of the virtual
+#'   interface.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     local gateway virtual interface.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   local gateway virtual interface.
 #' 
-#' -   `peer-address` - The peer address.
+#' - `peer-address` - The peer address.
 #' 
-#' -   `peer-bgp-asn` - The peer BGP ASN.
+#' - `peer-bgp-asn` - The peer BGP ASN.
 #' 
-#' -   `vlan` - The ID of the VLAN.
+#' - `vlan` - The ID of the VLAN.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -14130,7 +14393,8 @@ ec2_describe_local_gateway_virtual_interfaces <- function(LocalGatewayVirtualInt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaces")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaces"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_virtual_interfaces_input(LocalGatewayVirtualInterfaceIds = LocalGatewayVirtualInterfaceIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_virtual_interfaces_output()
@@ -14152,14 +14416,14 @@ ec2_describe_local_gateway_virtual_interfaces <- function(LocalGatewayVirtualInt
 #' @param LocalGatewayIds The IDs of the local gateways.
 #' @param Filters One or more filters.
 #' 
-#' -   `local-gateway-id` - The ID of a local gateway.
+#' - `local-gateway-id` - The ID of a local gateway.
 #' 
-#' -   `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost.
+#' - `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     local gateway.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   local gateway.
 #' 
-#' -   `state` - The state of the association.
+#' - `state` - The state of the association.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -14178,7 +14442,8 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateways_input(LocalGatewayIds = LocalGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateways_output()
@@ -14199,8 +14464,8 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
 #'
 #' @param Filters The filters.
 #' 
-#' -   `lock-state` - The state of the snapshot lock (`compliance-cooloff`
-#'     | `governance` | `compliance` | `expired`).
+#' - `lock-state` - The state of the snapshot lock (`compliance-cooloff` |
+#'   `governance` | `compliance` | `expired`).
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -14222,7 +14487,8 @@ ec2_describe_locked_snapshots <- function(Filters = NULL, MaxResults = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_locked_snapshots_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, SnapshotIds = SnapshotIds, DryRun = DryRun)
   output <- .ec2$describe_locked_snapshots_output()
@@ -14244,11 +14510,11 @@ ec2_describe_locked_snapshots <- function(Filters = NULL, MaxResults = NULL, Nex
 #'
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone` - The Availability Zone of the EC2 Mac Dedicated
-#'     Host.
+#' - `availability-zone` - The Availability Zone of the EC2 Mac Dedicated
+#'   Host.
 #' 
-#' -   `instance-type` - The instance type size that the EC2 Mac Dedicated
-#'     Host is configured to support.
+#' - `instance-type` - The instance type size that the EC2 Mac Dedicated
+#'   Host is configured to support.
 #' @param HostIds The IDs of the EC2 Mac Dedicated Hosts.
 #' @param MaxResults The maximum number of results to return for the request in a single
 #' page. The remaining results can be seen by sending another request with
@@ -14265,7 +14531,8 @@ ec2_describe_mac_hosts <- function(Filters = NULL, HostIds = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MacHosts")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MacHosts"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_mac_hosts_input(Filters = Filters, HostIds = HostIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_mac_hosts_output()
@@ -14291,11 +14558,11 @@ ec2_describe_mac_hosts <- function(Filters = NULL, HostIds = NULL, MaxResults = 
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters.
 #' 
-#' -   `owner-id` - The ID of the prefix list owner.
+#' - `owner-id` - The ID of the prefix list owner.
 #' 
-#' -   `prefix-list-id` - The ID of the prefix list.
+#' - `prefix-list-id` - The ID of the prefix list.
 #' 
-#' -   `prefix-list-name` - The name of the prefix list.
+#' - `prefix-list-name` - The name of the prefix list.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -14311,7 +14578,8 @@ ec2_describe_managed_prefix_lists <- function(DryRun = NULL, Filters = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_managed_prefix_lists_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, PrefixListIds = PrefixListIds)
   output <- .ec2$describe_managed_prefix_lists_output()
@@ -14332,8 +14600,8 @@ ec2_describe_managed_prefix_lists <- function(DryRun = NULL, Filters = NULL, Max
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `moving-status` - The status of the Elastic IP address
-#'     (`MovingToVpc` | `RestoringToClassic`).
+#' - `moving-status` - The status of the Elastic IP address (`MovingToVpc`
+#'   | `RestoringToClassic`).
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -14357,7 +14625,8 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MovingAddressStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MovingAddressStatuses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_moving_addresses_input(Filters = Filters, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, PublicIps = PublicIps)
   output <- .ec2$describe_moving_addresses_output()
@@ -14382,24 +14651,24 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filter The filters.
 #' 
-#' -   `nat-gateway-id` - The ID of the NAT gateway.
+#' - `nat-gateway-id` - The ID of the NAT gateway.
 #' 
-#' -   `state` - The state of the NAT gateway (`pending` | `failed` |
-#'     `available` | `deleting` | `deleted`).
+#' - `state` - The state of the NAT gateway (`pending` | `failed` |
+#'   `available` | `deleting` | `deleted`).
 #' 
-#' -   `subnet-id` - The ID of the subnet in which the NAT gateway resides.
+#' - `subnet-id` - The ID of the subnet in which the NAT gateway resides.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC in which the NAT gateway resides.
+#' - `vpc-id` - The ID of the VPC in which the NAT gateway resides.
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -14417,7 +14686,8 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NatGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NatGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_nat_gateways_input(DryRun = DryRun, Filter = Filter, MaxResults = MaxResults, NatGatewayIds = NatGatewayIds, NextToken = NextToken)
   output <- .ec2$describe_nat_gateways_output()
@@ -14438,60 +14708,60 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
 #'
 #' @param Filters The filters.
 #' 
-#' -   `association.association-id` - The ID of an association ID for the
-#'     ACL.
+#' - `association.association-id` - The ID of an association ID for the
+#'   ACL.
 #' 
-#' -   `association.network-acl-id` - The ID of the network ACL involved in
-#'     the association.
+#' - `association.network-acl-id` - The ID of the network ACL involved in
+#'   the association.
 #' 
-#' -   `association.subnet-id` - The ID of the subnet involved in the
-#'     association.
+#' - `association.subnet-id` - The ID of the subnet involved in the
+#'   association.
 #' 
-#' -   `default` - Indicates whether the ACL is the default network ACL for
-#'     the VPC.
+#' - `default` - Indicates whether the ACL is the default network ACL for
+#'   the VPC.
 #' 
-#' -   `entry.cidr` - The IPv4 CIDR range specified in the entry.
+#' - `entry.cidr` - The IPv4 CIDR range specified in the entry.
 #' 
-#' -   `entry.icmp.code` - The ICMP code specified in the entry, if any.
+#' - `entry.icmp.code` - The ICMP code specified in the entry, if any.
 #' 
-#' -   `entry.icmp.type` - The ICMP type specified in the entry, if any.
+#' - `entry.icmp.type` - The ICMP type specified in the entry, if any.
 #' 
-#' -   `entry.ipv6-cidr` - The IPv6 CIDR range specified in the entry.
+#' - `entry.ipv6-cidr` - The IPv6 CIDR range specified in the entry.
 #' 
-#' -   `entry.port-range.from` - The start of the port range specified in
-#'     the entry.
+#' - `entry.port-range.from` - The start of the port range specified in the
+#'   entry.
 #' 
-#' -   `entry.port-range.to` - The end of the port range specified in the
-#'     entry.
+#' - `entry.port-range.to` - The end of the port range specified in the
+#'   entry.
 #' 
-#' -   `entry.protocol` - The protocol specified in the entry (`tcp` |
-#'     `udp` | `icmp` or a protocol number).
+#' - `entry.protocol` - The protocol specified in the entry (`tcp` | `udp`
+#'   | `icmp` or a protocol number).
 #' 
-#' -   `entry.rule-action` - Allows or denies the matching traffic (`allow`
-#'     | `deny`).
+#' - `entry.rule-action` - Allows or denies the matching traffic (`allow` |
+#'   `deny`).
 #' 
-#' -   `entry.egress` - A Boolean that indicates the type of rule. Specify
-#'     `true` for egress rules, or `false` for ingress rules.
+#' - `entry.egress` - A Boolean that indicates the type of rule. Specify
+#'   `true` for egress rules, or `false` for ingress rules.
 #' 
-#' -   `entry.rule-number` - The number of an entry (in other words, rule)
-#'     in the set of ACL entries.
+#' - `entry.rule-number` - The number of an entry (in other words, rule) in
+#'   the set of ACL entries.
 #' 
-#' -   `network-acl-id` - The ID of the network ACL.
+#' - `network-acl-id` - The ID of the network ACL.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     network ACL.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   network ACL.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC for the network ACL.
+#' - `vpc-id` - The ID of the VPC for the network ACL.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -14513,7 +14783,8 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkAcls")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkAcls"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_acls_input(Filters = Filters, DryRun = DryRun, NetworkAclIds = NetworkAclIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_acls_output()
@@ -14557,7 +14828,8 @@ ec2_describe_network_insights_access_scope_analyses <- function(NetworkInsightsA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopeAnalyses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopeAnalyses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_insights_access_scope_analyses_input(NetworkInsightsAccessScopeAnalysisIds = NetworkInsightsAccessScopeAnalysisIds, NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId, AnalysisStartTimeBegin = AnalysisStartTimeBegin, AnalysisStartTimeEnd = AnalysisStartTimeEnd, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_access_scope_analyses_output()
@@ -14596,7 +14868,8 @@ ec2_describe_network_insights_access_scopes <- function(NetworkInsightsAccessSco
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_insights_access_scopes_input(NetworkInsightsAccessScopeIds = NetworkInsightsAccessScopeIds, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_access_scopes_output()
@@ -14622,10 +14895,10 @@ ec2_describe_network_insights_access_scopes <- function(NetworkInsightsAccessSco
 #' @param AnalysisEndTime The time when the network insights analyses ended.
 #' @param Filters The filters. The following are the possible values:
 #' 
-#' -   path-found - A Boolean value that indicates whether a feasible path
-#'     is found.
+#' - path-found - A Boolean value that indicates whether a feasible path is
+#'   found.
 #' 
-#' -   status - The status of the analysis (running | succeeded | failed).
+#' - status - The status of the analysis (running | succeeded | failed).
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -14644,7 +14917,8 @@ ec2_describe_network_insights_analyses <- function(NetworkInsightsAnalysisIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAnalyses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAnalyses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_insights_analyses_input(NetworkInsightsAnalysisIds = NetworkInsightsAnalysisIds, NetworkInsightsPathId = NetworkInsightsPathId, AnalysisStartTime = AnalysisStartTime, AnalysisEndTime = AnalysisEndTime, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_analyses_output()
@@ -14666,35 +14940,35 @@ ec2_describe_network_insights_analyses <- function(NetworkInsightsAnalysisIds = 
 #' @param NetworkInsightsPathIds The IDs of the paths.
 #' @param Filters The filters. The following are the possible values:
 #' 
-#' -   destination - The ID of the resource.
+#' - destination - The ID of the resource.
 #' 
-#' -   filter-at-source.source-address - The source IPv4 address at the
-#'     source.
+#' - filter-at-source.source-address - The source IPv4 address at the
+#'   source.
 #' 
-#' -   filter-at-source.source-port-range - The source port range at the
-#'     source.
+#' - filter-at-source.source-port-range - The source port range at the
+#'   source.
 #' 
-#' -   filter-at-source.destination-address - The destination IPv4 address
-#'     at the source.
+#' - filter-at-source.destination-address - The destination IPv4 address at
+#'   the source.
 #' 
-#' -   filter-at-source.destination-port-range - The destination port range
-#'     at the source.
+#' - filter-at-source.destination-port-range - The destination port range
+#'   at the source.
 #' 
-#' -   filter-at-destination.source-address - The source IPv4 address at
-#'     the destination.
+#' - filter-at-destination.source-address - The source IPv4 address at the
+#'   destination.
 #' 
-#' -   filter-at-destination.source-port-range - The source port range at
-#'     the destination.
+#' - filter-at-destination.source-port-range - The source port range at the
+#'   destination.
 #' 
-#' -   filter-at-destination.destination-address - The destination IPv4
-#'     address at the destination.
+#' - filter-at-destination.destination-address - The destination IPv4
+#'   address at the destination.
 #' 
-#' -   filter-at-destination.destination-port-range - The destination port
-#'     range at the destination.
+#' - filter-at-destination.destination-port-range - The destination port
+#'   range at the destination.
 #' 
-#' -   protocol - The protocol.
+#' - protocol - The protocol.
 #' 
-#' -   source - The ID of the resource.
+#' - source - The ID of the resource.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -14713,7 +14987,8 @@ ec2_describe_network_insights_paths <- function(NetworkInsightsPathIds = NULL, F
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsPaths")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsPaths"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_insights_paths_input(NetworkInsightsPathIds = NetworkInsightsPathIds, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_paths_output()
@@ -14748,7 +15023,8 @@ ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_interface_attribute_input(Attribute = Attribute, DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId)
   output <- .ec2$describe_network_interface_attribute_output()
@@ -14770,20 +15046,20 @@ ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = 
 #' @param NetworkInterfacePermissionIds The network interface permission IDs.
 #' @param Filters One or more filters.
 #' 
-#' -   `network-interface-permission.network-interface-permission-id` - The
-#'     ID of the permission.
+#' - `network-interface-permission.network-interface-permission-id` - The
+#'   ID of the permission.
 #' 
-#' -   `network-interface-permission.network-interface-id` - The ID of the
-#'     network interface.
+#' - `network-interface-permission.network-interface-id` - The ID of the
+#'   network interface.
 #' 
-#' -   `network-interface-permission.aws-account-id` - The Amazon Web
-#'     Services account ID.
+#' - `network-interface-permission.aws-account-id` - The Amazon Web
+#'   Services account ID.
 #' 
-#' -   `network-interface-permission.aws-service` - The Amazon Web Services
-#'     service.
+#' - `network-interface-permission.aws-service` - The Amazon Web Services
+#'   service.
 #' 
-#' -   `network-interface-permission.permission` - The type of permission
-#'     (`INSTANCE-ATTACH` | `EIP-ASSOCIATE`).
+#' - `network-interface-permission.permission` - The type of permission
+#'   (`INSTANCE-ATTACH` | `EIP-ASSOCIATE`).
 #' @param NextToken The token returned from a previous paginated request. Pagination
 #' continues from the end of the items returned by the previous request.
 #' @param MaxResults The maximum number of items to return for this request. To get the next
@@ -14801,7 +15077,8 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfacePermissions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfacePermissions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_interface_permissions_input(NetworkInterfacePermissionIds = NetworkInterfacePermissionIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_interface_permissions_output()
@@ -14822,117 +15099,116 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `association.allocation-id` - The allocation ID returned when you
-#'     allocated the Elastic IP address (IPv4) for your network interface.
+#' - `association.allocation-id` - The allocation ID returned when you
+#'   allocated the Elastic IP address (IPv4) for your network interface.
 #' 
-#' -   `association.association-id` - The association ID returned when the
-#'     network interface was associated with an IPv4 address.
+#' - `association.association-id` - The association ID returned when the
+#'   network interface was associated with an IPv4 address.
 #' 
-#' -   `addresses.association.owner-id` - The owner ID of the addresses
-#'     associated with the network interface.
+#' - `addresses.association.owner-id` - The owner ID of the addresses
+#'   associated with the network interface.
 #' 
-#' -   `addresses.association.public-ip` - The association ID returned when
-#'     the network interface was associated with the Elastic IP address
-#'     (IPv4).
+#' - `addresses.association.public-ip` - The association ID returned when
+#'   the network interface was associated with the Elastic IP address
+#'   (IPv4).
 #' 
-#' -   `addresses.primary` - Whether the private IPv4 address is the
-#'     primary IP address associated with the network interface.
+#' - `addresses.primary` - Whether the private IPv4 address is the primary
+#'   IP address associated with the network interface.
 #' 
-#' -   `addresses.private-ip-address` - The private IPv4 addresses
-#'     associated with the network interface.
+#' - `addresses.private-ip-address` - The private IPv4 addresses associated
+#'   with the network interface.
 #' 
-#' -   `association.ip-owner-id` - The owner of the Elastic IP address
-#'     (IPv4) associated with the network interface.
+#' - `association.ip-owner-id` - The owner of the Elastic IP address (IPv4)
+#'   associated with the network interface.
 #' 
-#' -   `association.public-ip` - The address of the Elastic IP address
-#'     (IPv4) bound to the network interface.
+#' - `association.public-ip` - The address of the Elastic IP address (IPv4)
+#'   bound to the network interface.
 #' 
-#' -   `association.public-dns-name` - The public DNS name for the network
-#'     interface (IPv4).
+#' - `association.public-dns-name` - The public DNS name for the network
+#'   interface (IPv4).
 #' 
-#' -   `attachment.attach-time` - The time that the network interface was
-#'     attached to an instance.
+#' - `attachment.attach-time` - The time that the network interface was
+#'   attached to an instance.
 #' 
-#' -   `attachment.attachment-id` - The ID of the interface attachment.
+#' - `attachment.attachment-id` - The ID of the interface attachment.
 #' 
-#' -   `attachment.delete-on-termination` - Indicates whether the
-#'     attachment is deleted when an instance is terminated.
+#' - `attachment.delete-on-termination` - Indicates whether the attachment
+#'   is deleted when an instance is terminated.
 #' 
-#' -   `attachment.device-index` - The device index to which the network
-#'     interface is attached.
+#' - `attachment.device-index` - The device index to which the network
+#'   interface is attached.
 #' 
-#' -   `attachment.instance-id` - The ID of the instance to which the
-#'     network interface is attached.
+#' - `attachment.instance-id` - The ID of the instance to which the network
+#'   interface is attached.
 #' 
-#' -   `attachment.instance-owner-id` - The owner ID of the instance to
-#'     which the network interface is attached.
+#' - `attachment.instance-owner-id` - The owner ID of the instance to which
+#'   the network interface is attached.
 #' 
-#' -   `attachment.status` - The status of the attachment (`attaching` |
-#'     `attached` | `detaching` | `detached`).
+#' - `attachment.status` - The status of the attachment (`attaching` |
+#'   `attached` | `detaching` | `detached`).
 #' 
-#' -   `availability-zone` - The Availability Zone of the network
-#'     interface.
+#' - `availability-zone` - The Availability Zone of the network interface.
 #' 
-#' -   `description` - The description of the network interface.
+#' - `description` - The description of the network interface.
 #' 
-#' -   `group-id` - The ID of a security group associated with the network
-#'     interface.
+#' - `group-id` - The ID of a security group associated with the network
+#'   interface.
 #' 
-#' -   `ipv6-addresses.ipv6-address` - An IPv6 address associated with the
-#'     network interface.
+#' - `ipv6-addresses.ipv6-address` - An IPv6 address associated with the
+#'   network interface.
 #' 
-#' -   `interface-type` - The type of network interface
-#'     (`api_gateway_managed` | `aws_codestar_connections_managed` |
-#'     `branch` | `ec2_instance_connect_endpoint` | `efa` | `efs` |
-#'     `gateway_load_balancer` | `gateway_load_balancer_endpoint` |
-#'     `global_accelerator_managed` | `interface` | `iot_rules_managed` |
-#'     `lambda` | `load_balancer` | `nat_gateway` | `network_load_balancer`
-#'     | `quicksight` | `transit_gateway` | `trunk` | `vpc_endpoint`).
+#' - `interface-type` - The type of network interface
+#'   (`api_gateway_managed` | `aws_codestar_connections_managed` | `branch`
+#'   | `ec2_instance_connect_endpoint` | `efa` | `efs` |
+#'   `gateway_load_balancer` | `gateway_load_balancer_endpoint` |
+#'   `global_accelerator_managed` | `interface` | `iot_rules_managed` |
+#'   `lambda` | `load_balancer` | `nat_gateway` | `network_load_balancer` |
+#'   `quicksight` | `transit_gateway` | `trunk` | `vpc_endpoint`).
 #' 
-#' -   `mac-address` - The MAC address of the network interface.
+#' - `mac-address` - The MAC address of the network interface.
 #' 
-#' -   `network-interface-id` - The ID of the network interface.
+#' - `network-interface-id` - The ID of the network interface.
 #' 
-#' -   `owner-id` - The Amazon Web Services account ID of the network
-#'     interface owner.
+#' - `owner-id` - The Amazon Web Services account ID of the network
+#'   interface owner.
 #' 
-#' -   `private-dns-name` - The private DNS name of the network interface
-#'     (IPv4).
+#' - `private-dns-name` - The private DNS name of the network interface
+#'   (IPv4).
 #' 
-#' -   `private-ip-address` - The private IPv4 address or addresses of the
-#'     network interface.
+#' - `private-ip-address` - The private IPv4 address or addresses of the
+#'   network interface.
 #' 
-#' -   `requester-id` - The alias or Amazon Web Services account ID of the
-#'     principal or service that created the network interface.
+#' - `requester-id` - The alias or Amazon Web Services account ID of the
+#'   principal or service that created the network interface.
 #' 
-#' -   `requester-managed` - Indicates whether the network interface is
-#'     being managed by an Amazon Web Services service (for example, Amazon
-#'     Web Services Management Console, Auto Scaling, and so on).
+#' - `requester-managed` - Indicates whether the network interface is being
+#'   managed by an Amazon Web Services service (for example, Amazon Web
+#'   Services Management Console, Auto Scaling, and so on).
 #' 
-#' -   `source-dest-check` - Indicates whether the network interface
-#'     performs source/destination checking. A value of `true` means
-#'     checking is enabled, and `false` means checking is disabled. The
-#'     value must be `false` for the network interface to perform network
-#'     address translation (NAT) in your VPC.
+#' - `source-dest-check` - Indicates whether the network interface performs
+#'   source/destination checking. A value of `true` means checking is
+#'   enabled, and `false` means checking is disabled. The value must be
+#'   `false` for the network interface to perform network address
+#'   translation (NAT) in your VPC.
 #' 
-#' -   `status` - The status of the network interface. If the network
-#'     interface is not attached to an instance, the status is `available`;
-#'     if a network interface is attached to an instance the status is
-#'     `in-use`.
+#' - `status` - The status of the network interface. If the network
+#'   interface is not attached to an instance, the status is `available`;
+#'   if a network interface is attached to an instance the status is
+#'   `in-use`.
 #' 
-#' -   `subnet-id` - The ID of the subnet for the network interface.
+#' - `subnet-id` - The ID of the subnet for the network interface.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC for the network interface.
+#' - `vpc-id` - The ID of the VPC for the network interface.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -14957,7 +15233,8 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfaces")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfaces"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_interfaces_input(Filters = Filters, DryRun = DryRun, NetworkInterfaceIds = NetworkInterfaceIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_interfaces_output()
@@ -14978,28 +15255,28 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 #'
 #' @param Filters The filters.
 #' 
-#' -   `group-name` - The name of the placement group.
+#' - `group-name` - The name of the placement group.
 #' 
-#' -   `group-arn` - The Amazon Resource Name (ARN) of the placement group.
+#' - `group-arn` - The Amazon Resource Name (ARN) of the placement group.
 #' 
-#' -   `spread-level` - The spread level for the placement group (`host` |
-#'     `rack`).
+#' - `spread-level` - The spread level for the placement group (`host` |
+#'   `rack`).
 #' 
-#' -   `state` - The state of the placement group (`pending` | `available`
-#'     | `deleting` | `deleted`).
+#' - `state` - The state of the placement group (`pending` | `available` |
+#'   `deleting` | `deleted`).
 #' 
-#' -   `strategy` - The strategy of the placement group (`cluster` |
-#'     `spread` | `partition`).
+#' - `strategy` - The strategy of the placement group (`cluster` | `spread`
+#'   | `partition`).
 #' 
-#' -   `tag:<key>` - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag:<key>` - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources that have a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources that have a tag with a specific key, regardless
+#'   of the tag value.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -15008,12 +15285,12 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 #' 
 #' Constraints:
 #' 
-#' -   You can specify a name only if the placement group is owned by your
-#'     account.
+#' - You can specify a name only if the placement group is owned by your
+#'   account.
 #' 
-#' -   If a placement group is *shared* with your account, specifying the
-#'     name results in an error. You must use the `GroupId` parameter
-#'     instead.
+#' - If a placement group is *shared* with your account, specifying the
+#'   name results in an error. You must use the `GroupId` parameter
+#'   instead.
 #' @param GroupIds The IDs of the placement groups.
 #'
 #' @keywords internal
@@ -15025,7 +15302,8 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "PlacementGroups")
+    paginator = list(result_key = "PlacementGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_placement_groups_input(Filters = Filters, DryRun = DryRun, GroupNames = GroupNames, GroupIds = GroupIds)
   output <- .ec2$describe_placement_groups_output()
@@ -15052,9 +15330,9 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters.
 #' 
-#' -   `prefix-list-id`: The ID of a prefix list.
+#' - `prefix-list-id`: The ID of a prefix list.
 #' 
-#' -   `prefix-list-name`: The name of a prefix list.
+#' - `prefix-list-name`: The name of a prefix list.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -15070,7 +15348,8 @@ ec2_describe_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_prefix_lists_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, PrefixListIds = PrefixListIds)
   output <- .ec2$describe_prefix_lists_output()
@@ -15119,7 +15398,8 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Principals")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Principals"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_principal_id_format_input(DryRun = DryRun, Resources = Resources, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_principal_id_format_output()
@@ -15145,15 +15425,15 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
 #' value.
 #' @param Filters One or more filters.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #'
 #' @keywords internal
 #'
@@ -15164,7 +15444,8 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PublicIpv4Pools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PublicIpv4Pools"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_public_ipv_4_pools_input(PoolIds = PoolIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_public_ipv_4_pools_output()
@@ -15185,13 +15466,13 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
 #'
 #' @param Filters The filters.
 #' 
-#' -   `endpoint` - The endpoint of the Region (for example,
-#'     `ec2.us-east-1.amazonaws.com`).
+#' - `endpoint` - The endpoint of the Region (for example,
+#'   `ec2.us-east-1.amazonaws.com`).
 #' 
-#' -   `opt-in-status` - The opt-in status of the Region
-#'     (`opt-in-not-required` | `opted-in` | `not-opted-in`).
+#' - `opt-in-status` - The opt-in status of the Region
+#'   (`opt-in-not-required` | `opted-in` | `not-opted-in`).
 #' 
-#' -   `region-name` - The name of the Region (for example, `us-east-1`).
+#' - `region-name` - The name of the Region (for example, `us-east-1`).
 #' @param RegionNames The names of the Regions. You can specify any Regions, whether they are
 #' enabled and disabled for your account.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -15210,7 +15491,8 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Regions")
+    paginator = list(result_key = "Regions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_regions_input(Filters = Filters, RegionNames = RegionNames, DryRun = DryRun, AllRegions = AllRegions)
   output <- .ec2$describe_regions_output()
@@ -15232,8 +15514,8 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
 #' @param ReplaceRootVolumeTaskIds The ID of the root volume replacement task to view.
 #' @param Filters Filter to use:
 #' 
-#' -   `instance-id` - The ID of the instance for which the root volume
-#'     replacement task was created.
+#' - `instance-id` - The ID of the instance for which the root volume
+#'   replacement task was created.
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -15254,7 +15536,8 @@ ec2_describe_replace_root_volume_tasks <- function(ReplaceRootVolumeTaskIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReplaceRootVolumeTasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReplaceRootVolumeTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_replace_root_volume_tasks_input(ReplaceRootVolumeTaskIds = ReplaceRootVolumeTaskIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_replace_root_volume_tasks_output()
@@ -15275,52 +15558,52 @@ ec2_describe_replace_root_volume_tasks <- function(ReplaceRootVolumeTaskIds = NU
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `availability-zone` - The Availability Zone where the Reserved
-#'     Instance can be used.
+#' - `availability-zone` - The Availability Zone where the Reserved
+#'   Instance can be used.
 #' 
-#' -   `duration` - The duration of the Reserved Instance (one year or
-#'     three years), in seconds (`31536000` | `94608000`).
+#' - `duration` - The duration of the Reserved Instance (one year or three
+#'   years), in seconds (`31536000` | `94608000`).
 #' 
-#' -   `end` - The time when the Reserved Instance expires (for example,
-#'     2015-08-07T11:54:42.000Z).
+#' - `end` - The time when the Reserved Instance expires (for example,
+#'   2015-08-07T11:54:42.000Z).
 #' 
-#' -   `fixed-price` - The purchase price of the Reserved Instance (for
-#'     example, 9800.0).
+#' - `fixed-price` - The purchase price of the Reserved Instance (for
+#'   example, 9800.0).
 #' 
-#' -   `instance-type` - The instance type that is covered by the
-#'     reservation.
+#' - `instance-type` - The instance type that is covered by the
+#'   reservation.
 #' 
-#' -   `scope` - The scope of the Reserved Instance (`Region` or
-#'     `Availability Zone`).
+#' - `scope` - The scope of the Reserved Instance (`Region` or
+#'   `Availability Zone`).
 #' 
-#' -   `product-description` - The Reserved Instance product platform
-#'     description (`Linux/UNIX` | `Linux with SQL Server Standard` |
-#'     `Linux with SQL Server Web` | `Linux with SQL Server Enterprise` |
-#'     `SUSE Linux` | `Red Hat Enterprise Linux` |
-#'     `Red Hat Enterprise Linux with HA` | `Windows` |
-#'     `Windows with SQL Server Standard` | `Windows with SQL Server Web` |
-#'     `Windows with SQL Server Enterprise`).
+#' - `product-description` - The Reserved Instance product platform
+#'   description (`Linux/UNIX` | `Linux with SQL Server Standard` |
+#'   `Linux with SQL Server Web` | `Linux with SQL Server Enterprise` |
+#'   `SUSE Linux` | `Red Hat Enterprise Linux` |
+#'   `Red Hat Enterprise Linux with HA` | `Windows` |
+#'   `Windows with SQL Server Standard` | `Windows with SQL Server Web` |
+#'   `Windows with SQL Server Enterprise`).
 #' 
-#' -   `reserved-instances-id` - The ID of the Reserved Instance.
+#' - `reserved-instances-id` - The ID of the Reserved Instance.
 #' 
-#' -   `start` - The time at which the Reserved Instance purchase request
-#'     was placed (for example, 2014-08-07T11:54:42.000Z).
+#' - `start` - The time at which the Reserved Instance purchase request was
+#'   placed (for example, 2014-08-07T11:54:42.000Z).
 #' 
-#' -   `state` - The state of the Reserved Instance (`payment-pending` |
-#'     `active` | `payment-failed` | `retired`).
+#' - `state` - The state of the Reserved Instance (`payment-pending` |
+#'   `active` | `payment-failed` | `retired`).
 #' 
-#' -   `tag:<key>` - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag:<key>` - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `usage-price` - The usage price of the Reserved Instance, per hour
-#'     (for example, 0.84).
+#' - `usage-price` - The usage price of the Reserved Instance, per hour
+#'   (for example, 0.84).
 #' @param OfferingClass Describes whether the Reserved Instance is Standard or Convertible.
 #' @param ReservedInstancesIds One or more Reserved Instance IDs.
 #' 
@@ -15343,7 +15626,8 @@ ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ReservedInstances")
+    paginator = list(result_key = "ReservedInstances"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_reserved_instances_input(Filters = Filters, OfferingClass = OfferingClass, ReservedInstancesIds = ReservedInstancesIds, DryRun = DryRun, OfferingType = OfferingType)
   output <- .ec2$describe_reserved_instances_output()
@@ -15365,15 +15649,15 @@ ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `reserved-instances-id` - The ID of the Reserved Instances.
+#' - `reserved-instances-id` - The ID of the Reserved Instances.
 #' 
-#' -   `reserved-instances-listing-id` - The ID of the Reserved Instances
-#'     listing.
+#' - `reserved-instances-listing-id` - The ID of the Reserved Instances
+#'   listing.
 #' 
-#' -   `status` - The status of the Reserved Instance listing (`pending` |
-#'     `active` | `cancelled` | `closed`).
+#' - `status` - The status of the Reserved Instance listing (`pending` |
+#'   `active` | `cancelled` | `closed`).
 #' 
-#' -   `status-message` - The reason for the status.
+#' - `status-message` - The reason for the status.
 #' @param ReservedInstancesId One or more Reserved Instance IDs.
 #' @param ReservedInstancesListingId One or more Reserved Instance listing IDs.
 #'
@@ -15386,7 +15670,8 @@ ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedIns
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ReservedInstancesListings")
+    paginator = list(result_key = "ReservedInstancesListings"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_reserved_instances_listings_input(Filters = Filters, ReservedInstancesId = ReservedInstancesId, ReservedInstancesListingId = ReservedInstancesListingId)
   output <- .ec2$describe_reserved_instances_listings_output()
@@ -15407,38 +15692,37 @@ ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedIns
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `client-token` - The idempotency token for the modification request.
+#' - `client-token` - The idempotency token for the modification request.
 #' 
-#' -   `create-date` - The time when the modification request was created.
+#' - `create-date` - The time when the modification request was created.
 #' 
-#' -   `effective-date` - The time when the modification becomes effective.
+#' - `effective-date` - The time when the modification becomes effective.
 #' 
-#' -   `modification-result.reserved-instances-id` - The ID for the
-#'     Reserved Instances created as part of the modification request. This
-#'     ID is only available when the status of the modification is
-#'     `fulfilled`.
+#' - `modification-result.reserved-instances-id` - The ID for the Reserved
+#'   Instances created as part of the modification request. This ID is only
+#'   available when the status of the modification is `fulfilled`.
 #' 
-#' -   `modification-result.target-configuration.availability-zone` - The
-#'     Availability Zone for the new Reserved Instances.
+#' - `modification-result.target-configuration.availability-zone` - The
+#'   Availability Zone for the new Reserved Instances.
 #' 
-#' -   `modification-result.target-configuration.instance-count ` - The
-#'     number of new Reserved Instances.
+#' - `modification-result.target-configuration.instance-count ` - The
+#'   number of new Reserved Instances.
 #' 
-#' -   `modification-result.target-configuration.instance-type` - The
-#'     instance type of the new Reserved Instances.
+#' - `modification-result.target-configuration.instance-type` - The
+#'   instance type of the new Reserved Instances.
 #' 
-#' -   `reserved-instances-id` - The ID of the Reserved Instances modified.
+#' - `reserved-instances-id` - The ID of the Reserved Instances modified.
 #' 
-#' -   `reserved-instances-modification-id` - The ID of the modification
-#'     request.
+#' - `reserved-instances-modification-id` - The ID of the modification
+#'   request.
 #' 
-#' -   `status` - The status of the Reserved Instances modification request
-#'     (`processing` | `fulfilled` | `failed`).
+#' - `status` - The status of the Reserved Instances modification request
+#'   (`processing` | `fulfilled` | `failed`).
 #' 
-#' -   `status-message` - The reason for the status.
+#' - `status-message` - The reason for the status.
 #' 
-#' -   `update-date` - The time when the modification request was last
-#'     updated.
+#' - `update-date` - The time when the modification request was last
+#'   updated.
 #' @param ReservedInstancesModificationIds IDs for the submitted modification request.
 #' @param NextToken The token to retrieve the next page of results.
 #'
@@ -15451,7 +15735,8 @@ ec2_describe_reserved_instances_modifications <- function(Filters = NULL, Reserv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ReservedInstancesModifications")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ReservedInstancesModifications"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_reserved_instances_modifications_input(Filters = Filters, ReservedInstancesModificationIds = ReservedInstancesModificationIds, NextToken = NextToken)
   output <- .ec2$describe_reserved_instances_modifications_output()
@@ -15473,39 +15758,38 @@ ec2_describe_reserved_instances_modifications <- function(Filters = NULL, Reserv
 #' @param AvailabilityZone The Availability Zone in which the Reserved Instance can be used.
 #' @param Filters One or more filters.
 #' 
-#' -   `availability-zone` - The Availability Zone where the Reserved
-#'     Instance can be used.
+#' - `availability-zone` - The Availability Zone where the Reserved
+#'   Instance can be used.
 #' 
-#' -   `duration` - The duration of the Reserved Instance (for example, one
-#'     year or three years), in seconds (`31536000` | `94608000`).
+#' - `duration` - The duration of the Reserved Instance (for example, one
+#'   year or three years), in seconds (`31536000` | `94608000`).
 #' 
-#' -   `fixed-price` - The purchase price of the Reserved Instance (for
-#'     example, 9800.0).
+#' - `fixed-price` - The purchase price of the Reserved Instance (for
+#'   example, 9800.0).
 #' 
-#' -   `instance-type` - The instance type that is covered by the
-#'     reservation.
+#' - `instance-type` - The instance type that is covered by the
+#'   reservation.
 #' 
-#' -   `marketplace` - Set to `true` to show only Reserved Instance
-#'     Marketplace offerings. When this filter is not used, which is the
-#'     default behavior, all offerings from both Amazon Web Services and
-#'     the Reserved Instance Marketplace are listed.
+#' - `marketplace` - Set to `true` to show only Reserved Instance
+#'   Marketplace offerings. When this filter is not used, which is the
+#'   default behavior, all offerings from both Amazon Web Services and the
+#'   Reserved Instance Marketplace are listed.
 #' 
-#' -   `product-description` - The Reserved Instance product platform
-#'     description (`Linux/UNIX` | `Linux with SQL Server Standard` |
-#'     `Linux with SQL Server Web` | `Linux with SQL Server Enterprise` |
-#'     `SUSE Linux` | `Red Hat Enterprise Linux` |
-#'     `Red Hat Enterprise Linux with HA` | `Windows` |
-#'     `Windows with SQL Server Standard` | `Windows with SQL Server Web` |
-#'     `Windows with SQL Server Enterprise`).
+#' - `product-description` - The Reserved Instance product platform
+#'   description (`Linux/UNIX` | `Linux with SQL Server Standard` |
+#'   `Linux with SQL Server Web` | `Linux with SQL Server Enterprise` |
+#'   `SUSE Linux` | `Red Hat Enterprise Linux` |
+#'   `Red Hat Enterprise Linux with HA` | `Windows` |
+#'   `Windows with SQL Server Standard` | `Windows with SQL Server Web` |
+#'   `Windows with SQL Server Enterprise`).
 #' 
-#' -   `reserved-instances-offering-id` - The Reserved Instances offering
-#'     ID.
+#' - `reserved-instances-offering-id` - The Reserved Instances offering ID.
 #' 
-#' -   `scope` - The scope of the Reserved Instance (`Availability Zone` or
-#'     `Region`).
+#' - `scope` - The scope of the Reserved Instance (`Availability Zone` or
+#'   `Region`).
 #' 
-#' -   `usage-price` - The usage price of the Reserved Instance, per hour
-#'     (for example, 0.84).
+#' - `usage-price` - The usage price of the Reserved Instance, per hour
+#'   (for example, 0.84).
 #' @param IncludeMarketplace Include Reserved Instance Marketplace offerings in the response.
 #' @param InstanceType The instance type that the reservation will cover (for example,
 #' `m1.small`). For more information, see [Amazon EC2 instance
@@ -15559,7 +15843,8 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedInstancesOfferings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedInstancesOfferings"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_reserved_instances_offerings_input(AvailabilityZone = AvailabilityZone, Filters = Filters, IncludeMarketplace = IncludeMarketplace, InstanceType = InstanceType, MaxDuration = MaxDuration, MaxInstanceCount = MaxInstanceCount, MinDuration = MinDuration, OfferingClass = OfferingClass, ProductDescription = ProductDescription, ReservedInstancesOfferingIds = ReservedInstancesOfferingIds, DryRun = DryRun, InstanceTenancy = InstanceTenancy, MaxResults = MaxResults, NextToken = NextToken, OfferingType = OfferingType)
   output <- .ec2$describe_reserved_instances_offerings_output()
@@ -15580,77 +15865,76 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 #'
 #' @param Filters The filters.
 #' 
-#' -   `association.gateway-id` - The ID of the gateway involved in the
-#'     association.
+#' - `association.gateway-id` - The ID of the gateway involved in the
+#'   association.
 #' 
-#' -   `association.route-table-association-id` - The ID of an association
-#'     ID for the route table.
+#' - `association.route-table-association-id` - The ID of an association ID
+#'   for the route table.
 #' 
-#' -   `association.route-table-id` - The ID of the route table involved in
-#'     the association.
+#' - `association.route-table-id` - The ID of the route table involved in
+#'   the association.
 #' 
-#' -   `association.subnet-id` - The ID of the subnet involved in the
-#'     association.
+#' - `association.subnet-id` - The ID of the subnet involved in the
+#'   association.
 #' 
-#' -   `association.main` - Indicates whether the route table is the main
-#'     route table for the VPC (`true` | `false`). Route tables that do not
-#'     have an association ID are not returned in the response.
+#' - `association.main` - Indicates whether the route table is the main
+#'   route table for the VPC (`true` | `false`). Route tables that do not
+#'   have an association ID are not returned in the response.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     route table.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   route table.
 #' 
-#' -   `route-table-id` - The ID of the route table.
+#' - `route-table-id` - The ID of the route table.
 #' 
-#' -   `route.destination-cidr-block` - The IPv4 CIDR range specified in a
-#'     route in the table.
+#' - `route.destination-cidr-block` - The IPv4 CIDR range specified in a
+#'   route in the table.
 #' 
-#' -   `route.destination-ipv6-cidr-block` - The IPv6 CIDR range specified
-#'     in a route in the route table.
+#' - `route.destination-ipv6-cidr-block` - The IPv6 CIDR range specified in
+#'   a route in the route table.
 #' 
-#' -   `route.destination-prefix-list-id` - The ID (prefix) of the Amazon
-#'     Web Services service specified in a route in the table.
+#' - `route.destination-prefix-list-id` - The ID (prefix) of the Amazon Web
+#'   Services service specified in a route in the table.
 #' 
-#' -   `route.egress-only-internet-gateway-id` - The ID of an egress-only
-#'     Internet gateway specified in a route in the route table.
+#' - `route.egress-only-internet-gateway-id` - The ID of an egress-only
+#'   Internet gateway specified in a route in the route table.
 #' 
-#' -   `route.gateway-id` - The ID of a gateway specified in a route in the
-#'     table.
+#' - `route.gateway-id` - The ID of a gateway specified in a route in the
+#'   table.
 #' 
-#' -   `route.instance-id` - The ID of an instance specified in a route in
-#'     the table.
+#' - `route.instance-id` - The ID of an instance specified in a route in
+#'   the table.
 #' 
-#' -   `route.nat-gateway-id` - The ID of a NAT gateway.
+#' - `route.nat-gateway-id` - The ID of a NAT gateway.
 #' 
-#' -   `route.transit-gateway-id` - The ID of a transit gateway.
+#' - `route.transit-gateway-id` - The ID of a transit gateway.
 #' 
-#' -   `route.origin` - Describes how the route was created.
-#'     [`create_route_table`][ec2_create_route_table] indicates that the
-#'     route was automatically created when the route table was created;
-#'     [`create_route`][ec2_create_route] indicates that the route was
-#'     manually added to the route table;
-#'     [`enable_vgw_route_propagation`][ec2_enable_vgw_route_propagation]
-#'     indicates that the route was propagated by route propagation.
+#' - `route.origin` - Describes how the route was created.
+#'   [`create_route_table`][ec2_create_route_table] indicates that the
+#'   route was automatically created when the route table was created;
+#'   [`create_route`][ec2_create_route] indicates that the route was
+#'   manually added to the route table;
+#'   [`enable_vgw_route_propagation`][ec2_enable_vgw_route_propagation]
+#'   indicates that the route was propagated by route propagation.
 #' 
-#' -   `route.state` - The state of a route in the route table (`active` |
-#'     `blackhole`). The blackhole state indicates that the route's target
-#'     isn't available (for example, the specified gateway isn't attached
-#'     to the VPC, the specified NAT instance has been terminated, and so
-#'     on).
+#' - `route.state` - The state of a route in the route table (`active` |
+#'   `blackhole`). The blackhole state indicates that the route's target
+#'   isn't available (for example, the specified gateway isn't attached to
+#'   the VPC, the specified NAT instance has been terminated, and so on).
 #' 
-#' -   `route.vpc-peering-connection-id` - The ID of a VPC peering
-#'     connection specified in a route in the table.
+#' - `route.vpc-peering-connection-id` - The ID of a VPC peering connection
+#'   specified in a route in the table.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC for the route table.
+#' - `vpc-id` - The ID of the VPC for the route table.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -15672,7 +15956,8 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RouteTables")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RouteTables"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_route_tables_input(Filters = Filters, DryRun = DryRun, RouteTableIds = RouteTableIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_route_tables_output()
@@ -15697,12 +15982,12 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone` - The Availability Zone (for example,
-#'     `us-west-2a`).
+#' - `availability-zone` - The Availability Zone (for example,
+#'   `us-west-2a`).
 #' 
-#' -   `instance-type` - The instance type (for example, `c4.large`).
+#' - `instance-type` - The instance type (for example, `c4.large`).
 #' 
-#' -   `platform` - The platform (`Linux/UNIX` or `Windows`).
+#' - `platform` - The platform (`Linux/UNIX` or `Windows`).
 #' @param FirstSlotStartTimeRange &#91;required&#93; The time period for the first schedule to start.
 #' @param MaxResults The maximum number of results to return in a single call. This value can
 #' be between 5 and 300. The default value is 300. To retrieve the
@@ -15726,7 +16011,8 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceAvailabilitySet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceAvailabilitySet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_scheduled_instance_availability_input(DryRun = DryRun, Filters = Filters, FirstSlotStartTimeRange = FirstSlotStartTimeRange, MaxResults = MaxResults, MaxSlotDurationInHours = MaxSlotDurationInHours, MinSlotDurationInHours = MinSlotDurationInHours, NextToken = NextToken, Recurrence = Recurrence)
   output <- .ec2$describe_scheduled_instance_availability_output()
@@ -15752,12 +16038,12 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone` - The Availability Zone (for example,
-#'     `us-west-2a`).
+#' - `availability-zone` - The Availability Zone (for example,
+#'   `us-west-2a`).
 #' 
-#' -   `instance-type` - The instance type (for example, `c4.large`).
+#' - `instance-type` - The instance type (for example, `c4.large`).
 #' 
-#' -   `platform` - The platform (`Linux/UNIX` or `Windows`).
+#' - `platform` - The platform (`Linux/UNIX` or `Windows`).
 #' @param MaxResults The maximum number of results to return in a single call. This value can
 #' be between 5 and 300. The default value is 100. To retrieve the
 #' remaining results, make another call with the returned `NextToken`
@@ -15775,7 +16061,8 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_scheduled_instances_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, ScheduledInstanceIds = ScheduledInstanceIds, SlotStartTimeRange = SlotStartTimeRange)
   output <- .ec2$describe_scheduled_instances_output()
@@ -15810,7 +16097,8 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_security_group_references_input(DryRun = DryRun, GroupId = GroupId)
   output <- .ec2$describe_security_group_references_output()
@@ -15831,15 +16119,15 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `group-id` - The ID of the security group.
+#' - `group-id` - The ID of the security group.
 #' 
-#' -   `security-group-rule-id` - The ID of the security group rule.
+#' - `security-group-rule-id` - The ID of the security group rule.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' @param SecurityGroupRuleIds The IDs of the security group rules.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -15862,7 +16150,8 @@ ec2_describe_security_group_rules <- function(Filters = NULL, SecurityGroupRuleI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupRules")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupRules"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_security_group_rules_input(Filters = Filters, SecurityGroupRuleIds = SecurityGroupRuleIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_security_group_rules_output()
@@ -15885,83 +16174,83 @@ ec2_describe_security_group_rules <- function(Filters = NULL, SecurityGroupRuleI
 #' security groups for which any combination of rules - not necessarily a
 #' single rule - match all filters.
 #' 
-#' -   `description` - The description of the security group.
+#' - `description` - The description of the security group.
 #' 
-#' -   `egress.ip-permission.cidr` - An IPv4 CIDR block for an outbound
-#'     security group rule.
+#' - `egress.ip-permission.cidr` - An IPv4 CIDR block for an outbound
+#'   security group rule.
 #' 
-#' -   `egress.ip-permission.from-port` - For an outbound rule, the start
-#'     of port range for the TCP and UDP protocols, or an ICMP type number.
+#' - `egress.ip-permission.from-port` - For an outbound rule, the start of
+#'   port range for the TCP and UDP protocols, or an ICMP type number.
 #' 
-#' -   `egress.ip-permission.group-id` - The ID of a security group that
-#'     has been referenced in an outbound security group rule.
+#' - `egress.ip-permission.group-id` - The ID of a security group that has
+#'   been referenced in an outbound security group rule.
 #' 
-#' -   `egress.ip-permission.group-name` - The name of a security group
-#'     that is referenced in an outbound security group rule.
+#' - `egress.ip-permission.group-name` - The name of a security group that
+#'   is referenced in an outbound security group rule.
 #' 
-#' -   `egress.ip-permission.ipv6-cidr` - An IPv6 CIDR block for an
-#'     outbound security group rule.
+#' - `egress.ip-permission.ipv6-cidr` - An IPv6 CIDR block for an outbound
+#'   security group rule.
 #' 
-#' -   `egress.ip-permission.prefix-list-id` - The ID of a prefix list to
-#'     which a security group rule allows outbound access.
+#' - `egress.ip-permission.prefix-list-id` - The ID of a prefix list to
+#'   which a security group rule allows outbound access.
 #' 
-#' -   `egress.ip-permission.protocol` - The IP protocol for an outbound
-#'     security group rule (`tcp` | `udp` | `icmp`, a protocol number, or
-#'     -1 for all protocols).
+#' - `egress.ip-permission.protocol` - The IP protocol for an outbound
+#'   security group rule (`tcp` | `udp` | `icmp`, a protocol number, or -1
+#'   for all protocols).
 #' 
-#' -   `egress.ip-permission.to-port` - For an outbound rule, the end of
-#'     port range for the TCP and UDP protocols, or an ICMP code.
+#' - `egress.ip-permission.to-port` - For an outbound rule, the end of port
+#'   range for the TCP and UDP protocols, or an ICMP code.
 #' 
-#' -   `egress.ip-permission.user-id` - The ID of an Amazon Web Services
-#'     account that has been referenced in an outbound security group rule.
+#' - `egress.ip-permission.user-id` - The ID of an Amazon Web Services
+#'   account that has been referenced in an outbound security group rule.
 #' 
-#' -   `group-id` - The ID of the security group.
+#' - `group-id` - The ID of the security group.
 #' 
-#' -   `group-name` - The name of the security group.
+#' - `group-name` - The name of the security group.
 #' 
-#' -   `ip-permission.cidr` - An IPv4 CIDR block for an inbound security
-#'     group rule.
+#' - `ip-permission.cidr` - An IPv4 CIDR block for an inbound security
+#'   group rule.
 #' 
-#' -   `ip-permission.from-port` - For an inbound rule, the start of port
-#'     range for the TCP and UDP protocols, or an ICMP type number.
+#' - `ip-permission.from-port` - For an inbound rule, the start of port
+#'   range for the TCP and UDP protocols, or an ICMP type number.
 #' 
-#' -   `ip-permission.group-id` - The ID of a security group that has been
-#'     referenced in an inbound security group rule.
+#' - `ip-permission.group-id` - The ID of a security group that has been
+#'   referenced in an inbound security group rule.
 #' 
-#' -   `ip-permission.group-name` - The name of a security group that is
-#'     referenced in an inbound security group rule.
+#' - `ip-permission.group-name` - The name of a security group that is
+#'   referenced in an inbound security group rule.
 #' 
-#' -   `ip-permission.ipv6-cidr` - An IPv6 CIDR block for an inbound
-#'     security group rule.
+#' - `ip-permission.ipv6-cidr` - An IPv6 CIDR block for an inbound security
+#'   group rule.
 #' 
-#' -   `ip-permission.prefix-list-id` - The ID of a prefix list from which
-#'     a security group rule allows inbound access.
+#' - `ip-permission.prefix-list-id` - The ID of a prefix list from which a
+#'   security group rule allows inbound access.
 #' 
-#' -   `ip-permission.protocol` - The IP protocol for an inbound security
-#'     group rule (`tcp` | `udp` | `icmp`, a protocol number, or -1 for all
-#'     protocols).
+#' - `ip-permission.protocol` - The IP protocol for an inbound security
+#'   group rule (`tcp` | `udp` | `icmp`, a protocol number, or -1 for all
+#'   protocols).
 #' 
-#' -   `ip-permission.to-port` - For an inbound rule, the end of port range
-#'     for the TCP and UDP protocols, or an ICMP code.
+#' - `ip-permission.to-port` - For an inbound rule, the end of port range
+#'   for the TCP and UDP protocols, or an ICMP code.
 #' 
-#' -   `ip-permission.user-id` - The ID of an Amazon Web Services account
-#'     that has been referenced in an inbound security group rule.
+#' - `ip-permission.user-id` - The ID of an Amazon Web Services account
+#'   that has been referenced in an inbound security group rule.
 #' 
-#' -   `owner-id` - The Amazon Web Services account ID of the owner of the
-#'     security group.
+#' - `owner-id` - The Amazon Web Services account ID of the owner of the
+#'   security group.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC specified when the security group was
-#'     created.
+#' - `vpc-id` - The ID of the VPC specified when the security group was
+#'   created.
 #' @param GroupIds The IDs of the security groups. Required for security groups in a
 #' nondefault VPC.
 #' 
@@ -15991,7 +16280,8 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_security_groups_input(Filters = Filters, GroupIds = GroupIds, GroupNames = GroupNames, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_security_groups_output()
@@ -16026,7 +16316,8 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_snapshot_attribute_input(Attribute = Attribute, SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$describe_snapshot_attribute_output()
@@ -16047,16 +16338,16 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #'
 #' @param Filters The filters.
 #' 
-#' -   `snapshot-id` - The snapshot ID.
+#' - `snapshot-id` - The snapshot ID.
 #' 
-#' -   `volume-id` - The ID of the volume the snapshot is for.
+#' - `volume-id` - The ID of the volume the snapshot is for.
 #' 
-#' -   `last-tiering-operation` - The state of the last archive or restore
-#'     action. (`archival-in-progress` | `archival-completed` |
-#'     `archival-failed` | `permanent-restore-in-progress` |
-#'     `permanent-restore-completed` | `permanent-restore-failed` |
-#'     `temporary-restore-in-progress` | `temporary-restore-completed` |
-#'     `temporary-restore-failed`)
+#' - `last-tiering-operation` - The state of the last archive or restore
+#'   action. (`archival-in-progress` | `archival-completed` |
+#'   `archival-failed` | `permanent-restore-in-progress` |
+#'   `permanent-restore-completed` | `permanent-restore-failed` |
+#'   `temporary-restore-in-progress` | `temporary-restore-completed` |
+#'   `temporary-restore-failed`)
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -16077,7 +16368,8 @@ ec2_describe_snapshot_tier_status <- function(Filters = NULL, DryRun = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SnapshotTierStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SnapshotTierStatuses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_snapshot_tier_status_input(Filters = Filters, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_snapshot_tier_status_output()
@@ -16099,45 +16391,45 @@ ec2_describe_snapshot_tier_status <- function(Filters = NULL, DryRun = NULL, Nex
 #'
 #' @param Filters The filters.
 #' 
-#' -   `description` - A description of the snapshot.
+#' - `description` - A description of the snapshot.
 #' 
-#' -   `encrypted` - Indicates whether the snapshot is encrypted (`true` |
-#'     `false`)
+#' - `encrypted` - Indicates whether the snapshot is encrypted (`true` |
+#'   `false`)
 #' 
-#' -   `owner-alias` - The owner alias, from an Amazon-maintained list
-#'     (`amazon`). This is not the user-configured Amazon Web Services
-#'     account alias set using the IAM console. We recommend that you use
-#'     the related parameter instead of this filter.
+#' - `owner-alias` - The owner alias, from an Amazon-maintained list
+#'   (`amazon`). This is not the user-configured Amazon Web Services
+#'   account alias set using the IAM console. We recommend that you use the
+#'   related parameter instead of this filter.
 #' 
-#' -   `owner-id` - The Amazon Web Services account ID of the owner. We
-#'     recommend that you use the related parameter instead of this filter.
+#' - `owner-id` - The Amazon Web Services account ID of the owner. We
+#'   recommend that you use the related parameter instead of this filter.
 #' 
-#' -   `progress` - The progress of the snapshot, as a percentage (for
-#'     example, 80%).
+#' - `progress` - The progress of the snapshot, as a percentage (for
+#'   example, 80%).
 #' 
-#' -   `snapshot-id` - The snapshot ID.
+#' - `snapshot-id` - The snapshot ID.
 #' 
-#' -   `start-time` - The time stamp when the snapshot was initiated.
+#' - `start-time` - The time stamp when the snapshot was initiated.
 #' 
-#' -   `status` - The status of the snapshot (`pending` | `completed` |
-#'     `error`).
+#' - `status` - The status of the snapshot (`pending` | `completed` |
+#'   `error`).
 #' 
-#' -   `storage-tier` - The storage tier of the snapshot (`archive` |
-#'     `standard`).
+#' - `storage-tier` - The storage tier of the snapshot (`archive` |
+#'   `standard`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `volume-id` - The ID of the volume the snapshot is for.
+#' - `volume-id` - The ID of the volume the snapshot is for.
 #' 
-#' -   `volume-size` - The size of the volume, in GiB.
+#' - `volume-size` - The size of the volume, in GiB.
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -16167,7 +16459,8 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_snapshots_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, OwnerIds = OwnerIds, RestorableByUserIds = RestorableByUserIds, SnapshotIds = SnapshotIds, DryRun = DryRun)
   output <- .ec2$describe_snapshots_output()
@@ -16200,7 +16493,8 @@ ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_datafeed_subscription_input(DryRun = DryRun)
   output <- .ec2$describe_spot_datafeed_subscription_output()
@@ -16240,7 +16534,8 @@ ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_fleet_instances_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, SpotFleetRequestId = SpotFleetRequestId)
   output <- .ec2$describe_spot_fleet_instances_output()
@@ -16284,7 +16579,8 @@ ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_fleet_request_history_input(DryRun = DryRun, EventType = EventType, MaxResults = MaxResults, NextToken = NextToken, SpotFleetRequestId = SpotFleetRequestId, StartTime = StartTime)
   output <- .ec2$describe_spot_fleet_request_history_output()
@@ -16324,7 +16620,8 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotFleetRequestConfigs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotFleetRequestConfigs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_fleet_requests_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, SpotFleetRequestIds = SpotFleetRequestIds)
   output <- .ec2$describe_spot_fleet_requests_output()
@@ -16345,121 +16642,119 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 #'
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone-group` - The Availability Zone group.
+#' - `availability-zone-group` - The Availability Zone group.
 #' 
-#' -   `create-time` - The time stamp when the Spot Instance request was
-#'     created.
+#' - `create-time` - The time stamp when the Spot Instance request was
+#'   created.
 #' 
-#' -   `fault-code` - The fault code related to the request.
+#' - `fault-code` - The fault code related to the request.
 #' 
-#' -   `fault-message` - The fault message related to the request.
+#' - `fault-message` - The fault message related to the request.
 #' 
-#' -   `instance-id` - The ID of the instance that fulfilled the request.
+#' - `instance-id` - The ID of the instance that fulfilled the request.
 #' 
-#' -   `launch-group` - The Spot Instance launch group.
+#' - `launch-group` - The Spot Instance launch group.
 #' 
-#' -   `launch.block-device-mapping.delete-on-termination` - Indicates
-#'     whether the EBS volume is deleted on instance termination.
+#' - `launch.block-device-mapping.delete-on-termination` - Indicates
+#'   whether the EBS volume is deleted on instance termination.
 #' 
-#' -   `launch.block-device-mapping.device-name` - The device name for the
-#'     volume in the block device mapping (for example, `/dev/sdh` or
-#'     `xvdh`).
+#' - `launch.block-device-mapping.device-name` - The device name for the
+#'   volume in the block device mapping (for example, `/dev/sdh` or
+#'   `xvdh`).
 #' 
-#' -   `launch.block-device-mapping.snapshot-id` - The ID of the snapshot
-#'     for the EBS volume.
+#' - `launch.block-device-mapping.snapshot-id` - The ID of the snapshot for
+#'   the EBS volume.
 #' 
-#' -   `launch.block-device-mapping.volume-size` - The size of the EBS
-#'     volume, in GiB.
+#' - `launch.block-device-mapping.volume-size` - The size of the EBS
+#'   volume, in GiB.
 #' 
-#' -   `launch.block-device-mapping.volume-type` - The type of EBS volume:
-#'     `gp2` or `gp3` for General Purpose SSD, `io1` or `io2` for
-#'     Provisioned IOPS SSD, `st1` for Throughput Optimized HDD, `sc1` for
-#'     Cold HDD, or `standard` for Magnetic.
+#' - `launch.block-device-mapping.volume-type` - The type of EBS volume:
+#'   `gp2` or `gp3` for General Purpose SSD, `io1` or `io2` for Provisioned
+#'   IOPS SSD, `st1` for Throughput Optimized HDD, `sc1` for Cold HDD, or
+#'   `standard` for Magnetic.
 #' 
-#' -   `launch.group-id` - The ID of the security group for the instance.
+#' - `launch.group-id` - The ID of the security group for the instance.
 #' 
-#' -   `launch.group-name` - The name of the security group for the
-#'     instance.
+#' - `launch.group-name` - The name of the security group for the instance.
 #' 
-#' -   `launch.image-id` - The ID of the AMI.
+#' - `launch.image-id` - The ID of the AMI.
 #' 
-#' -   `launch.instance-type` - The type of instance (for example,
-#'     `m3.medium`).
+#' - `launch.instance-type` - The type of instance (for example,
+#'   `m3.medium`).
 #' 
-#' -   `launch.kernel-id` - The kernel ID.
+#' - `launch.kernel-id` - The kernel ID.
 #' 
-#' -   `launch.key-name` - The name of the key pair the instance launched
-#'     with.
+#' - `launch.key-name` - The name of the key pair the instance launched
+#'   with.
 #' 
-#' -   `launch.monitoring-enabled` - Whether detailed monitoring is enabled
-#'     for the Spot Instance.
+#' - `launch.monitoring-enabled` - Whether detailed monitoring is enabled
+#'   for the Spot Instance.
 #' 
-#' -   `launch.ramdisk-id` - The RAM disk ID.
+#' - `launch.ramdisk-id` - The RAM disk ID.
 #' 
-#' -   `launched-availability-zone` - The Availability Zone in which the
-#'     request is launched.
+#' - `launched-availability-zone` - The Availability Zone in which the
+#'   request is launched.
 #' 
-#' -   `network-interface.addresses.primary` - Indicates whether the IP
-#'     address is the primary private IP address.
+#' - `network-interface.addresses.primary` - Indicates whether the IP
+#'   address is the primary private IP address.
 #' 
-#' -   `network-interface.delete-on-termination` - Indicates whether the
-#'     network interface is deleted when the instance is terminated.
+#' - `network-interface.delete-on-termination` - Indicates whether the
+#'   network interface is deleted when the instance is terminated.
 #' 
-#' -   `network-interface.description` - A description of the network
-#'     interface.
+#' - `network-interface.description` - A description of the network
+#'   interface.
 #' 
-#' -   `network-interface.device-index` - The index of the device for the
-#'     network interface attachment on the instance.
+#' - `network-interface.device-index` - The index of the device for the
+#'   network interface attachment on the instance.
 #' 
-#' -   `network-interface.group-id` - The ID of the security group
-#'     associated with the network interface.
+#' - `network-interface.group-id` - The ID of the security group associated
+#'   with the network interface.
 #' 
-#' -   `network-interface.network-interface-id` - The ID of the network
-#'     interface.
+#' - `network-interface.network-interface-id` - The ID of the network
+#'   interface.
 #' 
-#' -   `network-interface.private-ip-address` - The primary private IP
-#'     address of the network interface.
+#' - `network-interface.private-ip-address` - The primary private IP
+#'   address of the network interface.
 #' 
-#' -   `network-interface.subnet-id` - The ID of the subnet for the
-#'     instance.
+#' - `network-interface.subnet-id` - The ID of the subnet for the instance.
 #' 
-#' -   `product-description` - The product description associated with the
-#'     instance (`Linux/UNIX` | `Windows`).
+#' - `product-description` - The product description associated with the
+#'   instance (`Linux/UNIX` | `Windows`).
 #' 
-#' -   `spot-instance-request-id` - The Spot Instance request ID.
+#' - `spot-instance-request-id` - The Spot Instance request ID.
 #' 
-#' -   `spot-price` - The maximum hourly price for any Spot Instance
-#'     launched to fulfill the request.
+#' - `spot-price` - The maximum hourly price for any Spot Instance launched
+#'   to fulfill the request.
 #' 
-#' -   `state` - The state of the Spot Instance request (`open` | `active`
-#'     | `closed` | `cancelled` | `failed`). Spot request status
-#'     information can help you track your Amazon EC2 Spot Instance
-#'     requests. For more information, see [Spot request
-#'     status](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-request-status.html)
-#'     in the *Amazon EC2 User Guide*.
+#' - `state` - The state of the Spot Instance request (`open` | `active` |
+#'   `closed` | `cancelled` | `failed`). Spot request status information
+#'   can help you track your Amazon EC2 Spot Instance requests. For more
+#'   information, see [Spot request
+#'   status](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-request-status.html)
+#'   in the *Amazon EC2 User Guide*.
 #' 
-#' -   `status-code` - The short code describing the most recent evaluation
-#'     of your Spot Instance request.
+#' - `status-code` - The short code describing the most recent evaluation
+#'   of your Spot Instance request.
 #' 
-#' -   `status-message` - The message explaining the status of the Spot
-#'     Instance request.
+#' - `status-message` - The message explaining the status of the Spot
+#'   Instance request.
 #' 
-#' -   `tag:<key>` - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag:<key>` - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `type` - The type of Spot Instance request (`one-time` |
-#'     `persistent`).
+#' - `type` - The type of Spot Instance request (`one-time` |
+#'   `persistent`).
 #' 
-#' -   `valid-from` - The start date of the request.
+#' - `valid-from` - The start date of the request.
 #' 
-#' -   `valid-until` - The end date of the request.
+#' - `valid-until` - The end date of the request.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -16481,7 +16776,8 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotInstanceRequests")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotInstanceRequests"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_instance_requests_input(Filters = Filters, DryRun = DryRun, SpotInstanceRequestIds = SpotInstanceRequestIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_spot_instance_requests_output()
@@ -16502,24 +16798,23 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 #'
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone` - The Availability Zone for which prices should
-#'     be returned.
+#' - `availability-zone` - The Availability Zone for which prices should be
+#'   returned.
 #' 
-#' -   `instance-type` - The type of instance (for example, `m3.medium`).
+#' - `instance-type` - The type of instance (for example, `m3.medium`).
 #' 
-#' -   `product-description` - The product description for the Spot price
-#'     (`Linux/UNIX` | `Red Hat Enterprise Linux` | `SUSE Linux` |
-#'     `Windows` | `Linux/UNIX (Amazon VPC)` |
-#'     `Red Hat Enterprise Linux (Amazon VPC)` | `SUSE Linux (Amazon VPC)`
-#'     | `Windows (Amazon VPC)`).
+#' - `product-description` - The product description for the Spot price
+#'   (`Linux/UNIX` | `Red Hat Enterprise Linux` | `SUSE Linux` | `Windows`
+#'   | `Linux/UNIX (Amazon VPC)` | `Red Hat Enterprise Linux (Amazon VPC)`
+#'   | `SUSE Linux (Amazon VPC)` | `Windows (Amazon VPC)`).
 #' 
-#' -   `spot-price` - The Spot price. The value must match exactly (or use
-#'     wildcards; greater than or less than comparison is not supported).
+#' - `spot-price` - The Spot price. The value must match exactly (or use
+#'   wildcards; greater than or less than comparison is not supported).
 #' 
-#' -   `timestamp` - The time stamp of the Spot price history, in UTC
-#'     format (for example, *ddd MMM dd HH*:*mm*:*ss* UTC *YYYY*). You can
-#'     use wildcards (`*` and `?`). Greater than or less than comparison is
-#'     not supported.
+#' - `timestamp` - The time stamp of the Spot price history, in UTC format
+#'   (for example, *ddd MMM dd HH*:*mm*:*ss* UTC *YYYY*). You can use
+#'   wildcards (`*` and `?`). Greater than or less than comparison is not
+#'   supported.
 #' @param AvailabilityZone Filters the results by the specified Availability Zone.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -16549,7 +16844,8 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPriceHistory")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPriceHistory"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_price_history_input(Filters = Filters, AvailabilityZone = AvailabilityZone, DryRun = DryRun, EndTime = EndTime, InstanceTypes = InstanceTypes, MaxResults = MaxResults, NextToken = NextToken, ProductDescriptions = ProductDescriptions, StartTime = StartTime)
   output <- .ec2$describe_spot_price_history_output()
@@ -16590,7 +16886,8 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StaleSecurityGroupSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StaleSecurityGroupSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_stale_security_groups_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, VpcId = VpcId)
   output <- .ec2$describe_stale_security_groups_output()
@@ -16617,11 +16914,11 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
 #' 
-#' -   `task-state` - Returns tasks in a certain state (`InProgress` |
-#'     `Completed` | `Failed`)
+#' - `task-state` - Returns tasks in a certain state (`InProgress` |
+#'   `Completed` | `Failed`)
 #' 
-#' -   `bucket` - Returns task information for tasks that targeted a
-#'     specific bucket. For the filter value, specify the bucket name.
+#' - `bucket` - Returns task information for tasks that targeted a specific
+#'   bucket. For the filter value, specify the bucket name.
 #' 
 #' When you specify the `ImageIds` parameter, any filters that you specify
 #' are ignored. To use the filters, you must remove the `ImageIds`
@@ -16645,7 +16942,8 @@ ec2_describe_store_image_tasks <- function(ImageIds = NULL, DryRun = NULL, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StoreImageTaskResults")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StoreImageTaskResults"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_store_image_tasks_input(ImageIds = ImageIds, DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_store_image_tasks_output()
@@ -16666,93 +16964,93 @@ ec2_describe_store_image_tasks <- function(ImageIds = NULL, DryRun = NULL, Filte
 #'
 #' @param Filters The filters.
 #' 
-#' -   `availability-zone` - The Availability Zone for the subnet. You can
-#'     also use `availabilityZone` as the filter name.
+#' - `availability-zone` - The Availability Zone for the subnet. You can
+#'   also use `availabilityZone` as the filter name.
 #' 
-#' -   `availability-zone-id` - The ID of the Availability Zone for the
-#'     subnet. You can also use `availabilityZoneId` as the filter name.
+#' - `availability-zone-id` - The ID of the Availability Zone for the
+#'   subnet. You can also use `availabilityZoneId` as the filter name.
 #' 
-#' -   `available-ip-address-count` - The number of IPv4 addresses in the
-#'     subnet that are available.
+#' - `available-ip-address-count` - The number of IPv4 addresses in the
+#'   subnet that are available.
 #' 
-#' -   `cidr-block` - The IPv4 CIDR block of the subnet. The CIDR block you
-#'     specify must exactly match the subnet's CIDR block for information
-#'     to be returned for the subnet. You can also use `cidr` or
-#'     `cidrBlock` as the filter names.
+#' - `cidr-block` - The IPv4 CIDR block of the subnet. The CIDR block you
+#'   specify must exactly match the subnet's CIDR block for information to
+#'   be returned for the subnet. You can also use `cidr` or `cidrBlock` as
+#'   the filter names.
 #' 
-#' -   `customer-owned-ipv4-pool` - The customer-owned IPv4 address pool
-#'     associated with the subnet.
+#' - `customer-owned-ipv4-pool` - The customer-owned IPv4 address pool
+#'   associated with the subnet.
 #' 
-#' -   `default-for-az` - Indicates whether this is the default subnet for
-#'     the Availability Zone (`true` | `false`). You can also use
-#'     `defaultForAz` as the filter name.
+#' - `default-for-az` - Indicates whether this is the default subnet for
+#'   the Availability Zone (`true` | `false`). You can also use
+#'   `defaultForAz` as the filter name.
 #' 
-#' -   `enable-dns64` - Indicates whether DNS queries made to the
-#'     Amazon-provided DNS Resolver in this subnet should return synthetic
-#'     IPv6 addresses for IPv4-only destinations.
+#' - `enable-dns64` - Indicates whether DNS queries made to the
+#'   Amazon-provided DNS Resolver in this subnet should return synthetic
+#'   IPv6 addresses for IPv4-only destinations.
 #' 
-#' -   `enable-lni-at-device-index` - Indicates the device position for
-#'     local network interfaces in this subnet. For example, `1` indicates
-#'     local network interfaces in this subnet are the secondary network
-#'     interface (eth1).
+#' - `enable-lni-at-device-index` - Indicates the device position for local
+#'   network interfaces in this subnet. For example, `1` indicates local
+#'   network interfaces in this subnet are the secondary network interface
+#'   (eth1).
 #' 
-#' -   `ipv6-cidr-block-association.ipv6-cidr-block` - An IPv6 CIDR block
-#'     associated with the subnet.
+#' - `ipv6-cidr-block-association.ipv6-cidr-block` - An IPv6 CIDR block
+#'   associated with the subnet.
 #' 
-#' -   `ipv6-cidr-block-association.association-id` - An association ID for
-#'     an IPv6 CIDR block associated with the subnet.
+#' - `ipv6-cidr-block-association.association-id` - An association ID for
+#'   an IPv6 CIDR block associated with the subnet.
 #' 
-#' -   `ipv6-cidr-block-association.state` - The state of an IPv6 CIDR
-#'     block associated with the subnet.
+#' - `ipv6-cidr-block-association.state` - The state of an IPv6 CIDR block
+#'   associated with the subnet.
 #' 
-#' -   `ipv6-native` - Indicates whether this is an IPv6 only subnet
-#'     (`true` | `false`).
+#' - `ipv6-native` - Indicates whether this is an IPv6 only subnet (`true`
+#'   | `false`).
 #' 
-#' -   `map-customer-owned-ip-on-launch` - Indicates whether a network
-#'     interface created in this subnet (including a network interface
-#'     created by [`run_instances`][ec2_run_instances]) receives a
-#'     customer-owned IPv4 address.
+#' - `map-customer-owned-ip-on-launch` - Indicates whether a network
+#'   interface created in this subnet (including a network interface
+#'   created by [`run_instances`][ec2_run_instances]) receives a
+#'   customer-owned IPv4 address.
 #' 
-#' -   `map-public-ip-on-launch` - Indicates whether instances launched in
-#'     this subnet receive a public IPv4 address.
+#' - `map-public-ip-on-launch` - Indicates whether instances launched in
+#'   this subnet receive a public IPv4 address.
 #' 
-#' -   `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost.
+#' - `outpost-arn` - The Amazon Resource Name (ARN) of the Outpost.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     subnet.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   subnet.
 #' 
-#' -   `private-dns-name-options-on-launch.hostname-type` - The type of
-#'     hostname to assign to instances in the subnet at launch. For
-#'     IPv4-only and dual-stack (IPv4 and IPv6) subnets, an instance DNS
-#'     name can be based on the instance IPv4 address (ip-name) or the
-#'     instance ID (resource-name). For IPv6 only subnets, an instance DNS
-#'     name must be based on the instance ID (resource-name).
+#' - `private-dns-name-options-on-launch.hostname-type` - The type of
+#'   hostname to assign to instances in the subnet at launch. For IPv4-only
+#'   and dual-stack (IPv4 and IPv6) subnets, an instance DNS name can be
+#'   based on the instance IPv4 address (ip-name) or the instance ID
+#'   (resource-name). For IPv6 only subnets, an instance DNS name must be
+#'   based on the instance ID (resource-name).
 #' 
-#' -   `private-dns-name-options-on-launch.enable-resource-name-dns-a-record` -
-#'     Indicates whether to respond to DNS queries for instance hostnames
-#'     with DNS A records.
+#' - `private-dns-name-options-on-launch.enable-resource-name-dns-a-record` -
+#'   Indicates whether to respond to DNS queries for instance hostnames
+#'   with DNS A records.
 #' 
-#' -   `private-dns-name-options-on-launch.enable-resource-name-dns-aaaa-record` -
-#'     Indicates whether to respond to DNS queries for instance hostnames
-#'     with DNS AAAA records.
+#' - `private-dns-name-options-on-launch.enable-resource-name-dns-aaaa-record` -
+#'   Indicates whether to respond to DNS queries for instance hostnames
+#'   with DNS AAAA records.
 #' 
-#' -   `state` - The state of the subnet (`pending` | `available`).
+#' - `state` - The state of the subnet (`pending` | `available`).
 #' 
-#' -   `subnet-arn` - The Amazon Resource Name (ARN) of the subnet.
+#' - `subnet-arn` - The Amazon Resource Name (ARN) of the subnet.
 #' 
-#' -   `subnet-id` - The ID of the subnet.
+#' - `subnet-id` - The ID of the subnet.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC for the subnet.
+#' - `vpc-id` - The ID of the VPC for the subnet.
 #' @param SubnetIds The IDs of the subnets.
 #' 
 #' Default: Describes all your subnets.
@@ -16776,7 +17074,8 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subnets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subnets"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_subnets_input(Filters = Filters, SubnetIds = SubnetIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_subnets_output()
@@ -16801,19 +17100,19 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
 #' 
-#' -   `key` - The tag key.
+#' - `key` - The tag key.
 #' 
-#' -   `resource-id` - The ID of the resource.
+#' - `resource-id` - The ID of the resource.
 #' 
-#' -   `resource-type` - The resource type. For a list of possible values,
-#'     see
-#'     [TagSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TagSpecification.html).
+#' - `resource-type` - The resource type. For a list of possible values,
+#'   see
+#'   [TagSpecification](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_TagSpecification.html).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of the tag. For example,
-#'     specify "tag:Owner" for the filter name and "TeamA" for the filter
-#'     value to find resources with the tag "Owner=TeamA".
+#' - `tag`:\<key\> - The key/value combination of the tag. For example,
+#'   specify "tag:Owner" for the filter name and "TeamA" for the filter
+#'   value to find resources with the tag "Owner=TeamA".
 #' 
-#' -   `value` - The tag value.
+#' - `value` - The tag value.
 #' @param MaxResults The maximum number of items to return for this request. This value can
 #' be between 5 and 1000. To get the next page of items, make another
 #' request with the token returned in the output. For more information, see
@@ -16830,7 +17129,8 @@ ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_tags_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_tags_output()
@@ -16858,29 +17158,29 @@ ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, 
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters Traffic mirror filters.
 #' 
-#' -   `traffic-mirror-filter-rule-id`: The ID of the Traffic Mirror rule.
+#' - `traffic-mirror-filter-rule-id`: The ID of the Traffic Mirror rule.
 #' 
-#' -   `traffic-mirror-filter-id`: The ID of the filter that this rule is
-#'     associated with.
+#' - `traffic-mirror-filter-id`: The ID of the filter that this rule is
+#'   associated with.
 #' 
-#' -   `rule-number`: The number of the Traffic Mirror rule.
+#' - `rule-number`: The number of the Traffic Mirror rule.
 #' 
-#' -   `rule-action`: The action taken on the filtered traffic. Possible
-#'     actions are `accept` and `reject`.
+#' - `rule-action`: The action taken on the filtered traffic. Possible
+#'   actions are `accept` and `reject`.
 #' 
-#' -   `traffic-direction`: The traffic direction. Possible directions are
-#'     `ingress` and `egress`.
+#' - `traffic-direction`: The traffic direction. Possible directions are
+#'   `ingress` and `egress`.
 #' 
-#' -   `protocol`: The protocol, for example UDP, assigned to the Traffic
-#'     Mirror rule.
+#' - `protocol`: The protocol, for example UDP, assigned to the Traffic
+#'   Mirror rule.
 #' 
-#' -   `source-cidr-block`: The source CIDR block assigned to the Traffic
-#'     Mirror rule.
+#' - `source-cidr-block`: The source CIDR block assigned to the Traffic
+#'   Mirror rule.
 #' 
-#' -   `destination-cidr-block`: The destination CIDR block assigned to the
-#'     Traffic Mirror rule.
+#' - `destination-cidr-block`: The destination CIDR block assigned to the
+#'   Traffic Mirror rule.
 #' 
-#' -   `description`: The description of the Traffic Mirror rule.
+#' - `description`: The description of the Traffic Mirror rule.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -16895,7 +17195,8 @@ ec2_describe_traffic_mirror_filter_rules <- function(TrafficMirrorFilterRuleIds 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_traffic_mirror_filter_rules_input(TrafficMirrorFilterRuleIds = TrafficMirrorFilterRuleIds, TrafficMirrorFilterId = TrafficMirrorFilterId, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_filter_rules_output()
@@ -16921,9 +17222,9 @@ ec2_describe_traffic_mirror_filter_rules <- function(TrafficMirrorFilterRuleIds 
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `description`: The Traffic Mirror filter description.
+#' - `description`: The Traffic Mirror filter description.
 #' 
-#' -   `traffic-mirror-filter-id`: The ID of the Traffic Mirror filter.
+#' - `traffic-mirror-filter-id`: The ID of the Traffic Mirror filter.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -16938,7 +17239,8 @@ ec2_describe_traffic_mirror_filters <- function(TrafficMirrorFilterIds = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorFilters")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorFilters"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_traffic_mirror_filters_input(TrafficMirrorFilterIds = TrafficMirrorFilterIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_filters_output()
@@ -16964,26 +17266,26 @@ ec2_describe_traffic_mirror_filters <- function(TrafficMirrorFilterIds = NULL, D
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `description`: The Traffic Mirror session description.
+#' - `description`: The Traffic Mirror session description.
 #' 
-#' -   `network-interface-id`: The ID of the Traffic Mirror session network
-#'     interface.
+#' - `network-interface-id`: The ID of the Traffic Mirror session network
+#'   interface.
 #' 
-#' -   `owner-id`: The ID of the account that owns the Traffic Mirror
-#'     session.
+#' - `owner-id`: The ID of the account that owns the Traffic Mirror
+#'   session.
 #' 
-#' -   `packet-length`: The assigned number of packets to mirror.
+#' - `packet-length`: The assigned number of packets to mirror.
 #' 
-#' -   `session-number`: The assigned session number.
+#' - `session-number`: The assigned session number.
 #' 
-#' -   `traffic-mirror-filter-id`: The ID of the Traffic Mirror filter.
+#' - `traffic-mirror-filter-id`: The ID of the Traffic Mirror filter.
 #' 
-#' -   `traffic-mirror-session-id`: The ID of the Traffic Mirror session.
+#' - `traffic-mirror-session-id`: The ID of the Traffic Mirror session.
 #' 
-#' -   `traffic-mirror-target-id`: The ID of the Traffic Mirror target.
+#' - `traffic-mirror-target-id`: The ID of the Traffic Mirror target.
 #' 
-#' -   `virtual-network-id`: The virtual network ID of the Traffic Mirror
-#'     session.
+#' - `virtual-network-id`: The virtual network ID of the Traffic Mirror
+#'   session.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -16998,7 +17300,8 @@ ec2_describe_traffic_mirror_sessions <- function(TrafficMirrorSessionIds = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorSessions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorSessions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_traffic_mirror_sessions_input(TrafficMirrorSessionIds = TrafficMirrorSessionIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_sessions_output()
@@ -17024,18 +17327,18 @@ ec2_describe_traffic_mirror_sessions <- function(TrafficMirrorSessionIds = NULL,
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `description`: The Traffic Mirror target description.
+#' - `description`: The Traffic Mirror target description.
 #' 
-#' -   `network-interface-id`: The ID of the Traffic Mirror session network
-#'     interface.
+#' - `network-interface-id`: The ID of the Traffic Mirror session network
+#'   interface.
 #' 
-#' -   `network-load-balancer-arn`: The Amazon Resource Name (ARN) of the
-#'     Network Load Balancer that is associated with the session.
+#' - `network-load-balancer-arn`: The Amazon Resource Name (ARN) of the
+#'   Network Load Balancer that is associated with the session.
 #' 
-#' -   `owner-id`: The ID of the account that owns the Traffic Mirror
-#'     session.
+#' - `owner-id`: The ID of the account that owns the Traffic Mirror
+#'   session.
 #' 
-#' -   `traffic-mirror-target-id`: The ID of the Traffic Mirror target.
+#' - `traffic-mirror-target-id`: The ID of the Traffic Mirror target.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17050,7 +17353,8 @@ ec2_describe_traffic_mirror_targets <- function(TrafficMirrorTargetIds = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorTargets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorTargets"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_traffic_mirror_targets_input(TrafficMirrorTargetIds = TrafficMirrorTargetIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_targets_output()
@@ -17072,31 +17376,31 @@ ec2_describe_traffic_mirror_targets <- function(TrafficMirrorTargetIds = NULL, D
 #' @param TransitGatewayAttachmentIds The IDs of the attachments.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `association.state` - The state of the association (`associating` |
-#'     `associated` | `disassociating`).
+#' - `association.state` - The state of the association (`associating` |
+#'   `associated` | `disassociating`).
 #' 
-#' -   `association.transit-gateway-route-table-id` - The ID of the route
-#'     table for the transit gateway.
+#' - `association.transit-gateway-route-table-id` - The ID of the route
+#'   table for the transit gateway.
 #' 
-#' -   `resource-id` - The ID of the resource.
+#' - `resource-id` - The ID of the resource.
 #' 
-#' -   `resource-owner-id` - The ID of the Amazon Web Services account that
-#'     owns the resource.
+#' - `resource-owner-id` - The ID of the Amazon Web Services account that
+#'   owns the resource.
 #' 
-#' -   `resource-type` - The resource type. Valid values are `vpc` | `vpn`
-#'     | `direct-connect-gateway` | `peering` | `connect`.
+#' - `resource-type` - The resource type. Valid values are `vpc` | `vpn` |
+#'   `direct-connect-gateway` | `peering` | `connect`.
 #' 
-#' -   `state` - The state of the attachment. Valid values are `available`
-#'     | `deleted` | `deleting` | `failed` | `failing` |
-#'     `initiatingRequest` | `modifying` | `pendingAcceptance` | `pending`
-#'     | `rollingBack` | `rejected` | `rejecting`.
+#' - `state` - The state of the attachment. Valid values are `available` |
+#'   `deleted` | `deleting` | `failed` | `failing` | `initiatingRequest` |
+#'   `modifying` | `pendingAcceptance` | `pending` | `rollingBack` |
+#'   `rejected` | `rejecting`.
 #' 
-#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' - `transit-gateway-attachment-id` - The ID of the attachment.
 #' 
-#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' - `transit-gateway-id` - The ID of the transit gateway.
 #' 
-#' -   `transit-gateway-owner-id` - The ID of the Amazon Web Services
-#'     account that owns the transit gateway.
+#' - `transit-gateway-owner-id` - The ID of the Amazon Web Services account
+#'   that owns the transit gateway.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17115,7 +17419,8 @@ ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachments")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachments"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_attachments_output()
@@ -17137,12 +17442,12 @@ ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds
 #' @param TransitGatewayConnectPeerIds The IDs of the Connect peers.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `state` - The state of the Connect peer (`pending` | `available` |
-#'     `deleting` | `deleted`).
+#' - `state` - The state of the Connect peer (`pending` | `available` |
+#'   `deleting` | `deleted`).
 #' 
-#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' - `transit-gateway-attachment-id` - The ID of the attachment.
 #' 
-#' -   `transit-gateway-connect-peer-id` - The ID of the Connect peer.
+#' - `transit-gateway-connect-peer-id` - The ID of the Connect peer.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17161,7 +17466,8 @@ ec2_describe_transit_gateway_connect_peers <- function(TransitGatewayConnectPeer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnectPeers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnectPeers"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_connect_peers_input(TransitGatewayConnectPeerIds = TransitGatewayConnectPeerIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_connect_peers_output()
@@ -17183,19 +17489,19 @@ ec2_describe_transit_gateway_connect_peers <- function(TransitGatewayConnectPeer
 #' @param TransitGatewayAttachmentIds The IDs of the attachments.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `options.protocol` - The tunnel protocol (`gre`).
+#' - `options.protocol` - The tunnel protocol (`gre`).
 #' 
-#' -   `state` - The state of the attachment (`initiating` |
-#'     `initiatingRequest` | `pendingAcceptance` | `rollingBack` |
-#'     `pending` | `available` | `modifying` | `deleting` | `deleted` |
-#'     `failed` | `rejected` | `rejecting` | `failing`).
+#' - `state` - The state of the attachment (`initiating` |
+#'   `initiatingRequest` | `pendingAcceptance` | `rollingBack` | `pending`
+#'   | `available` | `modifying` | `deleting` | `deleted` | `failed` |
+#'   `rejected` | `rejecting` | `failing`).
 #' 
-#' -   `transit-gateway-attachment-id` - The ID of the Connect attachment.
+#' - `transit-gateway-attachment-id` - The ID of the Connect attachment.
 #' 
-#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' - `transit-gateway-id` - The ID of the transit gateway.
 #' 
-#' -   `transport-transit-gateway-attachment-id` - The ID of the transit
-#'     gateway attachment from which the Connect attachment was created.
+#' - `transport-transit-gateway-attachment-id` - The ID of the transit
+#'   gateway attachment from which the Connect attachment was created.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17214,7 +17520,8 @@ ec2_describe_transit_gateway_connects <- function(TransitGatewayAttachmentIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnects")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnects"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_connects_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_connects_output()
@@ -17236,13 +17543,13 @@ ec2_describe_transit_gateway_connects <- function(TransitGatewayAttachmentIds = 
 #' @param TransitGatewayMulticastDomainIds The ID of the transit gateway multicast domain.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `state` - The state of the transit gateway multicast domain. Valid
-#'     values are `pending` | `available` | `deleting` | `deleted`.
+#' - `state` - The state of the transit gateway multicast domain. Valid
+#'   values are `pending` | `available` | `deleting` | `deleted`.
 #' 
-#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' - `transit-gateway-id` - The ID of the transit gateway.
 #' 
-#' -   `transit-gateway-multicast-domain-id` - The ID of the transit
-#'     gateway multicast domain.
+#' - `transit-gateway-multicast-domain-id` - The ID of the transit gateway
+#'   multicast domain.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17261,7 +17568,8 @@ ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMultica
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayMulticastDomains")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayMulticastDomains"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_multicast_domains_input(TransitGatewayMulticastDomainIds = TransitGatewayMulticastDomainIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_multicast_domains_output()
@@ -17283,30 +17591,30 @@ ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMultica
 #' @param TransitGatewayAttachmentIds One or more IDs of the transit gateway peering attachments.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `transit-gateway-attachment-id` - The ID of the transit gateway
-#'     attachment.
+#' - `transit-gateway-attachment-id` - The ID of the transit gateway
+#'   attachment.
 #' 
-#' -   `local-owner-id` - The ID of your Amazon Web Services account.
+#' - `local-owner-id` - The ID of your Amazon Web Services account.
 #' 
-#' -   `remote-owner-id` - The ID of the Amazon Web Services account in the
-#'     remote Region that owns the transit gateway.
+#' - `remote-owner-id` - The ID of the Amazon Web Services account in the
+#'   remote Region that owns the transit gateway.
 #' 
-#' -   `state` - The state of the peering attachment. Valid values are
-#'     `available` | `deleted` | `deleting` | `failed` | `failing` |
-#'     `initiatingRequest` | `modifying` | `pendingAcceptance` | `pending`
-#'     | `rollingBack` | `rejected` | `rejecting`).
+#' - `state` - The state of the peering attachment. Valid values are
+#'   `available` | `deleted` | `deleting` | `failed` | `failing` |
+#'   `initiatingRequest` | `modifying` | `pendingAcceptance` | `pending` |
+#'   `rollingBack` | `rejected` | `rejecting`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources that have a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources that have a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' - `transit-gateway-id` - The ID of the transit gateway.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17325,7 +17633,8 @@ ec2_describe_transit_gateway_peering_attachments <- function(TransitGatewayAttac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPeeringAttachments")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPeeringAttachments"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_peering_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_peering_attachments_output()
@@ -17364,7 +17673,8 @@ ec2_describe_transit_gateway_policy_tables <- function(TransitGatewayPolicyTable
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPolicyTables")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPolicyTables"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_policy_tables_input(TransitGatewayPolicyTableIds = TransitGatewayPolicyTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_policy_tables_output()
@@ -17403,7 +17713,8 @@ ec2_describe_transit_gateway_route_table_announcements <- function(TransitGatewa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTableAnnouncements")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTableAnnouncements"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_route_table_announcements_input(TransitGatewayRouteTableAnnouncementIds = TransitGatewayRouteTableAnnouncementIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_route_table_announcements_output()
@@ -17425,21 +17736,21 @@ ec2_describe_transit_gateway_route_table_announcements <- function(TransitGatewa
 #' @param TransitGatewayRouteTableIds The IDs of the transit gateway route tables.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `default-association-route-table` - Indicates whether this is the
-#'     default association route table for the transit gateway (`true` |
-#'     `false`).
+#' - `default-association-route-table` - Indicates whether this is the
+#'   default association route table for the transit gateway (`true` |
+#'   `false`).
 #' 
-#' -   `default-propagation-route-table` - Indicates whether this is the
-#'     default propagation route table for the transit gateway (`true` |
-#'     `false`).
+#' - `default-propagation-route-table` - Indicates whether this is the
+#'   default propagation route table for the transit gateway (`true` |
+#'   `false`).
 #' 
-#' -   `state` - The state of the route table (`available` | `deleting` |
-#'     `deleted` | `pending`).
+#' - `state` - The state of the route table (`available` | `deleting` |
+#'   `deleted` | `pending`).
 #' 
-#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' - `transit-gateway-id` - The ID of the transit gateway.
 #' 
-#' -   `transit-gateway-route-table-id` - The ID of the transit gateway
-#'     route table.
+#' - `transit-gateway-route-table-id` - The ID of the transit gateway route
+#'   table.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17458,7 +17769,8 @@ ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTables")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTables"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_route_tables_input(TransitGatewayRouteTableIds = TransitGatewayRouteTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_route_tables_output()
@@ -17480,16 +17792,16 @@ ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableId
 #' @param TransitGatewayAttachmentIds The IDs of the attachments.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `state` - The state of the attachment. Valid values are `available`
-#'     | `deleted` | `deleting` | `failed` | `failing` |
-#'     `initiatingRequest` | `modifying` | `pendingAcceptance` | `pending`
-#'     | `rollingBack` | `rejected` | `rejecting`.
+#' - `state` - The state of the attachment. Valid values are `available` |
+#'   `deleted` | `deleting` | `failed` | `failing` | `initiatingRequest` |
+#'   `modifying` | `pendingAcceptance` | `pending` | `rollingBack` |
+#'   `rejected` | `rejecting`.
 #' 
-#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' - `transit-gateway-attachment-id` - The ID of the attachment.
 #' 
-#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' - `transit-gateway-id` - The ID of the transit gateway.
 #' 
-#' -   `vpc-id` - The ID of the VPC.
+#' - `vpc-id` - The ID of the VPC.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17508,7 +17820,8 @@ ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmen
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayVpcAttachments")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayVpcAttachments"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_vpc_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_vpc_attachments_output()
@@ -17530,46 +17843,45 @@ ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmen
 #' @param TransitGatewayIds The IDs of the transit gateways.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `options.propagation-default-route-table-id` - The ID of the default
-#'     propagation route table.
+#' - `options.propagation-default-route-table-id` - The ID of the default
+#'   propagation route table.
 #' 
-#' -   `options.amazon-side-asn` - The private ASN for the Amazon side of a
-#'     BGP session.
+#' - `options.amazon-side-asn` - The private ASN for the Amazon side of a
+#'   BGP session.
 #' 
-#' -   `options.association-default-route-table-id` - The ID of the default
-#'     association route table.
+#' - `options.association-default-route-table-id` - The ID of the default
+#'   association route table.
 #' 
-#' -   `options.auto-accept-shared-attachments` - Indicates whether there
-#'     is automatic acceptance of attachment requests (`enable` |
-#'     `disable`).
+#' - `options.auto-accept-shared-attachments` - Indicates whether there is
+#'   automatic acceptance of attachment requests (`enable` | `disable`).
 #' 
-#' -   `options.default-route-table-association` - Indicates whether
-#'     resource attachments are automatically associated with the default
-#'     association route table (`enable` | `disable`).
+#' - `options.default-route-table-association` - Indicates whether resource
+#'   attachments are automatically associated with the default association
+#'   route table (`enable` | `disable`).
 #' 
-#' -   `options.default-route-table-propagation` - Indicates whether
-#'     resource attachments automatically propagate routes to the default
-#'     propagation route table (`enable` | `disable`).
+#' - `options.default-route-table-propagation` - Indicates whether resource
+#'   attachments automatically propagate routes to the default propagation
+#'   route table (`enable` | `disable`).
 #' 
-#' -   `options.dns-support` - Indicates whether DNS support is enabled
-#'     (`enable` | `disable`).
+#' - `options.dns-support` - Indicates whether DNS support is enabled
+#'   (`enable` | `disable`).
 #' 
-#' -   `options.vpn-ecmp-support` - Indicates whether Equal Cost Multipath
-#'     Protocol support is enabled (`enable` | `disable`).
+#' - `options.vpn-ecmp-support` - Indicates whether Equal Cost Multipath
+#'   Protocol support is enabled (`enable` | `disable`).
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     transit gateway.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   transit gateway.
 #' 
-#' -   `state` - The state of the transit gateway (`available` | `deleted`
-#'     | `deleting` | `modifying` | `pending`).
+#' - `state` - The state of the transit gateway (`available` | `deleted` |
+#'   `deleting` | `modifying` | `pending`).
 #' 
-#' -   `transit-gateway-id` - The ID of the transit gateway.
+#' - `transit-gateway-id` - The ID of the transit gateway.
 #' 
-#' -   `tag-key `- The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag-key `- The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -17588,7 +17900,8 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateways_input(TransitGatewayIds = TransitGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateways_output()
@@ -17614,10 +17927,10 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters One or more filters.
 #' 
-#' -   `gre-key` - The ID of a trunk interface association.
+#' - `gre-key` - The ID of a trunk interface association.
 #' 
-#' -   `interface-protocol` - The interface protocol. Valid values are
-#'     `VLAN` and `GRE`.
+#' - `interface-protocol` - The interface protocol. Valid values are `VLAN`
+#'   and `GRE`.
 #' @param NextToken The token for the next page of results.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
@@ -17632,7 +17945,8 @@ ec2_describe_trunk_interface_associations <- function(AssociationIds = NULL, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InterfaceAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InterfaceAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_trunk_interface_associations_input(AssociationIds = AssociationIds, DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_trunk_interface_associations_output()
@@ -17673,7 +17987,8 @@ ec2_describe_verified_access_endpoints <- function(VerifiedAccessEndpointIds = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessEndpoints")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessEndpoints"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_endpoints_input(VerifiedAccessEndpointIds = VerifiedAccessEndpointIds, VerifiedAccessInstanceId = VerifiedAccessInstanceId, VerifiedAccessGroupId = VerifiedAccessGroupId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_endpoints_output()
@@ -17713,7 +18028,8 @@ ec2_describe_verified_access_groups <- function(VerifiedAccessGroupIds = NULL, V
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_groups_input(VerifiedAccessGroupIds = VerifiedAccessGroupIds, VerifiedAccessInstanceId = VerifiedAccessInstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_groups_output()
@@ -17752,7 +18068,8 @@ ec2_describe_verified_access_instance_logging_configurations <- function(Verifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LoggingConfigurations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LoggingConfigurations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_instance_logging_configurations_input(VerifiedAccessInstanceIds = VerifiedAccessInstanceIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_instance_logging_configurations_output()
@@ -17791,7 +18108,8 @@ ec2_describe_verified_access_instances <- function(VerifiedAccessInstanceIds = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessInstances")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessInstances"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_instances_input(VerifiedAccessInstanceIds = VerifiedAccessInstanceIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_instances_output()
@@ -17831,7 +18149,8 @@ ec2_describe_verified_access_trust_providers <- function(VerifiedAccessTrustProv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessTrustProviders")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessTrustProviders"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_trust_providers_input(VerifiedAccessTrustProviderIds = VerifiedAccessTrustProviderIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_trust_providers_output()
@@ -17866,7 +18185,8 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_volume_attribute_input(Attribute = Attribute, VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$describe_volume_attribute_output()
@@ -17887,37 +18207,37 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #'
 #' @param Filters The filters.
 #' 
-#' -   `action.code` - The action code for the event (for example,
-#'     `enable-volume-io`).
+#' - `action.code` - The action code for the event (for example,
+#'   `enable-volume-io`).
 #' 
-#' -   `action.description` - A description of the action.
+#' - `action.description` - A description of the action.
 #' 
-#' -   `action.event-id` - The event ID associated with the action.
+#' - `action.event-id` - The event ID associated with the action.
 #' 
-#' -   `availability-zone` - The Availability Zone of the instance.
+#' - `availability-zone` - The Availability Zone of the instance.
 #' 
-#' -   `event.description` - A description of the event.
+#' - `event.description` - A description of the event.
 #' 
-#' -   `event.event-id` - The event ID.
+#' - `event.event-id` - The event ID.
 #' 
-#' -   `event.event-type` - The event type (for `io-enabled`: `passed` |
-#'     `failed`; for `io-performance`: `io-performance:degraded` |
-#'     `io-performance:severely-degraded` | `io-performance:stalled`).
+#' - `event.event-type` - The event type (for `io-enabled`: `passed` |
+#'   `failed`; for `io-performance`: `io-performance:degraded` |
+#'   `io-performance:severely-degraded` | `io-performance:stalled`).
 #' 
-#' -   `event.not-after` - The latest end time for the event.
+#' - `event.not-after` - The latest end time for the event.
 #' 
-#' -   `event.not-before` - The earliest start time for the event.
+#' - `event.not-before` - The earliest start time for the event.
 #' 
-#' -   `volume-status.details-name` - The cause for `volume-status.status`
-#'     (`io-enabled` | `io-performance`).
+#' - `volume-status.details-name` - The cause for `volume-status.status`
+#'   (`io-enabled` | `io-performance`).
 #' 
-#' -   `volume-status.details-status` - The status of
-#'     `volume-status.details-name` (for `io-enabled`: `passed` | `failed`;
-#'     for `io-performance`: `normal` | `degraded` | `severely-degraded` |
-#'     `stalled`).
+#' - `volume-status.details-status` - The status of
+#'   `volume-status.details-name` (for `io-enabled`: `passed` | `failed`;
+#'   for `io-performance`: `normal` | `degraded` | `severely-degraded` |
+#'   `stalled`).
 #' 
-#' -   `volume-status.status` - The status of the volume (`ok` | `impaired`
-#'     | `warning` | `insufficient-data`).
+#' - `volume-status.status` - The status of the volume (`ok` | `impaired` |
+#'   `warning` | `insufficient-data`).
 #' @param MaxResults The maximum number of items to return for this request. To get the next
 #' page of items, make another request with the token returned in the
 #' output. For more information, see
@@ -17941,7 +18261,8 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumeStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumeStatuses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_volume_status_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, VolumeIds = VolumeIds, DryRun = DryRun)
   output <- .ec2$describe_volume_status_output()
@@ -17962,57 +18283,56 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 #'
 #' @param Filters The filters.
 #' 
-#' -   `attachment.attach-time` - The time stamp when the attachment
-#'     initiated.
+#' - `attachment.attach-time` - The time stamp when the attachment
+#'   initiated.
 #' 
-#' -   `attachment.delete-on-termination` - Whether the volume is deleted
-#'     on instance termination.
+#' - `attachment.delete-on-termination` - Whether the volume is deleted on
+#'   instance termination.
 #' 
-#' -   `attachment.device` - The device name specified in the block device
-#'     mapping (for example, `/dev/sda1`).
+#' - `attachment.device` - The device name specified in the block device
+#'   mapping (for example, `/dev/sda1`).
 #' 
-#' -   `attachment.instance-id` - The ID of the instance the volume is
-#'     attached to.
+#' - `attachment.instance-id` - The ID of the instance the volume is
+#'   attached to.
 #' 
-#' -   `attachment.status` - The attachment state (`attaching` | `attached`
-#'     | `detaching`).
+#' - `attachment.status` - The attachment state (`attaching` | `attached` |
+#'   `detaching`).
 #' 
-#' -   `availability-zone` - The Availability Zone in which the volume was
-#'     created.
+#' - `availability-zone` - The Availability Zone in which the volume was
+#'   created.
 #' 
-#' -   `create-time` - The time stamp when the volume was created.
+#' - `create-time` - The time stamp when the volume was created.
 #' 
-#' -   `encrypted` - Indicates whether the volume is encrypted (`true` |
-#'     `false`)
+#' - `encrypted` - Indicates whether the volume is encrypted (`true` |
+#'   `false`)
 #' 
-#' -   `multi-attach-enabled` - Indicates whether the volume is enabled for
-#'     Multi-Attach (`true` | `false`)
+#' - `multi-attach-enabled` - Indicates whether the volume is enabled for
+#'   Multi-Attach (`true` | `false`)
 #' 
-#' -   `fast-restored` - Indicates whether the volume was created from a
-#'     snapshot that is enabled for fast snapshot restore (`true` |
-#'     `false`).
+#' - `fast-restored` - Indicates whether the volume was created from a
+#'   snapshot that is enabled for fast snapshot restore (`true` | `false`).
 #' 
-#' -   `size` - The size of the volume, in GiB.
+#' - `size` - The size of the volume, in GiB.
 #' 
-#' -   `snapshot-id` - The snapshot from which the volume was created.
+#' - `snapshot-id` - The snapshot from which the volume was created.
 #' 
-#' -   `status` - The state of the volume (`creating` | `available` |
-#'     `in-use` | `deleting` | `deleted` | `error`).
+#' - `status` - The state of the volume (`creating` | `available` |
+#'   `in-use` | `deleting` | `deleted` | `error`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `volume-id` - The volume ID.
+#' - `volume-id` - The volume ID.
 #' 
-#' -   `volume-type` - The Amazon EBS volume type (`gp2` | `gp3` | `io1` |
-#'     `io2` | `st1` | `sc1`| `standard`)
+#' - `volume-type` - The Amazon EBS volume type (`gp2` | `gp3` | `io1` |
+#'   `io2` | `st1` | `sc1`| `standard`)
 #' @param VolumeIds The volume IDs. If not specified, then all volumes are included in the
 #' response.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -18035,7 +18355,8 @@ ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Volumes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Volumes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_volumes_input(Filters = Filters, VolumeIds = VolumeIds, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_volumes_output()
@@ -18062,32 +18383,32 @@ ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL
 #' @param VolumeIds The IDs of the volumes.
 #' @param Filters The filters.
 #' 
-#' -   `modification-state` - The current modification state (modifying |
-#'     optimizing | completed | failed).
+#' - `modification-state` - The current modification state (modifying |
+#'   optimizing | completed | failed).
 #' 
-#' -   `original-iops` - The original IOPS rate of the volume.
+#' - `original-iops` - The original IOPS rate of the volume.
 #' 
-#' -   `original-size` - The original size of the volume, in GiB.
+#' - `original-size` - The original size of the volume, in GiB.
 #' 
-#' -   `original-volume-type` - The original volume type of the volume
-#'     (standard | io1 | io2 | gp2 | sc1 | st1).
+#' - `original-volume-type` - The original volume type of the volume
+#'   (standard | io1 | io2 | gp2 | sc1 | st1).
 #' 
-#' -   `originalMultiAttachEnabled` - Indicates whether Multi-Attach
-#'     support was enabled (true | false).
+#' - `originalMultiAttachEnabled` - Indicates whether Multi-Attach support
+#'   was enabled (true | false).
 #' 
-#' -   `start-time` - The modification start time.
+#' - `start-time` - The modification start time.
 #' 
-#' -   `target-iops` - The target IOPS rate of the volume.
+#' - `target-iops` - The target IOPS rate of the volume.
 #' 
-#' -   `target-size` - The target size of the volume, in GiB.
+#' - `target-size` - The target size of the volume, in GiB.
 #' 
-#' -   `target-volume-type` - The target volume type of the volume
-#'     (standard | io1 | io2 | gp2 | sc1 | st1).
+#' - `target-volume-type` - The target volume type of the volume (standard
+#'   | io1 | io2 | gp2 | sc1 | st1).
 #' 
-#' -   `targetMultiAttachEnabled` - Indicates whether Multi-Attach support
-#'     is to be enabled (true | false).
+#' - `targetMultiAttachEnabled` - Indicates whether Multi-Attach support is
+#'   to be enabled (true | false).
 #' 
-#' -   `volume-id` - The ID of the volume.
+#' - `volume-id` - The ID of the volume.
 #' @param NextToken The token returned from a previous paginated request. Pagination
 #' continues from the end of the items returned by the previous request.
 #' @param MaxResults The maximum number of results (up to a limit of 500) to be returned in a
@@ -18103,7 +18424,8 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumesModifications")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumesModifications"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_volumes_modifications_input(DryRun = DryRun, VolumeIds = VolumeIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_volumes_modifications_output()
@@ -18138,7 +18460,8 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_attribute_input(Attribute = Attribute, VpcId = VpcId, DryRun = DryRun)
   output <- .ec2$describe_vpc_attribute_output()
@@ -18159,18 +18482,18 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
 #'
 #' @param Filters The filters.
 #' 
-#' -   `is-classic-link-enabled` - Whether the VPC is enabled for
-#'     ClassicLink (`true` | `false`).
+#' - `is-classic-link-enabled` - Whether the VPC is enabled for ClassicLink
+#'   (`true` | `false`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -18186,7 +18509,8 @@ ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_classic_link_input(Filters = Filters, DryRun = DryRun, VpcIds = VpcIds)
   output <- .ec2$describe_vpc_classic_link_output()
@@ -18222,7 +18546,8 @@ ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_classic_link_dns_support_input(MaxResults = MaxResults, NextToken = NextToken, VpcIds = VpcIds)
   output <- .ec2$describe_vpc_classic_link_dns_support_output()
@@ -18249,19 +18574,19 @@ ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextTok
 #' @param ConnectionNotificationId The ID of the notification.
 #' @param Filters The filters.
 #' 
-#' -   `connection-notification-arn` - The ARN of the SNS topic for the
-#'     notification.
+#' - `connection-notification-arn` - The ARN of the SNS topic for the
+#'   notification.
 #' 
-#' -   `connection-notification-id` - The ID of the notification.
+#' - `connection-notification-id` - The ID of the notification.
 #' 
-#' -   `connection-notification-state` - The state of the notification
-#'     (`Enabled` | `Disabled`).
+#' - `connection-notification-state` - The state of the notification
+#'   (`Enabled` | `Disabled`).
 #' 
-#' -   `connection-notification-type` - The type of notification (`Topic`).
+#' - `connection-notification-type` - The type of notification (`Topic`).
 #' 
-#' -   `service-id` - The ID of the endpoint service.
+#' - `service-id` - The ID of the endpoint service.
 #' 
-#' -   `vpc-endpoint-id` - The ID of the VPC endpoint.
+#' - `vpc-endpoint-id` - The ID of the VPC endpoint.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another request with the returned
 #' `NextToken` value.
@@ -18276,7 +18601,8 @@ ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ConnectionNotificationSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ConnectionNotificationSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_connection_notifications_input(DryRun = DryRun, ConnectionNotificationId = ConnectionNotificationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_connection_notifications_output()
@@ -18302,18 +18628,18 @@ ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Co
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Filters The filters.
 #' 
-#' -   `ip-address-type` - The IP address type (`ipv4` | `ipv6`).
+#' - `ip-address-type` - The IP address type (`ipv4` | `ipv6`).
 #' 
-#' -   `service-id` - The ID of the service.
+#' - `service-id` - The ID of the service.
 #' 
-#' -   `vpc-endpoint-owner` - The ID of the Amazon Web Services account ID
-#'     that owns the endpoint.
+#' - `vpc-endpoint-owner` - The ID of the Amazon Web Services account ID
+#'   that owns the endpoint.
 #' 
-#' -   `vpc-endpoint-state` - The state of the endpoint
-#'     (`pendingAcceptance` | `pending` | `available` | `deleting` |
-#'     `deleted` | `rejected` | `failed`).
+#' - `vpc-endpoint-state` - The state of the endpoint (`pendingAcceptance`
+#'   | `pending` | `available` | `deleting` | `deleted` | `rejected` |
+#'   `failed`).
 #' 
-#' -   `vpc-endpoint-id` - The ID of the endpoint.
+#' - `vpc-endpoint-id` - The ID of the endpoint.
 #' @param MaxResults The maximum number of results to return for the request in a single
 #' page. The remaining results of the initial request can be seen by
 #' sending another request with the returned `NextToken` value. This value
@@ -18330,7 +18656,8 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpointConnections")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpointConnections"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_connections_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_connections_output()
@@ -18357,25 +18684,24 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
 #' @param ServiceIds The IDs of the endpoint services.
 #' @param Filters The filters.
 #' 
-#' -   `service-name` - The name of the service.
+#' - `service-name` - The name of the service.
 #' 
-#' -   `service-id` - The ID of the service.
+#' - `service-id` - The ID of the service.
 #' 
-#' -   `service-state` - The state of the service (`Pending` | `Available`
-#'     | `Deleting` | `Deleted` | `Failed`).
+#' - `service-state` - The state of the service (`Pending` | `Available` |
+#'   `Deleting` | `Deleted` | `Failed`).
 #' 
-#' -   `supported-ip-address-types` - The IP address type (`ipv4` |
-#'     `ipv6`).
+#' - `supported-ip-address-types` - The IP address type (`ipv4` | `ipv6`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param MaxResults The maximum number of results to return for the request in a single
 #' page. The remaining results of the initial request can be seen by
 #' sending another request with the returned `NextToken` value. This value
@@ -18392,7 +18718,8 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceConfigurations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceConfigurations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_service_configurations_input(DryRun = DryRun, ServiceIds = ServiceIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_service_configurations_output()
@@ -18419,10 +18746,10 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
 #' @param ServiceId &#91;required&#93; The ID of the service.
 #' @param Filters The filters.
 #' 
-#' -   `principal` - The ARN of the principal.
+#' - `principal` - The ARN of the principal.
 #' 
-#' -   `principal-type` - The principal type (`All` | `Service` |
-#'     `OrganizationUnit` | `Account` | `User` | `Role`).
+#' - `principal-type` - The principal type (`All` | `Service` |
+#'   `OrganizationUnit` | `Account` | `User` | `Role`).
 #' @param MaxResults The maximum number of results to return for the request in a single
 #' page. The remaining results of the initial request can be seen by
 #' sending another request with the returned `NextToken` value. This value
@@ -18439,7 +18766,8 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AllowedPrincipals")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AllowedPrincipals"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_service_permissions_input(DryRun = DryRun, ServiceId = ServiceId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_service_permissions_output()
@@ -18465,26 +18793,25 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
 #' @param ServiceNames The service names.
 #' @param Filters The filters.
 #' 
-#' -   `owner` - The ID or alias of the Amazon Web Services account that
-#'     owns the service.
+#' - `owner` - The ID or alias of the Amazon Web Services account that owns
+#'   the service.
 #' 
-#' -   `service-name` - The name of the service.
+#' - `service-name` - The name of the service.
 #' 
-#' -   `service-type` - The type of service (`Interface` | `Gateway` |
-#'     `GatewayLoadBalancer`).
+#' - `service-type` - The type of service (`Interface` | `Gateway` |
+#'   `GatewayLoadBalancer`).
 #' 
-#' -   `supported-ip-address-types` - The IP address type (`ipv4` |
-#'     `ipv6`).
+#' - `supported-ip-address-types` - The IP address type (`ipv4` | `ipv6`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param MaxResults The maximum number of items to return for this request. The request
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -18503,7 +18830,8 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_services_input(DryRun = DryRun, ServiceNames = ServiceNames, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_services_output()
@@ -18529,30 +18857,30 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
 #' @param VpcEndpointIds The IDs of the VPC endpoints.
 #' @param Filters The filters.
 #' 
-#' -   `ip-address-type` - The IP address type (`ipv4` | `ipv6`).
+#' - `ip-address-type` - The IP address type (`ipv4` | `ipv6`).
 #' 
-#' -   `service-name` - The name of the service.
+#' - `service-name` - The name of the service.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC in which the endpoint resides.
+#' - `vpc-id` - The ID of the VPC in which the endpoint resides.
 #' 
-#' -   `vpc-endpoint-id` - The ID of the endpoint.
+#' - `vpc-endpoint-id` - The ID of the endpoint.
 #' 
-#' -   `vpc-endpoint-state` - The state of the endpoint
-#'     (`pendingAcceptance` | `pending` | `available` | `deleting` |
-#'     `deleted` | `rejected` | `failed`).
+#' - `vpc-endpoint-state` - The state of the endpoint (`pendingAcceptance`
+#'   | `pending` | `available` | `deleting` | `deleted` | `rejected` |
+#'   `failed`).
 #' 
-#' -   `vpc-endpoint-type` - The type of VPC endpoint (`Interface` |
-#'     `Gateway` | `GatewayLoadBalancer`).
+#' - `vpc-endpoint-type` - The type of VPC endpoint (`Interface` |
+#'   `Gateway` | `GatewayLoadBalancer`).
 #' @param MaxResults The maximum number of items to return for this request. The request
 #' returns a token that you can specify in a subsequent call to get the
 #' next set of results.
@@ -18571,7 +18899,8 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpoints")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpoints"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoints_input(DryRun = DryRun, VpcEndpointIds = VpcEndpointIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoints_output()
@@ -18592,43 +18921,43 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
 #'
 #' @param Filters The filters.
 #' 
-#' -   `accepter-vpc-info.cidr-block` - The IPv4 CIDR block of the accepter
-#'     VPC.
+#' - `accepter-vpc-info.cidr-block` - The IPv4 CIDR block of the accepter
+#'   VPC.
 #' 
-#' -   `accepter-vpc-info.owner-id` - The ID of the Amazon Web Services
-#'     account that owns the accepter VPC.
+#' - `accepter-vpc-info.owner-id` - The ID of the Amazon Web Services
+#'   account that owns the accepter VPC.
 #' 
-#' -   `accepter-vpc-info.vpc-id` - The ID of the accepter VPC.
+#' - `accepter-vpc-info.vpc-id` - The ID of the accepter VPC.
 #' 
-#' -   `expiration-time` - The expiration date and time for the VPC peering
-#'     connection.
+#' - `expiration-time` - The expiration date and time for the VPC peering
+#'   connection.
 #' 
-#' -   `requester-vpc-info.cidr-block` - The IPv4 CIDR block of the
-#'     requester's VPC.
+#' - `requester-vpc-info.cidr-block` - The IPv4 CIDR block of the
+#'   requester's VPC.
 #' 
-#' -   `requester-vpc-info.owner-id` - The ID of the Amazon Web Services
-#'     account that owns the requester VPC.
+#' - `requester-vpc-info.owner-id` - The ID of the Amazon Web Services
+#'   account that owns the requester VPC.
 #' 
-#' -   `requester-vpc-info.vpc-id` - The ID of the requester VPC.
+#' - `requester-vpc-info.vpc-id` - The ID of the requester VPC.
 #' 
-#' -   `status-code` - The status of the VPC peering connection
-#'     (`pending-acceptance` | `failed` | `expired` | `provisioning` |
-#'     `active` | `deleting` | `deleted` | `rejected`).
+#' - `status-code` - The status of the VPC peering connection
+#'   (`pending-acceptance` | `failed` | `expired` | `provisioning` |
+#'   `active` | `deleting` | `deleted` | `rejected`).
 #' 
-#' -   `status-message` - A message that provides more information about
-#'     the status of the VPC peering connection, if applicable.
+#' - `status-message` - A message that provides more information about the
+#'   status of the VPC peering connection, if applicable.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-peering-connection-id` - The ID of the VPC peering connection.
+#' - `vpc-peering-connection-id` - The ID of the VPC peering connection.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -18652,7 +18981,8 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcPeeringConnections")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcPeeringConnections"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_peering_connections_input(Filters = Filters, DryRun = DryRun, VpcPeeringConnectionIds = VpcPeeringConnectionIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_vpc_peering_connections_output()
@@ -18673,52 +19003,52 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 #'
 #' @param Filters The filters.
 #' 
-#' -   `cidr` - The primary IPv4 CIDR block of the VPC. The CIDR block you
-#'     specify must exactly match the VPC's CIDR block for information to
-#'     be returned for the VPC. Must contain the slash followed by one or
-#'     two digits (for example, `/28`).
+#' - `cidr` - The primary IPv4 CIDR block of the VPC. The CIDR block you
+#'   specify must exactly match the VPC's CIDR block for information to be
+#'   returned for the VPC. Must contain the slash followed by one or two
+#'   digits (for example, `/28`).
 #' 
-#' -   `cidr-block-association.cidr-block` - An IPv4 CIDR block associated
-#'     with the VPC.
+#' - `cidr-block-association.cidr-block` - An IPv4 CIDR block associated
+#'   with the VPC.
 #' 
-#' -   `cidr-block-association.association-id` - The association ID for an
-#'     IPv4 CIDR block associated with the VPC.
+#' - `cidr-block-association.association-id` - The association ID for an
+#'   IPv4 CIDR block associated with the VPC.
 #' 
-#' -   `cidr-block-association.state` - The state of an IPv4 CIDR block
-#'     associated with the VPC.
+#' - `cidr-block-association.state` - The state of an IPv4 CIDR block
+#'   associated with the VPC.
 #' 
-#' -   `dhcp-options-id` - The ID of a set of DHCP options.
+#' - `dhcp-options-id` - The ID of a set of DHCP options.
 #' 
-#' -   `ipv6-cidr-block-association.ipv6-cidr-block` - An IPv6 CIDR block
-#'     associated with the VPC.
+#' - `ipv6-cidr-block-association.ipv6-cidr-block` - An IPv6 CIDR block
+#'   associated with the VPC.
 #' 
-#' -   `ipv6-cidr-block-association.ipv6-pool` - The ID of the IPv6 address
-#'     pool from which the IPv6 CIDR block is allocated.
+#' - `ipv6-cidr-block-association.ipv6-pool` - The ID of the IPv6 address
+#'   pool from which the IPv6 CIDR block is allocated.
 #' 
-#' -   `ipv6-cidr-block-association.association-id` - The association ID
-#'     for an IPv6 CIDR block associated with the VPC.
+#' - `ipv6-cidr-block-association.association-id` - The association ID for
+#'   an IPv6 CIDR block associated with the VPC.
 #' 
-#' -   `ipv6-cidr-block-association.state` - The state of an IPv6 CIDR
-#'     block associated with the VPC.
+#' - `ipv6-cidr-block-association.state` - The state of an IPv6 CIDR block
+#'   associated with the VPC.
 #' 
-#' -   `is-default` - Indicates whether the VPC is the default VPC.
+#' - `is-default` - Indicates whether the VPC is the default VPC.
 #' 
-#' -   `owner-id` - The ID of the Amazon Web Services account that owns the
-#'     VPC.
+#' - `owner-id` - The ID of the Amazon Web Services account that owns the
+#'   VPC.
 #' 
-#' -   `state` - The state of the VPC (`pending` | `available`).
+#' - `state` - The state of the VPC (`pending` | `available`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `vpc-id` - The ID of the VPC.
+#' - `vpc-id` - The ID of the VPC.
 #' @param VpcIds The IDs of the VPCs.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -18740,7 +19070,8 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpcs_input(Filters = Filters, VpcIds = VpcIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_vpcs_output()
@@ -18761,45 +19092,45 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `customer-gateway-configuration` - The configuration information for
-#'     the customer gateway.
+#' - `customer-gateway-configuration` - The configuration information for
+#'   the customer gateway.
 #' 
-#' -   `customer-gateway-id` - The ID of a customer gateway associated with
-#'     the VPN connection.
+#' - `customer-gateway-id` - The ID of a customer gateway associated with
+#'   the VPN connection.
 #' 
-#' -   `state` - The state of the VPN connection (`pending` | `available` |
-#'     `deleting` | `deleted`).
+#' - `state` - The state of the VPN connection (`pending` | `available` |
+#'   `deleting` | `deleted`).
 #' 
-#' -   `option.static-routes-only` - Indicates whether the connection has
-#'     static routes only. Used for devices that do not support Border
-#'     Gateway Protocol (BGP).
+#' - `option.static-routes-only` - Indicates whether the connection has
+#'   static routes only. Used for devices that do not support Border
+#'   Gateway Protocol (BGP).
 #' 
-#' -   `route.destination-cidr-block` - The destination CIDR block. This
-#'     corresponds to the subnet used in a customer data center.
+#' - `route.destination-cidr-block` - The destination CIDR block. This
+#'   corresponds to the subnet used in a customer data center.
 #' 
-#' -   `bgp-asn` - The BGP Autonomous System Number (ASN) associated with a
-#'     BGP device.
+#' - `bgp-asn` - The BGP Autonomous System Number (ASN) associated with a
+#'   BGP device.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `type` - The type of VPN connection. Currently the only supported
-#'     type is `ipsec.1`.
+#' - `type` - The type of VPN connection. Currently the only supported type
+#'   is `ipsec.1`.
 #' 
-#' -   `vpn-connection-id` - The ID of the VPN connection.
+#' - `vpn-connection-id` - The ID of the VPN connection.
 #' 
-#' -   `vpn-gateway-id` - The ID of a virtual private gateway associated
-#'     with the VPN connection.
+#' - `vpn-gateway-id` - The ID of a virtual private gateway associated with
+#'   the VPN connection.
 #' 
-#' -   `transit-gateway-id` - The ID of a transit gateway associated with
-#'     the VPN connection.
+#' - `transit-gateway-id` - The ID of a transit gateway associated with the
+#'   VPN connection.
 #' @param VpnConnectionIds One or more VPN connection IDs.
 #' 
 #' Default: Describes your VPN connections.
@@ -18817,7 +19148,8 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "VpnConnections")
+    paginator = list(result_key = "VpnConnections"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpn_connections_input(Filters = Filters, VpnConnectionIds = VpnConnectionIds, DryRun = DryRun)
   output <- .ec2$describe_vpn_connections_output()
@@ -18838,35 +19170,35 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `amazon-side-asn` - The Autonomous System Number (ASN) for the
-#'     Amazon side of the gateway.
+#' - `amazon-side-asn` - The Autonomous System Number (ASN) for the Amazon
+#'   side of the gateway.
 #' 
-#' -   `attachment.state` - The current state of the attachment between the
-#'     gateway and the VPC (`attaching` | `attached` | `detaching` |
-#'     `detached`).
+#' - `attachment.state` - The current state of the attachment between the
+#'   gateway and the VPC (`attaching` | `attached` | `detaching` |
+#'   `detached`).
 #' 
-#' -   `attachment.vpc-id` - The ID of an attached VPC.
+#' - `attachment.vpc-id` - The ID of an attached VPC.
 #' 
-#' -   `availability-zone` - The Availability Zone for the virtual private
-#'     gateway (if applicable).
+#' - `availability-zone` - The Availability Zone for the virtual private
+#'   gateway (if applicable).
 #' 
-#' -   `state` - The state of the virtual private gateway (`pending` |
-#'     `available` | `deleting` | `deleted`).
+#' - `state` - The state of the virtual private gateway (`pending` |
+#'   `available` | `deleting` | `deleted`).
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' 
-#' -   `type` - The type of virtual private gateway. Currently the only
-#'     supported type is `ipsec.1`.
+#' - `type` - The type of virtual private gateway. Currently the only
+#'   supported type is `ipsec.1`.
 #' 
-#' -   `vpn-gateway-id` - The ID of the virtual private gateway.
+#' - `vpn-gateway-id` - The ID of the virtual private gateway.
 #' @param VpnGatewayIds One or more virtual private gateway IDs.
 #' 
 #' Default: Describes all your virtual private gateways.
@@ -18884,7 +19216,8 @@ ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "VpnGateways")
+    paginator = list(result_key = "VpnGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpn_gateways_input(Filters = Filters, VpnGatewayIds = VpnGatewayIds, DryRun = DryRun)
   output <- .ec2$describe_vpn_gateways_output()
@@ -18919,7 +19252,8 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_classic_link_vpc_input(DryRun = DryRun, InstanceId = InstanceId, VpcId = VpcId)
   output <- .ec2$detach_classic_link_vpc_output()
@@ -18955,7 +19289,8 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_internet_gateway_input(DryRun = DryRun, InternetGatewayId = InternetGatewayId, VpcId = VpcId)
   output <- .ec2$detach_internet_gateway_output()
@@ -18981,20 +19316,19 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param Force Specifies whether to force a detachment.
 #' 
-#' -   Use the `Force` parameter only as a last resort to detach a network
-#'     interface from a failed instance.
+#' - Use the `Force` parameter only as a last resort to detach a network
+#'   interface from a failed instance.
 #' 
-#' -   If you use the `Force` parameter to detach a network interface, you
-#'     might not be able to attach a different network interface to the
-#'     same index on the instance without first stopping and starting the
-#'     instance.
+#' - If you use the `Force` parameter to detach a network interface, you
+#'   might not be able to attach a different network interface to the same
+#'   index on the instance without first stopping and starting the
+#'   instance.
 #' 
-#' -   If you force the detachment of a network interface, the [instance
-#'     metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
-#'     might not get updated. This means that the attributes associated
-#'     with the detached network interface might still be visible. The
-#'     instance metadata will get updated when you stop and start the
-#'     instance.
+#' - If you force the detachment of a network interface, the [instance
+#'   metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
+#'   might not get updated. This means that the attributes associated with
+#'   the detached network interface might still be visible. The instance
+#'   metadata will get updated when you stop and start the instance.
 #'
 #' @keywords internal
 #'
@@ -19005,7 +19339,8 @@ ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_network_interface_input(AttachmentId = AttachmentId, DryRun = DryRun, Force = Force)
   output <- .ec2$detach_network_interface_output()
@@ -19044,7 +19379,8 @@ ec2_detach_verified_access_trust_provider <- function(VerifiedAccessInstanceId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_verified_access_trust_provider_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, VerifiedAccessTrustProviderId = VerifiedAccessTrustProviderId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$detach_verified_access_trust_provider_output()
@@ -19088,7 +19424,8 @@ ec2_detach_volume <- function(Device = NULL, Force = NULL, InstanceId = NULL, Vo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_volume_input(Device = Device, Force = Force, InstanceId = InstanceId, VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$detach_volume_output()
@@ -19123,7 +19460,8 @@ ec2_detach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_vpn_gateway_input(VpcId = VpcId, VpnGatewayId = VpnGatewayId, DryRun = DryRun)
   output <- .ec2$detach_vpn_gateway_output()
@@ -19157,7 +19495,8 @@ ec2_disable_address_transfer <- function(AllocationId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_address_transfer_input(AllocationId = AllocationId, DryRun = DryRun)
   output <- .ec2$disable_address_transfer_output()
@@ -19196,7 +19535,8 @@ ec2_disable_aws_network_performance_metric_subscription <- function(Source = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_aws_network_performance_metric_subscription_input(Source = Source, Destination = Destination, Metric = Metric, Statistic = Statistic, DryRun = DryRun)
   output <- .ec2$disable_aws_network_performance_metric_subscription_output()
@@ -19230,7 +19570,8 @@ ec2_disable_ebs_encryption_by_default <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_ebs_encryption_by_default_input(DryRun = DryRun)
   output <- .ec2$disable_ebs_encryption_by_default_output()
@@ -19268,7 +19609,8 @@ ec2_disable_fast_launch <- function(ImageId, Force = NULL, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_fast_launch_input(ImageId = ImageId, Force = Force, DryRun = DryRun)
   output <- .ec2$disable_fast_launch_output()
@@ -19304,7 +19646,8 @@ ec2_disable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshot
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_fast_snapshot_restores_input(AvailabilityZones = AvailabilityZones, SourceSnapshotIds = SourceSnapshotIds, DryRun = DryRun)
   output <- .ec2$disable_fast_snapshot_restores_output()
@@ -19339,7 +19682,8 @@ ec2_disable_image <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_image_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$disable_image_output()
@@ -19373,7 +19717,8 @@ ec2_disable_image_block_public_access <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_image_block_public_access_input(DryRun = DryRun)
   output <- .ec2$disable_image_block_public_access_output()
@@ -19407,7 +19752,8 @@ ec2_disable_image_deprecation <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_image_deprecation_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$disable_image_deprecation_output()
@@ -19441,7 +19787,8 @@ ec2_disable_image_deregistration_protection <- function(ImageId, DryRun = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_image_deregistration_protection_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$disable_image_deregistration_protection_output()
@@ -19476,7 +19823,8 @@ ec2_disable_ipam_organization_admin_account <- function(DryRun = NULL, Delegated
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_ipam_organization_admin_account_input(DryRun = DryRun, DelegatedAdminAccountId = DelegatedAdminAccountId)
   output <- .ec2$disable_ipam_organization_admin_account_output()
@@ -19510,7 +19858,8 @@ ec2_disable_serial_console_access <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_serial_console_access_input(DryRun = DryRun)
   output <- .ec2$disable_serial_console_access_output()
@@ -19544,7 +19893,8 @@ ec2_disable_snapshot_block_public_access <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_snapshot_block_public_access_input(DryRun = DryRun)
   output <- .ec2$disable_snapshot_block_public_access_output()
@@ -19581,7 +19931,8 @@ ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_transit_gateway_route_table_propagation_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun, TransitGatewayRouteTableAnnouncementId = TransitGatewayRouteTableAnnouncementId)
   output <- .ec2$disable_transit_gateway_route_table_propagation_output()
@@ -19617,7 +19968,8 @@ ec2_disable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_vgw_route_propagation_input(GatewayId = GatewayId, RouteTableId = RouteTableId, DryRun = DryRun)
   output <- .ec2$disable_vgw_route_propagation_output()
@@ -19651,7 +20003,8 @@ ec2_disable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_vpc_classic_link_input(DryRun = DryRun, VpcId = VpcId)
   output <- .ec2$disable_vpc_classic_link_output()
@@ -19681,7 +20034,8 @@ ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_vpc_classic_link_dns_support_input(VpcId = VpcId)
   output <- .ec2$disable_vpc_classic_link_dns_support_output()
@@ -19717,7 +20071,8 @@ ec2_disassociate_address <- function(AssociationId = NULL, PublicIp = NULL, DryR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_address_input(AssociationId = AssociationId, PublicIp = PublicIp, DryRun = DryRun)
   output <- .ec2$disassociate_address_output()
@@ -19753,7 +20108,8 @@ ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, Asso
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, AssociationId = AssociationId, DryRun = DryRun)
   output <- .ec2$disassociate_client_vpn_target_network_output()
@@ -19788,7 +20144,8 @@ ec2_disassociate_enclave_certificate_iam_role <- function(CertificateArn, RoleAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_enclave_certificate_iam_role_input(CertificateArn = CertificateArn, RoleArn = RoleArn, DryRun = DryRun)
   output <- .ec2$disassociate_enclave_certificate_iam_role_output()
@@ -19818,7 +20175,8 @@ ec2_disassociate_iam_instance_profile <- function(AssociationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_iam_instance_profile_input(AssociationId = AssociationId)
   output <- .ec2$disassociate_iam_instance_profile_output()
@@ -19853,7 +20211,8 @@ ec2_disassociate_instance_event_window <- function(DryRun = NULL, InstanceEventW
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_instance_event_window_input(DryRun = DryRun, InstanceEventWindowId = InstanceEventWindowId, AssociationTarget = AssociationTarget)
   output <- .ec2$disassociate_instance_event_window_output()
@@ -19889,7 +20248,8 @@ ec2_disassociate_ipam_byoasn <- function(DryRun = NULL, Asn, Cidr) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_ipam_byoasn_input(DryRun = DryRun, Asn = Asn, Cidr = Cidr)
   output <- .ec2$disassociate_ipam_byoasn_output()
@@ -19923,7 +20283,8 @@ ec2_disassociate_ipam_resource_discovery <- function(DryRun = NULL, IpamResource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_ipam_resource_discovery_input(DryRun = DryRun, IpamResourceDiscoveryAssociationId = IpamResourceDiscoveryAssociationId)
   output <- .ec2$disassociate_ipam_resource_discovery_output()
@@ -19963,7 +20324,8 @@ ec2_disassociate_nat_gateway_address <- function(NatGatewayId, AssociationIds, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_nat_gateway_address_input(NatGatewayId = NatGatewayId, AssociationIds = AssociationIds, MaxDrainDurationSeconds = MaxDrainDurationSeconds, DryRun = DryRun)
   output <- .ec2$disassociate_nat_gateway_address_output()
@@ -19998,7 +20360,8 @@ ec2_disassociate_route_table <- function(AssociationId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_route_table_input(AssociationId = AssociationId, DryRun = DryRun)
   output <- .ec2$disassociate_route_table_output()
@@ -20028,7 +20391,8 @@ ec2_disassociate_subnet_cidr_block <- function(AssociationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_subnet_cidr_block_input(AssociationId = AssociationId)
   output <- .ec2$disassociate_subnet_cidr_block_output()
@@ -20065,7 +20429,8 @@ ec2_disassociate_transit_gateway_multicast_domain <- function(TransitGatewayMult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_transit_gateway_multicast_domain_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, SubnetIds = SubnetIds, DryRun = DryRun)
   output <- .ec2$disassociate_transit_gateway_multicast_domain_output()
@@ -20101,7 +20466,8 @@ ec2_disassociate_transit_gateway_policy_table <- function(TransitGatewayPolicyTa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_transit_gateway_policy_table_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$disassociate_transit_gateway_policy_table_output()
@@ -20136,7 +20502,8 @@ ec2_disassociate_transit_gateway_route_table <- function(TransitGatewayRouteTabl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$disassociate_transit_gateway_route_table_output()
@@ -20174,7 +20541,8 @@ ec2_disassociate_trunk_interface <- function(AssociationId, ClientToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_trunk_interface_input(AssociationId = AssociationId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$disassociate_trunk_interface_output()
@@ -20204,7 +20572,8 @@ ec2_disassociate_vpc_cidr_block <- function(AssociationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_vpc_cidr_block_input(AssociationId = AssociationId)
   output <- .ec2$disassociate_vpc_cidr_block_output()
@@ -20240,7 +20609,8 @@ ec2_enable_address_transfer <- function(AllocationId, TransferAccountId, DryRun 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_address_transfer_input(AllocationId = AllocationId, TransferAccountId = TransferAccountId, DryRun = DryRun)
   output <- .ec2$enable_address_transfer_output()
@@ -20283,7 +20653,8 @@ ec2_enable_aws_network_performance_metric_subscription <- function(Source = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_aws_network_performance_metric_subscription_input(Source = Source, Destination = Destination, Metric = Metric, Statistic = Statistic, DryRun = DryRun)
   output <- .ec2$enable_aws_network_performance_metric_subscription_output()
@@ -20316,7 +20687,8 @@ ec2_enable_ebs_encryption_by_default <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_ebs_encryption_by_default_input(DryRun = DryRun)
   output <- .ec2$enable_ebs_encryption_by_default_output()
@@ -20363,7 +20735,8 @@ ec2_enable_fast_launch <- function(ImageId, ResourceType = NULL, SnapshotConfigu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_fast_launch_input(ImageId = ImageId, ResourceType = ResourceType, SnapshotConfiguration = SnapshotConfiguration, LaunchTemplate = LaunchTemplate, MaxParallelLaunches = MaxParallelLaunches, DryRun = DryRun)
   output <- .ec2$enable_fast_launch_output()
@@ -20401,7 +20774,8 @@ ec2_enable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshotI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_fast_snapshot_restores_input(AvailabilityZones = AvailabilityZones, SourceSnapshotIds = SourceSnapshotIds, DryRun = DryRun)
   output <- .ec2$enable_fast_snapshot_restores_output()
@@ -20435,7 +20809,8 @@ ec2_enable_image <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_image_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$enable_image_output()
@@ -20472,7 +20847,8 @@ ec2_enable_image_block_public_access <- function(ImageBlockPublicAccessState, Dr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_image_block_public_access_input(ImageBlockPublicAccessState = ImageBlockPublicAccessState, DryRun = DryRun)
   output <- .ec2$enable_image_block_public_access_output()
@@ -20513,7 +20889,8 @@ ec2_enable_image_deprecation <- function(ImageId, DeprecateAt, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_image_deprecation_input(ImageId = ImageId, DeprecateAt = DeprecateAt, DryRun = DryRun)
   output <- .ec2$enable_image_deprecation_output()
@@ -20549,7 +20926,8 @@ ec2_enable_image_deregistration_protection <- function(ImageId, WithCooldown = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_image_deregistration_protection_input(ImageId = ImageId, WithCooldown = WithCooldown, DryRun = DryRun)
   output <- .ec2$enable_image_deregistration_protection_output()
@@ -20584,7 +20962,8 @@ ec2_enable_ipam_organization_admin_account <- function(DryRun = NULL, DelegatedA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_ipam_organization_admin_account_input(DryRun = DryRun, DelegatedAdminAccountId = DelegatedAdminAccountId)
   output <- .ec2$enable_ipam_organization_admin_account_output()
@@ -20618,7 +20997,8 @@ ec2_enable_reachability_analyzer_organization_sharing <- function(DryRun = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_reachability_analyzer_organization_sharing_input(DryRun = DryRun)
   output <- .ec2$enable_reachability_analyzer_organization_sharing_output()
@@ -20652,7 +21032,8 @@ ec2_enable_serial_console_access <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_serial_console_access_input(DryRun = DryRun)
   output <- .ec2$enable_serial_console_access_output()
@@ -20675,16 +21056,16 @@ ec2_enable_serial_console_access <- function(DryRun = NULL) {
 #' @param State &#91;required&#93; The mode in which to enable block public access for snapshots for the
 #' Region. Specify one of the following values:
 #' 
-#' -   `block-all-sharing` - Prevents all public sharing of snapshots in
-#'     the Region. Users in the account will no longer be able to request
-#'     new public sharing. Additionally, snapshots that are already
-#'     publicly shared are treated as private and they are no longer
-#'     publicly available.
+#' - `block-all-sharing` - Prevents all public sharing of snapshots in the
+#'   Region. Users in the account will no longer be able to request new
+#'   public sharing. Additionally, snapshots that are already publicly
+#'   shared are treated as private and they are no longer publicly
+#'   available.
 #' 
-#' -   `block-new-sharing` - Prevents only new public sharing of snapshots
-#'     in the Region. Users in the account will no longer be able to
-#'     request new public sharing. However, snapshots that are already
-#'     publicly shared, remain publicly available.
+#' - `block-new-sharing` - Prevents only new public sharing of snapshots in
+#'   the Region. Users in the account will no longer be able to request new
+#'   public sharing. However, snapshots that are already publicly shared,
+#'   remain publicly available.
 #' 
 #' `unblocked` is not a valid value for
 #' **EnableSnapshotBlockPublicAccess**.
@@ -20702,7 +21083,8 @@ ec2_enable_snapshot_block_public_access <- function(State, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_snapshot_block_public_access_input(State = State, DryRun = DryRun)
   output <- .ec2$enable_snapshot_block_public_access_output()
@@ -20739,7 +21121,8 @@ ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_transit_gateway_route_table_propagation_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun, TransitGatewayRouteTableAnnouncementId = TransitGatewayRouteTableAnnouncementId)
   output <- .ec2$enable_transit_gateway_route_table_propagation_output()
@@ -20778,7 +21161,8 @@ ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_vgw_route_propagation_input(GatewayId = GatewayId, RouteTableId = RouteTableId, DryRun = DryRun)
   output <- .ec2$enable_vgw_route_propagation_output()
@@ -20813,7 +21197,8 @@ ec2_enable_volume_io <- function(DryRun = NULL, VolumeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_volume_io_input(DryRun = DryRun, VolumeId = VolumeId)
   output <- .ec2$enable_volume_io_output()
@@ -20847,7 +21232,8 @@ ec2_enable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_vpc_classic_link_input(DryRun = DryRun, VpcId = VpcId)
   output <- .ec2$enable_vpc_classic_link_output()
@@ -20877,7 +21263,8 @@ ec2_enable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_vpc_classic_link_dns_support_input(VpcId = VpcId)
   output <- .ec2$enable_vpc_classic_link_dns_support_output()
@@ -20912,7 +21299,8 @@ ec2_export_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$export_client_vpn_client_certificate_revocation_list_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun)
   output <- .ec2$export_client_vpn_client_certificate_revocation_list_output()
@@ -20947,7 +21335,8 @@ ec2_export_client_vpn_client_configuration <- function(ClientVpnEndpointId, DryR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$export_client_vpn_client_configuration_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun)
   output <- .ec2$export_client_vpn_client_configuration_output()
@@ -20991,7 +21380,8 @@ ec2_export_image <- function(ClientToken = NULL, Description = NULL, DiskImageFo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$export_image_input(ClientToken = ClientToken, Description = Description, DiskImageFormat = DiskImageFormat, DryRun = DryRun, ImageId = ImageId, S3ExportLocation = S3ExportLocation, RoleName = RoleName, TagSpecifications = TagSpecifications)
   output <- .ec2$export_image_output()
@@ -21014,32 +21404,30 @@ ec2_export_image <- function(ClientToken = NULL, Description = NULL, DiskImageFo
 #' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the route table.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `attachment.transit-gateway-attachment-id` - The id of the transit
-#'     gateway attachment.
+#' - `attachment.transit-gateway-attachment-id` - The id of the transit
+#'   gateway attachment.
 #' 
-#' -   `attachment.resource-id` - The resource id of the transit gateway
-#'     attachment.
+#' - `attachment.resource-id` - The resource id of the transit gateway
+#'   attachment.
 #' 
-#' -   `route-search.exact-match` - The exact match of the specified
-#'     filter.
+#' - `route-search.exact-match` - The exact match of the specified filter.
 #' 
-#' -   `route-search.longest-prefix-match` - The longest prefix that
-#'     matches the route.
+#' - `route-search.longest-prefix-match` - The longest prefix that matches
+#'   the route.
 #' 
-#' -   `route-search.subnet-of-match` - The routes with a subnet that match
-#'     the specified CIDR filter.
+#' - `route-search.subnet-of-match` - The routes with a subnet that match
+#'   the specified CIDR filter.
 #' 
-#' -   `route-search.supernet-of-match` - The routes with a CIDR that
-#'     encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
-#'     10.0.1.0/31 routes in your route table and you specify
-#'     supernet-of-match as 10.0.1.0/30, then the result returns
-#'     10.0.1.0/29.
+#' - `route-search.supernet-of-match` - The routes with a CIDR that
+#'   encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
+#'   10.0.1.0/31 routes in your route table and you specify
+#'   supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
 #' 
-#' -   `state` - The state of the route (`active` | `blackhole`).
+#' - `state` - The state of the route (`active` | `blackhole`).
 #' 
-#' -   `transit-gateway-route-destination-cidr-block` - The CIDR range.
+#' - `transit-gateway-route-destination-cidr-block` - The CIDR range.
 #' 
-#' -   `type` - The type of route (`propagated` | `static`).
+#' - `type` - The type of route (`propagated` | `static`).
 #' @param S3Bucket &#91;required&#93; The name of the S3 bucket.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -21055,7 +21443,8 @@ ec2_export_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$export_transit_gateway_routes_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, S3Bucket = S3Bucket, DryRun = DryRun)
   output <- .ec2$export_transit_gateway_routes_output()
@@ -21091,7 +21480,8 @@ ec2_get_associated_enclave_certificate_iam_roles <- function(CertificateArn, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_associated_enclave_certificate_iam_roles_input(CertificateArn = CertificateArn, DryRun = DryRun)
   output <- .ec2$get_associated_enclave_certificate_iam_roles_output()
@@ -21130,7 +21520,8 @@ ec2_get_associated_ipv_6_pool_cidrs <- function(PoolId, NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6CidrAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6CidrAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_associated_ipv_6_pool_cidrs_input(PoolId = PoolId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$get_associated_ipv_6_pool_cidrs_output()
@@ -21174,7 +21565,8 @@ ec2_get_aws_network_performance_data <- function(DataQueries = NULL, StartTime =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataResponses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataResponses"),
+    stream_api = FALSE
   )
   input <- .ec2$get_aws_network_performance_data_input(DataQueries = DataQueries, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_aws_network_performance_data_output()
@@ -21213,7 +21605,8 @@ ec2_get_capacity_reservation_usage <- function(CapacityReservationId, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_capacity_reservation_usage_input(CapacityReservationId = CapacityReservationId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$get_capacity_reservation_usage_output()
@@ -21235,16 +21628,15 @@ ec2_get_capacity_reservation_usage <- function(CapacityReservationId, NextToken 
 #' @param PoolId &#91;required&#93; The ID of the address pool.
 #' @param Filters One or more filters.
 #' 
-#' -   `coip-address-usage.allocation-id` - The allocation ID of the
-#'     address.
+#' - `coip-address-usage.allocation-id` - The allocation ID of the address.
 #' 
-#' -   `coip-address-usage.aws-account-id` - The ID of the Amazon Web
-#'     Services account that is using the customer-owned IP address.
+#' - `coip-address-usage.aws-account-id` - The ID of the Amazon Web
+#'   Services account that is using the customer-owned IP address.
 #' 
-#' -   `coip-address-usage.aws-service` - The Amazon Web Services service
-#'     that is using the customer-owned IP address.
+#' - `coip-address-usage.aws-service` - The Amazon Web Services service
+#'   that is using the customer-owned IP address.
 #' 
-#' -   `coip-address-usage.co-ip` - The customer-owned IP address.
+#' - `coip-address-usage.co-ip` - The customer-owned IP address.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -21263,7 +21655,8 @@ ec2_get_coip_pool_usage <- function(PoolId, Filters = NULL, MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_coip_pool_usage_input(PoolId = PoolId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_coip_pool_usage_output()
@@ -21300,7 +21693,8 @@ ec2_get_console_output <- function(InstanceId, DryRun = NULL, Latest = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_console_output_input(InstanceId = InstanceId, DryRun = DryRun, Latest = Latest)
   output <- .ec2$get_console_output_output()
@@ -21337,7 +21731,8 @@ ec2_get_console_screenshot <- function(DryRun = NULL, InstanceId, WakeUp = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_console_screenshot_input(DryRun = DryRun, InstanceId = InstanceId, WakeUp = WakeUp)
   output <- .ec2$get_console_screenshot_output()
@@ -21372,7 +21767,8 @@ ec2_get_default_credit_specification <- function(DryRun = NULL, InstanceFamily) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_default_credit_specification_input(DryRun = DryRun, InstanceFamily = InstanceFamily)
   output <- .ec2$get_default_credit_specification_output()
@@ -21406,7 +21802,8 @@ ec2_get_ebs_default_kms_key_id <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_ebs_default_kms_key_id_input(DryRun = DryRun)
   output <- .ec2$get_ebs_default_kms_key_id_output()
@@ -21440,7 +21837,8 @@ ec2_get_ebs_encryption_by_default <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_ebs_encryption_by_default_input(DryRun = DryRun)
   output <- .ec2$get_ebs_encryption_by_default_output()
@@ -21478,7 +21876,8 @@ ec2_get_flow_logs_integration_template <- function(DryRun = NULL, FlowLogId, Con
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_flow_logs_integration_template_input(DryRun = DryRun, FlowLogId = FlowLogId, ConfigDeliveryS3DestinationArn = ConfigDeliveryS3DestinationArn, IntegrateServices = IntegrateServices)
   output <- .ec2$get_flow_logs_integration_template_output()
@@ -21519,7 +21918,8 @@ ec2_get_groups_for_capacity_reservation <- function(CapacityReservationId, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$get_groups_for_capacity_reservation_input(CapacityReservationId = CapacityReservationId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$get_groups_for_capacity_reservation_output()
@@ -21551,7 +21951,8 @@ ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_host_reservation_purchase_preview_input(HostIdSet = HostIdSet, OfferingId = OfferingId)
   output <- .ec2$get_host_reservation_purchase_preview_output()
@@ -21585,7 +21986,8 @@ ec2_get_image_block_public_access_state <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_image_block_public_access_state_input(DryRun = DryRun)
   output <- .ec2$get_image_block_public_access_state_output()
@@ -21619,7 +22021,8 @@ ec2_get_instance_metadata_defaults <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_instance_metadata_defaults_input(DryRun = DryRun)
   output <- .ec2$get_instance_metadata_defaults_output()
@@ -21659,7 +22062,8 @@ ec2_get_instance_tpm_ek_pub <- function(InstanceId, KeyType, KeyFormat, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_instance_tpm_ek_pub_input(InstanceId = InstanceId, KeyType = KeyType, KeyFormat = KeyFormat, DryRun = DryRun)
   output <- .ec2$get_instance_tpm_ek_pub_output()
@@ -21701,7 +22105,8 @@ ec2_get_instance_types_from_instance_requirements <- function(DryRun = NULL, Arc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes"),
+    stream_api = FALSE
   )
   input <- .ec2$get_instance_types_from_instance_requirements_input(DryRun = DryRun, ArchitectureTypes = ArchitectureTypes, VirtualizationTypes = VirtualizationTypes, InstanceRequirements = InstanceRequirements, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_instance_types_from_instance_requirements_output()
@@ -21735,7 +22140,8 @@ ec2_get_instance_uefi_data <- function(InstanceId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_instance_uefi_data_input(InstanceId = InstanceId, DryRun = DryRun)
   output <- .ec2$get_instance_uefi_data_output()
@@ -21781,7 +22187,8 @@ ec2_get_ipam_address_history <- function(DryRun = NULL, Cidr, IpamScopeId, VpcId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HistoryRecords")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HistoryRecords"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_address_history_input(DryRun = DryRun, Cidr = Cidr, IpamScopeId = IpamScopeId, VpcId = VpcId, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_address_history_output()
@@ -21822,7 +22229,8 @@ ec2_get_ipam_discovered_accounts <- function(DryRun = NULL, IpamResourceDiscover
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredAccounts")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredAccounts"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_discovered_accounts_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, DiscoveryRegion = DiscoveryRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_ipam_discovered_accounts_output()
@@ -21861,7 +22269,8 @@ ec2_get_ipam_discovered_public_addresses <- function(DryRun = NULL, IpamResource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_discovered_public_addresses_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, AddressRegion = AddressRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_ipam_discovered_public_addresses_output()
@@ -21902,7 +22311,8 @@ ec2_get_ipam_discovered_resource_cidrs <- function(DryRun = NULL, IpamResourceDi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredResourceCidrs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredResourceCidrs"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_discovered_resource_cidrs_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, ResourceRegion = ResourceRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_ipam_discovered_resource_cidrs_output()
@@ -21942,7 +22352,8 @@ ec2_get_ipam_pool_allocations <- function(DryRun = NULL, IpamPoolId, IpamPoolAll
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolAllocations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolAllocations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_pool_allocations_input(DryRun = DryRun, IpamPoolId = IpamPoolId, IpamPoolAllocationId = IpamPoolAllocationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_pool_allocations_output()
@@ -21981,7 +22392,8 @@ ec2_get_ipam_pool_cidrs <- function(DryRun = NULL, IpamPoolId, Filters = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolCidrs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolCidrs"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_pool_cidrs_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_pool_cidrs_output()
@@ -22025,7 +22437,8 @@ ec2_get_ipam_resource_cidrs <- function(DryRun = NULL, Filters = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceCidrs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceCidrs"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_resource_cidrs_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamScopeId = IpamScopeId, IpamPoolId = IpamPoolId, ResourceId = ResourceId, ResourceType = ResourceType, ResourceTag = ResourceTag, ResourceOwner = ResourceOwner)
   output <- .ec2$get_ipam_resource_cidrs_output()
@@ -22059,7 +22472,8 @@ ec2_get_launch_template_data <- function(DryRun = NULL, InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_launch_template_data_input(DryRun = DryRun, InstanceId = InstanceId)
   output <- .ec2$get_launch_template_data_output()
@@ -22098,7 +22512,8 @@ ec2_get_managed_prefix_list_associations <- function(DryRun = NULL, PrefixListId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixListAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixListAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_managed_prefix_list_associations_input(DryRun = DryRun, PrefixListId = PrefixListId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_managed_prefix_list_associations_output()
@@ -22138,7 +22553,8 @@ ec2_get_managed_prefix_list_entries <- function(DryRun = NULL, PrefixListId, Tar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entries"),
+    stream_api = FALSE
   )
   input <- .ec2$get_managed_prefix_list_entries_input(DryRun = DryRun, PrefixListId = PrefixListId, TargetVersion = TargetVersion, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_managed_prefix_list_entries_output()
@@ -22176,7 +22592,8 @@ ec2_get_network_insights_access_scope_analysis_findings <- function(NetworkInsig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnalysisFindings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnalysisFindings"),
+    stream_api = FALSE
   )
   input <- .ec2$get_network_insights_access_scope_analysis_findings_input(NetworkInsightsAccessScopeAnalysisId = NetworkInsightsAccessScopeAnalysisId, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_network_insights_access_scope_analysis_findings_output()
@@ -22210,7 +22627,8 @@ ec2_get_network_insights_access_scope_content <- function(NetworkInsightsAccessS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_network_insights_access_scope_content_input(NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId, DryRun = DryRun)
   output <- .ec2$get_network_insights_access_scope_content_output()
@@ -22245,7 +22663,8 @@ ec2_get_password_data <- function(InstanceId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_password_data_input(InstanceId = InstanceId, DryRun = DryRun)
   output <- .ec2$get_password_data_output()
@@ -22283,7 +22702,8 @@ ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedIns
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_reserved_instances_exchange_quote_input(DryRun = DryRun, ReservedInstanceIds = ReservedInstanceIds, TargetConfigurations = TargetConfigurations)
   output <- .ec2$get_reserved_instances_exchange_quote_output()
@@ -22313,16 +22733,15 @@ ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedIns
 #' @param Filters The filters. If using multiple filters, the results include security
 #' groups which match all filters.
 #' 
-#' -   `group-id`: The security group ID.
+#' - `group-id`: The security group ID.
 #' 
-#' -   `description`: The security group's description.
+#' - `description`: The security group's description.
 #' 
-#' -   `group-name`: The security group name.
+#' - `group-name`: The security group name.
 #' 
-#' -   `owner-id`: The security group owner ID.
+#' - `owner-id`: The security group owner ID.
 #' 
-#' -   `primary-vpc-id`: The VPC ID in which the security group was
-#'     created.
+#' - `primary-vpc-id`: The VPC ID in which the security group was created.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -22337,7 +22756,8 @@ ec2_get_security_groups_for_vpc <- function(VpcId, NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupForVpcs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupForVpcs"),
+    stream_api = FALSE
   )
   input <- .ec2$get_security_groups_for_vpc_input(VpcId = VpcId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
   output <- .ec2$get_security_groups_for_vpc_output()
@@ -22371,7 +22791,8 @@ ec2_get_serial_console_access_status <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_serial_console_access_status_input(DryRun = DryRun)
   output <- .ec2$get_serial_console_access_status_output()
@@ -22405,7 +22826,8 @@ ec2_get_snapshot_block_public_access_state <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_snapshot_block_public_access_state_input(DryRun = DryRun)
   output <- .ec2$get_snapshot_block_public_access_state_output()
@@ -22469,7 +22891,8 @@ ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPlacementScores")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPlacementScores"),
+    stream_api = FALSE
   )
   input <- .ec2$get_spot_placement_scores_input(InstanceTypes = InstanceTypes, TargetCapacity = TargetCapacity, TargetCapacityUnitType = TargetCapacityUnitType, SingleAvailabilityZone = SingleAvailabilityZone, RegionNames = RegionNames, InstanceRequirementsWithMetadata = InstanceRequirementsWithMetadata, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_spot_placement_scores_output()
@@ -22490,19 +22913,19 @@ ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, 
 #'
 #' @param Filters One or more filters.
 #' 
-#' -   `reservationType` - The type of reservation (`prefix` | `explicit`).
+#' - `reservationType` - The type of reservation (`prefix` | `explicit`).
 #' 
-#' -   `subnet-id` - The ID of the subnet.
+#' - `subnet-id` - The ID of the subnet.
 #' 
-#' -   `tag`:\<key\> - The key/value combination of a tag assigned to the
-#'     resource. Use the tag key in the filter name and the tag value as
-#'     the filter value. For example, to find all resources that have a tag
-#'     with the key `Owner` and the value `TeamA`, specify `tag:Owner` for
-#'     the filter name and `TeamA` for the filter value.
+#' - `tag`:\<key\> - The key/value combination of a tag assigned to the
+#'   resource. Use the tag key in the filter name and the tag value as the
+#'   filter value. For example, to find all resources that have a tag with
+#'   the key `Owner` and the value `TeamA`, specify `tag:Owner` for the
+#'   filter name and `TeamA` for the filter value.
 #' 
-#' -   `tag-key` - The key of a tag assigned to the resource. Use this
-#'     filter to find all resources assigned a tag with a specific key,
-#'     regardless of the tag value.
+#' - `tag-key` - The key of a tag assigned to the resource. Use this filter
+#'   to find all resources assigned a tag with a specific key, regardless
+#'   of the tag value.
 #' @param SubnetId &#91;required&#93; The ID of the subnet.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -22522,7 +22945,8 @@ ec2_get_subnet_cidr_reservations <- function(Filters = NULL, SubnetId, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_subnet_cidr_reservations_input(Filters = Filters, SubnetId = SubnetId, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_subnet_cidr_reservations_output()
@@ -22545,8 +22969,8 @@ ec2_get_subnet_cidr_reservations <- function(Filters = NULL, SubnetId, DryRun = 
 #' @param TransitGatewayAttachmentId &#91;required&#93; The ID of the attachment.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `transit-gateway-route-table-id` - The ID of the transit gateway
-#'     route table.
+#' - `transit-gateway-route-table-id` - The ID of the transit gateway route
+#'   table.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -22565,7 +22989,8 @@ ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttach
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachmentPropagations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachmentPropagations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_attachment_propagations_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_attachment_propagations_output()
@@ -22588,17 +23013,17 @@ ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttach
 #' @param TransitGatewayMulticastDomainId &#91;required&#93; The ID of the transit gateway multicast domain.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `resource-id` - The ID of the resource.
+#' - `resource-id` - The ID of the resource.
 #' 
-#' -   `resource-type` - The type of resource. The valid value is: `vpc`.
+#' - `resource-type` - The type of resource. The valid value is: `vpc`.
 #' 
-#' -   `state` - The state of the subnet association. Valid values are
-#'     `associated` | `associating` | `disassociated` | `disassociating`.
+#' - `state` - The state of the subnet association. Valid values are
+#'   `associated` | `associating` | `disassociated` | `disassociating`.
 #' 
-#' -   `subnet-id` - The ID of the subnet.
+#' - `subnet-id` - The ID of the subnet.
 #' 
-#' -   `transit-gateway-attachment-id` - The id of the transit gateway
-#'     attachment.
+#' - `transit-gateway-attachment-id` - The id of the transit gateway
+#'   attachment.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -22617,7 +23042,8 @@ ec2_get_transit_gateway_multicast_domain_associations <- function(TransitGateway
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastDomainAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastDomainAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_multicast_domain_associations_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_multicast_domain_associations_output()
@@ -22656,7 +23082,8 @@ ec2_get_transit_gateway_policy_table_associations <- function(TransitGatewayPoli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_policy_table_associations_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_policy_table_associations_output()
@@ -22695,7 +23122,8 @@ ec2_get_transit_gateway_policy_table_entries <- function(TransitGatewayPolicyTab
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_policy_table_entries_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_policy_table_entries_output()
@@ -22718,25 +23146,22 @@ ec2_get_transit_gateway_policy_table_entries <- function(TransitGatewayPolicyTab
 #' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `attachment.resource-id` - The ID of the resource for the
-#'     attachment.
+#' - `attachment.resource-id` - The ID of the resource for the attachment.
 #' 
-#' -   `attachment.resource-type` - The type of resource for the
-#'     attachment. Valid values are `vpc` | `vpn` |
-#'     `direct-connect-gateway` | `peering`.
+#' - `attachment.resource-type` - The type of resource for the attachment.
+#'   Valid values are `vpc` | `vpn` | `direct-connect-gateway` | `peering`.
 #' 
-#' -   `attachment.transit-gateway-attachment-id` - The ID of the
-#'     attachment.
+#' - `attachment.transit-gateway-attachment-id` - The ID of the attachment.
 #' 
-#' -   `is-blackhole` - Whether traffic matching the route is blocked
-#'     (`true` | `false`).
+#' - `is-blackhole` - Whether traffic matching the route is blocked (`true`
+#'   | `false`).
 #' 
-#' -   `prefix-list-id` - The ID of the prefix list.
+#' - `prefix-list-id` - The ID of the prefix list.
 #' 
-#' -   `prefix-list-owner-id` - The ID of the owner of the prefix list.
+#' - `prefix-list-owner-id` - The ID of the owner of the prefix list.
 #' 
-#' -   `state` - The state of the prefix list reference (`pending` |
-#'     `available` | `modifying` | `deleting`).
+#' - `state` - The state of the prefix list reference (`pending` |
+#'   `available` | `modifying` | `deleting`).
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -22755,7 +23180,8 @@ ec2_get_transit_gateway_prefix_list_references <- function(TransitGatewayRouteTa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPrefixListReferences")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPrefixListReferences"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_prefix_list_references_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_prefix_list_references_output()
@@ -22778,12 +23204,12 @@ ec2_get_transit_gateway_prefix_list_references <- function(TransitGatewayRouteTa
 #' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `resource-id` - The ID of the resource.
+#' - `resource-id` - The ID of the resource.
 #' 
-#' -   `resource-type` - The resource type. Valid values are `vpc` | `vpn`
-#'     | `direct-connect-gateway` | `peering` | `connect`.
+#' - `resource-type` - The resource type. Valid values are `vpc` | `vpn` |
+#'   `direct-connect-gateway` | `peering` | `connect`.
 #' 
-#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' - `transit-gateway-attachment-id` - The ID of the attachment.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -22802,7 +23228,8 @@ ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_route_table_associations_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_route_table_associations_output()
@@ -22825,12 +23252,12 @@ ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRoute
 #' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `resource-id` - The ID of the resource.
+#' - `resource-id` - The ID of the resource.
 #' 
-#' -   `resource-type` - The resource type. Valid values are `vpc` | `vpn`
-#'     | `direct-connect-gateway` | `peering` | `connect`.
+#' - `resource-type` - The resource type. Valid values are `vpc` | `vpn` |
+#'   `direct-connect-gateway` | `peering` | `connect`.
 #' 
-#' -   `transit-gateway-attachment-id` - The ID of the attachment.
+#' - `transit-gateway-attachment-id` - The ID of the attachment.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -22849,7 +23276,8 @@ ec2_get_transit_gateway_route_table_propagations <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTablePropagations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTablePropagations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_route_table_propagations_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_route_table_propagations_output()
@@ -22883,7 +23311,8 @@ ec2_get_verified_access_endpoint_policy <- function(VerifiedAccessEndpointId, Dr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_verified_access_endpoint_policy_input(VerifiedAccessEndpointId = VerifiedAccessEndpointId, DryRun = DryRun)
   output <- .ec2$get_verified_access_endpoint_policy_output()
@@ -22918,7 +23347,8 @@ ec2_get_verified_access_group_policy <- function(VerifiedAccessGroupId, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_verified_access_group_policy_input(VerifiedAccessGroupId = VerifiedAccessGroupId, DryRun = DryRun)
   output <- .ec2$get_verified_access_group_policy_output()
@@ -22961,7 +23391,8 @@ ec2_get_vpn_connection_device_sample_configuration <- function(VpnConnectionId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_vpn_connection_device_sample_configuration_input(VpnConnectionId = VpnConnectionId, VpnConnectionDeviceTypeId = VpnConnectionDeviceTypeId, InternetKeyExchangeVersion = InternetKeyExchangeVersion, DryRun = DryRun)
   output <- .ec2$get_vpn_connection_device_sample_configuration_output()
@@ -23013,7 +23444,8 @@ ec2_get_vpn_connection_device_types <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpnConnectionDeviceTypes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpnConnectionDeviceTypes"),
+    stream_api = FALSE
   )
   input <- .ec2$get_vpn_connection_device_types_input(MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_vpn_connection_device_types_output()
@@ -23048,7 +23480,8 @@ ec2_get_vpn_tunnel_replacement_status <- function(VpnConnectionId, VpnTunnelOuts
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_vpn_tunnel_replacement_status_input(VpnConnectionId = VpnConnectionId, VpnTunnelOutsideIpAddress = VpnTunnelOutsideIpAddress, DryRun = DryRun)
   output <- .ec2$get_vpn_tunnel_replacement_status_output()
@@ -23088,7 +23521,8 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_client_vpn_client_certificate_revocation_list_input(ClientVpnEndpointId = ClientVpnEndpointId, CertificateRevocationList = CertificateRevocationList, DryRun = DryRun)
   output <- .ec2$import_client_vpn_client_certificate_revocation_list_output()
@@ -23124,7 +23558,7 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' encrypted. The default KMS key for EBS is used unless you specify a
 #' non-default KMS key using `KmsKeyId`. For more information, see [Amazon
 #' EBS
-#' Encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html)
+#' Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Hypervisor The target hypervisor platform.
 #' 
@@ -23137,21 +23571,21 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' 
 #' The KMS key identifier may be provided in any of the following formats:
 #' 
-#' -   Key ID
+#' - Key ID
 #' 
-#' -   Key alias
+#' - Key alias
 #' 
-#' -   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace,
-#'     followed by the Region of the key, the Amazon Web Services account
-#'     ID of the key owner, the `key` namespace, and then the key ID. For
-#'     example,
-#'     arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
+#' - ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace,
+#'   followed by the Region of the key, the Amazon Web Services account ID
+#'   of the key owner, the `key` namespace, and then the key ID. For
+#'   example,
+#'   arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
 #' 
-#' -   ARN using key alias. The alias ARN contains the `arn:aws:kms`
-#'     namespace, followed by the Region of the key, the Amazon Web
-#'     Services account ID of the key owner, the `alias` namespace, and
-#'     then the key alias. For example,
-#'     arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+#' - ARN using key alias. The alias ARN contains the `arn:aws:kms`
+#'   namespace, followed by the Region of the key, the Amazon Web Services
+#'   account ID of the key owner, the `alias` namespace, and then the key
+#'   alias. For example,
+#'   arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
 #' 
 #' Amazon Web Services parses `KmsKeyId` asynchronously, meaning that the
 #' action you call may appear to complete even though you provided an
@@ -23203,7 +23637,8 @@ ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_image_input(Architecture = Architecture, ClientData = ClientData, ClientToken = ClientToken, Description = Description, DiskContainers = DiskContainers, DryRun = DryRun, Encrypted = Encrypted, Hypervisor = Hypervisor, KmsKeyId = KmsKeyId, LicenseType = LicenseType, Platform = Platform, RoleName = RoleName, LicenseSpecifications = LicenseSpecifications, TagSpecifications = TagSpecifications, UsageOperation = UsageOperation, BootMode = BootMode)
   output <- .ec2$import_image_output()
@@ -23240,7 +23675,8 @@ ec2_import_instance <- function(Description = NULL, DiskImages = NULL, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_instance_input(Description = Description, DiskImages = DiskImages, DryRun = DryRun, LaunchSpecification = LaunchSpecification, Platform = Platform)
   output <- .ec2$import_instance_output()
@@ -23278,7 +23714,8 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_key_pair_input(DryRun = DryRun, KeyName = KeyName, PublicKeyMaterial = PublicKeyMaterial, TagSpecifications = TagSpecifications)
   output <- .ec2$import_key_pair_output()
@@ -23309,7 +23746,7 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
 #' be encrypted. The default KMS key for EBS is used unless you specify a
 #' non-default KMS key using `KmsKeyId`. For more information, see [Amazon
 #' EBS
-#' Encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html)
+#' Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param KmsKeyId An identifier for the symmetric KMS key to use when creating the
 #' encrypted snapshot. This parameter is only required if you want to use a
@@ -23319,21 +23756,21 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
 #' 
 #' The KMS key identifier may be provided in any of the following formats:
 #' 
-#' -   Key ID
+#' - Key ID
 #' 
-#' -   Key alias
+#' - Key alias
 #' 
-#' -   ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace,
-#'     followed by the Region of the key, the Amazon Web Services account
-#'     ID of the key owner, the `key` namespace, and then the key ID. For
-#'     example,
-#'     arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
+#' - ARN using key ID. The ID ARN contains the `arn:aws:kms` namespace,
+#'   followed by the Region of the key, the Amazon Web Services account ID
+#'   of the key owner, the `key` namespace, and then the key ID. For
+#'   example,
+#'   arn:aws:kms:*us-east-1*:*012345678910*:key/*abcd1234-a123-456a-a12b-a123b4cd56ef*.
 #' 
-#' -   ARN using key alias. The alias ARN contains the `arn:aws:kms`
-#'     namespace, followed by the Region of the key, the Amazon Web
-#'     Services account ID of the key owner, the `alias` namespace, and
-#'     then the key alias. For example,
-#'     arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
+#' - ARN using key alias. The alias ARN contains the `arn:aws:kms`
+#'   namespace, followed by the Region of the key, the Amazon Web Services
+#'   account ID of the key owner, the `alias` namespace, and then the key
+#'   alias. For example,
+#'   arn:aws:kms:*us-east-1*:*012345678910*:alias/*ExampleAlias*.
 #' 
 #' Amazon Web Services parses `KmsKeyId` asynchronously, meaning that the
 #' action you call may appear to complete even though you provided an
@@ -23355,7 +23792,8 @@ ec2_import_snapshot <- function(ClientData = NULL, ClientToken = NULL, Descripti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_snapshot_input(ClientData = ClientData, ClientToken = ClientToken, Description = Description, DiskContainer = DiskContainer, DryRun = DryRun, Encrypted = Encrypted, KmsKeyId = KmsKeyId, RoleName = RoleName, TagSpecifications = TagSpecifications)
   output <- .ec2$import_snapshot_output()
@@ -23393,7 +23831,8 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_volume_input(AvailabilityZone = AvailabilityZone, Description = Description, DryRun = DryRun, Image = Image, Volume = Volume)
   output <- .ec2$import_volume_output()
@@ -23408,7 +23847,7 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #' Lists one or more AMIs that are currently in the Recycle Bin
 #'
 #' @description
-#' Lists one or more AMIs that are currently in the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html) in the *Amazon EC2 User Guide*.
+#' Lists one or more AMIs that are currently in the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_list_images_in_recycle_bin/](https://www.paws-r-sdk.com/docs/ec2_list_images_in_recycle_bin/) for full documentation.
 #'
@@ -23435,7 +23874,8 @@ ec2_list_images_in_recycle_bin <- function(ImageIds = NULL, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images"),
+    stream_api = FALSE
   )
   input <- .ec2$list_images_in_recycle_bin_input(ImageIds = ImageIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$list_images_in_recycle_bin_output()
@@ -23476,7 +23916,8 @@ ec2_list_snapshots_in_recycle_bin <- function(MaxResults = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots"),
+    stream_api = FALSE
   )
   input <- .ec2$list_snapshots_in_recycle_bin_input(MaxResults = MaxResults, NextToken = NextToken, SnapshotIds = SnapshotIds, DryRun = DryRun)
   output <- .ec2$list_snapshots_in_recycle_bin_output()
@@ -23504,30 +23945,29 @@ ec2_list_snapshots_in_recycle_bin <- function(MaxResults = NULL, NextToken = NUL
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param LockMode &#91;required&#93; The mode in which to lock the snapshot. Specify one of the following:
 #' 
-#' -   `governance` - Locks the snapshot in governance mode. Snapshots
-#'     locked in governance mode can't be deleted until one of the
-#'     following conditions are met:
+#' - `governance` - Locks the snapshot in governance mode. Snapshots locked
+#'   in governance mode can't be deleted until one of the following
+#'   conditions are met:
 #' 
-#'     -   The lock duration expires.
+#'   - The lock duration expires.
 #' 
-#'     -   The snapshot is unlocked by a user with the appropriate
-#'         permissions.
+#'   - The snapshot is unlocked by a user with the appropriate permissions.
 #' 
-#'     Users with the appropriate IAM permissions can unlock the snapshot,
-#'     increase or decrease the lock duration, and change the lock mode to
-#'     `compliance` at any time.
+#'   Users with the appropriate IAM permissions can unlock the snapshot,
+#'   increase or decrease the lock duration, and change the lock mode to
+#'   `compliance` at any time.
 #' 
-#'     If you lock a snapshot in `governance` mode, omit **CoolOffPeriod**.
+#'   If you lock a snapshot in `governance` mode, omit **CoolOffPeriod**.
 #' 
-#' -   `compliance` - Locks the snapshot in compliance mode. Snapshots
-#'     locked in compliance mode can't be unlocked by any user. They can be
-#'     deleted only after the lock duration expires. Users can't decrease
-#'     the lock duration or change the lock mode to `governance`. However,
-#'     users with appropriate IAM permissions can increase the lock
-#'     duration at any time.
+#' - `compliance` - Locks the snapshot in compliance mode. Snapshots locked
+#'   in compliance mode can't be unlocked by any user. They can be deleted
+#'   only after the lock duration expires. Users can't decrease the lock
+#'   duration or change the lock mode to `governance`. However, users with
+#'   appropriate IAM permissions can increase the lock duration at any
+#'   time.
 #' 
-#'     If you lock a snapshot in `compliance` mode, you can optionally
-#'     specify **CoolOffPeriod**.
+#'   If you lock a snapshot in `compliance` mode, you can optionally
+#'   specify **CoolOffPeriod**.
 #' @param CoolOffPeriod The cooling-off period during which you can unlock the snapshot or
 #' modify the lock settings after locking the snapshot in compliance mode,
 #' in hours. After the cooling-off period expires, you can't unlock or
@@ -23570,7 +24010,8 @@ ec2_lock_snapshot <- function(SnapshotId, DryRun = NULL, LockMode, CoolOffPeriod
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$lock_snapshot_input(SnapshotId = SnapshotId, DryRun = DryRun, LockMode = LockMode, CoolOffPeriod = CoolOffPeriod, LockDuration = LockDuration, ExpirationDate = ExpirationDate)
   output <- .ec2$lock_snapshot_output()
@@ -23605,7 +24046,8 @@ ec2_modify_address_attribute <- function(AllocationId, DomainName = NULL, DryRun
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_address_attribute_input(AllocationId = AllocationId, DomainName = DomainName, DryRun = DryRun)
   output <- .ec2$modify_address_attribute_output()
@@ -23643,7 +24085,8 @@ ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_availability_zone_group_input(GroupName = GroupName, OptInStatus = OptInStatus, DryRun = DryRun)
   output <- .ec2$modify_availability_zone_group_output()
@@ -23682,13 +24125,13 @@ ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = 
 #' @param EndDateType Indicates the way in which the Capacity Reservation ends. A Capacity
 #' Reservation can have one of the following end types:
 #' 
-#' -   `unlimited` - The Capacity Reservation remains active until you
-#'     explicitly cancel it. Do not provide an `EndDate` value if
-#'     `EndDateType` is `unlimited`.
+#' - `unlimited` - The Capacity Reservation remains active until you
+#'   explicitly cancel it. Do not provide an `EndDate` value if
+#'   `EndDateType` is `unlimited`.
 #' 
-#' -   `limited` - The Capacity Reservation expires automatically at a
-#'     specified date and time. You must provide an `EndDate` value if
-#'     `EndDateType` is `limited`.
+#' - `limited` - The Capacity Reservation expires automatically at a
+#'   specified date and time. You must provide an `EndDate` value if
+#'   `EndDateType` is `limited`.
 #' @param Accept Reserved. Capacity Reservations you have created are accepted by
 #' default.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -23716,7 +24159,8 @@ ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_capacity_reservation_input(CapacityReservationId = CapacityReservationId, InstanceCount = InstanceCount, EndDate = EndDate, EndDateType = EndDateType, Accept = Accept, DryRun = DryRun, AdditionalInfo = AdditionalInfo, InstanceMatchCriteria = InstanceMatchCriteria)
   output <- .ec2$modify_capacity_reservation_output()
@@ -23774,7 +24218,8 @@ ec2_modify_capacity_reservation_fleet <- function(CapacityReservationFleetId, To
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_capacity_reservation_fleet_input(CapacityReservationFleetId = CapacityReservationFleetId, TotalTargetCapacity = TotalTargetCapacity, EndDate = EndDate, DryRun = DryRun, RemoveEndDate = RemoveEndDate)
   output <- .ec2$modify_capacity_reservation_fleet_output()
@@ -23802,13 +24247,13 @@ ec2_modify_capacity_reservation_fleet <- function(CapacityReservationFleetId, To
 #' is sent to a Cloudwatch Logs log stream. The following information is
 #' logged:
 #' 
-#' -   Client connection requests
+#' - Client connection requests
 #' 
-#' -   Client connection results (successful and unsuccessful)
+#' - Client connection results (successful and unsuccessful)
 #' 
-#' -   Reasons for unsuccessful client connection requests
+#' - Reasons for unsuccessful client connection requests
 #' 
-#' -   Client connection termination time
+#' - Client connection termination time
 #' @param DnsServers Information about the DNS servers to be used by Client VPN connections.
 #' A Client VPN endpoint can have up to two DNS servers.
 #' @param VpnPort The port number to assign to the Client VPN endpoint for TCP and UDP
@@ -23852,7 +24297,8 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, ServerCertificateArn = ServerCertificateArn, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions)
   output <- .ec2$modify_client_vpn_endpoint_output()
@@ -23890,7 +24336,8 @@ ec2_modify_default_credit_specification <- function(DryRun = NULL, InstanceFamil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_default_credit_specification_input(DryRun = DryRun, InstanceFamily = InstanceFamily, CpuCredits = CpuCredits)
   output <- .ec2$modify_default_credit_specification_output()
@@ -23916,15 +24363,15 @@ ec2_modify_default_credit_specification <- function(DryRun = NULL, InstanceFamil
 #' 
 #' You can specify the KMS key using any of the following:
 #' 
-#' -   Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
+#' - Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 #' 
-#' -   Key alias. For example, alias/ExampleAlias.
+#' - Key alias. For example, alias/ExampleAlias.
 #' 
-#' -   Key ARN. For example,
-#'     arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
+#' - Key ARN. For example,
+#'   arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 #' 
-#' -   Alias ARN. For example,
-#'     arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
+#' - Alias ARN. For example,
+#'   arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 #' 
 #' Amazon Web Services authenticates the KMS key asynchronously. Therefore,
 #' if you specify an ID, alias, or ARN that is not valid, the action can
@@ -23945,7 +24392,8 @@ ec2_modify_ebs_default_kms_key_id <- function(KmsKeyId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ebs_default_kms_key_id_input(KmsKeyId = KmsKeyId, DryRun = DryRun)
   output <- .ec2$modify_ebs_default_kms_key_id_output()
@@ -23987,7 +24435,8 @@ ec2_modify_fleet <- function(DryRun = NULL, ExcessCapacityTerminationPolicy = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_fleet_input(DryRun = DryRun, ExcessCapacityTerminationPolicy = ExcessCapacityTerminationPolicy, LaunchTemplateConfigs = LaunchTemplateConfigs, FleetId = FleetId, TargetCapacitySpecification = TargetCapacitySpecification, Context = Context)
   output <- .ec2$modify_fleet_output()
@@ -24034,7 +24483,8 @@ ec2_modify_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_fpga_image_attribute_input(DryRun = DryRun, FpgaImageId = FpgaImageId, Attribute = Attribute, OperationType = OperationType, UserIds = UserIds, UserGroups = UserGroups, ProductCodes = ProductCodes, LoadPermission = LoadPermission, Description = Description, Name = Name)
   output <- .ec2$modify_fpga_image_attribute_output()
@@ -24089,7 +24539,8 @@ ec2_modify_hosts <- function(AutoPlacement = NULL, HostIds, HostRecovery = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_hosts_input(AutoPlacement = AutoPlacement, HostIds = HostIds, HostRecovery = HostRecovery, InstanceType = InstanceType, InstanceFamily = InstanceFamily, HostMaintenance = HostMaintenance)
   output <- .ec2$modify_hosts_output()
@@ -24131,7 +24582,8 @@ ec2_modify_id_format <- function(Resource, UseLongIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_id_format_input(Resource = Resource, UseLongIds = UseLongIds)
   output <- .ec2$modify_id_format_output()
@@ -24178,7 +24630,8 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_identity_id_format_input(PrincipalArn = PrincipalArn, Resource = Resource, UseLongIds = UseLongIds)
   output <- .ec2$modify_identity_id_format_output()
@@ -24243,7 +24696,8 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_image_attribute_input(Attribute = Attribute, Description = Description, ImageId = ImageId, LaunchPermission = LaunchPermission, OperationType = OperationType, ProductCodes = ProductCodes, UserGroups = UserGroups, UserIds = UserIds, Value = Value, DryRun = DryRun, OrganizationArns = OrganizationArns, OrganizationalUnitArns = OrganizationalUnitArns, ImdsSupport = ImdsSupport)
   output <- .ec2$modify_image_attribute_output()
@@ -24318,11 +24772,11 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' @param Kernel Changes the instance's kernel to the specified value. We recommend that
 #' you use PV-GRUB instead of kernels and RAM disks. For more information,
 #' see
-#' [PV-GRUB](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html).
+#' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 #' @param Ramdisk Changes the instance's RAM disk to the specified value. We recommend
 #' that you use PV-GRUB instead of kernels and RAM disks. For more
 #' information, see
-#' [PV-GRUB](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html).
+#' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
 #' @param SriovNetSupport Set to `simple` to enable enhanced networking with the Intel 82599
 #' Virtual Function interface for the instance.
 #' 
@@ -24352,7 +24806,8 @@ ec2_modify_instance_attribute <- function(SourceDestCheck = NULL, Attribute = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_attribute_input(SourceDestCheck = SourceDestCheck, Attribute = Attribute, BlockDeviceMappings = BlockDeviceMappings, DisableApiTermination = DisableApiTermination, DryRun = DryRun, EbsOptimized = EbsOptimized, EnaSupport = EnaSupport, Groups = Groups, InstanceId = InstanceId, InstanceInitiatedShutdownBehavior = InstanceInitiatedShutdownBehavior, InstanceType = InstanceType, Kernel = Kernel, Ramdisk = Ramdisk, SriovNetSupport = SriovNetSupport, UserData = UserData, Value = Value, DisableApiStop = DisableApiStop)
   output <- .ec2$modify_instance_attribute_output()
@@ -24387,7 +24842,8 @@ ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, Capa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_capacity_reservation_attributes_input(InstanceId = InstanceId, CapacityReservationSpecification = CapacityReservationSpecification, DryRun = DryRun)
   output <- .ec2$modify_instance_capacity_reservation_attributes_output()
@@ -24413,7 +24869,7 @@ ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, Capa
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken A unique, case-sensitive token that you provide to ensure idempotency of
 #' your modification request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param InstanceCreditSpecifications &#91;required&#93; Information about the credit option for CPU usage.
 #'
 #' @keywords internal
@@ -24425,7 +24881,8 @@ ec2_modify_instance_credit_specification <- function(DryRun = NULL, ClientToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_credit_specification_input(DryRun = DryRun, ClientToken = ClientToken, InstanceCreditSpecifications = InstanceCreditSpecifications)
   output <- .ec2$modify_instance_credit_specification_output()
@@ -24461,7 +24918,8 @@ ec2_modify_instance_event_start_time <- function(DryRun = NULL, InstanceId, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_event_start_time_input(DryRun = DryRun, InstanceId = InstanceId, InstanceEventId = InstanceEventId, NotBefore = NotBefore)
   output <- .ec2$modify_instance_event_start_time_output()
@@ -24492,20 +24950,20 @@ ec2_modify_instance_event_start_time <- function(DryRun = NULL, InstanceId, Inst
 #' 
 #' Constraints:
 #' 
-#' -   Only hour and day of the week values are supported.
+#' - Only hour and day of the week values are supported.
 #' 
-#' -   For day of the week values, you can specify either integers `0`
-#'     through `6`, or alternative single values `SUN` through `SAT`.
+#' - For day of the week values, you can specify either integers `0`
+#'   through `6`, or alternative single values `SUN` through `SAT`.
 #' 
-#' -   The minute, month, and year must be specified by `*`.
+#' - The minute, month, and year must be specified by `*`.
 #' 
-#' -   The hour value must be one or a multiple range, for example, `0-4`
-#'     or `0-4,20-23`.
+#' - The hour value must be one or a multiple range, for example, `0-4` or
+#'   `0-4,20-23`.
 #' 
-#' -   Each hour range must be \>= 2 hours, for example, `0-2` or `20-23`.
+#' - Each hour range must be \>= 2 hours, for example, `0-2` or `20-23`.
 #' 
-#' -   The event window must be \>= 4 hours. The combined total time ranges
-#'     in the event window must be \>= 4 hours.
+#' - The event window must be \>= 4 hours. The combined total time ranges
+#'   in the event window must be \>= 4 hours.
 #' 
 #' For more information about cron expressions, see
 #' [cron](https://en.wikipedia.org/wiki/Cron) on the *Wikipedia website*.
@@ -24519,7 +24977,8 @@ ec2_modify_instance_event_window <- function(DryRun = NULL, Name = NULL, Instanc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_event_window_input(DryRun = DryRun, Name = Name, InstanceEventWindowId = InstanceEventWindowId, TimeRanges = TimeRanges, CronExpression = CronExpression)
   output <- .ec2$modify_instance_event_window_output()
@@ -24556,7 +25015,8 @@ ec2_modify_instance_maintenance_options <- function(InstanceId, AutoRecovery = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_maintenance_options_input(InstanceId = InstanceId, AutoRecovery = AutoRecovery, DryRun = DryRun)
   output <- .ec2$modify_instance_maintenance_options_output()
@@ -24578,11 +25038,11 @@ ec2_modify_instance_maintenance_options <- function(InstanceId, AutoRecovery = N
 #'
 #' @param HttpTokens Indicates whether IMDSv2 is required.
 #' 
-#' -   `optional` – IMDSv2 is optional, which means that you can use either
-#'     IMDSv2 or IMDSv1.
+#' - `optional` – IMDSv2 is optional, which means that you can use either
+#'   IMDSv2 or IMDSv1.
 #' 
-#' -   `required` – IMDSv2 is required, which means that IMDSv1 is
-#'     disabled, and you must use IMDSv2.
+#' - `required` – IMDSv2 is required, which means that IMDSv1 is disabled,
+#'   and you must use IMDSv2.
 #' @param HttpPutResponseHopLimit The maximum number of hops that the metadata token can travel. To
 #' indicate no preference, specify `-1`.
 #' 
@@ -24609,7 +25069,8 @@ ec2_modify_instance_metadata_defaults <- function(HttpTokens = NULL, HttpPutResp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_metadata_defaults_input(HttpTokens = HttpTokens, HttpPutResponseHopLimit = HttpPutResponseHopLimit, HttpEndpoint = HttpEndpoint, InstanceMetadataTags = InstanceMetadataTags, DryRun = DryRun)
   output <- .ec2$modify_instance_metadata_defaults_output()
@@ -24631,27 +25092,26 @@ ec2_modify_instance_metadata_defaults <- function(HttpTokens = NULL, HttpPutResp
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param HttpTokens Indicates whether IMDSv2 is required.
 #' 
-#' -   `optional` - IMDSv2 is optional. You can choose whether to send a
-#'     session token in your instance metadata retrieval requests. If you
-#'     retrieve IAM role credentials without a session token, you receive
-#'     the IMDSv1 role credentials. If you retrieve IAM role credentials
-#'     using a valid session token, you receive the IMDSv2 role
-#'     credentials.
+#' - `optional` - IMDSv2 is optional. You can choose whether to send a
+#'   session token in your instance metadata retrieval requests. If you
+#'   retrieve IAM role credentials without a session token, you receive the
+#'   IMDSv1 role credentials. If you retrieve IAM role credentials using a
+#'   valid session token, you receive the IMDSv2 role credentials.
 #' 
-#' -   `required` - IMDSv2 is required. You must send a session token in
-#'     your instance metadata retrieval requests. With this option,
-#'     retrieving the IAM role credentials always returns IMDSv2
-#'     credentials; IMDSv1 credentials are not available.
+#' - `required` - IMDSv2 is required. You must send a session token in your
+#'   instance metadata retrieval requests. With this option, retrieving the
+#'   IAM role credentials always returns IMDSv2 credentials; IMDSv1
+#'   credentials are not available.
 #' 
 #' Default:
 #' 
-#' -   If the value of `ImdsSupport` for the Amazon Machine Image (AMI) for
-#'     your instance is `v2.0` and the account level default is set to
-#'     `no-preference`, the default is `required`.
+#' - If the value of `ImdsSupport` for the Amazon Machine Image (AMI) for
+#'   your instance is `v2.0` and the account level default is set to
+#'   `no-preference`, the default is `required`.
 #' 
-#' -   If the value of `ImdsSupport` for the Amazon Machine Image (AMI) for
-#'     your instance is `v2.0`, but the account level default is set to
-#'     `V1 or V2`, the default is `optional`.
+#' - If the value of `ImdsSupport` for the Amazon Machine Image (AMI) for
+#'   your instance is `v2.0`, but the account level default is set to
+#'   `V1 or V2`, the default is `optional`.
 #' 
 #' The default value can also be affected by other combinations of
 #' parameters. For more information, see [Order of precedence for instance
@@ -24689,7 +25149,8 @@ ec2_modify_instance_metadata_options <- function(InstanceId, HttpTokens = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_metadata_options_input(InstanceId = InstanceId, HttpTokens = HttpTokens, HttpPutResponseHopLimit = HttpPutResponseHopLimit, HttpEndpoint = HttpEndpoint, DryRun = DryRun, HttpProtocolIpv6 = HttpProtocolIpv6, InstanceMetadataTags = InstanceMetadataTags)
   output <- .ec2$modify_instance_metadata_options_output()
@@ -24742,7 +25203,8 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_placement_input(Affinity = Affinity, GroupName = GroupName, HostId = HostId, InstanceId = InstanceId, Tenancy = Tenancy, PartitionNumber = PartitionNumber, HostResourceGroupArn = HostResourceGroupArn, GroupId = GroupId)
   output <- .ec2$modify_instance_placement_output()
@@ -24792,7 +25254,8 @@ ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_input(DryRun = DryRun, IpamId = IpamId, Description = Description, AddOperatingRegions = AddOperatingRegions, RemoveOperatingRegions = RemoveOperatingRegions, Tier = Tier, EnablePrivateGua = EnablePrivateGua)
   output <- .ec2$modify_ipam_output()
@@ -24856,7 +25319,8 @@ ec2_modify_ipam_pool <- function(DryRun = NULL, IpamPoolId, Description = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_pool_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Description = Description, AutoImport = AutoImport, AllocationMinNetmaskLength = AllocationMinNetmaskLength, AllocationMaxNetmaskLength = AllocationMaxNetmaskLength, AllocationDefaultNetmaskLength = AllocationDefaultNetmaskLength, ClearAllocationDefaultNetmaskLength = ClearAllocationDefaultNetmaskLength, AddAllocationResourceTags = AddAllocationResourceTags, RemoveAllocationResourceTags = RemoveAllocationResourceTags)
   output <- .ec2$modify_ipam_pool_output()
@@ -24897,7 +25361,8 @@ ec2_modify_ipam_resource_cidr <- function(DryRun = NULL, ResourceId, ResourceCid
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_resource_cidr_input(DryRun = DryRun, ResourceId = ResourceId, ResourceCidr = ResourceCidr, ResourceRegion = ResourceRegion, CurrentIpamScopeId = CurrentIpamScopeId, DestinationIpamScopeId = DestinationIpamScopeId, Monitored = Monitored)
   output <- .ec2$modify_ipam_resource_cidr_output()
@@ -24937,7 +25402,8 @@ ec2_modify_ipam_resource_discovery <- function(DryRun = NULL, IpamResourceDiscov
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_resource_discovery_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, Description = Description, AddOperatingRegions = AddOperatingRegions, RemoveOperatingRegions = RemoveOperatingRegions)
   output <- .ec2$modify_ipam_resource_discovery_output()
@@ -24972,7 +25438,8 @@ ec2_modify_ipam_scope <- function(DryRun = NULL, IpamScopeId, Description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_scope_input(DryRun = DryRun, IpamScopeId = IpamScopeId, Description = Description)
   output <- .ec2$modify_ipam_scope_output()
@@ -24997,7 +25464,7 @@ ec2_modify_ipam_scope <- function(DryRun = NULL, IpamScopeId, Description = NULL
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
 #' of the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
 #' @param LaunchTemplateId The ID of the launch template.
@@ -25019,7 +25486,8 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_launch_template_input(DryRun = DryRun, ClientToken = ClientToken, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, DefaultVersion = DefaultVersion)
   output <- .ec2$modify_launch_template_output()
@@ -25060,7 +25528,8 @@ ec2_modify_local_gateway_route <- function(DestinationCidrBlock = NULL, LocalGat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_local_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, LocalGatewayRouteTableId = LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId = LocalGatewayVirtualInterfaceGroupId, NetworkInterfaceId = NetworkInterfaceId, DryRun = DryRun, DestinationPrefixListId = DestinationPrefixListId)
   output <- .ec2$modify_local_gateway_route_output()
@@ -25106,7 +25575,8 @@ ec2_modify_managed_prefix_list <- function(DryRun = NULL, PrefixListId, CurrentV
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_managed_prefix_list_input(DryRun = DryRun, PrefixListId = PrefixListId, CurrentVersion = CurrentVersion, PrefixListName = PrefixListName, AddEntries = AddEntries, RemoveEntries = RemoveEntries, MaxEntries = MaxEntries)
   output <- .ec2$modify_managed_prefix_list_output()
@@ -25175,7 +25645,8 @@ ec2_modify_network_interface_attribute <- function(Attachment = NULL, Descriptio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_network_interface_attribute_input(Attachment = Attachment, Description = Description, DryRun = DryRun, Groups = Groups, NetworkInterfaceId = NetworkInterfaceId, SourceDestCheck = SourceDestCheck, EnaSrdSpecification = EnaSrdSpecification, EnablePrimaryIpv6 = EnablePrimaryIpv6, ConnectionTrackingSpecification = ConnectionTrackingSpecification, AssociatePublicIpAddress = AssociatePublicIpAddress)
   output <- .ec2$modify_network_interface_attribute_output()
@@ -25218,7 +25689,8 @@ ec2_modify_private_dns_name_options <- function(DryRun = NULL, InstanceId, Priva
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_private_dns_name_options_input(DryRun = DryRun, InstanceId = InstanceId, PrivateDnsHostnameType = PrivateDnsHostnameType, EnableResourceNameDnsARecord = EnableResourceNameDnsARecord, EnableResourceNameDnsAAAARecord = EnableResourceNameDnsAAAARecord)
   output <- .ec2$modify_private_dns_name_options_output()
@@ -25241,7 +25713,7 @@ ec2_modify_private_dns_name_options <- function(DryRun = NULL, InstanceId, Priva
 #' @param ReservedInstancesIds &#91;required&#93; The IDs of the Reserved Instances to modify.
 #' @param ClientToken A unique, case-sensitive token you provide to ensure idempotency of your
 #' modification request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param TargetConfigurations &#91;required&#93; The configuration settings for the Reserved Instances to modify.
 #'
 #' @keywords internal
@@ -25253,7 +25725,8 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_reserved_instances_input(ReservedInstancesIds = ReservedInstancesIds, ClientToken = ClientToken, TargetConfigurations = TargetConfigurations)
   output <- .ec2$modify_reserved_instances_output()
@@ -25288,7 +25761,8 @@ ec2_modify_security_group_rules <- function(GroupId, SecurityGroupRules, DryRun 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_security_group_rules_input(GroupId = GroupId, SecurityGroupRules = SecurityGroupRules, DryRun = DryRun)
   output <- .ec2$modify_security_group_rules_output()
@@ -25328,7 +25802,8 @@ ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermissi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_snapshot_attribute_input(Attribute = Attribute, CreateVolumePermission = CreateVolumePermission, GroupNames = GroupNames, OperationType = OperationType, SnapshotId = SnapshotId, UserIds = UserIds, DryRun = DryRun)
   output <- .ec2$modify_snapshot_attribute_output()
@@ -25363,7 +25838,8 @@ ec2_modify_snapshot_tier <- function(SnapshotId, StorageTier = NULL, DryRun = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_snapshot_tier_input(SnapshotId = SnapshotId, StorageTier = StorageTier, DryRun = DryRun)
   output <- .ec2$modify_snapshot_tier_output()
@@ -25405,7 +25881,8 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_spot_fleet_request_input(ExcessCapacityTerminationPolicy = ExcessCapacityTerminationPolicy, LaunchTemplateConfigs = LaunchTemplateConfigs, SpotFleetRequestId = SpotFleetRequestId, TargetCapacity = TargetCapacity, OnDemandTargetCapacity = OnDemandTargetCapacity, Context = Context)
   output <- .ec2$modify_spot_fleet_request_output()
@@ -25486,7 +25963,8 @@ ec2_modify_subnet_attribute <- function(AssignIpv6AddressOnCreation = NULL, MapP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_subnet_attribute_input(AssignIpv6AddressOnCreation = AssignIpv6AddressOnCreation, MapPublicIpOnLaunch = MapPublicIpOnLaunch, SubnetId = SubnetId, MapCustomerOwnedIpOnLaunch = MapCustomerOwnedIpOnLaunch, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, EnableDns64 = EnableDns64, PrivateDnsHostnameTypeOnLaunch = PrivateDnsHostnameTypeOnLaunch, EnableResourceNameDnsARecordOnLaunch = EnableResourceNameDnsARecordOnLaunch, EnableResourceNameDnsAAAARecordOnLaunch = EnableResourceNameDnsAAAARecordOnLaunch, EnableLniAtDeviceIndex = EnableLniAtDeviceIndex, DisableLniAtDeviceIndex = DisableLniAtDeviceIndex)
   output <- .ec2$modify_subnet_attribute_output()
@@ -25523,7 +26001,8 @@ ec2_modify_traffic_mirror_filter_network_services <- function(TrafficMirrorFilte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_traffic_mirror_filter_network_services_input(TrafficMirrorFilterId = TrafficMirrorFilterId, AddNetworkServices = AddNetworkServices, RemoveNetworkServices = RemoveNetworkServices, DryRun = DryRun)
   output <- .ec2$modify_traffic_mirror_filter_network_services_output()
@@ -25573,7 +26052,8 @@ ec2_modify_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Tra
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_traffic_mirror_filter_rule_input(TrafficMirrorFilterRuleId = TrafficMirrorFilterRuleId, TrafficDirection = TrafficDirection, RuleNumber = RuleNumber, RuleAction = RuleAction, DestinationPortRange = DestinationPortRange, SourcePortRange = SourcePortRange, Protocol = Protocol, DestinationCidrBlock = DestinationCidrBlock, SourceCidrBlock = SourceCidrBlock, Description = Description, RemoveFields = RemoveFields, DryRun = DryRun)
   output <- .ec2$modify_traffic_mirror_filter_rule_output()
@@ -25631,7 +26111,8 @@ ec2_modify_traffic_mirror_session <- function(TrafficMirrorSessionId, TrafficMir
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_traffic_mirror_session_input(TrafficMirrorSessionId = TrafficMirrorSessionId, TrafficMirrorTargetId = TrafficMirrorTargetId, TrafficMirrorFilterId = TrafficMirrorFilterId, PacketLength = PacketLength, SessionNumber = SessionNumber, VirtualNetworkId = VirtualNetworkId, Description = Description, RemoveFields = RemoveFields, DryRun = DryRun)
   output <- .ec2$modify_traffic_mirror_session_output()
@@ -25667,7 +26148,8 @@ ec2_modify_transit_gateway <- function(TransitGatewayId, Description = NULL, Opt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_transit_gateway_input(TransitGatewayId = TransitGatewayId, Description = Description, Options = Options, DryRun = DryRun)
   output <- .ec2$modify_transit_gateway_output()
@@ -25705,7 +26187,8 @@ ec2_modify_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_transit_gateway_prefix_list_reference_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, PrefixListId = PrefixListId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, Blackhole = Blackhole, DryRun = DryRun)
   output <- .ec2$modify_transit_gateway_prefix_list_reference_output()
@@ -25743,7 +26226,8 @@ ec2_modify_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, AddSubnetIds = AddSubnetIds, RemoveSubnetIds = RemoveSubnetIds, Options = Options, DryRun = DryRun)
   output <- .ec2$modify_transit_gateway_vpc_attachment_output()
@@ -25786,7 +26270,8 @@ ec2_modify_verified_access_endpoint <- function(VerifiedAccessEndpointId, Verifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_endpoint_input(VerifiedAccessEndpointId = VerifiedAccessEndpointId, VerifiedAccessGroupId = VerifiedAccessGroupId, LoadBalancerOptions = LoadBalancerOptions, NetworkInterfaceOptions = NetworkInterfaceOptions, Description = Description, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$modify_verified_access_endpoint_output()
@@ -25827,7 +26312,8 @@ ec2_modify_verified_access_endpoint_policy <- function(VerifiedAccessEndpointId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_endpoint_policy_input(VerifiedAccessEndpointId = VerifiedAccessEndpointId, PolicyEnabled = PolicyEnabled, PolicyDocument = PolicyDocument, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$modify_verified_access_endpoint_policy_output()
@@ -25867,7 +26353,8 @@ ec2_modify_verified_access_group <- function(VerifiedAccessGroupId, VerifiedAcce
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_group_input(VerifiedAccessGroupId = VerifiedAccessGroupId, VerifiedAccessInstanceId = VerifiedAccessInstanceId, Description = Description, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$modify_verified_access_group_output()
@@ -25907,7 +26394,8 @@ ec2_modify_verified_access_group_policy <- function(VerifiedAccessGroupId, Polic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_group_policy_input(VerifiedAccessGroupId = VerifiedAccessGroupId, PolicyEnabled = PolicyEnabled, PolicyDocument = PolicyDocument, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$modify_verified_access_group_policy_output()
@@ -25946,7 +26434,8 @@ ec2_modify_verified_access_instance <- function(VerifiedAccessInstanceId, Descri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_instance_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, Description = Description, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$modify_verified_access_instance_output()
@@ -25985,7 +26474,8 @@ ec2_modify_verified_access_instance_logging_configuration <- function(VerifiedAc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_instance_logging_configuration_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, AccessLogs = AccessLogs, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$modify_verified_access_instance_logging_configuration_output()
@@ -26029,7 +26519,8 @@ ec2_modify_verified_access_trust_provider <- function(VerifiedAccessTrustProvide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_trust_provider_input(VerifiedAccessTrustProviderId = VerifiedAccessTrustProviderId, OidcOptions = OidcOptions, DeviceOptions = DeviceOptions, Description = Description, DryRun = DryRun, ClientToken = ClientToken, SseSpecification = SseSpecification)
   output <- .ec2$modify_verified_access_trust_provider_output()
@@ -26059,15 +26550,15 @@ ec2_modify_verified_access_trust_provider <- function(VerifiedAccessTrustProvide
 #' 
 #' The following are the supported volumes sizes for each volume type:
 #' 
-#' -   `gp2` and `gp3`: 1 - 16,384 GiB
+#' - `gp2` and `gp3`: 1 - 16,384 GiB
 #' 
-#' -   `io1`: 4 - 16,384 GiB
+#' - `io1`: 4 - 16,384 GiB
 #' 
-#' -   `io2`: 4 - 65,536 GiB
+#' - `io2`: 4 - 65,536 GiB
 #' 
-#' -   `st1` and `sc1`: 125 - 16,384 GiB
+#' - `st1` and `sc1`: 125 - 16,384 GiB
 #' 
-#' -   `standard`: 1 - 1024 GiB
+#' - `standard`: 1 - 1024 GiB
 #' 
 #' Default: The existing size is retained.
 #' @param VolumeType The target EBS volume type of the volume. For more information, see
@@ -26081,11 +26572,11 @@ ec2_modify_verified_access_trust_provider <- function(VerifiedAccessTrustProvide
 #' 
 #' The following are the supported values for each volume type:
 #' 
-#' -   `gp3`: 3,000 - 16,000 IOPS
+#' - `gp3`: 3,000 - 16,000 IOPS
 #' 
-#' -   `io1`: 100 - 64,000 IOPS
+#' - `io1`: 100 - 64,000 IOPS
 #' 
-#' -   `io2`: 100 - 256,000 IOPS
+#' - `io2`: 100 - 256,000 IOPS
 #' 
 #' For `io2` volumes, you can achieve up to 256,000 IOPS on [instances
 #' built on the Nitro
@@ -26119,7 +26610,8 @@ ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_volume_input(DryRun = DryRun, VolumeId = VolumeId, Size = Size, VolumeType = VolumeType, Iops = Iops, Throughput = Throughput, MultiAttachEnabled = MultiAttachEnabled)
   output <- .ec2$modify_volume_output()
@@ -26154,7 +26646,8 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_volume_attribute_input(AutoEnableIO = AutoEnableIO, VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$modify_volume_attribute_output()
@@ -26202,7 +26695,8 @@ ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_attribute_input(EnableDnsHostnames = EnableDnsHostnames, EnableDnsSupport = EnableDnsSupport, VpcId = VpcId, EnableNetworkAddressUsageMetrics = EnableNetworkAddressUsageMetrics)
   output <- .ec2$modify_vpc_attribute_output()
@@ -26259,7 +26753,8 @@ ec2_modify_vpc_endpoint <- function(DryRun = NULL, VpcEndpointId, ResetPolicy = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_input(DryRun = DryRun, VpcEndpointId = VpcEndpointId, ResetPolicy = ResetPolicy, PolicyDocument = PolicyDocument, AddRouteTableIds = AddRouteTableIds, RemoveRouteTableIds = RemoveRouteTableIds, AddSubnetIds = AddSubnetIds, RemoveSubnetIds = RemoveSubnetIds, AddSecurityGroupIds = AddSecurityGroupIds, RemoveSecurityGroupIds = RemoveSecurityGroupIds, IpAddressType = IpAddressType, DnsOptions = DnsOptions, PrivateDnsEnabled = PrivateDnsEnabled, SubnetConfigurations = SubnetConfigurations)
   output <- .ec2$modify_vpc_endpoint_output()
@@ -26297,7 +26792,8 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_connection_notification_input(DryRun = DryRun, ConnectionNotificationId = ConnectionNotificationId, ConnectionNotificationArn = ConnectionNotificationArn, ConnectionEvents = ConnectionEvents)
   output <- .ec2$modify_vpc_endpoint_connection_notification_output()
@@ -26347,7 +26843,8 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_service_configuration_input(DryRun = DryRun, ServiceId = ServiceId, PrivateDnsName = PrivateDnsName, RemovePrivateDnsName = RemovePrivateDnsName, AcceptanceRequired = AcceptanceRequired, AddNetworkLoadBalancerArns = AddNetworkLoadBalancerArns, RemoveNetworkLoadBalancerArns = RemoveNetworkLoadBalancerArns, AddGatewayLoadBalancerArns = AddGatewayLoadBalancerArns, RemoveGatewayLoadBalancerArns = RemoveGatewayLoadBalancerArns, AddSupportedIpAddressTypes = AddSupportedIpAddressTypes, RemoveSupportedIpAddressTypes = RemoveSupportedIpAddressTypes)
   output <- .ec2$modify_vpc_endpoint_service_configuration_output()
@@ -26384,7 +26881,8 @@ ec2_modify_vpc_endpoint_service_payer_responsibility <- function(DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_service_payer_responsibility_input(DryRun = DryRun, ServiceId = ServiceId, PayerResponsibility = PayerResponsibility)
   output <- .ec2$modify_vpc_endpoint_service_payer_responsibility_output()
@@ -26423,7 +26921,8 @@ ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_service_permissions_input(DryRun = DryRun, ServiceId = ServiceId, AddAllowedPrincipals = AddAllowedPrincipals, RemoveAllowedPrincipals = RemoveAllowedPrincipals)
   output <- .ec2$modify_vpc_endpoint_service_permissions_output()
@@ -26460,7 +26959,8 @@ ec2_modify_vpc_peering_connection_options <- function(AccepterPeeringConnectionO
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_peering_connection_options_input(AccepterPeeringConnectionOptions = AccepterPeeringConnectionOptions, DryRun = DryRun, RequesterPeeringConnectionOptions = RequesterPeeringConnectionOptions, VpcPeeringConnectionId = VpcPeeringConnectionId)
   output <- .ec2$modify_vpc_peering_connection_options_output()
@@ -26495,7 +26995,8 @@ ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_tenancy_input(VpcId = VpcId, InstanceTenancy = InstanceTenancy, DryRun = DryRun)
   output <- .ec2$modify_vpc_tenancy_output()
@@ -26534,7 +27035,8 @@ ec2_modify_vpn_connection <- function(VpnConnectionId, TransitGatewayId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpn_connection_input(VpnConnectionId = VpnConnectionId, TransitGatewayId = TransitGatewayId, CustomerGatewayId = CustomerGatewayId, VpnGatewayId = VpnGatewayId, DryRun = DryRun)
   output <- .ec2$modify_vpn_connection_output()
@@ -26582,7 +27084,8 @@ ec2_modify_vpn_connection_options <- function(VpnConnectionId, LocalIpv4NetworkC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpn_connection_options_input(VpnConnectionId = VpnConnectionId, LocalIpv4NetworkCidr = LocalIpv4NetworkCidr, RemoteIpv4NetworkCidr = RemoteIpv4NetworkCidr, LocalIpv6NetworkCidr = LocalIpv6NetworkCidr, RemoteIpv6NetworkCidr = RemoteIpv6NetworkCidr, DryRun = DryRun)
   output <- .ec2$modify_vpn_connection_options_output()
@@ -26617,7 +27120,8 @@ ec2_modify_vpn_tunnel_certificate <- function(VpnConnectionId, VpnTunnelOutsideI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpn_tunnel_certificate_input(VpnConnectionId = VpnConnectionId, VpnTunnelOutsideIpAddress = VpnTunnelOutsideIpAddress, DryRun = DryRun)
   output <- .ec2$modify_vpn_tunnel_certificate_output()
@@ -26658,7 +27162,8 @@ ec2_modify_vpn_tunnel_options <- function(VpnConnectionId, VpnTunnelOutsideIpAdd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpn_tunnel_options_input(VpnConnectionId = VpnConnectionId, VpnTunnelOutsideIpAddress = VpnTunnelOutsideIpAddress, TunnelOptions = TunnelOptions, DryRun = DryRun, SkipTunnelReplacement = SkipTunnelReplacement)
   output <- .ec2$modify_vpn_tunnel_options_output()
@@ -26692,7 +27197,8 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$monitor_instances_input(InstanceIds = InstanceIds, DryRun = DryRun)
   output <- .ec2$monitor_instances_output()
@@ -26726,7 +27232,8 @@ ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$move_address_to_vpc_input(DryRun = DryRun, PublicIp = PublicIp)
   output <- .ec2$move_address_to_vpc_output()
@@ -26762,7 +27269,8 @@ ec2_move_byoip_cidr_to_ipam <- function(DryRun = NULL, Cidr, IpamPoolId, IpamPoo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$move_byoip_cidr_to_ipam_input(DryRun = DryRun, Cidr = Cidr, IpamPoolId = IpamPoolId, IpamPoolOwner = IpamPoolOwner)
   output <- .ec2$move_byoip_cidr_to_ipam_output()
@@ -26788,7 +27296,7 @@ ec2_move_byoip_cidr_to_ipam <- function(DryRun = NULL, Cidr, IpamPoolId, IpamPoo
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param SourceCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation from which you want to move capacity.
 #' @param DestinationCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation that you want to move capacity into.
 #' @param InstanceCount &#91;required&#93; The number of instances that you want to move from the source Capacity
@@ -26803,7 +27311,8 @@ ec2_move_capacity_reservation_instances <- function(DryRun = NULL, ClientToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$move_capacity_reservation_instances_input(DryRun = DryRun, ClientToken = ClientToken, SourceCapacityReservationId = SourceCapacityReservationId, DestinationCapacityReservationId = DestinationCapacityReservationId, InstanceCount = InstanceCount)
   output <- .ec2$move_capacity_reservation_instances_output()
@@ -26853,11 +27362,11 @@ ec2_move_capacity_reservation_instances <- function(DryRun = NULL, ClientToken =
 #' You can provision BYOIP address ranges to and advertise them in the
 #' following Local Zone network border groups:
 #' 
-#' -   us-east-1-dfw-2
+#' - us-east-1-dfw-2
 #' 
-#' -   us-west-2-lax-1
+#' - us-west-2-lax-1
 #' 
-#' -   us-west-2-phx-2
+#' - us-west-2-phx-2
 #' 
 #' You cannot provision or advertise BYOIPv6 address ranges in Local Zones
 #' at this time.
@@ -26871,7 +27380,8 @@ ec2_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext = NULL, Publ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$provision_byoip_cidr_input(Cidr = Cidr, CidrAuthorizationContext = CidrAuthorizationContext, PubliclyAdvertisable = PubliclyAdvertisable, Description = Description, DryRun = DryRun, PoolTagSpecifications = PoolTagSpecifications, MultiRegion = MultiRegion, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$provision_byoip_cidr_output()
@@ -26908,7 +27418,8 @@ ec2_provision_ipam_byoasn <- function(DryRun = NULL, IpamId, Asn, AsnAuthorizati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$provision_ipam_byoasn_input(DryRun = DryRun, IpamId = IpamId, Asn = Asn, AsnAuthorizationContext = AsnAuthorizationContext)
   output <- .ec2$provision_ipam_byoasn_output()
@@ -26961,7 +27472,8 @@ ec2_provision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$provision_ipam_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr, CidrAuthorizationContext = CidrAuthorizationContext, NetmaskLength = NetmaskLength, ClientToken = ClientToken, VerificationMethod = VerificationMethod, IpamExternalResourceVerificationTokenId = IpamExternalResourceVerificationTokenId)
   output <- .ec2$provision_ipam_pool_cidr_output()
@@ -27004,7 +27516,8 @@ ec2_provision_public_ipv_4_pool_cidr <- function(DryRun = NULL, IpamPoolId, Pool
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$provision_public_ipv_4_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, PoolId = PoolId, NetmaskLength = NetmaskLength, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$provision_public_ipv_4_pool_cidr_output()
@@ -27040,7 +27553,8 @@ ec2_purchase_capacity_block <- function(DryRun = NULL, TagSpecifications = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$purchase_capacity_block_input(DryRun = DryRun, TagSpecifications = TagSpecifications, CapacityBlockOfferingId = CapacityBlockOfferingId, InstancePlatform = InstancePlatform)
   output <- .ec2$purchase_capacity_block_output()
@@ -27062,7 +27576,7 @@ ec2_purchase_capacity_block <- function(DryRun = NULL, TagSpecifications = NULL,
 #'
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param CurrencyCode The currency in which the `totalUpfrontPrice`, `LimitPrice`, and
 #' `totalHourlyPrice` amounts are specified. At this time, the only
 #' supported currency is `USD`.
@@ -27087,7 +27601,8 @@ ec2_purchase_host_reservation <- function(ClientToken = NULL, CurrencyCode = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$purchase_host_reservation_input(ClientToken = ClientToken, CurrencyCode = CurrencyCode, HostIdSet = HostIdSet, LimitPrice = LimitPrice, OfferingId = OfferingId, TagSpecifications = TagSpecifications)
   output <- .ec2$purchase_host_reservation_output()
@@ -27127,7 +27642,8 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$purchase_reserved_instances_offering_input(InstanceCount = InstanceCount, ReservedInstancesOfferingId = ReservedInstancesOfferingId, DryRun = DryRun, LimitPrice = LimitPrice, PurchaseTime = PurchaseTime)
   output <- .ec2$purchase_reserved_instances_offering_output()
@@ -27148,7 +27664,7 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 #'
 #' @param ClientToken Unique, case-sensitive identifier that ensures the idempotency of the
 #' request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -27164,7 +27680,8 @@ ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$purchase_scheduled_instances_input(ClientToken = ClientToken, DryRun = DryRun, PurchaseRequests = PurchaseRequests)
   output <- .ec2$purchase_scheduled_instances_output()
@@ -27198,7 +27715,8 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reboot_instances_input(InstanceIds = InstanceIds, DryRun = DryRun)
   output <- .ec2$reboot_instances_output()
@@ -27328,7 +27846,8 @@ ec2_register_image <- function(ImageLocation = NULL, Architecture = NULL, BlockD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$register_image_input(ImageLocation = ImageLocation, Architecture = Architecture, BlockDeviceMappings = BlockDeviceMappings, Description = Description, DryRun = DryRun, EnaSupport = EnaSupport, KernelId = KernelId, Name = Name, BillingProducts = BillingProducts, RamdiskId = RamdiskId, RootDeviceName = RootDeviceName, SriovNetSupport = SriovNetSupport, VirtualizationType = VirtualizationType, BootMode = BootMode, TpmSupport = TpmSupport, UefiData = UefiData, ImdsSupport = ImdsSupport, TagSpecifications = TagSpecifications)
   output <- .ec2$register_image_output()
@@ -27363,7 +27882,8 @@ ec2_register_instance_event_notification_attributes <- function(DryRun = NULL, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$register_instance_event_notification_attributes_input(DryRun = DryRun, InstanceTagAttribute = InstanceTagAttribute)
   output <- .ec2$register_instance_event_notification_attributes_output()
@@ -27401,7 +27921,8 @@ ec2_register_transit_gateway_multicast_group_members <- function(TransitGatewayM
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$register_transit_gateway_multicast_group_members_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, GroupIpAddress = GroupIpAddress, NetworkInterfaceIds = NetworkInterfaceIds, DryRun = DryRun)
   output <- .ec2$register_transit_gateway_multicast_group_members_output()
@@ -27439,7 +27960,8 @@ ec2_register_transit_gateway_multicast_group_sources <- function(TransitGatewayM
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$register_transit_gateway_multicast_group_sources_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, GroupIpAddress = GroupIpAddress, NetworkInterfaceIds = NetworkInterfaceIds, DryRun = DryRun)
   output <- .ec2$register_transit_gateway_multicast_group_sources_output()
@@ -27477,7 +27999,8 @@ ec2_reject_transit_gateway_multicast_domain_associations <- function(TransitGate
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_transit_gateway_multicast_domain_associations_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, SubnetIds = SubnetIds, DryRun = DryRun)
   output <- .ec2$reject_transit_gateway_multicast_domain_associations_output()
@@ -27511,7 +28034,8 @@ ec2_reject_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_transit_gateway_peering_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$reject_transit_gateway_peering_attachment_output()
@@ -27545,7 +28069,8 @@ ec2_reject_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$reject_transit_gateway_vpc_attachment_output()
@@ -27580,7 +28105,8 @@ ec2_reject_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_vpc_endpoint_connections_input(DryRun = DryRun, ServiceId = ServiceId, VpcEndpointIds = VpcEndpointIds)
   output <- .ec2$reject_vpc_endpoint_connections_output()
@@ -27614,7 +28140,8 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_vpc_peering_connection_input(DryRun = DryRun, VpcPeeringConnectionId = VpcPeeringConnectionId)
   output <- .ec2$reject_vpc_peering_connection_output()
@@ -27654,7 +28181,8 @@ ec2_release_address <- function(AllocationId = NULL, PublicIp = NULL, NetworkBor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$release_address_input(AllocationId = AllocationId, PublicIp = PublicIp, NetworkBorderGroup = NetworkBorderGroup, DryRun = DryRun)
   output <- .ec2$release_address_output()
@@ -27685,7 +28213,8 @@ ec2_release_hosts <- function(HostIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$release_hosts_input(HostIds = HostIds)
   output <- .ec2$release_hosts_output()
@@ -27722,7 +28251,8 @@ ec2_release_ipam_pool_allocation <- function(DryRun = NULL, IpamPoolId, Cidr, Ip
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$release_ipam_pool_allocation_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr, IpamPoolAllocationId = IpamPoolAllocationId)
   output <- .ec2$release_ipam_pool_allocation_output()
@@ -27753,7 +28283,8 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_iam_instance_profile_association_input(IamInstanceProfile = IamInstanceProfile, AssociationId = AssociationId)
   output <- .ec2$replace_iam_instance_profile_association_output()
@@ -27789,7 +28320,8 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_network_acl_association_input(AssociationId = AssociationId, DryRun = DryRun, NetworkAclId = NetworkAclId)
   output <- .ec2$replace_network_acl_association_output()
@@ -27844,7 +28376,8 @@ ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egres
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_network_acl_entry_input(CidrBlock = CidrBlock, DryRun = DryRun, Egress = Egress, IcmpTypeCode = IcmpTypeCode, Ipv6CidrBlock = Ipv6CidrBlock, NetworkAclId = NetworkAclId, PortRange = PortRange, Protocol = Protocol, RuleAction = RuleAction, RuleNumber = RuleNumber)
   output <- .ec2$replace_network_acl_entry_output()
@@ -27897,7 +28430,8 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_route_input(DestinationCidrBlock = DestinationCidrBlock, DestinationIpv6CidrBlock = DestinationIpv6CidrBlock, DestinationPrefixListId = DestinationPrefixListId, DryRun = DryRun, VpcEndpointId = VpcEndpointId, EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId, GatewayId = GatewayId, InstanceId = InstanceId, LocalTarget = LocalTarget, NatGatewayId = NatGatewayId, TransitGatewayId = TransitGatewayId, LocalGatewayId = LocalGatewayId, CarrierGatewayId = CarrierGatewayId, NetworkInterfaceId = NetworkInterfaceId, RouteTableId = RouteTableId, VpcPeeringConnectionId = VpcPeeringConnectionId, CoreNetworkArn = CoreNetworkArn)
   output <- .ec2$replace_route_output()
@@ -27933,7 +28467,8 @@ ec2_replace_route_table_association <- function(AssociationId, DryRun = NULL, Ro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_route_table_association_input(AssociationId = AssociationId, DryRun = DryRun, RouteTableId = RouteTableId)
   output <- .ec2$replace_route_table_association_output()
@@ -27972,7 +28507,8 @@ ec2_replace_transit_gateway_route <- function(DestinationCidrBlock, TransitGatew
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_transit_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, Blackhole = Blackhole, DryRun = DryRun)
   output <- .ec2$replace_transit_gateway_route_output()
@@ -28008,7 +28544,8 @@ ec2_replace_vpn_tunnel <- function(VpnConnectionId, VpnTunnelOutsideIpAddress, A
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_vpn_tunnel_input(VpnConnectionId = VpnConnectionId, VpnTunnelOutsideIpAddress = VpnTunnelOutsideIpAddress, ApplyPendingMaintenance = ApplyPendingMaintenance, DryRun = DryRun)
   output <- .ec2$replace_vpn_tunnel_output()
@@ -28036,30 +28573,27 @@ ec2_replace_vpn_tunnel <- function(VpnConnectionId, VpnTunnelOutsideIpAddress, A
 #' @param Instances &#91;required&#93; The instances.
 #' @param ReasonCodes &#91;required&#93; The reason codes that describe the health state of your instance.
 #' 
-#' -   `instance-stuck-in-state`: My instance is stuck in a state.
+#' - `instance-stuck-in-state`: My instance is stuck in a state.
 #' 
-#' -   `unresponsive`: My instance is unresponsive.
+#' - `unresponsive`: My instance is unresponsive.
 #' 
-#' -   `not-accepting-credentials`: My instance is not accepting my
-#'     credentials.
+#' - `not-accepting-credentials`: My instance is not accepting my
+#'   credentials.
 #' 
-#' -   `password-not-available`: A password is not available for my
-#'     instance.
+#' - `password-not-available`: A password is not available for my instance.
 #' 
-#' -   `performance-network`: My instance is experiencing performance
-#'     problems that I believe are network related.
+#' - `performance-network`: My instance is experiencing performance
+#'   problems that I believe are network related.
 #' 
-#' -   `performance-instance-store`: My instance is experiencing
-#'     performance problems that I believe are related to the instance
-#'     stores.
+#' - `performance-instance-store`: My instance is experiencing performance
+#'   problems that I believe are related to the instance stores.
 #' 
-#' -   `performance-ebs-volume`: My instance is experiencing performance
-#'     problems that I believe are related to an EBS volume.
+#' - `performance-ebs-volume`: My instance is experiencing performance
+#'   problems that I believe are related to an EBS volume.
 #' 
-#' -   `performance-other`: My instance is experiencing performance
-#'     problems.
+#' - `performance-other`: My instance is experiencing performance problems.
 #' 
-#' -   `other`: \[explain using the description parameter\]
+#' - `other`: \[explain using the description parameter\]
 #' @param StartTime The time at which the reported instance health state began.
 #' @param Status &#91;required&#93; The status of all instances listed.
 #'
@@ -28072,7 +28606,8 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$report_instance_status_input(Description = Description, DryRun = DryRun, EndTime = EndTime, Instances = Instances, ReasonCodes = ReasonCodes, StartTime = StartTime, Status = Status)
   output <- .ec2$report_instance_status_output()
@@ -28106,7 +28641,8 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$request_spot_fleet_input(DryRun = DryRun, SpotFleetRequestConfig = SpotFleetRequestConfig)
   output <- .ec2$request_spot_fleet_output()
@@ -28150,7 +28686,7 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
 #' idempotency in Amazon EC2 API
-#' requests](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
+#' requests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 User Guide*.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -28186,14 +28722,14 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' @param ValidUntil The end date of the request, in UTC format
 #' (*YYYY*-*MM*-*DD*T*HH*:*MM*:*SS*Z).
 #' 
-#' -   For a persistent request, the request remains active until the
-#'     `ValidUntil` date and time is reached. Otherwise, the request
-#'     remains active until you cancel it.
+#' - For a persistent request, the request remains active until the
+#'   `ValidUntil` date and time is reached. Otherwise, the request remains
+#'   active until you cancel it.
 #' 
-#' -   For a one-time request, the request remains active until all
-#'     instances launch, the request is canceled, or the `ValidUntil` date
-#'     and time is reached. By default, the request is valid for 7 days
-#'     from the date the request was created.
+#' - For a one-time request, the request remains active until all instances
+#'   launch, the request is canceled, or the `ValidUntil` date and time is
+#'   reached. By default, the request is valid for 7 days from the date the
+#'   request was created.
 #' @param TagSpecifications The key-value pair for tagging the Spot Instance request on creation.
 #' The value for `ResourceType` must be `spot-instances-request`, otherwise
 #' the Spot Instance request fails. To tag the Spot Instance request after
@@ -28210,7 +28746,8 @@ ec2_request_spot_instances <- function(AvailabilityZoneGroup = NULL, BlockDurati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$request_spot_instances_input(AvailabilityZoneGroup = AvailabilityZoneGroup, BlockDurationMinutes = BlockDurationMinutes, ClientToken = ClientToken, DryRun = DryRun, InstanceCount = InstanceCount, LaunchGroup = LaunchGroup, LaunchSpecification = LaunchSpecification, SpotPrice = SpotPrice, Type = Type, ValidFrom = ValidFrom, ValidUntil = ValidUntil, TagSpecifications = TagSpecifications, InstanceInterruptionBehavior = InstanceInterruptionBehavior)
   output <- .ec2$request_spot_instances_output()
@@ -28245,7 +28782,8 @@ ec2_reset_address_attribute <- function(AllocationId, Attribute, DryRun = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_address_attribute_input(AllocationId = AllocationId, Attribute = Attribute, DryRun = DryRun)
   output <- .ec2$reset_address_attribute_output()
@@ -28279,7 +28817,8 @@ ec2_reset_ebs_default_kms_key_id <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_ebs_default_kms_key_id_input(DryRun = DryRun)
   output <- .ec2$reset_ebs_default_kms_key_id_output()
@@ -28315,7 +28854,8 @@ ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_fpga_image_attribute_input(DryRun = DryRun, FpgaImageId = FpgaImageId, Attribute = Attribute)
   output <- .ec2$reset_fpga_image_attribute_output()
@@ -28351,7 +28891,8 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_image_attribute_input(Attribute = Attribute, ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$reset_image_attribute_output()
@@ -28389,7 +28930,8 @@ ec2_reset_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_instance_attribute_input(Attribute = Attribute, DryRun = DryRun, InstanceId = InstanceId)
   output <- .ec2$reset_instance_attribute_output()
@@ -28424,7 +28966,8 @@ ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_network_interface_attribute_input(DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId, SourceDestCheck = SourceDestCheck)
   output <- .ec2$reset_network_interface_attribute_output()
@@ -28460,7 +29003,8 @@ ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_snapshot_attribute_input(Attribute = Attribute, SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$reset_snapshot_attribute_output()
@@ -28494,7 +29038,8 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_address_to_classic_input(DryRun = DryRun, PublicIp = PublicIp)
   output <- .ec2$restore_address_to_classic_output()
@@ -28509,7 +29054,7 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
 #' Restores an AMI from the Recycle Bin
 #'
 #' @description
-#' Restores an AMI from the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html) in the *Amazon EC2 User Guide*.
+#' Restores an AMI from the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_restore_image_from_recycle_bin/](https://www.paws-r-sdk.com/docs/ec2_restore_image_from_recycle_bin/) for full documentation.
 #'
@@ -28528,7 +29073,8 @@ ec2_restore_image_from_recycle_bin <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_image_from_recycle_bin_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$restore_image_from_recycle_bin_output()
@@ -28565,7 +29111,8 @@ ec2_restore_managed_prefix_list_version <- function(DryRun = NULL, PrefixListId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_managed_prefix_list_version_input(DryRun = DryRun, PrefixListId = PrefixListId, PreviousVersion = PreviousVersion, CurrentVersion = CurrentVersion)
   output <- .ec2$restore_managed_prefix_list_version_output()
@@ -28599,7 +29146,8 @@ ec2_restore_snapshot_from_recycle_bin <- function(SnapshotId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_snapshot_from_recycle_bin_input(SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$restore_snapshot_from_recycle_bin_output()
@@ -28644,7 +29192,8 @@ ec2_restore_snapshot_tier <- function(SnapshotId, TemporaryRestoreDays = NULL, P
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_snapshot_tier_input(SnapshotId = SnapshotId, TemporaryRestoreDays = TemporaryRestoreDays, PermanentRestore = PermanentRestore, DryRun = DryRun)
   output <- .ec2$restore_snapshot_tier_output()
@@ -28683,7 +29232,8 @@ ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$revoke_client_vpn_ingress_input(ClientVpnEndpointId = ClientVpnEndpointId, TargetNetworkCidr = TargetNetworkCidr, AccessGroupId = AccessGroupId, RevokeAllGroups = RevokeAllGroups, DryRun = DryRun)
   output <- .ec2$revoke_client_vpn_ingress_output()
@@ -28730,7 +29280,8 @@ ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$revoke_security_group_egress_input(DryRun = DryRun, GroupId = GroupId, IpPermissions = IpPermissions, SecurityGroupRuleIds = SecurityGroupRuleIds, CidrIp = CidrIp, FromPort = FromPort, IpProtocol = IpProtocol, ToPort = ToPort, SourceSecurityGroupName = SourceSecurityGroupName, SourceSecurityGroupOwnerId = SourceSecurityGroupOwnerId)
   output <- .ec2$revoke_security_group_egress_output()
@@ -28787,7 +29338,8 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$revoke_security_group_ingress_input(CidrIp = CidrIp, FromPort = FromPort, GroupId = GroupId, GroupName = GroupName, IpPermissions = IpPermissions, IpProtocol = IpProtocol, SourceSecurityGroupName = SourceSecurityGroupName, SourceSecurityGroupOwnerId = SourceSecurityGroupOwnerId, ToPort = ToPort, DryRun = DryRun, SecurityGroupRuleIds = SecurityGroupRuleIds)
   output <- .ec2$revoke_security_group_ingress_output()
@@ -28837,7 +29389,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' 
 #' We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 #' more information, see
-#' [PV-GRUB](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html)
+#' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
 #' in the *Amazon EC2 User Guide*.
 #' @param KeyName The name of the key pair. You can create a key pair using
 #' [`create_key_pair`][ec2_create_key_pair] or
@@ -28872,7 +29424,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' 
 #' We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 #' more information, see
-#' [PV-GRUB](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html)
+#' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
 #' in the *Amazon EC2 User Guide*.
 #' @param SecurityGroupIds The IDs of the security groups. You can create a security group using
 #' [`create_security_group`][ec2_create_security_group].
@@ -28900,7 +29452,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' generated token is used for the request to ensure idempotency.
 #' 
 #' For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' 
 #' Constraints: Maximum 64 ASCII characters
 #' @param DisableApiTermination If you set this parameter to `true`, you can't terminate the instance
@@ -28948,19 +29500,19 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' 
 #' Amazon Elastic Inference (EI) is no longer available to new customers.
 #' For more information, see [Amazon Elastic Inference
-#' FAQs](https://aws.amazon.com/machine-learning/elastic-inference/faqs/).
+#' FAQs](https://aws.amazon.com/sagemaker/deploy/).
 #' @param TagSpecifications The tags to apply to the resources that are created during instance
 #' launch.
 #' 
 #' You can specify tags for the following resources only:
 #' 
-#' -   Instances
+#' - Instances
 #' 
-#' -   Volumes
+#' - Volumes
 #' 
-#' -   Spot Instance requests
+#' - Spot Instance requests
 #' 
-#' -   Network interfaces
+#' - Network interfaces
 #' 
 #' To tag a resource after it has been created, see
 #' [`create_tags`][ec2_create_tags].
@@ -29043,7 +29595,8 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$run_instances_input(BlockDeviceMappings = BlockDeviceMappings, ImageId = ImageId, InstanceType = InstanceType, Ipv6AddressCount = Ipv6AddressCount, Ipv6Addresses = Ipv6Addresses, KernelId = KernelId, KeyName = KeyName, MaxCount = MaxCount, MinCount = MinCount, Monitoring = Monitoring, Placement = Placement, RamdiskId = RamdiskId, SecurityGroupIds = SecurityGroupIds, SecurityGroups = SecurityGroups, SubnetId = SubnetId, UserData = UserData, AdditionalInfo = AdditionalInfo, ClientToken = ClientToken, DisableApiTermination = DisableApiTermination, DryRun = DryRun, EbsOptimized = EbsOptimized, IamInstanceProfile = IamInstanceProfile, InstanceInitiatedShutdownBehavior = InstanceInitiatedShutdownBehavior, NetworkInterfaces = NetworkInterfaces, PrivateIpAddress = PrivateIpAddress, ElasticGpuSpecification = ElasticGpuSpecification, ElasticInferenceAccelerators = ElasticInferenceAccelerators, TagSpecifications = TagSpecifications, LaunchTemplate = LaunchTemplate, InstanceMarketOptions = InstanceMarketOptions, CreditSpecification = CreditSpecification, CpuOptions = CpuOptions, CapacityReservationSpecification = CapacityReservationSpecification, HibernationOptions = HibernationOptions, LicenseSpecifications = LicenseSpecifications, MetadataOptions = MetadataOptions, EnclaveOptions = EnclaveOptions, PrivateDnsNameOptions = PrivateDnsNameOptions, MaintenanceOptions = MaintenanceOptions, DisableApiStop = DisableApiStop, EnablePrimaryIpv6 = EnablePrimaryIpv6)
   output <- .ec2$run_instances_output()
@@ -29064,7 +29617,7 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #'
 #' @param ClientToken Unique, case-sensitive identifier that ensures the idempotency of the
 #' request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -29085,7 +29638,8 @@ ec2_run_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, Insta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$run_scheduled_instances_input(ClientToken = ClientToken, DryRun = DryRun, InstanceCount = InstanceCount, LaunchSpecification = LaunchSpecification, ScheduledInstanceId = ScheduledInstanceId)
   output <- .ec2$run_scheduled_instances_output()
@@ -29107,26 +29661,25 @@ ec2_run_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, Insta
 #' @param LocalGatewayRouteTableId &#91;required&#93; The ID of the local gateway route table.
 #' @param Filters One or more filters.
 #' 
-#' -   `prefix-list-id` - The ID of the prefix list.
+#' - `prefix-list-id` - The ID of the prefix list.
 #' 
-#' -   `route-search.exact-match` - The exact match of the specified
-#'     filter.
+#' - `route-search.exact-match` - The exact match of the specified filter.
 #' 
-#' -   `route-search.longest-prefix-match` - The longest prefix that
-#'     matches the route.
+#' - `route-search.longest-prefix-match` - The longest prefix that matches
+#'   the route.
 #' 
-#' -   `route-search.subnet-of-match` - The routes with a subnet that match
-#'     the specified CIDR filter.
+#' - `route-search.subnet-of-match` - The routes with a subnet that match
+#'   the specified CIDR filter.
 #' 
-#' -   `route-search.supernet-of-match` - The routes with a CIDR that
-#'     encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
-#'     10.0.1.0/31 routes in your route table and you specify
-#'     `supernet-of-match` as 10.0.1.0/30, then the result returns
-#'     10.0.1.0/29.
+#' - `route-search.supernet-of-match` - The routes with a CIDR that
+#'   encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
+#'   10.0.1.0/31 routes in your route table and you specify
+#'   `supernet-of-match` as 10.0.1.0/30, then the result returns
+#'   10.0.1.0/29.
 #' 
-#' -   `state` - The state of the route.
+#' - `state` - The state of the route.
 #' 
-#' -   `type` - The route type.
+#' - `type` - The route type.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -29145,7 +29698,8 @@ ec2_search_local_gateway_routes <- function(LocalGatewayRouteTableId, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes"),
+    stream_api = FALSE
   )
   input <- .ec2$search_local_gateway_routes_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$search_local_gateway_routes_output()
@@ -29168,28 +29722,28 @@ ec2_search_local_gateway_routes <- function(LocalGatewayRouteTableId, Filters = 
 #' @param TransitGatewayMulticastDomainId &#91;required&#93; The ID of the transit gateway multicast domain.
 #' @param Filters One or more filters. The possible values are:
 #' 
-#' -   `group-ip-address` - The IP address of the transit gateway multicast
-#'     group.
+#' - `group-ip-address` - The IP address of the transit gateway multicast
+#'   group.
 #' 
-#' -   `is-group-member` - The resource is a group member. Valid values are
-#'     `true` | `false`.
+#' - `is-group-member` - The resource is a group member. Valid values are
+#'   `true` | `false`.
 #' 
-#' -   `is-group-source` - The resource is a group source. Valid values are
-#'     `true` | `false`.
+#' - `is-group-source` - The resource is a group source. Valid values are
+#'   `true` | `false`.
 #' 
-#' -   `member-type` - The member type. Valid values are `igmp` | `static`.
+#' - `member-type` - The member type. Valid values are `igmp` | `static`.
 #' 
-#' -   `resource-id` - The ID of the resource.
+#' - `resource-id` - The ID of the resource.
 #' 
-#' -   `resource-type` - The type of resource. Valid values are `vpc` |
-#'     `vpn` | `direct-connect-gateway` | `tgw-peering`.
+#' - `resource-type` - The type of resource. Valid values are `vpc` | `vpn`
+#'   | `direct-connect-gateway` | `tgw-peering`.
 #' 
-#' -   `source-type` - The source type. Valid values are `igmp` | `static`.
+#' - `source-type` - The source type. Valid values are `igmp` | `static`.
 #' 
-#' -   `subnet-id` - The ID of the subnet.
+#' - `subnet-id` - The ID of the subnet.
 #' 
-#' -   `transit-gateway-attachment-id` - The id of the transit gateway
-#'     attachment.
+#' - `transit-gateway-attachment-id` - The id of the transit gateway
+#'   attachment.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
 #' the remaining results, make another call with the returned `nextToken`
 #' value.
@@ -29208,7 +29762,8 @@ ec2_search_transit_gateway_multicast_groups <- function(TransitGatewayMulticastD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$search_transit_gateway_multicast_groups_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$search_transit_gateway_multicast_groups_output()
@@ -29230,36 +29785,34 @@ ec2_search_transit_gateway_multicast_groups <- function(TransitGatewayMulticastD
 #' @param TransitGatewayRouteTableId &#91;required&#93; The ID of the transit gateway route table.
 #' @param Filters &#91;required&#93; One or more filters. The possible values are:
 #' 
-#' -   `attachment.transit-gateway-attachment-id`- The id of the transit
-#'     gateway attachment.
+#' - `attachment.transit-gateway-attachment-id`- The id of the transit
+#'   gateway attachment.
 #' 
-#' -   `attachment.resource-id` - The resource id of the transit gateway
-#'     attachment.
+#' - `attachment.resource-id` - The resource id of the transit gateway
+#'   attachment.
 #' 
-#' -   `attachment.resource-type` - The attachment resource type. Valid
-#'     values are `vpc` | `vpn` | `direct-connect-gateway` | `peering` |
-#'     `connect`.
+#' - `attachment.resource-type` - The attachment resource type. Valid
+#'   values are `vpc` | `vpn` | `direct-connect-gateway` | `peering` |
+#'   `connect`.
 #' 
-#' -   `prefix-list-id` - The ID of the prefix list.
+#' - `prefix-list-id` - The ID of the prefix list.
 #' 
-#' -   `route-search.exact-match` - The exact match of the specified
-#'     filter.
+#' - `route-search.exact-match` - The exact match of the specified filter.
 #' 
-#' -   `route-search.longest-prefix-match` - The longest prefix that
-#'     matches the route.
+#' - `route-search.longest-prefix-match` - The longest prefix that matches
+#'   the route.
 #' 
-#' -   `route-search.subnet-of-match` - The routes with a subnet that match
-#'     the specified CIDR filter.
+#' - `route-search.subnet-of-match` - The routes with a subnet that match
+#'   the specified CIDR filter.
 #' 
-#' -   `route-search.supernet-of-match` - The routes with a CIDR that
-#'     encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
-#'     10.0.1.0/31 routes in your route table and you specify
-#'     supernet-of-match as 10.0.1.0/30, then the result returns
-#'     10.0.1.0/29.
+#' - `route-search.supernet-of-match` - The routes with a CIDR that
+#'   encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
+#'   10.0.1.0/31 routes in your route table and you specify
+#'   supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
 #' 
-#' -   `state` - The state of the route (`active` | `blackhole`).
+#' - `state` - The state of the route (`active` | `blackhole`).
 #' 
-#' -   `type` - The type of route (`propagated` | `static`).
+#' - `type` - The type of route (`propagated` | `static`).
 #' @param MaxResults The maximum number of routes to return. If a value is not provided, the
 #' default is 1000.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -29276,7 +29829,8 @@ ec2_search_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$search_transit_gateway_routes_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$search_transit_gateway_routes_output()
@@ -29312,7 +29866,8 @@ ec2_send_diagnostic_interrupt <- function(InstanceId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$send_diagnostic_interrupt_input(InstanceId = InstanceId, DryRun = DryRun)
   output <- .ec2$send_diagnostic_interrupt_output()
@@ -29347,7 +29902,8 @@ ec2_start_instances <- function(InstanceIds, AdditionalInfo = NULL, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$start_instances_input(InstanceIds = InstanceIds, AdditionalInfo = AdditionalInfo, DryRun = DryRun)
   output <- .ec2$start_instances_output()
@@ -29385,7 +29941,8 @@ ec2_start_network_insights_access_scope_analysis <- function(NetworkInsightsAcce
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$start_network_insights_access_scope_analysis_input(NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId, DryRun = DryRun, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$start_network_insights_access_scope_analysis_output()
@@ -29426,7 +29983,8 @@ ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, Additiona
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$start_network_insights_analysis_input(NetworkInsightsPathId = NetworkInsightsPathId, AdditionalAccounts = AdditionalAccounts, FilterInArns = FilterInArns, DryRun = DryRun, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$start_network_insights_analysis_output()
@@ -29461,7 +30019,8 @@ ec2_start_vpc_endpoint_service_private_dns_verification <- function(DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$start_vpc_endpoint_service_private_dns_verification_input(DryRun = DryRun, ServiceId = ServiceId)
   output <- .ec2$start_vpc_endpoint_service_private_dns_verification_output()
@@ -29508,7 +30067,8 @@ ec2_stop_instances <- function(InstanceIds, Hibernate = NULL, DryRun = NULL, For
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$stop_instances_input(InstanceIds = InstanceIds, Hibernate = Hibernate, DryRun = DryRun, Force = Force)
   output <- .ec2$stop_instances_output()
@@ -29546,7 +30106,8 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$terminate_client_vpn_connections_input(ClientVpnEndpointId = ClientVpnEndpointId, ConnectionId = ConnectionId, Username = Username, DryRun = DryRun)
   output <- .ec2$terminate_client_vpn_connections_output()
@@ -29583,7 +30144,8 @@ ec2_terminate_instances <- function(InstanceIds, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$terminate_instances_input(InstanceIds = InstanceIds, DryRun = DryRun)
   output <- .ec2$terminate_instances_output()
@@ -29616,7 +30178,8 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses = NULL, Ipv6Prefixes = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unassign_ipv_6_addresses_input(Ipv6Addresses = Ipv6Addresses, Ipv6Prefixes = Ipv6Prefixes, NetworkInterfaceId = NetworkInterfaceId)
   output <- .ec2$unassign_ipv_6_addresses_output()
@@ -29651,7 +30214,8 @@ ec2_unassign_private_ip_addresses <- function(NetworkInterfaceId, PrivateIpAddre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unassign_private_ip_addresses_input(NetworkInterfaceId = NetworkInterfaceId, PrivateIpAddresses = PrivateIpAddresses, Ipv4Prefixes = Ipv4Prefixes)
   output <- .ec2$unassign_private_ip_addresses_output()
@@ -29689,7 +30253,8 @@ ec2_unassign_private_nat_gateway_address <- function(NatGatewayId, PrivateIpAddr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unassign_private_nat_gateway_address_input(NatGatewayId = NatGatewayId, PrivateIpAddresses = PrivateIpAddresses, MaxDrainDurationSeconds = MaxDrainDurationSeconds, DryRun = DryRun)
   output <- .ec2$unassign_private_nat_gateway_address_output()
@@ -29724,7 +30289,8 @@ ec2_unlock_snapshot <- function(SnapshotId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unlock_snapshot_input(SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$unlock_snapshot_output()
@@ -29758,7 +30324,8 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unmonitor_instances_input(InstanceIds = InstanceIds, DryRun = DryRun)
   output <- .ec2$unmonitor_instances_output()
@@ -29800,7 +30367,8 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$update_security_group_rule_descriptions_egress_input(DryRun = DryRun, GroupId = GroupId, GroupName = GroupName, IpPermissions = IpPermissions, SecurityGroupRuleDescriptions = SecurityGroupRuleDescriptions)
   output <- .ec2$update_security_group_rule_descriptions_egress_output()
@@ -29843,7 +30411,8 @@ ec2_update_security_group_rule_descriptions_ingress <- function(DryRun = NULL, G
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$update_security_group_rule_descriptions_ingress_input(DryRun = DryRun, GroupId = GroupId, GroupName = GroupName, IpPermissions = IpPermissions, SecurityGroupRuleDescriptions = SecurityGroupRuleDescriptions)
   output <- .ec2$update_security_group_rule_descriptions_ingress_output()
@@ -29878,7 +30447,8 @@ ec2_withdraw_byoip_cidr <- function(Cidr, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$withdraw_byoip_cidr_input(Cidr = Cidr, DryRun = DryRun)
   output <- .ec2$withdraw_byoip_cidr_output()

@@ -36,18 +36,18 @@ sagemaker_update_image_version(
 version stability.
 \item \code{STABLE}: The image version is stable.
 \item \code{TO_BE_ARCHIVED}: The image version is set to be archived. Custom
-image versions that are set to be archived are automatically
-archived after three months.
-\item \code{ARCHIVED}: The image version is archived. Archived image versions
-are not searchable and are no longer actively supported.
+image versions that are set to be archived are automatically archived
+after three months.
+\item \code{ARCHIVED}: The image version is archived. Archived image versions are
+not searchable and are no longer actively supported.
 }}
 
 \item{JobType}{Indicates SageMaker job type compatibility.
 \itemize{
 \item \code{TRAINING}: The image version is compatible with SageMaker training
 jobs.
-\item \code{INFERENCE}: The image version is compatible with SageMaker
-inference jobs.
+\item \code{INFERENCE}: The image version is compatible with SageMaker inference
+jobs.
 \item \code{NOTEBOOK_KERNEL}: The image version is compatible with SageMaker
 notebook kernels.
 }}

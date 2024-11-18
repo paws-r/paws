@@ -9,66 +9,66 @@ NULL
 #' interface (API) operations that support programmatic interaction with
 #' these types of resources:
 #' 
-#' -   [*Controls*](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
+#' - [*Controls*](https://docs.aws.amazon.com/controltower/latest/userguide/controls.html)
 #' 
-#'     -   [`disable_control`][controltower_disable_control]
+#'   - [`disable_control`][controltower_disable_control]
 #' 
-#'     -   [`enable_control`][controltower_enable_control]
+#'   - [`enable_control`][controltower_enable_control]
 #' 
-#'     -   [`get_enabled_control`][controltower_get_enabled_control]
+#'   - [`get_enabled_control`][controltower_get_enabled_control]
 #' 
-#'     -   [`list_control_operations`][controltower_list_control_operations]
+#'   - [`list_control_operations`][controltower_list_control_operations]
 #' 
-#'     -   [`list_enabled_controls`][controltower_list_enabled_controls]
+#'   - [`list_enabled_controls`][controltower_list_enabled_controls]
 #' 
-#'     -   [`update_enabled_control`][controltower_update_enabled_control]
+#'   - [`update_enabled_control`][controltower_update_enabled_control]
 #' 
-#' -   [*Landing
-#'     zones*](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html)
+#' - [*Landing
+#'   zones*](https://docs.aws.amazon.com/controltower/latest/userguide/lz-api-launch.html)
 #' 
-#'     -   [`create_landing_zone`][controltower_create_landing_zone]
+#'   - [`create_landing_zone`][controltower_create_landing_zone]
 #' 
-#'     -   [`delete_landing_zone`][controltower_delete_landing_zone]
+#'   - [`delete_landing_zone`][controltower_delete_landing_zone]
 #' 
-#'     -   [`get_landing_zone`][controltower_get_landing_zone]
+#'   - [`get_landing_zone`][controltower_get_landing_zone]
 #' 
-#'     -   [`get_landing_zone_operation`][controltower_get_landing_zone_operation]
+#'   - [`get_landing_zone_operation`][controltower_get_landing_zone_operation]
 #' 
-#'     -   [`list_landing_zones`][controltower_list_landing_zones]
+#'   - [`list_landing_zones`][controltower_list_landing_zones]
 #' 
-#'     -   [`list_landing_zone_operations`][controltower_list_landing_zone_operations]
+#'   - [`list_landing_zone_operations`][controltower_list_landing_zone_operations]
 #' 
-#'     -   [`reset_landing_zone`][controltower_reset_landing_zone]
+#'   - [`reset_landing_zone`][controltower_reset_landing_zone]
 #' 
-#'     -   [`update_landing_zone`][controltower_update_landing_zone]
+#'   - [`update_landing_zone`][controltower_update_landing_zone]
 #' 
-#' -   [*Baselines*](https://docs.aws.amazon.com/controltower/latest/userguide/types-of-baselines.html)
+#' - [*Baselines*](https://docs.aws.amazon.com/controltower/latest/userguide/types-of-baselines.html)
 #' 
-#'     -   [`disable_baseline`][controltower_disable_baseline]
+#'   - [`disable_baseline`][controltower_disable_baseline]
 #' 
-#'     -   [`enable_baseline`][controltower_enable_baseline]
+#'   - [`enable_baseline`][controltower_enable_baseline]
 #' 
-#'     -   [`get_baseline`][controltower_get_baseline]
+#'   - [`get_baseline`][controltower_get_baseline]
 #' 
-#'     -   [`get_baseline_operation`][controltower_get_baseline_operation]
+#'   - [`get_baseline_operation`][controltower_get_baseline_operation]
 #' 
-#'     -   [`get_enabled_baseline`][controltower_get_enabled_baseline]
+#'   - [`get_enabled_baseline`][controltower_get_enabled_baseline]
 #' 
-#'     -   [`list_baselines`][controltower_list_baselines]
+#'   - [`list_baselines`][controltower_list_baselines]
 #' 
-#'     -   [`list_enabled_baselines`][controltower_list_enabled_baselines]
+#'   - [`list_enabled_baselines`][controltower_list_enabled_baselines]
 #' 
-#'     -   [`reset_enabled_baseline`][controltower_reset_enabled_baseline]
+#'   - [`reset_enabled_baseline`][controltower_reset_enabled_baseline]
 #' 
-#'     -   [`update_enabled_baseline`][controltower_update_enabled_baseline]
+#'   - [`update_enabled_baseline`][controltower_update_enabled_baseline]
 #' 
-#' -   [*Tagging*](https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html)
+#' - [*Tagging*](https://docs.aws.amazon.com/controltower/latest/controlreference/tagging.html)
 #' 
-#'     -   [`list_tags_for_resource`][controltower_list_tags_for_resource]
+#'   - [`list_tags_for_resource`][controltower_list_tags_for_resource]
 #' 
-#'     -   [`tag_resource`][controltower_tag_resource]
+#'   - [`tag_resource`][controltower_tag_resource]
 #' 
-#'     -   [`untag_resource`][controltower_untag_resource]
+#'   - [`untag_resource`][controltower_untag_resource]
 #' 
 #' For more information about these types of resources, see the [*Amazon
 #' Web Services Control Tower User
@@ -84,13 +84,13 @@ NULL
 #' 
 #' To call these APIs, you'll need to know:
 #' 
-#' -   the `controlIdentifier` for the control--or guardrail--you are
-#'     targeting.
+#' - the `controlIdentifier` for the control--or guardrail--you are
+#'   targeting.
 #' 
-#' -   the ARN associated with the target organizational unit (OU), which
-#'     we call the `targetIdentifier`.
+#' - the ARN associated with the target organizational unit (OU), which we
+#'   call the `targetIdentifier`.
 #' 
-#' -   the ARN associated with a resource that you wish to tag or untag.
+#' - the ARN associated with a resource that you wish to tag or untag.
 #' 
 #' **To get the `controlIdentifier` for your Amazon Web Services Control
 #' Tower control:**
@@ -120,15 +120,15 @@ NULL
 #' 
 #' **Some controls have two identifiers**
 #' 
-#' -   **ARN format for Amazon Web Services Control Tower:**
-#'     `arn:aws:controltower:{REGION}::control/{CONTROL_TOWER_OPAQUE_ID}`
+#' - **ARN format for Amazon Web Services Control Tower:**
+#'   `arn:aws:controltower:{REGION}::control/{CONTROL_TOWER_OPAQUE_ID}`
 #' 
-#'     **Example:**
+#'   **Example:**
 #' 
-#'     `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED`
+#'   `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED`
 #' 
-#' -   **ARN format for Amazon Web Services Control Catalog:**
-#'     `arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}`
+#' - **ARN format for Amazon Web Services Control Catalog:**
+#'   `arn:{PARTITION}:controlcatalog:::control/{CONTROL_CATALOG_OPAQUE_ID}`
 #' 
 #' You can find the `{CONTROL_CATALOG_OPAQUE_ID}` in the [*Amazon Web
 #' Services Control Tower Controls Reference
@@ -191,56 +191,56 @@ NULL
 #' 
 #' **About Amazon Web Services Control Catalog identifiers**
 #' 
-#' -   The [`enable_control`][controltower_enable_control] and
-#'     [`disable_control`][controltower_disable_control] API operations can
-#'     be called by specifying either the Amazon Web Services Control Tower
-#'     identifer or the Amazon Web Services Control Catalog identifier. The
-#'     API response returns the same type of identifier that you specified
-#'     when calling the API.
+#' - The [`enable_control`][controltower_enable_control] and
+#'   [`disable_control`][controltower_disable_control] API operations can
+#'   be called by specifying either the Amazon Web Services Control Tower
+#'   identifer or the Amazon Web Services Control Catalog identifier. The
+#'   API response returns the same type of identifier that you specified
+#'   when calling the API.
 #' 
-#' -   If you use an Amazon Web Services Control Tower identifier to call
-#'     the [`enable_control`][controltower_enable_control] API, and then
-#'     call [`enable_control`][controltower_enable_control] again with an
-#'     Amazon Web Services Control Catalog identifier, Amazon Web Services
-#'     Control Tower returns an error message stating that the control is
-#'     already enabled. Similar behavior applies to the
-#'     [`disable_control`][controltower_disable_control] API operation.
+#' - If you use an Amazon Web Services Control Tower identifier to call the
+#'   [`enable_control`][controltower_enable_control] API, and then call
+#'   [`enable_control`][controltower_enable_control] again with an Amazon
+#'   Web Services Control Catalog identifier, Amazon Web Services Control
+#'   Tower returns an error message stating that the control is already
+#'   enabled. Similar behavior applies to the
+#'   [`disable_control`][controltower_disable_control] API operation.
 #' 
-#' -   Mandatory controls and the landing-zone-level Region deny control
-#'     have Amazon Web Services Control Tower identifiers only.
+#' - Mandatory controls and the landing-zone-level Region deny control have
+#'   Amazon Web Services Control Tower identifiers only.
 #' 
 #' **Details and examples**
 #' 
-#' -   [Control API input and output examples with
-#'     CLI](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html)
+#' - [Control API input and output examples with
+#'   CLI](https://docs.aws.amazon.com/controltower/latest/controlreference/control-api-examples-short.html)
 #' 
-#' -   [Baseline API input and output examples with
-#'     CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html)
+#' - [Baseline API input and output examples with
+#'   CLI](https://docs.aws.amazon.com/controltower/latest/userguide/baseline-api-examples.html)
 #' 
-#' -   [Enable controls with
-#'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/controlreference/enable-controls.html)
+#' - [Enable controls with
+#'   CloudFormation](https://docs.aws.amazon.com/controltower/latest/controlreference/enable-controls.html)
 #' 
-#' -   [Launch a landing zone with
-#'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html)
+#' - [Launch a landing zone with
+#'   CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/lz-apis-cfn-setup.html)
 #' 
-#' -   [Control metadata tables (large
-#'     page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html)
+#' - [Control metadata tables (large
+#'   page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-metadata-tables.html)
 #' 
-#' -   [Control availability by Region tables (large
-#'     page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html)
+#' - [Control availability by Region tables (large
+#'   page)](https://docs.aws.amazon.com/controltower/latest/controlreference/control-region-tables.html)
 #' 
-#' -   [List of identifiers for legacy
-#'     controls](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html)
+#' - [List of identifiers for legacy
+#'   controls](https://docs.aws.amazon.com/controltower/latest/controlreference/control-identifiers.html)
 #' 
-#' -   [Controls reference
-#'     guide](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
+#' - [Controls reference
+#'   guide](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
 #' 
-#' -   [Controls library
-#'     groupings](https://docs.aws.amazon.com/controltower/latest/controlreference/controls-reference.html)
+#' - [Controls library
+#'   groupings](https://docs.aws.amazon.com/controltower/latest/controlreference/controls-reference.html)
 #' 
-#' -   [Creating Amazon Web Services Control Tower resources with Amazon
-#'     Web Services
-#'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html)
+#' - [Creating Amazon Web Services Control Tower resources with Amazon Web
+#'   Services
+#'   CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html)
 #' 
 #' To view the open source resource repository on GitHub, see
 #' [aws-cloudformation/aws-cloudformation-resource-providers-controltower](https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower)

@@ -18,23 +18,23 @@ NULL
 #' 
 #' The ARN must be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' - For an Application Load Balancer:
+#'   `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway REST API:
-#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
+#' - For an Amazon API Gateway REST API:
+#'   `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
-#' -   For an AppSync GraphQL API:
-#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
+#' - For an AppSync GraphQL API:
+#'   `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
-#' -   For an Amazon Cognito user pool:
-#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' - For an Amazon Cognito user pool:
+#'   `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
 #' 
-#' -   For an App Runner service:
-#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' - For an App Runner service:
+#'   `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
 #' 
-#' -   For an Amazon Web Services Verified Access instance:
-#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' - For an Amazon Web Services Verified Access instance:
+#'   `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #'
 #' @keywords internal
 #'
@@ -45,7 +45,8 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$associate_web_acl_input(WebACLArn = WebACLArn, ResourceArn = ResourceArn)
   output <- .wafv2$associate_web_acl_output()
@@ -74,10 +75,10 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Rules &#91;required&#93; An array of Rule that you're configuring to use in a rule group or web
 #' ACL.
 #'
@@ -90,7 +91,8 @@ wafv2_check_capacity <- function(Scope, Rules) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$check_capacity_input(Scope = Scope, Rules = Rules)
   output <- .wafv2$check_capacity_output()
@@ -118,10 +120,10 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param TokenDomains &#91;required&#93; The client application domains that you want to use this API key for.
 #' 
 #' Example JSON: `"TokenDomains": ["abc.com", "store.abc.com"]`
@@ -138,7 +140,8 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_api_key_input(Scope = Scope, TokenDomains = TokenDomains)
   output <- .wafv2$create_api_key_output()
@@ -169,10 +172,10 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Description A description of the IP set that helps with identification.
 #' @param IPAddressVersion &#91;required&#93; The version of the IP addresses, either `IPV4` or `IPV6`.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
@@ -183,20 +186,20 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #' 
 #' Example address strings:
 #' 
-#' -   For requests that originated from the IP address 192.0.2.44, specify
-#'     `192.0.2.44/32`.
+#' - For requests that originated from the IP address 192.0.2.44, specify
+#'   `192.0.2.44/32`.
 #' 
-#' -   For requests that originated from IP addresses from 192.0.2.0 to
-#'     192.0.2.255, specify `192.0.2.0/24`.
+#' - For requests that originated from IP addresses from 192.0.2.0 to
+#'   192.0.2.255, specify `192.0.2.0/24`.
 #' 
-#' -   For requests that originated from the IP address
-#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
-#'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
+#' - For requests that originated from the IP address
+#'   1111:0000:0000:0000:0000:0000:0000:0111, specify
+#'   `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   For requests that originated from IP addresses
-#'     1111:0000:0000:0000:0000:0000:0000:0000 to
-#'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-#'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
+#' - For requests that originated from IP addresses
+#'   1111:0000:0000:0000:0000:0000:0000:0000 to
+#'   1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
+#'   `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
 #' For more information about CIDR notation, see the Wikipedia entry
 #' [Classless Inter-Domain
@@ -204,14 +207,14 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #' 
 #' Example JSON `Addresses` specifications:
 #' 
-#' -   Empty array: `"Addresses": []`
+#' - Empty array: `"Addresses": []`
 #' 
-#' -   Array with one address: `"Addresses": ["192.0.2.44/32"]`
+#' - Array with one address: `"Addresses": ["192.0.2.44/32"]`
 #' 
-#' -   Array with three addresses:
-#'     `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
+#' - Array with three addresses:
+#'   `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
 #' 
-#' -   INVALID specification: `"Addresses": [""]` INVALID
+#' - INVALID specification: `"Addresses": [""]` INVALID
 #' @param Tags An array of key:value pairs to associate with the resource.
 #'
 #' @keywords internal
@@ -223,7 +226,8 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_ip_set_input(Name = Name, Scope = Scope, Description = Description, IPAddressVersion = IPAddressVersion, Addresses = Addresses, Tags = Tags)
   output <- .wafv2$create_ip_set_output()
@@ -255,10 +259,10 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Description A description of the set that helps with identification.
 #' @param RegularExpressionList &#91;required&#93; Array of regular expression strings.
 #' @param Tags An array of key:value pairs to associate with the resource.
@@ -272,7 +276,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_regex_pattern_set_input(Name = Name, Scope = Scope, Description = Description, RegularExpressionList = RegularExpressionList, Tags = Tags)
   output <- .wafv2$create_regex_pattern_set_output()
@@ -302,10 +307,10 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Capacity &#91;required&#93; The web ACL capacity units (WCUs) required for this rule group.
 #' 
 #' When you create your own rule group, you define this, and you cannot
@@ -355,7 +360,8 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$create_rule_group_output()
@@ -385,10 +391,10 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param DefaultAction &#91;required&#93; The action to perform if none of the `Rules` contained in the `WebACL`
 #' match.
 #' @param Description A description of the web ACL that helps with identification.
@@ -457,7 +463,8 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$create_web_acl_output()
@@ -485,10 +492,10 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param APIKey &#91;required&#93; The encrypted API key that you want to delete.
 #'
 #' @keywords internal
@@ -500,7 +507,8 @@ wafv2_delete_api_key <- function(Scope, APIKey) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_api_key_input(Scope = Scope, APIKey = APIKey)
   output <- .wafv2$delete_api_key_output()
@@ -539,7 +547,8 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_firewall_manager_rule_groups_input(WebACLArn = WebACLArn, WebACLLockToken = WebACLLockToken)
   output <- .wafv2$delete_firewall_manager_rule_groups_output()
@@ -569,10 +578,10 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
@@ -594,7 +603,8 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_ip_set_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_ip_set_output()
@@ -641,7 +651,8 @@ wafv2_delete_logging_configuration <- function(ResourceArn, LogType = NULL, LogS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_logging_configuration_input(ResourceArn = ResourceArn, LogType = LogType, LogScope = LogScope)
   output <- .wafv2$delete_logging_configuration_output()
@@ -674,7 +685,8 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafv2$delete_permission_policy_output()
@@ -704,10 +716,10 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
@@ -729,7 +741,8 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_regex_pattern_set_output()
@@ -759,10 +772,10 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
@@ -784,7 +797,8 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_rule_group_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_rule_group_output()
@@ -814,10 +828,10 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
@@ -839,7 +853,8 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_web_acl_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_web_acl_output()
@@ -869,10 +884,10 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #'
 #' @keywords internal
 #'
@@ -883,7 +898,8 @@ wafv2_describe_all_managed_products <- function(Scope) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$describe_all_managed_products_input(Scope = Scope)
   output <- .wafv2$describe_all_managed_products_output()
@@ -914,10 +930,10 @@ wafv2_describe_all_managed_products <- function(Scope) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #'
 #' @keywords internal
 #'
@@ -928,7 +944,8 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$describe_managed_products_by_vendor_input(VendorName = VendorName, Scope = Scope)
   output <- .wafv2$describe_managed_products_by_vendor_output()
@@ -961,10 +978,10 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param VersionName The version of the rule group. You can only use a version that is not
 #' scheduled for expiration. If you don't provide this, WAF uses the
 #' vendor's default version.
@@ -978,7 +995,8 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$describe_managed_rule_group_input(VendorName = VendorName, Name = Name, Scope = Scope, VersionName = VersionName)
   output <- .wafv2$describe_managed_rule_group_output()
@@ -1003,23 +1021,23 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' 
 #' The ARN must be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' - For an Application Load Balancer:
+#'   `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway REST API:
-#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
+#' - For an Amazon API Gateway REST API:
+#'   `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
-#' -   For an AppSync GraphQL API:
-#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
+#' - For an AppSync GraphQL API:
+#'   `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
-#' -   For an Amazon Cognito user pool:
-#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' - For an Amazon Cognito user pool:
+#'   `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
 #' 
-#' -   For an App Runner service:
-#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' - For an App Runner service:
+#'   `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
 #' 
-#' -   For an Amazon Web Services Verified Access instance:
-#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' - For an Amazon Web Services Verified Access instance:
+#'   `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #'
 #' @keywords internal
 #'
@@ -1030,7 +1048,8 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$disassociate_web_acl_input(ResourceArn = ResourceArn)
   output <- .wafv2$disassociate_web_acl_output()
@@ -1062,7 +1081,8 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$generate_mobile_sdk_release_url_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
   output <- .wafv2$generate_mobile_sdk_release_url_output()
@@ -1090,10 +1110,10 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param APIKey &#91;required&#93; The encrypted API key.
 #'
 #' @keywords internal
@@ -1105,7 +1125,8 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_decrypted_api_key_input(Scope = Scope, APIKey = APIKey)
   output <- .wafv2$get_decrypted_api_key_output()
@@ -1135,10 +1156,10 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
@@ -1152,7 +1173,8 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_ip_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_ip_set_output()
@@ -1199,7 +1221,8 @@ wafv2_get_logging_configuration <- function(ResourceArn, LogType = NULL, LogScop
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_logging_configuration_input(ResourceArn = ResourceArn, LogType = LogType, LogScope = LogScope)
   output <- .wafv2$get_logging_configuration_output()
@@ -1232,10 +1255,10 @@ wafv2_get_logging_configuration <- function(ResourceArn, LogType = NULL, LogScop
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
 #' responses to commands like `list`. You provide it to operations like
 #' `get` and `update`.
@@ -1249,7 +1272,8 @@ wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_managed_rule_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_managed_rule_set_output()
@@ -1281,7 +1305,8 @@ wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_mobile_sdk_release_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
   output <- .wafv2$get_mobile_sdk_release_output()
@@ -1312,7 +1337,8 @@ wafv2_get_permission_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafv2$get_permission_policy_output()
@@ -1341,10 +1367,10 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param WebACLName &#91;required&#93; The name of the web ACL. You cannot change the name of a web ACL after
 #' you create it.
 #' @param WebACLId &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
@@ -1367,7 +1393,8 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_rate_based_statement_managed_keys_input(Scope = Scope, WebACLName = WebACLName, WebACLId = WebACLId, RuleGroupRuleName = RuleGroupRuleName, RuleName = RuleName)
   output <- .wafv2$get_rate_based_statement_managed_keys_output()
@@ -1397,10 +1424,10 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
@@ -1414,7 +1441,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_regex_pattern_set_output()
@@ -1444,10 +1472,10 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
@@ -1462,7 +1490,8 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_rule_group_input(Name = Name, Scope = Scope, Id = Id, ARN = ARN)
   output <- .wafv2$get_rule_group_output()
@@ -1497,10 +1526,10 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param TimeWindow &#91;required&#93; The start date and time and the end date and time of the range for which
 #' you want [`get_sampled_requests`][wafv2_get_sampled_requests] to return
 #' a sample of requests. You must specify the times in Coordinated
@@ -1523,7 +1552,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_sampled_requests_input(WebAclArn = WebAclArn, RuleMetricName = RuleMetricName, Scope = Scope, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .wafv2$get_sampled_requests_output()
@@ -1553,10 +1583,10 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
@@ -1570,7 +1600,8 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_web_acl_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_web_acl_output()
@@ -1594,23 +1625,23 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #' 
 #' The ARN must be in one of the following formats:
 #' 
-#' -   For an Application Load Balancer:
-#'     `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
+#' - For an Application Load Balancer:
+#'   `arn:partition:elasticloadbalancing:region:account-id:loadbalancer/app/load-balancer-name/load-balancer-id `
 #' 
-#' -   For an Amazon API Gateway REST API:
-#'     `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
+#' - For an Amazon API Gateway REST API:
+#'   `arn:partition:apigateway:region::/restapis/api-id/stages/stage-name `
 #' 
-#' -   For an AppSync GraphQL API:
-#'     `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
+#' - For an AppSync GraphQL API:
+#'   `arn:partition:appsync:region:account-id:apis/GraphQLApiId `
 #' 
-#' -   For an Amazon Cognito user pool:
-#'     `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
+#' - For an Amazon Cognito user pool:
+#'   `arn:partition:cognito-idp:region:account-id:userpool/user-pool-id `
 #' 
-#' -   For an App Runner service:
-#'     `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
+#' - For an App Runner service:
+#'   `arn:partition:apprunner:region:account-id:service/apprunner-service-name/apprunner-service-id `
 #' 
-#' -   For an Amazon Web Services Verified Access instance:
-#'     `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
+#' - For an Amazon Web Services Verified Access instance:
+#'   `arn:partition:ec2:region:account-id:verified-access-instance/instance-id `
 #'
 #' @keywords internal
 #'
@@ -1621,7 +1652,8 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_web_acl_for_resource_input(ResourceArn = ResourceArn)
   output <- .wafv2$get_web_acl_for_resource_output()
@@ -1650,10 +1682,10 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -1672,7 +1704,8 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_api_keys_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_api_keys_output()
@@ -1705,10 +1738,10 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -1727,7 +1760,8 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_available_managed_rule_group_versions_input(VendorName = VendorName, Name = Name, Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_available_managed_rule_group_versions_output()
@@ -1756,10 +1790,10 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -1778,7 +1812,8 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_available_managed_rule_groups_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_available_managed_rule_groups_output()
@@ -1807,10 +1842,10 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -1829,7 +1864,8 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_ip_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_ip_sets_output()
@@ -1857,10 +1893,10 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -1891,7 +1927,8 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_logging_configurations_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit, LogScope = LogScope)
   output <- .wafv2$list_logging_configurations_output()
@@ -1919,10 +1956,10 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -1941,7 +1978,8 @@ wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_managed_rule_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_managed_rule_sets_output()
@@ -1980,7 +2018,8 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_mobile_sdk_releases_input(Platform = Platform, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_mobile_sdk_releases_output()
@@ -2009,10 +2048,10 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -2031,7 +2070,8 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_regex_pattern_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_regex_pattern_sets_output()
@@ -2072,7 +2112,8 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_resources_for_web_acl_input(WebACLArn = WebACLArn, ResourceType = ResourceType)
   output <- .wafv2$list_resources_for_web_acl_output()
@@ -2101,10 +2142,10 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -2123,7 +2164,8 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_rule_groups_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_rule_groups_output()
@@ -2161,7 +2203,8 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .wafv2$list_tags_for_resource_output()
@@ -2190,10 +2233,10 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param NextMarker When you request a list of objects with a `Limit` setting, if the number
 #' of objects that are still available for retrieval exceeds the limit, WAF
 #' returns a `NextMarker` value in the response. To retrieve the next batch
@@ -2212,7 +2255,8 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_web_ac_ls_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_web_ac_ls_output()
@@ -2243,7 +2287,8 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .wafv2$put_logging_configuration_output()
@@ -2277,10 +2322,10 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
 #' responses to commands like `list`. You provide it to operations like
 #' `get` and `update`.
@@ -2306,7 +2351,8 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$put_managed_rule_set_versions_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, RecommendedVersion = RecommendedVersion, VersionsToPublish = VersionsToPublish)
   output <- .wafv2$put_managed_rule_set_versions_output()
@@ -2331,19 +2377,19 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
 #' 
 #' The policy specifications must conform to the following:
 #' 
-#' -   The policy must be composed using IAM Policy version 2012-10-17.
+#' - The policy must be composed using IAM Policy version 2012-10-17.
 #' 
-#' -   The policy must include specifications for `Effect`, `Action`, and
-#'     `Principal`.
+#' - The policy must include specifications for `Effect`, `Action`, and
+#'   `Principal`.
 #' 
-#' -   `Effect` must specify `Allow`.
+#' - `Effect` must specify `Allow`.
 #' 
-#' -   `Action` must specify `wafv2:CreateWebACL`, `wafv2:UpdateWebACL`,
-#'     and `wafv2:PutFirewallManagerRuleGroups` and may optionally specify
-#'     `wafv2:GetRuleGroup`. WAF rejects any extra actions or wildcard
-#'     actions in the policy.
+#' - `Action` must specify `wafv2:CreateWebACL`, `wafv2:UpdateWebACL`, and
+#'   `wafv2:PutFirewallManagerRuleGroups` and may optionally specify
+#'   `wafv2:GetRuleGroup`. WAF rejects any extra actions or wildcard
+#'   actions in the policy.
 #' 
-#' -   The policy must not include a `Resource` parameter.
+#' - The policy must not include a `Resource` parameter.
 #' 
 #' For more information, see [IAM
 #' Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html).
@@ -2357,7 +2403,8 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .wafv2$put_permission_policy_output()
@@ -2388,7 +2435,8 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .wafv2$tag_resource_output()
@@ -2419,7 +2467,8 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .wafv2$untag_resource_output()
@@ -2449,10 +2498,10 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
@@ -2465,20 +2514,20 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' 
 #' Example address strings:
 #' 
-#' -   For requests that originated from the IP address 192.0.2.44, specify
-#'     `192.0.2.44/32`.
+#' - For requests that originated from the IP address 192.0.2.44, specify
+#'   `192.0.2.44/32`.
 #' 
-#' -   For requests that originated from IP addresses from 192.0.2.0 to
-#'     192.0.2.255, specify `192.0.2.0/24`.
+#' - For requests that originated from IP addresses from 192.0.2.0 to
+#'   192.0.2.255, specify `192.0.2.0/24`.
 #' 
-#' -   For requests that originated from the IP address
-#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
-#'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
+#' - For requests that originated from the IP address
+#'   1111:0000:0000:0000:0000:0000:0000:0111, specify
+#'   `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   For requests that originated from IP addresses
-#'     1111:0000:0000:0000:0000:0000:0000:0000 to
-#'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
-#'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
+#' - For requests that originated from IP addresses
+#'   1111:0000:0000:0000:0000:0000:0000:0000 to
+#'   1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
+#'   `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
 #' For more information about CIDR notation, see the Wikipedia entry
 #' [Classless Inter-Domain
@@ -2486,14 +2535,14 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' 
 #' Example JSON `Addresses` specifications:
 #' 
-#' -   Empty array: `"Addresses": []`
+#' - Empty array: `"Addresses": []`
 #' 
-#' -   Array with one address: `"Addresses": ["192.0.2.44/32"]`
+#' - Array with one address: `"Addresses": ["192.0.2.44/32"]`
 #' 
-#' -   Array with three addresses:
-#'     `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
+#' - Array with three addresses:
+#'   `"Addresses": ["192.0.2.44/32", "192.0.2.0/24", "192.0.0.0/16"]`
 #' 
-#' -   INVALID specification: `"Addresses": [""]` INVALID
+#' - INVALID specification: `"Addresses": [""]` INVALID
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
 #' and `list` requests, to mark the state of the entity at the time of the
 #' request. To make changes to the entity associated with the token, you
@@ -2512,7 +2561,8 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_ip_set_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Addresses = Addresses, LockToken = LockToken)
   output <- .wafv2$update_ip_set_output()
@@ -2545,10 +2595,10 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the managed rule set. The ID is returned in the
 #' responses to commands like `list`. You provide it to operations like
 #' `get` and `update`.
@@ -2576,7 +2626,8 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_managed_rule_set_version_expiry_date_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, VersionToExpire = VersionToExpire, ExpiryTimestamp = ExpiryTimestamp)
   output <- .wafv2$update_managed_rule_set_version_expiry_date_output()
@@ -2606,10 +2657,10 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the set. This ID is returned in the responses to
 #' create and list commands. You provide it to operations like update and
 #' delete.
@@ -2633,7 +2684,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id, Description = Description, RegularExpressionList = RegularExpressionList, LockToken = LockToken)
   output <- .wafv2$update_regex_pattern_set_output()
@@ -2663,10 +2715,10 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; A unique identifier for the rule group. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
@@ -2709,7 +2761,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$update_rule_group_output()
@@ -2739,10 +2792,10 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' To work with CloudFront, you must also specify the Region US East (N.
 #' Virginia) as follows:
 #' 
-#' -   CLI - Specify the Region when you use the CloudFront scope:
-#'     `--scope=CLOUDFRONT --region=us-east-1`.
+#' - CLI - Specify the Region when you use the CloudFront scope:
+#'   `--scope=CLOUDFRONT --region=us-east-1`.
 #' 
-#' -   API and SDKs - For all calls, use the Region endpoint us-east-1.
+#' - API and SDKs - For all calls, use the Region endpoint us-east-1.
 #' @param Id &#91;required&#93; The unique identifier for the web ACL. This ID is returned in the
 #' responses to create and list commands. You provide it to operations like
 #' update and delete.
@@ -2821,7 +2874,8 @@ wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$update_web_acl_output()

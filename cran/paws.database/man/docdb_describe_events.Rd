@@ -23,12 +23,11 @@ specified, then all sources are included in the response.
 
 Constraints:
 \itemize{
-\item If \code{SourceIdentifier} is provided, \code{SourceType} must also be
-provided.
+\item If \code{SourceIdentifier} is provided, \code{SourceType} must also be provided.
 \item If the source type is \code{DBInstance}, a \code{DBInstanceIdentifier} must be
 provided.
-\item If the source type is \code{DBSecurityGroup}, a \code{DBSecurityGroupName}
-must be provided.
+\item If the source type is \code{DBSecurityGroup}, a \code{DBSecurityGroupName} must
+be provided.
 \item If the source type is \code{DBParameterGroup}, a \code{DBParameterGroupName}
 must be provided.
 \item If the source type is \code{DBSnapshot}, a \code{DBSnapshotIdentifier} must be

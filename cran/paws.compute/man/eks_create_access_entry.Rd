@@ -24,9 +24,9 @@ creation.
 
 The valid principals differ depending on the type of the access entry in
 the \code{type} field. The only valid ARN is IAM roles for the types of
-access entries for nodes: \verb{ }. You can use every IAM principal type
-for \code{STANDARD} access entries. You can't use the STS session principal
-type with access entries because this is a temporary principal for each
+access entries for nodes: . You can use every IAM principal type for
+\code{STANDARD} access entries. You can't use the STS session principal type
+with access entries because this is a temporary principal for each
 session and not a permanent identity that can be assigned permissions.
 
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp}{IAM best practices}

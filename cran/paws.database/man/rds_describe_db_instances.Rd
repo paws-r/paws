@@ -26,10 +26,10 @@ Constraints:
 
 Supported Filters:
 \itemize{
-\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
-Amazon Resource Names (ARNs). The results list only includes
-information about the DB instances associated with the DB clusters
-identified by these ARNs.
+\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster Amazon
+Resource Names (ARNs). The results list only includes information
+about the DB instances associated with the DB clusters identified by
+these ARNs.
 \item \code{db-instance-id} - Accepts DB instance identifiers and DB instance
 Amazon Resource Names (ARNs). The results list only includes
 information about the DB instances identified by these ARNs.
@@ -37,8 +37,8 @@ information about the DB instances identified by these ARNs.
 results list only includes information about the DB instances
 identified by these DB instance resource identifiers.
 \item \code{domain} - Accepts Active Directory directory IDs. The results list
-only includes information about the DB instances associated with
-these domains.
+only includes information about the DB instances associated with these
+domains.
 \item \code{engine} - Accepts engine names. The results list only includes
 information about the DB instances for these engines.
 }}

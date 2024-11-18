@@ -30,7 +30,8 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$create_budget_input(AccountId = AccountId, Budget = Budget, NotificationsWithSubscribers = NotificationsWithSubscribers, ResourceTags = ResourceTags)
   output <- .budgets$create_budget_output()
@@ -74,7 +75,8 @@ budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$create_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, NotificationType = NotificationType, ActionType = ActionType, ActionThreshold = ActionThreshold, Definition = Definition, ExecutionRoleArn = ExecutionRoleArn, ApprovalModel = ApprovalModel, Subscribers = Subscribers, ResourceTags = ResourceTags)
   output <- .budgets$create_budget_action_output()
@@ -111,7 +113,8 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$create_notification_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, Subscribers = Subscribers)
   output <- .budgets$create_notification_output()
@@ -146,7 +149,8 @@ budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subsc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$create_subscriber_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, Subscriber = Subscriber)
   output <- .budgets$create_subscriber_output()
@@ -178,7 +182,8 @@ budgets_delete_budget <- function(AccountId, BudgetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$delete_budget_input(AccountId = AccountId, BudgetName = BudgetName)
   output <- .budgets$delete_budget_output()
@@ -210,7 +215,8 @@ budgets_delete_budget_action <- function(AccountId, BudgetName, ActionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$delete_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId)
   output <- .budgets$delete_budget_action_output()
@@ -243,7 +249,8 @@ budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$delete_notification_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification)
   output <- .budgets$delete_notification_output()
@@ -277,7 +284,8 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$delete_subscriber_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, Subscriber = Subscriber)
   output <- .budgets$delete_subscriber_output()
@@ -309,7 +317,8 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$describe_budget_input(AccountId = AccountId, BudgetName = BudgetName)
   output <- .budgets$describe_budget_output()
@@ -341,7 +350,8 @@ budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$describe_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId)
   output <- .budgets$describe_budget_action_output()
@@ -376,7 +386,8 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActionHistories")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActionHistories"),
+    stream_api = FALSE
   )
   input <- .budgets$describe_budget_action_histories_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId, TimePeriod = TimePeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_action_histories_output()
@@ -408,7 +419,8 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions"),
+    stream_api = FALSE
   )
   input <- .budgets$describe_budget_actions_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_actions_for_account_output()
@@ -441,7 +453,8 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions"),
+    stream_api = FALSE
   )
   input <- .budgets$describe_budget_actions_for_budget_input(AccountId = AccountId, BudgetName = BudgetName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_actions_for_budget_output()
@@ -475,7 +488,8 @@ budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetNotificationsForAccount")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetNotificationsForAccount"),
+    stream_api = FALSE
   )
   input <- .budgets$describe_budget_notifications_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_notifications_for_account_output()
@@ -510,7 +524,8 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetPerformanceHistory")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetPerformanceHistory"),
+    stream_api = FALSE
   )
   input <- .budgets$describe_budget_performance_history_input(AccountId = AccountId, BudgetName = BudgetName, TimePeriod = TimePeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_performance_history_output()
@@ -545,7 +560,8 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Budgets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Budgets"),
+    stream_api = FALSE
   )
   input <- .budgets$describe_budgets_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budgets_output()
@@ -581,7 +597,8 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Notifications")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Notifications"),
+    stream_api = FALSE
   )
   input <- .budgets$describe_notifications_for_budget_input(AccountId = AccountId, BudgetName = BudgetName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_notifications_for_budget_output()
@@ -618,7 +635,8 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscribers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscribers"),
+    stream_api = FALSE
   )
   input <- .budgets$describe_subscribers_for_notification_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_subscribers_for_notification_output()
@@ -651,7 +669,8 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$execute_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId, ExecutionType = ExecutionType)
   output <- .budgets$execute_budget_action_output()
@@ -681,7 +700,8 @@ budgets_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .budgets$list_tags_for_resource_output()
@@ -712,7 +732,8 @@ budgets_tag_resource <- function(ResourceARN, ResourceTags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$tag_resource_input(ResourceARN = ResourceARN, ResourceTags = ResourceTags)
   output <- .budgets$tag_resource_output()
@@ -743,7 +764,8 @@ budgets_untag_resource <- function(ResourceARN, ResourceTagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$untag_resource_input(ResourceARN = ResourceARN, ResourceTagKeys = ResourceTagKeys)
   output <- .budgets$untag_resource_output()
@@ -775,7 +797,8 @@ budgets_update_budget <- function(AccountId, NewBudget) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$update_budget_input(AccountId = AccountId, NewBudget = NewBudget)
   output <- .budgets$update_budget_output()
@@ -814,7 +837,8 @@ budgets_update_budget_action <- function(AccountId, BudgetName, ActionId, Notifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$update_budget_action_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId, NotificationType = NotificationType, ActionThreshold = ActionThreshold, Definition = Definition, ExecutionRoleArn = ExecutionRoleArn, ApprovalModel = ApprovalModel, Subscribers = Subscribers)
   output <- .budgets$update_budget_action_output()
@@ -848,7 +872,8 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$update_notification_input(AccountId = AccountId, BudgetName = BudgetName, OldNotification = OldNotification, NewNotification = NewNotification)
   output <- .budgets$update_notification_output()
@@ -883,7 +908,8 @@ budgets_update_subscriber <- function(AccountId, BudgetName, Notification, OldSu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .budgets$update_subscriber_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, OldSubscriber = OldSubscriber, NewSubscriber = NewSubscriber)
   output <- .budgets$update_subscriber_output()

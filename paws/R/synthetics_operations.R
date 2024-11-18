@@ -42,7 +42,8 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
     http_method = "PATCH",
     http_path = "/group/{groupIdentifier}/associate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$associate_resource_input(GroupIdentifier = GroupIdentifier, ResourceArn = ResourceArn)
   output <- .synthetics$associate_resource_output()
@@ -103,19 +104,19 @@ synthetics_associate_resource <- function(GroupIdentifier, ResourceArn) {
 #' already exist, and must include `lambda.amazonaws.com` as a principal in
 #' the trust policy. The role must also have the following permissions:
 #' 
-#' -   `s3:PutObject`
+#' - `s3:PutObject`
 #' 
-#' -   `s3:GetBucketLocation`
+#' - `s3:GetBucketLocation`
 #' 
-#' -   `s3:ListAllMyBuckets`
+#' - `s3:ListAllMyBuckets`
 #' 
-#' -   `cloudwatch:PutMetricData`
+#' - `cloudwatch:PutMetricData`
 #' 
-#' -   `logs:CreateLogGroup`
+#' - `logs:CreateLogGroup`
 #' 
-#' -   `logs:CreateLogStream`
+#' - `logs:CreateLogStream`
 #' 
-#' -   `logs:PutLogEvents`
+#' - `logs:PutLogEvents`
 #' @param Schedule &#91;required&#93; A structure that contains information about how often the canary is to
 #' run and when these test runs are to stop.
 #' @param RunConfig A structure that contains the configuration for individual canary runs,
@@ -284,7 +285,8 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
     http_method = "POST",
     http_path = "/canary",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$create_canary_input(Name = Name, Code = Code, ArtifactS3Location = ArtifactS3Location, ExecutionRoleArn = ExecutionRoleArn, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, RuntimeVersion = RuntimeVersion, VpcConfig = VpcConfig, Tags = Tags, ArtifactConfig = ArtifactConfig)
   output <- .synthetics$create_canary_output()
@@ -377,7 +379,8 @@ synthetics_create_group <- function(Name, Tags = NULL) {
     http_method = "POST",
     http_path = "/group",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$create_group_input(Name = Name, Tags = Tags)
   output <- .synthetics$create_group_output()
@@ -401,18 +404,17 @@ synthetics_create_group <- function(Name, Tags = NULL) {
 #' deleted. After you delete a canary that you do not intend to use again,
 #' you should also delete the following:
 #' 
-#' -   The CloudWatch alarms created for this canary. These alarms have a
-#'     name of `Synthetics-SharpDrop-Alarm-MyCanaryName `.
+#' - The CloudWatch alarms created for this canary. These alarms have a
+#'   name of `Synthetics-SharpDrop-Alarm-MyCanaryName `.
 #' 
-#' -   Amazon S3 objects and buckets, such as the canary's artifact
-#'     location.
+#' - Amazon S3 objects and buckets, such as the canary's artifact location.
 #' 
-#' -   IAM roles created for the canary. If they were created in the
-#'     console, these roles have the name
-#'     ` role/service-role/CloudWatchSyntheticsRole-MyCanaryName `.
+#' - IAM roles created for the canary. If they were created in the console,
+#'   these roles have the name
+#'   ` role/service-role/CloudWatchSyntheticsRole-MyCanaryName `.
 #' 
-#' -   CloudWatch Logs log groups created for the canary. These logs groups
-#'     have the name `/aws/lambda/cwsyn-MyCanaryName `.
+#' - CloudWatch Logs log groups created for the canary. These logs groups
+#'   have the name `/aws/lambda/cwsyn-MyCanaryName `.
 #' 
 #' Before you delete a canary, you might want to use
 #' [`get_canary`][synthetics_get_canary] to display the information about
@@ -451,7 +453,8 @@ synthetics_delete_canary <- function(Name, DeleteLambda = NULL) {
     http_method = "DELETE",
     http_path = "/canary/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$delete_canary_input(Name = Name, DeleteLambda = DeleteLambda)
   output <- .synthetics$delete_canary_output()
@@ -501,7 +504,8 @@ synthetics_delete_group <- function(GroupIdentifier) {
     http_method = "DELETE",
     http_path = "/group/{groupIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$delete_group_input(GroupIdentifier = GroupIdentifier)
   output <- .synthetics$delete_group_output()
@@ -658,7 +662,8 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL, Na
     http_method = "POST",
     http_path = "/canaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .synthetics$describe_canaries_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_output()
@@ -766,7 +771,8 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
     http_method = "POST",
     http_path = "/canaries/last-run",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .synthetics$describe_canaries_last_run_input(NextToken = NextToken, MaxResults = MaxResults, Names = Names)
   output <- .synthetics$describe_canaries_last_run_output()
@@ -836,7 +842,8 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/runtime-versions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .synthetics$describe_runtime_versions_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$describe_runtime_versions_output()
@@ -883,7 +890,8 @@ synthetics_disassociate_resource <- function(GroupIdentifier, ResourceArn) {
     http_method = "PATCH",
     http_path = "/group/{groupIdentifier}/disassociate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$disassociate_resource_input(GroupIdentifier = GroupIdentifier, ResourceArn = ResourceArn)
   output <- .synthetics$disassociate_resource_output()
@@ -1003,7 +1011,8 @@ synthetics_get_canary <- function(Name) {
     http_method = "GET",
     http_path = "/canary/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$get_canary_input(Name = Name)
   output <- .synthetics$get_canary_output()
@@ -1080,7 +1089,8 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/canary/{name}/runs",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .synthetics$get_canary_runs_input(Name = Name, NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$get_canary_runs_output()
@@ -1143,7 +1153,8 @@ synthetics_get_group <- function(GroupIdentifier) {
     http_method = "GET",
     http_path = "/group/{groupIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$get_group_input(GroupIdentifier = GroupIdentifier)
   output <- .synthetics$get_group_output()
@@ -1209,7 +1220,8 @@ synthetics_list_associated_groups <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/resource/{resourceArn}/groups",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .synthetics$list_associated_groups_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .synthetics$list_associated_groups_output()
@@ -1272,7 +1284,8 @@ synthetics_list_group_resources <- function(NextToken = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/group/{groupIdentifier}/resources",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .synthetics$list_group_resources_input(NextToken = NextToken, MaxResults = MaxResults, GroupIdentifier = GroupIdentifier)
   output <- .synthetics$list_group_resources_output()
@@ -1335,7 +1348,8 @@ synthetics_list_groups <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/groups",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .synthetics$list_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .synthetics$list_groups_output()
@@ -1391,7 +1405,8 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .synthetics$list_tags_for_resource_output()
@@ -1438,7 +1453,8 @@ synthetics_start_canary <- function(Name) {
     http_method = "POST",
     http_path = "/canary/{name}/start",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$start_canary_input(Name = Name)
   output <- .synthetics$start_canary_output()
@@ -1490,7 +1506,8 @@ synthetics_stop_canary <- function(Name) {
     http_method = "POST",
     http_path = "/canary/{name}/stop",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$stop_canary_input(Name = Name)
   output <- .synthetics$stop_canary_output()
@@ -1561,7 +1578,8 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .synthetics$tag_resource_output()
@@ -1614,7 +1632,8 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .synthetics$untag_resource_output()
@@ -1652,19 +1671,19 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' already exist, and must include `lambda.amazonaws.com` as a principal in
 #' the trust policy. The role must also have the following permissions:
 #' 
-#' -   `s3:PutObject`
+#' - `s3:PutObject`
 #' 
-#' -   `s3:GetBucketLocation`
+#' - `s3:GetBucketLocation`
 #' 
-#' -   `s3:ListAllMyBuckets`
+#' - `s3:ListAllMyBuckets`
 #' 
-#' -   `cloudwatch:PutMetricData`
+#' - `cloudwatch:PutMetricData`
 #' 
-#' -   `logs:CreateLogGroup`
+#' - `logs:CreateLogGroup`
 #' 
-#' -   `logs:CreateLogStream`
+#' - `logs:CreateLogStream`
 #' 
-#' -   `logs:CreateLogStream`
+#' - `logs:CreateLogStream`
 #' @param RuntimeVersion Specifies the runtime version to use for the canary. For a list of valid
 #' runtime versions and for more information about runtime versions, see
 #' [Canary Runtime
@@ -1770,7 +1789,8 @@ synthetics_update_canary <- function(Name, Code = NULL, ExecutionRoleArn = NULL,
     http_method = "PATCH",
     http_path = "/canary/{name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .synthetics$update_canary_input(Name = Name, Code = Code, ExecutionRoleArn = ExecutionRoleArn, RuntimeVersion = RuntimeVersion, Schedule = Schedule, RunConfig = RunConfig, SuccessRetentionPeriodInDays = SuccessRetentionPeriodInDays, FailureRetentionPeriodInDays = FailureRetentionPeriodInDays, VpcConfig = VpcConfig, VisualReference = VisualReference, ArtifactS3Location = ArtifactS3Location, ArtifactConfig = ArtifactConfig)
   output <- .synthetics$update_canary_output()

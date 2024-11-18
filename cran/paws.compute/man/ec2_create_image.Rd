@@ -25,12 +25,12 @@ you want a different volume size, you must first change the volume
 size of the source instance.
 \item You can't modify the encryption status of existing volumes or
 snapshots. To create an AMI with volumes or snapshots that have a
-different encryption status (for example, where the source volume
-and snapshots are unencrypted, and you want to create an AMI with
+different encryption status (for example, where the source volume and
+snapshots are unencrypted, and you want to create an AMI with
 encrypted volumes or snapshots), use the
 \code{\link[=ec2_copy_image]{copy_image}} action.
-\item The only option that can be changed for existing mappings or
-snapshots is \code{DeleteOnTermination}.
+\item The only option that can be changed for existing mappings or snapshots
+is \code{DeleteOnTermination}.
 }}
 
 \item{Description}{A description for the new image.}
@@ -51,11 +51,11 @@ single quotes ('), at-signs (@), or underscores(_)}
 \item{NoReboot}{Indicates whether or not the instance should be automatically rebooted
 before creating the image. Specify one of the following values:
 \itemize{
-\item \code{true} - The instance is not rebooted before creating the image.
-This creates crash-consistent snapshots that include only the data
-that has been written to the volumes at the time the snapshots are
-created. Buffered data and data in memory that has not yet been
-written to the volumes is not included in the snapshots.
+\item \code{true} - The instance is not rebooted before creating the image. This
+creates crash-consistent snapshots that include only the data that has
+been written to the volumes at the time the snapshots are created.
+Buffered data and data in memory that has not yet been written to the
+volumes is not included in the snapshots.
 \item \code{false} - The instance is rebooted before creating the image. This
 ensures that all buffered data and data in memory is written to the
 volumes before the snapshots are created.
@@ -67,10 +67,10 @@ Default: \code{false}}
 AMI, the snapshots, or both.
 \itemize{
 \item To tag the AMI, the value for \code{ResourceType} must be \code{image}.
-\item To tag the snapshots that are created of the root volume and of
-other Amazon EBS volumes that are attached to the instance, the
-value for \code{ResourceType} must be \code{snapshot}. The same tag is applied
-to all of the snapshots that are created.
+\item To tag the snapshots that are created of the root volume and of other
+Amazon EBS volumes that are attached to the instance, the value for
+\code{ResourceType} must be \code{snapshot}. The same tag is applied to all of
+the snapshots that are created.
 }
 
 If you specify other values for \code{ResourceType}, the request fails.

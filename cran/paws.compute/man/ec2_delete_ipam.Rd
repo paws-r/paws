@@ -22,9 +22,9 @@ scope. If you use this option, IPAM does the following:
 \item Deallocates any CIDRs allocated to VPC resources (such as VPCs) in
 pools in private scopes.
 
-No VPC resources are deleted as a result of enabling this option.
-The CIDR associated with the resource will no longer be allocated
-from an IPAM pool, but the CIDR itself will remain unchanged.
+No VPC resources are deleted as a result of enabling this option. The
+CIDR associated with the resource will no longer be allocated from an
+IPAM pool, but the CIDR itself will remain unchanged.
 \item Deprovisions all IPv4 CIDRs provisioned to IPAM pools in private
 scopes.
 \item Deletes all IPAM pools in private scopes.

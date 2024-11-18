@@ -24,11 +24,11 @@ use \code{custom-resource} instead.}
 \item{ResourceId}{[required] The identifier of the resource that is associated with the scalable
 target. This string consists of the resource type and unique identifier.
 \itemize{
-\item ECS service - The resource type is \code{service} and the unique
-identifier is the cluster name and service name. Example:
+\item ECS service - The resource type is \code{service} and the unique identifier
+is the cluster name and service name. Example:
 \code{service/my-cluster/my-service}.
-\item Spot Fleet - The resource type is \code{spot-fleet-request} and the
-unique identifier is the Spot Fleet request ID. Example:
+\item Spot Fleet - The resource type is \code{spot-fleet-request} and the unique
+identifier is the Spot Fleet request ID. Example:
 \verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
 \item EMR cluster - The resource type is \code{instancegroup} and the unique
 identifier is the cluster ID and instance group ID. Example:
@@ -37,8 +37,8 @@ identifier is the cluster ID and instance group ID. Example:
 identifier is the fleet name. Example: \code{fleet/sample-fleet}.
 \item DynamoDB table - The resource type is \code{table} and the unique
 identifier is the table name. Example: \code{table/my-table}.
-\item DynamoDB global secondary index - The resource type is \code{index} and
-the unique identifier is the index name. Example:
+\item DynamoDB global secondary index - The resource type is \code{index} and the
+unique identifier is the index name. Example:
 \code{table/my-table/index/my-table-index}.
 \item Aurora DB cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
@@ -47,19 +47,18 @@ unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item Custom resources are not supported with a resource type. This
 parameter must specify the \code{OutputValue} from the CloudFormation
-template stack used to access the resources. The unique identifier
-is defined by the service provider. More information is available in
-our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
-\item Amazon Comprehend document classification endpoint - The resource
-type and unique identifier are specified using the endpoint ARN.
-Example:
+template stack used to access the resources. The unique identifier is
+defined by the service provider. More information is available in our
+\href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub repository}.
+\item Amazon Comprehend document classification endpoint - The resource type
+and unique identifier are specified using the endpoint ARN. Example:
 \code{arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE}.
 \item Amazon Comprehend entity recognizer endpoint - The resource type and
 unique identifier are specified using the endpoint ARN. Example:
 \code{arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE}.
 \item Lambda provisioned concurrency - The resource type is \code{function} and
-the unique identifier is the function name with a function version
-or alias name suffix that is not \verb{$LATEST}. Example:
+the unique identifier is the function name with a function version or
+alias name suffix that is not \verb{$LATEST}. Example:
 \verb{function:my-function:prod} or \verb{function:my-function:1}.
 \item Amazon Keyspaces table - The resource type is \code{table} and the unique
 identifier is the table name. Example:
@@ -68,12 +67,12 @@ identifier is the table name. Example:
 specified using the cluster ARN. Example:
 \verb{arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5}.
 \item Amazon ElastiCache replication group - The resource type is
-\code{replication-group} and the unique identifier is the replication
-group name. Example: \code{replication-group/mycluster}.
+\code{replication-group} and the unique identifier is the replication group
+name. Example: \code{replication-group/mycluster}.
 \item Neptune cluster - The resource type is \code{cluster} and the unique
 identifier is the cluster name. Example: \code{cluster:mycluster}.
-\item SageMaker serverless endpoint - The resource type is \code{variant} and
-the unique identifier is the resource ID. Example:
+\item SageMaker serverless endpoint - The resource type is \code{variant} and the
+unique identifier is the resource ID. Example:
 \code{endpoint/my-end-point/variant/KMeansClustering}.
 \item SageMaker inference component - The resource type is
 \code{inference-component} and the unique identifier is the resource ID.
@@ -87,47 +86,47 @@ unique identifier is the pool ID. Example:
 consists of the service namespace, resource type, and scaling property.
 \itemize{
 \item \code{ecs:service:DesiredCount} - The task count of an ECS service.
-\item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count
-of an EMR Instance Group.
+\item \code{elasticmapreduce:instancegroup:InstanceCount} - The instance count of
+an EMR Instance Group.
 \item \code{ec2:spot-fleet-request:TargetCapacity} - The target capacity of a
 Spot Fleet.
 \item \code{appstream:fleet:DesiredCapacity} - The capacity of an AppStream 2.0
 fleet.
-\item \code{dynamodb:table:ReadCapacityUnits} - The provisioned read capacity
-for a DynamoDB table.
+\item \code{dynamodb:table:ReadCapacityUnits} - The provisioned read capacity for
+a DynamoDB table.
 \item \code{dynamodb:table:WriteCapacityUnits} - The provisioned write capacity
 for a DynamoDB table.
-\item \code{dynamodb:index:ReadCapacityUnits} - The provisioned read capacity
-for a DynamoDB global secondary index.
+\item \code{dynamodb:index:ReadCapacityUnits} - The provisioned read capacity for
+a DynamoDB global secondary index.
 \item \code{dynamodb:index:WriteCapacityUnits} - The provisioned write capacity
 for a DynamoDB global secondary index.
 \item \code{rds:cluster:ReadReplicaCount} - The count of Aurora Replicas in an
 Aurora DB cluster. Available for Aurora MySQL-compatible edition and
 Aurora PostgreSQL-compatible edition.
-\item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2
-instances for a SageMaker model endpoint variant.
-\item \code{custom-resource:ResourceType:Property} - The scalable dimension for
-a custom resource provided by your own application or service.
-\item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
-The number of inference units for an Amazon Comprehend document
+\item \code{sagemaker:variant:DesiredInstanceCount} - The number of EC2 instances
+for a SageMaker model endpoint variant.
+\item \code{custom-resource:ResourceType:Property} - The scalable dimension for a
+custom resource provided by your own application or service.
+\item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} - The
+number of inference units for an Amazon Comprehend document
 classification endpoint.
 \item \code{comprehend:entity-recognizer-endpoint:DesiredInferenceUnits} - The
 number of inference units for an Amazon Comprehend entity recognizer
 endpoint.
-\item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
-concurrency for a Lambda function.
+\item \verb{lambda:function:ProvisionedConcurrency} - The provisioned concurrency
+for a Lambda function.
 \item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
 for an Amazon Keyspaces table.
-\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
-capacity for an Amazon Keyspaces table.
+\item \code{cassandra:table:WriteCapacityUnits} - The provisioned write capacity
+for an Amazon Keyspaces table.
 \item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
 GiB) for brokers in an Amazon MSK cluster.
-\item \code{elasticache:replication-group:NodeGroups} - The number of node
-groups for an Amazon ElastiCache replication group.
-\item \code{elasticache:replication-group:Replicas} - The number of replicas
-per node group for an Amazon ElastiCache replication group.
-\item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in
-an Amazon Neptune DB cluster.
+\item \code{elasticache:replication-group:NodeGroups} - The number of node groups
+for an Amazon ElastiCache replication group.
+\item \code{elasticache:replication-group:Replicas} - The number of replicas per
+node group for an Amazon ElastiCache replication group.
+\item \code{neptune:cluster:ReadReplicaCount} - The count of read replicas in an
+Amazon Neptune DB cluster.
 \item \code{sagemaker:variant:DesiredProvisionedConcurrency} - The provisioned
 concurrency for a SageMaker serverless endpoint.
 \item \code{sagemaker:inference-component:DesiredCopyCount} - The number of
@@ -196,14 +195,14 @@ activities.
 
 \strong{Suspension Outcomes}
 \itemize{
-\item For \code{DynamicScalingInSuspended}, while a suspension is in effect,
-all scale-in activities that are triggered by a scaling policy are
+\item For \code{DynamicScalingInSuspended}, while a suspension is in effect, all
+scale-in activities that are triggered by a scaling policy are
 suspended.
-\item For \code{DynamicScalingOutSuspended}, while a suspension is in effect,
-all scale-out activities that are triggered by a scaling policy are
+\item For \code{DynamicScalingOutSuspended}, while a suspension is in effect, all
+scale-out activities that are triggered by a scaling policy are
 suspended.
-\item For \code{ScheduledScalingSuspended}, while a suspension is in effect,
-all scaling activities that involve scheduled actions are suspended.
+\item For \code{ScheduledScalingSuspended}, while a suspension is in effect, all
+scaling activities that involve scheduled actions are suspended.
 }
 
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html}{Suspend and resume scaling}

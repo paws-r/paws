@@ -141,16 +141,15 @@ supports \code{ALLOW_REFRESH_TOKEN_AUTH}, \code{ALLOW_USER_SRP_AUTH}, and
 Valid values include:
 \itemize{
 \item \code{ALLOW_ADMIN_USER_PASSWORD_AUTH}: Enable admin based user password
-authentication flow \code{ADMIN_USER_PASSWORD_AUTH}. This setting
-replaces the \code{ADMIN_NO_SRP_AUTH} setting. With this authentication
-flow, your app passes a user name and password to Amazon Cognito in
-the request, instead of using the Secure Remote Password (SRP)
-protocol to securely transmit the password.
+authentication flow \code{ADMIN_USER_PASSWORD_AUTH}. This setting replaces
+the \code{ADMIN_NO_SRP_AUTH} setting. With this authentication flow, your
+app passes a user name and password to Amazon Cognito in the request,
+instead of using the Secure Remote Password (SRP) protocol to securely
+transmit the password.
 \item \code{ALLOW_CUSTOM_AUTH}: Enable Lambda trigger based authentication.
-\item \code{ALLOW_USER_PASSWORD_AUTH}: Enable user password-based
-authentication. In this flow, Amazon Cognito receives the password
-in the request instead of using the SRP protocol to verify
-passwords.
+\item \code{ALLOW_USER_PASSWORD_AUTH}: Enable user password-based authentication.
+In this flow, Amazon Cognito receives the password in the request
+instead of using the SRP protocol to verify passwords.
 \item \code{ALLOW_USER_SRP_AUTH}: Enable SRP-based authentication.
 \item \code{ALLOW_REFRESH_TOKEN_AUTH}: Enable authflow to refresh tokens.
 }
@@ -270,8 +269,8 @@ pool.
 Valid values include:
 \itemize{
 \item \code{ENABLED} - This prevents user existence-related errors.
-\item \code{LEGACY} - This represents the early behavior of Amazon Cognito
-where user existence related errors aren't prevented.
+\item \code{LEGACY} - This represents the early behavior of Amazon Cognito where
+user existence related errors aren't prevented.
 }
 
 Defaults to \code{LEGACY} when you don't provide a value.}

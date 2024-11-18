@@ -42,8 +42,8 @@ following values:
 taken by Amazon RDS for my Amazon Web Services account.
 \item \code{manual} - Return all DB snapshots that have been taken by my Amazon
 Web Services account.
-\item \code{shared} - Return all manual DB snapshots that have been shared to
-my Amazon Web Services account.
+\item \code{shared} - Return all manual DB snapshots that have been shared to my
+Amazon Web Services account.
 \item \code{public} - Return all DB snapshots that have been marked as public.
 \item \code{awsbackup} - Return the DB snapshots managed by the Amazon Web
 Services Backup service.

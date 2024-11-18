@@ -95,8 +95,7 @@ database cluster.
 Constraints:
 \itemize{
 \item Can't be specified if \code{SourceDBClusterIdentifier} is specified. In
-this case, Amazon Aurora uses the setting from the source DB
-cluster.
+this case, Amazon Aurora uses the setting from the source DB cluster.
 }}
 }
 \description{

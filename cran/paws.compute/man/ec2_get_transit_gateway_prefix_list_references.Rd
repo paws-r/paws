@@ -18,15 +18,12 @@ ec2_get_transit_gateway_prefix_list_references(
 
 \item{Filters}{One or more filters. The possible values are:
 \itemize{
-\item \code{attachment.resource-id} - The ID of the resource for the
-attachment.
-\item \code{attachment.resource-type} - The type of resource for the
-attachment. Valid values are \code{vpc} | \code{vpn} |
-\code{direct-connect-gateway} | \code{peering}.
-\item \code{attachment.transit-gateway-attachment-id} - The ID of the
-attachment.
-\item \code{is-blackhole} - Whether traffic matching the route is blocked
-(\code{true} | \code{false}).
+\item \code{attachment.resource-id} - The ID of the resource for the attachment.
+\item \code{attachment.resource-type} - The type of resource for the attachment.
+Valid values are \code{vpc} | \code{vpn} | \code{direct-connect-gateway} | \code{peering}.
+\item \code{attachment.transit-gateway-attachment-id} - The ID of the attachment.
+\item \code{is-blackhole} - Whether traffic matching the route is blocked (\code{true}
+| \code{false}).
 \item \code{prefix-list-id} - The ID of the prefix list.
 \item \code{prefix-list-owner-id} - The ID of the owner of the prefix list.
 \item \code{state} - The state of the prefix list reference (\code{pending} |

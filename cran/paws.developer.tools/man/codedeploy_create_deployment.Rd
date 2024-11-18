@@ -81,8 +81,7 @@ The \code{fileExistsBehavior} parameter takes any of the following values:
 \item DISALLOW: The deployment fails. This is also the default behavior if
 no option is specified.
 \item OVERWRITE: The version of the file from the application revision
-currently being deployed replaces the version already on the
-instance.
+currently being deployed replaces the version already on the instance.
 \item RETAIN: The version of the file already on the instance is kept and
 used as part of the new deployment.
 }}

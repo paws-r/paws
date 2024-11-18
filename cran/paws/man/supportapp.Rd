@@ -63,8 +63,8 @@ your Slack channel:
 \itemize{
 \item Create, search, update, and resolve your support cases
 \item Request service quota increases for your account
-\item Invite Amazon Web Services Support agents to your channel so that
-you can chat directly about your support cases
+\item Invite Amazon Web Services Support agents to your channel so that you
+can chat directly about your support cases
 }
 
 For more information about how to perform these actions in Slack, see
@@ -81,8 +81,8 @@ You can also use the Amazon Web Services Management Console instead of
 the Amazon Web Services Support App API to manage your Slack
 configurations. For more information, see \href{https://docs.aws.amazon.com/awssupport/latest/user/authorize-slack-workspace.html}{Authorize a Slack workspace to enable the Amazon Web Services Support App}.
 \itemize{
-\item You must have a Business or Enterprise Support plan to use the
-Amazon Web Services Support App API.
+\item You must have a Business or Enterprise Support plan to use the Amazon
+Web Services Support App API.
 \item For more information about the Amazon Web Services Support App
 endpoints, see the \href{https://docs.aws.amazon.com/general/latest/gr/awssupport.html#awssupport_app_region}{Amazon Web Services Support App in Slack endpoints}
 in the \emph{Amazon Web Services General Reference}.

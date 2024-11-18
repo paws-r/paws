@@ -92,10 +92,10 @@ The types \code{application/vnd.amazonaws.connect.message.interactive} and
 \code{application/vnd.amazonaws.connect.message.interactive.response} must be
 present in the SupportedMessagingContentTypes field of this API in order
 to set \code{SegmentAttributes} as
-\{\verb{ "connect:Subtype": \\\{"valueString" : "connect:Guide" \\\}\\\}}.}
+\\\verb{ "connect:Subtype": \\\{"valueString" : "connect:Guide" \\\}\\\}}.}
 }
 \description{
-Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Amazon Connect Participant Service.
+Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection} API in the Amazon Connect Participant Service.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_start_chat_contact/} for full documentation.
 }

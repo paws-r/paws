@@ -28,12 +28,12 @@ date.
 \item \code{Status} - Sets the search criteria to the \code{Evaluation} status.
 \item \code{Name} - Sets the search criteria to the contents of \code{Evaluation}
 \code{Name}.
-\item \code{IAMUser} - Sets the search criteria to the user account that
-invoked an \code{Evaluation}.
+\item \code{IAMUser} - Sets the search criteria to the user account that invoked
+an \code{Evaluation}.
 \item \code{MLModelId} - Sets the search criteria to the \code{MLModel} that was
 evaluated.
-\item \code{DataSourceId} - Sets the search criteria to the \code{DataSource} used
-in \code{Evaluation}.
+\item \code{DataSourceId} - Sets the search criteria to the \code{DataSource} used in
+\code{Evaluation}.
 \item \code{DataUri} - Sets the search criteria to the data file(s) used in
 \code{Evaluation}. The URL can identify either a file or an Amazon Simple
 Storage Solution (Amazon S3) bucket or directory.

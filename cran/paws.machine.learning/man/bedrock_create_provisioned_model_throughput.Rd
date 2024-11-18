@@ -18,7 +18,7 @@ bedrock_create_provisioned_model_throughput(
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
-error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
+error. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
 in the Amazon S3 User Guide.}
 
 \item{modelUnits}{[required] Number of model units to allocate. A model unit delivers a specific
@@ -39,7 +39,7 @@ Services account manager.}
 
 \item{modelId}{[required] The Amazon Resource Name (ARN) or name of the model to associate with
 this Provisioned Throughput. For a list of models for which you can
-purchase Provisioned Throughput, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#prov-throughput-models}{Amazon Bedrock model IDs for purchasing Provisioned Throughput}
+purchase Provisioned Throughput, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#prov-throughput-models}{Amazon Bedrock model IDs for purchasing Provisioned Throughput}
 in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
 
 \item{commitmentDuration}{The commitment duration requested for the Provisioned Throughput.

@@ -21,7 +21,8 @@ cloudformation_activate_organizations_access <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$activate_organizations_access_input()
   output <- .cloudformation$activate_organizations_access_output()
@@ -77,11 +78,11 @@ cloudformation_activate_organizations_access <- function() {
 #' version, if available. You can also use this parameter to update the
 #' value of `AutoUpdate`.
 #' 
-#' -   `MAJOR`: CloudFormation updates the extension to the newest major
-#'     version, if one is available.
+#' - `MAJOR`: CloudFormation updates the extension to the newest major
+#'   version, if one is available.
 #' 
-#' -   `MINOR`: CloudFormation updates the extension to the newest minor
-#'     version, if one is available.
+#' - `MINOR`: CloudFormation updates the extension to the newest minor
+#'   version, if one is available.
 #' @param MajorVersion The major version of this extension you want to activate, if multiple
 #' major versions are available. The default is the latest major version.
 #' CloudFormation uses the latest available *minor* version of the major
@@ -98,7 +99,8 @@ cloudformation_activate_type <- function(Type = NULL, PublicTypeArn = NULL, Publ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$activate_type_input(Type = Type, PublicTypeArn = PublicTypeArn, PublisherId = PublisherId, TypeName = TypeName, TypeNameAlias = TypeNameAlias, AutoUpdate = AutoUpdate, LoggingConfig = LoggingConfig, ExecutionRoleArn = ExecutionRoleArn, VersionBump = VersionBump, MajorVersion = MajorVersion)
   output <- .cloudformation$activate_type_output()
@@ -129,7 +131,8 @@ cloudformation_batch_describe_type_configurations <- function(TypeConfigurationI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$batch_describe_type_configurations_input(TypeConfigurationIdentifiers = TypeConfigurationIdentifiers)
   output <- .cloudformation$batch_describe_type_configurations_output()
@@ -175,7 +178,8 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$cancel_update_stack_input(StackName = StackName, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$cancel_update_stack_output()
@@ -269,7 +273,8 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$continue_update_rollback_input(StackName = StackName, RoleARN = RoleARN, ResourcesToSkip = ResourcesToSkip, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$continue_update_rollback_output()
@@ -315,77 +320,77 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' contains certain capabilities in order for CloudFormation to create the
 #' stack.
 #' 
-#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
+#' - `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#'     Some stack templates might include resources that can affect
-#'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stacks, you must explicitly acknowledge this by specifying one of
-#'     these capabilities.
+#'   Some stack templates might include resources that can affect
+#'   permissions in your Amazon Web Services account; for example, by
+#'   creating new Identity and Access Management (IAM) users. For those
+#'   stacks, you must explicitly acknowledge this by specifying one of
+#'   these capabilities.
 #' 
-#'     The following IAM resources require you to specify either the
-#'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
+#'   The following IAM resources require you to specify either the
+#'   `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
 #' 
-#'     -   If you have IAM resources, you can specify either capability.
+#'   - If you have IAM resources, you can specify either capability.
 #' 
-#'     -   If you have IAM resources with custom names, you *must* specify
-#'         `CAPABILITY_NAMED_IAM`.
+#'   - If you have IAM resources with custom names, you *must* specify
+#'     `CAPABILITY_NAMED_IAM`.
 #' 
-#'     -   If you don't specify either of these capabilities,
-#'         CloudFormation returns an `InsufficientCapabilities` error.
+#'   - If you don't specify either of these capabilities, CloudFormation
+#'     returns an `InsufficientCapabilities` error.
 #' 
-#'     If your stack template contains these resources, we suggest that you
-#'     review all permissions associated with them and edit their
-#'     permissions if necessary.
+#'   If your stack template contains these resources, we suggest that you
+#'   review all permissions associated with them and edit their permissions
+#'   if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
+#'   - [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
+#'   - [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
 #' 
-#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
+#'   - [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
+#'   - [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM resources in
-#'     CloudFormation
-#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'   For more information, see [Acknowledging IAM resources in
+#'   CloudFormation
+#'   templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
-#' -   `CAPABILITY_AUTO_EXPAND`
+#' - `CAPABILITY_AUTO_EXPAND`
 #' 
-#'     Some template contain macros. Macros perform custom processing on
-#'     templates; this can include simple actions like find-and-replace
-#'     operations, all the way to extensive transformations of entire
-#'     templates. Because of this, users typically create a change set from
-#'     the processed template, so that they can review the changes
-#'     resulting from the macros before actually creating the stack. If
-#'     your stack template contains one or more macros, and you choose to
-#'     create a stack directly from the processed template, without first
-#'     reviewing the resulting changes in a change set, you must
-#'     acknowledge this capability. This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.
+#'   Some template contain macros. Macros perform custom processing on
+#'   templates; this can include simple actions like find-and-replace
+#'   operations, all the way to extensive transformations of entire
+#'   templates. Because of this, users typically create a change set from
+#'   the processed template, so that they can review the changes resulting
+#'   from the macros before actually creating the stack. If your stack
+#'   template contains one or more macros, and you choose to create a stack
+#'   directly from the processed template, without first reviewing the
+#'   resulting changes in a change set, you must acknowledge this
+#'   capability. This includes the
+#'   [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'   and
+#'   [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'   transforms, which are macros hosted by CloudFormation.
 #' 
-#'     This capacity doesn't apply to creating change sets, and specifying
-#'     it when creating change sets has no effect.
+#'   This capacity doesn't apply to creating change sets, and specifying it
+#'   when creating change sets has no effect.
 #' 
-#'     If you want to create a stack from a stack template that contains
-#'     macros *and* nested stacks, you must create or update the stack
-#'     directly from the template using the
-#'     [`create_stack`][cloudformation_create_stack] or
-#'     [`update_stack`][cloudformation_update_stack] action, and specifying
-#'     this capability.
+#'   If you want to create a stack from a stack template that contains
+#'   macros *and* nested stacks, you must create or update the stack
+#'   directly from the template using the
+#'   [`create_stack`][cloudformation_create_stack] or
+#'   [`update_stack`][cloudformation_update_stack] action, and specifying
+#'   this capability.
 #' 
-#'     For more information about macros, see [Using CloudFormation macros
-#'     to perform custom processing on
-#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'   For more information about macros, see [Using CloudFormation macros to
+#'   perform custom processing on
+#'   templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
@@ -447,7 +452,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' If you create a change set for a new stack, CloudFormation creates a
 #' stack with a unique stack ID, but no template or resources. The stack
 #' will be in the
-#' [REVIEW_IN_PROGRESS](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/service_code_examples.html#d0e11995)
+#' [REVIEW_IN_PROGRESS](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
 #' state until you execute the change set.
 #' 
 #' By default, CloudFormation specifies `UPDATE`. You can't use the
@@ -462,21 +467,20 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' [`execute_change_set`][cloudformation_execute_change_set] API operation
 #' must not be specified. This must be one of these values:
 #' 
-#' -   `DELETE` - Deletes the change set if the stack creation fails. This
-#'     is only valid when the `ChangeSetType` parameter is set to `CREATE`.
-#'     If the deletion of the stack fails, the status of the stack is
-#'     `DELETE_FAILED`.
+#' - `DELETE` - Deletes the change set if the stack creation fails. This is
+#'   only valid when the `ChangeSetType` parameter is set to `CREATE`. If
+#'   the deletion of the stack fails, the status of the stack is
+#'   `DELETE_FAILED`.
 #' 
-#' -   `DO_NOTHING` - if the stack creation fails, do nothing. This is
-#'     equivalent to specifying `true` for the `DisableRollback` parameter
-#'     to the [`execute_change_set`][cloudformation_execute_change_set] API
-#'     operation.
+#' - `DO_NOTHING` - if the stack creation fails, do nothing. This is
+#'   equivalent to specifying `true` for the `DisableRollback` parameter to
+#'   the [`execute_change_set`][cloudformation_execute_change_set] API
+#'   operation.
 #' 
-#' -   `ROLLBACK` - if the stack creation fails, roll back the stack. This
-#'     is equivalent to specifying `false` for the `DisableRollback`
-#'     parameter to the
-#'     [`execute_change_set`][cloudformation_execute_change_set] API
-#'     operation.
+#' - `ROLLBACK` - if the stack creation fails, roll back the stack. This is
+#'   equivalent to specifying `false` for the `DisableRollback` parameter
+#'   to the [`execute_change_set`][cloudformation_execute_change_set] API
+#'   operation.
 #' 
 #' For nested stacks, when the `OnStackFailure` parameter is set to
 #' `DELETE` for the change set for the parent stack, any failure in a child
@@ -503,7 +507,8 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure, ImportExistingResources = ImportExistingResources)
   output <- .cloudformation$create_change_set_output()
@@ -544,7 +549,8 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$create_generated_template_input(Resources = Resources, GeneratedTemplateName = GeneratedTemplateName, StackName = StackName, TemplateConfiguration = TemplateConfiguration)
   output <- .cloudformation$create_generated_template_output()
@@ -607,79 +613,79 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' contains certain capabilities in order for CloudFormation to create the
 #' stack.
 #' 
-#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
+#' - `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#'     Some stack templates might include resources that can affect
-#'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stacks, you must explicitly acknowledge this by specifying one of
-#'     these capabilities.
+#'   Some stack templates might include resources that can affect
+#'   permissions in your Amazon Web Services account; for example, by
+#'   creating new Identity and Access Management (IAM) users. For those
+#'   stacks, you must explicitly acknowledge this by specifying one of
+#'   these capabilities.
 #' 
-#'     The following IAM resources require you to specify either the
-#'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
+#'   The following IAM resources require you to specify either the
+#'   `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
 #' 
-#'     -   If you have IAM resources, you can specify either capability.
+#'   - If you have IAM resources, you can specify either capability.
 #' 
-#'     -   If you have IAM resources with custom names, you *must* specify
-#'         `CAPABILITY_NAMED_IAM`.
+#'   - If you have IAM resources with custom names, you *must* specify
+#'     `CAPABILITY_NAMED_IAM`.
 #' 
-#'     -   If you don't specify either of these capabilities,
-#'         CloudFormation returns an `InsufficientCapabilities` error.
+#'   - If you don't specify either of these capabilities, CloudFormation
+#'     returns an `InsufficientCapabilities` error.
 #' 
-#'     If your stack template contains these resources, we recommend that
-#'     you review all permissions associated with them and edit their
-#'     permissions if necessary.
+#'   If your stack template contains these resources, we recommend that you
+#'   review all permissions associated with them and edit their permissions
+#'   if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
+#'   - [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
+#'   - [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
 #' 
-#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
+#'   - [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
+#'   - [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
-#'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'   For more information, see [Acknowledging IAM Resources in
+#'   CloudFormation
+#'   Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
-#' -   `CAPABILITY_AUTO_EXPAND`
+#' - `CAPABILITY_AUTO_EXPAND`
 #' 
-#'     Some template contain macros. Macros perform custom processing on
-#'     templates; this can include simple actions like find-and-replace
-#'     operations, all the way to extensive transformations of entire
-#'     templates. Because of this, users typically create a change set from
-#'     the processed template, so that they can review the changes
-#'     resulting from the macros before actually creating the stack. If
-#'     your stack template contains one or more macros, and you choose to
-#'     create a stack directly from the processed template, without first
-#'     reviewing the resulting changes in a change set, you must
-#'     acknowledge this capability. This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.
+#'   Some template contain macros. Macros perform custom processing on
+#'   templates; this can include simple actions like find-and-replace
+#'   operations, all the way to extensive transformations of entire
+#'   templates. Because of this, users typically create a change set from
+#'   the processed template, so that they can review the changes resulting
+#'   from the macros before actually creating the stack. If your stack
+#'   template contains one or more macros, and you choose to create a stack
+#'   directly from the processed template, without first reviewing the
+#'   resulting changes in a change set, you must acknowledge this
+#'   capability. This includes the
+#'   [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'   and
+#'   [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'   transforms, which are macros hosted by CloudFormation.
 #' 
-#'     If you want to create a stack from a stack template that contains
-#'     macros *and* nested stacks, you must create the stack directly from
-#'     the template using this capability.
+#'   If you want to create a stack from a stack template that contains
+#'   macros *and* nested stacks, you must create the stack directly from
+#'   the template using this capability.
 #' 
-#'     You should only create stacks directly from a stack template that
-#'     contains macros if you know what processing the macro performs.
+#'   You should only create stacks directly from a stack template that
+#'   contains macros if you know what processing the macro performs.
 #' 
-#'     Each macro relies on an underlying Lambda service function for
-#'     processing stack templates. Be aware that the Lambda function owner
-#'     can update the function operation without CloudFormation being
-#'     notified.
+#'   Each macro relies on an underlying Lambda service function for
+#'   processing stack templates. Be aware that the Lambda function owner
+#'   can update the function operation without CloudFormation being
+#'   notified.
 #' 
-#'     For more information, see [Using CloudFormation macros to perform
-#'     custom processing on
-#'     templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'   For more information, see [Using CloudFormation macros to perform
+#'   custom processing on
+#'   templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
@@ -780,7 +786,8 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$create_stack_output()
@@ -821,19 +828,19 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #' specifying parameters and their values, be aware of how CloudFormation
 #' sets parameter values during stack instance operations:
 #' 
-#' -   To override the current value for a parameter, include the parameter
-#'     and specify its value.
+#' - To override the current value for a parameter, include the parameter
+#'   and specify its value.
 #' 
-#' -   To leave an overridden parameter set to its present value, include
-#'     the parameter and specify `UsePreviousValue` as `true`. (You can't
-#'     specify both a value and set `UsePreviousValue` to `true`.)
+#' - To leave an overridden parameter set to its present value, include the
+#'   parameter and specify `UsePreviousValue` as `true`. (You can't specify
+#'   both a value and set `UsePreviousValue` to `true`.)
 #' 
-#' -   To set an overridden parameter back to the value specified in the
-#'     stack set, specify a parameter list but don't include the parameter
-#'     in the list.
+#' - To set an overridden parameter back to the value specified in the
+#'   stack set, specify a parameter list but don't include the parameter in
+#'   the list.
 #' 
-#' -   To leave all parameters set to their present values, don't specify
-#'     this property at all.
+#' - To leave all parameters set to their present values, don't specify
+#'   this property at all.
 #' 
 #' During stack set updates, any parameter values overridden for a stack
 #' instance aren't updated, but retain their overridden value.
@@ -862,16 +869,16 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -882,7 +889,8 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$create_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$create_stack_instances_output()
@@ -933,66 +941,66 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' template contains certain capabilities in order for CloudFormation to
 #' create the stack set and related stack instances.
 #' 
-#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
+#' - `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#'     Some stack templates might include resources that can affect
-#'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stack sets, you must explicitly acknowledge this by specifying one
-#'     of these capabilities.
+#'   Some stack templates might include resources that can affect
+#'   permissions in your Amazon Web Services account; for example, by
+#'   creating new Identity and Access Management (IAM) users. For those
+#'   stack sets, you must explicitly acknowledge this by specifying one of
+#'   these capabilities.
 #' 
-#'     The following IAM resources require you to specify either the
-#'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
+#'   The following IAM resources require you to specify either the
+#'   `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
 #' 
-#'     -   If you have IAM resources, you can specify either capability.
+#'   - If you have IAM resources, you can specify either capability.
 #' 
-#'     -   If you have IAM resources with custom names, you *must* specify
-#'         `CAPABILITY_NAMED_IAM`.
+#'   - If you have IAM resources with custom names, you *must* specify
+#'     `CAPABILITY_NAMED_IAM`.
 #' 
-#'     -   If you don't specify either of these capabilities,
-#'         CloudFormation returns an `InsufficientCapabilities` error.
+#'   - If you don't specify either of these capabilities, CloudFormation
+#'     returns an `InsufficientCapabilities` error.
 #' 
-#'     If your stack template contains these resources, we recommend that
-#'     you review all permissions associated with them and edit their
-#'     permissions if necessary.
+#'   If your stack template contains these resources, we recommend that you
+#'   review all permissions associated with them and edit their permissions
+#'   if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
+#'   - [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
+#'   - [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
 #' 
-#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
+#'   - [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
+#'   - [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
-#'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'   For more information, see [Acknowledging IAM Resources in
+#'   CloudFormation
+#'   Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
-#' -   `CAPABILITY_AUTO_EXPAND`
+#' - `CAPABILITY_AUTO_EXPAND`
 #' 
-#'     Some templates reference macros. If your stack set template
-#'     references one or more macros, you must create the stack set
-#'     directly from the processed template, without first reviewing the
-#'     resulting changes in a change set. To create the stack set directly,
-#'     you must acknowledge this capability. For more information, see
-#'     [Using CloudFormation Macros to Perform Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'   Some templates reference macros. If your stack set template references
+#'   one or more macros, you must create the stack set directly from the
+#'   processed template, without first reviewing the resulting changes in a
+#'   change set. To create the stack set directly, you must acknowledge
+#'   this capability. For more information, see [Using CloudFormation
+#'   Macros to Perform Custom Processing on
+#'   Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
-#'     Stack sets with service-managed permissions don't currently support
-#'     the use of macros in templates. (This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.) Even if you
-#'     specify this capability for a stack set with service-managed
-#'     permissions, if you reference a macro in your template the stack set
-#'     operation will fail.
+#'   Stack sets with service-managed permissions don't currently support
+#'   the use of macros in templates. (This includes the
+#'   [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'   and
+#'   [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'   transforms, which are macros hosted by CloudFormation.) Even if you
+#'   specify this capability for a stack set with service-managed
+#'   permissions, if you reference a macro in your template the stack set
+#'   operation will fail.
 #' @param Tags The key-value pairs to associate with this stack set and the stacks
 #' created from it. CloudFormation also propagates these tags to supported
 #' resources that are created in the stacks. A maximum number of 50 tags
@@ -1024,16 +1032,15 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @param PermissionModel Describes how the IAM roles required for stack set operations are
 #' created. By default, `SELF-MANAGED` is specified.
 #' 
-#' -   With `self-managed` permissions, you must create the administrator
-#'     and execution roles required to deploy to target accounts. For more
-#'     information, see [Grant Self-Managed Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+#' - With `self-managed` permissions, you must create the administrator and
+#'   execution roles required to deploy to target accounts. For more
+#'   information, see [Grant Self-Managed Stack Set
+#'   Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
 #' 
-#' -   With `service-managed` permissions, StackSets automatically creates
-#'     the IAM roles required to deploy to accounts managed by
-#'     Organizations. For more information, see [Grant Service-Managed
-#'     Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
+#' - With `service-managed` permissions, StackSets automatically creates
+#'   the IAM roles required to deploy to accounts managed by Organizations.
+#'   For more information, see [Grant Service-Managed Stack Set
+#'   Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
 #' @param AutoDeployment Describes whether StackSets automatically deploys to Organizations
 #' accounts that are added to the target organization or organizational
 #' unit (OU). Specify only if `PermissionModel` is `SERVICE_MANAGED`.
@@ -1044,17 +1051,17 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   To create a stack set with service-managed permissions while signed
-#'     in to the management account, specify `SELF`.
+#' - To create a stack set with service-managed permissions while signed in
+#'   to the management account, specify `SELF`.
 #' 
-#' -   To create a stack set with service-managed permissions while signed
-#'     in to a delegated administrator account, specify `DELEGATED_ADMIN`.
+#' - To create a stack set with service-managed permissions while signed in
+#'   to a delegated administrator account, specify `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     admin in the management account. For more information, see [Register
-#'     a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   admin in the management account. For more information, see [Register a
+#'   delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #' 
 #' Stack sets with service-managed permissions are created in the
 #' management account, including stack sets that are created by delegated
@@ -1081,7 +1088,8 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$create_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackId = StackId, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, PermissionModel = PermissionModel, AutoDeployment = AutoDeployment, CallAs = CallAs, ClientRequestToken = ClientRequestToken, ManagedExecution = ManagedExecution)
   output <- .cloudformation$create_stack_set_output()
@@ -1111,7 +1119,8 @@ cloudformation_deactivate_organizations_access <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$deactivate_organizations_access_input()
   output <- .cloudformation$deactivate_organizations_access_output()
@@ -1153,7 +1162,8 @@ cloudformation_deactivate_type <- function(TypeName = NULL, Type = NULL, Arn = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$deactivate_type_input(TypeName = TypeName, Type = Type, Arn = Arn)
   output <- .cloudformation$deactivate_type_output()
@@ -1186,7 +1196,8 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$delete_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName)
   output <- .cloudformation$delete_change_set_output()
@@ -1216,7 +1227,8 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$delete_generated_template_input(GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$delete_generated_template_output()
@@ -1273,11 +1285,11 @@ cloudformation_delete_generated_template <- function(GeneratedTemplateName) {
 #' `Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002`.
 #' @param DeletionMode Specifies the deletion mode for the stack. Possible values are:
 #' 
-#' -   `STANDARD` - Use the standard behavior. Specifying this value is the
-#'     same as not specifying this parameter.
+#' - `STANDARD` - Use the standard behavior. Specifying this value is the
+#'   same as not specifying this parameter.
 #' 
-#' -   `FORCE_DELETE_STACK` - Delete the stack if it's stuck in a
-#'     `DELETE_FAILED` state due to resource deletion failure.
+#' - `FORCE_DELETE_STACK` - Delete the stack if it's stuck in a
+#'   `DELETE_FAILED` state due to resource deletion failure.
 #'
 #' @keywords internal
 #'
@@ -1288,7 +1300,8 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$delete_stack_input(StackName = StackName, RetainResources = RetainResources, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, DeletionMode = DeletionMode)
   output <- .cloudformation$delete_stack_output()
@@ -1326,7 +1339,7 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #' existing, saved stack to a new stack set.
 #' 
 #' For more information, see [Stack set operation
-#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options).
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 #' @param OperationId The unique identifier for this stack set operation.
 #' 
 #' If you don't specify an operation ID, the SDK generates one
@@ -1346,16 +1359,16 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1366,7 +1379,8 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$delete_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, OperationPreferences = OperationPreferences, RetainStacks = RetainStacks, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$delete_stack_instances_output()
@@ -1395,16 +1409,16 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL,
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1415,7 +1429,8 @@ cloudformation_delete_stack_set <- function(StackSetName, CallAs = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$delete_stack_set_input(StackSetName = StackSetName, CallAs = CallAs)
   output <- .cloudformation$delete_stack_set_output()
@@ -1457,7 +1472,8 @@ cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$deregister_type_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId)
   output <- .cloudformation$deregister_type_output()
@@ -1489,7 +1505,8 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AccountLimits")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AccountLimits"),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_account_limits_input(NextToken = NextToken)
   output <- .cloudformation$describe_account_limits_output()
@@ -1529,7 +1546,8 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, IncludePropertyValues = IncludePropertyValues)
   output <- .cloudformation$describe_change_set_output()
@@ -1569,7 +1587,8 @@ cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_change_set_hooks_input(ChangeSetName = ChangeSetName, StackName = StackName, NextToken = NextToken, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$describe_change_set_hooks_output()
@@ -1599,7 +1618,8 @@ cloudformation_describe_generated_template <- function(GeneratedTemplateName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_generated_template_input(GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$describe_generated_template_output()
@@ -1624,16 +1644,16 @@ cloudformation_describe_generated_template <- function(GeneratedTemplateName) {
 #' 
 #' By default, `SELF` is specified.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1644,7 +1664,8 @@ cloudformation_describe_organizations_access <- function(CallAs = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_organizations_access_input(CallAs = CallAs)
   output <- .cloudformation$describe_organizations_access_output()
@@ -1679,7 +1700,8 @@ cloudformation_describe_publisher <- function(PublisherId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_publisher_input(PublisherId = PublisherId)
   output <- .cloudformation$describe_publisher_output()
@@ -1709,7 +1731,8 @@ cloudformation_describe_resource_scan <- function(ResourceScanId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_resource_scan_input(ResourceScanId = ResourceScanId)
   output <- .cloudformation$describe_resource_scan_output()
@@ -1743,7 +1766,8 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_drift_detection_status_input(StackDriftDetectionId = StackDriftDetectionId)
   output <- .cloudformation$describe_stack_drift_detection_status_output()
@@ -1766,10 +1790,10 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' @param StackName The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
 #' 
-#' -   Running stacks: You can specify either the stack's name or its
-#'     unique stack ID.
+#' - Running stacks: You can specify either the stack's name or its unique
+#'   stack ID.
 #' 
-#' -   Deleted stacks: You must specify the unique stack ID.
+#' - Deleted stacks: You must specify the unique stack ID.
 #' 
 #' Default: There is no default value.
 #' @param NextToken A string that identifies the next page of events that you want to
@@ -1784,7 +1808,8 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackEvents")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackEvents"),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_events_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stack_events_output()
@@ -1816,16 +1841,16 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1836,7 +1861,8 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_instance_input(StackSetName = StackSetName, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
   output <- .cloudformation$describe_stack_instance_output()
@@ -1858,10 +1884,10 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
 #' @param StackName &#91;required&#93; The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
 #' 
-#' -   Running stacks: You can specify either the stack's name or its
-#'     unique stack ID.
+#' - Running stacks: You can specify either the stack's name or its unique
+#'   stack ID.
 #' 
-#' -   Deleted stacks: You must specify the unique stack ID.
+#' - Deleted stacks: You must specify the unique stack ID.
 #' 
 #' Default: There is no default value.
 #' @param LogicalResourceId &#91;required&#93; The logical name of the resource as specified in the template.
@@ -1877,7 +1903,8 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_resource_input(StackName = StackName, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$describe_stack_resource_output()
@@ -1901,16 +1928,16 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #' @param StackResourceDriftStatusFilters The resource drift status values to use as filters for the resource
 #' drift results returned.
 #' 
-#' -   `DELETED`: The resource differs from its expected template
-#'     configuration in that the resource has been deleted.
+#' - `DELETED`: The resource differs from its expected template
+#'   configuration in that the resource has been deleted.
 #' 
-#' -   `MODIFIED`: One or more resource properties differ from their
-#'     expected template values.
+#' - `MODIFIED`: One or more resource properties differ from their expected
+#'   template values.
 #' 
-#' -   `IN_SYNC`: The resource's actual configuration matches its expected
-#'     template configuration.
+#' - `IN_SYNC`: The resource's actual configuration matches its expected
+#'   template configuration.
 #' 
-#' -   `NOT_CHECKED`: CloudFormation doesn't currently return this value.
+#' - `NOT_CHECKED`: CloudFormation doesn't currently return this value.
 #' @param NextToken A string that identifies the next page of stack resource drift results.
 #' @param MaxResults The maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
@@ -1926,7 +1953,8 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_resource_drifts_input(StackName = StackName, StackResourceDriftStatusFilters = StackResourceDriftStatusFilters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$describe_stack_resource_drifts_output()
@@ -1949,10 +1977,10 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' @param StackName The name or the unique stack ID that is associated with the stack, which
 #' aren't always interchangeable:
 #' 
-#' -   Running stacks: You can specify either the stack's name or its
-#'     unique stack ID.
+#' - Running stacks: You can specify either the stack's name or its unique
+#'   stack ID.
 #' 
-#' -   Deleted stacks: You must specify the unique stack ID.
+#' - Deleted stacks: You must specify the unique stack ID.
 #' 
 #' Default: There is no default value.
 #' 
@@ -1985,7 +2013,8 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "StackResources")
+    paginator = list(result_key = "StackResources"),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_resources_input(StackName = StackName, LogicalResourceId = LogicalResourceId, PhysicalResourceId = PhysicalResourceId)
   output <- .cloudformation$describe_stack_resources_output()
@@ -2012,16 +2041,16 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -2032,7 +2061,8 @@ cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_set_input(StackSetName = StackSetName, CallAs = CallAs)
   output <- .cloudformation$describe_stack_set_output()
@@ -2061,16 +2091,16 @@ cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -2081,7 +2111,8 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stack_set_operation_input(StackSetName = StackSetName, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$describe_stack_set_operation_output()
@@ -2113,17 +2144,17 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #' resource-level permissions and avoid returning a response when no
 #' parameter is sent in the request:
 #' 
-#' \{ "Version": "2012-10-17", "Statement": \[\{ "Effect": "Deny",
+#' \\ "Version": "2012-10-17", "Statement": \[\\ "Effect": "Deny",
 #' "Action": "cloudformation:DescribeStacks", "NotResource":
-#' "arn:aws:cloudformation:*:*:stack/*/*" \}\] \}
+#' "arn:aws:cloudformation:*:*:stack/*/*" \\] \\
 #' 
 #' The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
 #' 
-#' -   Running stacks: You can specify either the stack's name or its
-#'     unique stack ID.
+#' - Running stacks: You can specify either the stack's name or its unique
+#'   stack ID.
 #' 
-#' -   Deleted stacks: You must specify the unique stack ID.
+#' - Deleted stacks: You must specify the unique stack ID.
 #' 
 #' Default: There is no default value.
 #' @param NextToken A string that identifies the next page of stacks that you want to
@@ -2138,7 +2169,8 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Stacks")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Stacks"),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_stacks_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stacks_output()
@@ -2189,7 +2221,8 @@ cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_type_input(Type = Type, TypeName = TypeName, Arn = Arn, VersionId = VersionId, PublisherId = PublisherId, PublicVersionNumber = PublicVersionNumber)
   output <- .cloudformation$describe_type_output()
@@ -2224,7 +2257,8 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$describe_type_registration_input(RegistrationToken = RegistrationToken)
   output <- .cloudformation$describe_type_registration_output()
@@ -2257,7 +2291,8 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$detect_stack_drift_input(StackName = StackName, LogicalResourceIds = LogicalResourceIds)
   output <- .cloudformation$detect_stack_drift_output()
@@ -2290,7 +2325,8 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$detect_stack_resource_drift_input(StackName = StackName, LogicalResourceId = LogicalResourceId)
   output <- .cloudformation$detect_stack_resource_drift_output()
@@ -2316,7 +2352,7 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' 
 #' For more information about maximum concurrent accounts and failure
 #' tolerance, see [Stack set operation
-#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options).
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 #' @param OperationId *The ID of the stack set operation.*
 #' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
 #' account administrator in the organization's management account or as a
@@ -2325,16 +2361,16 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -2345,7 +2381,8 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$detect_stack_set_drift_input(StackSetName = StackSetName, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$detect_stack_set_drift_output()
@@ -2392,7 +2429,8 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$estimate_template_cost_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters)
   output <- .cloudformation$estimate_template_cost_output()
@@ -2430,16 +2468,14 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' [`create_change_set`][cloudformation_create_change_set] API operation
 #' was specified.
 #' 
-#' -   `True` - if the stack creation fails, do nothing. This is equivalent
-#'     to specifying `DO_NOTHING` for the `OnStackFailure` parameter to the
-#'     [`create_change_set`][cloudformation_create_change_set] API
-#'     operation.
+#' - `True` - if the stack creation fails, do nothing. This is equivalent
+#'   to specifying `DO_NOTHING` for the `OnStackFailure` parameter to the
+#'   [`create_change_set`][cloudformation_create_change_set] API operation.
 #' 
-#' -   `False` - if the stack creation fails, roll back the stack. This is
-#'     equivalent to specifying `ROLLBACK` for the `OnStackFailure`
-#'     parameter to the
-#'     [`create_change_set`][cloudformation_create_change_set] API
-#'     operation.
+#' - `False` - if the stack creation fails, roll back the stack. This is
+#'   equivalent to specifying `ROLLBACK` for the `OnStackFailure` parameter
+#'   to the [`create_change_set`][cloudformation_create_change_set] API
+#'   operation.
 #' 
 #' Default: `True`
 #' @param RetainExceptOnCreate When set to `true`, newly created resources are deleted when the
@@ -2457,7 +2493,8 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$execute_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, ClientRequestToken = ClientRequestToken, DisableRollback = DisableRollback, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$execute_change_set_output()
@@ -2479,9 +2516,9 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
 #' @param Format The language to use to retrieve for the generated template. Supported
 #' values are:
 #' 
-#' -   `JSON`
+#' - `JSON`
 #' 
-#' -   `YAML`
+#' - `YAML`
 #' @param GeneratedTemplateName &#91;required&#93; The name or Amazon Resource Name (ARN) of the generated template. The
 #' format is
 #' `arn:${Partition}:cloudformation:${Region}:${Account}:generatedtemplate/${Id}`.
@@ -2497,7 +2534,8 @@ cloudformation_get_generated_template <- function(Format = NULL, GeneratedTempla
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$get_generated_template_input(Format = Format, GeneratedTemplateName = GeneratedTemplateName)
   output <- .cloudformation$get_generated_template_output()
@@ -2528,7 +2566,8 @@ cloudformation_get_stack_policy <- function(StackName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$get_stack_policy_input(StackName = StackName)
   output <- .cloudformation$get_stack_policy_output()
@@ -2550,10 +2589,10 @@ cloudformation_get_stack_policy <- function(StackName) {
 #' @param StackName The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
 #' 
-#' -   Running stacks: You can specify either the stack's name or its
-#'     unique stack ID.
+#' - Running stacks: You can specify either the stack's name or its unique
+#'   stack ID.
 #' 
-#' -   Deleted stacks: You must specify the unique stack ID.
+#' - Deleted stacks: You must specify the unique stack ID.
 #' 
 #' Default: There is no default value.
 #' @param ChangeSetName The name or Amazon Resource Name (ARN) of a change set for which
@@ -2577,7 +2616,8 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$get_template_input(StackName = StackName, ChangeSetName = ChangeSetName, TemplateStage = TemplateStage)
   output <- .cloudformation$get_template_output()
@@ -2632,16 +2672,16 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #' @param TemplateSummaryConfig Specifies options for the
 #' [`get_template_summary`][cloudformation_get_template_summary] API
 #' action.
@@ -2655,7 +2695,8 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$get_template_summary_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackName = StackName, StackSetName = StackSetName, CallAs = CallAs, TemplateSummaryConfig = TemplateSummaryConfig)
   output <- .cloudformation$get_template_summary_output()
@@ -2690,14 +2731,14 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #' 
 #' For more information about maximum concurrent accounts and failure
 #' tolerance, see [Stack set operation
-#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options).
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 #' @param OperationId A unique, user defined, identifier for the stack set operation.
 #' @param CallAs By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   For service managed stack sets, specify `DELEGATED_ADMIN`.
+#' - For service managed stack sets, specify `DELEGATED_ADMIN`.
 #'
 #' @keywords internal
 #'
@@ -2708,7 +2749,8 @@ cloudformation_import_stacks_to_stack_set <- function(StackSetName, StackIds = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$import_stacks_to_stack_set_input(StackSetName = StackSetName, StackIds = StackIds, StackIdsUrl = StackIdsUrl, OrganizationalUnitIds = OrganizationalUnitIds, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$import_stacks_to_stack_set_output()
@@ -2742,7 +2784,8 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Summaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Summaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_change_sets_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_change_sets_output()
@@ -2775,7 +2818,8 @@ cloudformation_list_exports <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Exports")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Exports"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_exports_input(NextToken = NextToken)
   output <- .cloudformation$list_exports_output()
@@ -2811,7 +2855,8 @@ cloudformation_list_generated_templates <- function(NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_generated_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_generated_templates_output()
@@ -2845,7 +2890,8 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Imports")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Imports"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_imports_input(ExportName = ExportName, NextToken = NextToken)
   output <- .cloudformation$list_imports_output()
@@ -2884,7 +2930,8 @@ cloudformation_list_resource_scan_related_resources <- function(ResourceScanId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RelatedResources")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RelatedResources"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_resource_scan_related_resources_input(ResourceScanId = ResourceScanId, Resources = Resources, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_resource_scan_related_resources_output()
@@ -2928,7 +2975,8 @@ cloudformation_list_resource_scan_resources <- function(ResourceScanId, Resource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Resources")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Resources"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_resource_scan_resources_input(ResourceScanId = ResourceScanId, ResourceIdentifier = ResourceIdentifier, ResourceTypePrefix = ResourceTypePrefix, TagKey = TagKey, TagValue = TagValue, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_resource_scan_resources_output()
@@ -2962,7 +3010,8 @@ cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceScanSummaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceScanSummaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_resource_scans_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$list_resource_scans_output()
@@ -2995,16 +3044,16 @@ cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NU
 #' parameter to get the next set of results.
 #' @param StackInstanceResourceDriftStatuses The resource drift status of the stack instance.
 #' 
-#' -   `DELETED`: The resource differs from its expected template
-#'     configuration in that the resource has been deleted.
+#' - `DELETED`: The resource differs from its expected template
+#'   configuration in that the resource has been deleted.
 #' 
-#' -   `MODIFIED`: One or more resource properties differ from their
-#'     expected template values.
+#' - `MODIFIED`: One or more resource properties differ from their expected
+#'   template values.
 #' 
-#' -   `IN_SYNC`: The resource's actual configuration matches its expected
-#'     template configuration.
+#' - `IN_SYNC`: The resource's actual configuration matches its expected
+#'   template configuration.
 #' 
-#' -   `NOT_CHECKED`: CloudFormation doesn't currently return this value.
+#' - `NOT_CHECKED`: CloudFormation doesn't currently return this value.
 #' @param StackInstanceAccount &#91;required&#93; The name of the Amazon Web Services account that you want to list
 #' resource drifts for.
 #' @param StackInstanceRegion &#91;required&#93; The name of the Region where you want to list resource drifts.
@@ -3016,16 +3065,16 @@ cloudformation_list_resource_scans <- function(NextToken = NULL, MaxResults = NU
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -3036,7 +3085,8 @@ cloudformation_list_stack_instance_resource_drifts <- function(StackSetName, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_stack_instance_resource_drifts_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, StackInstanceResourceDriftStatuses = StackInstanceResourceDriftStatuses, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$list_stack_instance_resource_drifts_output()
@@ -3080,16 +3130,16 @@ cloudformation_list_stack_instance_resource_drifts <- function(StackSetName, Nex
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -3100,7 +3150,8 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_stack_instances_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
   output <- .cloudformation$list_stack_instances_output()
@@ -3122,10 +3173,10 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
 #' @param StackName &#91;required&#93; The name or the unique stack ID that is associated with the stack, which
 #' aren't always interchangeable:
 #' 
-#' -   Running stacks: You can specify either the stack's name or its
-#'     unique stack ID.
+#' - Running stacks: You can specify either the stack's name or its unique
+#'   stack ID.
 #' 
-#' -   Deleted stacks: You must specify the unique stack ID.
+#' - Deleted stacks: You must specify the unique stack ID.
 #' 
 #' Default: There is no default value.
 #' @param NextToken A string that identifies the next page of stack resources that you want
@@ -3140,7 +3191,8 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackResourceSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackResourceSummaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_stack_resources_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_stack_resources_output()
@@ -3174,16 +3226,16 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #' By default, `SELF` is specified. Use `SELF` for StackSets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -3194,7 +3246,8 @@ cloudformation_list_stack_set_auto_deployment_targets <- function(StackSetName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_stack_set_auto_deployment_targets_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
   output <- .cloudformation$list_stack_set_auto_deployment_targets_output()
@@ -3234,16 +3287,16 @@ cloudformation_list_stack_set_auto_deployment_targets <- function(StackSetName, 
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #' @param Filters The filter to apply to operation results.
 #'
 #' @keywords internal
@@ -3255,7 +3308,8 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs, Filters = Filters)
   output <- .cloudformation$list_stack_set_operation_results_output()
@@ -3294,16 +3348,16 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -3314,7 +3368,8 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_stack_set_operations_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
   output <- .cloudformation$list_stack_set_operations_output()
@@ -3354,16 +3409,16 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -3374,7 +3429,8 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_stack_sets_input(NextToken = NextToken, MaxResults = MaxResults, Status = Status, CallAs = CallAs)
   output <- .cloudformation$list_stack_sets_output()
@@ -3410,7 +3466,8 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackSummaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_stacks_input(NextToken = NextToken, StackStatusFilter = StackStatusFilter)
   output <- .cloudformation$list_stacks_output()
@@ -3461,7 +3518,8 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_type_registrations_input(Type = Type, TypeName = TypeName, TypeArn = TypeArn, RegistrationStatusFilter = RegistrationStatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_type_registrations_output()
@@ -3506,12 +3564,12 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
 #' 
 #' Valid values include:
 #' 
-#' -   `LIVE`: The extension version is registered and can be used in
-#'     CloudFormation operations, dependent on its provisioning behavior
-#'     and visibility scope.
+#' - `LIVE`: The extension version is registered and can be used in
+#'   CloudFormation operations, dependent on its provisioning behavior and
+#'   visibility scope.
 #' 
-#' -   `DEPRECATED`: The extension version has been deregistered and can no
-#'     longer be used in CloudFormation operations.
+#' - `DEPRECATED`: The extension version has been deregistered and can no
+#'   longer be used in CloudFormation operations.
 #' 
 #' The default is `LIVE`.
 #' @param PublisherId The publisher ID of the extension publisher.
@@ -3527,7 +3585,8 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_type_versions_input(Type = Type, TypeName = TypeName, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, DeprecatedStatus = DeprecatedStatus, PublisherId = PublisherId)
   output <- .cloudformation$list_type_versions_output()
@@ -3552,19 +3611,18 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' 
 #' Valid values include:
 #' 
-#' -   `PRIVATE`: Extensions that are visible and usable within this
-#'     account and Region. This includes:
+#' - `PRIVATE`: Extensions that are visible and usable within this account
+#'   and Region. This includes:
 #' 
-#'     -   Private extensions you have registered in this account and
-#'         Region.
+#'   - Private extensions you have registered in this account and Region.
 #' 
-#'     -   Public extensions that you have activated in this account and
-#'         Region.
+#'   - Public extensions that you have activated in this account and
+#'     Region.
 #' 
-#' -   `PUBLIC`: Extensions that are publicly visible and available to be
-#'     activated within any Amazon Web Services account. This includes
-#'     extensions from Amazon Web Services, in addition to third-party
-#'     publishers.
+#' - `PUBLIC`: Extensions that are publicly visible and available to be
+#'   activated within any Amazon Web Services account. This includes
+#'   extensions from Amazon Web Services, in addition to third-party
+#'   publishers.
 #' 
 #' The default is `PRIVATE`.
 #' @param ProvisioningType For resource types, the provisioning behavior of the resource type.
@@ -3573,15 +3631,15 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' 
 #' Valid values include:
 #' 
-#' -   `FULLY_MUTABLE`: The resource type includes an update handler to
-#'     process updates to the type during stack update operations.
+#' - `FULLY_MUTABLE`: The resource type includes an update handler to
+#'   process updates to the type during stack update operations.
 #' 
-#' -   `IMMUTABLE`: The resource type doesn't include an update handler, so
-#'     the type can't be updated and must instead be replaced during stack
-#'     update operations.
+#' - `IMMUTABLE`: The resource type doesn't include an update handler, so
+#'   the type can't be updated and must instead be replaced during stack
+#'   update operations.
 #' 
-#' -   `NON_PROVISIONABLE`: The resource type doesn't include create, read,
-#'     and delete handlers, and therefore can't actually be provisioned.
+#' - `NON_PROVISIONABLE`: The resource type doesn't include create, read,
+#'   and delete handlers, and therefore can't actually be provisioned.
 #' 
 #' The default is `FULLY_MUTABLE`.
 #' @param DeprecatedStatus The deprecation status of the extension that you want to get summary
@@ -3589,11 +3647,11 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' 
 #' Valid values include:
 #' 
-#' -   `LIVE`: The extension is registered for use in CloudFormation
-#'     operations.
+#' - `LIVE`: The extension is registered for use in CloudFormation
+#'   operations.
 #' 
-#' -   `DEPRECATED`: The extension has been deregistered and can no longer
-#'     be used in CloudFormation operations.
+#' - `DEPRECATED`: The extension has been deregistered and can no longer be
+#'   used in CloudFormation operations.
 #' @param Type The type of extension.
 #' @param Filters Filter criteria to use in determining which extensions to return.
 #' 
@@ -3621,7 +3679,8 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TypeSummaries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TypeSummaries"),
+    stream_api = FALSE
   )
   input <- .cloudformation$list_types_input(Visibility = Visibility, ProvisioningType = ProvisioningType, DeprecatedStatus = DeprecatedStatus, Type = Type, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_types_output()
@@ -3676,7 +3735,8 @@ cloudformation_publish_type <- function(Type = NULL, Arn = NULL, TypeName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$publish_type_input(Type = Type, Arn = Arn, TypeName = TypeName, PublicVersionNumber = PublicVersionNumber)
   output <- .cloudformation$publish_type_output()
@@ -3719,7 +3779,8 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$record_handler_progress_input(BearerToken = BearerToken, OperationStatus = OperationStatus, CurrentOperationStatus = CurrentOperationStatus, StatusMessage = StatusMessage, ErrorCode = ErrorCode, ResourceModel = ResourceModel, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$record_handler_progress_output()
@@ -3764,7 +3825,8 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$register_publisher_input(AcceptTermsAndConditions = AcceptTermsAndConditions, ConnectionArn = ConnectionArn)
   output <- .cloudformation$register_publisher_output()
@@ -3788,26 +3850,26 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' 
 #' We suggest that extension names adhere to the following patterns:
 #' 
-#' -   For resource types, *company_or_organization*::*service*::*type*.
+#' - For resource types, *company_or_organization*::*service*::*type*.
 #' 
-#' -   For modules, *company_or_organization*::*service*::*type*::MODULE.
+#' - For modules, *company_or_organization*::*service*::*type*::MODULE.
 #' 
-#' -   For hooks, *MyCompany*::*Testing*::*MyTestHook*.
+#' - For hooks, *MyCompany*::*Testing*::*MyTestHook*.
 #' 
 #' The following organization namespaces are reserved and can't be used in
 #' your extension names:
 #' 
-#' -   `Alexa`
+#' - `Alexa`
 #' 
-#' -   `AMZN`
+#' - `AMZN`
 #' 
-#' -   `Amazon`
+#' - `Amazon`
 #' 
-#' -   `AWS`
+#' - `AWS`
 #' 
-#' -   `Custom`
+#' - `Custom`
 #' 
-#' -   `Dev`
+#' - `Dev`
 #' @param SchemaHandlerPackage &#91;required&#93; A URL to the S3 bucket containing the extension project package that
 #' contains the necessary files for the extension you want to register.
 #' 
@@ -3831,11 +3893,12 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' contain a trust relationship with the CloudFormation service principal
 #' (`resources.cloudformation.amazonaws.com`). For more information about
 #' adding trust relationships, see [Modifying a role trust
-#' policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage.html#roles-managingrole_edit-trust-policy)
+#' policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-managingrole_edit-trust-policy)
 #' in the *Identity and Access Management User Guide*.
 #' 
 #' If your extension calls Amazon Web Services APIs in any of its handlers,
-#' you must create an *\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}* that includes the necessary permissions to call
+#' you must create an
+#' *\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}* that includes the necessary permissions to call
 #' those Amazon Web Services APIs, and provision that execution role in
 #' your account. When CloudFormation needs to invoke the resource type
 #' handler, CloudFormation assumes this execution role to create a
@@ -3857,7 +3920,8 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$register_type_input(Type = Type, TypeName = TypeName, SchemaHandlerPackage = SchemaHandlerPackage, LoggingConfig = LoggingConfig, ExecutionRoleArn = ExecutionRoleArn, ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$register_type_output()
@@ -3897,7 +3961,8 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$rollback_stack_output()
@@ -3937,7 +4002,8 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$set_stack_policy_input(StackName = StackName, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL)
   output <- .cloudformation$set_stack_policy_output()
@@ -4000,7 +4066,8 @@ cloudformation_set_type_configuration <- function(TypeArn = NULL, Configuration,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$set_type_configuration_input(TypeArn = TypeArn, Configuration = Configuration, ConfigurationAlias = ConfigurationAlias, TypeName = TypeName, Type = Type)
   output <- .cloudformation$set_type_configuration_output()
@@ -4042,7 +4109,8 @@ cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, Typ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$set_type_default_version_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId)
   output <- .cloudformation$set_type_default_version_output()
@@ -4083,7 +4151,8 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$signal_resource_input(StackName = StackName, LogicalResourceId = LogicalResourceId, UniqueId = UniqueId, Status = Status)
   output <- .cloudformation$signal_resource_output()
@@ -4116,7 +4185,8 @@ cloudformation_start_resource_scan <- function(ClientRequestToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$start_resource_scan_input(ClientRequestToken = ClientRequestToken)
   output <- .cloudformation$start_resource_scan_output()
@@ -4146,16 +4216,16 @@ cloudformation_start_resource_scan <- function(ClientRequestToken = NULL) {
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -4166,7 +4236,8 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$stop_stack_set_operation_input(StackSetName = StackSetName, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$stop_stack_set_operation_output()
@@ -4213,9 +4284,9 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' access items in the specified S3 bucket. Specifically, the user needs
 #' the following permissions:
 #' 
-#' -   `GetObject`
+#' - `GetObject`
 #' 
-#' -   `PutObject`
+#' - `PutObject`
 #' 
 #' For more information, see [Actions, Resources, and Condition Keys for
 #' Amazon
@@ -4231,7 +4302,8 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$test_type_input(Arn = Arn, Type = Type, TypeName = TypeName, VersionId = VersionId, LogDeliveryBucket = LogDeliveryBucket)
   output <- .cloudformation$test_type_output()
@@ -4272,7 +4344,8 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$update_generated_template_input(GeneratedTemplateName = GeneratedTemplateName, NewGeneratedTemplateName = NewGeneratedTemplateName, AddResources = AddResources, RemoveResources = RemoveResources, RefreshAllResources = RefreshAllResources, TemplateConfiguration = TemplateConfiguration)
   output <- .cloudformation$update_generated_template_output()
@@ -4344,79 +4417,79 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #' contains certain capabilities in order for CloudFormation to update the
 #' stack.
 #' 
-#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
+#' - `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#'     Some stack templates might include resources that can affect
-#'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stacks, you must explicitly acknowledge this by specifying one of
-#'     these capabilities.
+#'   Some stack templates might include resources that can affect
+#'   permissions in your Amazon Web Services account; for example, by
+#'   creating new Identity and Access Management (IAM) users. For those
+#'   stacks, you must explicitly acknowledge this by specifying one of
+#'   these capabilities.
 #' 
-#'     The following IAM resources require you to specify either the
-#'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
+#'   The following IAM resources require you to specify either the
+#'   `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
 #' 
-#'     -   If you have IAM resources, you can specify either capability.
+#'   - If you have IAM resources, you can specify either capability.
 #' 
-#'     -   If you have IAM resources with custom names, you *must* specify
-#'         `CAPABILITY_NAMED_IAM`.
+#'   - If you have IAM resources with custom names, you *must* specify
+#'     `CAPABILITY_NAMED_IAM`.
 #' 
-#'     -   If you don't specify either of these capabilities,
-#'         CloudFormation returns an `InsufficientCapabilities` error.
+#'   - If you don't specify either of these capabilities, CloudFormation
+#'     returns an `InsufficientCapabilities` error.
 #' 
-#'     If your stack template contains these resources, we suggest that you
-#'     review all permissions associated with them and edit their
-#'     permissions if necessary.
+#'   If your stack template contains these resources, we suggest that you
+#'   review all permissions associated with them and edit their permissions
+#'   if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
+#'   - [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
+#'   - [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
 #' 
-#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
+#'   - [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
+#'   - [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
-#'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'   For more information, see [Acknowledging IAM Resources in
+#'   CloudFormation
+#'   Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
-#' -   `CAPABILITY_AUTO_EXPAND`
+#' - `CAPABILITY_AUTO_EXPAND`
 #' 
-#'     Some template contain macros. Macros perform custom processing on
-#'     templates; this can include simple actions like find-and-replace
-#'     operations, all the way to extensive transformations of entire
-#'     templates. Because of this, users typically create a change set from
-#'     the processed template, so that they can review the changes
-#'     resulting from the macros before actually updating the stack. If
-#'     your stack template contains one or more macros, and you choose to
-#'     update a stack directly from the processed template, without first
-#'     reviewing the resulting changes in a change set, you must
-#'     acknowledge this capability. This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.
+#'   Some template contain macros. Macros perform custom processing on
+#'   templates; this can include simple actions like find-and-replace
+#'   operations, all the way to extensive transformations of entire
+#'   templates. Because of this, users typically create a change set from
+#'   the processed template, so that they can review the changes resulting
+#'   from the macros before actually updating the stack. If your stack
+#'   template contains one or more macros, and you choose to update a stack
+#'   directly from the processed template, without first reviewing the
+#'   resulting changes in a change set, you must acknowledge this
+#'   capability. This includes the
+#'   [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'   and
+#'   [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'   transforms, which are macros hosted by CloudFormation.
 #' 
-#'     If you want to update a stack from a stack template that contains
-#'     macros *and* nested stacks, you must update the stack directly from
-#'     the template using this capability.
+#'   If you want to update a stack from a stack template that contains
+#'   macros *and* nested stacks, you must update the stack directly from
+#'   the template using this capability.
 #' 
-#'     You should only update stacks directly from a stack template that
-#'     contains macros if you know what processing the macro performs.
+#'   You should only update stacks directly from a stack template that
+#'   contains macros if you know what processing the macro performs.
 #' 
-#'     Each macro relies on an underlying Lambda service function for
-#'     processing stack templates. Be aware that the Lambda function owner
-#'     can update the function operation without CloudFormation being
-#'     notified.
+#'   Each macro relies on an underlying Lambda service function for
+#'   processing stack templates. Be aware that the Lambda function owner
+#'   can update the function operation without CloudFormation being
+#'   notified.
 #' 
-#'     For more information, see [Using CloudFormation Macros to Perform
-#'     Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'   For more information, see [Using CloudFormation Macros to Perform
+#'   Custom Processing on
+#'   Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #' Only one of the `Capabilities` and `ResourceType` parameters can be
 #' specified.
@@ -4515,7 +4588,8 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$update_stack_output()
@@ -4564,19 +4638,19 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' specifying parameters and their values, be aware of how CloudFormation
 #' sets parameter values during stack instance update operations:
 #' 
-#' -   To override the current value for a parameter, include the parameter
-#'     and specify its value.
+#' - To override the current value for a parameter, include the parameter
+#'   and specify its value.
 #' 
-#' -   To leave an overridden parameter set to its present value, include
-#'     the parameter and specify `UsePreviousValue` as `true`. (You can't
-#'     specify both a value and set `UsePreviousValue` to `true`.)
+#' - To leave an overridden parameter set to its present value, include the
+#'   parameter and specify `UsePreviousValue` as `true`. (You can't specify
+#'   both a value and set `UsePreviousValue` to `true`.)
 #' 
-#' -   To set an overridden parameter back to the value specified in the
-#'     stack set, specify a parameter list but don't include the parameter
-#'     in the list.
+#' - To set an overridden parameter back to the value specified in the
+#'   stack set, specify a parameter list but don't include the parameter in
+#'   the list.
 #' 
-#' -   To leave all parameters set to their present values, don't specify
-#'     this property at all.
+#' - To leave all parameters set to their present values, don't specify
+#'   this property at all.
 #' 
 #' During stack set updates, any parameter values overridden for a stack
 #' instance aren't updated, but retain their overridden value.
@@ -4608,16 +4682,16 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #'
 #' @keywords internal
 #'
@@ -4628,7 +4702,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$update_stack_instances_input(StackSetName = StackSetName, Accounts = Accounts, DeploymentTargets = DeploymentTargets, Regions = Regions, ParameterOverrides = ParameterOverrides, OperationPreferences = OperationPreferences, OperationId = OperationId, CallAs = CallAs)
   output <- .cloudformation$update_stack_instances_output()
@@ -4677,66 +4752,66 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' contains certain capabilities in order for CloudFormation to update the
 #' stack set and its associated stack instances.
 #' 
-#' -   `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
+#' - `CAPABILITY_IAM` and `CAPABILITY_NAMED_IAM`
 #' 
-#'     Some stack templates might include resources that can affect
-#'     permissions in your Amazon Web Services account; for example, by
-#'     creating new Identity and Access Management (IAM) users. For those
-#'     stacks sets, you must explicitly acknowledge this by specifying one
-#'     of these capabilities.
+#'   Some stack templates might include resources that can affect
+#'   permissions in your Amazon Web Services account; for example, by
+#'   creating new Identity and Access Management (IAM) users. For those
+#'   stacks sets, you must explicitly acknowledge this by specifying one of
+#'   these capabilities.
 #' 
-#'     The following IAM resources require you to specify either the
-#'     `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
+#'   The following IAM resources require you to specify either the
+#'   `CAPABILITY_IAM` or `CAPABILITY_NAMED_IAM` capability.
 #' 
-#'     -   If you have IAM resources, you can specify either capability.
+#'   - If you have IAM resources, you can specify either capability.
 #' 
-#'     -   If you have IAM resources with custom names, you *must* specify
-#'         `CAPABILITY_NAMED_IAM`.
+#'   - If you have IAM resources with custom names, you *must* specify
+#'     `CAPABILITY_NAMED_IAM`.
 #' 
-#'     -   If you don't specify either of these capabilities,
-#'         CloudFormation returns an `InsufficientCapabilities` error.
+#'   - If you don't specify either of these capabilities, CloudFormation
+#'     returns an `InsufficientCapabilities` error.
 #' 
-#'     If your stack template contains these resources, we recommend that
-#'     you review all permissions associated with them and edit their
-#'     permissions if necessary.
+#'   If your stack template contains these resources, we recommend that you
+#'   review all permissions associated with them and edit their permissions
+#'   if necessary.
 #' 
-#'     -   [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
+#'   - [AWS::IAM::AccessKey](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html)
 #' 
-#'     -   [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
+#'   - [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html)
 #' 
-#'     -   [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
+#'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'     -   [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
 #' 
-#'     -   [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
+#'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
-#'     -   [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
+#'   - [AWS::IAM::User](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html)
 #' 
-#'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
+#'   - [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
-#'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'   For more information, see [Acknowledging IAM Resources in
+#'   CloudFormation
+#'   Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
-#' -   `CAPABILITY_AUTO_EXPAND`
+#' - `CAPABILITY_AUTO_EXPAND`
 #' 
-#'     Some templates reference macros. If your stack set template
-#'     references one or more macros, you must update the stack set
-#'     directly from the processed template, without first reviewing the
-#'     resulting changes in a change set. To update the stack set directly,
-#'     you must acknowledge this capability. For more information, see
-#'     [Using CloudFormation Macros to Perform Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'   Some templates reference macros. If your stack set template references
+#'   one or more macros, you must update the stack set directly from the
+#'   processed template, without first reviewing the resulting changes in a
+#'   change set. To update the stack set directly, you must acknowledge
+#'   this capability. For more information, see [Using CloudFormation
+#'   Macros to Perform Custom Processing on
+#'   Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
-#'     Stack sets with service-managed permissions do not currently support
-#'     the use of macros in templates. (This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.) Even if you
-#'     specify this capability for a stack set with service-managed
-#'     permissions, if you reference a macro in your template the stack set
-#'     operation will fail.
+#'   Stack sets with service-managed permissions do not currently support
+#'   the use of macros in templates. (This includes the
+#'   [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'   and
+#'   [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'   transforms, which are macros hosted by CloudFormation.) Even if you
+#'   specify this capability for a stack set with service-managed
+#'   permissions, if you reference a macro in your template the stack set
+#'   operation will fail.
 #' @param Tags The key-value pairs to associate with this stack set and the stacks
 #' created from it. CloudFormation also propagates these tags to supported
 #' resources that are created in the stacks. You can specify a maximum
@@ -4745,18 +4820,18 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' If you specify tags for this parameter, those tags replace any list of
 #' tags that are currently associated with this stack set. This means:
 #' 
-#' -   If you don't specify this parameter, CloudFormation doesn't modify
-#'     the stack's tags.
+#' - If you don't specify this parameter, CloudFormation doesn't modify the
+#'   stack's tags.
 #' 
-#' -   If you specify *any* tags using this parameter, you must specify
-#'     *all* the tags that you want associated with this stack set, even
-#'     tags you've specified before (for example, when creating the stack
-#'     set or during a previous update of the stack set.). Any tags that
-#'     you don't include in the updated list of tags are removed from the
-#'     stack set, and therefore from the stacks and resources as well.
+#' - If you specify *any* tags using this parameter, you must specify *all*
+#'   the tags that you want associated with this stack set, even tags
+#'   you've specified before (for example, when creating the stack set or
+#'   during a previous update of the stack set.). Any tags that you don't
+#'   include in the updated list of tags are removed from the stack set,
+#'   and therefore from the stacks and resources as well.
 #' 
-#' -   If you specify an empty value, CloudFormation removes all currently
-#'     associated tags.
+#' - If you specify an empty value, CloudFormation removes all currently
+#'   associated tags.
 #' 
 #' If you specify new tags as part of an
 #' [`update_stack_set`][cloudformation_update_stack_set] action,
@@ -4815,16 +4890,15 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' created. You cannot modify `PermissionModel` if there are stack
 #' instances associated with your stack set.
 #' 
-#' -   With `self-managed` permissions, you must create the administrator
-#'     and execution roles required to deploy to target accounts. For more
-#'     information, see [Grant Self-Managed Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
+#' - With `self-managed` permissions, you must create the administrator and
+#'   execution roles required to deploy to target accounts. For more
+#'   information, see [Grant Self-Managed Stack Set
+#'   Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html).
 #' 
-#' -   With `service-managed` permissions, StackSets automatically creates
-#'     the IAM roles required to deploy to accounts managed by
-#'     Organizations. For more information, see [Grant Service-Managed
-#'     Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
+#' - With `service-managed` permissions, StackSets automatically creates
+#'   the IAM roles required to deploy to accounts managed by Organizations.
+#'   For more information, see [Grant Service-Managed Stack Set
+#'   Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
 #' @param AutoDeployment \[Service-managed permissions\] Describes whether StackSets
 #' automatically deploys to Organizations accounts that are added to a
 #' target organization or organizational unit (OU).
@@ -4881,16 +4955,16 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
 #' 
-#' -   If you are signed in to the management account, specify `SELF`.
+#' - If you are signed in to the management account, specify `SELF`.
 #' 
-#' -   If you are signed in to a delegated administrator account, specify
-#'     `DELEGATED_ADMIN`.
+#' - If you are signed in to a delegated administrator account, specify
+#'   `DELEGATED_ADMIN`.
 #' 
-#'     Your Amazon Web Services account must be registered as a delegated
-#'     administrator in the management account. For more information, see
-#'     [Register a delegated
-#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
-#'     in the *CloudFormation User Guide*.
+#'   Your Amazon Web Services account must be registered as a delegated
+#'   administrator in the management account. For more information, see
+#'   [Register a delegated
+#'   administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'   in the *CloudFormation User Guide*.
 #' @param ManagedExecution Describes whether StackSets performs non-conflicting operations
 #' concurrently and queues conflicting operations.
 #'
@@ -4903,7 +4977,8 @@ cloudformation_update_stack_set <- function(StackSetName, Description = NULL, Te
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$update_stack_set_input(StackSetName = StackSetName, Description = Description, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, Tags = Tags, OperationPreferences = OperationPreferences, AdministrationRoleARN = AdministrationRoleARN, ExecutionRoleName = ExecutionRoleName, DeploymentTargets = DeploymentTargets, PermissionModel = PermissionModel, AutoDeployment = AutoDeployment, OperationId = OperationId, Accounts = Accounts, Regions = Regions, CallAs = CallAs, ManagedExecution = ManagedExecution)
   output <- .cloudformation$update_stack_set_output()
@@ -4935,7 +5010,8 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$update_termination_protection_input(EnableTerminationProtection = EnableTerminationProtection, StackName = StackName)
   output <- .cloudformation$update_termination_protection_output()
@@ -4982,7 +5058,8 @@ cloudformation_validate_template <- function(TemplateBody = NULL, TemplateURL = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudformation$validate_template_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL)
   output <- .cloudformation$validate_template_output()

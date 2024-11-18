@@ -14,8 +14,8 @@ cloudformation_get_template(
 \item{StackName}{The name or the unique stack ID that's associated with the stack, which
 aren't always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack's name or its
-unique stack ID.
+\item Running stacks: You can specify either the stack's name or its unique
+stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }
 

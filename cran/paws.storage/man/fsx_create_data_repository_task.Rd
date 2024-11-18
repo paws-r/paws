@@ -20,11 +20,11 @@ fsx_create_data_repository_task(
 \itemize{
 \item \code{EXPORT_TO_REPOSITORY} tasks export from your Amazon FSx for Lustre
 file system to a linked data repository.
-\item \code{IMPORT_METADATA_FROM_REPOSITORY} tasks import metadata changes from
-a linked S3 bucket to your Amazon FSx for Lustre file system.
-\item \code{RELEASE_DATA_FROM_FILESYSTEM} tasks release files in your Amazon
-FSx for Lustre file system that have been exported to a linked S3
-bucket and that meet your specified release criteria.
+\item \code{IMPORT_METADATA_FROM_REPOSITORY} tasks import metadata changes from a
+linked S3 bucket to your Amazon FSx for Lustre file system.
+\item \code{RELEASE_DATA_FROM_FILESYSTEM} tasks release files in your Amazon FSx
+for Lustre file system that have been exported to a linked S3 bucket
+and that meet your specified release criteria.
 \item \code{AUTO_RELEASE_DATA} tasks automatically release files from an Amazon
 File Cache resource.
 }}
@@ -37,25 +37,25 @@ release all exported files that meet the last accessed time criteria
 (for release tasks).
 \itemize{
 \item For export tasks, the list contains paths on the FSx for Lustre file
-system from which the files are exported to the Amazon S3 bucket.
-The default path is the file system root directory. The paths you
-provide need to be relative to the mount point of the file system.
-If the mount point is \verb{/mnt/fsx} and \verb{/mnt/fsx/path1} is a directory
-or file on the file system you want to export, then the path to
-provide is \code{path1}.
-\item For import tasks, the list contains paths in the Amazon S3 bucket
-from which POSIX metadata changes are imported to the FSx for Lustre
-file system. The path can be an S3 bucket or prefix in the format
+system from which the files are exported to the Amazon S3 bucket. The
+default path is the file system root directory. The paths you provide
+need to be relative to the mount point of the file system. If the
+mount point is \verb{/mnt/fsx} and \verb{/mnt/fsx/path1} is a directory or file
+on the file system you want to export, then the path to provide is
+\code{path1}.
+\item For import tasks, the list contains paths in the Amazon S3 bucket from
+which POSIX metadata changes are imported to the FSx for Lustre file
+system. The path can be an S3 bucket or prefix in the format
 \verb{s3://myBucket/myPrefix} (where \code{myPrefix} is optional).
 \item For release tasks, the list contains directory or file paths on the
-FSx for Lustre file system from which to release exported files. If
-a directory is specified, files within the directory are released.
-If a file path is specified, only that file is released. To release
-all exported files in the file system, specify a forward slash (/)
-as the path.
+FSx for Lustre file system from which to release exported files. If a
+directory is specified, files within the directory are released. If a
+file path is specified, only that file is released. To release all
+exported files in the file system, specify a forward slash (/) as the
+path.
 
-A file must also meet the last accessed time criteria specified in
-for the file to be released.
+A file must also meet the last accessed time criteria specified in for
+the file to be released.
 }}
 
 \item{FileSystemId}{[required]}

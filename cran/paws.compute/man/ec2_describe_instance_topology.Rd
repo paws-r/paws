@@ -46,16 +46,15 @@ Constraints: Maximum 100 explicitly specified placement group names.}
 
 \item{Filters}{The filters.
 \itemize{
-\item \code{availability-zone} - The name of the Availability Zone (for
-example, \verb{us-west-2a}) or Local Zone (for example,
-\verb{us-west-2-lax-1b}) that the instance is in.
-\item \code{instance-type} - The instance type (for example, \code{p4d.24xlarge}) or
-instance family (for example, \verb{p4d*}). You can use the \code{*} wildcard
-to match zero or more characters, or the \verb{?} wildcard to match zero
-or one character.
-\item \code{zone-id} - The ID of the Availability Zone (for example,
-\code{usw2-az2}) or Local Zone (for example, \code{usw2-lax1-az1}) that the
+\item \code{availability-zone} - The name of the Availability Zone (for example,
+\verb{us-west-2a}) or Local Zone (for example, \verb{us-west-2-lax-1b}) that the
 instance is in.
+\item \code{instance-type} - The instance type (for example, \code{p4d.24xlarge}) or
+instance family (for example, \verb{p4d*}). You can use the \code{*} wildcard to
+match zero or more characters, or the \verb{?} wildcard to match zero or
+one character.
+\item \code{zone-id} - The ID of the Availability Zone (for example, \code{usw2-az2})
+or Local Zone (for example, \code{usw2-lax1-az1}) that the instance is in.
 }}
 }
 \description{

@@ -112,8 +112,8 @@ Specify \code{NumCacheNodes=5} (3 + 2) and optionally specify two
 Availability Zones for the two new nodes.
 \item \strong{Scenario 2:} You have 3 active nodes and 2 nodes pending creation
 (from the scenario 1 call) and want to add 1 more node. Specify
-\code{NumCacheNodes=6} ((3 + 2) + 1) and optionally specify an
-Availability Zone for the new node.
+\code{NumCacheNodes=6} ((3 + 2) + 1) and optionally specify an Availability
+Zone for the new node.
 \item \strong{Scenario 3:} You want to cancel all pending operations. Specify
 \code{NumCacheNodes=3} to cancel all pending operations.
 }
@@ -134,22 +134,22 @@ Zone Considerations} section of \href{https://docs.aws.amazon.com/AmazonElastiCa
 \itemize{
 \item Pending Action: Delete
 \item New Request: Delete
-\item Result: The new delete, pending or immediate, replaces the
-pending delete.
+\item Result: The new delete, pending or immediate, replaces the pending
+delete.
 }
 \item Scenario-2
 \itemize{
 \item Pending Action: Delete
 \item New Request: Create
-\item Result: The new create, pending or immediate, replaces the
-pending delete.
+\item Result: The new create, pending or immediate, replaces the pending
+delete.
 }
 \item Scenario-3
 \itemize{
 \item Pending Action: Create
 \item New Request: Delete
-\item Result: The new delete, pending or immediate, replaces the
-pending create.
+\item Result: The new delete, pending or immediate, replaces the pending
+create.
 }
 \item Scenario-4
 \itemize{
@@ -157,10 +157,9 @@ pending create.
 \item New Request: Create
 \item Result: The new create is added to the pending create.
 
-\strong{Important:} If the new create request is \strong{Apply
-Immediately - Yes}, all creates are performed immediately. If
-the new create request is \strong{Apply Immediately - No}, all
-creates are pending.
+\strong{Important:} If the new create request is \strong{Apply Immediately -
+Yes}, all creates are performed immediately. If the new create
+request is \strong{Apply Immediately - No}, all creates are pending.
 }
 }}
 
@@ -259,12 +258,11 @@ parameter. Password constraints:
 \item Must be only printable ASCII characters
 \item Must be at least 16 characters and no more than 128 characters in
 length
-\item Cannot contain any of the following characters: '/', '"', or '@',
-'\%'
+\item Cannot contain any of the following characters: '/', '"', or '@', '\%'
 }
 
 For more information, see AUTH password at
-\href{https://redis.io/docs/latest/commands/auth/}{AUTH}.}
+\href{https://redis.io/commands/auth/}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:

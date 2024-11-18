@@ -41,10 +41,10 @@ Constraints:
 If \emph{SourceType} is supplied, \emph{SourceIdentifier} must also be provided.
 \itemize{
 \item Specify \code{cluster} when \emph{SourceIdentifier} is a cluster identifier.
-\item Specify \code{cluster-security-group} when \emph{SourceIdentifier} is a
-cluster security group name.
-\item Specify \code{cluster-parameter-group} when \emph{SourceIdentifier} is a
-cluster parameter group name.
+\item Specify \code{cluster-security-group} when \emph{SourceIdentifier} is a cluster
+security group name.
+\item Specify \code{cluster-parameter-group} when \emph{SourceIdentifier} is a cluster
+parameter group name.
 \item Specify \code{cluster-snapshot} when \emph{SourceIdentifier} is a cluster
 snapshot identifier.
 }}

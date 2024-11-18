@@ -11,41 +11,40 @@ NULL
 #' To create a broker, you must either use the AmazonMQFullAccess IAM
 #' policy or include the following EC2 permissions in your IAM policy.
 #' 
-#' -   ec2:CreateNetworkInterface
+#' - ec2:CreateNetworkInterface
 #' 
-#'     This permission is required to allow Amazon MQ to create an elastic
-#'     network interface (ENI) on behalf of your account.
+#'   This permission is required to allow Amazon MQ to create an elastic
+#'   network interface (ENI) on behalf of your account.
 #' 
-#' -   ec2:CreateNetworkInterfacePermission
+#' - ec2:CreateNetworkInterfacePermission
 #' 
-#'     This permission is required to attach the ENI to the broker
-#'     instance.
+#'   This permission is required to attach the ENI to the broker instance.
 #' 
-#' -   ec2:DeleteNetworkInterface
+#' - ec2:DeleteNetworkInterface
 #' 
-#' -   ec2:DeleteNetworkInterfacePermission
+#' - ec2:DeleteNetworkInterfacePermission
 #' 
-#' -   ec2:DetachNetworkInterface
+#' - ec2:DetachNetworkInterface
 #' 
-#' -   ec2:DescribeInternetGateways
+#' - ec2:DescribeInternetGateways
 #' 
-#' -   ec2:DescribeNetworkInterfaces
+#' - ec2:DescribeNetworkInterfaces
 #' 
-#' -   ec2:DescribeNetworkInterfacePermissions
+#' - ec2:DescribeNetworkInterfacePermissions
 #' 
-#' -   ec2:DescribeRouteTables
+#' - ec2:DescribeRouteTables
 #' 
-#' -   ec2:DescribeSecurityGroups
+#' - ec2:DescribeSecurityGroups
 #' 
-#' -   ec2:DescribeSubnets
+#' - ec2:DescribeSubnets
 #' 
-#' -   ec2:DescribeVpcs
+#' - ec2:DescribeVpcs
 #' 
 #' For more information, see [Create an IAM User and Get Your Amazon Web
 #' Services
 #' Credentials](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/amazon-mq-setting-up.html#create-iam-user)
 #' and [Never Modify or Delete the Amazon MQ Elastic Network
-#' Interface](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/#never-modify-delete-elastic-network-interface)
+#' Interface](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/connecting-to-amazon-mq.html#never-modify-delete-elastic-network-interface)
 #' in the *Amazon MQ Developer Guide*.
 #'
 #' @usage
@@ -221,7 +220,8 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
     http_method = "POST",
     http_path = "/v1/brokers",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users, DataReplicationMode = DataReplicationMode, DataReplicationPrimaryBrokerArn = DataReplicationPrimaryBrokerArn)
   output <- .mq$create_broker_output()
@@ -304,7 +304,8 @@ mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType, E
     http_method = "POST",
     http_path = "/v1/configurations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$create_configuration_input(AuthenticationStrategy = AuthenticationStrategy, EngineType = EngineType, EngineVersion = EngineVersion, Name = Name, Tags = Tags)
   output <- .mq$create_configuration_output()
@@ -351,7 +352,8 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
     http_method = "POST",
     http_path = "/v1/tags/{resource-arn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$create_tags_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .mq$create_tags_output()
@@ -420,7 +422,8 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
     http_method = "POST",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$create_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username, ReplicationUser = ReplicationUser)
   output <- .mq$create_user_output()
@@ -468,7 +471,8 @@ mq_delete_broker <- function(BrokerId) {
     http_method = "DELETE",
     http_path = "/v1/brokers/{broker-id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$delete_broker_input(BrokerId = BrokerId)
   output <- .mq$delete_broker_output()
@@ -515,7 +519,8 @@ mq_delete_tags <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/v1/tags/{resource-arn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$delete_tags_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .mq$delete_tags_output()
@@ -562,7 +567,8 @@ mq_delete_user <- function(BrokerId, Username) {
     http_method = "DELETE",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$delete_user_input(BrokerId = BrokerId, Username = Username)
   output <- .mq$delete_user_output()
@@ -739,7 +745,8 @@ mq_describe_broker <- function(BrokerId) {
     http_method = "GET",
     http_path = "/v1/brokers/{broker-id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$describe_broker_input(BrokerId = BrokerId)
   output <- .mq$describe_broker_output()
@@ -804,7 +811,8 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
     http_method = "GET",
     http_path = "/v1/broker-engine-types",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$describe_broker_engine_types_input(EngineType = EngineType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$describe_broker_engine_types_output()
@@ -882,7 +890,8 @@ mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceT
     http_method = "GET",
     http_path = "/v1/broker-instance-options",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$describe_broker_instance_options_input(EngineType = EngineType, HostInstanceType = HostInstanceType, MaxResults = MaxResults, NextToken = NextToken, StorageType = StorageType)
   output <- .mq$describe_broker_instance_options_output()
@@ -949,7 +958,8 @@ mq_describe_configuration <- function(ConfigurationId) {
     http_method = "GET",
     http_path = "/v1/configurations/{configuration-id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$describe_configuration_input(ConfigurationId = ConfigurationId)
   output <- .mq$describe_configuration_output()
@@ -1007,7 +1017,8 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
     http_method = "GET",
     http_path = "/v1/configurations/{configuration-id}/revisions/{configuration-revision}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$describe_configuration_revision_input(ConfigurationId = ConfigurationId, ConfigurationRevision = ConfigurationRevision)
   output <- .mq$describe_configuration_revision_output()
@@ -1072,7 +1083,8 @@ mq_describe_user <- function(BrokerId, Username) {
     http_method = "GET",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$describe_user_input(BrokerId = BrokerId, Username = Username)
   output <- .mq$describe_user_output()
@@ -1138,7 +1150,8 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/brokers",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BrokerSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BrokerSummaries"),
+    stream_api = FALSE
   )
   input <- .mq$list_brokers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_brokers_output()
@@ -1203,7 +1216,8 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
     http_method = "GET",
     http_path = "/v1/configurations/{configuration-id}/revisions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$list_configuration_revisions_input(ConfigurationId = ConfigurationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_configuration_revisions_output()
@@ -1280,7 +1294,8 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/configurations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$list_configurations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_configurations_output()
@@ -1330,7 +1345,8 @@ mq_list_tags <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/v1/tags/{resource-arn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$list_tags_input(ResourceArn = ResourceArn)
   output <- .mq$list_tags_output()
@@ -1392,7 +1408,8 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/brokers/{broker-id}/users",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$list_users_input(BrokerId = BrokerId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_users_output()
@@ -1443,7 +1460,8 @@ mq_promote <- function(BrokerId, Mode) {
     http_method = "POST",
     http_path = "/v1/brokers/{broker-id}/promote",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$promote_input(BrokerId = BrokerId, Mode = Mode)
   output <- .mq$promote_output()
@@ -1486,7 +1504,8 @@ mq_reboot_broker <- function(BrokerId) {
     http_method = "POST",
     http_path = "/v1/brokers/{broker-id}/reboot",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$reboot_broker_input(BrokerId = BrokerId)
   output <- .mq$reboot_broker_output()
@@ -1532,7 +1551,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' the broker.
 #' @param HostInstanceType The broker's host instance type to upgrade to. For a list of supported
 #' instance types, see [Broker instance
-#' types](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/#broker-instance-types).
+#' types](https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker.html#broker-instance-types).
 #' @param LdapServerMetadata Optional. The metadata of the LDAP server used to authenticate and
 #' authorize connections to the broker. Does not apply to RabbitMQ brokers.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
@@ -1653,7 +1672,8 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, SecurityGroups = SecurityGroups, DataReplicationMode = DataReplicationMode)
   output <- .mq$update_broker_output()
@@ -1725,7 +1745,8 @@ mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
     http_method = "PUT",
     http_path = "/v1/configurations/{configuration-id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$update_configuration_input(ConfigurationId = ConfigurationId, Data = Data, Description = Description)
   output <- .mq$update_configuration_output()
@@ -1788,7 +1809,8 @@ mq_update_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mq$update_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username, ReplicationUser = ReplicationUser)
   output <- .mq$update_user_output()

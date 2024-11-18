@@ -70,13 +70,13 @@ resources based on utilization
 dynamic scaling to scale your Amazon EC2 capacity faster
 \item Set minimum and maximum capacity limits
 \item Retrieve information on existing scaling plans
-\item Access current forecast data and historical forecast data for up to
-56 days previous
+\item Access current forecast data and historical forecast data for up to 56
+days previous
 }
 
 To learn more about AWS Auto Scaling, including information about
 granting IAM users required permissions for AWS Auto Scaling actions,
-see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/migrate-scaling-plan.html}{AWS Auto Scaling User Guide}.
+see the \href{https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html}{AWS Auto Scaling User Guide}.
 }
 \section{Service syntax}{
 

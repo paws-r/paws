@@ -29,8 +29,8 @@ shares that match the following:
 \itemize{
 \item \strong{\code{SELF}} – resource shares that your account shares with other
 accounts
-\item \strong{\code{OTHER-ACCOUNTS}} – resource shares that other accounts share
-with your account
+\item \strong{\code{OTHER-ACCOUNTS}} – resource shares that other accounts share with
+your account
 }}
 
 \item{name}{Specifies the name of an individual resource share that you want to

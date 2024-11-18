@@ -33,8 +33,8 @@ ec2_describe_volume_status(
 \code{volume-status.details-name} (for \code{io-enabled}: \code{passed} | \code{failed};
 for \code{io-performance}: \code{normal} | \code{degraded} | \code{severely-degraded} |
 \code{stalled}).
-\item \code{volume-status.status} - The status of the volume (\code{ok} | \code{impaired}
-| \code{warning} | \code{insufficient-data}).
+\item \code{volume-status.status} - The status of the volume (\code{ok} | \code{impaired} |
+\code{warning} | \code{insufficient-data}).
 }}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next

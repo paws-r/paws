@@ -32,7 +32,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{Encrypted}{Specifies whether the destination snapshot of the imported image should
 be encrypted. The default KMS key for EBS is used unless you specify a
-non-default KMS key using \code{KmsKeyId}. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html}{Amazon EBS Encryption}
+non-default KMS key using \code{KmsKeyId}. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{KmsKeyId}{An identifier for the symmetric KMS key to use when creating the
@@ -46,14 +46,14 @@ The KMS key identifier may be provided in any of the following formats:
 \item Key ID
 \item Key alias
 \item ARN using key ID. The ID ARN contains the \code{arn:aws:kms} namespace,
-followed by the Region of the key, the Amazon Web Services account
-ID of the key owner, the \code{key} namespace, and then the key ID. For
+followed by the Region of the key, the Amazon Web Services account ID
+of the key owner, the \code{key} namespace, and then the key ID. For
 example,
 arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:key/\emph{abcd1234-a123-456a-a12b-a123b4cd56ef}.
 \item ARN using key alias. The alias ARN contains the \code{arn:aws:kms}
-namespace, followed by the Region of the key, the Amazon Web
-Services account ID of the key owner, the \code{alias} namespace, and
-then the key alias. For example,
+namespace, followed by the Region of the key, the Amazon Web Services
+account ID of the key owner, the \code{alias} namespace, and then the key
+alias. For example,
 arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
 }
 

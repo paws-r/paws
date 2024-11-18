@@ -44,8 +44,8 @@ The following outlines key parameters and limitations:
 \item When \code{--job-status} is used, Batch returns up to 1000 values.
 \item When \code{--filters} is used, Batch returns up to 100 values.
 \item If neither parameter is used, then \code{\link[=batch_list_jobs]{list_jobs}}
-returns up to 1000 results (jobs that are in the \code{RUNNING} status)
-and a \code{nextToken} value, if applicable.
+returns up to 1000 results (jobs that are in the \code{RUNNING} status) and
+a \code{nextToken} value, if applicable.
 }}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated

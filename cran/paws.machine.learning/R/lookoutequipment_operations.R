@@ -28,7 +28,8 @@ lookoutequipment_create_dataset <- function(DatasetName, DatasetSchema = NULL, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$create_dataset_input(DatasetName = DatasetName, DatasetSchema = DatasetSchema, ServerSideKmsKeyId = ServerSideKmsKeyId, ClientToken = ClientToken, Tags = Tags)
   output <- .lookoutequipment$create_dataset_output()
@@ -92,7 +93,8 @@ lookoutequipment_create_inference_scheduler <- function(ModelName, InferenceSche
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$create_inference_scheduler_input(ModelName = ModelName, InferenceSchedulerName = InferenceSchedulerName, DataDelayOffsetInMinutes = DataDelayOffsetInMinutes, DataUploadFrequency = DataUploadFrequency, DataInputConfiguration = DataInputConfiguration, DataOutputConfiguration = DataOutputConfiguration, RoleArn = RoleArn, ServerSideKmsKeyId = ServerSideKmsKeyId, ClientToken = ClientToken, Tags = Tags)
   output <- .lookoutequipment$create_inference_scheduler_output()
@@ -143,7 +145,8 @@ lookoutequipment_create_label <- function(LabelGroupName, StartTime, EndTime, Ra
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$create_label_input(LabelGroupName = LabelGroupName, StartTime = StartTime, EndTime = EndTime, Rating = Rating, FaultCode = FaultCode, Notes = Notes, Equipment = Equipment, ClientToken = ClientToken)
   output <- .lookoutequipment$create_label_output()
@@ -187,7 +190,8 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$create_label_group_input(LabelGroupName = LabelGroupName, FaultCodes = FaultCodes, ClientToken = ClientToken, Tags = Tags)
   output <- .lookoutequipment$create_label_group_output()
@@ -252,7 +256,8 @@ lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$create_model_input(ModelName = ModelName, DatasetName = DatasetName, DatasetSchema = DatasetSchema, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, TrainingDataStartTime = TrainingDataStartTime, TrainingDataEndTime = TrainingDataEndTime, EvaluationDataStartTime = EvaluationDataStartTime, EvaluationDataEndTime = EvaluationDataEndTime, RoleArn = RoleArn, DataPreProcessingConfiguration = DataPreProcessingConfiguration, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags, OffCondition = OffCondition, ModelDiagnosticsOutputConfiguration = ModelDiagnosticsOutputConfiguration)
   output <- .lookoutequipment$create_model_output()
@@ -281,11 +286,11 @@ lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema 
 #' supported). The minimum value is 30 days (P30D) and the maximum value is
 #' 1 year (P1Y). For example, the following values are valid:
 #' 
-#' -   P3M15D – Every 3 months and 15 days
+#' - P3M15D – Every 3 months and 15 days
 #' 
-#' -   P2M – Every 2 months
+#' - P2M – Every 2 months
 #' 
-#' -   P150D – Every 150 days
+#' - P150D – Every 150 days
 #' @param LookbackWindow &#91;required&#93; The number of past days of data that will be used for retraining.
 #' @param PromoteMode Indicates how the service will use new models. In `MANAGED` mode, new
 #' models will automatically be used for inference if they have better
@@ -304,7 +309,8 @@ lookoutequipment_create_retraining_scheduler <- function(ModelName, RetrainingSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$create_retraining_scheduler_input(ModelName = ModelName, RetrainingStartDate = RetrainingStartDate, RetrainingFrequency = RetrainingFrequency, LookbackWindow = LookbackWindow, PromoteMode = PromoteMode, ClientToken = ClientToken)
   output <- .lookoutequipment$create_retraining_scheduler_output()
@@ -334,7 +340,8 @@ lookoutequipment_delete_dataset <- function(DatasetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$delete_dataset_input(DatasetName = DatasetName)
   output <- .lookoutequipment$delete_dataset_output()
@@ -364,7 +371,8 @@ lookoutequipment_delete_inference_scheduler <- function(InferenceSchedulerName) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$delete_inference_scheduler_input(InferenceSchedulerName = InferenceSchedulerName)
   output <- .lookoutequipment$delete_inference_scheduler_output()
@@ -397,7 +405,8 @@ lookoutequipment_delete_label <- function(LabelGroupName, LabelId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$delete_label_input(LabelGroupName = LabelGroupName, LabelId = LabelId)
   output <- .lookoutequipment$delete_label_output()
@@ -429,7 +438,8 @@ lookoutequipment_delete_label_group <- function(LabelGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$delete_label_group_input(LabelGroupName = LabelGroupName)
   output <- .lookoutequipment$delete_label_group_output()
@@ -460,7 +470,8 @@ lookoutequipment_delete_model <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$delete_model_input(ModelName = ModelName)
   output <- .lookoutequipment$delete_model_output()
@@ -491,7 +502,8 @@ lookoutequipment_delete_resource_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .lookoutequipment$delete_resource_policy_output()
@@ -521,7 +533,8 @@ lookoutequipment_delete_retraining_scheduler <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$delete_retraining_scheduler_input(ModelName = ModelName)
   output <- .lookoutequipment$delete_retraining_scheduler_output()
@@ -552,7 +565,8 @@ lookoutequipment_describe_data_ingestion_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_data_ingestion_job_input(JobId = JobId)
   output <- .lookoutequipment$describe_data_ingestion_job_output()
@@ -583,7 +597,8 @@ lookoutequipment_describe_dataset <- function(DatasetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_dataset_input(DatasetName = DatasetName)
   output <- .lookoutequipment$describe_dataset_output()
@@ -614,7 +629,8 @@ lookoutequipment_describe_inference_scheduler <- function(InferenceSchedulerName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_inference_scheduler_input(InferenceSchedulerName = InferenceSchedulerName)
   output <- .lookoutequipment$describe_inference_scheduler_output()
@@ -645,7 +661,8 @@ lookoutequipment_describe_label <- function(LabelGroupName, LabelId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_label_input(LabelGroupName = LabelGroupName, LabelId = LabelId)
   output <- .lookoutequipment$describe_label_output()
@@ -675,7 +692,8 @@ lookoutequipment_describe_label_group <- function(LabelGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_label_group_input(LabelGroupName = LabelGroupName)
   output <- .lookoutequipment$describe_label_group_output()
@@ -707,7 +725,8 @@ lookoutequipment_describe_model <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_model_input(ModelName = ModelName)
   output <- .lookoutequipment$describe_model_output()
@@ -738,7 +757,8 @@ lookoutequipment_describe_model_version <- function(ModelName, ModelVersion) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_model_version_input(ModelName = ModelName, ModelVersion = ModelVersion)
   output <- .lookoutequipment$describe_model_version_output()
@@ -769,7 +789,8 @@ lookoutequipment_describe_resource_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_resource_policy_input(ResourceArn = ResourceArn)
   output <- .lookoutequipment$describe_resource_policy_output()
@@ -800,7 +821,8 @@ lookoutequipment_describe_retraining_scheduler <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$describe_retraining_scheduler_input(ModelName = ModelName)
   output <- .lookoutequipment$describe_retraining_scheduler_output()
@@ -839,7 +861,8 @@ lookoutequipment_import_dataset <- function(SourceDatasetArn, DatasetName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$import_dataset_input(SourceDatasetArn = SourceDatasetArn, DatasetName = DatasetName, ClientToken = ClientToken, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags)
   output <- .lookoutequipment$import_dataset_output()
@@ -875,13 +898,13 @@ lookoutequipment_import_dataset <- function(SourceDatasetArn, DatasetName = NULL
 #' @param InferenceDataImportStrategy Indicates how to import the accumulated inference data when a model
 #' version is imported. The possible values are as follows:
 #' 
-#' -   NO_IMPORT – Don't import the data.
+#' - NO_IMPORT – Don't import the data.
 #' 
-#' -   ADD_WHEN_EMPTY – Only import the data from the source model if there
-#'     is no existing data in the target model.
+#' - ADD_WHEN_EMPTY – Only import the data from the source model if there
+#'   is no existing data in the target model.
 #' 
-#' -   OVERWRITE – Import the data from the source model and overwrite the
-#'     existing data in the target model.
+#' - OVERWRITE – Import the data from the source model and overwrite the
+#'   existing data in the target model.
 #'
 #' @keywords internal
 #'
@@ -892,7 +915,8 @@ lookoutequipment_import_model_version <- function(SourceModelVersionArn, ModelNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$import_model_version_input(SourceModelVersionArn = SourceModelVersionArn, ModelName = ModelName, DatasetName = DatasetName, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, RoleArn = RoleArn, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags, InferenceDataImportStrategy = InferenceDataImportStrategy)
   output <- .lookoutequipment$import_model_version_output()
@@ -927,7 +951,8 @@ lookoutequipment_list_data_ingestion_jobs <- function(DatasetName = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_data_ingestion_jobs_input(DatasetName = DatasetName, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
   output <- .lookoutequipment$list_data_ingestion_jobs_output()
@@ -961,7 +986,8 @@ lookoutequipment_list_datasets <- function(NextToken = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_datasets_input(NextToken = NextToken, MaxResults = MaxResults, DatasetNameBeginsWith = DatasetNameBeginsWith)
   output <- .lookoutequipment$list_datasets_output()
@@ -999,7 +1025,8 @@ lookoutequipment_list_inference_events <- function(NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_inference_events_input(NextToken = NextToken, MaxResults = MaxResults, InferenceSchedulerName = InferenceSchedulerName, IntervalStartTime = IntervalStartTime, IntervalEndTime = IntervalEndTime)
   output <- .lookoutequipment$list_inference_events_output()
@@ -1038,7 +1065,8 @@ lookoutequipment_list_inference_executions <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_inference_executions_input(NextToken = NextToken, MaxResults = MaxResults, InferenceSchedulerName = InferenceSchedulerName, DataStartTimeAfter = DataStartTimeAfter, DataEndTimeBefore = DataEndTimeBefore, Status = Status)
   output <- .lookoutequipment$list_inference_executions_output()
@@ -1075,7 +1103,8 @@ lookoutequipment_list_inference_schedulers <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_inference_schedulers_input(NextToken = NextToken, MaxResults = MaxResults, InferenceSchedulerNameBeginsWith = InferenceSchedulerNameBeginsWith, ModelName = ModelName, Status = Status)
   output <- .lookoutequipment$list_inference_schedulers_output()
@@ -1108,7 +1137,8 @@ lookoutequipment_list_label_groups <- function(LabelGroupNameBeginsWith = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_label_groups_input(LabelGroupNameBeginsWith = LabelGroupNameBeginsWith, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lookoutequipment$list_label_groups_output()
@@ -1146,7 +1176,8 @@ lookoutequipment_list_labels <- function(LabelGroupName, IntervalStartTime = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_labels_input(LabelGroupName = LabelGroupName, IntervalStartTime = IntervalStartTime, IntervalEndTime = IntervalEndTime, FaultCode = FaultCode, Equipment = Equipment, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lookoutequipment$list_labels_output()
@@ -1191,7 +1222,8 @@ lookoutequipment_list_model_versions <- function(ModelName, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_model_versions_input(ModelName = ModelName, NextToken = NextToken, MaxResults = MaxResults, Status = Status, SourceType = SourceType, CreatedAtEndTime = CreatedAtEndTime, CreatedAtStartTime = CreatedAtStartTime, MaxModelVersion = MaxModelVersion, MinModelVersion = MinModelVersion)
   output <- .lookoutequipment$list_model_versions_output()
@@ -1228,7 +1260,8 @@ lookoutequipment_list_models <- function(NextToken = NULL, MaxResults = NULL, St
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_models_input(NextToken = NextToken, MaxResults = MaxResults, Status = Status, ModelNameBeginsWith = ModelNameBeginsWith, DatasetNameBeginsWith = DatasetNameBeginsWith)
   output <- .lookoutequipment$list_models_output()
@@ -1266,7 +1299,8 @@ lookoutequipment_list_retraining_schedulers <- function(ModelNameBeginsWith = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_retraining_schedulers_input(ModelNameBeginsWith = ModelNameBeginsWith, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .lookoutequipment$list_retraining_schedulers_output()
@@ -1304,7 +1338,8 @@ lookoutequipment_list_sensor_statistics <- function(DatasetName, IngestionJobId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_sensor_statistics_input(DatasetName = DatasetName, IngestionJobId = IngestionJobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .lookoutequipment$list_sensor_statistics_output()
@@ -1337,7 +1372,8 @@ lookoutequipment_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .lookoutequipment$list_tags_for_resource_output()
@@ -1372,7 +1408,8 @@ lookoutequipment_put_resource_policy <- function(ResourceArn, ResourcePolicy, Po
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$put_resource_policy_input(ResourceArn = ResourceArn, ResourcePolicy = ResourcePolicy, PolicyRevisionId = PolicyRevisionId, ClientToken = ClientToken)
   output <- .lookoutequipment$put_resource_policy_output()
@@ -1408,7 +1445,8 @@ lookoutequipment_start_data_ingestion_job <- function(DatasetName, IngestionInpu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$start_data_ingestion_job_input(DatasetName = DatasetName, IngestionInputConfiguration = IngestionInputConfiguration, RoleArn = RoleArn, ClientToken = ClientToken)
   output <- .lookoutequipment$start_data_ingestion_job_output()
@@ -1438,7 +1476,8 @@ lookoutequipment_start_inference_scheduler <- function(InferenceSchedulerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$start_inference_scheduler_input(InferenceSchedulerName = InferenceSchedulerName)
   output <- .lookoutequipment$start_inference_scheduler_output()
@@ -1468,7 +1507,8 @@ lookoutequipment_start_retraining_scheduler <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$start_retraining_scheduler_input(ModelName = ModelName)
   output <- .lookoutequipment$start_retraining_scheduler_output()
@@ -1498,7 +1538,8 @@ lookoutequipment_stop_inference_scheduler <- function(InferenceSchedulerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$stop_inference_scheduler_input(InferenceSchedulerName = InferenceSchedulerName)
   output <- .lookoutequipment$stop_inference_scheduler_output()
@@ -1528,7 +1569,8 @@ lookoutequipment_stop_retraining_scheduler <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$stop_retraining_scheduler_input(ModelName = ModelName)
   output <- .lookoutequipment$stop_retraining_scheduler_output()
@@ -1561,7 +1603,8 @@ lookoutequipment_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .lookoutequipment$tag_resource_output()
@@ -1593,7 +1636,8 @@ lookoutequipment_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .lookoutequipment$untag_resource_output()
@@ -1626,7 +1670,8 @@ lookoutequipment_update_active_model_version <- function(ModelName, ModelVersion
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$update_active_model_version_input(ModelName = ModelName, ModelVersion = ModelVersion)
   output <- .lookoutequipment$update_active_model_version_output()
@@ -1678,7 +1723,8 @@ lookoutequipment_update_inference_scheduler <- function(InferenceSchedulerName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$update_inference_scheduler_input(InferenceSchedulerName = InferenceSchedulerName, DataDelayOffsetInMinutes = DataDelayOffsetInMinutes, DataUploadFrequency = DataUploadFrequency, DataInputConfiguration = DataInputConfiguration, DataOutputConfiguration = DataOutputConfiguration, RoleArn = RoleArn)
   output <- .lookoutequipment$update_inference_scheduler_output()
@@ -1713,7 +1759,8 @@ lookoutequipment_update_label_group <- function(LabelGroupName, FaultCodes = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$update_label_group_input(LabelGroupName = LabelGroupName, FaultCodes = FaultCodes)
   output <- .lookoutequipment$update_label_group_output()
@@ -1748,7 +1795,8 @@ lookoutequipment_update_model <- function(ModelName, LabelsInputConfiguration = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$update_model_input(ModelName = ModelName, LabelsInputConfiguration = LabelsInputConfiguration, RoleArn = RoleArn, ModelDiagnosticsOutputConfiguration = ModelDiagnosticsOutputConfiguration)
   output <- .lookoutequipment$update_model_output()
@@ -1777,11 +1825,11 @@ lookoutequipment_update_model <- function(ModelName, LabelsInputConfiguration = 
 #' supported). The minimum value is 30 days (P30D) and the maximum value is
 #' 1 year (P1Y). For example, the following values are valid:
 #' 
-#' -   P3M15D – Every 3 months and 15 days
+#' - P3M15D – Every 3 months and 15 days
 #' 
-#' -   P2M – Every 2 months
+#' - P2M – Every 2 months
 #' 
-#' -   P150D – Every 150 days
+#' - P150D – Every 150 days
 #' @param LookbackWindow The number of past days of data that will be used for retraining.
 #' @param PromoteMode Indicates how the service will use new models. In `MANAGED` mode, new
 #' models will automatically be used for inference if they have better
@@ -1798,7 +1846,8 @@ lookoutequipment_update_retraining_scheduler <- function(ModelName, RetrainingSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lookoutequipment$update_retraining_scheduler_input(ModelName = ModelName, RetrainingStartDate = RetrainingStartDate, RetrainingFrequency = RetrainingFrequency, LookbackWindow = LookbackWindow, PromoteMode = PromoteMode)
   output <- .lookoutequipment$update_retraining_scheduler_output()

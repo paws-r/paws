@@ -21,8 +21,8 @@ name or the workgroup name must be included in the request.}
 Constraints:
 \itemize{
 \item Must be 1 to 64 alphanumeric characters or hyphens.
-\item Must contain only uppercase or lowercase letters, numbers,
-underscore, plus sign, period (dot), at symbol (@), or hyphen.
+\item Must contain only uppercase or lowercase letters, numbers, underscore,
+plus sign, period (dot), at symbol (@), or hyphen.
 \item The first character must be a letter.
 \item Must not contain a colon ( : ) or slash ( / ).
 \item Cannot be a reserved word. A list of reserved words can be found in

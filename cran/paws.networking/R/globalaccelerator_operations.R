@@ -24,7 +24,8 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$add_custom_routing_endpoints_input(EndpointConfigurations = EndpointConfigurations, EndpointGroupArn = EndpointGroupArn)
   output <- .globalaccelerator$add_custom_routing_endpoints_output()
@@ -55,7 +56,8 @@ globalaccelerator_add_endpoints <- function(EndpointConfigurations, EndpointGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$add_endpoints_input(EndpointConfigurations = EndpointConfigurations, EndpointGroupArn = EndpointGroupArn)
   output <- .globalaccelerator$add_endpoints_output()
@@ -93,7 +95,8 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$advertise_byoip_cidr_input(Cidr = Cidr)
   output <- .globalaccelerator$advertise_byoip_cidr_output()
@@ -151,7 +154,8 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$allow_custom_routing_traffic_input(EndpointGroupArn = EndpointGroupArn, EndpointId = EndpointId, DestinationAddresses = DestinationAddresses, DestinationPorts = DestinationPorts, AllowAllTrafficToEndpoint = AllowAllTrafficToEndpoint)
   output <- .globalaccelerator$allow_custom_routing_traffic_output()
@@ -220,7 +224,8 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$create_accelerator_input(Name = Name, IpAddressType = IpAddressType, IpAddresses = IpAddresses, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .globalaccelerator$create_accelerator_output()
@@ -264,7 +269,8 @@ globalaccelerator_create_cross_account_attachment <- function(Name, Principals =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$create_cross_account_attachment_input(Name = Name, Principals = Principals, Resources = Resources, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .globalaccelerator$create_cross_account_attachment_output()
@@ -333,7 +339,8 @@ globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$create_custom_routing_accelerator_input(Name = Name, IpAddressType = IpAddressType, IpAddresses = IpAddresses, Enabled = Enabled, IdempotencyToken = IdempotencyToken, Tags = Tags)
   output <- .globalaccelerator$create_custom_routing_accelerator_output()
@@ -372,7 +379,8 @@ globalaccelerator_create_custom_routing_endpoint_group <- function(ListenerArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$create_custom_routing_endpoint_group_input(ListenerArn = ListenerArn, EndpointGroupRegion = EndpointGroupRegion, DestinationConfigurations = DestinationConfigurations, IdempotencyToken = IdempotencyToken)
   output <- .globalaccelerator$create_custom_routing_endpoint_group_output()
@@ -412,7 +420,8 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$create_custom_routing_listener_input(AcceleratorArn = AcceleratorArn, PortRanges = PortRanges, IdempotencyToken = IdempotencyToken)
   output <- .globalaccelerator$create_custom_routing_listener_output()
@@ -479,7 +488,8 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$create_endpoint_group_input(ListenerArn = ListenerArn, EndpointGroupRegion = EndpointGroupRegion, EndpointConfigurations = EndpointConfigurations, TrafficDialPercentage = TrafficDialPercentage, HealthCheckPort = HealthCheckPort, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, ThresholdCount = ThresholdCount, IdempotencyToken = IdempotencyToken, PortOverrides = PortOverrides)
   output <- .globalaccelerator$create_endpoint_group_output()
@@ -536,7 +546,8 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$create_listener_input(AcceleratorArn = AcceleratorArn, PortRanges = PortRanges, Protocol = Protocol, ClientAffinity = ClientAffinity, IdempotencyToken = IdempotencyToken)
   output <- .globalaccelerator$create_listener_output()
@@ -566,7 +577,8 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$delete_accelerator_input(AcceleratorArn = AcceleratorArn)
   output <- .globalaccelerator$delete_accelerator_output()
@@ -597,7 +609,8 @@ globalaccelerator_delete_cross_account_attachment <- function(AttachmentArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$delete_cross_account_attachment_input(AttachmentArn = AttachmentArn)
   output <- .globalaccelerator$delete_cross_account_attachment_output()
@@ -628,7 +641,8 @@ globalaccelerator_delete_custom_routing_accelerator <- function(AcceleratorArn) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$delete_custom_routing_accelerator_input(AcceleratorArn = AcceleratorArn)
   output <- .globalaccelerator$delete_custom_routing_accelerator_output()
@@ -659,7 +673,8 @@ globalaccelerator_delete_custom_routing_endpoint_group <- function(EndpointGroup
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$delete_custom_routing_endpoint_group_input(EndpointGroupArn = EndpointGroupArn)
   output <- .globalaccelerator$delete_custom_routing_endpoint_group_output()
@@ -689,7 +704,8 @@ globalaccelerator_delete_custom_routing_listener <- function(ListenerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$delete_custom_routing_listener_input(ListenerArn = ListenerArn)
   output <- .globalaccelerator$delete_custom_routing_listener_output()
@@ -719,7 +735,8 @@ globalaccelerator_delete_endpoint_group <- function(EndpointGroupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$delete_endpoint_group_input(EndpointGroupArn = EndpointGroupArn)
   output <- .globalaccelerator$delete_endpoint_group_output()
@@ -749,7 +766,8 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$delete_listener_input(ListenerArn = ListenerArn)
   output <- .globalaccelerator$delete_listener_output()
@@ -804,7 +822,8 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$deny_custom_routing_traffic_input(EndpointGroupArn = EndpointGroupArn, EndpointId = EndpointId, DestinationAddresses = DestinationAddresses, DestinationPorts = DestinationPorts, DenyAllTrafficToEndpoint = DenyAllTrafficToEndpoint)
   output <- .globalaccelerator$deny_custom_routing_traffic_output()
@@ -841,7 +860,8 @@ globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$deprovision_byoip_cidr_input(Cidr = Cidr)
   output <- .globalaccelerator$deprovision_byoip_cidr_output()
@@ -871,7 +891,8 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_accelerator_input(AcceleratorArn = AcceleratorArn)
   output <- .globalaccelerator$describe_accelerator_output()
@@ -902,7 +923,8 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_accelerator_attributes_input(AcceleratorArn = AcceleratorArn)
   output <- .globalaccelerator$describe_accelerator_attributes_output()
@@ -933,7 +955,8 @@ globalaccelerator_describe_cross_account_attachment <- function(AttachmentArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_cross_account_attachment_input(AttachmentArn = AttachmentArn)
   output <- .globalaccelerator$describe_cross_account_attachment_output()
@@ -963,7 +986,8 @@ globalaccelerator_describe_custom_routing_accelerator <- function(AcceleratorArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_custom_routing_accelerator_input(AcceleratorArn = AcceleratorArn)
   output <- .globalaccelerator$describe_custom_routing_accelerator_output()
@@ -994,7 +1018,8 @@ globalaccelerator_describe_custom_routing_accelerator_attributes <- function(Acc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_custom_routing_accelerator_attributes_input(AcceleratorArn = AcceleratorArn)
   output <- .globalaccelerator$describe_custom_routing_accelerator_attributes_output()
@@ -1024,7 +1049,8 @@ globalaccelerator_describe_custom_routing_endpoint_group <- function(EndpointGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_custom_routing_endpoint_group_input(EndpointGroupArn = EndpointGroupArn)
   output <- .globalaccelerator$describe_custom_routing_endpoint_group_output()
@@ -1054,7 +1080,8 @@ globalaccelerator_describe_custom_routing_listener <- function(ListenerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_custom_routing_listener_input(ListenerArn = ListenerArn)
   output <- .globalaccelerator$describe_custom_routing_listener_output()
@@ -1084,7 +1111,8 @@ globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_endpoint_group_input(EndpointGroupArn = EndpointGroupArn)
   output <- .globalaccelerator$describe_endpoint_group_output()
@@ -1114,7 +1142,8 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$describe_listener_input(ListenerArn = ListenerArn)
   output <- .globalaccelerator$describe_listener_output()
@@ -1147,7 +1176,8 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accelerators")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accelerators"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_accelerators_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_accelerators_output()
@@ -1182,7 +1212,8 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ByoipCidrs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ByoipCidrs"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_byoip_cidrs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_byoip_cidrs_output()
@@ -1216,7 +1247,8 @@ globalaccelerator_list_cross_account_attachments <- function(MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountAttachments")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountAttachments"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_cross_account_attachments_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_cross_account_attachments_output()
@@ -1246,7 +1278,8 @@ globalaccelerator_list_cross_account_resource_accounts <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_cross_account_resource_accounts_input()
   output <- .globalaccelerator$list_cross_account_resource_accounts_output()
@@ -1282,7 +1315,8 @@ globalaccelerator_list_cross_account_resources <- function(AcceleratorArn = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountResources")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountResources"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_cross_account_resources_input(AcceleratorArn = AcceleratorArn, ResourceOwnerAwsAccountId = ResourceOwnerAwsAccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_cross_account_resources_output()
@@ -1315,7 +1349,8 @@ globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accelerators")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Accelerators"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_custom_routing_accelerators_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_accelerators_output()
@@ -1351,7 +1386,8 @@ globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointGroups")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointGroups"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_custom_routing_endpoint_groups_input(ListenerArn = ListenerArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_endpoint_groups_output()
@@ -1385,7 +1421,8 @@ globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Listeners")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Listeners"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_custom_routing_listeners_input(AcceleratorArn = AcceleratorArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_listeners_output()
@@ -1424,7 +1461,8 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PortMappings")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PortMappings"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_custom_routing_port_mappings_input(AcceleratorArn = AcceleratorArn, EndpointGroupArn = EndpointGroupArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_port_mappings_output()
@@ -1461,7 +1499,8 @@ globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(E
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DestinationPortMappings")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DestinationPortMappings"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_custom_routing_port_mappings_by_destination_input(EndpointId = EndpointId, DestinationAddress = DestinationAddress, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_port_mappings_by_destination_output()
@@ -1495,7 +1534,8 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointGroups")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointGroups"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_endpoint_groups_input(ListenerArn = ListenerArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_endpoint_groups_output()
@@ -1530,7 +1570,8 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Listeners")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Listeners"),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_listeners_input(AcceleratorArn = AcceleratorArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_listeners_output()
@@ -1561,7 +1602,8 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .globalaccelerator$list_tags_for_resource_output()
@@ -1602,7 +1644,8 @@ globalaccelerator_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$provision_byoip_cidr_input(Cidr = Cidr, CidrAuthorizationContext = CidrAuthorizationContext)
   output <- .globalaccelerator$provision_byoip_cidr_output()
@@ -1635,7 +1678,8 @@ globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, Endpo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$remove_custom_routing_endpoints_input(EndpointIds = EndpointIds, EndpointGroupArn = EndpointGroupArn)
   output <- .globalaccelerator$remove_custom_routing_endpoints_output()
@@ -1666,7 +1710,8 @@ globalaccelerator_remove_endpoints <- function(EndpointIdentifiers, EndpointGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$remove_endpoints_input(EndpointIdentifiers = EndpointIdentifiers, EndpointGroupArn = EndpointGroupArn)
   output <- .globalaccelerator$remove_endpoints_output()
@@ -1699,7 +1744,8 @@ globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .globalaccelerator$tag_resource_output()
@@ -1731,7 +1777,8 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .globalaccelerator$untag_resource_output()
@@ -1772,7 +1819,8 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$update_accelerator_input(AcceleratorArn = AcceleratorArn, Name = Name, IpAddressType = IpAddressType, IpAddresses = IpAddresses, Enabled = Enabled)
   output <- .globalaccelerator$update_accelerator_output()
@@ -1821,7 +1869,8 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$update_accelerator_attributes_input(AcceleratorArn = AcceleratorArn, FlowLogsEnabled = FlowLogsEnabled, FlowLogsS3Bucket = FlowLogsS3Bucket, FlowLogsS3Prefix = FlowLogsS3Prefix)
   output <- .globalaccelerator$update_accelerator_attributes_output()
@@ -1879,7 +1928,8 @@ globalaccelerator_update_cross_account_attachment <- function(AttachmentArn, Nam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$update_cross_account_attachment_input(AttachmentArn = AttachmentArn, Name = Name, AddPrincipals = AddPrincipals, RemovePrincipals = RemovePrincipals, AddResources = AddResources, RemoveResources = RemoveResources)
   output <- .globalaccelerator$update_cross_account_attachment_output()
@@ -1920,7 +1970,8 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$update_custom_routing_accelerator_input(AcceleratorArn = AcceleratorArn, Name = Name, IpAddressType = IpAddressType, IpAddresses = IpAddresses, Enabled = Enabled)
   output <- .globalaccelerator$update_custom_routing_accelerator_output()
@@ -1971,7 +2022,8 @@ globalaccelerator_update_custom_routing_accelerator_attributes <- function(Accel
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$update_custom_routing_accelerator_attributes_input(AcceleratorArn = AcceleratorArn, FlowLogsEnabled = FlowLogsEnabled, FlowLogsS3Bucket = FlowLogsS3Bucket, FlowLogsS3Prefix = FlowLogsS3Prefix)
   output <- .globalaccelerator$update_custom_routing_accelerator_attributes_output()
@@ -2008,7 +2060,8 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$update_custom_routing_listener_input(ListenerArn = ListenerArn, PortRanges = PortRanges)
   output <- .globalaccelerator$update_custom_routing_listener_output()
@@ -2072,7 +2125,8 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$update_endpoint_group_input(EndpointGroupArn = EndpointGroupArn, EndpointConfigurations = EndpointConfigurations, TrafficDialPercentage = TrafficDialPercentage, HealthCheckPort = HealthCheckPort, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, ThresholdCount = ThresholdCount, PortOverrides = PortOverrides)
   output <- .globalaccelerator$update_endpoint_group_output()
@@ -2127,7 +2181,8 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$update_listener_input(ListenerArn = ListenerArn, PortRanges = PortRanges, Protocol = Protocol, ClientAffinity = ClientAffinity)
   output <- .globalaccelerator$update_listener_output()
@@ -2162,7 +2217,8 @@ globalaccelerator_withdraw_byoip_cidr <- function(Cidr) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .globalaccelerator$withdraw_byoip_cidr_input(Cidr = Cidr)
   output <- .globalaccelerator$withdraw_byoip_cidr_output()

@@ -12,8 +12,8 @@ codebuild_list_projects(sortBy = NULL, sortOrder = NULL, nextToken = NULL)
 include:
 \itemize{
 \item \code{CREATED_TIME}: List based on when each build project was created.
-\item \code{LAST_MODIFIED_TIME}: List based on when information about each
-build project was last changed.
+\item \code{LAST_MODIFIED_TIME}: List based on when information about each build
+project was last changed.
 \item \code{NAME}: List based on each build project's name.
 }
 

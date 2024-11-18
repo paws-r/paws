@@ -34,7 +34,7 @@ also allow \code{kms:Decrypt}, \verb{kms:GenerateDataKey*}, and \code{kms:Descri
 permissions to the \code{connect.amazonaws.com} service principal.
 
 For more information about setting up a customer managed key for Wisdom,
-see \href{https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html}{Enable Amazon Connect Wisdom for your instance}.}
+see \href{https://docs.aws.amazon.com/connect/latest/adminguide/enable-wisdom.html}{Enable Amazon Connect Wisdom for your instance}.}
 
 \item{tags}{The tags used to organize, track, or control access for this resource.}
 

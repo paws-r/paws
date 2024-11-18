@@ -137,7 +137,8 @@ sagemakerruntime_invoke_endpoint <- function(EndpointName, Body, ContentType = N
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemakerruntime$invoke_endpoint_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetModel = TargetModel, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, EnableExplanations = EnableExplanations, InferenceComponentName = InferenceComponentName)
   output <- .sagemakerruntime$invoke_endpoint_output()
@@ -250,7 +251,8 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/async-invocations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemakerruntime$invoke_endpoint_async_input(EndpointName = EndpointName, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, InferenceId = InferenceId, InputLocation = InputLocation, RequestTTLSeconds = RequestTTLSeconds, InvocationTimeoutSeconds = InvocationTimeoutSeconds)
   output <- .sagemakerruntime$invoke_endpoint_async_output()
@@ -276,13 +278,13 @@ sagemakerruntime_invoke_endpoint_async <- function(EndpointName, ContentType = N
 #' For more information that can help you use this API, see the following
 #' sections in the *Amazon SageMaker Developer Guide*:
 #' 
-#' -   For information about how to add streaming support to a model, see
-#'     [How Containers Serve
-#'     Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-code-how-containe-serves-requests).
+#' - For information about how to add streaming support to a model, see
+#'   [How Containers Serve
+#'   Requests](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms-inference-code.html#your-algorithms-inference-code-how-containe-serves-requests).
 #' 
-#' -   For information about how to process the streaming response, see
-#'     [Invoke real-time
-#'     endpoints](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-test-endpoints.html).
+#' - For information about how to process the streaming response, see
+#'   [Invoke real-time
+#'   endpoints](https://docs.aws.amazon.com/sagemaker/latest/dg/realtime-endpoints-test-endpoints.html).
 #' 
 #' Before you can use this operation, your IAM permissions must allow the
 #' `sagemaker:InvokeEndpoint` action. For more information about Amazon
@@ -404,7 +406,8 @@ sagemakerruntime_invoke_endpoint_with_response_stream <- function(EndpointName, 
     http_method = "POST",
     http_path = "/endpoints/{EndpointName}/invocations-response-stream",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = TRUE
   )
   input <- .sagemakerruntime$invoke_endpoint_with_response_stream_input(EndpointName = EndpointName, Body = Body, ContentType = ContentType, Accept = Accept, CustomAttributes = CustomAttributes, TargetVariant = TargetVariant, TargetContainerHostname = TargetContainerHostname, InferenceId = InferenceId, InferenceComponentName = InferenceComponentName)
   output <- .sagemakerruntime$invoke_endpoint_with_response_stream_output()

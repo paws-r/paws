@@ -54,7 +54,8 @@ arczonalshift_cancel_zonal_shift <- function(zonalShiftId) {
     http_method = "DELETE",
     http_path = "/zonalshifts/{zonalShiftId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$cancel_zonal_shift_input(zonalShiftId = zonalShiftId)
   output <- .arczonalshift$cancel_zonal_shift_output()
@@ -201,7 +202,8 @@ arczonalshift_create_practice_run_configuration <- function(blockedDates = NULL,
     http_method = "POST",
     http_path = "/configuration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$create_practice_run_configuration_input(blockedDates = blockedDates, blockedWindows = blockedWindows, blockingAlarms = blockingAlarms, outcomeAlarms = outcomeAlarms, resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$create_practice_run_configuration_output()
@@ -256,7 +258,8 @@ arczonalshift_delete_practice_run_configuration <- function(resourceIdentifier) 
     http_method = "DELETE",
     http_path = "/configuration/{resourceIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$delete_practice_run_configuration_input(resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$delete_practice_run_configuration_output()
@@ -314,7 +317,8 @@ arczonalshift_get_autoshift_observer_notification_status <- function() {
     http_method = "GET",
     http_path = "/autoshift-observer-notification",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$get_autoshift_observer_notification_status_input()
   output <- .arczonalshift$get_autoshift_observer_notification_status_output()
@@ -426,7 +430,8 @@ arczonalshift_get_managed_resource <- function(resourceIdentifier) {
     http_method = "GET",
     http_path = "/managedresources/{resourceIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$get_managed_resource_input(resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$get_managed_resource_output()
@@ -496,7 +501,8 @@ arczonalshift_list_autoshifts <- function(maxResults = NULL, nextToken = NULL, s
     http_method = "GET",
     http_path = "/autoshifts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .arczonalshift$list_autoshifts_input(maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .arczonalshift$list_autoshifts_output()
@@ -596,7 +602,8 @@ arczonalshift_list_managed_resources <- function(maxResults = NULL, nextToken = 
     http_method = "GET",
     http_path = "/managedresources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .arczonalshift$list_managed_resources_input(maxResults = maxResults, nextToken = nextToken)
   output <- .arczonalshift$list_managed_resources_output()
@@ -641,12 +648,12 @@ arczonalshift_list_managed_resources <- function(maxResults = NULL, nextToken = 
 #' 
 #' The `Status` for a zonal shift can have one of the following values:
 #' 
-#' -   **ACTIVE**: The zonal shift has been started and active.
+#' - **ACTIVE**: The zonal shift has been started and active.
 #' 
-#' -   **EXPIRED**: The zonal shift has expired (the expiry time was
-#'     exceeded).
+#' - **EXPIRED**: The zonal shift has expired (the expiry time was
+#'   exceeded).
 #' 
-#' -   **CANCELED**: The zonal shift was canceled.
+#' - **CANCELED**: The zonal shift was canceled.
 #'
 #' @return
 #' A list with the following syntax:
@@ -693,7 +700,8 @@ arczonalshift_list_zonal_shifts <- function(maxResults = NULL, nextToken = NULL,
     http_method = "GET",
     http_path = "/zonalshifts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .arczonalshift$list_zonal_shifts_input(maxResults = maxResults, nextToken = nextToken, resourceIdentifier = resourceIdentifier, status = status)
   output <- .arczonalshift$list_zonal_shifts_output()
@@ -759,9 +767,9 @@ arczonalshift_list_zonal_shifts <- function(maxResults = NULL, nextToken = NULL,
 #' To set a length of time for a zonal shift to be active, specify a whole
 #' number, and then one of the following, with no space:
 #' 
-#' -   **A lowercase letter m:** To specify that the value is in minutes.
+#' - **A lowercase letter m:** To specify that the value is in minutes.
 #' 
-#' -   **A lowercase letter h:** To specify that the value is in hours.
+#' - **A lowercase letter h:** To specify that the value is in hours.
 #' 
 #' For example: `20h` means the zonal shift expires in 20 hours. `120m`
 #' means the zonal shift expires in 120 minutes (2 hours).
@@ -810,7 +818,8 @@ arczonalshift_start_zonal_shift <- function(awayFrom, comment, expiresIn, resour
     http_method = "POST",
     http_path = "/zonalshifts",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$start_zonal_shift_input(awayFrom = awayFrom, comment = comment, expiresIn = expiresIn, resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$start_zonal_shift_output()
@@ -874,7 +883,8 @@ arczonalshift_update_autoshift_observer_notification_status <- function(status) 
     http_method = "PUT",
     http_path = "/autoshift-observer-notification",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$update_autoshift_observer_notification_status_input(status = status)
   output <- .arczonalshift$update_autoshift_observer_notification_status_output()
@@ -998,7 +1008,8 @@ arczonalshift_update_practice_run_configuration <- function(blockedDates = NULL,
     http_method = "PATCH",
     http_path = "/configuration/{resourceIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$update_practice_run_configuration_input(blockedDates = blockedDates, blockedWindows = blockedWindows, blockingAlarms = blockingAlarms, outcomeAlarms = outcomeAlarms, resourceIdentifier = resourceIdentifier)
   output <- .arczonalshift$update_practice_run_configuration_output()
@@ -1071,7 +1082,8 @@ arczonalshift_update_zonal_autoshift_configuration <- function(resourceIdentifie
     http_method = "PUT",
     http_path = "/managedresources/{resourceIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$update_zonal_autoshift_configuration_input(resourceIdentifier = resourceIdentifier, zonalAutoshiftStatus = zonalAutoshiftStatus)
   output <- .arczonalshift$update_zonal_autoshift_configuration_output()
@@ -1111,9 +1123,9 @@ arczonalshift_update_zonal_autoshift_configuration <- function(resourceIdentifie
 #' To set a length of time for a zonal shift to be active, specify a whole
 #' number, and then one of the following, with no space:
 #' 
-#' -   **A lowercase letter m:** To specify that the value is in minutes.
+#' - **A lowercase letter m:** To specify that the value is in minutes.
 #' 
-#' -   **A lowercase letter h:** To specify that the value is in hours.
+#' - **A lowercase letter h:** To specify that the value is in hours.
 #' 
 #' For example: `20h` means the zonal shift expires in 20 hours. `120m`
 #' means the zonal shift expires in 120 minutes (2 hours).
@@ -1157,7 +1169,8 @@ arczonalshift_update_zonal_shift <- function(comment = NULL, expiresIn = NULL, z
     http_method = "PATCH",
     http_path = "/zonalshifts/{zonalShiftId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .arczonalshift$update_zonal_shift_input(comment = comment, expiresIn = expiresIn, zonalShiftId = zonalShiftId)
   output <- .arczonalshift$update_zonal_shift_output()

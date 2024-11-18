@@ -89,12 +89,12 @@ error returned is \code{InvalidInstanceAttributeValue}.}
 \item{Kernel}{Changes the instance's kernel to the specified value. We recommend that
 you use PV-GRUB instead of kernels and RAM disks. For more information,
 see
-\href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}.}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}.}
 
 \item{Ramdisk}{Changes the instance's RAM disk to the specified value. We recommend
 that you use PV-GRUB instead of kernels and RAM disks. For more
 information, see
-\href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}.}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}.}
 
 \item{SriovNetSupport}{Set to \code{simple} to enable enhanced networking with the Intel 82599
 Virtual Function interface for the instance.

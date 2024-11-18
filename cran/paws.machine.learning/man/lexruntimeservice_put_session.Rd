@@ -65,8 +65,8 @@ response. Amazon Lex uses Amazon Polly to generate the speech in the
 configuration that you specify. For example, if you specify
 \code{audio/mpeg} as the value, Amazon Lex returns speech in the MPEG
 format.
-\item If the value is \code{audio/pcm}, the speech is returned as \code{audio/pcm}
-in 16-bit, little endian format.
+\item If the value is \code{audio/pcm}, the speech is returned as \code{audio/pcm} in
+16-bit, little endian format.
 \item The following are the accepted values:
 \itemize{
 \item \code{audio/mpeg}

@@ -92,7 +92,8 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$associate_firewall_rule_group_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Name = Name, MutationProtection = MutationProtection, Tags = Tags)
   output <- .route53resolver$associate_firewall_rule_group_output()
@@ -178,7 +179,8 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$associate_resolver_endpoint_ip_address_input(ResolverEndpointId = ResolverEndpointId, IpAddress = IpAddress)
   output <- .route53resolver$associate_resolver_endpoint_ip_address_output()
@@ -252,7 +254,8 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$associate_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId, ResourceId = ResourceId)
   output <- .route53resolver$associate_resolver_query_log_config_output()
@@ -319,7 +322,8 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$associate_resolver_rule_input(ResolverRuleId = ResolverRuleId, Name = Name, VPCId = VPCId)
   output <- .route53resolver$associate_resolver_rule_output()
@@ -396,7 +400,8 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_firewall_domain_list_input(CreatorRequestId = CreatorRequestId, Name = Name, Tags = Tags)
   output <- .route53resolver$create_firewall_domain_list_output()
@@ -439,25 +444,24 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' @param Action &#91;required&#93; The action that DNS Firewall should take on a DNS query when it matches
 #' one of the domains in the rule's domain list:
 #' 
-#' -   `ALLOW` - Permit the request to go through.
+#' - `ALLOW` - Permit the request to go through.
 #' 
-#' -   `ALERT` - Permit the request and send metrics and logs to Cloud
-#'     Watch.
+#' - `ALERT` - Permit the request and send metrics and logs to Cloud Watch.
 #' 
-#' -   `BLOCK` - Disallow the request. This option requires additional
-#'     details in the rule's `BlockResponse`.
+#' - `BLOCK` - Disallow the request. This option requires additional
+#'   details in the rule's `BlockResponse`.
 #' @param BlockResponse The way that you want DNS Firewall to block the request, used with the
 #' rule action setting `BLOCK`.
 #' 
-#' -   `NODATA` - Respond indicating that the query was successful, but no
-#'     response is available for it.
+#' - `NODATA` - Respond indicating that the query was successful, but no
+#'   response is available for it.
 #' 
-#' -   `NXDOMAIN` - Respond indicating that the domain name that's in the
-#'     query doesn't exist.
+#' - `NXDOMAIN` - Respond indicating that the domain name that's in the
+#'   query doesn't exist.
 #' 
-#' -   `OVERRIDE` - Provide a custom override in the response. This option
-#'     requires custom handling details in the rule's `BlockOverride*`
-#'     settings.
+#' - `OVERRIDE` - Provide a custom override in the response. This option
+#'   requires custom handling details in the rule's `BlockOverride*`
+#'   settings.
 #' 
 #' This setting is required if the rule action setting is `BLOCK`.
 #' @param BlockOverrideDomain The custom DNS record to send back in response to the query. Used for
@@ -487,39 +491,38 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
 #' domain in the redirection list to the domain list.
 #' @param Qtype The DNS query type you want the rule to evaluate. Allowed values are;
 #' 
-#' -   A: Returns an IPv4 address.
+#' - A: Returns an IPv4 address.
 #' 
-#' -   AAAA: Returns an Ipv6 address.
+#' - AAAA: Returns an Ipv6 address.
 #' 
-#' -   CAA: Restricts CAs that can create SSL/TLS certifications for the
-#'     domain.
+#' - CAA: Restricts CAs that can create SSL/TLS certifications for the
+#'   domain.
 #' 
-#' -   CNAME: Returns another domain name.
+#' - CNAME: Returns another domain name.
 #' 
-#' -   DS: Record that identifies the DNSSEC signing key of a delegated
-#'     zone.
+#' - DS: Record that identifies the DNSSEC signing key of a delegated zone.
 #' 
-#' -   MX: Specifies mail servers.
+#' - MX: Specifies mail servers.
 #' 
-#' -   NAPTR: Regular-expression-based rewriting of domain names.
+#' - NAPTR: Regular-expression-based rewriting of domain names.
 #' 
-#' -   NS: Authoritative name servers.
+#' - NS: Authoritative name servers.
 #' 
-#' -   PTR: Maps an IP address to a domain name.
+#' - PTR: Maps an IP address to a domain name.
 #' 
-#' -   SOA: Start of authority record for the zone.
+#' - SOA: Start of authority record for the zone.
 #' 
-#' -   SPF: Lists the servers authorized to send emails from a domain.
+#' - SPF: Lists the servers authorized to send emails from a domain.
 #' 
-#' -   SRV: Application specific values that identify servers.
+#' - SRV: Application specific values that identify servers.
 #' 
-#' -   TXT: Verifies email senders and application-specific values.
+#' - TXT: Verifies email senders and application-specific values.
 #' 
-#' -   A query type you define by using the DNS type ID, for example 28 for
-#'     AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
-#'     be 1-65334, for example, TYPE28. For more information, see [List of
-#'     DNS record
-#'     types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
+#' - A query type you define by using the DNS type ID, for example 28 for
+#'   AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
+#'   be 1-65334, for example, TYPE28. For more information, see [List of
+#'   DNS record
+#'   types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #'
 #' @return
 #' A list with the following syntax:
@@ -573,7 +576,8 @@ route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype)
   output <- .route53resolver$create_firewall_rule_output()
@@ -648,7 +652,8 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_firewall_rule_group_input(CreatorRequestId = CreatorRequestId, Name = Name, Tags = Tags)
   output <- .route53resolver$create_firewall_rule_group_output()
@@ -732,7 +737,8 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_outpost_resolver_input(CreatorRequestId = CreatorRequestId, Name = Name, InstanceCount = InstanceCount, PreferredInstanceType = PreferredInstanceType, OutpostArn = OutpostArn, Tags = Tags)
   output <- .route53resolver$create_outpost_resolver_output()
@@ -750,11 +756,11 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' Creates a Resolver endpoint. There are two types of Resolver endpoints,
 #' inbound and outbound:
 #' 
-#' -   An *inbound Resolver endpoint* forwards DNS queries to the DNS
-#'     service for a VPC from your network.
+#' - An *inbound Resolver endpoint* forwards DNS queries to the DNS service
+#'   for a VPC from your network.
 #' 
-#' -   An *outbound Resolver endpoint* forwards DNS queries from the DNS
-#'     service for a VPC to your network.
+#' - An *outbound Resolver endpoint* forwards DNS queries from the DNS
+#'   service for a VPC to your network.
 #'
 #' @usage
 #' route53resolver_create_resolver_endpoint(CreatorRequestId, Name,
@@ -783,11 +789,11 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' connections](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-connection-tracking.html#untracked-connectionsl).
 #' @param Direction &#91;required&#93; Specify the applicable value:
 #' 
-#' -   `INBOUND`: Resolver forwards DNS queries to the DNS service for a
-#'     VPC from your network
+#' - `INBOUND`: Resolver forwards DNS queries to the DNS service for a VPC
+#'   from your network
 #' 
-#' -   `OUTBOUND`: Resolver forwards DNS queries from the DNS service for a
-#'     VPC to your network
+#' - `OUTBOUND`: Resolver forwards DNS queries from the DNS service for a
+#'   VPC to your network
 #' @param IpAddresses &#91;required&#93; The subnets and IP addresses in your VPC that DNS queries originate from
 #' (for outbound endpoints) or that you forward DNS queries to (for inbound
 #' endpoints). The subnet ID uniquely identifies a VPC.
@@ -808,27 +814,27 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
 #' 
 #' For an inbound endpoint you can apply the protocols as follows:
 #' 
-#' -   Do53 and DoH in combination.
+#' - Do53 and DoH in combination.
 #' 
-#' -   Do53 and DoH-FIPS in combination.
+#' - Do53 and DoH-FIPS in combination.
 #' 
-#' -   Do53 alone.
+#' - Do53 alone.
 #' 
-#' -   DoH alone.
+#' - DoH alone.
 #' 
-#' -   DoH-FIPS alone.
+#' - DoH-FIPS alone.
 #' 
-#' -   None, which is treated as Do53.
+#' - None, which is treated as Do53.
 #' 
 #' For an outbound endpoint you can apply the protocols as follows:
 #' 
-#' -   Do53 and DoH in combination.
+#' - Do53 and DoH in combination.
 #' 
-#' -   Do53 alone.
+#' - Do53 alone.
 #' 
-#' -   DoH alone.
+#' - DoH alone.
 #' 
-#' -   None, which is treated as Do53.
+#' - None, which is treated as Do53.
 #'
 #' @return
 #' A list with the following syntax:
@@ -901,7 +907,8 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType, Tags = Tags, ResolverEndpointType = ResolverEndpointType, Protocols = Protocols)
   output <- .route53resolver$create_resolver_endpoint_output()
@@ -943,21 +950,21 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
 #' Kinesis Data Firehose delivery stream. Examples of valid values include
 #' the following:
 #' 
-#' -   **S3 bucket**:
+#' - **S3 bucket**:
 #' 
-#'     `arn:aws:s3:::examplebucket`
+#'   `arn:aws:s3:::examplebucket`
 #' 
-#'     You can optionally append a file prefix to the end of the ARN.
+#'   You can optionally append a file prefix to the end of the ARN.
 #' 
-#'     `arn:aws:s3:::examplebucket/development/`
+#'   `arn:aws:s3:::examplebucket/development/`
 #' 
-#' -   **CloudWatch Logs log group**:
+#' - **CloudWatch Logs log group**:
 #' 
-#'     `arn:aws:logs:us-west-1:123456789012:log-group:/mystack-testgroup-12ABC1AB12A1:*`
+#'   `arn:aws:logs:us-west-1:123456789012:log-group:/mystack-testgroup-12ABC1AB12A1:*`
 #' 
-#' -   **Kinesis Data Firehose delivery stream**:
+#' - **Kinesis Data Firehose delivery stream**:
 #' 
-#'     `arn:aws:kinesis:us-east-2:0123456789:stream/my_stream_name`
+#'   `arn:aws:kinesis:us-east-2:0123456789:stream/my_stream_name`
 #' @param CreatorRequestId &#91;required&#93; A unique string that identifies the request and that allows failed
 #' requests to be retried without the risk of running the operation twice.
 #' `CreatorRequestId` can be any unique string, for example, a date/time
@@ -1010,7 +1017,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_resolver_query_log_config_input(Name = Name, DestinationArn = DestinationArn, CreatorRequestId = CreatorRequestId, Tags = Tags)
   output <- .route53resolver$create_resolver_query_log_config_output()
@@ -1139,7 +1147,8 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_resolver_rule_input(CreatorRequestId = CreatorRequestId, Name = Name, RuleType = RuleType, DomainName = DomainName, TargetIps = TargetIps, ResolverEndpointId = ResolverEndpointId, Tags = Tags)
   output <- .route53resolver$create_resolver_rule_output()
@@ -1198,7 +1207,8 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_firewall_domain_list_input(FirewallDomainListId = FirewallDomainListId)
   output <- .route53resolver$delete_firewall_domain_list_output()
@@ -1225,39 +1235,38 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
 #' @param Qtype The DNS query type that the rule you are deleting evaluates. Allowed
 #' values are;
 #' 
-#' -   A: Returns an IPv4 address.
+#' - A: Returns an IPv4 address.
 #' 
-#' -   AAAA: Returns an Ipv6 address.
+#' - AAAA: Returns an Ipv6 address.
 #' 
-#' -   CAA: Restricts CAs that can create SSL/TLS certifications for the
-#'     domain.
+#' - CAA: Restricts CAs that can create SSL/TLS certifications for the
+#'   domain.
 #' 
-#' -   CNAME: Returns another domain name.
+#' - CNAME: Returns another domain name.
 #' 
-#' -   DS: Record that identifies the DNSSEC signing key of a delegated
-#'     zone.
+#' - DS: Record that identifies the DNSSEC signing key of a delegated zone.
 #' 
-#' -   MX: Specifies mail servers.
+#' - MX: Specifies mail servers.
 #' 
-#' -   NAPTR: Regular-expression-based rewriting of domain names.
+#' - NAPTR: Regular-expression-based rewriting of domain names.
 #' 
-#' -   NS: Authoritative name servers.
+#' - NS: Authoritative name servers.
 #' 
-#' -   PTR: Maps an IP address to a domain name.
+#' - PTR: Maps an IP address to a domain name.
 #' 
-#' -   SOA: Start of authority record for the zone.
+#' - SOA: Start of authority record for the zone.
 #' 
-#' -   SPF: Lists the servers authorized to send emails from a domain.
+#' - SPF: Lists the servers authorized to send emails from a domain.
 #' 
-#' -   SRV: Application specific values that identify servers.
+#' - SRV: Application specific values that identify servers.
 #' 
-#' -   TXT: Verifies email senders and application-specific values.
+#' - TXT: Verifies email senders and application-specific values.
 #' 
-#' -   A query type you define by using the DNS type ID, for example 28 for
-#'     AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
-#'     be 1-65334, for example, TYPE28. For more information, see [List of
-#'     DNS record
-#'     types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
+#' - A query type you define by using the DNS type ID, for example 28 for
+#'   AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
+#'   be 1-65334, for example, TYPE28. For more information, see [List of
+#'   DNS record
+#'   types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1302,7 +1311,8 @@ route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Qtype = Qtype)
   output <- .route53resolver$delete_firewall_rule_output()
@@ -1363,7 +1373,8 @@ route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_firewall_rule_group_input(FirewallRuleGroupId = FirewallRuleGroupId)
   output <- .route53resolver$delete_firewall_rule_group_output()
@@ -1423,7 +1434,8 @@ route53resolver_delete_outpost_resolver <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_outpost_resolver_input(Id = Id)
   output <- .route53resolver$delete_outpost_resolver_output()
@@ -1441,11 +1453,11 @@ route53resolver_delete_outpost_resolver <- function(Id) {
 #' Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint
 #' depends on whether it's an inbound or an outbound Resolver endpoint:
 #' 
-#' -   **Inbound**: DNS queries from your network are no longer routed to
-#'     the DNS service for the specified VPC.
+#' - **Inbound**: DNS queries from your network are no longer routed to the
+#'   DNS service for the specified VPC.
 #' 
-#' -   **Outbound**: DNS queries from a VPC are no longer routed to your
-#'     network.
+#' - **Outbound**: DNS queries from a VPC are no longer routed to your
+#'   network.
 #'
 #' @usage
 #' route53resolver_delete_resolver_endpoint(ResolverEndpointId)
@@ -1499,7 +1511,8 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId)
   output <- .route53resolver$delete_resolver_endpoint_output()
@@ -1576,7 +1589,8 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId)
   output <- .route53resolver$delete_resolver_query_log_config_output()
@@ -1649,7 +1663,8 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_resolver_rule_input(ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$delete_resolver_rule_output()
@@ -1714,7 +1729,8 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$disassociate_firewall_rule_group_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId)
   output <- .route53resolver$disassociate_firewall_rule_group_output()
@@ -1798,7 +1814,8 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$disassociate_resolver_endpoint_ip_address_input(ResolverEndpointId = ResolverEndpointId, IpAddress = IpAddress)
   output <- .route53resolver$disassociate_resolver_endpoint_ip_address_output()
@@ -1821,10 +1838,10 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
 #' accounts, VPCs can be disassociated from the configuration in the
 #' following ways:
 #' 
-#' -   The accounts that you shared the configuration with can disassociate
-#'     VPCs from the configuration.
+#' - The accounts that you shared the configuration with can disassociate
+#'   VPCs from the configuration.
 #' 
-#' -   You can stop sharing the configuration.
+#' - You can stop sharing the configuration.
 #'
 #' @usage
 #' route53resolver_disassociate_resolver_query_log_config(
@@ -1870,7 +1887,8 @@ route53resolver_disassociate_resolver_query_log_config <- function(ResolverQuery
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$disassociate_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId, ResourceId = ResourceId)
   output <- .route53resolver$disassociate_resolver_query_log_config_output()
@@ -1934,7 +1952,8 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$disassociate_resolver_rule_input(VPCId = VPCId, ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$disassociate_resolver_rule_output()
@@ -1990,7 +2009,8 @@ route53resolver_get_firewall_config <- function(ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_firewall_config_output()
@@ -2049,7 +2069,8 @@ route53resolver_get_firewall_domain_list <- function(FirewallDomainListId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_domain_list_input(FirewallDomainListId = FirewallDomainListId)
   output <- .route53resolver$get_firewall_domain_list_output()
@@ -2109,7 +2130,8 @@ route53resolver_get_firewall_rule_group <- function(FirewallRuleGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_rule_group_input(FirewallRuleGroupId = FirewallRuleGroupId)
   output <- .route53resolver$get_firewall_rule_group_output()
@@ -2176,7 +2198,8 @@ route53resolver_get_firewall_rule_group_association <- function(FirewallRuleGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_rule_group_association_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId)
   output <- .route53resolver$get_firewall_rule_group_association_output()
@@ -2227,7 +2250,8 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_rule_group_policy_input(Arn = Arn)
   output <- .route53resolver$get_firewall_rule_group_policy_output()
@@ -2289,7 +2313,8 @@ route53resolver_get_outpost_resolver <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_outpost_resolver_input(Id = Id)
   output <- .route53resolver$get_outpost_resolver_output()
@@ -2344,7 +2369,8 @@ route53resolver_get_resolver_config <- function(ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_resolver_config_output()
@@ -2398,7 +2424,8 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_dnssec_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_resolver_dnssec_config_output()
@@ -2471,7 +2498,8 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId)
   output <- .route53resolver$get_resolver_endpoint_output()
@@ -2535,7 +2563,8 @@ route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId)
   output <- .route53resolver$get_resolver_query_log_config_output()
@@ -2597,7 +2626,8 @@ route53resolver_get_resolver_query_log_config_association <- function(ResolverQu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_query_log_config_association_input(ResolverQueryLogConfigAssociationId = ResolverQueryLogConfigAssociationId)
   output <- .route53resolver$get_resolver_query_log_config_association_output()
@@ -2648,7 +2678,8 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_query_log_config_policy_input(Arn = Arn)
   output <- .route53resolver$get_resolver_query_log_config_policy_output()
@@ -2722,7 +2753,8 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_rule_input(ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$get_resolver_rule_output()
@@ -2781,7 +2813,8 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_rule_association_input(ResolverRuleAssociationId = ResolverRuleAssociationId)
   output <- .route53resolver$get_resolver_rule_association_output()
@@ -2833,7 +2866,8 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_rule_policy_input(Arn = Arn)
   output <- .route53resolver$get_resolver_rule_policy_output()
@@ -2855,12 +2889,12 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
 #' Each domain specification in your domain list must satisfy the following
 #' requirements:
 #' 
-#' -   It can optionally start with `*` (asterisk).
+#' - It can optionally start with `*` (asterisk).
 #' 
-#' -   With the exception of the optional starting asterisk, it must only
-#'     contain the following characters: `A-Z`, `a-z`, `0-9`, `-` (hyphen).
+#' - With the exception of the optional starting asterisk, it must only
+#'   contain the following characters: `A-Z`, `a-z`, `0-9`, `-` (hyphen).
 #' 
-#' -   It must be from 1-255 characters in length.
+#' - It must be from 1-255 characters in length.
 #'
 #' @usage
 #' route53resolver_import_firewall_domains(FirewallDomainListId, Operation,
@@ -2909,7 +2943,8 @@ route53resolver_import_firewall_domains <- function(FirewallDomainListId, Operat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$import_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, Operation = Operation, DomainFileUrl = DomainFileUrl)
   output <- .route53resolver$import_firewall_domains_output()
@@ -2984,7 +3019,8 @@ route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallConfigs"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_configs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_configs_output()
@@ -3061,7 +3097,8 @@ route53resolver_list_firewall_domain_lists <- function(MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallDomainLists")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallDomainLists"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_domain_lists_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_domain_lists_output()
@@ -3134,7 +3171,8 @@ route53resolver_list_firewall_domains <- function(FirewallDomainListId, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_domains_output()
@@ -3234,7 +3272,8 @@ route53resolver_list_firewall_rule_group_associations <- function(FirewallRuleGr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroupAssociations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroupAssociations"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_rule_group_associations_input(FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_group_associations_output()
@@ -3311,7 +3350,8 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroups")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroups"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_rule_groups_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_groups_output()
@@ -3350,13 +3390,13 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
 #' The action that DNS Firewall should take on a DNS query when it matches
 #' one of the domains in the rule's domain list:
 #' 
-#' -   `ALLOW` - Permit the request to go through.
+#' - `ALLOW` - Permit the request to go through.
 #' 
-#' -   `ALERT` - Permit the request to go through but send an alert to the
-#'     logs.
+#' - `ALERT` - Permit the request to go through but send an alert to the
+#'   logs.
 #' 
-#' -   `BLOCK` - Disallow the request. If this is specified, additional
-#'     handling details are provided in the rule's `BlockResponse` setting.
+#' - `BLOCK` - Disallow the request. If this is specified, additional
+#'   handling details are provided in the rule's `BlockResponse` setting.
 #' @param MaxResults The maximum number of objects that you want Resolver to return for this
 #' request. If more objects are available, in the response, Resolver
 #' provides a `NextToken` value that you can use in a subsequent call to
@@ -3420,7 +3460,8 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRules")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRules"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_rules_input(FirewallRuleGroupId = FirewallRuleGroupId, Priority = Priority, Action = Action, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rules_output()
@@ -3492,7 +3533,8 @@ route53resolver_list_outpost_resolvers <- function(OutpostArn = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OutpostResolvers")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OutpostResolvers"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_outpost_resolvers_input(OutpostArn = OutpostArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_outpost_resolvers_output()
@@ -3566,7 +3608,8 @@ route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverConfigs"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_configs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_resolver_configs_output()
@@ -3649,7 +3692,8 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverDnssecConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverDnssecConfigs"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_dnssec_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_dnssec_configs_output()
@@ -3727,7 +3771,8 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpAddresses")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpAddresses"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_endpoint_ip_addresses_input(ResolverEndpointId = ResolverEndpointId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_resolver_endpoint_ip_addresses_output()
@@ -3831,7 +3876,8 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverEndpoints")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverEndpoints"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_endpoints_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_endpoints_output()
@@ -3885,46 +3931,45 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
 #' 
 #' Valid values include the following elements:
 #' 
-#' -   `CreationTime`: The ID of the query logging association.
+#' - `CreationTime`: The ID of the query logging association.
 #' 
-#' -   `Error`: If the value of `Status` is `FAILED`, the value of `Error`
-#'     indicates the cause:
+#' - `Error`: If the value of `Status` is `FAILED`, the value of `Error`
+#'   indicates the cause:
 #' 
-#'     -   `DESTINATION_NOT_FOUND`: The specified destination (for example,
-#'         an Amazon S3 bucket) was deleted.
+#'   - `DESTINATION_NOT_FOUND`: The specified destination (for example, an
+#'     Amazon S3 bucket) was deleted.
 #' 
-#'     -   `ACCESS_DENIED`: Permissions don't allow sending logs to the
-#'         destination.
+#'   - `ACCESS_DENIED`: Permissions don't allow sending logs to the
+#'     destination.
 #' 
-#'     If `Status` is a value other than `FAILED`, `ERROR` is null.
+#'   If `Status` is a value other than `FAILED`, `ERROR` is null.
 #' 
-#' -   `Id`: The ID of the query logging association
+#' - `Id`: The ID of the query logging association
 #' 
-#' -   `ResolverQueryLogConfigId`: The ID of the query logging
-#'     configuration
+#' - `ResolverQueryLogConfigId`: The ID of the query logging configuration
 #' 
-#' -   `ResourceId`: The ID of the VPC that is associated with the query
-#'     logging configuration
+#' - `ResourceId`: The ID of the VPC that is associated with the query
+#'   logging configuration
 #' 
-#' -   `Status`: The current status of the configuration. Valid values
-#'     include the following:
+#' - `Status`: The current status of the configuration. Valid values
+#'   include the following:
 #' 
-#'     -   `CREATING`: Resolver is creating an association between an
-#'         Amazon VPC and a query logging configuration.
+#'   - `CREATING`: Resolver is creating an association between an Amazon
+#'     VPC and a query logging configuration.
 #' 
-#'     -   `CREATED`: The association between an Amazon VPC and a query
-#'         logging configuration was successfully created. Resolver is
-#'         logging queries that originate in the specified VPC.
+#'   - `CREATED`: The association between an Amazon VPC and a query logging
+#'     configuration was successfully created. Resolver is logging queries
+#'     that originate in the specified VPC.
 #' 
-#'     -   `DELETING`: Resolver is deleting this query logging association.
+#'   - `DELETING`: Resolver is deleting this query logging association.
 #' 
-#'     -   `FAILED`: Resolver either couldn't create or couldn't delete the
-#'         query logging association. Here are two common causes:
+#'   - `FAILED`: Resolver either couldn't create or couldn't delete the
+#'     query logging association. Here are two common causes:
 #' 
-#'         -   The specified destination (for example, an Amazon S3 bucket)
-#'             was deleted.
+#'     - The specified destination (for example, an Amazon S3 bucket) was
+#'       deleted.
 #' 
-#'         -   Permissions don't allow sending logs to the destination.
+#'     - Permissions don't allow sending logs to the destination.
 #' @param SortOrder If you specified a value for `SortBy`, the order that you want query
 #' logging associations to be listed in, `ASCENDING` or `DESCENDING`.
 #' 
@@ -3983,7 +4028,8 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigAssociations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigAssociations"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_query_log_config_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53resolver$list_resolver_query_log_config_associations_output()
@@ -4037,51 +4083,48 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
 #' 
 #' Valid values include the following elements:
 #' 
-#' -   `Arn`: The ARN of the query logging configuration
+#' - `Arn`: The ARN of the query logging configuration
 #' 
-#' -   `AssociationCount`: The number of VPCs that are associated with the
-#'     specified configuration
+#' - `AssociationCount`: The number of VPCs that are associated with the
+#'   specified configuration
 #' 
-#' -   `CreationTime`: The date and time that Resolver returned when the
-#'     configuration was created
+#' - `CreationTime`: The date and time that Resolver returned when the
+#'   configuration was created
 #' 
-#' -   `CreatorRequestId`: The value that was specified for
-#'     `CreatorRequestId` when the configuration was created
+#' - `CreatorRequestId`: The value that was specified for
+#'   `CreatorRequestId` when the configuration was created
 #' 
-#' -   `DestinationArn`: The location that logs are sent to
+#' - `DestinationArn`: The location that logs are sent to
 #' 
-#' -   `Id`: The ID of the configuration
+#' - `Id`: The ID of the configuration
 #' 
-#' -   `Name`: The name of the configuration
+#' - `Name`: The name of the configuration
 #' 
-#' -   `OwnerId`: The Amazon Web Services account number of the account
-#'     that created the configuration
+#' - `OwnerId`: The Amazon Web Services account number of the account that
+#'   created the configuration
 #' 
-#' -   `ShareStatus`: Whether the configuration is shared with other Amazon
-#'     Web Services accounts or shared with the current account by another
-#'     Amazon Web Services account. Sharing is configured through Resource
-#'     Access Manager (RAM).
+#' - `ShareStatus`: Whether the configuration is shared with other Amazon
+#'   Web Services accounts or shared with the current account by another
+#'   Amazon Web Services account. Sharing is configured through Resource
+#'   Access Manager (RAM).
 #' 
-#' -   `Status`: The current status of the configuration. Valid values
-#'     include the following:
+#' - `Status`: The current status of the configuration. Valid values
+#'   include the following:
 #' 
-#'     -   `CREATING`: Resolver is creating the query logging
-#'         configuration.
+#'   - `CREATING`: Resolver is creating the query logging configuration.
 #' 
-#'     -   `CREATED`: The query logging configuration was successfully
-#'         created. Resolver is logging queries that originate in the
-#'         specified VPC.
+#'   - `CREATED`: The query logging configuration was successfully created.
+#'     Resolver is logging queries that originate in the specified VPC.
 #' 
-#'     -   `DELETING`: Resolver is deleting this query logging
-#'         configuration.
+#'   - `DELETING`: Resolver is deleting this query logging configuration.
 #' 
-#'     -   `FAILED`: Resolver either couldn't create or couldn't delete the
-#'         query logging configuration. Here are two common causes:
+#'   - `FAILED`: Resolver either couldn't create or couldn't delete the
+#'     query logging configuration. Here are two common causes:
 #' 
-#'         -   The specified destination (for example, an Amazon S3 bucket)
-#'             was deleted.
+#'     - The specified destination (for example, an Amazon S3 bucket) was
+#'       deleted.
 #' 
-#'         -   Permissions don't allow sending logs to the destination.
+#'     - Permissions don't allow sending logs to the destination.
 #' @param SortOrder If you specified a value for `SortBy`, the order that you want query
 #' logging configurations to be listed in, `ASCENDING` or `DESCENDING`.
 #' 
@@ -4143,7 +4186,8 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigs"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_query_log_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53resolver$list_resolver_query_log_configs_output()
@@ -4231,7 +4275,8 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRuleAssociations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRuleAssociations"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_rule_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_rule_associations_output()
@@ -4335,7 +4380,8 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRules")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRules"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_rules_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_rules_output()
@@ -4405,7 +4451,8 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_tags_for_resource_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_tags_for_resource_output()
@@ -4461,7 +4508,8 @@ route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$put_firewall_rule_group_policy_input(Arn = Arn, FirewallRuleGroupPolicy = FirewallRuleGroupPolicy)
   output <- .route53resolver$put_firewall_rule_group_policy_output()
@@ -4496,11 +4544,11 @@ route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGrou
 #' to perform. You can specify the following operations in the `Actions`
 #' section of the statement:
 #' 
-#' -   `route53resolver:AssociateResolverQueryLogConfig`
+#' - `route53resolver:AssociateResolverQueryLogConfig`
 #' 
-#' -   `route53resolver:DisassociateResolverQueryLogConfig`
+#' - `route53resolver:DisassociateResolverQueryLogConfig`
 #' 
-#' -   `route53resolver:ListResolverQueryLogConfigs`
+#' - `route53resolver:ListResolverQueryLogConfigs`
 #' 
 #' In the `Resource` section of the statement, you specify the ARNs for the
 #' query logging configurations that you want to share with the account
@@ -4533,7 +4581,8 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$put_resolver_query_log_config_policy_input(Arn = Arn, ResolverQueryLogConfigPolicy = ResolverQueryLogConfigPolicy)
   output <- .route53resolver$put_resolver_query_log_config_policy_output()
@@ -4567,15 +4616,15 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
 #' specify the following operations in the `Action` section of the
 #' statement:
 #' 
-#' -   `route53resolver:GetResolverRule`
+#' - `route53resolver:GetResolverRule`
 #' 
-#' -   `route53resolver:AssociateResolverRule`
+#' - `route53resolver:AssociateResolverRule`
 #' 
-#' -   `route53resolver:DisassociateResolverRule`
+#' - `route53resolver:DisassociateResolverRule`
 #' 
-#' -   `route53resolver:ListResolverRules`
+#' - `route53resolver:ListResolverRules`
 #' 
-#' -   `route53resolver:ListResolverRuleAssociations`
+#' - `route53resolver:ListResolverRuleAssociations`
 #' 
 #' In the `Resource` section of the statement, specify the ARN for the rule
 #' that you want to share with another account. Specify the same ARN that
@@ -4608,7 +4657,8 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$put_resolver_rule_policy_input(Arn = Arn, ResolverRulePolicy = ResolverRulePolicy)
   output <- .route53resolver$put_resolver_rule_policy_output()
@@ -4632,17 +4682,17 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
 #' tags to. To get the ARN for a resource, use the applicable `Get` or
 #' `List` command:
 #' 
-#' -   [`get_resolver_endpoint`][route53resolver_get_resolver_endpoint]
+#' - [`get_resolver_endpoint`][route53resolver_get_resolver_endpoint]
 #' 
-#' -   [`get_resolver_rule`][route53resolver_get_resolver_rule]
+#' - [`get_resolver_rule`][route53resolver_get_resolver_rule]
 #' 
-#' -   [`get_resolver_rule_association`][route53resolver_get_resolver_rule_association]
+#' - [`get_resolver_rule_association`][route53resolver_get_resolver_rule_association]
 #' 
-#' -   [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
+#' - [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
 #' 
-#' -   [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
+#' - [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
 #' 
-#' -   [`list_resolver_rules`][route53resolver_list_resolver_rules]
+#' - [`list_resolver_rules`][route53resolver_list_resolver_rules]
 #' @param Tags &#91;required&#93; The tags that you want to add to the specified resource.
 #'
 #' @return
@@ -4672,7 +4722,8 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .route53resolver$tag_resource_output()
@@ -4696,17 +4747,17 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
 #' tags from. To get the ARN for a resource, use the applicable `Get` or
 #' `List` command:
 #' 
-#' -   [`get_resolver_endpoint`][route53resolver_get_resolver_endpoint]
+#' - [`get_resolver_endpoint`][route53resolver_get_resolver_endpoint]
 #' 
-#' -   [`get_resolver_rule`][route53resolver_get_resolver_rule]
+#' - [`get_resolver_rule`][route53resolver_get_resolver_rule]
 #' 
-#' -   [`get_resolver_rule_association`][route53resolver_get_resolver_rule_association]
+#' - [`get_resolver_rule_association`][route53resolver_get_resolver_rule_association]
 #' 
-#' -   [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
+#' - [`list_resolver_endpoints`][route53resolver_list_resolver_endpoints]
 #' 
-#' -   [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
+#' - [`list_resolver_rule_associations`][route53resolver_list_resolver_rule_associations]
 #' 
-#' -   [`list_resolver_rules`][route53resolver_list_resolver_rules]
+#' - [`list_resolver_rules`][route53resolver_list_resolver_rules]
 #' @param TagKeys &#91;required&#93; The tags that you want to remove to the specified resource.
 #'
 #' @return
@@ -4733,7 +4784,8 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .route53resolver$untag_resource_output()
@@ -4761,13 +4813,13 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
 #' example when all traffic that is sent to DNS Firewall fails to receive a
 #' reply.
 #' 
-#' -   By default, fail open is disabled, which means the failure mode is
-#'     closed. This approach favors security over availability. DNS
-#'     Firewall blocks queries that it is unable to evaluate properly.
+#' - By default, fail open is disabled, which means the failure mode is
+#'   closed. This approach favors security over availability. DNS Firewall
+#'   blocks queries that it is unable to evaluate properly.
 #' 
-#' -   If you enable this option, the failure mode is open. This approach
-#'     favors availability over security. DNS Firewall allows queries to
-#'     proceed if it is unable to properly evaluate them.
+#' - If you enable this option, the failure mode is open. This approach
+#'   favors availability over security. DNS Firewall allows queries to
+#'   proceed if it is unable to properly evaluate them.
 #' 
 #' This behavior is only enforced for VPCs that have at least one DNS
 #' Firewall rule group association.
@@ -4804,7 +4856,8 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_firewall_config_input(ResourceId = ResourceId, FirewallFailOpen = FirewallFailOpen)
   output <- .route53resolver$update_firewall_config_output()
@@ -4829,14 +4882,14 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
 #' @param Operation &#91;required&#93; What you want DNS Firewall to do with the domains that you are
 #' providing:
 #' 
-#' -   `ADD` - Add the domains to the ones that are already in the domain
-#'     list.
+#' - `ADD` - Add the domains to the ones that are already in the domain
+#'   list.
 #' 
-#' -   `REMOVE` - Search the domain list for the domains and remove them
-#'     from the list.
+#' - `REMOVE` - Search the domain list for the domains and remove them from
+#'   the list.
 #' 
-#' -   `REPLACE` - Update the domain list to exactly match the list that
-#'     you are providing.
+#' - `REPLACE` - Update the domain list to exactly match the list that you
+#'   are providing.
 #' @param Domains &#91;required&#93; A list of domains to use in the update operation.
 #' 
 #' There is a limit of 1000 domains per request.
@@ -4844,12 +4897,12 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
 #' Each domain specification in your domain list must satisfy the following
 #' requirements:
 #' 
-#' -   It can optionally start with `*` (asterisk).
+#' - It can optionally start with `*` (asterisk).
 #' 
-#' -   With the exception of the optional starting asterisk, it must only
-#'     contain the following characters: `A-Z`, `a-z`, `0-9`, `-` (hyphen).
+#' - With the exception of the optional starting asterisk, it must only
+#'   contain the following characters: `A-Z`, `a-z`, `0-9`, `-` (hyphen).
 #' 
-#' -   It must be from 1-255 characters in length.
+#' - It must be from 1-255 characters in length.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4884,7 +4937,8 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, Operation = Operation, Domains = Domains)
   output <- .route53resolver$update_firewall_domains_output()
@@ -4920,25 +4974,25 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' @param Action The action that DNS Firewall should take on a DNS query when it matches
 #' one of the domains in the rule's domain list:
 #' 
-#' -   `ALLOW` - Permit the request to go through.
+#' - `ALLOW` - Permit the request to go through.
 #' 
-#' -   `ALERT` - Permit the request to go through but send an alert to the
-#'     logs.
+#' - `ALERT` - Permit the request to go through but send an alert to the
+#'   logs.
 #' 
-#' -   `BLOCK` - Disallow the request. This option requires additional
-#'     details in the rule's `BlockResponse`.
+#' - `BLOCK` - Disallow the request. This option requires additional
+#'   details in the rule's `BlockResponse`.
 #' @param BlockResponse The way that you want DNS Firewall to block the request. Used for the
 #' rule action setting `BLOCK`.
 #' 
-#' -   `NODATA` - Respond indicating that the query was successful, but no
-#'     response is available for it.
+#' - `NODATA` - Respond indicating that the query was successful, but no
+#'   response is available for it.
 #' 
-#' -   `NXDOMAIN` - Respond indicating that the domain name that's in the
-#'     query doesn't exist.
+#' - `NXDOMAIN` - Respond indicating that the domain name that's in the
+#'   query doesn't exist.
 #' 
-#' -   `OVERRIDE` - Provide a custom override in the response. This option
-#'     requires custom handling details in the rule's `BlockOverride*`
-#'     settings.
+#' - `OVERRIDE` - Provide a custom override in the response. This option
+#'   requires custom handling details in the rule's `BlockOverride*`
+#'   settings.
 #' @param BlockOverrideDomain The custom DNS record to send back in response to the query. Used for
 #' the rule action `BLOCK` with a `BlockResponse` setting of `OVERRIDE`.
 #' @param BlockOverrideDnsType The DNS record's type. This determines the format of the record value
@@ -4960,39 +5014,38 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
 #' domain in the redirection list to the domain list.
 #' @param Qtype The DNS query type you want the rule to evaluate. Allowed values are;
 #' 
-#' -   A: Returns an IPv4 address.
+#' - A: Returns an IPv4 address.
 #' 
-#' -   AAAA: Returns an Ipv6 address.
+#' - AAAA: Returns an Ipv6 address.
 #' 
-#' -   CAA: Restricts CAs that can create SSL/TLS certifications for the
-#'     domain.
+#' - CAA: Restricts CAs that can create SSL/TLS certifications for the
+#'   domain.
 #' 
-#' -   CNAME: Returns another domain name.
+#' - CNAME: Returns another domain name.
 #' 
-#' -   DS: Record that identifies the DNSSEC signing key of a delegated
-#'     zone.
+#' - DS: Record that identifies the DNSSEC signing key of a delegated zone.
 #' 
-#' -   MX: Specifies mail servers.
+#' - MX: Specifies mail servers.
 #' 
-#' -   NAPTR: Regular-expression-based rewriting of domain names.
+#' - NAPTR: Regular-expression-based rewriting of domain names.
 #' 
-#' -   NS: Authoritative name servers.
+#' - NS: Authoritative name servers.
 #' 
-#' -   PTR: Maps an IP address to a domain name.
+#' - PTR: Maps an IP address to a domain name.
 #' 
-#' -   SOA: Start of authority record for the zone.
+#' - SOA: Start of authority record for the zone.
 #' 
-#' -   SPF: Lists the servers authorized to send emails from a domain.
+#' - SPF: Lists the servers authorized to send emails from a domain.
 #' 
-#' -   SRV: Application specific values that identify servers.
+#' - SRV: Application specific values that identify servers.
 #' 
-#' -   TXT: Verifies email senders and application-specific values.
+#' - TXT: Verifies email senders and application-specific values.
 #' 
-#' -   A query type you define by using the DNS type ID, for example 28 for
-#'     AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
-#'     be 1-65334, for example, TYPE28. For more information, see [List of
-#'     DNS record
-#'     types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
+#' - A query type you define by using the DNS type ID, for example 28 for
+#'   AAAA. The values must be defined as TYPENUMBER, where the NUMBER can
+#'   be 1-65334, for example, TYPE28. For more information, see [List of
+#'   DNS record
+#'   types](https://en.wikipedia.org/wiki/List_of_DNS_record_types).
 #'
 #' @return
 #' A list with the following syntax:
@@ -5045,7 +5098,8 @@ route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype)
   output <- .route53resolver$update_firewall_rule_output()
@@ -5126,7 +5180,8 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_firewall_rule_group_association_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId, Priority = Priority, MutationProtection = MutationProtection, Name = Name)
   output <- .route53resolver$update_firewall_rule_group_association_output()
@@ -5196,7 +5251,8 @@ route53resolver_update_outpost_resolver <- function(Id, Name = NULL, InstanceCou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_outpost_resolver_input(Id = Id, Name = Name, InstanceCount = InstanceCount, PreferredInstanceType = PreferredInstanceType)
   output <- .route53resolver$update_outpost_resolver_output()
@@ -5270,7 +5326,8 @@ route53resolver_update_resolver_config <- function(ResourceId, AutodefinedRevers
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_resolver_config_input(ResourceId = ResourceId, AutodefinedReverseFlag = AutodefinedReverseFlag)
   output <- .route53resolver$update_resolver_config_output()
@@ -5329,7 +5386,8 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_resolver_dnssec_config_input(ResourceId = ResourceId, Validation = Validation)
   output <- .route53resolver$update_resolver_dnssec_config_output()
@@ -5367,27 +5425,27 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
 #' 
 #' For an inbound endpoint you can apply the protocols as follows:
 #' 
-#' -   Do53 and DoH in combination.
+#' - Do53 and DoH in combination.
 #' 
-#' -   Do53 and DoH-FIPS in combination.
+#' - Do53 and DoH-FIPS in combination.
 #' 
-#' -   Do53 alone.
+#' - Do53 alone.
 #' 
-#' -   DoH alone.
+#' - DoH alone.
 #' 
-#' -   DoH-FIPS alone.
+#' - DoH-FIPS alone.
 #' 
-#' -   None, which is treated as Do53.
+#' - None, which is treated as Do53.
 #' 
 #' For an outbound endpoint you can apply the protocols as follows:
 #' 
-#' -   Do53 and DoH in combination.
+#' - Do53 and DoH in combination.
 #' 
-#' -   Do53 alone.
+#' - Do53 alone.
 #' 
-#' -   DoH alone.
+#' - DoH alone.
 #' 
-#' -   None, which is treated as Do53.
+#' - None, which is treated as Do53.
 #' 
 #' You can't change the protocol of an inbound endpoint directly from only
 #' Do53 to only DoH, or DoH-FIPS. This is to prevent a sudden disruption to
@@ -5454,7 +5512,8 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses, Protocols = Protocols)
   output <- .route53resolver$update_resolver_endpoint_output()
@@ -5539,7 +5598,8 @@ route53resolver_update_resolver_rule <- function(ResolverRuleId, Config) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_resolver_rule_input(ResolverRuleId = ResolverRuleId, Config = Config)
   output <- .route53resolver$update_resolver_rule_output()

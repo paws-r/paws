@@ -68,7 +68,8 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$add_tags_to_certificate_input(CertificateArn = CertificateArn, Tags = Tags)
   output <- .acm$add_tags_to_certificate_output()
@@ -127,7 +128,8 @@ acm_delete_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$delete_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$delete_certificate_output()
@@ -276,7 +278,8 @@ acm_describe_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$describe_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$describe_certificate_output()
@@ -350,7 +353,8 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$export_certificate_input(CertificateArn = CertificateArn, Passphrase = Passphrase)
   output <- .acm$export_certificate_output()
@@ -397,7 +401,8 @@ acm_get_account_configuration <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$get_account_configuration_input()
   output <- .acm$get_account_configuration_output()
@@ -460,7 +465,8 @@ acm_get_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$get_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$get_certificate_output()
@@ -493,42 +499,42 @@ acm_get_certificate <- function(CertificateArn) {
 #' 
 #' Note the following guidelines when importing third party certificates:
 #' 
-#' -   You must enter the private key that matches the certificate you are
-#'     importing.
+#' - You must enter the private key that matches the certificate you are
+#'   importing.
 #' 
-#' -   The private key must be unencrypted. You cannot import a private key
-#'     that is protected by a password or a passphrase.
+#' - The private key must be unencrypted. You cannot import a private key
+#'   that is protected by a password or a passphrase.
 #' 
-#' -   The private key must be no larger than 5 KB (5,120 bytes).
+#' - The private key must be no larger than 5 KB (5,120 bytes).
 #' 
-#' -   The certificate, private key, and certificate chain must be
-#'     PEM-encoded.
+#' - The certificate, private key, and certificate chain must be
+#'   PEM-encoded.
 #' 
-#' -   The current time must be between the `Not Before` and `Not After`
-#'     certificate fields.
+#' - The current time must be between the `Not Before` and `Not After`
+#'   certificate fields.
 #' 
-#' -   The `Issuer` field must not be empty.
+#' - The `Issuer` field must not be empty.
 #' 
-#' -   The OCSP authority URL, if present, must not exceed 1000 characters.
+#' - The OCSP authority URL, if present, must not exceed 1000 characters.
 #' 
-#' -   To import a new certificate, omit the `CertificateArn` argument.
-#'     Include this argument only when you want to replace a previously
-#'     imported certificate.
+#' - To import a new certificate, omit the `CertificateArn` argument.
+#'   Include this argument only when you want to replace a previously
+#'   imported certificate.
 #' 
-#' -   When you import a certificate by using the CLI, you must specify the
-#'     certificate, the certificate chain, and the private key by their
-#'     file names preceded by `fileb://`. For example, you can specify a
-#'     certificate saved in the `C:\\temp` folder as
-#'     `fileb://C:\\temp\\certificate_to_import.pem`. If you are making an
-#'     HTTP or HTTPS Query request, include these arguments as BLOBs.
+#' - When you import a certificate by using the CLI, you must specify the
+#'   certificate, the certificate chain, and the private key by their file
+#'   names preceded by `fileb://`. For example, you can specify a
+#'   certificate saved in the `C:\\temp` folder as
+#'   `fileb://C:\\temp\\certificate_to_import.pem`. If you are making an HTTP
+#'   or HTTPS Query request, include these arguments as BLOBs.
 #' 
-#' -   When you import a certificate by using an SDK, you must specify the
-#'     certificate, the certificate chain, and the private key files in the
-#'     manner required by the programming language you're using.
+#' - When you import a certificate by using an SDK, you must specify the
+#'   certificate, the certificate chain, and the private key files in the
+#'   manner required by the programming language you're using.
 #' 
-#' -   The cryptographic algorithm of an imported certificate must match
-#'     the algorithm of the signing CA. For example, if the signing CA key
-#'     type is RSA, then the certificate key type must also be RSA.
+#' - The cryptographic algorithm of an imported certificate must match the
+#'   algorithm of the signing CA. For example, if the signing CA key type
+#'   is RSA, then the certificate key type must also be RSA.
 #' 
 #' This operation returns the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -584,7 +590,8 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$import_certificate_input(CertificateArn = CertificateArn, Certificate = Certificate, PrivateKey = PrivateKey, CertificateChain = CertificateChain, Tags = Tags)
   output <- .acm$import_certificate_output()
@@ -711,7 +718,8 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "CertificateSummaryList")
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "CertificateSummaryList"),
+    stream_api = FALSE
   )
   input <- .acm$list_certificates_input(CertificateStatuses = CertificateStatuses, Includes = Includes, NextToken = NextToken, MaxItems = MaxItems, SortBy = SortBy, SortOrder = SortOrder)
   output <- .acm$list_certificates_output()
@@ -776,7 +784,8 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$list_tags_for_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$list_tags_for_certificate_output()
@@ -835,7 +844,8 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$put_account_configuration_input(ExpiryEvents = ExpiryEvents, IdempotencyToken = IdempotencyToken)
   output <- .acm$put_account_configuration_output()
@@ -901,7 +911,8 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$remove_tags_from_certificate_input(CertificateArn = CertificateArn, Tags = Tags)
   output <- .acm$remove_tags_from_certificate_output()
@@ -957,7 +968,8 @@ acm_renew_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$renew_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$renew_certificate_output()
@@ -1036,17 +1048,17 @@ acm_renew_certificate <- function(CertificateArn) {
 #' of multiple labels separated by periods. No label can be longer than 63
 #' octets. Consider the following examples:
 #' 
-#' -   `(63 octets).(63 octets).(63 octets).(61 octets)` is legal because
-#'     the total length is 253 octets (63+1+63+1+63+1+61) and no label
-#'     exceeds 63 octets.
+#' - `(63 octets).(63 octets).(63 octets).(61 octets)` is legal because the
+#'   total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63
+#'   octets.
 #' 
-#' -   `(64 octets).(63 octets).(63 octets).(61 octets)` is not legal
-#'     because the total length exceeds 253 octets (64+1+63+1+63+1+61) and
-#'     the first label exceeds 63 octets.
+#' - `(64 octets).(63 octets).(63 octets).(61 octets)` is not legal because
+#'   the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first
+#'   label exceeds 63 octets.
 #' 
-#' -   `(63 octets).(63 octets).(63 octets).(62 octets)` is not legal
-#'     because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
-#'     253 octets.
+#' - `(63 octets).(63 octets).(63 octets).(62 octets)` is not legal because
+#'   the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253
+#'   octets.
 #' @param IdempotencyToken Customer chosen string that can be used to distinguish between calls to
 #' [`request_certificate`][acm_request_certificate]. Idempotency tokens
 #' time out after one hour. Therefore, if you call
@@ -1085,15 +1097,15 @@ acm_renew_certificate <- function(CertificateArn) {
 #' broken. Check the requirements for the Amazon Web Services service where
 #' you plan to deploy your certificate. For more information about
 #' selecting an algorithm, see [Key
-#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html#algorithms).
+#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/#algorithms).
 #' 
 #' Algorithms supported for an ACM certificate request include:
 #' 
-#' -   `RSA_2048`
+#' - `RSA_2048`
 #' 
-#' -   `EC_prime256v1`
+#' - `EC_prime256v1`
 #' 
-#' -   `EC_secp384r1`
+#' - `EC_secp384r1`
 #' 
 #' Other listed algorithms are for imported certificates only.
 #' 
@@ -1151,7 +1163,8 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags, KeyAlgorithm = KeyAlgorithm)
   output <- .acm$request_certificate_output()
@@ -1200,15 +1213,15 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' the domain registrant, technical contact, and administrative contact in
 #' WHOIS and the following five addresses:
 #' 
-#' -   admin@@subdomain.example.com
+#' - admin@@subdomain.example.com
 #' 
-#' -   administrator@@subdomain.example.com
+#' - administrator@@subdomain.example.com
 #' 
-#' -   hostmaster@@subdomain.example.com
+#' - hostmaster@@subdomain.example.com
 #' 
-#' -   postmaster@@subdomain.example.com
+#' - postmaster@@subdomain.example.com
 #' 
-#' -   webmaster@@subdomain.example.com
+#' - webmaster@@subdomain.example.com
 #'
 #' @return
 #' An empty list.
@@ -1233,7 +1246,8 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$resend_validation_email_input(CertificateArn = CertificateArn, Domain = Domain, ValidationDomain = ValidationDomain)
   output <- .acm$resend_validation_email_output()
@@ -1291,7 +1305,8 @@ acm_update_certificate_options <- function(CertificateArn, Options) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$update_certificate_options_input(CertificateArn = CertificateArn, Options = Options)
   output <- .acm$update_certificate_options_output()

@@ -29,28 +29,28 @@ NULL
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -120,7 +120,8 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$create_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider, tags = tags)
   output <- .ecs$create_capacity_provider_output()
@@ -164,28 +165,28 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #' @param settings The setting to use when creating a cluster. This parameter is used to
 #' turn on CloudWatch Container Insights for a cluster. If this value is
 #' specified, it overrides the `containerInsights` value set with
@@ -389,7 +390,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$create_cluster_input(clusterName = clusterName, tags = tags, settings = settings, configuration = configuration, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy, serviceConnectDefaults = serviceConnectDefaults)
   output <- .ecs$create_cluster_output()
@@ -437,24 +439,24 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' There are two service scheduler strategies available:
 #' 
-#' -   `REPLICA` - The replica scheduling strategy places and maintains
-#'     your desired number of tasks across your cluster. By default, the
-#'     service scheduler spreads tasks across Availability Zones. You can
-#'     use task placement strategies and constraints to customize task
-#'     placement decisions. For more information, see [Service scheduler
-#'     concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' - `REPLICA` - The replica scheduling strategy places and maintains your
+#'   desired number of tasks across your cluster. By default, the service
+#'   scheduler spreads tasks across Availability Zones. You can use task
+#'   placement strategies and constraints to customize task placement
+#'   decisions. For more information, see [Service scheduler
+#'   concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
+#'   in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' -   `DAEMON` - The daemon scheduling strategy deploys exactly one task
-#'     on each active container instance that meets all of the task
-#'     placement constraints that you specify in your cluster. The service
-#'     scheduler also evaluates the task placement constraints for running
-#'     tasks. It also stops tasks that don't meet the placement
-#'     constraints. When using this strategy, you don't need to specify a
-#'     desired number of tasks, a task placement strategy, or use Service
-#'     Auto Scaling policies. For more information, see [Service scheduler
-#'     concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' - `DAEMON` - The daemon scheduling strategy deploys exactly one task on
+#'   each active container instance that meets all of the task placement
+#'   constraints that you specify in your cluster. The service scheduler
+#'   also evaluates the task placement constraints for running tasks. It
+#'   also stops tasks that don't meet the placement constraints. When using
+#'   this strategy, you don't need to specify a desired number of tasks, a
+#'   task placement strategy, or use Service Auto Scaling policies. For
+#'   more information, see [Service scheduler
+#'   concepts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html)
+#'   in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' You can optionally specify a deployment configuration for your service.
 #' The deployment is initiated by changing properties. For example, the
@@ -509,8 +511,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' level. The only required parameter is the service name. You control your
 #' services using the [`create_task_set`][ecs_create_task_set]. For more
 #' information, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
-#' the *Amazon Elastic Container Service Developer Guide*.
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' When the service scheduler launches new tasks, it determines task
 #' placement. For information about task placement and task placement
@@ -551,7 +553,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' or `CODE_DEPLOY` deployment controllers.
 #' 
 #' For more information about deployment types, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
 #' service. For more information, see [Service load
 #' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
@@ -651,7 +653,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' platform version is specified only for tasks using the Fargate launch
 #' type. If one isn't specified, the `LATEST` platform version is used. For
 #' more information, see [Fargate platform
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param role The name or full Amazon Resource Name (ARN) of the IAM role that allows
 #' Amazon ECS to make calls to your load balancer on your behalf. This
@@ -715,25 +717,25 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' There are two service scheduler strategies available:
 #' 
-#' -   `REPLICA`-The replica scheduling strategy places and maintains the
-#'     desired number of tasks across your cluster. By default, the service
-#'     scheduler spreads tasks across Availability Zones. You can use task
-#'     placement strategies and constraints to customize task placement
-#'     decisions. This scheduler strategy is required if the service uses
-#'     the `CODE_DEPLOY` or `EXTERNAL` deployment controller types.
+#' - `REPLICA`-The replica scheduling strategy places and maintains the
+#'   desired number of tasks across your cluster. By default, the service
+#'   scheduler spreads tasks across Availability Zones. You can use task
+#'   placement strategies and constraints to customize task placement
+#'   decisions. This scheduler strategy is required if the service uses the
+#'   `CODE_DEPLOY` or `EXTERNAL` deployment controller types.
 #' 
-#' -   `DAEMON`-The daemon scheduling strategy deploys exactly one task on
-#'     each active container instance that meets all of the task placement
-#'     constraints that you specify in your cluster. The service scheduler
-#'     also evaluates the task placement constraints for running tasks and
-#'     will stop tasks that don't meet the placement constraints. When
-#'     you're using this strategy, you don't need to specify a desired
-#'     number of tasks, a task placement strategy, or use Service Auto
-#'     Scaling policies.
+#' - `DAEMON`-The daemon scheduling strategy deploys exactly one task on
+#'   each active container instance that meets all of the task placement
+#'   constraints that you specify in your cluster. The service scheduler
+#'   also evaluates the task placement constraints for running tasks and
+#'   will stop tasks that don't meet the placement constraints. When you're
+#'   using this strategy, you don't need to specify a desired number of
+#'   tasks, a task placement strategy, or use Service Auto Scaling
+#'   policies.
 #' 
-#'     Tasks using the Fargate launch type or the `CODE_DEPLOY` or
-#'     `EXTERNAL` deployment controller types don't support the `DAEMON`
-#'     scheduling strategy.
+#'   Tasks using the Fargate launch type or the `CODE_DEPLOY` or `EXTERNAL`
+#'   deployment controller types don't support the `DAEMON` scheduling
+#'   strategy.
 #' @param deploymentController The deployment controller to use for the service. If no deployment
 #' controller is specified, the default value of `ECS` is used.
 #' @param tags The metadata that you apply to the service to help you categorize and
@@ -743,28 +745,28 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #' @param enableECSManagedTags Specifies whether to turn on Amazon ECS managed tags for the tasks
 #' within the service. For more information, see [Tagging your Amazon ECS
 #' resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
@@ -1302,7 +1304,8 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
   output <- .ecs$create_service_output()
@@ -1320,8 +1323,8 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' Create a task set in the specified cluster and service. This is used
 #' when a service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
-#' the *Amazon Elastic Container Service Developer Guide*.
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' On March 21, 2024, a change was made to resolve the task definition
 #' revision before authorization. When a task definition revision is not
@@ -1407,28 +1410,28 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1578,7 +1581,8 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$create_task_set_input(service = service, cluster = cluster, externalId = externalId, taskDefinition = taskDefinition, networkConfiguration = networkConfiguration, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, scale = scale, clientToken = clientToken, tags = tags)
   output <- .ecs$create_task_set_output()
@@ -1663,7 +1667,8 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_account_setting_input(name = name, principalArn = principalArn)
   output <- .ecs$delete_account_setting_output()
@@ -1733,7 +1738,8 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_attributes_input(cluster = cluster, attributes = attributes)
   output <- .ecs$delete_attributes_output()
@@ -1824,7 +1830,8 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_capacity_provider_input(capacityProvider = capacityProvider)
   output <- .ecs$delete_capacity_provider_output()
@@ -1961,7 +1968,8 @@ ecs_delete_cluster <- function(cluster) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_cluster_input(cluster = cluster)
   output <- .ecs$delete_cluster_output()
@@ -2338,7 +2346,8 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_service_input(cluster = cluster, service = service, force = force)
   output <- .ecs$delete_service_output()
@@ -2712,7 +2721,8 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_task_definitions_input(taskDefinitions = taskDefinitions)
   output <- .ecs$delete_task_definitions_output()
@@ -2730,8 +2740,8 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
 #' Deletes a specified task set within a service. This is used when a
 #' service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
-#' the *Amazon Elastic Container Service Developer Guide*.
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_delete_task_set(cluster, service, taskSet, force)
@@ -2846,7 +2856,8 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_task_set_input(cluster = cluster, service = service, taskSet = taskSet, force = force)
   output <- .ecs$delete_task_set_output()
@@ -3030,7 +3041,8 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$deregister_container_instance_input(cluster = cluster, containerInstance = containerInstance, force = force)
   output <- .ecs$deregister_container_instance_output()
@@ -3386,7 +3398,8 @@ ecs_deregister_task_definition <- function(taskDefinition) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$deregister_task_definition_input(taskDefinition = taskDefinition)
   output <- .ecs$deregister_task_definition_output()
@@ -3503,7 +3516,8 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_capacity_providers_input(capacityProviders = capacityProviders, include = include, maxResults = maxResults, nextToken = nextToken)
   output <- .ecs$describe_capacity_providers_output()
@@ -3666,7 +3680,8 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_clusters_input(clusters = clusters, include = include)
   output <- .ecs$describe_clusters_output()
@@ -3839,7 +3854,8 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_container_instances_input(cluster = cluster, containerInstances = containerInstances, include = include)
   output <- .ecs$describe_container_instances_output()
@@ -4215,7 +4231,8 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_services_input(cluster = cluster, services = services, include = include)
   output <- .ecs$describe_services_output()
@@ -4575,7 +4592,8 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_task_definition_input(taskDefinition = taskDefinition, include = include)
   output <- .ecs$describe_task_definition_output()
@@ -4593,8 +4611,8 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' Describes the task sets in the specified cluster and service. This is
 #' used when a service uses the `EXTERNAL` deployment controller type. For
 #' more information, see [Amazon ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
-#' the *Amazon Elastic Container Service Developer Guide*.
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_describe_task_sets(cluster, service, taskSets, include)
@@ -4722,7 +4740,8 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_task_sets_input(cluster = cluster, service = service, taskSets = taskSets, include = include)
   output <- .ecs$describe_task_sets_output()
@@ -4989,7 +5008,8 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_tasks_input(cluster = cluster, tasks = tasks, include = include)
   output <- .ecs$describe_tasks_output()
@@ -5049,7 +5069,8 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$discover_poll_endpoint_input(containerInstance = containerInstance, cluster = cluster)
   output <- .ecs$discover_poll_endpoint_output()
@@ -5128,7 +5149,8 @@ ecs_execute_command <- function(cluster = NULL, container = NULL, command, inter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$execute_command_input(cluster = cluster, container = container, command = command, interactive = interactive, task = task)
   output <- .ecs$execute_command_output()
@@ -5207,7 +5229,8 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$get_task_protection_input(cluster = cluster, tasks = tasks)
   output <- .ecs$get_task_protection_output()
@@ -5317,7 +5340,8 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "settings")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "settings"),
+    stream_api = FALSE
   )
   input <- .ecs$list_account_settings_input(name = name, value = value, principalArn = principalArn, effectiveSettings = effectiveSettings, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_account_settings_output()
@@ -5412,7 +5436,8 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "attributes")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "attributes"),
+    stream_api = FALSE
   )
   input <- .ecs$list_attributes_input(cluster = cluster, targetType = targetType, attributeName = attributeName, attributeValue = attributeValue, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_attributes_output()
@@ -5489,7 +5514,8 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_clusters_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_clusters_output()
@@ -5595,7 +5621,8 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "containerInstanceArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "containerInstanceArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_container_instances_input(cluster = cluster, filter = filter, nextToken = nextToken, maxResults = maxResults, status = status)
   output <- .ecs$list_container_instances_output()
@@ -5684,7 +5711,8 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_services_input(cluster = cluster, nextToken = nextToken, maxResults = maxResults, launchType = launchType, schedulingStrategy = schedulingStrategy)
   output <- .ecs$list_services_output()
@@ -5772,7 +5800,8 @@ ecs_list_services_by_namespace <- function(namespace, nextToken = NULL, maxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_services_by_namespace_input(namespace = namespace, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_services_by_namespace_output()
@@ -5835,7 +5864,8 @@ ecs_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ecs$list_tags_for_resource_output()
@@ -5942,7 +5972,8 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "families")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "families"),
+    stream_api = FALSE
   )
   input <- .ecs$list_task_definition_families_input(familyPrefix = familyPrefix, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definition_families_output()
@@ -6047,7 +6078,8 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskDefinitionArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskDefinitionArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_task_definitions_input(familyPrefix = familyPrefix, status = status, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definitions_output()
@@ -6176,7 +6208,8 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_tasks_input(cluster = cluster, containerInstance = containerInstance, family = family, nextToken = nextToken, maxResults = maxResults, startedBy = startedBy, serviceName = serviceName, desiredStatus = desiredStatus, launchType = launchType)
   output <- .ecs$list_tasks_output()
@@ -6207,105 +6240,105 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' 
 #' The following are the valid values for the account setting name.
 #' 
-#' -   `serviceLongArnFormat` - When modified, the Amazon Resource Name
-#'     (ARN) and resource ID format of the resource type for a specified
-#'     user, role, or the root user for an account is affected. The opt-in
-#'     and opt-out account setting must be set for each Amazon ECS resource
-#'     separately. The ARN and resource ID format of a resource is defined
-#'     by the opt-in status of the user or role that created the resource.
-#'     You must turn on this setting to use Amazon ECS features such as
-#'     resource tagging.
+#' - `serviceLongArnFormat` - When modified, the Amazon Resource Name (ARN)
+#'   and resource ID format of the resource type for a specified user,
+#'   role, or the root user for an account is affected. The opt-in and
+#'   opt-out account setting must be set for each Amazon ECS resource
+#'   separately. The ARN and resource ID format of a resource is defined by
+#'   the opt-in status of the user or role that created the resource. You
+#'   must turn on this setting to use Amazon ECS features such as resource
+#'   tagging.
 #' 
-#' -   `taskLongArnFormat` - When modified, the Amazon Resource Name (ARN)
-#'     and resource ID format of the resource type for a specified user,
-#'     role, or the root user for an account is affected. The opt-in and
-#'     opt-out account setting must be set for each Amazon ECS resource
-#'     separately. The ARN and resource ID format of a resource is defined
-#'     by the opt-in status of the user or role that created the resource.
-#'     You must turn on this setting to use Amazon ECS features such as
-#'     resource tagging.
+#' - `taskLongArnFormat` - When modified, the Amazon Resource Name (ARN)
+#'   and resource ID format of the resource type for a specified user,
+#'   role, or the root user for an account is affected. The opt-in and
+#'   opt-out account setting must be set for each Amazon ECS resource
+#'   separately. The ARN and resource ID format of a resource is defined by
+#'   the opt-in status of the user or role that created the resource. You
+#'   must turn on this setting to use Amazon ECS features such as resource
+#'   tagging.
 #' 
-#' -   `containerInstanceLongArnFormat` - When modified, the Amazon
-#'     Resource Name (ARN) and resource ID format of the resource type for
-#'     a specified user, role, or the root user for an account is affected.
-#'     The opt-in and opt-out account setting must be set for each Amazon
-#'     ECS resource separately. The ARN and resource ID format of a
-#'     resource is defined by the opt-in status of the user or role that
-#'     created the resource. You must turn on this setting to use Amazon
-#'     ECS features such as resource tagging.
+#' - `containerInstanceLongArnFormat` - When modified, the Amazon Resource
+#'   Name (ARN) and resource ID format of the resource type for a specified
+#'   user, role, or the root user for an account is affected. The opt-in
+#'   and opt-out account setting must be set for each Amazon ECS resource
+#'   separately. The ARN and resource ID format of a resource is defined by
+#'   the opt-in status of the user or role that created the resource. You
+#'   must turn on this setting to use Amazon ECS features such as resource
+#'   tagging.
 #' 
-#' -   `awsvpcTrunking` - When modified, the elastic network interface
-#'     (ENI) limit for any new container instances that support the feature
-#'     is changed. If `awsvpcTrunking` is turned on, any new container
-#'     instances that support the feature are launched have the increased
-#'     ENI limits available to them. For more information, see [Elastic
-#'     Network Interface
-#'     Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' - `awsvpcTrunking` - When modified, the elastic network interface (ENI)
+#'   limit for any new container instances that support the feature is
+#'   changed. If `awsvpcTrunking` is turned on, any new container instances
+#'   that support the feature are launched have the increased ENI limits
+#'   available to them. For more information, see [Elastic Network
+#'   Interface
+#'   Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
+#'   in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' -   `containerInsights` - When modified, the default setting indicating
-#'     whether Amazon Web Services CloudWatch Container Insights is turned
-#'     on for your clusters is changed. If `containerInsights` is turned
-#'     on, any new clusters that are created will have Container Insights
-#'     turned on unless you disable it during cluster creation. For more
-#'     information, see [CloudWatch Container
-#'     Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' - `containerInsights` - When modified, the default setting indicating
+#'   whether Amazon Web Services CloudWatch Container Insights is turned on
+#'   for your clusters is changed. If `containerInsights` is turned on, any
+#'   new clusters that are created will have Container Insights turned on
+#'   unless you disable it during cluster creation. For more information,
+#'   see [CloudWatch Container
+#'   Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
+#'   in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' -   `dualStackIPv6` - When turned on, when using a VPC in dual stack
-#'     mode, your tasks using the `awsvpc` network mode can have an IPv6
-#'     address assigned. For more information on using IPv6 with tasks
-#'     launched on Amazon EC2 instances, see [Using a VPC in dual-stack
-#'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking-awsvpc.html#task-networking-vpc-dual-stack).
-#'     For more information on using IPv6 with tasks launched on Fargate,
-#'     see [Using a VPC in dual-stack
-#'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack).
+#' - `dualStackIPv6` - When turned on, when using a VPC in dual stack mode,
+#'   your tasks using the `awsvpc` network mode can have an IPv6 address
+#'   assigned. For more information on using IPv6 with tasks launched on
+#'   Amazon EC2 instances, see [Using a VPC in dual-stack
+#'   mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking-awsvpc.html#task-networking-vpc-dual-stack).
+#'   For more information on using IPv6 with tasks launched on Fargate, see
+#'   [Using a VPC in dual-stack
+#'   mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack).
 #' 
-#' -   `fargateFIPSMode` - If you specify `fargateFIPSMode`, Fargate FIPS
-#'     140 compliance is affected.
+#' - `fargateFIPSMode` - If you specify `fargateFIPSMode`, Fargate FIPS 140
+#'   compliance is affected.
 #' 
-#' -   `fargateTaskRetirementWaitPeriod` - When Amazon Web Services
-#'     determines that a security or infrastructure update is needed for an
-#'     Amazon ECS task hosted on Fargate, the tasks need to be stopped and
-#'     new tasks launched to replace them. Use
-#'     `fargateTaskRetirementWaitPeriod` to configure the wait time to
-#'     retire a Fargate task. For information about the Fargate tasks
-#'     maintenance, see [Amazon Web Services Fargate task
-#'     maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
-#'     in the *Amazon ECS Developer Guide*.
+#' - `fargateTaskRetirementWaitPeriod` - When Amazon Web Services
+#'   determines that a security or infrastructure update is needed for an
+#'   Amazon ECS task hosted on Fargate, the tasks need to be stopped and
+#'   new tasks launched to replace them. Use
+#'   `fargateTaskRetirementWaitPeriod` to configure the wait time to retire
+#'   a Fargate task. For information about the Fargate tasks maintenance,
+#'   see [Amazon Web Services Fargate task
+#'   maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
+#'   in the *Amazon ECS Developer Guide*.
 #' 
-#' -   `tagResourceAuthorization` - Amazon ECS is introducing tagging
-#'     authorization for resource creation. Users must have permissions for
-#'     actions that create the resource, such as `ecsCreateCluster`. If
-#'     tags are specified when you create a resource, Amazon Web Services
-#'     performs additional authorization to verify if users or roles have
-#'     permissions to create tags. Therefore, you must grant explicit
-#'     permissions to use the `ecs:TagResource` action. For more
-#'     information, see [Grant permission to tag resources on
-#'     creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
-#'     in the *Amazon ECS Developer Guide*.
+#' - `tagResourceAuthorization` - Amazon ECS is introducing tagging
+#'   authorization for resource creation. Users must have permissions for
+#'   actions that create the resource, such as `ecsCreateCluster`. If tags
+#'   are specified when you create a resource, Amazon Web Services performs
+#'   additional authorization to verify if users or roles have permissions
+#'   to create tags. Therefore, you must grant explicit permissions to use
+#'   the `ecs:TagResource` action. For more information, see [Grant
+#'   permission to tag resources on
+#'   creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
+#'   in the *Amazon ECS Developer Guide*.
 #' 
-#' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
-#'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
-#'     enabled or disabled by your security administrator in your Amazon
-#'     ECS account. Amazon GuardDuty controls this account setting on your
-#'     behalf. For more information, see [Protecting Amazon ECS workloads
-#'     with Amazon ECS Runtime
-#'     Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
+#' - `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
+#'   in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
+#'   enabled or disabled by your security administrator in your Amazon ECS
+#'   account. Amazon GuardDuty controls this account setting on your
+#'   behalf. For more information, see [Protecting Amazon ECS workloads
+#'   with Amazon ECS Runtime
+#'   Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled`, `disabled`, `on`, and `off`.
 #' 
 #' When you specify `fargateTaskRetirementWaitPeriod` for the `name`, the
 #' following are the valid values:
 #' 
-#' -   `0` - Amazon Web Services sends the notification, and immediately
-#'     retires the affected tasks.
+#' - `0` - Amazon Web Services sends the notification, and immediately
+#'   retires the affected tasks.
 #' 
-#' -   `7` - Amazon Web Services sends the notification, and waits 7
-#'     calendar days to retire the tasks.
+#' - `7` - Amazon Web Services sends the notification, and waits 7 calendar
+#'   days to retire the tasks.
 #' 
-#' -   `14` - Amazon Web Services sends the notification, and waits 14
-#'     calendar days to retire the tasks.
+#' - `14` - Amazon Web Services sends the notification, and waits 14
+#'   calendar days to retire the tasks.
 #' @param principalArn The ARN of the principal, which can be a user, role, or the root user.
 #' If you specify the root user, it modifies the account setting for all
 #' users, roles, and the root user of the account unless a user or role
@@ -6374,7 +6407,8 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$put_account_setting_input(name = name, value = value, principalArn = principalArn)
   output <- .ecs$put_account_setting_output()
@@ -6401,105 +6435,105 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' 
 #' The following are the valid values for the account setting name.
 #' 
-#' -   `serviceLongArnFormat` - When modified, the Amazon Resource Name
-#'     (ARN) and resource ID format of the resource type for a specified
-#'     user, role, or the root user for an account is affected. The opt-in
-#'     and opt-out account setting must be set for each Amazon ECS resource
-#'     separately. The ARN and resource ID format of a resource is defined
-#'     by the opt-in status of the user or role that created the resource.
-#'     You must turn on this setting to use Amazon ECS features such as
-#'     resource tagging.
+#' - `serviceLongArnFormat` - When modified, the Amazon Resource Name (ARN)
+#'   and resource ID format of the resource type for a specified user,
+#'   role, or the root user for an account is affected. The opt-in and
+#'   opt-out account setting must be set for each Amazon ECS resource
+#'   separately. The ARN and resource ID format of a resource is defined by
+#'   the opt-in status of the user or role that created the resource. You
+#'   must turn on this setting to use Amazon ECS features such as resource
+#'   tagging.
 #' 
-#' -   `taskLongArnFormat` - When modified, the Amazon Resource Name (ARN)
-#'     and resource ID format of the resource type for a specified user,
-#'     role, or the root user for an account is affected. The opt-in and
-#'     opt-out account setting must be set for each Amazon ECS resource
-#'     separately. The ARN and resource ID format of a resource is defined
-#'     by the opt-in status of the user or role that created the resource.
-#'     You must turn on this setting to use Amazon ECS features such as
-#'     resource tagging.
+#' - `taskLongArnFormat` - When modified, the Amazon Resource Name (ARN)
+#'   and resource ID format of the resource type for a specified user,
+#'   role, or the root user for an account is affected. The opt-in and
+#'   opt-out account setting must be set for each Amazon ECS resource
+#'   separately. The ARN and resource ID format of a resource is defined by
+#'   the opt-in status of the user or role that created the resource. You
+#'   must turn on this setting to use Amazon ECS features such as resource
+#'   tagging.
 #' 
-#' -   `containerInstanceLongArnFormat` - When modified, the Amazon
-#'     Resource Name (ARN) and resource ID format of the resource type for
-#'     a specified user, role, or the root user for an account is affected.
-#'     The opt-in and opt-out account setting must be set for each Amazon
-#'     ECS resource separately. The ARN and resource ID format of a
-#'     resource is defined by the opt-in status of the user or role that
-#'     created the resource. You must turn on this setting to use Amazon
-#'     ECS features such as resource tagging.
+#' - `containerInstanceLongArnFormat` - When modified, the Amazon Resource
+#'   Name (ARN) and resource ID format of the resource type for a specified
+#'   user, role, or the root user for an account is affected. The opt-in
+#'   and opt-out account setting must be set for each Amazon ECS resource
+#'   separately. The ARN and resource ID format of a resource is defined by
+#'   the opt-in status of the user or role that created the resource. You
+#'   must turn on this setting to use Amazon ECS features such as resource
+#'   tagging.
 #' 
-#' -   `awsvpcTrunking` - When modified, the elastic network interface
-#'     (ENI) limit for any new container instances that support the feature
-#'     is changed. If `awsvpcTrunking` is turned on, any new container
-#'     instances that support the feature are launched have the increased
-#'     ENI limits available to them. For more information, see [Elastic
-#'     Network Interface
-#'     Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' - `awsvpcTrunking` - When modified, the elastic network interface (ENI)
+#'   limit for any new container instances that support the feature is
+#'   changed. If `awsvpcTrunking` is turned on, any new container instances
+#'   that support the feature are launched have the increased ENI limits
+#'   available to them. For more information, see [Elastic Network
+#'   Interface
+#'   Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
+#'   in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' -   `containerInsights` - When modified, the default setting indicating
-#'     whether Amazon Web Services CloudWatch Container Insights is turned
-#'     on for your clusters is changed. If `containerInsights` is turned
-#'     on, any new clusters that are created will have Container Insights
-#'     turned on unless you disable it during cluster creation. For more
-#'     information, see [CloudWatch Container
-#'     Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
-#'     in the *Amazon Elastic Container Service Developer Guide*.
+#' - `containerInsights` - When modified, the default setting indicating
+#'   whether Amazon Web Services CloudWatch Container Insights is turned on
+#'   for your clusters is changed. If `containerInsights` is turned on, any
+#'   new clusters that are created will have Container Insights turned on
+#'   unless you disable it during cluster creation. For more information,
+#'   see [CloudWatch Container
+#'   Insights](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-container-insights.html)
+#'   in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' -   `dualStackIPv6` - When turned on, when using a VPC in dual stack
-#'     mode, your tasks using the `awsvpc` network mode can have an IPv6
-#'     address assigned. For more information on using IPv6 with tasks
-#'     launched on Amazon EC2 instances, see [Using a VPC in dual-stack
-#'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking-awsvpc.html#task-networking-vpc-dual-stack).
-#'     For more information on using IPv6 with tasks launched on Fargate,
-#'     see [Using a VPC in dual-stack
-#'     mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack).
+#' - `dualStackIPv6` - When turned on, when using a VPC in dual stack mode,
+#'   your tasks using the `awsvpc` network mode can have an IPv6 address
+#'   assigned. For more information on using IPv6 with tasks launched on
+#'   Amazon EC2 instances, see [Using a VPC in dual-stack
+#'   mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-networking-awsvpc.html#task-networking-vpc-dual-stack).
+#'   For more information on using IPv6 with tasks launched on Fargate, see
+#'   [Using a VPC in dual-stack
+#'   mode](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/fargate-task-networking.html#fargate-task-networking-vpc-dual-stack).
 #' 
-#' -   `fargateFIPSMode` - If you specify `fargateFIPSMode`, Fargate FIPS
-#'     140 compliance is affected.
+#' - `fargateFIPSMode` - If you specify `fargateFIPSMode`, Fargate FIPS 140
+#'   compliance is affected.
 #' 
-#' -   `fargateTaskRetirementWaitPeriod` - When Amazon Web Services
-#'     determines that a security or infrastructure update is needed for an
-#'     Amazon ECS task hosted on Fargate, the tasks need to be stopped and
-#'     new tasks launched to replace them. Use
-#'     `fargateTaskRetirementWaitPeriod` to configure the wait time to
-#'     retire a Fargate task. For information about the Fargate tasks
-#'     maintenance, see [Amazon Web Services Fargate task
-#'     maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
-#'     in the *Amazon ECS Developer Guide*.
+#' - `fargateTaskRetirementWaitPeriod` - When Amazon Web Services
+#'   determines that a security or infrastructure update is needed for an
+#'   Amazon ECS task hosted on Fargate, the tasks need to be stopped and
+#'   new tasks launched to replace them. Use
+#'   `fargateTaskRetirementWaitPeriod` to configure the wait time to retire
+#'   a Fargate task. For information about the Fargate tasks maintenance,
+#'   see [Amazon Web Services Fargate task
+#'   maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
+#'   in the *Amazon ECS Developer Guide*.
 #' 
-#' -   `tagResourceAuthorization` - Amazon ECS is introducing tagging
-#'     authorization for resource creation. Users must have permissions for
-#'     actions that create the resource, such as `ecsCreateCluster`. If
-#'     tags are specified when you create a resource, Amazon Web Services
-#'     performs additional authorization to verify if users or roles have
-#'     permissions to create tags. Therefore, you must grant explicit
-#'     permissions to use the `ecs:TagResource` action. For more
-#'     information, see [Grant permission to tag resources on
-#'     creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
-#'     in the *Amazon ECS Developer Guide*.
+#' - `tagResourceAuthorization` - Amazon ECS is introducing tagging
+#'   authorization for resource creation. Users must have permissions for
+#'   actions that create the resource, such as `ecsCreateCluster`. If tags
+#'   are specified when you create a resource, Amazon Web Services performs
+#'   additional authorization to verify if users or roles have permissions
+#'   to create tags. Therefore, you must grant explicit permissions to use
+#'   the `ecs:TagResource` action. For more information, see [Grant
+#'   permission to tag resources on
+#'   creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
+#'   in the *Amazon ECS Developer Guide*.
 #' 
-#' -   `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
-#'     in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
-#'     enabled or disabled by your security administrator in your Amazon
-#'     ECS account. Amazon GuardDuty controls this account setting on your
-#'     behalf. For more information, see [Protecting Amazon ECS workloads
-#'     with Amazon ECS Runtime
-#'     Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
+#' - `guardDutyActivate` - The `guardDutyActivate` parameter is read-only
+#'   in Amazon ECS and indicates whether Amazon ECS Runtime Monitoring is
+#'   enabled or disabled by your security administrator in your Amazon ECS
+#'   account. Amazon GuardDuty controls this account setting on your
+#'   behalf. For more information, see [Protecting Amazon ECS workloads
+#'   with Amazon ECS Runtime
+#'   Monitoring](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-guard-duty-integration.html).
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled`, `disabled`, `on`, and `off`.
 #' 
 #' When you specify `fargateTaskRetirementWaitPeriod` for the `name`, the
 #' following are the valid values:
 #' 
-#' -   `0` - Amazon Web Services sends the notification, and immediately
-#'     retires the affected tasks.
+#' - `0` - Amazon Web Services sends the notification, and immediately
+#'   retires the affected tasks.
 #' 
-#' -   `7` - Amazon Web Services sends the notification, and waits 7
-#'     calendar days to retire the tasks.
+#' - `7` - Amazon Web Services sends the notification, and waits 7 calendar
+#'   days to retire the tasks.
 #' 
-#' -   `14` - Amazon Web Services sends the notification, and waits 14
-#'     calendar days to retire the tasks.
+#' - `14` - Amazon Web Services sends the notification, and waits 14
+#'   calendar days to retire the tasks.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6545,7 +6579,8 @@ ecs_put_account_setting_default <- function(name, value) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$put_account_setting_default_input(name = name, value = value)
   output <- .ecs$put_account_setting_default_output()
@@ -6618,7 +6653,8 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$put_attributes_input(cluster = cluster, attributes = attributes)
   output <- .ecs$put_attributes_output()
@@ -6805,7 +6841,8 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$put_cluster_capacity_providers_input(cluster = cluster, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy)
   output <- .ecs$put_cluster_capacity_providers_output()
@@ -6856,28 +6893,28 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7030,7 +7067,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$register_container_instance_input(cluster = cluster, instanceIdentityDocument = instanceIdentityDocument, instanceIdentityDocumentSignature = instanceIdentityDocumentSignature, totalResources = totalResources, versionInfo = versionInfo, containerInstanceArn = containerInstanceArn, attributes = attributes, platformDevices = platformDevices, tags = tags)
   output <- .ecs$register_container_instance_output()
@@ -7161,30 +7199,30 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' The CPU units cannot be less than 1 vCPU when you use Windows containers
 #' on Fargate.
 #' 
-#' -   256 (.25 vCPU) - Available `memory` values: 512 (0.5 GB), 1024 (1
-#'     GB), 2048 (2 GB)
+#' - 256 (.25 vCPU) - Available `memory` values: 512 (0.5 GB), 1024 (1 GB),
+#'   2048 (2 GB)
 #' 
-#' -   512 (.5 vCPU) - Available `memory` values: 1024 (1 GB), 2048 (2 GB),
-#'     3072 (3 GB), 4096 (4 GB)
+#' - 512 (.5 vCPU) - Available `memory` values: 1024 (1 GB), 2048 (2 GB),
+#'   3072 (3 GB), 4096 (4 GB)
 #' 
-#' -   1024 (1 vCPU) - Available `memory` values: 2048 (2 GB), 3072 (3 GB),
-#'     4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
+#' - 1024 (1 vCPU) - Available `memory` values: 2048 (2 GB), 3072 (3 GB),
+#'   4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168 (7 GB), 8192 (8 GB)
 #' 
-#' -   2048 (2 vCPU) - Available `memory` values: 4096 (4 GB) and 16384 (16
-#'     GB) in increments of 1024 (1 GB)
+#' - 2048 (2 vCPU) - Available `memory` values: 4096 (4 GB) and 16384 (16
+#'   GB) in increments of 1024 (1 GB)
 #' 
-#' -   4096 (4 vCPU) - Available `memory` values: 8192 (8 GB) and 30720 (30
-#'     GB) in increments of 1024 (1 GB)
+#' - 4096 (4 vCPU) - Available `memory` values: 8192 (8 GB) and 30720 (30
+#'   GB) in increments of 1024 (1 GB)
 #' 
-#' -   8192 (8 vCPU) - Available `memory` values: 16 GB and 60 GB in 4 GB
-#'     increments
+#' - 8192 (8 vCPU) - Available `memory` values: 16 GB and 60 GB in 4 GB
+#'   increments
 #' 
-#'     This option requires Linux platform `1.4.0` or later.
+#'   This option requires Linux platform `1.4.0` or later.
 #' 
-#' -   16384 (16vCPU) - Available `memory` values: 32GB and 120 GB in 8 GB
-#'     increments
+#' - 16384 (16vCPU) - Available `memory` values: 32GB and 120 GB in 8 GB
+#'   increments
 #' 
-#'     This option requires Linux platform `1.4.0` or later.
+#'   This option requires Linux platform `1.4.0` or later.
 #' @param memory The amount of memory (in MiB) used by the task. It can be expressed as
 #' an integer using MiB (for example ,`1024`) or as a string using GB (for
 #' example, `1GB` or `1 GB`) in a task definition. String values are
@@ -7204,58 +7242,58 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' The CPU units cannot be less than 1 vCPU when you use Windows containers
 #' on Fargate.
 #' 
-#' -   512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available `cpu` values: 256
-#'     (.25 vCPU)
+#' - 512 (0.5 GB), 1024 (1 GB), 2048 (2 GB) - Available `cpu` values: 256
+#'   (.25 vCPU)
 #' 
-#' -   1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available `cpu`
-#'     values: 512 (.5 vCPU)
+#' - 1024 (1 GB), 2048 (2 GB), 3072 (3 GB), 4096 (4 GB) - Available `cpu`
+#'   values: 512 (.5 vCPU)
 #' 
-#' -   2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB),
-#'     7168 (7 GB), 8192 (8 GB) - Available `cpu` values: 1024 (1 vCPU)
+#' - 2048 (2 GB), 3072 (3 GB), 4096 (4 GB), 5120 (5 GB), 6144 (6 GB), 7168
+#'   (7 GB), 8192 (8 GB) - Available `cpu` values: 1024 (1 vCPU)
 #' 
-#' -   Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) -
-#'     Available `cpu` values: 2048 (2 vCPU)
+#' - Between 4096 (4 GB) and 16384 (16 GB) in increments of 1024 (1 GB) -
+#'   Available `cpu` values: 2048 (2 vCPU)
 #' 
-#' -   Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) -
-#'     Available `cpu` values: 4096 (4 vCPU)
+#' - Between 8192 (8 GB) and 30720 (30 GB) in increments of 1024 (1 GB) -
+#'   Available `cpu` values: 4096 (4 vCPU)
 #' 
-#' -   Between 16 GB and 60 GB in 4 GB increments - Available `cpu` values:
-#'     8192 (8 vCPU)
+#' - Between 16 GB and 60 GB in 4 GB increments - Available `cpu` values:
+#'   8192 (8 vCPU)
 #' 
-#'     This option requires Linux platform `1.4.0` or later.
+#'   This option requires Linux platform `1.4.0` or later.
 #' 
-#' -   Between 32GB and 120 GB in 8 GB increments - Available `cpu` values:
-#'     16384 (16 vCPU)
+#' - Between 32GB and 120 GB in 8 GB increments - Available `cpu` values:
+#'   16384 (16 vCPU)
 #' 
-#'     This option requires Linux platform `1.4.0` or later.
+#'   This option requires Linux platform `1.4.0` or later.
 #' @param tags The metadata that you apply to the task definition to help you
 #' categorize and organize them. Each tag consists of a key and an optional
 #' value. You define both of them.
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #' @param pidMode The process namespace to use for the containers in the task. The valid
 #' values are `host` or `task`. On Fargate for Linux containers, the only
 #' valid value is `task`. For example, monitoring sidecars might need
@@ -7300,11 +7338,11 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' Controls](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' -   For tasks that use the `host` IPC mode, IPC namespace related
-#'     `systemControls` are not supported.
+#' - For tasks that use the `host` IPC mode, IPC namespace related
+#'   `systemControls` are not supported.
 #' 
-#' -   For tasks that use the `task` IPC mode, IPC namespace related
-#'     `systemControls` will apply to all containers within a task.
+#' - For tasks that use the `task` IPC mode, IPC namespace related
+#'   `systemControls` will apply to all containers within a task.
 #' 
 #' This parameter is not supported for Windows containers or tasks run on
 #' Fargate.
@@ -7331,9 +7369,9 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' For tasks using the Fargate launch type, the task requires the following
 #' platforms:
 #' 
-#' -   Linux platform version `1.4.0` or later.
+#' - Linux platform version `1.4.0` or later.
 #' 
-#' -   Windows platform version `1.0.0` or later.
+#' - Windows platform version `1.0.0` or later.
 #' @param runtimePlatform The operating system that your tasks definitions run on. A platform
 #' family is specified only for tasks using the Fargate launch type.
 #'
@@ -7945,7 +7983,8 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode, proxyConfiguration = proxyConfiguration, inferenceAccelerators = inferenceAccelerators, ephemeralStorage = ephemeralStorage, runtimePlatform = runtimePlatform)
   output <- .ecs$register_task_definition_output()
@@ -8000,18 +8039,17 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' 
 #' To manage eventual consistency, you can do the following:
 #' 
-#' -   Confirm the state of the resource before you run a command to modify
-#'     it. Run the DescribeTasks command using an exponential backoff
-#'     algorithm to ensure that you allow enough time for the previous
-#'     command to propagate through the system. To do this, run the
-#'     DescribeTasks command repeatedly, starting with a couple of seconds
-#'     of wait time and increasing gradually up to five minutes of wait
-#'     time.
+#' - Confirm the state of the resource before you run a command to modify
+#'   it. Run the DescribeTasks command using an exponential backoff
+#'   algorithm to ensure that you allow enough time for the previous
+#'   command to propagate through the system. To do this, run the
+#'   DescribeTasks command repeatedly, starting with a couple of seconds of
+#'   wait time and increasing gradually up to five minutes of wait time.
 #' 
-#' -   Add wait time between subsequent commands, even if the DescribeTasks
-#'     command returns an accurate response. Apply an exponential backoff
-#'     algorithm starting with a couple of seconds of wait time, and
-#'     increase gradually up to about five minutes of wait time.
+#' - Add wait time between subsequent commands, even if the DescribeTasks
+#'   command returns an accurate response. Apply an exponential backoff
+#'   algorithm starting with a couple of seconds of wait time, and increase
+#'   gradually up to about five minutes of wait time.
 #'
 #' @usage
 #' ecs_run_task(capacityProviderStrategy, cluster, count,
@@ -8099,7 +8137,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param platformVersion The platform version the task uses. A platform version is only specified
 #' for tasks hosted on Fargate. If one isn't specified, the `LATEST`
 #' platform version is used. For more information, see [Fargate platform
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags aren't propagated. Tags can
@@ -8127,28 +8165,28 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to run. If a `revision` isn't specified, the latest `ACTIVE`
 #' revision is used.
@@ -8524,7 +8562,8 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, clientToken = clientToken, volumeConfigurations = volumeConfigurations)
   output <- .ecs$run_task_output()
@@ -8623,28 +8662,28 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full ARN of the task
 #' definition to start. If a `revision` isn't specified, the latest
 #' `ACTIVE` revision is used.
@@ -8968,7 +9007,8 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$start_task_input(cluster = cluster, containerInstances = containerInstances, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, networkConfiguration = networkConfiguration, overrides = overrides, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, volumeConfigurations = volumeConfigurations)
   output <- .ecs$start_task_output()
@@ -9221,7 +9261,8 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$stop_task_input(cluster = cluster, task = task, reason = reason)
   output <- .ecs$stop_task_output()
@@ -9281,7 +9322,8 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$submit_attachment_state_changes_input(cluster = cluster, attachments = attachments)
   output <- .ecs$submit_attachment_state_changes_output()
@@ -9358,7 +9400,8 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$submit_container_state_change_input(cluster = cluster, task = task, containerName = containerName, runtimeId = runtimeId, status = status, exitCode = exitCode, reason = reason, networkBindings = networkBindings)
   output <- .ecs$submit_container_state_change_output()
@@ -9468,7 +9511,8 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$submit_task_state_change_input(cluster = cluster, task = task, status = status, reason = reason, containers = containers, attachments = attachments, managedAgents = managedAgents, pullStartedAt = pullStartedAt, pullStoppedAt = pullStoppedAt, executionStoppedAt = executionStoppedAt)
   output <- .ecs$submit_task_state_change_output()
@@ -9499,28 +9543,28 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' -   Maximum number of tags per resource - 50
+#' - Maximum number of tags per resource - 50
 #' 
-#' -   For each resource, each tag key must be unique, and each tag key can
-#'     have only one value.
+#' - For each resource, each tag key must be unique, and each tag key can
+#'   have only one value.
 #' 
-#' -   Maximum key length - 128 Unicode characters in UTF-8
+#' - Maximum key length - 128 Unicode characters in UTF-8
 #' 
-#' -   Maximum value length - 256 Unicode characters in UTF-8
+#' - Maximum value length - 256 Unicode characters in UTF-8
 #' 
-#' -   If your tagging schema is used across multiple services and
-#'     resources, remember that other services may have restrictions on
-#'     allowed characters. Generally allowed characters are: letters,
-#'     numbers, and spaces representable in UTF-8, and the following
-#'     characters: + - = . _ : / @@.
+#' - If your tagging schema is used across multiple services and resources,
+#'   remember that other services may have restrictions on allowed
+#'   characters. Generally allowed characters are: letters, numbers, and
+#'   spaces representable in UTF-8, and the following characters: + - = .
+#'   _ : / @@.
 #' 
-#' -   Tag keys and values are case-sensitive.
+#' - Tag keys and values are case-sensitive.
 #' 
-#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'     such as a prefix for either keys or values as it is reserved for
-#'     Amazon Web Services use. You cannot edit or delete tag keys or
-#'     values with this prefix. Tags with this prefix do not count against
-#'     your tags per resource limit.
+#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'   such as a prefix for either keys or values as it is reserved for
+#'   Amazon Web Services use. You cannot edit or delete tag keys or values
+#'   with this prefix. Tags with this prefix do not count against your tags
+#'   per resource limit.
 #'
 #' @return
 #' An empty list.
@@ -9563,7 +9607,8 @@ ecs_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ecs$tag_resource_output()
@@ -9623,7 +9668,8 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ecs$untag_resource_output()
@@ -9708,7 +9754,8 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider)
   output <- .ecs$update_capacity_provider_output()
@@ -9872,7 +9919,8 @@ ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL, s
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_cluster_input(cluster = cluster, settings = settings, configuration = configuration, serviceConnectDefaults = serviceConnectDefaults)
   output <- .ecs$update_cluster_output()
@@ -10008,7 +10056,8 @@ ecs_update_cluster_settings <- function(cluster, settings) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_cluster_settings_input(cluster = cluster, settings = settings)
   output <- .ecs$update_cluster_settings_output()
@@ -10173,7 +10222,8 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_container_agent_input(cluster = cluster, containerInstance = containerInstance)
   output <- .ecs$update_container_agent_output()
@@ -10212,24 +10262,24 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' You can change the deployment configuration of your service using
 #' [`update_service`][ecs_update_service].
 #' 
-#' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
-#'     `desiredCount` temporarily during task replacement. For example,
-#'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
-#'     to stop two existing tasks before starting two new tasks. If the
-#'     minimum is 100%, the service scheduler can't remove existing tasks
-#'     until the replacement tasks are considered healthy. Tasks for
-#'     services that do not use a load balancer are considered healthy if
-#'     they're in the `RUNNING` state. Tasks for services that use a load
-#'     balancer are considered healthy if they're in the `RUNNING` state
-#'     and are reported as healthy by the load balancer.
+#' - If `minimumHealthyPercent` is below 100%, the scheduler can ignore
+#'   `desiredCount` temporarily during task replacement. For example,
+#'   `desiredCount` is four tasks, a minimum of 50% allows the scheduler to
+#'   stop two existing tasks before starting two new tasks. If the minimum
+#'   is 100%, the service scheduler can't remove existing tasks until the
+#'   replacement tasks are considered healthy. Tasks for services that do
+#'   not use a load balancer are considered healthy if they're in the
+#'   `RUNNING` state. Tasks for services that use a load balancer are
+#'   considered healthy if they're in the `RUNNING` state and are reported
+#'   as healthy by the load balancer.
 #' 
-#' -   The `maximumPercent` parameter represents an upper limit on the
-#'     number of running tasks during task replacement. You can use this to
-#'     define the replacement batch size. For example, if `desiredCount` is
-#'     four tasks, a maximum of 200% starts four new tasks before stopping
-#'     the four tasks to be drained, provided that the cluster resources
-#'     required to do this are available. If the maximum is 100%, then
-#'     replacement tasks can't start until the draining tasks have stopped.
+#' - The `maximumPercent` parameter represents an upper limit on the number
+#'   of running tasks during task replacement. You can use this to define
+#'   the replacement batch size. For example, if `desiredCount` is four
+#'   tasks, a maximum of 200% starts four new tasks before stopping the
+#'   four tasks to be drained, provided that the cluster resources required
+#'   to do this are available. If the maximum is 100%, then replacement
+#'   tasks can't start until the draining tasks have stopped.
 #' 
 #' Any `PENDING` or `RUNNING` tasks that do not belong to a service aren't
 #' affected. You must wait for them to finish or stop them manually.
@@ -10381,7 +10431,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_container_instances_state_input(cluster = cluster, containerInstances = containerInstances, status = status)
   output <- .ecs$update_container_instances_state_output()
@@ -10470,21 +10521,21 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' `minimumHealthyPercent` and `maximumPercent`, to determine the
 #' deployment strategy.
 #' 
-#' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
-#'     `desiredCount` temporarily during a deployment. For example, if
-#'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
-#'     to stop two existing tasks before starting two new tasks. Tasks for
-#'     services that don't use a load balancer are considered healthy if
-#'     they're in the `RUNNING` state. Tasks for services that use a load
-#'     balancer are considered healthy if they're in the `RUNNING` state
-#'     and are reported as healthy by the load balancer.
+#' - If `minimumHealthyPercent` is below 100%, the scheduler can ignore
+#'   `desiredCount` temporarily during a deployment. For example, if
+#'   `desiredCount` is four tasks, a minimum of 50% allows the scheduler to
+#'   stop two existing tasks before starting two new tasks. Tasks for
+#'   services that don't use a load balancer are considered healthy if
+#'   they're in the `RUNNING` state. Tasks for services that use a load
+#'   balancer are considered healthy if they're in the `RUNNING` state and
+#'   are reported as healthy by the load balancer.
 #' 
-#' -   The `maximumPercent` parameter represents an upper limit on the
-#'     number of running tasks during a deployment. You can use it to
-#'     define the deployment batch size. For example, if `desiredCount` is
-#'     four tasks, a maximum of 200% starts four new tasks before stopping
-#'     the four older tasks (provided that the cluster resources required
-#'     to do this are available).
+#' - The `maximumPercent` parameter represents an upper limit on the number
+#'   of running tasks during a deployment. You can use it to define the
+#'   deployment batch size. For example, if `desiredCount` is four tasks, a
+#'   maximum of 200% starts four new tasks before stopping the four older
+#'   tasks (provided that the cluster resources required to do this are
+#'   available).
 #' 
 #' When [`update_service`][ecs_update_service] stops a task during a
 #' deployment, the equivalent of `docker stop` is issued to the containers
@@ -10496,45 +10547,45 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' When the service scheduler launches new tasks, it determines task
 #' placement in your cluster with the following logic.
 #' 
-#' -   Determine which of the container instances in your cluster can
-#'     support your service's task definition. For example, they have the
-#'     required CPU, memory, ports, and container instance attributes.
+#' - Determine which of the container instances in your cluster can support
+#'   your service's task definition. For example, they have the required
+#'   CPU, memory, ports, and container instance attributes.
 #' 
-#' -   By default, the service scheduler attempts to balance tasks across
-#'     Availability Zones in this manner even though you can choose a
-#'     different placement strategy.
+#' - By default, the service scheduler attempts to balance tasks across
+#'   Availability Zones in this manner even though you can choose a
+#'   different placement strategy.
 #' 
-#'     -   Sort the valid container instances by the fewest number of
-#'         running tasks for this service in the same Availability Zone as
-#'         the instance. For example, if zone A has one running service
-#'         task and zones B and C each have zero, valid container instances
-#'         in either zone B or C are considered optimal for placement.
+#'   - Sort the valid container instances by the fewest number of running
+#'     tasks for this service in the same Availability Zone as the
+#'     instance. For example, if zone A has one running service task and
+#'     zones B and C each have zero, valid container instances in either
+#'     zone B or C are considered optimal for placement.
 #' 
-#'     -   Place the new service task on a valid container instance in an
-#'         optimal Availability Zone (based on the previous steps),
-#'         favoring container instances with the fewest number of running
-#'         tasks for this service.
+#'   - Place the new service task on a valid container instance in an
+#'     optimal Availability Zone (based on the previous steps), favoring
+#'     container instances with the fewest number of running tasks for this
+#'     service.
 #' 
 #' When the service scheduler stops running tasks, it attempts to maintain
 #' balance across the Availability Zones in your cluster using the
 #' following logic:
 #' 
-#' -   Sort the container instances by the largest number of running tasks
-#'     for this service in the same Availability Zone as the instance. For
-#'     example, if zone A has one running service task and zones B and C
-#'     each have two, container instances in either zone B or C are
-#'     considered optimal for termination.
+#' - Sort the container instances by the largest number of running tasks
+#'   for this service in the same Availability Zone as the instance. For
+#'   example, if zone A has one running service task and zones B and C each
+#'   have two, container instances in either zone B or C are considered
+#'   optimal for termination.
 #' 
-#' -   Stop the task on a container instance in an optimal Availability
-#'     Zone (based on the previous steps), favoring container instances
-#'     with the largest number of running tasks for this service.
+#' - Stop the task on a container instance in an optimal Availability Zone
+#'   (based on the previous steps), favoring container instances with the
+#'   largest number of running tasks for this service.
 #' 
 #' You must have a service-linked role when you update any of the following
 #' service properties:
 #' 
-#' -   `loadBalancers`,
+#' - `loadBalancers`,
 #' 
-#' -   `serviceRegistries`
+#' - `serviceRegistries`
 #' 
 #' For more information about the role see the
 #' [`create_service`][ecs_create_service] request parameter
@@ -10616,7 +10667,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' version is only specified for tasks using the Fargate launch type. If a
 #' platform version is not specified, the `LATEST` platform version is
 #' used. For more information, see [Fargate Platform
-#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
+#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param forceNewDeployment Determines whether to force a new deployment of the service. By default,
 #' deployments aren't forced. You can use this option to start a new
@@ -11191,7 +11242,8 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
   output <- .ecs$update_service_output()
@@ -11211,8 +11263,8 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' transition to the service. This is used when a service uses the
 #' `EXTERNAL` deployment controller type. For more information, see [Amazon
 #' ECS Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
-#' the *Amazon Elastic Container Service Developer Guide*.
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_update_service_primary_task_set(cluster, service, primaryTaskSet)
@@ -11324,7 +11376,8 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_service_primary_task_set_input(cluster = cluster, service = service, primaryTaskSet = primaryTaskSet)
   output <- .ecs$update_service_primary_task_set_output()
@@ -11344,7 +11397,7 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #' from [Service
 #' Autoscaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html)
 #' or
-#' [deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
+#' [deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
 #' 
 #' Task-protection, by default, expires after 2 hours at which point Amazon
 #' ECS clears the `protectionEnabled` property making the task eligible for
@@ -11469,7 +11522,8 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_task_protection_input(cluster = cluster, tasks = tasks, protectionEnabled = protectionEnabled, expiresInMinutes = expiresInMinutes)
   output <- .ecs$update_task_protection_output()
@@ -11487,8 +11541,8 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
 #' Modifies a task set. This is used when a service uses the `EXTERNAL`
 #' deployment controller type. For more information, see [Amazon ECS
 #' Deployment
-#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in
-#' the *Amazon Elastic Container Service Developer Guide*.
+#' Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html)
+#' in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' @usage
 #' ecs_update_task_set(cluster, service, taskSet, scale)
@@ -11606,7 +11660,8 @@ ecs_update_task_set <- function(cluster, service, taskSet, scale) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_task_set_input(cluster = cluster, service = service, taskSet = taskSet, scale = scale)
   output <- .ecs$update_task_set_output()

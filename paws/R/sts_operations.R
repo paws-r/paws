@@ -65,11 +65,11 @@ NULL
 #' To allow a user to assume a role in the same account, you can do either
 #' of the following:
 #' 
-#' -   Attach a policy to the user that allows the user to call
-#'     [`assume_role`][sts_assume_role] (as long as the role's trust policy
-#'     trusts the account).
+#' - Attach a policy to the user that allows the user to call
+#'   [`assume_role`][sts_assume_role] (as long as the role's trust policy
+#'   trusts the account).
 #' 
-#' -   Add the user as a principal directly in the role's trust policy.
+#' - Add the user as a principal directly in the role's trust policy.
 #' 
 #' You can do either because the role’s trust policy acts as an IAM
 #' resource-based policy. When a resource-based policy grants access to a
@@ -190,8 +190,8 @@ NULL
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (``U+0020`` through ``U+00FF``). It can also include the tab
-#' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
+#' character list (`U+0020` through `U+00FF`). It can also include the tab
+#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
@@ -218,7 +218,7 @@ NULL
 #' `DurationSeconds` parameter value greater than one hour, the operation
 #' fails. To learn how to view the maximum value for your role, see [View
 #' the Maximum Session Duration Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*.
 #' 
 #' By default, the value is set to `3600` seconds.
@@ -293,7 +293,7 @@ NULL
 #' rather than everyone in the account. For more information about the
 #' external ID, see [How to Use an External ID When Granting Access to Your
 #' Amazon Web Services Resources to a Third
-#' Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html)
+#' Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)
 #' in the *IAM User Guide*.
 #' 
 #' The regex used to validate this parameter is a string of characters
@@ -444,7 +444,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity, ProvidedContexts = ProvidedContexts)
   output <- .sts$assume_role_output()
@@ -490,16 +491,16 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' the maximum session duration setting for the role. This setting can have
 #' a value from 1 hour to 12 hours. To learn how to view the maximum value
 #' for your role, see [View the Maximum Session Duration Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*. The maximum session duration limit applies when
 #' you use the `AssumeRole*` API operations or the `assume-role*` CLI
 #' commands. However the limit does not apply when you use those operations
 #' to create a console URL. For more information, see [Using IAM
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html)
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
 #' in the *IAM User Guide*.
 #' 
 #' [Role
-#' chaining](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html#id_roles_terms-and-concepts)
+#' chaining](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-role-chaining)
 #' limits your CLI or Amazon Web Services API role session to a maximum of
 #' one hour. When you use the [`assume_role`][sts_assume_role] API
 #' operation to assume a role, you can specify the duration of your role
@@ -599,21 +600,21 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' 
 #' For more information, see the following resources:
 #' 
-#' -   [About SAML 2.0-based
-#'     Federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
-#'     in the *IAM User Guide*.
+#' - [About SAML 2.0-based
+#'   Federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_saml.html)
+#'   in the *IAM User Guide*.
 #' 
-#' -   [Creating SAML Identity
-#'     Providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml.html)
-#'     in the *IAM User Guide*.
+#' - [Creating SAML Identity
+#'   Providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml.html)
+#'   in the *IAM User Guide*.
 #' 
-#' -   [Configuring a Relying Party and
-#'     Claims](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_relying-party.html)
-#'     in the *IAM User Guide*.
+#' - [Configuring a Relying Party and
+#'   Claims](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_saml_relying-party.html)
+#'   in the *IAM User Guide*.
 #' 
-#' -   [Creating a Role for SAML 2.0
-#'     Federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html)
-#'     in the *IAM User Guide*.
+#' - [Creating a Role for SAML 2.0
+#'   Federation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_saml.html)
+#'   in the *IAM User Guide*.
 #'
 #' @usage
 #' sts_assume_role_with_saml(RoleArn, PrincipalArn, SAMLAssertion,
@@ -673,8 +674,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (``U+0020`` through ``U+00FF``). It can also include the tab
-#' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
+#' character list (`U+0020` through `U+00FF`). It can also include the tab
+#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
@@ -694,7 +695,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' duration to 6 hours, your operation fails. To learn how to view the
 #' maximum value for your role, see [View the Maximum Session Duration
 #' Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*.
 #' 
 #' By default, the value is set to `3600` seconds.
@@ -772,7 +773,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_with_saml_input(RoleArn = RoleArn, PrincipalArn = PrincipalArn, SAMLAssertion = SAMLAssertion, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
   output <- .sts$assume_role_with_saml_output()
@@ -841,12 +843,12 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' setting for the role. This setting can have a value from 1 hour to 12
 #' hours. To learn how to view the maximum value for your role, see [View
 #' the Maximum Session Duration Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*. The maximum session duration limit applies when
 #' you use the `AssumeRole*` API operations or the `assume-role*` CLI
 #' commands. However the limit does not apply when you use those operations
 #' to create a console URL. For more information, see [Using IAM
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html)
+#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html)
 #' in the *IAM User Guide*.
 #' 
 #' **Permissions**
@@ -938,30 +940,29 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' [`assume_role_with_web_identity`][sts_assume_role_with_web_identity]
 #' API, see the following resources:
 #' 
-#' -   [Using Web Identity Federation API Operations for Mobile
-#'     Apps](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_federation_common_scenarios.html)
-#'     and [Federation Through a Web-based Identity
-#'     Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity).
+#' - [Using Web Identity Federation API Operations for Mobile
+#'   Apps](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html)
+#'   and [Federation Through a Web-based Identity
+#'   Provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity).
 #' 
-#' -   [Web Identity Federation
-#'     Playground](https://aws.amazon.com/blogs/aws/the-aws-web-identity-federation-playground/).
-#'     Walk through the process of authenticating through Login with
-#'     Amazon, Facebook, or Google, getting temporary security credentials,
-#'     and then using those credentials to make a request to Amazon Web
-#'     Services.
+#' - [Web Identity Federation
+#'   Playground](https://aws.amazon.com/blogs/aws/the-aws-web-identity-federation-playground/).
+#'   Walk through the process of authenticating through Login with Amazon,
+#'   Facebook, or Google, getting temporary security credentials, and then
+#'   using those credentials to make a request to Amazon Web Services.
 #' 
-#' -   [Amazon Web Services SDK for iOS Developer
-#'     Guide](https://aws.amazon.com/amplify/) and [Amazon Web Services SDK
-#'     for Android Developer Guide](https://aws.amazon.com/amplify/). These
-#'     toolkits contain sample apps that show how to invoke the identity
-#'     providers. The toolkits then show how to use the information from
-#'     these providers to get and use temporary security credentials.
+#' - [Amazon Web Services SDK for iOS Developer
+#'   Guide](https://aws.amazon.com/amplify/) and [Amazon Web Services SDK
+#'   for Android Developer Guide](https://aws.amazon.com/amplify/). These
+#'   toolkits contain sample apps that show how to invoke the identity
+#'   providers. The toolkits then show how to use the information from
+#'   these providers to get and use temporary security credentials.
 #' 
-#' -   [Web Identity Federation with Mobile
-#'     Applications](https://aws.amazon.com/articles/web-identity-federation-with-mobile-applications/).
-#'     This article discusses web identity federation and shows an example
-#'     of how to use web identity federation to get access to content in
-#'     Amazon S3.
+#' - [Web Identity Federation with Mobile
+#'   Applications](https://aws.amazon.com/articles/web-identity-federation-with-mobile-applications/).
+#'   This article discusses web identity federation and shows an example of
+#'   how to use web identity federation to get access to content in Amazon
+#'   S3.
 #'
 #' @usage
 #' sts_assume_role_with_web_identity(RoleArn, RoleSessionName,
@@ -1040,8 +1041,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (``U+0020`` through ``U+00FF``). It can also include the tab
-#' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
+#' character list (`U+0020` through `U+00FF`). It can also include the tab
+#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
@@ -1057,7 +1058,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' administrator set the maximum session duration to 6 hours, your
 #' operation fails. To learn how to view the maximum value for your role,
 #' see [View the Maximum Session Duration Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*.
 #' 
 #' By default, the value is set to `3600` seconds.
@@ -1136,7 +1137,8 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
   output <- .sts$assume_role_with_web_identity_output()
@@ -1179,19 +1181,19 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' 
 #' The decoded message includes the following type of information:
 #' 
-#' -   Whether the request was denied due to an explicit deny or due to the
-#'     absence of an explicit allow. For more information, see [Determining
-#'     Whether a Request is Allowed or
-#'     Denied](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow)
-#'     in the *IAM User Guide*.
+#' - Whether the request was denied due to an explicit deny or due to the
+#'   absence of an explicit allow. For more information, see [Determining
+#'   Whether a Request is Allowed or
+#'   Denied](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-denyallow)
+#'   in the *IAM User Guide*.
 #' 
-#' -   The principal who made the request.
+#' - The principal who made the request.
 #' 
-#' -   The requested action.
+#' - The requested action.
 #' 
-#' -   The requested resource.
+#' - The requested resource.
 #' 
-#' -   The values of condition keys in the context of the user's request.
+#' - The values of condition keys in the context of the user's request.
 #'
 #' @usage
 #' sts_decode_authorization_message(EncodedMessage)
@@ -1232,7 +1234,8 @@ sts_decode_authorization_message <- function(EncodedMessage) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$decode_authorization_message_input(EncodedMessage = EncodedMessage)
   output <- .sts$decode_authorization_message_output()
@@ -1310,7 +1313,8 @@ sts_get_access_key_info <- function(AccessKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_access_key_info_input(AccessKeyId = AccessKeyId)
   output <- .sts$get_access_key_info_output()
@@ -1335,7 +1339,7 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #' operation. Permissions are not required because the same information is
 #' returned when access is denied. To view an example response, see [I Am
 #' Not Authorized to Perform:
-#' iam:DeleteVirtualMFADevice](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_access-denied-delete-mfa)
+#' iam:DeleteVirtualMFADevice](https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_access-denied-delete-mfa)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -1386,7 +1390,8 @@ sts_get_caller_identity <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_caller_identity_input()
   output <- .sts$get_caller_identity_output()
@@ -1452,11 +1457,11 @@ sts_get_caller_identity <- function() {
 #' [`get_federation_token`][sts_get_federation_token] in any Amazon Web
 #' Services service with the following exceptions:
 #' 
-#' -   You cannot call any IAM operations using the CLI or the Amazon Web
-#'     Services API. This limitation does not apply to console sessions.
+#' - You cannot call any IAM operations using the CLI or the Amazon Web
+#'   Services API. This limitation does not apply to console sessions.
 #' 
-#' -   You cannot call any STS operations except
-#'     [`get_caller_identity`][sts_get_caller_identity].
+#' - You cannot call any STS operations except
+#'   [`get_caller_identity`][sts_get_caller_identity].
 #' 
 #' You can use temporary credentials for single sign-on (SSO) to the
 #' console.
@@ -1567,8 +1572,8 @@ sts_get_caller_identity <- function() {
 #' The plaintext that you use for both inline and managed session policies
 #' can't exceed 2,048 characters. The JSON policy characters can be any
 #' ASCII character from the space character to the end of the valid
-#' character list (``U+0020`` through ``U+00FF``). It can also include the tab
-#' (``U+0009``), linefeed (``U+000A``), and carriage return (``U+000D``) characters.
+#' character list (`U+0020` through `U+00FF`). It can also include the tab
+#' (`U+0009`), linefeed (`U+000A`), and carriage return (`U+000D`) characters.
 #' 
 #' An Amazon Web Services conversion compresses the passed inline session
 #' policy, managed policy ARNs, and session tags into a packed binary
@@ -1726,7 +1731,8 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds, Tags = Tags)
   output <- .sts$get_federation_token_output()
@@ -1787,12 +1793,11 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 #' [`get_session_token`][sts_get_session_token] can be used to make API
 #' calls to any Amazon Web Services service with the following exceptions:
 #' 
-#' -   You cannot call any IAM API operations unless MFA authentication
-#'     information is included in the request.
+#' - You cannot call any IAM API operations unless MFA authentication
+#'   information is included in the request.
 #' 
-#' -   You cannot call any STS API *except*
-#'     [`assume_role`][sts_assume_role] or
-#'     [`get_caller_identity`][sts_get_caller_identity].
+#' - You cannot call any STS API *except* [`assume_role`][sts_assume_role]
+#'   or [`get_caller_identity`][sts_get_caller_identity].
 #' 
 #' The credentials that [`get_session_token`][sts_get_session_token]
 #' returns are based on permissions associated with the IAM user whose
@@ -1894,7 +1899,8 @@ sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_session_token_input(DurationSeconds = DurationSeconds, SerialNumber = SerialNumber, TokenCode = TokenCode)
   output <- .sts$get_session_token_output()

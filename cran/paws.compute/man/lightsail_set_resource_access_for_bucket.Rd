@@ -19,8 +19,8 @@ resource.}
 The following access settings are available:
 \itemize{
 \item \code{allow} - Allows access to the bucket and its objects.
-\item \code{deny} - Denies access to the bucket and its objects. Use this
-setting to remove access for a resource previously set to \code{allow}.
+\item \code{deny} - Denies access to the bucket and its objects. Use this setting
+to remove access for a resource previously set to \code{allow}.
 }}
 }
 \description{

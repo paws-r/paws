@@ -15,15 +15,15 @@ NULL
 #' 
 #' Amazon DocumentDB elastic-clusters were created to:
 #' 
-#' -   provide a solution for customers looking for a database that
-#'     provides virtually limitless scale with rich query capabilities and
-#'     MongoDB API compatibility.
+#' - provide a solution for customers looking for a database that provides
+#'   virtually limitless scale with rich query capabilities and MongoDB API
+#'   compatibility.
 #' 
-#' -   give customers higher connection limits, and to reduce downtime from
-#'     patching.
+#' - give customers higher connection limits, and to reduce downtime from
+#'   patching.
 #' 
-#' -   continue investing in a cloud-native, elastic, and class leading
-#'     architecture for JSON workloads.
+#' - continue investing in a cloud-native, elastic, and class leading
+#'   architecture for JSON workloads.
 #'
 #' @param
 #' config

@@ -12,7 +12,7 @@ lightsail_disable_add_on(addOnType, resourceName)
 \item{resourceName}{[required] The name of the source resource for which to disable the add-on.}
 }
 \description{
-Disables an add-on for an Amazon Lightsail resource. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
+Disables an add-on for an Amazon Lightsail resource. For more information, see the Amazon Lightsail Developer Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/lightsail_disable_add_on/} for full documentation.
 }

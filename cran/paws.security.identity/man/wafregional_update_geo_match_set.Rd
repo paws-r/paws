@@ -22,9 +22,9 @@ data types:
 \item GeoMatchSetUpdate: Contains \code{Action} and \code{GeoMatchConstraint}
 \item GeoMatchConstraint: Contains \code{Type} and \code{Value}
 
-You can have only one \code{Type} and \code{Value} per \code{GeoMatchConstraint}.
-To add multiple countries, include multiple \code{GeoMatchSetUpdate}
-objects in your request.
+You can have only one \code{Type} and \code{Value} per \code{GeoMatchConstraint}. To
+add multiple countries, include multiple \code{GeoMatchSetUpdate} objects
+in your request.
 }}
 }
 \description{

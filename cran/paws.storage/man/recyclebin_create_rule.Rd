@@ -46,7 +46,7 @@ tagged.}
 \item{LockConfiguration}{Information about the retention rule lock configuration.}
 }
 \description{
-Creates a Recycle Bin retention rule. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-rules.html#recycle-bin-create-rule}{Create Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Creates a Recycle Bin retention rule. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin-working-with-rules.html#recycle-bin-create-rule}{Create Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/recyclebin_create_rule/} for full documentation.
 }
