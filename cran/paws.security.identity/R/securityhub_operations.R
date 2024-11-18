@@ -2895,8 +2895,8 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 #' administrator can create a configuration policy in which Security Hub is
 #' enabled and associate the policy with new organization accounts.
 #' @param AutoEnableStandards Whether to automatically enable Security Hub [default
-#' standards](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-enable-disable.html)
-#' in new member accounts when they join the organization.
+#' standards](https://docs.aws.amazon.com/securityhub/latest/userguide/) in
+#' new member accounts when they join the organization.
 #' 
 #' The default value of this parameter is equal to `DEFAULT`.
 #' 

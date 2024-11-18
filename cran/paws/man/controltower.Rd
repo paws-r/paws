@@ -57,7 +57,7 @@ Amazon Web Services Control Tower offers application programming
 interface (API) operations that support programmatic interaction with
 these types of resources:
 \itemize{
-\item \href{https://docs.aws.amazon.com/controltower/latest/userguide/controls.html}{\emph{Controls}}
+\item \href{https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html}{\emph{Controls}}
 \itemize{
 \item \code{disable_control}
 \item \code{enable_control}

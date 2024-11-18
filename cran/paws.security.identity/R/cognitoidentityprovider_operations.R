@@ -101,7 +101,7 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -258,7 +258,7 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -694,7 +694,7 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' - Define auth challenge
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -1011,7 +1011,7 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -1178,7 +1178,7 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' `clientMetadata` value to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -1462,7 +1462,7 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' value to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -1686,7 +1686,7 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -1769,7 +1769,7 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -2062,7 +2062,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' Lambda function.
 #' 
 #' For more information on using the Lambda API to add permission, see
-#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/dg/API_AddPermission.html)
+#' [AddPermission](https://docs.aws.amazon.com/lambda/latest/api/API_AddPermission.html)
 #' .
 #' 
 #' For adding permission using the CLI, see
@@ -3029,7 +3029,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' confirmation code that is required to change the user's password
 #'
 #' @description
-#' Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the `Username` parameter, you can use the username or user alias. The method used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more information, see [Recovering User Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html) in the *Amazon Cognito Developer Guide*. To use the confirmation code for resetting the password, call [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password].
+#' Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the `Username` parameter, you can use the username or user alias. The method used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more information, see [Recovering User Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/managing-users-passwords.html) in the *Amazon Cognito Developer Guide*. To use the confirmation code for resetting the password, call [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password].
 #'
 #' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forgot_password/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forgot_password/) for full documentation.
 #'
@@ -3063,7 +3063,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -3386,7 +3386,7 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -3587,7 +3587,7 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' - Define auth challenge
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -4105,7 +4105,7 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -4258,7 +4258,7 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -4609,7 +4609,7 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito
@@ -5067,7 +5067,7 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' to enhance your workflow for your specific needs.
 #' 
 #' For more information, see [Customizing user pool Workflows with Lambda
-#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html)
+#' Triggers](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' When you use the ClientMetadata parameter, remember that Amazon Cognito

@@ -1916,7 +1916,7 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' The `BYOL_REGULAR_BYOP` and `BYOL_GRAPHICS_G4DN_BYOP` values are only
 #' supported by Amazon WorkSpaces Core. Contact your account team to be
 #' allow-listed to use these values. For more information, see [Amazon
-#' WorkSpaces Core](https://aws.amazon.com/workspaces/core/).
+#' WorkSpaces Core](https://aws.amazon.com/workspaces-family/core/).
 #' @param ImageName &#91;required&#93; The name of the WorkSpace image.
 #' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
 #' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
@@ -2276,7 +2276,7 @@ workspaces_modify_streaming_properties <- function(ResourceId, StreamingProperti
 #' their WorkSpaces
 #'
 #' @description
-#' Specifies which devices and operating systems users can use to access their WorkSpaces. For more information, see [Control Device Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access).
+#' Specifies which devices and operating systems users can use to access their WorkSpaces. For more information, see [Control Device Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/#control-device-access).
 #'
 #' See [https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_access_properties/](https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_access_properties/) for full documentation.
 #'

@@ -114,7 +114,7 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #' Creates a view that users can query by using the Search operation
 #'
 #' @description
-#' Creates a view that users can query by using the [`search`][resourceexplorer_search] operation. Results from queries that you make using this view include only resources that match the view's `Filters`. For more information about Amazon Web Services Resource Explorer views, see [Managing views](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views.html) in the *Amazon Web Services Resource Explorer User Guide*.
+#' Creates a view that users can query by using the [`search`][resourceexplorer_search] operation. Results from queries that you make using this view include only resources that match the view's `Filters`. For more information about Amazon Web Services Resource Explorer views, see [Managing views](https://docs.aws.amazon.com/resource-explorer/latest/userguide/) in the *Amazon Web Services Resource Explorer User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/resourceexplorer_create_view/](https://www.paws-r-sdk.com/docs/resourceexplorer_create_view/) for full documentation.
 #'

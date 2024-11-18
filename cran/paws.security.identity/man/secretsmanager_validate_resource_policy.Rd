@@ -14,7 +14,7 @@ validate.}
 \item{ResourcePolicy}{[required] A JSON-formatted string that contains an Amazon Web Services
 resource-based policy. The policy in the string identifies who can
 access or manage this secret and its versions. For example policies, see
-\href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html}{Permissions policy examples}.}
+\href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html}{Permissions policy examples}.}
 }
 \description{
 Validates that a resource policy does not grant a wide range of principals access to your secret. A resource-based policy is optional for secrets.

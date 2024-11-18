@@ -17,7 +17,7 @@ which you can get using
 \code{LIVE}.}
 
 \item{EventObject}{[required] The event object to test the function with. For more information about
-the structure of the event object, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function}{Testing functions}
+the structure of the event object, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/create-function.html#test-function}{Testing functions}
 in the \emph{Amazon CloudFront Developer Guide}.}
 }
 \description{

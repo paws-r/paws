@@ -6,7 +6,7 @@ NULL
 #' Converts a recovery point to a snapshot
 #'
 #' @description
-#' Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html).
+#' Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/) for full documentation.
 #'
@@ -236,7 +236,7 @@ redshiftserverless_create_scheduled_action <- function(enabled = NULL, endTime =
 #' Creates a snapshot of all databases in a namespace
 #'
 #' @description
-#' Creates a snapshot of all databases in a namespace. For more information about snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html).
+#' Creates a snapshot of all databases in a namespace. For more information about snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot/) for full documentation.
 #'

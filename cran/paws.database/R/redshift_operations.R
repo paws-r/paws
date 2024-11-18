@@ -4941,8 +4941,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' must also specify the number of nodes parameter.
 #' 
 #' For more information about resizing clusters, go to [Resizing Clusters
-#' in Amazon
-#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html)
+#' in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: `dc2.large` | `dc2.8xlarge` | `ra3.xlplus` | `ra3.4xlarge`
@@ -4951,8 +4950,7 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' nodes, you must also specify the node type parameter.
 #' 
 #' For more information about resizing clusters, go to [Resizing Clusters
-#' in Amazon
-#' Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/managing-cluster-operations.html)
+#' in Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/mgmt/)
 #' in the *Amazon Redshift Cluster Management Guide*.
 #' 
 #' Valid Values: Integer greater than `0`.
@@ -6312,7 +6310,7 @@ redshift_resume_cluster <- function(ClusterIdentifier) {
 #' previously authorized IP range or Amazon EC2 security group
 #'
 #' @description
-#' Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group. To add an ingress rule, see [`authorize_cluster_security_group_ingress`][redshift_authorize_cluster_security_group_ingress]. For information about managing security groups, go to [Amazon Redshift Cluster Security Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html) in the *Amazon Redshift Cluster Management Guide*.
+#' Revokes an ingress rule in an Amazon Redshift security group for a previously authorized IP range or Amazon EC2 security group. To add an ingress rule, see [`authorize_cluster_security_group_ingress`][redshift_authorize_cluster_security_group_ingress]. For information about managing security groups, go to [Amazon Redshift Cluster Security Groups](https://docs.aws.amazon.com/redshift/latest/mgmt/) in the *Amazon Redshift Cluster Management Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshift_revoke_cluster_security_group_ingress/](https://www.paws-r-sdk.com/docs/redshift_revoke_cluster_security_group_ingress/) for full documentation.
 #'

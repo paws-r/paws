@@ -349,7 +349,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' 
 #'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html)
 #' 
 #'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
@@ -452,7 +452,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' If you create a change set for a new stack, CloudFormation creates a
 #' stack with a unique stack ID, but no template or resources. The stack
 #' will be in the
-#' [REVIEW_IN_PROGRESS](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
+#' [REVIEW_IN_PROGRESS](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/service_code_examples.html#d0e11995)
 #' state until you execute the change set.
 #' 
 #' By default, CloudFormation specifies `UPDATE`. You can't use the
@@ -642,7 +642,7 @@ cloudformation_create_generated_template <- function(Resources = NULL, Generated
 #' 
 #'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html)
 #' 
 #'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
@@ -970,7 +970,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html)
 #' 
 #'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
@@ -1339,7 +1339,7 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #' existing, saved stack to a new stack set.
 #' 
 #' For more information, see [Stack set operation
-#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options).
 #' @param OperationId The unique identifier for this stack set operation.
 #' 
 #' If you don't specify an operation ID, the SDK generates one
@@ -2352,7 +2352,7 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' 
 #' For more information about maximum concurrent accounts and failure
 #' tolerance, see [Stack set operation
-#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options).
 #' @param OperationId *The ID of the stack set operation.*
 #' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
 #' account administrator in the organization's management account or as a
@@ -2731,7 +2731,7 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #' 
 #' For more information about maximum concurrent accounts and failure
 #' tolerance, see [Stack set operation
-#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html#stackset-ops-options).
 #' @param OperationId A unique, user defined, identifier for the stack set operation.
 #' @param CallAs By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
@@ -3893,7 +3893,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' contain a trust relationship with the CloudFormation service principal
 #' (`resources.cloudformation.amazonaws.com`). For more information about
 #' adding trust relationships, see [Modifying a role trust
-#' policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-managingrole-editing-console.html#roles-managingrole_edit-trust-policy)
+#' policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage.html#roles-managingrole_edit-trust-policy)
 #' in the *Identity and Access Management User Guide*.
 #' 
 #' If your extension calls Amazon Web Services APIs in any of its handlers,
@@ -4446,7 +4446,7 @@ cloudformation_update_generated_template <- function(GeneratedTemplateName, NewG
 #' 
 #'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html)
 #' 
 #'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 
@@ -4781,7 +4781,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'   - [AWS::IAM::InstanceProfile](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html)
 #' 
-#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/)
+#'   - [AWS::IAM::Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html)
 #' 
 #'   - [AWS::IAM::Role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html)
 #' 

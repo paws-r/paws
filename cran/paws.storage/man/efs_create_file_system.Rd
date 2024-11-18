@@ -82,8 +82,8 @@ in the \emph{Amazon EFS User Guide}.}
 \item{AvailabilityZoneName}{Used to create a One Zone file system. It specifies the Amazon Web
 Services Availability Zone in which to create the file system. Use the
 format \verb{us-east-1a} to specify the Availability Zone. For more
-information about One Zone file systems, see \href{https://docs.aws.amazon.com/efs/latest/ug/storage-classes.html}{Using EFS storage classes}
-in the \emph{Amazon EFS User Guide}.
+information about One Zone file systems, see \href{https://docs.aws.amazon.com/efs/latest/ug/}{Using EFS storage classes} in the \emph{Amazon EFS
+User Guide}.
 
 One Zone file systems are not available in all Availability Zones in
 Amazon Web Services Regions where Amazon EFS is available.}

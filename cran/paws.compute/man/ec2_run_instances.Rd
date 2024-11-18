@@ -83,7 +83,7 @@ same request.}
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}
+\href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{KeyName}{The name of the key pair. You can create a key pair using
@@ -120,7 +120,7 @@ to the Amazon Web Services Resource Center and search for the kernel ID.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{PV-GRUB}
+\href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{PV-GRUB}
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{SecurityGroupIds}{The IDs of the security groups. You can create a security group using
@@ -152,7 +152,7 @@ base64-encoding might be performed for you. For more information, see
 of the request. If you do not specify a client token, a randomly
 generated token is used for the request to ensure idempotency.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.
+For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring Idempotency}.
 
 Constraints: Maximum 64 ASCII characters}
 

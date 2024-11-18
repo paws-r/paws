@@ -35,7 +35,7 @@ state continue to progress normally. Managed compute environments in the
 Compute environments in a \code{DISABLED} state may continue to incur billing
 charges. To prevent additional charges, turn off and then delete the
 compute environment. For more information, see
-\href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environment_parameters.html#compute_environment_state}{State}
+\href{https://docs.aws.amazon.com/batch/latest/APIReference/API_JobQueueDetail.html#compute_environment_state}{State}
 in the \emph{Batch User Guide}.
 
 When an instance is idle, the instance scales down to the \code{minvCpus}
@@ -57,7 +57,7 @@ in the \emph{Batch User Guide}.}
 
 \item{serviceRole}{The full Amazon Resource Name (ARN) of the IAM role that allows Batch to
 make calls to other Amazon Web Services services on your behalf. For
-more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html}{Batch service IAM role}
+more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-service-linked-roles.html}{Batch service IAM role}
 in the \emph{Batch User Guide}.
 
 If the compute environment has a service-linked role, it can't be

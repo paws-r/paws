@@ -27,7 +27,7 @@ key with a different tag value, Application Auto Scaling replaces the
 current tag value with the specified one.
 
 For information about the rules that apply to tag keys and tag values,
-see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{User-defined tag restrictions}
+see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/}{User-defined tag restrictions}
 in the \emph{Amazon Web Services Billing User Guide}.}
 }
 \description{

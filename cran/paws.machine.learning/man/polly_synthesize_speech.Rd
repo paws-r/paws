@@ -23,7 +23,7 @@ speech synthesis. Provide an engine that is supported by the voice you
 select. If you don't provide an engine, the standard engine is selected
 by default. If a chosen voice isn't supported by the standard engine,
 this will result in an error. For information on Amazon Polly voices and
-which voices are available for each engine, see \href{https://docs.aws.amazon.com/polly/latest/dg/voicelist.html}{Available Voices}.
+which voices are available for each engine, see \href{https://docs.aws.amazon.com/polly/latest/dg/available-voices.html}{Available Voices}.
 
 Type: String
 

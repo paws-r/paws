@@ -20,7 +20,7 @@ bedrockruntime_invoke_model_with_response_stream(
 \code{contentType} in the header. You must provide the body in JSON format.
 To see the format and content of the request and response bodies for
 different models, refer to \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html}{Inference parameters}.
-For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html}{Run inference}
+For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html}{Run inference}
 in the Bedrock User Guide.}
 
 \item{contentType}{The MIME type of the input data in the request. You must specify

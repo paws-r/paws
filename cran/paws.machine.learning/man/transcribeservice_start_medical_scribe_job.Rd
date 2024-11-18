@@ -32,7 +32,8 @@ bucket.
 
 Note that the role specified in the \code{DataAccessRoleArn} request
 parameter must have permission to use the specified location. You can
-change Amazon S3 permissions using the \href{https://console.aws.amazon.com/s3/home}{Amazon Web Services Management Console}. See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.}
+change Amazon S3 permissions using the Amazon Web Services Management
+Console. See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.}
 
 \item{OutputEncryptionKMSKeyId}{The KMS key you want to use to encrypt your Medical Scribe output.
 

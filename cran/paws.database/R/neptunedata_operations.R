@@ -940,7 +940,7 @@ neptunedata_get_propertygraph_stream <- function(limit = NULL, iteratorType = NU
     http_path = "/propertygraph/stream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = FALSE
   )
   input <- .neptunedata$get_propertygraph_stream_input(limit = limit, iteratorType = iteratorType, commitNum = commitNum, opNum = opNum, encoding = encoding)
   output <- .neptunedata$get_propertygraph_stream_output()
@@ -1094,7 +1094,7 @@ neptunedata_get_sparql_stream <- function(limit = NULL, iteratorType = NULL, com
     http_path = "/sparql/stream",
     host_prefix = "",
     paginator = list(),
-    stream_api = TRUE
+    stream_api = FALSE
   )
   input <- .neptunedata$get_sparql_stream_input(limit = limit, iteratorType = iteratorType, commitNum = commitNum, opNum = opNum, encoding = encoding)
   output <- .neptunedata$get_sparql_stream_output()

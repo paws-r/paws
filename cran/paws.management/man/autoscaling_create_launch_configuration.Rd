@@ -49,7 +49,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.}
 
 \item{UserData}{The user data to make available to the launched EC2 instances. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}
-(Linux) and \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html}{Instance metadata and user data}
+(Linux) and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}
 (Windows). If you are using a command line tool, base64-encoding is
 performed for you, and you can load the text from a file. Otherwise, you
 must provide base64-encoded text. User data is limited to 16 KB.}
@@ -73,13 +73,13 @@ If you specify \code{InstanceId}, an \code{InstanceType} is not required.}
 \item{KernelId}{The ID of the kernel associated with the AMI.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{User provided kernels}
+more information, see \href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{User provided kernels}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{RamdiskId}{The ID of the RAM disk to select.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html}{User provided kernels}
+more information, see \href{https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html}{User provided kernels}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{BlockDeviceMappings}{The block device mapping entries that define the block devices to attach

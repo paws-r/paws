@@ -183,7 +183,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' Amazon Web Services Systems Manager
 #'
 #' @description
-#' Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager capabilities. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see [Setting up Amazon Web Services Systems Manager for hybrid and multicloud environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html) in the *Amazon Web Services Systems Manager User Guide*.
+#' Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager capabilities. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see [Setting up Amazon Web Services Systems Manager for hybrid and multicloud environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-hybrid-multicloud.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ssm_create_activation/](https://www.paws-r-sdk.com/docs/ssm_create_activation/) for full documentation.
 #'
@@ -201,7 +201,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' permissions for the Amazon Web Services Systems Manager service
 #' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
 #' service role for a hybrid and multicloud
-#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
+#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can't specify an IAM service-linked role for this parameter. You
@@ -6658,7 +6658,7 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' permissions for the Amazon Web Services Systems Manager service
 #' principal `ssm.amazonaws.com`. For more information, see [Create an IAM
 #' service role for a hybrid and multicloud
-#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-service-role.html)
+#' environment](https://docs.aws.amazon.com/systems-manager/latest/userguide/hybrid-multicloud-service-role.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' 
 #' You can't specify an IAM service-linked role for this parameter. You

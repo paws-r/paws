@@ -6,7 +6,7 @@ NULL
 #' A tag is a key-value pair where the key and value are case-sensitive
 #'
 #' @description
-#' A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
+#' A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_add_tags_to_resource/](https://www.paws-r-sdk.com/docs/elasticache_add_tags_to_resource/) for full documentation.
 #'
@@ -83,7 +83,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' Apply the service update
 #'
 #' @description
-#' Apply the service update. For more information on service updates and applying them, see [Applying Service Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/).
+#' Apply the service update. For more information on service updates and applying them, see [Applying Service Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_batch_apply_update_action/](https://www.paws-r-sdk.com/docs/elasticache_batch_apply_update_action/) for full documentation.
 #'
@@ -116,7 +116,7 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
 #' Stop the service update
 #'
 #' @description
-#' Stop the service update. For more information on service updates and stopping them, see [Stopping Service Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/).
+#' Stop the service update. For more information on service updates and stopping them, see [Stopping Service Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_batch_stop_update_action/](https://www.paws-r-sdk.com/docs/elasticache_batch_stop_update_action/) for full documentation.
 #'
@@ -236,11 +236,11 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' When using this parameter to export a snapshot, be sure Amazon
 #' ElastiCache has the needed permissions to this S3 bucket. For more
 #' information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#' Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
+#' Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html#backups-exporting-grant-access)
 #' in the *Amazon ElastiCache User Guide*.
 #' 
 #' For more information, see [Exporting a
-#' Snapshot](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
+#' Snapshot](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html)
 #' in the *Amazon ElastiCache User Guide*.
 #' @param KmsKeyId The ID of the KMS key used to encrypt the target snapshot.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
@@ -352,7 +352,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
 #'     For region availability, see [Supported Node
-#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'     **M6g node types** (available only for Redis OSS engine version
 #'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -406,7 +406,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'     For region availability, see [Supported Node
-#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'     **R6g node types** (available only for Redis OSS engine version
 #'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -454,7 +454,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing cluster or
 #' replication group and create it anew with the earlier engine version.
@@ -470,7 +470,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' If you're going to launch your cluster in an Amazon VPC, you need to
 #' create a subnet group before you start creating a cluster. For more
 #' information, see [Subnets and Subnet
-#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
+#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SubnetGroups.html).
 #' @param CacheSecurityGroupNames A list of security group names to associate with this cluster.
 #' 
 #' Use this parameter only when you are creating a cluster outside of an
@@ -538,7 +538,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'   the AUTH token.
 #' 
 #' For more information, see [AUTH
-#' password](https://redis.io/commands/auth/) at
+#' password](https://redis.io/docs/latest/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
@@ -702,7 +702,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' secure cross-region replication
 #'
 #' @description
-#' Global Datastore for Redis OSS offers fully managed, fast, reliable and secure cross-region replication. Using Global Datastore for Redis OSS, you can create cross-region read replica clusters for ElastiCache (Redis OSS) to enable low-latency reads and disaster recovery across regions. For more information, see [Replication Across Regions Using Global Datastore](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html).
+#' Global Datastore for Redis OSS offers fully managed, fast, reliable and secure cross-region replication. Using Global Datastore for Redis OSS, you can create cross-region read replica clusters for ElastiCache (Redis OSS) to enable low-latency reads and disaster recovery across regions. For more information, see [Replication Across Regions Using Global Datastore](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Redis-Global-Datastore.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_create_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_create_global_replication_group/) for full documentation.
 #'
@@ -716,7 +716,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' For a full list of Amazon Regions and their respective Global datastore
 #' iD prefixes, see [Using the Amazon CLI with Global
-#' datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html)
+#' datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Redis-Global-Datastores-CLI.html)
 #' .
 #' @param GlobalReplicationGroupDescription Provides details of the Global datastore
 #' @param PrimaryReplicationGroupId &#91;required&#93; The name of the primary cluster that accepts writes and will replicate
@@ -779,7 +779,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' Default: false
 #' @param MultiAZEnabled A flag indicating if you have Multi-AZ enabled to enhance fault
 #' tolerance. For more information, see [Minimizing Downtime:
-#' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html).
+#' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/AutoFailover.html).
 #' @param NumCacheClusters The number of clusters this replication group initially has.
 #' 
 #' This parameter is not used if there is more than one node group (shard).
@@ -843,7 +843,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
 #'     For region availability, see [Supported Node
-#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'     **M6g node types** (available only for Redis OSS engine version
 #'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -897,7 +897,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'     For region availability, see [Supported Node
-#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'     **R6g node types** (available only for Redis OSS engine version
 #'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -946,7 +946,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement))
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement))
 #' in the *ElastiCache User Guide*, but you cannot downgrade to an earlier
 #' engine version. If you want to use an earlier engine version, you must
 #' delete the existing cluster or replication group and create it anew with
@@ -969,7 +969,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' If you're going to launch your cluster in an Amazon VPC, you need to
 #' create a subnet group before you start creating a cluster. For more
 #' information, see [Subnets and Subnet
-#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
+#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SubnetGroups.html).
 #' @param CacheSecurityGroupNames A list of cache security group names to associate with this replication
 #' group.
 #' @param SecurityGroupIds One or more Amazon VPC security groups associated with this replication
@@ -1060,7 +1060,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'   the AUTH token.
 #' 
 #' For more information, see [AUTH
-#' password](https://redis.io/commands/auth/) at
+#' password](https://redis.io/docs/latest/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
@@ -1095,7 +1095,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' @param DataTieringEnabled Enables data tiering. Data tiering is only supported for replication
 #' groups using the r6gd node type. This parameter must be set to true when
 #' using r6gd nodes. For more information, see [Data
-#' tiering](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html).
+#' tiering](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/data-tiering.html).
 #' @param NetworkType Must be either `ipv4` | `ipv6` | `dual_stack`. IPv6 is supported for
 #' workloads using Redis OSS engine version 6.2 onward or Memcached engine
 #' version 1.6.6 on all instances built on the [Nitro
@@ -1296,7 +1296,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' For Redis OSS engine version 6
 #'
 #' @description
-#' For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+#' For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_create_user/](https://www.paws-r-sdk.com/docs/elasticache_create_user/) for full documentation.
 #'
@@ -1336,7 +1336,7 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' For Redis OSS engine version 6
 #'
 #' @description
-#' For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user group. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html)
+#' For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user group. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html)
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_create_user_group/](https://www.paws-r-sdk.com/docs/elasticache_create_user_group/) for full documentation.
 #'
@@ -1781,7 +1781,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #' For Redis OSS engine version 6
 #'
 #' @description
-#' For Redis OSS engine version 6.0 onwards: Deletes a user. The user will be removed from all user groups and in turn removed from all replication groups. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+#' For Redis OSS engine version 6.0 onwards: Deletes a user. The user will be removed from all user groups and in turn removed from all replication groups. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_delete_user/](https://www.paws-r-sdk.com/docs/elasticache_delete_user/) for full documentation.
 #'
@@ -1812,7 +1812,7 @@ elasticache_delete_user <- function(UserId) {
 #' For Redis OSS engine version 6
 #'
 #' @description
-#' For Redis OSS engine version 6.0 onwards: Deletes a user group. The user group must first be disassociated from the replication group before it can be deleted. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+#' For Redis OSS engine version 6.0 onwards: Deletes a user group. The user group must first be disassociated from the replication group before it can be deleted. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_delete_user_group/](https://www.paws-r-sdk.com/docs/elasticache_delete_user_group/) for full documentation.
 #'
@@ -2341,7 +2341,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'     `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
 #'     For region availability, see [Supported Node
-#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'     **M6g node types** (available only for Redis OSS engine version
 #'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -2395,7 +2395,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'     `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'     For region availability, see [Supported Node
-#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'     **R6g node types** (available only for Redis OSS engine version
 #'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -2508,7 +2508,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'     `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
 #'     For region availability, see [Supported Node
-#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'     **M6g node types** (available only for Redis OSS engine version
 #'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -2562,7 +2562,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'     `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'     For region availability, see [Supported Node
-#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'     Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'     **R6g node types** (available only for Redis OSS engine version
 #'     5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -3320,7 +3320,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' different Availability Zones. For guidance on how to move existing
 #' Memcached nodes to different Availability Zones, see the **Availability
 #' Zone Considerations** section of [Cache Node Considerations for
-#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNodes.SupportedTypes.html).
+#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html).
 #' 
 #' **Impact of new add/remove requests upon pending requests**
 #' 
@@ -3428,7 +3428,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing cluster and
 #' create it anew with the earlier engine version.
@@ -3457,7 +3457,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' - Cannot contain any of the following characters: '/', '"', or '@@', '%'
 #' 
 #' For more information, see AUTH password at
-#' [AUTH](https://redis.io/commands/auth/).
+#' [AUTH](https://redis.io/docs/latest/commands/auth/).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -3468,7 +3468,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' - DELETE - allowed only when transitioning to RBAC
 #' 
 #' For more information, see [Authenticating Users with Redis OSS
-#' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+#' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/auth.html)
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
 #' @param IpDiscovery The network type you choose when modifying a cluster, either `ipv4` |
 #' `ipv6`. IPv6 is supported for workloads using Redis OSS engine version
@@ -3703,7 +3703,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing replication
 #' group and create it anew with the earlier engine version.
@@ -3739,7 +3739,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' - Cannot contain any of the following characters: '/', '"', or '@@', '%'
 #' 
 #' For more information, see AUTH password at
-#' [AUTH](https://redis.io/commands/auth/).
+#' [AUTH](https://redis.io/docs/latest/commands/auth/).
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -3750,7 +3750,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' - DELETE - allowed only when transitioning to RBAC
 #' 
 #' For more information, see [Authenticating Users with Redis OSS
-#' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+#' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/auth.html)
 #' @param UserGroupIdsToAdd The ID of the user group you are associating with the replication group.
 #' @param UserGroupIdsToRemove The ID of the user group to disassociate from the replication group,
 #' meaning the users in the group no longer can access the replication
@@ -3994,7 +3994,7 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
 #' Allows you to purchase a reserved cache node offering
 #'
 #' @description
-#' Allows you to purchase a reserved cache node offering. Reserved nodes are not eligible for cancellation and are non-refundable. For more information, see [Managing Costs with Reserved Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/) for Redis OSS or [Managing Costs with Reserved Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/) for Memcached.
+#' Allows you to purchase a reserved cache node offering. Reserved nodes are not eligible for cancellation and are non-refundable. For more information, see [Managing Costs with Reserved Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/) for Redis OSS or [Managing Costs with Reserved Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/) for Memcached.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_purchase_reserved_cache_nodes_offering/](https://www.paws-r-sdk.com/docs/elasticache_purchase_reserved_cache_nodes_offering/) for full documentation.
 #'
@@ -4106,7 +4106,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' Removes the tags identified by the TagKeys list from the named resource
 #'
 #' @description
-#' Removes the tags identified by the `TagKeys` list from the named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
+#' Removes the tags identified by the `TagKeys` list from the named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/elasticache_remove_tags_from_resource/](https://www.paws-r-sdk.com/docs/elasticache_remove_tags_from_resource/) for full documentation.
 #'

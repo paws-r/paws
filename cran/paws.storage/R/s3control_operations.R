@@ -1728,7 +1728,7 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
 #' Gets an Amazon S3 on Outposts bucket
 #'
 #' @description
-#' Gets an Amazon S3 on Outposts bucket. For more information, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html) in the *Amazon S3 User Guide*.
+#' Gets an Amazon S3 on Outposts bucket. For more information, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_bucket/](https://www.paws-r-sdk.com/docs/s3control_get_bucket/) for full documentation.
 #'

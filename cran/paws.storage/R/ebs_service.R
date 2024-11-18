@@ -28,7 +28,7 @@ NULL
 #' information about the elements that make up the EBS direct APIs, and
 #' examples of how to use them effectively, see [Accessing the Contents of
 #' an Amazon EBS
-#' Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html)
+#' Snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-accessing-snapshot.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*. For more information
 #' about the supported Amazon Web Services Regions, endpoints, and service
 #' quotas for the EBS direct APIs, see [Amazon Elastic Block Store

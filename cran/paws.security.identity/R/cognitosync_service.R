@@ -24,9 +24,8 @@ NULL
 #' If you want to use Cognito Sync in an Android or iOS application, you
 #' will probably want to make API calls via the AWS Mobile SDK. To learn
 #' more, see the [Developer Guide for
-#' Android](https://docs.amplify.aws/start/q/integration/android/) and the
-#' [Developer Guide for
-#' iOS](https://docs.amplify.aws/start/q/integration/ios/).
+#' Android](https://docs.amplify.aws/android/) and the [Developer Guide for
+#' iOS](https://docs.amplify.aws/swift/).
 #'
 #' @param
 #' config

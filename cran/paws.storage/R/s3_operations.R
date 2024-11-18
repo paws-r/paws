@@ -46,7 +46,7 @@ NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
 #' @param UploadId &#91;required&#93; Upload ID that identifies the multipart upload.
@@ -120,7 +120,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MultipartUpload The container for the multipart upload request information.
@@ -283,7 +283,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies the caching behavior along the request/reply chain.
 #' @param ChecksumAlgorithm Indicates the algorithm that you want Amazon S3 to use to create the
@@ -655,7 +655,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' information about configuring any of the officially supported Amazon Web
 #' Services SDKs and Amazon Web Services CLI, see [Specifying the Signature
 #' Version in Request
-#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' 
 #' **Directory buckets** - If you specify `x-amz-server-side-encryption`
@@ -967,7 +967,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
 #' @param ContentDisposition Specifies presentational information for the object.
@@ -2024,7 +2024,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key name of the object to delete.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
@@ -2098,7 +2098,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key that identifies the object in the bucket from which to remove
 #' all tags.
@@ -2173,7 +2173,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delete &#91;required&#93; Container for the request.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
@@ -3199,7 +3199,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified in this header; otherwise, return a `412 Precondition Failed`
@@ -3478,7 +3478,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The object key.
 #' @param VersionId The version ID used to reference a specific version of the object.
@@ -3715,7 +3715,7 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which to get the tagging information.
 #' @param VersionId The versionId of the object for which to get the tagging information.
@@ -3870,7 +3870,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the account ID that you
 #' provide does not match the actual owner of the bucket, the request fails
@@ -3942,7 +3942,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
@@ -4359,7 +4359,7 @@ s3_list_directory_buckets <- function(ContinuationToken = NULL, MaxDirectoryBuck
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter Character you use to group keys.
 #' 
@@ -4544,7 +4544,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
 #' @param EncodingType 
@@ -4628,7 +4628,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter A delimiter is a character that you use to group keys.
 #' 
@@ -4759,7 +4759,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MaxParts Sets the maximum number of parts to return.
@@ -5936,7 +5936,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Can be used to specify caching behavior along the request/reply chain.
 #' For more information, see
@@ -5957,7 +5957,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' originally sent. Although it is optional, we recommend using the
 #' Content-MD5 mechanism as an end-to-end integrity check. For more
 #' information about REST request authentication, see [REST
-#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html).
+#' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html).
 #' 
 #' The `Content-MD5` or `x-amz-sdk-checksum-algorithm` header is required
 #' for any request to upload an object with a retention period configured
@@ -6328,7 +6328,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. This header must be
 #' used as a message integrity check to verify that the request body was
@@ -6620,7 +6620,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Name of the object key.
 #' @param VersionId The versionId of the object that the tag-set will be added to.
@@ -6755,7 +6755,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the action was initiated.
 #' @param VersionId VersionId used to reference a specific version of the object.
@@ -6860,7 +6860,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
     http_path = "/{Bucket}/{Key+}?select&select-type=2",
     host_prefix = "",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = TRUE
   )
   input <- .s3$select_object_content_input(Bucket = Bucket, Key = Key, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5, Expression = Expression, ExpressionType = ExpressionType, RequestProgress = RequestProgress, InputSerialization = InputSerialization, OutputSerialization = OutputSerialization, ScanRange = ScanRange, ExpectedBucketOwner = ExpectedBucketOwner)
   output <- .s3$select_object_content_output()
@@ -6916,7 +6916,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
@@ -7056,7 +7056,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
 #' value in one of two formats, depending on whether you want to access the

@@ -84,7 +84,7 @@ if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}

@@ -2859,7 +2859,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #'   in the *Amazon EC2 User Guide for Linux Instances*
 #' 
 #' - Windows: [Elastic IP Addresses
-#'   (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
+#'   (EIP)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 #'   in the *Amazon EC2 User Guide for Windows Instances*
 #' 
 #' If a health check already has a value for `IPAddress`, you can change

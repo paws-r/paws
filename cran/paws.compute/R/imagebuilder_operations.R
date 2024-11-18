@@ -14,7 +14,7 @@ NULL
 #' creation for.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -50,7 +50,7 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' cancel.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -122,7 +122,7 @@ imagebuilder_cancel_lifecycle_execution <- function(lifecycleExecutionId, client
 #' @param tags The tags that apply to the component.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -191,7 +191,7 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 #' @param kmsKeyId Identifies which KMS key is used to encrypt the container image.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -229,7 +229,7 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 #' @param tags The tags of the distribution configuration.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -277,7 +277,7 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 #' @param tags The tags of the image.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains an array of workflow configuration objects.
@@ -334,7 +334,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 #' @param tags The tags of the image pipeline.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains an array of workflow configuration objects.
@@ -403,7 +403,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 #' @param additionalInstanceConfiguration Specify additional settings and launch scripts for your build instances.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -466,7 +466,7 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 #' @param tags The tags of the infrastructure configuration.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -510,7 +510,7 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 #' @param tags Tags to apply to the lifecycle policy resource.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -576,7 +576,7 @@ imagebuilder_create_lifecycle_policy <- function(name, description = NULL, statu
 #' @param tags Tags that apply to the workflow resource.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param type &#91;required&#93; The phase in the image build process for which the workflow resource is
 #' responsible.
@@ -1438,7 +1438,7 @@ imagebuilder_get_workflow_step_execution <- function(stepExecutionId) {
 #' @param tags The tags of the component.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -1500,7 +1500,7 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' @param tags Tags that are attached to the import resources.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2543,7 +2543,7 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
 #' @param reason The reason why this action is sent.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2579,7 +2579,7 @@ imagebuilder_send_workflow_step_action <- function(stepExecutionId, imageBuildVe
 #' manually invoke.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2624,7 +2624,7 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 #' action.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2726,7 +2726,7 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 #' @param distributions &#91;required&#93; The distributions of the distribution configuration.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal
@@ -2778,7 +2778,7 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 #' @param status The status of the image pipeline.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param imageScanningConfiguration Contains settings for vulnerability scans.
 #' @param workflows Contains the workflows to run for the pipeline.
@@ -2842,7 +2842,7 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #' service runs under.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param resourceTags The tags attached to the resource created by Image Builder.
 #' @param instanceMetadataOptions The instance metadata options that you can set for the HTTP requests
@@ -2855,7 +2855,7 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 #'   in the *Amazon EC2 User Guide* for Linux instances.
 #' 
 #' - [Configure the instance metadata
-#'   options](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-instance-metadata-options.html)
+#'   options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
 #'   in the *Amazon EC2 Windows Guide* for Windows instances.
 #'
 #' @keywords internal
@@ -2897,7 +2897,7 @@ imagebuilder_update_infrastructure_configuration <- function(infrastructureConfi
 #' @param resourceSelection &#91;required&#93; Selection criteria for resources that the lifecycle policy applies to.
 #' @param clientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #'
 #' @keywords internal

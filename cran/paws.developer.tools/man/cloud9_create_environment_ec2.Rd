@@ -31,7 +31,7 @@ account.}
 \item{clientRequestToken}{A unique, case-sensitive string that helps Cloud9 to ensure this
 operation completes no more than one time.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Client Tokens}
+For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Client Tokens}
 in the \emph{Amazon EC2 API Reference}.}
 
 \item{instanceType}{[required] The type of instance to connect to the environment (for example,

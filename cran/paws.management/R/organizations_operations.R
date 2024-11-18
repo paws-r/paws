@@ -1149,7 +1149,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' that is specified by ServicePrincipal) with Organizations
 #'
 #' @description
-#' Disables the integration of an Amazon Web Services service (the service that is specified by `ServicePrincipal`) with Organizations. When you disable integration, the specified service no longer can create a [service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in *new* accounts in your organization. This means the service can't perform operations on your behalf on any new accounts in your organization. The service can still perform operations in older accounts until the service completes its clean-up from Organizations.
+#' Disables the integration of an Amazon Web Services service (the service that is specified by `ServicePrincipal`) with Organizations. When you disable integration, the specified service no longer can create a [service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html) in *new* accounts in your organization. This means the service can't perform operations on your behalf on any new accounts in your organization. The service can still perform operations in older accounts until the service completes its clean-up from Organizations.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_disable_aws_service_access/](https://www.paws-r-sdk.com/docs/organizations_disable_aws_service_access/) for full documentation.
 #'
@@ -1231,7 +1231,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' that is specified by ServicePrincipal) with Organizations
 #'
 #' @description
-#' Enables the integration of an Amazon Web Services service (the service that is specified by `ServicePrincipal`) with Organizations. When you enable integration, you allow the specified service to create a [service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html) in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.
+#' Enables the integration of an Amazon Web Services service (the service that is specified by `ServicePrincipal`) with Organizations. When you enable integration, you allow the specified service to create a [service-linked role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create-service-linked-role.html) in all the accounts in your organization. This allows the service to perform operations on your behalf in your organization and its accounts.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_enable_aws_service_access/](https://www.paws-r-sdk.com/docs/organizations_enable_aws_service_access/) for full documentation.
 #'

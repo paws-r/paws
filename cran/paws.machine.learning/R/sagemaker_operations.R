@@ -2638,7 +2638,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' notebook instance. Currently, only one instance type can be associated
 #' with a notebook instance. For more information, see [Using Elastic
 #' Inference in Amazon
-#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/).
 #' @param DefaultCodeRepository A Git repository to associate with the notebook instance as its default
 #' code repository. This can be either the name of a Git repository stored
 #' as a resource in your account, or the URL of a Git repository in [Amazon
@@ -3545,7 +3545,7 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' @param CognitoConfig Use this parameter to configure an Amazon Cognito private workforce. A
 #' single Cognito workforce is created using and corresponds to a single
 #' [Amazon Cognito user
-#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html).
 #' 
 #' Do not use `OidcConfig` if you specify values for `CognitoConfig`.
 #' @param OidcConfig Use this parameter to configure a private workforce using your own OIDC
@@ -3606,7 +3606,7 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
 #' `UserPool` values. To add a Amazon Cognito user group to an existing
 #' worker pool, see Adding groups to a User Pool. For more information
 #' about user pools, see [Amazon Cognito User
-#' Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+#' Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html).
 #' 
 #' For workforces created using your own OIDC IdP, specify the user groups
 #' that you want to include in your private work team in
@@ -13313,7 +13313,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' this notebook instance. Currently only one EI instance type can be
 #' associated with a notebook instance. For more information, see [Using
 #' Elastic Inference in Amazon
-#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/).
 #' @param DisassociateAcceleratorTypes A list of the Elastic Inference (EI) instance types to remove from this
 #' notebook instance. This operation is idempotent. If you specify an
 #' accelerator type that is not associated with the notebook instance when
@@ -13777,7 +13777,7 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, Oid
 #' `UserPool` values. To add a Amazon Cognito user group to an existing
 #' worker pool, see Adding groups to a User Pool. For more information
 #' about user pools, see [Amazon Cognito User
-#' Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+#' Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html).
 #' 
 #' For workforces created using your own OIDC IdP, specify the user groups
 #' that you want to include in your private work team in

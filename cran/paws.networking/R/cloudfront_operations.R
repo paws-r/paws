@@ -3256,7 +3256,7 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 #' `LIVE`.
 #' @param EventObject &#91;required&#93; The event object to test the function with. For more information about
 #' the structure of the event object, see [Testing
-#' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/managing-functions.html#test-function)
+#' functions](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/create-function.html#test-function)
 #' in the *Amazon CloudFront Developer Guide*.
 #'
 #' @keywords internal

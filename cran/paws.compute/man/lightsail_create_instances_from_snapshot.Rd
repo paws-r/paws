@@ -52,7 +52,7 @@ user data. For example, \verb{apt-get -y update}.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and
 Ubuntu use \code{apt-get}, and FreeBSD uses \code{pkg}. For a complete list, see
-the Amazon Lightsail Developer Guide.}
+the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html}{Amazon Lightsail Developer Guide}.}
 
 \item{keyPairName}{The name for your key pair.}
 
@@ -80,8 +80,7 @@ Constraints:
 \verb{instance snapshot name} parameter. The \verb{source instance name} and
 \verb{instance snapshot name} parameters are mutually exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the Amazon Lightsail
-Developer Guide.
+automatic snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
 }}
 
 \item{restoreDate}{The date of the automatic snapshot to use for the new instance. Use the
@@ -96,8 +95,7 @@ Constraints:
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the Amazon Lightsail
-Developer Guide.
+automatic snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -109,8 +107,7 @@ Constraints:
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the Amazon Lightsail
-Developer Guide.
+automatic snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
 }}
 }
 \description{

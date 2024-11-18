@@ -107,7 +107,7 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Can be used to specify caching behavior along the request/reply chain.
@@ -133,7 +133,7 @@ headers) according to RFC 1864. This header can be used as a message
 integrity check to verify that the data is the same data that was
 originally sent. Although it is optional, we recommend using the
 Content-MD5 mechanism as an end-to-end integrity check. For more
-information about REST request authentication, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html}{REST Authentication}.
+information about REST request authentication, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTAuthentication.html}{REST Authentication}.
 
 The \code{Content-MD5} or \code{x-amz-sdk-checksum-algorithm} header is required
 for any request to upload an object with a retention period configured

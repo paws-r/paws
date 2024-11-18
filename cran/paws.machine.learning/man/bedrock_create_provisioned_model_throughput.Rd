@@ -18,7 +18,7 @@ bedrock_create_provisioned_model_throughput(
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
-error. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
 in the Amazon S3 User Guide.}
 
 \item{modelUnits}{[required] Number of model units to allocate. A model unit delivers a specific

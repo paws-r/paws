@@ -301,7 +301,7 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 #' change set)
 #'
 #' @description
-#' Lists all tags that have been added to a resource (either an [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#' Lists all tags that have been added to a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/marketplacecatalog_list_tags_for_resource/) for full documentation.
 #'
@@ -408,7 +408,7 @@ marketplacecatalog_start_change_set <- function(Catalog, ChangeSet, ChangeSetNam
 #' Tags a resource (either an entity or change set)
 #'
 #' @description
-#' Tags a resource (either an [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#' Tags a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_tag_resource/](https://www.paws-r-sdk.com/docs/marketplacecatalog_tag_resource/) for full documentation.
 #'
@@ -443,7 +443,7 @@ marketplacecatalog_tag_resource <- function(ResourceArn, Tags) {
 #' change set)
 #'
 #' @description
-#' Removes a tag or list of tags from a resource (either an [entity](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets)).
+#' Removes a tag or list of tags from a resource (either an [entity](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities) or [change set](https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets)).
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_untag_resource/](https://www.paws-r-sdk.com/docs/marketplacecatalog_untag_resource/) for full documentation.
 #'

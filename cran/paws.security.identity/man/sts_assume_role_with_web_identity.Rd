@@ -108,7 +108,7 @@ specify a value higher than this setting, the operation fails. For
 example, if you specify a session duration of 12 hours, but your
 administrator set the maximum session duration to 6 hours, your
 operation fails. To learn how to view the maximum value for your role,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session}{View the Maximum Session Duration Setting for a Role}
 in the \emph{IAM User Guide}.
 
 By default, the value is set to \code{3600} seconds.

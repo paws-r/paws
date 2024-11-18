@@ -56,7 +56,7 @@ the ClientMetadata parameter in your ConfirmForgotPassword request. In
 your function code in Lambda, you can process the \code{clientMetadata} value
 to enhance your workflow for your specific needs.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-working-with-lambda-triggers.html}{Customizing user pool Workflows with Lambda Triggers}
 in the \emph{Amazon Cognito Developer Guide}.
 
 When you use the ClientMetadata parameter, remember that Amazon Cognito

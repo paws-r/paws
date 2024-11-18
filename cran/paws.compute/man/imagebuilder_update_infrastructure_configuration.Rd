@@ -58,7 +58,7 @@ encrypt the SNS topic must reside in the account that the Image Builder
 service runs under.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
 in the \emph{Amazon EC2 API Reference}.}
 
 \item{resourceTags}{The tags attached to the resource created by Image Builder.}
@@ -70,7 +70,7 @@ following links:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options}
 in the \emph{Amazon EC2 User Guide} for Linux instances.
-\item \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options}
+\item \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html}{Configure the instance metadata options}
 in the \emph{Amazon EC2 Windows Guide} for Windows instances.
 }}
 }

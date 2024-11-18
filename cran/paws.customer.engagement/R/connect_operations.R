@@ -9187,7 +9187,7 @@ connect_start_attached_file_upload <- function(ClientToken = NULL, InstanceId, F
 #' Initiates a flow to start a new chat for the customer
 #'
 #' @description
-#' Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html) API in the Amazon Connect Participant Service.
+#' Initiates a flow to start a new chat for the customer. Response of this API provides a token required to obtain credentials from the [CreateParticipantConnection](https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-participant_CreateParticipantConnection.html) API in the Amazon Connect Participant Service.
 #'
 #' See [https://www.paws-r-sdk.com/docs/connect_start_chat_contact/](https://www.paws-r-sdk.com/docs/connect_start_chat_contact/) for full documentation.
 #'

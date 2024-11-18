@@ -114,7 +114,7 @@ An invited member account can use the Detective API to do the following:
 \item Remove their account from a behavior graph.
 }
 
-All API actions are logged as CloudTrail events. See \href{https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html}{Logging Detective API Calls with CloudTrail}.
+All API actions are logged as CloudTrail events. See \href{https://docs.aws.amazon.com/detective/latest/userguide/}{Logging Detective API Calls with CloudTrail}.
 
 We replaced the term "master account" with the term "administrator
 account". An administrator account is used to centrally manage multiple

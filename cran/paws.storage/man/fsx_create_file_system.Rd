@@ -72,7 +72,7 @@ Windows, Lustre, ONTAP, and OpenZFS deployment types.
 and on \code{PERSISTENT_1} Lustre file system deployment types.
 }
 
-Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/optimize-fsx-costs.html#storage-type-options}{Storage type options}
+Default value is \code{SSD}. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-configuration.html#optimize-storage-costs}{Storage type options}
 in the \emph{FSx for Windows File Server User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html#storage-options}{Multiple storage options}
 in the \emph{FSx for Lustre User Guide}.}
 

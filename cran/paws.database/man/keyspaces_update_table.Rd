@@ -87,7 +87,7 @@ in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{defaultTimeToLive}{The default Time to Live setting in seconds for the table.
 
-For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl}{Setting the default TTL value for a table}
+For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/#ttl-howitworks_default_ttl}{Setting the default TTL value for a table}
 in the \emph{Amazon Keyspaces Developer Guide}.}
 
 \item{clientSideTimestamps}{Enables client-side timestamps for the table. By default, the setting is

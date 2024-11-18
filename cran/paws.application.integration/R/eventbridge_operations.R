@@ -250,8 +250,8 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' bus.
 #' 
 #' For more information, see [Managing
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html)
-#' in the *Key Management Service Developer Guide*.
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
+#' *Key Management Service Developer Guide*.
 #' 
 #' Archives and schema discovery are not supported for event buses
 #' encrypted using a customer managed key. EventBridge returns an error if:
@@ -2098,8 +2098,8 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
 #' bus.
 #' 
 #' For more information, see [Managing
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html)
-#' in the *Key Management Service Developer Guide*.
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
+#' *Key Management Service Developer Guide*.
 #' 
 #' Archives and schema discovery are not supported for event buses
 #' encrypted using a customer managed key. EventBridge returns an error if:

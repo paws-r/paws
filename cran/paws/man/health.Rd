@@ -51,9 +51,8 @@ Operations section.
 Health
 
 The Health API provides access to the Health information that appears in
-the \href{https://health.aws.amazon.com/health/home}{Health Dashboard}. You
-can use the API operations to get information about events that might
-affect your Amazon Web Services and resources.
+the Health Dashboard. You can use the API operations to get information
+about events that might affect your Amazon Web Services and resources.
 
 You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 from \href{https://aws.amazon.com/premiumsupport/}{Amazon Web Services Support} to use the Health API.
@@ -77,7 +76,7 @@ you can get the latest information from the API. For more information,
 see \href{https://docs.aws.amazon.com/health/latest/ug/health-api.html}{Accessing the Health API} in
 the \emph{Health User Guide}.
 
-For authentication of requests, Health uses the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
+For authentication of requests, Health uses the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
 
 If your Amazon Web Services account is part of Organizations, you can
 use the Health organizational view feature. This feature provides a

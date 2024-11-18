@@ -52,7 +52,7 @@ user data. For example, you might want to run \verb{apt-get -y update}.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and
 Ubuntu use \code{apt-get}, and FreeBSD uses \code{pkg}. For a complete list, see
-the Amazon Lightsail Developer Guide.}
+the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/compare-options-choose-lightsail-instance-image.html}{Amazon Lightsail Developer Guide}.}
 
 \item{keyPairName}{The name of your key pair.}
 

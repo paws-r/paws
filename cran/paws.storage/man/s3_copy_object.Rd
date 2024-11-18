@@ -104,7 +104,7 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies the caching behavior along the request/reply chain.}
@@ -482,7 +482,7 @@ directory bucket.}
 object encryption. All GET and PUT requests for an object protected by
 KMS will fail if they're not made via SSL or using SigV4. For
 information about configuring any of the officially supported Amazon Web
-Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
+Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/#specify-signature-version}{Specifying the Signature Version in Request Authentication}
 in the \emph{Amazon S3 User Guide}.
 
 \strong{Directory buckets} - If you specify \code{x-amz-server-side-encryption}

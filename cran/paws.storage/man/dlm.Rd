@@ -54,7 +54,7 @@ used to automate operations on the specified resources.
 
 Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
 For information about using Amazon Data Lifecycle Manager with Amazon
-EBS, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html}{Amazon Data Lifecycle Manager}
+EBS, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/snapshot-lifecycle.html}{Amazon Data Lifecycle Manager}
 in the \emph{Amazon EC2 User Guide}.
 }
 \section{Service syntax}{

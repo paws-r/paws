@@ -241,7 +241,7 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
 #' different models, refer to [Inference
 #' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 #' For more information, see [Run
-#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html)
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
 #' in the Bedrock User Guide.
 #' @param contentType The MIME type of the input data in the request. You must specify
 #' `application/json`.
@@ -328,7 +328,7 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #' different models, refer to [Inference
 #' parameters](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 #' For more information, see [Run
-#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/api-methods-run.html)
+#' inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference.html)
 #' in the Bedrock User Guide.
 #' @param contentType The MIME type of the input data in the request. You must specify
 #' `application/json`.

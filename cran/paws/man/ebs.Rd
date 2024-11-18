@@ -69,7 +69,7 @@ from Amazon EBS.
 This API reference provides detailed information about the actions, data
 types, parameters, and errors of the EBS direct APIs. For more
 information about the elements that make up the EBS direct APIs, and
-examples of how to use them effectively, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html}{Accessing the Contents of an Amazon EBS Snapshot}
+examples of how to use them effectively, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/ebs-accessing-snapshot.html}{Accessing the Contents of an Amazon EBS Snapshot}
 in the \emph{Amazon Elastic Compute Cloud User Guide}. For more information
 about the supported Amazon Web Services Regions, endpoints, and service
 quotas for the EBS direct APIs, see \href{https://docs.aws.amazon.com/general/latest/gr/ebs-service.html}{Amazon Elastic Block Store Endpoints and Quotas}

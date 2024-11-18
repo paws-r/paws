@@ -26,7 +26,7 @@ in the \emph{Amazon EC2 User Guide}.
 Valid values: \code{prioritized}}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensure Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensure Idempotency}.}
 
 \item{InstanceTypeSpecifications}{[required] Information about the instance types for which to reserve the capacity.}
 
@@ -76,7 +76,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Creates a Capacity Reservation Fleet. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet}{Create a Capacity Reservation Fleet} in the \emph{Amazon EC2 User Guide}.
+Creates a Capacity Reservation Fleet. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/crfleet-concepts.html#create-crfleet}{Create a Capacity Reservation Fleet} in the \emph{Amazon EC2 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/} for full documentation.
 }

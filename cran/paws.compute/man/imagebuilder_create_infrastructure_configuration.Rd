@@ -65,7 +65,7 @@ that pipeline builds use to launch EC2 build and test instances.}
 \item{tags}{The tags of the infrastructure configuration.}
 
 \item{clientToken}{[required] Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+the request. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
 in the \emph{Amazon EC2 API Reference}.}
 }
 \description{

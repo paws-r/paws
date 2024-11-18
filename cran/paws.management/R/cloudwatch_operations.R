@@ -2010,7 +2010,7 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' @param OutputFormat &#91;required&#93; The output format for the stream. Valid values are `json`,
 #' `opentelemetry1.0`, and `opentelemetry0.7`. For more information about
 #' metric stream output formats, see [Metric streams output
-#' formats](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-metric-streams-formats.html).
+#' formats](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html).
 #' @param Tags A list of key-value pairs to associate with the metric stream. You can
 #' associate as many as 50 tags with a metric stream.
 #' 

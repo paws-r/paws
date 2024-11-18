@@ -15,7 +15,7 @@ NULL
 #' database user name and password for the credentials in the secret.
 #' 
 #' For information about creating the secret, see [Create a database
-#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' @param sql &#91;required&#93; The SQL statement to run. Don't include a semicolon (;) at the end of
 #' the SQL statement.
 #' @param database The name of the database.
@@ -147,7 +147,7 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
 #' credentials in the secret.
 #' 
 #' For information about creating the secret, see [Create a database
-#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' @param sqlStatements &#91;required&#93; One or more SQL statements to run on the DB cluster.
 #' 
 #' You can separate SQL statements from each other with a semicolon (;).
@@ -190,7 +190,7 @@ rdsdataservice_execute_sql <- function(dbClusterOrInstanceArn, awsSecretStoreArn
 #' database user name and password for the credentials in the secret.
 #' 
 #' For information about creating the secret, see [Create a database
-#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' @param sql &#91;required&#93; The SQL statement to run.
 #' @param database The name of the database.
 #' @param schema The name of the database schema.

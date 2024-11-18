@@ -39,7 +39,7 @@ This KMS key must have a policy that allows \code{kms:CreateGrant},
 the IAM identity using the key to invoke Wisdom.
 
 For more information about setting up a customer managed key for Wisdom,
-see \href{https://docs.aws.amazon.com/connect/latest/adminguide/enable-wisdom.html}{Enable Amazon Connect Wisdom for your instance}.}
+see \href{https://docs.aws.amazon.com/connect/latest/adminguide/enable-q.html}{Enable Amazon Connect Wisdom for your instance}.}
 
 \item{sourceConfiguration}{The source of the knowledge base content. Only set this argument for
 EXTERNAL knowledge bases.}

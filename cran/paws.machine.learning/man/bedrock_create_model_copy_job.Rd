@@ -25,7 +25,7 @@ in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedroc
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than one time. If this token matches a previous
 request, Amazon Bedrock ignores the request, but does not return an
-error. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}.}
+error. For more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}.}
 }
 \description{
 Copies a model to another region so that it can be used there. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/copy-model.html}{Copy models to be used in other regions} in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.

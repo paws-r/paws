@@ -46,7 +46,7 @@ once it has been created.}
 \item{loggingConfiguration}{Defines what execution history events are logged and where they are
 logged.
 
-By default, the \code{level} is set to \code{OFF}. For more information see \href{https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html}{Log Levels}
+By default, the \code{level} is set to \code{OFF}. For more information see \href{https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html}{Log Levels}
 in the Step Functions User Guide.}
 
 \item{tags}{Tags to be added when creating a state machine.

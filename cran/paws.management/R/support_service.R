@@ -58,7 +58,7 @@ NULL
 #' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' For more information about this service and the endpoints to use, see
 #' [About the Amazon Web Services Support

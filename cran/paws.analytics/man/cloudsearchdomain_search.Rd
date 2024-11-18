@@ -282,7 +282,7 @@ advanced options such as term boosting, \code{matchall}, and \code{near}. For
 more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html}{Constructing Compound Queries}
 in the \emph{Amazon CloudSearch Developer Guide}.
 \item \code{lucene}: search using the Apache Lucene query parser syntax. For more
-information, see Apache Lucene Query Parser Syntax.
+information, see \href{https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}{Apache Lucene Query Parser Syntax}.
 \item \code{dismax}: search using the simplified subset of the Apache Lucene
 query parser syntax defined by the DisMax query parser. For more
 information, see \href{https://cwiki.apache.org/confluence/display/solr/DisMaxQParserPlugin#Query_Syntax}{DisMax Query Parser Syntax}.

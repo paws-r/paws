@@ -112,7 +112,7 @@ maximum of 5 strategy rules for each task.}
 
 \item{platformVersion}{The platform version the task uses. A platform version is only specified
 for tasks hosted on Fargate. If one isn't specified, the \code{LATEST}
-platform version is used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{Fargate platform versions}
+platform version is used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html}{Fargate platform versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{propagateTags}{Specifies whether to propagate the tags from the task definition to the

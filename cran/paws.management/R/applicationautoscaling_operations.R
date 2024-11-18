@@ -2132,7 +2132,7 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
 #' 
 #' For information about the rules that apply to tag keys and tag values,
 #' see [User-defined tag
-#' restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+#' restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/)
 #' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @keywords internal

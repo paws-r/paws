@@ -311,12 +311,12 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 #' for the Kubernetes control plane to make calls to Amazon Web Services
 #' API operations on your behalf. For more information, see [Amazon EKS
 #' Service IAM
-#' Role](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
+#' Role](https://docs.aws.amazon.com/eks/latest/userguide/cluster-iam-role.html)
 #' in the *Amazon EKS User Guide* .
 #' @param resourcesVpcConfig &#91;required&#93; The VPC configuration that's used by the cluster control plane. Amazon
 #' EKS VPC resources have specific requirements to work properly with
 #' Kubernetes. For more information, see [Cluster VPC
-#' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
+#' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/network-reqs.html)
 #' and [Cluster Security Group
 #' Considerations](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 #' in the *Amazon EKS User Guide*. You must specify at least two subnets.

@@ -6,7 +6,7 @@ NULL
 #' Assigns a Grafana Enterprise license to a workspace
 #'
 #' @description
-#' Assigns a Grafana Enterprise license to a workspace. To upgrade, you must use `ENTERPRISE` for the `licenseType`, and pass in a valid Grafana Labs token for the `grafanaToken`. Upgrading to Grafana Enterprise incurs additional fees. For more information, see [Upgrade a workspace to Grafana Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html).
+#' Assigns a Grafana Enterprise license to a workspace. To upgrade, you must use `ENTERPRISE` for the `licenseType`, and pass in a valid Grafana Labs token for the `grafanaToken`. Upgrading to Grafana Enterprise incurs additional fees. For more information, see [Upgrade a workspace to Grafana Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-enterprise-plugins.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/managedgrafana_associate_license/](https://www.paws-r-sdk.com/docs/managedgrafana_associate_license/) for full documentation.
 #'

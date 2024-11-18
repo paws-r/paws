@@ -21,7 +21,7 @@ NULL
 #' operation completes no more than one time.
 #' 
 #' For more information, see [Client
-#' Tokens](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' Tokens](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param instanceType &#91;required&#93; The type of instance to connect to the environment (for example,
 #' `t2.micro`).

@@ -207,7 +207,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' or `CODE_DEPLOY` deployment controllers.
 #' 
 #' For more information about deployment types, see [Amazon ECS deployment
-#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
+#' types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
 #' service. For more information, see [Service load
 #' balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
@@ -307,7 +307,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' platform version is specified only for tasks using the Fargate launch
 #' type. If one isn't specified, the `LATEST` platform version is used. For
 #' more information, see [Fargate platform
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param role The name or full Amazon Resource Name (ARN) of the IAM role that allows
 #' Amazon ECS to make calls to your load balancer on your behalf. This
@@ -484,7 +484,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' Create a task set in the specified cluster and service
 #'
 #' @description
-#' Create a task set in the specified cluster and service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
+#' Create a task set in the specified cluster and service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecs_create_task_set/](https://www.paws-r-sdk.com/docs/ecs_create_task_set/) for full documentation.
 #'
@@ -823,7 +823,7 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
 #' Deletes a specified task set within a service
 #'
 #' @description
-#' Deletes a specified task set within a service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
+#' Deletes a specified task set within a service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecs_delete_task_set/](https://www.paws-r-sdk.com/docs/ecs_delete_task_set/) for full documentation.
 #'
@@ -1172,7 +1172,7 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' Describes the task sets in the specified cluster and service
 #'
 #' @description
-#' Describes the task sets in the specified cluster and service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
+#' Describes the task sets in the specified cluster and service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecs_describe_task_sets/](https://www.paws-r-sdk.com/docs/ecs_describe_task_sets/) for full documentation.
 #'
@@ -2788,7 +2788,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param platformVersion The platform version the task uses. A platform version is only specified
 #' for tasks hosted on Fargate. If one isn't specified, the `LATEST`
 #' platform version is used. For more information, see [Fargate platform
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags aren't propagated. Tags can
@@ -3526,7 +3526,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' version is only specified for tasks using the Fargate launch type. If a
 #' platform version is not specified, the `LATEST` platform version is
 #' used. For more information, see [Fargate Platform
-#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
+#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param forceNewDeployment Determines whether to force a new deployment of the service. By default,
 #' deployments aren't forced. You can use this option to start a new
@@ -3652,7 +3652,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' Modifies which task set in a service is the primary task set
 #'
 #' @description
-#' Modifies which task set in a service is the primary task set. Any parameters that are updated on the primary task set in a service will transition to the service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
+#' Modifies which task set in a service is the primary task set. Any parameters that are updated on the primary task set in a service will transition to the service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecs_update_service_primary_task_set/](https://www.paws-r-sdk.com/docs/ecs_update_service_primary_task_set/) for full documentation.
 #'
@@ -3688,7 +3688,7 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #' Updates the protection status of a task
 #'
 #' @description
-#' Updates the protection status of a task. You can set `protectionEnabled` to `true` to protect your task from termination during scale-in events from [Service Autoscaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html) or [deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
+#' Updates the protection status of a task. You can set `protectionEnabled` to `true` to protect your task from termination during scale-in events from [Service Autoscaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html) or [deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecs_update_task_protection/](https://www.paws-r-sdk.com/docs/ecs_update_task_protection/) for full documentation.
 #'
@@ -3732,7 +3732,7 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
 #' Modifies a task set
 #'
 #' @description
-#' Modifies a task set. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
+#' Modifies a task set. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/) in the *Amazon Elastic Container Service Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ecs_update_task_set/](https://www.paws-r-sdk.com/docs/ecs_update_task_set/) for full documentation.
 #'

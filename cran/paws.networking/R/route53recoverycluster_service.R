@@ -46,7 +46,7 @@ NULL
 #'   routing controls, and control panels, and how to work with Route 53
 #'   ARC in the Amazon Web Services console. For more information, see
 #'   [Recovery control
-#'   components](https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components.html#introduction-components-routing)
+#'   components](https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components-zonal.html#introduction-components-routing)
 #'   in the Amazon Route 53 Application Recovery Controller Developer
 #'   Guide.
 #' 

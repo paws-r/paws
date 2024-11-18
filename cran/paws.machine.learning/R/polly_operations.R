@@ -332,7 +332,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 #' by default. If a chosen voice isn't supported by the standard engine,
 #' this will result in an error. For information on Amazon Polly voices and
 #' which voices are available for each engine, see [Available
-#' Voices](https://docs.aws.amazon.com/polly/latest/dg/voicelist.html).
+#' Voices](https://docs.aws.amazon.com/polly/latest/dg/available-voices.html).
 #' 
 #' Type: String
 #' 

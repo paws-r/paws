@@ -753,7 +753,7 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #' numbers and their metadata
 #'
 #' @description
-#' Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more information about origination numbers, see [Origination numbers](https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html) in the *Amazon SNS Developer Guide*.
+#' Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more information about origination numbers, see [Origination numbers](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_list_origination_numbers/](https://www.paws-r-sdk.com/docs/sns_list_origination_numbers/) for full documentation.
 #'

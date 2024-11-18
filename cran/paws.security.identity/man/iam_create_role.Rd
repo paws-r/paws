@@ -76,7 +76,7 @@ parameter. If users don't specify a value for the \code{DurationSeconds}
 parameter, their security credentials are valid for one hour by default.
 This applies when you use the \verb{AssumeRole*} API operations or the
 \verb{assume-role*} CLI operations but does not apply when you use those
-operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html}{Using IAM roles}
+operations to create a console URL. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html}{Using IAM roles}
 in the \emph{IAM User Guide}.}
 
 \item{PermissionsBoundary}{The ARN of the managed policy that is used to set the permissions

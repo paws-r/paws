@@ -43,7 +43,7 @@ by the LAG. The possible values are 1Gbps,10Gbps, 100Gbps, and 400Gbps.}
 
 All connections in the LAG must be capable of supporting MAC Security
 (MACsec). For information about MAC Security (MACsec) prerequisties, see
-\href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites}{MACsec prerequisties}
+\href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites}{MACsec prerequisties}
 in the \emph{Direct Connect User Guide}.}
 }
 \description{

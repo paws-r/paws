@@ -18,7 +18,7 @@ bedrock_create_guardrail_version(
 \item{clientRequestToken}{A unique, case-sensitive identifier to ensure that the API request
 completes no more than once. If this token matches a previous request,
 Amazon Bedrock ignores the request, but does not return an error. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring idempotency}
+more information, see \href{https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html}{Ensuring idempotency}
 in the \emph{Amazon S3 User Guide}.}
 }
 \description{

@@ -9,7 +9,7 @@ NULL
 #' interface (API) operations that support programmatic interaction with
 #' these types of resources:
 #' 
-#' - [*Controls*](https://docs.aws.amazon.com/controltower/latest/userguide/controls.html)
+#' - [*Controls*](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
 #' 
 #'   - [`disable_control`][controltower_disable_control]
 #' 

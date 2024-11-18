@@ -38,8 +38,8 @@ If you do not specify a customer managed key identifier, EventBridge
 uses an Amazon Web Services owned key to encrypt events on the event
 bus.
 
-For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html}{Managing keys}
-in the \emph{Key Management Service Developer Guide}.
+For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{Managing keys} in the
+\emph{Key Management Service Developer Guide}.
 
 Archives and schema discovery are not supported for event buses
 encrypted using a customer managed key. EventBridge returns an error if:

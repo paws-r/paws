@@ -124,7 +124,7 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #' For more information, see [Security
 #' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 #' in the *Application Load Balancers Guide* and [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#describe-ssl-policies)
 #' in the *Network Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default certificate for the listener.
 #' You must provide exactly one certificate. Set `CertificateArn` to the
@@ -145,7 +145,7 @@ elbv2_add_trust_store_revocations <- function(TrustStoreArn, RevocationContents 
 #' - `None`
 #' 
 #' For more information, see [ALPN
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#alpn-policies)
 #' in the *Network Load Balancers Guide*.
 #' @param Tags The tags to assign to the listener.
 #' @param MutualAuthentication The mutual authentication configuration information.
@@ -1333,7 +1333,7 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
 #' For more information, see [Security
 #' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 #' in the *Application Load Balancers Guide* or [Security
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#describe-ssl-policies)
 #' in the *Network Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default certificate for the listener.
 #' You must provide exactly one certificate. Set `CertificateArn` to the
@@ -1354,7 +1354,7 @@ elbv2_get_trust_store_revocation_content <- function(TrustStoreArn, RevocationId
 #' - `None`
 #' 
 #' For more information, see [ALPN
-#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#alpn-policies)
 #' in the *Network Load Balancers Guide*.
 #' @param MutualAuthentication The mutual authentication configuration information.
 #'

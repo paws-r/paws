@@ -126,7 +126,7 @@ Default: \code{false}}
 \item{EngineVersion}{The upgraded version of the cache engine to be run on the clusters in
 the replication group.
 
-\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
+\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing replication
 group and create it anew with the earlier engine version.}
@@ -166,7 +166,7 @@ length
 }
 
 For more information, see AUTH password at
-\href{https://redis.io/commands/auth/}{AUTH}.}
+\href{https://redis.io/docs/latest/commands/auth/}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:
@@ -176,7 +176,7 @@ must be specified with the \code{auth-token} parameter. Possible values:
 \item DELETE - allowed only when transitioning to RBAC
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis OSS AUTH}}
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/auth.html}{Authenticating Users with Redis OSS AUTH}}
 
 \item{UserGroupIdsToAdd}{The ID of the user group you are associating with the replication group.}
 

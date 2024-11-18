@@ -78,7 +78,7 @@ The principals in the key policy must exist and be visible to KMS.
 When you create a new Amazon Web Services principal, you might need to
 enforce a delay before including the new principal in a key policy
 because the new principal might not be immediately visible to KMS. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot_general.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
+more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
 in the \emph{Amazon Web Services Identity and Access Management User
 Guide}.
 }

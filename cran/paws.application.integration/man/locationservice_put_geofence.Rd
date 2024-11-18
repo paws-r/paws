@@ -22,8 +22,8 @@ locationservice_put_geofence(
 polygon, a circle or a polygon encoded in Geobuf format. Including
 multiple selections will return a validation error.
 
-The \href{https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html}{geofence polygon}
-format supports a maximum of 1,000 vertices. The \href{https://docs.aws.amazon.com/location/latest/APIReference/API_GeofenceGeometry.html}{Geofence Geobuf}
+The \href{https://docs.aws.amazon.com/location/latest/APIReference/}{geofence polygon}
+format supports a maximum of 1,000 vertices. The \href{https://docs.aws.amazon.com/location/latest/APIReference/}{Geofence Geobuf}
 format supports a maximum of 100,000 vertices.}
 
 \item{GeofenceProperties}{Associates one of more properties with the geofence. A property is a

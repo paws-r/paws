@@ -2826,7 +2826,7 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #' When making the API calls, you will need to authenticate your request by
 #' providing a signature. Lambda supports signature version 4. For more
 #' information, see [Signature Version 4 signing
-#' process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' in the *Amazon Web Services General Reference.*.
 #' 
 #' **CA certificates**
@@ -3057,8 +3057,9 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' 
 #' You can manage your Lightsail resources using the Lightsail console,
 #' Lightsail API, Command Line Interface (CLI), or SDKs. For more
-#' information about Lightsail concepts and tasks, see the Amazon Lightsail
-#' Developer Guide.
+#' information about Lightsail concepts and tasks, see the [Amazon
+#' Lightsail Developer
+#' Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli.html).
 #' 
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the Lightsail service. For more
@@ -4047,7 +4048,7 @@ backup <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
 #' For information about using Amazon Data Lifecycle Manager with Amazon
 #' EBS, see [Amazon Data Lifecycle
-#' Manager](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
+#' Manager](https://docs.aws.amazon.com/ebs/latest/userguide/snapshot-lifecycle.html)
 #' in the *Amazon EC2 User Guide*.
 #'
 #' @param
@@ -4186,7 +4187,7 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' information about the elements that make up the EBS direct APIs, and
 #' examples of how to use them effectively, see [Accessing the Contents of
 #' an Amazon EBS
-#' Snapshot](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-accessing-snapshot.html)
+#' Snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-accessing-snapshot.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*. For more information
 #' about the supported Amazon Web Services Regions, endpoints, and service
 #' quotas for the EBS direct APIs, see [Amazon Elastic Block Store
@@ -5142,7 +5143,7 @@ omics <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' restored, the resource is permanently deleted from the Recycle Bin and
 #' is no longer available for recovery. For more information about Recycle
 #' Bin, see [Recycle
-#' Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html)
+#' Bin](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @param
@@ -12462,7 +12463,7 @@ route53domains <- function(config = list(), credentials = list(), endpoint = NUL
 #'   routing controls, and control panels, and how to work with Route 53
 #'   ARC in the Amazon Web Services console. For more information, see
 #'   [Recovery control
-#'   components](https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components.html#introduction-components-routing)
+#'   components](https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components-zonal.html#introduction-components-routing)
 #'   in the Amazon Route 53 Application Recovery Controller Developer
 #'   Guide.
 #' 
@@ -18343,7 +18344,7 @@ autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' To learn more about AWS Auto Scaling, including information about
 #' granting IAM users required permissions for AWS Auto Scaling actions,
 #' see the [AWS Auto Scaling User
-#' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-a-scaling-plan.html).
+#' Guide](https://docs.aws.amazon.com/autoscaling/plans/userguide/migrate-scaling-plan.html).
 #'
 #' @param
 #' config
@@ -19002,7 +19003,7 @@ cloudtraildataservice <- function(config = list(), credentials = list(), endpoin
 #' manage Config. The Config API uses the Signature Version 4 protocol for
 #' signing requests. For more information about how to sign a request with
 #' this protocol, see [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' For detailed information about Config features and their associated
 #' actions or commands, as well as how to work with Amazon Web Services
 #' Management Console, see [What Is
@@ -19210,7 +19211,7 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' interface (API) operations that support programmatic interaction with
 #' these types of resources:
 #' 
-#' - [*Controls*](https://docs.aws.amazon.com/controltower/latest/userguide/controls.html)
+#' - [*Controls*](https://docs.aws.amazon.com/controltower/latest/controlreference/controls.html)
 #' 
 #'   - `disable_control`
 #' 
@@ -20231,9 +20232,8 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' Health
 #' 
 #' The Health API provides access to the Health information that appears in
-#' the [Health Dashboard](https://health.aws.amazon.com/health/home). You
-#' can use the API operations to get information about events that might
-#' affect your Amazon Web Services and resources.
+#' the Health Dashboard. You can use the API operations to get information
+#' about events that might affect your Amazon Web Services and resources.
 #' 
 #' You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 #' from [Amazon Web Services
@@ -20262,7 +20262,7 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' 
 #' For authentication of requests, Health uses the [Signature Version 4
 #' Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' If your Amazon Web Services account is part of Organizations, you can
 #' use the Health organizational view feature. This feature provides a
@@ -21485,7 +21485,7 @@ cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = 
 #' OpsWorks Stacks is an application management service that provides an
 #' integrated experience for managing the complete application lifecycle.
 #' For information about OpsWorks, see the
-#' [OpsWorks](https://aws.amazon.com/opsworks/) information page.
+#' [OpsWorks](https://aws.amazon.com/) information page.
 #' 
 #' **SDKs and CLI**
 #' 
@@ -24138,7 +24138,7 @@ ssmsap <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' For more information about this service and the endpoints to use, see
 #' [About the Amazon Web Services Support
@@ -24438,7 +24438,7 @@ supportapp <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' integrate with CloudWatch ServiceLens to help you trace the causes of
 #' impacted nodes in your applications. For more information, see [Using
 #' ServiceLens to Monitor the Health of Your
-#' Applications](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ServiceLens.html)
+#' Applications](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-servicemap.html)
 #' in the *Amazon CloudWatch User Guide*.
 #' 
 #' Before you create and manage canaries, be aware of the security
@@ -35523,9 +35523,8 @@ cognitoidentityprovider <- function(config = list(), credentials = list(), endpo
 #' If you want to use Cognito Sync in an Android or iOS application, you
 #' will probably want to make API calls via the AWS Mobile SDK. To learn
 #' more, see the [Developer Guide for
-#' Android](https://docs.amplify.aws/start/q/integration/android/) and the
-#' [Developer Guide for
-#' iOS](https://docs.amplify.aws/start/q/integration/ios/).
+#' Android](https://docs.amplify.aws/android/) and the [Developer Guide for
+#' iOS](https://docs.amplify.aws/swift/).
 #'
 #' @param
 #' config
@@ -35717,7 +35716,7 @@ cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' 
 #' All API actions are logged as CloudTrail events. See [Logging Detective
 #' API Calls with
-#' CloudTrail](https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html).
+#' CloudTrail](https://docs.aws.amazon.com/detective/latest/userguide/).
 #' 
 #' We replaced the term "master account" with the term "administrator
 #' account". An administrator account is used to centrally manage multiple
@@ -37203,7 +37202,7 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' credentials and use those to sign requests.
 #' 
 #' All KMS requests must be signed with [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' **Logging API Requests**
 #' 
@@ -37232,7 +37231,7 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'   temporary security credentials.
 #' 
 #' - [Signature Version 4 Signing
-#'   Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) -
+#'   Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html) -
 #'   This set of topics walks you through the process of signing a request
 #'   using an access key ID and a secret access key.
 #' 

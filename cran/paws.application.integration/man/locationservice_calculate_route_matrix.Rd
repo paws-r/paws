@@ -23,8 +23,8 @@ locationservice_calculate_route_matrix(
 calculate the route matrix.}
 
 \item{DeparturePositions}{[required] The list of departure (origin) positions for the route matrix. An array
-of points, each of which is itself a 2-value array defined in WGS 84
-format: \verb{[longitude, latitude]}. For example, \verb{[-123.115, 49.285]}.
+of points, each of which is itself a 2-value array defined in \href{https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84}{WGS 84} format:
+\verb{[longitude, latitude]}. For example, \verb{[-123.115, 49.285]}.
 
 Depending on the data provider selected in the route calculator resource
 there may be additional restrictions on the inputs you can choose. See
@@ -32,15 +32,14 @@ there may be additional restrictions on the inputs you can choose. See
 in the \emph{Amazon Location Service Developer Guide}.
 
 For route calculators that use Esri as the data provider, if you specify
-a departure that's not located on a road, Amazon Location \href{https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
-The snapped value is available in the result in
-\code{SnappedDeparturePositions}.
+a departure that's not located on a road, Amazon Location \href{https://docs.aws.amazon.com/location/latest/developerguide/}{moves the position to the nearest road}. The
+snapped value is available in the result in \code{SnappedDeparturePositions}.
 
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
 
 \item{DestinationPositions}{[required] The list of destination positions for the route matrix. An array of
-points, each of which is itself a 2-value array defined in WGS 84
-format: \verb{[longitude, latitude]}. For example, \verb{[-122.339, 47.615]}
+points, each of which is itself a 2-value array defined in \href{https://earth-info.nga.mil/index.php?dir=wgs84&action=wgs84}{WGS 84} format:
+\verb{[longitude, latitude]}. For example, \verb{[-122.339, 47.615]}
 
 Depending on the data provider selected in the route calculator resource
 there may be additional restrictions on the inputs you can choose. See
@@ -48,8 +47,8 @@ there may be additional restrictions on the inputs you can choose. See
 in the \emph{Amazon Location Service Developer Guide}.
 
 For route calculators that use Esri as the data provider, if you specify
-a destination that's not located on a road, Amazon Location \href{https://docs.aws.amazon.com/location/latest/developerguide/snap-to-nearby-road.html}{moves the position to the nearest road}.
-The snapped value is available in the result in
+a destination that's not located on a road, Amazon Location \href{https://docs.aws.amazon.com/location/latest/developerguide/}{moves the position to the nearest road}. The
+snapped value is available in the result in
 \code{SnappedDestinationPositions}.
 
 Valid Values: \verb{[-180 to 180,-90 to 90]}}
@@ -70,7 +69,7 @@ provider, and only within Southeast Asia.
 \code{Truck} is not available for Grab.
 
 For more information about using Grab as a data provider, see
-\href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}
+\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}
 in the \emph{Amazon Location Service Developer Guide}.
 
 Default Value: \code{Car}}

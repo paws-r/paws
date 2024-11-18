@@ -381,14 +381,14 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 #' match its instance type configuration, or if it only accepts Host
 #' tenancy instance launches that specify its unique host ID. For more
 #' information, see [Understanding auto-placement and
-#' affinity](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding)
+#' affinity](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/#dedicated-hosts-understanding)
 #' in the *Amazon EC2 User Guide*.
 #' 
 #' Default: `off`
 #' @param AvailabilityZone &#91;required&#93; The Availability Zone in which to allocate the Dedicated Host.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param InstanceType Specifies the instance type to be supported by the Dedicated Hosts. If
 #' you specify an instance type, the Dedicated Hosts support instances of
 #' the specified instance type only.
@@ -2234,7 +2234,7 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #'
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure idempotency of
 #' the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param Description A description for the new AMI in the destination Region.
 #' @param Encrypted Specifies whether the destination snapshots of the copied image should
@@ -2442,7 +2442,7 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, 
 #'
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param InstanceType &#91;required&#93; The instance type for which to reserve capacity. For more information,
 #' see [Instance
 #' types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
@@ -2554,7 +2554,7 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param SourceCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation from which you want to split the
 #' available capacity.
 #' @param InstanceCount &#91;required&#93; The number of instances to split from the source Capacity Reservation.
@@ -2585,7 +2585,7 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
 #' Creates a Capacity Reservation Fleet
 #'
 #' @description
-#' Creates a Capacity Reservation Fleet. For more information, see [Create a Capacity Reservation Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/work-with-cr-fleets.html#create-crfleet) in the *Amazon EC2 User Guide*.
+#' Creates a Capacity Reservation Fleet. For more information, see [Create a Capacity Reservation Fleet](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/crfleet-concepts.html#create-crfleet) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/](https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation_fleet/) for full documentation.
 #'
@@ -2599,7 +2599,7 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
 #' Valid values: `prioritized`
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param InstanceTypeSpecifications &#91;required&#93; Information about the instance types for which to reserve the capacity.
 #' @param Tenancy Indicates the tenancy of the Capacity Reservation Fleet. All Capacity
 #' Reservations in the Fleet inherit this tenancy. The Capacity Reservation
@@ -3162,7 +3162,7 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param SpotOptions Describes the configuration of Spot Instances in an EC2 Fleet.
 #' @param OnDemandOptions Describes the configuration of On-Demand Instances in an EC2 Fleet.
 #' @param ExcessCapacityTerminationPolicy Indicates whether running instances should be terminated if the total
@@ -4012,7 +4012,7 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL, KeyType = NULL, TagSpeci
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
 #' of the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
 #' @param LaunchTemplateName &#91;required&#93; A name for the launch template.
@@ -4062,7 +4062,7 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
 #' of the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
 #' @param LaunchTemplateId The ID of the launch template.
@@ -4896,7 +4896,7 @@ ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, C
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier you provide to ensure idempotency of
 #' your listings. This helps avoid duplicate listings. For more
 #' information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param InstanceCount &#91;required&#93; The number of instances that are a part of a Reserved Instance account
 #' to be listed in the Reserved Instance Marketplace. This number should be
 #' less than or equal to the instance count associated with the Reserved
@@ -11991,7 +11991,7 @@ ec2_describe_id_format <- function(Resource = NULL) {
 #' user, IAM role, or root user
 #'
 #' @description
-#' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html) in the *Amazon Elastic Compute Cloud User Guide*.
+#' Describes the ID format settings for resources for the specified IAM user, IAM role, or root user. For example, you can view the resource types that are enabled for longer IDs. This request only returns information about resource types whose ID formats can be modified; it does not return information about other resource types. For more information, see [Resource IDs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resources.html) in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_describe_identity_id_format/](https://www.paws-r-sdk.com/docs/ec2_describe_identity_id_format/) for full documentation.
 #'
@@ -23558,7 +23558,7 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' encrypted. The default KMS key for EBS is used unless you specify a
 #' non-default KMS key using `KmsKeyId`. For more information, see [Amazon
 #' EBS
-#' Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+#' Encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param Hypervisor The target hypervisor platform.
 #' 
@@ -23746,7 +23746,7 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
 #' be encrypted. The default KMS key for EBS is used unless you specify a
 #' non-default KMS key using `KmsKeyId`. For more information, see [Amazon
 #' EBS
-#' Encryption](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
+#' Encryption](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-encryption.html)
 #' in the *Amazon Elastic Compute Cloud User Guide*.
 #' @param KmsKeyId An identifier for the symmetric KMS key to use when creating the
 #' encrypted snapshot. This parameter is only required if you want to use a
@@ -23847,7 +23847,7 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #' Lists one or more AMIs that are currently in the Recycle Bin
 #'
 #' @description
-#' Lists one or more AMIs that are currently in the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html) in the *Amazon EC2 User Guide*.
+#' Lists one or more AMIs that are currently in the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_list_images_in_recycle_bin/](https://www.paws-r-sdk.com/docs/ec2_list_images_in_recycle_bin/) for full documentation.
 #'
@@ -24772,11 +24772,11 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 #' @param Kernel Changes the instance's kernel to the specified value. We recommend that
 #' you use PV-GRUB instead of kernels and RAM disks. For more information,
 #' see
-#' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
+#' [PV-GRUB](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html).
 #' @param Ramdisk Changes the instance's RAM disk to the specified value. We recommend
 #' that you use PV-GRUB instead of kernels and RAM disks. For more
 #' information, see
-#' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html).
+#' [PV-GRUB](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html).
 #' @param SriovNetSupport Set to `simple` to enable enhanced networking with the Intel 82599
 #' Virtual Function interface for the instance.
 #' 
@@ -24869,7 +24869,7 @@ ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, Capa
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken A unique, case-sensitive token that you provide to ensure idempotency of
 #' your modification request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param InstanceCreditSpecifications &#91;required&#93; Information about the credit option for CPU usage.
 #'
 #' @keywords internal
@@ -25464,7 +25464,7 @@ ec2_modify_ipam_scope <- function(DryRun = NULL, IpamScopeId, Description = NULL
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier you provide to ensure the idempotency
 #' of the request. For more information, see [Ensuring
-#' idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' 
 #' Constraint: Maximum 128 ASCII characters.
 #' @param LaunchTemplateId The ID of the launch template.
@@ -25713,7 +25713,7 @@ ec2_modify_private_dns_name_options <- function(DryRun = NULL, InstanceId, Priva
 #' @param ReservedInstancesIds &#91;required&#93; The IDs of the Reserved Instances to modify.
 #' @param ClientToken A unique, case-sensitive token you provide to ensure idempotency of your
 #' modification request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param TargetConfigurations &#91;required&#93; The configuration settings for the Reserved Instances to modify.
 #'
 #' @keywords internal
@@ -27296,7 +27296,7 @@ ec2_move_byoip_cidr_to_ipam <- function(DryRun = NULL, Cidr, IpamPoolId, IpamPoo
 #' Otherwise, it is `UnauthorizedOperation`.
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensure
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param SourceCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation from which you want to move capacity.
 #' @param DestinationCapacityReservationId &#91;required&#93; The ID of the Capacity Reservation that you want to move capacity into.
 #' @param InstanceCount &#91;required&#93; The number of instances that you want to move from the source Capacity
@@ -27576,7 +27576,7 @@ ec2_purchase_capacity_block <- function(DryRun = NULL, TagSpecifications = NULL,
 #'
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param CurrencyCode The currency in which the `totalUpfrontPrice`, `LimitPrice`, and
 #' `totalHourlyPrice` amounts are specified. At this time, the only
 #' supported currency is `USD`.
@@ -27664,7 +27664,7 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 #'
 #' @param ClientToken Unique, case-sensitive identifier that ensures the idempotency of the
 #' request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -28686,7 +28686,7 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 #' @param ClientToken Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. For more information, see [Ensuring
 #' idempotency in Amazon EC2 API
-#' requests](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' requests](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html)
 #' in the *Amazon EC2 User Guide*.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
@@ -29054,7 +29054,7 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
 #' Restores an AMI from the Recycle Bin
 #'
 #' @description
-#' Restores an AMI from the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html) in the *Amazon EC2 User Guide*.
+#' Restores an AMI from the Recycle Bin. For more information, see [Recycle Bin](https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin.html) in the *Amazon EC2 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/ec2_restore_image_from_recycle_bin/](https://www.paws-r-sdk.com/docs/ec2_restore_image_from_recycle_bin/) for full documentation.
 #'
@@ -29389,7 +29389,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' 
 #' We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 #' more information, see
-#' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
+#' [PV-GRUB](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html)
 #' in the *Amazon EC2 User Guide*.
 #' @param KeyName The name of the key pair. You can create a key pair using
 #' [`create_key_pair`][ec2_create_key_pair] or
@@ -29424,7 +29424,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' 
 #' We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 #' more information, see
-#' [PV-GRUB](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedKernels.html)
+#' [PV-GRUB](https://docs.aws.amazon.com/linux/al2/ug/UserProvidedKernels.html)
 #' in the *Amazon EC2 User Guide*.
 #' @param SecurityGroupIds The IDs of the security groups. You can create a security group using
 #' [`create_security_group`][ec2_create_security_group].
@@ -29452,7 +29452,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' generated token is used for the request to ensure idempotency.
 #' 
 #' For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' 
 #' Constraints: Maximum 64 ASCII characters
 #' @param DisableApiTermination If you set this parameter to `true`, you can't terminate the instance
@@ -29617,7 +29617,7 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 #'
 #' @param ClientToken Unique, case-sensitive identifier that ensures the idempotency of the
 #' request. For more information, see [Ensuring
-#' Idempotency](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+#' Idempotency](https://docs.aws.amazon.com/ec2/latest/devguide/ec2-api-idempotency.html).
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.

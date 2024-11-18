@@ -49,7 +49,7 @@ latest \code{ACTIVE} revision is used.
 A task definition must be specified if the service uses either the \code{ECS}
 or \code{CODE_DEPLOY} deployment controllers.
 
-For more information about deployment types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html}{Amazon ECS deployment types}.}
+For more information about deployment types, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Amazon ECS deployment types}.}
 
 \item{loadBalancers}{A load balancer object representing the load balancers to use with your
 service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html}{Service load balancing}
@@ -150,7 +150,7 @@ providers.}
 \item{platformVersion}{The platform version that your tasks in the service are running on. A
 platform version is specified only for tasks using the Fargate launch
 type. If one isn't specified, the \code{LATEST} platform version is used. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html}{Fargate platform versions}
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html}{Fargate platform versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{role}{The name or full Amazon Resource Name (ARN) of the IAM role that allows

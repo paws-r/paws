@@ -2797,7 +2797,7 @@ cloudwatchlogs_start_live_tail <- function(logGroupIdentifiers, logStreamNames =
     http_path = "/",
     host_prefix = "streaming-",
     paginator = list(),
-    stream_api = FALSE
+    stream_api = TRUE
   )
   input <- .cloudwatchlogs$start_live_tail_input(logGroupIdentifiers = logGroupIdentifiers, logStreamNames = logStreamNames, logStreamNamePrefixes = logStreamNamePrefixes, logEventFilterPattern = logEventFilterPattern)
   output <- .cloudwatchlogs$start_live_tail_output()

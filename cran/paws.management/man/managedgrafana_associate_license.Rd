@@ -18,7 +18,7 @@ free trials.}
 \item{workspaceId}{[required] The ID of the workspace to associate the license with.}
 }
 \description{
-Assigns a Grafana Enterprise license to a workspace. To upgrade, you must use \code{ENTERPRISE} for the \code{licenseType}, and pass in a valid Grafana Labs token for the \code{grafanaToken}. Upgrading to Grafana Enterprise incurs additional fees. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html}{Upgrade a workspace to Grafana Enterprise}.
+Assigns a Grafana Enterprise license to a workspace. To upgrade, you must use \code{ENTERPRISE} for the \code{licenseType}, and pass in a valid Grafana Labs token for the \code{grafanaToken}. Upgrading to Grafana Enterprise incurs additional fees. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-enterprise-plugins.html}{Upgrade a workspace to Grafana Enterprise}.
 
 See \url{https://www.paws-r-sdk.com/docs/managedgrafana_associate_license/} for full documentation.
 }

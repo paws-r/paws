@@ -13,7 +13,7 @@ NULL
 #' @param name &#91;required&#93; The name of the activity to create. This name must be unique for your
 #' Amazon Web Services account and region for 90 days. For more
 #' information, see [Limits Related to State Machine
-#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
 #' 
 #' A name must *not* contain:
@@ -100,7 +100,7 @@ sfn_create_activity <- function(name, tags = NULL, encryptionConfiguration = NUL
 #' logged.
 #' 
 #' By default, the `level` is set to `OFF`. For more information see [Log
-#' Levels](https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html)
+#' Levels](https://docs.aws.amazon.com/step-functions/latest/dg/welcome.html)
 #' in the Step Functions User Guide.
 #' @param tags Tags to be added when creating a state machine.
 #' 
@@ -1179,7 +1179,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #' @param name Optional name of the execution. This name must be unique for your Amazon
 #' Web Services account, Region, and state machine for 90 days. For more
 #' information, see [Limits Related to State Machine
-#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/limits-overview.html#service-limits-state-machine-executions)
+#' Executions](https://docs.aws.amazon.com/step-functions/latest/dg/service-quotas.html#service-limits-state-machine-executions)
 #' in the *Step Functions Developer Guide*.
 #' 
 #' If you don't provide a name for the execution, Step Functions

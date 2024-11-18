@@ -101,7 +101,7 @@ NULL
 #' `DurationSeconds` parameter value greater than one hour, the operation
 #' fails. To learn how to view the maximum value for your role, see [View
 #' the Maximum Session Duration Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*.
 #' 
 #' By default, the value is set to `3600` seconds.
@@ -176,7 +176,7 @@ NULL
 #' rather than everyone in the account. For more information about the
 #' external ID, see [How to Use an External ID When Granting Access to Your
 #' Amazon Web Services Resources to a Third
-#' Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)
+#' Party](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_common-scenarios_third-party.html)
 #' in the *IAM User Guide*.
 #' 
 #' The regex used to validate this parameter is a string of characters
@@ -337,7 +337,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' duration to 6 hours, your operation fails. To learn how to view the
 #' maximum value for your role, see [View the Maximum Session Duration
 #' Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*.
 #' 
 #' By default, the value is set to `3600` seconds.
@@ -472,7 +472,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' administrator set the maximum session duration to 6 hours, your
 #' operation fails. To learn how to view the maximum value for your role,
 #' see [View the Maximum Session Duration Setting for a
-#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
+#' Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage-assume.html#id_roles_use_view-role-max-session)
 #' in the *IAM User Guide*.
 #' 
 #' By default, the value is set to `3600` seconds.

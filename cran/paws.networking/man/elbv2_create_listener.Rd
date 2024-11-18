@@ -34,7 +34,7 @@ port for a Gateway Load Balancer.}
 protocols and ciphers are supported.
 
 For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security policies}
-in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies}{Security policies}
+in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#describe-ssl-policies}{Security policies}
 in the \emph{Network Load Balancers Guide}.}
 
 \item{Certificates}{[HTTPS and TLS listeners] The default certificate for the listener.
@@ -54,7 +54,7 @@ possible values:
 \item \code{None}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies}{ALPN policies}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/#alpn-policies}{ALPN policies}
 in the \emph{Network Load Balancers Guide}.}
 
 \item{Tags}{The tags to assign to the listener.}
