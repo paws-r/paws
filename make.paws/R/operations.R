@@ -93,13 +93,8 @@ set_paginator <- function(paginator) {
   }
 }
 
-# TODO: double check this is correct method
 set_stream_api <- function(operation) {
-  if (endsWith(operation$http$requestUri, "stream")) {
-    "TRUE"
-  } else {
-    "FALSE"
-  }
+  as.character(operation$eventstream %||% FALSE)
 }
 
 # Override operation name from extdata/operation_name_override.yml
