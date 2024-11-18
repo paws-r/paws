@@ -18,6 +18,10 @@ read_api <- function(api_name, path) {
     paginators <- jsonlite::read_json(files$paginators)
     api <- merge_paginators(api, paginators$pagination)
   }
+  if (!is.null(files$min)) {
+    ops <- jsonlite::read_json(files$min)$operations
+    api <- merge_eventstream(api, ops)
+  }
   region_config <- jsonlite::read_json(region_config_path)
   api <- merge_region_config(api, region_config)
   api <- fix_region_config(api)
@@ -58,6 +62,16 @@ merge_paginators <- function(api, paginators) {
     operation <- api$operations[[name]]
     operation[["paginators"]] <- paginators[[name]]
     api$operations[[name]] <- operation
+  }
+  return(api)
+}
+
+merge_eventstream <- function(api, ops) {
+  flatten_ops <- unlist(ops)
+  found <- flatten_ops[endsWith(names(flatten_ops), "eventstream")]
+  op_name <- stringr::str_extract(names(found), "([a-zA-Z]+)")
+  for (i in seq_along(op_name)) {
+    api$operations[[op_name[i]]]$eventstream <- found[i]
   }
   return(api)
 }
