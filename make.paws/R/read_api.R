@@ -1,4 +1,6 @@
 # Read a given API's definition and documentation files.
+# aws-sdk-js deprecated and apis is not being updated
+# TODO: short term migrate to botocore jsons
 read_api <- function(api_name, path) {
   api_path <- file.path(path, "apis")
   region_config_path <- file.path(path, "lib/region_config_data.json")
@@ -18,10 +20,7 @@ read_api <- function(api_name, path) {
     paginators <- jsonlite::read_json(files$paginators)
     api <- merge_paginators(api, paginators$pagination)
   }
-  if (!is.null(files$min)) {
-    ops <- jsonlite::read_json(files$min)$operations
-    api <- merge_eventstream(api, ops)
-  }
+  api <- merge_eventstream(api)
   region_config <- jsonlite::read_json(region_config_path)
   api <- merge_region_config(api, region_config)
   api <- fix_region_config(api)
@@ -66,12 +65,20 @@ merge_paginators <- function(api, paginators) {
   return(api)
 }
 
-merge_eventstream <- function(api, ops) {
-  flatten_ops <- unlist(ops)
-  found <- flatten_ops[endsWith(names(flatten_ops), "eventstream")]
-  op_name <- stringr::str_extract(names(found), "([a-zA-Z]+)")
-  for (i in seq_along(op_name)) {
-    api$operations[[op_name[i]]]$eventstream <- found[i]
+merge_eventstream <- function(api) {
+  flat_shape <- unlist(api$shapes)
+  eventstream <- flat_shape[endsWith(names(flat_shape),"eventstream")]
+  names(eventstream) <- stringr::str_extract(names(eventstream), "([a-zA-Z]+)")
+
+  shape <- flat_shape[endsWith(names(flat_shape), "shape")]
+  shape <- shape[shape %in% names(eventstream)]
+  names(shape) <- gsub(
+    "Output$|Response$", "", stringr::str_extract(names(shape), "([a-zA-Z]+)")
+  )
+  names(eventstream) <- names(shape)
+
+  for (nms in names(eventstream)) {
+    api$operations[[nms]]$eventstream <- eventstream[nms]
   }
   return(api)
 }
