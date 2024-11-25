@@ -16,18 +16,13 @@ decode_json <- function(raw) {
   return(obj)
 }
 
-# Read a JSON string into an R list object.
-json_to_list <- function(string) {
-  if (length(string) == 0 || string == "") {
-    return(list())
+stream_raw <- function(con) {
+  on.exit(close(con))
+  total <- raw()
+  while (isIncomplete(con)) {
+    total <- c(total, readBin(con, raw(), n = 1024))
   }
-  l <- jsonlite::fromJSON(
-    string,
-    simplifyVector = FALSE,
-    simplifyDataFrame = FALSE,
-    simplifyMatrix = FALSE
-  )
-  return(l)
+  return(total)
 }
 
 #-------------------------------------------------------------------------------

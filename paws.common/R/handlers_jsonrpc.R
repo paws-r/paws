@@ -42,6 +42,10 @@ jsonrpc_unmarshal <- function(request) {
 
 # Unmarshal errors from a JSON RPC response.
 jsonrpc_unmarshal_error <- function(request) {
+  if (request$operation$stream_api) {
+    con <- request$http_response$body
+    request$http_response$body <- stream_raw(con$body)
+  }
   error <- decode_json(request$http_response$body)
   if (length(error) == 0) {
     return(request)
