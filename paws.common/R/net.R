@@ -1,4 +1,4 @@
-#' @importFrom httr2 request req_options req_perform
+#' @importFrom httr2 request req_options req_perform req_perform_connection
 
 #' @include struct.R
 #' @include url.R
@@ -31,7 +31,8 @@ HttpRequest <- struct(
   timeout = NULL,
   response = NULL,
   ctx = list(),
-  dest = NULL
+  dest = NULL,
+  stream_api = FALSE
 )
 
 # Construct an HTTP response object.
@@ -43,7 +44,6 @@ HttpResponse <- struct(
   proto_minor = NA,
   header = list(),
   body = NULL,
-  connection = NULL,
   content_length = NA,
   transfer_encoding = list(),
   close = logical(0),
@@ -63,7 +63,7 @@ HttpResponse <- struct(
 # @param timeout Timeout for the entire request.
 # @param dest Control where the response body is written
 # @param header list of HTTP headers to add to the request
-new_http_request <- function(method, url, body = NULL, close = FALSE, connect_timeout = NULL, timeout = NULL, dest = NULL, header = list()) {
+new_http_request <- function(method, url, body = NULL, close = FALSE, connect_timeout = NULL, timeout = NULL, dest = NULL, stream_api = FALSE, header = list()) {
   if (method == "") {
     method <- "GET"
   }
@@ -84,7 +84,8 @@ new_http_request <- function(method, url, body = NULL, close = FALSE, connect_ti
     close = close,
     connect_timeout = connect_timeout,
     timeout = timeout,
-    dest = dest
+    dest = dest,
+    stream_api = stream_api
   )
   return(req)
 }
@@ -120,7 +121,7 @@ issue <- function(http_request) {
     header = resp$headers,
     content_length = as.integer(resp$headers$`content-length`),
     # Prevent reading in data when output is set
-    body = resp_body(resp, http_request$dest)
+    body = resp_body(resp, http_request$dest, http_request$stream_api)
   )
 
   # Decode gzipped response bodies that are not automatically decompressed
@@ -137,7 +138,9 @@ request_aws <- function(url, http_request) {
   req$method <- http_request$method
   req$headers <- http_request$header
   req$policies$error_is_error <- function(resp) FALSE
-  req$body <- list(data = http_request$body, type = "raw", content_type = "", params = list())
+  if (!is.null(http_request$body)) {
+    req$body <- list(data = http_request$body, type = "raw", content_type = "", params = list())
+  }
   req <- req_options(
     .req = req,
     timeout_ms = http_request$timeout * 1000,
@@ -145,11 +148,17 @@ request_aws <- function(url, http_request) {
     debugfunction = paws_debug,
     verbose = isTRUE(getOption("paws.log_level") >= 3L)
   )
-  return(req_perform(req, path = http_request$dest))
+  if (http_request$stream_api) {
+    return(req_perform_connection(req))
+  } else {
+    return(req_perform(req, path = http_request$dest))
+  }
 }
 
-resp_body <- function(resp, path) {
-  if (is.null(path)) {
+resp_body <- function(resp, path, stream_api) {
+  if (stream_api) {
+    body <- resp
+  } else if (is.null(path)) {
     body <- resp$body
     # return error message if call has failed or needs redirecting
   } else if (resp$status_code %in% c(301, 400)) {
