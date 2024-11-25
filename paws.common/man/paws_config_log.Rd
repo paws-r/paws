@@ -13,6 +13,7 @@ paws_config_log(
 \arguments{
 \item{level}{(integer) to determine the level logging threshold.
 \itemize{
+\item \code{5L}: TRACE
 \item \code{4L}: DEBUG
 \item \code{3L}: INFO
 \item \code{2L}: WARNING

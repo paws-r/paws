@@ -75,6 +75,7 @@ Collate:
     'handlers_rest.R'
     'handlers_restjson.R'
     'handlers_restxml.R'
+    'handlers_stream.R'
     'idempotency.R'
     'jsonutil.R'
     'onLoad.R'
