@@ -9,6 +9,7 @@ Operation <- struct(
   http_path = "",
   host_prefix = "",
   paginator = list(),
+  stream_api = FALSE,
   before_presign_fn = function() {}
 )
 
@@ -22,7 +23,8 @@ Operation <- struct(
 #' @param http_method The HTTP method, e.g. `"GET"` or `"POST"`.
 #' @param http_path The HTTP path.
 #' @param host_prefix The HTTP prefix
-#' @param paginator Currently unused.
+#' @param paginator List input_token and output_token.
+#' @param stream_api Set if operation is stream api or not
 #' @param before_presign_fn Currently unused.
 #'
 #' @family API request functions
@@ -37,7 +39,7 @@ Operation <- struct(
 #' )
 #'
 #' @export
-new_operation <- function(name, http_method, http_path, host_prefix, paginator, before_presign_fn = NULL) {
+new_operation <- function(name, http_method, http_path, host_prefix, paginator, stream_api = FALSE, before_presign_fn = NULL) {
   args <- as.list(environment())
   args[lengths(args) == 0] <- NULL
   return(do.call(Operation, args))
@@ -111,7 +113,8 @@ new_request <- function(client, operation, params, data, dest = NULL) {
     body = NULL,
     close = client$config$close_connection,
     connect_timeout = client$config$connect_timeout,
-    dest = dest
+    dest = dest,
+    stream_api = operation$stream_api
   )
 
   http_req$url <- parse_url(
@@ -120,7 +123,7 @@ new_request <- function(client, operation, params, data, dest = NULL) {
 
   http_req <- sanitize_host_for_header(http_req)
 
-  r <- Request(
+  req <- Request(
     config = client$config,
     client_info = client$client_info,
     handlers = client$handlers,
@@ -137,7 +140,7 @@ new_request <- function(client, operation, params, data, dest = NULL) {
 
   # TODO: Custom initialization.
 
-  return(r)
+  return(req)
 }
 
 #' Send a request and handle the response
