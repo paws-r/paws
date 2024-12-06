@@ -51,16 +51,15 @@
 #' }
 NULL
 
-StreamHandler <- function(request, unmarshal) {
-  con <- paws_con(request$http_response$body, unmarshal)
+StreamHandler <- function(request, unmarshal, format) {
+  con <- paws_con(request$http_response$body, unmarshal, format)
   paws_stream_handler <- function(FUN, .connection = FALSE) {
     if (isTRUE(.connection)) {
       return(con)
     }
-    on.exit(close(con))
     result <- list()
-    while(!is.null(event <- paws_stream_parser(con, unmarshal))) {
-      result[[length(result) + 1]] <- list(FUN(resp))
+    while(!is.null(resp <- paws_stream_parser(con))) {
+      result[[length(result) + 1]] <- FUN(resp)
     }
     return(result)
   }
@@ -68,8 +67,11 @@ StreamHandler <- function(request, unmarshal) {
   return(paws_stream_handler)
 }
 
-paws_con <- function(con, unmarshal) {
-  con$paws_unmarshal <- unmarshal
+paws_con <- function(con, unmarshal, format) {
+  con$paws_metadata <- list(
+    unmarshal=unmarshal,
+    format=format
+  )
   class(con) <- c("paws_connection", class(con))
   return(con)
 }
@@ -80,7 +82,7 @@ print.PawsStreamHandler <- function(x, ...) {
   op_name <- tolower(gsub("(.)([A-Z])", "\\1_\\2", request$operation$name))
   msg <- sprintf(c(
       "<PawsStreamHandler>",
-      "Please check return object for service: %1$s and operation: %2$s",
+      "Please check return object for: %1$s_%2$s",
       "https://www.paws-r-sdk.com/docs/%1$s_%2$s/"
     ),
     request$client_info$service_name,
@@ -94,52 +96,167 @@ print.PawsStreamHandler <- function(x, ...) {
 #' @name paws_stream_handler
 #' @export
 paws_stream_parser <- function(con) {
-  event_bytes <- paws_boundary(con)
-  if (!is.null(event_bytes)) {
-    paws_eventstream_parser(event_bytes, con$paws_unmarshal)
-  } else {
+  if (!isIncomplete(con$body)) {
     close(con)
     return(NULL)
   }
-}
-
-# TODO: correctly parse event stream
-paws_eventstream_parser <- function(event, unmarshal) {
-  return(event)
-}
-
-
-################ connection boundary ################
-# TODO: identify boundaries of message from event stream
-paws_boundary <- function(con) {
-
-}
-
-
-################ aws parsers ################
-
-big_endian <- function(vec, dtype) {
-  switch(
-    dtype,
-    "int64" = c(
-      vec[8:1], vec[16:9], vec[24:17], vec[32:25], vec[40:33], vec[48:41], vec[56:49], vec[64:57]
-    ),
-    "int32" = c(vec[8:1], vec[16:9], vec[24:17], vec[32:25]),
-    "int16" = c(vec[8:1], vec[16:9]),
-    "int8" = vec[8:1]
+  buffer <- readBin(con$body, raw(), n = 1024)
+  if (is.null(aws_boundary(buffer))) {
+    close(con)
+    return(NULL)
+  }
+  return(paws_eventstream_parser(
+      buffer, con$paws_metadata$unmarshal, con$paws_metadata$format
+    )
   )
 }
 
-int_to_uint <- function (x, adjustment=2^32) {
-  if (sign(x) < 0) {
-    return(x + adjustment)
+
+################ parsing message ################
+unmarshal_json_stream <- function(bytes, format) {
+  payload <- decode_json(bytes)
+  json_parse(payload, format)
+}
+
+################ connection boundary ################
+# TODO: identify boundaries of message from event stream
+paws_eventstream_parser <- function(buffer, unmarshal, format) {
+  # chunk loop
+  while (!is.null(split_at <- aws_boundary(buffer))) {
+      result <- split_buffer(buffer, split_at)
+      data <- parse_aws_event(result$matched)
+      nms <- data$headers[[":event-type"]]
+      format[[nms]] <- unmarshal(
+        data$payload, format[[nms]]
+      )
+      buffer <- result$remaining
   }
-  return(x)
+  return(tag_del(format))
+}
+
+aws_boundary <- function(buffer) {
+  # No valid AWS event message is less than 16 bytes
+  if (length(buffer) < 16) {
+    return(NULL)
+  }
+
+  # Read first 4 bytes as a big endian number
+  event_size <- parse_int32(buffer[1:4])
+  if (event_size > length(buffer)) {
+    return(NULL)
+  }
+
+  event_size + 1
+}
+
+
+# Modified from httr2:
+# https://github.com/r-lib/httr2/blob/e972770199f674eca4c64ca8161235e5745683dd/R/utils.R#L314C1-L326C2
+split_buffer <- function (buffer, split_at) {
+  list(
+    matched = slice(buffer, end = split_at),
+    remaining = slice(buffer, start = split_at)
+  )
+}
+
+slice <- function(vector, start = 1, end = length(vector) + 1) {
+  if (start == end) {
+    vector[FALSE]
+  } else {
+    vector[start:(end - 1)]
+  }
+}
+
+################ aws parsers ################
+# Implementation from https://github.com/lifion/lifion-aws-event-stream/blob/develop/lib/index.js
+# Modified from httr2: https://github.com/r-lib/httr2/blob/main/R/resp-stream.R
+parse_aws_event <- function(bytes) {
+  i <- 1
+  read_bytes <- function(n) {
+    if (n == 0) {
+      return(raw())
+    }
+    out <- bytes[i:(i + n - 1)]
+    i <<- i + n
+    out
+  }
+
+  # Parse prelude
+  # The prelude for an event stream message has the following format:
+  #   [total_length][header_length][prelude_crc]
+  prelude_bytes <- read_bytes(8)
+  tot_hd <- parse_int32(prelude_bytes)
+  total_length <- tot_hd[1]
+  header_length <- tot_hd[2]
+
+  # validate perlude checksum
+  validate_checksum(prelude_bytes, paste(read_bytes(4), collapse = ""))
+
+  if (total_length != length(bytes)) {
+    stop("AWS event metadata doesn't match supplied bytes")
+  }
+
+  # Parse headers
+  headers <- list()
+  while(i <= 12 + header_length) {
+    name_length <- parse_int8(read_bytes(1))
+    name <- rawToChar(read_bytes(name_length))
+    type <- parse_int8(read_bytes(1))
+    delayedAssign("len", parse_int16(read_bytes(2)))
+    value <- switch(
+      type_enum(type),
+      'TRUE' = TRUE,
+      'FALSE' = FALSE,
+      BYTE = parse_int8(read_bytes(1)),
+      SHORT = parse_int16(read_bytes(2)),
+      INTEGER = parse_int(read_bytes(4)),
+      LONG = parse_int64(read_bytes(8)),
+      BYTE_ARRAY = read_bytes(len),
+      CHARACTER = rawToChar(read_bytes(len)),
+      TIMESTAMP = parse_int64(read_bytes(8)),
+      UUID = paste(read_bytes(16), collapse = ""),
+    )
+    headers[[name]] <- value
+  }
+
+  # Parse message
+  payload_raw <- read_bytes(total_length - i - 4 + 1)
+
+  # validate the message checksum
+  validate_checksum(
+    bytes[1:(total_length-4)], paste(read_bytes(4), collapse = "")
+  )
+
+  list(
+    total_length = total_length,
+    header_length = header_length,
+    payload = payload_raw,
+    headers = headers
+  )
+}
+
+################ Helpers ################
+type_enum <- function(value) {
+  if (value < 0 || value > 10) {
+    stopf("Unsupported type %s.", value)
+  }
+  switch(value + 1,
+         "TRUE",
+         "FALSE",
+         "BYTE",
+         "SHORT",
+         "INTEGER",
+         "LONG",
+         "BYTE_ARRAY",
+         "CHARACTER",
+         "TIMESTAMP",
+         "UUID",
+  )
 }
 
 # Convert raw vector into integers with big-endian
 parse_int64 <- function(x) {
-  bits <- as.integer(big_endian(rawToBits(x), "int64"))
+  bits <- as.integer(big_endian_int64(rawToBits(x)))
   sum(bits[-1] * 2^(62:0)) - bits[[1]] * 2^63
 }
 
@@ -155,23 +272,23 @@ parse_int8 <- function(x) {
   readBin(x, "integer", n=length(x), size=1, endian = "big")
 }
 
-# Converts raw vector into unsigned integers with big-endian
-parse_uint64 <- function(x) {
-  int_to_uint(int64(x), 2^64)
+hex_to_raw <- function(x) {
+  x <- gsub("(\\s|\n)+", "", x)
+
+  pairs <- substring(x, seq(1, nchar(x), by = 2), seq(2, nchar(x), by = 2))
+  as.raw(strtoi(pairs, 16L))
 }
 
-parse_uint32 <- function(x) {
-  int_to_uint(readBin(x, "integer", n=length(x), size = 4, endian = "big"))
+# Get the CRC of a raw vector.
+crc32 <- function(raw) {
+  return(digest::digest(raw, algo = "crc32", serialize = FALSE))
 }
 
-parse_uint16 <- function(x) {
-  readBin(x, "integer", n=length(x), size=2, signed = F, endian = "big")
-}
-
-parse_uint8 <- function(x) {
-  readBin(x, "integer", n=length(x), size=1, signed = F, endian = "big")
-}
-
-parse_string <- function(x) {
-  rawToChar(x)
+validate_checksum <- function(data, crc) {
+  computed_checksum <- crc32(data)
+  if (computed_checksum != crc) {
+    stopf(
+      'Checksum mismatch: expected %s, calculated %s', crc, computed_checksum
+    )
+  }
 }
