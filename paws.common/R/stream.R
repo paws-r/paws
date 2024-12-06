@@ -103,8 +103,3 @@ stream_decode_number <- function(raw) {
 stream_decode_string <- function(raw) {
   return(rawToChar(raw))
 }
-
-# Get the CRC of a raw vector.
-crc <- function(raw) {
-  return(digest::digest(raw, algo = "crc32", serialize = FALSE))
-}
