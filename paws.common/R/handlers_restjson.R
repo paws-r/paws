@@ -41,7 +41,13 @@ restjson_unmarshal_meta <- function(request) {
 # Unmarshal a REST JSON protocol API response.
 restjson_unmarshal <- function(request) {
   if (request$operation$stream_api) {
-    request$data <- list(stream = StreamHandler(request, jsonrpc_unmarshal))
+    # Need to get a better method
+    eventstream <- vapply(request$data, \(x) tag_get(x, "eventstream"), FUN.VALUE = logical(1))
+    resp <- lapply(request$data, `[[`, 1)
+    resp[[eventstream]] <- StreamHandler(
+      request, unmarshal_json_stream, request$data[[eventstream]]
+    )
+    request$data <- resp
   } else if (rest_payload_type(request$data) %in% c("structure", "")) {
     request <- jsonrpc_unmarshal(request)
   } else {
