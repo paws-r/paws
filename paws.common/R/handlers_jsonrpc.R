@@ -34,10 +34,28 @@ jsonrpc_unmarshal_meta <- function(request) {
 jsonrpc_unmarshal <- function(request) {
   body <- request$http_response$body
   if (data_filled(request) && length(body) > 0) {
-    data <- decode_json(body)
-    request$data <- tag_del(json_parse(data, request$data))
+    ### need stream method
+    if (request$operation$stream_api) {
+      payload <- tag_get(request$data, "payload")
+      shape <- tag_del(request$data)
+      shape[[payload]] <- StreamHandler(
+        body, unmarshal_json_stream, request$data[[payload]], list(
+          operation_name = request$operation$name,
+          service_name = request$client_info$service_name
+        )
+      )
+      request$data <- shape
+    } else {
+      data <- decode_json(body)
+      request$data <- tag_del(json_parse(data, request$data))
+    }
   }
   return(request)
+}
+
+unmarshal_json_stream <- function(bytes, format) {
+  payload <- decode_json(bytes)
+  json_parse(payload, format)
 }
 
 # Unmarshal errors from a JSON RPC response.
