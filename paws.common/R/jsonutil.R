@@ -16,15 +16,6 @@ decode_json <- function(raw) {
   return(obj)
 }
 
-stream_raw <- function(con) {
-  on.exit(close(con))
-  total <- raw()
-  while (isIncomplete(con)) {
-    total <- c(total, readBin(con, raw(), n = 1024))
-  }
-  return(total)
-}
-
 #-------------------------------------------------------------------------------
 
 # Build a JSON string for a given object.
