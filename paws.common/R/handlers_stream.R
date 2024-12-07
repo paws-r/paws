@@ -51,8 +51,8 @@
 #' }
 NULL
 
-StreamHandler <- function(request, unmarshal, format) {
-  con <- paws_con(request$http_response$body, unmarshal, format)
+StreamHandler <- function(body, unmarshal, format, metadata) {
+  con <- paws_con(body, unmarshal, format)
   paws_stream_handler <- function(FUN, .connection = FALSE) {
     if (isTRUE(.connection)) {
       return(con)
@@ -78,14 +78,14 @@ paws_con <- function(con, unmarshal, format) {
 
 #' @export
 print.PawsStreamHandler <- function(x, ...) {
-  request <- environment(x)$request
-  op_name <- tolower(gsub("(.)([A-Z])", "\\1_\\2", request$operation$name))
+  metadata <- environment(x)$metadata
+  op_name <- tolower(gsub("(.)([A-Z])", "\\1_\\2", metadata$operation_name))
   msg <- sprintf(c(
       "<PawsStreamHandler>",
       "Please check return object for: %1$s_%2$s",
       "https://www.paws-r-sdk.com/docs/%1$s_%2$s/"
     ),
-    request$client_info$service_name,
+    metadata$service_name,
     op_name
   )
   cli::cat_line(
@@ -101,35 +101,29 @@ paws_stream_parser <- function(con) {
     return(NULL)
   }
   buffer <- readBin(con$body, raw(), n = 1024)
-  if (is.null(aws_boundary(buffer))) {
+  if (is.null(boundary <- aws_boundary(buffer))) {
     close(con)
     return(NULL)
   }
-  return(paws_eventstream_parser(
-      buffer, con$paws_metadata$unmarshal, con$paws_metadata$format
+  return(eventstream_parser(
+      buffer, con$paws_metadata$unmarshal, con$paws_metadata$format, boundary
     )
   )
 }
 
-
-################ parsing message ################
-unmarshal_json_stream <- function(bytes, format) {
-  payload <- decode_json(bytes)
-  json_parse(payload, format)
-}
-
 ################ connection boundary ################
 # TODO: identify boundaries of message from event stream
-paws_eventstream_parser <- function(buffer, unmarshal, format) {
+eventstream_parser <- function(buffer, unmarshal, format, boundary) {
   # chunk loop
-  while (!is.null(split_at <- aws_boundary(buffer))) {
-      result <- split_buffer(buffer, split_at)
-      data <- parse_aws_event(result$matched)
-      nms <- data$headers[[":event-type"]]
-      format[[nms]] <- unmarshal(
-        data$payload, format[[nms]]
-      )
-      buffer <- result$remaining
+  while (!is.null(boundary)) {
+    result <- split_buffer(buffer, boundary)
+    data <- parse_aws_event(result$matched)
+    nms <- data$headers[[":event-type"]]
+    format[[nms]] <- unmarshal(
+      data$payload, format[[nms]]
+    )
+    buffer <- result$remaining
+    boundary <- aws_boundary(buffer)
   }
   return(tag_del(format))
 }
