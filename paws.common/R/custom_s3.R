@@ -236,18 +236,6 @@ content_md5 <- function(request) {
 
 ################################################################################
 
-s3_unmarshal_select_object_content <- function(request) {
-  if (request$operation$name != "SelectObjectContent") {
-    return(request)
-  }
-  payload <- stream_decode(request$http_response$body)
-  request$data <- populate(list(Payload = payload), request$data)
-  request$http_response$body <- raw()
-  return(request)
-}
-
-################################################################################
-
 s3_unmarshal_get_bucket_location <- function(request) {
   if (request$operation$name != "GetBucketLocation") {
     return(request)

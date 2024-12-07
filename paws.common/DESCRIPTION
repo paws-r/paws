@@ -64,9 +64,6 @@ Collate:
     'head_bucket.R'
     'http_status.R'
     'error.R'
-    'tags.R'
-    'xmlutil.R'
-    'stream.R'
     'custom_s3.R'
     'handlers_core.R'
     'handlers_ec2query.R'
@@ -82,6 +79,7 @@ Collate:
     'paginate.R'
     'populate.R'
     'populateutil.R'
+    'tags.R'
     'queryutil.R'
     'request.R'
     'retry.R'
@@ -92,4 +90,5 @@ Collate:
     'signer_v1.R'
     'signer_v2.R'
     'time.R'
+    'xmlutil.R'
 Config/testthat/edition: 3
