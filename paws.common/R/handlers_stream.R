@@ -3,7 +3,6 @@
 #' paws_stream_handler(FUN, .connection = FALSE)
 #' paws_stream_parser(con)
 #' @param FUN function to iterate over stream connection.
-#' @param .chunk_kb size of chunks (default 64 KB)
 #' @param .connection return \code{httr2::req_perform_connection} object (default \code{FALSE})
 #' @name paws_stream
 #' @return list of responses from the operation or a \code{httr2::req_perform_connection} object
@@ -51,8 +50,8 @@
 #' }
 NULL
 
-StreamHandler <- function(body, unmarshal, format, metadata) {
-  con <- paws_con(body, unmarshal, format)
+StreamHandler <- function(body, unmarshal, interface, metadata) {
+  con <- paws_con(body, unmarshal, interface)
   paws_stream_handler <- function(FUN, .connection = FALSE) {
     if (isTRUE(.connection)) {
       return(con)
@@ -67,10 +66,10 @@ StreamHandler <- function(body, unmarshal, format, metadata) {
   return(paws_stream_handler)
 }
 
-paws_con <- function(con, unmarshal, format) {
+paws_con <- function(con, unmarshal, interface) {
   con$paws_metadata <- list(
     unmarshal=unmarshal,
-    format=format
+    interface=interface
   )
   class(con) <- c("paws_connection", class(con))
   return(con)
@@ -106,26 +105,58 @@ paws_stream_parser <- function(con) {
     return(NULL)
   }
   return(eventstream_parser(
-      buffer, con$paws_metadata$unmarshal, con$paws_metadata$format, boundary
+      buffer,
+      unmarshal = con$paws_metadata$unmarshal,
+      interface = con$paws_metadata$interface,
+      boundary = boundary
     )
   )
 }
 
+################ stream unmarshal ################
+stream_unmarshal <- function(request, body, unmarshal) {
+  payload <- tag_get(request$data, "payload")
+  shape <- tag_del(request$data)
+  shape[[payload]] <- StreamHandler(
+    body, unmarshal, request$data[[payload]], list(
+      operation_name = request$operation$name,
+      service_name = request$client_info$service_name
+    )
+  )
+  return(shape)
+}
+
+############## stream error ##############
+get_connection_error <- function(payload, stream_api) {
+  if (stream_api && !is.raw(payload)) {
+    return(stream_raw(payload$body))
+  }
+  return(payload)
+}
+
+stream_raw <- function(con) {
+  on.exit(close(con))
+  total <- raw()
+  while (isIncomplete(con)) {
+    total <- c(total, readBin(con, raw(), n = 1024))
+  }
+  return(total)
+}
+
 ################ connection boundary ################
-# TODO: identify boundaries of message from event stream
-eventstream_parser <- function(buffer, unmarshal, format, boundary) {
+eventstream_parser <- function(buffer, unmarshal, interface, boundary) {
   # chunk loop
   while (!is.null(boundary)) {
     result <- split_buffer(buffer, boundary)
     data <- parse_aws_event(result$matched)
-    nms <- data$headers[[":event-type"]]
-    format[[nms]] <- unmarshal(
-      data$payload, format[[nms]]
+    (nms <- data$headers[[":event-type"]])
+    interface[[nms]] <- unmarshal(
+      data$payload, interface[[nms]]
     )
     buffer <- result$remaining
     boundary <- aws_boundary(buffer)
   }
-  return(tag_del(format))
+  return(tag_del(interface))
 }
 
 aws_boundary <- function(buffer) {
