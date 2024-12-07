@@ -468,3 +468,23 @@ transpose <- function(x) {
   }
   .mapply(list, x, NULL)
 }
+
+############## stream ##############
+xml_stream <- function(bytes, interface) {
+  payload <- xml2::read_xml(bytes)
+  xml_nms <- xml2::xml_name(payload)
+
+  in_nms <- names(interface)
+  if (xml_nms %in% in_nms) {
+    return(xml_parse(payload, interface, xml_nms))
+  }
+  root <- xml2::xml_contents(payload)
+  xml_nms <- xml2::xml_name(root)
+
+  if (any(xml_nms %in% in_nms)) {
+    return(xml_parse(root, interface, xml_nms))
+  }
+  result <- list(xml_parse(root, interface[[in_nms]], xml_nms))
+  names(result) <- in_nms
+  return(result)
+}
