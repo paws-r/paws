@@ -1,7 +1,12 @@
+#' @importFrom digest digest
+
+
+.PAYLOAD_KB = 1024 * 65
+
+
 #' @title Iterate over AWS Event Stream connection
 #' @usage
 #' paws_stream_handler(FUN, .connection = FALSE)
-#' paws_stream_parser(con)
 #' @param FUN function to iterate over stream connection.
 #' @param .connection return \code{httr2::req_perform_connection} object (default \code{FALSE})
 #' @name paws_stream
@@ -32,7 +37,7 @@
 #'   messages = conversation,
 #'   inferenceConfig = list(maxTokens=512, temperature=0.5, topP=0.9)
 #' )
-#' resp$stream(\(chunk) print(chunk$contentBlockDelta$delta$text))
+#' resp$stream(\(chunk) chunk$contentBlockDelta$delta$text)
 #'
 #' # Or handle stream utilising paws_stream_parser
 #' while(!is.null(event <- paws_stream_parser(con))) {
@@ -92,14 +97,14 @@ print.PawsStreamHandler <- function(x, ...) {
   )
 }
 
-#' @name paws_stream_handler
+#' @name paws_stream
 #' @export
 paws_stream_parser <- function(con) {
   if (!isIncomplete(con$body)) {
     close(con)
     return(NULL)
   }
-  buffer <- readBin(con$body, raw(), n = 1024)
+  buffer <- readBin(con$body, raw(), n = .PAYLOAD_KB)
   if (is.null(boundary <- aws_boundary(buffer))) {
     close(con)
     return(NULL)
@@ -118,7 +123,10 @@ stream_unmarshal <- function(request, body, unmarshal) {
   payload <- tag_get(request$data, "payload")
   shape <- tag_del(request$data)
   shape[[payload]] <- StreamHandler(
-    body, unmarshal, request$data[[payload]], list(
+    body,
+    unmarshal,
+    request$data[[payload]],
+    list(
       operation_name = request$operation$name,
       service_name = request$client_info$service_name
     )
@@ -138,7 +146,7 @@ stream_raw <- function(con) {
   on.exit(close(con))
   total <- raw()
   while (isIncomplete(con)) {
-    total <- c(total, readBin(con, raw(), n = 1024))
+    total <- c(total, readBin(con, raw(), n = .PAYLOAD_KB))
   }
   return(total)
 }
@@ -234,7 +242,7 @@ parse_aws_event <- function(bytes) {
       'FALSE' = FALSE,
       BYTE = parse_int8(read_bytes(1)),
       SHORT = parse_int16(read_bytes(2)),
-      INTEGER = parse_int(read_bytes(4)),
+      INTEGER = parse_int32(read_bytes(4)),
       LONG = parse_int64(read_bytes(8)),
       BYTE_ARRAY = read_bytes(len),
       CHARACTER = rawToChar(read_bytes(len)),
@@ -306,7 +314,7 @@ hex_to_raw <- function(x) {
 
 # Get the CRC of a raw vector.
 crc32 <- function(raw) {
-  return(digest::digest(raw, algo = "crc32", serialize = FALSE))
+  return(digest(raw, algo = "crc32", serialize = FALSE))
 }
 
 validate_checksum <- function(data, crc) {
