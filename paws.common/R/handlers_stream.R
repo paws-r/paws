@@ -151,7 +151,7 @@ stream_raw <- function(con) {
   return(total)
 }
 
-################ connection boundary ################
+################ parse event stream ################
 eventstream_parser <- function(buffer, unmarshal, interface, boundary) {
   # chunk loop
   while (!is.null(boundary)) {
