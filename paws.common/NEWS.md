@@ -3,6 +3,9 @@
 * enrich sso message (#844). Thanks to @hadley for raising issue.
 * attempt to automatically set/refresh `sso` credentials by calling `aws cli` (#844)
 * moved api log level to `debug` and `trace`. This is to prevent `info` level being saturated by api calls.
+* migrate backend `httr` to `httr2`
+* new `PawsStreamHandler`, allows paws to handle aws stream event (#842). Thankyou to @hadley for developing the initial solution in `httr2`.
+* deprecated custom handler for `s3_unmarshal_select_object_content`
 
 # paws.common 0.7.7
 * fix unix time expiration check

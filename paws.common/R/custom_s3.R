@@ -1,5 +1,4 @@
 #' @include service.R
-#' @include stream.R
 #' @include util.R
 #' @include error.R
 #' @include head_bucket.R

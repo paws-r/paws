@@ -1,3 +1,5 @@
+#' @include xmlutil.R
+
 # Build the request body for the REST XML protocol.
 restxml_build <- function(request) {
   request <- rest_build(request)

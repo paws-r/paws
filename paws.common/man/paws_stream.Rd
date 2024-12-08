@@ -2,9 +2,11 @@
 % Please edit documentation in R/handlers_stream.R
 \name{paws_stream}
 \alias{paws_stream}
+\alias{paws_stream_parser}
 \title{Iterate over AWS Event Stream connection}
 \usage{
 paws_stream_handler(FUN, .connection = FALSE)
+
 paws_stream_parser(con)
 }
 \arguments{
@@ -44,7 +46,7 @@ resp <- client$converse_stream(
   messages = conversation,
   inferenceConfig = list(maxTokens=512, temperature=0.5, topP=0.9)
 )
-resp$stream(\(chunk) print(chunk$contentBlockDelta$delta$text))
+resp$stream(\(chunk) chunk$contentBlockDelta$delta$text)
 
 # Or handle stream utilising paws_stream_parser
 while(!is.null(event <- paws_stream_parser(con))) {

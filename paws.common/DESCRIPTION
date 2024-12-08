@@ -71,6 +71,8 @@ Collate:
     'handlers_query.R'
     'handlers_rest.R'
     'handlers_restjson.R'
+    'tags.R'
+    'xmlutil.R'
     'handlers_restxml.R'
     'handlers_stream.R'
     'idempotency.R'
@@ -79,7 +81,6 @@ Collate:
     'paginate.R'
     'populate.R'
     'populateutil.R'
-    'tags.R'
     'queryutil.R'
     'request.R'
     'retry.R'
@@ -90,5 +91,4 @@ Collate:
     'signer_v1.R'
     'signer_v2.R'
     'time.R'
-    'xmlutil.R'
 Config/testthat/edition: 3
