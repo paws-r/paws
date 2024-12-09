@@ -21,7 +21,8 @@ cloudsearch_build_suggesters <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$build_suggesters_input(DomainName = DomainName)
   output <- .cloudsearch$build_suggesters_output()
@@ -54,7 +55,8 @@ cloudsearch_create_domain <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$create_domain_input(DomainName = DomainName)
   output <- .cloudsearch$create_domain_output()
@@ -86,7 +88,8 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$define_analysis_scheme_input(DomainName = DomainName, AnalysisScheme = AnalysisScheme)
   output <- .cloudsearch$define_analysis_scheme_output()
@@ -117,7 +120,8 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$define_expression_input(DomainName = DomainName, Expression = Expression)
   output <- .cloudsearch$define_expression_output()
@@ -148,7 +152,8 @@ cloudsearch_define_index_field <- function(DomainName, IndexField) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$define_index_field_input(DomainName = DomainName, IndexField = IndexField)
   output <- .cloudsearch$define_index_field_output()
@@ -179,7 +184,8 @@ cloudsearch_define_suggester <- function(DomainName, Suggester) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$define_suggester_input(DomainName = DomainName, Suggester = Suggester)
   output <- .cloudsearch$define_suggester_output()
@@ -210,7 +216,8 @@ cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$delete_analysis_scheme_input(DomainName = DomainName, AnalysisSchemeName = AnalysisSchemeName)
   output <- .cloudsearch$delete_analysis_scheme_output()
@@ -240,7 +247,8 @@ cloudsearch_delete_domain <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$delete_domain_input(DomainName = DomainName)
   output <- .cloudsearch$delete_domain_output()
@@ -271,7 +279,8 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$delete_expression_input(DomainName = DomainName, ExpressionName = ExpressionName)
   output <- .cloudsearch$delete_expression_output()
@@ -303,7 +312,8 @@ cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$delete_index_field_input(DomainName = DomainName, IndexFieldName = IndexFieldName)
   output <- .cloudsearch$delete_index_field_output()
@@ -334,7 +344,8 @@ cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$delete_suggester_input(DomainName = DomainName, SuggesterName = SuggesterName)
   output <- .cloudsearch$delete_suggester_output()
@@ -367,7 +378,8 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "AnalysisSchemes")
+    paginator = list(result_key = "AnalysisSchemes"),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_analysis_schemes_input(DomainName = DomainName, AnalysisSchemeNames = AnalysisSchemeNames, Deployed = Deployed)
   output <- .cloudsearch$describe_analysis_schemes_output()
@@ -399,7 +411,8 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_availability_options_input(DomainName = DomainName, Deployed = Deployed)
   output <- .cloudsearch$describe_availability_options_output()
@@ -433,7 +446,8 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_domain_endpoint_options_input(DomainName = DomainName, Deployed = Deployed)
   output <- .cloudsearch$describe_domain_endpoint_options_output()
@@ -463,7 +477,8 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "DomainStatusList")
+    paginator = list(result_key = "DomainStatusList"),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_domains_input(DomainNames = DomainNames)
   output <- .cloudsearch$describe_domains_output()
@@ -498,7 +513,8 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Expressions")
+    paginator = list(result_key = "Expressions"),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_expressions_input(DomainName = DomainName, ExpressionNames = ExpressionNames, Deployed = Deployed)
   output <- .cloudsearch$describe_expressions_output()
@@ -532,7 +548,8 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "IndexFields")
+    paginator = list(result_key = "IndexFields"),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_index_fields_input(DomainName = DomainName, FieldNames = FieldNames, Deployed = Deployed)
   output <- .cloudsearch$describe_index_fields_output()
@@ -562,7 +579,8 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_scaling_parameters_input(DomainName = DomainName)
   output <- .cloudsearch$describe_scaling_parameters_output()
@@ -595,7 +613,8 @@ cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_service_access_policies_input(DomainName = DomainName, Deployed = Deployed)
   output <- .cloudsearch$describe_service_access_policies_output()
@@ -628,7 +647,8 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Suggesters")
+    paginator = list(result_key = "Suggesters"),
+    stream_api = FALSE
   )
   input <- .cloudsearch$describe_suggesters_input(DomainName = DomainName, SuggesterNames = SuggesterNames, Deployed = Deployed)
   output <- .cloudsearch$describe_suggesters_output()
@@ -659,7 +679,8 @@ cloudsearch_index_documents <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$index_documents_input(DomainName = DomainName)
   output <- .cloudsearch$index_documents_output()
@@ -689,7 +710,8 @@ cloudsearch_list_domain_names <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$list_domain_names_input()
   output <- .cloudsearch$list_domain_names_output()
@@ -723,7 +745,8 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$update_availability_options_input(DomainName = DomainName, MultiAZ = MultiAZ)
   output <- .cloudsearch$update_availability_options_output()
@@ -758,7 +781,8 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$update_domain_endpoint_options_input(DomainName = DomainName, DomainEndpointOptions = DomainEndpointOptions)
   output <- .cloudsearch$update_domain_endpoint_options_output()
@@ -789,7 +813,8 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$update_scaling_parameters_input(DomainName = DomainName, ScalingParameters = ScalingParameters)
   output <- .cloudsearch$update_scaling_parameters_output()
@@ -822,7 +847,8 @@ cloudsearch_update_service_access_policies <- function(DomainName, AccessPolicie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudsearch$update_service_access_policies_input(DomainName = DomainName, AccessPolicies = AccessPolicies)
   output <- .cloudsearch$update_service_access_policies_output()

@@ -23,7 +23,8 @@ securitylake_create_aws_log_source <- function(sources) {
     http_method = "POST",
     http_path = "/v1/datalake/logsources/aws",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$create_aws_log_source_input(sources = sources)
   output <- .securitylake$create_aws_log_source_output()
@@ -119,7 +120,8 @@ securitylake_create_custom_log_source <- function(configuration, eventClasses = 
     http_method = "POST",
     http_path = "/v1/datalake/logsources/custom",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$create_custom_log_source_input(configuration = configuration, eventClasses = eventClasses, sourceName = sourceName, sourceVersion = sourceVersion)
   output <- .securitylake$create_custom_log_source_output()
@@ -157,7 +159,8 @@ securitylake_create_data_lake <- function(configurations, metaStoreManagerRoleAr
     http_method = "POST",
     http_path = "/v1/datalake",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$create_data_lake_input(configurations = configurations, metaStoreManagerRoleArn = metaStoreManagerRoleArn, tags = tags)
   output <- .securitylake$create_data_lake_output()
@@ -191,7 +194,8 @@ securitylake_create_data_lake_exception_subscription <- function(exceptionTimeTo
     http_method = "POST",
     http_path = "/v1/datalake/exceptions/subscription",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$create_data_lake_exception_subscription_input(exceptionTimeToLive = exceptionTimeToLive, notificationEndpoint = notificationEndpoint, subscriptionProtocol = subscriptionProtocol)
   output <- .securitylake$create_data_lake_exception_subscription_output()
@@ -223,7 +227,8 @@ securitylake_create_data_lake_organization_configuration <- function(autoEnableN
     http_method = "POST",
     http_path = "/v1/datalake/organization/configuration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$create_data_lake_organization_configuration_input(autoEnableNewAccount = autoEnableNewAccount)
   output <- .securitylake$create_data_lake_organization_configuration_output()
@@ -263,7 +268,8 @@ securitylake_create_subscriber <- function(accessTypes = NULL, sources, subscrib
     http_method = "POST",
     http_path = "/v1/subscribers",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$create_subscriber_input(accessTypes = accessTypes, sources = sources, subscriberDescription = subscriberDescription, subscriberIdentity = subscriberIdentity, subscriberName = subscriberName, tags = tags)
   output <- .securitylake$create_subscriber_output()
@@ -296,7 +302,8 @@ securitylake_create_subscriber_notification <- function(configuration, subscribe
     http_method = "POST",
     http_path = "/v1/subscribers/{subscriberId}/notification",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$create_subscriber_notification_input(configuration = configuration, subscriberId = subscriberId)
   output <- .securitylake$create_subscriber_notification_output()
@@ -328,7 +335,8 @@ securitylake_delete_aws_log_source <- function(sources) {
     http_method = "POST",
     http_path = "/v1/datalake/logsources/aws/delete",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$delete_aws_log_source_input(sources = sources)
   output <- .securitylake$delete_aws_log_source_output()
@@ -361,7 +369,8 @@ securitylake_delete_custom_log_source <- function(sourceName, sourceVersion = NU
     http_method = "DELETE",
     http_path = "/v1/datalake/logsources/custom/{sourceName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$delete_custom_log_source_input(sourceName = sourceName, sourceVersion = sourceVersion)
   output <- .securitylake$delete_custom_log_source_output()
@@ -393,7 +402,8 @@ securitylake_delete_data_lake <- function(regions) {
     http_method = "POST",
     http_path = "/v1/datalake/delete",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$delete_data_lake_input(regions = regions)
   output <- .securitylake$delete_data_lake_output()
@@ -424,7 +434,8 @@ securitylake_delete_data_lake_exception_subscription <- function() {
     http_method = "DELETE",
     http_path = "/v1/datalake/exceptions/subscription",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$delete_data_lake_exception_subscription_input()
   output <- .securitylake$delete_data_lake_exception_subscription_output()
@@ -456,7 +467,8 @@ securitylake_delete_data_lake_organization_configuration <- function(autoEnableN
     http_method = "POST",
     http_path = "/v1/datalake/organization/configuration/delete",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$delete_data_lake_organization_configuration_input(autoEnableNewAccount = autoEnableNewAccount)
   output <- .securitylake$delete_data_lake_organization_configuration_output()
@@ -488,7 +500,8 @@ securitylake_delete_subscriber <- function(subscriberId) {
     http_method = "DELETE",
     http_path = "/v1/subscribers/{subscriberId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$delete_subscriber_input(subscriberId = subscriberId)
   output <- .securitylake$delete_subscriber_output()
@@ -519,7 +532,8 @@ securitylake_delete_subscriber_notification <- function(subscriberId) {
     http_method = "DELETE",
     http_path = "/v1/subscribers/{subscriberId}/notification",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$delete_subscriber_notification_input(subscriberId = subscriberId)
   output <- .securitylake$delete_subscriber_notification_output()
@@ -550,7 +564,8 @@ securitylake_deregister_data_lake_delegated_administrator <- function() {
     http_method = "DELETE",
     http_path = "/v1/datalake/delegate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$deregister_data_lake_delegated_administrator_input()
   output <- .securitylake$deregister_data_lake_delegated_administrator_output()
@@ -581,7 +596,8 @@ securitylake_get_data_lake_exception_subscription <- function() {
     http_method = "GET",
     http_path = "/v1/datalake/exceptions/subscription",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$get_data_lake_exception_subscription_input()
   output <- .securitylake$get_data_lake_exception_subscription_output()
@@ -613,7 +629,8 @@ securitylake_get_data_lake_organization_configuration <- function() {
     http_method = "GET",
     http_path = "/v1/datalake/organization/configuration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$get_data_lake_organization_configuration_input()
   output <- .securitylake$get_data_lake_organization_configuration_output()
@@ -657,7 +674,8 @@ securitylake_get_data_lake_sources <- function(accounts = NULL, maxResults = NUL
     http_method = "POST",
     http_path = "/v1/datalake/sources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataLakeSources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataLakeSources"),
+    stream_api = FALSE
   )
   input <- .securitylake$get_data_lake_sources_input(accounts = accounts, maxResults = maxResults, nextToken = nextToken)
   output <- .securitylake$get_data_lake_sources_output()
@@ -688,7 +706,8 @@ securitylake_get_subscriber <- function(subscriberId) {
     http_method = "GET",
     http_path = "/v1/subscribers/{subscriberId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$get_subscriber_input(subscriberId = subscriberId)
   output <- .securitylake$get_subscriber_output()
@@ -727,7 +746,8 @@ securitylake_list_data_lake_exceptions <- function(maxResults = NULL, nextToken 
     http_method = "POST",
     http_path = "/v1/datalake/exceptions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "exceptions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "exceptions"),
+    stream_api = FALSE
   )
   input <- .securitylake$list_data_lake_exceptions_input(maxResults = maxResults, nextToken = nextToken, regions = regions)
   output <- .securitylake$list_data_lake_exceptions_output()
@@ -758,7 +778,8 @@ securitylake_list_data_lakes <- function(regions = NULL) {
     http_method = "GET",
     http_path = "/v1/datalakes",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$list_data_lakes_input(regions = regions)
   output <- .securitylake$list_data_lakes_output()
@@ -794,7 +815,8 @@ securitylake_list_log_sources <- function(accounts = NULL, maxResults = NULL, ne
     http_method = "POST",
     http_path = "/v1/datalake/logsources/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sources"),
+    stream_api = FALSE
   )
   input <- .securitylake$list_log_sources_input(accounts = accounts, maxResults = maxResults, nextToken = nextToken, regions = regions, sources = sources)
   output <- .securitylake$list_log_sources_output()
@@ -826,7 +848,8 @@ securitylake_list_subscribers <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/subscribers",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "subscribers")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "subscribers"),
+    stream_api = FALSE
   )
   input <- .securitylake$list_subscribers_input(maxResults = maxResults, nextToken = nextToken)
   output <- .securitylake$list_subscribers_output()
@@ -860,7 +883,8 @@ securitylake_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .securitylake$list_tags_for_resource_output()
@@ -892,7 +916,8 @@ securitylake_register_data_lake_delegated_administrator <- function(accountId) {
     http_method = "POST",
     http_path = "/v1/datalake/delegate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$register_data_lake_delegated_administrator_input(accountId = accountId)
   output <- .securitylake$register_data_lake_delegated_administrator_output()
@@ -930,7 +955,8 @@ securitylake_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .securitylake$tag_resource_output()
@@ -965,7 +991,8 @@ securitylake_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .securitylake$untag_resource_output()
@@ -999,7 +1026,8 @@ securitylake_update_data_lake <- function(configurations, metaStoreManagerRoleAr
     http_method = "PUT",
     http_path = "/v1/datalake",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$update_data_lake_input(configurations = configurations, metaStoreManagerRoleArn = metaStoreManagerRoleArn)
   output <- .securitylake$update_data_lake_output()
@@ -1032,7 +1060,8 @@ securitylake_update_data_lake_exception_subscription <- function(exceptionTimeTo
     http_method = "PUT",
     http_path = "/v1/datalake/exceptions/subscription",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$update_data_lake_exception_subscription_input(exceptionTimeToLive = exceptionTimeToLive, notificationEndpoint = notificationEndpoint, subscriptionProtocol = subscriptionProtocol)
   output <- .securitylake$update_data_lake_exception_subscription_output()
@@ -1071,7 +1100,8 @@ securitylake_update_subscriber <- function(sources = NULL, subscriberDescription
     http_method = "PUT",
     http_path = "/v1/subscribers/{subscriberId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$update_subscriber_input(sources = sources, subscriberDescription = subscriberDescription, subscriberId = subscriberId, subscriberIdentity = subscriberIdentity, subscriberName = subscriberName)
   output <- .securitylake$update_subscriber_output()
@@ -1105,7 +1135,8 @@ securitylake_update_subscriber_notification <- function(configuration, subscribe
     http_method = "PUT",
     http_path = "/v1/subscribers/{subscriberId}/notification",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .securitylake$update_subscriber_notification_input(configuration = configuration, subscriberId = subscriberId)
   output <- .securitylake$update_subscriber_notification_output()

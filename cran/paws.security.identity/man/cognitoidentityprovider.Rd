@@ -79,7 +79,7 @@ unauthenticated requests to manage, authenticate, or authorize a
 user.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html}{Using the Amazon Cognito user pools API and user pool endpoints}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html}{Using the Amazon Cognito user pools API and user pool endpoints}
 in the \emph{Amazon Cognito Developer Guide}.
 
 With your Amazon Web Services SDK, you can build the logic to support

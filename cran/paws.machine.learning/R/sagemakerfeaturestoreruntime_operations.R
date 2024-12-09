@@ -29,7 +29,8 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers, Expiratio
     http_method = "POST",
     http_path = "/BatchGetRecord",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemakerfeaturestoreruntime$batch_get_record_input(Identifiers = Identifiers, ExpirationTimeResponse = ExpirationTimeResponse)
   output <- .sagemakerfeaturestoreruntime$batch_get_record_output()
@@ -69,7 +70,8 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
     http_method = "DELETE",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemakerfeaturestoreruntime$delete_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, EventTime = EventTime, TargetStores = TargetStores, DeletionMode = DeletionMode)
   output <- .sagemakerfeaturestoreruntime$delete_record_output()
@@ -109,7 +111,8 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
     http_method = "GET",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemakerfeaturestoreruntime$get_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, FeatureNames = FeatureNames, ExpirationTimeResponse = ExpirationTimeResponse)
   output <- .sagemakerfeaturestoreruntime$get_record_output()
@@ -160,7 +163,8 @@ sagemakerfeaturestoreruntime_put_record <- function(FeatureGroupName, Record, Ta
     http_method = "PUT",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemakerfeaturestoreruntime$put_record_input(FeatureGroupName = FeatureGroupName, Record = Record, TargetStores = TargetStores, TtlDuration = TtlDuration)
   output <- .sagemakerfeaturestoreruntime$put_record_output()

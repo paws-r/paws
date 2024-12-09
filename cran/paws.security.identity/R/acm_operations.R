@@ -28,7 +28,8 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$add_tags_to_certificate_input(CertificateArn = CertificateArn, Tags = Tags)
   output <- .acm$add_tags_to_certificate_output()
@@ -64,7 +65,8 @@ acm_delete_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$delete_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$delete_certificate_output()
@@ -100,7 +102,8 @@ acm_describe_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$describe_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$describe_certificate_output()
@@ -145,7 +148,8 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$export_certificate_input(CertificateArn = CertificateArn, Passphrase = Passphrase)
   output <- .acm$export_certificate_output()
@@ -176,7 +180,8 @@ acm_get_account_configuration <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$get_account_configuration_input()
   output <- .acm$get_account_configuration_output()
@@ -211,7 +216,8 @@ acm_get_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$get_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$get_certificate_output()
@@ -251,7 +257,8 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$import_certificate_input(CertificateArn = CertificateArn, Certificate = Certificate, PrivateKey = PrivateKey, CertificateChain = CertificateChain, Tags = Tags)
   output <- .acm$import_certificate_output()
@@ -295,7 +302,8 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "CertificateSummaryList")
+    paginator = list(input_token = "NextToken", limit_key = "MaxItems", output_token = "NextToken", result_key = "CertificateSummaryList"),
+    stream_api = FALSE
   )
   input <- .acm$list_certificates_input(CertificateStatuses = CertificateStatuses, Includes = Includes, NextToken = NextToken, MaxItems = MaxItems, SortBy = SortBy, SortOrder = SortOrder)
   output <- .acm$list_certificates_output()
@@ -331,7 +339,8 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$list_tags_for_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$list_tags_for_certificate_output()
@@ -368,7 +377,8 @@ acm_put_account_configuration <- function(ExpiryEvents = NULL, IdempotencyToken)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$put_account_configuration_input(ExpiryEvents = ExpiryEvents, IdempotencyToken = IdempotencyToken)
   output <- .acm$put_account_configuration_output()
@@ -405,7 +415,8 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$remove_tags_from_certificate_input(CertificateArn = CertificateArn, Tags = Tags)
   output <- .acm$remove_tags_from_certificate_output()
@@ -441,7 +452,8 @@ acm_renew_certificate <- function(CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$renew_certificate_input(CertificateArn = CertificateArn)
   output <- .acm$renew_certificate_output()
@@ -542,7 +554,7 @@ acm_renew_certificate <- function(CertificateArn) {
 #' broken. Check the requirements for the Amazon Web Services service where
 #' you plan to deploy your certificate. For more information about
 #' selecting an algorithm, see [Key
-#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html#algorithms).
+#' algorithms](https://docs.aws.amazon.com/acm/latest/userguide/#algorithms).
 #' 
 #' Algorithms supported for an ACM certificate request include:
 #' 
@@ -569,7 +581,8 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$request_certificate_input(DomainName = DomainName, ValidationMethod = ValidationMethod, SubjectAlternativeNames = SubjectAlternativeNames, IdempotencyToken = IdempotencyToken, DomainValidationOptions = DomainValidationOptions, Options = Options, CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags, KeyAlgorithm = KeyAlgorithm)
   output <- .acm$request_certificate_output()
@@ -584,7 +597,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 #' Resends the email that requests domain ownership validation
 #'
 #' @description
-#' Resends the email that requests domain ownership validation. The domain owner or an authorized representative must approve the ACM certificate before it can be issued. The certificate can be approved by clicking a link in the mail to navigate to the Amazon certificate approval website and then clicking **I Approve**. However, the validation email can be blocked by spam filters. Therefore, if you do not receive the original mail, you can request that the mail be resent within 72 hours of requesting the ACM certificate. If more than 72 hours have elapsed since your original request or since your last attempt to resend validation mail, you must request a new certificate. For more information about setting up your contact email addresses, see [Configure Email for your Domain](https://docs.aws.amazon.com/acm/latest/userguide/setup-email.html).
+#' Resends the email that requests domain ownership validation. The domain owner or an authorized representative must approve the ACM certificate before it can be issued. The certificate can be approved by clicking a link in the mail to navigate to the Amazon certificate approval website and then clicking **I Approve**. However, the validation email can be blocked by spam filters. Therefore, if you do not receive the original mail, you can request that the mail be resent within 72 hours of requesting the ACM certificate. If more than 72 hours have elapsed since your original request or since your last attempt to resend validation mail, you must request a new certificate. For more information about setting up your contact email addresses, see [Configure Email for your Domain](https://docs.aws.amazon.com/acm/latest/userguide/email-validation.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/acm_resend_validation_email/](https://www.paws-r-sdk.com/docs/acm_resend_validation_email/) for full documentation.
 #'
@@ -625,7 +638,8 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$resend_validation_email_input(CertificateArn = CertificateArn, Domain = Domain, ValidationDomain = ValidationDomain)
   output <- .acm$resend_validation_email_output()
@@ -663,7 +677,8 @@ acm_update_certificate_options <- function(CertificateArn, Options) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .acm$update_certificate_options_input(CertificateArn = CertificateArn, Options = Options)
   output <- .acm$update_certificate_options_output()

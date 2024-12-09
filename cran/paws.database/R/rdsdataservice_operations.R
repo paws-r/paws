@@ -15,7 +15,7 @@ NULL
 #' database user name and password for the credentials in the secret.
 #' 
 #' For information about creating the secret, see [Create a database
-#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' @param sql &#91;required&#93; The SQL statement to run. Don't include a semicolon (;) at the end of
 #' the SQL statement.
 #' @param database The name of the database.
@@ -53,7 +53,8 @@ rdsdataservice_batch_execute_statement <- function(resourceArn, secretArn, sql, 
     http_method = "POST",
     http_path = "/BatchExecute",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rdsdataservice$batch_execute_statement_input(resourceArn = resourceArn, secretArn = secretArn, sql = sql, database = database, schema = schema, parameterSets = parameterSets, transactionId = transactionId)
   output <- .rdsdataservice$batch_execute_statement_output()
@@ -86,7 +87,8 @@ rdsdataservice_begin_transaction <- function(resourceArn, secretArn, database = 
     http_method = "POST",
     http_path = "/BeginTransaction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rdsdataservice$begin_transaction_input(resourceArn = resourceArn, secretArn = secretArn, database = database, schema = schema)
   output <- .rdsdataservice$begin_transaction_output()
@@ -119,7 +121,8 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
     http_method = "POST",
     http_path = "/CommitTransaction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rdsdataservice$commit_transaction_input(resourceArn = resourceArn, secretArn = secretArn, transactionId = transactionId)
   output <- .rdsdataservice$commit_transaction_output()
@@ -144,7 +147,7 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
 #' credentials in the secret.
 #' 
 #' For information about creating the secret, see [Create a database
-#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' @param sqlStatements &#91;required&#93; One or more SQL statements to run on the DB cluster.
 #' 
 #' You can separate SQL statements from each other with a semicolon (;).
@@ -162,7 +165,8 @@ rdsdataservice_execute_sql <- function(dbClusterOrInstanceArn, awsSecretStoreArn
     http_method = "POST",
     http_path = "/ExecuteSql",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rdsdataservice$execute_sql_input(dbClusterOrInstanceArn = dbClusterOrInstanceArn, awsSecretStoreArn = awsSecretStoreArn, sqlStatements = sqlStatements, database = database, schema = schema)
   output <- .rdsdataservice$execute_sql_output()
@@ -186,7 +190,7 @@ rdsdataservice_execute_sql <- function(dbClusterOrInstanceArn, awsSecretStoreArn
 #' database user name and password for the credentials in the secret.
 #' 
 #' For information about creating the secret, see [Create a database
-#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html).
+#' secret](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' @param sql &#91;required&#93; The SQL statement to run.
 #' @param database The name of the database.
 #' @param schema The name of the database schema.
@@ -232,7 +236,8 @@ rdsdataservice_execute_statement <- function(resourceArn, secretArn, sql, databa
     http_method = "POST",
     http_path = "/Execute",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rdsdataservice$execute_statement_input(resourceArn = resourceArn, secretArn = secretArn, sql = sql, database = database, schema = schema, parameters = parameters, transactionId = transactionId, includeResultMetadata = includeResultMetadata, continueAfterTimeout = continueAfterTimeout, resultSetOptions = resultSetOptions, formatRecordsAs = formatRecordsAs)
   output <- .rdsdataservice$execute_statement_output()
@@ -264,7 +269,8 @@ rdsdataservice_rollback_transaction <- function(resourceArn, secretArn, transact
     http_method = "POST",
     http_path = "/RollbackTransaction",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rdsdataservice$rollback_transaction_input(resourceArn = resourceArn, secretArn = secretArn, transactionId = transactionId)
   output <- .rdsdataservice$rollback_transaction_output()

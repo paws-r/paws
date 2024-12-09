@@ -91,7 +91,7 @@ parameters.}
 \code{SYMMETRIC_DEFAULT}, creates a KMS key with a 256-bit AES-GCM key that
 is used for encryption and decryption, except in China Regions, where it
 creates a 128-bit symmetric key that uses SM4 encryption. For help
-choosing a key spec for your KMS key, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-types.html#symm-asymm-choose}{Choosing a KMS key type}
+choosing a key spec for your KMS key, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symm-asymm-choose}{Choosing a KMS key type}
 in the \emph{Key Management Service Developer Guide} .
 
 The \code{KeySpec} determines whether the KMS key contains a symmetric key or
@@ -170,9 +170,9 @@ set this value to \code{EXTERNAL_KEY_STORE}. You must also use the
 \code{XksKeyId} parameter to identify the associated external key. The
 \code{KeySpec} value must be \code{SYMMETRIC_DEFAULT}.}
 
-\item{CustomKeyStoreId}{Creates the KMS key in the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
-The \code{ConnectionState} of the custom key store must be \code{CONNECTED}. To
-find the CustomKeyStoreID and ConnectionState use the
+\item{CustomKeyStoreId}{Creates the KMS key in the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store}. The
+\code{ConnectionState} of the custom key store must be \code{CONNECTED}. To find
+the CustomKeyStoreID and ConnectionState use the
 \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
 operation.
 

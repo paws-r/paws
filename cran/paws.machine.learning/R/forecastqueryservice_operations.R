@@ -40,7 +40,8 @@ forecastqueryservice_query_forecast <- function(ForecastArn, StartDate = NULL, E
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .forecastqueryservice$query_forecast_input(ForecastArn = ForecastArn, StartDate = StartDate, EndDate = EndDate, Filters = Filters, NextToken = NextToken)
   output <- .forecastqueryservice$query_forecast_output()
@@ -88,7 +89,8 @@ forecastqueryservice_query_what_if_forecast <- function(WhatIfForecastArn, Start
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .forecastqueryservice$query_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn, StartDate = StartDate, EndDate = EndDate, Filters = Filters, NextToken = NextToken)
   output <- .forecastqueryservice$query_what_if_forecast_output()

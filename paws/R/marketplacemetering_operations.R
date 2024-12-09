@@ -147,7 +147,8 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacemetering$batch_meter_usage_input(UsageRecords = UsageRecords, ProductCode = ProductCode)
   output <- .marketplacemetering$batch_meter_usage_output()
@@ -244,7 +245,8 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacemetering$meter_usage_input(ProductCode = ProductCode, Timestamp = Timestamp, UsageDimension = UsageDimension, UsageQuantity = UsageQuantity, DryRun = DryRun, UsageAllocations = UsageAllocations)
   output <- .marketplacemetering$meter_usage_output()
@@ -347,7 +349,8 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacemetering$register_usage_input(ProductCode = ProductCode, PublicKeyVersion = PublicKeyVersion, Nonce = Nonce)
   output <- .marketplacemetering$register_usage_output()
@@ -415,7 +418,8 @@ marketplacemetering_resolve_customer <- function(RegistrationToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .marketplacemetering$resolve_customer_input(RegistrationToken = RegistrationToken)
   output <- .marketplacemetering$resolve_customer_output()

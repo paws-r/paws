@@ -12,7 +12,7 @@ NULL
 #' tags on replication groups, those actions will be replicated to all
 #' nodes in the replication group. For more information, see
 #' [Resource-level
-#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
+#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
 #' 
 #' For example, you can use cost-allocation tags to your ElastiCache
 #' resources, Amazon generates a cost allocation report as a
@@ -22,7 +22,7 @@ NULL
 #' across multiple services.
 #' 
 #' For more information, see [Using Cost Allocation Tags in Amazon
-#' ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
+#' ElastiCache](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Tagging.html)
 #' in the *ElastiCache User Guide*.
 #'
 #' @usage
@@ -77,7 +77,8 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .elasticache$add_tags_to_resource_output()
@@ -150,7 +151,8 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$authorize_cache_security_group_ingress_input(CacheSecurityGroupName = CacheSecurityGroupName, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .elasticache$authorize_cache_security_group_ingress_output()
@@ -167,7 +169,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' @description
 #' Apply the service update. For more information on service updates and
 #' applying them, see [Applying Service
-#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/).
+#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/).
 #'
 #' @usage
 #' elasticache_batch_apply_update_action(ReplicationGroupIds,
@@ -225,7 +227,8 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$batch_apply_update_action_input(ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, ServiceUpdateName = ServiceUpdateName)
   output <- .elasticache$batch_apply_update_action_output()
@@ -242,7 +245,7 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
 #' @description
 #' Stop the service update. For more information on service updates and
 #' stopping them, see [Stopping Service
-#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/).
+#' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/).
 #'
 #' @usage
 #' elasticache_batch_stop_update_action(ReplicationGroupIds,
@@ -300,7 +303,8 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$batch_stop_update_action_input(ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, ServiceUpdateName = ServiceUpdateName)
   output <- .elasticache$batch_stop_update_action_output()
@@ -478,7 +482,8 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$complete_migration_input(ReplicationGroupId = ReplicationGroupId, Force = Force)
   output <- .elasticache$complete_migration_output()
@@ -563,7 +568,8 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$copy_serverless_cache_snapshot_input(SourceServerlessCacheSnapshotName = SourceServerlessCacheSnapshotName, TargetServerlessCacheSnapshotName = TargetServerlessCacheSnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_serverless_cache_snapshot_output()
@@ -589,9 +595,9 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' the [`copy_snapshot`][elasticache_copy_snapshot] operation. For more
 #' information about using IAM to control the use of ElastiCache
 #' operations, see [Exporting
-#' Snapshots](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
+#' Snapshots](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html)
 #' and [Authentication & Access
-#' Control](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.html).
+#' Control](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.html).
 #' 
 #' You could receive the following error messages.
 #' 
@@ -601,14 +607,14 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
 #'     snapshot. For more information, see [Step 1: Create an Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html#backups-exporting-create-s3-bucket)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** The S3 bucket %s does not exist.
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
 #'     snapshot. For more information, see [Step 1: Create an Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html#backups-exporting-create-s3-bucket)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** The S3 bucket %s is not owned by the
@@ -616,7 +622,7 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
 #'     snapshot. For more information, see [Step 1: Create an Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html#backups-exporting-create-s3-bucket)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** The authenticated user does not have sufficient
@@ -637,7 +643,7 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' 
 #'     **Solution:** Add List and Read permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html#backups-exporting-grant-access)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted WRITE
@@ -645,7 +651,7 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' 
 #'     **Solution:** Add Upload/Delete permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html#backups-exporting-grant-access)
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted READ_ACP
@@ -653,7 +659,7 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' 
 #'     **Solution:** Add View Permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
+#'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html#backups-exporting-grant-access)
 #'     in the ElastiCache User Guide.
 #'
 #' @usage
@@ -670,11 +676,11 @@ elasticache_copy_serverless_cache_snapshot <- function(SourceServerlessCacheSnap
 #' When using this parameter to export a snapshot, be sure Amazon
 #' ElastiCache has the needed permissions to this S3 bucket. For more
 #' information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
-#' Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access)
+#' Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html#backups-exporting-grant-access)
 #' in the *Amazon ElastiCache User Guide*.
 #' 
 #' For more information, see [Exporting a
-#' Snapshot](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html)
+#' Snapshot](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/backups-exporting.html)
 #' in the *Amazon ElastiCache User Guide*.
 #' @param KmsKeyId The ID of the KMS key used to encrypt the target snapshot.
 #' @param Tags A list of tags to be added to this resource. A tag is a key-value pair.
@@ -772,7 +778,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$copy_snapshot_input(SourceSnapshotName = SourceSnapshotName, TargetSnapshotName = TargetSnapshotName, TargetBucket = TargetBucket, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$copy_snapshot_output()
@@ -882,7 +889,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M6g node types** (available only for Redis OSS engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -936,7 +943,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **R6g node types** (available only for Redis OSS engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -984,7 +991,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing cluster or
 #' replication group and create it anew with the earlier engine version.
@@ -1000,7 +1007,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' If you're going to launch your cluster in an Amazon VPC, you need to
 #' create a subnet group before you start creating a cluster. For more
 #' information, see [Subnets and Subnet
-#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
+#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SubnetGroups.html).
 #' @param CacheSecurityGroupNames A list of security group names to associate with this cluster.
 #' 
 #' Use this parameter only when you are creating a cluster outside of an
@@ -1067,7 +1074,8 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     \<, \>, and -. Other printable special characters cannot be used in
 #'     the AUTH token.
 #' 
-#' For more information, see AUTH password at
+#' For more information, see [AUTH
+#' password](https://redis.io/docs/latest/commands/auth/) at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
@@ -1286,7 +1294,8 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_cache_cluster_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId, AZMode = AZMode, PreferredAvailabilityZone = PreferredAvailabilityZone, PreferredAvailabilityZones = PreferredAvailabilityZones, NumCacheNodes = NumCacheNodes, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, OutpostMode = OutpostMode, PreferredOutpostArn = PreferredOutpostArn, PreferredOutpostArns = PreferredOutpostArns, LogDeliveryConfigurations = LogDeliveryConfigurations, TransitEncryptionEnabled = TransitEncryptionEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery)
   output <- .elasticache$create_cache_cluster_output()
@@ -1315,7 +1324,7 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #'     in the ElastiCache API Reference.
 #' 
 #' -   [Parameters and Parameter
-#'     Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html)
+#'     Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/ParameterGroups.html)
 #'     in the ElastiCache User Guide.
 #'
 #' @usage
@@ -1373,7 +1382,8 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, CacheParameterGroupFamily = CacheParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_parameter_group_output()
@@ -1457,7 +1467,8 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName, Description = Description, Tags = Tags)
   output <- .elasticache$create_cache_security_group_output()
@@ -1551,7 +1562,8 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .elasticache$create_cache_subnet_group_output()
@@ -1572,7 +1584,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' you can create cross-region read replica clusters for ElastiCache (Redis
 #' OSS) to enable low-latency reads and disaster recovery across regions.
 #' For more information, see [Replication Across Regions Using Global
-#' Datastore](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html).
+#' Datastore](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Redis-Global-Datastore.html).
 #' 
 #' -   The **GlobalReplicationGroupIdSuffix** is the name of the Global
 #'     datastore.
@@ -1596,7 +1608,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' 
 #' For a full list of Amazon Regions and their respective Global datastore
 #' iD prefixes, see [Using the Amazon CLI with Global
-#' datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html)
+#' datastores](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Redis-Global-Datastores-CLI.html)
 #' .
 #' @param GlobalReplicationGroupDescription Provides details of the Global datastore
 #' @param PrimaryReplicationGroupId &#91;required&#93; The name of the primary cluster that accepts writes and will replicate
@@ -1657,7 +1669,8 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_global_replication_group_input(GlobalReplicationGroupIdSuffix = GlobalReplicationGroupIdSuffix, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
   output <- .elasticache$create_global_replication_group_output()
@@ -1699,7 +1712,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' subnet group have too small a CIDR range or the subnets are shared and
 #' heavily used by other clusters. For more information, see [Creating a
 #' Subnet
-#' Group](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.Creating.html).
+#' Group](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SubnetGroups.Creating.html).
 #' For versions below 5.0.6, the limit is 250 per cluster.
 #' 
 #' To request a limit increase, see [Amazon Service
@@ -1711,7 +1724,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' a total of 5 read replicas. If you need to increase or decrease the
 #' number of node groups (console: shards), you can use ElastiCache (Redis
 #' OSS) scaling. For more information, see [Scaling ElastiCache (Redis OSS)
-#' Clusters](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html)
+#' Clusters](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Scaling.html)
 #' in the *ElastiCache User Guide*.
 #' 
 #' This operation is valid for Redis OSS only.
@@ -1758,7 +1771,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' Default: false
 #' @param MultiAZEnabled A flag indicating if you have Multi-AZ enabled to enhance fault
 #' tolerance. For more information, see [Minimizing Downtime:
-#' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html).
+#' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/AutoFailover.html).
 #' @param NumCacheClusters The number of clusters this replication group initially has.
 #' 
 #' This parameter is not used if there is more than one node group (shard).
@@ -1822,7 +1835,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M6g node types** (available only for Redis OSS engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -1876,7 +1889,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **R6g node types** (available only for Redis OSS engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -1925,7 +1938,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement))
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement))
 #' in the *ElastiCache User Guide*, but you cannot downgrade to an earlier
 #' engine version. If you want to use an earlier engine version, you must
 #' delete the existing cluster or replication group and create it anew with
@@ -1948,7 +1961,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' If you're going to launch your cluster in an Amazon VPC, you need to
 #' create a subnet group before you start creating a cluster. For more
 #' information, see [Subnets and Subnet
-#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html).
+#' Groups](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SubnetGroups.html).
 #' @param CacheSecurityGroupNames A list of cache security group names to associate with this replication
 #' group.
 #' @param SecurityGroupIds One or more Amazon VPC security groups associated with this replication
@@ -2074,7 +2087,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' @param DataTieringEnabled Enables data tiering. Data tiering is only supported for replication
 #' groups using the r6gd node type. This parameter must be set to true when
 #' using r6gd nodes. For more information, see [Data
-#' tiering](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html).
+#' tiering](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/data-tiering.html).
 #' @param NetworkType Must be either `ipv4` | `ipv6` | `dual_stack`. IPv6 is supported for
 #' workloads using Redis OSS engine version 6.2 onward or Memcached engine
 #' version 1.6.6 on all instances built on the [Nitro
@@ -2340,7 +2353,8 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryClusterId = PrimaryClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NumCacheClusters = NumCacheClusters, PreferredCacheClusterAZs = PreferredCacheClusterAZs, NumNodeGroups = NumNodeGroups, ReplicasPerNodeGroup = ReplicasPerNodeGroup, NodeGroupConfiguration = NodeGroupConfiguration, CacheNodeType = CacheNodeType, Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, CacheSubnetGroupName = CacheSubnetGroupName, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, Tags = Tags, SnapshotArns = SnapshotArns, SnapshotName = SnapshotName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Port = Port, NotificationTopicArn = NotificationTopicArn, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, AuthToken = AuthToken, TransitEncryptionEnabled = TransitEncryptionEnabled, AtRestEncryptionEnabled = AtRestEncryptionEnabled, KmsKeyId = KmsKeyId, UserGroupIds = UserGroupIds, LogDeliveryConfigurations = LogDeliveryConfigurations, DataTieringEnabled = DataTieringEnabled, NetworkType = NetworkType, IpDiscovery = IpDiscovery, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
   output <- .elasticache$create_replication_group_output()
@@ -2498,7 +2512,8 @@ elasticache_create_serverless_cache <- function(ServerlessCacheName, Description
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, Engine = Engine, MajorEngineVersion = MajorEngineVersion, CacheUsageLimits = CacheUsageLimits, KmsKeyId = KmsKeyId, SecurityGroupIds = SecurityGroupIds, SnapshotArnsToRestore = SnapshotArnsToRestore, Tags = Tags, UserGroupId = UserGroupId, SubnetIds = SubnetIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
   output <- .elasticache$create_serverless_cache_output()
@@ -2583,7 +2598,8 @@ elasticache_create_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, ServerlessCacheName = ServerlessCacheName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_serverless_cache_snapshot_output()
@@ -2709,7 +2725,8 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_snapshot_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .elasticache$create_snapshot_output()
@@ -2726,7 +2743,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' @description
 #' For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user. For
 #' more information, see [Using Role Based Access Control
-#' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+#' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html).
 #'
 #' @usage
 #' elasticache_create_user(UserId, UserName, Engine, Passwords,
@@ -2801,7 +2818,8 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_user_input(UserId = UserId, UserName = UserName, Engine = Engine, Passwords = Passwords, AccessString = AccessString, NoPasswordRequired = NoPasswordRequired, Tags = Tags, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$create_user_output()
@@ -2818,7 +2836,7 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' @description
 #' For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user
 #' group. For more information, see [Using Role Based Access Control
-#' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html)
+#' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html)
 #'
 #' @usage
 #' elasticache_create_user_group(UserGroupId, Engine, UserIds, Tags)
@@ -2887,7 +2905,8 @@ elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$create_user_group_input(UserGroupId = UserGroupId, Engine = Engine, UserIds = UserIds, Tags = Tags)
   output <- .elasticache$create_user_group_output()
@@ -2986,7 +3005,8 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$decrease_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, GlobalNodeGroupsToRemove = GlobalNodeGroupsToRemove, GlobalNodeGroupsToRetain = GlobalNodeGroupsToRetain, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$decrease_node_groups_in_global_replication_group_output()
@@ -3210,7 +3230,8 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$decrease_replica_count_input(ReplicationGroupId = ReplicationGroupId, NewReplicaCount = NewReplicaCount, ReplicaConfiguration = ReplicaConfiguration, ReplicasToRemove = ReplicasToRemove, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$decrease_replica_count_output()
@@ -3402,7 +3423,8 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_cache_cluster_input(CacheClusterId = CacheClusterId, FinalSnapshotIdentifier = FinalSnapshotIdentifier)
   output <- .elasticache$delete_cache_cluster_output()
@@ -3450,7 +3472,8 @@ elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName)
   output <- .elasticache$delete_cache_parameter_group_output()
@@ -3498,7 +3521,8 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_cache_security_group_input(CacheSecurityGroupName = CacheSecurityGroupName)
   output <- .elasticache$delete_cache_security_group_output()
@@ -3547,7 +3571,8 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName)
   output <- .elasticache$delete_cache_subnet_group_output()
@@ -3646,7 +3671,8 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, RetainPrimaryReplicationGroup = RetainPrimaryReplicationGroup)
   output <- .elasticache$delete_global_replication_group_output()
@@ -3845,7 +3871,8 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_replication_group_input(ReplicationGroupId = ReplicationGroupId, RetainPrimaryCluster = RetainPrimaryCluster, FinalSnapshotIdentifier = FinalSnapshotIdentifier)
   output <- .elasticache$delete_replication_group_output()
@@ -3942,7 +3969,8 @@ elasticache_delete_serverless_cache <- function(ServerlessCacheName, FinalSnapsh
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, FinalSnapshotName = FinalSnapshotName)
   output <- .elasticache$delete_serverless_cache_output()
@@ -4011,7 +4039,8 @@ elasticache_delete_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName)
   output <- .elasticache$delete_serverless_cache_snapshot_output()
@@ -4120,7 +4149,8 @@ elasticache_delete_snapshot <- function(SnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_snapshot_input(SnapshotName = SnapshotName)
   output <- .elasticache$delete_snapshot_output()
@@ -4138,7 +4168,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #' For Redis OSS engine version 6.0 onwards: Deletes a user. The user will
 #' be removed from all user groups and in turn removed from all replication
 #' groups. For more information, see [Using Role Based Access Control
-#' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+#' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html).
 #'
 #' @usage
 #' elasticache_delete_user(UserId)
@@ -4184,7 +4214,8 @@ elasticache_delete_user <- function(UserId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_user_input(UserId = UserId)
   output <- .elasticache$delete_user_output()
@@ -4203,7 +4234,7 @@ elasticache_delete_user <- function(UserId) {
 #' group must first be disassociated from the replication group before it
 #' can be deleted. For more information, see [Using Role Based Access
 #' Control
-#' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+#' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html).
 #'
 #' @usage
 #' elasticache_delete_user_group(UserGroupId)
@@ -4257,7 +4288,8 @@ elasticache_delete_user_group <- function(UserGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$delete_user_group_input(UserGroupId = UserGroupId)
   output <- .elasticache$delete_user_group_output()
@@ -4473,7 +4505,8 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheClusters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheClusters"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_clusters_input(CacheClusterId = CacheClusterId, MaxRecords = MaxRecords, Marker = Marker, ShowCacheNodeInfo = ShowCacheNodeInfo, ShowCacheClustersNotInReplicationGroups = ShowCacheClustersNotInReplicationGroups)
   output <- .elasticache$describe_cache_clusters_output()
@@ -4566,7 +4599,8 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheEngineVersions")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheEngineVersions"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly)
   output <- .elasticache$describe_cache_engine_versions_output()
@@ -4639,7 +4673,8 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheParameterGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheParameterGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_parameter_groups_input(CacheParameterGroupName = CacheParameterGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameter_groups_output()
@@ -4738,7 +4773,8 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_parameters_input(CacheParameterGroupName = CacheParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameters_output()
@@ -4817,7 +4853,8 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSecurityGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSecurityGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_security_groups_input(CacheSecurityGroupName = CacheSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_security_groups_output()
@@ -4907,7 +4944,8 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSubnetGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSubnetGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_cache_subnet_groups_input(CacheSubnetGroupName = CacheSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_subnet_groups_output()
@@ -5009,7 +5047,8 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_engine_default_parameters_input(CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_engine_default_parameters_output()
@@ -5108,7 +5147,8 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_events_output()
@@ -5200,7 +5240,8 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalReplicationGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalReplicationGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_global_replication_groups_input(GlobalReplicationGroupId = GlobalReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker, ShowMemberInfo = ShowMemberInfo)
   output <- .elasticache$describe_global_replication_groups_output()
@@ -5400,7 +5441,8 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReplicationGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReplicationGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_replication_groups_input(ReplicationGroupId = ReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_replication_groups_output()
@@ -5445,7 +5487,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M6g node types** (available only for Redis OSS engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -5499,7 +5541,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **R6g node types** (available only for Redis OSS engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -5618,7 +5660,8 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodes")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodes"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_reserved_cache_nodes_input(ReservedCacheNodeId = ReservedCacheNodeId, ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_output()
@@ -5662,7 +5705,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'         `cache.m7g.12xlarge`, `cache.m7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **M6g node types** (available only for Redis OSS engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -5716,7 +5759,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #'         `cache.r7g.12xlarge`, `cache.r7g.16xlarge`
 #' 
 #'         For region availability, see [Supported Node
-#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+#'         Types](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 #' 
 #'         **R6g node types** (available only for Redis OSS engine version
 #'         5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -5827,7 +5870,8 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodesOfferings")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodesOfferings"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_reserved_cache_nodes_offerings_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_offerings_output()
@@ -5922,7 +5966,8 @@ elasticache_describe_serverless_cache_snapshots <- function(ServerlessCacheName 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCacheSnapshots")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCacheSnapshots"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_serverless_cache_snapshots_input(ServerlessCacheName = ServerlessCacheName, ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, SnapshotType = SnapshotType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .elasticache$describe_serverless_cache_snapshots_output()
@@ -6027,7 +6072,8 @@ elasticache_describe_serverless_caches <- function(ServerlessCacheName = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCaches")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerlessCaches"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_serverless_caches_input(ServerlessCacheName = ServerlessCacheName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticache$describe_serverless_caches_output()
@@ -6109,7 +6155,8 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServiceUpdates")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServiceUpdates"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ServiceUpdateStatus = ServiceUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_service_updates_output()
@@ -6252,7 +6299,8 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_snapshots_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, SnapshotSource = SnapshotSource, Marker = Marker, MaxRecords = MaxRecords, ShowNodeGroupConfig = ShowNodeGroupConfig)
   output <- .elasticache$describe_snapshots_output()
@@ -6418,7 +6466,8 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UpdateActions")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UpdateActions"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_update_actions_input(ServiceUpdateName = ServiceUpdateName, ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, Engine = Engine, ServiceUpdateStatus = ServiceUpdateStatus, ServiceUpdateTimeRange = ServiceUpdateTimeRange, UpdateActionStatus = UpdateActionStatus, ShowNodeLevelUpdateStatus = ShowNodeLevelUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_update_actions_output()
@@ -6501,7 +6550,8 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UserGroups")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UserGroups"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_user_groups_input(UserGroupId = UserGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_user_groups_output()
@@ -6587,7 +6637,8 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Users")
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Users"),
+    stream_api = FALSE
   )
   input <- .elasticache$describe_users_input(Engine = Engine, UserId = UserId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_users_output()
@@ -6673,7 +6724,8 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$disassociate_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ReplicationGroupId = ReplicationGroupId, ReplicationGroupRegion = ReplicationGroupRegion)
   output <- .elasticache$disassociate_global_replication_group_output()
@@ -6747,7 +6799,8 @@ elasticache_export_serverless_cache_snapshot <- function(ServerlessCacheSnapshot
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$export_serverless_cache_snapshot_input(ServerlessCacheSnapshotName = ServerlessCacheSnapshotName, S3BucketName = S3BucketName)
   output <- .elasticache$export_serverless_cache_snapshot_output()
@@ -6829,7 +6882,8 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$failover_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, PrimaryRegion = PrimaryRegion, PrimaryReplicationGroupId = PrimaryReplicationGroupId)
   output <- .elasticache$failover_global_replication_group_output()
@@ -6928,7 +6982,8 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$increase_node_groups_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, NodeGroupCount = NodeGroupCount, RegionalConfigurations = RegionalConfigurations, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$increase_node_groups_in_global_replication_group_output()
@@ -7135,7 +7190,8 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$increase_replica_count_input(ReplicationGroupId = ReplicationGroupId, NewReplicaCount = NewReplicaCount, ReplicaConfiguration = ReplicaConfiguration, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$increase_replica_count_output()
@@ -7212,7 +7268,8 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$list_allowed_node_type_modifications_input(CacheClusterId = CacheClusterId, ReplicationGroupId = ReplicationGroupId)
   output <- .elasticache$list_allowed_node_type_modifications_output()
@@ -7235,7 +7292,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' tags on replication groups, those actions will be replicated to all
 #' nodes in the replication group. For more information, see
 #' [Resource-level
-#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
+#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
 #' 
 #' If the cluster is not in the *available* state,
 #' [`list_tags_for_resource`][elasticache_list_tags_for_resource] returns
@@ -7284,7 +7341,8 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$list_tags_for_resource_input(ResourceName = ResourceName)
   output <- .elasticache$list_tags_for_resource_output()
@@ -7407,7 +7465,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' different Availability Zones. For guidance on how to move existing
 #' Memcached nodes to different Availability Zones, see the **Availability
 #' Zone Considerations** section of [Cache Node Considerations for
-#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNodes.SupportedTypes.html).
+#' Memcached](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html).
 #' 
 #' **Impact of new add/remove requests upon pending requests**
 #' 
@@ -7516,7 +7574,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing cluster and
 #' create it anew with the earlier engine version.
@@ -7557,7 +7615,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' -   DELETE - allowed only when transitioning to RBAC
 #' 
 #' For more information, see [Authenticating Users with Redis OSS
-#' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+#' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/auth.html)
 #' @param LogDeliveryConfigurations Specifies the destination, format and type of the logs.
 #' @param IpDiscovery The network type you choose when modifying a cluster, either `ipv4` |
 #' `ipv6`. IPv6 is supported for workloads using Redis OSS engine version
@@ -7750,7 +7808,8 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_cache_cluster_input(CacheClusterId = CacheClusterId, NumCacheNodes = NumCacheNodes, CacheNodeIdsToRemove = CacheNodeIdsToRemove, AZMode = AZMode, NewAvailabilityZones = NewAvailabilityZones, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery)
   output <- .elasticache$modify_cache_cluster_output()
@@ -7810,7 +7869,8 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, ParameterNameValues = ParameterNameValues)
   output <- .elasticache$modify_cache_parameter_group_output()
@@ -7893,7 +7953,8 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_cache_subnet_group_input(CacheSubnetGroupName = CacheSubnetGroupName, CacheSubnetGroupDescription = CacheSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .elasticache$modify_cache_subnet_group_output()
@@ -7989,7 +8050,8 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately, CacheNodeType = CacheNodeType, EngineVersion = EngineVersion, CacheParameterGroupName = CacheParameterGroupName, GlobalReplicationGroupDescription = GlobalReplicationGroupDescription, AutomaticFailoverEnabled = AutomaticFailoverEnabled)
   output <- .elasticache$modify_global_replication_group_output()
@@ -8008,7 +8070,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' OSS 7 and newer.
 #' 
 #' -   [Scaling for Amazon ElastiCache (Redis OSS) (cluster mode
-#'     enabled)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html)
+#'     enabled)](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/scaling-redis-cluster-mode-enabled.html)
 #'     in the ElastiCache User Guide
 #' 
 #' -   [`modify_replication_group_shard_configuration`][elasticache_modify_replication_group_shard_configuration]
@@ -8110,7 +8172,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' 
 #' **Important:** You can upgrade to a newer engine version (see [Selecting
 #' a Cache Engine and
-#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement)),
+#' Version](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement)),
 #' but you cannot downgrade to an earlier engine version. If you want to
 #' use an earlier engine version, you must delete the existing replication
 #' group and create it anew with the earlier engine version.
@@ -8158,7 +8220,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' -   DELETE - allowed only when transitioning to RBAC
 #' 
 #' For more information, see [Authenticating Users with Redis OSS
-#' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html)
+#' AUTH](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/auth.html)
 #' @param UserGroupIdsToAdd The ID of the user group you are associating with the replication group.
 #' @param UserGroupIdsToRemove The ID of the user group to disassociate from the replication group,
 #' meaning the users in the group no longer can access the replication
@@ -8395,7 +8457,8 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_replication_group_input(ReplicationGroupId = ReplicationGroupId, ReplicationGroupDescription = ReplicationGroupDescription, PrimaryClusterId = PrimaryClusterId, SnapshottingClusterId = SnapshottingClusterId, AutomaticFailoverEnabled = AutomaticFailoverEnabled, MultiAZEnabled = MultiAZEnabled, NodeGroupId = NodeGroupId, CacheSecurityGroupNames = CacheSecurityGroupNames, SecurityGroupIds = SecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, NotificationTopicArn = NotificationTopicArn, CacheParameterGroupName = CacheParameterGroupName, NotificationTopicStatus = NotificationTopicStatus, ApplyImmediately = ApplyImmediately, EngineVersion = EngineVersion, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, SnapshotRetentionLimit = SnapshotRetentionLimit, SnapshotWindow = SnapshotWindow, CacheNodeType = CacheNodeType, AuthToken = AuthToken, AuthTokenUpdateStrategy = AuthTokenUpdateStrategy, UserGroupIdsToAdd = UserGroupIdsToAdd, UserGroupIdsToRemove = UserGroupIdsToRemove, RemoveUserGroups = RemoveUserGroups, LogDeliveryConfigurations = LogDeliveryConfigurations, IpDiscovery = IpDiscovery, TransitEncryptionEnabled = TransitEncryptionEnabled, TransitEncryptionMode = TransitEncryptionMode, ClusterMode = ClusterMode)
   output <- .elasticache$modify_replication_group_output()
@@ -8620,7 +8683,8 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_replication_group_shard_configuration_input(ReplicationGroupId = ReplicationGroupId, NodeGroupCount = NodeGroupCount, ApplyImmediately = ApplyImmediately, ReshardingConfiguration = ReshardingConfiguration, NodeGroupsToRemove = NodeGroupsToRemove, NodeGroupsToRetain = NodeGroupsToRetain)
   output <- .elasticache$modify_replication_group_shard_configuration_output()
@@ -8752,7 +8816,8 @@ elasticache_modify_serverless_cache <- function(ServerlessCacheName, Description
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_serverless_cache_input(ServerlessCacheName = ServerlessCacheName, Description = Description, CacheUsageLimits = CacheUsageLimits, RemoveUserGroup = RemoveUserGroup, UserGroupId = UserGroupId, SecurityGroupIds = SecurityGroupIds, SnapshotRetentionLimit = SnapshotRetentionLimit, DailySnapshotTime = DailySnapshotTime)
   output <- .elasticache$modify_serverless_cache_output()
@@ -8831,7 +8896,8 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_user_input(UserId = UserId, AccessString = AccessString, AppendAccessString = AppendAccessString, Passwords = Passwords, NoPasswordRequired = NoPasswordRequired, AuthenticationMode = AuthenticationMode)
   output <- .elasticache$modify_user_output()
@@ -8909,7 +8975,8 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$modify_user_group_input(UserGroupId = UserGroupId, UserIdsToAdd = UserIdsToAdd, UserIdsToRemove = UserIdsToRemove)
   output <- .elasticache$modify_user_group_output()
@@ -8927,9 +8994,9 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
 #' Allows you to purchase a reserved cache node offering. Reserved nodes
 #' are not eligible for cancellation and are non-refundable. For more
 #' information, see [Managing Costs with Reserved
-#' Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/) for
+#' Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/) for
 #' Redis OSS or [Managing Costs with Reserved
-#' Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/) for
+#' Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/) for
 #' Memcached.
 #'
 #' @usage
@@ -9007,7 +9074,8 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$purchase_reserved_cache_nodes_offering_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, ReservedCacheNodeId = ReservedCacheNodeId, CacheNodeCount = CacheNodeCount, Tags = Tags)
   output <- .elasticache$purchase_reserved_cache_nodes_offering_output()
@@ -9087,7 +9155,8 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$rebalance_slots_in_global_replication_group_input(GlobalReplicationGroupId = GlobalReplicationGroupId, ApplyImmediately = ApplyImmediately)
   output <- .elasticache$rebalance_slots_in_global_replication_group_output()
@@ -9119,7 +9188,7 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #' 
 #' If you make changes to parameters that require a Redis OSS (cluster mode
 #' enabled) cluster reboot for the changes to be applied, see [Rebooting a
-#' Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/nodes.rebooting.html)
+#' Cluster](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/nodes.rebooting.html)
 #' for an alternate process.
 #'
 #' @usage
@@ -9276,7 +9345,8 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$reboot_cache_cluster_input(CacheClusterId = CacheClusterId, CacheNodeIdsToReboot = CacheNodeIdsToReboot)
   output <- .elasticache$reboot_cache_cluster_output()
@@ -9298,7 +9368,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' When you add or remove tags on replication groups, those actions will be
 #' replicated to all nodes in the replication group. For more information,
 #' see [Resource-level
-#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
+#' permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html).
 #'
 #' @usage
 #' elasticache_remove_tags_from_resource(ResourceName, TagKeys)
@@ -9348,7 +9418,8 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .elasticache$remove_tags_from_resource_output()
@@ -9418,7 +9489,8 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$reset_cache_parameter_group_input(CacheParameterGroupName = CacheParameterGroupName, ResetAllParameters = ResetAllParameters, ParameterNameValues = ParameterNameValues)
   output <- .elasticache$reset_cache_parameter_group_output()
@@ -9487,7 +9559,8 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$revoke_cache_security_group_ingress_input(CacheSecurityGroupName = CacheSecurityGroupName, EC2SecurityGroupName = EC2SecurityGroupName, EC2SecurityGroupOwnerId = EC2SecurityGroupOwnerId)
   output <- .elasticache$revoke_cache_security_group_ingress_output()
@@ -9670,7 +9743,8 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$start_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
   output <- .elasticache$start_migration_output()
@@ -9734,14 +9808,14 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #'     For more information see:
 #' 
 #'     -   [Viewing ElastiCache
-#'         Events](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ECEvents.Viewing.html)
+#'         Events](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/ECEvents.Viewing.html)
 #'         in the *ElastiCache User Guide*
 #' 
 #'     -   [`describe_events`][elasticache_describe_events] in the
 #'         ElastiCache API Reference
 #' 
 #' Also see, [Testing
-#' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
+#' Multi-AZ](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/AutoFailover.html#auto-failover-test)
 #' in the *ElastiCache User Guide*.
 #'
 #' @usage
@@ -9907,7 +9981,8 @@ elasticache_test_failover <- function(ReplicationGroupId, NodeGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$test_failover_input(ReplicationGroupId = ReplicationGroupId, NodeGroupId = NodeGroupId)
   output <- .elasticache$test_failover_output()
@@ -10090,7 +10165,8 @@ elasticache_test_migration <- function(ReplicationGroupId, CustomerNodeEndpointL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticache$test_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
   output <- .elasticache$test_migration_output()

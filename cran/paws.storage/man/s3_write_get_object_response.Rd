@@ -108,7 +108,7 @@ referenced by the Content-Type header field.}
 
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This specifies
-the base64-encoded, 32-bit CRC32 checksum of the object returned by the
+the base64-encoded, 32-bit CRC-32 checksum of the object returned by the
 Object Lambda function. This may not match the checksum for the object
 stored in Amazon S3. Amazon S3 will perform validation of the checksum
 values only when the original \code{\link[=s3_get_object]{get_object}} request
@@ -121,12 +121,12 @@ multiple checksum headers, this request will fail.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This specifies
-the base64-encoded, 32-bit CRC32C checksum of the object returned by the
-Object Lambda function. This may not match the checksum for the object
-stored in Amazon S3. Amazon S3 will perform validation of the checksum
-values only when the original \code{\link[=s3_get_object]{get_object}} request
-required checksum validation. For more information about checksums, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
+the base64-encoded, 32-bit CRC-32C checksum of the object returned by
+the Object Lambda function. This may not match the checksum for the
+object stored in Amazon S3. Amazon S3 will perform validation of the
+checksum values only when the original \code{\link[=s3_get_object]{get_object}}
+request required checksum validation. For more information about
+checksums, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.
 
 Only one checksum header can be specified at a time. If you supply

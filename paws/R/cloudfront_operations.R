@@ -52,7 +52,8 @@ cloudfront_associate_alias <- function(TargetDistributionId, Alias) {
     http_method = "PUT",
     http_path = "/2020-05-31/distribution/{TargetDistributionId}/associate-alias",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$associate_alias_input(TargetDistributionId = TargetDistributionId, Alias = Alias)
   output <- .cloudfront$associate_alias_output()
@@ -479,7 +480,8 @@ cloudfront_copy_distribution <- function(PrimaryDistributionId, Staging = NULL, 
     http_method = "POST",
     http_path = "/2020-05-31/distribution/{PrimaryDistributionId}/copy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$copy_distribution_input(PrimaryDistributionId = PrimaryDistributionId, Staging = Staging, IfMatch = IfMatch, CallerReference = CallerReference, Enabled = Enabled)
   output <- .cloudfront$copy_distribution_output()
@@ -632,7 +634,8 @@ cloudfront_create_cache_policy <- function(CachePolicyConfig) {
     http_method = "POST",
     http_path = "/2020-05-31/cache-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_cache_policy_input(CachePolicyConfig = CachePolicyConfig)
   output <- .cloudfront$create_cache_policy_output()
@@ -699,7 +702,8 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
     http_method = "POST",
     http_path = "/2020-05-31/origin-access-identity/cloudfront",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_cloud_front_origin_access_identity_input(CloudFrontOriginAccessIdentityConfig = CloudFrontOriginAccessIdentityConfig)
   output <- .cloudfront$create_cloud_front_origin_access_identity_output()
@@ -814,7 +818,8 @@ cloudfront_create_continuous_deployment_policy <- function(ContinuousDeploymentP
     http_method = "POST",
     http_path = "/2020-05-31/continuous-deployment-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_continuous_deployment_policy_input(ContinuousDeploymentPolicyConfig = ContinuousDeploymentPolicyConfig)
   output <- .cloudfront$create_continuous_deployment_policy_output()
@@ -1490,7 +1495,8 @@ cloudfront_create_distribution <- function(DistributionConfig) {
     http_method = "POST",
     http_path = "/2020-05-31/distribution",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_distribution_input(DistributionConfig = DistributionConfig)
   output <- .cloudfront$create_distribution_output()
@@ -2181,7 +2187,8 @@ cloudfront_create_distribution_with_tags <- function(DistributionConfigWithTags)
     http_method = "POST",
     http_path = "/2020-05-31/distribution?WithTags",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_distribution_with_tags_input(DistributionConfigWithTags = DistributionConfigWithTags)
   output <- .cloudfront$create_distribution_with_tags_output()
@@ -2294,7 +2301,8 @@ cloudfront_create_field_level_encryption_config <- function(FieldLevelEncryption
     http_method = "POST",
     http_path = "/2020-05-31/field-level-encryption",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_field_level_encryption_config_input(FieldLevelEncryptionConfig = FieldLevelEncryptionConfig)
   output <- .cloudfront$create_field_level_encryption_config_output()
@@ -2389,7 +2397,8 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
     http_method = "POST",
     http_path = "/2020-05-31/field-level-encryption-profile",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_field_level_encryption_profile_input(FieldLevelEncryptionProfileConfig = FieldLevelEncryptionProfileConfig)
   output <- .cloudfront$create_field_level_encryption_profile_output()
@@ -2519,7 +2528,8 @@ cloudfront_create_function <- function(Name, FunctionConfig, FunctionCode) {
     http_method = "POST",
     http_path = "/2020-05-31/function",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_function_input(Name = Name, FunctionConfig = FunctionConfig, FunctionCode = FunctionCode)
   output <- .cloudfront$create_function_output()
@@ -2595,7 +2605,8 @@ cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
     http_method = "POST",
     http_path = "/2020-05-31/distribution/{DistributionId}/invalidation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_invalidation_input(DistributionId = DistributionId, InvalidationBatch = InvalidationBatch)
   output <- .cloudfront$create_invalidation_output()
@@ -2678,7 +2689,8 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
     http_method = "POST",
     http_path = "/2020-05-31/key-group",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_key_group_input(KeyGroupConfig = KeyGroupConfig)
   output <- .cloudfront$create_key_group_output()
@@ -2762,7 +2774,8 @@ cloudfront_create_key_value_store <- function(Name, Comment = NULL, ImportSource
     http_method = "POST",
     http_path = "/2020-05-31/key-value-store/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_key_value_store_input(Name = Name, Comment = Comment, ImportSource = ImportSource)
   output <- .cloudfront$create_key_value_store_output()
@@ -2829,7 +2842,8 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
     http_method = "POST",
     http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_monitoring_subscription_input(DistributionId = DistributionId, MonitoringSubscription = MonitoringSubscription)
   output <- .cloudfront$create_monitoring_subscription_output()
@@ -2905,7 +2919,8 @@ cloudfront_create_origin_access_control <- function(OriginAccessControlConfig) {
     http_method = "POST",
     http_path = "/2020-05-31/origin-access-control",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_origin_access_control_input(OriginAccessControlConfig = OriginAccessControlConfig)
   output <- .cloudfront$create_origin_access_control_output()
@@ -3047,7 +3062,8 @@ cloudfront_create_origin_request_policy <- function(OriginRequestPolicyConfig) {
     http_method = "POST",
     http_path = "/2020-05-31/origin-request-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_origin_request_policy_input(OriginRequestPolicyConfig = OriginRequestPolicyConfig)
   output <- .cloudfront$create_origin_request_policy_output()
@@ -3118,7 +3134,8 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
     http_method = "POST",
     http_path = "/2020-05-31/public-key",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_public_key_input(PublicKeyConfig = PublicKeyConfig)
   output <- .cloudfront$create_public_key_output()
@@ -3214,7 +3231,8 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
     http_method = "POST",
     http_path = "/2020-05-31/realtime-log-config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_realtime_log_config_input(EndPoints = EndPoints, Fields = Fields, Name = Name, SamplingRate = SamplingRate)
   output <- .cloudfront$create_realtime_log_config_output()
@@ -3452,7 +3470,8 @@ cloudfront_create_response_headers_policy <- function(ResponseHeadersPolicyConfi
     http_method = "POST",
     http_path = "/2020-05-31/response-headers-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_response_headers_policy_input(ResponseHeadersPolicyConfig = ResponseHeadersPolicyConfig)
   output <- .cloudfront$create_response_headers_policy_output()
@@ -3583,7 +3602,8 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
     http_method = "POST",
     http_path = "/2020-05-31/streaming-distribution",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_streaming_distribution_input(StreamingDistributionConfig = StreamingDistributionConfig)
   output <- .cloudfront$create_streaming_distribution_output()
@@ -3725,7 +3745,8 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
     http_method = "POST",
     http_path = "/2020-05-31/streaming-distribution?WithTags",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$create_streaming_distribution_with_tags_input(StreamingDistributionConfigWithTags = StreamingDistributionConfigWithTags)
   output <- .cloudfront$create_streaming_distribution_with_tags_output()
@@ -3785,7 +3806,8 @@ cloudfront_delete_cache_policy <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/cache-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_cache_policy_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_cache_policy_output()
@@ -3831,7 +3853,8 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
     http_method = "DELETE",
     http_path = "/2020-05-31/origin-access-identity/cloudfront/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_cloud_front_origin_access_identity_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_cloud_front_origin_access_identity_output()
@@ -3882,7 +3905,8 @@ cloudfront_delete_continuous_deployment_policy <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/continuous-deployment-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_continuous_deployment_policy_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_continuous_deployment_policy_output()
@@ -3928,7 +3952,8 @@ cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/distribution/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_distribution_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_distribution_output()
@@ -3974,7 +3999,8 @@ cloudfront_delete_field_level_encryption_config <- function(Id, IfMatch = NULL) 
     http_method = "DELETE",
     http_path = "/2020-05-31/field-level-encryption/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_field_level_encryption_config_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_field_level_encryption_config_output()
@@ -4020,7 +4046,8 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
     http_method = "DELETE",
     http_path = "/2020-05-31/field-level-encryption-profile/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_field_level_encryption_profile_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_field_level_encryption_profile_output()
@@ -4076,7 +4103,8 @@ cloudfront_delete_function <- function(Name, IfMatch) {
     http_method = "DELETE",
     http_path = "/2020-05-31/function/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_function_input(Name = Name, IfMatch = IfMatch)
   output <- .cloudfront$delete_function_output()
@@ -4135,7 +4163,8 @@ cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/key-group/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_key_group_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_key_group_output()
@@ -4189,7 +4218,8 @@ cloudfront_delete_key_value_store <- function(Name, IfMatch) {
     http_method = "DELETE",
     http_path = "/2020-05-31/key-value-store/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_key_value_store_input(Name = Name, IfMatch = IfMatch)
   output <- .cloudfront$delete_key_value_store_output()
@@ -4234,7 +4264,8 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
     http_method = "DELETE",
     http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_monitoring_subscription_input(DistributionId = DistributionId)
   output <- .cloudfront$delete_monitoring_subscription_output()
@@ -4285,7 +4316,8 @@ cloudfront_delete_origin_access_control <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/origin-access-control/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_origin_access_control_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_origin_access_control_output()
@@ -4346,7 +4378,8 @@ cloudfront_delete_origin_request_policy <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/origin-request-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_origin_request_policy_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_origin_request_policy_output()
@@ -4392,7 +4425,8 @@ cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/public-key/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_public_key_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_public_key_output()
@@ -4448,7 +4482,8 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
     http_method = "POST",
     http_path = "/2020-05-31/delete-realtime-log-config/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_realtime_log_config_input(Name = Name, ARN = ARN)
   output <- .cloudfront$delete_realtime_log_config_output()
@@ -4514,7 +4549,8 @@ cloudfront_delete_response_headers_policy <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/response-headers-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_response_headers_policy_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_response_headers_policy_output()
@@ -4599,7 +4635,8 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
     http_method = "DELETE",
     http_path = "/2020-05-31/streaming-distribution/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$delete_streaming_distribution_input(Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$delete_streaming_distribution_output()
@@ -4682,7 +4719,8 @@ cloudfront_describe_function <- function(Name, Stage = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/function/{Name}/describe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$describe_function_input(Name = Name, Stage = Stage)
   output <- .cloudfront$describe_function_output()
@@ -4748,7 +4786,8 @@ cloudfront_describe_key_value_store <- function(Name) {
     http_method = "GET",
     http_path = "/2020-05-31/key-value-store/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$describe_key_value_store_input(Name = Name)
   output <- .cloudfront$describe_key_value_store_output()
@@ -4857,7 +4896,8 @@ cloudfront_get_cache_policy <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/cache-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_cache_policy_input(Id = Id)
   output <- .cloudfront$get_cache_policy_output()
@@ -4956,7 +4996,8 @@ cloudfront_get_cache_policy_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/cache-policy/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_cache_policy_config_input(Id = Id)
   output <- .cloudfront$get_cache_policy_config_output()
@@ -5012,7 +5053,8 @@ cloudfront_get_cloud_front_origin_access_identity <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-identity/cloudfront/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_cloud_front_origin_access_identity_input(Id = Id)
   output <- .cloudfront$get_cloud_front_origin_access_identity_output()
@@ -5064,7 +5106,8 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-identity/cloudfront/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_cloud_front_origin_access_identity_config_input(Id = Id)
   output <- .cloudfront$get_cloud_front_origin_access_identity_config_output()
@@ -5143,7 +5186,8 @@ cloudfront_get_continuous_deployment_policy <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/continuous-deployment-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_continuous_deployment_policy_input(Id = Id)
   output <- .cloudfront$get_continuous_deployment_policy_output()
@@ -5215,7 +5259,8 @@ cloudfront_get_continuous_deployment_policy_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/continuous-deployment-policy/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_continuous_deployment_policy_config_input(Id = Id)
   output <- .cloudfront$get_continuous_deployment_policy_config_output()
@@ -5601,7 +5646,8 @@ cloudfront_get_distribution <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/distribution/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_distribution_input(Id = Id)
   output <- .cloudfront$get_distribution_output()
@@ -5941,7 +5987,8 @@ cloudfront_get_distribution_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/distribution/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_distribution_config_input(Id = Id)
   output <- .cloudfront$get_distribution_config_output()
@@ -6024,7 +6071,8 @@ cloudfront_get_field_level_encryption <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/field-level-encryption/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_field_level_encryption_input(Id = Id)
   output <- .cloudfront$get_field_level_encryption_output()
@@ -6101,7 +6149,8 @@ cloudfront_get_field_level_encryption_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/field-level-encryption/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_field_level_encryption_config_input(Id = Id)
   output <- .cloudfront$get_field_level_encryption_config_output()
@@ -6175,7 +6224,8 @@ cloudfront_get_field_level_encryption_profile <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/field-level-encryption-profile/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_field_level_encryption_profile_input(Id = Id)
   output <- .cloudfront$get_field_level_encryption_profile_output()
@@ -6244,7 +6294,8 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/field-level-encryption-profile/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_field_level_encryption_profile_config_input(Id = Id)
   output <- .cloudfront$get_field_level_encryption_profile_config_output()
@@ -6302,7 +6353,8 @@ cloudfront_get_function <- function(Name, Stage = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/function/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_function_input(Name = Name, Stage = Stage)
   output <- .cloudfront$get_function_output()
@@ -6368,7 +6420,8 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
     http_method = "GET",
     http_path = "/2020-05-31/distribution/{DistributionId}/invalidation/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_invalidation_input(DistributionId = DistributionId, Id = Id)
   output <- .cloudfront$get_invalidation_output()
@@ -6440,7 +6493,8 @@ cloudfront_get_key_group <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/key-group/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_key_group_input(Id = Id)
   output <- .cloudfront$get_key_group_output()
@@ -6504,7 +6558,8 @@ cloudfront_get_key_group_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/key-group/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_key_group_config_input(Id = Id)
   output <- .cloudfront$get_key_group_config_output()
@@ -6558,7 +6613,8 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
     http_method = "GET",
     http_path = "/2020-05-31/distributions/{DistributionId}/monitoring-subscription/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_monitoring_subscription_input(DistributionId = DistributionId)
   output <- .cloudfront$get_monitoring_subscription_output()
@@ -6617,7 +6673,8 @@ cloudfront_get_origin_access_control <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-control/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_origin_access_control_input(Id = Id)
   output <- .cloudfront$get_origin_access_control_output()
@@ -6672,7 +6729,8 @@ cloudfront_get_origin_access_control_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-control/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_origin_access_control_config_input(Id = Id)
   output <- .cloudfront$get_origin_access_control_config_output()
@@ -6777,7 +6835,8 @@ cloudfront_get_origin_request_policy <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/origin-request-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_origin_request_policy_input(Id = Id)
   output <- .cloudfront$get_origin_request_policy_output()
@@ -6872,7 +6931,8 @@ cloudfront_get_origin_request_policy_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/origin-request-policy/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_origin_request_policy_config_input(Id = Id)
   output <- .cloudfront$get_origin_request_policy_config_output()
@@ -6932,7 +6992,8 @@ cloudfront_get_public_key <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/public-key/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_public_key_input(Id = Id)
   output <- .cloudfront$get_public_key_output()
@@ -6986,7 +7047,8 @@ cloudfront_get_public_key_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/public-key/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_public_key_config_input(Id = Id)
   output <- .cloudfront$get_public_key_config_output()
@@ -7058,7 +7120,8 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
     http_method = "POST",
     http_path = "/2020-05-31/get-realtime-log-config/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_realtime_log_config_input(Name = Name, ARN = ARN)
   output <- .cloudfront$get_realtime_log_config_output()
@@ -7215,7 +7278,8 @@ cloudfront_get_response_headers_policy <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/response-headers-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_response_headers_policy_input(Id = Id)
   output <- .cloudfront$get_response_headers_policy_output()
@@ -7364,7 +7428,8 @@ cloudfront_get_response_headers_policy_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/response-headers-policy/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_response_headers_policy_config_input(Id = Id)
   output <- .cloudfront$get_response_headers_policy_config_output()
@@ -7466,7 +7531,8 @@ cloudfront_get_streaming_distribution <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/streaming-distribution/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_streaming_distribution_input(Id = Id)
   output <- .cloudfront$get_streaming_distribution_output()
@@ -7542,7 +7608,8 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
     http_method = "GET",
     http_path = "/2020-05-31/streaming-distribution/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$get_streaming_distribution_config_input(Id = Id)
   output <- .cloudfront$get_streaming_distribution_config_output()
@@ -7669,7 +7736,8 @@ cloudfront_list_cache_policies <- function(Type = NULL, Marker = NULL, MaxItems 
     http_method = "GET",
     http_path = "/2020-05-31/cache-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_cache_policies_input(Type = Type, Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_cache_policies_output()
@@ -7737,7 +7805,8 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-identity/cloudfront",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "CloudFrontOriginAccessIdentityList.IsTruncated", output_token = "CloudFrontOriginAccessIdentityList.NextMarker", result_key = "CloudFrontOriginAccessIdentityList.Items")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "CloudFrontOriginAccessIdentityList.IsTruncated", output_token = "CloudFrontOriginAccessIdentityList.NextMarker", result_key = "CloudFrontOriginAccessIdentityList.Items"),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_cloud_front_origin_access_identities_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_cloud_front_origin_access_identities_output()
@@ -7841,7 +7910,8 @@ cloudfront_list_conflicting_aliases <- function(DistributionId, Alias, Marker = 
     http_method = "GET",
     http_path = "/2020-05-31/conflicting-alias",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_conflicting_aliases_input(DistributionId = DistributionId, Alias = Alias, Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_conflicting_aliases_output()
@@ -7942,7 +8012,8 @@ cloudfront_list_continuous_deployment_policies <- function(Marker = NULL, MaxIte
     http_method = "GET",
     http_path = "/2020-05-31/continuous-deployment-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_continuous_deployment_policies_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_continuous_deployment_policies_output()
@@ -8299,7 +8370,8 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/distribution",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "DistributionList.IsTruncated", output_token = "DistributionList.NextMarker", result_key = "DistributionList.Items")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "DistributionList.IsTruncated", output_token = "DistributionList.NextMarker", result_key = "DistributionList.Items"),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_distributions_output()
@@ -8375,7 +8447,8 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
     http_method = "GET",
     http_path = "/2020-05-31/distributionsByCachePolicyId/{CachePolicyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_by_cache_policy_id_input(Marker = Marker, MaxItems = MaxItems, CachePolicyId = CachePolicyId)
   output <- .cloudfront$list_distributions_by_cache_policy_id_output()
@@ -8450,7 +8523,8 @@ cloudfront_list_distributions_by_key_group <- function(Marker = NULL, MaxItems =
     http_method = "GET",
     http_path = "/2020-05-31/distributionsByKeyGroupId/{KeyGroupId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_by_key_group_input(Marker = Marker, MaxItems = MaxItems, KeyGroupId = KeyGroupId)
   output <- .cloudfront$list_distributions_by_key_group_output()
@@ -8526,7 +8600,8 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
     http_method = "GET",
     http_path = "/2020-05-31/distributionsByOriginRequestPolicyId/{OriginRequestPolicyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_by_origin_request_policy_id_input(Marker = Marker, MaxItems = MaxItems, OriginRequestPolicyId = OriginRequestPolicyId)
   output <- .cloudfront$list_distributions_by_origin_request_policy_id_output()
@@ -8904,7 +8979,8 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
     http_method = "POST",
     http_path = "/2020-05-31/distributionsByRealtimeLogConfig/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_by_realtime_log_config_input(Marker = Marker, MaxItems = MaxItems, RealtimeLogConfigName = RealtimeLogConfigName, RealtimeLogConfigArn = RealtimeLogConfigArn)
   output <- .cloudfront$list_distributions_by_realtime_log_config_output()
@@ -8981,7 +9057,8 @@ cloudfront_list_distributions_by_response_headers_policy_id <- function(Marker =
     http_method = "GET",
     http_path = "/2020-05-31/distributionsByResponseHeadersPolicyId/{ResponseHeadersPolicyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_by_response_headers_policy_id_input(Marker = Marker, MaxItems = MaxItems, ResponseHeadersPolicyId = ResponseHeadersPolicyId)
   output <- .cloudfront$list_distributions_by_response_headers_policy_id_output()
@@ -9350,7 +9427,8 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
     http_method = "GET",
     http_path = "/2020-05-31/distributionsByWebACLId/{WebACLId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_distributions_by_web_acl_id_input(Marker = Marker, MaxItems = MaxItems, WebACLId = WebACLId)
   output <- .cloudfront$list_distributions_by_web_acl_id_output()
@@ -9445,7 +9523,8 @@ cloudfront_list_field_level_encryption_configs <- function(Marker = NULL, MaxIte
     http_method = "GET",
     http_path = "/2020-05-31/field-level-encryption",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_field_level_encryption_configs_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_field_level_encryption_configs_output()
@@ -9531,7 +9610,8 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
     http_method = "GET",
     http_path = "/2020-05-31/field-level-encryption-profile",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_field_level_encryption_profiles_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_field_level_encryption_profiles_output()
@@ -9632,7 +9712,8 @@ cloudfront_list_functions <- function(Marker = NULL, MaxItems = NULL, Stage = NU
     http_method = "GET",
     http_path = "/2020-05-31/function",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_functions_input(Marker = Marker, MaxItems = MaxItems, Stage = Stage)
   output <- .cloudfront$list_functions_output()
@@ -9706,7 +9787,8 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
     http_method = "GET",
     http_path = "/2020-05-31/distribution/{DistributionId}/invalidation",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "InvalidationList.IsTruncated", output_token = "InvalidationList.NextMarker", result_key = "InvalidationList.Items")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "InvalidationList.IsTruncated", output_token = "InvalidationList.NextMarker", result_key = "InvalidationList.Items"),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_invalidations_input(DistributionId = DistributionId, Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_invalidations_output()
@@ -9788,7 +9870,8 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/key-group",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_key_groups_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_key_groups_output()
@@ -9867,7 +9950,8 @@ cloudfront_list_key_value_stores <- function(Marker = NULL, MaxItems = NULL, Sta
     http_method = "GET",
     http_path = "/2020-05-31/key-value-store",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "KeyValueStoreList.NextMarker", result_key = "KeyValueStoreList.Items")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "KeyValueStoreList.NextMarker", result_key = "KeyValueStoreList.Items"),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_key_value_stores_input(Marker = Marker, MaxItems = MaxItems, Status = Status)
   output <- .cloudfront$list_key_value_stores_output()
@@ -9947,7 +10031,8 @@ cloudfront_list_origin_access_controls <- function(Marker = NULL, MaxItems = NUL
     http_method = "GET",
     http_path = "/2020-05-31/origin-access-control",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_origin_access_controls_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_origin_access_controls_output()
@@ -10068,7 +10153,8 @@ cloudfront_list_origin_request_policies <- function(Type = NULL, Marker = NULL, 
     http_method = "GET",
     http_path = "/2020-05-31/origin-request-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_origin_request_policies_input(Type = Type, Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_origin_request_policies_output()
@@ -10138,7 +10224,8 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "GET",
     http_path = "/2020-05-31/public-key",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_public_keys_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_public_keys_output()
@@ -10224,7 +10311,8 @@ cloudfront_list_realtime_log_configs <- function(MaxItems = NULL, Marker = NULL)
     http_method = "GET",
     http_path = "/2020-05-31/realtime-log-config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_realtime_log_configs_input(MaxItems = MaxItems, Marker = Marker)
   output <- .cloudfront$list_realtime_log_configs_output()
@@ -10398,7 +10486,8 @@ cloudfront_list_response_headers_policies <- function(Type = NULL, Marker = NULL
     http_method = "GET",
     http_path = "/2020-05-31/response-headers-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_response_headers_policies_input(Type = Type, Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_response_headers_policies_output()
@@ -10485,7 +10574,8 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
     http_method = "GET",
     http_path = "/2020-05-31/streaming-distribution",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "StreamingDistributionList.IsTruncated", output_token = "StreamingDistributionList.NextMarker", result_key = "StreamingDistributionList.Items")
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "StreamingDistributionList.IsTruncated", output_token = "StreamingDistributionList.NextMarker", result_key = "StreamingDistributionList.Items"),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_streaming_distributions_input(Marker = Marker, MaxItems = MaxItems)
   output <- .cloudfront$list_streaming_distributions_output()
@@ -10543,7 +10633,8 @@ cloudfront_list_tags_for_resource <- function(Resource) {
     http_method = "GET",
     http_path = "/2020-05-31/tagging",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$list_tags_for_resource_input(Resource = Resource)
   output <- .cloudfront$list_tags_for_resource_output()
@@ -10633,7 +10724,8 @@ cloudfront_publish_function <- function(Name, IfMatch) {
     http_method = "POST",
     http_path = "/2020-05-31/function/{Name}/publish",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$publish_function_input(Name = Name, IfMatch = IfMatch)
   output <- .cloudfront$publish_function_output()
@@ -10687,7 +10779,8 @@ cloudfront_tag_resource <- function(Resource, Tags) {
     http_method = "POST",
     http_path = "/2020-05-31/tagging?Operation=Tag",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$tag_resource_input(Resource = Resource, Tags = Tags)
   output <- .cloudfront$tag_resource_output()
@@ -10795,7 +10888,8 @@ cloudfront_test_function <- function(Name, IfMatch, Stage = NULL, EventObject) {
     http_method = "POST",
     http_path = "/2020-05-31/function/{Name}/test",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$test_function_input(Name = Name, IfMatch = IfMatch, Stage = Stage, EventObject = EventObject)
   output <- .cloudfront$test_function_output()
@@ -10847,7 +10941,8 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
     http_method = "POST",
     http_path = "/2020-05-31/tagging?Operation=Untag",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$untag_resource_input(Resource = Resource, TagKeys = TagKeys)
   output <- .cloudfront$untag_resource_output()
@@ -10999,7 +11094,8 @@ cloudfront_update_cache_policy <- function(CachePolicyConfig, Id, IfMatch = NULL
     http_method = "PUT",
     http_path = "/2020-05-31/cache-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_cache_policy_input(CachePolicyConfig = CachePolicyConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_cache_policy_output()
@@ -11064,7 +11160,8 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
     http_method = "PUT",
     http_path = "/2020-05-31/origin-access-identity/cloudfront/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_cloud_front_origin_access_identity_input(CloudFrontOriginAccessIdentityConfig = CloudFrontOriginAccessIdentityConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_cloud_front_origin_access_identity_output()
@@ -11190,7 +11287,8 @@ cloudfront_update_continuous_deployment_policy <- function(ContinuousDeploymentP
     http_method = "PUT",
     http_path = "/2020-05-31/continuous-deployment-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_continuous_deployment_policy_input(ContinuousDeploymentPolicyConfig = ContinuousDeploymentPolicyConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_continuous_deployment_policy_output()
@@ -11900,7 +11998,8 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
     http_method = "PUT",
     http_path = "/2020-05-31/distribution/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_distribution_input(DistributionConfig = DistributionConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_distribution_output()
@@ -12315,7 +12414,8 @@ cloudfront_update_distribution_with_staging_config <- function(Id, StagingDistri
     http_method = "PUT",
     http_path = "/2020-05-31/distribution/{Id}/promote-staging-config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_distribution_with_staging_config_input(Id = Id, StagingDistributionId = StagingDistributionId, IfMatch = IfMatch)
   output <- .cloudfront$update_distribution_with_staging_config_output()
@@ -12432,7 +12532,8 @@ cloudfront_update_field_level_encryption_config <- function(FieldLevelEncryption
     http_method = "PUT",
     http_path = "/2020-05-31/field-level-encryption/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_field_level_encryption_config_input(FieldLevelEncryptionConfig = FieldLevelEncryptionConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_field_level_encryption_config_output()
@@ -12531,7 +12632,8 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
     http_method = "PUT",
     http_path = "/2020-05-31/field-level-encryption-profile/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_field_level_encryption_profile_input(FieldLevelEncryptionProfileConfig = FieldLevelEncryptionProfileConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_field_level_encryption_profile_output()
@@ -12657,7 +12759,8 @@ cloudfront_update_function <- function(Name, IfMatch, FunctionConfig, FunctionCo
     http_method = "PUT",
     http_path = "/2020-05-31/function/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_function_input(Name = Name, IfMatch = IfMatch, FunctionConfig = FunctionConfig, FunctionCode = FunctionCode)
   output <- .cloudfront$update_function_output()
@@ -12744,7 +12847,8 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
     http_method = "PUT",
     http_path = "/2020-05-31/key-group/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_key_group_input(KeyGroupConfig = KeyGroupConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_key_group_output()
@@ -12816,7 +12920,8 @@ cloudfront_update_key_value_store <- function(Name, Comment, IfMatch) {
     http_method = "PUT",
     http_path = "/2020-05-31/key-value-store/{Name}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_key_value_store_input(Name = Name, Comment = Comment, IfMatch = IfMatch)
   output <- .cloudfront$update_key_value_store_output()
@@ -12887,7 +12992,8 @@ cloudfront_update_origin_access_control <- function(OriginAccessControlConfig, I
     http_method = "PUT",
     http_path = "/2020-05-31/origin-access-control/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_origin_access_control_input(OriginAccessControlConfig = OriginAccessControlConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_origin_access_control_output()
@@ -13030,7 +13136,8 @@ cloudfront_update_origin_request_policy <- function(OriginRequestPolicyConfig, I
     http_method = "PUT",
     http_path = "/2020-05-31/origin-request-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_origin_request_policy_input(OriginRequestPolicyConfig = OriginRequestPolicyConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_origin_request_policy_output()
@@ -13101,7 +13208,8 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
     http_method = "PUT",
     http_path = "/2020-05-31/public-key/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_public_key_input(PublicKeyConfig = PublicKeyConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_public_key_output()
@@ -13210,7 +13318,8 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
     http_method = "PUT",
     http_path = "/2020-05-31/realtime-log-config/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_realtime_log_config_input(EndPoints = EndPoints, Fields = Fields, Name = Name, ARN = ARN, SamplingRate = SamplingRate)
   output <- .cloudfront$update_realtime_log_config_output()
@@ -13456,7 +13565,8 @@ cloudfront_update_response_headers_policy <- function(ResponseHeadersPolicyConfi
     http_method = "PUT",
     http_path = "/2020-05-31/response-headers-policy/{Id}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_response_headers_policy_input(ResponseHeadersPolicyConfig = ResponseHeadersPolicyConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_response_headers_policy_output()
@@ -13589,7 +13699,8 @@ cloudfront_update_streaming_distribution <- function(StreamingDistributionConfig
     http_method = "PUT",
     http_path = "/2020-05-31/streaming-distribution/{Id}/config",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudfront$update_streaming_distribution_input(StreamingDistributionConfig = StreamingDistributionConfig, Id = Id, IfMatch = IfMatch)
   output <- .cloudfront$update_streaming_distribution_output()

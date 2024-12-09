@@ -23,7 +23,8 @@ inspector2_associate_member <- function(accountId) {
     http_method = "POST",
     http_path = "/members/associate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$associate_member_input(accountId = accountId)
   output <- .inspector2$associate_member_output()
@@ -55,7 +56,8 @@ inspector2_batch_get_account_status <- function(accountIds = NULL) {
     http_method = "POST",
     http_path = "/status/batch/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$batch_get_account_status_input(accountIds = accountIds)
   output <- .inspector2$batch_get_account_status_output()
@@ -87,7 +89,8 @@ inspector2_batch_get_code_snippet <- function(findingArns) {
     http_method = "POST",
     http_path = "/codesnippet/batchget",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$batch_get_code_snippet_input(findingArns = findingArns)
   output <- .inspector2$batch_get_code_snippet_output()
@@ -117,7 +120,8 @@ inspector2_batch_get_finding_details <- function(findingArns) {
     http_method = "POST",
     http_path = "/findings/details/batch/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$batch_get_finding_details_input(findingArns = findingArns)
   output <- .inspector2$batch_get_finding_details_output()
@@ -147,7 +151,8 @@ inspector2_batch_get_free_trial_info <- function(accountIds) {
     http_method = "POST",
     http_path = "/freetrialinfo/batchget",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$batch_get_free_trial_info_input(accountIds = accountIds)
   output <- .inspector2$batch_get_free_trial_info_output()
@@ -181,7 +186,8 @@ inspector2_batch_get_member_ec_2_deep_inspection_status <- function(accountIds =
     http_method = "POST",
     http_path = "/ec2deepinspectionstatus/member/batch/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$batch_get_member_ec_2_deep_inspection_status_input(accountIds = accountIds)
   output <- .inspector2$batch_get_member_ec_2_deep_inspection_status_output()
@@ -213,7 +219,8 @@ inspector2_batch_update_member_ec_2_deep_inspection_status <- function(accountId
     http_method = "POST",
     http_path = "/ec2deepinspectionstatus/member/batch/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$batch_update_member_ec_2_deep_inspection_status_input(accountIds = accountIds)
   output <- .inspector2$batch_update_member_ec_2_deep_inspection_status_output()
@@ -243,7 +250,8 @@ inspector2_cancel_findings_report <- function(reportId) {
     http_method = "POST",
     http_path = "/reporting/cancel",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$cancel_findings_report_input(reportId = reportId)
   output <- .inspector2$cancel_findings_report_output()
@@ -273,7 +281,8 @@ inspector2_cancel_sbom_export <- function(reportId) {
     http_method = "POST",
     http_path = "/sbomexport/cancel",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$cancel_sbom_export_input(reportId = reportId)
   output <- .inspector2$cancel_sbom_export_output()
@@ -308,7 +317,8 @@ inspector2_create_cis_scan_configuration <- function(scanName, schedule, securit
     http_method = "POST",
     http_path = "/cis/scan-configuration/create",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$create_cis_scan_configuration_input(scanName = scanName, schedule = schedule, securityLevel = securityLevel, tags = tags, targets = targets)
   output <- .inspector2$create_cis_scan_configuration_output()
@@ -346,7 +356,8 @@ inspector2_create_filter <- function(action, description = NULL, filterCriteria,
     http_method = "POST",
     http_path = "/filters/create",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$create_filter_input(action = action, description = description, filterCriteria = filterCriteria, name = name, reason = reason, tags = tags)
   output <- .inspector2$create_filter_output()
@@ -378,7 +389,8 @@ inspector2_create_findings_report <- function(filterCriteria = NULL, reportForma
     http_method = "POST",
     http_path = "/reporting/create",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$create_findings_report_input(filterCriteria = filterCriteria, reportFormat = reportFormat, s3Destination = s3Destination)
   output <- .inspector2$create_findings_report_output()
@@ -411,7 +423,8 @@ inspector2_create_sbom_export <- function(reportFormat, resourceFilterCriteria =
     http_method = "POST",
     http_path = "/sbomexport/create",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$create_sbom_export_input(reportFormat = reportFormat, resourceFilterCriteria = resourceFilterCriteria, s3Destination = s3Destination)
   output <- .inspector2$create_sbom_export_output()
@@ -441,7 +454,8 @@ inspector2_delete_cis_scan_configuration <- function(scanConfigurationArn) {
     http_method = "POST",
     http_path = "/cis/scan-configuration/delete",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$delete_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn)
   output <- .inspector2$delete_cis_scan_configuration_output()
@@ -471,7 +485,8 @@ inspector2_delete_filter <- function(arn) {
     http_method = "POST",
     http_path = "/filters/delete",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$delete_filter_input(arn = arn)
   output <- .inspector2$delete_filter_output()
@@ -502,7 +517,8 @@ inspector2_describe_organization_configuration <- function() {
     http_method = "POST",
     http_path = "/organizationconfiguration/describe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$describe_organization_configuration_input()
   output <- .inspector2$describe_organization_configuration_output()
@@ -534,7 +550,8 @@ inspector2_disable <- function(accountIds = NULL, resourceTypes = NULL) {
     http_method = "POST",
     http_path = "/disable",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$disable_input(accountIds = accountIds, resourceTypes = resourceTypes)
   output <- .inspector2$disable_output()
@@ -566,7 +583,8 @@ inspector2_disable_delegated_admin_account <- function(delegatedAdminAccountId) 
     http_method = "POST",
     http_path = "/delegatedadminaccounts/disable",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$disable_delegated_admin_account_input(delegatedAdminAccountId = delegatedAdminAccountId)
   output <- .inspector2$disable_delegated_admin_account_output()
@@ -598,7 +616,8 @@ inspector2_disassociate_member <- function(accountId) {
     http_method = "POST",
     http_path = "/members/disassociate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$disassociate_member_input(accountId = accountId)
   output <- .inspector2$disassociate_member_output()
@@ -631,7 +650,8 @@ inspector2_enable <- function(accountIds = NULL, clientToken = NULL, resourceTyp
     http_method = "POST",
     http_path = "/enable",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$enable_input(accountIds = accountIds, clientToken = clientToken, resourceTypes = resourceTypes)
   output <- .inspector2$enable_output()
@@ -664,7 +684,8 @@ inspector2_enable_delegated_admin_account <- function(clientToken = NULL, delega
     http_method = "POST",
     http_path = "/delegatedadminaccounts/enable",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$enable_delegated_admin_account_input(clientToken = clientToken, delegatedAdminAccountId = delegatedAdminAccountId)
   output <- .inspector2$enable_delegated_admin_account_output()
@@ -697,7 +718,8 @@ inspector2_get_cis_scan_report <- function(reportFormat = NULL, scanArn, targetA
     http_method = "POST",
     http_path = "/cis/scan/report/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$get_cis_scan_report_input(reportFormat = reportFormat, scanArn = scanArn, targetAccounts = targetAccounts)
   output <- .inspector2$get_cis_scan_report_output()
@@ -736,7 +758,8 @@ inspector2_get_cis_scan_result_details <- function(accountId, filterCriteria = N
     http_method = "POST",
     http_path = "/cis/scan-result/details/get",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanResultDetails")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanResultDetails"),
+    stream_api = FALSE
   )
   input <- .inspector2$get_cis_scan_result_details_input(accountId = accountId, filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder, targetResourceId = targetResourceId)
   output <- .inspector2$get_cis_scan_result_details_output()
@@ -766,7 +789,8 @@ inspector2_get_configuration <- function() {
     http_method = "POST",
     http_path = "/configuration/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$get_configuration_input()
   output <- .inspector2$get_configuration_output()
@@ -797,7 +821,8 @@ inspector2_get_delegated_admin_account <- function() {
     http_method = "POST",
     http_path = "/delegatedadminaccounts/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$get_delegated_admin_account_input()
   output <- .inspector2$get_delegated_admin_account_output()
@@ -828,7 +853,8 @@ inspector2_get_ec_2_deep_inspection_configuration <- function() {
     http_method = "POST",
     http_path = "/ec2deepinspectionconfiguration/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$get_ec_2_deep_inspection_configuration_input()
   output <- .inspector2$get_ec_2_deep_inspection_configuration_output()
@@ -859,7 +885,8 @@ inspector2_get_encryption_key <- function(resourceType, scanType) {
     http_method = "GET",
     http_path = "/encryptionkey/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$get_encryption_key_input(resourceType = resourceType, scanType = scanType)
   output <- .inspector2$get_encryption_key_output()
@@ -889,7 +916,8 @@ inspector2_get_findings_report_status <- function(reportId = NULL) {
     http_method = "POST",
     http_path = "/reporting/status/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$get_findings_report_status_input(reportId = reportId)
   output <- .inspector2$get_findings_report_status_output()
@@ -920,7 +948,8 @@ inspector2_get_member <- function(accountId) {
     http_method = "POST",
     http_path = "/members/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$get_member_input(accountId = accountId)
   output <- .inspector2$get_member_output()
@@ -950,7 +979,8 @@ inspector2_get_sbom_export <- function(reportId) {
     http_method = "POST",
     http_path = "/sbomexport/get",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$get_sbom_export_input(reportId = reportId)
   output <- .inspector2$get_sbom_export_output()
@@ -990,7 +1020,8 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
     http_method = "POST",
     http_path = "/accountpermissions/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_account_permissions_input(maxResults = maxResults, nextToken = nextToken, service = service)
   output <- .inspector2$list_account_permissions_output()
@@ -1026,7 +1057,8 @@ inspector2_list_cis_scan_configurations <- function(filterCriteria = NULL, maxRe
     http_method = "POST",
     http_path = "/cis/scan-configuration/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scanConfigurations"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_cis_scan_configurations_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .inspector2$list_cis_scan_configurations_output()
@@ -1063,7 +1095,8 @@ inspector2_list_cis_scan_results_aggregated_by_checks <- function(filterCriteria
     http_method = "POST",
     http_path = "/cis/scan-result/check/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "checkAggregations")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "checkAggregations"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_cis_scan_results_aggregated_by_checks_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder)
   output <- .inspector2$list_cis_scan_results_aggregated_by_checks_output()
@@ -1100,7 +1133,8 @@ inspector2_list_cis_scan_results_aggregated_by_target_resource <- function(filte
     http_method = "POST",
     http_path = "/cis/scan-result/resource/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetResourceAggregations")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "targetResourceAggregations"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, scanArn = scanArn, sortBy = sortBy, sortOrder = sortOrder)
   output <- .inspector2$list_cis_scan_results_aggregated_by_target_resource_output()
@@ -1136,7 +1170,8 @@ inspector2_list_cis_scans <- function(detailLevel = NULL, filterCriteria = NULL,
     http_method = "POST",
     http_path = "/cis/scan/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scans")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scans"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_cis_scans_input(detailLevel = detailLevel, filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .inspector2$list_cis_scans_output()
@@ -1177,7 +1212,8 @@ inspector2_list_coverage <- function(filterCriteria = NULL, maxResults = NULL, n
     http_method = "POST",
     http_path = "/coverage/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "coveredResources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "coveredResources"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_coverage_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_coverage_output()
@@ -1213,7 +1249,8 @@ inspector2_list_coverage_statistics <- function(filterCriteria = NULL, groupBy =
     http_method = "POST",
     http_path = "/coverage/statistics/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "countsByGroup")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "countsByGroup"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_coverage_statistics_input(filterCriteria = filterCriteria, groupBy = groupBy, nextToken = nextToken)
   output <- .inspector2$list_coverage_statistics_output()
@@ -1253,7 +1290,8 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
     http_method = "POST",
     http_path = "/delegatedadminaccounts/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "delegatedAdminAccounts")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "delegatedAdminAccounts"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_delegated_admin_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_delegated_admin_accounts_output()
@@ -1294,7 +1332,8 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
     http_method = "POST",
     http_path = "/filters/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "filters")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "filters"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_filters_input(action = action, arns = arns, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_filters_output()
@@ -1339,7 +1378,8 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
     http_method = "POST",
     http_path = "/findings/aggregation/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responses")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "responses"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_finding_aggregations_input(accountIds = accountIds, aggregationRequest = aggregationRequest, aggregationType = aggregationType, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_finding_aggregations_output()
@@ -1380,7 +1420,8 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
     http_method = "POST",
     http_path = "/findings/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findings"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_findings_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .inspector2$list_findings_output()
@@ -1422,7 +1463,8 @@ inspector2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAss
     http_method = "POST",
     http_path = "/members/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_members_input(maxResults = maxResults, nextToken = nextToken, onlyAssociated = onlyAssociated)
   output <- .inspector2$list_members_output()
@@ -1452,7 +1494,8 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .inspector2$list_tags_for_resource_output()
@@ -1492,7 +1535,8 @@ inspector2_list_usage_totals <- function(accountIds = NULL, maxResults = NULL, n
     http_method = "POST",
     http_path = "/usage/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "totals")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "totals"),
+    stream_api = FALSE
   )
   input <- .inspector2$list_usage_totals_input(accountIds = accountIds, maxResults = maxResults, nextToken = nextToken)
   output <- .inspector2$list_usage_totals_output()
@@ -1523,7 +1567,8 @@ inspector2_reset_encryption_key <- function(resourceType, scanType) {
     http_method = "PUT",
     http_path = "/encryptionkey/reset",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$reset_encryption_key_input(resourceType = resourceType, scanType = scanType)
   output <- .inspector2$reset_encryption_key_output()
@@ -1557,7 +1602,8 @@ inspector2_search_vulnerabilities <- function(filterCriteria, nextToken = NULL) 
     http_method = "POST",
     http_path = "/vulnerabilities/search",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "vulnerabilities")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "vulnerabilities"),
+    stream_api = FALSE
   )
   input <- .inspector2$search_vulnerabilities_input(filterCriteria = filterCriteria, nextToken = nextToken)
   output <- .inspector2$search_vulnerabilities_output()
@@ -1588,7 +1634,8 @@ inspector2_send_cis_session_health <- function(scanJobId, sessionToken) {
     http_method = "PUT",
     http_path = "/cissession/health/send",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$send_cis_session_health_input(scanJobId = scanJobId, sessionToken = sessionToken)
   output <- .inspector2$send_cis_session_health_output()
@@ -1620,7 +1667,8 @@ inspector2_send_cis_session_telemetry <- function(messages, scanJobId, sessionTo
     http_method = "PUT",
     http_path = "/cissession/telemetry/send",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$send_cis_session_telemetry_input(messages = messages, scanJobId = scanJobId, sessionToken = sessionToken)
   output <- .inspector2$send_cis_session_telemetry_output()
@@ -1651,7 +1699,8 @@ inspector2_start_cis_session <- function(message, scanJobId) {
     http_method = "PUT",
     http_path = "/cissession/start",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$start_cis_session_input(message = message, scanJobId = scanJobId)
   output <- .inspector2$start_cis_session_output()
@@ -1683,7 +1732,8 @@ inspector2_stop_cis_session <- function(message, scanJobId, sessionToken) {
     http_method = "PUT",
     http_path = "/cissession/stop",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$stop_cis_session_input(message = message, scanJobId = scanJobId, sessionToken = sessionToken)
   output <- .inspector2$stop_cis_session_output()
@@ -1714,7 +1764,8 @@ inspector2_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .inspector2$tag_resource_output()
@@ -1745,7 +1796,8 @@ inspector2_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .inspector2$untag_resource_output()
@@ -1780,7 +1832,8 @@ inspector2_update_cis_scan_configuration <- function(scanConfigurationArn, scanN
     http_method = "POST",
     http_path = "/cis/scan-configuration/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$update_cis_scan_configuration_input(scanConfigurationArn = scanConfigurationArn, scanName = scanName, schedule = schedule, securityLevel = securityLevel, targets = targets)
   output <- .inspector2$update_cis_scan_configuration_output()
@@ -1813,7 +1866,8 @@ inspector2_update_configuration <- function(ec2Configuration = NULL, ecrConfigur
     http_method = "POST",
     http_path = "/configuration/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$update_configuration_input(ec2Configuration = ec2Configuration, ecrConfiguration = ecrConfiguration)
   output <- .inspector2$update_configuration_output()
@@ -1850,7 +1904,8 @@ inspector2_update_ec_2_deep_inspection_configuration <- function(activateDeepIns
     http_method = "POST",
     http_path = "/ec2deepinspectionconfiguration/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$update_ec_2_deep_inspection_configuration_input(activateDeepInspection = activateDeepInspection, packagePaths = packagePaths)
   output <- .inspector2$update_ec_2_deep_inspection_configuration_output()
@@ -1882,7 +1937,8 @@ inspector2_update_encryption_key <- function(kmsKeyId, resourceType, scanType) {
     http_method = "PUT",
     http_path = "/encryptionkey/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$update_encryption_key_input(kmsKeyId = kmsKeyId, resourceType = resourceType, scanType = scanType)
   output <- .inspector2$update_encryption_key_output()
@@ -1919,7 +1975,8 @@ inspector2_update_filter <- function(action = NULL, description = NULL, filterAr
     http_method = "POST",
     http_path = "/filters/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$update_filter_input(action = action, description = description, filterArn = filterArn, filterCriteria = filterCriteria, name = name, reason = reason)
   output <- .inspector2$update_filter_output()
@@ -1951,7 +2008,8 @@ inspector2_update_org_ec_2_deep_inspection_configuration <- function(orgPackageP
     http_method = "POST",
     http_path = "/ec2deepinspectionconfiguration/org/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$update_org_ec_2_deep_inspection_configuration_input(orgPackagePaths = orgPackagePaths)
   output <- .inspector2$update_org_ec_2_deep_inspection_configuration_output()
@@ -1982,7 +2040,8 @@ inspector2_update_organization_configuration <- function(autoEnable) {
     http_method = "POST",
     http_path = "/organizationconfiguration/update",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .inspector2$update_organization_configuration_input(autoEnable = autoEnable)
   output <- .inspector2$update_organization_configuration_output()

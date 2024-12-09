@@ -39,7 +39,7 @@ Services account manager.}
 
 \item{modelId}{[required] The Amazon Resource Name (ARN) or name of the model to associate with
 this Provisioned Throughput. For a list of models for which you can
-purchase Provisioned Throughput, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#prov-throughput-models}{Amazon Bedrock model IDs for purchasing Provisioned Throughput}
+purchase Provisioned Throughput, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#prov-throughput-models}{Amazon Bedrock model IDs for purchasing Provisioned Throughput}
 in the \href{https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html}{Amazon Bedrock User Guide}.}
 
 \item{commitmentDuration}{The commitment duration requested for the Provisioned Throughput.

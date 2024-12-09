@@ -45,7 +45,8 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$associate_web_acl_input(WebACLArn = WebACLArn, ResourceArn = ResourceArn)
   output <- .wafv2$associate_web_acl_output()
@@ -90,7 +91,8 @@ wafv2_check_capacity <- function(Scope, Rules) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$check_capacity_input(Scope = Scope, Rules = Rules)
   output <- .wafv2$check_capacity_output()
@@ -138,7 +140,8 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_api_key_input(Scope = Scope, TokenDomains = TokenDomains)
   output <- .wafv2$create_api_key_output()
@@ -223,7 +226,8 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_ip_set_input(Name = Name, Scope = Scope, Description = Description, IPAddressVersion = IPAddressVersion, Addresses = Addresses, Tags = Tags)
   output <- .wafv2$create_ip_set_output()
@@ -272,7 +276,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_regex_pattern_set_input(Name = Name, Scope = Scope, Description = Description, RegularExpressionList = RegularExpressionList, Tags = Tags)
   output <- .wafv2$create_regex_pattern_set_output()
@@ -355,7 +360,8 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_rule_group_input(Name = Name, Scope = Scope, Capacity = Capacity, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$create_rule_group_output()
@@ -457,7 +463,8 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$create_web_acl_input(Name = Name, Scope = Scope, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, Tags = Tags, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$create_web_acl_output()
@@ -500,7 +507,8 @@ wafv2_delete_api_key <- function(Scope, APIKey) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_api_key_input(Scope = Scope, APIKey = APIKey)
   output <- .wafv2$delete_api_key_output()
@@ -539,7 +547,8 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_firewall_manager_rule_groups_input(WebACLArn = WebACLArn, WebACLLockToken = WebACLLockToken)
   output <- .wafv2$delete_firewall_manager_rule_groups_output()
@@ -594,7 +603,8 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_ip_set_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_ip_set_output()
@@ -641,7 +651,8 @@ wafv2_delete_logging_configuration <- function(ResourceArn, LogType = NULL, LogS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_logging_configuration_input(ResourceArn = ResourceArn, LogType = LogType, LogScope = LogScope)
   output <- .wafv2$delete_logging_configuration_output()
@@ -674,7 +685,8 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafv2$delete_permission_policy_output()
@@ -729,7 +741,8 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_regex_pattern_set_output()
@@ -784,7 +797,8 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_rule_group_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_rule_group_output()
@@ -839,7 +853,8 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$delete_web_acl_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken)
   output <- .wafv2$delete_web_acl_output()
@@ -883,7 +898,8 @@ wafv2_describe_all_managed_products <- function(Scope) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$describe_all_managed_products_input(Scope = Scope)
   output <- .wafv2$describe_all_managed_products_output()
@@ -928,7 +944,8 @@ wafv2_describe_managed_products_by_vendor <- function(VendorName, Scope) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$describe_managed_products_by_vendor_input(VendorName = VendorName, Scope = Scope)
   output <- .wafv2$describe_managed_products_by_vendor_output()
@@ -978,7 +995,8 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$describe_managed_rule_group_input(VendorName = VendorName, Name = Name, Scope = Scope, VersionName = VersionName)
   output <- .wafv2$describe_managed_rule_group_output()
@@ -1030,7 +1048,8 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$disassociate_web_acl_input(ResourceArn = ResourceArn)
   output <- .wafv2$disassociate_web_acl_output()
@@ -1062,7 +1081,8 @@ wafv2_generate_mobile_sdk_release_url <- function(Platform, ReleaseVersion) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$generate_mobile_sdk_release_url_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
   output <- .wafv2$generate_mobile_sdk_release_url_output()
@@ -1105,7 +1125,8 @@ wafv2_get_decrypted_api_key <- function(Scope, APIKey) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_decrypted_api_key_input(Scope = Scope, APIKey = APIKey)
   output <- .wafv2$get_decrypted_api_key_output()
@@ -1152,7 +1173,8 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_ip_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_ip_set_output()
@@ -1199,7 +1221,8 @@ wafv2_get_logging_configuration <- function(ResourceArn, LogType = NULL, LogScop
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_logging_configuration_input(ResourceArn = ResourceArn, LogType = LogType, LogScope = LogScope)
   output <- .wafv2$get_logging_configuration_output()
@@ -1249,7 +1272,8 @@ wafv2_get_managed_rule_set <- function(Name, Scope, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_managed_rule_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_managed_rule_set_output()
@@ -1281,7 +1305,8 @@ wafv2_get_mobile_sdk_release <- function(Platform, ReleaseVersion) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_mobile_sdk_release_input(Platform = Platform, ReleaseVersion = ReleaseVersion)
   output <- .wafv2$get_mobile_sdk_release_output()
@@ -1312,7 +1337,8 @@ wafv2_get_permission_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_permission_policy_input(ResourceArn = ResourceArn)
   output <- .wafv2$get_permission_policy_output()
@@ -1367,7 +1393,8 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_rate_based_statement_managed_keys_input(Scope = Scope, WebACLName = WebACLName, WebACLId = WebACLId, RuleGroupRuleName = RuleGroupRuleName, RuleName = RuleName)
   output <- .wafv2$get_rate_based_statement_managed_keys_output()
@@ -1414,7 +1441,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_regex_pattern_set_output()
@@ -1462,7 +1490,8 @@ wafv2_get_rule_group <- function(Name = NULL, Scope = NULL, Id = NULL, ARN = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_rule_group_input(Name = Name, Scope = Scope, Id = Id, ARN = ARN)
   output <- .wafv2$get_rule_group_output()
@@ -1523,7 +1552,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_sampled_requests_input(WebAclArn = WebAclArn, RuleMetricName = RuleMetricName, Scope = Scope, TimeWindow = TimeWindow, MaxItems = MaxItems)
   output <- .wafv2$get_sampled_requests_output()
@@ -1570,7 +1600,8 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_web_acl_input(Name = Name, Scope = Scope, Id = Id)
   output <- .wafv2$get_web_acl_output()
@@ -1621,7 +1652,8 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$get_web_acl_for_resource_input(ResourceArn = ResourceArn)
   output <- .wafv2$get_web_acl_for_resource_output()
@@ -1672,7 +1704,8 @@ wafv2_list_api_keys <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_api_keys_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_api_keys_output()
@@ -1727,7 +1760,8 @@ wafv2_list_available_managed_rule_group_versions <- function(VendorName, Name, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_available_managed_rule_group_versions_input(VendorName = VendorName, Name = Name, Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_available_managed_rule_group_versions_output()
@@ -1778,7 +1812,8 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_available_managed_rule_groups_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_available_managed_rule_groups_output()
@@ -1829,7 +1864,8 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_ip_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_ip_sets_output()
@@ -1891,7 +1927,8 @@ wafv2_list_logging_configurations <- function(Scope, NextMarker = NULL, Limit = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_logging_configurations_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit, LogScope = LogScope)
   output <- .wafv2$list_logging_configurations_output()
@@ -1941,7 +1978,8 @@ wafv2_list_managed_rule_sets <- function(Scope, NextMarker = NULL, Limit = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_managed_rule_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_managed_rule_sets_output()
@@ -1980,7 +2018,8 @@ wafv2_list_mobile_sdk_releases <- function(Platform, NextMarker = NULL, Limit = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_mobile_sdk_releases_input(Platform = Platform, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_mobile_sdk_releases_output()
@@ -2031,7 +2070,8 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_regex_pattern_sets_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_regex_pattern_sets_output()
@@ -2072,7 +2112,8 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_resources_for_web_acl_input(WebACLArn = WebACLArn, ResourceType = ResourceType)
   output <- .wafv2$list_resources_for_web_acl_output()
@@ -2123,7 +2164,8 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_rule_groups_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_rule_groups_output()
@@ -2161,7 +2203,8 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_tags_for_resource_input(NextMarker = NextMarker, Limit = Limit, ResourceARN = ResourceARN)
   output <- .wafv2$list_tags_for_resource_output()
@@ -2212,7 +2255,8 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$list_web_ac_ls_input(Scope = Scope, NextMarker = NextMarker, Limit = Limit)
   output <- .wafv2$list_web_ac_ls_output()
@@ -2243,7 +2287,8 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$put_logging_configuration_input(LoggingConfiguration = LoggingConfiguration)
   output <- .wafv2$put_logging_configuration_output()
@@ -2306,7 +2351,8 @@ wafv2_put_managed_rule_set_versions <- function(Name, Scope, Id, LockToken, Reco
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$put_managed_rule_set_versions_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, RecommendedVersion = RecommendedVersion, VersionsToPublish = VersionsToPublish)
   output <- .wafv2$put_managed_rule_set_versions_output()
@@ -2357,7 +2403,8 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$put_permission_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .wafv2$put_permission_policy_output()
@@ -2388,7 +2435,8 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .wafv2$tag_resource_output()
@@ -2419,7 +2467,8 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .wafv2$untag_resource_output()
@@ -2512,7 +2561,8 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_ip_set_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Addresses = Addresses, LockToken = LockToken)
   output <- .wafv2$update_ip_set_output()
@@ -2576,7 +2626,8 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_managed_rule_set_version_expiry_date_input(Name = Name, Scope = Scope, Id = Id, LockToken = LockToken, VersionToExpire = VersionToExpire, ExpiryTimestamp = ExpiryTimestamp)
   output <- .wafv2$update_managed_rule_set_version_expiry_date_output()
@@ -2633,7 +2684,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_regex_pattern_set_input(Name = Name, Scope = Scope, Id = Id, Description = Description, RegularExpressionList = RegularExpressionList, LockToken = LockToken)
   output <- .wafv2$update_regex_pattern_set_output()
@@ -2709,7 +2761,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_rule_group_input(Name = Name, Scope = Scope, Id = Id, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies)
   output <- .wafv2$update_rule_group_output()
@@ -2821,7 +2874,8 @@ wafv2_update_web_acl <- function(Name, Scope, Id, DefaultAction, Description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .wafv2$update_web_acl_input(Name = Name, Scope = Scope, Id = Id, DefaultAction = DefaultAction, Description = Description, Rules = Rules, VisibilityConfig = VisibilityConfig, LockToken = LockToken, CustomResponseBodies = CustomResponseBodies, CaptchaConfig = CaptchaConfig, ChallengeConfig = ChallengeConfig, TokenDomains = TokenDomains, AssociationConfig = AssociationConfig)
   output <- .wafv2$update_web_acl_output()

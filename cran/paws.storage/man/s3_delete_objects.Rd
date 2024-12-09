@@ -48,7 +48,7 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Delete}{[required] Container for the request.}
@@ -92,10 +92,10 @@ code \verb{400 Bad Request}.
 For the \code{x-amz-checksum-algorithm } header, replace \code{algorithm} with
 the supported algorithm from the following list:
 \itemize{
-\item CRC32
-\item CRC32C
-\item SHA1
-\item SHA256
+\item \code{CRC32}
+\item \code{CRC32C}
+\item \code{SHA1}
+\item \code{SHA256}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}

@@ -10,6 +10,7 @@
 \alias{config}
 \alias{credentials}
 \alias{creds}
+\alias{paws_stream_parser}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -17,6 +18,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{paws.common}{\code{\link[paws.common:set_service_parameter]{config}}, \code{\link[paws.common:set_service_parameter]{credentials}}, \code{\link[paws.common:set_service_parameter]{creds}}, \code{\link[paws.common]{list_paginators}}, \code{\link[paws.common]{paginate}}, \code{\link[paws.common:paginate]{paginate_lapply}}, \code{\link[paws.common:paginate]{paginate_sapply}}}
+  \item{paws.common}{\code{\link[paws.common:set_service_parameter]{config}}, \code{\link[paws.common:set_service_parameter]{credentials}}, \code{\link[paws.common:set_service_parameter]{creds}}, \code{\link[paws.common]{list_paginators}}, \code{\link[paws.common]{paginate}}, \code{\link[paws.common:paginate]{paginate_lapply}}, \code{\link[paws.common:paginate]{paginate_sapply}}, \code{\link[paws.common:paws_stream]{paws_stream_parser}}}
 }}
 

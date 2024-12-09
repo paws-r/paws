@@ -131,6 +131,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[paws.networking:elbv2_delete_trust_store]{delete_trust_store} \tab Deletes a trust store\cr
 \link[paws.networking:elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
 \link[paws.networking:elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account\cr
+\link[paws.networking:elbv2_describe_listener_attributes]{describe_listener_attributes} \tab Describes the attributes for the specified listener\cr
 \link[paws.networking:elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener\cr
 \link[paws.networking:elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 \link[paws.networking:elbv2_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
@@ -148,6 +149,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[paws.networking:elbv2_get_trust_store_ca_certificates_bundle]{get_trust_store_ca_certificates_bundle} \tab Retrieves the ca certificate bundle\cr
 \link[paws.networking:elbv2_get_trust_store_revocation_content]{get_trust_store_revocation_content} \tab Retrieves the specified revocation file\cr
 \link[paws.networking:elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
+\link[paws.networking:elbv2_modify_listener_attributes]{modify_listener_attributes} \tab Modifies the specified attributes of the specified listener\cr
 \link[paws.networking:elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 \link[paws.networking:elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule\cr
 \link[paws.networking:elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group\cr

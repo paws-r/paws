@@ -53,7 +53,8 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$assign_instance_input(InstanceId = InstanceId, LayerIds = LayerIds)
   output <- .opsworks$assign_instance_output()
@@ -112,7 +113,8 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$assign_volume_input(VolumeId = VolumeId, InstanceId = InstanceId)
   output <- .opsworks$assign_volume_output()
@@ -168,7 +170,8 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$associate_elastic_ip_input(ElasticIp = ElasticIp, InstanceId = InstanceId)
   output <- .opsworks$associate_elastic_ip_output()
@@ -229,7 +232,8 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$attach_elastic_load_balancer_input(ElasticLoadBalancerName = ElasticLoadBalancerName, LayerId = LayerId)
   output <- .opsworks$attach_elastic_load_balancer_output()
@@ -536,7 +540,8 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$clone_stack_input(SourceStackId = SourceStackId, Name = Name, Region = Region, VpcId = VpcId, Attributes = Attributes, ServiceRoleArn = ServiceRoleArn, DefaultInstanceProfileArn = DefaultInstanceProfileArn, DefaultOs = DefaultOs, HostnameTheme = HostnameTheme, DefaultAvailabilityZone = DefaultAvailabilityZone, DefaultSubnetId = DefaultSubnetId, CustomJson = CustomJson, ConfigurationManager = ConfigurationManager, ChefConfiguration = ChefConfiguration, UseCustomCookbooks = UseCustomCookbooks, UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, ClonePermissions = ClonePermissions, CloneAppIds = CloneAppIds, DefaultRootDeviceType = DefaultRootDeviceType, AgentVersion = AgentVersion)
   output <- .opsworks$clone_stack_output()
@@ -663,7 +668,8 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_app_input(StackId = StackId, Shortname = Shortname, Name = Name, Description = Description, DataSources = DataSources, Type = Type, AppSource = AppSource, Domains = Domains, EnableSsl = EnableSsl, SslConfiguration = SslConfiguration, Attributes = Attributes, Environment = Environment)
   output <- .opsworks$create_app_output()
@@ -756,7 +762,8 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_deployment_input(StackId = StackId, AppId = AppId, InstanceIds = InstanceIds, LayerIds = LayerIds, Command = Command, Comment = Comment, CustomJson = CustomJson)
   output <- .opsworks$create_deployment_output()
@@ -964,7 +971,8 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_instance_input(StackId = StackId, LayerIds = LayerIds, InstanceType = InstanceType, AutoScalingType = AutoScalingType, Hostname = Hostname, Os = Os, AmiId = AmiId, SshKeyName = SshKeyName, AvailabilityZone = AvailabilityZone, VirtualizationType = VirtualizationType, SubnetId = SubnetId, Architecture = Architecture, RootDeviceType = RootDeviceType, BlockDeviceMappings = BlockDeviceMappings, InstallUpdatesOnBoot = InstallUpdatesOnBoot, EbsOptimized = EbsOptimized, AgentVersion = AgentVersion, Tenancy = Tenancy)
   output <- .opsworks$create_instance_output()
@@ -1159,7 +1167,8 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_layer_input(StackId = StackId, Type = Type, Name = Name, Shortname = Shortname, Attributes = Attributes, CloudWatchLogsConfiguration = CloudWatchLogsConfiguration, CustomInstanceProfileArn = CustomInstanceProfileArn, CustomJson = CustomJson, CustomSecurityGroupIds = CustomSecurityGroupIds, Packages = Packages, VolumeConfigurations = VolumeConfigurations, EnableAutoHealing = EnableAutoHealing, AutoAssignElasticIps = AutoAssignElasticIps, AutoAssignPublicIps = AutoAssignPublicIps, CustomRecipes = CustomRecipes, InstallUpdatesOnBoot = InstallUpdatesOnBoot, UseEbsOptimizedInstances = UseEbsOptimizedInstances, LifecycleEventConfiguration = LifecycleEventConfiguration)
   output <- .opsworks$create_layer_output()
@@ -1467,7 +1476,8 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_stack_input(Name = Name, Region = Region, VpcId = VpcId, Attributes = Attributes, ServiceRoleArn = ServiceRoleArn, DefaultInstanceProfileArn = DefaultInstanceProfileArn, DefaultOs = DefaultOs, HostnameTheme = HostnameTheme, DefaultAvailabilityZone = DefaultAvailabilityZone, DefaultSubnetId = DefaultSubnetId, CustomJson = CustomJson, ConfigurationManager = ConfigurationManager, ChefConfiguration = ChefConfiguration, UseCustomCookbooks = UseCustomCookbooks, UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, DefaultRootDeviceType = DefaultRootDeviceType, AgentVersion = AgentVersion)
   output <- .opsworks$create_stack_output()
@@ -1534,7 +1544,8 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$create_user_profile_input(IamUserArn = IamUserArn, SshUsername = SshUsername, SshPublicKey = SshPublicKey, AllowSelfManagement = AllowSelfManagement)
   output <- .opsworks$create_user_profile_output()
@@ -1583,7 +1594,8 @@ opsworks_delete_app <- function(AppId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_app_input(AppId = AppId)
   output <- .opsworks$delete_app_output()
@@ -1641,7 +1653,8 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_instance_input(InstanceId = InstanceId, DeleteElasticIp = DeleteElasticIp, DeleteVolumes = DeleteVolumes)
   output <- .opsworks$delete_instance_output()
@@ -1693,7 +1706,8 @@ opsworks_delete_layer <- function(LayerId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_layer_input(LayerId = LayerId)
   output <- .opsworks$delete_layer_output()
@@ -1745,7 +1759,8 @@ opsworks_delete_stack <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_stack_input(StackId = StackId)
   output <- .opsworks$delete_stack_output()
@@ -1793,7 +1808,8 @@ opsworks_delete_user_profile <- function(IamUserArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$delete_user_profile_input(IamUserArn = IamUserArn)
   output <- .opsworks$delete_user_profile_output()
@@ -1844,7 +1860,8 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_ecs_cluster_input(EcsClusterArn = EcsClusterArn)
   output <- .opsworks$deregister_ecs_cluster_output()
@@ -1896,7 +1913,8 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_elastic_ip_input(ElasticIp = ElasticIp)
   output <- .opsworks$deregister_elastic_ip_output()
@@ -1948,7 +1966,8 @@ opsworks_deregister_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_instance_input(InstanceId = InstanceId)
   output <- .opsworks$deregister_instance_output()
@@ -1997,7 +2016,8 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_rds_db_instance_input(RdsDbInstanceArn = RdsDbInstanceArn)
   output <- .opsworks$deregister_rds_db_instance_output()
@@ -2050,7 +2070,8 @@ opsworks_deregister_volume <- function(VolumeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$deregister_volume_input(VolumeId = VolumeId)
   output <- .opsworks$deregister_volume_output()
@@ -2115,7 +2136,8 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_agent_versions_input(StackId = StackId, ConfigurationManager = ConfigurationManager)
   output <- .opsworks$describe_agent_versions_output()
@@ -2224,7 +2246,8 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Apps")
+    paginator = list(result_key = "Apps"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_apps_input(StackId = StackId, AppIds = AppIds)
   output <- .opsworks$describe_apps_output()
@@ -2306,7 +2329,8 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Commands")
+    paginator = list(result_key = "Commands"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_commands_input(DeploymentId = DeploymentId, InstanceId = InstanceId, CommandIds = CommandIds)
   output <- .opsworks$describe_commands_output()
@@ -2396,7 +2420,8 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Deployments")
+    paginator = list(result_key = "Deployments"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_deployments_input(StackId = StackId, AppId = AppId, DeploymentIds = DeploymentIds)
   output <- .opsworks$describe_deployments_output()
@@ -2484,7 +2509,8 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EcsClusters")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EcsClusters"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_ecs_clusters_input(EcsClusterArns = EcsClusterArns, StackId = StackId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworks$describe_ecs_clusters_output()
@@ -2564,7 +2590,8 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ElasticIps")
+    paginator = list(result_key = "ElasticIps"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_elastic_ips_input(InstanceId = InstanceId, StackId = StackId, Ips = Ips)
   output <- .opsworks$describe_elastic_ips_output()
@@ -2644,7 +2671,8 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ElasticLoadBalancers")
+    paginator = list(result_key = "ElasticLoadBalancers"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_elastic_load_balancers_input(StackId = StackId, LayerIds = LayerIds)
   output <- .opsworks$describe_elastic_load_balancers_output()
@@ -2778,7 +2806,8 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Instances")
+    paginator = list(result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_instances_input(StackId = StackId, LayerId = LayerId, InstanceIds = InstanceIds)
   output <- .opsworks$describe_instances_output()
@@ -2938,7 +2967,8 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Layers")
+    paginator = list(result_key = "Layers"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_layers_input(StackId = StackId, LayerIds = LayerIds)
   output <- .opsworks$describe_layers_output()
@@ -3023,7 +3053,8 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "LoadBasedAutoScalingConfigurations")
+    paginator = list(result_key = "LoadBasedAutoScalingConfigurations"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_load_based_auto_scaling_input(LayerIds = LayerIds)
   output <- .opsworks$describe_load_based_auto_scaling_output()
@@ -3077,7 +3108,8 @@ opsworks_describe_my_user_profile <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_my_user_profile_input()
   output <- .opsworks$describe_my_user_profile_output()
@@ -3135,7 +3167,8 @@ opsworks_describe_operating_systems <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_operating_systems_input()
   output <- .opsworks$describe_operating_systems_output()
@@ -3201,7 +3234,8 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Permissions")
+    paginator = list(result_key = "Permissions"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_permissions_input(IamUserArn = IamUserArn, StackId = StackId)
   output <- .opsworks$describe_permissions_output()
@@ -3284,7 +3318,8 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "RaidArrays")
+    paginator = list(result_key = "RaidArrays"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_raid_arrays_input(InstanceId = InstanceId, StackId = StackId, RaidArrayIds = RaidArrayIds)
   output <- .opsworks$describe_raid_arrays_output()
@@ -3357,7 +3392,8 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_rds_db_instances_input(StackId = StackId, RdsDbInstanceArns = RdsDbInstanceArns)
   output <- .opsworks$describe_rds_db_instances_output()
@@ -3435,7 +3471,8 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ServiceErrors")
+    paginator = list(result_key = "ServiceErrors"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_service_errors_input(StackId = StackId, InstanceId = InstanceId, ServiceErrorIds = ServiceErrorIds)
   output <- .opsworks$describe_service_errors_output()
@@ -3492,7 +3529,8 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_stack_provisioning_parameters_input(StackId = StackId)
   output <- .opsworks$describe_stack_provisioning_parameters_output()
@@ -3576,7 +3614,8 @@ opsworks_describe_stack_summary <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_stack_summary_input(StackId = StackId)
   output <- .opsworks$describe_stack_summary_output()
@@ -3680,7 +3719,8 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Stacks")
+    paginator = list(result_key = "Stacks"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_stacks_input(StackIds = StackIds)
   output <- .opsworks$describe_stacks_output()
@@ -3766,7 +3806,8 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "TimeBasedAutoScalingConfigurations")
+    paginator = list(result_key = "TimeBasedAutoScalingConfigurations"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_time_based_auto_scaling_input(InstanceIds = InstanceIds)
   output <- .opsworks$describe_time_based_auto_scaling_output()
@@ -3830,7 +3871,8 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "UserProfiles")
+    paginator = list(result_key = "UserProfiles"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_user_profiles_input(IamUserArns = IamUserArns)
   output <- .opsworks$describe_user_profiles_output()
@@ -3919,7 +3961,8 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Volumes")
+    paginator = list(result_key = "Volumes"),
+    stream_api = FALSE
   )
   input <- .opsworks$describe_volumes_input(InstanceId = InstanceId, StackId = StackId, RaidArrayId = RaidArrayId, VolumeIds = VolumeIds)
   output <- .opsworks$describe_volumes_output()
@@ -3971,7 +4014,8 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$detach_elastic_load_balancer_input(ElasticLoadBalancerName = ElasticLoadBalancerName, LayerId = LayerId)
   output <- .opsworks$detach_elastic_load_balancer_output()
@@ -4022,7 +4066,8 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$disassociate_elastic_ip_input(ElasticIp = ElasticIp)
   output <- .opsworks$disassociate_elastic_ip_output()
@@ -4079,7 +4124,8 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$get_hostname_suggestion_input(LayerId = LayerId)
   output <- .opsworks$get_hostname_suggestion_output()
@@ -4139,7 +4185,8 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$grant_access_input(InstanceId = InstanceId, ValidForInMinutes = ValidForInMinutes)
   output <- .opsworks$grant_access_output()
@@ -4196,7 +4243,8 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$list_tags_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .opsworks$list_tags_output()
@@ -4247,7 +4295,8 @@ opsworks_reboot_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$reboot_instance_input(InstanceId = InstanceId)
   output <- .opsworks$reboot_instance_output()
@@ -4306,7 +4355,8 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_ecs_cluster_input(EcsClusterArn = EcsClusterArn, StackId = StackId)
   output <- .opsworks$register_ecs_cluster_output()
@@ -4367,7 +4417,8 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_elastic_ip_input(ElasticIp = ElasticIp, StackId = StackId)
   output <- .opsworks$register_elastic_ip_output()
@@ -4462,7 +4513,8 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_instance_input(StackId = StackId, Hostname = Hostname, PublicIp = PublicIp, PrivateIp = PrivateIp, RsaPublicKey = RsaPublicKey, RsaPublicKeyFingerprint = RsaPublicKeyFingerprint, InstanceIdentity = InstanceIdentity)
   output <- .opsworks$register_instance_output()
@@ -4518,7 +4570,8 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_rds_db_instance_input(StackId = StackId, RdsDbInstanceArn = RdsDbInstanceArn, DbUser = DbUser, DbPassword = DbPassword)
   output <- .opsworks$register_rds_db_instance_output()
@@ -4579,7 +4632,8 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$register_volume_input(Ec2VolumeId = Ec2VolumeId, StackId = StackId)
   output <- .opsworks$register_volume_output()
@@ -4666,7 +4720,8 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$set_load_based_auto_scaling_input(LayerId = LayerId, Enable = Enable, UpScaling = UpScaling, DownScaling = DownScaling)
   output <- .opsworks$set_load_based_auto_scaling_output()
@@ -4739,7 +4794,8 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$set_permission_input(StackId = StackId, IamUserArn = IamUserArn, AllowSsh = AllowSsh, AllowSudo = AllowSudo, Level = Level)
   output <- .opsworks$set_permission_output()
@@ -4816,7 +4872,8 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$set_time_based_auto_scaling_input(InstanceId = InstanceId, AutoScalingSchedule = AutoScalingSchedule)
   output <- .opsworks$set_time_based_auto_scaling_output()
@@ -4867,7 +4924,8 @@ opsworks_start_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$start_instance_input(InstanceId = InstanceId)
   output <- .opsworks$start_instance_output()
@@ -4916,7 +4974,8 @@ opsworks_start_stack <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$start_stack_input(StackId = StackId)
   output <- .opsworks$start_stack_output()
@@ -4977,7 +5036,8 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$stop_instance_input(InstanceId = InstanceId, Force = Force)
   output <- .opsworks$stop_instance_output()
@@ -5026,7 +5086,8 @@ opsworks_stop_stack <- function(StackId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$stop_stack_input(StackId = StackId)
   output <- .opsworks$stop_stack_output()
@@ -5093,7 +5154,8 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .opsworks$tag_resource_output()
@@ -5146,7 +5208,8 @@ opsworks_unassign_instance <- function(InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$unassign_instance_input(InstanceId = InstanceId)
   output <- .opsworks$unassign_instance_output()
@@ -5197,7 +5260,8 @@ opsworks_unassign_volume <- function(VolumeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$unassign_volume_input(VolumeId = VolumeId)
   output <- .opsworks$unassign_volume_output()
@@ -5244,7 +5308,8 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .opsworks$untag_resource_output()
@@ -5358,7 +5423,8 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_app_input(AppId = AppId, Name = Name, Description = Description, DataSources = DataSources, Type = Type, AppSource = AppSource, Domains = Domains, EnableSsl = EnableSsl, SslConfiguration = SslConfiguration, Attributes = Attributes, Environment = Environment)
   output <- .opsworks$update_app_output()
@@ -5411,7 +5477,8 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_elastic_ip_input(ElasticIp = ElasticIp, Name = Name)
   output <- .opsworks$update_elastic_ip_output()
@@ -5563,7 +5630,8 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_instance_input(InstanceId = InstanceId, LayerIds = LayerIds, InstanceType = InstanceType, AutoScalingType = AutoScalingType, Hostname = Hostname, Os = Os, AmiId = AmiId, SshKeyName = SshKeyName, Architecture = Architecture, InstallUpdatesOnBoot = InstallUpdatesOnBoot, EbsOptimized = EbsOptimized, AgentVersion = AgentVersion)
   output <- .opsworks$update_instance_output()
@@ -5736,7 +5804,8 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_layer_input(LayerId = LayerId, Name = Name, Shortname = Shortname, Attributes = Attributes, CloudWatchLogsConfiguration = CloudWatchLogsConfiguration, CustomInstanceProfileArn = CustomInstanceProfileArn, CustomJson = CustomJson, CustomSecurityGroupIds = CustomSecurityGroupIds, Packages = Packages, VolumeConfigurations = VolumeConfigurations, EnableAutoHealing = EnableAutoHealing, AutoAssignElasticIps = AutoAssignElasticIps, AutoAssignPublicIps = AutoAssignPublicIps, CustomRecipes = CustomRecipes, InstallUpdatesOnBoot = InstallUpdatesOnBoot, UseEbsOptimizedInstances = UseEbsOptimizedInstances, LifecycleEventConfiguration = LifecycleEventConfiguration)
   output <- .opsworks$update_layer_output()
@@ -5785,7 +5854,8 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_my_user_profile_input(SshPublicKey = SshPublicKey)
   output <- .opsworks$update_my_user_profile_output()
@@ -5838,7 +5908,8 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_rds_db_instance_input(RdsDbInstanceArn = RdsDbInstanceArn, DbUser = DbUser, DbPassword = DbPassword)
   output <- .opsworks$update_rds_db_instance_output()
@@ -6085,7 +6156,8 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_stack_input(StackId = StackId, Name = Name, Attributes = Attributes, ServiceRoleArn = ServiceRoleArn, DefaultInstanceProfileArn = DefaultInstanceProfileArn, DefaultOs = DefaultOs, HostnameTheme = HostnameTheme, DefaultAvailabilityZone = DefaultAvailabilityZone, DefaultSubnetId = DefaultSubnetId, CustomJson = CustomJson, ConfigurationManager = ConfigurationManager, ChefConfiguration = ChefConfiguration, UseCustomCookbooks = UseCustomCookbooks, CustomCookbooksSource = CustomCookbooksSource, DefaultSshKeyName = DefaultSshKeyName, DefaultRootDeviceType = DefaultRootDeviceType, UseOpsworksSecurityGroups = UseOpsworksSecurityGroups, AgentVersion = AgentVersion)
   output <- .opsworks$update_stack_output()
@@ -6146,7 +6218,8 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_user_profile_input(IamUserArn = IamUserArn, SshUsername = SshUsername, SshPublicKey = SshPublicKey, AllowSelfManagement = AllowSelfManagement)
   output <- .opsworks$update_user_profile_output()
@@ -6201,7 +6274,8 @@ opsworks_update_volume <- function(VolumeId, Name = NULL, MountPoint = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworks$update_volume_input(VolumeId = VolumeId, Name = Name, MountPoint = MountPoint)
   output <- .opsworks$update_volume_output()

@@ -10,7 +10,7 @@ elasticache_delete_user_group(UserGroupId)
 \item{UserGroupId}{[required] The ID of the user group.}
 }
 \description{
-For Redis OSS engine version 6.0 onwards: Deletes a user group. The user group must first be disassociated from the replication group before it can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
+For Redis OSS engine version 6.0 onwards: Deletes a user group. The user group must first be disassociated from the replication group before it can be deleted. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_delete_user_group/} for full documentation.
 }

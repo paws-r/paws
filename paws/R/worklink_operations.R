@@ -42,7 +42,8 @@ worklink_associate_domain <- function(FleetArn, DomainName, DisplayName = NULL, 
     http_method = "POST",
     http_path = "/associateDomain",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$associate_domain_input(FleetArn = FleetArn, DomainName = DomainName, DisplayName = DisplayName, AcmCertificateArn = AcmCertificateArn)
   output <- .worklink$associate_domain_output()
@@ -98,7 +99,8 @@ worklink_associate_website_authorization_provider <- function(FleetArn, Authoriz
     http_method = "POST",
     http_path = "/associateWebsiteAuthorizationProvider",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$associate_website_authorization_provider_input(FleetArn = FleetArn, AuthorizationProviderType = AuthorizationProviderType, DomainName = DomainName)
   output <- .worklink$associate_website_authorization_provider_output()
@@ -155,7 +157,8 @@ worklink_associate_website_certificate_authority <- function(FleetArn, Certifica
     http_method = "POST",
     http_path = "/associateWebsiteCertificateAuthority",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$associate_website_certificate_authority_input(FleetArn = FleetArn, Certificate = Certificate, DisplayName = DisplayName)
   output <- .worklink$associate_website_certificate_authority_output()
@@ -216,7 +219,8 @@ worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndU
     http_method = "POST",
     http_path = "/createFleet",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$create_fleet_input(FleetName = FleetName, DisplayName = DisplayName, OptimizeForEndUserLocation = OptimizeForEndUserLocation, Tags = Tags)
   output <- .worklink$create_fleet_output()
@@ -260,7 +264,8 @@ worklink_delete_fleet <- function(FleetArn) {
     http_method = "POST",
     http_path = "/deleteFleet",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$delete_fleet_input(FleetArn = FleetArn)
   output <- .worklink$delete_fleet_output()
@@ -310,7 +315,8 @@ worklink_describe_audit_stream_configuration <- function(FleetArn) {
     http_method = "POST",
     http_path = "/describeAuditStreamConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$describe_audit_stream_configuration_input(FleetArn = FleetArn)
   output <- .worklink$describe_audit_stream_configuration_output()
@@ -366,7 +372,8 @@ worklink_describe_company_network_configuration <- function(FleetArn) {
     http_method = "POST",
     http_path = "/describeCompanyNetworkConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$describe_company_network_configuration_input(FleetArn = FleetArn)
   output <- .worklink$describe_company_network_configuration_output()
@@ -428,7 +435,8 @@ worklink_describe_device <- function(FleetArn, DeviceId) {
     http_method = "POST",
     http_path = "/describeDevice",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$describe_device_input(FleetArn = FleetArn, DeviceId = DeviceId)
   output <- .worklink$describe_device_output()
@@ -476,7 +484,8 @@ worklink_describe_device_policy_configuration <- function(FleetArn) {
     http_method = "POST",
     http_path = "/describeDevicePolicyConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$describe_device_policy_configuration_input(FleetArn = FleetArn)
   output <- .worklink$describe_device_policy_configuration_output()
@@ -532,7 +541,8 @@ worklink_describe_domain <- function(FleetArn, DomainName) {
     http_method = "POST",
     http_path = "/describeDomain",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$describe_domain_input(FleetArn = FleetArn, DomainName = DomainName)
   output <- .worklink$describe_domain_output()
@@ -595,7 +605,8 @@ worklink_describe_fleet_metadata <- function(FleetArn) {
     http_method = "POST",
     http_path = "/describeFleetMetadata",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$describe_fleet_metadata_input(FleetArn = FleetArn)
   output <- .worklink$describe_fleet_metadata_output()
@@ -645,7 +656,8 @@ worklink_describe_identity_provider_configuration <- function(FleetArn) {
     http_method = "POST",
     http_path = "/describeIdentityProviderConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$describe_identity_provider_configuration_input(FleetArn = FleetArn)
   output <- .worklink$describe_identity_provider_configuration_output()
@@ -699,7 +711,8 @@ worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaI
     http_method = "POST",
     http_path = "/describeWebsiteCertificateAuthority",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$describe_website_certificate_authority_input(FleetArn = FleetArn, WebsiteCaId = WebsiteCaId)
   output <- .worklink$describe_website_certificate_authority_output()
@@ -745,7 +758,8 @@ worklink_disassociate_domain <- function(FleetArn, DomainName) {
     http_method = "POST",
     http_path = "/disassociateDomain",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$disassociate_domain_input(FleetArn = FleetArn, DomainName = DomainName)
   output <- .worklink$disassociate_domain_output()
@@ -793,7 +807,8 @@ worklink_disassociate_website_authorization_provider <- function(FleetArn, Autho
     http_method = "POST",
     http_path = "/disassociateWebsiteAuthorizationProvider",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$disassociate_website_authorization_provider_input(FleetArn = FleetArn, AuthorizationProviderId = AuthorizationProviderId)
   output <- .worklink$disassociate_website_authorization_provider_output()
@@ -839,7 +854,8 @@ worklink_disassociate_website_certificate_authority <- function(FleetArn, Websit
     http_method = "POST",
     http_path = "/disassociateWebsiteCertificateAuthority",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$disassociate_website_certificate_authority_input(FleetArn = FleetArn, WebsiteCaId = WebsiteCaId)
   output <- .worklink$disassociate_website_certificate_authority_output()
@@ -898,7 +914,8 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
     http_method = "POST",
     http_path = "/listDevices",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .worklink$list_devices_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_devices_output()
@@ -961,7 +978,8 @@ worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
     http_method = "POST",
     http_path = "/listDomains",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .worklink$list_domains_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_domains_output()
@@ -1030,7 +1048,8 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/listFleets",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .worklink$list_fleets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_fleets_output()
@@ -1080,7 +1099,8 @@ worklink_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .worklink$list_tags_for_resource_output()
@@ -1146,7 +1166,8 @@ worklink_list_website_authorization_providers <- function(FleetArn, NextToken = 
     http_method = "POST",
     http_path = "/listWebsiteAuthorizationProviders",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .worklink$list_website_authorization_providers_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_website_authorization_providers_output()
@@ -1211,7 +1232,8 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
     http_method = "POST",
     http_path = "/listWebsiteCertificateAuthorities",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .worklink$list_website_certificate_authorities_input(FleetArn = FleetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .worklink$list_website_certificate_authorities_output()
@@ -1256,7 +1278,8 @@ worklink_restore_domain_access <- function(FleetArn, DomainName) {
     http_method = "POST",
     http_path = "/restoreDomainAccess",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$restore_domain_access_input(FleetArn = FleetArn, DomainName = DomainName)
   output <- .worklink$restore_domain_access_output()
@@ -1301,7 +1324,8 @@ worklink_revoke_domain_access <- function(FleetArn, DomainName) {
     http_method = "POST",
     http_path = "/revokeDomainAccess",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$revoke_domain_access_input(FleetArn = FleetArn, DomainName = DomainName)
   output <- .worklink$revoke_domain_access_output()
@@ -1347,7 +1371,8 @@ worklink_sign_out_user <- function(FleetArn, Username) {
     http_method = "POST",
     http_path = "/signOutUser",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$sign_out_user_input(FleetArn = FleetArn, Username = Username)
   output <- .worklink$sign_out_user_output()
@@ -1397,7 +1422,8 @@ worklink_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .worklink$tag_resource_output()
@@ -1444,7 +1470,8 @@ worklink_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .worklink$untag_resource_output()
@@ -1490,7 +1517,8 @@ worklink_update_audit_stream_configuration <- function(FleetArn, AuditStreamArn 
     http_method = "POST",
     http_path = "/updateAuditStreamConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$update_audit_stream_configuration_input(FleetArn = FleetArn, AuditStreamArn = AuditStreamArn)
   output <- .worklink$update_audit_stream_configuration_output()
@@ -1545,7 +1573,8 @@ worklink_update_company_network_configuration <- function(FleetArn, VpcId, Subne
     http_method = "POST",
     http_path = "/updateCompanyNetworkConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$update_company_network_configuration_input(FleetArn = FleetArn, VpcId = VpcId, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds)
   output <- .worklink$update_company_network_configuration_output()
@@ -1592,7 +1621,8 @@ worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertif
     http_method = "POST",
     http_path = "/updateDevicePolicyConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$update_device_policy_configuration_input(FleetArn = FleetArn, DeviceCaCertificate = DeviceCaCertificate)
   output <- .worklink$update_device_policy_configuration_output()
@@ -1639,7 +1669,8 @@ worklink_update_domain_metadata <- function(FleetArn, DomainName, DisplayName = 
     http_method = "POST",
     http_path = "/updateDomainMetadata",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$update_domain_metadata_input(FleetArn = FleetArn, DomainName = DomainName, DisplayName = DisplayName)
   output <- .worklink$update_domain_metadata_output()
@@ -1690,7 +1721,8 @@ worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, Optimiz
     http_method = "POST",
     http_path = "/UpdateFleetMetadata",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$update_fleet_metadata_input(FleetArn = FleetArn, DisplayName = DisplayName, OptimizeForEndUserLocation = OptimizeForEndUserLocation)
   output <- .worklink$update_fleet_metadata_output()
@@ -1739,7 +1771,8 @@ worklink_update_identity_provider_configuration <- function(FleetArn, IdentityPr
     http_method = "POST",
     http_path = "/updateIdentityProviderConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .worklink$update_identity_provider_configuration_input(FleetArn = FleetArn, IdentityProviderType = IdentityProviderType, IdentityProviderSamlMetadata = IdentityProviderSamlMetadata)
   output <- .worklink$update_identity_provider_configuration_output()

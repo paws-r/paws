@@ -53,7 +53,8 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$count_closed_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, closeTimeFilter = closeTimeFilter, executionFilter = executionFilter, typeFilter = typeFilter, tagFilter = tagFilter, closeStatusFilter = closeStatusFilter)
   output <- .swf$count_closed_workflow_executions_output()
@@ -100,7 +101,8 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$count_open_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, typeFilter = typeFilter, tagFilter = tagFilter, executionFilter = executionFilter)
   output <- .swf$count_open_workflow_executions_output()
@@ -132,7 +134,8 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$count_pending_activity_tasks_input(domain = domain, taskList = taskList)
   output <- .swf$count_pending_activity_tasks_output()
@@ -164,7 +167,8 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$count_pending_decision_tasks_input(domain = domain, taskList = taskList)
   output <- .swf$count_pending_decision_tasks_output()
@@ -195,7 +199,8 @@ swf_delete_activity_type <- function(domain, activityType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$delete_activity_type_input(domain = domain, activityType = activityType)
   output <- .swf$delete_activity_type_output()
@@ -226,7 +231,8 @@ swf_delete_workflow_type <- function(domain, workflowType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$delete_workflow_type_input(domain = domain, workflowType = workflowType)
   output <- .swf$delete_workflow_type_output()
@@ -257,7 +263,8 @@ swf_deprecate_activity_type <- function(domain, activityType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$deprecate_activity_type_input(domain = domain, activityType = activityType)
   output <- .swf$deprecate_activity_type_output()
@@ -287,7 +294,8 @@ swf_deprecate_domain <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$deprecate_domain_input(name = name)
   output <- .swf$deprecate_domain_output()
@@ -318,7 +326,8 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$deprecate_workflow_type_input(domain = domain, workflowType = workflowType)
   output <- .swf$deprecate_workflow_type_output()
@@ -351,7 +360,8 @@ swf_describe_activity_type <- function(domain, activityType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$describe_activity_type_input(domain = domain, activityType = activityType)
   output <- .swf$describe_activity_type_output()
@@ -382,7 +392,8 @@ swf_describe_domain <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$describe_domain_input(name = name)
   output <- .swf$describe_domain_output()
@@ -414,7 +425,8 @@ swf_describe_workflow_execution <- function(domain, execution) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$describe_workflow_execution_input(domain = domain, execution = execution)
   output <- .swf$describe_workflow_execution_output()
@@ -445,7 +457,8 @@ swf_describe_workflow_type <- function(domain, workflowType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$describe_workflow_type_input(domain = domain, workflowType = workflowType)
   output <- .swf$describe_workflow_type_output()
@@ -490,7 +503,8 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events"),
+    stream_api = FALSE
   )
   input <- .swf$get_workflow_execution_history_input(domain = domain, execution = execution, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$get_workflow_execution_history_output()
@@ -537,7 +551,8 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_activity_types_input(domain = domain, name = name, registrationStatus = registrationStatus, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_activity_types_output()
@@ -616,7 +631,8 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_closed_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, closeTimeFilter = closeTimeFilter, executionFilter = executionFilter, closeStatusFilter = closeStatusFilter, typeFilter = typeFilter, tagFilter = tagFilter, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_closed_workflow_executions_output()
@@ -660,7 +676,8 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "domainInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "domainInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_domains_input(nextPageToken = nextPageToken, registrationStatus = registrationStatus, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_domains_output()
@@ -721,7 +738,8 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "executionInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_open_workflow_executions_input(domain = domain, startTimeFilter = startTimeFilter, typeFilter = typeFilter, tagFilter = tagFilter, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder, executionFilter = executionFilter)
   output <- .swf$list_open_workflow_executions_output()
@@ -751,7 +769,8 @@ swf_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .swf$list_tags_for_resource_output()
@@ -797,7 +816,8 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "typeInfos"),
+    stream_api = FALSE
   )
   input <- .swf$list_workflow_types_input(domain = domain, name = name, registrationStatus = registrationStatus, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder)
   output <- .swf$list_workflow_types_output()
@@ -838,7 +858,8 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$poll_for_activity_task_input(domain = domain, taskList = taskList, identity = identity)
   output <- .swf$poll_for_activity_task_output()
@@ -907,7 +928,8 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events")
+    paginator = list(input_token = "nextPageToken", limit_key = "maximumPageSize", output_token = "nextPageToken", result_key = "events"),
+    stream_api = FALSE
   )
   input <- .swf$poll_for_decision_task_input(domain = domain, taskList = taskList, identity = identity, nextPageToken = nextPageToken, maximumPageSize = maximumPageSize, reverseOrder = reverseOrder, startAtPreviousStartedEvent = startAtPreviousStartedEvent)
   output <- .swf$poll_for_decision_task_output()
@@ -944,7 +966,8 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$record_activity_task_heartbeat_input(taskToken = taskToken, details = details)
   output <- .swf$record_activity_task_heartbeat_output()
@@ -1033,7 +1056,8 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$register_activity_type_input(domain = domain, name = name, version = version, description = description, defaultTaskStartToCloseTimeout = defaultTaskStartToCloseTimeout, defaultTaskHeartbeatTimeout = defaultTaskHeartbeatTimeout, defaultTaskList = defaultTaskList, defaultTaskPriority = defaultTaskPriority, defaultTaskScheduleToStartTimeout = defaultTaskScheduleToStartTimeout, defaultTaskScheduleToCloseTimeout = defaultTaskScheduleToCloseTimeout)
   output <- .swf$register_activity_type_output()
@@ -1087,7 +1111,8 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$register_domain_input(name = name, description = description, workflowExecutionRetentionPeriodInDays = workflowExecutionRetentionPeriodInDays, tags = tags)
   output <- .swf$register_domain_output()
@@ -1194,7 +1219,8 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$register_workflow_type_input(domain = domain, name = name, version = version, description = description, defaultTaskStartToCloseTimeout = defaultTaskStartToCloseTimeout, defaultExecutionStartToCloseTimeout = defaultExecutionStartToCloseTimeout, defaultTaskList = defaultTaskList, defaultTaskPriority = defaultTaskPriority, defaultChildPolicy = defaultChildPolicy, defaultLambdaRole = defaultLambdaRole)
   output <- .swf$register_workflow_type_output()
@@ -1228,7 +1254,8 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$request_cancel_workflow_execution_input(domain = domain, workflowId = workflowId, runId = runId)
   output <- .swf$request_cancel_workflow_execution_output()
@@ -1265,7 +1292,8 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$respond_activity_task_canceled_input(taskToken = taskToken, details = details)
   output <- .swf$respond_activity_task_canceled_output()
@@ -1303,7 +1331,8 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$respond_activity_task_completed_input(taskToken = taskToken, result = result)
   output <- .swf$respond_activity_task_completed_output()
@@ -1341,7 +1370,8 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$respond_activity_task_failed_input(taskToken = taskToken, reason = reason, details = details)
   output <- .swf$respond_activity_task_failed_output()
@@ -1395,7 +1425,8 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$respond_decision_task_completed_input(taskToken = taskToken, decisions = decisions, executionContext = executionContext, taskList = taskList, taskListScheduleToStartTimeout = taskListScheduleToStartTimeout)
   output <- .swf$respond_decision_task_completed_output()
@@ -1433,7 +1464,8 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$signal_workflow_execution_input(domain = domain, workflowId = workflowId, runId = runId, signalName = signalName, input = input)
   output <- .swf$signal_workflow_execution_output()
@@ -1569,7 +1601,8 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$start_workflow_execution_input(domain = domain, workflowId = workflowId, workflowType = workflowType, taskList = taskList, taskPriority = taskPriority, input = input, executionStartToCloseTimeout = executionStartToCloseTimeout, tagList = tagList, taskStartToCloseTimeout = taskStartToCloseTimeout, childPolicy = childPolicy, lambdaRole = lambdaRole)
   output <- .swf$start_workflow_execution_output()
@@ -1603,7 +1636,8 @@ swf_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .swf$tag_resource_output()
@@ -1659,7 +1693,8 @@ swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, r
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$terminate_workflow_execution_input(domain = domain, workflowId = workflowId, runId = runId, reason = reason, details = details, childPolicy = childPolicy)
   output <- .swf$terminate_workflow_execution_output()
@@ -1690,7 +1725,8 @@ swf_undeprecate_activity_type <- function(domain, activityType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$undeprecate_activity_type_input(domain = domain, activityType = activityType)
   output <- .swf$undeprecate_activity_type_output()
@@ -1720,7 +1756,8 @@ swf_undeprecate_domain <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$undeprecate_domain_input(name = name)
   output <- .swf$undeprecate_domain_output()
@@ -1751,7 +1788,8 @@ swf_undeprecate_workflow_type <- function(domain, workflowType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$undeprecate_workflow_type_input(domain = domain, workflowType = workflowType)
   output <- .swf$undeprecate_workflow_type_output()
@@ -1782,7 +1820,8 @@ swf_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .swf$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .swf$untag_resource_output()

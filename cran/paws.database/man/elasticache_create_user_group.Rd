@@ -18,7 +18,7 @@ A tag key must be accompanied by a tag value, although null is accepted.
 Available for Redis OSS only.}
 }
 \description{
-For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}
+For Redis OSS engine version 6.0 onwards: Creates a Redis OSS user group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/Clusters.RBAC.html}{Using Role Based Access Control (RBAC)}
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_create_user_group/} for full documentation.
 }

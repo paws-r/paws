@@ -241,7 +241,8 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds, Tags = Tags, TransitiveTagKeys = TransitiveTagKeys, ExternalId = ExternalId, SerialNumber = SerialNumber, TokenCode = TokenCode, SourceIdentity = SourceIdentity, ProvidedContexts = ProvidedContexts)
   output <- .sts$assume_role_output()
@@ -359,7 +360,8 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_with_saml_input(RoleArn = RoleArn, PrincipalArn = PrincipalArn, SAMLAssertion = SAMLAssertion, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
   output <- .sts$assume_role_with_saml_output()
@@ -493,7 +495,8 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$assume_role_with_web_identity_input(RoleArn = RoleArn, RoleSessionName = RoleSessionName, WebIdentityToken = WebIdentityToken, ProviderId = ProviderId, PolicyArns = PolicyArns, Policy = Policy, DurationSeconds = DurationSeconds)
   output <- .sts$assume_role_with_web_identity_output()
@@ -525,7 +528,8 @@ sts_decode_authorization_message <- function(EncodedMessage) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$decode_authorization_message_input(EncodedMessage = EncodedMessage)
   output <- .sts$decode_authorization_message_output()
@@ -558,7 +562,8 @@ sts_get_access_key_info <- function(AccessKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_access_key_info_input(AccessKeyId = AccessKeyId)
   output <- .sts$get_access_key_info_output()
@@ -589,7 +594,8 @@ sts_get_caller_identity <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_caller_identity_input()
   output <- .sts$get_caller_identity_output()
@@ -746,7 +752,8 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_federation_token_input(Name = Name, Policy = Policy, PolicyArns = PolicyArns, DurationSeconds = DurationSeconds, Tags = Tags)
   output <- .sts$get_federation_token_output()
@@ -805,7 +812,8 @@ sts_get_session_token <- function(DurationSeconds = NULL, SerialNumber = NULL, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sts$get_session_token_input(DurationSeconds = DurationSeconds, SerialNumber = SerialNumber, TokenCode = TokenCode)
   output <- .sts$get_session_token_output()

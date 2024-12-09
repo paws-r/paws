@@ -70,7 +70,8 @@ route53recoverycluster_get_routing_control_state <- function(RoutingControlArn) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53recoverycluster$get_routing_control_state_input(RoutingControlArn = RoutingControlArn)
   output <- .route53recoverycluster$get_routing_control_state_output()
@@ -169,7 +170,8 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingControls")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingControls"),
+    stream_api = FALSE
   )
   input <- .route53recoverycluster$list_routing_controls_input(ControlPanelArn = ControlPanelArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53recoverycluster$list_routing_controls_output()
@@ -260,7 +262,8 @@ route53recoverycluster_update_routing_control_state <- function(RoutingControlAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53recoverycluster$update_routing_control_state_input(RoutingControlArn = RoutingControlArn, RoutingControlState = RoutingControlState, SafetyRulesToOverride = SafetyRulesToOverride)
   output <- .route53recoverycluster$update_routing_control_state_output()
@@ -353,7 +356,8 @@ route53recoverycluster_update_routing_control_states <- function(UpdateRoutingCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53recoverycluster$update_routing_control_states_input(UpdateRoutingControlStateEntries = UpdateRoutingControlStateEntries, SafetyRulesToOverride = SafetyRulesToOverride)
   output <- .route53recoverycluster$update_routing_control_states_output()

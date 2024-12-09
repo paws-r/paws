@@ -54,7 +54,7 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
@@ -65,13 +65,13 @@ in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 32-bit CRC32 checksum of the object. For
+specifies the base64-encoded, 32-bit CRC-32 checksum of the object. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ChecksumCRC32C}{This header can be used as a data integrity check to verify that the
 data received is the same data that was originally sent. This header
-specifies the base64-encoded, 32-bit CRC32C checksum of the object. For
+specifies the base64-encoded, 32-bit CRC-32C checksum of the object. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}
 in the \emph{Amazon S3 User Guide}.}
 

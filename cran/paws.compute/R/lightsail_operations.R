@@ -21,7 +21,8 @@ lightsail_allocate_static_ip <- function(staticIpName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$allocate_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$allocate_static_ip_output()
@@ -68,7 +69,8 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$attach_certificate_to_distribution_input(distributionName = distributionName, certificateName = certificateName)
   output <- .lightsail$attach_certificate_to_distribution_output()
@@ -106,7 +108,8 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath, autoMounting
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$attach_disk_input(diskName = diskName, instanceName = instanceName, diskPath = diskPath, autoMounting = autoMounting)
   output <- .lightsail$attach_disk_output()
@@ -145,7 +148,8 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$attach_instances_to_load_balancer_input(loadBalancerName = loadBalancerName, instanceNames = instanceNames)
   output <- .lightsail$attach_instances_to_load_balancer_output()
@@ -178,7 +182,8 @@ lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, cer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$attach_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName)
   output <- .lightsail$attach_load_balancer_tls_certificate_output()
@@ -209,7 +214,8 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$attach_static_ip_input(staticIpName = staticIpName, instanceName = instanceName)
   output <- .lightsail$attach_static_ip_output()
@@ -240,7 +246,8 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$close_instance_public_ports_input(portInfo = portInfo, instanceName = instanceName)
   output <- .lightsail$close_instance_public_ports_output()
@@ -319,7 +326,8 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$copy_snapshot_input(sourceSnapshotName = sourceSnapshotName, sourceResourceName = sourceResourceName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot, targetSnapshotName = targetSnapshotName, sourceRegion = sourceRegion)
   output <- .lightsail$copy_snapshot_output()
@@ -375,7 +383,8 @@ lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObj
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_bucket_input(bucketName = bucketName, bundleId = bundleId, tags = tags, enableObjectVersioning = enableObjectVersioning)
   output <- .lightsail$create_bucket_output()
@@ -406,7 +415,8 @@ lightsail_create_bucket_access_key <- function(bucketName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_bucket_access_key_input(bucketName = bucketName)
   output <- .lightsail$create_bucket_access_key_output()
@@ -450,7 +460,8 @@ lightsail_create_certificate <- function(certificateName, domainName, subjectAlt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_certificate_input(certificateName = certificateName, domainName = domainName, subjectAlternativeNames = subjectAlternativeNames, tags = tags)
   output <- .lightsail$create_certificate_output()
@@ -484,7 +495,8 @@ lightsail_create_cloud_formation_stack <- function(instances) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_cloud_formation_stack_input(instances = instances)
   output <- .lightsail$create_cloud_formation_stack_output()
@@ -524,7 +536,7 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' For a list of countries/regions where SMS text messages can be sent, and
 #' the latest Amazon Web Services Regions where SMS text messaging is
 #' supported, see [Supported Regions and
-#' Countries](https://docs.aws.amazon.com/sns/latest/dg/sns-supported-regions-countries.html)
+#' Countries](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html)
 #' in the *Amazon SNS Developer Guide*.
 #' 
 #' For more information about notifications in Amazon Lightsail, see
@@ -550,7 +562,8 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_contact_method_input(protocol = protocol, contactEndpoint = contactEndpoint)
   output <- .lightsail$create_contact_method_output()
@@ -665,7 +678,8 @@ lightsail_create_container_service <- function(serviceName, power, scale, tags =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_container_service_input(serviceName = serviceName, power = power, scale = scale, tags = tags, publicDomainNames = publicDomainNames, deployment = deployment, privateRegistryAccess = privateRegistryAccess)
   output <- .lightsail$create_container_service_output()
@@ -699,7 +713,8 @@ lightsail_create_container_service_deployment <- function(serviceName, container
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_container_service_deployment_input(serviceName = serviceName, containers = containers, publicEndpoint = publicEndpoint)
   output <- .lightsail$create_container_service_deployment_output()
@@ -730,7 +745,8 @@ lightsail_create_container_service_registry_login <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_container_service_registry_login_input()
   output <- .lightsail$create_container_service_registry_login_output()
@@ -774,7 +790,8 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_disk_input(diskName = diskName, availabilityZone = availabilityZone, sizeInGb = sizeInGb, tags = tags, addOns = addOns)
   output <- .lightsail$create_disk_output()
@@ -869,7 +886,8 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_disk_from_snapshot_input(diskName = diskName, diskSnapshotName = diskSnapshotName, availabilityZone = availabilityZone, sizeInGb = sizeInGb, tags = tags, addOns = addOns, sourceDiskName = sourceDiskName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot)
   output <- .lightsail$create_disk_from_snapshot_output()
@@ -916,7 +934,8 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_disk_snapshot_input(diskName = diskName, diskSnapshotName = diskSnapshotName, instanceName = instanceName, tags = tags)
   output <- .lightsail$create_disk_snapshot_output()
@@ -980,7 +999,8 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, bundleId = bundleId, ipAddressType = ipAddressType, tags = tags, certificateName = certificateName, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion)
   output <- .lightsail$create_distribution_output()
@@ -1014,7 +1034,8 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_domain_input(domainName = domainName, tags = tags)
   output <- .lightsail$create_domain_output()
@@ -1050,7 +1071,8 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$create_domain_entry_output()
@@ -1081,7 +1103,8 @@ lightsail_create_gui_session_access_details <- function(resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_gui_session_access_details_input(resourceName = resourceName)
   output <- .lightsail$create_gui_session_access_details_output()
@@ -1116,7 +1139,8 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName, instanceName = instanceName, tags = tags)
   output <- .lightsail$create_instance_snapshot_output()
@@ -1190,7 +1214,8 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_instances_input(instanceNames = instanceNames, availabilityZone = availabilityZone, customImageName = customImageName, blueprintId = blueprintId, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, ipAddressType = ipAddressType)
   output <- .lightsail$create_instances_output()
@@ -1303,7 +1328,8 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_instances_from_snapshot_input(instanceNames = instanceNames, attachedDiskMapping = attachedDiskMapping, availabilityZone = availabilityZone, instanceSnapshotName = instanceSnapshotName, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, ipAddressType = ipAddressType, sourceInstanceName = sourceInstanceName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot)
   output <- .lightsail$create_instances_from_snapshot_output()
@@ -1338,7 +1364,8 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_key_pair_input(keyPairName = keyPairName, tags = tags)
   output <- .lightsail$create_key_pair_output()
@@ -1408,7 +1435,8 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_load_balancer_input(loadBalancerName = loadBalancerName, instancePort = instancePort, healthCheckPath = healthCheckPath, certificateName = certificateName, certificateDomainName = certificateDomainName, certificateAlternativeNames = certificateAlternativeNames, tags = tags, ipAddressType = ipAddressType, tlsPolicyName = tlsPolicyName)
   output <- .lightsail$create_load_balancer_output()
@@ -1455,7 +1483,8 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName, certificateDomainName = certificateDomainName, certificateAlternativeNames = certificateAlternativeNames, tags = tags)
   output <- .lightsail$create_load_balancer_tls_certificate_output()
@@ -1655,7 +1684,8 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_relational_database_input(relationalDatabaseName = relationalDatabaseName, availabilityZone = availabilityZone, relationalDatabaseBlueprintId = relationalDatabaseBlueprintId, relationalDatabaseBundleId = relationalDatabaseBundleId, masterDatabaseName = masterDatabaseName, masterUsername = masterUsername, masterUserPassword = masterUserPassword, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, publiclyAccessible = publiclyAccessible, tags = tags)
   output <- .lightsail$create_relational_database_output()
@@ -1741,7 +1771,8 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_relational_database_from_snapshot_input(relationalDatabaseName = relationalDatabaseName, availabilityZone = availabilityZone, publiclyAccessible = publiclyAccessible, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName, relationalDatabaseBundleId = relationalDatabaseBundleId, sourceRelationalDatabaseName = sourceRelationalDatabaseName, restoreTime = restoreTime, useLatestRestorableTime = useLatestRestorableTime, tags = tags)
   output <- .lightsail$create_relational_database_from_snapshot_output()
@@ -1782,7 +1813,8 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$create_relational_database_snapshot_input(relationalDatabaseName = relationalDatabaseName, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName, tags = tags)
   output <- .lightsail$create_relational_database_snapshot_output()
@@ -1812,7 +1844,8 @@ lightsail_delete_alarm <- function(alarmName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_alarm_input(alarmName = alarmName)
   output <- .lightsail$delete_alarm_output()
@@ -1846,7 +1879,8 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_auto_snapshot_input(resourceName = resourceName, date = date)
   output <- .lightsail$delete_auto_snapshot_output()
@@ -1897,7 +1931,8 @@ lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_bucket_input(bucketName = bucketName, forceDelete = forceDelete)
   output <- .lightsail$delete_bucket_output()
@@ -1931,7 +1966,8 @@ lightsail_delete_bucket_access_key <- function(bucketName, accessKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_bucket_access_key_input(bucketName = bucketName, accessKeyId = accessKeyId)
   output <- .lightsail$delete_bucket_access_key_output()
@@ -1965,7 +2001,8 @@ lightsail_delete_certificate <- function(certificateName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_certificate_input(certificateName = certificateName)
   output <- .lightsail$delete_certificate_output()
@@ -2001,7 +2038,8 @@ lightsail_delete_contact_method <- function(protocol) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_contact_method_input(protocol = protocol)
   output <- .lightsail$delete_contact_method_output()
@@ -2044,7 +2082,8 @@ lightsail_delete_container_image <- function(serviceName, image) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_container_image_input(serviceName = serviceName, image = image)
   output <- .lightsail$delete_container_image_output()
@@ -2074,7 +2113,8 @@ lightsail_delete_container_service <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_container_service_input(serviceName = serviceName)
   output <- .lightsail$delete_container_service_output()
@@ -2105,7 +2145,8 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_disk_input(diskName = diskName, forceDeleteAddOns = forceDeleteAddOns)
   output <- .lightsail$delete_disk_output()
@@ -2135,7 +2176,8 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_disk_snapshot_input(diskSnapshotName = diskSnapshotName)
   output <- .lightsail$delete_disk_snapshot_output()
@@ -2169,7 +2211,8 @@ lightsail_delete_distribution <- function(distributionName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_distribution_input(distributionName = distributionName)
   output <- .lightsail$delete_distribution_output()
@@ -2199,7 +2242,8 @@ lightsail_delete_domain <- function(domainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_domain_input(domainName = domainName)
   output <- .lightsail$delete_domain_output()
@@ -2231,7 +2275,8 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$delete_domain_entry_output()
@@ -2263,7 +2308,8 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_instance_input(instanceName = instanceName, forceDeleteAddOns = forceDeleteAddOns)
   output <- .lightsail$delete_instance_output()
@@ -2293,7 +2339,8 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName)
   output <- .lightsail$delete_instance_snapshot_output()
@@ -2328,7 +2375,8 @@ lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_key_pair_input(keyPairName = keyPairName, expectedFingerprint = expectedFingerprint)
   output <- .lightsail$delete_key_pair_output()
@@ -2360,7 +2408,8 @@ lightsail_delete_known_host_keys <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_known_host_keys_input(instanceName = instanceName)
   output <- .lightsail$delete_known_host_keys_output()
@@ -2391,7 +2440,8 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_load_balancer_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$delete_load_balancer_output()
@@ -2428,7 +2478,8 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName, force = force)
   output <- .lightsail$delete_load_balancer_tls_certificate_output()
@@ -2478,7 +2529,8 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_relational_database_input(relationalDatabaseName = relationalDatabaseName, skipFinalSnapshot = skipFinalSnapshot, finalRelationalDatabaseSnapshotName = finalRelationalDatabaseSnapshotName)
   output <- .lightsail$delete_relational_database_output()
@@ -2508,7 +2560,8 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$delete_relational_database_snapshot_input(relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$delete_relational_database_snapshot_output()
@@ -2542,7 +2595,8 @@ lightsail_detach_certificate_from_distribution <- function(distributionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$detach_certificate_from_distribution_input(distributionName = distributionName)
   output <- .lightsail$detach_certificate_from_distribution_output()
@@ -2573,7 +2627,8 @@ lightsail_detach_disk <- function(diskName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$detach_disk_input(diskName = diskName)
   output <- .lightsail$detach_disk_output()
@@ -2605,7 +2660,8 @@ lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$detach_instances_from_load_balancer_input(loadBalancerName = loadBalancerName, instanceNames = instanceNames)
   output <- .lightsail$detach_instances_from_load_balancer_output()
@@ -2636,7 +2692,8 @@ lightsail_detach_static_ip <- function(staticIpName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$detach_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$detach_static_ip_output()
@@ -2667,7 +2724,8 @@ lightsail_disable_add_on <- function(addOnType, resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$disable_add_on_input(addOnType = addOnType, resourceName = resourceName)
   output <- .lightsail$disable_add_on_output()
@@ -2697,7 +2755,8 @@ lightsail_download_default_key_pair <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$download_default_key_pair_input()
   output <- .lightsail$download_default_key_pair_output()
@@ -2729,7 +2788,8 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$enable_add_on_input(resourceName = resourceName, addOnRequest = addOnRequest)
   output <- .lightsail$enable_add_on_output()
@@ -2760,7 +2820,8 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$export_snapshot_input(sourceSnapshotName = sourceSnapshotName)
   output <- .lightsail$export_snapshot_output()
@@ -2795,7 +2856,8 @@ lightsail_get_active_names <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_active_names_input(pageToken = pageToken)
   output <- .lightsail$get_active_names_output()
@@ -2837,7 +2899,8 @@ lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_alarms_input(alarmName = alarmName, pageToken = pageToken, monitoredResourceName = monitoredResourceName)
   output <- .lightsail$get_alarms_output()
@@ -2868,7 +2931,8 @@ lightsail_get_auto_snapshots <- function(resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_auto_snapshots_input(resourceName = resourceName)
   output <- .lightsail$get_auto_snapshots_output()
@@ -2909,7 +2973,8 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL, a
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_blueprints_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
   output <- .lightsail$get_blueprints_output()
@@ -2940,7 +3005,8 @@ lightsail_get_bucket_access_keys <- function(bucketName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_bucket_access_keys_input(bucketName = bucketName)
   output <- .lightsail$get_bucket_access_keys_output()
@@ -2971,7 +3037,8 @@ lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_bucket_bundles_input(includeInactive = includeInactive)
   output <- .lightsail$get_bucket_bundles_output()
@@ -3061,7 +3128,8 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_bucket_metric_data_input(bucketName = bucketName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, statistics = statistics, unit = unit)
   output <- .lightsail$get_bucket_metric_data_output()
@@ -3104,7 +3172,8 @@ lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_buckets_input(bucketName = bucketName, pageToken = pageToken, includeConnectedResources = includeConnectedResources)
   output <- .lightsail$get_buckets_output()
@@ -3145,7 +3214,8 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_bundles_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
   output <- .lightsail$get_bundles_output()
@@ -3198,7 +3268,8 @@ lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertif
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_certificates_input(certificateStatuses = certificateStatuses, includeCertificateDetails = includeCertificateDetails, certificateName = certificateName, pageToken = pageToken)
   output <- .lightsail$get_certificates_output()
@@ -3234,7 +3305,8 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_cloud_formation_stack_records_input(pageToken = pageToken)
   output <- .lightsail$get_cloud_formation_stack_records_output()
@@ -3268,7 +3340,8 @@ lightsail_get_contact_methods <- function(protocols = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_contact_methods_input(protocols = protocols)
   output <- .lightsail$get_contact_methods_output()
@@ -3299,7 +3372,8 @@ lightsail_get_container_api_metadata <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_container_api_metadata_input()
   output <- .lightsail$get_container_api_metadata_output()
@@ -3331,7 +3405,8 @@ lightsail_get_container_images <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_container_images_input(serviceName = serviceName)
   output <- .lightsail$get_container_images_output()
@@ -3414,7 +3489,8 @@ lightsail_get_container_log <- function(serviceName, containerName, startTime = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_container_log_input(serviceName = serviceName, containerName = containerName, startTime = startTime, endTime = endTime, filterPattern = filterPattern, pageToken = pageToken)
   output <- .lightsail$get_container_log_output()
@@ -3444,7 +3520,8 @@ lightsail_get_container_service_deployments <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_container_service_deployments_input(serviceName = serviceName)
   output <- .lightsail$get_container_service_deployments_output()
@@ -3529,7 +3606,8 @@ lightsail_get_container_service_metric_data <- function(serviceName, metricName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_container_service_metric_data_input(serviceName = serviceName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, statistics = statistics)
   output <- .lightsail$get_container_service_metric_data_output()
@@ -3560,7 +3638,8 @@ lightsail_get_container_service_powers <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_container_service_powers_input()
   output <- .lightsail$get_container_service_powers_output()
@@ -3594,7 +3673,8 @@ lightsail_get_container_services <- function(serviceName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_container_services_input(serviceName = serviceName)
   output <- .lightsail$get_container_services_output()
@@ -3650,7 +3730,8 @@ lightsail_get_cost_estimate <- function(resourceName, startTime, endTime) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_cost_estimate_input(resourceName = resourceName, startTime = startTime, endTime = endTime)
   output <- .lightsail$get_cost_estimate_output()
@@ -3680,7 +3761,8 @@ lightsail_get_disk <- function(diskName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_disk_input(diskName = diskName)
   output <- .lightsail$get_disk_output()
@@ -3710,7 +3792,8 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_disk_snapshot_input(diskSnapshotName = diskSnapshotName)
   output <- .lightsail$get_disk_snapshot_output()
@@ -3746,7 +3829,8 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_disk_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_disk_snapshots_output()
@@ -3782,7 +3866,8 @@ lightsail_get_disks <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_disks_input(pageToken = pageToken)
   output <- .lightsail$get_disks_output()
@@ -3813,7 +3898,8 @@ lightsail_get_distribution_bundles <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_distribution_bundles_input()
   output <- .lightsail$get_distribution_bundles_output()
@@ -3851,7 +3937,8 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_distribution_latest_cache_reset_input(distributionName = distributionName)
   output <- .lightsail$get_distribution_latest_cache_reset_output()
@@ -3996,7 +4083,8 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_distribution_metric_data_input(distributionName = distributionName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, unit = unit, statistics = statistics)
   output <- .lightsail$get_distribution_metric_data_output()
@@ -4036,7 +4124,8 @@ lightsail_get_distributions <- function(distributionName = NULL, pageToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_distributions_input(distributionName = distributionName, pageToken = pageToken)
   output <- .lightsail$get_distributions_output()
@@ -4066,7 +4155,8 @@ lightsail_get_domain <- function(domainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_domain_input(domainName = domainName)
   output <- .lightsail$get_domain_output()
@@ -4101,7 +4191,8 @@ lightsail_get_domains <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_domains_input(pageToken = pageToken)
   output <- .lightsail$get_domains_output()
@@ -4138,7 +4229,8 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_export_snapshot_records_input(pageToken = pageToken)
   output <- .lightsail$get_export_snapshot_records_output()
@@ -4169,7 +4261,8 @@ lightsail_get_instance <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_instance_input(instanceName = instanceName)
   output <- .lightsail$get_instance_output()
@@ -4201,7 +4294,8 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_instance_access_details_input(instanceName = instanceName, protocol = protocol)
   output <- .lightsail$get_instance_access_details_output()
@@ -4376,7 +4470,8 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_instance_metric_data_input(instanceName = instanceName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_instance_metric_data_output()
@@ -4408,7 +4503,8 @@ lightsail_get_instance_port_states <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_instance_port_states_input(instanceName = instanceName)
   output <- .lightsail$get_instance_port_states_output()
@@ -4438,7 +4534,8 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName)
   output <- .lightsail$get_instance_snapshot_output()
@@ -4473,7 +4570,8 @@ lightsail_get_instance_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_instance_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_instance_snapshots_output()
@@ -4503,7 +4601,8 @@ lightsail_get_instance_state <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_instance_state_input(instanceName = instanceName)
   output <- .lightsail$get_instance_state_output()
@@ -4539,7 +4638,8 @@ lightsail_get_instances <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_instances_input(pageToken = pageToken)
   output <- .lightsail$get_instances_output()
@@ -4569,7 +4669,8 @@ lightsail_get_key_pair <- function(keyPairName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_key_pair_input(keyPairName = keyPairName)
   output <- .lightsail$get_key_pair_output()
@@ -4606,7 +4707,8 @@ lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_key_pairs_input(pageToken = pageToken, includeDefaultKeyPair = includeDefaultKeyPair)
   output <- .lightsail$get_key_pairs_output()
@@ -4636,7 +4738,8 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_load_balancer_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$get_load_balancer_output()
@@ -4812,7 +4915,8 @@ lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_load_balancer_metric_data_input(loadBalancerName = loadBalancerName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_load_balancer_metric_data_output()
@@ -4844,7 +4948,8 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_load_balancer_tls_certificates_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$get_load_balancer_tls_certificates_output()
@@ -4881,7 +4986,8 @@ lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_load_balancer_tls_policies_input(pageToken = pageToken)
   output <- .lightsail$get_load_balancer_tls_policies_output()
@@ -4916,7 +5022,8 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_load_balancers_input(pageToken = pageToken)
   output <- .lightsail$get_load_balancers_output()
@@ -4946,7 +5053,8 @@ lightsail_get_operation <- function(operationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_operation_input(operationId = operationId)
   output <- .lightsail$get_operation_output()
@@ -4981,7 +5089,8 @@ lightsail_get_operations <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_operations_input(pageToken = pageToken)
   output <- .lightsail$get_operations_output()
@@ -5018,7 +5127,8 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_operations_for_resource_input(resourceName = resourceName, pageToken = pageToken)
   output <- .lightsail$get_operations_for_resource_output()
@@ -5053,7 +5163,8 @@ lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_regions_input(includeAvailabilityZones = includeAvailabilityZones, includeRelationalDatabaseAvailabilityZones = includeRelationalDatabaseAvailabilityZones)
   output <- .lightsail$get_regions_output()
@@ -5083,7 +5194,8 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$get_relational_database_output()
@@ -5119,7 +5231,8 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_blueprints_input(pageToken = pageToken)
   output <- .lightsail$get_relational_database_blueprints_output()
@@ -5157,7 +5270,8 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL, includeI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_bundles_input(pageToken = pageToken, includeInactive = includeInactive)
   output <- .lightsail$get_relational_database_bundles_output()
@@ -5200,7 +5314,8 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_events_input(relationalDatabaseName = relationalDatabaseName, durationInMinutes = durationInMinutes, pageToken = pageToken)
   output <- .lightsail$get_relational_database_events_output()
@@ -5268,7 +5383,8 @@ lightsail_get_relational_database_log_events <- function(relationalDatabaseName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_log_events_input(relationalDatabaseName = relationalDatabaseName, logStreamName = logStreamName, startTime = startTime, endTime = endTime, startFromHead = startFromHead, pageToken = pageToken)
   output <- .lightsail$get_relational_database_log_events_output()
@@ -5299,7 +5415,8 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_log_streams_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$get_relational_database_log_streams_output()
@@ -5339,7 +5456,8 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_master_user_password_input(relationalDatabaseName = relationalDatabaseName, passwordVersion = passwordVersion)
   output <- .lightsail$get_relational_database_master_user_password_output()
@@ -5472,7 +5590,8 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_metric_data_input(relationalDatabaseName = relationalDatabaseName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_relational_database_metric_data_output()
@@ -5510,7 +5629,8 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_parameters_input(relationalDatabaseName = relationalDatabaseName, pageToken = pageToken)
   output <- .lightsail$get_relational_database_parameters_output()
@@ -5541,7 +5661,8 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_snapshot_input(relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$get_relational_database_snapshot_output()
@@ -5578,7 +5699,8 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_database_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_relational_database_snapshots_output()
@@ -5614,7 +5736,8 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_relational_databases_input(pageToken = pageToken)
   output <- .lightsail$get_relational_databases_output()
@@ -5651,7 +5774,8 @@ lightsail_get_setup_history <- function(resourceName, pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_setup_history_input(resourceName = resourceName, pageToken = pageToken)
   output <- .lightsail$get_setup_history_output()
@@ -5681,7 +5805,8 @@ lightsail_get_static_ip <- function(staticIpName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$get_static_ip_output()
@@ -5716,7 +5841,8 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$get_static_ips_input(pageToken = pageToken)
   output <- .lightsail$get_static_ips_output()
@@ -5747,7 +5873,8 @@ lightsail_import_key_pair <- function(keyPairName, publicKeyBase64) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$import_key_pair_input(keyPairName = keyPairName, publicKeyBase64 = publicKeyBase64)
   output <- .lightsail$import_key_pair_output()
@@ -5777,7 +5904,8 @@ lightsail_is_vpc_peered <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$is_vpc_peered_input()
   output <- .lightsail$is_vpc_peered_output()
@@ -5810,7 +5938,8 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$open_instance_public_ports_input(portInfo = portInfo, instanceName = instanceName)
   output <- .lightsail$open_instance_public_ports_output()
@@ -5840,7 +5969,8 @@ lightsail_peer_vpc <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$peer_vpc_input()
   output <- .lightsail$peer_vpc_output()
@@ -5983,7 +6113,8 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$put_alarm_input(alarmName = alarmName, metricName = metricName, monitoredResourceName = monitoredResourceName, comparisonOperator = comparisonOperator, threshold = threshold, evaluationPeriods = evaluationPeriods, datapointsToAlarm = datapointsToAlarm, treatMissingData = treatMissingData, contactProtocols = contactProtocols, notificationTriggers = notificationTriggers, notificationEnabled = notificationEnabled)
   output <- .lightsail$put_alarm_output()
@@ -6017,7 +6148,8 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$put_instance_public_ports_input(portInfos = portInfos, instanceName = instanceName)
   output <- .lightsail$put_instance_public_ports_output()
@@ -6047,7 +6179,8 @@ lightsail_reboot_instance <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$reboot_instance_input(instanceName = instanceName)
   output <- .lightsail$reboot_instance_output()
@@ -6077,7 +6210,8 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$reboot_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$reboot_relational_database_output()
@@ -6133,7 +6267,8 @@ lightsail_register_container_image <- function(serviceName, label, digest) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$register_container_image_input(serviceName = serviceName, label = label, digest = digest)
   output <- .lightsail$register_container_image_output()
@@ -6163,7 +6298,8 @@ lightsail_release_static_ip <- function(staticIpName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$release_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$release_static_ip_output()
@@ -6197,7 +6333,8 @@ lightsail_reset_distribution_cache <- function(distributionName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$reset_distribution_cache_input(distributionName = distributionName)
   output <- .lightsail$reset_distribution_cache_output()
@@ -6228,7 +6365,8 @@ lightsail_send_contact_method_verification <- function(protocol) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$send_contact_method_verification_input(protocol = protocol)
   output <- .lightsail$send_contact_method_verification_output()
@@ -6281,7 +6419,8 @@ lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$set_ip_address_type_input(resourceType = resourceType, resourceName = resourceName, ipAddressType = ipAddressType, acceptBundleUpdate = acceptBundleUpdate)
   output <- .lightsail$set_ip_address_type_output()
@@ -6323,7 +6462,8 @@ lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, a
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$set_resource_access_for_bucket_input(resourceName = resourceName, bucketName = bucketName, access = access)
   output <- .lightsail$set_resource_access_for_bucket_output()
@@ -6358,7 +6498,8 @@ lightsail_setup_instance_https <- function(instanceName, emailAddress, domainNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$setup_instance_https_input(instanceName = instanceName, emailAddress = emailAddress, domainNames = domainNames, certificateProvider = certificateProvider)
   output <- .lightsail$setup_instance_https_output()
@@ -6389,7 +6530,8 @@ lightsail_start_gui_session <- function(resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$start_gui_session_input(resourceName = resourceName)
   output <- .lightsail$start_gui_session_output()
@@ -6419,7 +6561,8 @@ lightsail_start_instance <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$start_instance_input(instanceName = instanceName)
   output <- .lightsail$start_instance_output()
@@ -6449,7 +6592,8 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$start_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$start_relational_database_output()
@@ -6480,7 +6624,8 @@ lightsail_stop_gui_session <- function(resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$stop_gui_session_input(resourceName = resourceName)
   output <- .lightsail$stop_gui_session_output()
@@ -6516,7 +6661,8 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$stop_instance_input(instanceName = instanceName, force = force)
   output <- .lightsail$stop_instance_output()
@@ -6548,7 +6694,8 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$stop_relational_database_input(relationalDatabaseName = relationalDatabaseName, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$stop_relational_database_output()
@@ -6581,7 +6728,8 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$tag_resource_input(resourceName = resourceName, resourceArn = resourceArn, tags = tags)
   output <- .lightsail$tag_resource_output()
@@ -6622,7 +6770,8 @@ lightsail_test_alarm <- function(alarmName, state) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$test_alarm_input(alarmName = alarmName, state = state)
   output <- .lightsail$test_alarm_output()
@@ -6652,7 +6801,8 @@ lightsail_unpeer_vpc <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$unpeer_vpc_input()
   output <- .lightsail$unpeer_vpc_output()
@@ -6686,7 +6836,8 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$untag_resource_input(resourceName = resourceName, resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .lightsail$untag_resource_output()
@@ -6733,7 +6884,8 @@ lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_bucket_input(bucketName = bucketName, accessRules = accessRules, versioning = versioning, readonlyAccessAccounts = readonlyAccessAccounts, accessLogConfig = accessLogConfig)
   output <- .lightsail$update_bucket_output()
@@ -6768,7 +6920,8 @@ lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_bucket_bundle_input(bucketName = bucketName, bundleId = bundleId)
   output <- .lightsail$update_bucket_bundle_output()
@@ -6845,7 +6998,8 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_container_service_input(serviceName = serviceName, power = power, scale = scale, isDisabled = isDisabled, publicDomainNames = publicDomainNames, privateRegistryAccess = privateRegistryAccess)
   output <- .lightsail$update_container_service_output()
@@ -6910,7 +7064,8 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, isEnabled = isEnabled, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion, certificateName = certificateName, useDefaultCertificate = useDefaultCertificate)
   output <- .lightsail$update_distribution_output()
@@ -6948,7 +7103,8 @@ lightsail_update_distribution_bundle <- function(distributionName = NULL, bundle
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_distribution_bundle_input(distributionName = distributionName, bundleId = bundleId)
   output <- .lightsail$update_distribution_bundle_output()
@@ -6980,7 +7136,8 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$update_domain_entry_output()
@@ -7038,7 +7195,8 @@ lightsail_update_instance_metadata_options <- function(instanceName, httpTokens 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_instance_metadata_options_input(instanceName = instanceName, httpTokens = httpTokens, httpEndpoint = httpEndpoint, httpPutResponseHopLimit = httpPutResponseHopLimit, httpProtocolIpv6 = httpProtocolIpv6)
   output <- .lightsail$update_instance_metadata_options_output()
@@ -7101,7 +7259,8 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_load_balancer_attribute_input(loadBalancerName = loadBalancerName, attributeName = attributeName, attributeValue = attributeValue)
   output <- .lightsail$update_load_balancer_attribute_output()
@@ -7209,7 +7368,8 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_relational_database_input(relationalDatabaseName = relationalDatabaseName, masterUserPassword = masterUserPassword, rotateMasterUserPassword = rotateMasterUserPassword, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, enableBackupRetention = enableBackupRetention, disableBackupRetention = disableBackupRetention, publiclyAccessible = publiclyAccessible, applyImmediately = applyImmediately, caCertificateIdentifier = caCertificateIdentifier, relationalDatabaseBlueprintId = relationalDatabaseBlueprintId)
   output <- .lightsail$update_relational_database_output()
@@ -7241,7 +7401,8 @@ lightsail_update_relational_database_parameters <- function(relationalDatabaseNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lightsail$update_relational_database_parameters_input(relationalDatabaseName = relationalDatabaseName, parameters = parameters)
   output <- .lightsail$update_relational_database_parameters_output()

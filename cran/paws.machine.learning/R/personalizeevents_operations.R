@@ -26,7 +26,8 @@ personalizeevents_put_action_interactions <- function(trackingId, actionInteract
     http_method = "POST",
     http_path = "/action-interactions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalizeevents$put_action_interactions_input(trackingId = trackingId, actionInteractions = actionInteractions)
   output <- .personalizeevents$put_action_interactions_output()
@@ -58,7 +59,8 @@ personalizeevents_put_actions <- function(datasetArn, actions) {
     http_method = "POST",
     http_path = "/actions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalizeevents$put_actions_input(datasetArn = datasetArn, actions = actions)
   output <- .personalizeevents$put_actions_output()
@@ -98,7 +100,8 @@ personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, e
     http_method = "POST",
     http_path = "/events",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalizeevents$put_events_input(trackingId = trackingId, userId = userId, sessionId = sessionId, eventList = eventList)
   output <- .personalizeevents$put_events_output()
@@ -130,7 +133,8 @@ personalizeevents_put_items <- function(datasetArn, items) {
     http_method = "POST",
     http_path = "/items",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalizeevents$put_items_input(datasetArn = datasetArn, items = items)
   output <- .personalizeevents$put_items_output()
@@ -162,7 +166,8 @@ personalizeevents_put_users <- function(datasetArn, users) {
     http_method = "POST",
     http_path = "/users",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalizeevents$put_users_input(datasetArn = datasetArn, users = users)
   output <- .personalizeevents$put_users_output()

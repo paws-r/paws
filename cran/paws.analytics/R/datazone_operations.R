@@ -31,7 +31,8 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/assets/{identifier}/accept-predictions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$accept_predictions_input(acceptChoices = acceptChoices, acceptRule = acceptRule, clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, revision = revision)
   output <- .datazone$accept_predictions_output()
@@ -50,6 +51,7 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #'
 #' See [https://www.paws-r-sdk.com/docs/datazone_accept_subscription_request/](https://www.paws-r-sdk.com/docs/datazone_accept_subscription_request/) for full documentation.
 #'
+#' @param assetScopes The asset scopes of the accept subscription request.
 #' @param decisionComment A description that specifies the reason for accepting the specified
 #' subscription request.
 #' @param domainIdentifier &#91;required&#93; The Amazon DataZone domain where the specified subscription request is
@@ -60,15 +62,16 @@ datazone_accept_predictions <- function(acceptChoices = NULL, acceptRule = NULL,
 #' @keywords internal
 #'
 #' @rdname datazone_accept_subscription_request
-datazone_accept_subscription_request <- function(decisionComment = NULL, domainIdentifier, identifier) {
+datazone_accept_subscription_request <- function(assetScopes = NULL, decisionComment = NULL, domainIdentifier, identifier) {
   op <- new_operation(
     name = "AcceptSubscriptionRequest",
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/accept",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
-  input <- .datazone$accept_subscription_request_input(decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
+  input <- .datazone$accept_subscription_request_input(assetScopes = assetScopes, decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$accept_subscription_request_output()
   config <- get_config()
   svc <- .datazone$service(config, op)
@@ -101,7 +104,8 @@ datazone_add_entity_owner <- function(clientToken = NULL, domainIdentifier, enti
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/addOwner",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$add_entity_owner_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, owner = owner)
   output <- .datazone$add_entity_owner_output()
@@ -140,7 +144,8 @@ datazone_add_policy_grant <- function(clientToken = NULL, detail, domainIdentifi
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/addGrant",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$add_policy_grant_input(clientToken = clientToken, detail = detail, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, policyType = policyType, principal = principal)
   output <- .datazone$add_policy_grant_output()
@@ -173,7 +178,8 @@ datazone_associate_environment_role <- function(domainIdentifier, environmentIde
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$associate_environment_role_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, environmentRoleArn = environmentRoleArn)
   output <- .datazone$associate_environment_role_output()
@@ -205,7 +211,8 @@ datazone_cancel_metadata_generation_run <- function(domainIdentifier, identifier
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}/cancel",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$cancel_metadata_generation_run_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$cancel_metadata_generation_run_output()
@@ -237,7 +244,8 @@ datazone_cancel_subscription <- function(domainIdentifier, identifier) {
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/subscriptions/{identifier}/cancel",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$cancel_subscription_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$cancel_subscription_output()
@@ -279,7 +287,8 @@ datazone_create_asset <- function(clientToken = NULL, description = NULL, domain
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/assets",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_asset_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, externalIdentifier = externalIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, name = name, owningProjectIdentifier = owningProjectIdentifier, predictionConfiguration = predictionConfiguration, typeIdentifier = typeIdentifier, typeRevision = typeRevision)
   output <- .datazone$create_asset_output()
@@ -315,7 +324,8 @@ datazone_create_asset_filter <- function(assetIdentifier, clientToken = NULL, co
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_asset_filter_input(assetIdentifier = assetIdentifier, clientToken = clientToken, configuration = configuration, description = description, domainIdentifier = domainIdentifier, name = name)
   output <- .datazone$create_asset_filter_output()
@@ -357,7 +367,8 @@ datazone_create_asset_revision <- function(clientToken = NULL, description = NUL
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/assets/{identifier}/revisions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_asset_revision_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, identifier = identifier, name = name, predictionConfiguration = predictionConfiguration, typeRevision = typeRevision)
   output <- .datazone$create_asset_revision_output()
@@ -393,7 +404,8 @@ datazone_create_asset_type <- function(description = NULL, domainIdentifier, for
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/asset-types",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_asset_type_input(description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, name = name, owningProjectIdentifier = owningProjectIdentifier)
   output <- .datazone$create_asset_type_output()
@@ -431,7 +443,8 @@ datazone_create_data_product <- function(clientToken = NULL, description = NULL,
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/data-products",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_data_product_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, items = items, name = name, owningProjectIdentifier = owningProjectIdentifier)
   output <- .datazone$create_data_product_output()
@@ -469,7 +482,8 @@ datazone_create_data_product_revision <- function(clientToken = NULL, descriptio
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_data_product_revision_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, formsInput = formsInput, glossaryTerms = glossaryTerms, identifier = identifier, items = items, name = name)
   output <- .datazone$create_data_product_revision_output()
@@ -518,7 +532,8 @@ datazone_create_data_source <- function(assetFormsInput = NULL, clientToken = NU
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/data-sources",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_data_source_input(assetFormsInput = assetFormsInput, clientToken = clientToken, configuration = configuration, description = description, domainIdentifier = domainIdentifier, enableSetting = enableSetting, environmentIdentifier = environmentIdentifier, name = name, projectIdentifier = projectIdentifier, publishOnImport = publishOnImport, recommendation = recommendation, schedule = schedule, type = type)
   output <- .datazone$create_data_source_output()
@@ -559,7 +574,8 @@ datazone_create_domain <- function(clientToken = NULL, description = NULL, domai
     http_method = "POST",
     http_path = "/v2/domains",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, kmsKeyIdentifier = kmsKeyIdentifier, name = name, singleSignOn = singleSignOn, tags = tags)
   output <- .datazone$create_domain_output()
@@ -594,7 +610,8 @@ datazone_create_domain_unit <- function(clientToken = NULL, description = NULL, 
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/domain-units",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_domain_unit_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, name = name, parentDomainUnitIdentifier = parentDomainUnitIdentifier)
   output <- .datazone$create_domain_unit_output()
@@ -636,7 +653,8 @@ datazone_create_environment <- function(description = NULL, domainIdentifier, en
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/environments",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_environment_input(description = description, domainIdentifier = domainIdentifier, environmentAccountIdentifier = environmentAccountIdentifier, environmentAccountRegion = environmentAccountRegion, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentProfileIdentifier = environmentProfileIdentifier, glossaryTerms = glossaryTerms, name = name, projectIdentifier = projectIdentifier, userParameters = userParameters)
   output <- .datazone$create_environment_output()
@@ -673,7 +691,8 @@ datazone_create_environment_action <- function(description = NULL, domainIdentif
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_environment_action_input(description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, name = name, parameters = parameters)
   output <- .datazone$create_environment_action_output()
@@ -714,7 +733,8 @@ datazone_create_environment_profile <- function(awsAccountId = NULL, awsAccountR
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/environment-profiles",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_environment_profile_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, description = description, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, name = name, projectIdentifier = projectIdentifier, userParameters = userParameters)
   output <- .datazone$create_environment_profile_output()
@@ -750,7 +770,8 @@ datazone_create_form_type <- function(description = NULL, domainIdentifier, mode
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/form-types",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_form_type_input(description = description, domainIdentifier = domainIdentifier, model = model, name = name, owningProjectIdentifier = owningProjectIdentifier, status = status)
   output <- .datazone$create_form_type_output()
@@ -787,7 +808,8 @@ datazone_create_glossary <- function(clientToken = NULL, description = NULL, dom
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/glossaries",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_glossary_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, name = name, owningProjectIdentifier = owningProjectIdentifier, status = status)
   output <- .datazone$create_glossary_output()
@@ -826,7 +848,8 @@ datazone_create_glossary_term <- function(clientToken = NULL, domainIdentifier, 
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/glossary-terms",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_glossary_term_input(clientToken = clientToken, domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, longDescription = longDescription, name = name, shortDescription = shortDescription, status = status, termRelations = termRelations)
   output <- .datazone$create_glossary_term_output()
@@ -860,7 +883,8 @@ datazone_create_group_profile <- function(clientToken = NULL, domainIdentifier, 
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/group-profiles",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_group_profile_input(clientToken = clientToken, domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier)
   output <- .datazone$create_group_profile_output()
@@ -897,7 +921,8 @@ datazone_create_listing_change_set <- function(action, clientToken = NULL, domai
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/listings/change-set",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_listing_change_set_input(action = action, clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityRevision = entityRevision, entityType = entityType)
   output <- .datazone$create_listing_change_set_output()
@@ -933,7 +958,8 @@ datazone_create_project <- function(description = NULL, domainIdentifier, domain
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/projects",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_project_input(description = description, domainIdentifier = domainIdentifier, domainUnitId = domainUnitId, glossaryTerms = glossaryTerms, name = name)
   output <- .datazone$create_project_output()
@@ -967,7 +993,8 @@ datazone_create_project_membership <- function(designation, domainIdentifier, me
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/createMembership",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_project_membership_input(designation = designation, domainIdentifier = domainIdentifier, member = member, projectIdentifier = projectIdentifier)
   output <- .datazone$create_project_membership_output()
@@ -1005,7 +1032,8 @@ datazone_create_subscription_grant <- function(assetTargetNames = NULL, clientTo
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/subscription-grants",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_subscription_grant_input(assetTargetNames = assetTargetNames, clientToken = clientToken, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, grantedEntity = grantedEntity, subscriptionTargetIdentifier = subscriptionTargetIdentifier)
   output <- .datazone$create_subscription_grant_output()
@@ -1042,7 +1070,8 @@ datazone_create_subscription_request <- function(clientToken = NULL, domainIdent
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/subscription-requests",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_subscription_request_input(clientToken = clientToken, domainIdentifier = domainIdentifier, requestReason = requestReason, subscribedListings = subscribedListings, subscribedPrincipals = subscribedPrincipals)
   output <- .datazone$create_subscription_request_output()
@@ -1083,7 +1112,8 @@ datazone_create_subscription_target <- function(applicableAssetTypes, authorized
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_subscription_target_input(applicableAssetTypes = applicableAssetTypes, authorizedPrincipals = authorizedPrincipals, clientToken = clientToken, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, manageAccessRole = manageAccessRole, name = name, provider = provider, subscriptionTargetConfig = subscriptionTargetConfig, type = type)
   output <- .datazone$create_subscription_target_output()
@@ -1118,7 +1148,8 @@ datazone_create_user_profile <- function(clientToken = NULL, domainIdentifier, u
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/user-profiles",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$create_user_profile_input(clientToken = clientToken, domainIdentifier = domainIdentifier, userIdentifier = userIdentifier, userType = userType)
   output <- .datazone$create_user_profile_output()
@@ -1149,7 +1180,8 @@ datazone_delete_asset <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/assets/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_asset_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_asset_output()
@@ -1181,7 +1213,8 @@ datazone_delete_asset_filter <- function(assetIdentifier, domainIdentifier, iden
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_asset_filter_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_asset_filter_output()
@@ -1212,7 +1245,8 @@ datazone_delete_asset_type <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/asset-types/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_asset_type_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_asset_type_output()
@@ -1244,7 +1278,8 @@ datazone_delete_data_product <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/data-products/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_data_product_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_data_product_output()
@@ -1280,7 +1315,8 @@ datazone_delete_data_source <- function(clientToken = NULL, domainIdentifier, id
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/data-sources/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_data_source_input(clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure)
   output <- .datazone$delete_data_source_output()
@@ -1314,7 +1350,8 @@ datazone_delete_domain <- function(clientToken = NULL, identifier, skipDeletionC
     http_method = "DELETE",
     http_path = "/v2/domains/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_domain_input(clientToken = clientToken, identifier = identifier, skipDeletionCheck = skipDeletionCheck)
   output <- .datazone$delete_domain_output()
@@ -1345,7 +1382,8 @@ datazone_delete_domain_unit <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/domain-units/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_domain_unit_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_domain_unit_output()
@@ -1377,7 +1415,8 @@ datazone_delete_environment <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/environments/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_environment_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_environment_output()
@@ -1411,7 +1450,8 @@ datazone_delete_environment_action <- function(domainIdentifier, environmentIden
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_environment_action_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier)
   output <- .datazone$delete_environment_action_output()
@@ -1443,7 +1483,8 @@ datazone_delete_environment_blueprint_configuration <- function(domainIdentifier
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier)
   output <- .datazone$delete_environment_blueprint_configuration_output()
@@ -1475,7 +1516,8 @@ datazone_delete_environment_profile <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_environment_profile_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_environment_profile_output()
@@ -1507,7 +1549,8 @@ datazone_delete_form_type <- function(domainIdentifier, formTypeIdentifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/form-types/{formTypeIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_form_type_input(domainIdentifier = domainIdentifier, formTypeIdentifier = formTypeIdentifier)
   output <- .datazone$delete_form_type_output()
@@ -1539,7 +1582,8 @@ datazone_delete_glossary <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/glossaries/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_glossary_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_glossary_output()
@@ -1571,7 +1615,8 @@ datazone_delete_glossary_term <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_glossary_term_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_glossary_term_output()
@@ -1602,7 +1647,8 @@ datazone_delete_listing <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/listings/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_listing_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_listing_output()
@@ -1635,7 +1681,8 @@ datazone_delete_project <- function(domainIdentifier, identifier, skipDeletionCh
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/projects/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_project_input(domainIdentifier = domainIdentifier, identifier = identifier, skipDeletionCheck = skipDeletionCheck)
   output <- .datazone$delete_project_output()
@@ -1669,7 +1716,8 @@ datazone_delete_project_membership <- function(domainIdentifier, member, project
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/deleteMembership",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_project_membership_input(domainIdentifier = domainIdentifier, member = member, projectIdentifier = projectIdentifier)
   output <- .datazone$delete_project_membership_output()
@@ -1701,7 +1749,8 @@ datazone_delete_subscription_grant <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_subscription_grant_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_subscription_grant_output()
@@ -1733,7 +1782,8 @@ datazone_delete_subscription_request <- function(domainIdentifier, identifier) {
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_subscription_request_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$delete_subscription_request_output()
@@ -1767,7 +1817,8 @@ datazone_delete_subscription_target <- function(domainIdentifier, environmentIde
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_subscription_target_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier)
   output <- .datazone$delete_subscription_target_output()
@@ -1803,7 +1854,8 @@ datazone_delete_time_series_data_points <- function(clientToken = NULL, domainId
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$delete_time_series_data_points_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName)
   output <- .datazone$delete_time_series_data_points_output()
@@ -1836,7 +1888,8 @@ datazone_disassociate_environment_role <- function(domainIdentifier, environment
     http_method = "DELETE",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/roles/{environmentRoleArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$disassociate_environment_role_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, environmentRoleArn = environmentRoleArn)
   output <- .datazone$disassociate_environment_role_output()
@@ -1868,7 +1921,8 @@ datazone_get_asset <- function(domainIdentifier, identifier, revision = NULL) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/assets/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_asset_input(domainIdentifier = domainIdentifier, identifier = identifier, revision = revision)
   output <- .datazone$get_asset_output()
@@ -1900,7 +1954,8 @@ datazone_get_asset_filter <- function(assetIdentifier, domainIdentifier, identif
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_asset_filter_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_asset_filter_output()
@@ -1932,7 +1987,8 @@ datazone_get_asset_type <- function(domainIdentifier, identifier, revision = NUL
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/asset-types/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_asset_type_input(domainIdentifier = domainIdentifier, identifier = identifier, revision = revision)
   output <- .datazone$get_asset_type_output()
@@ -1964,7 +2020,8 @@ datazone_get_data_product <- function(domainIdentifier, identifier, revision = N
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/data-products/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_data_product_input(domainIdentifier = domainIdentifier, identifier = identifier, revision = revision)
   output <- .datazone$get_data_product_output()
@@ -1995,7 +2052,8 @@ datazone_get_data_source <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/data-sources/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_data_source_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_data_source_output()
@@ -2026,7 +2084,8 @@ datazone_get_data_source_run <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/data-source-runs/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_data_source_run_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_data_source_run_output()
@@ -2056,7 +2115,8 @@ datazone_get_domain <- function(identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_domain_input(identifier = identifier)
   output <- .datazone$get_domain_output()
@@ -2087,7 +2147,8 @@ datazone_get_domain_unit <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/domain-units/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_domain_unit_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_domain_unit_output()
@@ -2118,7 +2179,8 @@ datazone_get_environment <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environments/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_environment_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_environment_output()
@@ -2152,7 +2214,8 @@ datazone_get_environment_action <- function(domainIdentifier, environmentIdentif
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_environment_action_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier)
   output <- .datazone$get_environment_action_output()
@@ -2183,7 +2246,8 @@ datazone_get_environment_blueprint <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environment-blueprints/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_environment_blueprint_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_environment_blueprint_output()
@@ -2214,7 +2278,8 @@ datazone_get_environment_blueprint_configuration <- function(domainIdentifier, e
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier)
   output <- .datazone$get_environment_blueprint_configuration_output()
@@ -2246,7 +2311,8 @@ datazone_get_environment_credentials <- function(domainIdentifier, environmentId
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/credentials",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_environment_credentials_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier)
   output <- .datazone$get_environment_credentials_output()
@@ -2278,7 +2344,8 @@ datazone_get_environment_profile <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_environment_profile_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_environment_profile_output()
@@ -2311,7 +2378,8 @@ datazone_get_form_type <- function(domainIdentifier, formTypeIdentifier, revisio
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/form-types/{formTypeIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_form_type_input(domainIdentifier = domainIdentifier, formTypeIdentifier = formTypeIdentifier, revision = revision)
   output <- .datazone$get_form_type_output()
@@ -2343,7 +2411,8 @@ datazone_get_glossary <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/glossaries/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_glossary_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_glossary_output()
@@ -2375,7 +2444,8 @@ datazone_get_glossary_term <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_glossary_term_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_glossary_term_output()
@@ -2407,7 +2477,8 @@ datazone_get_group_profile <- function(domainIdentifier, groupIdentifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/group-profiles/{groupIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_group_profile_input(domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier)
   output <- .datazone$get_group_profile_output()
@@ -2438,7 +2509,8 @@ datazone_get_iam_portal_login_url <- function(domainIdentifier) {
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/get-portal-login-url",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_iam_portal_login_url_input(domainIdentifier = domainIdentifier)
   output <- .datazone$get_iam_portal_login_url_output()
@@ -2475,7 +2547,8 @@ datazone_get_lineage_node <- function(domainIdentifier, eventTimestamp = NULL, i
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/lineage/nodes/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_lineage_node_input(domainIdentifier = domainIdentifier, eventTimestamp = eventTimestamp, identifier = identifier)
   output <- .datazone$get_lineage_node_output()
@@ -2507,7 +2580,8 @@ datazone_get_listing <- function(domainIdentifier, identifier, listingRevision =
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/listings/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_listing_input(domainIdentifier = domainIdentifier, identifier = identifier, listingRevision = listingRevision)
   output <- .datazone$get_listing_output()
@@ -2539,7 +2613,8 @@ datazone_get_metadata_generation_run <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/metadata-generation-runs/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_metadata_generation_run_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_metadata_generation_run_output()
@@ -2570,7 +2645,8 @@ datazone_get_project <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/projects/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_project_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_project_output()
@@ -2601,7 +2677,8 @@ datazone_get_subscription <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/subscriptions/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_subscription_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_subscription_output()
@@ -2633,7 +2710,8 @@ datazone_get_subscription_grant <- function(domainIdentifier, identifier) {
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_subscription_grant_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_subscription_grant_output()
@@ -2665,7 +2743,8 @@ datazone_get_subscription_request_details <- function(domainIdentifier, identifi
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_subscription_request_details_input(domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$get_subscription_request_details_output()
@@ -2698,7 +2777,8 @@ datazone_get_subscription_target <- function(domainIdentifier, environmentIdenti
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_subscription_target_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier)
   output <- .datazone$get_subscription_target_output()
@@ -2734,7 +2814,8 @@ datazone_get_time_series_data_point <- function(domainIdentifier, entityIdentifi
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_time_series_data_point_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, identifier = identifier)
   output <- .datazone$get_time_series_data_point_output()
@@ -2767,7 +2848,8 @@ datazone_get_user_profile <- function(domainIdentifier, type = NULL, userIdentif
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/user-profiles/{userIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$get_user_profile_input(domainIdentifier = domainIdentifier, type = type, userIdentifier = userIdentifier)
   output <- .datazone$get_user_profile_output()
@@ -2812,7 +2894,8 @@ datazone_list_asset_filters <- function(assetIdentifier, domainIdentifier, maxRe
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_asset_filters_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .datazone$list_asset_filters_output()
@@ -2856,7 +2939,8 @@ datazone_list_asset_revisions <- function(domainIdentifier, identifier, maxResul
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/assets/{identifier}/revisions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_asset_revisions_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_asset_revisions_output()
@@ -2902,7 +2986,8 @@ datazone_list_data_product_revisions <- function(domainIdentifier, identifier, m
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/data-products/{identifier}/revisions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_data_product_revisions_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_data_product_revisions_output()
@@ -2949,7 +3034,8 @@ datazone_list_data_source_run_activities <- function(domainIdentifier, identifie
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/data-source-runs/{identifier}/activities",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_data_source_run_activities_input(domainIdentifier = domainIdentifier, identifier = identifier, maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .datazone$list_data_source_run_activities_output()
@@ -2996,7 +3082,8 @@ datazone_list_data_source_runs <- function(dataSourceIdentifier, domainIdentifie
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/data-sources/{dataSourceIdentifier}/runs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_data_source_runs_input(dataSourceIdentifier = dataSourceIdentifier, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .datazone$list_data_source_runs_output()
@@ -3045,7 +3132,8 @@ datazone_list_data_sources <- function(domainIdentifier, environmentIdentifier =
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/data-sources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_data_sources_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, status = status, type = type)
   output <- .datazone$list_data_sources_output()
@@ -3088,7 +3176,8 @@ datazone_list_domain_units_for_parent <- function(domainIdentifier, maxResults =
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/domain-units",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_domain_units_for_parent_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, parentDomainUnitIdentifier = parentDomainUnitIdentifier)
   output <- .datazone$list_domain_units_for_parent_output()
@@ -3129,7 +3218,8 @@ datazone_list_domains <- function(maxResults = NULL, nextToken = NULL, status = 
     http_method = "GET",
     http_path = "/v2/domains",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_domains_input(maxResults = maxResults, nextToken = nextToken, status = status)
   output <- .datazone$list_domains_output()
@@ -3174,7 +3264,8 @@ datazone_list_entity_owners <- function(domainIdentifier, entityIdentifier, enti
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/owners",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "owners")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "owners"),
+    stream_api = FALSE
   )
   input <- .datazone$list_entity_owners_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_entity_owners_output()
@@ -3220,7 +3311,8 @@ datazone_list_environment_actions <- function(domainIdentifier, environmentIdent
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_environment_actions_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_environment_actions_output()
@@ -3265,7 +3357,8 @@ datazone_list_environment_blueprint_configurations <- function(domainIdentifier,
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environment-blueprint-configurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_environment_blueprint_configurations_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken)
   output <- .datazone$list_environment_blueprint_configurations_output()
@@ -3313,7 +3406,8 @@ datazone_list_environment_blueprints <- function(domainIdentifier, managed = NUL
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environment-blueprints",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_environment_blueprints_input(domainIdentifier = domainIdentifier, managed = managed, maxResults = maxResults, name = name, nextToken = nextToken)
   output <- .datazone$list_environment_blueprints_output()
@@ -3365,7 +3459,8 @@ datazone_list_environment_profiles <- function(awsAccountId = NULL, awsAccountRe
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environment-profiles",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_environment_profiles_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier)
   output <- .datazone$list_environment_profiles_output()
@@ -3417,7 +3512,8 @@ datazone_list_environments <- function(awsAccountId = NULL, awsAccountRegion = N
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environments",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_environments_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, domainIdentifier = domainIdentifier, environmentBlueprintIdentifier = environmentBlueprintIdentifier, environmentProfileIdentifier = environmentProfileIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, projectIdentifier = projectIdentifier, provider = provider, status = status)
   output <- .datazone$list_environments_output()
@@ -3469,7 +3565,8 @@ datazone_list_lineage_node_history <- function(direction = NULL, domainIdentifie
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/lineage/nodes/{identifier}/history",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "nodes")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "nodes"),
+    stream_api = FALSE
   )
   input <- .datazone$list_lineage_node_history_input(direction = direction, domainIdentifier = domainIdentifier, eventTimestampGTE = eventTimestampGTE, eventTimestampLTE = eventTimestampLTE, identifier = identifier, maxResults = maxResults, nextToken = nextToken, sortOrder = sortOrder)
   output <- .datazone$list_lineage_node_history_output()
@@ -3513,7 +3610,8 @@ datazone_list_metadata_generation_runs <- function(domainIdentifier, maxResults 
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/metadata-generation-runs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_metadata_generation_runs_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, status = status, type = type)
   output <- .datazone$list_metadata_generation_runs_output()
@@ -3561,7 +3659,8 @@ datazone_list_notifications <- function(afterTimestamp = NULL, beforeTimestamp =
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/notifications",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "notifications")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "notifications"),
+    stream_api = FALSE
   )
   input <- .datazone$list_notifications_input(afterTimestamp = afterTimestamp, beforeTimestamp = beforeTimestamp, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, subjects = subjects, taskStatus = taskStatus, type = type)
   output <- .datazone$list_notifications_output()
@@ -3607,7 +3706,8 @@ datazone_list_policy_grants <- function(domainIdentifier, entityIdentifier, enti
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/grants",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grantList")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grantList"),
+    stream_api = FALSE
   )
   input <- .datazone$list_policy_grants_input(domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, maxResults = maxResults, nextToken = nextToken, policyType = policyType)
   output <- .datazone$list_policy_grants_output()
@@ -3655,7 +3755,8 @@ datazone_list_project_memberships <- function(domainIdentifier, maxResults = NUL
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/projects/{projectIdentifier}/memberships",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members"),
+    stream_api = FALSE
   )
   input <- .datazone$list_project_memberships_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, projectIdentifier = projectIdentifier, sortBy = sortBy, sortOrder = sortOrder)
   output <- .datazone$list_project_memberships_output()
@@ -3701,7 +3802,8 @@ datazone_list_projects <- function(domainIdentifier, groupIdentifier = NULL, max
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/projects",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_projects_input(domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier, maxResults = maxResults, name = name, nextToken = nextToken, userIdentifier = userIdentifier)
   output <- .datazone$list_projects_output()
@@ -3752,7 +3854,8 @@ datazone_list_subscription_grants <- function(domainIdentifier, environmentId = 
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/subscription-grants",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_subscription_grants_input(domainIdentifier = domainIdentifier, environmentId = environmentId, maxResults = maxResults, nextToken = nextToken, owningProjectId = owningProjectId, sortBy = sortBy, sortOrder = sortOrder, subscribedListingId = subscribedListingId, subscriptionId = subscriptionId, subscriptionTargetId = subscriptionTargetId)
   output <- .datazone$list_subscription_grants_output()
@@ -3805,7 +3908,8 @@ datazone_list_subscription_requests <- function(approverProjectId = NULL, domain
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/subscription-requests",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_subscription_requests_input(approverProjectId = approverProjectId, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, owningProjectId = owningProjectId, sortBy = sortBy, sortOrder = sortOrder, status = status, subscribedListingId = subscribedListingId)
   output <- .datazone$list_subscription_requests_output()
@@ -3854,7 +3958,8 @@ datazone_list_subscription_targets <- function(domainIdentifier, environmentIden
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_subscription_targets_input(domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, sortOrder = sortOrder)
   output <- .datazone$list_subscription_targets_output()
@@ -3909,7 +4014,8 @@ datazone_list_subscriptions <- function(approverProjectId = NULL, domainIdentifi
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/subscriptions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_subscriptions_input(approverProjectId = approverProjectId, domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, owningProjectId = owningProjectId, sortBy = sortBy, sortOrder = sortOrder, status = status, subscribedListingId = subscribedListingId, subscriptionRequestIdentifier = subscriptionRequestIdentifier)
   output <- .datazone$list_subscriptions_output()
@@ -3939,7 +4045,8 @@ datazone_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .datazone$list_tags_for_resource_output()
@@ -3986,7 +4093,8 @@ datazone_list_time_series_data_points <- function(domainIdentifier, endedAt = NU
     http_method = "GET",
     http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$list_time_series_data_points_input(domainIdentifier = domainIdentifier, endedAt = endedAt, entityIdentifier = entityIdentifier, entityType = entityType, formName = formName, maxResults = maxResults, nextToken = nextToken, startedAt = startedAt)
   output <- .datazone$list_time_series_data_points_output()
@@ -4020,7 +4128,8 @@ datazone_post_lineage_event <- function(clientToken = NULL, domainIdentifier, ev
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/lineage/events",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$post_lineage_event_input(clientToken = clientToken, domainIdentifier = domainIdentifier, event = event)
   output <- .datazone$post_lineage_event_output()
@@ -4056,7 +4165,8 @@ datazone_post_time_series_data_points <- function(clientToken = NULL, domainIden
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/time-series-data-points",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$post_time_series_data_points_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, forms = forms)
   output <- .datazone$post_time_series_data_points_output()
@@ -4093,7 +4203,8 @@ datazone_put_environment_blueprint_configuration <- function(domainIdentifier, e
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/environment-blueprint-configurations/{environmentBlueprintIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$put_environment_blueprint_configuration_input(domainIdentifier = domainIdentifier, enabledRegions = enabledRegions, environmentBlueprintIdentifier = environmentBlueprintIdentifier, manageAccessRoleArn = manageAccessRoleArn, provisioningConfigurations = provisioningConfigurations, provisioningRoleArn = provisioningRoleArn, regionalParameters = regionalParameters)
   output <- .datazone$put_environment_blueprint_configuration_output()
@@ -4133,7 +4244,8 @@ datazone_reject_predictions <- function(clientToken = NULL, domainIdentifier, id
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/assets/{identifier}/reject-predictions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$reject_predictions_input(clientToken = clientToken, domainIdentifier = domainIdentifier, identifier = identifier, rejectChoices = rejectChoices, rejectRule = rejectRule, revision = revision)
   output <- .datazone$reject_predictions_output()
@@ -4166,7 +4278,8 @@ datazone_reject_subscription_request <- function(decisionComment = NULL, domainI
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}/reject",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$reject_subscription_request_input(decisionComment = decisionComment, domainIdentifier = domainIdentifier, identifier = identifier)
   output <- .datazone$reject_subscription_request_output()
@@ -4201,7 +4314,8 @@ datazone_remove_entity_owner <- function(clientToken = NULL, domainIdentifier, e
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/entities/{entityType}/{entityIdentifier}/removeOwner",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$remove_entity_owner_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, owner = owner)
   output <- .datazone$remove_entity_owner_output()
@@ -4237,7 +4351,8 @@ datazone_remove_policy_grant <- function(clientToken = NULL, domainIdentifier, e
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/policies/managed/{entityType}/{entityIdentifier}/removeGrant",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$remove_policy_grant_input(clientToken = clientToken, domainIdentifier = domainIdentifier, entityIdentifier = entityIdentifier, entityType = entityType, policyType = policyType, principal = principal)
   output <- .datazone$remove_policy_grant_output()
@@ -4271,7 +4386,8 @@ datazone_revoke_subscription <- function(domainIdentifier, identifier, retainPer
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/subscriptions/{identifier}/revoke",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$revoke_subscription_input(domainIdentifier = domainIdentifier, identifier = identifier, retainPermissions = retainPermissions)
   output <- .datazone$revoke_subscription_output()
@@ -4320,7 +4436,8 @@ datazone_search <- function(additionalAttributes = NULL, domainIdentifier, filte
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/search",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$search_input(additionalAttributes = additionalAttributes, domainIdentifier = domainIdentifier, filters = filters, maxResults = maxResults, nextToken = nextToken, owningProjectIdentifier = owningProjectIdentifier, searchIn = searchIn, searchScope = searchScope, searchText = searchText, sort = sort)
   output <- .datazone$search_output()
@@ -4367,7 +4484,8 @@ datazone_search_group_profiles <- function(domainIdentifier, groupType, maxResul
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/search-group-profiles",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$search_group_profiles_input(domainIdentifier = domainIdentifier, groupType = groupType, maxResults = maxResults, nextToken = nextToken, searchText = searchText)
   output <- .datazone$search_group_profiles_output()
@@ -4416,7 +4534,8 @@ datazone_search_listings <- function(additionalAttributes = NULL, domainIdentifi
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/listings/search",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$search_listings_input(additionalAttributes = additionalAttributes, domainIdentifier = domainIdentifier, filters = filters, maxResults = maxResults, nextToken = nextToken, searchIn = searchIn, searchText = searchText, sort = sort)
   output <- .datazone$search_listings_output()
@@ -4465,7 +4584,8 @@ datazone_search_types <- function(domainIdentifier, filters = NULL, managed, max
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/types-search",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$search_types_input(domainIdentifier = domainIdentifier, filters = filters, managed = managed, maxResults = maxResults, nextToken = nextToken, searchIn = searchIn, searchScope = searchScope, searchText = searchText, sort = sort)
   output <- .datazone$search_types_output()
@@ -4512,7 +4632,8 @@ datazone_search_user_profiles <- function(domainIdentifier, maxResults = NULL, n
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/search-user-profiles",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
+    stream_api = FALSE
   )
   input <- .datazone$search_user_profiles_input(domainIdentifier = domainIdentifier, maxResults = maxResults, nextToken = nextToken, searchText = searchText, userType = userType)
   output <- .datazone$search_user_profiles_output()
@@ -4546,7 +4667,8 @@ datazone_start_data_source_run <- function(clientToken = NULL, dataSourceIdentif
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/data-sources/{dataSourceIdentifier}/runs",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$start_data_source_run_input(clientToken = clientToken, dataSourceIdentifier = dataSourceIdentifier, domainIdentifier = domainIdentifier)
   output <- .datazone$start_data_source_run_output()
@@ -4583,7 +4705,8 @@ datazone_start_metadata_generation_run <- function(clientToken = NULL, domainIde
     http_method = "POST",
     http_path = "/v2/domains/{domainIdentifier}/metadata-generation-runs",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$start_metadata_generation_run_input(clientToken = clientToken, domainIdentifier = domainIdentifier, owningProjectIdentifier = owningProjectIdentifier, target = target, type = type)
   output <- .datazone$start_metadata_generation_run_output()
@@ -4615,7 +4738,8 @@ datazone_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .datazone$tag_resource_output()
@@ -4647,7 +4771,8 @@ datazone_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .datazone$untag_resource_output()
@@ -4682,7 +4807,8 @@ datazone_update_asset_filter <- function(assetIdentifier, configuration = NULL, 
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/assets/{assetIdentifier}/filters/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_asset_filter_input(assetIdentifier = assetIdentifier, configuration = configuration, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name)
   output <- .datazone$update_asset_filter_output()
@@ -4731,7 +4857,8 @@ datazone_update_data_source <- function(assetFormsInput = NULL, configuration = 
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/data-sources/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_data_source_input(assetFormsInput = assetFormsInput, configuration = configuration, description = description, domainIdentifier = domainIdentifier, enableSetting = enableSetting, identifier = identifier, name = name, publishOnImport = publishOnImport, recommendation = recommendation, retainPermissionsOnRevokeFailure = retainPermissionsOnRevokeFailure, schedule = schedule)
   output <- .datazone$update_data_source_output()
@@ -4771,7 +4898,8 @@ datazone_update_domain <- function(clientToken = NULL, description = NULL, domai
     http_method = "PUT",
     http_path = "/v2/domains/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_domain_input(clientToken = clientToken, description = description, domainExecutionRole = domainExecutionRole, identifier = identifier, name = name, singleSignOn = singleSignOn)
   output <- .datazone$update_domain_output()
@@ -4804,7 +4932,8 @@ datazone_update_domain_unit <- function(description = NULL, domainIdentifier, id
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/domain-units/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_domain_unit_input(description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name)
   output <- .datazone$update_domain_unit_output()
@@ -4841,7 +4970,8 @@ datazone_update_environment <- function(description = NULL, domainIdentifier, gl
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/environments/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_environment_input(description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name)
   output <- .datazone$update_environment_output()
@@ -4876,7 +5006,8 @@ datazone_update_environment_action <- function(description = NULL, domainIdentif
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/actions/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_environment_action_input(description = description, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, name = name, parameters = parameters)
   output <- .datazone$update_environment_action_output()
@@ -4921,7 +5052,8 @@ datazone_update_environment_profile <- function(awsAccountId = NULL, awsAccountR
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/environment-profiles/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_environment_profile_input(awsAccountId = awsAccountId, awsAccountRegion = awsAccountRegion, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name, userParameters = userParameters)
   output <- .datazone$update_environment_profile_output()
@@ -4961,7 +5093,8 @@ datazone_update_glossary <- function(clientToken = NULL, description = NULL, dom
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/glossaries/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_glossary_input(clientToken = clientToken, description = description, domainIdentifier = domainIdentifier, identifier = identifier, name = name, status = status)
   output <- .datazone$update_glossary_output()
@@ -5005,7 +5138,8 @@ datazone_update_glossary_term <- function(domainIdentifier, glossaryIdentifier =
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/glossary-terms/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_glossary_term_input(domainIdentifier = domainIdentifier, glossaryIdentifier = glossaryIdentifier, identifier = identifier, longDescription = longDescription, name = name, shortDescription = shortDescription, status = status, termRelations = termRelations)
   output <- .datazone$update_glossary_term_output()
@@ -5038,7 +5172,8 @@ datazone_update_group_profile <- function(domainIdentifier, groupIdentifier, sta
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/group-profiles/{groupIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_group_profile_input(domainIdentifier = domainIdentifier, groupIdentifier = groupIdentifier, status = status)
   output <- .datazone$update_group_profile_output()
@@ -5075,7 +5210,8 @@ datazone_update_project <- function(description = NULL, domainIdentifier, glossa
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/projects/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_project_input(description = description, domainIdentifier = domainIdentifier, glossaryTerms = glossaryTerms, identifier = identifier, name = name)
   output <- .datazone$update_project_output()
@@ -5119,7 +5255,8 @@ datazone_update_subscription_grant_status <- function(assetIdentifier, domainIde
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/subscription-grants/{identifier}/status/{assetIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_subscription_grant_status_input(assetIdentifier = assetIdentifier, domainIdentifier = domainIdentifier, failureCause = failureCause, identifier = identifier, status = status, targetName = targetName)
   output <- .datazone$update_subscription_grant_status_output()
@@ -5154,7 +5291,8 @@ datazone_update_subscription_request <- function(domainIdentifier, identifier, r
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/subscription-requests/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_subscription_request_input(domainIdentifier = domainIdentifier, identifier = identifier, requestReason = requestReason)
   output <- .datazone$update_subscription_request_output()
@@ -5206,7 +5344,8 @@ datazone_update_subscription_target <- function(applicableAssetTypes = NULL, aut
     http_method = "PATCH",
     http_path = "/v2/domains/{domainIdentifier}/environments/{environmentIdentifier}/subscription-targets/{identifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_subscription_target_input(applicableAssetTypes = applicableAssetTypes, authorizedPrincipals = authorizedPrincipals, domainIdentifier = domainIdentifier, environmentIdentifier = environmentIdentifier, identifier = identifier, manageAccessRole = manageAccessRole, name = name, provider = provider, subscriptionTargetConfig = subscriptionTargetConfig)
   output <- .datazone$update_subscription_target_output()
@@ -5240,7 +5379,8 @@ datazone_update_user_profile <- function(domainIdentifier, status, type = NULL, 
     http_method = "PUT",
     http_path = "/v2/domains/{domainIdentifier}/user-profiles/{userIdentifier}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .datazone$update_user_profile_input(domainIdentifier = domainIdentifier, status = status, type = type, userIdentifier = userIdentifier)
   output <- .datazone$update_user_profile_output()

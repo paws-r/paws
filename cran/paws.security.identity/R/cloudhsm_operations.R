@@ -22,7 +22,8 @@ cloudhsm_add_tags_to_resource <- function(ResourceArn, TagList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$add_tags_to_resource_input(ResourceArn = ResourceArn, TagList = TagList)
   output <- .cloudhsm$add_tags_to_resource_output()
@@ -52,7 +53,8 @@ cloudhsm_create_hapg <- function(Label) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$create_hapg_input(Label = Label)
   output <- .cloudhsm$create_hapg_output()
@@ -95,7 +97,8 @@ cloudhsm_create_hsm <- function(SubnetId, SshKey, EniIp = NULL, IamRoleArn, Exte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$create_hsm_input(SubnetId = SubnetId, SshKey = SshKey, EniIp = EniIp, IamRoleArn = IamRoleArn, ExternalId = ExternalId, SubscriptionType = SubscriptionType, ClientToken = ClientToken, SyslogIp = SyslogIp)
   output <- .cloudhsm$create_hsm_output()
@@ -127,7 +130,8 @@ cloudhsm_create_luna_client <- function(Label = NULL, Certificate) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$create_luna_client_input(Label = Label, Certificate = Certificate)
   output <- .cloudhsm$create_luna_client_output()
@@ -157,7 +161,8 @@ cloudhsm_delete_hapg <- function(HapgArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$delete_hapg_input(HapgArn = HapgArn)
   output <- .cloudhsm$delete_hapg_output()
@@ -187,7 +192,8 @@ cloudhsm_delete_hsm <- function(HsmArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$delete_hsm_input(HsmArn = HsmArn)
   output <- .cloudhsm$delete_hsm_output()
@@ -217,7 +223,8 @@ cloudhsm_delete_luna_client <- function(ClientArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$delete_luna_client_input(ClientArn = ClientArn)
   output <- .cloudhsm$delete_luna_client_output()
@@ -247,7 +254,8 @@ cloudhsm_describe_hapg <- function(HapgArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$describe_hapg_input(HapgArn = HapgArn)
   output <- .cloudhsm$describe_hapg_output()
@@ -280,7 +288,8 @@ cloudhsm_describe_hsm <- function(HsmArn = NULL, HsmSerialNumber = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$describe_hsm_input(HsmArn = HsmArn, HsmSerialNumber = HsmSerialNumber)
   output <- .cloudhsm$describe_hsm_output()
@@ -311,7 +320,8 @@ cloudhsm_describe_luna_client <- function(ClientArn = NULL, CertificateFingerpri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$describe_luna_client_input(ClientArn = ClientArn, CertificateFingerprint = CertificateFingerprint)
   output <- .cloudhsm$describe_luna_client_output()
@@ -344,7 +354,8 @@ cloudhsm_get_config <- function(ClientArn, ClientVersion, HapgList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$get_config_input(ClientArn = ClientArn, ClientVersion = ClientVersion, HapgList = HapgList)
   output <- .cloudhsm$get_config_output()
@@ -374,7 +385,8 @@ cloudhsm_list_available_zones <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$list_available_zones_input()
   output <- .cloudhsm$list_available_zones_output()
@@ -406,7 +418,8 @@ cloudhsm_list_hapgs <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$list_hapgs_input(NextToken = NextToken)
   output <- .cloudhsm$list_hapgs_output()
@@ -437,7 +450,8 @@ cloudhsm_list_hsms <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$list_hsms_input(NextToken = NextToken)
   output <- .cloudhsm$list_hsms_output()
@@ -469,7 +483,8 @@ cloudhsm_list_luna_clients <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$list_luna_clients_input(NextToken = NextToken)
   output <- .cloudhsm$list_luna_clients_output()
@@ -499,7 +514,8 @@ cloudhsm_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cloudhsm$list_tags_for_resource_output()
@@ -532,7 +548,8 @@ cloudhsm_modify_hapg <- function(HapgArn, Label = NULL, PartitionSerialList = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$modify_hapg_input(HapgArn = HapgArn, Label = Label, PartitionSerialList = PartitionSerialList)
   output <- .cloudhsm$modify_hapg_output()
@@ -574,7 +591,8 @@ cloudhsm_modify_hsm <- function(HsmArn, SubnetId = NULL, EniIp = NULL, IamRoleAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$modify_hsm_input(HsmArn = HsmArn, SubnetId = SubnetId, EniIp = EniIp, IamRoleArn = IamRoleArn, ExternalId = ExternalId, SyslogIp = SyslogIp)
   output <- .cloudhsm$modify_hsm_output()
@@ -605,7 +623,8 @@ cloudhsm_modify_luna_client <- function(ClientArn, Certificate) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$modify_luna_client_input(ClientArn = ClientArn, Certificate = Certificate)
   output <- .cloudhsm$modify_luna_client_output()
@@ -640,7 +659,8 @@ cloudhsm_remove_tags_from_resource <- function(ResourceArn, TagKeyList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsm$remove_tags_from_resource_input(ResourceArn = ResourceArn, TagKeyList = TagKeyList)
   output <- .cloudhsm$remove_tags_from_resource_output()

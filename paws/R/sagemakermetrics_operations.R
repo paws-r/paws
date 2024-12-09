@@ -56,7 +56,8 @@ sagemakermetrics_batch_put_metrics <- function(TrialComponentName, MetricData) {
     http_method = "PUT",
     http_path = "/BatchPutMetrics",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemakermetrics$batch_put_metrics_input(TrialComponentName = TrialComponentName, MetricData = MetricData)
   output <- .sagemakermetrics$batch_put_metrics_output()

@@ -24,7 +24,7 @@ rdsdataservice_execute_statement(
 \item{secretArn}{[required] The ARN of the secret that enables access to the DB cluster. Enter the
 database user name and password for the credentials in the secret.
 
-For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
+For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/}{Create a database secret}.}
 
 \item{sql}{[required] The SQL statement to run.}
 

@@ -16,10 +16,10 @@ NULL
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_add_custom_attributes(UserPoolId,
@@ -67,7 +67,8 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$add_custom_attributes_input(UserPoolId = UserPoolId, CustomAttributes = CustomAttributes)
   output <- .cognitoidentityprovider$add_custom_attributes_output()
@@ -94,10 +95,10 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_add_user_to_group(UserPoolId, Username,
@@ -134,7 +135,8 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_add_user_to_group_input(UserPoolId = UserPoolId, Username = Username, GroupName = GroupName)
   output <- .cognitoidentityprovider$admin_add_user_to_group_output()
@@ -171,10 +173,10 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_confirm_sign_up(UserPoolId, Username,
@@ -241,7 +243,8 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_confirm_sign_up_input(UserPoolId = UserPoolId, Username = Username, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_confirm_sign_up_output()
@@ -299,10 +302,10 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_create_user(UserPoolId, Username,
@@ -536,7 +539,8 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_create_user_input(UserPoolId = UserPoolId, Username = Username, UserAttributes = UserAttributes, ValidationData = ValidationData, TemporaryPassword = TemporaryPassword, ForceAliasCreation = ForceAliasCreation, MessageAction = MessageAction, DesiredDeliveryMediums = DesiredDeliveryMediums, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_create_user_output()
@@ -561,10 +565,10 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_delete_user(UserPoolId, Username)
@@ -598,7 +602,8 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_delete_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_delete_user_output()
@@ -624,10 +629,10 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_delete_user_attributes(UserPoolId,
@@ -671,7 +676,8 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_delete_user_attributes_input(UserPoolId = UserPoolId, Username = Username, UserAttributeNames = UserAttributeNames)
   output <- .cognitoidentityprovider$admin_delete_user_attributes_output()
@@ -727,10 +733,10 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_disable_provider_for_user(UserPoolId,
@@ -765,7 +771,8 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_disable_provider_for_user_input(UserPoolId = UserPoolId, User = User)
   output <- .cognitoidentityprovider$admin_disable_provider_for_user_output()
@@ -793,10 +800,10 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
@@ -830,7 +837,8 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_disable_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_disable_user_output()
@@ -855,10 +863,10 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_enable_user(UserPoolId, Username)
@@ -892,7 +900,8 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_enable_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_enable_user_output()
@@ -917,10 +926,10 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_forget_device(UserPoolId, Username,
@@ -957,7 +966,8 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_forget_device_input(UserPoolId = UserPoolId, Username = Username, DeviceKey = DeviceKey)
   output <- .cognitoidentityprovider$admin_forget_device_output()
@@ -982,10 +992,10 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_get_device(DeviceKey, UserPoolId,
@@ -1044,7 +1054,8 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_get_device_input(DeviceKey = DeviceKey, UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_get_device_output()
@@ -1070,10 +1081,10 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_get_user(UserPoolId, Username)
@@ -1137,7 +1148,8 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_get_user_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_get_user_output()
@@ -1180,10 +1192,10 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_initiate_auth(UserPoolId, ClientId,
@@ -1374,7 +1386,8 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_initiate_auth_input(UserPoolId = UserPoolId, ClientId = ClientId, AuthFlow = AuthFlow, AuthParameters = AuthParameters, ClientMetadata = ClientMetadata, AnalyticsMetadata = AnalyticsMetadata, ContextData = ContextData)
   output <- .cognitoidentityprovider$admin_initiate_auth_output()
@@ -1418,10 +1431,10 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_link_provider_for_user(UserPoolId,
@@ -1510,7 +1523,8 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_link_provider_for_user_input(UserPoolId = UserPoolId, DestinationUser = DestinationUser, SourceUser = SourceUser)
   output <- .cognitoidentityprovider$admin_link_provider_for_user_output()
@@ -1535,10 +1549,10 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_list_devices(UserPoolId, Username, Limit,
@@ -1607,7 +1621,8 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_list_devices_input(UserPoolId = UserPoolId, Username = Username, Limit = Limit, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$admin_list_devices_output()
@@ -1632,10 +1647,10 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_list_groups_for_user(Username, UserPoolId,
@@ -1696,7 +1711,8 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_list_groups_for_user_input(Username = Username, UserPoolId = UserPoolId, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$admin_list_groups_for_user_output()
@@ -1723,10 +1739,10 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_list_user_auth_events(UserPoolId,
@@ -1807,7 +1823,8 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthEvents")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthEvents"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_list_user_auth_events_input(UserPoolId = UserPoolId, Username = Username, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$admin_list_user_auth_events_output()
@@ -1832,10 +1849,10 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_remove_user_from_group(UserPoolId,
@@ -1872,7 +1889,8 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_remove_user_from_group_input(UserPoolId = UserPoolId, Username = Username, GroupName = GroupName)
   output <- .cognitoidentityprovider$admin_remove_user_from_group_output()
@@ -1931,10 +1949,10 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_reset_user_password(UserPoolId, Username,
@@ -2002,7 +2020,8 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_reset_user_password_input(UserPoolId = UserPoolId, Username = Username, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_reset_user_password_output()
@@ -2057,10 +2076,10 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_respond_to_auth_challenge(UserPoolId,
@@ -2268,7 +2287,8 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_respond_to_auth_challenge_input(UserPoolId = UserPoolId, ClientId = ClientId, ChallengeName = ChallengeName, ChallengeResponses = ChallengeResponses, Session = Session, AnalyticsMetadata = AnalyticsMetadata, ContextData = ContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_respond_to_auth_challenge_output()
@@ -2299,10 +2319,10 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_set_user_mfa_preference(SMSMfaSettings,
@@ -2347,7 +2367,8 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_set_user_mfa_preference_input(SMSMfaSettings = SMSMfaSettings, SoftwareTokenMfaSettings = SoftwareTokenMfaSettings, Username = Username, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$admin_set_user_mfa_preference_output()
@@ -2398,10 +2419,10 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_set_user_password(UserPoolId, Username,
@@ -2441,7 +2462,8 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_set_user_password_input(UserPoolId = UserPoolId, Username = Username, Password = Password, Permanent = Permanent)
   output <- .cognitoidentityprovider$admin_set_user_password_output()
@@ -2470,10 +2492,10 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_set_user_settings(UserPoolId, Username,
@@ -2517,7 +2539,8 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_set_user_settings_input(UserPoolId = UserPoolId, Username = Username, MFAOptions = MFAOptions)
   output <- .cognitoidentityprovider$admin_set_user_settings_output()
@@ -2545,10 +2568,10 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_update_auth_event_feedback(UserPoolId,
@@ -2592,7 +2615,8 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_update_auth_event_feedback_input(UserPoolId = UserPoolId, Username = Username, EventId = EventId, FeedbackValue = FeedbackValue)
   output <- .cognitoidentityprovider$admin_update_auth_event_feedback_output()
@@ -2617,10 +2641,10 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_update_device_status(UserPoolId, Username,
@@ -2659,7 +2683,8 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_update_device_status_input(UserPoolId = UserPoolId, Username = Username, DeviceKey = DeviceKey, DeviceRememberedStatus = DeviceRememberedStatus)
   output <- .cognitoidentityprovider$admin_update_device_status_output()
@@ -2710,10 +2735,10 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_update_user_attributes(UserPoolId,
@@ -2806,7 +2831,8 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_update_user_attributes_input(UserPoolId = UserPoolId, Username = Username, UserAttributes = UserAttributes, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$admin_update_user_attributes_output()
@@ -2831,7 +2857,7 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #'     that you authorize with a signed-out user's access tokens. For more
 #'     information, see [Using the Amazon Cognito user pools API and user
 #'     pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #'     Amazon Cognito returns an `Access Token has been revoked` error when
 #'     your app attempts to authorize a user pools API request with a
@@ -2857,10 +2883,10 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
@@ -2894,7 +2920,8 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$admin_user_global_sign_out_input(UserPoolId = UserPoolId, Username = Username)
   output <- .cognitoidentityprovider$admin_user_global_sign_out_output()
@@ -2940,7 +2967,7 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_associate_software_token(AccessToken, Session)
@@ -2979,7 +3006,8 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$associate_software_token_input(AccessToken = AccessToken, Session = Session)
   output <- .cognitoidentityprovider$associate_software_token_output()
@@ -3005,7 +3033,7 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_change_password(PreviousPassword,
@@ -3039,7 +3067,8 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$change_password_input(PreviousPassword = PreviousPassword, ProposedPassword = ProposedPassword, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$change_password_output()
@@ -3068,7 +3097,7 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_confirm_device(AccessToken, DeviceKey,
@@ -3112,7 +3141,8 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$confirm_device_input(AccessToken = AccessToken, DeviceKey = DeviceKey, DeviceSecretVerifierConfig = DeviceSecretVerifierConfig, DeviceName = DeviceName)
   output <- .cognitoidentityprovider$confirm_device_output()
@@ -3136,7 +3166,7 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_confirm_forgot_password(ClientId, SecretHash,
@@ -3230,7 +3260,8 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$confirm_forgot_password_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, ConfirmationCode = ConfirmationCode, Password = Password, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$confirm_forgot_password_output()
@@ -3270,7 +3301,7 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_confirm_sign_up(ClientId, SecretHash, Username,
@@ -3364,7 +3395,8 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$confirm_sign_up_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, ConfirmationCode = ConfirmationCode, ForceAliasCreation = ForceAliasCreation, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$confirm_sign_up_output()
@@ -3389,10 +3421,10 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_group(GroupName, UserPoolId, Description,
@@ -3462,7 +3494,8 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_group_input(GroupName = GroupName, UserPoolId = UserPoolId, Description = Description, RoleArn = RoleArn, Precedence = Precedence)
   output <- .cognitoidentityprovider$create_group_output()
@@ -3489,10 +3522,10 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_identity_provider(UserPoolId,
@@ -3623,7 +3656,8 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName, ProviderType = ProviderType, ProviderDetails = ProviderDetails, AttributeMapping = AttributeMapping, IdpIdentifiers = IdpIdentifiers)
   output <- .cognitoidentityprovider$create_identity_provider_output()
@@ -3649,10 +3683,10 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_resource_server(UserPoolId, Identifier,
@@ -3715,7 +3749,8 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier, Name = Name, Scopes = Scopes)
   output <- .cognitoidentityprovider$create_resource_server_output()
@@ -3740,10 +3775,10 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_import_job(JobName, UserPoolId,
@@ -3803,7 +3838,8 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_user_import_job_input(JobName = JobName, UserPoolId = UserPoolId, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn)
   output <- .cognitoidentityprovider$create_user_import_job_output()
@@ -3850,10 +3886,10 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_pool(PoolName, Policies,
@@ -3944,7 +3980,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' your user pool, set to `ENFORCED`.
 #' 
 #' For more information, see [Adding advanced security to a user
-#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html).
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html).
 #' @param UsernameConfiguration Case sensitivity on the username input for the selected sign-in option.
 #' When case sensitivity is set to `False` (case insensitive), users can
 #' sign in with any combination of capital and lowercase letters. For
@@ -4386,7 +4422,8 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_user_pool_input(PoolName = PoolName, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, AliasAttributes = AliasAttributes, UsernameAttributes = UsernameAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, MfaConfiguration = MfaConfiguration, UserAttributeUpdateSettings = UserAttributeUpdateSettings, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, Schema = Schema, UserPoolAddOns = UserPoolAddOns, UsernameConfiguration = UsernameConfiguration, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$create_user_pool_output()
@@ -4418,10 +4455,10 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_pool_client(UserPoolId, ClientName,
@@ -4680,7 +4717,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' @param EnablePropagateAdditionalUserContextData Activates the propagation of additional user context data. For more
 #' information about propagation of user context data, see [Adding advanced
 #' security to a user
-#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html).
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html).
 #' If you don’t include this parameter, you can't send device fingerprint
 #' information, including source IP address, to Amazon Cognito advanced
 #' security. You can only activate
@@ -4883,7 +4920,8 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_user_pool_client_input(UserPoolId = UserPoolId, ClientName = ClientName, GenerateSecret = GenerateSecret, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData, AuthSessionValidity = AuthSessionValidity)
   output <- .cognitoidentityprovider$create_user_pool_client_output()
@@ -4908,10 +4946,10 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_create_user_pool_domain(Domain, UserPoolId,
@@ -4962,7 +5000,8 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$create_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, CustomDomainConfig = CustomDomainConfig)
   output <- .cognitoidentityprovider$create_user_pool_domain_output()
@@ -5009,7 +5048,8 @@ cognitoidentityprovider_delete_group <- function(GroupName, UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_group_input(GroupName = GroupName, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_group_output()
@@ -5055,7 +5095,8 @@ cognitoidentityprovider_delete_identity_provider <- function(UserPoolId, Provide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName)
   output <- .cognitoidentityprovider$delete_identity_provider_output()
@@ -5100,7 +5141,8 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier)
   output <- .cognitoidentityprovider$delete_resource_server_output()
@@ -5126,7 +5168,7 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_delete_user(AccessToken)
@@ -5155,7 +5197,8 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$delete_user_output()
@@ -5181,7 +5224,7 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_delete_user_attributes(UserAttributeNames,
@@ -5219,7 +5262,8 @@ cognitoidentityprovider_delete_user_attributes <- function(UserAttributeNames, A
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_attributes_input(UserAttributeNames = UserAttributeNames, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$delete_user_attributes_output()
@@ -5262,7 +5306,8 @@ cognitoidentityprovider_delete_user_pool <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_pool_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_user_pool_output()
@@ -5307,7 +5352,8 @@ cognitoidentityprovider_delete_user_pool_client <- function(UserPoolId, ClientId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$delete_user_pool_client_output()
@@ -5354,7 +5400,8 @@ cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$delete_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$delete_user_pool_domain_output()
@@ -5424,7 +5471,8 @@ cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, Provi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName)
   output <- .cognitoidentityprovider$describe_identity_provider_output()
@@ -5491,7 +5539,8 @@ cognitoidentityprovider_describe_resource_server <- function(UserPoolId, Identif
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier)
   output <- .cognitoidentityprovider$describe_resource_server_output()
@@ -5600,7 +5649,8 @@ cognitoidentityprovider_describe_risk_configuration <- function(UserPoolId, Clie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_risk_configuration_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$describe_risk_configuration_output()
@@ -5671,7 +5721,8 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$describe_user_import_job_output()
@@ -5698,10 +5749,10 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_describe_user_pool(UserPoolId)
@@ -5876,7 +5927,8 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_user_pool_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$describe_user_pool_output()
@@ -5903,10 +5955,10 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_describe_user_pool_client(UserPoolId, ClientId)
@@ -5997,7 +6049,8 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$describe_user_pool_client_output()
@@ -6058,7 +6111,8 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$describe_user_pool_domain_input(Domain = Domain)
   output <- .cognitoidentityprovider$describe_user_pool_domain_output()
@@ -6086,7 +6140,7 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_forget_device(AccessToken, DeviceKey)
@@ -6117,7 +6171,8 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$forget_device_input(AccessToken = AccessToken, DeviceKey = DeviceKey)
   output <- .cognitoidentityprovider$forget_device_output()
@@ -6139,7 +6194,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' method used to send the confirmation code is sent according to the
 #' specified AccountRecoverySetting. For more information, see [Recovering
 #' User
-#' Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html)
+#' Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/managing-users-passwords.html)
 #' in the *Amazon Cognito Developer Guide*. To use the confirmation code
 #' for resetting the password, call
 #' [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password].
@@ -6160,7 +6215,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -6272,7 +6327,8 @@ cognitoidentityprovider_forgot_password <- function(ClientId, SecretHash = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$forgot_password_input(ClientId = ClientId, SecretHash = SecretHash, UserContextData = UserContextData, Username = Username, AnalyticsMetadata = AnalyticsMetadata, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$forgot_password_output()
@@ -6326,7 +6382,8 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_csv_header_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_csv_header_output()
@@ -6354,7 +6411,7 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_get_device(DeviceKey, AccessToken)
@@ -6407,7 +6464,8 @@ cognitoidentityprovider_get_device <- function(DeviceKey, AccessToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_device_input(DeviceKey = DeviceKey, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$get_device_output()
@@ -6471,7 +6529,8 @@ cognitoidentityprovider_get_group <- function(GroupName, UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_group_input(GroupName = GroupName, UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_group_output()
@@ -6541,7 +6600,8 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_identity_provider_by_identifier_input(UserPoolId = UserPoolId, IdpIdentifier = IdpIdentifier)
   output <- .cognitoidentityprovider$get_identity_provider_by_identifier_output()
@@ -6607,7 +6667,8 @@ cognitoidentityprovider_get_log_delivery_configuration <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_log_delivery_configuration_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_log_delivery_configuration_output()
@@ -6661,7 +6722,8 @@ cognitoidentityprovider_get_signing_certificate <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_signing_certificate_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_signing_certificate_output()
@@ -6728,7 +6790,8 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_ui_customization_input(UserPoolId = UserPoolId, ClientId = ClientId)
   output <- .cognitoidentityprovider$get_ui_customization_output()
@@ -6754,7 +6817,7 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_get_user(AccessToken)
@@ -6804,7 +6867,8 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_user_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$get_user_output()
@@ -6833,7 +6897,7 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -6926,7 +6990,8 @@ cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_user_attribute_verification_code_input(AccessToken = AccessToken, AttributeName = AttributeName, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$get_user_attribute_verification_code_output()
@@ -6985,7 +7050,8 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$get_user_pool_mfa_config_input(UserPoolId = UserPoolId)
   output <- .cognitoidentityprovider$get_user_pool_mfa_config_output()
@@ -7009,7 +7075,7 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #'     that you authorize with a signed-out user's access tokens. For more
 #'     information, see [Using the Amazon Cognito user pools API and user
 #'     pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #'     Amazon Cognito returns an `Access Token has been revoked` error when
 #'     your app attempts to authorize a user pools API request with a
@@ -7036,7 +7102,7 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_global_sign_out(AccessToken)
@@ -7065,7 +7131,8 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$global_sign_out_input(AccessToken = AccessToken)
   output <- .cognitoidentityprovider$global_sign_out_output()
@@ -7092,7 +7159,7 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -7311,7 +7378,8 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$initiate_auth_input(AuthFlow = AuthFlow, AuthParameters = AuthParameters, ClientMetadata = ClientMetadata, ClientId = ClientId, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData)
   output <- .cognitoidentityprovider$initiate_auth_output()
@@ -7341,7 +7409,7 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_list_devices(AccessToken, Limit,
@@ -7405,7 +7473,8 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_devices_input(AccessToken = AccessToken, Limit = Limit, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$list_devices_output()
@@ -7430,10 +7499,10 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_groups(UserPoolId, Limit, NextToken)
@@ -7487,7 +7556,8 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_groups_input(UserPoolId = UserPoolId, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_groups_output()
@@ -7512,10 +7582,10 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_identity_providers(UserPoolId, MaxResults,
@@ -7565,7 +7635,8 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Providers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Providers"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_identity_providers_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_identity_providers_output()
@@ -7590,10 +7661,10 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_resource_servers(UserPoolId, MaxResults,
@@ -7644,7 +7715,8 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceServers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceServers"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_resource_servers_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_resource_servers_output()
@@ -7701,7 +7773,8 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cognitoidentityprovider$list_tags_for_resource_output()
@@ -7726,10 +7799,10 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_user_import_jobs(UserPoolId, MaxResults,
@@ -7796,7 +7869,8 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_user_import_jobs_input(UserPoolId = UserPoolId, MaxResults = MaxResults, PaginationToken = PaginationToken)
   output <- .cognitoidentityprovider$list_user_import_jobs_output()
@@ -7821,10 +7895,10 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_user_pool_clients(UserPoolId, MaxResults,
@@ -7873,7 +7947,8 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPoolClients")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPoolClients"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_user_pool_clients_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_user_pool_clients_output()
@@ -7898,10 +7973,10 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_user_pools(NextToken, MaxResults)
@@ -7977,7 +8052,8 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPools"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_user_pools_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cognitoidentityprovider$list_user_pools_output()
@@ -8002,10 +8078,10 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_users(UserPoolId, AttributesToGet, Limit,
@@ -8170,7 +8246,8 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", limit_key = "Limit", output_token = "PaginationToken", result_key = "Users")
+    paginator = list(input_token = "PaginationToken", limit_key = "Limit", output_token = "PaginationToken", result_key = "Users"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_users_input(UserPoolId = UserPoolId, AttributesToGet = AttributesToGet, Limit = Limit, PaginationToken = PaginationToken, Filter = Filter)
   output <- .cognitoidentityprovider$list_users_output()
@@ -8195,10 +8272,10 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_list_users_in_group(UserPoolId, GroupName,
@@ -8265,7 +8342,8 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Users")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Users"),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$list_users_in_group_input(UserPoolId = UserPoolId, GroupName = GroupName, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_users_in_group_output()
@@ -8290,7 +8368,7 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -8403,7 +8481,8 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$resend_confirmation_code_input(ClientId = ClientId, SecretHash = SecretHash, UserContextData = UserContextData, Username = Username, AnalyticsMetadata = AnalyticsMetadata, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$resend_confirmation_code_output()
@@ -8438,7 +8517,7 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -8641,7 +8720,8 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$respond_to_auth_challenge_input(ClientId = ClientId, ChallengeName = ChallengeName, Session = Session, ChallengeResponses = ChallengeResponses, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$respond_to_auth_challenge_output()
@@ -8668,7 +8748,7 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_revoke_token(Token, ClientId, ClientSecret)
@@ -8701,7 +8781,8 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$revoke_token_input(Token = Token, ClientId = ClientId, ClientSecret = ClientSecret)
   output <- .cognitoidentityprovider$revoke_token_output()
@@ -8785,7 +8866,8 @@ cognitoidentityprovider_set_log_delivery_configuration <- function(UserPoolId, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_log_delivery_configuration_input(UserPoolId = UserPoolId, LogConfigurations = LogConfigurations)
   output <- .cognitoidentityprovider$set_log_delivery_configuration_output()
@@ -8961,7 +9043,8 @@ cognitoidentityprovider_set_risk_configuration <- function(UserPoolId, ClientId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_risk_configuration_input(UserPoolId = UserPoolId, ClientId = ClientId, CompromisedCredentialsRiskConfiguration = CompromisedCredentialsRiskConfiguration, AccountTakeoverRiskConfiguration = AccountTakeoverRiskConfiguration, RiskExceptionConfiguration = RiskExceptionConfiguration)
   output <- .cognitoidentityprovider$set_risk_configuration_output()
@@ -9041,7 +9124,8 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_ui_customization_input(UserPoolId = UserPoolId, ClientId = ClientId, CSS = CSS, ImageFile = ImageFile)
   output <- .cognitoidentityprovider$set_ui_customization_output()
@@ -9078,7 +9162,7 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_set_user_mfa_preference(SMSMfaSettings,
@@ -9118,7 +9202,8 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_user_mfa_preference_input(SMSMfaSettings = SMSMfaSettings, SoftwareTokenMfaSettings = SoftwareTokenMfaSettings, AccessToken = AccessToken)
   output <- .cognitoidentityprovider$set_user_mfa_preference_output()
@@ -9222,7 +9307,8 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_user_pool_mfa_config_input(UserPoolId = UserPoolId, SmsMfaConfiguration = SmsMfaConfiguration, SoftwareTokenMfaConfiguration = SoftwareTokenMfaConfiguration, MfaConfiguration = MfaConfiguration)
   output <- .cognitoidentityprovider$set_user_pool_mfa_config_output()
@@ -9252,7 +9338,7 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_set_user_settings(AccessToken, MFAOptions)
@@ -9289,7 +9375,8 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$set_user_settings_input(AccessToken = AccessToken, MFAOptions = MFAOptions)
   output <- .cognitoidentityprovider$set_user_settings_output()
@@ -9314,7 +9401,7 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -9460,7 +9547,8 @@ cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Usernam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$sign_up_input(ClientId = ClientId, SecretHash = SecretHash, Username = Username, Password = Password, UserAttributes = UserAttributes, ValidationData = ValidationData, AnalyticsMetadata = AnalyticsMetadata, UserContextData = UserContextData, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$sign_up_output()
@@ -9531,7 +9619,8 @@ cognitoidentityprovider_start_user_import_job <- function(UserPoolId, JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$start_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$start_user_import_job_output()
@@ -9602,7 +9691,8 @@ cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$stop_user_import_job_input(UserPoolId = UserPoolId, JobId = JobId)
   output <- .cognitoidentityprovider$stop_user_import_job_output()
@@ -9667,7 +9757,8 @@ cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cognitoidentityprovider$tag_resource_output()
@@ -9716,7 +9807,8 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cognitoidentityprovider$untag_resource_output()
@@ -9743,7 +9835,7 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_update_auth_event_feedback(UserPoolId, Username,
@@ -9789,7 +9881,8 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_auth_event_feedback_input(UserPoolId = UserPoolId, Username = Username, EventId = EventId, FeedbackToken = FeedbackToken, FeedbackValue = FeedbackValue)
   output <- .cognitoidentityprovider$update_auth_event_feedback_output()
@@ -9817,7 +9910,7 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_update_device_status(AccessToken, DeviceKey,
@@ -9851,7 +9944,8 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_device_status_input(AccessToken = AccessToken, DeviceKey = DeviceKey, DeviceRememberedStatus = DeviceRememberedStatus)
   output <- .cognitoidentityprovider$update_device_status_output()
@@ -9876,10 +9970,10 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_group(GroupName, UserPoolId, Description,
@@ -9936,7 +10030,8 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_group_input(GroupName = GroupName, UserPoolId = UserPoolId, Description = Description, RoleArn = RoleArn, Precedence = Precedence)
   output <- .cognitoidentityprovider$update_group_output()
@@ -9961,10 +10056,10 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_identity_provider(UserPoolId,
@@ -10092,7 +10187,8 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_identity_provider_input(UserPoolId = UserPoolId, ProviderName = ProviderName, ProviderDetails = ProviderDetails, AttributeMapping = AttributeMapping, IdpIdentifiers = IdpIdentifiers)
   output <- .cognitoidentityprovider$update_identity_provider_output()
@@ -10121,10 +10217,10 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_resource_server(UserPoolId, Identifier,
@@ -10186,7 +10282,8 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_resource_server_input(UserPoolId = UserPoolId, Identifier = Identifier, Name = Name, Scopes = Scopes)
   output <- .cognitoidentityprovider$update_resource_server_output()
@@ -10217,7 +10314,7 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #' 
 #' This action might generate an SMS text message. Starting June 1, 2021,
 #' US telecom carriers require you to register an origination phone number
@@ -10325,7 +10422,8 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_user_attributes_input(UserAttributes = UserAttributes, AccessToken = AccessToken, ClientMetadata = ClientMetadata)
   output <- .cognitoidentityprovider$update_user_attributes_output()
@@ -10373,10 +10471,10 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool(UserPoolId, Policies,
@@ -10460,7 +10558,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' your user pool, set to `ENFORCED`.
 #' 
 #' For more information, see [Adding advanced security to a user
-#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html).
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html).
 #' @param AccountRecoverySetting The available verified method a user can use to recover their password
 #' when they call
 #' [`forgot_password`][cognitoidentityprovider_forgot_password]. You can
@@ -10592,7 +10690,8 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_user_pool_input(UserPoolId = UserPoolId, Policies = Policies, DeletionProtection = DeletionProtection, LambdaConfig = LambdaConfig, AutoVerifiedAttributes = AutoVerifiedAttributes, SmsVerificationMessage = SmsVerificationMessage, EmailVerificationMessage = EmailVerificationMessage, EmailVerificationSubject = EmailVerificationSubject, VerificationMessageTemplate = VerificationMessageTemplate, SmsAuthenticationMessage = SmsAuthenticationMessage, UserAttributeUpdateSettings = UserAttributeUpdateSettings, MfaConfiguration = MfaConfiguration, DeviceConfiguration = DeviceConfiguration, EmailConfiguration = EmailConfiguration, SmsConfiguration = SmsConfiguration, UserPoolTags = UserPoolTags, AdminCreateUserConfig = AdminCreateUserConfig, UserPoolAddOns = UserPoolAddOns, AccountRecoverySetting = AccountRecoverySetting)
   output <- .cognitoidentityprovider$update_user_pool_output()
@@ -10627,10 +10726,10 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool_client(UserPoolId, ClientId,
@@ -10880,7 +10979,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' @param EnablePropagateAdditionalUserContextData Activates the propagation of additional user context data. For more
 #' information about propagation of user context data, see [Adding advanced
 #' security to a user
-#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html).
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html).
 #' If you don’t include this parameter, you can't send device fingerprint
 #' information, including source IP address, to Amazon Cognito advanced
 #' security. You can only activate
@@ -11020,7 +11119,8 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_user_pool_client_input(UserPoolId = UserPoolId, ClientId = ClientId, ClientName = ClientName, RefreshTokenValidity = RefreshTokenValidity, AccessTokenValidity = AccessTokenValidity, IdTokenValidity = IdTokenValidity, TokenValidityUnits = TokenValidityUnits, ReadAttributes = ReadAttributes, WriteAttributes = WriteAttributes, ExplicitAuthFlows = ExplicitAuthFlows, SupportedIdentityProviders = SupportedIdentityProviders, CallbackURLs = CallbackURLs, LogoutURLs = LogoutURLs, DefaultRedirectURI = DefaultRedirectURI, AllowedOAuthFlows = AllowedOAuthFlows, AllowedOAuthScopes = AllowedOAuthScopes, AllowedOAuthFlowsUserPoolClient = AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration = AnalyticsConfiguration, PreventUserExistenceErrors = PreventUserExistenceErrors, EnableTokenRevocation = EnableTokenRevocation, EnablePropagateAdditionalUserContextData = EnablePropagateAdditionalUserContextData, AuthSessionValidity = AuthSessionValidity)
   output <- .cognitoidentityprovider$update_user_pool_client_output()
@@ -11076,10 +11176,10 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' **Learn more**
 #' 
 #' -   [Signing Amazon Web Services API
-#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#'     Requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' 
 #' -   [Using the Amazon Cognito user pools API and user pool
-#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#'     endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #'
 #' @usage
 #' cognitoidentityprovider_update_user_pool_domain(Domain, UserPoolId,
@@ -11127,7 +11227,8 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$update_user_pool_domain_input(Domain = Domain, UserPoolId = UserPoolId, CustomDomainConfig = CustomDomainConfig)
   output <- .cognitoidentityprovider$update_user_pool_domain_output()
@@ -11155,7 +11256,7 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_verify_software_token(AccessToken, Session,
@@ -11199,7 +11300,8 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$verify_software_token_input(AccessToken = AccessToken, Session = Session, UserCode = UserCode, FriendlyDeviceName = FriendlyDeviceName)
   output <- .cognitoidentityprovider$verify_software_token_output()
@@ -11230,7 +11332,7 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
 #' permissions in policies. For more information about authorization models
 #' in Amazon Cognito, see [Using the Amazon Cognito user pools API and user
 #' pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html).
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html).
 #'
 #' @usage
 #' cognitoidentityprovider_verify_user_attribute(AccessToken,
@@ -11264,7 +11366,8 @@ cognitoidentityprovider_verify_user_attribute <- function(AccessToken, Attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cognitoidentityprovider$verify_user_attribute_input(AccessToken = AccessToken, AttributeName = AttributeName, Code = Code)
   output <- .cognitoidentityprovider$verify_user_attribute_output()

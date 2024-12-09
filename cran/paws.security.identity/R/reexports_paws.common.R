@@ -25,3 +25,7 @@ paws.common::credentials
 #' @importFrom paws.common creds
 #' @export
 paws.common::creds
+
+#' @importFrom paws.common paws_stream_parser
+#' @export
+paws.common::paws_stream_parser

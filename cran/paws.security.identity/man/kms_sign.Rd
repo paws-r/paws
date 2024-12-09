@@ -75,7 +75,7 @@ algorithm.
 algorithm.
 \item Signing algorithms that end in SHA_512 use the SHA_512 hashing
 algorithm.
-\item SM2DSA uses the SM3 hashing algorithm. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/asymmetric-key-specs.html#key-spec-sm-offline-verification}{Offline verification with SM2 key pairs}.
+\item SM2DSA uses the SM3 hashing algorithm. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html#key-spec-sm-offline-verification}{Offline verification with SM2 key pairs}.
 }}
 
 \item{GrantTokens}{A list of grant tokens.
@@ -83,7 +83,7 @@ algorithm.
 Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{SigningAlgorithm}{[required] Specifies the signing algorithm to use when signing the message.

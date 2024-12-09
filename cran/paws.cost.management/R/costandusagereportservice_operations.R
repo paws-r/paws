@@ -22,7 +22,8 @@ costandusagereportservice_delete_report_definition <- function(ReportName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .costandusagereportservice$delete_report_definition_input(ReportName = ReportName)
   output <- .costandusagereportservice$delete_report_definition_output()
@@ -54,7 +55,8 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .costandusagereportservice$describe_report_definitions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .costandusagereportservice$describe_report_definitions_output()
@@ -85,7 +87,8 @@ costandusagereportservice_list_tags_for_resource <- function(ReportName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .costandusagereportservice$list_tags_for_resource_input(ReportName = ReportName)
   output <- .costandusagereportservice$list_tags_for_resource_output()
@@ -116,7 +119,8 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .costandusagereportservice$modify_report_definition_input(ReportName = ReportName, ReportDefinition = ReportDefinition)
   output <- .costandusagereportservice$modify_report_definition_output()
@@ -148,7 +152,8 @@ costandusagereportservice_put_report_definition <- function(ReportDefinition, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .costandusagereportservice$put_report_definition_input(ReportDefinition = ReportDefinition, Tags = Tags)
   output <- .costandusagereportservice$put_report_definition_output()
@@ -180,7 +185,8 @@ costandusagereportservice_tag_resource <- function(ReportName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .costandusagereportservice$tag_resource_input(ReportName = ReportName, Tags = Tags)
   output <- .costandusagereportservice$tag_resource_output()
@@ -212,7 +218,8 @@ costandusagereportservice_untag_resource <- function(ReportName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .costandusagereportservice$untag_resource_input(ReportName = ReportName, TagKeys = TagKeys)
   output <- .costandusagereportservice$untag_resource_output()

@@ -13,9 +13,8 @@ NULL
 #' well as to import your usage data into the Application Cost Profiler
 #' service.
 #' 
-#' For more information about using this service, see the [AWS Application
-#' Cost Profiler User
-#' Guide](https://docs.aws.amazon.com/application-cost-profiler/latest/userguide/introduction.html).
+#' For more information about using this service, see the AWS Application
+#' Cost Profiler User Guide.
 #'
 #' @param
 #' config

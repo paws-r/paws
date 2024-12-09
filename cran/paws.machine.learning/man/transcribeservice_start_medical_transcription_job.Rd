@@ -68,8 +68,8 @@ For example, if you want your output stored in
 \code{DOC-EXAMPLE-BUCKET} and \code{OutputKey} to \verb{test-files/}.
 
 Note that Amazon Transcribe must have permission to use the specified
-location. You can change Amazon S3 permissions using the \href{https://console.aws.amazon.com/s3/home}{Amazon Web Services Management Console}.
-See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.}
+location. You can change Amazon S3 permissions using the Amazon Web
+Services Management Console. See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.}
 
 \item{OutputKey}{Use in combination with \code{OutputBucketName} to specify the output
 location of your transcript and, optionally, a unique name for your

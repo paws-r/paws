@@ -66,7 +66,8 @@ pi_create_performance_analysis_report <- function(ServiceType, Identifier, Start
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .pi$create_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Tags = Tags)
   output <- .pi$create_performance_analysis_report_output()
@@ -122,7 +123,8 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .pi$delete_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, AnalysisReportId = AnalysisReportId)
   output <- .pi$delete_performance_analysis_report_output()
@@ -318,7 +320,8 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .pi$describe_dimension_keys_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Metric = Metric, PeriodInSeconds = PeriodInSeconds, GroupBy = GroupBy, AdditionalMetrics = AdditionalMetrics, PartitionBy = PartitionBy, Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pi$describe_dimension_keys_output()
@@ -417,7 +420,8 @@ pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .pi$get_dimension_key_details_input(ServiceType = ServiceType, Identifier = Identifier, Group = Group, GroupIdentifier = GroupIdentifier, RequestedDimensions = RequestedDimensions)
   output <- .pi$get_dimension_key_details_output()
@@ -549,7 +553,8 @@ pi_get_performance_analysis_report <- function(ServiceType, Identifier, Analysis
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .pi$get_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, AnalysisReportId = AnalysisReportId, TextFormat = TextFormat, AcceptLanguage = AcceptLanguage)
   output <- .pi$get_performance_analysis_report_output()
@@ -611,7 +616,8 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .pi$get_resource_metadata_input(ServiceType = ServiceType, Identifier = Identifier)
   output <- .pi$get_resource_metadata_output()
@@ -776,7 +782,8 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .pi$get_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricQueries = MetricQueries, StartTime = StartTime, EndTime = EndTime, PeriodInSeconds = PeriodInSeconds, MaxResults = MaxResults, NextToken = NextToken, PeriodAlignment = PeriodAlignment)
   output <- .pi$get_resource_metrics_output()
@@ -872,7 +879,8 @@ pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .pi$list_available_resource_dimensions_input(ServiceType = ServiceType, Identifier = Identifier, Metrics = Metrics, MaxResults = MaxResults, NextToken = NextToken, AuthorizedActions = AuthorizedActions)
   output <- .pi$list_available_resource_dimensions_output()
@@ -960,7 +968,8 @@ pi_list_available_resource_metrics <- function(ServiceType, Identifier, MetricTy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .pi$list_available_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricTypes = MetricTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pi$list_available_resource_metrics_output()
@@ -1051,7 +1060,8 @@ pi_list_performance_analysis_reports <- function(ServiceType, Identifier, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .pi$list_performance_analysis_reports_input(ServiceType = ServiceType, Identifier = Identifier, NextToken = NextToken, MaxResults = MaxResults, ListTags = ListTags)
   output <- .pi$list_performance_analysis_reports_output()
@@ -1112,7 +1122,8 @@ pi_list_tags_for_resource <- function(ServiceType, ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .pi$list_tags_for_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN)
   output <- .pi$list_tags_for_resource_output()
@@ -1169,7 +1180,8 @@ pi_tag_resource <- function(ServiceType, ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .pi$tag_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN, Tags = Tags)
   output <- .pi$tag_resource_output()
@@ -1225,7 +1237,8 @@ pi_untag_resource <- function(ServiceType, ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .pi$untag_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .pi$untag_resource_output()

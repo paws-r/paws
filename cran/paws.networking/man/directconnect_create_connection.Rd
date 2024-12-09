@@ -33,7 +33,7 @@ connection.}
 (MACsec).
 
 MAC Security (MACsec) is only available on dedicated connections. For
-information about MAC Security (MACsec) prerequisties, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites}{MACsec prerequisties}
+information about MAC Security (MACsec) prerequisties, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/#mac-sec-prerequisites}{MACsec prerequisties}
 in the \emph{Direct Connect User Guide}.}
 }
 \description{

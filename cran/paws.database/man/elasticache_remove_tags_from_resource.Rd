@@ -18,7 +18,7 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 resource.}
 }
 \description{
-Removes the tags identified by the \code{TagKeys} list from the named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html}{Resource-level permissions}.
+Removes the tags identified by the \code{TagKeys} list from the named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html}{Resource-level permissions}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_remove_tags_from_resource/} for full documentation.
 }

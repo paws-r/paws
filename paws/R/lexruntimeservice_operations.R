@@ -46,7 +46,8 @@ lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
     http_method = "DELETE",
     http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/session",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lexruntimeservice$delete_session_input(botName = botName, botAlias = botAlias, userId = userId)
   output <- .lexruntimeservice$delete_session_output()
@@ -145,7 +146,8 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
     http_method = "GET",
     http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/session/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lexruntimeservice$get_session_input(botName = botName, botAlias = botAlias, userId = userId, checkpointLabelFilter = checkpointLabelFilter)
   output <- .lexruntimeservice$get_session_output()
@@ -386,7 +388,8 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
     http_method = "POST",
     http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/content",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lexruntimeservice$post_content_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, requestAttributes = requestAttributes, contentType = contentType, accept = accept, inputStream = inputStream, activeContexts = activeContexts)
   output <- .lexruntimeservice$post_content_output()
@@ -613,7 +616,8 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
     http_method = "POST",
     http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/text",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lexruntimeservice$post_text_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, requestAttributes = requestAttributes, inputText = inputText, activeContexts = activeContexts)
   output <- .lexruntimeservice$post_text_output()
@@ -787,7 +791,8 @@ lexruntimeservice_put_session <- function(botName, botAlias, userId, sessionAttr
     http_method = "POST",
     http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/session",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .lexruntimeservice$put_session_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, dialogAction = dialogAction, recentIntentSummaryView = recentIntentSummaryView, accept = accept, activeContexts = activeContexts)
   output <- .lexruntimeservice$put_session_output()

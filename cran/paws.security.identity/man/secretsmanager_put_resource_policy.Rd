@@ -17,7 +17,7 @@ For an ARN, we recommend that you specify a complete ARN rather than a
 partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
 \item{ResourcePolicy}{[required] A JSON-formatted string for an Amazon Web Services resource-based
-policy. For example policies, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html}{Permissions policy examples}.}
+policy. For example policies, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html}{Permissions policy examples}.}
 
 \item{BlockPublicPolicy}{Specifies whether to block resource-based policies that allow broad
 access to the secret, for example those that use a wildcard for the

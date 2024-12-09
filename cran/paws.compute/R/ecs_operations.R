@@ -53,7 +53,8 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$create_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider, tags = tags)
   output <- .ecs$create_capacity_provider_output()
@@ -170,7 +171,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$create_cluster_input(clusterName = clusterName, tags = tags, settings = settings, configuration = configuration, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy, serviceConnectDefaults = serviceConnectDefaults)
   output <- .ecs$create_cluster_output()
@@ -305,7 +307,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' platform version is specified only for tasks using the Fargate launch
 #' type. If one isn't specified, the `LATEST` platform version is used. For
 #' more information, see [Fargate platform
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param role The name or full Amazon Resource Name (ARN) of the IAM role that allows
 #' Amazon ECS to make calls to your load balancer on your behalf. This
@@ -466,7 +468,8 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$create_service_input(cluster = cluster, serviceName = serviceName, taskDefinition = taskDefinition, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, desiredCount = desiredCount, clientToken = clientToken, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, role = role, deploymentConfiguration = deploymentConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, networkConfiguration = networkConfiguration, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, schedulingStrategy = schedulingStrategy, deploymentController = deploymentController, tags = tags, enableECSManagedTags = enableECSManagedTags, propagateTags = propagateTags, enableExecuteCommand = enableExecuteCommand, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
   output <- .ecs$create_service_output()
@@ -586,7 +589,8 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$create_task_set_input(service = service, cluster = cluster, externalId = externalId, taskDefinition = taskDefinition, networkConfiguration = networkConfiguration, loadBalancers = loadBalancers, serviceRegistries = serviceRegistries, launchType = launchType, capacityProviderStrategy = capacityProviderStrategy, platformVersion = platformVersion, scale = scale, clientToken = clientToken, tags = tags)
   output <- .ecs$create_task_set_output()
@@ -629,7 +633,8 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_account_setting_input(name = name, principalArn = principalArn)
   output <- .ecs$delete_account_setting_output()
@@ -666,7 +671,8 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_attributes_input(cluster = cluster, attributes = attributes)
   output <- .ecs$delete_attributes_output()
@@ -697,7 +703,8 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_capacity_provider_input(capacityProvider = capacityProvider)
   output <- .ecs$delete_capacity_provider_output()
@@ -728,7 +735,8 @@ ecs_delete_cluster <- function(cluster) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_cluster_input(cluster = cluster)
   output <- .ecs$delete_cluster_output()
@@ -764,7 +772,8 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_service_input(cluster = cluster, service = service, force = force)
   output <- .ecs$delete_service_output()
@@ -798,7 +807,8 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_task_definitions_input(taskDefinitions = taskDefinitions)
   output <- .ecs$delete_task_definitions_output()
@@ -835,7 +845,8 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$delete_task_set_input(cluster = cluster, service = service, taskSet = taskSet, force = force)
   output <- .ecs$delete_task_set_output()
@@ -885,7 +896,8 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$deregister_container_instance_input(cluster = cluster, containerInstance = containerInstance, force = force)
   output <- .ecs$deregister_container_instance_output()
@@ -917,7 +929,8 @@ ecs_deregister_task_definition <- function(taskDefinition) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$deregister_task_definition_input(taskDefinition = taskDefinition)
   output <- .ecs$deregister_task_definition_output()
@@ -974,7 +987,8 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_capacity_providers_input(capacityProviders = capacityProviders, include = include, maxResults = maxResults, nextToken = nextToken)
   output <- .ecs$describe_capacity_providers_output()
@@ -1024,7 +1038,8 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_clusters_input(clusters = clusters, include = include)
   output <- .ecs$describe_clusters_output()
@@ -1065,7 +1080,8 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_container_instances_input(cluster = cluster, containerInstances = containerInstances, include = include)
   output <- .ecs$describe_container_instances_output()
@@ -1104,7 +1120,8 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_services_input(cluster = cluster, services = services, include = include)
   output <- .ecs$describe_services_output()
@@ -1139,7 +1156,8 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_task_definition_input(taskDefinition = taskDefinition, include = include)
   output <- .ecs$describe_task_definition_output()
@@ -1176,7 +1194,8 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_task_sets_input(cluster = cluster, service = service, taskSets = taskSets, include = include)
   output <- .ecs$describe_task_sets_output()
@@ -1214,7 +1233,8 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$describe_tasks_input(cluster = cluster, tasks = tasks, include = include)
   output <- .ecs$describe_tasks_output()
@@ -1250,7 +1270,8 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$discover_poll_endpoint_input(containerInstance = containerInstance, cluster = cluster)
   output <- .ecs$discover_poll_endpoint_output()
@@ -1288,7 +1309,8 @@ ecs_execute_command <- function(cluster = NULL, container = NULL, command, inter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$execute_command_input(cluster = cluster, container = container, command = command, interactive = interactive, task = task)
   output <- .ecs$execute_command_output()
@@ -1320,7 +1342,8 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$get_task_protection_input(cluster = cluster, tasks = tasks)
   output <- .ecs$get_task_protection_output()
@@ -1383,7 +1406,8 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "settings")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "settings"),
+    stream_api = FALSE
   )
   input <- .ecs$list_account_settings_input(name = name, value = value, principalArn = principalArn, effectiveSettings = effectiveSettings, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_account_settings_output()
@@ -1439,7 +1463,8 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "attributes")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "attributes"),
+    stream_api = FALSE
   )
   input <- .ecs$list_attributes_input(cluster = cluster, targetType = targetType, attributeName = attributeName, attributeValue = attributeValue, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_attributes_output()
@@ -1487,7 +1512,8 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_clusters_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_clusters_output()
@@ -1552,7 +1578,8 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "containerInstanceArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "containerInstanceArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_container_instances_input(cluster = cluster, filter = filter, nextToken = nextToken, maxResults = maxResults, status = status)
   output <- .ecs$list_container_instances_output()
@@ -1607,7 +1634,8 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_services_input(cluster = cluster, nextToken = nextToken, maxResults = maxResults, launchType = launchType, schedulingStrategy = schedulingStrategy)
   output <- .ecs$list_services_output()
@@ -1665,7 +1693,8 @@ ecs_list_services_by_namespace <- function(namespace, nextToken = NULL, maxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_services_by_namespace_input(namespace = namespace, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_services_by_namespace_output()
@@ -1697,7 +1726,8 @@ ecs_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ecs$list_tags_for_resource_output()
@@ -1761,7 +1791,8 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "families")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "families"),
+    stream_api = FALSE
   )
   input <- .ecs$list_task_definition_families_input(familyPrefix = familyPrefix, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definition_families_output()
@@ -1827,7 +1858,8 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskDefinitionArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskDefinitionArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_task_definitions_input(familyPrefix = familyPrefix, status = status, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definitions_output()
@@ -1906,7 +1938,8 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskArns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskArns"),
+    stream_api = FALSE
   )
   input <- .ecs$list_tasks_input(cluster = cluster, containerInstance = containerInstance, family = family, nextToken = nextToken, maxResults = maxResults, startedBy = startedBy, serviceName = serviceName, desiredStatus = desiredStatus, launchType = launchType)
   output <- .ecs$list_tasks_output()
@@ -2049,7 +2082,8 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$put_account_setting_input(name = name, value = value, principalArn = principalArn)
   output <- .ecs$put_account_setting_output()
@@ -2182,7 +2216,8 @@ ecs_put_account_setting_default <- function(name, value) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$put_account_setting_default_input(name = name, value = value)
   output <- .ecs$put_account_setting_default_output()
@@ -2217,7 +2252,8 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$put_attributes_input(cluster = cluster, attributes = attributes)
   output <- .ecs$put_attributes_output()
@@ -2287,7 +2323,8 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$put_cluster_capacity_providers_input(cluster = cluster, capacityProviders = capacityProviders, defaultCapacityProviderStrategy = defaultCapacityProviderStrategy)
   output <- .ecs$put_cluster_capacity_providers_output()
@@ -2363,7 +2400,8 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$register_container_instance_input(cluster = cluster, instanceIdentityDocument = instanceIdentityDocument, instanceIdentityDocumentSignature = instanceIdentityDocumentSignature, totalResources = totalResources, versionInfo = versionInfo, containerInstanceArn = containerInstanceArn, attributes = attributes, platformDevices = platformDevices, tags = tags)
   output <- .ecs$register_container_instance_output()
@@ -2651,7 +2689,8 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$register_task_definition_input(family = family, taskRoleArn = taskRoleArn, executionRoleArn = executionRoleArn, networkMode = networkMode, containerDefinitions = containerDefinitions, volumes = volumes, placementConstraints = placementConstraints, requiresCompatibilities = requiresCompatibilities, cpu = cpu, memory = memory, tags = tags, pidMode = pidMode, ipcMode = ipcMode, proxyConfiguration = proxyConfiguration, inferenceAccelerators = inferenceAccelerators, ephemeralStorage = ephemeralStorage, runtimePlatform = runtimePlatform)
   output <- .ecs$register_task_definition_output()
@@ -2749,7 +2788,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @param platformVersion The platform version the task uses. A platform version is only specified
 #' for tasks hosted on Fargate. If one isn't specified, the `LATEST`
 #' platform version is used. For more information, see [Fargate platform
-#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
+#' versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags aren't propagated. Tags can
@@ -2840,7 +2879,8 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$run_task_input(capacityProviderStrategy = capacityProviderStrategy, cluster = cluster, count = count, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, launchType = launchType, networkConfiguration = networkConfiguration, overrides = overrides, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, clientToken = clientToken, volumeConfigurations = volumeConfigurations)
   output <- .ecs$run_task_output()
@@ -2949,7 +2989,8 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$start_task_input(cluster = cluster, containerInstances = containerInstances, enableECSManagedTags = enableECSManagedTags, enableExecuteCommand = enableExecuteCommand, group = group, networkConfiguration = networkConfiguration, overrides = overrides, propagateTags = propagateTags, referenceId = referenceId, startedBy = startedBy, tags = tags, taskDefinition = taskDefinition, volumeConfigurations = volumeConfigurations)
   output <- .ecs$start_task_output()
@@ -2987,7 +3028,8 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$stop_task_input(cluster = cluster, task = task, reason = reason)
   output <- .ecs$stop_task_output()
@@ -3020,7 +3062,8 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$submit_attachment_state_changes_input(cluster = cluster, attachments = attachments)
   output <- .ecs$submit_attachment_state_changes_output()
@@ -3059,7 +3102,8 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$submit_container_state_change_input(cluster = cluster, task = task, containerName = containerName, runtimeId = runtimeId, status = status, exitCode = exitCode, reason = reason, networkBindings = networkBindings)
   output <- .ecs$submit_container_state_change_output()
@@ -3100,7 +3144,8 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$submit_task_state_change_input(cluster = cluster, task = task, status = status, reason = reason, containers = containers, attachments = attachments, managedAgents = managedAgents, pullStartedAt = pullStartedAt, pullStoppedAt = pullStoppedAt, executionStoppedAt = executionStoppedAt)
   output <- .ecs$submit_task_state_change_output()
@@ -3159,7 +3204,8 @@ ecs_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ecs$tag_resource_output()
@@ -3192,7 +3238,8 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ecs$untag_resource_output()
@@ -3224,7 +3271,8 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider)
   output <- .ecs$update_capacity_provider_output()
@@ -3273,7 +3321,8 @@ ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL, s
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_cluster_input(cluster = cluster, settings = settings, configuration = configuration, serviceConnectDefaults = serviceConnectDefaults)
   output <- .ecs$update_cluster_output()
@@ -3315,7 +3364,8 @@ ecs_update_cluster_settings <- function(cluster, settings) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_cluster_settings_input(cluster = cluster, settings = settings)
   output <- .ecs$update_cluster_settings_output()
@@ -3349,7 +3399,8 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_container_agent_input(cluster = cluster, containerInstance = containerInstance)
   output <- .ecs$update_container_agent_output()
@@ -3388,7 +3439,8 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_container_instances_state_input(cluster = cluster, containerInstances = containerInstances, status = status)
   output <- .ecs$update_container_instances_state_output()
@@ -3474,7 +3526,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' version is only specified for tasks using the Fargate launch type. If a
 #' platform version is not specified, the `LATEST` platform version is
 #' used. For more information, see [Fargate Platform
-#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/)
+#' Versions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param forceNewDeployment Determines whether to force a new deployment of the service. By default,
 #' deployments aren't forced. You can use this option to start a new
@@ -3584,7 +3636,8 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_service_input(cluster = cluster, service = service, desiredCount = desiredCount, taskDefinition = taskDefinition, capacityProviderStrategy = capacityProviderStrategy, deploymentConfiguration = deploymentConfiguration, networkConfiguration = networkConfiguration, placementConstraints = placementConstraints, placementStrategy = placementStrategy, platformVersion = platformVersion, forceNewDeployment = forceNewDeployment, healthCheckGracePeriodSeconds = healthCheckGracePeriodSeconds, enableExecuteCommand = enableExecuteCommand, enableECSManagedTags = enableECSManagedTags, loadBalancers = loadBalancers, propagateTags = propagateTags, serviceRegistries = serviceRegistries, serviceConnectConfiguration = serviceConnectConfiguration, volumeConfigurations = volumeConfigurations)
   output <- .ecs$update_service_output()
@@ -3619,7 +3672,8 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_service_primary_task_set_input(cluster = cluster, service = service, primaryTaskSet = primaryTaskSet)
   output <- .ecs$update_service_primary_task_set_output()
@@ -3662,7 +3716,8 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_task_protection_input(cluster = cluster, tasks = tasks, protectionEnabled = protectionEnabled, expiresInMinutes = expiresInMinutes)
   output <- .ecs$update_task_protection_output()
@@ -3699,7 +3754,8 @@ ecs_update_task_set <- function(cluster, service, taskSet, scale) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ecs$update_task_set_input(cluster = cluster, service = service, taskSet = taskSet, scale = scale)
   output <- .ecs$update_task_set_output()

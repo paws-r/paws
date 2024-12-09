@@ -119,7 +119,7 @@ previous generation counterparts.
 \code{cache.m7g.2xlarge}, \code{cache.m7g.4xlarge}, \code{cache.m7g.8xlarge},
 \code{cache.m7g.12xlarge}, \code{cache.m7g.16xlarge}
 
-For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -171,7 +171,7 @@ for these types.)
 \code{cache.r7g.2xlarge}, \code{cache.r7g.4xlarge}, \code{cache.r7g.8xlarge},
 \code{cache.r7g.12xlarge}, \code{cache.r7g.16xlarge}
 
-For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -218,7 +218,7 @@ Valid values for this parameter are: \code{memcached} | \code{redis}}
 view the supported cache engine versions, use the
 DescribeCacheEngineVersions operation.
 
-\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
+\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing cluster or
 replication group and create it anew with the earlier engine version.}
@@ -235,7 +235,7 @@ Virtual Private Cloud (Amazon VPC).
 
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html}{Subnets and Subnet Groups}.}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SubnetGroups.html}{Subnets and Subnet Groups}.}
 
 \item{CacheSecurityGroupNames}{A list of security group names to associate with this cluster.
 
@@ -313,7 +313,7 @@ length.
 the AUTH token.
 }
 
-For more information, see AUTH password at
+For more information, see \href{https://redis.io/docs/latest/commands/auth/}{AUTH password} at
 http://redis.io/commands/AUTH.}
 
 \item{OutpostMode}{Specifies whether the nodes in the cluster are created in a single

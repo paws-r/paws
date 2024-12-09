@@ -14,18 +14,18 @@ NULL
 #' @param DestinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination.
 #' @param AssociationType The type of association. The following are suggested uses for each type.
 #' Amazon SageMaker places no restrictions on their use.
-#'
+#' 
 #' -   ContributedTo - The source contributed to the destination or had a
 #'     part in enabling the destination. For example, the training data
 #'     contributed to the training job.
-#'
+#' 
 #' -   AssociatedWith - The source is connected to the destination. For
 #'     example, an approval workflow is associated with a model deployment.
-#'
+#' 
 #' -   DerivedFrom - The destination is a modification of the source. For
 #'     example, a digest output of a channel input for a processing job is
 #'     derived from the original inputs.
-#'
+#' 
 #' -   Produced - The source generated the destination. For example, a
 #'     training job produced a model artifact.
 #'
@@ -38,7 +38,8 @@ sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$add_association_input(SourceArn = SourceArn, DestinationArn = DestinationArn, AssociationType = AssociationType)
   output <- .sagemaker$add_association_output()
@@ -73,7 +74,8 @@ sagemaker_add_tags <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$add_tags_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .sagemaker$add_tags_output()
@@ -104,7 +106,8 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$associate_trial_component_input(TrialComponentName = TrialComponentName, TrialName = TrialName)
   output <- .sagemaker$associate_trial_component_output()
@@ -134,7 +137,8 @@ sagemaker_batch_describe_model_package <- function(ModelPackageArnList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$batch_describe_model_package_input(ModelPackageArnList = ModelPackageArnList)
   output <- .sagemaker$batch_describe_model_package_output()
@@ -160,7 +164,7 @@ sagemaker_batch_describe_model_package <- function(ModelPackageArnList) {
 #' @param Description The description of the action.
 #' @param Status The status of the action.
 #' @param Properties A list of properties to add to the action.
-#' @param MetadataProperties
+#' @param MetadataProperties 
 #' @param Tags A list of tags to apply to the action.
 #'
 #' @keywords internal
@@ -172,7 +176,8 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_action_input(ActionName = ActionName, Source = Source, ActionType = ActionType, Description = Description, Status = Status, Properties = Properties, MetadataProperties = MetadataProperties, Tags = Tags)
   output <- .sagemaker$create_action_output()
@@ -196,33 +201,33 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #' @param AlgorithmDescription A description of the algorithm.
 #' @param TrainingSpecification &#91;required&#93; Specifies details about training jobs run by this algorithm, including
 #' the following:
-#'
+#' 
 #' -   The Amazon ECR path of the container and the version digest of the
 #'     algorithm.
-#'
+#' 
 #' -   The hyperparameters that the algorithm supports.
-#'
+#' 
 #' -   The instance types that the algorithm supports for training.
-#'
+#' 
 #' -   Whether the algorithm supports distributed training.
-#'
+#' 
 #' -   The metrics that the algorithm emits to Amazon CloudWatch.
-#'
+#' 
 #' -   Which metrics that the algorithm emits can be used as the objective
 #'     metric for hyperparameter tuning jobs.
-#'
+#' 
 #' -   The input channels that the algorithm supports for training data.
 #'     For example, an algorithm might support `train`, `validation`, and
 #'     `test` channels.
 #' @param InferenceSpecification Specifies details about inference jobs that the algorithm runs,
 #' including the following:
-#'
+#' 
 #' -   The Amazon ECR paths of containers that contain the inference code
 #'     and model artifacts.
-#'
+#' 
 #' -   The instance types that the algorithm supports for transform jobs
 #'     and real-time endpoints used for inference.
-#'
+#' 
 #' -   The input and output content formats that the algorithm supports for
 #'     inference.
 #' @param ValidationSpecification Specifies configurations for one or more training jobs and that
@@ -246,7 +251,8 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_algorithm_input(AlgorithmName = AlgorithmName, AlgorithmDescription = AlgorithmDescription, TrainingSpecification = TrainingSpecification, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags)
   output <- .sagemaker$create_algorithm_output()
@@ -276,7 +282,7 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' unique per resource.
 #' @param ResourceSpec The instance type and the Amazon Resource Name (ARN) of the SageMaker
 #' image created on the instance.
-#'
+#' 
 #' The value of `InstanceType` passed as part of the `ResourceSpec` in the
 #' [`create_app`][sagemaker_create_app] call overrides the value passed as
 #' part of the `ResourceSpec` configured for the user profile or the
@@ -294,7 +300,8 @@ sagemaker_create_app <- function(DomainId, UserProfileName = NULL, SpaceName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_app_input(DomainId = DomainId, UserProfileName = UserProfileName, SpaceName = SpaceName, AppType = AppType, AppName = AppName, Tags = Tags, ResourceSpec = ResourceSpec)
   output <- .sagemaker$create_app_output()
@@ -336,7 +343,8 @@ sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, K
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_app_image_config_input(AppImageConfigName = AppImageConfigName, Tags = Tags, KernelGatewayImageConfig = KernelGatewayImageConfig, JupyterLabAppImageConfig = JupyterLabAppImageConfig, CodeEditorAppImageConfig = CodeEditorAppImageConfig)
   output <- .sagemaker$create_app_image_config_output()
@@ -360,7 +368,7 @@ sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, K
 #' @param Source &#91;required&#93; The ID, ID type, and URI of the source.
 #' @param ArtifactType &#91;required&#93; The artifact type.
 #' @param Properties A list of properties to add to the artifact.
-#' @param MetadataProperties
+#' @param MetadataProperties 
 #' @param Tags A list of tags to apply to the artifact.
 #'
 #' @keywords internal
@@ -372,7 +380,8 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_artifact_input(ArtifactName = ArtifactName, Source = Source, ArtifactType = ArtifactType, Properties = Properties, MetadataProperties = MetadataProperties, Tags = Tags)
   output <- .sagemaker$create_artifact_output()
@@ -433,7 +442,8 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_auto_ml_job_input(AutoMLJobName = AutoMLJobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ProblemType = ProblemType, AutoMLJobObjective = AutoMLJobObjective, AutoMLJobConfig = AutoMLJobConfig, RoleArn = RoleArn, GenerateCandidateDefinitionsOnly = GenerateCandidateDefinitionsOnly, Tags = Tags, ModelDeployConfig = ModelDeployConfig)
   output <- .sagemaker$create_auto_ml_job_output()
@@ -460,16 +470,16 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' [InputDataConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html#sagemaker-CreateAutoMLJob-request-InputDataConfig)
 #' attribute in the [`create_auto_ml_job`][sagemaker_create_auto_ml_job]
 #' input parameters. The supported formats depend on the problem type:
-#'
+#' 
 #' -   For tabular problem types: `S3Prefix`, `ManifestFile`.
-#'
+#' 
 #' -   For image classification: `S3Prefix`, `ManifestFile`,
 #'     `AugmentedManifestFile`.
-#'
+#' 
 #' -   For text classification: `S3Prefix`.
-#'
+#' 
 #' -   For time-series forecasting: `S3Prefix`.
-#'
+#' 
 #' -   For text generation (LLMs fine-tuning): `S3Prefix`.
 #' @param OutputDataConfig &#91;required&#93; Provides information about encryption and the Amazon S3 output path
 #' needed to store artifacts from an AutoML job.
@@ -487,12 +497,12 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' not specified, the default objective metric depends on the problem type.
 #' For the list of default values per problem type, see
 #' [AutoMLJobObjective](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html).
-#'
+#' 
 #' -   For tabular problem types: You must either provide both the
 #'     `AutoMLJobObjective` and indicate the type of supervised learning
 #'     problem in `AutoMLProblemTypeConfig`
 #'     (`TabularJobConfig.ProblemType`), or none at all.
-#'
+#' 
 #' -   For text generation problem types (LLMs fine-tuning): Fine-tuning
 #'     language models in Autopilot does not require setting the
 #'     `AutoMLJobObjective` field. Autopilot fine-tunes LLMs without
@@ -507,12 +517,12 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' Autopilot model deployment.
 #' @param DataSplitConfig This structure specifies how to split the data into train and validation
 #' datasets.
-#'
+#' 
 #' The validation and training datasets must contain the same headers. For
 #' jobs created by calling
 #' [`create_auto_ml_job`][sagemaker_create_auto_ml_job], the validation
 #' dataset must be less than 2 GB in size.
-#'
+#' 
 #' This attribute must not be set for the time-series forecasting problem
 #' type, as Autopilot automatically splits the input dataset into training
 #' and validation sets.
@@ -527,7 +537,8 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_auto_ml_job_v2_input(AutoMLJobName = AutoMLJobName, AutoMLJobInputDataConfig = AutoMLJobInputDataConfig, OutputDataConfig = OutputDataConfig, AutoMLProblemTypeConfig = AutoMLProblemTypeConfig, RoleArn = RoleArn, Tags = Tags, SecurityConfig = SecurityConfig, AutoMLJobObjective = AutoMLJobObjective, ModelDeployConfig = ModelDeployConfig, DataSplitConfig = DataSplitConfig, AutoMLComputeConfig = AutoMLComputeConfig)
   output <- .sagemaker$create_auto_ml_job_v2_output()
@@ -548,7 +559,7 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
 #'
 #' @param ClusterName &#91;required&#93; The name for the new SageMaker HyperPod cluster.
 #' @param InstanceGroups &#91;required&#93; The instance groups to be created in the SageMaker HyperPod cluster.
-#' @param VpcConfig
+#' @param VpcConfig 
 #' @param Tags Custom tags for managing the SageMaker HyperPod cluster as an Amazon Web
 #' Services resource. You can add tags to your cluster in the same way you
 #' add them in other Amazon Web Services services that support tagging. To
@@ -565,7 +576,8 @@ sagemaker_create_cluster <- function(ClusterName, InstanceGroups, VpcConfig = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups, VpcConfig = VpcConfig, Tags = Tags)
   output <- .sagemaker$create_cluster_output()
@@ -604,7 +616,8 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_code_repository_input(CodeRepositoryName = CodeRepositoryName, GitConfig = GitConfig, Tags = Tags)
   output <- .sagemaker$create_code_repository_output()
@@ -627,17 +640,17 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' Amazon Web Services Region and within your Amazon Web Services account.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
 #' SageMaker to perform tasks on your behalf.
-#'
+#' 
 #' During model compilation, Amazon SageMaker needs your permission to:
-#'
+#' 
 #' -   Read input data from an S3 bucket
-#'
+#' 
 #' -   Write model artifacts to an S3 bucket
-#'
+#' 
 #' -   Write logs to Amazon CloudWatch Logs
-#'
+#' 
 #' -   Publish metrics to Amazon CloudWatch
-#'
+#' 
 #' You grant permissions for all of these tasks to an IAM role. To pass
 #' this role to Amazon SageMaker, the caller of this API must have the
 #' `iam:PassRole` permission. For more information, see [Amazon SageMaker
@@ -677,7 +690,8 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, ModelP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_compilation_job_input(CompilationJobName = CompilationJobName, RoleArn = RoleArn, ModelPackageVersionArn = ModelPackageVersionArn, InputConfig = InputConfig, OutputConfig = OutputConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags)
   output <- .sagemaker$create_compilation_job_output()
@@ -713,7 +727,8 @@ sagemaker_create_context <- function(ContextName, Source, ContextType, Descripti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_context_input(ContextName = ContextName, Source = Source, ContextType = ContextType, Description = Description, Properties = Properties, Tags = Tags)
   output <- .sagemaker$create_context_output()
@@ -737,12 +752,12 @@ sagemaker_create_context <- function(ContextName, Source, ContextType, Descripti
 #' @param DataQualityAppSpecification &#91;required&#93; Specifies the container that runs the monitoring job.
 #' @param DataQualityJobInput &#91;required&#93; A list of inputs for the monitoring job. Currently endpoints are
 #' supported as monitoring inputs.
-#' @param DataQualityJobOutputConfig &#91;required&#93;
-#' @param JobResources &#91;required&#93;
+#' @param DataQualityJobOutputConfig &#91;required&#93; 
+#' @param JobResources &#91;required&#93; 
 #' @param NetworkConfig Specifies networking configuration for the monitoring job.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 #' assume to perform tasks on your behalf.
-#' @param StoppingCondition
+#' @param StoppingCondition 
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
@@ -757,7 +772,8 @@ sagemaker_create_data_quality_job_definition <- function(JobDefinitionName, Data
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_data_quality_job_definition_input(JobDefinitionName = JobDefinitionName, DataQualityBaselineConfig = DataQualityBaselineConfig, DataQualityAppSpecification = DataQualityAppSpecification, DataQualityJobInput = DataQualityJobInput, DataQualityJobOutputConfig = DataQualityJobOutputConfig, JobResources = JobResources, NetworkConfig = NetworkConfig, RoleArn = RoleArn, StoppingCondition = StoppingCondition, Tags = Tags)
   output <- .sagemaker$create_data_quality_job_definition_output()
@@ -785,7 +801,7 @@ sagemaker_create_data_quality_job_definition <- function(JobDefinitionName, Data
 #' @param EnableIotRoleAlias Whether to create an Amazon Web Services IoT Role Alias during device
 #' fleet creation. The name of the role alias generated will match this
 #' pattern: "SageMakerEdge-\{DeviceFleetName\}".
-#'
+#' 
 #' For example, if your device fleet is called "demo-fleet", the name of
 #' the role alias will be "SageMakerEdge-demo-fleet".
 #'
@@ -798,7 +814,8 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_device_fleet_input(DeviceFleetName = DeviceFleetName, RoleArn = RoleArn, Description = Description, OutputConfig = OutputConfig, Tags = Tags, EnableIotRoleAlias = EnableIotRoleAlias)
   output <- .sagemaker$create_device_fleet_output()
@@ -822,7 +839,7 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @param DefaultUserSettings &#91;required&#93; The default settings to use to create a user profile when `UserSettings`
 #' isn't specified in the call to the
 #' [`create_user_profile`][sagemaker_create_user_profile] API.
-#'
+#' 
 #' `SecurityGroups` is aggregated when specified in both calls. For all
 #' other settings in `UserSettings`, the values specified in
 #' [`create_user_profile`][sagemaker_create_user_profile] take precedence
@@ -834,15 +851,15 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @param Tags Tags to associated with the Domain. Each tag consists of a key and an
 #' optional value. Tag keys must be unique per resource. Tags are
 #' searchable using the [`search`][sagemaker_search] API.
-#'
+#' 
 #' Tags that you specify for the Domain are also added to all Apps that the
 #' Domain launches.
 #' @param AppNetworkAccessType Specifies the VPC used for non-EFS traffic. The default value is
 #' `PublicInternetOnly`.
-#'
+#' 
 #' -   `PublicInternetOnly` - Non-EFS traffic is through a VPC managed by
 #'     Amazon SageMaker, which allows direct internet access
-#'
+#' 
 #' -   `VpcOnly` - All traffic is through the specified VPC and subnets
 #' @param HomeEfsFileSystemKmsKeyId Use `KmsKeyId`.
 #' @param KmsKeyId SageMaker uses Amazon Web Services KMS to encrypt EFS and EBS volumes
@@ -865,7 +882,8 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_domain_input(DomainName = DomainName, AuthMode = AuthMode, DefaultUserSettings = DefaultUserSettings, DomainSettings = DomainSettings, SubnetIds = SubnetIds, VpcId = VpcId, Tags = Tags, AppNetworkAccessType = AppNetworkAccessType, HomeEfsFileSystemKmsKeyId = HomeEfsFileSystemKmsKeyId, KmsKeyId = KmsKeyId, AppSecurityGroupManagement = AppSecurityGroupManagement, DefaultSpaceSettings = DefaultSpaceSettings)
   output <- .sagemaker$create_domain_output()
@@ -900,7 +918,8 @@ sagemaker_create_edge_deployment_plan <- function(EdgeDeploymentPlanName, ModelC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_edge_deployment_plan_input(EdgeDeploymentPlanName = EdgeDeploymentPlanName, ModelConfigs = ModelConfigs, DeviceFleetName = DeviceFleetName, Stages = Stages, Tags = Tags)
   output <- .sagemaker$create_edge_deployment_plan_output()
@@ -931,7 +950,8 @@ sagemaker_create_edge_deployment_stage <- function(EdgeDeploymentPlanName, Stage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_edge_deployment_stage_input(EdgeDeploymentPlanName = EdgeDeploymentPlanName, Stages = Stages)
   output <- .sagemaker$create_edge_deployment_stage_output()
@@ -972,7 +992,8 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_edge_packaging_job_input(EdgePackagingJobName = EdgePackagingJobName, CompilationJobName = CompilationJobName, ModelName = ModelName, ModelVersion = ModelVersion, RoleArn = RoleArn, OutputConfig = OutputConfig, ResourceKey = ResourceKey, Tags = Tags)
   output <- .sagemaker$create_edge_packaging_job_output()
@@ -999,7 +1020,7 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' [InvokeEndpoint](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_runtime_InvokeEndpoint.html).
 #' @param EndpointConfigName &#91;required&#93; The name of an endpoint configuration. For more information, see
 #' [`create_endpoint_config`][sagemaker_create_endpoint_config].
-#' @param DeploymentConfig
+#' @param DeploymentConfig 
 #' @param Tags An array of key-value pairs. You can use tags to categorize your Amazon
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
@@ -1015,7 +1036,8 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_endpoint_input(EndpointName = EndpointName, EndpointConfigName = EndpointConfigName, DeploymentConfig = DeploymentConfig, Tags = Tags)
   output <- .sagemaker$create_endpoint_output()
@@ -1039,7 +1061,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' [`create_endpoint`][sagemaker_create_endpoint] request.
 #' @param ProductionVariants &#91;required&#93; An array of `ProductionVariant` objects, one for each model that you
 #' want to host at this endpoint.
-#' @param DataCaptureConfig
+#' @param DataCaptureConfig 
 #' @param Tags An array of key-value pairs. You can use tags to categorize your Amazon
 #' Web Services resources in different ways, for example, by purpose,
 #' owner, or environment. For more information, see [Tagging Amazon Web
@@ -1048,26 +1070,26 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' @param KmsKeyId The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
 #' Service key that SageMaker uses to encrypt data on the storage volume
 #' attached to the ML compute instance that hosts the endpoint.
-#'
+#' 
 #' The KmsKeyId can be any of the following formats:
-#'
+#' 
 #' -   Key ID: `1234abcd-12ab-34cd-56ef-1234567890ab`
-#'
+#' 
 #' -   Key ARN:
 #'     `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`
-#'
+#' 
 #' -   Alias name: `alias/ExampleAlias`
-#'
+#' 
 #' -   Alias name ARN:
 #'     `arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias`
-#'
+#' 
 #' The KMS key policy must grant permission to the IAM role that you
 #' specify in your [`create_endpoint`][sagemaker_create_endpoint],
 #' [`update_endpoint`][sagemaker_update_endpoint] requests. For more
 #' information, refer to the Amazon Web Services Key Management Service
 #' section [Using Key Policies in Amazon Web Services
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
-#'
+#' 
 #' Certain Nitro-based instances include local storage, dependent on the
 #' instance type. Local storage volumes are encrypted using a hardware
 #' module on the instance. You can't request a `KmsKeyId` when using an
@@ -1077,11 +1099,11 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' you specify a value for `KmsKeyId` when using any nitro-based instances
 #' with local storage, the call to
 #' [`create_endpoint_config`][sagemaker_create_endpoint_config] fails.
-#'
+#' 
 #' For a list of instance types that support local instance storage, see
 #' [Instance Store
 #' Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes).
-#'
+#' 
 #' For more information about local instance storage encryption, see [SSD
 #' Instance Store
 #' Volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html).
@@ -1100,10 +1122,10 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' assume to perform actions on your behalf. For more information, see
 #' [SageMaker
 #' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
-#'
+#' 
 #' To be able to pass this role to Amazon SageMaker, the caller of this
 #' action must have the `iam:PassRole` permission.
-#' @param VpcConfig
+#' @param VpcConfig 
 #' @param EnableNetworkIsolation Sets whether all model containers deployed to the endpoint are isolated.
 #' If they are, no inbound or outbound network calls can be made to or from
 #' the model containers.
@@ -1117,7 +1139,8 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_endpoint_config_input(EndpointConfigName = EndpointConfigName, ProductionVariants = ProductionVariants, DataCaptureConfig = DataCaptureConfig, Tags = Tags, KmsKeyId = KmsKeyId, AsyncInferenceConfig = AsyncInferenceConfig, ExplainerConfig = ExplainerConfig, ShadowProductionVariants = ShadowProductionVariants, ExecutionRoleArn = ExecutionRoleArn, VpcConfig = VpcConfig, EnableNetworkIsolation = EnableNetworkIsolation)
   output <- .sagemaker$create_endpoint_config_output()
@@ -1154,7 +1177,8 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_experiment_input(ExperimentName = ExperimentName, DisplayName = DisplayName, Description = Description, Tags = Tags)
   output <- .sagemaker$create_experiment_output()
@@ -1175,40 +1199,40 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'
 #' @param FeatureGroupName &#91;required&#93; The name of the `FeatureGroup`. The name must be unique within an Amazon
 #' Web Services Region in an Amazon Web Services account.
-#'
+#' 
 #' The name:
-#'
+#' 
 #' -   Must start with an alphanumeric character.
-#'
+#' 
 #' -   Can only include alphanumeric characters, underscores, and hyphens.
 #'     Spaces are not allowed.
 #' @param RecordIdentifierFeatureName &#91;required&#93; The name of the `Feature` whose value uniquely identifies a `Record`
 #' defined in the `FeatureStore`. Only the latest record per identifier
 #' value will be stored in the `OnlineStore`. `RecordIdentifierFeatureName`
 #' must be one of feature definitions' names.
-#'
+#' 
 #' You use the `RecordIdentifierFeatureName` to access data in a
 #' `FeatureStore`.
-#'
+#' 
 #' This name:
-#'
+#' 
 #' -   Must start with an alphanumeric character.
-#'
+#' 
 #' -   Can only contains alphanumeric characters, hyphens, underscores.
 #'     Spaces are not allowed.
 #' @param EventTimeFeatureName &#91;required&#93; The name of the feature that stores the `EventTime` of a `Record` in a
 #' `FeatureGroup`.
-#'
+#' 
 #' An `EventTime` is a point in time when a new event occurs that
 #' corresponds to the creation or update of a `Record` in a `FeatureGroup`.
 #' All `Records` in the `FeatureGroup` must have a corresponding
 #' `EventTime`.
-#'
+#' 
 #' An `EventTime` can be a `String` or `Fractional`.
-#'
+#' 
 #' -   `Fractional`: `EventTime` feature values must be a Unix timestamp in
 #'     seconds.
-#'
+#' 
 #' -   `String`: `EventTime` feature values must be an ISO-8601 string in
 #'     the format. The following formats are supported
 #'     `yyyy-MM-dd'T'HH:mm:ssZ` and `yyyy-MM-dd'T'HH:mm:ss.SSSZ` where
@@ -1218,29 +1242,29 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'     `'T'` and `Z` are constants.
 #' @param FeatureDefinitions &#91;required&#93; A list of `Feature` names and types. `Name` and `Type` is compulsory per
 #' `Feature`.
-#'
+#' 
 #' Valid feature `FeatureType`s are `Integral`, `Fractional` and `String`.
-#'
+#' 
 #' `FeatureName`s cannot be any of the following: `is_deleted`,
 #' `write_time`, `api_invocation_time`
-#'
+#' 
 #' You can create up to 2,500 `FeatureDefinition`s per `FeatureGroup`.
 #' @param OnlineStoreConfig You can turn the `OnlineStore` on or off by specifying `True` for the
 #' `EnableOnlineStore` flag in `OnlineStoreConfig`.
-#'
+#' 
 #' You can also include an Amazon Web Services KMS key ID (`KMSKeyId`) for
 #' at-rest encryption of the `OnlineStore`.
-#'
+#' 
 #' The default value is `False`.
 #' @param OfflineStoreConfig Use this to configure an `OfflineFeatureStore`. This parameter allows
 #' you to specify:
-#'
+#' 
 #' -   The Amazon Simple Storage Service (Amazon S3) location of an
 #'     `OfflineStore`.
-#'
+#' 
 #' -   A configuration for an Amazon Web Services Glue or Amazon Web
 #'     Services Hive data catalog.
-#'
+#' 
 #' -   An KMS encryption key to encrypt the Amazon S3 location used for
 #'     `OfflineStore`. If KMS encryption key is not specified, by default
 #'     we encrypt all data at rest using Amazon Web Services KMS key. By
@@ -1248,13 +1272,13 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'     key](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html)
 #'     for SSE, you can reduce Amazon Web Services KMS requests costs by up
 #'     to 99 percent.
-#'
+#' 
 #' -   Format for the offline store table. Supported formats are Glue
 #'     (Default) and [Apache Iceberg](https://iceberg.apache.org/).
-#'
+#' 
 #' To learn more about this parameter, see
 #' [OfflineStoreConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OfflineStoreConfig.html).
-#' @param ThroughputConfig
+#' @param ThroughputConfig 
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM execution role used to persist
 #' data into the `OfflineStore` if an `OfflineStoreConfig` is provided.
 #' @param Description A free-form description of a `FeatureGroup`.
@@ -1269,7 +1293,8 @@ sagemaker_create_feature_group <- function(FeatureGroupName, RecordIdentifierFea
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_feature_group_input(FeatureGroupName = FeatureGroupName, RecordIdentifierFeatureName = RecordIdentifierFeatureName, EventTimeFeatureName = EventTimeFeatureName, FeatureDefinitions = FeatureDefinitions, OnlineStoreConfig = OnlineStoreConfig, OfflineStoreConfig = OfflineStoreConfig, ThroughputConfig = ThroughputConfig, RoleArn = RoleArn, Description = Description, Tags = Tags)
   output <- .sagemaker$create_feature_group_output()
@@ -1314,7 +1339,8 @@ sagemaker_create_flow_definition <- function(FlowDefinitionName, HumanLoopReques
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_flow_definition_input(FlowDefinitionName = FlowDefinitionName, HumanLoopRequestSource = HumanLoopRequestSource, HumanLoopActivationConfig = HumanLoopActivationConfig, HumanLoopConfig = HumanLoopConfig, OutputConfig = OutputConfig, RoleArn = RoleArn, Tags = Tags)
   output <- .sagemaker$create_flow_definition_output()
@@ -1349,7 +1375,8 @@ sagemaker_create_hub <- function(HubName, HubDescription, HubDisplayName = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_hub_input(HubName = HubName, HubDescription = HubDescription, HubDisplayName = HubDisplayName, HubSearchKeywords = HubSearchKeywords, S3StorageConfig = S3StorageConfig, Tags = Tags)
   output <- .sagemaker$create_hub_output()
@@ -1384,7 +1411,8 @@ sagemaker_create_hub_content_reference <- function(HubName, SageMakerPublicHubCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_hub_content_reference_input(HubName = HubName, SageMakerPublicHubContentArn = SageMakerPublicHubContentArn, HubContentName = HubContentName, MinVersion = MinVersion, Tags = Tags)
   output <- .sagemaker$create_hub_content_reference_output()
@@ -1405,7 +1433,7 @@ sagemaker_create_hub_content_reference <- function(HubName, SageMakerPublicHubCo
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_human_task_ui/](https://www.paws-r-sdk.com/docs/sagemaker_create_human_task_ui/) for full documentation.
 #'
 #' @param HumanTaskUiName &#91;required&#93; The name of the user interface you are creating.
-#' @param UiTemplate &#91;required&#93;
+#' @param UiTemplate &#91;required&#93; 
 #' @param Tags An array of key-value pairs that contain metadata to help you categorize
 #' and organize a human review workflow user interface. Each tag consists
 #' of a key and a value, both of which you define.
@@ -1419,7 +1447,8 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_human_task_ui_input(HumanTaskUiName = HumanTaskUiName, UiTemplate = UiTemplate, Tags = Tags)
   output <- .sagemaker$create_human_task_ui_output()
@@ -1462,7 +1491,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' using one or more previous tuning jobs as a starting point. The results
 #' of previous tuning jobs are used to inform which combinations of
 #' hyperparameters to search over in the new tuning job.
-#'
+#' 
 #' All training jobs launched by the new hyperparameter tuning job are
 #' evaluated by using the objective metric. If you specify
 #' `IDENTICAL_DATA_AND_ALGORITHM` as the `WarmStartType` value for the warm
@@ -1470,7 +1499,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' tuning job is compared to the best training jobs from the parent tuning
 #' jobs. From these, the training job that performs the best as measured by
 #' the objective metric is returned as the overall best training job.
-#'
+#' 
 #' All training jobs launched by parent hyperparameter tuning jobs and the
 #' new hyperparameter tuning jobs count against the limit of training jobs
 #' for the tuning job.
@@ -1479,33 +1508,33 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' owner, or environment. For more information, see [Tagging Amazon Web
 #' Services
 #' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
-#'
+#' 
 #' Tags that you specify for the tuning job are also added to all training
 #' jobs that the tuning job launches.
 #' @param Autotune Configures SageMaker Automatic model tuning (AMT) to automatically find
 #' optimal parameters for the following fields:
-#'
+#' 
 #' -   [ParameterRanges](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html#sagemaker-Type-HyperParameterTuningJobConfig-ParameterRanges):
 #'     The names and ranges of parameters that a hyperparameter tuning job
 #'     can optimize.
-#'
+#' 
 #' -   [ResourceLimits](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ResourceLimits.html):
 #'     The maximum resources that can be used for a training job. These
 #'     resources include the maximum number of training jobs, the maximum
 #'     runtime of a tuning job, and the maximum number of training jobs to
 #'     run at the same time.
-#'
+#' 
 #' -   [TrainingJobEarlyStoppingType](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html#sagemaker-Type-HyperParameterTuningJobConfig-TrainingJobEarlyStoppingType):
 #'     A flag that specifies whether or not to use early stopping for
 #'     training jobs launched by a hyperparameter tuning job.
-#'
+#' 
 #' -   [RetryStrategy](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTrainingJobDefinition.html#sagemaker-Type-HyperParameterTrainingJobDefinition-RetryStrategy):
 #'     The number of times to retry a training job.
-#'
+#' 
 #' -   [Strategy](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobConfig.html):
 #'     Specifies how hyperparameter tuning chooses the combinations of
 #'     hyperparameter values to use for the training jobs that it launches.
-#'
+#' 
 #' -   [ConvergenceDetected](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ConvergenceDetected.html):
 #'     A flag to indicate that Automatic model tuning (AMT) has detected
 #'     model convergence.
@@ -1519,7 +1548,8 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName, HyperParameterTuningJobConfig = HyperParameterTuningJobConfig, TrainingJobDefinition = TrainingJobDefinition, TrainingJobDefinitions = TrainingJobDefinitions, WarmStartConfig = WarmStartConfig, Tags = Tags, Autotune = Autotune)
   output <- .sagemaker$create_hyper_parameter_tuning_job_output()
@@ -1555,7 +1585,8 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_image_input(Description = Description, DisplayName = DisplayName, ImageName = ImageName, RoleArn = RoleArn, Tags = Tags)
   output <- .sagemaker$create_image_output()
@@ -1576,7 +1607,7 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #'
 #' @param BaseImage &#91;required&#93; The registry path of the container image to use as the starting point
 #' for this version. The path is an Amazon ECR URI in the following format:
-#'
+#' 
 #' `<acct-id>.dkr.ecr.<region>.amazonaws.com/<repo-name[:tag] or [@@digest]>`
 #' @param ClientToken &#91;required&#93; A unique ID. If not specified, the Amazon Web Services CLI and Amazon
 #' Web Services SDKs, such as the SDK for Python (Boto3), add a unique
@@ -1584,34 +1615,34 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' @param ImageName &#91;required&#93; The `ImageName` of the `Image` to create a version of.
 #' @param Aliases A list of aliases created with the image version.
 #' @param VendorGuidance The stability of the image version, specified by the maintainer.
-#'
+#' 
 #' -   `NOT_PROVIDED`: The maintainers did not provide a status for image
 #'     version stability.
-#'
+#' 
 #' -   `STABLE`: The image version is stable.
-#'
+#' 
 #' -   `TO_BE_ARCHIVED`: The image version is set to be archived. Custom
 #'     image versions that are set to be archived are automatically
 #'     archived after three months.
-#'
+#' 
 #' -   `ARCHIVED`: The image version is archived. Archived image versions
 #'     are not searchable and are no longer actively supported.
 #' @param JobType Indicates SageMaker job type compatibility.
-#'
+#' 
 #' -   `TRAINING`: The image version is compatible with SageMaker training
 #'     jobs.
-#'
+#' 
 #' -   `INFERENCE`: The image version is compatible with SageMaker
 #'     inference jobs.
-#'
+#' 
 #' -   `NOTEBOOK_KERNEL`: The image version is compatible with SageMaker
 #'     notebook kernels.
 #' @param MLFramework The machine learning framework vended in the image version.
 #' @param ProgrammingLang The supported programming language and its version.
 #' @param Processor Indicates CPU or GPU compatibility.
-#'
+#' 
 #' -   `CPU`: The image version is compatible with CPU.
-#'
+#' 
 #' -   `GPU`: The image version is compatible with GPU.
 #' @param Horovod Indicates Horovod compatibility.
 #' @param ReleaseNotes The maintainer description of the image version.
@@ -1625,7 +1656,8 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName, Al
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_image_version_input(BaseImage = BaseImage, ClientToken = ClientToken, ImageName = ImageName, Aliases = Aliases, VendorGuidance = VendorGuidance, JobType = JobType, MLFramework = MLFramework, ProgrammingLang = ProgrammingLang, Processor = Processor, Horovod = Horovod, ReleaseNotes = ReleaseNotes)
   output <- .sagemaker$create_image_version_output()
@@ -1667,7 +1699,8 @@ sagemaker_create_inference_component <- function(InferenceComponentName, Endpoin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_inference_component_input(InferenceComponentName = InferenceComponentName, EndpointName = EndpointName, VariantName = VariantName, Specification = Specification, RuntimeConfig = RuntimeConfig, Tags = Tags)
   output <- .sagemaker$create_inference_component_output()
@@ -1690,7 +1723,7 @@ sagemaker_create_inference_component <- function(InferenceComponentName, Endpoin
 #' @param Name &#91;required&#93; The name for the inference experiment.
 #' @param Type &#91;required&#93; The type of the inference experiment that you want to run. The following
 #' types of experiments are possible:
-#'
+#' 
 #' -   `ShadowMode`: You can use this type to validate a shadow variant.
 #'     For more information, see [Shadow
 #'     tests](https://docs.aws.amazon.com/sagemaker/latest/dg/shadow-tests.html).
@@ -1709,7 +1742,7 @@ sagemaker_create_inference_component <- function(InferenceComponentName, Endpoin
 #' variant.
 #' @param DataStorageConfig The Amazon S3 location and configuration for storing inference request
 #' and response data.
-#'
+#' 
 #' This is an optional parameter that you can use for data capture. For
 #' more information, see [Capture
 #' data](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html).
@@ -1722,23 +1755,23 @@ sagemaker_create_inference_component <- function(InferenceComponentName, Endpoin
 #' key that Amazon SageMaker uses to encrypt data on the storage volume
 #' attached to the ML compute instance that hosts the endpoint. The
 #' `KmsKey` can be any of the following formats:
-#'
+#' 
 #' -   KMS key ID
-#'
+#' 
 #'     `"1234abcd-12ab-34cd-56ef-1234567890ab"`
-#'
+#' 
 #' -   Amazon Resource Name (ARN) of a KMS key
-#'
+#' 
 #'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
-#'
+#' 
 #' -   KMS key Alias
-#'
+#' 
 #'     `"alias/ExampleAlias"`
-#'
+#' 
 #' -   Amazon Resource Name (ARN) of a KMS key Alias
-#'
+#' 
 #'     `"arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"`
-#'
+#' 
 #' If you use a KMS key ID or an alias of your KMS key, the Amazon
 #' SageMaker execution role must include permissions to call `kms:Encrypt`.
 #' If you don't provide a KMS key ID, Amazon SageMaker uses the default KMS
@@ -1750,7 +1783,7 @@ sagemaker_create_inference_component <- function(InferenceComponentName, Endpoin
 #' see [KMS managed Encryption
 #' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
 #' in the *Amazon Simple Storage Service Developer Guide.*
-#'
+#' 
 #' The KMS key policy must grant permission to the IAM role that you
 #' specify in your [`create_endpoint`][sagemaker_create_endpoint] and
 #' [`update_endpoint`][sagemaker_update_endpoint] requests. For more
@@ -1771,7 +1804,8 @@ sagemaker_create_inference_experiment <- function(Name, Type, Schedule = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_inference_experiment_input(Name = Name, Type = Type, Schedule = Schedule, Description = Description, RoleArn = RoleArn, EndpointName = EndpointName, ModelVariants = ModelVariants, DataStorageConfig = DataStorageConfig, ShadowModeConfig = ShadowModeConfig, KmsKey = KmsKey, Tags = Tags)
   output <- .sagemaker$create_inference_experiment_output()
@@ -1825,7 +1859,8 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_inference_recommendations_job_input(JobName = JobName, JobType = JobType, RoleArn = RoleArn, InputConfig = InputConfig, JobDescription = JobDescription, StoppingConditions = StoppingConditions, OutputConfig = OutputConfig, Tags = Tags)
   output <- .sagemaker$create_inference_recommendations_job_output()
@@ -1854,38 +1889,38 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 #' This is the key for the key/value pair formed with the label that a
 #' worker assigns to the object. The `LabelAttributeName` must meet the
 #' following requirements.
-#'
+#' 
 #' -   The name can't end with "-metadata".
-#'
+#' 
 #' -   If you are using one of the following [built-in task
 #'     types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html),
 #'     the attribute name *must* end with "-ref". If the task type you are
 #'     using is not listed below, the attribute name *must not* end with
 #'     "-ref".
-#'
+#' 
 #'     -   Image semantic segmentation (`SemanticSegmentation)`, and
 #'         adjustment (`AdjustmentSemanticSegmentation`) and verification
 #'         (`VerificationSemanticSegmentation`) labeling jobs for this task
 #'         type.
-#'
+#' 
 #'     -   Video frame object detection (`VideoObjectDetection`), and
 #'         adjustment and verification (`AdjustmentVideoObjectDetection`)
 #'         labeling jobs for this task type.
-#'
+#' 
 #'     -   Video frame object tracking (`VideoObjectTracking`), and
 #'         adjustment and verification (`AdjustmentVideoObjectTracking`)
 #'         labeling jobs for this task type.
-#'
+#' 
 #'     -   3D point cloud semantic segmentation
 #'         (`3DPointCloudSemanticSegmentation`), and adjustment and
 #'         verification (`Adjustment3DPointCloudSemanticSegmentation`)
 #'         labeling jobs for this task type.
-#'
+#' 
 #'     -   3D point cloud object tracking (`3DPointCloudObjectTracking`),
 #'         and adjustment and verification
 #'         (`Adjustment3DPointCloudObjectTracking`) labeling jobs for this
 #'         task type.
-#'
+#' 
 #' If you are creating an adjustment or verification labeling job, you must
 #' use a *different* `LabelAttributeName` than the one used in the original
 #' labeling job. The original labeling job is the Ground Truth labeling job
@@ -1896,20 +1931,20 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 #' @param InputConfig &#91;required&#93; Input data for the labeling job, such as the Amazon S3 location of the
 #' data objects and the location of the manifest file that describes the
 #' data objects.
-#'
+#' 
 #' You must specify at least one of the following: `S3DataSource` or
 #' `SnsDataSource`.
-#'
+#' 
 #' -   Use `SnsDataSource` to specify an SNS input topic for a streaming
 #'     labeling job. If you do not specify and SNS input topic ARN, Ground
 #'     Truth will create a one-time labeling job that stops after all data
 #'     objects in the input manifest file have been labeled.
-#'
+#' 
 #' -   Use `S3DataSource` to specify an input manifest file for both
 #'     streaming and one-time labeling jobs. Adding an `S3DataSource` is
 #'     optional if you use `SnsDataSource` to create a streaming labeling
 #'     job.
-#'
+#' 
 #' If you use the Amazon Mechanical Turk workforce, your input data should
 #' not include confidential information, personal information or protected
 #' health information. Use `ContentClassifiers` to specify that your data
@@ -1923,13 +1958,13 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 #' complete data labeling.
 #' @param LabelCategoryConfigS3Uri The S3 URI of the file, referred to as a *label category configuration
 #' file*, that defines the categories used to label the data objects.
-#'
+#' 
 #' For 3D point cloud and video frame task types, you can add label
 #' category attributes and frame attributes to your label category
 #' configuration file. To learn how, see [Create a Labeling Category
 #' Configuration File for 3D Point Cloud Labeling
 #' Jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-cat-config-attributes.html).
-#'
+#' 
 #' For named entity recognition jobs, in addition to `"labels"`, you must
 #' provide worker instructions in the label category configuration file
 #' using the `"instructions"` parameter:
@@ -1938,7 +1973,7 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 #' Labeling Job
 #' (API)](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-named-entity-recg.html#sms-creating-ner-api)
 #' .
-#'
+#' 
 #' For all other [built-in task
 #' types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)
 #' and [custom
@@ -1946,25 +1981,25 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 #' your label category configuration file must be a JSON file in the
 #' following format. Identify the labels you want to use by replacing
 #' `label_1`, `label_2`,`...`,`label_n` with your label categories.
-#'
+#' 
 #' `\{ `
-#'
+#' 
 #' `"document-version": "2018-11-28",`
-#'
+#' 
 #' `"labels": [{"label": "label_1"},{"label": "label_2"},...{"label": "label_n"}]`
-#'
+#' 
 #' `\}`
-#'
+#' 
 #' Note the following about the label category configuration file:
-#'
+#' 
 #' -   For image classification and text classification (single and
 #'     multi-label) you must specify at least two label categories. For all
 #'     other task types, the minimum number of label categories required is
 #'     one.
-#'
+#' 
 #' -   Each label category must be unique, you cannot specify duplicate
 #'     label categories.
-#'
+#' 
 #' -   If you create a 3D point cloud or video frame adjustment or
 #'     verification labeling job, you must include
 #'     `auditLabelAttributeName` in the label category configuration. Use
@@ -1992,7 +2027,8 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_labeling_job_input(LabelingJobName = LabelingJobName, LabelAttributeName = LabelAttributeName, InputConfig = InputConfig, OutputConfig = OutputConfig, RoleArn = RoleArn, LabelCategoryConfigS3Uri = LabelCategoryConfigS3Uri, StoppingConditions = StoppingConditions, LabelingJobAlgorithmsConfig = LabelingJobAlgorithmsConfig, HumanTaskConfig = HumanTaskConfig, Tags = Tags)
   output <- .sagemaker$create_labeling_job_output()
@@ -2021,7 +2057,7 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' Tracking Server configuration size is `"Small"`. You can choose a size
 #' depending on the projected use of the tracking server such as the volume
 #' of data logged, number of users, and frequency of use.
-#'
+#' 
 #' We recommend using a small tracking server for teams of up to 25 users,
 #' a medium tracking server for teams of up to 50 users, and a large
 #' tracking server for teams of up to 100 users.
@@ -2054,7 +2090,8 @@ sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, Artifact
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_mlflow_tracking_server_input(TrackingServerName = TrackingServerName, ArtifactStoreUri = ArtifactStoreUri, TrackingServerSize = TrackingServerSize, MlflowVersion = MlflowVersion, RoleArn = RoleArn, AutomaticModelRegistration = AutomaticModelRegistration, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, Tags = Tags)
   output <- .sagemaker$create_mlflow_tracking_server_output()
@@ -2085,7 +2122,7 @@ sagemaker_create_mlflow_tracking_server <- function(TrackingServerName, Artifact
 #' instances or for batch transform jobs. Deploying on ML compute instances
 #' is part of model hosting. For more information, see [SageMaker
 #' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
-#'
+#' 
 #' To be able to pass this role to SageMaker, the caller of this API must
 #' have the `iam:PassRole` permission.
 #' @param Tags An array of key-value pairs. You can use tags to categorize your Amazon
@@ -2115,7 +2152,8 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_model_input(ModelName = ModelName, PrimaryContainer = PrimaryContainer, Containers = Containers, InferenceExecutionConfig = InferenceExecutionConfig, ExecutionRoleArn = ExecutionRoleArn, Tags = Tags, VpcConfig = VpcConfig, EnableNetworkIsolation = EnableNetworkIsolation)
   output <- .sagemaker$create_model_output()
@@ -2139,12 +2177,12 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 #' @param ModelBiasBaselineConfig The baseline configuration for a model bias job.
 #' @param ModelBiasAppSpecification &#91;required&#93; Configures the model bias job to run a specified Docker container image.
 #' @param ModelBiasJobInput &#91;required&#93; Inputs for the model bias job.
-#' @param ModelBiasJobOutputConfig &#91;required&#93;
-#' @param JobResources &#91;required&#93;
+#' @param ModelBiasJobOutputConfig &#91;required&#93; 
+#' @param JobResources &#91;required&#93; 
 #' @param NetworkConfig Networking options for a model bias job.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 #' assume to perform tasks on your behalf.
-#' @param StoppingCondition
+#' @param StoppingCondition 
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
@@ -2159,7 +2197,8 @@ sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelB
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_model_bias_job_definition_input(JobDefinitionName = JobDefinitionName, ModelBiasBaselineConfig = ModelBiasBaselineConfig, ModelBiasAppSpecification = ModelBiasAppSpecification, ModelBiasJobInput = ModelBiasJobInput, ModelBiasJobOutputConfig = ModelBiasJobOutputConfig, JobResources = JobResources, NetworkConfig = NetworkConfig, RoleArn = RoleArn, StoppingCondition = StoppingCondition, Tags = Tags)
   output <- .sagemaker$create_model_bias_job_definition_output()
@@ -2188,13 +2227,13 @@ sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelB
 #' @param ModelCardStatus &#91;required&#93; The approval status of the model card within your organization.
 #' Different organizations might have different criteria for model card
 #' review and approval.
-#'
+#' 
 #' -   `Draft`: The model card is a work in progress.
-#'
+#' 
 #' -   `PendingReview`: The model card is pending review.
-#'
+#' 
 #' -   `Approved`: The model card is approved.
-#'
+#' 
 #' -   `Archived`: The model card is archived. No more updates should be
 #'     made to the model card, but it can still be exported.
 #' @param Tags Key-value pairs used to manage metadata for model cards.
@@ -2208,7 +2247,8 @@ sagemaker_create_model_card <- function(ModelCardName, SecurityConfig = NULL, Co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_model_card_input(ModelCardName = ModelCardName, SecurityConfig = SecurityConfig, Content = Content, ModelCardStatus = ModelCardStatus, Tags = Tags)
   output <- .sagemaker$create_model_card_output()
@@ -2243,7 +2283,8 @@ sagemaker_create_model_card_export_job <- function(ModelCardName, ModelCardVersi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_model_card_export_job_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion, ModelCardExportJobName = ModelCardExportJobName, OutputConfig = OutputConfig)
   output <- .sagemaker$create_model_card_export_job_output()
@@ -2269,12 +2310,12 @@ sagemaker_create_model_card_export_job <- function(ModelCardName, ModelCardVersi
 #' @param ModelExplainabilityAppSpecification &#91;required&#93; Configures the model explainability job to run a specified Docker
 #' container image.
 #' @param ModelExplainabilityJobInput &#91;required&#93; Inputs for the model explainability job.
-#' @param ModelExplainabilityJobOutputConfig &#91;required&#93;
-#' @param JobResources &#91;required&#93;
+#' @param ModelExplainabilityJobOutputConfig &#91;required&#93; 
+#' @param JobResources &#91;required&#93; 
 #' @param NetworkConfig Networking options for a model explainability job.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 #' assume to perform tasks on your behalf.
-#' @param StoppingCondition
+#' @param StoppingCondition 
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
@@ -2289,7 +2330,8 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_model_explainability_job_definition_input(JobDefinitionName = JobDefinitionName, ModelExplainabilityBaselineConfig = ModelExplainabilityBaselineConfig, ModelExplainabilityAppSpecification = ModelExplainabilityAppSpecification, ModelExplainabilityJobInput = ModelExplainabilityJobInput, ModelExplainabilityJobOutputConfig = ModelExplainabilityJobOutputConfig, JobResources = JobResources, NetworkConfig = NetworkConfig, RoleArn = RoleArn, StoppingCondition = StoppingCondition, Tags = Tags)
   output <- .sagemaker$create_model_explainability_job_definition_output()
@@ -2312,24 +2354,24 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #'
 #' @param ModelPackageName The name of the model package. The name must have 1 to 63 characters.
 #' Valid characters are a-z, A-Z, 0-9, and - (hyphen).
-#'
+#' 
 #' This parameter is required for unversioned models. It is not applicable
 #' to versioned models.
 #' @param ModelPackageGroupName The name or Amazon Resource Name (ARN) of the model package group that
 #' this model version belongs to.
-#'
+#' 
 #' This parameter is required for versioned models, and does not apply to
 #' unversioned models.
 #' @param ModelPackageDescription A description of the model package.
 #' @param InferenceSpecification Specifies details about inference jobs that you can run with models
 #' based on this model package, including the following information:
-#'
+#' 
 #' -   The Amazon ECR paths of containers that contain the inference code
 #'     and model artifacts.
-#'
+#' 
 #' -   The instance types that the model package supports for transform
 #'     jobs and real-time endpoints used for inference.
-#'
+#' 
 #' -   The input and output content formats that the model package supports
 #'     for inference.
 #' @param ValidationSpecification Specifies configurations for one or more transform jobs that SageMaker
@@ -2337,25 +2379,25 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' @param SourceAlgorithmSpecification Details about the algorithm that was used to create the model package.
 #' @param CertifyForMarketplace Whether to certify the model package for listing on Amazon Web Services
 #' Marketplace.
-#'
+#' 
 #' This parameter is optional for unversioned models, and does not apply to
 #' versioned models.
 #' @param Tags A list of key value pairs associated with the model. For more
 #' information, see [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
-#'
+#' 
 #' If you supply `ModelPackageGroupName`, your model package belongs to the
 #' model group you specify and uses the tags associated with the model
 #' group. In this case, you cannot supply a `tag` argument.
 #' @param ModelApprovalStatus Whether the model is approved for deployment.
-#'
+#' 
 #' This parameter is optional for versioned models, and does not apply to
 #' unversioned models.
-#'
+#' 
 #' For versioned models, the value of this parameter must be set to
 #' `Approved` to deploy the model.
-#' @param MetadataProperties
+#' @param MetadataProperties 
 #' @param ModelMetrics A structure that contains model metrics reports.
 #' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
 #' @param Domain The machine learning domain of your model package and its components.
@@ -2367,7 +2409,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' Recommender: `"IMAGE_CLASSIFICATION"` | `"OBJECT_DETECTION"` |
 #' `"TEXT_GENERATION"` |`"IMAGE_SEGMENTATION"` | `"FILL_MASK"` |
 #' `"CLASSIFICATION"` | `"REGRESSION"` | `"OTHER"`.
-#'
+#' 
 #' Specify "OTHER" if none of the tasks listed fit your use case.
 #' @param SamplePayloadUrl The Amazon Simple Storage Service (Amazon S3) path where the sample
 #' payload is stored. This path must point to a single gzip compressed tar
@@ -2413,7 +2455,8 @@ sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications, SkipModelValidation = SkipModelValidation, SourceUri = SourceUri, SecurityConfig = SecurityConfig, ModelCard = ModelCard)
   output <- .sagemaker$create_model_package_output()
@@ -2448,7 +2491,8 @@ sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_model_package_group_input(ModelPackageGroupName = ModelPackageGroupName, ModelPackageGroupDescription = ModelPackageGroupDescription, Tags = Tags)
   output <- .sagemaker$create_model_package_group_output()
@@ -2472,12 +2516,12 @@ sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPac
 #' @param ModelQualityAppSpecification &#91;required&#93; The container that runs the monitoring job.
 #' @param ModelQualityJobInput &#91;required&#93; A list of the inputs that are monitored. Currently endpoints are
 #' supported.
-#' @param ModelQualityJobOutputConfig &#91;required&#93;
-#' @param JobResources &#91;required&#93;
+#' @param ModelQualityJobOutputConfig &#91;required&#93; 
+#' @param JobResources &#91;required&#93; 
 #' @param NetworkConfig Specifies the network configuration for the monitoring job.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 #' assume to perform tasks on your behalf.
-#' @param StoppingCondition
+#' @param StoppingCondition 
 #' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
 #' Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
@@ -2492,7 +2536,8 @@ sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, Mod
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_model_quality_job_definition_input(JobDefinitionName = JobDefinitionName, ModelQualityBaselineConfig = ModelQualityBaselineConfig, ModelQualityAppSpecification = ModelQualityAppSpecification, ModelQualityJobInput = ModelQualityJobInput, ModelQualityJobOutputConfig = ModelQualityJobOutputConfig, JobResources = JobResources, NetworkConfig = NetworkConfig, RoleArn = RoleArn, StoppingCondition = StoppingCondition, Tags = Tags)
   output <- .sagemaker$create_model_quality_job_definition_output()
@@ -2529,7 +2574,8 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_monitoring_schedule_input(MonitoringScheduleName = MonitoringScheduleName, MonitoringScheduleConfig = MonitoringScheduleConfig, Tags = Tags)
   output <- .sagemaker$create_monitoring_schedule_output()
@@ -2561,7 +2607,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' principal (sagemaker.amazonaws.com) permissions to assume this role. For
 #' more information, see [SageMaker
 #' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
-#'
+#' 
 #' To be able to pass this role to SageMaker, the caller of this API must
 #' have the `iam:PassRole` permission.
 #' @param KmsKeyId The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
@@ -2584,7 +2630,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' to access resources only in your VPC, and is not be able to connect to
 #' SageMaker training and endpoint services unless you configure a NAT
 #' Gateway in your VPC.
-#'
+#' 
 #' For more information, see [Notebook Instances Are Internet-Enabled by
 #' Default](https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-interface-endpoint.html#appendix-notebook-and-internet-access).
 #' You can set the value of this parameter to `Disabled` only if you set a
@@ -2595,7 +2641,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' notebook instance. Currently, only one instance type can be associated
 #' with a notebook instance. For more information, see [Using Elastic
 #' Inference in Amazon
-#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/).
 #' @param DefaultCodeRepository A Git repository to associate with the notebook instance as its default
 #' code repository. This can be either the name of a Git repository stored
 #' as a resource in your account, or the URL of a Git repository in [Amazon
@@ -2616,7 +2662,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' Instances](https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 #' @param RootAccess Whether root access is enabled or disabled for users of the notebook
 #' instance. The default value is `Enabled`.
-#'
+#' 
 #' Lifecycle configurations need root access to be able to set up a
 #' notebook instance. Because of this, lifecycle configurations associated
 #' with a notebook instance always run with root access even if you disable
@@ -2633,7 +2679,8 @@ sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceTyp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, SubnetId = SubnetId, SecurityGroupIds = SecurityGroupIds, RoleArn = RoleArn, KmsKeyId = KmsKeyId, Tags = Tags, LifecycleConfigName = LifecycleConfigName, DirectInternetAccess = DirectInternetAccess, VolumeSizeInGB = VolumeSizeInGB, AcceleratorTypes = AcceleratorTypes, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, RootAccess = RootAccess, PlatformIdentifier = PlatformIdentifier, InstanceMetadataServiceConfiguration = InstanceMetadataServiceConfiguration)
   output <- .sagemaker$create_notebook_instance_output()
@@ -2669,7 +2716,8 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_notebook_instance_lifecycle_config_input(NotebookInstanceLifecycleConfigName = NotebookInstanceLifecycleConfigName, OnCreate = OnCreate, OnStart = OnStart)
   output <- .sagemaker$create_notebook_instance_lifecycle_config_output()
@@ -2691,17 +2739,17 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @param OptimizationJobName &#91;required&#93; A custom name for the new optimization job.
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
 #' SageMaker to perform tasks on your behalf.
-#'
+#' 
 #' During model optimization, Amazon SageMaker needs your permission to:
-#'
+#' 
 #' -   Read input data from an S3 bucket
-#'
+#' 
 #' -   Write model artifacts to an S3 bucket
-#'
+#' 
 #' -   Write logs to Amazon CloudWatch Logs
-#'
+#' 
 #' -   Publish metrics to Amazon CloudWatch
-#'
+#' 
 #' You grant permissions for all of these tasks to an IAM role. To pass
 #' this role to Amazon SageMaker, the caller of this API must have the
 #' `iam:PassRole` permission. For more information, see [Amazon SageMaker
@@ -2713,7 +2761,7 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @param OptimizationConfigs &#91;required&#93; Settings for each of the optimization techniques that the job applies.
 #' @param OutputConfig &#91;required&#93; Details for where to store the optimized model that you create with the
 #' optimization job.
-#' @param StoppingCondition &#91;required&#93;
+#' @param StoppingCondition &#91;required&#93; 
 #' @param Tags A list of key-value pairs associated with the optimization job. For more
 #' information, see [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
@@ -2729,7 +2777,8 @@ sagemaker_create_optimization_job <- function(OptimizationJobName, RoleArn, Mode
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_optimization_job_input(OptimizationJobName = OptimizationJobName, RoleArn = RoleArn, ModelSource = ModelSource, DeploymentInstanceType = DeploymentInstanceType, OptimizationEnvironment = OptimizationEnvironment, OptimizationConfigs = OptimizationConfigs, OutputConfig = OutputConfig, StoppingCondition = StoppingCondition, Tags = Tags, VpcConfig = VpcConfig)
   output <- .sagemaker$create_optimization_job_output()
@@ -2775,7 +2824,8 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_pipeline_input(PipelineName = PipelineName, PipelineDisplayName = PipelineDisplayName, PipelineDefinition = PipelineDefinition, PipelineDefinitionS3Location = PipelineDefinitionS3Location, PipelineDescription = PipelineDescription, ClientRequestToken = ClientRequestToken, RoleArn = RoleArn, Tags = Tags, ParallelismConfiguration = ParallelismConfiguration)
   output <- .sagemaker$create_pipeline_output()
@@ -2805,23 +2855,23 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' presigned URL. Using this value, users can access Studio or Studio
 #' Classic, even if it is not the default experience for the domain. The
 #' supported values are:
-#'
+#' 
 #' -   `studio::relative/path`: Directs users to the relative path in
 #'     Studio.
-#'
+#' 
 #' -   `app:JupyterServer:relative/path`: Directs users to the relative
 #'     path in the Studio Classic application.
-#'
+#' 
 #' -   `app:JupyterLab:relative/path`: Directs users to the relative path
 #'     in the JupyterLab application.
-#'
+#' 
 #' -   `app:RStudioServerPro:relative/path`: Directs users to the relative
 #'     path in the RStudio application.
-#'
+#' 
 #' -   `app:CodeEditor:relative/path`: Directs users to the relative path
 #'     in the Code Editor, based on Code-OSS, Visual Studio Code - Open
 #'     Source application.
-#'
+#' 
 #' -   `app:Canvas:relative/path`: Directs users to the relative path in
 #'     the Canvas application.
 #'
@@ -2834,7 +2884,8 @@ sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, Ses
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_presigned_domain_url_input(DomainId = DomainId, UserProfileName = UserProfileName, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds, ExpiresInSeconds = ExpiresInSeconds, SpaceName = SpaceName, LandingUri = LandingUri)
   output <- .sagemaker$create_presigned_domain_url_output()
@@ -2868,7 +2919,8 @@ sagemaker_create_presigned_mlflow_tracking_server_url <- function(TrackingServer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_presigned_mlflow_tracking_server_url_input(TrackingServerName = TrackingServerName, ExpiresInSeconds = ExpiresInSeconds, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds)
   output <- .sagemaker$create_presigned_mlflow_tracking_server_url_output()
@@ -2900,7 +2952,8 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_presigned_notebook_instance_url_input(NotebookInstanceName = NotebookInstanceName, SessionExpirationDurationInSeconds = SessionExpirationDurationInSeconds)
   output <- .sagemaker$create_presigned_notebook_instance_url_output()
@@ -2941,7 +2994,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
 #' in the *Amazon Web Services Billing and Cost Management User Guide*.
-#' @param ExperimentConfig
+#' @param ExperimentConfig 
 #'
 #' @keywords internal
 #'
@@ -2952,7 +3005,8 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_processing_job_input(ProcessingInputs = ProcessingInputs, ProcessingOutputConfig = ProcessingOutputConfig, ProcessingJobName = ProcessingJobName, ProcessingResources = ProcessingResources, StoppingCondition = StoppingCondition, AppSpecification = AppSpecification, Environment = Environment, NetworkConfig = NetworkConfig, RoleArn = RoleArn, Tags = Tags, ExperimentConfig = ExperimentConfig)
   output <- .sagemaker$create_processing_job_output()
@@ -2996,7 +3050,8 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_project_input(ProjectName = ProjectName, ProjectDescription = ProjectDescription, ServiceCatalogProvisioningDetails = ServiceCatalogProvisioningDetails, Tags = Tags)
   output <- .sagemaker$create_project_output()
@@ -3035,7 +3090,8 @@ sagemaker_create_space <- function(DomainId, SpaceName, Tags = NULL, SpaceSettin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_space_input(DomainId = DomainId, SpaceName = SpaceName, Tags = Tags, SpaceSettings = SpaceSettings, OwnershipSettings = OwnershipSettings, SpaceSharingSettings = SpaceSharingSettings, SpaceDisplayName = SpaceDisplayName)
   output <- .sagemaker$create_space_output()
@@ -3072,7 +3128,8 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_studio_lifecycle_config_input(StudioLifecycleConfigName = StudioLifecycleConfigName, StudioLifecycleConfigContent = StudioLifecycleConfigContent, StudioLifecycleConfigAppType = StudioLifecycleConfigAppType, Tags = Tags)
   output <- .sagemaker$create_studio_lifecycle_config_output()
@@ -3098,11 +3155,11 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' list of hyperparameters for each training algorithm provided by
 #' SageMaker, see
 #' [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
-#'
+#' 
 #' You can specify a maximum of 100 hyperparameters. Each hyperparameter is
 #' a key-value pair. Each key and value is limited to 256 characters, as
 #' specified by the `Length Constraint`.
-#'
+#' 
 #' Do not include any security-sensitive information including account
 #' access IDs, secrets or tokens in any hyperparameter field. If the use of
 #' security-sensitive credentials are detected, SageMaker will reject your
@@ -3116,7 +3173,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html).
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that SageMaker can assume
 #' to perform tasks on your behalf.
-#'
+#' 
 #' During model training, SageMaker needs your permission to read input
 #' data from an S3 bucket, download a Docker image that contains training
 #' code, write model artifacts to an S3 bucket, write logs to Amazon
@@ -3124,32 +3181,32 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' permissions for all of these tasks to an IAM role. For more information,
 #' see [SageMaker
 #' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
-#'
+#' 
 #' To be able to pass this role to SageMaker, the caller of this API must
 #' have the `iam:PassRole` permission.
 #' @param InputDataConfig An array of `Channel` objects. Each channel is a named input source.
 #' `InputDataConfig` describes the input data and its location.
-#'
+#' 
 #' Algorithms can accept input data from one or more channels. For example,
 #' an algorithm might have two channels of input data, `training_data` and
 #' `validation_data`. The configuration for each channel provides the S3,
 #' EFS, or FSx location where the input data is stored. It also provides
 #' information about the stored data: the MIME type, compression method,
 #' and whether the data is wrapped in RecordIO format.
-#'
+#' 
 #' Depending on the input mode that the algorithm supports, SageMaker
 #' either copies input data files from an S3 bucket to a local directory in
 #' the Docker container, or makes it available as input streams. For
 #' example, if you specify an EFS location, input data files are available
 #' as input streams. They do not need to be downloaded.
-#'
+#' 
 #' Your input must be in the same Amazon Web Services region as your
 #' training job.
 #' @param OutputDataConfig &#91;required&#93; Specifies the path to the S3 location where you want to store model
 #' artifacts. SageMaker creates subfolders for the artifacts.
 #' @param ResourceConfig &#91;required&#93; The resources, including the ML compute instances and ML storage
 #' volumes, to use for model training.
-#'
+#' 
 #' ML storage volumes store model artifacts and incremental states.
 #' Training algorithms might also use ML storage volumes for scratch space.
 #' If you want SageMaker to use the ML storage volume to store the training
@@ -3167,7 +3224,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' specifies how long a managed Spot training job has to complete. When the
 #' job reaches the time limit, SageMaker ends the training job. Use this
 #' API to cap model training costs.
-#'
+#' 
 #' To stop a job, SageMaker sends the algorithm the `SIGTERM` signal, which
 #' delays job termination for 120 seconds. Algorithms can use this
 #' 120-second window to save the model artifacts, so the results of
@@ -3196,7 +3253,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' training machine learning models. this option is useful when training
 #' jobs can be interrupted and when there is flexibility when the training
 #' job is run.
-#'
+#' 
 #' The complete and intermediate results of jobs are stored in an Amazon S3
 #' bucket, and can be used as a starting point to train models
 #' incrementally. Amazon SageMaker provides metrics and logs in CloudWatch.
@@ -3204,12 +3261,12 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' interrupted, resumed, or completed.
 #' @param CheckpointConfig Contains information about the output location for managed spot training
 #' checkpoint data.
-#' @param DebugHookConfig
+#' @param DebugHookConfig 
 #' @param DebugRuleConfigurations Configuration information for Amazon SageMaker Debugger rules for
 #' debugging output tensors.
-#' @param TensorBoardOutputConfig
-#' @param ExperimentConfig
-#' @param ProfilerConfig
+#' @param TensorBoardOutputConfig 
+#' @param ExperimentConfig 
+#' @param ProfilerConfig 
 #' @param ProfilerRuleConfigurations Configuration information for Amazon SageMaker Debugger rules for
 #' profiling system and framework metrics.
 #' @param Environment The environment variables to set in the Docker container.
@@ -3233,7 +3290,8 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations, Environment = Environment, RetryStrategy = RetryStrategy, RemoteDebugConfig = RemoteDebugConfig, InfraCheckConfig = InfraCheckConfig, SessionChainingConfig = SessionChainingConfig)
   output <- .sagemaker$create_training_job_output()
@@ -3275,11 +3333,11 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' the number of records. To ensure that the records fit within the maximum
 #' payload size, we recommend using a slightly larger value. The default
 #' value is `6` MB.
-#'
+#' 
 #' The value of `MaxPayloadInMB` cannot be greater than 100 MB. If you
 #' specify the `MaxConcurrentTransforms` parameter, the value of
 #' `(MaxConcurrentTransforms * MaxPayloadInMB)` also cannot exceed 100 MB.
-#'
+#' 
 #' For cases where the payload might be arbitrarily large and is
 #' transmitted using HTTP chunked encoding, set the value to `0`. This
 #' feature works only in supported algorithms. Currently, Amazon SageMaker
@@ -3288,19 +3346,20 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' inference request. A *record* is a single unit of input data that
 #' inference can be made on. For example, a single line in a CSV file is a
 #' record.
-#'
+#' 
 #' To enable the batch strategy, you must set the `SplitType` property to
 #' `Line`, `RecordIO`, or `TFRecord`.
-#'
+#' 
 #' To use only one record when making an HTTP invocation request to a
 #' container, set `BatchStrategy` to `SingleRecord` and `SplitType` to
 #' `Line`.
-#'
+#' 
 #' To fit as many records in a mini-batch as can fit within the
 #' `MaxPayloadInMB` limit, set `BatchStrategy` to `MultiRecord` and
 #' `SplitType` to `Line`.
-#' @param Environment The environment variables to set in the Docker container. We support up
-#' to 16 key and values entries in the map.
+#' @param Environment The environment variables to set in the Docker container. Don't include
+#' any sensitive data in your environment variables. We support up to 16
+#' key and values entries in the map.
 #' @param TransformInput &#91;required&#93; Describes the input source and the way the transform job consumes it.
 #' @param TransformOutput &#91;required&#93; Describes the results of the transform job.
 #' @param DataCaptureConfig Configuration to control how SageMaker captures inference data.
@@ -3319,7 +3378,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' Cost Allocation
 #' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 #' in the *Amazon Web Services Billing and Cost Management User Guide*.
-#' @param ExperimentConfig
+#' @param ExperimentConfig 
 #'
 #' @keywords internal
 #'
@@ -3330,7 +3389,8 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_transform_job_input(TransformJobName = TransformJobName, ModelName = ModelName, MaxConcurrentTransforms = MaxConcurrentTransforms, ModelClientConfig = ModelClientConfig, MaxPayloadInMB = MaxPayloadInMB, BatchStrategy = BatchStrategy, Environment = Environment, TransformInput = TransformInput, TransformOutput = TransformOutput, DataCaptureConfig = DataCaptureConfig, TransformResources = TransformResources, DataProcessing = DataProcessing, Tags = Tags, ExperimentConfig = ExperimentConfig)
   output <- .sagemaker$create_transform_job_output()
@@ -3354,7 +3414,7 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #' @param DisplayName The name of the trial as displayed. The name doesn't need to be unique.
 #' If `DisplayName` isn't specified, `TrialName` is displayed.
 #' @param ExperimentName &#91;required&#93; The name of the experiment to associate the trial with.
-#' @param MetadataProperties
+#' @param MetadataProperties 
 #' @param Tags A list of tags to associate with the trial. You can use
 #' [`search`][sagemaker_search] API to search on the tags.
 #'
@@ -3367,7 +3427,8 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_trial_input(TrialName = TrialName, DisplayName = DisplayName, ExperimentName = ExperimentName, MetadataProperties = MetadataProperties, Tags = Tags)
   output <- .sagemaker$create_trial_output()
@@ -3392,11 +3453,11 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' unique. If `DisplayName` isn't specified, `TrialComponentName` is
 #' displayed.
 #' @param Status The status of the component. States include:
-#'
+#' 
 #' -   InProgress
-#'
+#' 
 #' -   Completed
-#'
+#' 
 #' -   Failed
 #' @param StartTime When the component started.
 #' @param EndTime When the component ended.
@@ -3405,7 +3466,7 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' datasets, algorithms, hyperparameters, source code, and instance types.
 #' @param OutputArtifacts The output artifacts for the component. Examples of output artifacts are
 #' metrics, snapshots, logs, and images.
-#' @param MetadataProperties
+#' @param MetadataProperties 
 #' @param Tags A list of tags to associate with the component. You can use
 #' [`search`][sagemaker_search] API to search on the tags.
 #'
@@ -3418,7 +3479,8 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_trial_component_input(TrialComponentName = TrialComponentName, DisplayName = DisplayName, Status = Status, StartTime = StartTime, EndTime = EndTime, Parameters = Parameters, InputArtifacts = InputArtifacts, OutputArtifacts = OutputArtifacts, MetadataProperties = MetadataProperties, Tags = Tags)
   output <- .sagemaker$create_trial_component_output()
@@ -3450,7 +3512,7 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' this field cannot be specified.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
-#'
+#' 
 #' Tags that you specify for the User Profile are also added to all Apps
 #' that the User Profile launches.
 #' @param UserSettings A collection of settings.
@@ -3464,7 +3526,8 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_user_profile_input(DomainId = DomainId, UserProfileName = UserProfileName, SingleSignOnUserIdentifier = SingleSignOnUserIdentifier, SingleSignOnUserValue = SingleSignOnUserValue, Tags = Tags, UserSettings = UserSettings)
   output <- .sagemaker$create_user_profile_output()
@@ -3487,13 +3550,13 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' single Cognito workforce is created using and corresponds to a single
 #' [Amazon Cognito user
 #' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html).
-#'
+#' 
 #' Do not use `OidcConfig` if you specify values for `CognitoConfig`.
 #' @param OidcConfig Use this parameter to configure a private workforce using your own OIDC
 #' Identity Provider.
-#'
+#' 
 #' Do not use `CognitoConfig` if you specify values for `OidcConfig`.
-#' @param SourceIpConfig
+#' @param SourceIpConfig 
 #' @param WorkforceName &#91;required&#93; The name of the private workforce.
 #' @param Tags An array of key-value pairs that contain metadata to help you categorize
 #' and organize our workforce. Each tag consists of a key and a value, both
@@ -3509,7 +3572,8 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_workforce_input(CognitoConfig = CognitoConfig, OidcConfig = OidcConfig, SourceIpConfig = SourceIpConfig, WorkforceName = WorkforceName, Tags = Tags, WorkforceVpcConfig = WorkforceVpcConfig)
   output <- .sagemaker$create_workforce_output()
@@ -3532,13 +3596,13 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
 #' @param WorkforceName The name of the workforce.
 #' @param MemberDefinitions &#91;required&#93; A list of `MemberDefinition` objects that contains objects that identify
 #' the workers that make up the work team.
-#'
+#' 
 #' Workforces can be created using Amazon Cognito or your own OIDC Identity
 #' Provider (IdP). For private workforces created using Amazon Cognito use
 #' `CognitoMemberDefinition`. For workforces created using your own OIDC
 #' identity provider (IdP) use `OidcMemberDefinition`. Do not provide input
 #' for both of these parameters in a single request.
-#'
+#' 
 #' For workforces created using Amazon Cognito, private work teams
 #' correspond to Amazon Cognito *user groups* within the user pool used to
 #' create a workforce. All of the `CognitoMemberDefinition` objects that
@@ -3547,7 +3611,7 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
 #' worker pool, see Adding groups to a User Pool. For more information
 #' about user pools, see [Amazon Cognito User
 #' Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html).
-#'
+#' 
 #' For workforces created using your own OIDC IdP, specify the user groups
 #' that you want to include in your private work team in
 #' `OidcMemberDefinition` by listing those groups in `Groups`.
@@ -3559,7 +3623,7 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
 #' Amazon S3 resource is accessed in the worker portal using a Amazon S3
 #' presigned URL.
 #' @param Tags An array of key-value pairs.
-#'
+#' 
 #' For more information, see [Resource
 #' Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)
 #' and [Using Cost Allocation
@@ -3575,7 +3639,8 @@ sagemaker_create_workteam <- function(WorkteamName, WorkforceName = NULL, Member
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$create_workteam_input(WorkteamName = WorkteamName, WorkforceName = WorkforceName, MemberDefinitions = MemberDefinitions, Description = Description, NotificationConfiguration = NotificationConfiguration, WorkerAccessConfiguration = WorkerAccessConfiguration, Tags = Tags)
   output <- .sagemaker$create_workteam_output()
@@ -3605,7 +3670,8 @@ sagemaker_delete_action <- function(ActionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_action_input(ActionName = ActionName)
   output <- .sagemaker$delete_action_output()
@@ -3635,7 +3701,8 @@ sagemaker_delete_algorithm <- function(AlgorithmName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_algorithm_input(AlgorithmName = AlgorithmName)
   output <- .sagemaker$delete_algorithm_output()
@@ -3671,7 +3738,8 @@ sagemaker_delete_app <- function(DomainId, UserProfileName = NULL, SpaceName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_app_input(DomainId = DomainId, UserProfileName = UserProfileName, SpaceName = SpaceName, AppType = AppType, AppName = AppName)
   output <- .sagemaker$delete_app_output()
@@ -3701,7 +3769,8 @@ sagemaker_delete_app_image_config <- function(AppImageConfigName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_app_image_config_input(AppImageConfigName = AppImageConfigName)
   output <- .sagemaker$delete_app_image_config_output()
@@ -3732,7 +3801,8 @@ sagemaker_delete_artifact <- function(ArtifactArn = NULL, Source = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_artifact_input(ArtifactArn = ArtifactArn, Source = Source)
   output <- .sagemaker$delete_artifact_output()
@@ -3763,7 +3833,8 @@ sagemaker_delete_association <- function(SourceArn, DestinationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_association_input(SourceArn = SourceArn, DestinationArn = DestinationArn)
   output <- .sagemaker$delete_association_output()
@@ -3794,7 +3865,8 @@ sagemaker_delete_cluster <- function(ClusterName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_cluster_input(ClusterName = ClusterName)
   output <- .sagemaker$delete_cluster_output()
@@ -3824,7 +3896,8 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_code_repository_input(CodeRepositoryName = CodeRepositoryName)
   output <- .sagemaker$delete_code_repository_output()
@@ -3854,7 +3927,8 @@ sagemaker_delete_compilation_job <- function(CompilationJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_compilation_job_input(CompilationJobName = CompilationJobName)
   output <- .sagemaker$delete_compilation_job_output()
@@ -3884,7 +3958,8 @@ sagemaker_delete_context <- function(ContextName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_context_input(ContextName = ContextName)
   output <- .sagemaker$delete_context_output()
@@ -3914,7 +3989,8 @@ sagemaker_delete_data_quality_job_definition <- function(JobDefinitionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_data_quality_job_definition_input(JobDefinitionName = JobDefinitionName)
   output <- .sagemaker$delete_data_quality_job_definition_output()
@@ -3944,7 +4020,8 @@ sagemaker_delete_device_fleet <- function(DeviceFleetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_device_fleet_input(DeviceFleetName = DeviceFleetName)
   output <- .sagemaker$delete_device_fleet_output()
@@ -3977,7 +4054,8 @@ sagemaker_delete_domain <- function(DomainId, RetentionPolicy = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_domain_input(DomainId = DomainId, RetentionPolicy = RetentionPolicy)
   output <- .sagemaker$delete_domain_output()
@@ -4008,7 +4086,8 @@ sagemaker_delete_edge_deployment_plan <- function(EdgeDeploymentPlanName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_edge_deployment_plan_input(EdgeDeploymentPlanName = EdgeDeploymentPlanName)
   output <- .sagemaker$delete_edge_deployment_plan_output()
@@ -4041,7 +4120,8 @@ sagemaker_delete_edge_deployment_stage <- function(EdgeDeploymentPlanName, Stage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_edge_deployment_stage_input(EdgeDeploymentPlanName = EdgeDeploymentPlanName, StageName = StageName)
   output <- .sagemaker$delete_edge_deployment_stage_output()
@@ -4071,7 +4151,8 @@ sagemaker_delete_endpoint <- function(EndpointName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_endpoint_input(EndpointName = EndpointName)
   output <- .sagemaker$delete_endpoint_output()
@@ -4101,7 +4182,8 @@ sagemaker_delete_endpoint_config <- function(EndpointConfigName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_endpoint_config_input(EndpointConfigName = EndpointConfigName)
   output <- .sagemaker$delete_endpoint_config_output()
@@ -4131,7 +4213,8 @@ sagemaker_delete_experiment <- function(ExperimentName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_experiment_input(ExperimentName = ExperimentName)
   output <- .sagemaker$delete_experiment_output()
@@ -4164,7 +4247,8 @@ sagemaker_delete_feature_group <- function(FeatureGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_feature_group_input(FeatureGroupName = FeatureGroupName)
   output <- .sagemaker$delete_feature_group_output()
@@ -4194,7 +4278,8 @@ sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_flow_definition_input(FlowDefinitionName = FlowDefinitionName)
   output <- .sagemaker$delete_flow_definition_output()
@@ -4224,7 +4309,8 @@ sagemaker_delete_hub <- function(HubName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_hub_input(HubName = HubName)
   output <- .sagemaker$delete_hub_output()
@@ -4257,7 +4343,8 @@ sagemaker_delete_hub_content <- function(HubName, HubContentType, HubContentName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_hub_content_input(HubName = HubName, HubContentType = HubContentType, HubContentName = HubContentName, HubContentVersion = HubContentVersion)
   output <- .sagemaker$delete_hub_content_output()
@@ -4291,7 +4378,8 @@ sagemaker_delete_hub_content_reference <- function(HubName, HubContentType, HubC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_hub_content_reference_input(HubName = HubName, HubContentType = HubContentType, HubContentName = HubContentName)
   output <- .sagemaker$delete_hub_content_reference_output()
@@ -4323,7 +4411,8 @@ sagemaker_delete_human_task_ui <- function(HumanTaskUiName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_human_task_ui_input(HumanTaskUiName = HumanTaskUiName)
   output <- .sagemaker$delete_human_task_ui_output()
@@ -4353,7 +4442,8 @@ sagemaker_delete_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName)
   output <- .sagemaker$delete_hyper_parameter_tuning_job_output()
@@ -4383,7 +4473,8 @@ sagemaker_delete_image <- function(ImageName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_image_input(ImageName = ImageName)
   output <- .sagemaker$delete_image_output()
@@ -4415,7 +4506,8 @@ sagemaker_delete_image_version <- function(ImageName, Version = NULL, Alias = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_image_version_input(ImageName = ImageName, Version = Version, Alias = Alias)
   output <- .sagemaker$delete_image_version_output()
@@ -4445,7 +4537,8 @@ sagemaker_delete_inference_component <- function(InferenceComponentName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_inference_component_input(InferenceComponentName = InferenceComponentName)
   output <- .sagemaker$delete_inference_component_output()
@@ -4475,7 +4568,8 @@ sagemaker_delete_inference_experiment <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_inference_experiment_input(Name = Name)
   output <- .sagemaker$delete_inference_experiment_output()
@@ -4505,7 +4599,8 @@ sagemaker_delete_mlflow_tracking_server <- function(TrackingServerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_mlflow_tracking_server_input(TrackingServerName = TrackingServerName)
   output <- .sagemaker$delete_mlflow_tracking_server_output()
@@ -4535,7 +4630,8 @@ sagemaker_delete_model <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_model_input(ModelName = ModelName)
   output <- .sagemaker$delete_model_output()
@@ -4565,7 +4661,8 @@ sagemaker_delete_model_bias_job_definition <- function(JobDefinitionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_model_bias_job_definition_input(JobDefinitionName = JobDefinitionName)
   output <- .sagemaker$delete_model_bias_job_definition_output()
@@ -4595,7 +4692,8 @@ sagemaker_delete_model_card <- function(ModelCardName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_model_card_input(ModelCardName = ModelCardName)
   output <- .sagemaker$delete_model_card_output()
@@ -4625,7 +4723,8 @@ sagemaker_delete_model_explainability_job_definition <- function(JobDefinitionNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_model_explainability_job_definition_input(JobDefinitionName = JobDefinitionName)
   output <- .sagemaker$delete_model_explainability_job_definition_output()
@@ -4645,7 +4744,7 @@ sagemaker_delete_model_explainability_job_definition <- function(JobDefinitionNa
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package/) for full documentation.
 #'
 #' @param ModelPackageName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model package to delete.
-#'
+#' 
 #' When you specify a name, the name must have 1 to 63 characters. Valid
 #' characters are a-z, A-Z, 0-9, and - (hyphen).
 #'
@@ -4658,7 +4757,8 @@ sagemaker_delete_model_package <- function(ModelPackageName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_model_package_input(ModelPackageName = ModelPackageName)
   output <- .sagemaker$delete_model_package_output()
@@ -4688,7 +4788,8 @@ sagemaker_delete_model_package_group <- function(ModelPackageGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_model_package_group_input(ModelPackageGroupName = ModelPackageGroupName)
   output <- .sagemaker$delete_model_package_group_output()
@@ -4718,7 +4819,8 @@ sagemaker_delete_model_package_group_policy <- function(ModelPackageGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_model_package_group_policy_input(ModelPackageGroupName = ModelPackageGroupName)
   output <- .sagemaker$delete_model_package_group_policy_output()
@@ -4748,7 +4850,8 @@ sagemaker_delete_model_quality_job_definition <- function(JobDefinitionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_model_quality_job_definition_input(JobDefinitionName = JobDefinitionName)
   output <- .sagemaker$delete_model_quality_job_definition_output()
@@ -4778,7 +4881,8 @@ sagemaker_delete_monitoring_schedule <- function(MonitoringScheduleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_monitoring_schedule_input(MonitoringScheduleName = MonitoringScheduleName)
   output <- .sagemaker$delete_monitoring_schedule_output()
@@ -4808,7 +4912,8 @@ sagemaker_delete_notebook_instance <- function(NotebookInstanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_notebook_instance_input(NotebookInstanceName = NotebookInstanceName)
   output <- .sagemaker$delete_notebook_instance_output()
@@ -4838,7 +4943,8 @@ sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstance
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_notebook_instance_lifecycle_config_input(NotebookInstanceLifecycleConfigName = NotebookInstanceLifecycleConfigName)
   output <- .sagemaker$delete_notebook_instance_lifecycle_config_output()
@@ -4868,7 +4974,8 @@ sagemaker_delete_optimization_job <- function(OptimizationJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_optimization_job_input(OptimizationJobName = OptimizationJobName)
   output <- .sagemaker$delete_optimization_job_output()
@@ -4901,7 +5008,8 @@ sagemaker_delete_pipeline <- function(PipelineName, ClientRequestToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_pipeline_input(PipelineName = PipelineName, ClientRequestToken = ClientRequestToken)
   output <- .sagemaker$delete_pipeline_output()
@@ -4931,7 +5039,8 @@ sagemaker_delete_project <- function(ProjectName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_project_input(ProjectName = ProjectName)
   output <- .sagemaker$delete_project_output()
@@ -4962,7 +5071,8 @@ sagemaker_delete_space <- function(DomainId, SpaceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_space_input(DomainId = DomainId, SpaceName = SpaceName)
   output <- .sagemaker$delete_space_output()
@@ -4993,7 +5103,8 @@ sagemaker_delete_studio_lifecycle_config <- function(StudioLifecycleConfigName) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_studio_lifecycle_config_input(StudioLifecycleConfigName = StudioLifecycleConfigName)
   output <- .sagemaker$delete_studio_lifecycle_config_output()
@@ -5025,7 +5136,8 @@ sagemaker_delete_tags <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_tags_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .sagemaker$delete_tags_output()
@@ -5055,7 +5167,8 @@ sagemaker_delete_trial <- function(TrialName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_trial_input(TrialName = TrialName)
   output <- .sagemaker$delete_trial_output()
@@ -5085,7 +5198,8 @@ sagemaker_delete_trial_component <- function(TrialComponentName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_trial_component_input(TrialComponentName = TrialComponentName)
   output <- .sagemaker$delete_trial_component_output()
@@ -5116,7 +5230,8 @@ sagemaker_delete_user_profile <- function(DomainId, UserProfileName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_user_profile_input(DomainId = DomainId, UserProfileName = UserProfileName)
   output <- .sagemaker$delete_user_profile_output()
@@ -5146,7 +5261,8 @@ sagemaker_delete_workforce <- function(WorkforceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_workforce_input(WorkforceName = WorkforceName)
   output <- .sagemaker$delete_workforce_output()
@@ -5176,7 +5292,8 @@ sagemaker_delete_workteam <- function(WorkteamName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$delete_workteam_input(WorkteamName = WorkteamName)
   output <- .sagemaker$delete_workteam_output()
@@ -5207,7 +5324,8 @@ sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$deregister_devices_input(DeviceFleetName = DeviceFleetName, DeviceNames = DeviceNames)
   output <- .sagemaker$deregister_devices_output()
@@ -5237,7 +5355,8 @@ sagemaker_describe_action <- function(ActionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_action_input(ActionName = ActionName)
   output <- .sagemaker$describe_action_output()
@@ -5267,7 +5386,8 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_algorithm_input(AlgorithmName = AlgorithmName)
   output <- .sagemaker$describe_algorithm_output()
@@ -5302,7 +5422,8 @@ sagemaker_describe_app <- function(DomainId, UserProfileName = NULL, SpaceName =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_app_input(DomainId = DomainId, UserProfileName = UserProfileName, SpaceName = SpaceName, AppType = AppType, AppName = AppName)
   output <- .sagemaker$describe_app_output()
@@ -5332,7 +5453,8 @@ sagemaker_describe_app_image_config <- function(AppImageConfigName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_app_image_config_input(AppImageConfigName = AppImageConfigName)
   output <- .sagemaker$describe_app_image_config_output()
@@ -5362,7 +5484,8 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_artifact_input(ArtifactArn = ArtifactArn)
   output <- .sagemaker$describe_artifact_output()
@@ -5393,7 +5516,8 @@ sagemaker_describe_auto_ml_job <- function(AutoMLJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_auto_ml_job_input(AutoMLJobName = AutoMLJobName)
   output <- .sagemaker$describe_auto_ml_job_output()
@@ -5424,7 +5548,8 @@ sagemaker_describe_auto_ml_job_v2 <- function(AutoMLJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_auto_ml_job_v2_input(AutoMLJobName = AutoMLJobName)
   output <- .sagemaker$describe_auto_ml_job_v2_output()
@@ -5455,7 +5580,8 @@ sagemaker_describe_cluster <- function(ClusterName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_cluster_input(ClusterName = ClusterName)
   output <- .sagemaker$describe_cluster_output()
@@ -5488,7 +5614,8 @@ sagemaker_describe_cluster_node <- function(ClusterName, NodeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_cluster_node_input(ClusterName = ClusterName, NodeId = NodeId)
   output <- .sagemaker$describe_cluster_node_output()
@@ -5518,7 +5645,8 @@ sagemaker_describe_code_repository <- function(CodeRepositoryName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_code_repository_input(CodeRepositoryName = CodeRepositoryName)
   output <- .sagemaker$describe_code_repository_output()
@@ -5548,7 +5676,8 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_compilation_job_input(CompilationJobName = CompilationJobName)
   output <- .sagemaker$describe_compilation_job_output()
@@ -5578,7 +5707,8 @@ sagemaker_describe_context <- function(ContextName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_context_input(ContextName = ContextName)
   output <- .sagemaker$describe_context_output()
@@ -5608,7 +5738,8 @@ sagemaker_describe_data_quality_job_definition <- function(JobDefinitionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_data_quality_job_definition_input(JobDefinitionName = JobDefinitionName)
   output <- .sagemaker$describe_data_quality_job_definition_output()
@@ -5640,7 +5771,8 @@ sagemaker_describe_device <- function(NextToken = NULL, DeviceName, DeviceFleetN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_device_input(NextToken = NextToken, DeviceName = DeviceName, DeviceFleetName = DeviceFleetName)
   output <- .sagemaker$describe_device_output()
@@ -5670,7 +5802,8 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_device_fleet_input(DeviceFleetName = DeviceFleetName)
   output <- .sagemaker$describe_device_fleet_output()
@@ -5700,7 +5833,8 @@ sagemaker_describe_domain <- function(DomainId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_domain_input(DomainId = DomainId)
   output <- .sagemaker$describe_domain_output()
@@ -5733,7 +5867,8 @@ sagemaker_describe_edge_deployment_plan <- function(EdgeDeploymentPlanName, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_edge_deployment_plan_input(EdgeDeploymentPlanName = EdgeDeploymentPlanName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$describe_edge_deployment_plan_output()
@@ -5763,7 +5898,8 @@ sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_edge_packaging_job_input(EdgePackagingJobName = EdgePackagingJobName)
   output <- .sagemaker$describe_edge_packaging_job_output()
@@ -5793,7 +5929,8 @@ sagemaker_describe_endpoint <- function(EndpointName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_endpoint_input(EndpointName = EndpointName)
   output <- .sagemaker$describe_endpoint_output()
@@ -5824,7 +5961,8 @@ sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_endpoint_config_input(EndpointConfigName = EndpointConfigName)
   output <- .sagemaker$describe_endpoint_config_output()
@@ -5854,7 +5992,8 @@ sagemaker_describe_experiment <- function(ExperimentName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_experiment_input(ExperimentName = ExperimentName)
   output <- .sagemaker$describe_experiment_output()
@@ -5887,7 +6026,8 @@ sagemaker_describe_feature_group <- function(FeatureGroupName, NextToken = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_feature_group_input(FeatureGroupName = FeatureGroupName, NextToken = NextToken)
   output <- .sagemaker$describe_feature_group_output()
@@ -5919,7 +6059,8 @@ sagemaker_describe_feature_metadata <- function(FeatureGroupName, FeatureName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_feature_metadata_input(FeatureGroupName = FeatureGroupName, FeatureName = FeatureName)
   output <- .sagemaker$describe_feature_metadata_output()
@@ -5949,7 +6090,8 @@ sagemaker_describe_flow_definition <- function(FlowDefinitionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_flow_definition_input(FlowDefinitionName = FlowDefinitionName)
   output <- .sagemaker$describe_flow_definition_output()
@@ -5979,7 +6121,8 @@ sagemaker_describe_hub <- function(HubName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_hub_input(HubName = HubName)
   output <- .sagemaker$describe_hub_output()
@@ -6012,7 +6155,8 @@ sagemaker_describe_hub_content <- function(HubName, HubContentType, HubContentNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_hub_content_input(HubName = HubName, HubContentType = HubContentType, HubContentName = HubContentName, HubContentVersion = HubContentVersion)
   output <- .sagemaker$describe_hub_content_output()
@@ -6044,7 +6188,8 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_human_task_ui_input(HumanTaskUiName = HumanTaskUiName)
   output <- .sagemaker$describe_human_task_ui_output()
@@ -6075,7 +6220,8 @@ sagemaker_describe_hyper_parameter_tuning_job <- function(HyperParameterTuningJo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName)
   output <- .sagemaker$describe_hyper_parameter_tuning_job_output()
@@ -6105,7 +6251,8 @@ sagemaker_describe_image <- function(ImageName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_image_input(ImageName = ImageName)
   output <- .sagemaker$describe_image_output()
@@ -6138,7 +6285,8 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL, Alias = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_image_version_input(ImageName = ImageName, Version = Version, Alias = Alias)
   output <- .sagemaker$describe_image_version_output()
@@ -6168,7 +6316,8 @@ sagemaker_describe_inference_component <- function(InferenceComponentName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_inference_component_input(InferenceComponentName = InferenceComponentName)
   output <- .sagemaker$describe_inference_component_output()
@@ -6198,7 +6347,8 @@ sagemaker_describe_inference_experiment <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_inference_experiment_input(Name = Name)
   output <- .sagemaker$describe_inference_experiment_output()
@@ -6229,7 +6379,8 @@ sagemaker_describe_inference_recommendations_job <- function(JobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_inference_recommendations_job_input(JobName = JobName)
   output <- .sagemaker$describe_inference_recommendations_job_output()
@@ -6259,7 +6410,8 @@ sagemaker_describe_labeling_job <- function(LabelingJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_labeling_job_input(LabelingJobName = LabelingJobName)
   output <- .sagemaker$describe_labeling_job_output()
@@ -6289,7 +6441,8 @@ sagemaker_describe_lineage_group <- function(LineageGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_lineage_group_input(LineageGroupName = LineageGroupName)
   output <- .sagemaker$describe_lineage_group_output()
@@ -6319,7 +6472,8 @@ sagemaker_describe_mlflow_tracking_server <- function(TrackingServerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_mlflow_tracking_server_input(TrackingServerName = TrackingServerName)
   output <- .sagemaker$describe_mlflow_tracking_server_output()
@@ -6349,7 +6503,8 @@ sagemaker_describe_model <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_model_input(ModelName = ModelName)
   output <- .sagemaker$describe_model_output()
@@ -6380,7 +6535,8 @@ sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_model_bias_job_definition_input(JobDefinitionName = JobDefinitionName)
   output <- .sagemaker$describe_model_bias_job_definition_output()
@@ -6413,7 +6569,8 @@ sagemaker_describe_model_card <- function(ModelCardName, ModelCardVersion = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_model_card_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion)
   output <- .sagemaker$describe_model_card_output()
@@ -6443,7 +6600,8 @@ sagemaker_describe_model_card_export_job <- function(ModelCardExportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_model_card_export_job_input(ModelCardExportJobArn = ModelCardExportJobArn)
   output <- .sagemaker$describe_model_card_export_job_output()
@@ -6475,7 +6633,8 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_model_explainability_job_definition_input(JobDefinitionName = JobDefinitionName)
   output <- .sagemaker$describe_model_explainability_job_definition_output()
@@ -6496,7 +6655,7 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package/) for full documentation.
 #'
 #' @param ModelPackageName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model package to describe.
-#'
+#' 
 #' When you specify a name, the name must have 1 to 63 characters. Valid
 #' characters are a-z, A-Z, 0-9, and - (hyphen).
 #'
@@ -6509,7 +6668,8 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_model_package_input(ModelPackageName = ModelPackageName)
   output <- .sagemaker$describe_model_package_output()
@@ -6539,7 +6699,8 @@ sagemaker_describe_model_package_group <- function(ModelPackageGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_model_package_group_input(ModelPackageGroupName = ModelPackageGroupName)
   output <- .sagemaker$describe_model_package_group_output()
@@ -6570,7 +6731,8 @@ sagemaker_describe_model_quality_job_definition <- function(JobDefinitionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_model_quality_job_definition_input(JobDefinitionName = JobDefinitionName)
   output <- .sagemaker$describe_model_quality_job_definition_output()
@@ -6600,7 +6762,8 @@ sagemaker_describe_monitoring_schedule <- function(MonitoringScheduleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_monitoring_schedule_input(MonitoringScheduleName = MonitoringScheduleName)
   output <- .sagemaker$describe_monitoring_schedule_output()
@@ -6630,7 +6793,8 @@ sagemaker_describe_notebook_instance <- function(NotebookInstanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_notebook_instance_input(NotebookInstanceName = NotebookInstanceName)
   output <- .sagemaker$describe_notebook_instance_output()
@@ -6660,7 +6824,8 @@ sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_notebook_instance_lifecycle_config_input(NotebookInstanceLifecycleConfigName = NotebookInstanceLifecycleConfigName)
   output <- .sagemaker$describe_notebook_instance_lifecycle_config_output()
@@ -6690,7 +6855,8 @@ sagemaker_describe_optimization_job <- function(OptimizationJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_optimization_job_input(OptimizationJobName = OptimizationJobName)
   output <- .sagemaker$describe_optimization_job_output()
@@ -6720,7 +6886,8 @@ sagemaker_describe_pipeline <- function(PipelineName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_pipeline_input(PipelineName = PipelineName)
   output <- .sagemaker$describe_pipeline_output()
@@ -6750,7 +6917,8 @@ sagemaker_describe_pipeline_definition_for_execution <- function(PipelineExecuti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_pipeline_definition_for_execution_input(PipelineExecutionArn = PipelineExecutionArn)
   output <- .sagemaker$describe_pipeline_definition_for_execution_output()
@@ -6780,7 +6948,8 @@ sagemaker_describe_pipeline_execution <- function(PipelineExecutionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_pipeline_execution_input(PipelineExecutionArn = PipelineExecutionArn)
   output <- .sagemaker$describe_pipeline_execution_output()
@@ -6811,7 +6980,8 @@ sagemaker_describe_processing_job <- function(ProcessingJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_processing_job_input(ProcessingJobName = ProcessingJobName)
   output <- .sagemaker$describe_processing_job_output()
@@ -6841,7 +7011,8 @@ sagemaker_describe_project <- function(ProjectName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_project_input(ProjectName = ProjectName)
   output <- .sagemaker$describe_project_output()
@@ -6872,7 +7043,8 @@ sagemaker_describe_space <- function(DomainId, SpaceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_space_input(DomainId = DomainId, SpaceName = SpaceName)
   output <- .sagemaker$describe_space_output()
@@ -6903,7 +7075,8 @@ sagemaker_describe_studio_lifecycle_config <- function(StudioLifecycleConfigName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_studio_lifecycle_config_input(StudioLifecycleConfigName = StudioLifecycleConfigName)
   output <- .sagemaker$describe_studio_lifecycle_config_output()
@@ -6933,7 +7106,8 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_subscribed_workteam_input(WorkteamArn = WorkteamArn)
   output <- .sagemaker$describe_subscribed_workteam_output()
@@ -6963,7 +7137,8 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_training_job_input(TrainingJobName = TrainingJobName)
   output <- .sagemaker$describe_training_job_output()
@@ -6993,7 +7168,8 @@ sagemaker_describe_transform_job <- function(TransformJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_transform_job_input(TransformJobName = TransformJobName)
   output <- .sagemaker$describe_transform_job_output()
@@ -7023,7 +7199,8 @@ sagemaker_describe_trial <- function(TrialName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_trial_input(TrialName = TrialName)
   output <- .sagemaker$describe_trial_output()
@@ -7053,7 +7230,8 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_trial_component_input(TrialComponentName = TrialComponentName)
   output <- .sagemaker$describe_trial_component_output()
@@ -7084,7 +7262,8 @@ sagemaker_describe_user_profile <- function(DomainId, UserProfileName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_user_profile_input(DomainId = DomainId, UserProfileName = UserProfileName)
   output <- .sagemaker$describe_user_profile_output()
@@ -7118,7 +7297,8 @@ sagemaker_describe_workforce <- function(WorkforceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_workforce_input(WorkforceName = WorkforceName)
   output <- .sagemaker$describe_workforce_output()
@@ -7148,7 +7328,8 @@ sagemaker_describe_workteam <- function(WorkteamName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$describe_workteam_input(WorkteamName = WorkteamName)
   output <- .sagemaker$describe_workteam_output()
@@ -7178,7 +7359,8 @@ sagemaker_disable_sagemaker_servicecatalog_portfolio <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$disable_sagemaker_servicecatalog_portfolio_input()
   output <- .sagemaker$disable_sagemaker_servicecatalog_portfolio_output()
@@ -7209,7 +7391,8 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$disassociate_trial_component_input(TrialComponentName = TrialComponentName, TrialName = TrialName)
   output <- .sagemaker$disassociate_trial_component_output()
@@ -7239,7 +7422,8 @@ sagemaker_enable_sagemaker_servicecatalog_portfolio <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$enable_sagemaker_servicecatalog_portfolio_input()
   output <- .sagemaker$enable_sagemaker_servicecatalog_portfolio_output()
@@ -7269,7 +7453,8 @@ sagemaker_get_device_fleet_report <- function(DeviceFleetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$get_device_fleet_report_input(DeviceFleetName = DeviceFleetName)
   output <- .sagemaker$get_device_fleet_report_output()
@@ -7299,7 +7484,8 @@ sagemaker_get_lineage_group_policy <- function(LineageGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$get_lineage_group_policy_input(LineageGroupName = LineageGroupName)
   output <- .sagemaker$get_lineage_group_policy_output()
@@ -7329,7 +7515,8 @@ sagemaker_get_model_package_group_policy <- function(ModelPackageGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$get_model_package_group_policy_input(ModelPackageGroupName = ModelPackageGroupName)
   output <- .sagemaker$get_model_package_group_policy_output()
@@ -7359,7 +7546,8 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$get_sagemaker_servicecatalog_portfolio_status_input()
   output <- .sagemaker$get_sagemaker_servicecatalog_portfolio_status_output()
@@ -7384,13 +7572,13 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
 #' recommendation. This ID should come from one of the recommendations
 #' returned by the job specified in the `InferenceRecommendationsJobName`
 #' field.
-#'
+#' 
 #' Specify either this field or the `EndpointName` field.
 #' @param EndpointName The name of an endpoint benchmarked during a previously completed
 #' inference recommendation job. This name should come from one of the
 #' recommendations returned by the job specified in the
 #' `InferenceRecommendationsJobName` field.
-#'
+#' 
 #' Specify either this field or the `RecommendationId` field.
 #' @param TargetCpuUtilizationPerCore The percentage of how much utilization you want an instance to use
 #' before autoscaling. The default value is 50%.
@@ -7406,7 +7594,8 @@ sagemaker_get_scaling_configuration_recommendation <- function(InferenceRecommen
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$get_scaling_configuration_recommendation_input(InferenceRecommendationsJobName = InferenceRecommendationsJobName, RecommendationId = RecommendationId, EndpointName = EndpointName, TargetCpuUtilizationPerCore = TargetCpuUtilizationPerCore, ScalingPolicyObjective = ScalingPolicyObjective)
   output <- .sagemaker$get_scaling_configuration_recommendation_output()
@@ -7438,7 +7627,8 @@ sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$get_search_suggestions_input(Resource = Resource, SuggestionQuery = SuggestionQuery)
   output <- .sagemaker$get_search_suggestions_output()
@@ -7480,7 +7670,8 @@ sagemaker_import_hub_content <- function(HubContentName, HubContentVersion = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$import_hub_content_input(HubContentName = HubContentName, HubContentVersion = HubContentVersion, HubContentType = HubContentType, DocumentSchemaVersion = DocumentSchemaVersion, HubName = HubName, HubContentDisplayName = HubContentDisplayName, HubContentDescription = HubContentDescription, HubContentMarkdown = HubContentMarkdown, HubContentDocument = HubContentDocument, HubContentSearchKeywords = HubContentSearchKeywords, Tags = Tags)
   output <- .sagemaker$import_hub_content_output()
@@ -7522,7 +7713,8 @@ sagemaker_list_actions <- function(SourceUri = NULL, ActionType = NULL, CreatedA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ActionSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ActionSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_actions_input(SourceUri = SourceUri, ActionType = ActionType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_actions_output()
@@ -7565,7 +7757,8 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AlgorithmSummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AlgorithmSummaryList"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_algorithms_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_algorithms_output()
@@ -7602,7 +7795,8 @@ sagemaker_list_aliases <- function(ImageName, Alias = NULL, Version = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SageMakerImageVersionAliases")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SageMakerImageVersionAliases"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_aliases_input(ImageName = ImageName, Alias = Alias, Version = Version, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_aliases_output()
@@ -7650,7 +7844,8 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AppImageConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AppImageConfigs"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_app_image_configs_input(MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, ModifiedTimeBefore = ModifiedTimeBefore, ModifiedTimeAfter = ModifiedTimeAfter, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_app_image_configs_output()
@@ -7695,7 +7890,8 @@ sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Apps")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Apps"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_apps_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, UserProfileNameEquals = UserProfileNameEquals, SpaceNameEquals = SpaceNameEquals)
   output <- .sagemaker$list_apps_output()
@@ -7737,7 +7933,8 @@ sagemaker_list_artifacts <- function(SourceUri = NULL, ArtifactType = NULL, Crea
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ArtifactSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ArtifactSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_artifacts_input(SourceUri = SourceUri, ArtifactType = ArtifactType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_artifacts_output()
@@ -7785,7 +7982,8 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AssociationSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AssociationSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_associations_input(SourceArn = SourceArn, DestinationArn = DestinationArn, SourceType = SourceType, DestinationType = DestinationType, AssociationType = AssociationType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_associations_output()
@@ -7825,7 +8023,8 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AutoMLJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AutoMLJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_auto_ml_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_auto_ml_jobs_output()
@@ -7862,7 +8061,8 @@ sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEqual
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Candidates")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Candidates"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_candidates_for_auto_ml_job_input(AutoMLJobName = AutoMLJobName, StatusEquals = StatusEquals, CandidateNameEquals = CandidateNameEquals, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_candidates_for_auto_ml_job_output()
@@ -7887,21 +8087,21 @@ sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEqual
 #' @param CreationTimeAfter A filter that returns nodes in a SageMaker HyperPod cluster created
 #' after the specified time. Timestamps are formatted according to the ISO
 #' 8601 standard.
-#'
+#' 
 #' Acceptable formats include:
-#'
+#' 
 #' -   `YYYY-MM-DDThh:mm:ss.sssTZD` (UTC), for example,
 #'     `2014-10-01T20:30:00.000Z`
-#'
+#' 
 #' -   `YYYY-MM-DDThh:mm:ss.sssTZD` (with offset), for example,
 #'     `2014-10-01T12:30:00.000-08:00`
-#'
+#' 
 #' -   `YYYY-MM-DD`, for example, `2014-10-01`
-#'
+#' 
 #' -   Unix time in seconds, for example, `1412195400`. This is also
 #'     referred to as Unix Epoch time and represents the number of seconds
 #'     since midnight, January 1, 1970 UTC.
-#'
+#' 
 #' For more information about the timestamp format, see
 #' [Timestamp](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp)
 #' in the *Amazon Web Services Command Line Interface User Guide*.
@@ -7931,7 +8131,8 @@ sagemaker_list_cluster_nodes <- function(ClusterName, CreationTimeAfter = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterNodeSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterNodeSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_cluster_nodes_input(ClusterName = ClusterName, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, InstanceGroupNameContains = InstanceGroupNameContains, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_cluster_nodes_output()
@@ -7953,21 +8154,21 @@ sagemaker_list_cluster_nodes <- function(ClusterName, CreationTimeAfter = NULL, 
 #' @param CreationTimeAfter Set a start time for the time range during which you want to list
 #' SageMaker HyperPod clusters. Timestamps are formatted according to the
 #' ISO 8601 standard.
-#'
+#' 
 #' Acceptable formats include:
-#'
+#' 
 #' -   `YYYY-MM-DDThh:mm:ss.sssTZD` (UTC), for example,
 #'     `2014-10-01T20:30:00.000Z`
-#'
+#' 
 #' -   `YYYY-MM-DDThh:mm:ss.sssTZD` (with offset), for example,
 #'     `2014-10-01T12:30:00.000-08:00`
-#'
+#' 
 #' -   `YYYY-MM-DD`, for example, `2014-10-01`
-#'
+#' 
 #' -   Unix time in seconds, for example, `1412195400`. This is also
 #'     referred to as Unix Epoch time and represents the number of seconds
 #'     since midnight, January 1, 1970 UTC.
-#'
+#' 
 #' For more information about the timestamp format, see
 #' [Timestamp](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-types.html#parameter-type-timestamp)
 #' in the *Amazon Web Services Command Line Interface User Guide*.
@@ -7994,7 +8195,8 @@ sagemaker_list_clusters <- function(CreationTimeAfter = NULL, CreationTimeBefore
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_clusters_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_clusters_output()
@@ -8039,7 +8241,8 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CodeRepositorySummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CodeRepositorySummaryList"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_code_repositories_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_code_repositories_output()
@@ -8087,7 +8290,8 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CompilationJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CompilationJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_compilation_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_compilation_jobs_output()
@@ -8129,7 +8333,8 @@ sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, Create
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ContextSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ContextSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_contexts_input(SourceUri = SourceUri, ContextType = ContextType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_contexts_output()
@@ -8176,7 +8381,8 @@ sagemaker_list_data_quality_job_definitions <- function(EndpointName = NULL, Sor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_data_quality_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_data_quality_job_definitions_output()
@@ -8216,7 +8422,8 @@ sagemaker_list_device_fleets <- function(NextToken = NULL, MaxResults = NULL, Cr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceFleetSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceFleetSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_device_fleets_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_device_fleets_output()
@@ -8252,7 +8459,8 @@ sagemaker_list_devices <- function(NextToken = NULL, MaxResults = NULL, LatestHe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_devices_input(NextToken = NextToken, MaxResults = MaxResults, LatestHeartbeatAfter = LatestHeartbeatAfter, ModelName = ModelName, DeviceFleetName = DeviceFleetName)
   output <- .sagemaker$list_devices_output()
@@ -8290,7 +8498,8 @@ sagemaker_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_domains_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_domains_output()
@@ -8332,7 +8541,8 @@ sagemaker_list_edge_deployment_plans <- function(NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EdgeDeploymentPlanSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EdgeDeploymentPlanSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_edge_deployment_plans_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, DeviceFleetNameContains = DeviceFleetNameContains, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_edge_deployment_plans_output()
@@ -8373,7 +8583,8 @@ sagemaker_list_edge_packaging_jobs <- function(NextToken = NULL, MaxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EdgePackagingJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EdgePackagingJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_edge_packaging_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, ModelNameContains = ModelNameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_edge_packaging_jobs_output()
@@ -8414,7 +8625,8 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointConfigs"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_endpoint_configs_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_endpoint_configs_output()
@@ -8461,7 +8673,8 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Endpoints")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Endpoints"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_endpoints_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals)
   output <- .sagemaker$list_endpoints_output()
@@ -8500,7 +8713,8 @@ sagemaker_list_experiments <- function(CreatedAfter = NULL, CreatedBefore = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExperimentSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExperimentSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_experiments_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_experiments_output()
@@ -8543,7 +8757,8 @@ sagemaker_list_feature_groups <- function(NameContains = NULL, FeatureGroupStatu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FeatureGroupSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FeatureGroupSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_feature_groups_input(NameContains = NameContains, FeatureGroupStatusEquals = FeatureGroupStatusEquals, OfflineStoreStatusEquals = OfflineStoreStatusEquals, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_feature_groups_output()
@@ -8583,7 +8798,8 @@ sagemaker_list_flow_definitions <- function(CreationTimeAfter = NULL, CreationTi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FlowDefinitionSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FlowDefinitionSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_flow_definitions_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_flow_definitions_output()
@@ -8628,7 +8844,8 @@ sagemaker_list_hub_content_versions <- function(HubName, HubContentType, HubCont
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_hub_content_versions_input(HubName = HubName, HubContentType = HubContentType, HubContentName = HubContentName, MinVersion = MinVersion, MaxSchemaVersion = MaxSchemaVersion, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_hub_content_versions_output()
@@ -8670,7 +8887,8 @@ sagemaker_list_hub_contents <- function(HubName, HubContentType, NameContains = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_hub_contents_input(HubName = HubName, HubContentType = HubContentType, NameContains = NameContains, MaxSchemaVersion = MaxSchemaVersion, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_hub_contents_output()
@@ -8710,7 +8928,8 @@ sagemaker_list_hubs <- function(NameContains = NULL, CreationTimeBefore = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_hubs_input(NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_hubs_output()
@@ -8750,7 +8969,8 @@ sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HumanTaskUiSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HumanTaskUiSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_human_task_uis_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_human_task_uis_output()
@@ -8798,7 +9018,8 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HyperParameterTuningJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HyperParameterTuningJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_hyper_parameter_tuning_jobs_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, StatusEquals = StatusEquals)
   output <- .sagemaker$list_hyper_parameter_tuning_jobs_output()
@@ -8844,7 +9065,8 @@ sagemaker_list_image_versions <- function(CreationTimeAfter = NULL, CreationTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ImageVersions")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ImageVersions"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_image_versions_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, ImageName = ImageName, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_image_versions_output()
@@ -8890,7 +9112,8 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Images")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Images"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_images_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_images_output()
@@ -8945,7 +9168,8 @@ sagemaker_list_inference_components <- function(SortBy = NULL, SortOrder = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InferenceComponents")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InferenceComponents"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_inference_components_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, EndpointNameEquals = EndpointNameEquals, VariantNameEquals = VariantNameEquals)
   output <- .sagemaker$list_inference_components_output()
@@ -8992,7 +9216,8 @@ sagemaker_list_inference_experiments <- function(NameContains = NULL, Type = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InferenceExperiments")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InferenceExperiments"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_inference_experiments_input(NameContains = NameContains, Type = Type, StatusEquals = StatusEquals, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_inference_experiments_output()
@@ -9015,7 +9240,7 @@ sagemaker_list_inference_experiments <- function(NameContains = NULL, Type = NUL
 #' @param Status A filter to return benchmarks of a specified status. If this field is
 #' left empty, then all benchmarks are returned.
 #' @param StepType A filter to return details about the specified type of subtask.
-#'
+#' 
 #' `BENCHMARK`: Evaluate the performance of your model on different
 #' instance types.
 #' @param MaxResults The maximum number of results to return.
@@ -9032,7 +9257,8 @@ sagemaker_list_inference_recommendations_job_steps <- function(JobName, Status =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Steps")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Steps"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_inference_recommendations_job_steps_input(JobName = JobName, Status = Status, StepType = StepType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_inference_recommendations_job_steps_output()
@@ -9082,7 +9308,8 @@ sagemaker_list_inference_recommendations_jobs <- function(CreationTimeAfter = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InferenceRecommendationsJobs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InferenceRecommendationsJobs"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_inference_recommendations_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, ModelNameEquals = ModelNameEquals, ModelPackageVersionArnEquals = ModelPackageVersionArnEquals)
   output <- .sagemaker$list_inference_recommendations_jobs_output()
@@ -9130,7 +9357,8 @@ sagemaker_list_labeling_jobs <- function(CreationTimeAfter = NULL, CreationTimeB
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LabelingJobSummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LabelingJobSummaryList"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_labeling_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, SortBy = SortBy, SortOrder = SortOrder, StatusEquals = StatusEquals)
   output <- .sagemaker$list_labeling_jobs_output()
@@ -9175,7 +9403,8 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LabelingJobSummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LabelingJobSummaryList"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_labeling_jobs_for_workteam_input(WorkteamArn = WorkteamArn, MaxResults = MaxResults, NextToken = NextToken, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, JobReferenceCodeContains = JobReferenceCodeContains, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_labeling_jobs_for_workteam_output()
@@ -9215,7 +9444,8 @@ sagemaker_list_lineage_groups <- function(CreatedAfter = NULL, CreatedBefore = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LineageGroupSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LineageGroupSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_lineage_groups_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_lineage_groups_output()
@@ -9265,7 +9495,8 @@ sagemaker_list_mlflow_tracking_servers <- function(CreatedAfter = NULL, CreatedB
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrackingServerSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrackingServerSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_mlflow_tracking_servers_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, TrackingServerStatus = TrackingServerStatus, MlflowVersion = MlflowVersion, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_mlflow_tracking_servers_output()
@@ -9308,7 +9539,8 @@ sagemaker_list_model_bias_job_definitions <- function(EndpointName = NULL, SortB
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_bias_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_model_bias_job_definitions_output()
@@ -9355,7 +9587,8 @@ sagemaker_list_model_card_export_jobs <- function(ModelCardName, ModelCardVersio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardExportJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardExportJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_card_export_jobs_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, ModelCardExportJobNameContains = ModelCardExportJobNameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_model_card_export_jobs_output()
@@ -9398,7 +9631,8 @@ sagemaker_list_model_card_versions <- function(CreationTimeAfter = NULL, Creatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardVersionSummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardVersionSummaryList"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_card_versions_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, ModelCardName = ModelCardName, ModelCardStatus = ModelCardStatus, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_model_card_versions_output()
@@ -9439,7 +9673,8 @@ sagemaker_list_model_cards <- function(CreationTimeAfter = NULL, CreationTimeBef
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_cards_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, ModelCardStatus = ModelCardStatus, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_model_cards_output()
@@ -9483,7 +9718,8 @@ sagemaker_list_model_explainability_job_definitions <- function(EndpointName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_explainability_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_model_explainability_job_definitions_output()
@@ -9522,7 +9758,8 @@ sagemaker_list_model_metadata <- function(SearchExpression = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelMetadataSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelMetadataSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_metadata_input(SearchExpression = SearchExpression, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_model_metadata_output()
@@ -9569,7 +9806,8 @@ sagemaker_list_model_package_groups <- function(CreationTimeAfter = NULL, Creati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelPackageGroupSummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelPackageGroupSummaryList"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_package_groups_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder, CrossAccountFilterOption = CrossAccountFilterOption)
   output <- .sagemaker$list_model_package_groups_output()
@@ -9601,12 +9839,12 @@ sagemaker_list_model_package_groups <- function(CreationTimeAfter = NULL, Creati
 #' model group.
 #' @param ModelPackageType A filter that returns only the model packages of the specified type.
 #' This can be one of the following values.
-#'
+#' 
 #' -   `UNVERSIONED` - List only unversioined models. This is the default
 #'     value if no `ModelPackageType` is specified.
-#'
+#' 
 #' -   `VERSIONED` - List only versioned models.
-#'
+#' 
 #' -   `BOTH` - List both versioned and unversioned models.
 #' @param NextToken If the response to a previous
 #' [`list_model_packages`][sagemaker_list_model_packages] request was
@@ -9625,7 +9863,8 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelPackageSummaryList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelPackageSummaryList"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_packages_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, ModelApprovalStatus = ModelApprovalStatus, ModelPackageGroupName = ModelPackageGroupName, ModelPackageType = ModelPackageType, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_model_packages_output()
@@ -9673,7 +9912,8 @@ sagemaker_list_model_quality_job_definitions <- function(EndpointName = NULL, So
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_model_quality_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_model_quality_job_definitions_output()
@@ -9714,7 +9954,8 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Models")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Models"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_models_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_models_output()
@@ -9759,7 +10000,8 @@ sagemaker_list_monitoring_alert_history <- function(MonitoringScheduleName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringAlertHistory")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringAlertHistory"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_monitoring_alert_history_input(MonitoringScheduleName = MonitoringScheduleName, MonitoringAlertName = MonitoringAlertName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, StatusEquals = StatusEquals)
   output <- .sagemaker$list_monitoring_alert_history_output()
@@ -9794,7 +10036,8 @@ sagemaker_list_monitoring_alerts <- function(MonitoringScheduleName, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringAlertSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringAlertSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_monitoring_alerts_input(MonitoringScheduleName = MonitoringScheduleName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_monitoring_alerts_output()
@@ -9844,7 +10087,8 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringExecutionSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringExecutionSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_monitoring_executions_input(MonitoringScheduleName = MonitoringScheduleName, EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, ScheduledTimeBefore = ScheduledTimeBefore, ScheduledTimeAfter = ScheduledTimeAfter, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, MonitoringJobDefinitionName = MonitoringJobDefinitionName, MonitoringTypeEquals = MonitoringTypeEquals)
   output <- .sagemaker$list_monitoring_executions_output()
@@ -9897,7 +10141,8 @@ sagemaker_list_monitoring_schedules <- function(EndpointName = NULL, SortBy = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringScheduleSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringScheduleSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_monitoring_schedules_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, MonitoringJobDefinitionName = MonitoringJobDefinitionName, MonitoringTypeEquals = MonitoringTypeEquals)
   output <- .sagemaker$list_monitoring_schedules_output()
@@ -9945,7 +10190,8 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotebookInstanceLifecycleConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotebookInstanceLifecycleConfigs"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_notebook_instance_lifecycle_configs_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter)
   output <- .sagemaker$list_notebook_instance_lifecycle_configs_output()
@@ -9971,7 +10217,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 #' in your subsequent
 #' [`list_notebook_instances`][sagemaker_list_notebook_instances] request
 #' to fetch the next set of notebook instances.
-#'
+#' 
 #' You might specify a filter or a sort order in your request. When
 #' response is truncated, you must use the same values for the filer and
 #' sort order in the next request.
@@ -10009,7 +10255,8 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotebookInstances")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotebookInstances"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_notebook_instances_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, NotebookInstanceLifecycleConfigNameContains = NotebookInstanceLifecycleConfigNameContains, DefaultCodeRepositoryContains = DefaultCodeRepositoryContains, AdditionalCodeRepositoryEquals = AdditionalCodeRepositoryEquals)
   output <- .sagemaker$list_notebook_instances_output()
@@ -10061,7 +10308,8 @@ sagemaker_list_optimization_jobs <- function(NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OptimizationJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OptimizationJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_optimization_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, OptimizationContains = OptimizationContains, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_optimization_jobs_output()
@@ -10099,7 +10347,8 @@ sagemaker_list_pipeline_execution_steps <- function(PipelineExecutionArn = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineExecutionSteps")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineExecutionSteps"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_pipeline_execution_steps_input(PipelineExecutionArn = PipelineExecutionArn, NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder)
   output <- .sagemaker$list_pipeline_execution_steps_output()
@@ -10140,7 +10389,8 @@ sagemaker_list_pipeline_executions <- function(PipelineName, CreatedAfter = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineExecutionSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineExecutionSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_pipeline_executions_input(PipelineName = PipelineName, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_pipeline_executions_output()
@@ -10175,7 +10425,8 @@ sagemaker_list_pipeline_parameters_for_execution <- function(PipelineExecutionAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineParameters")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineParameters"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_pipeline_parameters_for_execution_input(PipelineExecutionArn = PipelineExecutionArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_pipeline_parameters_for_execution_output()
@@ -10216,7 +10467,8 @@ sagemaker_list_pipelines <- function(PipelineNamePrefix = NULL, CreatedAfter = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_pipelines_input(PipelineNamePrefix = PipelineNamePrefix, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_pipelines_output()
@@ -10263,7 +10515,8 @@ sagemaker_list_processing_jobs <- function(CreationTimeAfter = NULL, CreationTim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProcessingJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProcessingJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_processing_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_processing_jobs_output()
@@ -10304,7 +10557,8 @@ sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_projects_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_projects_output()
@@ -10345,7 +10599,8 @@ sagemaker_list_resource_catalogs <- function(NameContains = NULL, CreationTimeAf
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceCatalogs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceCatalogs"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_resource_catalogs_input(NameContains = NameContains, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_resource_catalogs_output()
@@ -10388,7 +10643,8 @@ sagemaker_list_spaces <- function(NextToken = NULL, MaxResults = NULL, SortOrder
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Spaces")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Spaces"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_spaces_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, SpaceNameContains = SpaceNameContains)
   output <- .sagemaker$list_spaces_output()
@@ -10424,7 +10680,8 @@ sagemaker_list_stage_devices <- function(NextToken = NULL, MaxResults = NULL, Ed
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceDeploymentSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceDeploymentSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_stage_devices_input(NextToken = NextToken, MaxResults = MaxResults, EdgeDeploymentPlanName = EdgeDeploymentPlanName, ExcludeDevicesDeployedInOtherStage = ExcludeDevicesDeployedInOtherStage, StageName = StageName)
   output <- .sagemaker$list_stage_devices_output()
@@ -10475,7 +10732,8 @@ sagemaker_list_studio_lifecycle_configs <- function(MaxResults = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StudioLifecycleConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StudioLifecycleConfigs"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_studio_lifecycle_configs_input(MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, AppTypeEquals = AppTypeEquals, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, ModifiedTimeBefore = ModifiedTimeBefore, ModifiedTimeAfter = ModifiedTimeAfter, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_studio_lifecycle_configs_output()
@@ -10512,7 +10770,8 @@ sagemaker_list_subscribed_workteams <- function(NameContains = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SubscribedWorkteams")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SubscribedWorkteams"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_subscribed_workteams_input(NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_subscribed_workteams_output()
@@ -10547,7 +10806,8 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_tags_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_tags_output()
@@ -10596,7 +10856,8 @@ sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, Cr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_training_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, WarmPoolStatusEquals = WarmPoolStatusEquals)
   output <- .sagemaker$list_training_jobs_output()
@@ -10624,7 +10885,7 @@ sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, Cr
 #' @param MaxResults The maximum number of training jobs to return. The default value is 10.
 #' @param StatusEquals A filter that returns only training jobs with the specified status.
 #' @param SortBy The field to sort results by. The default is `Name`.
-#'
+#' 
 #' If the value of this field is `FinalObjectiveMetricValue`, any training
 #' jobs that did not return an objective metric are not listed.
 #' @param SortOrder The sort order for results. The default is `Ascending`.
@@ -10638,7 +10899,8 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_training_jobs_for_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName, NextToken = NextToken, MaxResults = MaxResults, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_training_jobs_for_hyper_parameter_tuning_job_output()
@@ -10686,7 +10948,8 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransformJobSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransformJobSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_transform_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_transform_jobs_output()
@@ -10734,7 +10997,8 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrialComponentSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrialComponentSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_trial_components_input(ExperimentName = ExperimentName, TrialName = TrialName, SourceArn = SourceArn, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_trial_components_output()
@@ -10776,7 +11040,8 @@ sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrialSummaries")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrialSummaries"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_trials_input(ExperimentName = ExperimentName, TrialComponentName = TrialComponentName, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_trials_output()
@@ -10818,7 +11083,8 @@ sagemaker_list_user_profiles <- function(NextToken = NULL, MaxResults = NULL, So
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "UserProfiles")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "UserProfiles"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_user_profiles_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, UserProfileNameContains = UserProfileNameContains)
   output <- .sagemaker$list_user_profiles_output()
@@ -10854,7 +11120,8 @@ sagemaker_list_workforces <- function(SortBy = NULL, SortOrder = NULL, NameConta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Workforces")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Workforces"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_workforces_input(SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_workforces_output()
@@ -10892,7 +11159,8 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Workteams")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Workteams"),
+    stream_api = FALSE
   )
   input <- .sagemaker$list_workteams_input(SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_workteams_output()
@@ -10923,7 +11191,8 @@ sagemaker_put_model_package_group_policy <- function(ModelPackageGroupName, Reso
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$put_model_package_group_policy_input(ModelPackageGroupName = ModelPackageGroupName, ResourcePolicy = ResourcePolicy)
   output <- .sagemaker$put_model_package_group_policy_output()
@@ -10954,17 +11223,17 @@ sagemaker_put_model_package_group_policy <- function(ModelPackageGroupName, Reso
 #' entities that match your query.
 #' @param Filters A set of filtering parameters that allow you to specify which entities
 #' should be returned.
-#'
+#' 
 #' -   Properties - Key-value pairs to match on the lineage entities'
 #'     properties.
-#'
+#' 
 #' -   LineageTypes - A set of lineage entity types to match on. For
 #'     example: `TrialComponent`, `Artifact`, or `Context`.
-#'
+#' 
 #' -   CreatedBefore - Filter entities created before this date.
-#'
+#' 
 #' -   ModifiedBefore - Filter entities modified before this date.
-#'
+#' 
 #' -   ModifiedAfter - Filter entities modified after this date.
 #' @param MaxDepth The maximum depth in lineage relationships from the `StartArns` that are
 #' traversed. Depth is a measure of the number of `Associations` from the
@@ -10983,7 +11252,8 @@ sagemaker_query_lineage <- function(StartArns = NULL, Direction = NULL, IncludeE
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .sagemaker$query_lineage_input(StartArns = StartArns, Direction = Direction, IncludeEdges = IncludeEdges, Filters = Filters, MaxDepth = MaxDepth, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$query_lineage_output()
@@ -11015,7 +11285,8 @@ sagemaker_register_devices <- function(DeviceFleetName, Devices, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$register_devices_input(DeviceFleetName = DeviceFleetName, Devices = Devices, Tags = Tags)
   output <- .sagemaker$register_devices_output()
@@ -11040,7 +11311,7 @@ sagemaker_register_devices <- function(DeviceFleetName, Devices, Tags = NULL) {
 #' are used by the template.
 #' @param HumanTaskUiArn The `HumanTaskUiArn` of the worker UI that you want to render. Do not
 #' provide a `HumanTaskUiArn` if you use the `UiTemplate` parameter.
-#'
+#' 
 #' See a list of available Human Ui Amazon Resource Names (ARNs) in
 #' [UiConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_UiConfig.html).
 #'
@@ -11053,7 +11324,8 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$render_ui_template_input(UiTemplate = UiTemplate, Task = Task, RoleArn = RoleArn, HumanTaskUiArn = HumanTaskUiArn)
   output <- .sagemaker$render_ui_template_output()
@@ -11088,7 +11360,8 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$retry_pipeline_execution_input(PipelineExecutionArn = PipelineExecutionArn, ClientRequestToken = ClientRequestToken, ParallelismConfiguration = ParallelismConfiguration)
   output <- .sagemaker$retry_pipeline_execution_output()
@@ -11143,7 +11416,8 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results"),
+    stream_api = FALSE
   )
   input <- .sagemaker$search_input(Resource = Resource, SearchExpression = SearchExpression, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, CrossAccountFilterOption = CrossAccountFilterOption, VisibilityConditions = VisibilityConditions)
   output <- .sagemaker$search_output()
@@ -11178,7 +11452,8 @@ sagemaker_send_pipeline_execution_step_failure <- function(CallbackToken, Failur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$send_pipeline_execution_step_failure_input(CallbackToken = CallbackToken, FailureReason = FailureReason, ClientRequestToken = ClientRequestToken)
   output <- .sagemaker$send_pipeline_execution_step_failure_output()
@@ -11213,7 +11488,8 @@ sagemaker_send_pipeline_execution_step_success <- function(CallbackToken, Output
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$send_pipeline_execution_step_success_input(CallbackToken = CallbackToken, OutputParameters = OutputParameters, ClientRequestToken = ClientRequestToken)
   output <- .sagemaker$send_pipeline_execution_step_success_output()
@@ -11244,7 +11520,8 @@ sagemaker_start_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$start_edge_deployment_stage_input(EdgeDeploymentPlanName = EdgeDeploymentPlanName, StageName = StageName)
   output <- .sagemaker$start_edge_deployment_stage_output()
@@ -11274,7 +11551,8 @@ sagemaker_start_inference_experiment <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$start_inference_experiment_input(Name = Name)
   output <- .sagemaker$start_inference_experiment_output()
@@ -11304,7 +11582,8 @@ sagemaker_start_mlflow_tracking_server <- function(TrackingServerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$start_mlflow_tracking_server_input(TrackingServerName = TrackingServerName)
   output <- .sagemaker$start_mlflow_tracking_server_output()
@@ -11334,7 +11613,8 @@ sagemaker_start_monitoring_schedule <- function(MonitoringScheduleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$start_monitoring_schedule_input(MonitoringScheduleName = MonitoringScheduleName)
   output <- .sagemaker$start_monitoring_schedule_output()
@@ -11365,7 +11645,8 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$start_notebook_instance_input(NotebookInstanceName = NotebookInstanceName)
   output <- .sagemaker$start_notebook_instance_output()
@@ -11404,7 +11685,8 @@ sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$start_pipeline_execution_input(PipelineName = PipelineName, PipelineExecutionDisplayName = PipelineExecutionDisplayName, PipelineParameters = PipelineParameters, PipelineExecutionDescription = PipelineExecutionDescription, ClientRequestToken = ClientRequestToken, ParallelismConfiguration = ParallelismConfiguration, SelectiveExecutionConfig = SelectiveExecutionConfig)
   output <- .sagemaker$start_pipeline_execution_output()
@@ -11434,7 +11716,8 @@ sagemaker_stop_auto_ml_job <- function(AutoMLJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_auto_ml_job_input(AutoMLJobName = AutoMLJobName)
   output <- .sagemaker$stop_auto_ml_job_output()
@@ -11464,7 +11747,8 @@ sagemaker_stop_compilation_job <- function(CompilationJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_compilation_job_input(CompilationJobName = CompilationJobName)
   output <- .sagemaker$stop_compilation_job_output()
@@ -11495,7 +11779,8 @@ sagemaker_stop_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_edge_deployment_stage_input(EdgeDeploymentPlanName = EdgeDeploymentPlanName, StageName = StageName)
   output <- .sagemaker$stop_edge_deployment_stage_output()
@@ -11525,7 +11810,8 @@ sagemaker_stop_edge_packaging_job <- function(EdgePackagingJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_edge_packaging_job_input(EdgePackagingJobName = EdgePackagingJobName)
   output <- .sagemaker$stop_edge_packaging_job_output()
@@ -11556,7 +11842,8 @@ sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName)
   output <- .sagemaker$stop_hyper_parameter_tuning_job_output()
@@ -11578,11 +11865,11 @@ sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobNam
 #' @param Name &#91;required&#93; The name of the inference experiment to stop.
 #' @param ModelVariantActions &#91;required&#93; Array of key-value pairs, with names of variants mapped to actions. The
 #' possible actions are the following:
-#'
+#' 
 #' -   `Promote` - Promote the shadow variant to a production variant
-#'
+#' 
 #' -   `Remove` - Delete the variant
-#'
+#' 
 #' -   `Retain` - Keep the variant as it is
 #' @param DesiredModelVariants An array of `ModelVariantConfig` objects. There is one for each variant
 #' that you want to deploy after the inference experiment stops. Each
@@ -11590,9 +11877,9 @@ sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobNam
 #' deploying the corresponding variant.
 #' @param DesiredState The desired state of the experiment after stopping. The possible states
 #' are the following:
-#'
+#' 
 #' -   `Completed`: The experiment completed successfully
-#'
+#' 
 #' -   `Cancelled`: The experiment was canceled
 #' @param Reason The reason for stopping the experiment.
 #'
@@ -11605,7 +11892,8 @@ sagemaker_stop_inference_experiment <- function(Name, ModelVariantActions, Desir
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_inference_experiment_input(Name = Name, ModelVariantActions = ModelVariantActions, DesiredModelVariants = DesiredModelVariants, DesiredState = DesiredState, Reason = Reason)
   output <- .sagemaker$stop_inference_experiment_output()
@@ -11635,7 +11923,8 @@ sagemaker_stop_inference_recommendations_job <- function(JobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_inference_recommendations_job_input(JobName = JobName)
   output <- .sagemaker$stop_inference_recommendations_job_output()
@@ -11665,7 +11954,8 @@ sagemaker_stop_labeling_job <- function(LabelingJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_labeling_job_input(LabelingJobName = LabelingJobName)
   output <- .sagemaker$stop_labeling_job_output()
@@ -11695,7 +11985,8 @@ sagemaker_stop_mlflow_tracking_server <- function(TrackingServerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_mlflow_tracking_server_input(TrackingServerName = TrackingServerName)
   output <- .sagemaker$stop_mlflow_tracking_server_output()
@@ -11725,7 +12016,8 @@ sagemaker_stop_monitoring_schedule <- function(MonitoringScheduleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_monitoring_schedule_input(MonitoringScheduleName = MonitoringScheduleName)
   output <- .sagemaker$stop_monitoring_schedule_output()
@@ -11755,7 +12047,8 @@ sagemaker_stop_notebook_instance <- function(NotebookInstanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_notebook_instance_input(NotebookInstanceName = NotebookInstanceName)
   output <- .sagemaker$stop_notebook_instance_output()
@@ -11785,7 +12078,8 @@ sagemaker_stop_optimization_job <- function(OptimizationJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_optimization_job_input(OptimizationJobName = OptimizationJobName)
   output <- .sagemaker$stop_optimization_job_output()
@@ -11818,7 +12112,8 @@ sagemaker_stop_pipeline_execution <- function(PipelineExecutionArn, ClientReques
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_pipeline_execution_input(PipelineExecutionArn = PipelineExecutionArn, ClientRequestToken = ClientRequestToken)
   output <- .sagemaker$stop_pipeline_execution_output()
@@ -11848,7 +12143,8 @@ sagemaker_stop_processing_job <- function(ProcessingJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_processing_job_input(ProcessingJobName = ProcessingJobName)
   output <- .sagemaker$stop_processing_job_output()
@@ -11878,7 +12174,8 @@ sagemaker_stop_training_job <- function(TrainingJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_training_job_input(TrainingJobName = TrainingJobName)
   output <- .sagemaker$stop_training_job_output()
@@ -11908,7 +12205,8 @@ sagemaker_stop_transform_job <- function(TransformJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$stop_transform_job_input(TransformJobName = TransformJobName)
   output <- .sagemaker$stop_transform_job_output()
@@ -11942,7 +12240,8 @@ sagemaker_update_action <- function(ActionName, Description = NULL, Status = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_action_input(ActionName = ActionName, Description = Description, Status = Status, Properties = Properties, PropertiesToRemove = PropertiesToRemove)
   output <- .sagemaker$update_action_output()
@@ -11975,7 +12274,8 @@ sagemaker_update_app_image_config <- function(AppImageConfigName, KernelGatewayI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_app_image_config_input(AppImageConfigName = AppImageConfigName, KernelGatewayImageConfig = KernelGatewayImageConfig, JupyterLabAppImageConfig = JupyterLabAppImageConfig, CodeEditorAppImageConfig = CodeEditorAppImageConfig)
   output <- .sagemaker$update_app_image_config_output()
@@ -12008,7 +12308,8 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_artifact_input(ArtifactArn = ArtifactArn, ArtifactName = ArtifactName, Properties = Properties, PropertiesToRemove = PropertiesToRemove)
   output <- .sagemaker$update_artifact_output()
@@ -12039,7 +12340,8 @@ sagemaker_update_cluster <- function(ClusterName, InstanceGroups) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_cluster_input(ClusterName = ClusterName, InstanceGroups = InstanceGroups)
   output <- .sagemaker$update_cluster_output()
@@ -12071,7 +12373,8 @@ sagemaker_update_cluster_software <- function(ClusterName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_cluster_software_input(ClusterName = ClusterName)
   output <- .sagemaker$update_cluster_software_output()
@@ -12096,7 +12399,7 @@ sagemaker_update_cluster_software <- function(ClusterName) {
 #' secret that contains the credentials used to access the repository. The
 #' secret must have a staging label of `AWSCURRENT` and must be in the
 #' following format:
-#'
+#' 
 #' `{"username": UserName, "password": Password}`
 #'
 #' @keywords internal
@@ -12108,7 +12411,8 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_code_repository_input(CodeRepositoryName = CodeRepositoryName, GitConfig = GitConfig)
   output <- .sagemaker$update_code_repository_output()
@@ -12141,7 +12445,8 @@ sagemaker_update_context <- function(ContextName, Description = NULL, Properties
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_context_input(ContextName = ContextName, Description = Description, Properties = Properties, PropertiesToRemove = PropertiesToRemove)
   output <- .sagemaker$update_context_output()
@@ -12167,7 +12472,7 @@ sagemaker_update_context <- function(ContextName, Description = NULL, Properties
 #' @param EnableIotRoleAlias Whether to create an Amazon Web Services IoT Role Alias during device
 #' fleet creation. The name of the role alias generated will match this
 #' pattern: "SageMakerEdge-\{DeviceFleetName\}".
-#'
+#' 
 #' For example, if your device fleet is called "demo-fleet", the name of
 #' the role alias will be "SageMakerEdge-demo-fleet".
 #'
@@ -12180,7 +12485,8 @@ sagemaker_update_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_device_fleet_input(DeviceFleetName = DeviceFleetName, RoleArn = RoleArn, Description = Description, OutputConfig = OutputConfig, EnableIotRoleAlias = EnableIotRoleAlias)
   output <- .sagemaker$update_device_fleet_output()
@@ -12211,7 +12517,8 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_devices_input(DeviceFleetName = DeviceFleetName, Devices = Devices)
   output <- .sagemaker$update_devices_output()
@@ -12241,17 +12548,17 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' must be set to `Service`.
 #' @param DefaultSpaceSettings The default settings used to create a space within the domain.
 #' @param SubnetIds The VPC subnets that Studio uses for communication.
-#'
+#' 
 #' If removing subnets, ensure there are no apps in the `InService`,
 #' `Pending`, or `Deleting` state.
 #' @param AppNetworkAccessType Specifies the VPC used for non-EFS traffic.
-#'
+#' 
 #' -   `PublicInternetOnly` - Non-EFS traffic is through a VPC managed by
 #'     Amazon SageMaker, which allows direct internet access.
-#'
+#' 
 #' -   `VpcOnly` - All Studio traffic is through the specified VPC and
 #'     subnets.
-#'
+#' 
 #' This configuration can only be modified if there are no apps in the
 #' `InService`, `Pending`, or `Deleting` state. The configuration cannot be
 #' updated if
@@ -12269,7 +12576,8 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, Domain
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_domain_input(DomainId = DomainId, DefaultUserSettings = DefaultUserSettings, DomainSettingsForUpdate = DomainSettingsForUpdate, AppSecurityGroupManagement = AppSecurityGroupManagement, DefaultSpaceSettings = DefaultSpaceSettings, SubnetIds = SubnetIds, AppNetworkAccessType = AppNetworkAccessType)
   output <- .sagemaker$update_domain_output()
@@ -12320,7 +12628,8 @@ sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_endpoint_input(EndpointName = EndpointName, EndpointConfigName = EndpointConfigName, RetainAllVariantProperties = RetainAllVariantProperties, ExcludeRetainedVariantProperties = ExcludeRetainedVariantProperties, DeploymentConfig = DeploymentConfig, RetainDeploymentConfig = RetainDeploymentConfig)
   output <- .sagemaker$update_endpoint_output()
@@ -12353,7 +12662,8 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_endpoint_weights_and_capacities_input(EndpointName = EndpointName, DesiredWeightsAndCapacities = DesiredWeightsAndCapacities)
   output <- .sagemaker$update_endpoint_weights_and_capacities_output()
@@ -12386,7 +12696,8 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_experiment_input(ExperimentName = ExperimentName, DisplayName = DisplayName, Description = Description)
   output <- .sagemaker$update_experiment_output()
@@ -12413,7 +12724,7 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' request. It takes some time after you've made a valid request for
 #' Feature Store to update the feature group.
 #' @param OnlineStoreConfig Updates the feature group online store configuration.
-#' @param ThroughputConfig
+#' @param ThroughputConfig 
 #'
 #' @keywords internal
 #'
@@ -12424,7 +12735,8 @@ sagemaker_update_feature_group <- function(FeatureGroupName, FeatureAdditions = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_feature_group_input(FeatureGroupName = FeatureGroupName, FeatureAdditions = FeatureAdditions, OnlineStoreConfig = OnlineStoreConfig, ThroughputConfig = ThroughputConfig)
   output <- .sagemaker$update_feature_group_output()
@@ -12461,7 +12773,8 @@ sagemaker_update_feature_metadata <- function(FeatureGroupName, FeatureName, Des
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_feature_metadata_input(FeatureGroupName = FeatureGroupName, FeatureName = FeatureName, Description = Description, ParameterAdditions = ParameterAdditions, ParameterRemovals = ParameterRemovals)
   output <- .sagemaker$update_feature_metadata_output()
@@ -12494,7 +12807,8 @@ sagemaker_update_hub <- function(HubName, HubDescription = NULL, HubDisplayName 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_hub_input(HubName = HubName, HubDescription = HubDescription, HubDisplayName = HubDisplayName, HubSearchKeywords = HubSearchKeywords)
   output <- .sagemaker$update_hub_output()
@@ -12530,7 +12844,8 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_image_input(DeleteProperties = DeleteProperties, Description = Description, DisplayName = DisplayName, ImageName = ImageName, RoleArn = RoleArn)
   output <- .sagemaker$update_image_output()
@@ -12555,34 +12870,34 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
 #' @param AliasesToAdd A list of aliases to add.
 #' @param AliasesToDelete A list of aliases to delete.
 #' @param VendorGuidance The availability of the image version specified by the maintainer.
-#'
+#' 
 #' -   `NOT_PROVIDED`: The maintainers did not provide a status for image
 #'     version stability.
-#'
+#' 
 #' -   `STABLE`: The image version is stable.
-#'
+#' 
 #' -   `TO_BE_ARCHIVED`: The image version is set to be archived. Custom
 #'     image versions that are set to be archived are automatically
 #'     archived after three months.
-#'
+#' 
 #' -   `ARCHIVED`: The image version is archived. Archived image versions
 #'     are not searchable and are no longer actively supported.
 #' @param JobType Indicates SageMaker job type compatibility.
-#'
+#' 
 #' -   `TRAINING`: The image version is compatible with SageMaker training
 #'     jobs.
-#'
+#' 
 #' -   `INFERENCE`: The image version is compatible with SageMaker
 #'     inference jobs.
-#'
+#' 
 #' -   `NOTEBOOK_KERNEL`: The image version is compatible with SageMaker
 #'     notebook kernels.
 #' @param MLFramework The machine learning framework vended in the image version.
 #' @param ProgrammingLang The supported programming language and its version.
 #' @param Processor Indicates CPU or GPU compatibility.
-#'
+#' 
 #' -   `CPU`: The image version is compatible with CPU.
-#'
+#' 
 #' -   `GPU`: The image version is compatible with GPU.
 #' @param Horovod Indicates Horovod compatibility.
 #' @param ReleaseNotes The maintainer description of the image version.
@@ -12596,7 +12911,8 @@ sagemaker_update_image_version <- function(ImageName, Alias = NULL, Version = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_image_version_input(ImageName = ImageName, Alias = Alias, Version = Version, AliasesToAdd = AliasesToAdd, AliasesToDelete = AliasesToDelete, VendorGuidance = VendorGuidance, JobType = JobType, MLFramework = MLFramework, ProgrammingLang = ProgrammingLang, Processor = Processor, Horovod = Horovod, ReleaseNotes = ReleaseNotes)
   output <- .sagemaker$update_image_version_output()
@@ -12630,7 +12946,8 @@ sagemaker_update_inference_component <- function(InferenceComponentName, Specifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_inference_component_input(InferenceComponentName = InferenceComponentName, Specification = Specification, RuntimeConfig = RuntimeConfig)
   output <- .sagemaker$update_inference_component_output()
@@ -12663,7 +12980,8 @@ sagemaker_update_inference_component_runtime_config <- function(InferenceCompone
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_inference_component_runtime_config_input(InferenceComponentName = InferenceComponentName, DesiredRuntimeConfig = DesiredRuntimeConfig)
   output <- .sagemaker$update_inference_component_runtime_config_output()
@@ -12707,7 +13025,8 @@ sagemaker_update_inference_experiment <- function(Name, Schedule = NULL, Descrip
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_inference_experiment_input(Name = Name, Schedule = Schedule, Description = Description, ModelVariants = ModelVariants, DataStorageConfig = DataStorageConfig, ShadowModeConfig = ShadowModeConfig)
   output <- .sagemaker$update_inference_experiment_output()
@@ -12748,7 +13067,8 @@ sagemaker_update_mlflow_tracking_server <- function(TrackingServerName, Artifact
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_mlflow_tracking_server_input(TrackingServerName = TrackingServerName, ArtifactStoreUri = ArtifactStoreUri, TrackingServerSize = TrackingServerSize, AutomaticModelRegistration = AutomaticModelRegistration, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart)
   output <- .sagemaker$update_mlflow_tracking_server_output()
@@ -12771,19 +13091,19 @@ sagemaker_update_mlflow_tracking_server <- function(TrackingServerName, Artifact
 #' @param Content The updated model card content. Content must be in [model card JSON
 #' schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema)
 #' and provided as a string.
-#'
+#' 
 #' When updating model card content, be sure to include the full content
 #' and not just updated content.
 #' @param ModelCardStatus The approval status of the model card within your organization.
 #' Different organizations might have different criteria for model card
 #' review and approval.
-#'
+#' 
 #' -   `Draft`: The model card is a work in progress.
-#'
+#' 
 #' -   `PendingReview`: The model card is pending review.
-#'
+#' 
 #' -   `Approved`: The model card is approved.
-#'
+#' 
 #' -   `Archived`: The model card is archived. No more updates should be
 #'     made to the model card, but it can still be exported.
 #'
@@ -12796,7 +13116,8 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_model_card_input(ModelCardName = ModelCardName, Content = Content, ModelCardStatus = ModelCardStatus)
   output <- .sagemaker$update_model_card_output()
@@ -12829,13 +13150,13 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #' Neo to store the compiled artifacts.
 #' @param InferenceSpecification Specifies details about inference jobs that you can run with models
 #' based on this model package, including the following information:
-#'
+#' 
 #' -   The Amazon ECR paths of containers that contain the inference code
 #'     and model artifacts.
-#'
+#' 
 #' -   The instance types that the model package supports for transform
 #'     jobs and real-time endpoints used for inference.
-#'
+#' 
 #' -   The input and output content formats that the model package supports
 #'     for inference.
 #' @param SourceUri The URI of the source for the model package.
@@ -12860,7 +13181,8 @@ sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_model_package_input(ModelPackageArn = ModelPackageArn, ModelApprovalStatus = ModelApprovalStatus, ApprovalDescription = ApprovalDescription, CustomerMetadataProperties = CustomerMetadataProperties, CustomerMetadataPropertiesToRemove = CustomerMetadataPropertiesToRemove, AdditionalInferenceSpecificationsToAdd = AdditionalInferenceSpecificationsToAdd, InferenceSpecification = InferenceSpecification, SourceUri = SourceUri, ModelCard = ModelCard)
   output <- .sagemaker$update_model_package_output()
@@ -12895,7 +13217,8 @@ sagemaker_update_monitoring_alert <- function(MonitoringScheduleName, Monitoring
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_monitoring_alert_input(MonitoringScheduleName = MonitoringScheduleName, MonitoringAlertName = MonitoringAlertName, DatapointsToAlert = DatapointsToAlert, EvaluationPeriod = EvaluationPeriod)
   output <- .sagemaker$update_monitoring_alert_output()
@@ -12928,7 +13251,8 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_monitoring_schedule_input(MonitoringScheduleName = MonitoringScheduleName, MonitoringScheduleConfig = MonitoringScheduleConfig)
   output <- .sagemaker$update_monitoring_schedule_output()
@@ -12952,7 +13276,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role that SageMaker can assume
 #' to access the notebook instance. For more information, see [SageMaker
 #' Roles](https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
-#'
+#' 
 #' To be able to pass this role to SageMaker, the caller of this API must
 #' have the `iam:PassRole` permission.
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook
@@ -12993,7 +13317,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' this notebook instance. Currently only one EI instance type can be
 #' associated with a notebook instance. For more information, see [Using
 #' Elastic Inference in Amazon
-#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
+#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/).
 #' @param DisassociateAcceleratorTypes A list of the Elastic Inference (EI) instance types to remove from this
 #' notebook instance. This operation is idempotent. If you specify an
 #' accelerator type that is not associated with the notebook instance when
@@ -13008,7 +13332,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' you call this method, it does not throw an error.
 #' @param RootAccess Whether root access is enabled or disabled for users of the notebook
 #' instance. The default value is `Enabled`.
-#'
+#' 
 #' If you set this to `Disabled`, users don't have root access on the
 #' notebook instance, but lifecycle configuration scripts still run with
 #' root permissions.
@@ -13023,7 +13347,8 @@ sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceTyp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_notebook_instance_input(NotebookInstanceName = NotebookInstanceName, InstanceType = InstanceType, RoleArn = RoleArn, LifecycleConfigName = LifecycleConfigName, DisassociateLifecycleConfig = DisassociateLifecycleConfig, VolumeSizeInGB = VolumeSizeInGB, DefaultCodeRepository = DefaultCodeRepository, AdditionalCodeRepositories = AdditionalCodeRepositories, AcceleratorTypes = AcceleratorTypes, DisassociateAcceleratorTypes = DisassociateAcceleratorTypes, DisassociateDefaultCodeRepository = DisassociateDefaultCodeRepository, DisassociateAdditionalCodeRepositories = DisassociateAdditionalCodeRepositories, RootAccess = RootAccess, InstanceMetadataServiceConfiguration = InstanceMetadataServiceConfiguration)
   output <- .sagemaker$update_notebook_instance_output()
@@ -13059,7 +13384,8 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_notebook_instance_lifecycle_config_input(NotebookInstanceLifecycleConfigName = NotebookInstanceLifecycleConfigName, OnCreate = OnCreate, OnStart = OnStart)
   output <- .sagemaker$update_notebook_instance_lifecycle_config_output()
@@ -13097,7 +13423,8 @@ sagemaker_update_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_pipeline_input(PipelineName = PipelineName, PipelineDisplayName = PipelineDisplayName, PipelineDefinition = PipelineDefinition, PipelineDefinitionS3Location = PipelineDefinitionS3Location, PipelineDescription = PipelineDescription, RoleArn = RoleArn, ParallelismConfiguration = ParallelismConfiguration)
   output <- .sagemaker$update_pipeline_output()
@@ -13131,7 +13458,8 @@ sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineEx
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_pipeline_execution_input(PipelineExecutionArn = PipelineExecutionArn, PipelineExecutionDescription = PipelineExecutionDescription, PipelineExecutionDisplayName = PipelineExecutionDisplayName, ParallelismConfiguration = ParallelismConfiguration)
   output <- .sagemaker$update_pipeline_execution_output()
@@ -13178,7 +13506,8 @@ sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, Ser
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_project_input(ProjectName = ProjectName, ProjectDescription = ProjectDescription, ServiceCatalogProvisioningUpdateDetails = ServiceCatalogProvisioningUpdateDetails, Tags = Tags)
   output <- .sagemaker$update_project_output()
@@ -13211,7 +13540,8 @@ sagemaker_update_space <- function(DomainId, SpaceName, SpaceSettings = NULL, Sp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_space_input(DomainId = DomainId, SpaceName = SpaceName, SpaceSettings = SpaceSettings, SpaceDisplayName = SpaceDisplayName)
   output <- .sagemaker$update_space_output()
@@ -13255,7 +13585,8 @@ sagemaker_update_training_job <- function(TrainingJobName, ProfilerConfig = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_training_job_input(TrainingJobName = TrainingJobName, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations, ResourceConfig = ResourceConfig, RemoteDebugConfig = RemoteDebugConfig)
   output <- .sagemaker$update_training_job_output()
@@ -13287,7 +13618,8 @@ sagemaker_update_trial <- function(TrialName, DisplayName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_trial_input(TrialName = TrialName, DisplayName = DisplayName)
   output <- .sagemaker$update_trial_output()
@@ -13338,7 +13670,8 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_trial_component_input(TrialComponentName = TrialComponentName, DisplayName = DisplayName, Status = Status, StartTime = StartTime, EndTime = EndTime, Parameters = Parameters, ParametersToRemove = ParametersToRemove, InputArtifacts = InputArtifacts, InputArtifactsToRemove = InputArtifactsToRemove, OutputArtifacts = OutputArtifacts, OutputArtifactsToRemove = OutputArtifactsToRemove)
   output <- .sagemaker$update_trial_component_output()
@@ -13370,7 +13703,8 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_user_profile_input(DomainId = DomainId, UserProfileName = UserProfileName, UserSettings = UserSettings)
   output <- .sagemaker$update_user_profile_output()
@@ -13395,7 +13729,7 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' @param SourceIpConfig A list of one to ten worker IP address ranges
 #' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html))
 #' that can be used to access tasks assigned to this workforce.
-#'
+#' 
 #' Maximum: Ten CIDR values
 #' @param OidcConfig Use this parameter to update your OIDC Identity Provider (IdP)
 #' configuration for a workforce made using your own IdP.
@@ -13410,7 +13744,8 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, Oid
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_workforce_input(WorkforceName = WorkforceName, SourceIpConfig = SourceIpConfig, OidcConfig = OidcConfig, WorkforceVpcConfig = WorkforceVpcConfig)
   output <- .sagemaker$update_workforce_output()
@@ -13432,13 +13767,13 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, Oid
 #' @param WorkteamName &#91;required&#93; The name of the work team to update.
 #' @param MemberDefinitions A list of `MemberDefinition` objects that contains objects that identify
 #' the workers that make up the work team.
-#'
+#' 
 #' Workforces can be created using Amazon Cognito or your own OIDC Identity
 #' Provider (IdP). For private workforces created using Amazon Cognito use
 #' `CognitoMemberDefinition`. For workforces created using your own OIDC
 #' identity provider (IdP) use `OidcMemberDefinition`. You should not
 #' provide input for both of these parameters in a single request.
-#'
+#' 
 #' For workforces created using Amazon Cognito, private work teams
 #' correspond to Amazon Cognito *user groups* within the user pool used to
 #' create a workforce. All of the `CognitoMemberDefinition` objects that
@@ -13447,7 +13782,7 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, Oid
 #' worker pool, see Adding groups to a User Pool. For more information
 #' about user pools, see [Amazon Cognito User
 #' Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools.html).
-#'
+#' 
 #' For workforces created using your own OIDC IdP, specify the user groups
 #' that you want to include in your private work team in
 #' `OidcMemberDefinition` by listing those groups in `Groups`. Be aware
@@ -13471,7 +13806,8 @@ sagemaker_update_workteam <- function(WorkteamName, MemberDefinitions = NULL, De
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sagemaker$update_workteam_input(WorkteamName = WorkteamName, MemberDefinitions = MemberDefinitions, Description = Description, NotificationConfiguration = NotificationConfiguration, WorkerAccessConfiguration = WorkerAccessConfiguration)
   output <- .sagemaker$update_workteam_output()

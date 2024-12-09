@@ -10,7 +10,7 @@ opensearchservice_list_data_sources(DomainName)
 \item{DomainName}{[required] The name of the domain.}
 }
 \description{
-Lists direct-query data sources for a specific domain. For more information, see For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query-s3.html}{Working with Amazon OpenSearch Service direct queries with Amazon S3}.
+Lists direct-query data sources for a specific domain. For more information, see For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/direct-query.html}{Working with Amazon OpenSearch Service direct queries with Amazon S3}.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_data_sources/} for full documentation.
 }

@@ -24,8 +24,8 @@ Region and linked Regions. However, in that case, the delegated
 administrator can create a configuration policy in which Security Hub is
 enabled and associate the policy with new organization accounts.}
 
-\item{AutoEnableStandards}{Whether to automatically enable Security Hub \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards-enable-disable.html}{default standards}
-in new member accounts when they join the organization.
+\item{AutoEnableStandards}{Whether to automatically enable Security Hub \href{https://docs.aws.amazon.com/securityhub/latest/userguide/}{default standards} in
+new member accounts when they join the organization.
 
 The default value of this parameter is equal to \code{DEFAULT}.
 

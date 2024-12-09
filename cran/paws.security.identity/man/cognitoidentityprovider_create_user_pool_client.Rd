@@ -284,7 +284,7 @@ If you don't include this parameter, token revocation is automatically
 activated for the new user pool client.}
 
 \item{EnablePropagateAdditionalUserContextData}{Activates the propagation of additional user context data. For more
-information about propagation of user context data, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html}{Adding advanced security to a user pool}.
+information about propagation of user context data, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{Adding advanced security to a user pool}.
 If you don’t include this parameter, you can't send device fingerprint
 information, including source IP address, to Amazon Cognito advanced
 security. You can only activate

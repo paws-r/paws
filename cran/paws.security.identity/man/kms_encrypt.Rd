@@ -64,7 +64,7 @@ in the \emph{Key Management Service Developer Guide}.}
 Use a grant token when your permission to call this operation comes from
 a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
-and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
+and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#using-grant-token}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
 
 \item{EncryptionAlgorithm}{Specifies the encryption algorithm that KMS will use to encrypt the

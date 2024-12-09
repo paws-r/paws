@@ -34,7 +34,7 @@ must have Amazon Bedrock as the service principal, and provide access to
 any Amazon S3 buckets specified in the \code{EvaluationConfig} object. To
 pass this role to Amazon Bedrock, the caller of this API must have the
 \code{iam:PassRole} permission. To learn more about the required permissions,
-see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-security.html}{Required permissions}.}
+see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation-security-service-roles.html}{Required permissions}.}
 
 \item{customerEncryptionKeyId}{Specify your customer managed key ARN that will be used to encrypt your
 model evaluation job.}
@@ -52,7 +52,7 @@ evaluation job that use human workers support two models.}
 saved in Amazon S3.}
 }
 \description{
-API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers. To learn more about the requirements for creating a model evaluation job see, \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html}{Model evaluation}.
+API operation for creating and managing Amazon Bedrock automatic model evaluation jobs and model evaluation jobs that use human workers. To learn more about the requirements for creating a model evaluation job see, \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Model evaluation}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_create_evaluation_job/} for full documentation.
 }

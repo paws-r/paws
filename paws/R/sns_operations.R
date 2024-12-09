@@ -57,7 +57,8 @@ sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$add_permission_input(TopicArn = TopicArn, Label = Label, AWSAccountId = AWSAccountId, ActionName = ActionName)
   output <- .sns$add_permission_output()
@@ -111,7 +112,8 @@ sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$check_if_phone_number_is_opted_out_input(phoneNumber = phoneNumber)
   output <- .sns$check_if_phone_number_is_opted_out_output()
@@ -174,7 +176,8 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$confirm_subscription_input(TopicArn = TopicArn, Token = Token, AuthenticateOnUnsubscribe = AuthenticateOnUnsubscribe)
   output <- .sns$confirm_subscription_output()
@@ -276,7 +279,8 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$create_platform_application_input(Name = Name, Platform = Platform, Attributes = Attributes)
   output <- .sns$create_platform_application_output()
@@ -362,7 +366,8 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$create_platform_endpoint_input(PlatformApplicationArn = PlatformApplicationArn, Token = Token, CustomUserData = CustomUserData, Attributes = Attributes)
   output <- .sns$create_platform_endpoint_output()
@@ -422,7 +427,8 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$create_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber, LanguageCode = LanguageCode)
   output <- .sns$create_sms_sandbox_phone_number_output()
@@ -572,7 +578,8 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL, DataProtectio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$create_topic_input(Name = Name, Attributes = Attributes, Tags = Tags, DataProtectionPolicy = DataProtectionPolicy)
   output <- .sns$create_topic_output()
@@ -621,7 +628,8 @@ sns_delete_endpoint <- function(EndpointArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$delete_endpoint_input(EndpointArn = EndpointArn)
   output <- .sns$delete_endpoint_output()
@@ -668,7 +676,8 @@ sns_delete_platform_application <- function(PlatformApplicationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$delete_platform_application_input(PlatformApplicationArn = PlatformApplicationArn)
   output <- .sns$delete_platform_application_output()
@@ -724,7 +733,8 @@ sns_delete_sms_sandbox_phone_number <- function(PhoneNumber) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$delete_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber)
   output <- .sns$delete_sms_sandbox_phone_number_output()
@@ -770,7 +780,8 @@ sns_delete_topic <- function(TopicArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$delete_topic_input(TopicArn = TopicArn)
   output <- .sns$delete_topic_output()
@@ -824,7 +835,8 @@ sns_get_data_protection_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$get_data_protection_policy_input(ResourceArn = ResourceArn)
   output <- .sns$get_data_protection_policy_output()
@@ -880,7 +892,8 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$get_endpoint_attributes_input(EndpointArn = EndpointArn)
   output <- .sns$get_endpoint_attributes_output()
@@ -936,7 +949,8 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$get_platform_application_attributes_input(PlatformApplicationArn = PlatformApplicationArn)
   output <- .sns$get_platform_application_attributes_output()
@@ -999,7 +1013,8 @@ sns_get_sms_attributes <- function(attributes = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$get_sms_attributes_input(attributes = attributes)
   output <- .sns$get_sms_attributes_output()
@@ -1058,7 +1073,8 @@ sns_get_sms_sandbox_account_status <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$get_sms_sandbox_account_status_input()
   output <- .sns$get_sms_sandbox_account_status_output()
@@ -1108,7 +1124,8 @@ sns_get_subscription_attributes <- function(SubscriptionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$get_subscription_attributes_input(SubscriptionArn = SubscriptionArn)
   output <- .sns$get_subscription_attributes_output()
@@ -1159,7 +1176,8 @@ sns_get_topic_attributes <- function(TopicArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$get_topic_attributes_input(TopicArn = TopicArn)
   output <- .sns$get_topic_attributes_output()
@@ -1237,7 +1255,8 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Endpoints")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Endpoints"),
+    stream_api = FALSE
   )
   input <- .sns$list_endpoints_by_platform_application_input(PlatformApplicationArn = PlatformApplicationArn, NextToken = NextToken)
   output <- .sns$list_endpoints_by_platform_application_output()
@@ -1256,8 +1275,8 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #' Lists the calling Amazon Web Services account's dedicated origination
 #' numbers and their metadata. For more information about origination
 #' numbers, see [Origination
-#' numbers](https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html)
-#' in the *Amazon SNS Developer Guide*.
+#' numbers](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS
+#' Developer Guide*.
 #'
 #' @usage
 #' sns_list_origination_numbers(NextToken, MaxResults)
@@ -1308,7 +1327,8 @@ sns_list_origination_numbers <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers"),
+    stream_api = FALSE
   )
   input <- .sns$list_origination_numbers_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sns$list_origination_numbers_output()
@@ -1373,7 +1393,8 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "phoneNumbers")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "phoneNumbers"),
+    stream_api = FALSE
   )
   input <- .sns$list_phone_numbers_opted_out_input(nextToken = nextToken)
   output <- .sns$list_phone_numbers_opted_out_output()
@@ -1446,7 +1467,8 @@ sns_list_platform_applications <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PlatformApplications")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PlatformApplications"),
+    stream_api = FALSE
   )
   input <- .sns$list_platform_applications_input(NextToken = NextToken)
   output <- .sns$list_platform_applications_output()
@@ -1516,7 +1538,8 @@ sns_list_sms_sandbox_phone_numbers <- function(NextToken = NULL, MaxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers"),
+    stream_api = FALSE
   )
   input <- .sns$list_sms_sandbox_phone_numbers_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sns$list_sms_sandbox_phone_numbers_output()
@@ -1580,7 +1603,8 @@ sns_list_subscriptions <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions"),
+    stream_api = FALSE
   )
   input <- .sns$list_subscriptions_input(NextToken = NextToken)
   output <- .sns$list_subscriptions_output()
@@ -1648,7 +1672,8 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions"),
+    stream_api = FALSE
   )
   input <- .sns$list_subscriptions_by_topic_input(TopicArn = TopicArn, NextToken = NextToken)
   output <- .sns$list_subscriptions_by_topic_output()
@@ -1704,7 +1729,8 @@ sns_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .sns$list_tags_for_resource_output()
@@ -1762,7 +1788,8 @@ sns_list_topics <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Topics")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Topics"),
+    stream_api = FALSE
   )
   input <- .sns$list_topics_input(NextToken = NextToken)
   output <- .sns$list_topics_output()
@@ -1809,7 +1836,8 @@ sns_opt_in_phone_number <- function(phoneNumber) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$opt_in_phone_number_input(phoneNumber = phoneNumber)
   output <- .sns$opt_in_phone_number_output()
@@ -2007,7 +2035,8 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$publish_input(TopicArn = TopicArn, TargetArn = TargetArn, PhoneNumber = PhoneNumber, Message = Message, Subject = Subject, MessageStructure = MessageStructure, MessageAttributes = MessageAttributes, MessageDeduplicationId = MessageDeduplicationId, MessageGroupId = MessageGroupId)
   output <- .sns$publish_output()
@@ -2118,7 +2147,8 @@ sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$publish_batch_input(TopicArn = TopicArn, PublishBatchRequestEntries = PublishBatchRequestEntries)
   output <- .sns$publish_batch_output()
@@ -2174,7 +2204,8 @@ sns_put_data_protection_policy <- function(ResourceArn, DataProtectionPolicy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$put_data_protection_policy_input(ResourceArn = ResourceArn, DataProtectionPolicy = DataProtectionPolicy)
   output <- .sns$put_data_protection_policy_output()
@@ -2225,7 +2256,8 @@ sns_remove_permission <- function(TopicArn, Label) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$remove_permission_input(TopicArn = TopicArn, Label = Label)
   output <- .sns$remove_permission_output()
@@ -2293,7 +2325,8 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$set_endpoint_attributes_input(EndpointArn = EndpointArn, Attributes = Attributes)
   output <- .sns$set_endpoint_attributes_output()
@@ -2422,7 +2455,8 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$set_platform_application_attributes_input(PlatformApplicationArn = PlatformApplicationArn, Attributes = Attributes)
   output <- .sns$set_platform_application_attributes_output()
@@ -2445,8 +2479,8 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' use the [`publish`][sns_publish] action with the
 #' `MessageAttributes.entry.N` parameter. For more information, see
 #' [Publishing to a mobile
-#' phone](https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html)
-#' in the *Amazon SNS Developer Guide*.
+#' phone](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS
+#' Developer Guide*.
 #' 
 #' To use this operation, you must grant the Amazon SNS service principal
 #' (`sns.amazonaws.com`) permission to perform the `s3:ListBucket` action.
@@ -2555,7 +2589,8 @@ sns_set_sms_attributes <- function(attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$set_sms_attributes_input(attributes = attributes)
   output <- .sns$set_sms_attributes_output()
@@ -2651,7 +2686,8 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$set_subscription_attributes_input(SubscriptionArn = SubscriptionArn, AttributeName = AttributeName, AttributeValue = AttributeValue)
   output <- .sns$set_subscription_attributes_output()
@@ -2853,7 +2889,8 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$set_topic_attributes_input(TopicArn = TopicArn, AttributeName = AttributeName, AttributeValue = AttributeValue)
   output <- .sns$set_topic_attributes_output()
@@ -3048,7 +3085,8 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$subscribe_input(TopicArn = TopicArn, Protocol = Protocol, Endpoint = Endpoint, Attributes = Attributes, ReturnSubscriptionArn = ReturnSubscriptionArn)
   output <- .sns$subscribe_output()
@@ -3117,7 +3155,8 @@ sns_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .sns$tag_resource_output()
@@ -3173,7 +3212,8 @@ sns_unsubscribe <- function(SubscriptionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$unsubscribe_input(SubscriptionArn = SubscriptionArn)
   output <- .sns$unsubscribe_output()
@@ -3223,7 +3263,8 @@ sns_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .sns$untag_resource_output()
@@ -3282,7 +3323,8 @@ sns_verify_sms_sandbox_phone_number <- function(PhoneNumber, OneTimePassword) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .sns$verify_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber, OneTimePassword = OneTimePassword)
   output <- .sns$verify_sms_sandbox_phone_number_output()

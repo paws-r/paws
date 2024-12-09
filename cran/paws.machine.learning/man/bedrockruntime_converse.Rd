@@ -22,10 +22,10 @@ The \code{modelId} to provide depends on the type of model or throughput that
 you use:
 \itemize{
 \item If you use a base model, specify the model ID or its ARN. For a list
-of model IDs for base models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns}{Amazon Bedrock base model IDs (on-demand throughput)}
+of model IDs for base models, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns}{Amazon Bedrock base model IDs (on-demand throughput)}
 in the Amazon Bedrock User Guide.
 \item If you use an inference profile, specify the inference profile ID or
-its ARN. For a list of inference profile IDs, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html}{Supported Regions and models for cross-region inference}
+its ARN. For a list of inference profile IDs, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html}{Supported Regions and models for cross-region inference}
 in the Amazon Bedrock User Guide.
 \item If you use a provisioned model, specify the ARN of the Provisioned
 Throughput. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/prov-thru-use.html}{Run inference using a Provisioned Throughput}
