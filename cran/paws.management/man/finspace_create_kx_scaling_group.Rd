@@ -26,6 +26,12 @@ FinSpace Managed kdb clusters will be placed.
 
 You can add one of the following values:
 \itemize{
+\item \code{kx.sg.large} – The host type with a configuration of 16 GiB memory
+and 2 vCPUs.
+\item \code{kx.sg.xlarge} – The host type with a configuration of 32 GiB memory
+and 4 vCPUs.
+\item \code{kx.sg.2xlarge} – The host type with a configuration of 64 GiB
+memory and 8 vCPUs.
 \item \code{kx.sg.4xlarge} – The host type with a configuration of 108 GiB
 memory and 16 vCPUs.
 \item \code{kx.sg.8xlarge} – The host type with a configuration of 216 GiB

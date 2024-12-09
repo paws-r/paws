@@ -19,7 +19,7 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html}{Resource-level permissions}.
+A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/IAM.ResourceLevelPermissions.html}{Resource-level permissions}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_add_tags_to_resource/} for full documentation.
 }

@@ -71,7 +71,8 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
     http_method = "POST",
     http_path = "/acceptPrimaryEmailUpdate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$accept_primary_email_update_input(AccountId = AccountId, Otp = Otp, PrimaryEmail = PrimaryEmail)
   output <- .account$accept_primary_email_update_output()
@@ -92,7 +93,7 @@ account_accept_primary_email_update <- function(AccountId, Otp, PrimaryEmail) {
 #' 
 #' For complete details about how to use the alternate contact operations,
 #' see [Access or updating the alternate
-#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/).
 #' 
 #' Before you can update the alternate contact information for an Amazon
 #' Web Services account that is managed by Organizations, you must first
@@ -155,7 +156,8 @@ account_delete_alternate_contact <- function(AccountId = NULL, AlternateContactT
     http_method = "POST",
     http_path = "/deleteAlternateContact",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$delete_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType)
   output <- .account$delete_alternate_contact_output()
@@ -232,7 +234,8 @@ account_disable_region <- function(AccountId = NULL, RegionName) {
     http_method = "POST",
     http_path = "/disableRegion",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$disable_region_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$disable_region_output()
@@ -307,7 +310,8 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
     http_method = "POST",
     http_path = "/enableRegion",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$enable_region_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$enable_region_output()
@@ -328,7 +332,7 @@ account_enable_region <- function(AccountId = NULL, RegionName) {
 #' 
 #' For complete details about how to use the alternate contact operations,
 #' see [Access or updating the alternate
-#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/).
 #' 
 #' Before you can update the alternate contact information for an Amazon
 #' Web Services account that is managed by Organizations, you must first
@@ -402,7 +406,8 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
     http_method = "POST",
     http_path = "/getAlternateContact",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$get_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType)
   output <- .account$get_alternate_contact_output()
@@ -423,7 +428,7 @@ account_get_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' 
 #' For complete details about how to use the primary contact operations,
 #' see [Update the primary and alternate contact
-#' information](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' information](https://docs.aws.amazon.com/accounts/latest/reference/).
 #'
 #' @usage
 #' account_get_contact_information(AccountId)
@@ -493,7 +498,8 @@ account_get_contact_information <- function(AccountId = NULL) {
     http_method = "POST",
     http_path = "/getContactInformation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$get_contact_information_input(AccountId = AccountId)
   output <- .account$get_contact_information_output()
@@ -559,7 +565,8 @@ account_get_primary_email <- function(AccountId) {
     http_method = "POST",
     http_path = "/getPrimaryEmail",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$get_primary_email_input(AccountId = AccountId)
   output <- .account$get_primary_email_output()
@@ -636,7 +643,8 @@ account_get_region_opt_status <- function(AccountId = NULL, RegionName) {
     http_method = "POST",
     http_path = "/getRegionOptStatus",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$get_region_opt_status_input(AccountId = AccountId, RegionName = RegionName)
   output <- .account$get_region_opt_status_output()
@@ -740,7 +748,8 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/listRegions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Regions"),
+    stream_api = FALSE
   )
   input <- .account$list_regions_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken, RegionOptStatusContains = RegionOptStatusContains)
   output <- .account$list_regions_output()
@@ -761,7 +770,7 @@ account_list_regions <- function(AccountId = NULL, MaxResults = NULL, NextToken 
 #' 
 #' For complete details about how to use the alternate contact operations,
 #' see [Access or updating the alternate
-#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' contacts](https://docs.aws.amazon.com/accounts/latest/reference/).
 #' 
 #' Before you can update the alternate contact information for an Amazon
 #' Web Services account that is managed by Organizations, you must first
@@ -833,7 +842,8 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
     http_method = "POST",
     http_path = "/putAlternateContact",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$put_alternate_contact_input(AccountId = AccountId, AlternateContactType = AlternateContactType, EmailAddress = EmailAddress, Name = Name, PhoneNumber = PhoneNumber, Title = Title)
   output <- .account$put_alternate_contact_output()
@@ -854,7 +864,7 @@ account_put_alternate_contact <- function(AccountId = NULL, AlternateContactType
 #' 
 #' For complete details about how to use the primary contact operations,
 #' see [Update the primary and alternate contact
-#' information](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact.html).
+#' information](https://docs.aws.amazon.com/accounts/latest/reference/).
 #'
 #' @usage
 #' account_put_contact_information(AccountId, ContactInformation)
@@ -922,7 +932,8 @@ account_put_contact_information <- function(AccountId = NULL, ContactInformation
     http_method = "POST",
     http_path = "/putContactInformation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$put_contact_information_input(AccountId = AccountId, ContactInformation = ContactInformation)
   output <- .account$put_contact_information_output()
@@ -993,7 +1004,8 @@ account_start_primary_email_update <- function(AccountId, PrimaryEmail) {
     http_method = "POST",
     http_path = "/startPrimaryEmailUpdate",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .account$start_primary_email_update_input(AccountId = AccountId, PrimaryEmail = PrimaryEmail)
   output <- .account$start_primary_email_update_output()

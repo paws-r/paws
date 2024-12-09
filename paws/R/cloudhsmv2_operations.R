@@ -61,7 +61,8 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$copy_backup_to_region_input(DestinationRegion = DestinationRegion, BackupId = BackupId, TagList = TagList)
   output <- .cloudhsmv2$copy_backup_to_region_output()
@@ -192,7 +193,8 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$create_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, HsmType = HsmType, SourceBackupId = SourceBackupId, SubnetIds = SubnetIds, TagList = TagList, Mode = Mode)
   output <- .cloudhsmv2$create_cluster_output()
@@ -264,7 +266,8 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$create_hsm_input(ClusterId = ClusterId, AvailabilityZone = AvailabilityZone, IpAddress = IpAddress)
   output <- .cloudhsmv2$create_hsm_output()
@@ -344,7 +347,8 @@ cloudhsmv2_delete_backup <- function(BackupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$delete_backup_input(BackupId = BackupId)
   output <- .cloudhsmv2$delete_backup_output()
@@ -445,7 +449,8 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$delete_cluster_input(ClusterId = ClusterId)
   output <- .cloudhsmv2$delete_cluster_output()
@@ -509,7 +514,8 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$delete_hsm_input(ClusterId = ClusterId, HsmId = HsmId, EniId = EniId, EniIp = EniIp)
   output <- .cloudhsmv2$delete_hsm_output()
@@ -565,7 +571,8 @@ cloudhsmv2_delete_resource_policy <- function(ResourceArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .cloudhsmv2$delete_resource_policy_output()
@@ -702,7 +709,8 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$describe_backups_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, Shared = Shared, SortAscending = SortAscending)
   output <- .cloudhsmv2$describe_backups_output()
@@ -831,7 +839,8 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$describe_clusters_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudhsmv2$describe_clusters_output()
@@ -883,7 +892,8 @@ cloudhsmv2_get_resource_policy <- function(ResourceArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .cloudhsmv2$get_resource_policy_output()
@@ -951,7 +961,8 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$initialize_cluster_input(ClusterId = ClusterId, SignedCert = SignedCert, TrustAnchor = TrustAnchor)
   output <- .cloudhsmv2$initialize_cluster_output()
@@ -1024,7 +1035,8 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$list_tags_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudhsmv2$list_tags_output()
@@ -1107,7 +1119,8 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$modify_backup_attributes_input(BackupId = BackupId, NeverExpires = NeverExpires)
   output <- .cloudhsmv2$modify_backup_attributes_output()
@@ -1210,7 +1223,8 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$modify_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, ClusterId = ClusterId)
   output <- .cloudhsmv2$modify_cluster_output()
@@ -1291,7 +1305,8 @@ cloudhsmv2_put_resource_policy <- function(ResourceArn = NULL, Policy = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .cloudhsmv2$put_resource_policy_output()
@@ -1372,7 +1387,8 @@ cloudhsmv2_restore_backup <- function(BackupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$restore_backup_input(BackupId = BackupId)
   output <- .cloudhsmv2$restore_backup_output()
@@ -1427,7 +1443,8 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$tag_resource_input(ResourceId = ResourceId, TagList = TagList)
   output <- .cloudhsmv2$tag_resource_output()
@@ -1480,7 +1497,8 @@ cloudhsmv2_untag_resource <- function(ResourceId, TagKeyList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudhsmv2$untag_resource_input(ResourceId = ResourceId, TagKeyList = TagKeyList)
   output <- .cloudhsmv2$untag_resource_output()

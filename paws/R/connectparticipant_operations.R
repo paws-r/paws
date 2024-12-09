@@ -17,7 +17,7 @@ NULL
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_complete_attachment_upload(AttachmentIds,
@@ -56,7 +56,8 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
     http_method = "POST",
     http_path = "/participant/complete-attachment-upload",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$complete_attachment_upload_input(AttachmentIds = AttachmentIds, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$complete_attachment_upload_output()
@@ -109,7 +110,7 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_create_participant_connection(Type, ParticipantToken,
@@ -164,7 +165,8 @@ connectparticipant_create_participant_connection <- function(Type = NULL, Partic
     http_method = "POST",
     http_path = "/participant/connection",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$create_participant_connection_input(Type = Type, ParticipantToken = ParticipantToken, ConnectParticipant = ConnectParticipant)
   output <- .connectparticipant$create_participant_connection_output()
@@ -227,7 +229,8 @@ connectparticipant_describe_view <- function(ViewToken, ConnectionToken) {
     http_method = "GET",
     http_path = "/participant/views/{ViewToken}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$describe_view_input(ViewToken = ViewToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$describe_view_output()
@@ -249,7 +252,7 @@ connectparticipant_describe_view <- function(ViewToken, ConnectionToken) {
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_disconnect_participant(ClientToken, ConnectionToken)
@@ -283,7 +286,8 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
     http_method = "POST",
     http_path = "/participant/disconnect",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$disconnect_participant_input(ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$disconnect_participant_output()
@@ -306,7 +310,7 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_get_attachment(AttachmentId, ConnectionToken)
@@ -342,7 +346,8 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
     http_method = "POST",
     http_path = "/participant/attachment",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$get_attachment_input(AttachmentId = AttachmentId, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$get_attachment_output()
@@ -382,7 +387,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_get_transcript(ContactId, MaxResults, NextToken,
@@ -469,7 +474,8 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/participant/transcript",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .connectparticipant$get_transcript_input(ContactId = ContactId, MaxResults = MaxResults, NextToken = NextToken, ScanDirection = ScanDirection, SortOrder = SortOrder, StartPosition = StartPosition, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$get_transcript_output()
@@ -500,7 +506,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_send_event(ContentType, Content, ClientToken,
@@ -559,7 +565,8 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
     http_method = "POST",
     http_path = "/participant/event",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$send_event_input(ContentType = ContentType, Content = Content, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$send_event_output()
@@ -581,7 +588,7 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_send_message(ContentType, Content, ClientToken,
@@ -638,7 +645,8 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
     http_method = "POST",
     http_path = "/participant/message",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$send_message_input(ContentType = ContentType, Content = Content, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$send_message_output()
@@ -662,7 +670,7 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' 
 #' The Amazon Connect Participant Service APIs do not use [Signature
 #' Version 4
-#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' authentication](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #'
 #' @usage
 #' connectparticipant_start_attachment_upload(ContentType,
@@ -718,7 +726,8 @@ connectparticipant_start_attachment_upload <- function(ContentType, AttachmentSi
     http_method = "POST",
     http_path = "/participant/start-attachment-upload",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .connectparticipant$start_attachment_upload_input(ContentType = ContentType, AttachmentSizeInBytes = AttachmentSizeInBytes, AttachmentName = AttachmentName, ClientToken = ClientToken, ConnectionToken = ConnectionToken)
   output <- .connectparticipant$start_attachment_upload_output()

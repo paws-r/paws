@@ -23,7 +23,8 @@ auditmanager_associate_assessment_report_evidence_folder <- function(assessmentI
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/associateToAssessmentReport",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$associate_assessment_report_evidence_folder_input(assessmentId = assessmentId, evidenceFolderId = evidenceFolderId)
   output <- .auditmanager$associate_assessment_report_evidence_folder_output()
@@ -56,7 +57,8 @@ auditmanager_batch_associate_assessment_report_evidence <- function(assessmentId
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/batchAssociateToAssessmentReport",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$batch_associate_assessment_report_evidence_input(assessmentId = assessmentId, evidenceFolderId = evidenceFolderId, evidenceIds = evidenceIds)
   output <- .auditmanager$batch_associate_assessment_report_evidence_output()
@@ -87,7 +89,8 @@ auditmanager_batch_create_delegation_by_assessment <- function(createDelegationR
     http_method = "POST",
     http_path = "/assessments/{assessmentId}/delegations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$batch_create_delegation_by_assessment_input(createDelegationRequests = createDelegationRequests, assessmentId = assessmentId)
   output <- .auditmanager$batch_create_delegation_by_assessment_output()
@@ -118,7 +121,8 @@ auditmanager_batch_delete_delegation_by_assessment <- function(delegationIds, as
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/delegations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$batch_delete_delegation_by_assessment_input(delegationIds = delegationIds, assessmentId = assessmentId)
   output <- .auditmanager$batch_delete_delegation_by_assessment_output()
@@ -151,7 +155,8 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/batchDisassociateFromAssessmentReport",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$batch_disassociate_assessment_report_evidence_input(assessmentId = assessmentId, evidenceFolderId = evidenceFolderId, evidenceIds = evidenceIds)
   output <- .auditmanager$batch_disassociate_assessment_report_evidence_output()
@@ -185,7 +190,8 @@ auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentI
     http_method = "POST",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/controls/{controlId}/evidence",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$batch_import_evidence_to_assessment_control_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, manualEvidence = manualEvidence)
   output <- .auditmanager$batch_import_evidence_to_assessment_control_output()
@@ -223,7 +229,8 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
     http_method = "POST",
     http_path = "/assessments",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$create_assessment_input(name = name, description = description, assessmentReportsDestination = assessmentReportsDestination, scope = scope, roles = roles, frameworkId = frameworkId, tags = tags)
   output <- .auditmanager$create_assessment_output()
@@ -258,7 +265,8 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
     http_method = "POST",
     http_path = "/assessmentFrameworks",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$create_assessment_framework_input(name = name, description = description, complianceType = complianceType, controlSets = controlSets, tags = tags)
   output <- .auditmanager$create_assessment_framework_output()
@@ -309,7 +317,8 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
     http_method = "POST",
     http_path = "/assessments/{assessmentId}/reports",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$create_assessment_report_input(name = name, description = description, assessmentId = assessmentId, queryStatement = queryStatement)
   output <- .auditmanager$create_assessment_report_output()
@@ -345,7 +354,8 @@ auditmanager_create_control <- function(name, description = NULL, testingInforma
     http_method = "POST",
     http_path = "/controls",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$create_control_input(name = name, description = description, testingInformation = testingInformation, actionPlanTitle = actionPlanTitle, actionPlanInstructions = actionPlanInstructions, controlMappingSources = controlMappingSources, tags = tags)
   output <- .auditmanager$create_control_output()
@@ -375,7 +385,8 @@ auditmanager_delete_assessment <- function(assessmentId) {
     http_method = "DELETE",
     http_path = "/assessments/{assessmentId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$delete_assessment_input(assessmentId = assessmentId)
   output <- .auditmanager$delete_assessment_output()
@@ -405,7 +416,8 @@ auditmanager_delete_assessment_framework <- function(frameworkId) {
     http_method = "DELETE",
     http_path = "/assessmentFrameworks/{frameworkId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$delete_assessment_framework_input(frameworkId = frameworkId)
   output <- .auditmanager$delete_assessment_framework_output()
@@ -437,7 +449,8 @@ auditmanager_delete_assessment_framework_share <- function(requestId, requestTyp
     http_method = "DELETE",
     http_path = "/assessmentFrameworkShareRequests/{requestId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$delete_assessment_framework_share_input(requestId = requestId, requestType = requestType)
   output <- .auditmanager$delete_assessment_framework_share_output()
@@ -468,7 +481,8 @@ auditmanager_delete_assessment_report <- function(assessmentId, assessmentReport
     http_method = "DELETE",
     http_path = "/assessments/{assessmentId}/reports/{assessmentReportId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$delete_assessment_report_input(assessmentId = assessmentId, assessmentReportId = assessmentReportId)
   output <- .auditmanager$delete_assessment_report_output()
@@ -498,7 +512,8 @@ auditmanager_delete_control <- function(controlId) {
     http_method = "DELETE",
     http_path = "/controls/{controlId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$delete_control_input(controlId = controlId)
   output <- .auditmanager$delete_control_output()
@@ -528,7 +543,8 @@ auditmanager_deregister_account <- function() {
     http_method = "POST",
     http_path = "/account/deregisterAccount",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$deregister_account_input()
   output <- .auditmanager$deregister_account_output()
@@ -559,7 +575,8 @@ auditmanager_deregister_organization_admin_account <- function(adminAccountId = 
     http_method = "POST",
     http_path = "/account/deregisterOrganizationAdminAccount",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$deregister_organization_admin_account_input(adminAccountId = adminAccountId)
   output <- .auditmanager$deregister_organization_admin_account_output()
@@ -591,7 +608,8 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/disassociateFromAssessmentReport",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$disassociate_assessment_report_evidence_folder_input(assessmentId = assessmentId, evidenceFolderId = evidenceFolderId)
   output <- .auditmanager$disassociate_assessment_report_evidence_folder_output()
@@ -621,7 +639,8 @@ auditmanager_get_account_status <- function() {
     http_method = "GET",
     http_path = "/account/status",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_account_status_input()
   output <- .auditmanager$get_account_status_output()
@@ -651,7 +670,8 @@ auditmanager_get_assessment <- function(assessmentId) {
     http_method = "GET",
     http_path = "/assessments/{assessmentId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_assessment_input(assessmentId = assessmentId)
   output <- .auditmanager$get_assessment_output()
@@ -681,7 +701,8 @@ auditmanager_get_assessment_framework <- function(frameworkId) {
     http_method = "GET",
     http_path = "/assessmentFrameworks/{frameworkId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_assessment_framework_input(frameworkId = frameworkId)
   output <- .auditmanager$get_assessment_framework_output()
@@ -712,7 +733,8 @@ auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmen
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/reports/{assessmentReportId}/url",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_assessment_report_url_input(assessmentReportId = assessmentReportId, assessmentId = assessmentId)
   output <- .auditmanager$get_assessment_report_url_output()
@@ -747,7 +769,8 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/changelogs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_change_logs_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_change_logs_output()
@@ -777,7 +800,8 @@ auditmanager_get_control <- function(controlId) {
     http_method = "GET",
     http_path = "/controls/{controlId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_control_input(controlId = controlId)
   output <- .auditmanager$get_control_output()
@@ -809,7 +833,8 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "GET",
     http_path = "/delegations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_delegations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_delegations_output()
@@ -842,7 +867,8 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/evidenceFolders/{evidenceFolderId}/evidence/{evidenceId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_evidence_input(assessmentId = assessmentId, controlSetId = controlSetId, evidenceFolderId = evidenceFolderId, evidenceId = evidenceId)
   output <- .auditmanager$get_evidence_output()
@@ -877,7 +903,8 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/evidenceFolders/{evidenceFolderId}/evidence",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_evidence_by_evidence_folder_input(assessmentId = assessmentId, controlSetId = controlSetId, evidenceFolderId = evidenceFolderId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_by_evidence_folder_output()
@@ -911,7 +938,8 @@ auditmanager_get_evidence_file_upload_url <- function(fileName) {
     http_method = "GET",
     http_path = "/evidenceFileUploadUrl",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_evidence_file_upload_url_input(fileName = fileName)
   output <- .auditmanager$get_evidence_file_upload_url_output()
@@ -943,7 +971,8 @@ auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenc
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/evidenceFolders/{evidenceFolderId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_evidence_folder_input(assessmentId = assessmentId, controlSetId = controlSetId, evidenceFolderId = evidenceFolderId)
   output <- .auditmanager$get_evidence_folder_output()
@@ -976,7 +1005,8 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/evidenceFolders",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_evidence_folders_by_assessment_input(assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_folders_by_assessment_output()
@@ -1012,7 +1042,8 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
     http_method = "GET",
     http_path = "/assessments/{assessmentId}/evidenceFolders-by-assessment-control/{controlSetId}/{controlId}",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_evidence_folders_by_assessment_control_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$get_evidence_folders_by_assessment_control_output()
@@ -1042,7 +1073,8 @@ auditmanager_get_insights <- function() {
     http_method = "GET",
     http_path = "/insights",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_insights_input()
   output <- .auditmanager$get_insights_output()
@@ -1072,7 +1104,8 @@ auditmanager_get_insights_by_assessment <- function(assessmentId) {
     http_method = "GET",
     http_path = "/insights/assessments/{assessmentId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_insights_by_assessment_input(assessmentId = assessmentId)
   output <- .auditmanager$get_insights_by_assessment_output()
@@ -1103,7 +1136,8 @@ auditmanager_get_organization_admin_account <- function() {
     http_method = "GET",
     http_path = "/account/organizationAdminAccount",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_organization_admin_account_input()
   output <- .auditmanager$get_organization_admin_account_output()
@@ -1134,7 +1168,8 @@ auditmanager_get_services_in_scope <- function() {
     http_method = "GET",
     http_path = "/services",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_services_in_scope_input()
   output <- .auditmanager$get_services_in_scope_output()
@@ -1164,7 +1199,8 @@ auditmanager_get_settings <- function(attribute) {
     http_method = "GET",
     http_path = "/settings/{attribute}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$get_settings_input(attribute = attribute)
   output <- .auditmanager$get_settings_output()
@@ -1205,7 +1241,8 @@ auditmanager_list_assessment_control_insights_by_control_domain <- function(cont
     http_method = "GET",
     http_path = "/insights/controls-by-assessment",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_assessment_control_insights_by_control_domain_input(controlDomainId = controlDomainId, assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_control_insights_by_control_domain_output()
@@ -1240,7 +1277,8 @@ auditmanager_list_assessment_framework_share_requests <- function(requestType, n
     http_method = "GET",
     http_path = "/assessmentFrameworkShareRequests",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_assessment_framework_share_requests_input(requestType = requestType, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_framework_share_requests_output()
@@ -1275,7 +1313,8 @@ auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = N
     http_method = "GET",
     http_path = "/assessmentFrameworks",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_assessment_frameworks_input(frameworkType = frameworkType, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_frameworks_output()
@@ -1307,7 +1346,8 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
     http_method = "GET",
     http_path = "/assessmentReports",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_assessment_reports_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessment_reports_output()
@@ -1340,7 +1380,8 @@ auditmanager_list_assessments <- function(status = NULL, nextToken = NULL, maxRe
     http_method = "GET",
     http_path = "/assessments",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_assessments_input(status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_assessments_output()
@@ -1373,7 +1414,8 @@ auditmanager_list_control_domain_insights <- function(nextToken = NULL, maxResul
     http_method = "GET",
     http_path = "/insights/control-domains",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_control_domain_insights_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_domain_insights_output()
@@ -1407,7 +1449,8 @@ auditmanager_list_control_domain_insights_by_assessment <- function(assessmentId
     http_method = "GET",
     http_path = "/insights/control-domains-by-assessment",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_control_domain_insights_by_assessment_input(assessmentId = assessmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_domain_insights_by_assessment_output()
@@ -1447,7 +1490,8 @@ auditmanager_list_control_insights_by_control_domain <- function(controlDomainId
     http_method = "GET",
     http_path = "/insights/controls",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_control_insights_by_control_domain_input(controlDomainId = controlDomainId, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_control_insights_by_control_domain_output()
@@ -1503,7 +1547,8 @@ auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults
     http_method = "GET",
     http_path = "/controls",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_controls_input(controlType = controlType, nextToken = nextToken, maxResults = maxResults, controlCatalogId = controlCatalogId)
   output <- .auditmanager$list_controls_output()
@@ -1537,7 +1582,8 @@ auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL,
     http_method = "GET",
     http_path = "/dataSourceKeywords",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_keywords_for_data_source_input(source = source, nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_keywords_for_data_source_output()
@@ -1569,7 +1615,8 @@ auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL)
     http_method = "GET",
     http_path = "/notifications",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_notifications_input(nextToken = nextToken, maxResults = maxResults)
   output <- .auditmanager$list_notifications_output()
@@ -1599,7 +1646,8 @@ auditmanager_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .auditmanager$list_tags_for_resource_output()
@@ -1630,7 +1678,8 @@ auditmanager_register_account <- function(kmsKey = NULL, delegatedAdminAccount =
     http_method = "POST",
     http_path = "/account/registerAccount",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$register_account_input(kmsKey = kmsKey, delegatedAdminAccount = delegatedAdminAccount)
   output <- .auditmanager$register_account_output()
@@ -1661,7 +1710,8 @@ auditmanager_register_organization_admin_account <- function(adminAccountId) {
     http_method = "POST",
     http_path = "/account/registerOrganizationAdminAccount",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$register_organization_admin_account_input(adminAccountId = adminAccountId)
   output <- .auditmanager$register_organization_admin_account_output()
@@ -1694,7 +1744,8 @@ auditmanager_start_assessment_framework_share <- function(frameworkId, destinati
     http_method = "POST",
     http_path = "/assessmentFrameworks/{frameworkId}/shareRequests",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$start_assessment_framework_share_input(frameworkId = frameworkId, destinationAccount = destinationAccount, destinationRegion = destinationRegion, comment = comment)
   output <- .auditmanager$start_assessment_framework_share_output()
@@ -1725,7 +1776,8 @@ auditmanager_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .auditmanager$tag_resource_output()
@@ -1756,7 +1808,8 @@ auditmanager_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .auditmanager$untag_resource_output()
@@ -1792,7 +1845,8 @@ auditmanager_update_assessment <- function(assessmentId, assessmentName = NULL, 
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$update_assessment_input(assessmentId = assessmentId, assessmentName = assessmentName, assessmentDescription = assessmentDescription, scope = scope, assessmentReportsDestination = assessmentReportsDestination, roles = roles)
   output <- .auditmanager$update_assessment_output()
@@ -1826,7 +1880,8 @@ auditmanager_update_assessment_control <- function(assessmentId, controlSetId, c
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/controls/{controlId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$update_assessment_control_input(assessmentId = assessmentId, controlSetId = controlSetId, controlId = controlId, controlStatus = controlStatus, commentBody = commentBody)
   output <- .auditmanager$update_assessment_control_output()
@@ -1859,7 +1914,8 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/controlSets/{controlSetId}/status",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$update_assessment_control_set_status_input(assessmentId = assessmentId, controlSetId = controlSetId, status = status, comment = comment)
   output <- .auditmanager$update_assessment_control_set_status_output()
@@ -1894,7 +1950,8 @@ auditmanager_update_assessment_framework <- function(frameworkId, name, descript
     http_method = "PUT",
     http_path = "/assessmentFrameworks/{frameworkId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$update_assessment_framework_input(frameworkId = frameworkId, name = name, description = description, complianceType = complianceType, controlSets = controlSets)
   output <- .auditmanager$update_assessment_framework_output()
@@ -1927,7 +1984,8 @@ auditmanager_update_assessment_framework_share <- function(requestId, requestTyp
     http_method = "PUT",
     http_path = "/assessmentFrameworkShareRequests/{requestId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$update_assessment_framework_share_input(requestId = requestId, requestType = requestType, action = action)
   output <- .auditmanager$update_assessment_framework_share_output()
@@ -1958,7 +2016,8 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
     http_method = "PUT",
     http_path = "/assessments/{assessmentId}/status",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$update_assessment_status_input(assessmentId = assessmentId, status = status)
   output <- .auditmanager$update_assessment_status_output()
@@ -1994,7 +2053,8 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
     http_method = "PUT",
     http_path = "/controls/{controlId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$update_control_input(controlId = controlId, name = name, description = description, testingInformation = testingInformation, actionPlanTitle = actionPlanTitle, actionPlanInstructions = actionPlanInstructions, controlMappingSources = controlMappingSources)
   output <- .auditmanager$update_control_output()
@@ -2043,7 +2103,8 @@ auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentRepor
     http_method = "PUT",
     http_path = "/settings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$update_settings_input(snsTopic = snsTopic, defaultAssessmentReportsDestination = defaultAssessmentReportsDestination, defaultProcessOwners = defaultProcessOwners, kmsKey = kmsKey, evidenceFinderEnabled = evidenceFinderEnabled, deregistrationPolicy = deregistrationPolicy, defaultExportDestination = defaultExportDestination)
   output <- .auditmanager$update_settings_output()
@@ -2074,7 +2135,8 @@ auditmanager_validate_assessment_report_integrity <- function(s3RelativePath) {
     http_method = "POST",
     http_path = "/assessmentReports/integrity",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .auditmanager$validate_assessment_report_integrity_input(s3RelativePath = s3RelativePath)
   output <- .auditmanager$validate_assessment_report_integrity_output()

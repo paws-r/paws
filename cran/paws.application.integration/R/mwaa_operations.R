@@ -22,7 +22,8 @@ mwaa_create_cli_token <- function(Name) {
     http_method = "POST",
     http_path = "/clitoken/{Name}",
     host_prefix = "env.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$create_cli_token_input(Name = Name)
   output <- .mwaa$create_cli_token_output()
@@ -189,7 +190,8 @@ mwaa_create_environment <- function(Name, ExecutionRoleArn, SourceBucketArn, Dag
     http_method = "PUT",
     http_path = "/environments/{Name}",
     host_prefix = "api.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$create_environment_input(Name = Name, ExecutionRoleArn = ExecutionRoleArn, SourceBucketArn = SourceBucketArn, DagS3Path = DagS3Path, NetworkConfiguration = NetworkConfiguration, PluginsS3Path = PluginsS3Path, PluginsS3ObjectVersion = PluginsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, StartupScriptS3Path = StartupScriptS3Path, StartupScriptS3ObjectVersion = StartupScriptS3ObjectVersion, AirflowConfigurationOptions = AirflowConfigurationOptions, EnvironmentClass = EnvironmentClass, MaxWorkers = MaxWorkers, KmsKey = KmsKey, AirflowVersion = AirflowVersion, LoggingConfiguration = LoggingConfiguration, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, Tags = Tags, WebserverAccessMode = WebserverAccessMode, MinWorkers = MinWorkers, Schedulers = Schedulers, EndpointManagement = EndpointManagement, MinWebservers = MinWebservers, MaxWebservers = MaxWebservers)
   output <- .mwaa$create_environment_output()
@@ -220,7 +222,8 @@ mwaa_create_web_login_token <- function(Name) {
     http_method = "POST",
     http_path = "/webtoken/{Name}",
     host_prefix = "env.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$create_web_login_token_input(Name = Name)
   output <- .mwaa$create_web_login_token_output()
@@ -252,7 +255,8 @@ mwaa_delete_environment <- function(Name) {
     http_method = "DELETE",
     http_path = "/environments/{Name}",
     host_prefix = "api.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$delete_environment_input(Name = Name)
   output <- .mwaa$delete_environment_output()
@@ -284,7 +288,8 @@ mwaa_get_environment <- function(Name) {
     http_method = "GET",
     http_path = "/environments/{Name}",
     host_prefix = "api.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$get_environment_input(Name = Name)
   output <- .mwaa$get_environment_output()
@@ -317,7 +322,8 @@ mwaa_list_environments <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "GET",
     http_path = "/environments",
     host_prefix = "api.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Environments")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Environments"),
+    stream_api = FALSE
   )
   input <- .mwaa$list_environments_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .mwaa$list_environments_output()
@@ -350,7 +356,8 @@ mwaa_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "api.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .mwaa$list_tags_for_resource_output()
@@ -384,7 +391,8 @@ mwaa_publish_metrics <- function(EnvironmentName, MetricData) {
     http_method = "POST",
     http_path = "/metrics/environments/{EnvironmentName}",
     host_prefix = "ops.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$publish_metrics_input(EnvironmentName = EnvironmentName, MetricData = MetricData)
   output <- .mwaa$publish_metrics_output()
@@ -421,7 +429,8 @@ mwaa_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "api.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .mwaa$tag_resource_output()
@@ -456,7 +465,8 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "api.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$untag_resource_input(ResourceArn = ResourceArn, tagKeys = tagKeys)
   output <- .mwaa$untag_resource_output()
@@ -603,7 +613,8 @@ mwaa_update_environment <- function(Name, ExecutionRoleArn = NULL, AirflowVersio
     http_method = "PATCH",
     http_path = "/environments/{Name}",
     host_prefix = "api.",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .mwaa$update_environment_input(Name = Name, ExecutionRoleArn = ExecutionRoleArn, AirflowVersion = AirflowVersion, SourceBucketArn = SourceBucketArn, DagS3Path = DagS3Path, PluginsS3Path = PluginsS3Path, PluginsS3ObjectVersion = PluginsS3ObjectVersion, RequirementsS3Path = RequirementsS3Path, RequirementsS3ObjectVersion = RequirementsS3ObjectVersion, StartupScriptS3Path = StartupScriptS3Path, StartupScriptS3ObjectVersion = StartupScriptS3ObjectVersion, AirflowConfigurationOptions = AirflowConfigurationOptions, EnvironmentClass = EnvironmentClass, MaxWorkers = MaxWorkers, NetworkConfiguration = NetworkConfiguration, LoggingConfiguration = LoggingConfiguration, WeeklyMaintenanceWindowStart = WeeklyMaintenanceWindowStart, WebserverAccessMode = WebserverAccessMode, MinWorkers = MinWorkers, Schedulers = Schedulers, MinWebservers = MinWebservers, MaxWebservers = MaxWebservers)
   output <- .mwaa$update_environment_output()

@@ -14,7 +14,7 @@ NULL
 #' Systems Manager User
 #' Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/).
 #' To get started, see [Setting up Amazon Web Services Systems
-#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html).
+#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/).
 #' 
 #' **Related resources**
 #' 

@@ -37,7 +37,7 @@ NULL
 #' 
 #' For more information, see [Using the Amazon Cognito user pools API and
 #' user pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' With your Amazon Web Services SDK, you can build the logic to support

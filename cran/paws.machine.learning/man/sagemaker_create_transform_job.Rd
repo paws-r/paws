@@ -74,8 +74,9 @@ To fit as many records in a mini-batch as can fit within the
 \code{MaxPayloadInMB} limit, set \code{BatchStrategy} to \code{MultiRecord} and
 \code{SplitType} to \code{Line}.}
 
-\item{Environment}{The environment variables to set in the Docker container. We support up
-to 16 key and values entries in the map.}
+\item{Environment}{The environment variables to set in the Docker container. Don't include
+any sensitive data in your environment variables. We support up to 16
+key and values entries in the map.}
 
 \item{TransformInput}{[required] Describes the input source and the way the transform job consumes it.}
 

@@ -117,7 +117,8 @@ rekognition_associate_faces <- function(CollectionId, UserId, FaceIds, UserMatch
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$associate_faces_input(CollectionId = CollectionId, UserId = UserId, FaceIds = FaceIds, UserMatchThreshold = UserMatchThreshold, ClientRequestToken = ClientRequestToken)
   output <- .rekognition$associate_faces_output()
@@ -381,7 +382,8 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$compare_faces_input(SourceImage = SourceImage, TargetImage = TargetImage, SimilarityThreshold = SimilarityThreshold, QualityFilter = QualityFilter)
   output <- .rekognition$compare_faces_output()
@@ -524,7 +526,8 @@ rekognition_copy_project_version <- function(SourceProjectArn, SourceProjectVers
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$copy_project_version_input(SourceProjectArn = SourceProjectArn, SourceProjectVersionArn = SourceProjectVersionArn, DestinationProjectArn = DestinationProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, Tags = Tags, KmsKeyId = KmsKeyId)
   output <- .rekognition$copy_project_version_output()
@@ -604,7 +607,8 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$create_collection_input(CollectionId = CollectionId, Tags = Tags)
   output <- .rekognition$create_collection_output()
@@ -725,7 +729,8 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$create_dataset_input(DatasetSource = DatasetSource, DatasetType = DatasetType, ProjectArn = ProjectArn, Tags = Tags)
   output <- .rekognition$create_dataset_output()
@@ -804,7 +809,8 @@ rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$create_face_liveness_session_input(KmsKeyId = KmsKeyId, Settings = Settings, ClientRequestToken = ClientRequestToken)
   output <- .rekognition$create_face_liveness_session_output()
@@ -878,7 +884,8 @@ rekognition_create_project <- function(ProjectName, Feature = NULL, AutoUpdate =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$create_project_input(ProjectName = ProjectName, Feature = Feature, AutoUpdate = AutoUpdate, Tags = Tags)
   output <- .rekognition$create_project_output()
@@ -1056,7 +1063,8 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData, Tags = Tags, KmsKeyId = KmsKeyId, VersionDescription = VersionDescription, FeatureConfig = FeatureConfig)
   output <- .rekognition$create_project_version_output()
@@ -1242,7 +1250,8 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$create_stream_processor_input(Input = Input, Output = Output, Name = Name, Settings = Settings, RoleArn = RoleArn, Tags = Tags, NotificationChannel = NotificationChannel, KmsKeyId = KmsKeyId, RegionsOfInterest = RegionsOfInterest, DataSharingPreference = DataSharingPreference)
   output <- .rekognition$create_stream_processor_output()
@@ -1313,7 +1322,8 @@ rekognition_create_user <- function(CollectionId, UserId, ClientRequestToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$create_user_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken)
   output <- .rekognition$create_user_output()
@@ -1374,7 +1384,8 @@ rekognition_delete_collection <- function(CollectionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$delete_collection_input(CollectionId = CollectionId)
   output <- .rekognition$delete_collection_output()
@@ -1440,7 +1451,8 @@ rekognition_delete_dataset <- function(DatasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$delete_dataset_input(DatasetArn = DatasetArn)
   output <- .rekognition$delete_dataset_output()
@@ -1518,7 +1530,8 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$delete_faces_input(CollectionId = CollectionId, FaceIds = FaceIds)
   output <- .rekognition$delete_faces_output()
@@ -1587,7 +1600,8 @@ rekognition_delete_project <- function(ProjectArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$delete_project_input(ProjectArn = ProjectArn)
   output <- .rekognition$delete_project_output()
@@ -1657,7 +1671,8 @@ rekognition_delete_project_policy <- function(ProjectArn, PolicyName, PolicyRevi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$delete_project_policy_input(ProjectArn = ProjectArn, PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId)
   output <- .rekognition$delete_project_policy_output()
@@ -1727,7 +1742,8 @@ rekognition_delete_project_version <- function(ProjectVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$delete_project_version_input(ProjectVersionArn = ProjectVersionArn)
   output <- .rekognition$delete_project_version_output()
@@ -1775,7 +1791,8 @@ rekognition_delete_stream_processor <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$delete_stream_processor_input(Name = Name)
   output <- .rekognition$delete_stream_processor_output()
@@ -1842,7 +1859,8 @@ rekognition_delete_user <- function(CollectionId, UserId, ClientRequestToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$delete_user_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken)
   output <- .rekognition$delete_user_output()
@@ -1902,7 +1920,8 @@ rekognition_describe_collection <- function(CollectionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$describe_collection_input(CollectionId = CollectionId)
   output <- .rekognition$describe_collection_output()
@@ -1981,7 +2000,8 @@ rekognition_describe_dataset <- function(DatasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$describe_dataset_input(DatasetArn = DatasetArn)
   output <- .rekognition$describe_dataset_output()
@@ -2197,7 +2217,8 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectVersionDescriptions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectVersionDescriptions"),
+    stream_api = FALSE
   )
   input <- .rekognition$describe_project_versions_input(ProjectArn = ProjectArn, VersionNames = VersionNames, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$describe_project_versions_output()
@@ -2299,7 +2320,8 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, P
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectDescriptions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectDescriptions"),
+    stream_api = FALSE
   )
   input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults, ProjectNames = ProjectNames, Features = Features)
   output <- .rekognition$describe_projects_output()
@@ -2411,7 +2433,8 @@ rekognition_describe_stream_processor <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$describe_stream_processor_input(Name = Name)
   output <- .rekognition$describe_stream_processor_output()
@@ -2568,7 +2591,8 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$detect_custom_labels_input(ProjectVersionArn = ProjectVersionArn, Image = Image, MaxResults = MaxResults, MinConfidence = MinConfidence)
   output <- .rekognition$detect_custom_labels_output()
@@ -2762,7 +2786,8 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$detect_faces_input(Image = Image, Attributes = Attributes)
   output <- .rekognition$detect_faces_output()
@@ -3099,7 +3124,8 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$detect_labels_input(Image = Image, MaxLabels = MaxLabels, MinConfidence = MinConfidence, Features = Features, Settings = Settings)
   output <- .rekognition$detect_labels_output()
@@ -3224,7 +3250,8 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$detect_moderation_labels_input(Image = Image, MinConfidence = MinConfidence, HumanLoopConfig = HumanLoopConfig, ProjectVersion = ProjectVersion)
   output <- .rekognition$detect_moderation_labels_output()
@@ -3374,7 +3401,8 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$detect_protective_equipment_input(Image = Image, SummarizationAttributes = SummarizationAttributes)
   output <- .rekognition$detect_protective_equipment_output()
@@ -3519,7 +3547,8 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$detect_text_input(Image = Image, Filters = Filters)
   output <- .rekognition$detect_text_output()
@@ -3619,7 +3648,8 @@ rekognition_disassociate_faces <- function(CollectionId, UserId, ClientRequestTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$disassociate_faces_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken, FaceIds = FaceIds)
   output <- .rekognition$disassociate_faces_output()
@@ -3705,7 +3735,8 @@ rekognition_distribute_dataset_entries <- function(Datasets) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$distribute_dataset_entries_input(Datasets = Datasets)
   output <- .rekognition$distribute_dataset_entries_output()
@@ -3771,7 +3802,8 @@ rekognition_get_celebrity_info <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$get_celebrity_info_input(Id = Id)
   output <- .rekognition$get_celebrity_info_output()
@@ -4010,7 +4042,8 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$get_celebrity_recognition_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_celebrity_recognition_output()
@@ -4173,7 +4206,8 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$get_content_moderation_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_content_moderation_output()
@@ -4362,7 +4396,8 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$get_face_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_face_detection_output()
@@ -4456,7 +4491,8 @@ rekognition_get_face_liveness_session_results <- function(SessionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$get_face_liveness_session_results_input(SessionId = SessionId)
   output <- .rekognition$get_face_liveness_session_results_output()
@@ -4685,7 +4721,8 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$get_face_search_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_face_search_output()
@@ -4910,7 +4947,8 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$get_label_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_label_detection_output()
@@ -5015,7 +5053,8 @@ rekognition_get_media_analysis_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$get_media_analysis_job_input(JobId = JobId)
   output <- .rekognition$get_media_analysis_job_output()
@@ -5230,7 +5269,8 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$get_person_tracking_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_person_tracking_output()
@@ -5387,7 +5427,8 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$get_segment_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_segment_detection_output()
@@ -5525,7 +5566,8 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$get_text_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_text_detection_output()
@@ -5943,7 +5985,8 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$index_faces_input(CollectionId = CollectionId, Image = Image, ExternalImageId = ExternalImageId, DetectionAttributes = DetectionAttributes, MaxFaces = MaxFaces, QualityFilter = QualityFilter)
   output <- .rekognition$index_faces_output()
@@ -6013,7 +6056,8 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CollectionIds")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CollectionIds"),
+    stream_api = FALSE
   )
   input <- .rekognition$list_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_collections_output()
@@ -6131,7 +6175,8 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetEntries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetEntries"),
+    stream_api = FALSE
   )
   input <- .rekognition$list_dataset_entries_input(DatasetArn = DatasetArn, ContainsLabels = ContainsLabels, Labeled = Labeled, SourceRefContains = SourceRefContains, HasErrors = HasErrors, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_dataset_entries_output()
@@ -6216,7 +6261,8 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetLabelDescriptions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetLabelDescriptions"),
+    stream_api = FALSE
   )
   input <- .rekognition$list_dataset_labels_input(DatasetArn = DatasetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_dataset_labels_output()
@@ -6313,7 +6359,8 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Faces")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Faces"),
+    stream_api = FALSE
   )
   input <- .rekognition$list_faces_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults, UserId = UserId, FaceIds = FaceIds)
   output <- .rekognition$list_faces_output()
@@ -6427,7 +6474,8 @@ rekognition_list_media_analysis_jobs <- function(NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$list_media_analysis_jobs_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_media_analysis_jobs_output()
@@ -6519,7 +6567,8 @@ rekognition_list_project_policies <- function(ProjectArn, NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectPolicies")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectPolicies"),
+    stream_api = FALSE
   )
   input <- .rekognition$list_project_policies_input(ProjectArn = ProjectArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_project_policies_output()
@@ -6581,7 +6630,8 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .rekognition$list_stream_processors_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_stream_processors_output()
@@ -6637,7 +6687,8 @@ rekognition_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .rekognition$list_tags_for_resource_output()
@@ -6708,7 +6759,8 @@ rekognition_list_users <- function(CollectionId, MaxResults = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Users")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Users"),
+    stream_api = FALSE
   )
   input <- .rekognition$list_users_input(CollectionId = CollectionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$list_users_output()
@@ -6809,7 +6861,8 @@ rekognition_put_project_policy <- function(ProjectArn, PolicyName, PolicyRevisio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$put_project_policy_input(ProjectArn = ProjectArn, PolicyName = PolicyName, PolicyRevisionId = PolicyRevisionId, PolicyDocument = PolicyDocument)
   output <- .rekognition$put_project_policy_output()
@@ -6992,7 +7045,8 @@ rekognition_recognize_celebrities <- function(Image) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$recognize_celebrities_input(Image = Image)
   output <- .rekognition$recognize_celebrities_output()
@@ -7103,7 +7157,8 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$search_faces_input(CollectionId = CollectionId, FaceId = FaceId, MaxFaces = MaxFaces, FaceMatchThreshold = FaceMatchThreshold)
   output <- .rekognition$search_faces_output()
@@ -7280,7 +7335,8 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$search_faces_by_image_input(CollectionId = CollectionId, Image = Image, MaxFaces = MaxFaces, FaceMatchThreshold = FaceMatchThreshold, QualityFilter = QualityFilter)
   output <- .rekognition$search_faces_by_image_output()
@@ -7371,7 +7427,8 @@ rekognition_search_users <- function(CollectionId, UserId = NULL, FaceId = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$search_users_input(CollectionId = CollectionId, UserId = UserId, FaceId = FaceId, UserMatchThreshold = UserMatchThreshold, MaxUsers = MaxUsers)
   output <- .rekognition$search_users_output()
@@ -7637,7 +7694,8 @@ rekognition_search_users_by_image <- function(CollectionId, Image, UserMatchThre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$search_users_by_image_input(CollectionId = CollectionId, Image = Image, UserMatchThreshold = UserMatchThreshold, MaxUsers = MaxUsers, QualityFilter = QualityFilter)
   output <- .rekognition$search_users_by_image_output()
@@ -7731,7 +7789,8 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_celebrity_recognition_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag)
   output <- .rekognition$start_celebrity_recognition_output()
@@ -7839,7 +7898,8 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_content_moderation_input(Video = Video, MinConfidence = MinConfidence, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag)
   output <- .rekognition$start_content_moderation_output()
@@ -7938,7 +7998,8 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_face_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, FaceAttributes = FaceAttributes, JobTag = JobTag)
   output <- .rekognition$start_face_detection_output()
@@ -8036,7 +8097,8 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_face_search_input(Video = Video, ClientRequestToken = ClientRequestToken, FaceMatchThreshold = FaceMatchThreshold, CollectionId = CollectionId, NotificationChannel = NotificationChannel, JobTag = JobTag)
   output <- .rekognition$start_face_search_output()
@@ -8180,7 +8242,8 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_label_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, MinConfidence = MinConfidence, NotificationChannel = NotificationChannel, JobTag = JobTag, Features = Features, Settings = Settings)
   output <- .rekognition$start_label_detection_output()
@@ -8286,7 +8349,8 @@ rekognition_start_media_analysis_job <- function(ClientRequestToken = NULL, JobN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_media_analysis_job_input(ClientRequestToken = ClientRequestToken, JobName = JobName, OperationsConfig = OperationsConfig, Input = Input, OutputConfig = OutputConfig, KmsKeyId = KmsKeyId)
   output <- .rekognition$start_media_analysis_job_output()
@@ -8376,7 +8440,8 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_person_tracking_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag)
   output <- .rekognition$start_person_tracking_output()
@@ -8460,7 +8525,8 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_project_version_input(ProjectVersionArn = ProjectVersionArn, MinInferenceUnits = MinInferenceUnits, MaxInferenceUnits = MaxInferenceUnits)
   output <- .rekognition$start_project_version_output()
@@ -8577,7 +8643,8 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_segment_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag, Filters = Filters, SegmentTypes = SegmentTypes)
   output <- .rekognition$start_segment_detection_output()
@@ -8657,7 +8724,8 @@ rekognition_start_stream_processor <- function(Name, StartSelector = NULL, StopS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_stream_processor_input(Name = Name, StartSelector = StartSelector, StopSelector = StopSelector)
   output <- .rekognition$start_stream_processor_output()
@@ -8766,7 +8834,8 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$start_text_detection_input(Video = Video, ClientRequestToken = ClientRequestToken, NotificationChannel = NotificationChannel, JobTag = JobTag, Filters = Filters)
   output <- .rekognition$start_text_detection_output()
@@ -8834,7 +8903,8 @@ rekognition_stop_project_version <- function(ProjectVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$stop_project_version_input(ProjectVersionArn = ProjectVersionArn)
   output <- .rekognition$stop_project_version_output()
@@ -8880,7 +8950,8 @@ rekognition_stop_stream_processor <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$stop_stream_processor_input(Name = Name)
   output <- .rekognition$stop_stream_processor_output()
@@ -8935,7 +9006,8 @@ rekognition_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .rekognition$tag_resource_output()
@@ -8988,7 +9060,8 @@ rekognition_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .rekognition$untag_resource_output()
@@ -9079,7 +9152,8 @@ rekognition_update_dataset_entries <- function(DatasetArn, Changes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$update_dataset_entries_input(DatasetArn = DatasetArn, Changes = Changes)
   output <- .rekognition$update_dataset_entries_output()
@@ -9166,7 +9240,8 @@ rekognition_update_stream_processor <- function(Name, SettingsForUpdate = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .rekognition$update_stream_processor_input(Name = Name, SettingsForUpdate = SettingsForUpdate, RegionsOfInterestForUpdate = RegionsOfInterestForUpdate, DataSharingPreferenceForUpdate = DataSharingPreferenceForUpdate, ParametersToDelete = ParametersToDelete)
   output <- .rekognition$update_stream_processor_output()

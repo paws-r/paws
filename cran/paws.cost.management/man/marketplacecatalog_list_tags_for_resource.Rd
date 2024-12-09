@@ -12,7 +12,7 @@ marketplacecatalog_list_tags_for_resource(ResourceArn)
 you want to list tags on.}
 }
 \description{
-Lists all tags that have been added to a resource (either an \href{https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#catalog-api-entities}{entity} or \href{https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets}{change set}).
+Lists all tags that have been added to a resource (either an \href{https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#catalog-api-entities}{entity} or \href{https://docs.aws.amazon.com/marketplace/latest/APIReference/catalog-apis.html#working-with-change-sets}{change set}).
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_list_tags_for_resource/} for full documentation.
 }

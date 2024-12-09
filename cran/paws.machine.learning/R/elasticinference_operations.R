@@ -28,7 +28,8 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
     http_method = "POST",
     http_path = "/describe-accelerator-offerings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticinference$describe_accelerator_offerings_input(locationType = locationType, acceleratorTypes = acceleratorTypes)
   output <- .elasticinference$describe_accelerator_offerings_output()
@@ -59,7 +60,8 @@ elasticinference_describe_accelerator_types <- function() {
     http_method = "GET",
     http_path = "/describe-accelerator-types",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticinference$describe_accelerator_types_input()
   output <- .elasticinference$describe_accelerator_types_output()
@@ -102,7 +104,8 @@ elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filter
     http_method = "POST",
     http_path = "/describe-accelerators",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "acceleratorSet")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "acceleratorSet"),
+    stream_api = FALSE
   )
   input <- .elasticinference$describe_accelerators_input(acceleratorIds = acceleratorIds, filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .elasticinference$describe_accelerators_output()
@@ -132,7 +135,8 @@ elasticinference_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticinference$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .elasticinference$list_tags_for_resource_output()
@@ -163,7 +167,8 @@ elasticinference_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticinference$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .elasticinference$tag_resource_output()
@@ -194,7 +199,8 @@ elasticinference_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .elasticinference$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .elasticinference$untag_resource_output()

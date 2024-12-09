@@ -28,7 +28,8 @@ timestreamwrite_create_batch_load_task <- function(ClientToken = NULL, DataModel
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$create_batch_load_task_input(ClientToken = ClientToken, DataModelConfiguration = DataModelConfiguration, DataSourceConfiguration = DataSourceConfiguration, ReportConfiguration = ReportConfiguration, TargetDatabaseName = TargetDatabaseName, TargetTableName = TargetTableName, RecordVersion = RecordVersion)
   output <- .timestreamwrite$create_batch_load_task_output()
@@ -63,7 +64,8 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$create_database_input(DatabaseName = DatabaseName, KmsKeyId = KmsKeyId, Tags = Tags)
   output <- .timestreamwrite$create_database_output()
@@ -100,7 +102,8 @@ timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionPrope
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$create_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, Tags = Tags, MagneticStoreWriteProperties = MagneticStoreWriteProperties, Schema = Schema)
   output <- .timestreamwrite$create_table_output()
@@ -130,7 +133,8 @@ timestreamwrite_delete_database <- function(DatabaseName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$delete_database_input(DatabaseName = DatabaseName)
   output <- .timestreamwrite$delete_database_output()
@@ -161,7 +165,8 @@ timestreamwrite_delete_table <- function(DatabaseName, TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$delete_table_input(DatabaseName = DatabaseName, TableName = TableName)
   output <- .timestreamwrite$delete_table_output()
@@ -192,7 +197,8 @@ timestreamwrite_describe_batch_load_task <- function(TaskId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$describe_batch_load_task_input(TaskId = TaskId)
   output <- .timestreamwrite$describe_batch_load_task_output()
@@ -224,7 +230,8 @@ timestreamwrite_describe_database <- function(DatabaseName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$describe_database_input(DatabaseName = DatabaseName)
   output <- .timestreamwrite$describe_database_output()
@@ -255,7 +262,8 @@ timestreamwrite_describe_endpoints <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$describe_endpoints_input()
   output <- .timestreamwrite$describe_endpoints_output()
@@ -287,7 +295,8 @@ timestreamwrite_describe_table <- function(DatabaseName, TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$describe_table_input(DatabaseName = DatabaseName, TableName = TableName)
   output <- .timestreamwrite$describe_table_output()
@@ -324,7 +333,8 @@ timestreamwrite_list_batch_load_tasks <- function(NextToken = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$list_batch_load_tasks_input(NextToken = NextToken, MaxResults = MaxResults, TaskStatus = TaskStatus)
   output <- .timestreamwrite$list_batch_load_tasks_output()
@@ -359,7 +369,8 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$list_databases_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .timestreamwrite$list_databases_output()
@@ -396,7 +407,8 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$list_tables_input(DatabaseName = DatabaseName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .timestreamwrite$list_tables_output()
@@ -427,7 +439,8 @@ timestreamwrite_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .timestreamwrite$list_tags_for_resource_output()
@@ -457,7 +470,8 @@ timestreamwrite_resume_batch_load_task <- function(TaskId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$resume_batch_load_task_input(TaskId = TaskId)
   output <- .timestreamwrite$resume_batch_load_task_output()
@@ -489,7 +503,8 @@ timestreamwrite_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .timestreamwrite$tag_resource_output()
@@ -522,7 +537,8 @@ timestreamwrite_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .timestreamwrite$untag_resource_output()
@@ -567,7 +583,8 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$update_database_input(DatabaseName = DatabaseName, KmsKeyId = KmsKeyId)
   output <- .timestreamwrite$update_database_output()
@@ -603,7 +620,8 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$update_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, MagneticStoreWriteProperties = MagneticStoreWriteProperties, Schema = Schema)
   output <- .timestreamwrite$update_table_output()
@@ -643,7 +661,8 @@ timestreamwrite_write_records <- function(DatabaseName, TableName, CommonAttribu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .timestreamwrite$write_records_input(DatabaseName = DatabaseName, TableName = TableName, CommonAttributes = CommonAttributes, Records = Records)
   output <- .timestreamwrite$write_records_output()

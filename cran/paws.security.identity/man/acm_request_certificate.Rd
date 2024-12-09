@@ -100,7 +100,7 @@ or only support ECDSA keys of a particular size, while others allow the
 use of either RSA and ECDSA keys to ensure that compatibility is not
 broken. Check the requirements for the Amazon Web Services service where
 you plan to deploy your certificate. For more information about
-selecting an algorithm, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html#algorithms}{Key algorithms}.
+selecting an algorithm, see \href{https://docs.aws.amazon.com/acm/latest/userguide/#algorithms}{Key algorithms}.
 
 Algorithms supported for an ACM certificate request include:
 \itemize{

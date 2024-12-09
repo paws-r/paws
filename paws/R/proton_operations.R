@@ -63,7 +63,8 @@ proton_accept_environment_account_connection <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$accept_environment_account_connection_input(id = id)
   output <- .proton$accept_environment_account_connection_output()
@@ -142,7 +143,8 @@ proton_cancel_component_deployment <- function(componentName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$cancel_component_deployment_input(componentName = componentName)
   output <- .proton$cancel_component_deployment_output()
@@ -241,7 +243,8 @@ proton_cancel_environment_deployment <- function(environmentName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$cancel_environment_deployment_input(environmentName = environmentName)
   output <- .proton$cancel_environment_deployment_output()
@@ -335,7 +338,8 @@ proton_cancel_service_instance_deployment <- function(serviceInstanceName, servi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$cancel_service_instance_deployment_input(serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$cancel_service_instance_deployment_output()
@@ -422,7 +426,8 @@ proton_cancel_service_pipeline_deployment <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$cancel_service_pipeline_deployment_input(serviceName = serviceName)
   output <- .proton$cancel_service_pipeline_deployment_output()
@@ -546,7 +551,8 @@ proton_create_component <- function(clientToken = NULL, description = NULL, envi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_component_input(clientToken = clientToken, description = description, environmentName = environmentName, manifest = manifest, name = name, serviceInstanceName = serviceInstanceName, serviceName = serviceName, serviceSpec = serviceSpec, tags = tags, templateFile = templateFile)
   output <- .proton$create_component_output()
@@ -726,7 +732,8 @@ proton_create_environment <- function(codebuildRoleArn = NULL, componentRoleArn 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_environment_input(codebuildRoleArn = codebuildRoleArn, componentRoleArn = componentRoleArn, description = description, environmentAccountConnectionId = environmentAccountConnectionId, name = name, protonServiceRoleArn = protonServiceRoleArn, provisioningRepository = provisioningRepository, spec = spec, tags = tags, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion, templateName = templateName)
   output <- .proton$create_environment_output()
@@ -848,7 +855,8 @@ proton_create_environment_account_connection <- function(clientToken = NULL, cod
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_environment_account_connection_input(clientToken = clientToken, codebuildRoleArn = codebuildRoleArn, componentRoleArn = componentRoleArn, environmentName = environmentName, managementAccountId = managementAccountId, roleArn = roleArn, tags = tags)
   output <- .proton$create_environment_account_connection_output()
@@ -950,7 +958,8 @@ proton_create_environment_template <- function(description = NULL, displayName =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_environment_template_input(description = description, displayName = displayName, encryptionKey = encryptionKey, name = name, provisioning = provisioning, tags = tags)
   output <- .proton$create_environment_template_output()
@@ -1050,7 +1059,8 @@ proton_create_environment_template_version <- function(clientToken = NULL, descr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_environment_template_version_input(clientToken = clientToken, description = description, majorVersion = majorVersion, source = source, tags = tags, templateName = templateName)
   output <- .proton$create_environment_template_version_output()
@@ -1143,7 +1153,8 @@ proton_create_repository <- function(connectionArn, encryptionKey = NULL, name, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_repository_input(connectionArn = connectionArn, encryptionKey = encryptionKey, name = name, provider = provider, tags = tags)
   output <- .proton$create_repository_output()
@@ -1276,7 +1287,8 @@ proton_create_service <- function(branchName = NULL, description = NULL, name, r
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_service_input(branchName = branchName, description = description, name = name, repositoryConnectionArn = repositoryConnectionArn, repositoryId = repositoryId, spec = spec, tags = tags, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion, templateName = templateName)
   output <- .proton$create_service_output()
@@ -1372,7 +1384,8 @@ proton_create_service_instance <- function(clientToken = NULL, name, serviceName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_service_instance_input(clientToken = clientToken, name = name, serviceName = serviceName, spec = spec, tags = tags, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
   output <- .proton$create_service_instance_output()
@@ -1435,7 +1448,8 @@ proton_create_service_sync_config <- function(branch, filePath, repositoryName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_service_sync_config_input(branch = branch, filePath = filePath, repositoryName = repositoryName, repositoryProvider = repositoryProvider, serviceName = serviceName)
   output <- .proton$create_service_sync_config_output()
@@ -1532,7 +1546,8 @@ proton_create_service_template <- function(description = NULL, displayName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_service_template_input(description = description, displayName = displayName, encryptionKey = encryptionKey, name = name, pipelineProvisioning = pipelineProvisioning, tags = tags)
   output <- .proton$create_service_template_output()
@@ -1661,7 +1676,8 @@ proton_create_service_template_version <- function(clientToken = NULL, compatibl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_service_template_version_input(clientToken = clientToken, compatibleEnvironmentTemplates = compatibleEnvironmentTemplates, description = description, majorVersion = majorVersion, source = source, supportedComponentSources = supportedComponentSources, tags = tags, templateName = templateName)
   output <- .proton$create_service_template_version_output()
@@ -1741,7 +1757,8 @@ proton_create_template_sync_config <- function(branch, repositoryName, repositor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$create_template_sync_config_input(branch = branch, repositoryName = repositoryName, repositoryProvider = repositoryProvider, subdirectory = subdirectory, templateName = templateName, templateType = templateType)
   output <- .proton$create_template_sync_config_output()
@@ -1818,7 +1835,8 @@ proton_delete_component <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_component_input(name = name)
   output <- .proton$delete_component_output()
@@ -1953,7 +1971,8 @@ proton_delete_deployment <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_deployment_input(id = id)
   output <- .proton$delete_deployment_output()
@@ -2034,7 +2053,8 @@ proton_delete_environment <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_environment_input(name = name)
   output <- .proton$delete_environment_output()
@@ -2109,7 +2129,8 @@ proton_delete_environment_account_connection <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_environment_account_connection_input(id = id)
   output <- .proton$delete_environment_account_connection_output()
@@ -2173,7 +2194,8 @@ proton_delete_environment_template <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_environment_template_input(name = name)
   output <- .proton$delete_environment_template_output()
@@ -2255,7 +2277,8 @@ proton_delete_environment_template_version <- function(majorVersion, minorVersio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_environment_template_version_input(majorVersion = majorVersion, minorVersion = minorVersion, templateName = templateName)
   output <- .proton$delete_environment_template_version_output()
@@ -2311,7 +2334,8 @@ proton_delete_repository <- function(name, provider) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_repository_input(name = name, provider = provider)
   output <- .proton$delete_repository_output()
@@ -2403,7 +2427,8 @@ proton_delete_service <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_service_input(name = name)
   output <- .proton$delete_service_output()
@@ -2458,7 +2483,8 @@ proton_delete_service_sync_config <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_service_sync_config_input(serviceName = serviceName)
   output <- .proton$delete_service_sync_config_output()
@@ -2522,7 +2548,8 @@ proton_delete_service_template <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_service_template_input(name = name)
   output <- .proton$delete_service_template_output()
@@ -2612,7 +2639,8 @@ proton_delete_service_template_version <- function(majorVersion, minorVersion, t
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_service_template_version_input(majorVersion = majorVersion, minorVersion = minorVersion, templateName = templateName)
   output <- .proton$delete_service_template_version_output()
@@ -2669,7 +2697,8 @@ proton_delete_template_sync_config <- function(templateName, templateType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$delete_template_sync_config_input(templateName = templateName, templateType = templateType)
   output <- .proton$delete_template_sync_config_output()
@@ -2724,7 +2753,8 @@ proton_get_account_settings <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_account_settings_input()
   output <- .proton$get_account_settings_output()
@@ -2801,7 +2831,8 @@ proton_get_component <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_component_input(name = name)
   output <- .proton$get_component_output()
@@ -2946,7 +2977,8 @@ proton_get_deployment <- function(componentName = NULL, environmentName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_deployment_input(componentName = componentName, environmentName = environmentName, id = id, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$get_deployment_output()
@@ -3027,7 +3059,8 @@ proton_get_environment <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_environment_input(name = name)
   output <- .proton$get_environment_output()
@@ -3098,7 +3131,8 @@ proton_get_environment_account_connection <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_environment_account_connection_input(id = id)
   output <- .proton$get_environment_account_connection_output()
@@ -3161,7 +3195,8 @@ proton_get_environment_template <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_environment_template_input(name = name)
   output <- .proton$get_environment_template_output()
@@ -3235,7 +3270,8 @@ proton_get_environment_template_version <- function(majorVersion, minorVersion, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_environment_template_version_input(majorVersion = majorVersion, minorVersion = minorVersion, templateName = templateName)
   output <- .proton$get_environment_template_version_output()
@@ -3291,7 +3327,8 @@ proton_get_repository <- function(name, provider) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_repository_input(name = name, provider = provider)
   output <- .proton$get_repository_output()
@@ -3372,7 +3409,8 @@ proton_get_repository_sync_status <- function(branch, repositoryName, repository
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_repository_sync_status_input(branch = branch, repositoryName = repositoryName, repositoryProvider = repositoryProvider, syncType = syncType)
   output <- .proton$get_repository_sync_status_output()
@@ -3487,7 +3525,8 @@ proton_get_resources_summary <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_resources_summary_input()
   output <- .proton$get_resources_summary_output()
@@ -3572,7 +3611,8 @@ proton_get_service <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_service_input(name = name)
   output <- .proton$get_service_output()
@@ -3647,7 +3687,8 @@ proton_get_service_instance <- function(name, serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_service_instance_input(name = name, serviceName = serviceName)
   output <- .proton$get_service_instance_output()
@@ -3767,7 +3808,8 @@ proton_get_service_instance_sync_status <- function(serviceInstanceName, service
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_service_instance_sync_status_input(serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$get_service_instance_sync_status_output()
@@ -3845,7 +3887,8 @@ proton_get_service_sync_blocker_summary <- function(serviceInstanceName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_service_sync_blocker_summary_input(serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$get_service_sync_blocker_summary_output()
@@ -3900,7 +3943,8 @@ proton_get_service_sync_config <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_service_sync_config_input(serviceName = serviceName)
   output <- .proton$get_service_sync_config_output()
@@ -3962,7 +4006,8 @@ proton_get_service_template <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_service_template_input(name = name)
   output <- .proton$get_service_template_output()
@@ -4043,7 +4088,8 @@ proton_get_service_template_version <- function(majorVersion, minorVersion, temp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_service_template_version_input(majorVersion = majorVersion, minorVersion = minorVersion, templateName = templateName)
   output <- .proton$get_service_template_version_output()
@@ -4100,7 +4146,8 @@ proton_get_template_sync_config <- function(templateName, templateType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_template_sync_config_input(templateName = templateName, templateType = templateType)
   output <- .proton$get_template_sync_config_output()
@@ -4221,7 +4268,8 @@ proton_get_template_sync_status <- function(templateName, templateType, template
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$get_template_sync_status_input(templateName = templateName, templateType = templateType, templateVersion = templateVersion)
   output <- .proton$get_template_sync_status_output()
@@ -4284,7 +4332,8 @@ proton_list_component_outputs <- function(componentName, deploymentId = NULL, ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs"),
+    stream_api = FALSE
   )
   input <- .proton$list_component_outputs_input(componentName = componentName, deploymentId = deploymentId, nextToken = nextToken)
   output <- .proton$list_component_outputs_output()
@@ -4347,7 +4396,8 @@ proton_list_component_provisioned_resources <- function(componentName, nextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources"),
+    stream_api = FALSE
   )
   input <- .proton$list_component_provisioned_resources_input(componentName = componentName, nextToken = nextToken)
   output <- .proton$list_component_provisioned_resources_output()
@@ -4440,7 +4490,8 @@ proton_list_components <- function(environmentName = NULL, maxResults = NULL, ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "components")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "components"),
+    stream_api = FALSE
   )
   input <- .proton$list_components_input(environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_components_output()
@@ -4533,7 +4584,8 @@ proton_list_deployments <- function(componentName = NULL, environmentName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "deployments")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "deployments"),
+    stream_api = FALSE
   )
   input <- .proton$list_deployments_input(componentName = componentName, environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_deployments_output()
@@ -4619,7 +4671,8 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environmentAccountConnections")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environmentAccountConnections"),
+    stream_api = FALSE
   )
   input <- .proton$list_environment_account_connections_input(environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, requestedBy = requestedBy, statuses = statuses)
   output <- .proton$list_environment_account_connections_output()
@@ -4680,7 +4733,8 @@ proton_list_environment_outputs <- function(deploymentId = NULL, environmentName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs"),
+    stream_api = FALSE
   )
   input <- .proton$list_environment_outputs_input(deploymentId = deploymentId, environmentName = environmentName, nextToken = nextToken)
   output <- .proton$list_environment_outputs_output()
@@ -4740,7 +4794,8 @@ proton_list_environment_provisioned_resources <- function(environmentName, nextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources"),
+    stream_api = FALSE
   )
   input <- .proton$list_environment_provisioned_resources_input(environmentName = environmentName, nextToken = nextToken)
   output <- .proton$list_environment_provisioned_resources_output()
@@ -4821,7 +4876,8 @@ proton_list_environment_template_versions <- function(majorVersion = NULL, maxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions"),
+    stream_api = FALSE
   )
   input <- .proton$list_environment_template_versions_input(majorVersion = majorVersion, maxResults = maxResults, nextToken = nextToken, templateName = templateName)
   output <- .proton$list_environment_template_versions_output()
@@ -4889,7 +4945,8 @@ proton_list_environment_templates <- function(maxResults = NULL, nextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates"),
+    stream_api = FALSE
   )
   input <- .proton$list_environment_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_environment_templates_output()
@@ -4976,7 +5033,8 @@ proton_list_environments <- function(environmentTemplates = NULL, maxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments"),
+    stream_api = FALSE
   )
   input <- .proton$list_environments_input(environmentTemplates = environmentTemplates, maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_environments_output()
@@ -5035,7 +5093,8 @@ proton_list_repositories <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories"),
+    stream_api = FALSE
   )
   input <- .proton$list_repositories_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_repositories_output()
@@ -5100,7 +5159,8 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "syncDefinitions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "syncDefinitions"),
+    stream_api = FALSE
   )
   input <- .proton$list_repository_sync_definitions_input(nextToken = nextToken, repositoryName = repositoryName, repositoryProvider = repositoryProvider, syncType = syncType)
   output <- .proton$list_repository_sync_definitions_output()
@@ -5162,7 +5222,8 @@ proton_list_service_instance_outputs <- function(deploymentId = NULL, nextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs"),
+    stream_api = FALSE
   )
   input <- .proton$list_service_instance_outputs_input(deploymentId = deploymentId, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_service_instance_outputs_output()
@@ -5224,7 +5285,8 @@ proton_list_service_instance_provisioned_resources <- function(nextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources"),
+    stream_api = FALSE
   )
   input <- .proton$list_service_instance_provisioned_resources_input(nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_service_instance_provisioned_resources_output()
@@ -5324,7 +5386,8 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceInstances")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceInstances"),
+    stream_api = FALSE
   )
   input <- .proton$list_service_instances_input(filters = filters, maxResults = maxResults, nextToken = nextToken, serviceName = serviceName, sortBy = sortBy, sortOrder = sortOrder)
   output <- .proton$list_service_instances_output()
@@ -5384,7 +5447,8 @@ proton_list_service_pipeline_outputs <- function(deploymentId = NULL, nextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs"),
+    stream_api = FALSE
   )
   input <- .proton$list_service_pipeline_outputs_input(deploymentId = deploymentId, nextToken = nextToken, serviceName = serviceName)
   output <- .proton$list_service_pipeline_outputs_output()
@@ -5444,7 +5508,8 @@ proton_list_service_pipeline_provisioned_resources <- function(nextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources"),
+    stream_api = FALSE
   )
   input <- .proton$list_service_pipeline_provisioned_resources_input(nextToken = nextToken, serviceName = serviceName)
   output <- .proton$list_service_pipeline_provisioned_resources_output()
@@ -5524,7 +5589,8 @@ proton_list_service_template_versions <- function(majorVersion = NULL, maxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions"),
+    stream_api = FALSE
   )
   input <- .proton$list_service_template_versions_input(majorVersion = majorVersion, maxResults = maxResults, nextToken = nextToken, templateName = templateName)
   output <- .proton$list_service_template_versions_output()
@@ -5592,7 +5658,8 @@ proton_list_service_templates <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates"),
+    stream_api = FALSE
   )
   input <- .proton$list_service_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_service_templates_output()
@@ -5659,7 +5726,8 @@ proton_list_services <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "services")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "services"),
+    stream_api = FALSE
   )
   input <- .proton$list_services_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_services_output()
@@ -5722,7 +5790,8 @@ proton_list_tags_for_resource <- function(maxResults = NULL, nextToken = NULL, r
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags"),
+    stream_api = FALSE
   )
   input <- .proton$list_tags_for_resource_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .proton$list_tags_for_resource_output()
@@ -5786,7 +5855,8 @@ proton_notify_resource_deployment_status_change <- function(deploymentId = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$notify_resource_deployment_status_change_input(deploymentId = deploymentId, outputs = outputs, resourceArn = resourceArn, status = status, statusMessage = statusMessage)
   output <- .proton$notify_resource_deployment_status_change_output()
@@ -5862,7 +5932,8 @@ proton_reject_environment_account_connection <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$reject_environment_account_connection_input(id = id)
   output <- .proton$reject_environment_account_connection_output()
@@ -5918,7 +5989,8 @@ proton_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .proton$tag_resource_output()
@@ -5972,7 +6044,8 @@ proton_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .proton$untag_resource_output()
@@ -6060,7 +6133,8 @@ proton_update_account_settings <- function(deletePipelineProvisioningRepository 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_account_settings_input(deletePipelineProvisioningRepository = deletePipelineProvisioningRepository, pipelineCodebuildRoleArn = pipelineCodebuildRoleArn, pipelineProvisioningRepository = pipelineProvisioningRepository, pipelineServiceRoleArn = pipelineServiceRoleArn)
   output <- .proton$update_account_settings_output()
@@ -6189,7 +6263,8 @@ proton_update_component <- function(clientToken = NULL, deploymentType, descript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_component_input(clientToken = clientToken, deploymentType = deploymentType, description = description, name = name, serviceInstanceName = serviceInstanceName, serviceName = serviceName, serviceSpec = serviceSpec, templateFile = templateFile)
   output <- .proton$update_component_output()
@@ -6420,7 +6495,8 @@ proton_update_environment <- function(codebuildRoleArn = NULL, componentRoleArn 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_environment_input(codebuildRoleArn = codebuildRoleArn, componentRoleArn = componentRoleArn, deploymentType = deploymentType, description = description, environmentAccountConnectionId = environmentAccountConnectionId, name = name, protonServiceRoleArn = protonServiceRoleArn, provisioningRepository = provisioningRepository, spec = spec, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
   output <- .proton$update_environment_output()
@@ -6512,7 +6588,8 @@ proton_update_environment_account_connection <- function(codebuildRoleArn = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_environment_account_connection_input(codebuildRoleArn = codebuildRoleArn, componentRoleArn = componentRoleArn, id = id, roleArn = roleArn)
   output <- .proton$update_environment_account_connection_output()
@@ -6579,7 +6656,8 @@ proton_update_environment_template <- function(description = NULL, displayName =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_environment_template_input(description = description, displayName = displayName, name = name)
   output <- .proton$update_environment_template_output()
@@ -6654,7 +6732,8 @@ proton_update_environment_template_version <- function(description = NULL, major
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_environment_template_version_input(description = description, majorVersion = majorVersion, minorVersion = minorVersion, status = status, templateName = templateName)
   output <- .proton$update_environment_template_version_output()
@@ -6764,7 +6843,8 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_service_input(description = description, name = name, spec = spec)
   output <- .proton$update_service_output()
@@ -6893,7 +6973,8 @@ proton_update_service_instance <- function(clientToken = NULL, deploymentType, n
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_service_instance_input(clientToken = clientToken, deploymentType = deploymentType, name = name, serviceName = serviceName, spec = spec, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
   output <- .proton$update_service_instance_output()
@@ -7045,7 +7126,8 @@ proton_update_service_pipeline <- function(deploymentType, serviceName, spec, te
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_service_pipeline_input(deploymentType = deploymentType, serviceName = serviceName, spec = spec, templateMajorVersion = templateMajorVersion, templateMinorVersion = templateMinorVersion)
   output <- .proton$update_service_pipeline_output()
@@ -7115,7 +7197,8 @@ proton_update_service_sync_blocker <- function(id, resolvedReason) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_service_sync_blocker_input(id = id, resolvedReason = resolvedReason)
   output <- .proton$update_service_sync_blocker_output()
@@ -7179,7 +7262,8 @@ proton_update_service_sync_config <- function(branch, filePath, repositoryName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_service_sync_config_input(branch = branch, filePath = filePath, repositoryName = repositoryName, repositoryProvider = repositoryProvider, serviceName = serviceName)
   output <- .proton$update_service_sync_config_output()
@@ -7246,7 +7330,8 @@ proton_update_service_template <- function(description = NULL, displayName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_service_template_input(description = description, displayName = displayName, name = name)
   output <- .proton$update_service_template_output()
@@ -7353,7 +7438,8 @@ proton_update_service_template_version <- function(compatibleEnvironmentTemplate
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_service_template_version_input(compatibleEnvironmentTemplates = compatibleEnvironmentTemplates, description = description, majorVersion = majorVersion, minorVersion = minorVersion, status = status, supportedComponentSources = supportedComponentSources, templateName = templateName)
   output <- .proton$update_service_template_version_output()
@@ -7425,7 +7511,8 @@ proton_update_template_sync_config <- function(branch, repositoryName, repositor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .proton$update_template_sync_config_input(branch = branch, repositoryName = repositoryName, repositoryProvider = repositoryProvider, subdirectory = subdirectory, templateName = templateName, templateType = templateType)
   output <- .proton$update_template_sync_config_output()

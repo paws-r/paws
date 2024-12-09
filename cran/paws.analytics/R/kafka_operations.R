@@ -22,7 +22,8 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
     http_method = "POST",
     http_path = "/v1/clusters/{clusterArn}/scram-secrets",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$batch_associate_scram_secret_input(ClusterArn = ClusterArn, SecretArnList = SecretArnList)
   output <- .kafka$batch_associate_scram_secret_output()
@@ -66,7 +67,8 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
     http_method = "POST",
     http_path = "/v1/clusters",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$create_cluster_input(BrokerNodeGroupInfo = BrokerNodeGroupInfo, ClientAuthentication = ClientAuthentication, ClusterName = ClusterName, ConfigurationInfo = ConfigurationInfo, EncryptionInfo = EncryptionInfo, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, KafkaVersion = KafkaVersion, LoggingInfo = LoggingInfo, NumberOfBrokerNodes = NumberOfBrokerNodes, Tags = Tags, StorageMode = StorageMode)
   output <- .kafka$create_cluster_output()
@@ -99,7 +101,8 @@ kafka_create_cluster_v2 <- function(ClusterName, Tags = NULL, Provisioned = NULL
     http_method = "POST",
     http_path = "/api/v2/clusters",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$create_cluster_v2_input(ClusterName = ClusterName, Tags = Tags, Provisioned = Provisioned, Serverless = Serverless)
   output <- .kafka$create_cluster_v2_output()
@@ -136,7 +139,8 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
     http_method = "POST",
     http_path = "/v1/configurations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$create_configuration_input(Description = Description, KafkaVersions = KafkaVersions, Name = Name, ServerProperties = ServerProperties)
   output <- .kafka$create_configuration_output()
@@ -174,7 +178,8 @@ kafka_create_replicator <- function(Description = NULL, KafkaClusters, Replicati
     http_method = "POST",
     http_path = "/replication/v1/replicators",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$create_replicator_input(Description = Description, KafkaClusters = KafkaClusters, ReplicationInfoList = ReplicationInfoList, ReplicatorName = ReplicatorName, ServiceExecutionRoleArn = ServiceExecutionRoleArn, Tags = Tags)
   output <- .kafka$create_replicator_output()
@@ -209,7 +214,8 @@ kafka_create_vpc_connection <- function(TargetClusterArn, Authentication, VpcId,
     http_method = "POST",
     http_path = "/v1/vpc-connection",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$create_vpc_connection_input(TargetClusterArn = TargetClusterArn, Authentication = Authentication, VpcId = VpcId, ClientSubnets = ClientSubnets, SecurityGroups = SecurityGroups, Tags = Tags)
   output <- .kafka$create_vpc_connection_output()
@@ -241,7 +247,8 @@ kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
     http_method = "DELETE",
     http_path = "/v1/clusters/{clusterArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$delete_cluster_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion)
   output <- .kafka$delete_cluster_output()
@@ -272,7 +279,8 @@ kafka_delete_cluster_policy <- function(ClusterArn) {
     http_method = "DELETE",
     http_path = "/v1/clusters/{clusterArn}/policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$delete_cluster_policy_input(ClusterArn = ClusterArn)
   output <- .kafka$delete_cluster_policy_output()
@@ -303,7 +311,8 @@ kafka_delete_configuration <- function(Arn) {
     http_method = "DELETE",
     http_path = "/v1/configurations/{arn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$delete_configuration_input(Arn = Arn)
   output <- .kafka$delete_configuration_output()
@@ -334,7 +343,8 @@ kafka_delete_replicator <- function(CurrentVersion = NULL, ReplicatorArn) {
     http_method = "DELETE",
     http_path = "/replication/v1/replicators/{replicatorArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$delete_replicator_input(CurrentVersion = CurrentVersion, ReplicatorArn = ReplicatorArn)
   output <- .kafka$delete_replicator_output()
@@ -365,7 +375,8 @@ kafka_delete_vpc_connection <- function(Arn) {
     http_method = "DELETE",
     http_path = "/v1/vpc-connection/{arn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$delete_vpc_connection_input(Arn = Arn)
   output <- .kafka$delete_vpc_connection_output()
@@ -396,7 +407,8 @@ kafka_describe_cluster <- function(ClusterArn) {
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$describe_cluster_input(ClusterArn = ClusterArn)
   output <- .kafka$describe_cluster_output()
@@ -427,7 +439,8 @@ kafka_describe_cluster_v2 <- function(ClusterArn) {
     http_method = "GET",
     http_path = "/api/v2/clusters/{clusterArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$describe_cluster_v2_input(ClusterArn = ClusterArn)
   output <- .kafka$describe_cluster_v2_output()
@@ -458,7 +471,8 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
     http_method = "GET",
     http_path = "/v1/operations/{clusterOperationArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$describe_cluster_operation_input(ClusterOperationArn = ClusterOperationArn)
   output <- .kafka$describe_cluster_operation_output()
@@ -488,7 +502,8 @@ kafka_describe_cluster_operation_v2 <- function(ClusterOperationArn) {
     http_method = "GET",
     http_path = "/api/v2/operations/{clusterOperationArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$describe_cluster_operation_v2_input(ClusterOperationArn = ClusterOperationArn)
   output <- .kafka$describe_cluster_operation_v2_output()
@@ -519,7 +534,8 @@ kafka_describe_configuration <- function(Arn) {
     http_method = "GET",
     http_path = "/v1/configurations/{arn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$describe_configuration_input(Arn = Arn)
   output <- .kafka$describe_configuration_output()
@@ -551,7 +567,8 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
     http_method = "GET",
     http_path = "/v1/configurations/{arn}/revisions/{revision}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$describe_configuration_revision_input(Arn = Arn, Revision = Revision)
   output <- .kafka$describe_configuration_revision_output()
@@ -581,7 +598,8 @@ kafka_describe_replicator <- function(ReplicatorArn) {
     http_method = "GET",
     http_path = "/replication/v1/replicators/{replicatorArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$describe_replicator_input(ReplicatorArn = ReplicatorArn)
   output <- .kafka$describe_replicator_output()
@@ -612,7 +630,8 @@ kafka_describe_vpc_connection <- function(Arn) {
     http_method = "GET",
     http_path = "/v1/vpc-connection/{arn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$describe_vpc_connection_input(Arn = Arn)
   output <- .kafka$describe_vpc_connection_output()
@@ -643,7 +662,8 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
     http_method = "PATCH",
     http_path = "/v1/clusters/{clusterArn}/scram-secrets",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$batch_disassociate_scram_secret_input(ClusterArn = ClusterArn, SecretArnList = SecretArnList)
   output <- .kafka$batch_disassociate_scram_secret_output()
@@ -673,7 +693,8 @@ kafka_get_bootstrap_brokers <- function(ClusterArn) {
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/bootstrap-brokers",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$get_bootstrap_brokers_input(ClusterArn = ClusterArn)
   output <- .kafka$get_bootstrap_brokers_output()
@@ -703,7 +724,8 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
     http_method = "GET",
     http_path = "/v1/compatible-kafka-versions",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$get_compatible_kafka_versions_input(ClusterArn = ClusterArn)
   output <- .kafka$get_compatible_kafka_versions_output()
@@ -734,7 +756,8 @@ kafka_get_cluster_policy <- function(ClusterArn) {
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$get_cluster_policy_input(ClusterArn = ClusterArn)
   output <- .kafka$get_cluster_policy_output()
@@ -770,7 +793,8 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/operations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterOperationInfoList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterOperationInfoList"),
+    stream_api = FALSE
   )
   input <- .kafka$list_cluster_operations_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_cluster_operations_output()
@@ -803,7 +827,8 @@ kafka_list_cluster_operations_v2 <- function(ClusterArn, MaxResults = NULL, Next
     http_method = "GET",
     http_path = "/api/v2/clusters/{clusterArn}/operations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterOperationInfoList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterOperationInfoList"),
+    stream_api = FALSE
   )
   input <- .kafka$list_cluster_operations_v2_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_cluster_operations_v2_output()
@@ -839,7 +864,8 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
     http_method = "GET",
     http_path = "/v1/clusters",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterInfoList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterInfoList"),
+    stream_api = FALSE
   )
   input <- .kafka$list_clusters_input(ClusterNameFilter = ClusterNameFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_clusters_output()
@@ -876,7 +902,8 @@ kafka_list_clusters_v2 <- function(ClusterNameFilter = NULL, ClusterTypeFilter =
     http_method = "GET",
     http_path = "/api/v2/clusters",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterInfoList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClusterInfoList"),
+    stream_api = FALSE
   )
   input <- .kafka$list_clusters_v2_input(ClusterNameFilter = ClusterNameFilter, ClusterTypeFilter = ClusterTypeFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_clusters_v2_output()
@@ -912,7 +939,8 @@ kafka_list_configuration_revisions <- function(Arn, MaxResults = NULL, NextToken
     http_method = "GET",
     http_path = "/v1/configurations/{arn}/revisions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Revisions")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Revisions"),
+    stream_api = FALSE
   )
   input <- .kafka$list_configuration_revisions_input(Arn = Arn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_configuration_revisions_output()
@@ -946,7 +974,8 @@ kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/configurations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Configurations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Configurations"),
+    stream_api = FALSE
   )
   input <- .kafka$list_configurations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_configurations_output()
@@ -980,7 +1009,8 @@ kafka_list_kafka_versions <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/kafka-versions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "KafkaVersions")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "KafkaVersions"),
+    stream_api = FALSE
   )
   input <- .kafka$list_kafka_versions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_kafka_versions_output()
@@ -1015,7 +1045,8 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/nodes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NodeInfoList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NodeInfoList"),
+    stream_api = FALSE
   )
   input <- .kafka$list_nodes_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_nodes_output()
@@ -1050,7 +1081,8 @@ kafka_list_replicators <- function(MaxResults = NULL, NextToken = NULL, Replicat
     http_method = "GET",
     http_path = "/replication/v1/replicators",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Replicators")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Replicators"),
+    stream_api = FALSE
   )
   input <- .kafka$list_replicators_input(MaxResults = MaxResults, NextToken = NextToken, ReplicatorNameFilter = ReplicatorNameFilter)
   output <- .kafka$list_replicators_output()
@@ -1083,7 +1115,8 @@ kafka_list_scram_secrets <- function(ClusterArn, MaxResults = NULL, NextToken = 
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/scram-secrets",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SecretArnList")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SecretArnList"),
+    stream_api = FALSE
   )
   input <- .kafka$list_scram_secrets_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_scram_secrets_output()
@@ -1114,7 +1147,8 @@ kafka_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .kafka$list_tags_for_resource_output()
@@ -1149,7 +1183,8 @@ kafka_list_client_vpc_connections <- function(ClusterArn, MaxResults = NULL, Nex
     http_method = "GET",
     http_path = "/v1/clusters/{clusterArn}/client-vpc-connections",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClientVpcConnections")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ClientVpcConnections"),
+    stream_api = FALSE
   )
   input <- .kafka$list_client_vpc_connections_input(ClusterArn = ClusterArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_client_vpc_connections_output()
@@ -1183,7 +1218,8 @@ kafka_list_vpc_connections <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v1/vpc-connections",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VpcConnections")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VpcConnections"),
+    stream_api = FALSE
   )
   input <- .kafka$list_vpc_connections_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .kafka$list_vpc_connections_output()
@@ -1214,7 +1250,8 @@ kafka_reject_client_vpc_connection <- function(ClusterArn, VpcConnectionArn) {
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/client-vpc-connection",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$reject_client_vpc_connection_input(ClusterArn = ClusterArn, VpcConnectionArn = VpcConnectionArn)
   output <- .kafka$reject_client_vpc_connection_output()
@@ -1247,7 +1284,8 @@ kafka_put_cluster_policy <- function(ClusterArn, CurrentVersion = NULL, Policy) 
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$put_cluster_policy_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, Policy = Policy)
   output <- .kafka$put_cluster_policy_output()
@@ -1279,7 +1317,8 @@ kafka_reboot_broker <- function(BrokerIds, ClusterArn) {
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/reboot-broker",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$reboot_broker_input(BrokerIds = BrokerIds, ClusterArn = ClusterArn)
   output <- .kafka$reboot_broker_output()
@@ -1311,7 +1350,8 @@ kafka_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .kafka$tag_resource_output()
@@ -1357,7 +1397,8 @@ kafka_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .kafka$untag_resource_output()
@@ -1391,7 +1432,8 @@ kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOf
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/nodes/count",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_broker_count_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, TargetNumberOfBrokerNodes = TargetNumberOfBrokerNodes)
   output <- .kafka$update_broker_count_output()
@@ -1425,7 +1467,8 @@ kafka_update_broker_type <- function(ClusterArn, CurrentVersion, TargetInstanceT
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/nodes/type",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_broker_type_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, TargetInstanceType = TargetInstanceType)
   output <- .kafka$update_broker_type_output()
@@ -1459,7 +1502,8 @@ kafka_update_broker_storage <- function(ClusterArn, CurrentVersion, TargetBroker
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/nodes/storage",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_broker_storage_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, TargetBrokerEBSVolumeInfo = TargetBrokerEBSVolumeInfo)
   output <- .kafka$update_broker_storage_output()
@@ -1494,7 +1538,8 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
     http_method = "PUT",
     http_path = "/v1/configurations/{arn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_configuration_input(Arn = Arn, Description = Description, ServerProperties = ServerProperties)
   output <- .kafka$update_configuration_output()
@@ -1528,7 +1573,8 @@ kafka_update_connectivity <- function(ClusterArn, ConnectivityInfo, CurrentVersi
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/connectivity",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_connectivity_input(ClusterArn = ClusterArn, ConnectivityInfo = ConnectivityInfo, CurrentVersion = CurrentVersion)
   output <- .kafka$update_connectivity_output()
@@ -1562,7 +1608,8 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/configuration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_cluster_configuration_input(ClusterArn = ClusterArn, ConfigurationInfo = ConfigurationInfo, CurrentVersion = CurrentVersion)
   output <- .kafka$update_cluster_configuration_output()
@@ -1596,7 +1643,8 @@ kafka_update_cluster_kafka_version <- function(ClusterArn, ConfigurationInfo = N
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/version",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_cluster_kafka_version_input(ClusterArn = ClusterArn, ConfigurationInfo = ConfigurationInfo, CurrentVersion = CurrentVersion, TargetKafkaVersion = TargetKafkaVersion)
   output <- .kafka$update_cluster_kafka_version_output()
@@ -1633,7 +1681,8 @@ kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitori
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/monitoring",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_monitoring_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, EnhancedMonitoring = EnhancedMonitoring, OpenMonitoring = OpenMonitoring, LoggingInfo = LoggingInfo)
   output <- .kafka$update_monitoring_output()
@@ -1668,7 +1717,8 @@ kafka_update_replication_info <- function(ConsumerGroupReplication = NULL, Curre
     http_method = "PUT",
     http_path = "/replication/v1/replicators/{replicatorArn}/replication-info",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_replication_info_input(ConsumerGroupReplication = ConsumerGroupReplication, CurrentVersion = CurrentVersion, ReplicatorArn = ReplicatorArn, SourceKafkaClusterArn = SourceKafkaClusterArn, TargetKafkaClusterArn = TargetKafkaClusterArn, TopicReplication = TopicReplication)
   output <- .kafka$update_replication_info_output()
@@ -1703,7 +1753,8 @@ kafka_update_security <- function(ClientAuthentication = NULL, ClusterArn, Curre
     http_method = "PATCH",
     http_path = "/v1/clusters/{clusterArn}/security",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_security_input(ClientAuthentication = ClientAuthentication, ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, EncryptionInfo = EncryptionInfo)
   output <- .kafka$update_security_output()
@@ -1739,7 +1790,8 @@ kafka_update_storage <- function(ClusterArn, CurrentVersion, ProvisionedThroughp
     http_method = "PUT",
     http_path = "/v1/clusters/{clusterArn}/storage",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .kafka$update_storage_input(ClusterArn = ClusterArn, CurrentVersion = CurrentVersion, ProvisionedThroughput = ProvisionedThroughput, StorageMode = StorageMode, VolumeSizeGB = VolumeSizeGB)
   output <- .kafka$update_storage_output()

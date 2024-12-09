@@ -177,7 +177,8 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$delete_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$delete_scaling_policy_output()
@@ -363,7 +364,8 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$delete_scheduled_action_input(ServiceNamespace = ServiceNamespace, ScheduledActionName = ScheduledActionName, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$delete_scheduled_action_output()
@@ -548,7 +550,8 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$deregister_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension)
   output <- .applicationautoscaling$deregister_scalable_target_output()
@@ -743,7 +746,8 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalableTargets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalableTargets"),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scalable_targets_input(ServiceNamespace = ServiceNamespace, ResourceIds = ResourceIds, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scalable_targets_output()
@@ -944,7 +948,8 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingActivities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingActivities"),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken, IncludeNotScaledActivities = IncludeNotScaledActivities)
   output <- .applicationautoscaling$describe_scaling_activities_output()
@@ -1140,7 +1145,8 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPolicies")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPolicies"),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scaling_policies_input(PolicyNames = PolicyNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scaling_policies_output()
@@ -1336,7 +1342,8 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledActions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledActions"),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$describe_scheduled_actions_input(ScheduledActionNames = ScheduledActionNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scheduled_actions_output()
@@ -1373,7 +1380,8 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .applicationautoscaling$list_tags_for_resource_output()
@@ -1587,7 +1595,8 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$put_scaling_policy_input(PolicyName = PolicyName, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, PolicyType = PolicyType, StepScalingPolicyConfiguration = StepScalingPolicyConfiguration, TargetTrackingScalingPolicyConfiguration = TargetTrackingScalingPolicyConfiguration)
   output <- .applicationautoscaling$put_scaling_policy_output()
@@ -1813,7 +1822,8 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$put_scheduled_action_input(ServiceNamespace = ServiceNamespace, Schedule = Schedule, Timezone = Timezone, ScheduledActionName = ScheduledActionName, ResourceId = ResourceId, ScalableDimension = ScalableDimension, StartTime = StartTime, EndTime = EndTime, ScalableTargetAction = ScalableTargetAction)
   output <- .applicationautoscaling$put_scheduled_action_output()
@@ -2092,7 +2102,8 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$register_scalable_target_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MinCapacity = MinCapacity, MaxCapacity = MaxCapacity, RoleARN = RoleARN, SuspendedState = SuspendedState, Tags = Tags)
   output <- .applicationautoscaling$register_scalable_target_output()
@@ -2143,7 +2154,8 @@ applicationautoscaling_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .applicationautoscaling$tag_resource_output()
@@ -2181,7 +2193,8 @@ applicationautoscaling_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .applicationautoscaling$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .applicationautoscaling$untag_resource_output()

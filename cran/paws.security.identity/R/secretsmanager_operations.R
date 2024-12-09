@@ -36,7 +36,8 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .secretsmanager$batch_get_secret_value_output()
@@ -71,7 +72,8 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$cancel_rotate_secret_input(SecretId = SecretId)
   output <- .secretsmanager$cancel_rotate_secret_output()
@@ -138,7 +140,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' encrypt the secret value in the secret. An alias is always prefixed by
 #' `alias/`, for example `alias/aws/secretsmanager`. For more information,
 #' see [About
-#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about).
 #' 
 #' To use a KMS key in a different account, use the key ARN or the alias
 #' ARN.
@@ -191,9 +193,9 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' for this secret, then Secrets Manager blocks the operation and returns
 #' an `Access Denied` error. For more information, see [Control access to
 #' secrets using
-#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#tag-secrets-abac)
+#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#tag-secrets-abac)
 #' and [Limit access to identities with tags that match secrets'
-#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_tags2).
+#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#auth-and-access_tags2).
 #' 
 #' For information about how to format a JSON parameter for the various
 #' command line tool environments, see [Using JSON for
@@ -218,7 +220,8 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$create_secret_output()
@@ -253,7 +256,8 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$delete_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$delete_resource_policy_output()
@@ -310,7 +314,8 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$delete_secret_input(SecretId = SecretId, RecoveryWindowInDays = RecoveryWindowInDays, ForceDeleteWithoutRecovery = ForceDeleteWithoutRecovery)
   output <- .secretsmanager$delete_secret_output()
@@ -344,7 +349,8 @@ secretsmanager_describe_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$describe_secret_input(SecretId = SecretId)
   output <- .secretsmanager$describe_secret_output()
@@ -391,7 +397,8 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$get_random_password_input(PasswordLength = PasswordLength, ExcludeCharacters = ExcludeCharacters, ExcludeNumbers = ExcludeNumbers, ExcludePunctuation = ExcludePunctuation, ExcludeUppercase = ExcludeUppercase, ExcludeLowercase = ExcludeLowercase, IncludeSpace = IncludeSpace, RequireEachIncludedType = RequireEachIncludedType)
   output <- .secretsmanager$get_random_password_output()
@@ -427,7 +434,8 @@ secretsmanager_get_resource_policy <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$get_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$get_resource_policy_output()
@@ -480,7 +488,8 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$get_secret_value_input(SecretId = SecretId, VersionId = VersionId, VersionStage = VersionStage)
   output <- .secretsmanager$get_secret_value_output()
@@ -528,7 +537,8 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .secretsmanager$list_secret_version_ids_input(SecretId = SecretId, MaxResults = MaxResults, NextToken = NextToken, IncludeDeprecated = IncludeDeprecated)
   output <- .secretsmanager$list_secret_version_ids_output()
@@ -571,7 +581,8 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
+    stream_api = FALSE
   )
   input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
@@ -597,7 +608,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #' @param ResourcePolicy &#91;required&#93; A JSON-formatted string for an Amazon Web Services resource-based
 #' policy. For example policies, see [Permissions policy
-#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
+#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
 #' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
 #' access to the secret, for example those that use a wildcard for the
 #' principal. By default, public policies aren't blocked.
@@ -627,7 +638,8 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$put_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy, BlockPublicPolicy = BlockPublicPolicy)
   output <- .secretsmanager$put_resource_policy_output()
@@ -742,7 +754,8 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$put_secret_value_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, SecretBinary = SecretBinary, SecretString = SecretString, VersionStages = VersionStages, RotationToken = RotationToken)
   output <- .secretsmanager$put_secret_value_output()
@@ -774,7 +787,8 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$remove_regions_from_replication_input(SecretId = SecretId, RemoveReplicaRegions = RemoveReplicaRegions)
   output <- .secretsmanager$remove_regions_from_replication_output()
@@ -807,7 +821,8 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$replicate_secret_to_regions_input(SecretId = SecretId, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$replicate_secret_to_regions_output()
@@ -842,7 +857,8 @@ secretsmanager_restore_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$restore_secret_input(SecretId = SecretId)
   output <- .secretsmanager$restore_secret_output()
@@ -915,7 +931,8 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, RotateImmediately = RotateImmediately)
   output <- .secretsmanager$rotate_secret_output()
@@ -946,7 +963,8 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$stop_replication_to_replica_input(SecretId = SecretId)
   output <- .secretsmanager$stop_replication_to_replica_output()
@@ -989,7 +1007,8 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$tag_resource_input(SecretId = SecretId, Tags = Tags)
   output <- .secretsmanager$tag_resource_output()
@@ -1033,7 +1052,8 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$untag_resource_input(SecretId = SecretId, TagKeys = TagKeys)
   output <- .secretsmanager$untag_resource_output()
@@ -1087,7 +1107,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' A key alias is always prefixed by `alias/`, for example
 #' `alias/aws/secretsmanager`. For more information, see [About
-#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about).
 #' 
 #' If you set this to an empty string, Secrets Manager uses the Amazon Web
 #' Services managed key `aws/secretsmanager`. If this key doesn't already
@@ -1134,7 +1154,8 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString)
   output <- .secretsmanager$update_secret_output()
@@ -1181,7 +1202,8 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$update_secret_version_stage_input(SecretId = SecretId, VersionStage = VersionStage, RemoveFromVersionId = RemoveFromVersionId, MoveToVersionId = MoveToVersionId)
   output <- .secretsmanager$update_secret_version_stage_output()
@@ -1207,7 +1229,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' resource-based policy. The policy in the string identifies who can
 #' access or manage this secret and its versions. For example policies, see
 #' [Permissions policy
-#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
+#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
 #'
 #' @keywords internal
 #'
@@ -1218,7 +1240,8 @@ secretsmanager_validate_resource_policy <- function(SecretId = NULL, ResourcePol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .secretsmanager$validate_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy)
   output <- .secretsmanager$validate_resource_policy_output()

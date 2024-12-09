@@ -36,7 +36,8 @@ eventbridge_activate_event_source <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$activate_event_source_input(Name = Name)
   output <- .eventbridge$activate_event_source_output()
@@ -86,7 +87,8 @@ eventbridge_cancel_replay <- function(ReplayName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$cancel_replay_input(ReplayName = ReplayName)
   output <- .eventbridge$cancel_replay_output()
@@ -164,7 +166,8 @@ eventbridge_create_api_destination <- function(Name, Description = NULL, Connect
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$create_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
   output <- .eventbridge$create_api_destination_output()
@@ -250,7 +253,8 @@ eventbridge_create_archive <- function(ArchiveName, EventSourceArn, Description 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$create_archive_input(ArchiveName = ArchiveName, EventSourceArn = EventSourceArn, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
   output <- .eventbridge$create_archive_output()
@@ -380,7 +384,8 @@ eventbridge_create_connection <- function(Name, Description = NULL, Authorizatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
   output <- .eventbridge$create_connection_output()
@@ -488,7 +493,8 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$create_endpoint_input(Name = Name, Description = Description, RoutingConfig = RoutingConfig, ReplicationConfig = ReplicationConfig, EventBuses = EventBuses, RoleArn = RoleArn)
   output <- .eventbridge$create_endpoint_output()
@@ -534,8 +540,8 @@ eventbridge_create_endpoint <- function(Name, Description = NULL, RoutingConfig,
 #' bus.
 #' 
 #' For more information, see [Managing
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html)
-#' in the *Key Management Service Developer Guide*.
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
+#' *Key Management Service Developer Guide*.
 #' 
 #' Archives and schema discovery are not supported for event buses
 #' encrypted using a customer managed key. EventBridge returns an error if:
@@ -600,7 +606,8 @@ eventbridge_create_event_bus <- function(Name, EventSourceName = NULL, Descripti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$create_event_bus_input(Name = Name, EventSourceName = EventSourceName, Description = Description, KmsKeyIdentifier = KmsKeyIdentifier, DeadLetterConfig = DeadLetterConfig, Tags = Tags)
   output <- .eventbridge$create_event_bus_output()
@@ -691,7 +698,8 @@ eventbridge_create_partner_event_source <- function(Name, Account) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$create_partner_event_source_input(Name = Name, Account = Account)
   output <- .eventbridge$create_partner_event_source_output()
@@ -743,7 +751,8 @@ eventbridge_deactivate_event_source <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$deactivate_event_source_input(Name = Name)
   output <- .eventbridge$deactivate_event_source_output()
@@ -803,7 +812,8 @@ eventbridge_deauthorize_connection <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$deauthorize_connection_input(Name = Name)
   output <- .eventbridge$deauthorize_connection_output()
@@ -846,7 +856,8 @@ eventbridge_delete_api_destination <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$delete_api_destination_input(Name = Name)
   output <- .eventbridge$delete_api_destination_output()
@@ -889,7 +900,8 @@ eventbridge_delete_archive <- function(ArchiveName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$delete_archive_input(ArchiveName = ArchiveName)
   output <- .eventbridge$delete_archive_output()
@@ -947,7 +959,8 @@ eventbridge_delete_connection <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$delete_connection_input(Name = Name)
   output <- .eventbridge$delete_connection_output()
@@ -995,7 +1008,8 @@ eventbridge_delete_endpoint <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$delete_endpoint_input(Name = Name)
   output <- .eventbridge$delete_endpoint_output()
@@ -1040,7 +1054,8 @@ eventbridge_delete_event_bus <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$delete_event_bus_input(Name = Name)
   output <- .eventbridge$delete_event_bus_output()
@@ -1090,7 +1105,8 @@ eventbridge_delete_partner_event_source <- function(Name, Account) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$delete_partner_event_source_input(Name = Name, Account = Account)
   output <- .eventbridge$delete_partner_event_source_output()
@@ -1160,7 +1176,8 @@ eventbridge_delete_rule <- function(Name, EventBusName = NULL, Force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$delete_rule_input(Name = Name, EventBusName = EventBusName, Force = Force)
   output <- .eventbridge$delete_rule_output()
@@ -1221,7 +1238,8 @@ eventbridge_describe_api_destination <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_api_destination_input(Name = Name)
   output <- .eventbridge$describe_api_destination_output()
@@ -1281,7 +1299,8 @@ eventbridge_describe_archive <- function(ArchiveName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_archive_input(ArchiveName = ArchiveName)
   output <- .eventbridge$describe_archive_output()
@@ -1405,7 +1424,8 @@ eventbridge_describe_connection <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_connection_input(Name = Name)
   output <- .eventbridge$describe_connection_output()
@@ -1492,7 +1512,8 @@ eventbridge_describe_endpoint <- function(Name, HomeRegion = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_endpoint_input(Name = Name, HomeRegion = HomeRegion)
   output <- .eventbridge$describe_endpoint_output()
@@ -1564,7 +1585,8 @@ eventbridge_describe_event_bus <- function(Name = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_event_bus_input(Name = Name)
   output <- .eventbridge$describe_event_bus_output()
@@ -1623,7 +1645,8 @@ eventbridge_describe_event_source <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_event_source_input(Name = Name)
   output <- .eventbridge$describe_event_source_output()
@@ -1677,7 +1700,8 @@ eventbridge_describe_partner_event_source <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_partner_event_source_input(Name = Name)
   output <- .eventbridge$describe_partner_event_source_output()
@@ -1762,7 +1786,8 @@ eventbridge_describe_replay <- function(ReplayName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_replay_input(ReplayName = ReplayName)
   output <- .eventbridge$describe_replay_output()
@@ -1826,7 +1851,8 @@ eventbridge_describe_rule <- function(Name, EventBusName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$describe_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .eventbridge$describe_rule_output()
@@ -1876,7 +1902,8 @@ eventbridge_disable_rule <- function(Name, EventBusName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$disable_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .eventbridge$disable_rule_output()
@@ -1927,7 +1954,8 @@ eventbridge_enable_rule <- function(Name, EventBusName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$enable_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .eventbridge$enable_rule_output()
@@ -2002,7 +2030,8 @@ eventbridge_list_api_destinations <- function(NamePrefix = NULL, ConnectionArn =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_api_destinations_input(NamePrefix = NamePrefix, ConnectionArn = ConnectionArn, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_api_destinations_output()
@@ -2077,7 +2106,8 @@ eventbridge_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_archives_input(NamePrefix = NamePrefix, EventSourceArn = EventSourceArn, State = State, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_archives_output()
@@ -2152,7 +2182,8 @@ eventbridge_list_connections <- function(NamePrefix = NULL, ConnectionState = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_connections_input(NamePrefix = NamePrefix, ConnectionState = ConnectionState, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_connections_output()
@@ -2254,7 +2285,8 @@ eventbridge_list_endpoints <- function(NamePrefix = NULL, HomeRegion = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_endpoints_input(NamePrefix = NamePrefix, HomeRegion = HomeRegion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .eventbridge$list_endpoints_output()
@@ -2326,7 +2358,8 @@ eventbridge_list_event_buses <- function(NamePrefix = NULL, NextToken = NULL, Li
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_event_buses_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_event_buses_output()
@@ -2400,7 +2433,8 @@ eventbridge_list_event_sources <- function(NamePrefix = NULL, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_event_sources_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_event_sources_output()
@@ -2474,7 +2508,8 @@ eventbridge_list_partner_event_source_accounts <- function(EventSourceName, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_partner_event_source_accounts_input(EventSourceName = EventSourceName, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_partner_event_source_accounts_output()
@@ -2539,7 +2574,8 @@ eventbridge_list_partner_event_sources <- function(NamePrefix, NextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_partner_event_sources_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_partner_event_sources_output()
@@ -2623,7 +2659,8 @@ eventbridge_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_replays_input(NamePrefix = NamePrefix, State = State, EventSourceArn = EventSourceArn, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_replays_output()
@@ -2686,7 +2723,8 @@ eventbridge_list_rule_names_by_target <- function(TargetArn, EventBusName = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_rule_names_by_target_input(TargetArn = TargetArn, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_rule_names_by_target_output()
@@ -2762,7 +2800,8 @@ eventbridge_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_rules_input(NamePrefix = NamePrefix, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_rules_output()
@@ -2816,7 +2855,8 @@ eventbridge_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .eventbridge$list_tags_for_resource_output()
@@ -3002,7 +3042,8 @@ eventbridge_list_targets_by_rule <- function(Rule, EventBusName = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$list_targets_by_rule_input(Rule = Rule, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .eventbridge$list_targets_by_rule_output()
@@ -3095,7 +3136,8 @@ eventbridge_put_events <- function(Entries, EndpointId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$put_events_input(Entries = Entries, EndpointId = EndpointId)
   output <- .eventbridge$put_events_output()
@@ -3169,7 +3211,8 @@ eventbridge_put_partner_events <- function(Entries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$put_partner_events_input(Entries = Entries)
   output <- .eventbridge$put_partner_events_output()
@@ -3284,7 +3327,8 @@ eventbridge_put_permission <- function(EventBusName = NULL, Action = NULL, Princ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$put_permission_input(EventBusName = EventBusName, Action = Action, Principal = Principal, StatementId = StatementId, Condition = Condition, Policy = Policy)
   output <- .eventbridge$put_permission_output()
@@ -3455,7 +3499,8 @@ eventbridge_put_rule <- function(Name, ScheduleExpression = NULL, EventPattern =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$put_rule_input(Name = Name, ScheduleExpression = ScheduleExpression, EventPattern = EventPattern, State = State, Description = Description, RoleArn = RoleArn, Tags = Tags, EventBusName = EventBusName)
   output <- .eventbridge$put_rule_output()
@@ -3752,7 +3797,8 @@ eventbridge_put_targets <- function(Rule, EventBusName = NULL, Targets) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$put_targets_input(Rule = Rule, EventBusName = EventBusName, Targets = Targets)
   output <- .eventbridge$put_targets_output()
@@ -3809,7 +3855,8 @@ eventbridge_remove_permission <- function(StatementId = NULL, RemoveAllPermissio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$remove_permission_input(StatementId = StatementId, RemoveAllPermissions = RemoveAllPermissions, EventBusName = EventBusName)
   output <- .eventbridge$remove_permission_output()
@@ -3895,7 +3942,8 @@ eventbridge_remove_targets <- function(Rule, EventBusName = NULL, Ids, Force = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$remove_targets_input(Rule = Rule, EventBusName = EventBusName, Ids = Ids, Force = Force)
   output <- .eventbridge$remove_targets_output()
@@ -3981,7 +4029,8 @@ eventbridge_start_replay <- function(ReplayName, Description = NULL, EventSource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$start_replay_input(ReplayName = ReplayName, Description = Description, EventSourceArn = EventSourceArn, EventStartTime = EventStartTime, EventEndTime = EventEndTime, Destination = Destination)
   output <- .eventbridge$start_replay_output()
@@ -4047,7 +4096,8 @@ eventbridge_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .eventbridge$tag_resource_output()
@@ -4122,7 +4172,8 @@ eventbridge_test_event_pattern <- function(EventPattern, Event) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$test_event_pattern_input(EventPattern = EventPattern, Event = Event)
   output <- .eventbridge$test_event_pattern_output()
@@ -4171,7 +4222,8 @@ eventbridge_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .eventbridge$untag_resource_output()
@@ -4238,7 +4290,8 @@ eventbridge_update_api_destination <- function(Name, Description = NULL, Connect
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$update_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
   output <- .eventbridge$update_api_destination_output()
@@ -4298,7 +4351,8 @@ eventbridge_update_archive <- function(ArchiveName, Description = NULL, EventPat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$update_archive_input(ArchiveName = ArchiveName, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
   output <- .eventbridge$update_archive_output()
@@ -4426,7 +4480,8 @@ eventbridge_update_connection <- function(Name, Description = NULL, Authorizatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
   output <- .eventbridge$update_connection_output()
@@ -4528,7 +4583,8 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$update_endpoint_input(Name = Name, Description = Description, RoutingConfig = RoutingConfig, ReplicationConfig = ReplicationConfig, EventBuses = EventBuses, RoleArn = RoleArn)
   output <- .eventbridge$update_endpoint_output()
@@ -4560,8 +4616,8 @@ eventbridge_update_endpoint <- function(Name, Description = NULL, RoutingConfig 
 #' bus.
 #' 
 #' For more information, see [Managing
-#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/getting-started.html)
-#' in the *Key Management Service Developer Guide*.
+#' keys](https://docs.aws.amazon.com/kms/latest/developerguide/) in the
+#' *Key Management Service Developer Guide*.
 #' 
 #' Archives and schema discovery are not supported for event buses
 #' encrypted using a customer managed key. EventBridge returns an error if:
@@ -4620,7 +4676,8 @@ eventbridge_update_event_bus <- function(Name = NULL, KmsKeyIdentifier = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .eventbridge$update_event_bus_input(Name = Name, KmsKeyIdentifier = KmsKeyIdentifier, Description = Description, DeadLetterConfig = DeadLetterConfig)
   output <- .eventbridge$update_event_bus_output()

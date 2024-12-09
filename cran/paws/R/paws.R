@@ -2826,7 +2826,7 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #' When making the API calls, you will need to authenticate your request by
 #' providing a signature. Lambda supports signature version 4. For more
 #' information, see [Signature Version 4 signing
-#' process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
+#' process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
 #' in the *Amazon Web Services General Reference.*.
 #' 
 #' **CA certificates**
@@ -5353,11 +5353,11 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.storage:s3_copy_object]{copy_object} \tab Creates a copy of an object that is already stored in Amazon S3\cr
 #'  \link[paws.storage:s3_create_bucket]{create_bucket} \tab This action creates an Amazon S3 bucket\cr
 #'  \link[paws.storage:s3_create_multipart_upload]{create_multipart_upload} \tab This action initiates a multipart upload and returns an upload ID\cr
-#'  \link[paws.storage:s3_create_session]{create_session} \tab Creates a session that establishes temporary security credentials to support fast authentication and authorization for the Zonal endpoint APIs on directory buckets\cr
+#'  \link[paws.storage:s3_create_session]{create_session} \tab Creates a session that establishes temporary security credentials to support fast authentication and authorization for the Zonal endpoint API operations on directory buckets\cr
 #'  \link[paws.storage:s3_delete_bucket]{delete_bucket} \tab Deletes the S3 bucket\cr
 #'  \link[paws.storage:s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_delete_bucket_cors]{delete_bucket_cors} \tab This operation is not supported by directory buckets\cr
-#'  \link[paws.storage:s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3)\cr
 #'  \link[paws.storage:s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab This operation is not supported by directory buckets\cr
@@ -5377,7 +5377,7 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.storage:s3_get_bucket_acl]{get_bucket_acl} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_get_bucket_cors]{get_bucket_cors} \tab This operation is not supported by directory buckets\cr
-#'  \link[paws.storage:s3_get_bucket_encryption]{get_bucket_encryption} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_get_bucket_encryption]{get_bucket_encryption} \tab Returns the default encryption configuration for an Amazon S3 bucket\cr
 #'  \link[paws.storage:s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_get_bucket_lifecycle]{get_bucket_lifecycle} \tab For an updated version of this API, see GetBucketLifecycleConfiguration\cr
@@ -5421,7 +5421,7 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.storage:s3_put_bucket_acl]{put_bucket_acl} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_put_bucket_cors]{put_bucket_cors} \tab This operation is not supported by directory buckets\cr
-#'  \link[paws.storage:s3_put_bucket_encryption]{put_bucket_encryption} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3_put_bucket_encryption]{put_bucket_encryption} \tab This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket\cr
 #'  \link[paws.storage:s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab This operation is not supported by directory buckets\cr
@@ -5622,6 +5622,7 @@ s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #'  \link[paws.storage:s3control_list_access_grants_locations]{list_access_grants_locations} \tab Returns a list of the locations registered in your S3 Access Grants instance\cr
 #'  \link[paws.storage:s3control_list_access_points]{list_access_points} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3control_list_access_points_for_object_lambda]{list_access_points_for_object_lambda} \tab This operation is not supported by directory buckets\cr
+#'  \link[paws.storage:s3control_list_caller_access_grants]{list_caller_access_grants} \tab Returns a list of the access grants that were given to the caller using S3 Access Grants and that allow the caller to access the S3 data of the Amazon Web Services account specified in the request\cr
 #'  \link[paws.storage:s3control_list_jobs]{list_jobs} \tab Lists current S3 Batch Operations jobs as well as the jobs that have ended within the last 90 days for the Amazon Web Services account making the request\cr
 #'  \link[paws.storage:s3control_list_multi_region_access_points]{list_multi_region_access_points} \tab This operation is not supported by directory buckets\cr
 #'  \link[paws.storage:s3control_list_regional_buckets]{list_regional_buckets} \tab This operation is not supported by directory buckets\cr
@@ -11379,6 +11380,7 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.networking:elbv2_delete_trust_store]{delete_trust_store} \tab Deletes a trust store\cr
 #'  \link[paws.networking:elbv2_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
 #'  \link[paws.networking:elbv2_describe_account_limits]{describe_account_limits} \tab Describes the current Elastic Load Balancing resource limits for your Amazon Web Services account\cr
+#'  \link[paws.networking:elbv2_describe_listener_attributes]{describe_listener_attributes} \tab Describes the attributes for the specified listener\cr
 #'  \link[paws.networking:elbv2_describe_listener_certificates]{describe_listener_certificates} \tab Describes the default certificate and the certificate list for the specified HTTPS or TLS listener\cr
 #'  \link[paws.networking:elbv2_describe_listeners]{describe_listeners} \tab Describes the specified listeners or the listeners for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[paws.networking:elbv2_describe_load_balancer_attributes]{describe_load_balancer_attributes} \tab Describes the attributes for the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
@@ -11396,6 +11398,7 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.networking:elbv2_get_trust_store_ca_certificates_bundle]{get_trust_store_ca_certificates_bundle} \tab Retrieves the ca certificate bundle\cr
 #'  \link[paws.networking:elbv2_get_trust_store_revocation_content]{get_trust_store_revocation_content} \tab Retrieves the specified revocation file\cr
 #'  \link[paws.networking:elbv2_modify_listener]{modify_listener} \tab Replaces the specified properties of the specified listener\cr
+#'  \link[paws.networking:elbv2_modify_listener_attributes]{modify_listener_attributes} \tab Modifies the specified attributes of the specified listener\cr
 #'  \link[paws.networking:elbv2_modify_load_balancer_attributes]{modify_load_balancer_attributes} \tab Modifies the specified attributes of the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer\cr
 #'  \link[paws.networking:elbv2_modify_rule]{modify_rule} \tab Replaces the specified properties of the specified rule\cr
 #'  \link[paws.networking:elbv2_modify_target_group]{modify_target_group} \tab Modifies the health checks used when evaluating the health state of the targets in the specified target group\cr
@@ -16949,6 +16952,7 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.developer.tools:fis_get_experiment]{get_experiment} \tab Gets information about the specified experiment\cr
 #'  \link[paws.developer.tools:fis_get_experiment_target_account_configuration]{get_experiment_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment\cr
 #'  \link[paws.developer.tools:fis_get_experiment_template]{get_experiment_template} \tab Gets information about the specified experiment template\cr
+#'  \link[paws.developer.tools:fis_get_safety_lever]{get_safety_lever} \tab Gets information about the specified safety lever\cr
 #'  \link[paws.developer.tools:fis_get_target_account_configuration]{get_target_account_configuration} \tab Gets information about the specified target account configuration of the experiment template\cr
 #'  \link[paws.developer.tools:fis_get_target_resource_type]{get_target_resource_type} \tab Gets information about the specified resource type\cr
 #'  \link[paws.developer.tools:fis_list_actions]{list_actions} \tab Lists the available FIS actions\cr
@@ -16964,6 +16968,7 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.developer.tools:fis_tag_resource]{tag_resource} \tab Applies the specified tags to the specified resource\cr
 #'  \link[paws.developer.tools:fis_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
 #'  \link[paws.developer.tools:fis_update_experiment_template]{update_experiment_template} \tab Updates the specified experiment template\cr
+#'  \link[paws.developer.tools:fis_update_safety_lever_state]{update_safety_lever_state} \tab Updates the specified safety lever state\cr
 #'  \link[paws.developer.tools:fis_update_target_account_configuration]{update_target_account_configuration} \tab Updates the target account configuration for the specified experiment template
 #' }
 #'
@@ -17818,9 +17823,8 @@ applicationinsights <- function(config = list(), credentials = list(), endpoint 
 #' well as to import your usage data into the Application Cost Profiler
 #' service.
 #' 
-#' For more information about using this service, see the [AWS Application
-#' Cost Profiler User
-#' Guide](https://docs.aws.amazon.com/application-cost-profiler/latest/userguide/introduction.html).
+#' For more information about using this service, see the AWS Application
+#' Cost Profiler User Guide.
 #'
 #' @param
 #' config
@@ -19011,7 +19015,7 @@ cloudtraildataservice <- function(config = list(), credentials = list(), endpoin
 #' manage Config. The Config API uses the Signature Version 4 protocol for
 #' signing requests. For more information about how to sign a request with
 #' this protocol, see [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' For detailed information about Config features and their associated
 #' actions or commands, as well as how to work with Amazon Web Services
 #' Management Console, see [What Is
@@ -20271,7 +20275,7 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' 
 #' For authentication of requests, Health uses the [Signature Version 4
 #' Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' If your Amazon Web Services account is part of Organizations, you can
 #' use the Health organizational view feature. This feature provides a
@@ -20957,6 +20961,7 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'  \link[paws.management:cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy\cr
 #'  \link[paws.management:cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter\cr
 #'  \link[paws.management:cloudwatchlogs_describe_account_policies]{describe_account_policies} \tab Returns a list of all CloudWatch Logs account policies in the account\cr
+#'  \link[paws.management:cloudwatchlogs_describe_configuration_templates]{describe_configuration_templates} \tab Use this operation to return the valid and default values that are used when creating delivery sources, delivery destinations, and deliveries\cr
 #'  \link[paws.management:cloudwatchlogs_describe_deliveries]{describe_deliveries} \tab Retrieves a list of the deliveries that have been created in the account\cr
 #'  \link[paws.management:cloudwatchlogs_describe_delivery_destinations]{describe_delivery_destinations} \tab Retrieves a list of the delivery destinations that have been created in the account\cr
 #'  \link[paws.management:cloudwatchlogs_describe_delivery_sources]{describe_delivery_sources} \tab Retrieves a list of the delivery sources that have been created in the account\cr
@@ -21007,6 +21012,7 @@ licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list
 #'  \link[paws.management:cloudwatchlogs_untag_log_group]{untag_log_group} \tab The UntagLogGroup operation is on the path to deprecation\cr
 #'  \link[paws.management:cloudwatchlogs_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
 #'  \link[paws.management:cloudwatchlogs_update_anomaly]{update_anomaly} \tab Use this operation to suppress anomaly detection for a specified anomaly or pattern\cr
+#'  \link[paws.management:cloudwatchlogs_update_delivery_configuration]{update_delivery_configuration} \tab Use this operation to update the configuration of a delivery to change either the S3 path pattern or the format of the delivered logs\cr
 #'  \link[paws.management:cloudwatchlogs_update_log_anomaly_detector]{update_log_anomaly_detector} \tab Updates an existing log anomaly detector
 #' }
 #'
@@ -23389,7 +23395,7 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' Systems Manager User
 #' Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/).
 #' To get started, see [Setting up Amazon Web Services Systems
-#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html).
+#' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/).
 #' 
 #' **Related resources**
 #' 
@@ -24142,7 +24148,7 @@ ssmsap <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' For more information about this service and the endpoints to use, see
 #' [About the Amazon Web Services Support
@@ -35236,7 +35242,7 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #' 
 #' For more information, see [Using the Amazon Cognito user pools API and
 #' user pool
-#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
+#' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flows-public-server-side.html)
 #' in the *Amazon Cognito Developer Guide*.
 #' 
 #' With your Amazon Web Services SDK, you can build the logic to support
@@ -37207,7 +37213,7 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' credentials and use those to sign requests.
 #' 
 #' All KMS requests must be signed with [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
 #' 
 #' **Logging API Requests**
 #' 
@@ -37236,7 +37242,7 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'     temporary security credentials.
 #' 
 #' -   [Signature Version 4 Signing
-#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) -
+#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html) -
 #'     This set of topics walks you through the process of signing a
 #'     request using an access key ID and a secret access key.
 #' 
@@ -42039,7 +42045,7 @@ sqs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' tracking their progress and maintaining their state.
 #' 
 #' This documentation serves as reference only. For a broader overview of
-#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-welcome.html}{Amazon SWF Developer Guide}* .
+#' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
 #'
 #' @param
 #' config
@@ -43224,7 +43230,7 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #' records with the `eventName` of
 #' `batch_meter_usage`. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#' see the *\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
 #'
 #' @param
 #' config

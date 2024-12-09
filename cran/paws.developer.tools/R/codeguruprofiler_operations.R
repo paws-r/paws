@@ -23,7 +23,8 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$add_notification_channels_input(channels = channels, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$add_notification_channels_output()
@@ -81,7 +82,8 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/frames/-/metrics",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$batch_get_frame_metric_data_input(endTime = endTime, frameMetrics = frameMetrics, period = period, profilingGroupName = profilingGroupName, startTime = startTime, targetResolution = targetResolution)
   output <- .codeguruprofiler$batch_get_frame_metric_data_output()
@@ -144,7 +146,8 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/configureAgent",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$configure_agent_input(fleetInstanceId = fleetInstanceId, metadata = metadata, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$configure_agent_output()
@@ -185,7 +188,8 @@ codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = N
     http_method = "POST",
     http_path = "/profilingGroups",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$create_profiling_group_input(agentOrchestrationConfig = agentOrchestrationConfig, clientToken = clientToken, computePlatform = computePlatform, profilingGroupName = profilingGroupName, tags = tags)
   output <- .codeguruprofiler$create_profiling_group_output()
@@ -215,7 +219,8 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
     http_method = "DELETE",
     http_path = "/profilingGroups/{profilingGroupName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$delete_profiling_group_input(profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$delete_profiling_group_output()
@@ -246,7 +251,8 @@ codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$describe_profiling_group_input(profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$describe_profiling_group_output()
@@ -298,7 +304,8 @@ codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnl
     http_method = "GET",
     http_path = "/internal/findingsReports",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$get_findings_report_account_summary_input(dailyReportsOnly = dailyReportsOnly, maxResults = maxResults, nextToken = nextToken)
   output <- .codeguruprofiler$get_findings_report_account_summary_output()
@@ -330,7 +337,8 @@ codeguruprofiler_get_notification_configuration <- function(profilingGroupName) 
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$get_notification_configuration_input(profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$get_notification_configuration_output()
@@ -360,7 +368,8 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$get_policy_input(profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$get_policy_output()
@@ -417,7 +426,8 @@ codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/profile",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$get_profile_input(accept = accept, endTime = endTime, maxDepth = maxDepth, period = period, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$get_profile_output()
@@ -480,7 +490,8 @@ codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profili
     http_method = "GET",
     http_path = "/internal/profilingGroups/{profilingGroupName}/recommendations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$get_recommendations_input(endTime = endTime, locale = locale, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$get_recommendations_output()
@@ -539,7 +550,8 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
     http_method = "GET",
     http_path = "/internal/profilingGroups/{profilingGroupName}/findingsReports",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$list_findings_reports_input(dailyReportsOnly = dailyReportsOnly, endTime = endTime, maxResults = maxResults, nextToken = nextToken, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$list_findings_reports_output()
@@ -602,7 +614,8 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
     http_method = "GET",
     http_path = "/profilingGroups/{profilingGroupName}/profileTimes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "profileTimes")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "profileTimes"),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$list_profile_times_input(endTime = endTime, maxResults = maxResults, nextToken = nextToken, orderBy = orderBy, period = period, profilingGroupName = profilingGroupName, startTime = startTime)
   output <- .codeguruprofiler$list_profile_times_output()
@@ -654,7 +667,8 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
     http_method = "GET",
     http_path = "/profilingGroups",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$list_profiling_groups_input(includeDescription = includeDescription, maxResults = maxResults, nextToken = nextToken)
   output <- .codeguruprofiler$list_profiling_groups_output()
@@ -685,7 +699,8 @@ codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .codeguruprofiler$list_tags_for_resource_output()
@@ -725,7 +740,8 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
     http_method = "POST",
     http_path = "/profilingGroups/{profilingGroupName}/agentProfile",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$post_agent_profile_input(agentProfile = agentProfile, contentType = contentType, profileToken = profileToken, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$post_agent_profile_output()
@@ -768,7 +784,8 @@ codeguruprofiler_put_permission <- function(actionGroup, principals, profilingGr
     http_method = "PUT",
     http_path = "/profilingGroups/{profilingGroupName}/policy/{actionGroup}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$put_permission_input(actionGroup = actionGroup, principals = principals, profilingGroupName = profilingGroupName, revisionId = revisionId)
   output <- .codeguruprofiler$put_permission_output()
@@ -800,7 +817,8 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
     http_method = "DELETE",
     http_path = "/profilingGroups/{profilingGroupName}/notificationConfiguration/{channelId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$remove_notification_channel_input(channelId = channelId, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$remove_notification_channel_output()
@@ -838,7 +856,8 @@ codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, 
     http_method = "DELETE",
     http_path = "/profilingGroups/{profilingGroupName}/policy/{actionGroup}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$remove_permission_input(actionGroup = actionGroup, profilingGroupName = profilingGroupName, revisionId = revisionId)
   output <- .codeguruprofiler$remove_permission_output()
@@ -875,7 +894,8 @@ codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, 
     http_method = "POST",
     http_path = "/internal/profilingGroups/{profilingGroupName}/anomalies/{anomalyInstanceId}/feedback",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$submit_feedback_input(anomalyInstanceId = anomalyInstanceId, comment = comment, profilingGroupName = profilingGroupName, type = type)
   output <- .codeguruprofiler$submit_feedback_output()
@@ -907,7 +927,8 @@ codeguruprofiler_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codeguruprofiler$tag_resource_output()
@@ -940,7 +961,8 @@ codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codeguruprofiler$untag_resource_output()
@@ -972,7 +994,8 @@ codeguruprofiler_update_profiling_group <- function(agentOrchestrationConfig, pr
     http_method = "PUT",
     http_path = "/profilingGroups/{profilingGroupName}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codeguruprofiler$update_profiling_group_input(agentOrchestrationConfig = agentOrchestrationConfig, profilingGroupName = profilingGroupName)
   output <- .codeguruprofiler$update_profiling_group_output()

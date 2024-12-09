@@ -54,7 +54,7 @@ management solution for hybrid cloud environments that enables safe and
 secure operations at scale.
 
 This reference is intended to be used with the \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Amazon Web Services Systems Manager User Guide}.
-To get started, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html}{Setting up Amazon Web Services Systems Manager}.
+To get started, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Setting up Amazon Web Services Systems Manager}.
 
 \strong{Related resources}
 \itemize{

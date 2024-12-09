@@ -37,7 +37,8 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$associate_node_input(ServerName = ServerName, NodeName = NodeName, EngineAttributes = EngineAttributes)
   output <- .opsworkscm$associate_node_output()
@@ -86,7 +87,8 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$create_backup_input(ServerName = ServerName, Description = Description, Tags = Tags)
   output <- .opsworkscm$create_backup_output()
@@ -280,7 +282,8 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDoma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$create_server_input(AssociatePublicIpAddress = AssociatePublicIpAddress, CustomDomain = CustomDomain, CustomCertificate = CustomCertificate, CustomPrivateKey = CustomPrivateKey, DisableAutomatedBackup = DisableAutomatedBackup, Engine = Engine, EngineModel = EngineModel, EngineVersion = EngineVersion, EngineAttributes = EngineAttributes, BackupRetentionCount = BackupRetentionCount, ServerName = ServerName, InstanceProfileArn = InstanceProfileArn, InstanceType = InstanceType, KeyPair = KeyPair, PreferredMaintenanceWindow = PreferredMaintenanceWindow, PreferredBackupWindow = PreferredBackupWindow, SecurityGroupIds = SecurityGroupIds, ServiceRoleArn = ServiceRoleArn, SubnetIds = SubnetIds, Tags = Tags, BackupId = BackupId)
   output <- .opsworkscm$create_server_output()
@@ -312,7 +315,8 @@ opsworkscm_delete_backup <- function(BackupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$delete_backup_input(BackupId = BackupId)
   output <- .opsworkscm$delete_backup_output()
@@ -343,7 +347,8 @@ opsworkscm_delete_server <- function(ServerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$delete_server_input(ServerName = ServerName)
   output <- .opsworkscm$delete_server_output()
@@ -373,7 +378,8 @@ opsworkscm_describe_account_attributes <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$describe_account_attributes_input()
   output <- .opsworkscm$describe_account_attributes_output()
@@ -408,7 +414,8 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Backups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Backups"),
+    stream_api = FALSE
   )
   input <- .opsworkscm$describe_backups_input(BackupId = BackupId, ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_backups_output()
@@ -452,7 +459,8 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerEvents")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerEvents"),
+    stream_api = FALSE
   )
   input <- .opsworkscm$describe_events_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_events_output()
@@ -485,7 +493,8 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$describe_node_association_status_input(NodeAssociationStatusToken = NodeAssociationStatusToken, ServerName = ServerName)
   output <- .opsworkscm$describe_node_association_status_output()
@@ -520,7 +529,8 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Servers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Servers"),
+    stream_api = FALSE
   )
   input <- .opsworkscm$describe_servers_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_servers_output()
@@ -560,7 +570,8 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$disassociate_node_input(ServerName = ServerName, NodeName = NodeName, EngineAttributes = EngineAttributes)
   output <- .opsworkscm$disassociate_node_output()
@@ -613,7 +624,8 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$export_server_engine_attribute_input(ExportAttributeName = ExportAttributeName, ServerName = ServerName, InputAttributes = InputAttributes)
   output <- .opsworkscm$export_server_engine_attribute_output()
@@ -663,7 +675,8 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .opsworkscm$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$list_tags_for_resource_output()
@@ -702,7 +715,8 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$restore_server_input(BackupId = BackupId, ServerName = ServerName, InstanceType = InstanceType, KeyPair = KeyPair)
   output <- .opsworkscm$restore_server_output()
@@ -744,7 +758,8 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$start_maintenance_input(ServerName = ServerName, EngineAttributes = EngineAttributes)
   output <- .opsworkscm$start_maintenance_output()
@@ -795,7 +810,8 @@ opsworkscm_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .opsworkscm$tag_resource_output()
@@ -828,7 +844,8 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .opsworkscm$untag_resource_output()
@@ -863,7 +880,8 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$update_server_input(DisableAutomatedBackup = DisableAutomatedBackup, BackupRetentionCount = BackupRetentionCount, ServerName = ServerName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, PreferredBackupWindow = PreferredBackupWindow)
   output <- .opsworkscm$update_server_output()
@@ -895,7 +913,8 @@ opsworkscm_update_server_engine_attributes <- function(ServerName, AttributeName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .opsworkscm$update_server_engine_attributes_input(ServerName = ServerName, AttributeName = AttributeName, AttributeValue = AttributeValue)
   output <- .opsworkscm$update_server_engine_attributes_output()

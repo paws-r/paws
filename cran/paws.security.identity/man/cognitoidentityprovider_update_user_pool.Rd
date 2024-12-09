@@ -114,7 +114,7 @@ features. To log user security information but take no action, set to
 \code{AUDIT}. To configure automatic security responses to risky traffic to
 your user pool, set to \code{ENFORCED}.
 
-For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html}{Adding advanced security to a user pool}.}
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-threat-protection.html}{Adding advanced security to a user pool}.}
 
 \item{AccountRecoverySetting}{The available verified method a user can use to recover their password
 when they call

@@ -322,7 +322,8 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
     http_method = "POST",
     http_path = "/policies",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$create_lifecycle_policy_input(ExecutionRoleArn = ExecutionRoleArn, Description = Description, State = State, PolicyDetails = PolicyDetails, Tags = Tags, DefaultPolicy = DefaultPolicy, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$create_lifecycle_policy_output()
@@ -342,7 +343,7 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
 #' operations that the policy specified.
 #' 
 #' For more information about deleting a policy, see [Delete lifecycle
-#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/view-modify-delete.html#delete).
+#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/#delete).
 #'
 #' @usage
 #' dlm_delete_lifecycle_policy(PolicyId)
@@ -370,7 +371,8 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
     http_method = "DELETE",
     http_path = "/policies/{policyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$delete_lifecycle_policy_input(PolicyId = PolicyId)
   output <- .dlm$delete_lifecycle_policy_output()
@@ -467,7 +469,8 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
     http_method = "GET",
     http_path = "/policies",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$get_lifecycle_policies_input(PolicyIds = PolicyIds, State = State, ResourceTypes = ResourceTypes, TargetTags = TargetTags, TagsToAdd = TagsToAdd, DefaultPolicyType = DefaultPolicyType)
   output <- .dlm$get_lifecycle_policies_output()
@@ -700,7 +703,8 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
     http_method = "GET",
     http_path = "/policies/{policyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$get_lifecycle_policy_input(PolicyId = PolicyId)
   output <- .dlm$get_lifecycle_policy_output()
@@ -750,7 +754,8 @@ dlm_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .dlm$list_tags_for_resource_output()
@@ -797,7 +802,8 @@ dlm_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .dlm$tag_resource_output()
@@ -844,7 +850,8 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .dlm$untag_resource_output()
@@ -862,7 +869,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates the specified lifecycle policy.
 #' 
 #' For more information about updating a policy, see [Modify lifecycle
-#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/view-modify-delete.html#modify).
+#' policies](https://docs.aws.amazon.com/ebs/latest/userguide/#modify).
 #'
 #' @usage
 #' dlm_update_lifecycle_policy(PolicyId, ExecutionRoleArn, State,
@@ -1129,7 +1136,8 @@ dlm_update_lifecycle_policy <- function(PolicyId, ExecutionRoleArn = NULL, State
     http_method = "PATCH",
     http_path = "/policies/{policyId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dlm$update_lifecycle_policy_input(PolicyId = PolicyId, ExecutionRoleArn = ExecutionRoleArn, State = State, Description = Description, PolicyDetails = PolicyDetails, CreateInterval = CreateInterval, RetainInterval = RetainInterval, CopyTags = CopyTags, ExtendDeletion = ExtendDeletion, CrossRegionCopyTargets = CrossRegionCopyTargets, Exclusions = Exclusions)
   output <- .dlm$update_lifecycle_policy_output()

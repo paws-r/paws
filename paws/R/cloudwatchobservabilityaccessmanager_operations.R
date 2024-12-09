@@ -125,7 +125,8 @@ cloudwatchobservabilityaccessmanager_create_link <- function(LabelTemplate, Link
     http_method = "POST",
     http_path = "/CreateLink",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$create_link_input(LabelTemplate = LabelTemplate, LinkConfiguration = LinkConfiguration, ResourceTypes = ResourceTypes, SinkIdentifier = SinkIdentifier, Tags = Tags)
   output <- .cloudwatchobservabilityaccessmanager$create_link_output()
@@ -202,7 +203,8 @@ cloudwatchobservabilityaccessmanager_create_sink <- function(Name, Tags = NULL) 
     http_method = "POST",
     http_path = "/CreateSink",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$create_sink_input(Name = Name, Tags = Tags)
   output <- .cloudwatchobservabilityaccessmanager$create_sink_output()
@@ -246,7 +248,8 @@ cloudwatchobservabilityaccessmanager_delete_link <- function(Identifier) {
     http_method = "POST",
     http_path = "/DeleteLink",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$delete_link_input(Identifier = Identifier)
   output <- .cloudwatchobservabilityaccessmanager$delete_link_output()
@@ -290,7 +293,8 @@ cloudwatchobservabilityaccessmanager_delete_sink <- function(Identifier) {
     http_method = "POST",
     http_path = "/DeleteSink",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$delete_sink_input(Identifier = Identifier)
   output <- .cloudwatchobservabilityaccessmanager$delete_sink_output()
@@ -360,7 +364,8 @@ cloudwatchobservabilityaccessmanager_get_link <- function(Identifier) {
     http_method = "POST",
     http_path = "/GetLink",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$get_link_input(Identifier = Identifier)
   output <- .cloudwatchobservabilityaccessmanager$get_link_output()
@@ -417,7 +422,8 @@ cloudwatchobservabilityaccessmanager_get_sink <- function(Identifier) {
     http_method = "POST",
     http_path = "/GetSink",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$get_sink_input(Identifier = Identifier)
   output <- .cloudwatchobservabilityaccessmanager$get_sink_output()
@@ -469,7 +475,8 @@ cloudwatchobservabilityaccessmanager_get_sink_policy <- function(SinkIdentifier)
     http_method = "POST",
     http_path = "/GetSinkPolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$get_sink_policy_input(SinkIdentifier = SinkIdentifier)
   output <- .cloudwatchobservabilityaccessmanager$get_sink_policy_output()
@@ -541,7 +548,8 @@ cloudwatchobservabilityaccessmanager_list_attached_links <- function(MaxResults 
     http_method = "POST",
     http_path = "/ListAttachedLinks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$list_attached_links_input(MaxResults = MaxResults, NextToken = NextToken, SinkIdentifier = SinkIdentifier)
   output <- .cloudwatchobservabilityaccessmanager$list_attached_links_output()
@@ -609,7 +617,8 @@ cloudwatchobservabilityaccessmanager_list_links <- function(MaxResults = NULL, N
     http_method = "POST",
     http_path = "/ListLinks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$list_links_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchobservabilityaccessmanager$list_links_output()
@@ -669,7 +678,8 @@ cloudwatchobservabilityaccessmanager_list_sinks <- function(MaxResults = NULL, N
     http_method = "POST",
     http_path = "/ListSinks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items"),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$list_sinks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchobservabilityaccessmanager$list_sinks_output()
@@ -735,7 +745,8 @@ cloudwatchobservabilityaccessmanager_list_tags_for_resource <- function(Resource
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cloudwatchobservabilityaccessmanager$list_tags_for_resource_output()
@@ -814,7 +825,8 @@ cloudwatchobservabilityaccessmanager_put_sink_policy <- function(Policy, SinkIde
     http_method = "POST",
     http_path = "/PutSinkPolicy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$put_sink_policy_input(Policy = Policy, SinkIdentifier = SinkIdentifier)
   output <- .cloudwatchobservabilityaccessmanager$put_sink_policy_output()
@@ -894,7 +906,8 @@ cloudwatchobservabilityaccessmanager_tag_resource <- function(ResourceArn, Tags)
     http_method = "PUT",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cloudwatchobservabilityaccessmanager$tag_resource_output()
@@ -957,7 +970,8 @@ cloudwatchobservabilityaccessmanager_untag_resource <- function(ResourceArn, Tag
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cloudwatchobservabilityaccessmanager$untag_resource_output()
@@ -1052,7 +1066,8 @@ cloudwatchobservabilityaccessmanager_update_link <- function(Identifier, LinkCon
     http_method = "POST",
     http_path = "/UpdateLink",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .cloudwatchobservabilityaccessmanager$update_link_input(Identifier = Identifier, LinkConfiguration = LinkConfiguration, ResourceTypes = ResourceTypes)
   output <- .cloudwatchobservabilityaccessmanager$update_link_output()

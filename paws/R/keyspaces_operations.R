@@ -76,7 +76,8 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$create_keyspace_input(keyspaceName = keyspaceName, tags = tags, replicationSpecification = replicationSpecification)
   output <- .keyspaces$create_keyspace_output()
@@ -103,7 +104,7 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' status is `ACTIVE`.
 #' 
 #' For more information, see [Creating
-#' tables](https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-tables.html#tables-create)
+#' tables](https://docs.aws.amazon.com/keyspaces/latest/devguide/#tables-create)
 #' in the *Amazon Keyspaces Developer Guide*.
 #'
 #' @usage
@@ -206,7 +207,7 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' @param defaultTimeToLive The default Time to Live setting in seconds for the table.
 #' 
 #' For more information, see [Setting the default TTL value for a
-#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl)
+#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/#ttl-howitworks_default_ttl)
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param tags A list of key-value pair tags to be attached to the resource.
 #' 
@@ -378,7 +379,8 @@ keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$create_table_input(keyspaceName = keyspaceName, tableName = tableName, schemaDefinition = schemaDefinition, comment = comment, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, tags = tags, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$create_table_output()
@@ -422,7 +424,8 @@ keyspaces_delete_keyspace <- function(keyspaceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$delete_keyspace_input(keyspaceName = keyspaceName)
   output <- .keyspaces$delete_keyspace_output()
@@ -475,7 +478,8 @@ keyspaces_delete_table <- function(keyspaceName, tableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$delete_table_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$delete_table_output()
@@ -530,7 +534,8 @@ keyspaces_get_keyspace <- function(keyspaceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$get_keyspace_input(keyspaceName = keyspaceName)
   output <- .keyspaces$get_keyspace_output()
@@ -658,7 +663,8 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$get_table_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$get_table_output()
@@ -794,7 +800,8 @@ keyspaces_get_table_auto_scaling_settings <- function(keyspaceName, tableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$get_table_auto_scaling_settings_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$get_table_auto_scaling_settings_output()
@@ -858,7 +865,8 @@ keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyspaces")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyspaces"),
+    stream_api = FALSE
   )
   input <- .keyspaces$list_keyspaces_input(nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_keyspaces_output()
@@ -921,7 +929,8 @@ keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tables")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tables"),
+    stream_api = FALSE
   )
   input <- .keyspaces$list_tables_input(nextToken = nextToken, maxResults = maxResults, keyspaceName = keyspaceName)
   output <- .keyspaces$list_tables_output()
@@ -985,7 +994,8 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags"),
+    stream_api = FALSE
   )
   input <- .keyspaces$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_tags_for_resource_output()
@@ -1214,7 +1224,8 @@ keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetK
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$restore_table_input(sourceKeyspaceName = sourceKeyspaceName, sourceTableName = sourceTableName, targetKeyspaceName = targetKeyspaceName, targetTableName = targetTableName, restoreTimestamp = restoreTimestamp, capacitySpecificationOverride = capacitySpecificationOverride, encryptionSpecificationOverride = encryptionSpecificationOverride, pointInTimeRecoveryOverride = pointInTimeRecoveryOverride, tagsOverride = tagsOverride, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$restore_table_output()
@@ -1276,7 +1287,8 @@ keyspaces_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .keyspaces$tag_resource_output()
@@ -1328,7 +1340,8 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$untag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .keyspaces$untag_resource_output()
@@ -1422,7 +1435,7 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' @param defaultTimeToLive The default Time to Live setting in seconds for the table.
 #' 
 #' For more information, see [Setting the default TTL value for a
-#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl)
+#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/#ttl-howitworks_default_ttl)
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param clientSideTimestamps Enables client-side timestamps for the table. By default, the setting is
 #' disabled. You can enable client-side timestamps with the following
@@ -1548,7 +1561,8 @@ keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, c
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .keyspaces$update_table_input(keyspaceName = keyspaceName, tableName = tableName, addColumns = addColumns, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$update_table_output()

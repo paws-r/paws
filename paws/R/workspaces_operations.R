@@ -50,7 +50,8 @@ workspaces_accept_account_link_invitation <- function(LinkId, ClientToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$accept_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
   output <- .workspaces$accept_account_link_invitation_output()
@@ -109,7 +110,8 @@ workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$associate_connection_alias_input(AliasId = AliasId, ResourceId = ResourceId)
   output <- .workspaces$associate_connection_alias_output()
@@ -158,7 +160,8 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$associate_ip_groups_input(DirectoryId = DirectoryId, GroupIds = GroupIds)
   output <- .workspaces$associate_ip_groups_output()
@@ -223,7 +226,8 @@ workspaces_associate_workspace_application <- function(WorkspaceId, ApplicationI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$associate_workspace_application_input(WorkspaceId = WorkspaceId, ApplicationId = ApplicationId)
   output <- .workspaces$associate_workspace_application_output()
@@ -276,7 +280,8 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$authorize_ip_rules_input(GroupId = GroupId, UserRules = UserRules)
   output <- .workspaces$authorize_ip_rules_output()
@@ -357,7 +362,8 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$copy_workspace_image_input(Name = Name, Description = Description, SourceImageId = SourceImageId, SourceRegion = SourceRegion, Tags = Tags)
   output <- .workspaces$copy_workspace_image_output()
@@ -413,7 +419,8 @@ workspaces_create_account_link_invitation <- function(TargetAccountId, ClientTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_account_link_invitation_input(TargetAccountId = TargetAccountId, ClientToken = ClientToken)
   output <- .workspaces$create_account_link_invitation_output()
@@ -469,7 +476,8 @@ workspaces_create_connect_client_add_in <- function(ResourceId, Name, URL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_connect_client_add_in_input(ResourceId = ResourceId, Name = Name, URL = URL)
   output <- .workspaces$create_connect_client_add_in_output()
@@ -535,7 +543,8 @@ workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_connection_alias_input(ConnectionString = ConnectionString, Tags = Tags)
   output <- .workspaces$create_connection_alias_output()
@@ -613,7 +622,8 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_ip_group_input(GroupName = GroupName, GroupDesc = GroupDesc, UserRules = UserRules, Tags = Tags)
   output <- .workspaces$create_ip_group_output()
@@ -701,7 +711,8 @@ workspaces_create_standby_workspaces <- function(PrimaryRegion, StandbyWorkspace
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_standby_workspaces_input(PrimaryRegion = PrimaryRegion, StandbyWorkspaces = StandbyWorkspaces)
   output <- .workspaces$create_standby_workspaces_output()
@@ -753,7 +764,8 @@ workspaces_create_tags <- function(ResourceId, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_tags_input(ResourceId = ResourceId, Tags = Tags)
   output <- .workspaces$create_tags_output()
@@ -834,7 +846,8 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_updated_workspace_image_input(Name = Name, Description = Description, SourceImageId = SourceImageId, Tags = Tags)
   output <- .workspaces$create_updated_workspace_image_output()
@@ -935,7 +948,8 @@ workspaces_create_workspace_bundle <- function(BundleName, BundleDescription, Im
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_workspace_bundle_input(BundleName = BundleName, BundleDescription = BundleDescription, ImageId = ImageId, ComputeType = ComputeType, UserStorage = UserStorage, RootStorage = RootStorage, Tags = Tags)
   output <- .workspaces$create_workspace_bundle_output()
@@ -1007,7 +1021,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_workspace_image_input(Name = Name, Description = Description, WorkspaceId = WorkspaceId, Tags = Tags)
   output <- .workspaces$create_workspace_image_output()
@@ -1190,7 +1205,8 @@ workspaces_create_workspaces <- function(Workspaces) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_workspaces_input(Workspaces = Workspaces)
   output <- .workspaces$create_workspaces_output()
@@ -1300,7 +1316,8 @@ workspaces_create_workspaces_pool <- function(PoolName, Description, BundleId, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$create_workspaces_pool_input(PoolName = PoolName, Description = Description, BundleId = BundleId, DirectoryId = DirectoryId, Capacity = Capacity, Tags = Tags, ApplicationSettings = ApplicationSettings, TimeoutSettings = TimeoutSettings)
   output <- .workspaces$create_workspaces_pool_output()
@@ -1356,7 +1373,8 @@ workspaces_delete_account_link_invitation <- function(LinkId, ClientToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$delete_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
   output <- .workspaces$delete_account_link_invitation_output()
@@ -1410,7 +1428,8 @@ workspaces_delete_client_branding <- function(ResourceId, Platforms) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$delete_client_branding_input(ResourceId = ResourceId, Platforms = Platforms)
   output <- .workspaces$delete_client_branding_output()
@@ -1457,7 +1476,8 @@ workspaces_delete_connect_client_add_in <- function(AddInId, ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$delete_connect_client_add_in_input(AddInId = AddInId, ResourceId = ResourceId)
   output <- .workspaces$delete_connect_client_add_in_output()
@@ -1515,7 +1535,8 @@ workspaces_delete_connection_alias <- function(AliasId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$delete_connection_alias_input(AliasId = AliasId)
   output <- .workspaces$delete_connection_alias_output()
@@ -1561,7 +1582,8 @@ workspaces_delete_ip_group <- function(GroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$delete_ip_group_input(GroupId = GroupId)
   output <- .workspaces$delete_ip_group_output()
@@ -1610,7 +1632,8 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$delete_tags_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .workspaces$delete_tags_output()
@@ -1655,7 +1678,8 @@ workspaces_delete_workspace_bundle <- function(BundleId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$delete_workspace_bundle_input(BundleId = BundleId)
   output <- .workspaces$delete_workspace_bundle_output()
@@ -1700,7 +1724,8 @@ workspaces_delete_workspace_image <- function(ImageId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$delete_workspace_image_input(ImageId = ImageId)
   output <- .workspaces$delete_workspace_image_output()
@@ -1771,7 +1796,8 @@ workspaces_deploy_workspace_applications <- function(WorkspaceId, Force = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$deploy_workspace_applications_input(WorkspaceId = WorkspaceId, Force = Force)
   output <- .workspaces$deploy_workspace_applications_output()
@@ -1832,7 +1858,8 @@ workspaces_deregister_workspace_directory <- function(DirectoryId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$deregister_workspace_directory_input(DirectoryId = DirectoryId)
   output <- .workspaces$deregister_workspace_directory_output()
@@ -1882,7 +1909,8 @@ workspaces_describe_account <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_account_input()
   output <- .workspaces$describe_account_output()
@@ -1945,7 +1973,8 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_account_modifications_input(NextToken = NextToken)
   output <- .workspaces$describe_account_modifications_output()
@@ -2023,7 +2052,8 @@ workspaces_describe_application_associations <- function(MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_application_associations_input(MaxResults = MaxResults, NextToken = NextToken, ApplicationId = ApplicationId, AssociatedResourceTypes = AssociatedResourceTypes)
   output <- .workspaces$describe_application_associations_output()
@@ -2112,7 +2142,8 @@ workspaces_describe_applications <- function(ApplicationIds = NULL, ComputeTypeN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_applications_input(ApplicationIds = ApplicationIds, ComputeTypeNames = ComputeTypeNames, LicenseType = LicenseType, OperatingSystemNames = OperatingSystemNames, Owner = Owner, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workspaces$describe_applications_output()
@@ -2184,7 +2215,8 @@ workspaces_describe_bundle_associations <- function(BundleId, AssociatedResource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_bundle_associations_input(BundleId = BundleId, AssociatedResourceTypes = AssociatedResourceTypes)
   output <- .workspaces$describe_bundle_associations_output()
@@ -2294,7 +2326,8 @@ workspaces_describe_client_branding <- function(ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_client_branding_input(ResourceId = ResourceId)
   output <- .workspaces$describe_client_branding_output()
@@ -2354,7 +2387,8 @@ workspaces_describe_client_properties <- function(ResourceIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_client_properties_input(ResourceIds = ResourceIds)
   output <- .workspaces$describe_client_properties_output()
@@ -2417,7 +2451,8 @@ workspaces_describe_connect_client_add_ins <- function(ResourceId, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_connect_client_add_ins_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_connect_client_add_ins_output()
@@ -2484,7 +2519,8 @@ workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_connection_alias_permissions_input(AliasId = AliasId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_connection_alias_permissions_output()
@@ -2562,7 +2598,8 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_connection_aliases_input(AliasIds = AliasIds, ResourceId = ResourceId, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_connection_aliases_output()
@@ -2633,7 +2670,8 @@ workspaces_describe_image_associations <- function(ImageId, AssociatedResourceTy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_image_associations_input(ImageId = ImageId, AssociatedResourceTypes = AssociatedResourceTypes)
   output <- .workspaces$describe_image_associations_output()
@@ -2701,7 +2739,8 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_ip_groups_input(GroupIds = GroupIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_ip_groups_output()
@@ -2756,7 +2795,8 @@ workspaces_describe_tags <- function(ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_tags_input(ResourceId = ResourceId)
   output <- .workspaces$describe_tags_output()
@@ -2828,7 +2868,8 @@ workspaces_describe_workspace_associations <- function(WorkspaceId, AssociatedRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspace_associations_input(WorkspaceId = WorkspaceId, AssociatedResourceTypes = AssociatedResourceTypes)
   output <- .workspaces$describe_workspace_associations_output()
@@ -2918,7 +2959,8 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Bundles")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Bundles"),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspace_bundles_input(BundleIds = BundleIds, Owner = Owner, NextToken = NextToken)
   output <- .workspaces$describe_workspace_bundles_output()
@@ -3081,7 +3123,8 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Works
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Directories")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Directories"),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, WorkspaceDirectoryNames = WorkspaceDirectoryNames, Limit = Limit, NextToken = NextToken, Filters = Filters)
   output <- .workspaces$describe_workspace_directories_output()
@@ -3143,7 +3186,8 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspace_image_permissions_input(ImageId = ImageId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_workspace_image_permissions_output()
@@ -3232,7 +3276,8 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspace_images_input(ImageIds = ImageIds, ImageType = ImageType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_workspace_images_output()
@@ -3293,7 +3338,8 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspace_snapshots_input(WorkspaceId = WorkspaceId)
   output <- .workspaces$describe_workspace_snapshots_output()
@@ -3430,7 +3476,8 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Workspaces")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Workspaces"),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspaces_input(WorkspaceIds = WorkspaceIds, DirectoryId = DirectoryId, UserName = UserName, BundleId = BundleId, Limit = Limit, NextToken = NextToken, WorkspaceName = WorkspaceName)
   output <- .workspaces$describe_workspaces_output()
@@ -3496,7 +3543,8 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspaces_connection_status_input(WorkspaceIds = WorkspaceIds, NextToken = NextToken)
   output <- .workspaces$describe_workspaces_connection_status_output()
@@ -3574,7 +3622,8 @@ workspaces_describe_workspaces_pool_sessions <- function(PoolId, UserId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspaces_pool_sessions_input(PoolId = PoolId, UserId = UserId, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_workspaces_pool_sessions_output()
@@ -3675,7 +3724,8 @@ workspaces_describe_workspaces_pools <- function(PoolIds = NULL, Filters = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$describe_workspaces_pools_input(PoolIds = PoolIds, Filters = Filters, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_workspaces_pools_output()
@@ -3727,7 +3777,8 @@ workspaces_disassociate_connection_alias <- function(AliasId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$disassociate_connection_alias_input(AliasId = AliasId)
   output <- .workspaces$disassociate_connection_alias_output()
@@ -3776,7 +3827,8 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$disassociate_ip_groups_input(DirectoryId = DirectoryId, GroupIds = GroupIds)
   output <- .workspaces$disassociate_ip_groups_output()
@@ -3842,7 +3894,8 @@ workspaces_disassociate_workspace_application <- function(WorkspaceId, Applicati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$disassociate_workspace_application_input(WorkspaceId = WorkspaceId, ApplicationId = ApplicationId)
   output <- .workspaces$disassociate_workspace_application_output()
@@ -3897,7 +3950,8 @@ workspaces_get_account_link <- function(LinkId = NULL, LinkedAccountId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$get_account_link_input(LinkId = LinkId, LinkedAccountId = LinkedAccountId)
   output <- .workspaces$get_account_link_output()
@@ -4085,7 +4139,8 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$import_client_branding_input(ResourceId = ResourceId, DeviceTypeWindows = DeviceTypeWindows, DeviceTypeOsx = DeviceTypeOsx, DeviceTypeAndroid = DeviceTypeAndroid, DeviceTypeIos = DeviceTypeIos, DeviceTypeLinux = DeviceTypeLinux, DeviceTypeWeb = DeviceTypeWeb)
   output <- .workspaces$import_client_branding_output()
@@ -4182,7 +4237,8 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$import_workspace_image_input(Ec2ImageId = Ec2ImageId, IngestionProcess = IngestionProcess, ImageName = ImageName, ImageDescription = ImageDescription, Tags = Tags, Applications = Applications)
   output <- .workspaces$import_workspace_image_output()
@@ -4245,7 +4301,8 @@ workspaces_list_account_links <- function(LinkStatusFilter = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountLinks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountLinks"),
+    stream_api = FALSE
   )
   input <- .workspaces$list_account_links_input(LinkStatusFilter = LinkStatusFilter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$list_account_links_output()
@@ -4317,7 +4374,8 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$list_available_management_cidr_ranges_input(ManagementCidrRangeConstraint = ManagementCidrRangeConstraint, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workspaces$list_available_management_cidr_ranges_output()
@@ -4382,7 +4440,8 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$migrate_workspace_input(SourceWorkspaceId = SourceWorkspaceId, BundleId = BundleId)
   output <- .workspaces$migrate_workspace_output()
@@ -4436,7 +4495,8 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_account_input(DedicatedTenancySupport = DedicatedTenancySupport, DedicatedTenancyManagementCidrRange = DedicatedTenancyManagementCidrRange)
   output <- .workspaces$modify_account_output()
@@ -4492,7 +4552,8 @@ workspaces_modify_certificate_based_auth_properties <- function(ResourceId, Cert
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_certificate_based_auth_properties_input(ResourceId = ResourceId, CertificateBasedAuthProperties = CertificateBasedAuthProperties, PropertiesToDelete = PropertiesToDelete)
   output <- .workspaces$modify_certificate_based_auth_properties_output()
@@ -4540,7 +4601,8 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_client_properties_input(ResourceId = ResourceId, ClientProperties = ClientProperties)
   output <- .workspaces$modify_client_properties_output()
@@ -4605,7 +4667,8 @@ workspaces_modify_saml_properties <- function(ResourceId, SamlProperties = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_saml_properties_input(ResourceId = ResourceId, SamlProperties = SamlProperties, PropertiesToDelete = PropertiesToDelete)
   output <- .workspaces$modify_saml_properties_output()
@@ -4661,7 +4724,8 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_selfservice_permissions_input(ResourceId = ResourceId, SelfservicePermissions = SelfservicePermissions)
   output <- .workspaces$modify_selfservice_permissions_output()
@@ -4721,7 +4785,8 @@ workspaces_modify_streaming_properties <- function(ResourceId, StreamingProperti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_streaming_properties_input(ResourceId = ResourceId, StreamingProperties = StreamingProperties)
   output <- .workspaces$modify_streaming_properties_output()
@@ -4739,7 +4804,7 @@ workspaces_modify_streaming_properties <- function(ResourceId, StreamingProperti
 #' @description
 #' Specifies which devices and operating systems users can use to access
 #' their WorkSpaces. For more information, see [Control Device
-#' Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access).
+#' Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/#control-device-access).
 #'
 #' @usage
 #' workspaces_modify_workspace_access_properties(ResourceId,
@@ -4779,7 +4844,8 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_workspace_access_properties_input(ResourceId = ResourceId, WorkspaceAccessProperties = WorkspaceAccessProperties)
   output <- .workspaces$modify_workspace_access_properties_output()
@@ -4833,7 +4899,8 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_workspace_creation_properties_input(ResourceId = ResourceId, WorkspaceCreationProperties = WorkspaceCreationProperties)
   output <- .workspaces$modify_workspace_creation_properties_output()
@@ -4898,7 +4965,8 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_workspace_properties_input(WorkspaceId = WorkspaceId, WorkspaceProperties = WorkspaceProperties, DataReplication = DataReplication)
   output <- .workspaces$modify_workspace_properties_output()
@@ -4949,7 +5017,8 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$modify_workspace_state_input(WorkspaceId = WorkspaceId, WorkspaceState = WorkspaceState)
   output <- .workspaces$modify_workspace_state_output()
@@ -5015,7 +5084,8 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$reboot_workspaces_input(RebootWorkspaceRequests = RebootWorkspaceRequests)
   output <- .workspaces$reboot_workspaces_output()
@@ -5083,7 +5153,8 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$rebuild_workspaces_input(RebuildWorkspaceRequests = RebuildWorkspaceRequests)
   output <- .workspaces$rebuild_workspaces_output()
@@ -5196,7 +5267,8 @@ workspaces_register_workspace_directory <- function(DirectoryId = NULL, SubnetId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$register_workspace_directory_input(DirectoryId = DirectoryId, SubnetIds = SubnetIds, EnableWorkDocs = EnableWorkDocs, EnableSelfService = EnableSelfService, Tenancy = Tenancy, Tags = Tags, WorkspaceDirectoryName = WorkspaceDirectoryName, WorkspaceDirectoryDescription = WorkspaceDirectoryDescription, UserIdentityType = UserIdentityType, IdcInstanceArn = IdcInstanceArn, MicrosoftEntraConfig = MicrosoftEntraConfig, WorkspaceType = WorkspaceType, ActiveDirectoryConfig = ActiveDirectoryConfig)
   output <- .workspaces$register_workspace_directory_output()
@@ -5251,7 +5323,8 @@ workspaces_reject_account_link_invitation <- function(LinkId, ClientToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$reject_account_link_invitation_input(LinkId = LinkId, ClientToken = ClientToken)
   output <- .workspaces$reject_account_link_invitation_output()
@@ -5304,7 +5377,8 @@ workspaces_restore_workspace <- function(WorkspaceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$restore_workspace_input(WorkspaceId = WorkspaceId)
   output <- .workspaces$restore_workspace_output()
@@ -5351,7 +5425,8 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$revoke_ip_rules_input(GroupId = GroupId, UserRules = UserRules)
   output <- .workspaces$revoke_ip_rules_output()
@@ -5412,7 +5487,8 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$start_workspaces_input(StartWorkspaceRequests = StartWorkspaceRequests)
   output <- .workspaces$start_workspaces_output()
@@ -5458,7 +5534,8 @@ workspaces_start_workspaces_pool <- function(PoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$start_workspaces_pool_input(PoolId = PoolId)
   output <- .workspaces$start_workspaces_pool_output()
@@ -5520,7 +5597,8 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$stop_workspaces_input(StopWorkspaceRequests = StopWorkspaceRequests)
   output <- .workspaces$stop_workspaces_output()
@@ -5567,7 +5645,8 @@ workspaces_stop_workspaces_pool <- function(PoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$stop_workspaces_pool_input(PoolId = PoolId)
   output <- .workspaces$stop_workspaces_pool_output()
@@ -5654,7 +5733,8 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$terminate_workspaces_input(TerminateWorkspaceRequests = TerminateWorkspaceRequests)
   output <- .workspaces$terminate_workspaces_output()
@@ -5697,7 +5777,8 @@ workspaces_terminate_workspaces_pool <- function(PoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$terminate_workspaces_pool_input(PoolId = PoolId)
   output <- .workspaces$terminate_workspaces_pool_output()
@@ -5740,7 +5821,8 @@ workspaces_terminate_workspaces_pool_session <- function(SessionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$terminate_workspaces_pool_session_input(SessionId = SessionId)
   output <- .workspaces$terminate_workspaces_pool_session_output()
@@ -5790,7 +5872,8 @@ workspaces_update_connect_client_add_in <- function(AddInId, ResourceId, Name = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$update_connect_client_add_in_input(AddInId = AddInId, ResourceId = ResourceId, Name = Name, URL = URL)
   output <- .workspaces$update_connect_client_add_in_output()
@@ -5861,7 +5944,8 @@ workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$update_connection_alias_permission_input(AliasId = AliasId, ConnectionAliasPermission = ConnectionAliasPermission)
   output <- .workspaces$update_connection_alias_permission_output()
@@ -5913,7 +5997,8 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$update_rules_of_ip_group_input(GroupId = GroupId, UserRules = UserRules)
   output <- .workspaces$update_rules_of_ip_group_output()
@@ -5965,7 +6050,8 @@ workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$update_workspace_bundle_input(BundleId = BundleId, ImageId = ImageId)
   output <- .workspaces$update_workspace_bundle_output()
@@ -6046,7 +6132,8 @@ workspaces_update_workspace_image_permission <- function(ImageId, AllowCopyImage
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$update_workspace_image_permission_input(ImageId = ImageId, AllowCopyImage = AllowCopyImage, SharedAccountId = SharedAccountId)
   output <- .workspaces$update_workspace_image_permission_output()
@@ -6149,7 +6236,8 @@ workspaces_update_workspaces_pool <- function(PoolId, Description = NULL, Bundle
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .workspaces$update_workspaces_pool_input(PoolId = PoolId, Description = Description, BundleId = BundleId, DirectoryId = DirectoryId, Capacity = Capacity, ApplicationSettings = ApplicationSettings, TimeoutSettings = TimeoutSettings)
   output <- .workspaces$update_workspaces_pool_output()

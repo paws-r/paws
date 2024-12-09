@@ -23,7 +23,8 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .simpledb$batch_delete_attributes_input(DomainName = DomainName, Items = Items)
   output <- .simpledb$batch_delete_attributes_output()
@@ -55,7 +56,8 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .simpledb$batch_put_attributes_input(DomainName = DomainName, Items = Items)
   output <- .simpledb$batch_put_attributes_output()
@@ -87,7 +89,8 @@ simpledb_create_domain <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .simpledb$create_domain_input(DomainName = DomainName)
   output <- .simpledb$create_domain_output()
@@ -125,7 +128,8 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .simpledb$delete_attributes_input(DomainName = DomainName, ItemName = ItemName, Attributes = Attributes, Expected = Expected)
   output <- .simpledb$delete_attributes_output()
@@ -155,7 +159,8 @@ simpledb_delete_domain <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .simpledb$delete_domain_input(DomainName = DomainName)
   output <- .simpledb$delete_domain_output()
@@ -187,7 +192,8 @@ simpledb_domain_metadata <- function(DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .simpledb$domain_metadata_input(DomainName = DomainName)
   output <- .simpledb$domain_metadata_output()
@@ -224,7 +230,8 @@ simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .simpledb$get_attributes_input(DomainName = DomainName, ItemName = ItemName, AttributeNames = AttributeNames, ConsistentRead = ConsistentRead)
   output <- .simpledb$get_attributes_output()
@@ -258,7 +265,8 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxNumberOfDomains", result_key = "DomainNames")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxNumberOfDomains", result_key = "DomainNames"),
+    stream_api = FALSE
   )
   input <- .simpledb$list_domains_input(MaxNumberOfDomains = MaxNumberOfDomains, NextToken = NextToken)
   output <- .simpledb$list_domains_output()
@@ -294,7 +302,8 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .simpledb$put_attributes_input(DomainName = DomainName, ItemName = ItemName, Attributes = Attributes, Expected = Expected)
   output <- .simpledb$put_attributes_output()
@@ -332,7 +341,8 @@ simpledb_select <- function(SelectExpression, NextToken = NULL, ConsistentRead =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Items")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Items"),
+    stream_api = FALSE
   )
   input <- .simpledb$select_input(SelectExpression = SelectExpression, NextToken = NextToken, ConsistentRead = ConsistentRead)
   output <- .simpledb$select_output()

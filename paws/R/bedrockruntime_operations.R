@@ -132,7 +132,8 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
     http_method = "POST",
     http_path = "/guardrail/{guardrailIdentifier}/version/{guardrailVersion}/apply",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrockruntime$apply_guardrail_input(guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion, source = source, content = content)
   output <- .bedrockruntime$apply_guardrail_output()
@@ -181,13 +182,13 @@ bedrockruntime_apply_guardrail <- function(guardrailIdentifier, guardrailVersion
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
 #'     (on-demand
-#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use an inference profile, specify the inference profile ID or
 #'     its ARN. For a list of inference profile IDs, see [Supported Regions
 #'     and models for cross-region
-#'     inference](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html)
+#'     inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use a provisioned model, specify the ARN of the Provisioned
@@ -578,7 +579,8 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
     http_method = "POST",
     http_path = "/model/{modelId}/converse",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrockruntime$converse_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths)
   output <- .bedrockruntime$converse_output()
@@ -637,13 +639,13 @@ bedrockruntime_converse <- function(modelId, messages, system = NULL, inferenceC
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
 #'     (on-demand
-#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use an inference profile, specify the inference profile ID or
 #'     its ARN. For a list of inference profile IDs, see [Supported Regions
 #'     and models for cross-region
-#'     inference](https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference-support.html)
+#'     inference](https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use a provisioned model, specify the ARN of the Provisioned
@@ -1024,7 +1026,8 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
     http_method = "POST",
     http_path = "/model/{modelId}/converse-stream",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = TRUE
   )
   input <- .bedrockruntime$converse_stream_input(modelId = modelId, messages = messages, system = system, inferenceConfig = inferenceConfig, toolConfig = toolConfig, guardrailConfig = guardrailConfig, additionalModelRequestFields = additionalModelRequestFields, additionalModelResponseFieldPaths = additionalModelResponseFieldPaths)
   output <- .bedrockruntime$converse_stream_output()
@@ -1072,7 +1075,7 @@ bedrockruntime_converse_stream <- function(modelId, messages, system = NULL, inf
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
 #'     (on-demand
-#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use a provisioned model, specify the ARN of the Provisioned
@@ -1143,7 +1146,8 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
     http_method = "POST",
     http_path = "/model/{modelId}/invoke",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .bedrockruntime$invoke_model_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrockruntime$invoke_model_output()
@@ -1200,7 +1204,7 @@ bedrockruntime_invoke_model <- function(body, contentType = NULL, accept = NULL,
 #' -   If you use a base model, specify the model ID or its ARN. For a list
 #'     of model IDs for base models, see [Amazon Bedrock base model IDs
 #'     (on-demand
-#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/model-ids.html#model-ids-arns)
+#'     throughput)](https://docs.aws.amazon.com/bedrock/latest/userguide/models-supported.html#model-ids-arns)
 #'     in the Amazon Bedrock User Guide.
 #' 
 #' -   If you use a provisioned model, specify the ARN of the Provisioned
@@ -1295,7 +1299,8 @@ bedrockruntime_invoke_model_with_response_stream <- function(body, contentType =
     http_method = "POST",
     http_path = "/model/{modelId}/invoke-with-response-stream",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = TRUE
   )
   input <- .bedrockruntime$invoke_model_with_response_stream_input(body = body, contentType = contentType, accept = accept, modelId = modelId, trace = trace, guardrailIdentifier = guardrailIdentifier, guardrailVersion = guardrailVersion)
   output <- .bedrockruntime$invoke_model_with_response_stream_output()

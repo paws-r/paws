@@ -23,7 +23,7 @@ Services Regions.
 
 For a list of countries/regions where SMS text messages can be sent, and
 the latest Amazon Web Services Regions where SMS text messaging is
-supported, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-supported-regions-countries.html}{Supported Regions and Countries}
+supported, see \href{https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html}{Supported Regions and Countries}
 in the \emph{Amazon SNS Developer Guide}.
 
 For more information about notifications in Amazon Lightsail, see

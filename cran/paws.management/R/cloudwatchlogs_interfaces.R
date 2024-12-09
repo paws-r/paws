@@ -25,13 +25,13 @@ NULL
 
 .cloudwatchlogs$create_delivery_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), recordFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), fieldDelimiter = structure(logical(0), tags = list(type = "string")), s3DeliveryConfiguration = structure(list(suffixPath = structure(logical(0), tags = list(type = "string")), enableHiveCompatiblePath = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudwatchlogs$create_delivery_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(delivery = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(delivery = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), recordFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), fieldDelimiter = structure(logical(0), tags = list(type = "string")), s3DeliveryConfiguration = structure(list(suffixPath = structure(logical(0), tags = list(type = "string")), enableHiveCompatiblePath = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -243,6 +243,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudwatchlogs$describe_configuration_templates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(service = structure(logical(0), tags = list(type = "string")), logTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), deliveryDestinationTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_configuration_templates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(configurationTemplates = structure(list(structure(list(service = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), defaultDeliveryConfigValues = structure(list(recordFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), fieldDelimiter = structure(logical(0), tags = list(type = "string")), s3DeliveryConfiguration = structure(list(suffixPath = structure(logical(0), tags = list(type = "string")), enableHiveCompatiblePath = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), allowedFields = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), mandatory = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), allowedOutputFormats = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), allowedActionForAllowVendedLogsDeliveryForResource = structure(logical(0), tags = list(type = "string")), allowedFieldDelimiters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), allowedSuffixPathFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchlogs$describe_deliveries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -251,7 +263,7 @@ NULL
 
 .cloudwatchlogs$describe_deliveries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(deliveries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(deliveries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), recordFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), fieldDelimiter = structure(logical(0), tags = list(type = "string")), s3DeliveryConfiguration = structure(list(suffixPath = structure(logical(0), tags = list(type = "string")), enableHiveCompatiblePath = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -429,7 +441,7 @@ NULL
 
 .cloudwatchlogs$get_delivery_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(delivery = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(delivery = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), recordFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), fieldDelimiter = structure(logical(0), tags = list(type = "string")), s3DeliveryConfiguration = structure(list(suffixPath = structure(logical(0), tags = list(type = "string")), enableHiveCompatiblePath = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -821,6 +833,18 @@ NULL
 
 .cloudwatchlogs$update_anomaly_output <- function(...) {
   list()
+}
+
+.cloudwatchlogs$update_delivery_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), recordFields = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), fieldDelimiter = structure(logical(0), tags = list(type = "string")), s3DeliveryConfiguration = structure(list(suffixPath = structure(logical(0), tags = list(type = "string")), enableHiveCompatiblePath = structure(logical(0), tags = list(box = TRUE, type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$update_delivery_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
 }
 
 .cloudwatchlogs$update_log_anomaly_detector_input <- function(...) {

@@ -41,7 +41,7 @@ Region in which the rule is created, even if the resources are not
 tagged.}
 }
 \description{
-Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/recycle-bin-working-with-rules.html#recycle-bin-update-rule}{Update Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Updates an existing Recycle Bin retention rule. You can update a retention rule's description, resource tags, and retention period at any time after creation. You can't update a retention rule's resource type after creation. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/#recycle-bin-update-rule}{Update Recycle Bin retention rules} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/recyclebin_update_rule/} for full documentation.
 }

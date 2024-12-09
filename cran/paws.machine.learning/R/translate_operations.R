@@ -32,7 +32,8 @@ translate_create_parallel_data <- function(Name, Description = NULL, ParallelDat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$create_parallel_data_input(Name = Name, Description = Description, ParallelDataConfig = ParallelDataConfig, EncryptionKey = EncryptionKey, ClientToken = ClientToken, Tags = Tags)
   output <- .translate$create_parallel_data_output()
@@ -62,7 +63,8 @@ translate_delete_parallel_data <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$delete_parallel_data_input(Name = Name)
   output <- .translate$delete_parallel_data_output()
@@ -92,7 +94,8 @@ translate_delete_terminology <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$delete_terminology_input(Name = Name)
   output <- .translate$delete_terminology_output()
@@ -126,7 +129,8 @@ translate_describe_text_translation_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$describe_text_translation_job_input(JobId = JobId)
   output <- .translate$describe_text_translation_job_output()
@@ -156,7 +160,8 @@ translate_get_parallel_data <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$get_parallel_data_input(Name = Name)
   output <- .translate$get_parallel_data_output()
@@ -196,7 +201,8 @@ translate_get_terminology <- function(Name, TerminologyDataFormat = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$get_terminology_input(Name = Name, TerminologyDataFormat = TerminologyDataFormat)
   output <- .translate$get_terminology_output()
@@ -238,7 +244,8 @@ translate_import_terminology <- function(Name, MergeStrategy, Description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$import_terminology_input(Name = Name, MergeStrategy = MergeStrategy, Description = Description, TerminologyData = TerminologyData, EncryptionKey = EncryptionKey, Tags = Tags)
   output <- .translate$import_terminology_output()
@@ -273,7 +280,8 @@ translate_list_languages <- function(DisplayLanguageCode = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .translate$list_languages_input(DisplayLanguageCode = DisplayLanguageCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_languages_output()
@@ -305,7 +313,8 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .translate$list_parallel_data_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_parallel_data_output()
@@ -336,7 +345,8 @@ translate_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .translate$list_tags_for_resource_output()
@@ -368,7 +378,8 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .translate$list_terminologies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_terminologies_output()
@@ -403,7 +414,8 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .translate$list_text_translation_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .translate$list_text_translation_jobs_output()
@@ -499,7 +511,8 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$start_text_translation_job_input(JobName = JobName, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, SourceLanguageCode = SourceLanguageCode, TargetLanguageCodes = TargetLanguageCodes, TerminologyNames = TerminologyNames, ParallelDataNames = ParallelDataNames, ClientToken = ClientToken, Settings = Settings)
   output <- .translate$start_text_translation_job_output()
@@ -529,7 +542,8 @@ translate_stop_text_translation_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$stop_text_translation_job_input(JobId = JobId)
   output <- .translate$stop_text_translation_job_output()
@@ -563,7 +577,8 @@ translate_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .translate$tag_resource_output()
@@ -631,7 +646,8 @@ translate_translate_document <- function(Document, TerminologyNames = NULL, Sour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$translate_document_input(Document = Document, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode, Settings = Settings)
   output <- .translate$translate_document_output()
@@ -700,7 +716,8 @@ translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLangua
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$translate_text_input(Text = Text, TerminologyNames = TerminologyNames, SourceLanguageCode = SourceLanguageCode, TargetLanguageCode = TargetLanguageCode, Settings = Settings)
   output <- .translate$translate_text_output()
@@ -734,7 +751,8 @@ translate_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .translate$untag_resource_output()
@@ -769,7 +787,8 @@ translate_update_parallel_data <- function(Name, Description = NULL, ParallelDat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .translate$update_parallel_data_input(Name = Name, Description = Description, ParallelDataConfig = ParallelDataConfig, ClientToken = ClientToken)
   output <- .translate$update_parallel_data_output()

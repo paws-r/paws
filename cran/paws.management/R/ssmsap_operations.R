@@ -23,7 +23,8 @@ ssmsap_delete_resource_permission <- function(ActionType = NULL, SourceResourceA
     http_method = "POST",
     http_path = "/delete-resource-permission",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$delete_resource_permission_input(ActionType = ActionType, SourceResourceArn = SourceResourceArn, ResourceArn = ResourceArn)
   output <- .ssmsap$delete_resource_permission_output()
@@ -53,7 +54,8 @@ ssmsap_deregister_application <- function(ApplicationId) {
     http_method = "POST",
     http_path = "/deregister-application",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$deregister_application_input(ApplicationId = ApplicationId)
   output <- .ssmsap$deregister_application_output()
@@ -85,7 +87,8 @@ ssmsap_get_application <- function(ApplicationId = NULL, ApplicationArn = NULL, 
     http_method = "POST",
     http_path = "/get-application",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$get_application_input(ApplicationId = ApplicationId, ApplicationArn = ApplicationArn, AppRegistryArn = AppRegistryArn)
   output <- .ssmsap$get_application_output()
@@ -117,7 +120,8 @@ ssmsap_get_component <- function(ApplicationId, ComponentId) {
     http_method = "POST",
     http_path = "/get-component",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$get_component_input(ApplicationId = ApplicationId, ComponentId = ComponentId)
   output <- .ssmsap$get_component_output()
@@ -151,7 +155,8 @@ ssmsap_get_database <- function(ApplicationId = NULL, ComponentId = NULL, Databa
     http_method = "POST",
     http_path = "/get-database",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$get_database_input(ApplicationId = ApplicationId, ComponentId = ComponentId, DatabaseId = DatabaseId, DatabaseArn = DatabaseArn)
   output <- .ssmsap$get_database_output()
@@ -181,7 +186,8 @@ ssmsap_get_operation <- function(OperationId) {
     http_method = "POST",
     http_path = "/get-operation",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$get_operation_input(OperationId = OperationId)
   output <- .ssmsap$get_operation_output()
@@ -212,7 +218,8 @@ ssmsap_get_resource_permission <- function(ActionType = NULL, ResourceArn) {
     http_method = "POST",
     http_path = "/get-resource-permission",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$get_resource_permission_input(ActionType = ActionType, ResourceArn = ResourceArn)
   output <- .ssmsap$get_resource_permission_output()
@@ -246,7 +253,8 @@ ssmsap_list_applications <- function(NextToken = NULL, MaxResults = NULL, Filter
     http_method = "POST",
     http_path = "/list-applications",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Applications")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Applications"),
+    stream_api = FALSE
   )
   input <- .ssmsap$list_applications_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ssmsap$list_applications_output()
@@ -283,7 +291,8 @@ ssmsap_list_components <- function(ApplicationId = NULL, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/list-components",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Components")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Components"),
+    stream_api = FALSE
   )
   input <- .ssmsap$list_components_input(ApplicationId = ApplicationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmsap$list_components_output()
@@ -320,7 +329,8 @@ ssmsap_list_databases <- function(ApplicationId = NULL, ComponentId = NULL, Next
     http_method = "POST",
     http_path = "/list-databases",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Databases")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Databases"),
+    stream_api = FALSE
   )
   input <- .ssmsap$list_databases_input(ApplicationId = ApplicationId, ComponentId = ComponentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssmsap$list_databases_output()
@@ -362,7 +372,8 @@ ssmsap_list_operation_events <- function(OperationId, MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/list-operation-events",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OperationEvents")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OperationEvents"),
+    stream_api = FALSE
   )
   input <- .ssmsap$list_operation_events_input(OperationId = OperationId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssmsap$list_operation_events_output()
@@ -398,7 +409,8 @@ ssmsap_list_operations <- function(ApplicationId, MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/list-operations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Operations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Operations"),
+    stream_api = FALSE
   )
   input <- .ssmsap$list_operations_input(ApplicationId = ApplicationId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssmsap$list_operations_output()
@@ -429,7 +441,8 @@ ssmsap_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ssmsap$list_tags_for_resource_output()
@@ -461,7 +474,8 @@ ssmsap_put_resource_permission <- function(ActionType, SourceResourceArn, Resour
     http_method = "POST",
     http_path = "/put-resource-permission",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$put_resource_permission_input(ActionType = ActionType, SourceResourceArn = SourceResourceArn, ResourceArn = ResourceArn)
   output <- .ssmsap$put_resource_permission_output()
@@ -498,7 +512,8 @@ ssmsap_register_application <- function(ApplicationId, ApplicationType, Instance
     http_method = "POST",
     http_path = "/register-application",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$register_application_input(ApplicationId = ApplicationId, ApplicationType = ApplicationType, Instances = Instances, SapInstanceNumber = SapInstanceNumber, Sid = Sid, Tags = Tags, Credentials = Credentials, DatabaseArn = DatabaseArn)
   output <- .ssmsap$register_application_output()
@@ -528,7 +543,8 @@ ssmsap_start_application <- function(ApplicationId) {
     http_method = "POST",
     http_path = "/start-application",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$start_application_input(ApplicationId = ApplicationId)
   output <- .ssmsap$start_application_output()
@@ -558,7 +574,8 @@ ssmsap_start_application_refresh <- function(ApplicationId) {
     http_method = "POST",
     http_path = "/start-application-refresh",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$start_application_refresh_input(ApplicationId = ApplicationId)
   output <- .ssmsap$start_application_refresh_output()
@@ -595,7 +612,8 @@ ssmsap_stop_application <- function(ApplicationId, StopConnectedEntity = NULL, I
     http_method = "POST",
     http_path = "/stop-application",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$stop_application_input(ApplicationId = ApplicationId, StopConnectedEntity = StopConnectedEntity, IncludeEc2InstanceShutdown = IncludeEc2InstanceShutdown)
   output <- .ssmsap$stop_application_output()
@@ -626,7 +644,8 @@ ssmsap_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ssmsap$tag_resource_output()
@@ -658,7 +677,8 @@ ssmsap_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ssmsap$untag_resource_output()
@@ -694,7 +714,8 @@ ssmsap_update_application_settings <- function(ApplicationId, CredentialsToAddOr
     http_method = "POST",
     http_path = "/update-application-settings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ssmsap$update_application_settings_input(ApplicationId = ApplicationId, CredentialsToAddOrUpdate = CredentialsToAddOrUpdate, CredentialsToRemove = CredentialsToRemove, Backint = Backint, DatabaseArn = DatabaseArn)
   output <- .ssmsap$update_application_settings_output()

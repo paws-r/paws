@@ -88,7 +88,8 @@ codestarnotifications_create_notification_rule <- function(Name, EventTypeIds, R
     http_method = "POST",
     http_path = "/createNotificationRule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$create_notification_rule_input(Name = Name, EventTypeIds = EventTypeIds, Resource = Resource, Targets = Targets, DetailType = DetailType, ClientRequestToken = ClientRequestToken, Tags = Tags, Status = Status)
   output <- .codestarnotifications$create_notification_rule_output()
@@ -137,7 +138,8 @@ codestarnotifications_delete_notification_rule <- function(Arn) {
     http_method = "POST",
     http_path = "/deleteNotificationRule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$delete_notification_rule_input(Arn = Arn)
   output <- .codestarnotifications$delete_notification_rule_output()
@@ -186,7 +188,8 @@ codestarnotifications_delete_target <- function(TargetAddress, ForceUnsubscribeA
     http_method = "POST",
     http_path = "/deleteTarget",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$delete_target_input(TargetAddress = TargetAddress, ForceUnsubscribeAll = ForceUnsubscribeAll)
   output <- .codestarnotifications$delete_target_output()
@@ -263,7 +266,8 @@ codestarnotifications_describe_notification_rule <- function(Arn) {
     http_method = "POST",
     http_path = "/describeNotificationRule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$describe_notification_rule_input(Arn = Arn)
   output <- .codestarnotifications$describe_notification_rule_output()
@@ -333,7 +337,8 @@ codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = N
     http_method = "POST",
     http_path = "/listEventTypes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EventTypes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EventTypes"),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$list_event_types_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_event_types_output()
@@ -406,7 +411,8 @@ codestarnotifications_list_notification_rules <- function(Filters = NULL, NextTo
     http_method = "POST",
     http_path = "/listNotificationRules",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NotificationRules")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NotificationRules"),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$list_notification_rules_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_notification_rules_output()
@@ -456,7 +462,8 @@ codestarnotifications_list_tags_for_resource <- function(Arn) {
     http_method = "POST",
     http_path = "/listTagsForResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$list_tags_for_resource_input(Arn = Arn)
   output <- .codestarnotifications$list_tags_for_resource_output()
@@ -529,7 +536,8 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
     http_method = "POST",
     http_path = "/listTargets",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Targets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Targets"),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$list_targets_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .codestarnotifications$list_targets_output()
@@ -590,7 +598,8 @@ codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NU
     http_method = "POST",
     http_path = "/subscribe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$subscribe_input(Arn = Arn, Target = Target, ClientRequestToken = ClientRequestToken)
   output <- .codestarnotifications$subscribe_output()
@@ -645,7 +654,8 @@ codestarnotifications_tag_resource <- function(Arn, Tags) {
     http_method = "POST",
     http_path = "/tagResource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$tag_resource_input(Arn = Arn, Tags = Tags)
   output <- .codestarnotifications$tag_resource_output()
@@ -699,7 +709,8 @@ codestarnotifications_unsubscribe <- function(Arn, TargetAddress) {
     http_method = "POST",
     http_path = "/unsubscribe",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$unsubscribe_input(Arn = Arn, TargetAddress = TargetAddress)
   output <- .codestarnotifications$unsubscribe_output()
@@ -749,7 +760,8 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
     http_method = "POST",
     http_path = "/untagResource/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$untag_resource_input(Arn = Arn, TagKeys = TagKeys)
   output <- .codestarnotifications$untag_resource_output()
@@ -825,7 +837,8 @@ codestarnotifications_update_notification_rule <- function(Arn, Name = NULL, Sta
     http_method = "POST",
     http_path = "/updateNotificationRule",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .codestarnotifications$update_notification_rule_input(Arn = Arn, Name = Name, Status = Status, EventTypeIds = EventTypeIds, Targets = Targets, DetailType = DetailType)
   output <- .codestarnotifications$update_notification_rule_output()

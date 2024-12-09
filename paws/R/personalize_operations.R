@@ -126,7 +126,8 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, batchInferenceJobConfig = batchInferenceJobConfig, tags = tags, batchInferenceJobMode = batchInferenceJobMode, themeGenerationConfig = themeGenerationConfig)
   output <- .personalize$create_batch_inference_job_output()
@@ -217,7 +218,8 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_batch_segment_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, tags = tags)
   output <- .personalize$create_batch_segment_job_output()
@@ -369,7 +371,8 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_campaign_input(name = name, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig, tags = tags)
   output <- .personalize$create_campaign_output()
@@ -483,7 +486,8 @@ personalize_create_data_deletion_job <- function(jobName, datasetGroupArn, dataS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_data_deletion_job_input(jobName = jobName, datasetGroupArn = datasetGroupArn, dataSource = dataSource, roleArn = roleArn, tags = tags)
   output <- .personalize$create_data_deletion_job_output()
@@ -598,7 +602,8 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_dataset_input(name = name, schemaArn = schemaArn, datasetGroupArn = datasetGroupArn, datasetType = datasetType, tags = tags)
   output <- .personalize$create_dataset_output()
@@ -694,7 +699,8 @@ personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestion
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_dataset_export_job_input(jobName = jobName, datasetArn = datasetArn, ingestionMode = ingestionMode, roleArn = roleArn, jobOutput = jobOutput, tags = tags)
   output <- .personalize$create_dataset_export_job_output()
@@ -820,7 +826,8 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_dataset_group_input(name = name, roleArn = roleArn, kmsKeyArn = kmsKeyArn, domain = domain, tags = tags)
   output <- .personalize$create_dataset_group_output()
@@ -942,7 +949,8 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_dataset_import_job_input(jobName = jobName, datasetArn = datasetArn, dataSource = dataSource, roleArn = roleArn, tags = tags, importMode = importMode, publishAttributionMetricsToS3 = publishAttributionMetricsToS3)
   output <- .personalize$create_dataset_import_job_output()
@@ -1039,7 +1047,8 @@ personalize_create_event_tracker <- function(name, datasetGroupArn, tags = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_event_tracker_input(name = name, datasetGroupArn = datasetGroupArn, tags = tags)
   output <- .personalize$create_event_tracker_output()
@@ -1106,7 +1115,8 @@ personalize_create_filter <- function(name, datasetGroupArn, filterExpression, t
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_filter_input(name = name, datasetGroupArn = datasetGroupArn, filterExpression = filterExpression, tags = tags)
   output <- .personalize$create_filter_output()
@@ -1182,7 +1192,8 @@ personalize_create_metric_attribution <- function(name, datasetGroupArn, metrics
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_metric_attribution_input(name = name, datasetGroupArn = datasetGroupArn, metrics = metrics, metricsOutputConfig = metricsOutputConfig)
   output <- .personalize$create_metric_attribution_output()
@@ -1327,7 +1338,8 @@ personalize_create_recommender <- function(name, datasetGroupArn, recipeArn, rec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_recommender_input(name = name, datasetGroupArn = datasetGroupArn, recipeArn = recipeArn, recommenderConfig = recommenderConfig, tags = tags)
   output <- .personalize$create_recommender_output()
@@ -1396,7 +1408,8 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_schema_input(name = name, schema = schema, domain = domain)
   output <- .personalize$create_schema_output()
@@ -1653,7 +1666,8 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, performAutoTraining = performAutoTraining, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
   output <- .personalize$create_solution_output()
@@ -1781,7 +1795,8 @@ personalize_create_solution_version <- function(name = NULL, solutionArn, traini
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$create_solution_version_input(name = name, solutionArn = solutionArn, trainingMode = trainingMode, tags = tags)
   output <- .personalize$create_solution_version_output()
@@ -1829,7 +1844,8 @@ personalize_delete_campaign <- function(campaignArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_campaign_input(campaignArn = campaignArn)
   output <- .personalize$delete_campaign_output()
@@ -1875,7 +1891,8 @@ personalize_delete_dataset <- function(datasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_dataset_input(datasetArn = datasetArn)
   output <- .personalize$delete_dataset_output()
@@ -1925,7 +1942,8 @@ personalize_delete_dataset_group <- function(datasetGroupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_dataset_group_input(datasetGroupArn = datasetGroupArn)
   output <- .personalize$delete_dataset_group_output()
@@ -1970,7 +1988,8 @@ personalize_delete_event_tracker <- function(eventTrackerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_event_tracker_input(eventTrackerArn = eventTrackerArn)
   output <- .personalize$delete_event_tracker_output()
@@ -2013,7 +2032,8 @@ personalize_delete_filter <- function(filterArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_filter_input(filterArn = filterArn)
   output <- .personalize$delete_filter_output()
@@ -2056,7 +2076,8 @@ personalize_delete_metric_attribution <- function(metricAttributionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_metric_attribution_input(metricAttributionArn = metricAttributionArn)
   output <- .personalize$delete_metric_attribution_output()
@@ -2102,7 +2123,8 @@ personalize_delete_recommender <- function(recommenderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$delete_recommender_output()
@@ -2147,7 +2169,8 @@ personalize_delete_schema <- function(schemaArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_schema_input(schemaArn = schemaArn)
   output <- .personalize$delete_schema_output()
@@ -2197,7 +2220,8 @@ personalize_delete_solution <- function(solutionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$delete_solution_input(solutionArn = solutionArn)
   output <- .personalize$delete_solution_output()
@@ -2293,7 +2317,8 @@ personalize_describe_algorithm <- function(algorithmArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_algorithm_input(algorithmArn = algorithmArn)
   output <- .personalize$describe_algorithm_output()
@@ -2383,7 +2408,8 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_batch_inference_job_input(batchInferenceJobArn = batchInferenceJobArn)
   output <- .personalize$describe_batch_inference_job_output()
@@ -2462,7 +2488,8 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_batch_segment_job_input(batchSegmentJobArn = batchSegmentJobArn)
   output <- .personalize$describe_batch_segment_job_output()
@@ -2561,7 +2588,8 @@ personalize_describe_campaign <- function(campaignArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_campaign_input(campaignArn = campaignArn)
   output <- .personalize$describe_campaign_output()
@@ -2629,7 +2657,8 @@ personalize_describe_data_deletion_job <- function(dataDeletionJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_data_deletion_job_input(dataDeletionJobArn = dataDeletionJobArn)
   output <- .personalize$describe_data_deletion_job_output()
@@ -2703,7 +2732,8 @@ personalize_describe_dataset <- function(datasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_dataset_input(datasetArn = datasetArn)
   output <- .personalize$describe_dataset_output()
@@ -2774,7 +2804,8 @@ personalize_describe_dataset_export_job <- function(datasetExportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_dataset_export_job_input(datasetExportJobArn = datasetExportJobArn)
   output <- .personalize$describe_dataset_export_job_output()
@@ -2837,7 +2868,8 @@ personalize_describe_dataset_group <- function(datasetGroupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_dataset_group_input(datasetGroupArn = datasetGroupArn)
   output <- .personalize$describe_dataset_group_output()
@@ -2906,7 +2938,8 @@ personalize_describe_dataset_import_job <- function(datasetImportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_dataset_import_job_input(datasetImportJobArn = datasetImportJobArn)
   output <- .personalize$describe_dataset_import_job_output()
@@ -2969,7 +3002,8 @@ personalize_describe_event_tracker <- function(eventTrackerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_event_tracker_input(eventTrackerArn = eventTrackerArn)
   output <- .personalize$describe_event_tracker_output()
@@ -3031,7 +3065,8 @@ personalize_describe_feature_transformation <- function(featureTransformationArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_feature_transformation_input(featureTransformationArn = featureTransformationArn)
   output <- .personalize$describe_feature_transformation_output()
@@ -3092,7 +3127,8 @@ personalize_describe_filter <- function(filterArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_filter_input(filterArn = filterArn)
   output <- .personalize$describe_filter_output()
@@ -3159,7 +3195,8 @@ personalize_describe_metric_attribution <- function(metricAttributionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_metric_attribution_input(metricAttributionArn = metricAttributionArn)
   output <- .personalize$describe_metric_attribution_output()
@@ -3240,7 +3277,8 @@ personalize_describe_recipe <- function(recipeArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_recipe_input(recipeArn = recipeArn)
   output <- .personalize$describe_recipe_output()
@@ -3360,7 +3398,8 @@ personalize_describe_recommender <- function(recommenderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$describe_recommender_output()
@@ -3420,7 +3459,8 @@ personalize_describe_schema <- function(schemaArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_schema_input(schemaArn = schemaArn)
   output <- .personalize$describe_schema_output()
@@ -3581,7 +3621,8 @@ personalize_describe_solution <- function(solutionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_solution_input(solutionArn = solutionArn)
   output <- .personalize$describe_solution_output()
@@ -3719,7 +3760,8 @@ personalize_describe_solution_version <- function(solutionVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$describe_solution_version_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$describe_solution_version_output()
@@ -3771,7 +3813,8 @@ personalize_get_solution_metrics <- function(solutionVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$get_solution_metrics_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$get_solution_metrics_output()
@@ -3844,7 +3887,8 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchInferenceJobs")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchInferenceJobs"),
+    stream_api = FALSE
   )
   input <- .personalize$list_batch_inference_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_batch_inference_jobs_output()
@@ -3916,7 +3960,8 @@ personalize_list_batch_segment_jobs <- function(solutionVersionArn = NULL, nextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchSegmentJobs")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchSegmentJobs"),
+    stream_api = FALSE
   )
   input <- .personalize$list_batch_segment_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_batch_segment_jobs_output()
@@ -3990,7 +4035,8 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "campaigns")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "campaigns"),
+    stream_api = FALSE
   )
   input <- .personalize$list_campaigns_input(solutionArn = solutionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_campaigns_output()
@@ -4068,7 +4114,8 @@ personalize_list_data_deletion_jobs <- function(datasetGroupArn = NULL, nextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$list_data_deletion_jobs_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_data_deletion_jobs_output()
@@ -4144,7 +4191,8 @@ personalize_list_dataset_export_jobs <- function(datasetArn = NULL, nextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetExportJobs")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetExportJobs"),
+    stream_api = FALSE
   )
   input <- .personalize$list_dataset_export_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_export_jobs_output()
@@ -4214,7 +4262,8 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetGroups")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetGroups"),
+    stream_api = FALSE
   )
   input <- .personalize$list_dataset_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_groups_output()
@@ -4291,7 +4340,8 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetImportJobs")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetImportJobs"),
+    stream_api = FALSE
   )
   input <- .personalize$list_dataset_import_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_import_jobs_output()
@@ -4363,7 +4413,8 @@ personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasets")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasets"),
+    stream_api = FALSE
   )
   input <- .personalize$list_datasets_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_datasets_output()
@@ -4434,7 +4485,8 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTrackers")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTrackers"),
+    stream_api = FALSE
   )
   input <- .personalize$list_event_trackers_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_event_trackers_output()
@@ -4503,7 +4555,8 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "Filters")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "Filters"),
+    stream_api = FALSE
   )
   input <- .personalize$list_filters_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_filters_output()
@@ -4565,7 +4618,8 @@ personalize_list_metric_attribution_metrics <- function(metricAttributionArn = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metrics")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metrics"),
+    stream_api = FALSE
   )
   input <- .personalize$list_metric_attribution_metrics_input(metricAttributionArn = metricAttributionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_metric_attribution_metrics_output()
@@ -4634,7 +4688,8 @@ personalize_list_metric_attributions <- function(datasetGroupArn = NULL, nextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metricAttributions")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metricAttributions"),
+    stream_api = FALSE
   )
   input <- .personalize$list_metric_attributions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_metric_attributions_output()
@@ -4708,7 +4763,8 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recipes")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recipes"),
+    stream_api = FALSE
   )
   input <- .personalize$list_recipes_input(recipeProvider = recipeProvider, nextToken = nextToken, maxResults = maxResults, domain = domain)
   output <- .personalize$list_recipes_output()
@@ -4798,7 +4854,8 @@ personalize_list_recommenders <- function(datasetGroupArn = NULL, nextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recommenders")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recommenders"),
+    stream_api = FALSE
   )
   input <- .personalize$list_recommenders_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_recommenders_output()
@@ -4866,7 +4923,8 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "schemas")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "schemas"),
+    stream_api = FALSE
   )
   input <- .personalize$list_schemas_input(nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_schemas_output()
@@ -4938,7 +4996,8 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutionVersions")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutionVersions"),
+    stream_api = FALSE
   )
   input <- .personalize$list_solution_versions_input(solutionArn = solutionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_solution_versions_output()
@@ -5010,7 +5069,8 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutions")
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutions"),
+    stream_api = FALSE
   )
   input <- .personalize$list_solutions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_solutions_output()
@@ -5065,7 +5125,8 @@ personalize_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .personalize$list_tags_for_resource_output()
@@ -5115,7 +5176,8 @@ personalize_start_recommender <- function(recommenderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$start_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$start_recommender_output()
@@ -5164,7 +5226,8 @@ personalize_stop_recommender <- function(recommenderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$stop_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$stop_recommender_output()
@@ -5223,7 +5286,8 @@ personalize_stop_solution_version_creation <- function(solutionVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$stop_solution_version_creation_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$stop_solution_version_creation_output()
@@ -5275,7 +5339,8 @@ personalize_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .personalize$tag_resource_output()
@@ -5324,7 +5389,8 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .personalize$untag_resource_output()
@@ -5430,7 +5496,8 @@ personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$update_campaign_input(campaignArn = campaignArn, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig)
   output <- .personalize$update_campaign_output()
@@ -5482,7 +5549,8 @@ personalize_update_dataset <- function(datasetArn, schemaArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$update_dataset_input(datasetArn = datasetArn, schemaArn = schemaArn)
   output <- .personalize$update_dataset_output()
@@ -5551,7 +5619,8 @@ personalize_update_metric_attribution <- function(addMetrics = NULL, removeMetri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$update_metric_attribution_input(addMetrics = addMetrics, removeMetrics = removeMetrics, metricsOutputConfig = metricsOutputConfig, metricAttributionArn = metricAttributionArn)
   output <- .personalize$update_metric_attribution_output()
@@ -5621,7 +5690,8 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$update_recommender_input(recommenderArn = recommenderArn, recommenderConfig = recommenderConfig)
   output <- .personalize$update_recommender_output()
@@ -5708,7 +5778,8 @@ personalize_update_solution <- function(solutionArn, performAutoTraining = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .personalize$update_solution_input(solutionArn = solutionArn, performAutoTraining = performAutoTraining, solutionUpdateConfig = solutionUpdateConfig)
   output <- .personalize$update_solution_output()

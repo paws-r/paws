@@ -64,7 +64,8 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$attach_instances_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$attach_instances_output()
@@ -165,7 +166,8 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$attach_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, TargetGroupARNs = TargetGroupARNs)
   output <- .autoscaling$attach_load_balancer_target_groups_output()
@@ -254,7 +256,8 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$attach_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, LoadBalancerNames = LoadBalancerNames)
   output <- .autoscaling$attach_load_balancers_output()
@@ -343,7 +346,8 @@ autoscaling_attach_traffic_sources <- function(AutoScalingGroupName, TrafficSour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$attach_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSources = TrafficSources)
   output <- .autoscaling$attach_traffic_sources_output()
@@ -405,7 +409,8 @@ autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, Sche
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$batch_delete_scheduled_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionNames = ScheduledActionNames)
   output <- .autoscaling$batch_delete_scheduled_action_output()
@@ -479,7 +484,8 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$batch_put_scheduled_update_group_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledUpdateGroupActions = ScheduledUpdateGroupActions)
   output <- .autoscaling$batch_put_scheduled_update_group_action_output()
@@ -547,7 +553,8 @@ autoscaling_cancel_instance_refresh <- function(AutoScalingGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$cancel_instance_refresh_input(AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$cancel_instance_refresh_output()
@@ -649,7 +656,8 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$complete_lifecycle_action_input(LifecycleHookName = LifecycleHookName, AutoScalingGroupName = AutoScalingGroupName, LifecycleActionToken = LifecycleActionToken, LifecycleActionResult = LifecycleActionResult, InstanceId = InstanceId)
   output <- .autoscaling$complete_lifecycle_action_output()
@@ -1205,7 +1213,8 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$create_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, InstanceId = InstanceId, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, LoadBalancerNames = LoadBalancerNames, TargetGroupARNs = TargetGroupARNs, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, CapacityRebalance = CapacityRebalance, LifecycleHookSpecificationList = LifecycleHookSpecificationList, Tags = Tags, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, TrafficSources = TrafficSources, InstanceMaintenancePolicy = InstanceMaintenancePolicy)
   output <- .autoscaling$create_auto_scaling_group_output()
@@ -1462,7 +1471,8 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$create_launch_configuration_input(LaunchConfigurationName = LaunchConfigurationName, ImageId = ImageId, KeyName = KeyName, SecurityGroups = SecurityGroups, ClassicLinkVPCId = ClassicLinkVPCId, ClassicLinkVPCSecurityGroups = ClassicLinkVPCSecurityGroups, UserData = UserData, InstanceId = InstanceId, InstanceType = InstanceType, KernelId = KernelId, RamdiskId = RamdiskId, BlockDeviceMappings = BlockDeviceMappings, InstanceMonitoring = InstanceMonitoring, SpotPrice = SpotPrice, IamInstanceProfile = IamInstanceProfile, EbsOptimized = EbsOptimized, AssociatePublicIpAddress = AssociatePublicIpAddress, PlacementTenancy = PlacementTenancy, MetadataOptions = MetadataOptions)
   output <- .autoscaling$create_launch_configuration_output()
@@ -1544,7 +1554,8 @@ autoscaling_create_or_update_tags <- function(Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$create_or_update_tags_input(Tags = Tags)
   output <- .autoscaling$create_or_update_tags_output()
@@ -1632,7 +1643,8 @@ autoscaling_delete_auto_scaling_group <- function(AutoScalingGroupName, ForceDel
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$delete_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, ForceDelete = ForceDelete)
   output <- .autoscaling$delete_auto_scaling_group_output()
@@ -1687,7 +1699,8 @@ autoscaling_delete_launch_configuration <- function(LaunchConfigurationName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$delete_launch_configuration_input(LaunchConfigurationName = LaunchConfigurationName)
   output <- .autoscaling$delete_launch_configuration_output()
@@ -1746,7 +1759,8 @@ autoscaling_delete_lifecycle_hook <- function(LifecycleHookName, AutoScalingGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$delete_lifecycle_hook_input(LifecycleHookName = LifecycleHookName, AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$delete_lifecycle_hook_output()
@@ -1802,7 +1816,8 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$delete_notification_configuration_input(AutoScalingGroupName = AutoScalingGroupName, TopicARN = TopicARN)
   output <- .autoscaling$delete_notification_configuration_output()
@@ -1864,7 +1879,8 @@ autoscaling_delete_policy <- function(AutoScalingGroupName = NULL, PolicyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$delete_policy_input(AutoScalingGroupName = AutoScalingGroupName, PolicyName = PolicyName)
   output <- .autoscaling$delete_policy_output()
@@ -1920,7 +1936,8 @@ autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$delete_scheduled_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionName = ScheduledActionName)
   output <- .autoscaling$delete_scheduled_action_output()
@@ -1987,7 +2004,8 @@ autoscaling_delete_tags <- function(Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$delete_tags_input(Tags = Tags)
   output <- .autoscaling$delete_tags_output()
@@ -2039,7 +2057,8 @@ autoscaling_delete_warm_pool <- function(AutoScalingGroupName, ForceDelete = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$delete_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, ForceDelete = ForceDelete)
   output <- .autoscaling$delete_warm_pool_output()
@@ -2101,7 +2120,8 @@ autoscaling_describe_account_limits <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_account_limits_input()
   output <- .autoscaling$describe_account_limits_output()
@@ -2164,7 +2184,8 @@ autoscaling_describe_adjustment_types <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_adjustment_types_input()
   output <- .autoscaling$describe_adjustment_types_output()
@@ -2455,7 +2476,8 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingGroups"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_auto_scaling_groups_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords, Filters = Filters)
   output <- .autoscaling$describe_auto_scaling_groups_output()
@@ -2546,7 +2568,8 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingInstances")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingInstances"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_auto_scaling_instances_input(InstanceIds = InstanceIds, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_auto_scaling_instances_output()
@@ -2599,7 +2622,8 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_auto_scaling_notification_types_input()
   output <- .autoscaling$describe_auto_scaling_notification_types_output()
@@ -2849,7 +2873,8 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_instance_refreshes_input(AutoScalingGroupName = AutoScalingGroupName, InstanceRefreshIds = InstanceRefreshIds, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_instance_refreshes_output()
@@ -2972,7 +2997,8 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "LaunchConfigurations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "LaunchConfigurations"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_launch_configurations_input(LaunchConfigurationNames = LaunchConfigurationNames, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_launch_configurations_output()
@@ -3029,7 +3055,8 @@ autoscaling_describe_lifecycle_hook_types <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_lifecycle_hook_types_input()
   output <- .autoscaling$describe_lifecycle_hook_types_output()
@@ -3106,7 +3133,8 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_lifecycle_hooks_input(AutoScalingGroupName = AutoScalingGroupName, LifecycleHookNames = LifecycleHookNames)
   output <- .autoscaling$describe_lifecycle_hooks_output()
@@ -3224,7 +3252,8 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_load_balancer_target_groups_output()
@@ -3342,7 +3371,8 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_load_balancers_output()
@@ -3400,7 +3430,8 @@ autoscaling_describe_metric_collection_types <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_metric_collection_types_input()
   output <- .autoscaling$describe_metric_collection_types_output()
@@ -3477,7 +3508,8 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "NotificationConfigurations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "NotificationConfigurations"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_notification_configurations_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_notification_configurations_output()
@@ -3721,7 +3753,8 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScalingPolicies")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScalingPolicies"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_policies_input(AutoScalingGroupName = AutoScalingGroupName, PolicyNames = PolicyNames, PolicyTypes = PolicyTypes, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_policies_output()
@@ -3832,7 +3865,8 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Activities")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Activities"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_scaling_activities_input(ActivityIds = ActivityIds, AutoScalingGroupName = AutoScalingGroupName, IncludeDeletedGroups = IncludeDeletedGroups, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_scaling_activities_output()
@@ -3888,7 +3922,8 @@ autoscaling_describe_scaling_process_types <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_scaling_process_types_input()
   output <- .autoscaling$describe_scaling_process_types_output()
@@ -3998,7 +4033,8 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScheduledUpdateGroupActions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScheduledUpdateGroupActions"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_scheduled_actions_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionNames = ScheduledActionNames, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_scheduled_actions_output()
@@ -4097,7 +4133,8 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Tags")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_tags_input(Filters = Filters, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_tags_output()
@@ -4153,7 +4190,8 @@ autoscaling_describe_termination_policy_types <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_termination_policy_types_input()
   output <- .autoscaling$describe_termination_policy_types_output()
@@ -4245,7 +4283,8 @@ autoscaling_describe_traffic_sources <- function(AutoScalingGroupName, TrafficSo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSourceType = TrafficSourceType, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_traffic_sources_output()
@@ -4330,7 +4369,8 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Instances")
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .autoscaling$describe_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_warm_pool_output()
@@ -4434,7 +4474,8 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$detach_instances_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName, ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
   output <- .autoscaling$detach_instances_output()
@@ -4521,7 +4562,8 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$detach_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, TargetGroupARNs = TargetGroupARNs)
   output <- .autoscaling$detach_load_balancer_target_groups_output()
@@ -4608,7 +4650,8 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$detach_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, LoadBalancerNames = LoadBalancerNames)
   output <- .autoscaling$detach_load_balancers_output()
@@ -4681,7 +4724,8 @@ autoscaling_detach_traffic_sources <- function(AutoScalingGroupName, TrafficSour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$detach_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSources = TrafficSources)
   output <- .autoscaling$detach_traffic_sources_output()
@@ -4788,7 +4832,8 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$disable_metrics_collection_input(AutoScalingGroupName = AutoScalingGroupName, Metrics = Metrics)
   output <- .autoscaling$disable_metrics_collection_output()
@@ -4906,7 +4951,8 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$enable_metrics_collection_input(AutoScalingGroupName = AutoScalingGroupName, Metrics = Metrics, Granularity = Granularity)
   output <- .autoscaling$enable_metrics_collection_output()
@@ -5007,7 +5053,8 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$enter_standby_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName, ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
   output <- .autoscaling$enter_standby_output()
@@ -5090,7 +5137,8 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$execute_policy_input(AutoScalingGroupName = AutoScalingGroupName, PolicyName = PolicyName, HonorCooldown = HonorCooldown, MetricValue = MetricValue, BreachThreshold = BreachThreshold)
   output <- .autoscaling$execute_policy_output()
@@ -5180,7 +5228,8 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$exit_standby_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$exit_standby_output()
@@ -5372,7 +5421,8 @@ autoscaling_get_predictive_scaling_forecast <- function(AutoScalingGroupName, Po
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$get_predictive_scaling_forecast_input(AutoScalingGroupName = AutoScalingGroupName, PolicyName = PolicyName, StartTime = StartTime, EndTime = EndTime)
   output <- .autoscaling$get_predictive_scaling_forecast_output()
@@ -5525,7 +5575,8 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$put_lifecycle_hook_input(LifecycleHookName = LifecycleHookName, AutoScalingGroupName = AutoScalingGroupName, LifecycleTransition = LifecycleTransition, RoleARN = RoleARN, NotificationTargetARN = NotificationTargetARN, NotificationMetadata = NotificationMetadata, HeartbeatTimeout = HeartbeatTimeout, DefaultResult = DefaultResult)
   output <- .autoscaling$put_lifecycle_hook_output()
@@ -5604,7 +5655,8 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$put_notification_configuration_input(AutoScalingGroupName = AutoScalingGroupName, TopicARN = TopicARN, NotificationTypes = NotificationTypes)
   output <- .autoscaling$put_notification_configuration_output()
@@ -5969,7 +6021,8 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$put_scaling_policy_input(AutoScalingGroupName = AutoScalingGroupName, PolicyName = PolicyName, PolicyType = PolicyType, AdjustmentType = AdjustmentType, MinAdjustmentStep = MinAdjustmentStep, MinAdjustmentMagnitude = MinAdjustmentMagnitude, ScalingAdjustment = ScalingAdjustment, Cooldown = Cooldown, MetricAggregationType = MetricAggregationType, StepAdjustments = StepAdjustments, EstimatedInstanceWarmup = EstimatedInstanceWarmup, TargetTrackingConfiguration = TargetTrackingConfiguration, Enabled = Enabled, PredictiveScalingConfiguration = PredictiveScalingConfiguration)
   output <- .autoscaling$put_scaling_policy_output()
@@ -6094,7 +6147,8 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$put_scheduled_update_group_action_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionName = ScheduledActionName, Time = Time, StartTime = StartTime, EndTime = EndTime, Recurrence = Recurrence, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, TimeZone = TimeZone)
   output <- .autoscaling$put_scheduled_update_group_action_output()
@@ -6202,7 +6256,8 @@ autoscaling_put_warm_pool <- function(AutoScalingGroupName, MaxGroupPreparedCapa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$put_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, MaxGroupPreparedCapacity = MaxGroupPreparedCapacity, MinSize = MinSize, PoolState = PoolState, InstanceReusePolicy = InstanceReusePolicy)
   output <- .autoscaling$put_warm_pool_output()
@@ -6301,7 +6356,8 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$record_lifecycle_action_heartbeat_input(LifecycleHookName = LifecycleHookName, AutoScalingGroupName = AutoScalingGroupName, LifecycleActionToken = LifecycleActionToken, InstanceId = InstanceId)
   output <- .autoscaling$record_lifecycle_action_heartbeat_output()
@@ -6386,7 +6442,8 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$resume_processes_input(AutoScalingGroupName = AutoScalingGroupName, ScalingProcesses = ScalingProcesses)
   output <- .autoscaling$resume_processes_output()
@@ -6462,7 +6519,8 @@ autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$rollback_instance_refresh_input(AutoScalingGroupName = AutoScalingGroupName)
   output <- .autoscaling$rollback_instance_refresh_output()
@@ -6534,7 +6592,8 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$set_desired_capacity_input(AutoScalingGroupName = AutoScalingGroupName, DesiredCapacity = DesiredCapacity, HonorCooldown = HonorCooldown)
   output <- .autoscaling$set_desired_capacity_output()
@@ -6608,7 +6667,8 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$set_instance_health_input(InstanceId = InstanceId, HealthStatus = HealthStatus, ShouldRespectGracePeriod = ShouldRespectGracePeriod)
   output <- .autoscaling$set_instance_health_output()
@@ -6688,7 +6748,8 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$set_instance_protection_input(InstanceIds = InstanceIds, AutoScalingGroupName = AutoScalingGroupName, ProtectedFromScaleIn = ProtectedFromScaleIn)
   output <- .autoscaling$set_instance_protection_output()
@@ -6950,7 +7011,8 @@ autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$start_instance_refresh_input(AutoScalingGroupName = AutoScalingGroupName, Strategy = Strategy, DesiredConfiguration = DesiredConfiguration, Preferences = Preferences)
   output <- .autoscaling$start_instance_refresh_output()
@@ -7040,7 +7102,8 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$suspend_processes_input(AutoScalingGroupName = AutoScalingGroupName, ScalingProcesses = ScalingProcesses)
   output <- .autoscaling$suspend_processes_output()
@@ -7139,7 +7202,8 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$terminate_instance_in_auto_scaling_group_input(InstanceId = InstanceId, ShouldDecrementDesiredCapacity = ShouldDecrementDesiredCapacity)
   output <- .autoscaling$terminate_instance_in_auto_scaling_group_output()
@@ -7509,7 +7573,8 @@ autoscaling_update_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .autoscaling$update_auto_scaling_group_input(AutoScalingGroupName = AutoScalingGroupName, LaunchConfigurationName = LaunchConfigurationName, LaunchTemplate = LaunchTemplate, MixedInstancesPolicy = MixedInstancesPolicy, MinSize = MinSize, MaxSize = MaxSize, DesiredCapacity = DesiredCapacity, DefaultCooldown = DefaultCooldown, AvailabilityZones = AvailabilityZones, HealthCheckType = HealthCheckType, HealthCheckGracePeriod = HealthCheckGracePeriod, PlacementGroup = PlacementGroup, VPCZoneIdentifier = VPCZoneIdentifier, TerminationPolicies = TerminationPolicies, NewInstancesProtectedFromScaleIn = NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN = ServiceLinkedRoleARN, MaxInstanceLifetime = MaxInstanceLifetime, CapacityRebalance = CapacityRebalance, Context = Context, DesiredCapacityType = DesiredCapacityType, DefaultInstanceWarmup = DefaultInstanceWarmup, InstanceMaintenancePolicy = InstanceMaintenancePolicy)
   output <- .autoscaling$update_auto_scaling_group_output()

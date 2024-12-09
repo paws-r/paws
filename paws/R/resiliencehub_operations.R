@@ -59,7 +59,8 @@ resiliencehub_accept_resource_grouping_recommendations <- function(appArn, entri
     http_method = "POST",
     http_path = "/accept-resource-grouping-recommendations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$accept_resource_grouping_recommendations_input(appArn = appArn, entries = entries)
   output <- .resiliencehub$accept_resource_grouping_recommendations_output()
@@ -160,7 +161,8 @@ resiliencehub_add_draft_app_version_resource_mappings <- function(appArn, resour
     http_method = "POST",
     http_path = "/add-draft-app-version-resource-mappings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$add_draft_app_version_resource_mappings_input(appArn = appArn, resourceMappings = resourceMappings)
   output <- .resiliencehub$add_draft_app_version_resource_mappings_output()
@@ -249,7 +251,8 @@ resiliencehub_batch_update_recommendation_status <- function(appArn, requestEntr
     http_method = "POST",
     http_path = "/batch-update-recommendation-status",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$batch_update_recommendation_status_input(appArn = appArn, requestEntries = requestEntries)
   output <- .resiliencehub$batch_update_recommendation_status_output()
@@ -396,7 +399,8 @@ resiliencehub_create_app <- function(assessmentSchedule = NULL, clientToken = NU
     http_method = "POST",
     http_path = "/create-app",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$create_app_input(assessmentSchedule = assessmentSchedule, clientToken = clientToken, description = description, eventSubscriptions = eventSubscriptions, name = name, permissionModel = permissionModel, policyArn = policyArn, tags = tags)
   output <- .resiliencehub$create_app_output()
@@ -485,7 +489,8 @@ resiliencehub_create_app_version_app_component <- function(additionalInfo = NULL
     http_method = "POST",
     http_path = "/create-app-version-app-component",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$create_app_version_app_component_input(additionalInfo = additionalInfo, appArn = appArn, clientToken = clientToken, id = id, name = name, type = type)
   output <- .resiliencehub$create_app_version_app_component_output()
@@ -628,7 +633,8 @@ resiliencehub_create_app_version_resource <- function(additionalInfo = NULL, app
     http_method = "POST",
     http_path = "/create-app-version-resource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$create_app_version_resource_input(additionalInfo = additionalInfo, appArn = appArn, appComponents = appComponents, awsAccountId = awsAccountId, awsRegion = awsRegion, clientToken = clientToken, logicalResourceId = logicalResourceId, physicalResourceId = physicalResourceId, resourceName = resourceName, resourceType = resourceType)
   output <- .resiliencehub$create_app_version_resource_output()
@@ -757,7 +763,8 @@ resiliencehub_create_recommendation_template <- function(assessmentArn, bucketNa
     http_method = "POST",
     http_path = "/create-recommendation-template",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$create_recommendation_template_input(assessmentArn = assessmentArn, bucketName = bucketName, clientToken = clientToken, format = format, name = name, recommendationIds = recommendationIds, recommendationTypes = recommendationTypes, tags = tags)
   output <- .resiliencehub$create_recommendation_template_output()
@@ -859,7 +866,8 @@ resiliencehub_create_resiliency_policy <- function(clientToken = NULL, dataLocat
     http_method = "POST",
     http_path = "/create-resiliency-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$create_resiliency_policy_input(clientToken = clientToken, dataLocationConstraint = dataLocationConstraint, policy = policy, policyDescription = policyDescription, policyName = policyName, tags = tags, tier = tier)
   output <- .resiliencehub$create_resiliency_policy_output()
@@ -919,7 +927,8 @@ resiliencehub_delete_app <- function(appArn, clientToken = NULL, forceDelete = N
     http_method = "POST",
     http_path = "/delete-app",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$delete_app_input(appArn = appArn, clientToken = clientToken, forceDelete = forceDelete)
   output <- .resiliencehub$delete_app_output()
@@ -978,7 +987,8 @@ resiliencehub_delete_app_assessment <- function(assessmentArn, clientToken = NUL
     http_method = "POST",
     http_path = "/delete-app-assessment",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$delete_app_assessment_input(assessmentArn = assessmentArn, clientToken = clientToken)
   output <- .resiliencehub$delete_app_assessment_output()
@@ -1068,7 +1078,8 @@ resiliencehub_delete_app_input_source <- function(appArn, clientToken = NULL, ek
     http_method = "POST",
     http_path = "/delete-app-input-source",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$delete_app_input_source_input(appArn = appArn, clientToken = clientToken, eksSourceClusterNamespace = eksSourceClusterNamespace, sourceArn = sourceArn, terraformSource = terraformSource)
   output <- .resiliencehub$delete_app_input_source_output()
@@ -1146,7 +1157,8 @@ resiliencehub_delete_app_version_app_component <- function(appArn, clientToken =
     http_method = "POST",
     http_path = "/delete-app-version-app-component",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$delete_app_version_app_component_input(appArn = appArn, clientToken = clientToken, id = id)
   output <- .resiliencehub$delete_app_version_app_component_output()
@@ -1271,7 +1283,8 @@ resiliencehub_delete_app_version_resource <- function(appArn, awsAccountId = NUL
     http_method = "POST",
     http_path = "/delete-app-version-resource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$delete_app_version_resource_input(appArn = appArn, awsAccountId = awsAccountId, awsRegion = awsRegion, clientToken = clientToken, logicalResourceId = logicalResourceId, physicalResourceId = physicalResourceId, resourceName = resourceName)
   output <- .resiliencehub$delete_app_version_resource_output()
@@ -1326,7 +1339,8 @@ resiliencehub_delete_recommendation_template <- function(clientToken = NULL, rec
     http_method = "POST",
     http_path = "/delete-recommendation-template",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$delete_recommendation_template_input(clientToken = clientToken, recommendationTemplateArn = recommendationTemplateArn)
   output <- .resiliencehub$delete_recommendation_template_output()
@@ -1384,7 +1398,8 @@ resiliencehub_delete_resiliency_policy <- function(clientToken = NULL, policyArn
     http_method = "POST",
     http_path = "/delete-resiliency-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$delete_resiliency_policy_input(clientToken = clientToken, policyArn = policyArn)
   output <- .resiliencehub$delete_resiliency_policy_output()
@@ -1478,7 +1493,8 @@ resiliencehub_describe_app <- function(appArn) {
     http_method = "POST",
     http_path = "/describe-app",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_app_input(appArn = appArn)
   output <- .resiliencehub$describe_app_output()
@@ -1626,7 +1642,8 @@ resiliencehub_describe_app_assessment <- function(assessmentArn) {
     http_method = "POST",
     http_path = "/describe-app-assessment",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_app_assessment_input(assessmentArn = assessmentArn)
   output <- .resiliencehub$describe_app_assessment_output()
@@ -1687,7 +1704,8 @@ resiliencehub_describe_app_version <- function(appArn, appVersion) {
     http_method = "POST",
     http_path = "/describe-app-version",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_app_version_input(appArn = appArn, appVersion = appVersion)
   output <- .resiliencehub$describe_app_version_output()
@@ -1755,7 +1773,8 @@ resiliencehub_describe_app_version_app_component <- function(appArn, appVersion,
     http_method = "POST",
     http_path = "/describe-app-version-app-component",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_app_version_app_component_input(appArn = appArn, appVersion = appVersion, id = id)
   output <- .resiliencehub$describe_app_version_app_component_output()
@@ -1876,7 +1895,8 @@ resiliencehub_describe_app_version_resource <- function(appArn, appVersion, awsA
     http_method = "POST",
     http_path = "/describe-app-version-resource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_app_version_resource_input(appArn = appArn, appVersion = appVersion, awsAccountId = awsAccountId, awsRegion = awsRegion, logicalResourceId = logicalResourceId, physicalResourceId = physicalResourceId, resourceName = resourceName)
   output <- .resiliencehub$describe_app_version_resource_output()
@@ -1941,7 +1961,8 @@ resiliencehub_describe_app_version_resources_resolution_status <- function(appAr
     http_method = "POST",
     http_path = "/describe-app-version-resources-resolution-status",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_app_version_resources_resolution_status_input(appArn = appArn, appVersion = appVersion, resolutionId = resolutionId)
   output <- .resiliencehub$describe_app_version_resources_resolution_status_output()
@@ -1998,7 +2019,8 @@ resiliencehub_describe_app_version_template <- function(appArn, appVersion) {
     http_method = "POST",
     http_path = "/describe-app-version-template",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_app_version_template_input(appArn = appArn, appVersion = appVersion)
   output <- .resiliencehub$describe_app_version_template_output()
@@ -2063,7 +2085,8 @@ resiliencehub_describe_draft_app_version_resources_import_status <- function(app
     http_method = "POST",
     http_path = "/describe-draft-app-version-resources-import-status",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_draft_app_version_resources_import_status_input(appArn = appArn)
   output <- .resiliencehub$describe_draft_app_version_resources_import_status_output()
@@ -2139,7 +2162,8 @@ resiliencehub_describe_resiliency_policy <- function(policyArn) {
     http_method = "POST",
     http_path = "/describe-resiliency-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_resiliency_policy_input(policyArn = policyArn)
   output <- .resiliencehub$describe_resiliency_policy_output()
@@ -2199,7 +2223,8 @@ resiliencehub_describe_resource_grouping_recommendation_task <- function(appArn,
     http_method = "POST",
     http_path = "/describe-resource-grouping-recommendation-task",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$describe_resource_grouping_recommendation_task_input(appArn = appArn, groupingId = groupingId)
   output <- .resiliencehub$describe_resource_grouping_recommendation_task_output()
@@ -2299,7 +2324,8 @@ resiliencehub_import_resources_to_draft_app_version <- function(appArn, eksSourc
     http_method = "POST",
     http_path = "/import-resources-to-draft-app-version",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$import_resources_to_draft_app_version_input(appArn = appArn, eksSources = eksSources, importStrategy = importStrategy, sourceArns = sourceArns, terraformSources = terraformSources)
   output <- .resiliencehub$import_resources_to_draft_app_version_output()
@@ -2384,7 +2410,8 @@ resiliencehub_list_alarm_recommendations <- function(assessmentArn, maxResults =
     http_method = "POST",
     http_path = "/list-alarm-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_alarm_recommendations_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_alarm_recommendations_output()
@@ -2483,7 +2510,8 @@ resiliencehub_list_app_assessment_compliance_drifts <- function(assessmentArn, m
     http_method = "POST",
     http_path = "/list-app-assessment-compliance-drifts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_assessment_compliance_drifts_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_app_assessment_compliance_drifts_output()
@@ -2564,7 +2592,8 @@ resiliencehub_list_app_assessment_resource_drifts <- function(assessmentArn, max
     http_method = "POST",
     http_path = "/list-app-assessment-resource-drifts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resourceDrifts")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "resourceDrifts"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_assessment_resource_drifts_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_app_assessment_resource_drifts_output()
@@ -2666,7 +2695,8 @@ resiliencehub_list_app_assessments <- function(appArn = NULL, assessmentName = N
     http_method = "GET",
     http_path = "/list-app-assessments",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_assessments_input(appArn = appArn, assessmentName = assessmentName, assessmentStatus = assessmentStatus, complianceStatus = complianceStatus, invoker = invoker, maxResults = maxResults, nextToken = nextToken, reverseOrder = reverseOrder)
   output <- .resiliencehub$list_app_assessments_output()
@@ -2766,7 +2796,8 @@ resiliencehub_list_app_component_compliances <- function(assessmentArn, maxResul
     http_method = "POST",
     http_path = "/list-app-component-compliances",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_component_compliances_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_app_component_compliances_output()
@@ -2873,7 +2904,8 @@ resiliencehub_list_app_component_recommendations <- function(assessmentArn, maxR
     http_method = "POST",
     http_path = "/list-app-component-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_component_recommendations_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_app_component_recommendations_output()
@@ -2952,7 +2984,8 @@ resiliencehub_list_app_input_sources <- function(appArn, appVersion, maxResults 
     http_method = "POST",
     http_path = "/list-app-input-sources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_input_sources_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_app_input_sources_output()
@@ -3027,7 +3060,8 @@ resiliencehub_list_app_version_app_components <- function(appArn, appVersion, ma
     http_method = "POST",
     http_path = "/list-app-version-app-components",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_version_app_components_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_app_version_app_components_output()
@@ -3109,7 +3143,8 @@ resiliencehub_list_app_version_resource_mappings <- function(appArn, appVersion,
     http_method = "POST",
     http_path = "/list-app-version-resource-mappings",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_version_resource_mappings_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_app_version_resource_mappings_output()
@@ -3213,7 +3248,8 @@ resiliencehub_list_app_version_resources <- function(appArn, appVersion, maxResu
     http_method = "POST",
     http_path = "/list-app-version-resources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_version_resources_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken, resolutionId = resolutionId)
   output <- .resiliencehub$list_app_version_resources_output()
@@ -3291,7 +3327,8 @@ resiliencehub_list_app_versions <- function(appArn, endTime = NULL, maxResults =
     http_method = "POST",
     http_path = "/list-app-versions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_app_versions_input(appArn = appArn, endTime = endTime, maxResults = maxResults, nextToken = nextToken, startTime = startTime)
   output <- .resiliencehub$list_app_versions_output()
@@ -3394,7 +3431,8 @@ resiliencehub_list_apps <- function(appArn = NULL, fromLastAssessmentTime = NULL
     http_method = "GET",
     http_path = "/list-apps",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_apps_input(appArn = appArn, fromLastAssessmentTime = fromLastAssessmentTime, maxResults = maxResults, name = name, nextToken = nextToken, reverseOrder = reverseOrder, toLastAssessmentTime = toLastAssessmentTime)
   output <- .resiliencehub$list_apps_output()
@@ -3496,7 +3534,8 @@ resiliencehub_list_recommendation_templates <- function(assessmentArn = NULL, ma
     http_method = "GET",
     http_path = "/list-recommendation-templates",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_recommendation_templates_input(assessmentArn = assessmentArn, maxResults = maxResults, name = name, nextToken = nextToken, recommendationTemplateArn = recommendationTemplateArn, reverseOrder = reverseOrder, status = status)
   output <- .resiliencehub$list_recommendation_templates_output()
@@ -3573,7 +3612,8 @@ resiliencehub_list_resiliency_policies <- function(maxResults = NULL, nextToken 
     http_method = "GET",
     http_path = "/list-resiliency-policies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_resiliency_policies_input(maxResults = maxResults, nextToken = nextToken, policyName = policyName)
   output <- .resiliencehub$list_resiliency_policies_output()
@@ -3676,7 +3716,8 @@ resiliencehub_list_resource_grouping_recommendations <- function(appArn = NULL, 
     http_method = "GET",
     http_path = "/list-resource-grouping-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "groupingRecommendations")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "groupingRecommendations"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_resource_grouping_recommendations_input(appArn = appArn, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_resource_grouping_recommendations_output()
@@ -3760,7 +3801,8 @@ resiliencehub_list_sop_recommendations <- function(assessmentArn, maxResults = N
     http_method = "POST",
     http_path = "/list-sop-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_sop_recommendations_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_sop_recommendations_output()
@@ -3836,7 +3878,8 @@ resiliencehub_list_suggested_resiliency_policies <- function(maxResults = NULL, 
     http_method = "GET",
     http_path = "/list-suggested-resiliency-policies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_suggested_resiliency_policies_input(maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_suggested_resiliency_policies_output()
@@ -3887,7 +3930,8 @@ resiliencehub_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .resiliencehub$list_tags_for_resource_output()
@@ -3974,7 +4018,8 @@ resiliencehub_list_test_recommendations <- function(assessmentArn, maxResults = 
     http_method = "POST",
     http_path = "/list-test-recommendations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_test_recommendations_input(assessmentArn = assessmentArn, maxResults = maxResults, nextToken = nextToken)
   output <- .resiliencehub$list_test_recommendations_output()
@@ -4060,7 +4105,8 @@ resiliencehub_list_unsupported_app_version_resources <- function(appArn, appVers
     http_method = "POST",
     http_path = "/list-unsupported-app-version-resources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
+    stream_api = FALSE
   )
   input <- .resiliencehub$list_unsupported_app_version_resources_input(appArn = appArn, appVersion = appVersion, maxResults = maxResults, nextToken = nextToken, resolutionId = resolutionId)
   output <- .resiliencehub$list_unsupported_app_version_resources_output()
@@ -4118,7 +4164,8 @@ resiliencehub_publish_app_version <- function(appArn, versionName = NULL) {
     http_method = "POST",
     http_path = "/publish-app-version",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$publish_app_version_input(appArn = appArn, versionName = versionName)
   output <- .resiliencehub$publish_app_version_output()
@@ -4397,7 +4444,8 @@ resiliencehub_put_draft_app_version_template <- function(appArn, appTemplateBody
     http_method = "POST",
     http_path = "/put-draft-app-version-template",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$put_draft_app_version_template_input(appArn = appArn, appTemplateBody = appTemplateBody)
   output <- .resiliencehub$put_draft_app_version_template_output()
@@ -4464,7 +4512,8 @@ resiliencehub_reject_resource_grouping_recommendations <- function(appArn, entri
     http_method = "POST",
     http_path = "/reject-resource-grouping-recommendations",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$reject_resource_grouping_recommendations_input(appArn = appArn, entries = entries)
   output <- .resiliencehub$reject_resource_grouping_recommendations_output()
@@ -4552,7 +4601,8 @@ resiliencehub_remove_draft_app_version_resource_mappings <- function(appArn, app
     http_method = "POST",
     http_path = "/remove-draft-app-version-resource-mappings",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$remove_draft_app_version_resource_mappings_input(appArn = appArn, appRegistryAppNames = appRegistryAppNames, eksSourceNames = eksSourceNames, logicalStackNames = logicalStackNames, resourceGroupNames = resourceGroupNames, resourceNames = resourceNames, terraformSourceNames = terraformSourceNames)
   output <- .resiliencehub$remove_draft_app_version_resource_mappings_output()
@@ -4610,7 +4660,8 @@ resiliencehub_resolve_app_version_resources <- function(appArn, appVersion) {
     http_method = "POST",
     http_path = "/resolve-app-version-resources",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$resolve_app_version_resources_input(appArn = appArn, appVersion = appVersion)
   output <- .resiliencehub$resolve_app_version_resources_output()
@@ -4772,7 +4823,8 @@ resiliencehub_start_app_assessment <- function(appArn, appVersion, assessmentNam
     http_method = "POST",
     http_path = "/start-app-assessment",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$start_app_assessment_input(appArn = appArn, appVersion = appVersion, assessmentName = assessmentName, clientToken = clientToken, tags = tags)
   output <- .resiliencehub$start_app_assessment_output()
@@ -4828,7 +4880,8 @@ resiliencehub_start_resource_grouping_recommendation_task <- function(appArn) {
     http_method = "POST",
     http_path = "/start-resource-grouping-recommendation-task",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$start_resource_grouping_recommendation_task_input(appArn = appArn)
   output <- .resiliencehub$start_resource_grouping_recommendation_task_output()
@@ -4876,7 +4929,8 @@ resiliencehub_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .resiliencehub$tag_resource_output()
@@ -4923,7 +4977,8 @@ resiliencehub_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .resiliencehub$untag_resource_output()
@@ -5052,7 +5107,8 @@ resiliencehub_update_app <- function(appArn, assessmentSchedule = NULL, clearRes
     http_method = "POST",
     http_path = "/update-app",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$update_app_input(appArn = appArn, assessmentSchedule = assessmentSchedule, clearResiliencyPolicyArn = clearResiliencyPolicyArn, description = description, eventSubscriptions = eventSubscriptions, permissionModel = permissionModel, policyArn = policyArn)
   output <- .resiliencehub$update_app_output()
@@ -5133,7 +5189,8 @@ resiliencehub_update_app_version <- function(additionalInfo = NULL, appArn) {
     http_method = "POST",
     http_path = "/update-app-version",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$update_app_version_input(additionalInfo = additionalInfo, appArn = appArn)
   output <- .resiliencehub$update_app_version_output()
@@ -5220,7 +5277,8 @@ resiliencehub_update_app_version_app_component <- function(additionalInfo = NULL
     http_method = "POST",
     http_path = "/update-app-version-app-component",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$update_app_version_app_component_input(additionalInfo = additionalInfo, appArn = appArn, id = id, name = name, type = type)
   output <- .resiliencehub$update_app_version_app_component_output()
@@ -5360,7 +5418,8 @@ resiliencehub_update_app_version_resource <- function(additionalInfo = NULL, app
     http_method = "POST",
     http_path = "/update-app-version-resource",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$update_app_version_resource_input(additionalInfo = additionalInfo, appArn = appArn, appComponents = appComponents, awsAccountId = awsAccountId, awsRegion = awsRegion, excluded = excluded, logicalResourceId = logicalResourceId, physicalResourceId = physicalResourceId, resourceName = resourceName, resourceType = resourceType)
   output <- .resiliencehub$update_app_version_resource_output()
@@ -5459,7 +5518,8 @@ resiliencehub_update_resiliency_policy <- function(dataLocationConstraint = NULL
     http_method = "POST",
     http_path = "/update-resiliency-policy",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .resiliencehub$update_resiliency_policy_input(dataLocationConstraint = dataLocationConstraint, policy = policy, policyArn = policyArn, policyDescription = policyDescription, policyName = policyName, tier = tier)
   output <- .resiliencehub$update_resiliency_policy_output()

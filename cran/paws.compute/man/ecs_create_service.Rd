@@ -150,7 +150,7 @@ providers.}
 \item{platformVersion}{The platform version that your tasks in the service are running on. A
 platform version is specified only for tasks using the Fargate launch
 type. If one isn't specified, the \code{LATEST} platform version is used. For
-more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Fargate platform versions}
+more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html}{Fargate platform versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{role}{The name or full Amazon Resource Name (ARN) of the IAM role that allows

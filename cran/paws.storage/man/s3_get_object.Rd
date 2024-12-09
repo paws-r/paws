@@ -67,7 +67,7 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
@@ -228,8 +228,8 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{ChecksumMode}{To retrieve the checksum, this mode must be enabled.
 
-In addition, if you enable checksum mode and the object is uploaded with
-a
+\strong{General purpose buckets} - In addition, if you enable checksum mode
+and the object is uploaded with a
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html}{checksum}
 and encrypted with an Key Management Service (KMS) key, you must have
 permission to use the \code{kms:Decrypt} action to retrieve the checksum.}

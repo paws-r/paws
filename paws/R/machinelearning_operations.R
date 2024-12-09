@@ -54,7 +54,8 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$add_tags_input(Tags = Tags, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$add_tags_output()
@@ -139,7 +140,8 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$create_batch_prediction_input(BatchPredictionId = BatchPredictionId, BatchPredictionName = BatchPredictionName, MLModelId = MLModelId, BatchPredictionDataSourceId = BatchPredictionDataSourceId, OutputUri = OutputUri)
   output <- .machinelearning$create_batch_prediction_output()
@@ -293,7 +295,8 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$create_data_source_from_rds_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, RDSData = RDSData, RoleARN = RoleARN, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_rds_output()
@@ -450,7 +453,8 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$create_data_source_from_redshift_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, DataSpec = DataSpec, RoleARN = RoleARN, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_redshift_output()
@@ -566,7 +570,8 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$create_data_source_from_s3_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, DataSpec = DataSpec, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_s3_output()
@@ -644,7 +649,8 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$create_evaluation_input(EvaluationId = EvaluationId, EvaluationName = EvaluationName, MLModelId = MLModelId, EvaluationDataSourceId = EvaluationDataSourceId)
   output <- .machinelearning$create_evaluation_output()
@@ -789,7 +795,8 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$create_ml_model_input(MLModelId = MLModelId, MLModelName = MLModelName, MLModelType = MLModelType, Parameters = Parameters, TrainingDataSourceId = TrainingDataSourceId, Recipe = Recipe, RecipeUri = RecipeUri)
   output <- .machinelearning$create_ml_model_output()
@@ -847,7 +854,8 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$create_realtime_endpoint_input(MLModelId = MLModelId)
   output <- .machinelearning$create_realtime_endpoint_output()
@@ -906,7 +914,8 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$delete_batch_prediction_input(BatchPredictionId = BatchPredictionId)
   output <- .machinelearning$delete_batch_prediction_output()
@@ -964,7 +973,8 @@ machinelearning_delete_data_source <- function(DataSourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$delete_data_source_input(DataSourceId = DataSourceId)
   output <- .machinelearning$delete_data_source_output()
@@ -1021,7 +1031,8 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$delete_evaluation_input(EvaluationId = EvaluationId)
   output <- .machinelearning$delete_evaluation_output()
@@ -1078,7 +1089,8 @@ machinelearning_delete_ml_model <- function(MLModelId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$delete_ml_model_input(MLModelId = MLModelId)
   output <- .machinelearning$delete_ml_model_output()
@@ -1134,7 +1146,8 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$delete_realtime_endpoint_input(MLModelId = MLModelId)
   output <- .machinelearning$delete_realtime_endpoint_output()
@@ -1192,7 +1205,8 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$delete_tags_input(TagKeys = TagKeys, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$delete_tags_output()
@@ -1344,7 +1358,8 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
+    stream_api = FALSE
   )
   input <- .machinelearning$describe_batch_predictions_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_batch_predictions_output()
@@ -1507,7 +1522,8 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
+    stream_api = FALSE
   )
   input <- .machinelearning$describe_data_sources_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_data_sources_output()
@@ -1661,7 +1677,8 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
+    stream_api = FALSE
   )
   input <- .machinelearning$describe_evaluations_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_evaluations_output()
@@ -1828,7 +1845,8 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
+    stream_api = FALSE
   )
   input <- .machinelearning$describe_ml_models_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_ml_models_output()
@@ -1885,7 +1903,8 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$describe_tags_input(ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$describe_tags_output()
@@ -1959,7 +1978,8 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$get_batch_prediction_input(BatchPredictionId = BatchPredictionId)
   output <- .machinelearning$get_batch_prediction_output()
@@ -2065,7 +2085,8 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$get_data_source_input(DataSourceId = DataSourceId, Verbose = Verbose)
   output <- .machinelearning$get_data_source_output()
@@ -2143,7 +2164,8 @@ machinelearning_get_evaluation <- function(EvaluationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$get_evaluation_input(EvaluationId = EvaluationId)
   output <- .machinelearning$get_evaluation_output()
@@ -2242,7 +2264,8 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$get_ml_model_input(MLModelId = MLModelId, Verbose = Verbose)
   output <- .machinelearning$get_ml_model_output()
@@ -2309,7 +2332,8 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$predict_input(MLModelId = MLModelId, Record = Record, PredictEndpoint = PredictEndpoint)
   output <- .machinelearning$predict_output()
@@ -2364,7 +2388,8 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$update_batch_prediction_input(BatchPredictionId = BatchPredictionId, BatchPredictionName = BatchPredictionName)
   output <- .machinelearning$update_batch_prediction_output()
@@ -2418,7 +2443,8 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$update_data_source_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName)
   output <- .machinelearning$update_data_source_output()
@@ -2472,7 +2498,8 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$update_evaluation_input(EvaluationId = EvaluationId, EvaluationName = EvaluationName)
   output <- .machinelearning$update_evaluation_output()
@@ -2533,7 +2560,8 @@ machinelearning_update_ml_model <- function(MLModelId, MLModelName = NULL, Score
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .machinelearning$update_ml_model_input(MLModelId = MLModelId, MLModelName = MLModelName, ScoreThreshold = ScoreThreshold)
   output <- .machinelearning$update_ml_model_output()

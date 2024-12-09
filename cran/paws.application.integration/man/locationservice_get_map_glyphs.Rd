@@ -18,7 +18,7 @@ locationservice_get_map_glyphs(
 preference. For example, \verb{Noto Sans Regular, Arial Unicode}.
 
 Valid font stacks for
-\href{https://docs.aws.amazon.com/location/latest/developerguide/esri.html}{Esri}
+\href{https://docs.aws.amazon.com/location/latest/developerguide/}{Esri}
 styles:
 \itemize{
 \item VectorEsriDarkGrayCanvas – \verb{Ubuntu Medium Italic} | \verb{Ubuntu Medium}
@@ -33,7 +33,7 @@ styles:
 \verb{Arial Bold}
 }
 
-Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/HERE.html}{HERE Technologies}
+Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/}{HERE Technologies}
 styles:
 \itemize{
 \item VectorHereContrast – \verb{Fira GO Regular} | \verb{Fira GO Bold}
@@ -44,14 +44,14 @@ HybridHereExploreSatellite – \verb{Fira GO Italic} | \verb{Fira GO Map} |
 }
 
 Valid font stacks for
-\href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}
+\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}
 styles:
 \itemize{
 \item VectorGrabStandardLight, VectorGrabStandardDark –
 \verb{Noto Sans Regular} | \verb{Noto Sans Medium} | \verb{Noto Sans Bold}
 }
 
-Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/open-data.html}{Open Data}
+Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/}{Open Data}
 styles:
 \itemize{
 \item VectorOpenDataStandardLight, VectorOpenDataStandardDark,

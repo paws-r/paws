@@ -1,6 +1,6 @@
 Package: paws
 Title: Amazon Web Services Software Development Kit
-Version: 0.7.0
+Version: 0.8.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -15,20 +15,20 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.analytics (>= 0.7.0),
-    paws.application.integration (>= 0.7.0),
-    paws.common (>= 0.7.5),
-    paws.compute (>= 0.7.0),
-    paws.cost.management (>= 0.7.0),
-    paws.customer.engagement (>= 0.7.0),
-    paws.database (>= 0.7.0),
-    paws.developer.tools (>= 0.7.0),
-    paws.end.user.computing (>= 0.7.0),
-    paws.machine.learning (>= 0.7.0),
-    paws.management (>= 0.7.0),
-    paws.networking (>= 0.7.0),
-    paws.security.identity (>= 0.7.0),
-    paws.storage (>= 0.7.0)
+    paws.analytics (>= 0.8.0),
+    paws.application.integration (>= 0.8.0),
+    paws.common (>= 0.8.0),
+    paws.compute (>= 0.8.0),
+    paws.cost.management (>= 0.8.0),
+    paws.customer.engagement (>= 0.8.0),
+    paws.database (>= 0.8.0),
+    paws.developer.tools (>= 0.8.0),
+    paws.end.user.computing (>= 0.8.0),
+    paws.machine.learning (>= 0.8.0),
+    paws.management (>= 0.8.0),
+    paws.networking (>= 0.8.0),
+    paws.security.identity (>= 0.8.0),
+    paws.storage (>= 0.8.0)
 Suggests: 
     testthat
 Encoding: UTF-8

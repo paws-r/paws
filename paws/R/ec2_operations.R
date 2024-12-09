@@ -74,7 +74,8 @@ ec2_accept_address_transfer <- function(Address, TagSpecifications = NULL, DryRu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_address_transfer_input(Address = Address, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$accept_address_transfer_output()
@@ -143,7 +144,8 @@ ec2_accept_reserved_instances_exchange_quote <- function(DryRun = NULL, Reserved
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_reserved_instances_exchange_quote_input(DryRun = DryRun, ReservedInstanceIds = ReservedInstanceIds, TargetConfigurations = TargetConfigurations)
   output <- .ec2$accept_reserved_instances_exchange_quote_output()
@@ -219,7 +221,8 @@ ec2_accept_transit_gateway_multicast_domain_associations <- function(TransitGate
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_transit_gateway_multicast_domain_associations_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, SubnetIds = SubnetIds, DryRun = DryRun)
   output <- .ec2$accept_transit_gateway_multicast_domain_associations_output()
@@ -306,7 +309,8 @@ ec2_accept_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_transit_gateway_peering_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$accept_transit_gateway_peering_attachment_output()
@@ -390,7 +394,8 @@ ec2_accept_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$accept_transit_gateway_vpc_attachment_output()
@@ -455,7 +460,8 @@ ec2_accept_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_vpc_endpoint_connections_input(DryRun = DryRun, ServiceId = ServiceId, VpcEndpointIds = VpcEndpointIds)
   output <- .ec2$accept_vpc_endpoint_connections_output()
@@ -573,7 +579,8 @@ ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$accept_vpc_peering_connection_input(DryRun = DryRun, VpcPeeringConnectionId = VpcPeeringConnectionId)
   output <- .ec2$accept_vpc_peering_connection_output()
@@ -683,7 +690,8 @@ ec2_advertise_byoip_cidr <- function(Cidr, Asn = NULL, DryRun = NULL, NetworkBor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$advertise_byoip_cidr_input(Cidr = Cidr, Asn = Asn, DryRun = DryRun, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$advertise_byoip_cidr_output()
@@ -806,7 +814,8 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$allocate_address_input(Domain = Domain, Address = Address, PublicIpv4Pool = PublicIpv4Pool, NetworkBorderGroup = NetworkBorderGroup, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, DryRun = DryRun, TagSpecifications = TagSpecifications, IpamPoolId = IpamPoolId)
   output <- .ec2$allocate_address_output()
@@ -946,7 +955,8 @@ ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$allocate_hosts_input(AutoPlacement = AutoPlacement, AvailabilityZone = AvailabilityZone, ClientToken = ClientToken, InstanceType = InstanceType, InstanceFamily = InstanceFamily, Quantity = Quantity, TagSpecifications = TagSpecifications, HostRecovery = HostRecovery, OutpostArn = OutpostArn, HostMaintenance = HostMaintenance, AssetIds = AssetIds)
   output <- .ec2$allocate_hosts_output()
@@ -1063,7 +1073,8 @@ ec2_allocate_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$allocate_ipam_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr, NetmaskLength = NetmaskLength, ClientToken = ClientToken, Description = Description, PreviewNextCidr = PreviewNextCidr, AllowedCidrs = AllowedCidrs, DisallowedCidrs = DisallowedCidrs)
   output <- .ec2$allocate_ipam_pool_cidr_output()
@@ -1130,7 +1141,8 @@ ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$apply_security_groups_to_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, VpcId = VpcId, SecurityGroupIds = SecurityGroupIds, DryRun = DryRun)
   output <- .ec2$apply_security_groups_to_client_vpn_target_network_output()
@@ -1221,7 +1233,8 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$assign_ipv_6_addresses_input(Ipv6AddressCount = Ipv6AddressCount, Ipv6Addresses = Ipv6Addresses, Ipv6PrefixCount = Ipv6PrefixCount, Ipv6Prefixes = Ipv6Prefixes, NetworkInterfaceId = NetworkInterfaceId)
   output <- .ec2$assign_ipv_6_addresses_output()
@@ -1357,7 +1370,8 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$assign_private_ip_addresses_input(AllowReassignment = AllowReassignment, NetworkInterfaceId = NetworkInterfaceId, PrivateIpAddresses = PrivateIpAddresses, SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount, Ipv4Prefixes = Ipv4Prefixes, Ipv4PrefixCount = Ipv4PrefixCount)
   output <- .ec2$assign_private_ip_addresses_output()
@@ -1434,7 +1448,8 @@ ec2_assign_private_nat_gateway_address <- function(NatGatewayId, PrivateIpAddres
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$assign_private_nat_gateway_address_input(NatGatewayId = NatGatewayId, PrivateIpAddresses = PrivateIpAddresses, PrivateIpAddressCount = PrivateIpAddressCount, DryRun = DryRun)
   output <- .ec2$assign_private_nat_gateway_address_output()
@@ -1549,7 +1564,8 @@ ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, Public
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_address_input(AllocationId = AllocationId, InstanceId = InstanceId, PublicIp = PublicIp, AllowReassociation = AllowReassociation, DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId, PrivateIpAddress = PrivateIpAddress)
   output <- .ec2$associate_address_output()
@@ -1624,7 +1640,8 @@ ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, SubnetId = SubnetId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$associate_client_vpn_target_network_output()
@@ -1705,7 +1722,8 @@ ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_dhcp_options_input(DhcpOptionsId = DhcpOptionsId, VpcId = VpcId, DryRun = DryRun)
   output <- .ec2$associate_dhcp_options_output()
@@ -1785,7 +1803,8 @@ ec2_associate_enclave_certificate_iam_role <- function(CertificateArn, RoleArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_enclave_certificate_iam_role_input(CertificateArn = CertificateArn, RoleArn = RoleArn, DryRun = DryRun)
   output <- .ec2$associate_enclave_certificate_iam_role_output()
@@ -1863,7 +1882,8 @@ ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_iam_instance_profile_input(IamInstanceProfile = IamInstanceProfile, InstanceId = InstanceId)
   output <- .ec2$associate_iam_instance_profile_output()
@@ -1971,7 +1991,8 @@ ec2_associate_instance_event_window <- function(DryRun = NULL, InstanceEventWind
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_instance_event_window_input(DryRun = DryRun, InstanceEventWindowId = InstanceEventWindowId, AssociationTarget = AssociationTarget)
   output <- .ec2$associate_instance_event_window_output()
@@ -2041,7 +2062,8 @@ ec2_associate_ipam_byoasn <- function(DryRun = NULL, Asn, Cidr) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_ipam_byoasn_input(DryRun = DryRun, Asn = Asn, Cidr = Cidr)
   output <- .ec2$associate_ipam_byoasn_output()
@@ -2130,7 +2152,8 @@ ec2_associate_ipam_resource_discovery <- function(DryRun = NULL, IpamId, IpamRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_ipam_resource_discovery_input(DryRun = DryRun, IpamId = IpamId, IpamResourceDiscoveryId = IpamResourceDiscoveryId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$associate_ipam_resource_discovery_output()
@@ -2226,7 +2249,8 @@ ec2_associate_nat_gateway_address <- function(NatGatewayId, AllocationIds, Priva
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_nat_gateway_address_input(NatGatewayId = NatGatewayId, AllocationIds = AllocationIds, PrivateIpAddresses = PrivateIpAddresses, DryRun = DryRun)
   output <- .ec2$associate_nat_gateway_address_output()
@@ -2307,7 +2331,8 @@ ec2_associate_route_table <- function(DryRun = NULL, RouteTableId, SubnetId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_route_table_input(DryRun = DryRun, RouteTableId = RouteTableId, SubnetId = SubnetId, GatewayId = GatewayId)
   output <- .ec2$associate_route_table_output()
@@ -2373,7 +2398,8 @@ ec2_associate_subnet_cidr_block <- function(Ipv6CidrBlock = NULL, SubnetId, Ipv6
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_subnet_cidr_block_input(Ipv6CidrBlock = Ipv6CidrBlock, SubnetId = SubnetId, Ipv6IpamPoolId = Ipv6IpamPoolId, Ipv6NetmaskLength = Ipv6NetmaskLength)
   output <- .ec2$associate_subnet_cidr_block_output()
@@ -2455,7 +2481,8 @@ ec2_associate_transit_gateway_multicast_domain <- function(TransitGatewayMultica
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_transit_gateway_multicast_domain_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, SubnetIds = SubnetIds, DryRun = DryRun)
   output <- .ec2$associate_transit_gateway_multicast_domain_output()
@@ -2521,7 +2548,8 @@ ec2_associate_transit_gateway_policy_table <- function(TransitGatewayPolicyTable
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_transit_gateway_policy_table_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$associate_transit_gateway_policy_table_output()
@@ -2585,7 +2613,8 @@ ec2_associate_transit_gateway_route_table <- function(TransitGatewayRouteTableId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$associate_transit_gateway_route_table_output()
@@ -2669,7 +2698,8 @@ ec2_associate_trunk_interface <- function(BranchInterfaceId, TrunkInterfaceId, V
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_trunk_interface_input(BranchInterfaceId = BranchInterfaceId, TrunkInterfaceId = TrunkInterfaceId, VlanId = VlanId, GreKey = GreKey, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$associate_trunk_interface_output()
@@ -2793,7 +2823,8 @@ ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, Cid
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$associate_vpc_cidr_block_input(AmazonProvidedIpv6CidrBlock = AmazonProvidedIpv6CidrBlock, CidrBlock = CidrBlock, VpcId = VpcId, Ipv6CidrBlockNetworkBorderGroup = Ipv6CidrBlockNetworkBorderGroup, Ipv6Pool = Ipv6Pool, Ipv6CidrBlock = Ipv6CidrBlock, Ipv4IpamPoolId = Ipv4IpamPoolId, Ipv4NetmaskLength = Ipv4NetmaskLength, Ipv6IpamPoolId = Ipv6IpamPoolId, Ipv6NetmaskLength = Ipv6NetmaskLength)
   output <- .ec2$associate_vpc_cidr_block_output()
@@ -2867,7 +2898,8 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_classic_link_vpc_input(DryRun = DryRun, Groups = Groups, InstanceId = InstanceId, VpcId = VpcId)
   output <- .ec2$attach_classic_link_vpc_output()
@@ -2932,7 +2964,8 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_internet_gateway_input(DryRun = DryRun, InternetGatewayId = InternetGatewayId, VpcId = VpcId)
   output <- .ec2$attach_internet_gateway_output()
@@ -3014,7 +3047,8 @@ ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_network_interface_input(DeviceIndex = DeviceIndex, DryRun = DryRun, InstanceId = InstanceId, NetworkInterfaceId = NetworkInterfaceId, NetworkCardIndex = NetworkCardIndex, EnaSrdSpecification = EnaSrdSpecification)
   output <- .ec2$attach_network_interface_output()
@@ -3130,7 +3164,8 @@ ec2_attach_verified_access_trust_provider <- function(VerifiedAccessInstanceId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_verified_access_trust_provider_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, VerifiedAccessTrustProviderId = VerifiedAccessTrustProviderId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$attach_verified_access_trust_provider_output()
@@ -3236,7 +3271,8 @@ ec2_attach_volume <- function(Device, InstanceId, VolumeId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_volume_input(Device = Device, InstanceId = InstanceId, VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$attach_volume_output()
@@ -3299,7 +3335,8 @@ ec2_attach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$attach_vpn_gateway_input(VpcId = VpcId, VpnGatewayId = VpnGatewayId, DryRun = DryRun)
   output <- .ec2$attach_vpn_gateway_output()
@@ -3376,7 +3413,8 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$authorize_client_vpn_ingress_input(ClientVpnEndpointId = ClientVpnEndpointId, TargetNetworkCidr = TargetNetworkCidr, AccessGroupId = AccessGroupId, AuthorizeAllGroups = AuthorizeAllGroups, Description = Description, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$authorize_client_vpn_ingress_output()
@@ -3583,7 +3621,8 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$authorize_security_group_egress_input(DryRun = DryRun, GroupId = GroupId, IpPermissions = IpPermissions, TagSpecifications = TagSpecifications, CidrIp = CidrIp, FromPort = FromPort, IpProtocol = IpProtocol, ToPort = ToPort, SourceSecurityGroupName = SourceSecurityGroupName, SourceSecurityGroupOwnerId = SourceSecurityGroupOwnerId)
   output <- .ec2$authorize_security_group_egress_output()
@@ -3853,7 +3892,8 @@ ec2_authorize_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$authorize_security_group_ingress_input(CidrIp = CidrIp, FromPort = FromPort, GroupId = GroupId, GroupName = GroupName, IpPermissions = IpPermissions, IpProtocol = IpProtocol, SourceSecurityGroupName = SourceSecurityGroupName, SourceSecurityGroupOwnerId = SourceSecurityGroupOwnerId, ToPort = ToPort, DryRun = DryRun, TagSpecifications = TagSpecifications)
   output <- .ec2$authorize_security_group_ingress_output()
@@ -3951,7 +3991,8 @@ ec2_bundle_instance <- function(InstanceId, Storage, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$bundle_instance_input(InstanceId = InstanceId, Storage = Storage, DryRun = DryRun)
   output <- .ec2$bundle_instance_output()
@@ -4030,7 +4071,8 @@ ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_bundle_task_input(BundleId = BundleId, DryRun = DryRun)
   output <- .ec2$cancel_bundle_task_output()
@@ -4092,7 +4134,8 @@ ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_capacity_reservation_input(CapacityReservationId = CapacityReservationId, DryRun = DryRun)
   output <- .ec2$cancel_capacity_reservation_output()
@@ -4172,7 +4215,8 @@ ec2_cancel_capacity_reservation_fleets <- function(DryRun = NULL, CapacityReserv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_capacity_reservation_fleets_input(DryRun = DryRun, CapacityReservationFleetIds = CapacityReservationFleetIds)
   output <- .ec2$cancel_capacity_reservation_fleets_output()
@@ -4193,8 +4237,8 @@ ec2_cancel_capacity_reservation_fleets <- function(DryRun = NULL, CapacityReserv
 #' complete or is in the process of transferring the final disk image, the
 #' command fails and returns an exception.
 #' 
-#' For more information, see [Importing a Virtual Machine Using the Amazon
-#' EC2 CLI](http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf).
+#' For more information, see Importing a Virtual Machine Using the Amazon
+#' EC2 CLI.
 #'
 #' @usage
 #' ec2_cancel_conversion_task(ConversionTaskId, DryRun, ReasonMessage)
@@ -4229,7 +4273,8 @@ ec2_cancel_conversion_task <- function(ConversionTaskId, DryRun = NULL, ReasonMe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_conversion_task_input(ConversionTaskId = ConversionTaskId, DryRun = DryRun, ReasonMessage = ReasonMessage)
   output <- .ec2$cancel_conversion_task_output()
@@ -4277,7 +4322,8 @@ ec2_cancel_export_task <- function(ExportTaskId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_export_task_input(ExportTaskId = ExportTaskId)
   output <- .ec2$cancel_export_task_output()
@@ -4335,7 +4381,8 @@ ec2_cancel_image_launch_permission <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_image_launch_permission_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$cancel_image_launch_permission_output()
@@ -4392,7 +4439,8 @@ ec2_cancel_import_task <- function(CancelReason = NULL, DryRun = NULL, ImportTas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_import_task_input(CancelReason = CancelReason, DryRun = DryRun, ImportTaskId = ImportTaskId)
   output <- .ec2$cancel_import_task_output()
@@ -4480,7 +4528,8 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_reserved_instances_listing_input(ReservedInstancesListingId = ReservedInstancesListingId)
   output <- .ec2$cancel_reserved_instances_listing_output()
@@ -4595,7 +4644,8 @@ ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_spot_fleet_requests_input(DryRun = DryRun, SpotFleetRequestIds = SpotFleetRequestIds, TerminateInstances = TerminateInstances)
   output <- .ec2$cancel_spot_fleet_requests_output()
@@ -4668,7 +4718,8 @@ ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequest
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$cancel_spot_instance_requests_input(DryRun = DryRun, SpotInstanceRequestIds = SpotInstanceRequestIds)
   output <- .ec2$cancel_spot_instance_requests_output()
@@ -4737,7 +4788,8 @@ ec2_confirm_product_instance <- function(InstanceId, ProductCode, DryRun = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$confirm_product_instance_input(InstanceId = InstanceId, ProductCode = ProductCode, DryRun = DryRun)
   output <- .ec2$confirm_product_instance_output()
@@ -4801,7 +4853,8 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$copy_fpga_image_input(DryRun = DryRun, SourceFpgaImageId = SourceFpgaImageId, Description = Description, Name = Name, SourceRegion = SourceRegion, ClientToken = ClientToken)
   output <- .ec2$copy_fpga_image_output()
@@ -4976,7 +5029,8 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$copy_image_input(ClientToken = ClientToken, Description = Description, Encrypted = Encrypted, KmsKeyId = KmsKeyId, Name = Name, SourceImageId = SourceImageId, SourceRegion = SourceRegion, DestinationOutpostArn = DestinationOutpostArn, DryRun = DryRun, CopyImageTags = CopyImageTags, TagSpecifications = TagSpecifications)
   output <- .ec2$copy_image_output()
@@ -5165,7 +5219,8 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationOutpostArn = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$copy_snapshot_input(Description = Description, DestinationOutpostArn = DestinationOutpostArn, DestinationRegion = DestinationRegion, Encrypted = Encrypted, KmsKeyId = KmsKeyId, PresignedUrl = PresignedUrl, SourceRegion = SourceRegion, SourceSnapshotId = SourceSnapshotId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$copy_snapshot_output()
@@ -5387,7 +5442,8 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_capacity_reservation_input(ClientToken = ClientToken, InstanceType = InstanceType, InstancePlatform = InstancePlatform, AvailabilityZone = AvailabilityZone, AvailabilityZoneId = AvailabilityZoneId, Tenancy = Tenancy, InstanceCount = InstanceCount, EbsOptimized = EbsOptimized, EphemeralStorage = EphemeralStorage, EndDate = EndDate, EndDateType = EndDateType, InstanceMatchCriteria = InstanceMatchCriteria, TagSpecifications = TagSpecifications, DryRun = DryRun, OutpostArn = OutpostArn, PlacementGroupArn = PlacementGroupArn)
   output <- .ec2$create_capacity_reservation_output()
@@ -5549,7 +5605,8 @@ ec2_create_capacity_reservation_by_splitting <- function(DryRun = NULL, ClientTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_capacity_reservation_by_splitting_input(DryRun = DryRun, ClientToken = ClientToken, SourceCapacityReservationId = SourceCapacityReservationId, InstanceCount = InstanceCount, TagSpecifications = TagSpecifications)
   output <- .ec2$create_capacity_reservation_by_splitting_output()
@@ -5718,7 +5775,8 @@ ec2_create_capacity_reservation_fleet <- function(AllocationStrategy = NULL, Cli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_capacity_reservation_fleet_input(AllocationStrategy = AllocationStrategy, ClientToken = ClientToken, InstanceTypeSpecifications = InstanceTypeSpecifications, Tenancy = Tenancy, TotalTargetCapacity = TotalTargetCapacity, EndDate = EndDate, InstanceMatchCriteria = InstanceMatchCriteria, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_capacity_reservation_fleet_output()
@@ -5802,7 +5860,8 @@ ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_carrier_gateway_input(VpcId = VpcId, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$create_carrier_gateway_output()
@@ -5990,7 +6049,8 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_client_vpn_endpoint_input(ClientCidrBlock = ClientCidrBlock, ServerCertificateArn = ServerCertificateArn, AuthenticationOptions = AuthenticationOptions, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, TransportProtocol = TransportProtocol, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, ClientToken = ClientToken, TagSpecifications = TagSpecifications, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions)
   output <- .ec2$create_client_vpn_endpoint_output()
@@ -6076,7 +6136,8 @@ ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBloc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_client_vpn_route_input(ClientVpnEndpointId = ClientVpnEndpointId, DestinationCidrBlock = DestinationCidrBlock, TargetVpcSubnetId = TargetVpcSubnetId, Description = Description, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$create_client_vpn_route_output()
@@ -6135,7 +6196,8 @@ ec2_create_coip_cidr <- function(Cidr, CoipPoolId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_coip_cidr_input(Cidr = Cidr, CoipPoolId = CoipPoolId, DryRun = DryRun)
   output <- .ec2$create_coip_cidr_output()
@@ -6214,7 +6276,8 @@ ec2_create_coip_pool <- function(LocalGatewayRouteTableId, TagSpecifications = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_coip_pool_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_coip_pool_output()
@@ -6356,7 +6419,8 @@ ec2_create_customer_gateway <- function(BgpAsn = NULL, PublicIp = NULL, Certific
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_customer_gateway_input(BgpAsn = BgpAsn, PublicIp = PublicIp, CertificateArn = CertificateArn, Type = Type, TagSpecifications = TagSpecifications, DeviceName = DeviceName, IpAddress = IpAddress, DryRun = DryRun, BgpAsnExtended = BgpAsnExtended)
   output <- .ec2$create_customer_gateway_output()
@@ -6461,7 +6525,8 @@ ec2_create_default_subnet <- function(AvailabilityZone, DryRun = NULL, Ipv6Nativ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_default_subnet_input(AvailabilityZone = AvailabilityZone, DryRun = DryRun, Ipv6Native = Ipv6Native)
   output <- .ec2$create_default_subnet_output()
@@ -6559,7 +6624,8 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_default_vpc_input(DryRun = DryRun)
   output <- .ec2$create_default_vpc_output()
@@ -6714,7 +6780,8 @@ ec2_create_dhcp_options <- function(DhcpConfigurations, TagSpecifications = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_dhcp_options_input(DhcpConfigurations = DhcpConfigurations, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_dhcp_options_output()
@@ -6803,7 +6870,8 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_egress_only_internet_gateway_input(ClientToken = ClientToken, DryRun = DryRun, VpcId = VpcId, TagSpecifications = TagSpecifications)
   output <- .ec2$create_egress_only_internet_gateway_output()
@@ -7272,7 +7340,8 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_fleet_input(DryRun = DryRun, ClientToken = ClientToken, SpotOptions = SpotOptions, OnDemandOptions = OnDemandOptions, ExcessCapacityTerminationPolicy = ExcessCapacityTerminationPolicy, LaunchTemplateConfigs = LaunchTemplateConfigs, TargetCapacitySpecification = TargetCapacitySpecification, TerminateInstancesWithExpiration = TerminateInstancesWithExpiration, Type = Type, ValidFrom = ValidFrom, ValidUntil = ValidUntil, ReplaceUnhealthyInstances = ReplaceUnhealthyInstances, TagSpecifications = TagSpecifications, Context = Context)
   output <- .ec2$create_fleet_output()
@@ -7460,7 +7529,8 @@ ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_flow_logs_input(DryRun = DryRun, ClientToken = ClientToken, DeliverLogsPermissionArn = DeliverLogsPermissionArn, DeliverCrossAccountRole = DeliverCrossAccountRole, LogGroupName = LogGroupName, ResourceIds = ResourceIds, ResourceType = ResourceType, TrafficType = TrafficType, LogDestinationType = LogDestinationType, LogDestination = LogDestination, LogFormat = LogFormat, TagSpecifications = TagSpecifications, MaxAggregationInterval = MaxAggregationInterval, DestinationOptions = DestinationOptions)
   output <- .ec2$create_flow_logs_output()
@@ -7554,7 +7624,8 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_fpga_image_input(DryRun = DryRun, InputStorageLocation = InputStorageLocation, LogsStorageLocation = LogsStorageLocation, Description = Description, Name = Name, ClientToken = ClientToken, TagSpecifications = TagSpecifications)
   output <- .ec2$create_fpga_image_output()
@@ -7728,7 +7799,8 @@ ec2_create_image <- function(BlockDeviceMappings = NULL, Description = NULL, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_image_input(BlockDeviceMappings = BlockDeviceMappings, Description = Description, DryRun = DryRun, InstanceId = InstanceId, Name = Name, NoReboot = NoReboot, TagSpecifications = TagSpecifications)
   output <- .ec2$create_image_output()
@@ -7848,7 +7920,8 @@ ec2_create_instance_connect_endpoint <- function(DryRun = NULL, SubnetId, Securi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_instance_connect_endpoint_input(DryRun = DryRun, SubnetId = SubnetId, SecurityGroupIds = SecurityGroupIds, PreserveClientIp = PreserveClientIp, ClientToken = ClientToken, TagSpecifications = TagSpecifications)
   output <- .ec2$create_instance_connect_endpoint_output()
@@ -8009,7 +8082,8 @@ ec2_create_instance_event_window <- function(DryRun = NULL, Name = NULL, TimeRan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_instance_event_window_input(DryRun = DryRun, Name = Name, TimeRanges = TimeRanges, CronExpression = CronExpression, TagSpecifications = TagSpecifications)
   output <- .ec2$create_instance_event_window_output()
@@ -8110,7 +8184,8 @@ ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_instance_export_task_input(Description = Description, ExportToS3Task = ExportToS3Task, InstanceId = InstanceId, TargetEnvironment = TargetEnvironment, TagSpecifications = TagSpecifications)
   output <- .ec2$create_instance_export_task_output()
@@ -8200,7 +8275,8 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_internet_gateway_input(TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_internet_gateway_output()
@@ -8330,7 +8406,8 @@ ec2_create_ipam <- function(DryRun = NULL, Description = NULL, OperatingRegions 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_input(DryRun = DryRun, Description = Description, OperatingRegions = OperatingRegions, TagSpecifications = TagSpecifications, ClientToken = ClientToken, Tier = Tier, EnablePrivateGua = EnablePrivateGua)
   output <- .ec2$create_ipam_output()
@@ -8423,7 +8500,8 @@ ec2_create_ipam_external_resource_verification_token <- function(DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_external_resource_verification_token_input(DryRun = DryRun, IpamId = IpamId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_ipam_external_resource_verification_token_output()
@@ -8640,7 +8718,8 @@ ec2_create_ipam_pool <- function(DryRun = NULL, IpamScopeId, Locale = NULL, Sour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_pool_input(DryRun = DryRun, IpamScopeId = IpamScopeId, Locale = Locale, SourceIpamPoolId = SourceIpamPoolId, Description = Description, AddressFamily = AddressFamily, AutoImport = AutoImport, PubliclyAdvertisable = PubliclyAdvertisable, AllocationMinNetmaskLength = AllocationMinNetmaskLength, AllocationMaxNetmaskLength = AllocationMaxNetmaskLength, AllocationDefaultNetmaskLength = AllocationDefaultNetmaskLength, AllocationResourceTags = AllocationResourceTags, TagSpecifications = TagSpecifications, ClientToken = ClientToken, AwsService = AwsService, PublicIpSource = PublicIpSource, SourceResource = SourceResource)
   output <- .ec2$create_ipam_pool_output()
@@ -8738,7 +8817,8 @@ ec2_create_ipam_resource_discovery <- function(DryRun = NULL, Description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_resource_discovery_input(DryRun = DryRun, Description = Description, OperatingRegions = OperatingRegions, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_ipam_resource_discovery_output()
@@ -8840,7 +8920,8 @@ ec2_create_ipam_scope <- function(DryRun = NULL, IpamId, Description = NULL, Tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_ipam_scope_input(DryRun = DryRun, IpamId = IpamId, Description = Description, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_ipam_scope_output()
@@ -8951,7 +9032,8 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL, KeyType = NULL, TagSpeci
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_key_pair_input(KeyName = KeyName, DryRun = DryRun, KeyType = KeyType, TagSpecifications = TagSpecifications, KeyFormat = KeyFormat)
   output <- .ec2$create_key_pair_output()
@@ -9356,7 +9438,8 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_launch_template_input(DryRun = DryRun, ClientToken = ClientToken, LaunchTemplateName = LaunchTemplateName, VersionDescription = VersionDescription, LaunchTemplateData = LaunchTemplateData, TagSpecifications = TagSpecifications)
   output <- .ec2$create_launch_template_output()
@@ -10000,7 +10083,8 @@ ec2_create_launch_template_version <- function(DryRun = NULL, ClientToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_launch_template_version_input(DryRun = DryRun, ClientToken = ClientToken, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, SourceVersion = SourceVersion, VersionDescription = VersionDescription, LaunchTemplateData = LaunchTemplateData, ResolveAlias = ResolveAlias)
   output <- .ec2$create_launch_template_version_output()
@@ -10083,7 +10167,8 @@ ec2_create_local_gateway_route <- function(DestinationCidrBlock = NULL, LocalGat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_local_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, LocalGatewayRouteTableId = LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId = LocalGatewayVirtualInterfaceGroupId, DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId, DestinationPrefixListId = DestinationPrefixListId)
   output <- .ec2$create_local_gateway_route_output()
@@ -10169,7 +10254,8 @@ ec2_create_local_gateway_route_table <- function(LocalGatewayId, Mode = NULL, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_local_gateway_route_table_input(LocalGatewayId = LocalGatewayId, Mode = Mode, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_local_gateway_route_table_output()
@@ -10254,7 +10340,8 @@ ec2_create_local_gateway_route_table_virtual_interface_group_association <- func
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_local_gateway_route_table_virtual_interface_group_association_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId = LocalGatewayVirtualInterfaceGroupId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_local_gateway_route_table_virtual_interface_group_association_output()
@@ -10338,7 +10425,8 @@ ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_local_gateway_route_table_vpc_association_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, VpcId = VpcId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_local_gateway_route_table_vpc_association_output()
@@ -10444,7 +10532,8 @@ ec2_create_managed_prefix_list <- function(DryRun = NULL, PrefixListName, Entrie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_managed_prefix_list_input(DryRun = DryRun, PrefixListName = PrefixListName, Entries = Entries, MaxEntries = MaxEntries, TagSpecifications = TagSpecifications, AddressFamily = AddressFamily, ClientToken = ClientToken)
   output <- .ec2$create_managed_prefix_list_output()
@@ -10632,7 +10721,8 @@ ec2_create_nat_gateway <- function(AllocationId = NULL, ClientToken = NULL, DryR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_nat_gateway_input(AllocationId = AllocationId, ClientToken = ClientToken, DryRun = DryRun, SubnetId = SubnetId, TagSpecifications = TagSpecifications, ConnectivityType = ConnectivityType, PrivateIpAddress = PrivateIpAddress, SecondaryAllocationIds = SecondaryAllocationIds, SecondaryPrivateIpAddresses = SecondaryPrivateIpAddresses, SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount)
   output <- .ec2$create_nat_gateway_output()
@@ -10752,7 +10842,8 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_acl_input(DryRun = DryRun, VpcId = VpcId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_network_acl_output()
@@ -10880,7 +10971,8 @@ ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_acl_entry_input(CidrBlock = CidrBlock, DryRun = DryRun, Egress = Egress, IcmpTypeCode = IcmpTypeCode, Ipv6CidrBlock = Ipv6CidrBlock, NetworkAclId = NetworkAclId, PortRange = PortRange, Protocol = Protocol, RuleAction = RuleAction, RuleNumber = RuleNumber)
   output <- .ec2$create_network_acl_entry_output()
@@ -11303,7 +11395,8 @@ ec2_create_network_insights_access_scope <- function(MatchPaths = NULL, ExcludeP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_insights_access_scope_input(MatchPaths = MatchPaths, ExcludePaths = ExcludePaths, ClientToken = ClientToken, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_network_insights_access_scope_output()
@@ -11465,7 +11558,8 @@ ec2_create_network_insights_path <- function(SourceIp = NULL, DestinationIp = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_insights_path_input(SourceIp = SourceIp, DestinationIp = DestinationIp, Source = Source, Destination = Destination, Protocol = Protocol, DestinationPort = DestinationPort, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken, FilterAtSource = FilterAtSource, FilterAtDestination = FilterAtDestination)
   output <- .ec2$create_network_insights_path_output()
@@ -11769,7 +11863,8 @@ ec2_create_network_interface <- function(Description = NULL, DryRun = NULL, Grou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_interface_input(Description = Description, DryRun = DryRun, Groups = Groups, Ipv6AddressCount = Ipv6AddressCount, Ipv6Addresses = Ipv6Addresses, PrivateIpAddress = PrivateIpAddress, PrivateIpAddresses = PrivateIpAddresses, SecondaryPrivateIpAddressCount = SecondaryPrivateIpAddressCount, Ipv4Prefixes = Ipv4Prefixes, Ipv4PrefixCount = Ipv4PrefixCount, Ipv6Prefixes = Ipv6Prefixes, Ipv6PrefixCount = Ipv6PrefixCount, InterfaceType = InterfaceType, SubnetId = SubnetId, TagSpecifications = TagSpecifications, ClientToken = ClientToken, EnablePrimaryIpv6 = EnablePrimaryIpv6, ConnectionTrackingSpecification = ConnectionTrackingSpecification)
   output <- .ec2$create_network_interface_output()
@@ -11844,7 +11939,8 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_network_interface_permission_input(NetworkInterfaceId = NetworkInterfaceId, AwsAccountId = AwsAccountId, AwsService = AwsService, Permission = Permission, DryRun = DryRun)
   output <- .ec2$create_network_interface_permission_output()
@@ -11960,7 +12056,8 @@ ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_placement_group_input(DryRun = DryRun, GroupName = GroupName, Strategy = Strategy, PartitionCount = PartitionCount, TagSpecifications = TagSpecifications, SpreadLevel = SpreadLevel)
   output <- .ec2$create_placement_group_output()
@@ -12040,7 +12137,8 @@ ec2_create_public_ipv_4_pool <- function(DryRun = NULL, TagSpecifications = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_public_ipv_4_pool_input(DryRun = DryRun, TagSpecifications = TagSpecifications, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$create_public_ipv_4_pool_output()
@@ -12160,7 +12258,8 @@ ec2_create_replace_root_volume_task <- function(InstanceId, SnapshotId = NULL, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_replace_root_volume_task_input(InstanceId = InstanceId, SnapshotId = SnapshotId, ClientToken = ClientToken, DryRun = DryRun, TagSpecifications = TagSpecifications, ImageId = ImageId, DeleteReplacedRootVolume = DeleteReplacedRootVolume)
   output <- .ec2$create_replace_root_volume_task_output()
@@ -12291,7 +12390,8 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_reserved_instances_listing_input(ClientToken = ClientToken, InstanceCount = InstanceCount, PriceSchedules = PriceSchedules, ReservedInstancesId = ReservedInstancesId)
   output <- .ec2$create_reserved_instances_listing_output()
@@ -12383,7 +12483,8 @@ ec2_create_restore_image_task <- function(Bucket, ObjectKey, Name = NULL, TagSpe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_restore_image_task_input(Bucket = Bucket, ObjectKey = ObjectKey, Name = Name, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_restore_image_task_output()
@@ -12511,7 +12612,8 @@ ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_route_input(DestinationCidrBlock = DestinationCidrBlock, DestinationIpv6CidrBlock = DestinationIpv6CidrBlock, DestinationPrefixListId = DestinationPrefixListId, DryRun = DryRun, VpcEndpointId = VpcEndpointId, EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId, GatewayId = GatewayId, InstanceId = InstanceId, NatGatewayId = NatGatewayId, TransitGatewayId = TransitGatewayId, LocalGatewayId = LocalGatewayId, CarrierGatewayId = CarrierGatewayId, NetworkInterfaceId = NetworkInterfaceId, RouteTableId = RouteTableId, VpcPeeringConnectionId = VpcPeeringConnectionId, CoreNetworkArn = CoreNetworkArn)
   output <- .ec2$create_route_output()
@@ -12642,7 +12744,8 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_route_table_input(DryRun = DryRun, VpcId = VpcId, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$create_route_table_output()
@@ -12766,7 +12869,8 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_security_group_input(Description = Description, GroupName = GroupName, VpcId = VpcId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_security_group_output()
@@ -12932,7 +13036,8 @@ ec2_create_snapshot <- function(Description = NULL, OutpostArn = NULL, VolumeId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_snapshot_input(Description = Description, OutpostArn = OutpostArn, VolumeId = VolumeId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_snapshot_output()
@@ -13066,7 +13171,8 @@ ec2_create_snapshots <- function(Description = NULL, InstanceSpecification, Outp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_snapshots_input(Description = Description, InstanceSpecification = InstanceSpecification, OutpostArn = OutpostArn, TagSpecifications = TagSpecifications, DryRun = DryRun, CopyTagsFromSource = CopyTagsFromSource)
   output <- .ec2$create_snapshots_output()
@@ -13148,7 +13254,8 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_spot_datafeed_subscription_input(Bucket = Bucket, DryRun = DryRun, Prefix = Prefix)
   output <- .ec2$create_spot_datafeed_subscription_output()
@@ -13224,7 +13331,8 @@ ec2_create_store_image_task <- function(ImageId, Bucket, S3ObjectTags = NULL, Dr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_store_image_task_input(ImageId = ImageId, Bucket = Bucket, S3ObjectTags = S3ObjectTags, DryRun = DryRun)
   output <- .ec2$create_store_image_task_output()
@@ -13412,7 +13520,8 @@ ec2_create_subnet <- function(TagSpecifications = NULL, AvailabilityZone = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_subnet_input(TagSpecifications = TagSpecifications, AvailabilityZone = AvailabilityZone, AvailabilityZoneId = AvailabilityZoneId, CidrBlock = CidrBlock, Ipv6CidrBlock = Ipv6CidrBlock, OutpostArn = OutpostArn, VpcId = VpcId, DryRun = DryRun, Ipv6Native = Ipv6Native, Ipv4IpamPoolId = Ipv4IpamPoolId, Ipv4NetmaskLength = Ipv4NetmaskLength, Ipv6IpamPoolId = Ipv6IpamPoolId, Ipv6NetmaskLength = Ipv6NetmaskLength)
   output <- .ec2$create_subnet_output()
@@ -13509,7 +13618,8 @@ ec2_create_subnet_cidr_reservation <- function(SubnetId, Cidr, ReservationType, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_subnet_cidr_reservation_input(SubnetId = SubnetId, Cidr = Cidr, ReservationType = ReservationType, Description = Description, DryRun = DryRun, TagSpecifications = TagSpecifications)
   output <- .ec2$create_subnet_cidr_reservation_output()
@@ -13601,7 +13711,8 @@ ec2_create_tags <- function(DryRun = NULL, Resources, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_tags_input(DryRun = DryRun, Resources = Resources, Tags = Tags)
   output <- .ec2$create_tags_output()
@@ -13748,7 +13859,8 @@ ec2_create_traffic_mirror_filter <- function(Description = NULL, TagSpecificatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_traffic_mirror_filter_input(Description = Description, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$create_traffic_mirror_filter_output()
@@ -13880,7 +13992,8 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_traffic_mirror_filter_rule_input(TrafficMirrorFilterId = TrafficMirrorFilterId, TrafficDirection = TrafficDirection, RuleNumber = RuleNumber, RuleAction = RuleAction, DestinationPortRange = DestinationPortRange, SourcePortRange = SourcePortRange, Protocol = Protocol, DestinationCidrBlock = DestinationCidrBlock, SourceCidrBlock = SourceCidrBlock, Description = Description, DryRun = DryRun, ClientToken = ClientToken, TagSpecifications = TagSpecifications)
   output <- .ec2$create_traffic_mirror_filter_rule_output()
@@ -14015,7 +14128,8 @@ ec2_create_traffic_mirror_session <- function(NetworkInterfaceId, TrafficMirrorT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_traffic_mirror_session_input(NetworkInterfaceId = NetworkInterfaceId, TrafficMirrorTargetId = TrafficMirrorTargetId, TrafficMirrorFilterId = TrafficMirrorFilterId, PacketLength = PacketLength, SessionNumber = SessionNumber, VirtualNetworkId = VirtualNetworkId, Description = Description, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$create_traffic_mirror_session_output()
@@ -14119,7 +14233,8 @@ ec2_create_traffic_mirror_target <- function(NetworkInterfaceId = NULL, NetworkL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_traffic_mirror_target_input(NetworkInterfaceId = NetworkInterfaceId, NetworkLoadBalancerArn = NetworkLoadBalancerArn, Description = Description, TagSpecifications = TagSpecifications, DryRun = DryRun, ClientToken = ClientToken, GatewayLoadBalancerEndpointId = GatewayLoadBalancerEndpointId)
   output <- .ec2$create_traffic_mirror_target_output()
@@ -14256,7 +14371,8 @@ ec2_create_transit_gateway <- function(Description = NULL, Options = NULL, TagSp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_input(Description = Description, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_output()
@@ -14350,7 +14466,8 @@ ec2_create_transit_gateway_connect <- function(TransportTransitGatewayAttachment
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_connect_input(TransportTransitGatewayAttachmentId = TransportTransitGatewayAttachmentId, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_connect_output()
@@ -14476,7 +14593,8 @@ ec2_create_transit_gateway_connect_peer <- function(TransitGatewayAttachmentId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_connect_peer_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, TransitGatewayAddress = TransitGatewayAddress, PeerAddress = PeerAddress, BgpOptions = BgpOptions, InsideCidrBlocks = InsideCidrBlocks, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_connect_peer_output()
@@ -14572,7 +14690,8 @@ ec2_create_transit_gateway_multicast_domain <- function(TransitGatewayId, Option
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_multicast_domain_input(TransitGatewayId = TransitGatewayId, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_multicast_domain_output()
@@ -14690,7 +14809,8 @@ ec2_create_transit_gateway_peering_attachment <- function(TransitGatewayId, Peer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_peering_attachment_input(TransitGatewayId = TransitGatewayId, PeerTransitGatewayId = PeerTransitGatewayId, PeerAccountId = PeerAccountId, PeerRegion = PeerRegion, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_peering_attachment_output()
@@ -14770,7 +14890,8 @@ ec2_create_transit_gateway_policy_table <- function(TransitGatewayId, TagSpecifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_policy_table_input(TransitGatewayId = TransitGatewayId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_policy_table_output()
@@ -14844,7 +14965,8 @@ ec2_create_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_prefix_list_reference_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, PrefixListId = PrefixListId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, Blackhole = Blackhole, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_prefix_list_reference_output()
@@ -14919,7 +15041,8 @@ ec2_create_transit_gateway_route <- function(DestinationCidrBlock, TransitGatewa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, Blackhole = Blackhole, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_route_output()
@@ -15000,7 +15123,8 @@ ec2_create_transit_gateway_route_table <- function(TransitGatewayId, TagSpecific
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_route_table_input(TransitGatewayId = TransitGatewayId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_route_table_output()
@@ -15089,7 +15213,8 @@ ec2_create_transit_gateway_route_table_announcement <- function(TransitGatewayRo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_route_table_announcement_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, PeeringAttachmentId = PeeringAttachmentId, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_route_table_announcement_output()
@@ -15202,7 +15327,8 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_transit_gateway_vpc_attachment_input(TransitGatewayId = TransitGatewayId, VpcId = VpcId, SubnetIds = SubnetIds, Options = Options, TagSpecifications = TagSpecifications, DryRun = DryRun)
   output <- .ec2$create_transit_gateway_vpc_attachment_output()
@@ -15366,7 +15492,8 @@ ec2_create_verified_access_endpoint <- function(VerifiedAccessGroupId, EndpointT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_verified_access_endpoint_input(VerifiedAccessGroupId = VerifiedAccessGroupId, EndpointType = EndpointType, AttachmentType = AttachmentType, DomainCertificateArn = DomainCertificateArn, ApplicationDomain = ApplicationDomain, EndpointDomainPrefix = EndpointDomainPrefix, SecurityGroupIds = SecurityGroupIds, LoadBalancerOptions = LoadBalancerOptions, NetworkInterfaceOptions = NetworkInterfaceOptions, Description = Description, PolicyDocument = PolicyDocument, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$create_verified_access_endpoint_output()
@@ -15472,7 +15599,8 @@ ec2_create_verified_access_group <- function(VerifiedAccessInstanceId, Descripti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_verified_access_group_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, Description = Description, PolicyDocument = PolicyDocument, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$create_verified_access_group_output()
@@ -15570,7 +15698,8 @@ ec2_create_verified_access_instance <- function(Description = NULL, TagSpecifica
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_verified_access_instance_input(Description = Description, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun, FIPSEnabled = FIPSEnabled)
   output <- .ec2$create_verified_access_instance_output()
@@ -15711,7 +15840,8 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_verified_access_trust_provider_input(TrustProviderType = TrustProviderType, UserTrustProviderType = UserTrustProviderType, DeviceTrustProviderType = DeviceTrustProviderType, OidcOptions = OidcOptions, DeviceOptions = DeviceOptions, PolicyReferenceName = PolicyReferenceName, Description = Description, TagSpecifications = TagSpecifications, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$create_verified_access_trust_provider_output()
@@ -15762,7 +15892,7 @@ ec2_create_verified_access_trust_provider <- function(TrustProviderType, UserTru
 #' a snapshot), starting encryption state, ownership, and whether
 #' encryption by default is enabled. For more information, see [Encryption
 #' by
-#' default](https://docs.aws.amazon.com/ebs/latest/userguide/work-with-ebs-encr.html#encryption-by-default)
+#' default](https://docs.aws.amazon.com/ebs/latest/userguide/#encryption-by-default)
 #' in the *Amazon EBS User Guide*.
 #' 
 #' Encrypted Amazon EBS volumes must be attached to instances that support
@@ -15981,7 +16111,8 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_volume_input(AvailabilityZone = AvailabilityZone, Encrypted = Encrypted, Iops = Iops, KmsKeyId = KmsKeyId, OutpostArn = OutpostArn, Size = Size, SnapshotId = SnapshotId, VolumeType = VolumeType, DryRun = DryRun, TagSpecifications = TagSpecifications, MultiAttachEnabled = MultiAttachEnabled, Throughput = Throughput, ClientToken = ClientToken)
   output <- .ec2$create_volume_output()
@@ -16175,7 +16306,8 @@ ec2_create_vpc <- function(CidrBlock = NULL, AmazonProvidedIpv6CidrBlock = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_input(CidrBlock = CidrBlock, AmazonProvidedIpv6CidrBlock = AmazonProvidedIpv6CidrBlock, Ipv6Pool = Ipv6Pool, Ipv6CidrBlock = Ipv6CidrBlock, Ipv4IpamPoolId = Ipv4IpamPoolId, Ipv4NetmaskLength = Ipv4NetmaskLength, Ipv6IpamPoolId = Ipv6IpamPoolId, Ipv6NetmaskLength = Ipv6NetmaskLength, DryRun = DryRun, InstanceTenancy = InstanceTenancy, Ipv6CidrBlockNetworkBorderGroup = Ipv6CidrBlockNetworkBorderGroup, TagSpecifications = TagSpecifications)
   output <- .ec2$create_vpc_output()
@@ -16360,7 +16492,8 @@ ec2_create_vpc_endpoint <- function(DryRun = NULL, VpcEndpointType = NULL, VpcId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_endpoint_input(DryRun = DryRun, VpcEndpointType = VpcEndpointType, VpcId = VpcId, ServiceName = ServiceName, PolicyDocument = PolicyDocument, RouteTableIds = RouteTableIds, SubnetIds = SubnetIds, SecurityGroupIds = SecurityGroupIds, IpAddressType = IpAddressType, DnsOptions = DnsOptions, ClientToken = ClientToken, PrivateDnsEnabled = PrivateDnsEnabled, TagSpecifications = TagSpecifications, SubnetConfigurations = SubnetConfigurations)
   output <- .ec2$create_vpc_endpoint_output()
@@ -16446,7 +16579,8 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_endpoint_connection_notification_input(DryRun = DryRun, ServiceId = ServiceId, VpcEndpointId = VpcEndpointId, ConnectionNotificationArn = ConnectionNotificationArn, ConnectionEvents = ConnectionEvents, ClientToken = ClientToken)
   output <- .ec2$create_vpc_endpoint_connection_notification_output()
@@ -16597,7 +16731,8 @@ ec2_create_vpc_endpoint_service_configuration <- function(DryRun = NULL, Accepta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_endpoint_service_configuration_input(DryRun = DryRun, AcceptanceRequired = AcceptanceRequired, PrivateDnsName = PrivateDnsName, NetworkLoadBalancerArns = NetworkLoadBalancerArns, GatewayLoadBalancerArns = GatewayLoadBalancerArns, SupportedIpAddressTypes = SupportedIpAddressTypes, ClientToken = ClientToken, TagSpecifications = TagSpecifications)
   output <- .ec2$create_vpc_endpoint_service_configuration_output()
@@ -16751,7 +16886,8 @@ ec2_create_vpc_peering_connection <- function(DryRun = NULL, PeerOwnerId = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpc_peering_connection_input(DryRun = DryRun, PeerOwnerId = PeerOwnerId, PeerVpcId = PeerVpcId, VpcId = VpcId, PeerRegion = PeerRegion, TagSpecifications = TagSpecifications)
   output <- .ec2$create_vpc_peering_connection_output()
@@ -17023,7 +17159,8 @@ ec2_create_vpn_connection <- function(CustomerGatewayId, Type, VpnGatewayId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpn_connection_input(CustomerGatewayId = CustomerGatewayId, Type = Type, VpnGatewayId = VpnGatewayId, TransitGatewayId = TransitGatewayId, DryRun = DryRun, Options = Options, TagSpecifications = TagSpecifications)
   output <- .ec2$create_vpn_connection_output()
@@ -17076,7 +17213,8 @@ ec2_create_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpn_connection_route_input(DestinationCidrBlock = DestinationCidrBlock, VpnConnectionId = VpnConnectionId)
   output <- .ec2$create_vpn_connection_route_output()
@@ -17175,7 +17313,8 @@ ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, TagSpecificati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$create_vpn_gateway_input(AvailabilityZone = AvailabilityZone, Type = Type, TagSpecifications = TagSpecifications, AmazonSideAsn = AmazonSideAsn, DryRun = DryRun)
   output <- .ec2$create_vpn_gateway_output()
@@ -17243,7 +17382,8 @@ ec2_delete_carrier_gateway <- function(CarrierGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_carrier_gateway_input(CarrierGatewayId = CarrierGatewayId, DryRun = DryRun)
   output <- .ec2$delete_carrier_gateway_output()
@@ -17300,7 +17440,8 @@ ec2_delete_client_vpn_endpoint <- function(ClientVpnEndpointId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun)
   output <- .ec2$delete_client_vpn_endpoint_output()
@@ -17365,7 +17506,8 @@ ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_client_vpn_route_input(ClientVpnEndpointId = ClientVpnEndpointId, TargetVpcSubnetId = TargetVpcSubnetId, DestinationCidrBlock = DestinationCidrBlock, DryRun = DryRun)
   output <- .ec2$delete_client_vpn_route_output()
@@ -17424,7 +17566,8 @@ ec2_delete_coip_cidr <- function(Cidr, CoipPoolId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_coip_cidr_input(Cidr = Cidr, CoipPoolId = CoipPoolId, DryRun = DryRun)
   output <- .ec2$delete_coip_cidr_output()
@@ -17490,7 +17633,8 @@ ec2_delete_coip_pool <- function(CoipPoolId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_coip_pool_input(CoipPoolId = CoipPoolId, DryRun = DryRun)
   output <- .ec2$delete_coip_pool_output()
@@ -17547,7 +17691,8 @@ ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_customer_gateway_input(CustomerGatewayId = CustomerGatewayId, DryRun = DryRun)
   output <- .ec2$delete_customer_gateway_output()
@@ -17606,7 +17751,8 @@ ec2_delete_dhcp_options <- function(DhcpOptionsId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_dhcp_options_input(DhcpOptionsId = DhcpOptionsId, DryRun = DryRun)
   output <- .ec2$delete_dhcp_options_output()
@@ -17660,7 +17806,8 @@ ec2_delete_egress_only_internet_gateway <- function(DryRun = NULL, EgressOnlyInt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_egress_only_internet_gateway_input(DryRun = DryRun, EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId)
   output <- .ec2$delete_egress_only_internet_gateway_output()
@@ -17774,7 +17921,8 @@ ec2_delete_fleets <- function(DryRun = NULL, FleetIds, TerminateInstances) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_fleets_input(DryRun = DryRun, FleetIds = FleetIds, TerminateInstances = TerminateInstances)
   output <- .ec2$delete_fleets_output()
@@ -17839,7 +17987,8 @@ ec2_delete_flow_logs <- function(DryRun = NULL, FlowLogIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_flow_logs_input(DryRun = DryRun, FlowLogIds = FlowLogIds)
   output <- .ec2$delete_flow_logs_output()
@@ -17892,7 +18041,8 @@ ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_fpga_image_input(DryRun = DryRun, FpgaImageId = FpgaImageId)
   output <- .ec2$delete_fpga_image_output()
@@ -17972,7 +18122,8 @@ ec2_delete_instance_connect_endpoint <- function(DryRun = NULL, InstanceConnectE
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_instance_connect_endpoint_input(DryRun = DryRun, InstanceConnectEndpointId = InstanceConnectEndpointId)
   output <- .ec2$delete_instance_connect_endpoint_output()
@@ -18036,7 +18187,8 @@ ec2_delete_instance_event_window <- function(DryRun = NULL, ForceDelete = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_instance_event_window_input(DryRun = DryRun, ForceDelete = ForceDelete, InstanceEventWindowId = InstanceEventWindowId)
   output <- .ec2$delete_instance_event_window_output()
@@ -18093,7 +18245,8 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_internet_gateway_input(DryRun = DryRun, InternetGatewayId = InternetGatewayId)
   output <- .ec2$delete_internet_gateway_output()
@@ -18199,7 +18352,8 @@ ec2_delete_ipam <- function(DryRun = NULL, IpamId, Cascade = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_input(DryRun = DryRun, IpamId = IpamId, Cascade = Cascade)
   output <- .ec2$delete_ipam_output()
@@ -18276,7 +18430,8 @@ ec2_delete_ipam_external_resource_verification_token <- function(DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_external_resource_verification_token_input(DryRun = DryRun, IpamExternalResourceVerificationTokenId = IpamExternalResourceVerificationTokenId)
   output <- .ec2$delete_ipam_external_resource_verification_token_output()
@@ -18386,7 +18541,8 @@ ec2_delete_ipam_pool <- function(DryRun = NULL, IpamPoolId, Cascade = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_pool_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cascade = Cascade)
   output <- .ec2$delete_ipam_pool_output()
@@ -18460,7 +18616,8 @@ ec2_delete_ipam_resource_discovery <- function(DryRun = NULL, IpamResourceDiscov
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_resource_discovery_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId)
   output <- .ec2$delete_ipam_resource_discovery_output()
@@ -18534,7 +18691,8 @@ ec2_delete_ipam_scope <- function(DryRun = NULL, IpamScopeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_ipam_scope_input(DryRun = DryRun, IpamScopeId = IpamScopeId)
   output <- .ec2$delete_ipam_scope_output()
@@ -18600,7 +18758,8 @@ ec2_delete_key_pair <- function(KeyName = NULL, KeyPairId = NULL, DryRun = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_key_pair_input(KeyName = KeyName, KeyPairId = KeyPairId, DryRun = DryRun)
   output <- .ec2$delete_key_pair_output()
@@ -18685,7 +18844,8 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_launch_template_input(DryRun = DryRun, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName)
   output <- .ec2$delete_launch_template_output()
@@ -18795,7 +18955,8 @@ ec2_delete_launch_template_versions <- function(DryRun = NULL, LaunchTemplateId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_launch_template_versions_input(DryRun = DryRun, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, Versions = Versions)
   output <- .ec2$delete_launch_template_versions_output()
@@ -18869,7 +19030,8 @@ ec2_delete_local_gateway_route <- function(DestinationCidrBlock = NULL, LocalGat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_local_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, LocalGatewayRouteTableId = LocalGatewayRouteTableId, DryRun = DryRun, DestinationPrefixListId = DestinationPrefixListId)
   output <- .ec2$delete_local_gateway_route_output()
@@ -18940,7 +19102,8 @@ ec2_delete_local_gateway_route_table <- function(LocalGatewayRouteTableId, DryRu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_local_gateway_route_table_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, DryRun = DryRun)
   output <- .ec2$delete_local_gateway_route_table_output()
@@ -19009,7 +19172,8 @@ ec2_delete_local_gateway_route_table_virtual_interface_group_association <- func
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_local_gateway_route_table_virtual_interface_group_association_input(LocalGatewayRouteTableVirtualInterfaceGroupAssociationId = LocalGatewayRouteTableVirtualInterfaceGroupAssociationId, DryRun = DryRun)
   output <- .ec2$delete_local_gateway_route_table_virtual_interface_group_association_output()
@@ -19079,7 +19243,8 @@ ec2_delete_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_local_gateway_route_table_vpc_association_input(LocalGatewayRouteTableVpcAssociationId = LocalGatewayRouteTableVpcAssociationId, DryRun = DryRun)
   output <- .ec2$delete_local_gateway_route_table_vpc_association_output()
@@ -19149,7 +19314,8 @@ ec2_delete_managed_prefix_list <- function(DryRun = NULL, PrefixListId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_managed_prefix_list_input(DryRun = DryRun, PrefixListId = PrefixListId)
   output <- .ec2$delete_managed_prefix_list_output()
@@ -19213,7 +19379,8 @@ ec2_delete_nat_gateway <- function(DryRun = NULL, NatGatewayId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_nat_gateway_input(DryRun = DryRun, NatGatewayId = NatGatewayId)
   output <- .ec2$delete_nat_gateway_output()
@@ -19270,7 +19437,8 @@ ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_acl_input(DryRun = DryRun, NetworkAclId = NetworkAclId)
   output <- .ec2$delete_network_acl_output()
@@ -19335,7 +19503,8 @@ ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, Ru
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_acl_entry_input(DryRun = DryRun, Egress = Egress, NetworkAclId = NetworkAclId, RuleNumber = RuleNumber)
   output <- .ec2$delete_network_acl_entry_output()
@@ -19389,7 +19558,8 @@ ec2_delete_network_insights_access_scope <- function(DryRun = NULL, NetworkInsig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_insights_access_scope_input(DryRun = DryRun, NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId)
   output <- .ec2$delete_network_insights_access_scope_output()
@@ -19443,7 +19613,8 @@ ec2_delete_network_insights_access_scope_analysis <- function(NetworkInsightsAcc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_insights_access_scope_analysis_input(NetworkInsightsAccessScopeAnalysisId = NetworkInsightsAccessScopeAnalysisId, DryRun = DryRun)
   output <- .ec2$delete_network_insights_access_scope_analysis_output()
@@ -19496,7 +19667,8 @@ ec2_delete_network_insights_analysis <- function(DryRun = NULL, NetworkInsightsA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_insights_analysis_input(DryRun = DryRun, NetworkInsightsAnalysisId = NetworkInsightsAnalysisId)
   output <- .ec2$delete_network_insights_analysis_output()
@@ -19549,7 +19721,8 @@ ec2_delete_network_insights_path <- function(DryRun = NULL, NetworkInsightsPathI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_insights_path_input(DryRun = DryRun, NetworkInsightsPathId = NetworkInsightsPathId)
   output <- .ec2$delete_network_insights_path_output()
@@ -19606,7 +19779,8 @@ ec2_delete_network_interface <- function(DryRun = NULL, NetworkInterfaceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_interface_input(DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId)
   output <- .ec2$delete_network_interface_output()
@@ -19666,7 +19840,8 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_network_interface_permission_input(NetworkInterfacePermissionId = NetworkInterfacePermissionId, Force = Force, DryRun = DryRun)
   output <- .ec2$delete_network_interface_permission_output()
@@ -19727,7 +19902,8 @@ ec2_delete_placement_group <- function(DryRun = NULL, GroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_placement_group_input(DryRun = DryRun, GroupName = GroupName)
   output <- .ec2$delete_placement_group_output()
@@ -19790,7 +19966,8 @@ ec2_delete_public_ipv_4_pool <- function(DryRun = NULL, PoolId, NetworkBorderGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_public_ipv_4_pool_input(DryRun = DryRun, PoolId = PoolId, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$delete_public_ipv_4_pool_output()
@@ -19858,7 +20035,8 @@ ec2_delete_queued_reserved_instances <- function(DryRun = NULL, ReservedInstance
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_queued_reserved_instances_input(DryRun = DryRun, ReservedInstancesIds = ReservedInstancesIds)
   output <- .ec2$delete_queued_reserved_instances_output()
@@ -19924,7 +20102,8 @@ ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_route_input(DestinationCidrBlock = DestinationCidrBlock, DestinationIpv6CidrBlock = DestinationIpv6CidrBlock, DestinationPrefixListId = DestinationPrefixListId, DryRun = DryRun, RouteTableId = RouteTableId)
   output <- .ec2$delete_route_output()
@@ -19982,7 +20161,8 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_route_table_input(DryRun = DryRun, RouteTableId = RouteTableId)
   output <- .ec2$delete_route_table_output()
@@ -20046,7 +20226,8 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_security_group_input(GroupId = GroupId, GroupName = GroupName, DryRun = DryRun)
   output <- .ec2$delete_security_group_output()
@@ -20120,7 +20301,8 @@ ec2_delete_snapshot <- function(SnapshotId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_snapshot_input(SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$delete_snapshot_output()
@@ -20172,7 +20354,8 @@ ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_spot_datafeed_subscription_input(DryRun = DryRun)
   output <- .ec2$delete_spot_datafeed_subscription_output()
@@ -20229,7 +20412,8 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_subnet_input(SubnetId = SubnetId, DryRun = DryRun)
   output <- .ec2$delete_subnet_output()
@@ -20295,7 +20479,8 @@ ec2_delete_subnet_cidr_reservation <- function(SubnetCidrReservationId, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_subnet_cidr_reservation_input(SubnetCidrReservationId = SubnetCidrReservationId, DryRun = DryRun)
   output <- .ec2$delete_subnet_cidr_reservation_output()
@@ -20386,7 +20571,8 @@ ec2_delete_tags <- function(DryRun = NULL, Resources, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_tags_input(DryRun = DryRun, Resources = Resources, Tags = Tags)
   output <- .ec2$delete_tags_output()
@@ -20442,7 +20628,8 @@ ec2_delete_traffic_mirror_filter <- function(TrafficMirrorFilterId, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_traffic_mirror_filter_input(TrafficMirrorFilterId = TrafficMirrorFilterId, DryRun = DryRun)
   output <- .ec2$delete_traffic_mirror_filter_output()
@@ -20495,7 +20682,8 @@ ec2_delete_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_traffic_mirror_filter_rule_input(TrafficMirrorFilterRuleId = TrafficMirrorFilterRuleId, DryRun = DryRun)
   output <- .ec2$delete_traffic_mirror_filter_rule_output()
@@ -20548,7 +20736,8 @@ ec2_delete_traffic_mirror_session <- function(TrafficMirrorSessionId, DryRun = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_traffic_mirror_session_input(TrafficMirrorSessionId = TrafficMirrorSessionId, DryRun = DryRun)
   output <- .ec2$delete_traffic_mirror_session_output()
@@ -20604,7 +20793,8 @@ ec2_delete_traffic_mirror_target <- function(TrafficMirrorTargetId, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_traffic_mirror_target_input(TrafficMirrorTargetId = TrafficMirrorTargetId, DryRun = DryRun)
   output <- .ec2$delete_traffic_mirror_target_output()
@@ -20687,7 +20877,8 @@ ec2_delete_transit_gateway <- function(TransitGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_input(TransitGatewayId = TransitGatewayId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_output()
@@ -20758,7 +20949,8 @@ ec2_delete_transit_gateway_connect <- function(TransitGatewayAttachmentId, DryRu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_connect_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_connect_output()
@@ -20842,7 +21034,8 @@ ec2_delete_transit_gateway_connect_peer <- function(TransitGatewayConnectPeerId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_connect_peer_input(TransitGatewayConnectPeerId = TransitGatewayConnectPeerId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_connect_peer_output()
@@ -20916,7 +21109,8 @@ ec2_delete_transit_gateway_multicast_domain <- function(TransitGatewayMulticastD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_multicast_domain_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_multicast_domain_output()
@@ -21002,7 +21196,8 @@ ec2_delete_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_peering_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_peering_attachment_output()
@@ -21069,7 +21264,8 @@ ec2_delete_transit_gateway_policy_table <- function(TransitGatewayPolicyTableId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_policy_table_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_policy_table_output()
@@ -21138,7 +21334,8 @@ ec2_delete_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_prefix_list_reference_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, PrefixListId = PrefixListId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_prefix_list_reference_output()
@@ -21210,7 +21407,8 @@ ec2_delete_transit_gateway_route <- function(TransitGatewayRouteTableId, Destina
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_route_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, DestinationCidrBlock = DestinationCidrBlock, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_route_output()
@@ -21283,7 +21481,8 @@ ec2_delete_transit_gateway_route_table <- function(TransitGatewayRouteTableId, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_route_table_output()
@@ -21358,7 +21557,8 @@ ec2_delete_transit_gateway_route_table_announcement <- function(TransitGatewayRo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_route_table_announcement_input(TransitGatewayRouteTableAnnouncementId = TransitGatewayRouteTableAnnouncementId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_route_table_announcement_output()
@@ -21436,7 +21636,8 @@ ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$delete_transit_gateway_vpc_attachment_output()
@@ -21538,7 +21739,8 @@ ec2_delete_verified_access_endpoint <- function(VerifiedAccessEndpointId, Client
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_verified_access_endpoint_input(VerifiedAccessEndpointId = VerifiedAccessEndpointId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$delete_verified_access_endpoint_output()
@@ -21615,7 +21817,8 @@ ec2_delete_verified_access_group <- function(VerifiedAccessGroupId, ClientToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_verified_access_group_input(VerifiedAccessGroupId = VerifiedAccessGroupId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$delete_verified_access_group_output()
@@ -21694,7 +21897,8 @@ ec2_delete_verified_access_instance <- function(VerifiedAccessInstanceId, DryRun
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_verified_access_instance_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$delete_verified_access_instance_output()
@@ -21784,7 +21988,8 @@ ec2_delete_verified_access_trust_provider <- function(VerifiedAccessTrustProvide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_verified_access_trust_provider_input(VerifiedAccessTrustProviderId = VerifiedAccessTrustProviderId, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$delete_verified_access_trust_provider_output()
@@ -21849,7 +22054,8 @@ ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_volume_input(VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$delete_volume_output()
@@ -21911,7 +22117,8 @@ ec2_delete_vpc <- function(VpcId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_input(VpcId = VpcId, DryRun = DryRun)
   output <- .ec2$delete_vpc_output()
@@ -21975,7 +22182,8 @@ ec2_delete_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Conn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_endpoint_connection_notifications_input(DryRun = DryRun, ConnectionNotificationIds = ConnectionNotificationIds)
   output <- .ec2$delete_vpc_endpoint_connection_notifications_output()
@@ -22041,7 +22249,8 @@ ec2_delete_vpc_endpoint_service_configurations <- function(DryRun = NULL, Servic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_endpoint_service_configurations_input(DryRun = DryRun, ServiceIds = ServiceIds)
   output <- .ec2$delete_vpc_endpoint_service_configurations_output()
@@ -22114,7 +22323,8 @@ ec2_delete_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_endpoints_input(DryRun = DryRun, VpcEndpointIds = VpcEndpointIds)
   output <- .ec2$delete_vpc_endpoints_output()
@@ -22172,7 +22382,8 @@ ec2_delete_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpc_peering_connection_input(DryRun = DryRun, VpcPeeringConnectionId = VpcPeeringConnectionId)
   output <- .ec2$delete_vpc_peering_connection_output()
@@ -22234,7 +22445,8 @@ ec2_delete_vpn_connection <- function(VpnConnectionId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpn_connection_input(VpnConnectionId = VpnConnectionId, DryRun = DryRun)
   output <- .ec2$delete_vpn_connection_output()
@@ -22283,7 +22495,8 @@ ec2_delete_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpn_connection_route_input(DestinationCidrBlock = DestinationCidrBlock, VpnConnectionId = VpnConnectionId)
   output <- .ec2$delete_vpn_connection_route_output()
@@ -22334,7 +22547,8 @@ ec2_delete_vpn_gateway <- function(VpnGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$delete_vpn_gateway_input(VpnGatewayId = VpnGatewayId, DryRun = DryRun)
   output <- .ec2$delete_vpn_gateway_output()
@@ -22410,7 +22624,8 @@ ec2_deprovision_byoip_cidr <- function(Cidr, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deprovision_byoip_cidr_input(Cidr = Cidr, DryRun = DryRun)
   output <- .ec2$deprovision_byoip_cidr_output()
@@ -22477,7 +22692,8 @@ ec2_deprovision_ipam_byoasn <- function(DryRun = NULL, IpamId, Asn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deprovision_ipam_byoasn_input(DryRun = DryRun, IpamId = IpamId, Asn = Asn)
   output <- .ec2$deprovision_ipam_byoasn_output()
@@ -22545,7 +22761,8 @@ ec2_deprovision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deprovision_ipam_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr)
   output <- .ec2$deprovision_ipam_pool_cidr_output()
@@ -22607,7 +22824,8 @@ ec2_deprovision_public_ipv_4_pool_cidr <- function(DryRun = NULL, PoolId, Cidr) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deprovision_public_ipv_4_pool_cidr_input(DryRun = DryRun, PoolId = PoolId, Cidr = Cidr)
   output <- .ec2$deprovision_public_ipv_4_pool_cidr_output()
@@ -22672,7 +22890,8 @@ ec2_deregister_image <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deregister_image_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$deregister_image_output()
@@ -22740,7 +22959,8 @@ ec2_deregister_instance_event_notification_attributes <- function(DryRun = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deregister_instance_event_notification_attributes_input(DryRun = DryRun, InstanceTagAttribute = InstanceTagAttribute)
   output <- .ec2$deregister_instance_event_notification_attributes_output()
@@ -22809,7 +23029,8 @@ ec2_deregister_transit_gateway_multicast_group_members <- function(TransitGatewa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deregister_transit_gateway_multicast_group_members_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, GroupIpAddress = GroupIpAddress, NetworkInterfaceIds = NetworkInterfaceIds, DryRun = DryRun)
   output <- .ec2$deregister_transit_gateway_multicast_group_members_output()
@@ -22878,7 +23099,8 @@ ec2_deregister_transit_gateway_multicast_group_sources <- function(TransitGatewa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$deregister_transit_gateway_multicast_group_sources_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, GroupIpAddress = GroupIpAddress, NetworkInterfaceIds = NetworkInterfaceIds, DryRun = DryRun)
   output <- .ec2$deregister_transit_gateway_multicast_group_sources_output()
@@ -22981,7 +23203,8 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "AccountAttributes")
+    paginator = list(result_key = "AccountAttributes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_account_attributes_input(AttributeNames = AttributeNames, DryRun = DryRun)
   output <- .ec2$describe_account_attributes_output()
@@ -23069,7 +23292,8 @@ ec2_describe_address_transfers <- function(AllocationIds = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AddressTransfers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AddressTransfers"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_address_transfers_input(AllocationIds = AllocationIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_address_transfers_output()
@@ -23201,7 +23425,8 @@ ec2_describe_addresses <- function(Filters = NULL, PublicIps = NULL, AllocationI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Addresses")
+    paginator = list(result_key = "Addresses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_addresses_input(Filters = Filters, PublicIps = PublicIps, AllocationIds = AllocationIds, DryRun = DryRun)
   output <- .ec2$describe_addresses_output()
@@ -23279,7 +23504,8 @@ ec2_describe_addresses_attribute <- function(AllocationIds = NULL, Attribute = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Addresses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Addresses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_addresses_attribute_input(AllocationIds = AllocationIds, Attribute = Attribute, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_addresses_attribute_output()
@@ -23357,7 +23583,8 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_aggregate_id_format_input(DryRun = DryRun)
   output <- .ec2$describe_aggregate_id_format_output()
@@ -23505,7 +23732,8 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "AvailabilityZones")
+    paginator = list(result_key = "AvailabilityZones"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_availability_zones_input(Filters = Filters, ZoneNames = ZoneNames, ZoneIds = ZoneIds, AllAvailabilityZones = AllAvailabilityZones, DryRun = DryRun)
   output <- .ec2$describe_availability_zones_output()
@@ -23581,7 +23809,8 @@ ec2_describe_aws_network_performance_metric_subscriptions <- function(MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscriptions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscriptions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_aws_network_performance_metric_subscriptions_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_aws_network_performance_metric_subscriptions_output()
@@ -23705,7 +23934,8 @@ ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "BundleTasks")
+    paginator = list(result_key = "BundleTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_bundle_tasks_input(BundleIds = BundleIds, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_bundle_tasks_output()
@@ -23786,7 +24016,8 @@ ec2_describe_byoip_cidrs <- function(DryRun = NULL, MaxResults, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ByoipCidrs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ByoipCidrs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_byoip_cidrs_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_byoip_cidrs_output()
@@ -23882,7 +24113,8 @@ ec2_describe_capacity_block_offerings <- function(DryRun = NULL, InstanceType, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityBlockOfferings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityBlockOfferings"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_capacity_block_offerings_input(DryRun = DryRun, InstanceType = InstanceType, InstanceCount = InstanceCount, StartDateRange = StartDateRange, EndDateRange = EndDateRange, CapacityDurationHours = CapacityDurationHours, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_capacity_block_offerings_output()
@@ -24007,7 +24239,8 @@ ec2_describe_capacity_reservation_fleets <- function(CapacityReservationFleetIds
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationFleets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationFleets"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_capacity_reservation_fleets_input(CapacityReservationFleetIds = CapacityReservationFleetIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_capacity_reservation_fleets_output()
@@ -24208,7 +24441,8 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_capacity_reservations_input(CapacityReservationIds = CapacityReservationIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_capacity_reservations_output()
@@ -24313,7 +24547,8 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CarrierGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CarrierGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_carrier_gateways_input(CarrierGatewayIds = CarrierGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_carrier_gateways_output()
@@ -24429,7 +24664,8 @@ ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_classic_link_instances_input(Filters = Filters, DryRun = DryRun, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_classic_link_instances_output()
@@ -24519,7 +24755,8 @@ ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthorizationRules")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthorizationRules"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_authorization_rules_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun, NextToken = NextToken, Filters = Filters, MaxResults = MaxResults)
   output <- .ec2$describe_client_vpn_authorization_rules_output()
@@ -24620,7 +24857,8 @@ ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Connections")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Connections"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_connections_input(ClientVpnEndpointId = ClientVpnEndpointId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_connections_output()
@@ -24767,7 +25005,8 @@ ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnEndpoints")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnEndpoints"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_endpoints_input(ClientVpnEndpointIds = ClientVpnEndpointIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_endpoints_output()
@@ -24858,7 +25097,8 @@ ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_routes_input(ClientVpnEndpointId = ClientVpnEndpointId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_routes_output()
@@ -24955,7 +25195,8 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnTargetNetworks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ClientVpnTargetNetworks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_client_vpn_target_networks_input(ClientVpnEndpointId = ClientVpnEndpointId, AssociationIds = AssociationIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_client_vpn_target_networks_output()
@@ -25048,7 +25289,8 @@ ec2_describe_coip_pools <- function(PoolIds = NULL, Filters = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CoipPools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CoipPools"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_coip_pools_input(PoolIds = PoolIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_coip_pools_output()
@@ -25161,7 +25403,8 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ConversionTasks")
+    paginator = list(result_key = "ConversionTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_conversion_tasks_input(ConversionTaskIds = ConversionTaskIds, DryRun = DryRun)
   output <- .ec2$describe_conversion_tasks_output()
@@ -25282,7 +25525,8 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "CustomerGateways")
+    paginator = list(result_key = "CustomerGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_customer_gateways_input(CustomerGatewayIds = CustomerGatewayIds, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_customer_gateways_output()
@@ -25413,7 +25657,8 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DhcpOptions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DhcpOptions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_dhcp_options_input(DhcpOptionsIds = DhcpOptionsIds, Filters = Filters, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_dhcp_options_output()
@@ -25517,7 +25762,8 @@ ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnly
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EgressOnlyInternetGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EgressOnlyInternetGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_egress_only_internet_gateways_input(DryRun = DryRun, EgressOnlyInternetGatewayIds = EgressOnlyInternetGatewayIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ec2$describe_egress_only_internet_gateways_output()
@@ -25627,7 +25873,8 @@ ec2_describe_elastic_gpus <- function(ElasticGpuIds = NULL, DryRun = NULL, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_elastic_gpus_input(ElasticGpuIds = ElasticGpuIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_elastic_gpus_output()
@@ -25719,7 +25966,8 @@ ec2_describe_export_image_tasks <- function(DryRun = NULL, Filters = NULL, Expor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExportImageTasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExportImageTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_export_image_tasks_input(DryRun = DryRun, Filters = Filters, ExportImageTaskIds = ExportImageTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_export_image_tasks_output()
@@ -25803,7 +26051,8 @@ ec2_describe_export_tasks <- function(ExportTaskIds = NULL, Filters = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ExportTasks")
+    paginator = list(result_key = "ExportTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_export_tasks_input(ExportTaskIds = ExportTaskIds, Filters = Filters)
   output <- .ec2$describe_export_tasks_output()
@@ -25905,7 +26154,8 @@ ec2_describe_fast_launch_images <- function(ImageIds = NULL, Filters = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastLaunchImages")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastLaunchImages"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fast_launch_images_input(ImageIds = ImageIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_fast_launch_images_output()
@@ -26009,7 +26259,8 @@ ec2_describe_fast_snapshot_restores <- function(Filters = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastSnapshotRestores")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FastSnapshotRestores"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fast_snapshot_restores_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_fast_snapshot_restores_output()
@@ -26109,7 +26360,8 @@ ec2_describe_fleet_history <- function(DryRun = NULL, EventType = NULL, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fleet_history_input(DryRun = DryRun, EventType = EventType, MaxResults = MaxResults, NextToken = NextToken, FleetId = FleetId, StartTime = StartTime)
   output <- .ec2$describe_fleet_history_output()
@@ -26200,7 +26452,8 @@ ec2_describe_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fleet_instances_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, FleetId = FleetId, Filters = Filters)
   output <- .ec2$describe_fleet_instances_output()
@@ -26645,7 +26898,8 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Fleets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Fleets"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fleets_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, FleetIds = FleetIds, Filters = Filters)
   output <- .ec2$describe_fleets_output()
@@ -26779,7 +27033,8 @@ ec2_describe_flow_logs <- function(DryRun = NULL, Filter = NULL, FlowLogIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FlowLogs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FlowLogs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_flow_logs_input(DryRun = DryRun, Filter = Filter, FlowLogIds = FlowLogIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_flow_logs_output()
@@ -26852,7 +27107,8 @@ ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attrib
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fpga_image_attribute_input(DryRun = DryRun, FpgaImageId = FpgaImageId, Attribute = Attribute)
   output <- .ec2$describe_fpga_image_attribute_output()
@@ -27003,7 +27259,8 @@ ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FpgaImages")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "FpgaImages"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_fpga_images_input(DryRun = DryRun, FpgaImageIds = FpgaImageIds, Owners = Owners, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_fpga_images_output()
@@ -27107,7 +27364,8 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OfferingSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OfferingSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_host_reservation_offerings_input(Filter = Filter, MaxDuration = MaxDuration, MaxResults = MaxResults, MinDuration = MinDuration, NextToken = NextToken, OfferingId = OfferingId)
   output <- .ec2$describe_host_reservation_offerings_output()
@@ -27223,7 +27481,8 @@ ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HostReservationSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HostReservationSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_host_reservations_input(Filter = Filter, HostReservationIdSet = HostReservationIdSet, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_host_reservations_output()
@@ -27374,7 +27633,8 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Hosts")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Hosts"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_hosts_input(Filter = Filter, HostIds = HostIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_hosts_output()
@@ -27471,7 +27731,8 @@ ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IamInstanceProfileAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IamInstanceProfileAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_iam_instance_profile_associations_input(AssociationIds = AssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_iam_instance_profile_associations_output()
@@ -27562,7 +27823,8 @@ ec2_describe_id_format <- function(Resource = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_id_format_input(Resource = Resource)
   output <- .ec2$describe_id_format_output()
@@ -27652,7 +27914,8 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_identity_id_format_input(PrincipalArn = PrincipalArn, Resource = Resource)
   output <- .ec2$describe_identity_id_format_output()
@@ -27788,7 +28051,8 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_image_attribute_input(Attribute = Attribute, ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$describe_image_attribute_output()
@@ -28095,7 +28359,8 @@ ec2_describe_images <- function(ExecutableUsers = NULL, Filters = NULL, ImageIds
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_images_input(ExecutableUsers = ExecutableUsers, Filters = Filters, ImageIds = ImageIds, Owners = Owners, IncludeDeprecated = IncludeDeprecated, IncludeDisabled = IncludeDisabled, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_images_output()
@@ -28213,7 +28478,8 @@ ec2_describe_import_image_tasks <- function(DryRun = NULL, Filters = NULL, Impor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportImageTasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportImageTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_import_image_tasks_input(DryRun = DryRun, Filters = Filters, ImportTaskIds = ImportTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_import_image_tasks_output()
@@ -28312,7 +28578,8 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportSnapshotTasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ImportSnapshotTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_import_snapshot_tasks_input(DryRun = DryRun, Filters = Filters, ImportTaskIds = ImportTaskIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_import_snapshot_tasks_output()
@@ -28466,7 +28733,8 @@ ec2_describe_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_attribute_input(Attribute = Attribute, DryRun = DryRun, InstanceId = InstanceId)
   output <- .ec2$describe_instance_attribute_output()
@@ -28598,7 +28866,8 @@ ec2_describe_instance_connect_endpoints <- function(DryRun = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceConnectEndpoints")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceConnectEndpoints"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_connect_endpoints_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, InstanceConnectEndpointIds = InstanceConnectEndpointIds)
   output <- .ec2$describe_instance_connect_endpoints_output()
@@ -28713,7 +28982,8 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceCreditSpecifications")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceCreditSpecifications"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_credit_specifications_input(DryRun = DryRun, Filters = Filters, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_credit_specifications_output()
@@ -28771,7 +29041,8 @@ ec2_describe_instance_event_notification_attributes <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_event_notification_attributes_input(DryRun = DryRun)
   output <- .ec2$describe_instance_event_notification_attributes_output()
@@ -28923,7 +29194,8 @@ ec2_describe_instance_event_windows <- function(DryRun = NULL, InstanceEventWind
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceEventWindows")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceEventWindows"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_event_windows_input(DryRun = DryRun, InstanceEventWindowIds = InstanceEventWindowIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_event_windows_output()
@@ -29160,7 +29432,8 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceStatuses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_status_input(Filters = Filters, InstanceIds = InstanceIds, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun, IncludeAllInstances = IncludeAllInstances)
   output <- .ec2$describe_instance_status_output()
@@ -29302,7 +29575,8 @@ ec2_describe_instance_topology <- function(DryRun = NULL, NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_topology_input(DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults, InstanceIds = InstanceIds, GroupNames = GroupNames, Filters = Filters)
   output <- .ec2$describe_instance_topology_output()
@@ -29403,7 +29677,8 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypeOfferings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypeOfferings"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_type_offerings_input(DryRun = DryRun, LocationType = LocationType, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_type_offerings_output()
@@ -29816,7 +30091,8 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instance_types_input(DryRun = DryRun, InstanceTypes = InstanceTypes, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instance_types_output()
@@ -30636,7 +30912,8 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Reservations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Reservations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_instances_input(Filters = Filters, InstanceIds = InstanceIds, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_instances_output()
@@ -30768,7 +31045,8 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InternetGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InternetGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_internet_gateways_input(Filters = Filters, DryRun = DryRun, InternetGatewayIds = InternetGatewayIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_internet_gateways_output()
@@ -30838,7 +31116,8 @@ ec2_describe_ipam_byoasn <- function(DryRun = NULL, MaxResults = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_byoasn_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_ipam_byoasn_output()
@@ -30955,7 +31234,8 @@ ec2_describe_ipam_external_resource_verification_tokens <- function(DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_external_resource_verification_tokens_input(DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, IpamExternalResourceVerificationTokenIds = IpamExternalResourceVerificationTokenIds)
   output <- .ec2$describe_ipam_external_resource_verification_tokens_output()
@@ -31069,7 +31349,8 @@ ec2_describe_ipam_pools <- function(DryRun = NULL, Filters = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPools"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_pools_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamPoolIds = IpamPoolIds)
   output <- .ec2$describe_ipam_pools_output()
@@ -31164,7 +31445,8 @@ ec2_describe_ipam_resource_discoveries <- function(DryRun = NULL, IpamResourceDi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveries"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_resource_discoveries_input(DryRun = DryRun, IpamResourceDiscoveryIds = IpamResourceDiscoveryIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_ipam_resource_discoveries_output()
@@ -31257,7 +31539,8 @@ ec2_describe_ipam_resource_discovery_associations <- function(DryRun = NULL, Ipa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveryAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceDiscoveryAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_resource_discovery_associations_input(DryRun = DryRun, IpamResourceDiscoveryAssociationIds = IpamResourceDiscoveryAssociationIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_ipam_resource_discovery_associations_output()
@@ -31348,7 +31631,8 @@ ec2_describe_ipam_scopes <- function(DryRun = NULL, Filters = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamScopes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamScopes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipam_scopes_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamScopeIds = IpamScopeIds)
   output <- .ec2$describe_ipam_scopes_output()
@@ -31452,7 +31736,8 @@ ec2_describe_ipams <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipams")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipams"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipams_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamIds = IpamIds)
   output <- .ec2$describe_ipams_output()
@@ -31550,7 +31835,8 @@ ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6Pools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6Pools"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_ipv_6_pools_input(PoolIds = PoolIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun, Filters = Filters)
   output <- .ec2$describe_ipv_6_pools_output()
@@ -31672,7 +31958,8 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "KeyPairs")
+    paginator = list(result_key = "KeyPairs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_key_pairs_input(Filters = Filters, KeyNames = KeyNames, KeyPairIds = KeyPairIds, DryRun = DryRun, IncludePublicKey = IncludePublicKey)
   output <- .ec2$describe_key_pairs_output()
@@ -32101,7 +32388,8 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplateVersions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplateVersions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_launch_template_versions_input(DryRun = DryRun, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, Versions = Versions, MinVersion = MinVersion, MaxVersion = MaxVersion, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, ResolveAlias = ResolveAlias)
   output <- .ec2$describe_launch_template_versions_output()
@@ -32218,7 +32506,8 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplates")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LaunchTemplates"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_launch_templates_input(DryRun = DryRun, LaunchTemplateIds = LaunchTemplateIds, LaunchTemplateNames = LaunchTemplateNames, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_launch_templates_output()
@@ -32328,7 +32617,8 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations <- f
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVirtualInterfaceGroupAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVirtualInterfaceGroupAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_route_table_virtual_interface_group_associations_input(LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds = LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_table_virtual_interface_group_associations_output()
@@ -32437,7 +32727,8 @@ ec2_describe_local_gateway_route_table_vpc_associations <- function(LocalGateway
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVpcAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTableVpcAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_route_table_vpc_associations_input(LocalGatewayRouteTableVpcAssociationIds = LocalGatewayRouteTableVpcAssociationIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_table_vpc_associations_output()
@@ -32546,7 +32837,8 @@ ec2_describe_local_gateway_route_tables <- function(LocalGatewayRouteTableIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTables")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayRouteTables"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_route_tables_input(LocalGatewayRouteTableIds = LocalGatewayRouteTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_route_tables_output()
@@ -32645,7 +32937,8 @@ ec2_describe_local_gateway_virtual_interface_groups <- function(LocalGatewayVirt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaceGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaceGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_virtual_interface_groups_input(LocalGatewayVirtualInterfaceGroupIds = LocalGatewayVirtualInterfaceGroupIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_virtual_interface_groups_output()
@@ -32753,7 +33046,8 @@ ec2_describe_local_gateway_virtual_interfaces <- function(LocalGatewayVirtualInt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaces")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGatewayVirtualInterfaces"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateway_virtual_interfaces_input(LocalGatewayVirtualInterfaceIds = LocalGatewayVirtualInterfaceIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateway_virtual_interfaces_output()
@@ -32848,7 +33142,8 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LocalGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_local_gateways_input(LocalGatewayIds = LocalGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_local_gateways_output()
@@ -32945,7 +33240,8 @@ ec2_describe_locked_snapshots <- function(Filters = NULL, MaxResults = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_locked_snapshots_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, SnapshotIds = SnapshotIds, DryRun = DryRun)
   output <- .ec2$describe_locked_snapshots_output()
@@ -33027,7 +33323,8 @@ ec2_describe_mac_hosts <- function(Filters = NULL, HostIds = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MacHosts")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MacHosts"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_mac_hosts_input(Filters = Filters, HostIds = HostIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_mac_hosts_output()
@@ -33128,7 +33425,8 @@ ec2_describe_managed_prefix_lists <- function(DryRun = NULL, Filters = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_managed_prefix_lists_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, PrefixListIds = PrefixListIds)
   output <- .ec2$describe_managed_prefix_lists_output()
@@ -33222,7 +33520,8 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MovingAddressStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MovingAddressStatuses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_moving_addresses_input(Filters = Filters, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, PublicIps = PublicIps)
   output <- .ec2$describe_moving_addresses_output()
@@ -33378,7 +33677,8 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NatGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NatGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_nat_gateways_input(DryRun = DryRun, Filter = Filter, MaxResults = MaxResults, NatGatewayIds = NatGatewayIds, NextToken = NextToken)
   output <- .ec2$describe_nat_gateways_output()
@@ -33562,7 +33862,8 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkAcls")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkAcls"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_acls_input(Filters = Filters, DryRun = DryRun, NetworkAclIds = NetworkAclIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_acls_output()
@@ -33671,7 +33972,8 @@ ec2_describe_network_insights_access_scope_analyses <- function(NetworkInsightsA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopeAnalyses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopeAnalyses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_insights_access_scope_analyses_input(NetworkInsightsAccessScopeAnalysisIds = NetworkInsightsAccessScopeAnalysisIds, NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId, AnalysisStartTimeBegin = AnalysisStartTimeBegin, AnalysisStartTimeEnd = AnalysisStartTimeEnd, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_access_scope_analyses_output()
@@ -33760,7 +34062,8 @@ ec2_describe_network_insights_access_scopes <- function(NetworkInsightsAccessSco
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAccessScopes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_insights_access_scopes_input(NetworkInsightsAccessScopeIds = NetworkInsightsAccessScopeIds, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_access_scopes_output()
@@ -35220,7 +35523,8 @@ ec2_describe_network_insights_analyses <- function(NetworkInsightsAnalysisIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAnalyses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsAnalyses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_insights_analyses_input(NetworkInsightsAnalysisIds = NetworkInsightsAnalysisIds, NetworkInsightsPathId = NetworkInsightsPathId, AnalysisStartTime = AnalysisStartTime, AnalysisEndTime = AnalysisEndTime, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_analyses_output()
@@ -35368,7 +35672,8 @@ ec2_describe_network_insights_paths <- function(NetworkInsightsPathIds = NULL, F
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsPaths")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInsightsPaths"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_insights_paths_input(NetworkInsightsPathIds = NetworkInsightsPathIds, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun, NextToken = NextToken)
   output <- .ec2$describe_network_insights_paths_output()
@@ -35487,7 +35792,8 @@ ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_interface_attribute_input(Attribute = Attribute, DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId)
   output <- .ec2$describe_network_interface_attribute_output()
@@ -35584,7 +35890,8 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfacePermissions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfacePermissions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_interface_permissions_input(NetworkInterfacePermissionIds = NetworkInterfacePermissionIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_interface_permissions_output()
@@ -35888,7 +36195,8 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfaces")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "NetworkInterfaces"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_network_interfaces_input(Filters = Filters, DryRun = DryRun, NetworkInterfaceIds = NetworkInterfaceIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_network_interfaces_output()
@@ -36014,7 +36322,8 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "PlacementGroups")
+    paginator = list(result_key = "PlacementGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_placement_groups_input(Filters = Filters, DryRun = DryRun, GroupNames = GroupNames, GroupIds = GroupIds)
   output <- .ec2$describe_placement_groups_output()
@@ -36106,7 +36415,8 @@ ec2_describe_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixLists"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_prefix_lists_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, PrefixListIds = PrefixListIds)
   output <- .ec2$describe_prefix_lists_output()
@@ -36211,7 +36521,8 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Principals")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Principals"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_principal_id_format_input(DryRun = DryRun, Resources = Resources, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_principal_id_format_output()
@@ -36309,7 +36620,8 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PublicIpv4Pools")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PublicIpv4Pools"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_public_ipv_4_pools_input(PoolIds = PoolIds, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .ec2$describe_public_ipv_4_pools_output()
@@ -36410,7 +36722,8 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "Regions")
+    paginator = list(result_key = "Regions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_regions_input(Filters = Filters, RegionNames = RegionNames, DryRun = DryRun, AllRegions = AllRegions)
   output <- .ec2$describe_regions_output()
@@ -36507,7 +36820,8 @@ ec2_describe_replace_root_volume_tasks <- function(ReplaceRootVolumeTaskIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReplaceRootVolumeTasks")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReplaceRootVolumeTasks"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_replace_root_volume_tasks_input(ReplaceRootVolumeTaskIds = ReplaceRootVolumeTaskIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_replace_root_volume_tasks_output()
@@ -36671,7 +36985,8 @@ ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ReservedInstances")
+    paginator = list(result_key = "ReservedInstances"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_reserved_instances_input(Filters = Filters, OfferingClass = OfferingClass, ReservedInstancesIds = ReservedInstancesIds, DryRun = DryRun, OfferingType = OfferingType)
   output <- .ec2$describe_reserved_instances_output()
@@ -36803,7 +37118,8 @@ ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedIns
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "ReservedInstancesListings")
+    paginator = list(result_key = "ReservedInstancesListings"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_reserved_instances_listings_input(Filters = Filters, ReservedInstancesId = ReservedInstancesId, ReservedInstancesListingId = ReservedInstancesListingId)
   output <- .ec2$describe_reserved_instances_listings_output()
@@ -36943,7 +37259,8 @@ ec2_describe_reserved_instances_modifications <- function(Filters = NULL, Reserv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ReservedInstancesModifications")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ReservedInstancesModifications"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_reserved_instances_modifications_input(Filters = Filters, ReservedInstancesModificationIds = ReservedInstancesModificationIds, NextToken = NextToken)
   output <- .ec2$describe_reserved_instances_modifications_output()
@@ -37141,7 +37458,8 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedInstancesOfferings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ReservedInstancesOfferings"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_reserved_instances_offerings_input(AvailabilityZone = AvailabilityZone, Filters = Filters, IncludeMarketplace = IncludeMarketplace, InstanceType = InstanceType, MaxDuration = MaxDuration, MaxInstanceCount = MaxInstanceCount, MinDuration = MinDuration, OfferingClass = OfferingClass, ProductDescription = ProductDescription, ReservedInstancesOfferingIds = ReservedInstancesOfferingIds, DryRun = DryRun, InstanceTenancy = InstanceTenancy, MaxResults = MaxResults, NextToken = NextToken, OfferingType = OfferingType)
   output <- .ec2$describe_reserved_instances_offerings_output()
@@ -37359,7 +37677,8 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RouteTables")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RouteTables"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_route_tables_input(Filters = Filters, DryRun = DryRun, RouteTableIds = RouteTableIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_route_tables_output()
@@ -37499,7 +37818,8 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceAvailabilitySet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceAvailabilitySet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_scheduled_instance_availability_input(DryRun = DryRun, Filters = Filters, FirstSlotStartTimeRange = FirstSlotStartTimeRange, MaxResults = MaxResults, MaxSlotDurationInHours = MaxSlotDurationInHours, MinSlotDurationInHours = MinSlotDurationInHours, NextToken = NextToken, Recurrence = Recurrence)
   output <- .ec2$describe_scheduled_instance_availability_output()
@@ -37626,7 +37946,8 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledInstanceSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_scheduled_instances_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, ScheduledInstanceIds = ScheduledInstanceIds, SlotStartTimeRange = SlotStartTimeRange)
   output <- .ec2$describe_scheduled_instances_output()
@@ -37701,7 +38022,8 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_security_group_references_input(DryRun = DryRun, GroupId = GroupId)
   output <- .ec2$describe_security_group_references_output()
@@ -37813,7 +38135,8 @@ ec2_describe_security_group_rules <- function(Filters = NULL, SecurityGroupRuleI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupRules")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupRules"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_security_group_rules_input(Filters = Filters, SecurityGroupRuleIds = SecurityGroupRuleIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_security_group_rules_output()
@@ -38087,7 +38410,8 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_security_groups_input(Filters = Filters, GroupIds = GroupIds, GroupNames = GroupNames, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_security_groups_output()
@@ -38169,7 +38493,8 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_snapshot_attribute_input(Attribute = Attribute, SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$describe_snapshot_attribute_output()
@@ -38276,7 +38601,8 @@ ec2_describe_snapshot_tier_status <- function(Filters = NULL, DryRun = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SnapshotTierStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SnapshotTierStatuses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_snapshot_tier_status_input(Filters = Filters, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_snapshot_tier_status_output()
@@ -38517,7 +38843,8 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_snapshots_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, OwnerIds = OwnerIds, RestorableByUserIds = RestorableByUserIds, SnapshotIds = SnapshotIds, DryRun = DryRun)
   output <- .ec2$describe_snapshots_output()
@@ -38587,7 +38914,8 @@ ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_datafeed_subscription_input(DryRun = DryRun)
   output <- .ec2$describe_spot_datafeed_subscription_output()
@@ -38667,7 +38995,8 @@ ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_fleet_instances_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, SpotFleetRequestId = SpotFleetRequestId)
   output <- .ec2$describe_spot_fleet_instances_output()
@@ -38777,7 +39106,8 @@ ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_fleet_request_history_input(DryRun = DryRun, EventType = EventType, MaxResults = MaxResults, NextToken = NextToken, SpotFleetRequestId = SpotFleetRequestId, StartTime = StartTime)
   output <- .ec2$describe_spot_fleet_request_history_output()
@@ -39204,7 +39534,8 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotFleetRequestConfigs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotFleetRequestConfigs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_fleet_requests_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, SpotFleetRequestIds = SpotFleetRequestIds)
   output <- .ec2$describe_spot_fleet_requests_output()
@@ -39567,7 +39898,8 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotInstanceRequests")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotInstanceRequests"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_instance_requests_input(Filters = Filters, DryRun = DryRun, SpotInstanceRequestIds = SpotInstanceRequestIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_spot_instance_requests_output()
@@ -39713,7 +40045,8 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPriceHistory")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPriceHistory"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_spot_price_history_input(Filters = Filters, AvailabilityZone = AvailabilityZone, DryRun = DryRun, EndTime = EndTime, InstanceTypes = InstanceTypes, MaxResults = MaxResults, NextToken = NextToken, ProductDescriptions = ProductDescriptions, StartTime = StartTime)
   output <- .ec2$describe_spot_price_history_output()
@@ -39835,7 +40168,8 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StaleSecurityGroupSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StaleSecurityGroupSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_stale_security_groups_input(DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken, VpcId = VpcId)
   output <- .ec2$describe_stale_security_groups_output()
@@ -39954,7 +40288,8 @@ ec2_describe_store_image_tasks <- function(ImageIds = NULL, DryRun = NULL, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StoreImageTaskResults")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StoreImageTaskResults"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_store_image_tasks_input(ImageIds = ImageIds, DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_store_image_tasks_output()
@@ -40182,7 +40517,8 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subnets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subnets"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_subnets_input(Filters = Filters, SubnetIds = SubnetIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_subnets_output()
@@ -40298,7 +40634,8 @@ ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_tags_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_tags_output()
@@ -40424,7 +40761,8 @@ ec2_describe_traffic_mirror_filter_rules <- function(TrafficMirrorFilterRuleIds 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_traffic_mirror_filter_rules_input(TrafficMirrorFilterRuleIds = TrafficMirrorFilterRuleIds, TrafficMirrorFilterId = TrafficMirrorFilterId, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_filter_rules_output()
@@ -40568,7 +40906,8 @@ ec2_describe_traffic_mirror_filters <- function(TrafficMirrorFilterIds = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorFilters")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorFilters"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_traffic_mirror_filters_input(TrafficMirrorFilterIds = TrafficMirrorFilterIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_filters_output()
@@ -40681,7 +41020,8 @@ ec2_describe_traffic_mirror_sessions <- function(TrafficMirrorSessionIds = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorSessions")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorSessions"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_traffic_mirror_sessions_input(TrafficMirrorSessionIds = TrafficMirrorSessionIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_sessions_output()
@@ -40782,7 +41122,8 @@ ec2_describe_traffic_mirror_targets <- function(TrafficMirrorTargetIds = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorTargets")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficMirrorTargets"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_traffic_mirror_targets_input(TrafficMirrorTargetIds = TrafficMirrorTargetIds, DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_traffic_mirror_targets_output()
@@ -40906,7 +41247,8 @@ ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachments")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachments"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_attachments_output()
@@ -41017,7 +41359,8 @@ ec2_describe_transit_gateway_connect_peers <- function(TransitGatewayConnectPeer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnectPeers")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnectPeers"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_connect_peers_input(TransitGatewayConnectPeerIds = TransitGatewayConnectPeerIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_connect_peers_output()
@@ -41122,7 +41465,8 @@ ec2_describe_transit_gateway_connects <- function(TransitGatewayAttachmentIds = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnects")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayConnects"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_connects_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_connects_output()
@@ -41225,7 +41569,8 @@ ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMultica
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayMulticastDomains")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayMulticastDomains"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_multicast_domains_input(TransitGatewayMulticastDomainIds = TransitGatewayMulticastDomainIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_multicast_domains_output()
@@ -41356,7 +41701,8 @@ ec2_describe_transit_gateway_peering_attachments <- function(TransitGatewayAttac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPeeringAttachments")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPeeringAttachments"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_peering_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_peering_attachments_output()
@@ -41443,7 +41789,8 @@ ec2_describe_transit_gateway_policy_tables <- function(TransitGatewayPolicyTable
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPolicyTables")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPolicyTables"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_policy_tables_input(TransitGatewayPolicyTableIds = TransitGatewayPolicyTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_policy_tables_output()
@@ -41537,7 +41884,8 @@ ec2_describe_transit_gateway_route_table_announcements <- function(TransitGatewa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTableAnnouncements")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTableAnnouncements"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_route_table_announcements_input(TransitGatewayRouteTableAnnouncementIds = TransitGatewayRouteTableAnnouncementIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_route_table_announcements_output()
@@ -41644,7 +41992,8 @@ ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTables")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTables"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_route_tables_input(TransitGatewayRouteTableIds = TransitGatewayRouteTableIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_route_tables_output()
@@ -41754,7 +42103,8 @@ ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmen
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayVpcAttachments")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayVpcAttachments"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateway_vpc_attachments_input(TransitGatewayAttachmentIds = TransitGatewayAttachmentIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateway_vpc_attachments_output()
@@ -41900,7 +42250,8 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGateways")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_transit_gateways_input(TransitGatewayIds = TransitGatewayIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$describe_transit_gateways_output()
@@ -41992,7 +42343,8 @@ ec2_describe_trunk_interface_associations <- function(AssociationIds = NULL, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InterfaceAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InterfaceAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_trunk_interface_associations_input(AssociationIds = AssociationIds, DryRun = DryRun, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_trunk_interface_associations_output()
@@ -42115,7 +42467,8 @@ ec2_describe_verified_access_endpoints <- function(VerifiedAccessEndpointIds = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessEndpoints")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessEndpoints"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_endpoints_input(VerifiedAccessEndpointIds = VerifiedAccessEndpointIds, VerifiedAccessInstanceId = VerifiedAccessInstanceId, VerifiedAccessGroupId = VerifiedAccessGroupId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_endpoints_output()
@@ -42210,7 +42563,8 @@ ec2_describe_verified_access_groups <- function(VerifiedAccessGroupIds = NULL, V
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_groups_input(VerifiedAccessGroupIds = VerifiedAccessGroupIds, VerifiedAccessInstanceId = VerifiedAccessInstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_groups_output()
@@ -42316,7 +42670,8 @@ ec2_describe_verified_access_instance_logging_configurations <- function(Verifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LoggingConfigurations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "LoggingConfigurations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_instance_logging_configurations_input(VerifiedAccessInstanceIds = VerifiedAccessInstanceIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_instance_logging_configurations_output()
@@ -42411,7 +42766,8 @@ ec2_describe_verified_access_instances <- function(VerifiedAccessInstanceIds = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessInstances")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessInstances"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_instances_input(VerifiedAccessInstanceIds = VerifiedAccessInstanceIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_instances_output()
@@ -42519,7 +42875,8 @@ ec2_describe_verified_access_trust_providers <- function(VerifiedAccessTrustProv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessTrustProviders")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VerifiedAccessTrustProviders"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_verified_access_trust_providers_input(VerifiedAccessTrustProviderIds = VerifiedAccessTrustProviderIds, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, DryRun = DryRun)
   output <- .ec2$describe_verified_access_trust_providers_output()
@@ -42598,7 +42955,8 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_volume_attribute_input(Attribute = Attribute, VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$describe_volume_attribute_output()
@@ -42633,8 +42991,8 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 #' the checks might still be taking place on your volume at the time. We
 #' recommend that you retry the request. For more information about volume
 #' status, see [Monitor the status of your
-#' volumes](https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-status.html)
-#' in the *Amazon EBS User Guide*.
+#' volumes](https://docs.aws.amazon.com/ebs/latest/userguide/) in the
+#' *Amazon EBS User Guide*.
 #' 
 #' *Events*: Reflect the cause of a volume status and might require you to
 #' take action. For example, if your volume returns an `impaired` status,
@@ -42817,7 +43175,8 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumeStatuses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumeStatuses"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_volume_status_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, VolumeIds = VolumeIds, DryRun = DryRun)
   output <- .ec2$describe_volume_status_output()
@@ -43025,7 +43384,8 @@ ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Volumes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Volumes"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_volumes_input(Filters = Filters, VolumeIds = VolumeIds, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_volumes_output()
@@ -43154,7 +43514,8 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumesModifications")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VolumesModifications"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_volumes_modifications_input(DryRun = DryRun, VolumeIds = VolumeIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_volumes_modifications_output()
@@ -43240,7 +43601,8 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_attribute_input(Attribute = Attribute, VpcId = VpcId, DryRun = DryRun)
   output <- .ec2$describe_vpc_attribute_output()
@@ -43330,7 +43692,8 @@ ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_classic_link_input(Filters = Filters, DryRun = DryRun, VpcIds = VpcIds)
   output <- .ec2$describe_vpc_classic_link_output()
@@ -43401,7 +43764,8 @@ ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_classic_link_dns_support_input(MaxResults = MaxResults, NextToken = NextToken, VpcIds = VpcIds)
   output <- .ec2$describe_vpc_classic_link_dns_support_output()
@@ -43499,7 +43863,8 @@ ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ConnectionNotificationSet")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ConnectionNotificationSet"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_connection_notifications_input(DryRun = DryRun, ConnectionNotificationId = ConnectionNotificationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_connection_notifications_output()
@@ -43614,7 +43979,8 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpointConnections")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpointConnections"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_connections_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_connections_output()
@@ -43752,7 +44118,8 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceConfigurations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceConfigurations"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_service_configurations_input(DryRun = DryRun, ServiceIds = ServiceIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_service_configurations_output()
@@ -43844,7 +44211,8 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AllowedPrincipals")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AllowedPrincipals"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_service_permissions_input(DryRun = DryRun, ServiceId = ServiceId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_service_permissions_output()
@@ -43989,7 +44357,8 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoint_services_input(DryRun = DryRun, ServiceNames = ServiceNames, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoint_services_output()
@@ -44144,7 +44513,8 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpoints")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcEndpoints"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_endpoints_input(DryRun = DryRun, VpcEndpointIds = VpcEndpointIds, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$describe_vpc_endpoints_output()
@@ -44320,7 +44690,8 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcPeeringConnections")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpcPeeringConnections"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpc_peering_connections_input(Filters = Filters, DryRun = DryRun, VpcPeeringConnectionIds = VpcPeeringConnectionIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_vpc_peering_connections_output()
@@ -44492,7 +44863,8 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Vpcs"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpcs_input(Filters = Filters, VpcIds = VpcIds, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$describe_vpcs_output()
@@ -44711,7 +45083,8 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "VpnConnections")
+    paginator = list(result_key = "VpnConnections"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpn_connections_input(Filters = Filters, VpnConnectionIds = VpnConnectionIds, DryRun = DryRun)
   output <- .ec2$describe_vpn_connections_output()
@@ -44831,7 +45204,8 @@ ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "VpnGateways")
+    paginator = list(result_key = "VpnGateways"),
+    stream_api = FALSE
   )
   input <- .ec2$describe_vpn_gateways_input(Filters = Filters, VpnGatewayIds = VpnGatewayIds, DryRun = DryRun)
   output <- .ec2$describe_vpn_gateways_output()
@@ -44891,7 +45265,8 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_classic_link_vpc_input(DryRun = DryRun, InstanceId = InstanceId, VpcId = VpcId)
   output <- .ec2$detach_classic_link_vpc_output()
@@ -44954,7 +45329,8 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_internet_gateway_input(DryRun = DryRun, InternetGatewayId = InternetGatewayId, VpcId = VpcId)
   output <- .ec2$detach_internet_gateway_output()
@@ -45028,7 +45404,8 @@ ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_network_interface_input(AttachmentId = AttachmentId, DryRun = DryRun, Force = Force)
   output <- .ec2$detach_network_interface_output()
@@ -45145,7 +45522,8 @@ ec2_detach_verified_access_trust_provider <- function(VerifiedAccessInstanceId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_verified_access_trust_provider_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, VerifiedAccessTrustProviderId = VerifiedAccessTrustProviderId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$detach_verified_access_trust_provider_output()
@@ -45249,7 +45627,8 @@ ec2_detach_volume <- function(Device = NULL, Force = NULL, InstanceId = NULL, Vo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_volume_input(Device = Device, Force = Force, InstanceId = InstanceId, VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$detach_volume_output()
@@ -45307,7 +45686,8 @@ ec2_detach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$detach_vpn_gateway_input(VpcId = VpcId, VpnGatewayId = VpnGatewayId, DryRun = DryRun)
   output <- .ec2$detach_vpn_gateway_output()
@@ -45374,7 +45754,8 @@ ec2_disable_address_transfer <- function(AllocationId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_address_transfer_input(AllocationId = AllocationId, DryRun = DryRun)
   output <- .ec2$disable_address_transfer_output()
@@ -45436,7 +45817,8 @@ ec2_disable_aws_network_performance_metric_subscription <- function(Source = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_aws_network_performance_metric_subscription_input(Source = Source, Destination = Destination, Metric = Metric, Statistic = Statistic, DryRun = DryRun)
   output <- .ec2$disable_aws_network_performance_metric_subscription_output()
@@ -45499,7 +45881,8 @@ ec2_disable_ebs_encryption_by_default <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_ebs_encryption_by_default_input(DryRun = DryRun)
   output <- .ec2$disable_ebs_encryption_by_default_output()
@@ -45580,7 +45963,8 @@ ec2_disable_fast_launch <- function(ImageId, Force = NULL, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_fast_launch_input(ImageId = ImageId, Force = Force, DryRun = DryRun)
   output <- .ec2$disable_fast_launch_output()
@@ -45680,7 +46064,8 @@ ec2_disable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshot
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_fast_snapshot_restores_input(AvailabilityZones = AvailabilityZones, SourceSnapshotIds = SourceSnapshotIds, DryRun = DryRun)
   output <- .ec2$disable_fast_snapshot_restores_output()
@@ -45752,7 +46137,8 @@ ec2_disable_image <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_image_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$disable_image_output()
@@ -45818,7 +46204,8 @@ ec2_disable_image_block_public_access <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_image_block_public_access_input(DryRun = DryRun)
   output <- .ec2$disable_image_block_public_access_output()
@@ -45875,7 +46262,8 @@ ec2_disable_image_deprecation <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_image_deprecation_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$disable_image_deprecation_output()
@@ -45938,7 +46326,8 @@ ec2_disable_image_deregistration_protection <- function(ImageId, DryRun = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_image_deregistration_protection_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$disable_image_deregistration_protection_output()
@@ -45996,7 +46385,8 @@ ec2_disable_ipam_organization_admin_account <- function(DryRun = NULL, Delegated
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_ipam_organization_admin_account_input(DryRun = DryRun, DelegatedAdminAccountId = DelegatedAdminAccountId)
   output <- .ec2$disable_ipam_organization_admin_account_output()
@@ -46053,7 +46443,8 @@ ec2_disable_serial_console_access <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_serial_console_access_input(DryRun = DryRun)
   output <- .ec2$disable_serial_console_access_output()
@@ -46122,7 +46513,8 @@ ec2_disable_snapshot_block_public_access <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_snapshot_block_public_access_input(DryRun = DryRun)
   output <- .ec2$disable_snapshot_block_public_access_output()
@@ -46190,7 +46582,8 @@ ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_transit_gateway_route_table_propagation_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun, TransitGatewayRouteTableAnnouncementId = TransitGatewayRouteTableAnnouncementId)
   output <- .ec2$disable_transit_gateway_route_table_propagation_output()
@@ -46252,7 +46645,8 @@ ec2_disable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_vgw_route_propagation_input(GatewayId = GatewayId, RouteTableId = RouteTableId, DryRun = DryRun)
   output <- .ec2$disable_vgw_route_propagation_output()
@@ -46308,7 +46702,8 @@ ec2_disable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_vpc_classic_link_input(DryRun = DryRun, VpcId = VpcId)
   output <- .ec2$disable_vpc_classic_link_output()
@@ -46362,7 +46757,8 @@ ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disable_vpc_classic_link_dns_support_input(VpcId = VpcId)
   output <- .ec2$disable_vpc_classic_link_dns_support_output()
@@ -46425,7 +46821,8 @@ ec2_disassociate_address <- function(AssociationId = NULL, PublicIp = NULL, DryR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_address_input(AssociationId = AssociationId, PublicIp = PublicIp, DryRun = DryRun)
   output <- .ec2$disassociate_address_output()
@@ -46496,7 +46893,8 @@ ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, Asso
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_client_vpn_target_network_input(ClientVpnEndpointId = ClientVpnEndpointId, AssociationId = AssociationId, DryRun = DryRun)
   output <- .ec2$disassociate_client_vpn_target_network_output()
@@ -46557,7 +46955,8 @@ ec2_disassociate_enclave_certificate_iam_role <- function(CertificateArn, RoleAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_enclave_certificate_iam_role_input(CertificateArn = CertificateArn, RoleArn = RoleArn, DryRun = DryRun)
   output <- .ec2$disassociate_enclave_certificate_iam_role_output()
@@ -46630,7 +47029,8 @@ ec2_disassociate_iam_instance_profile <- function(AssociationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_iam_instance_profile_input(AssociationId = AssociationId)
   output <- .ec2$disassociate_iam_instance_profile_output()
@@ -46736,7 +47136,8 @@ ec2_disassociate_instance_event_window <- function(DryRun = NULL, InstanceEventW
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_instance_event_window_input(DryRun = DryRun, InstanceEventWindowId = InstanceEventWindowId, AssociationTarget = AssociationTarget)
   output <- .ec2$disassociate_instance_event_window_output()
@@ -46802,7 +47203,8 @@ ec2_disassociate_ipam_byoasn <- function(DryRun = NULL, Asn, Cidr) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_ipam_byoasn_input(DryRun = DryRun, Asn = Asn, Cidr = Cidr)
   output <- .ec2$disassociate_ipam_byoasn_output()
@@ -46875,7 +47277,8 @@ ec2_disassociate_ipam_resource_discovery <- function(DryRun = NULL, IpamResource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_ipam_resource_discovery_input(DryRun = DryRun, IpamResourceDiscoveryAssociationId = IpamResourceDiscoveryAssociationId)
   output <- .ec2$disassociate_ipam_resource_discovery_output()
@@ -46966,7 +47369,8 @@ ec2_disassociate_nat_gateway_address <- function(NatGatewayId, AssociationIds, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_nat_gateway_address_input(NatGatewayId = NatGatewayId, AssociationIds = AssociationIds, MaxDrainDurationSeconds = MaxDrainDurationSeconds, DryRun = DryRun)
   output <- .ec2$disassociate_nat_gateway_address_output()
@@ -47030,7 +47434,8 @@ ec2_disassociate_route_table <- function(AssociationId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_route_table_input(AssociationId = AssociationId, DryRun = DryRun)
   output <- .ec2$disassociate_route_table_output()
@@ -47091,7 +47496,8 @@ ec2_disassociate_subnet_cidr_block <- function(AssociationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_subnet_cidr_block_input(AssociationId = AssociationId)
   output <- .ec2$disassociate_subnet_cidr_block_output()
@@ -47166,7 +47572,8 @@ ec2_disassociate_transit_gateway_multicast_domain <- function(TransitGatewayMult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_transit_gateway_multicast_domain_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, SubnetIds = SubnetIds, DryRun = DryRun)
   output <- .ec2$disassociate_transit_gateway_multicast_domain_output()
@@ -47229,7 +47636,8 @@ ec2_disassociate_transit_gateway_policy_table <- function(TransitGatewayPolicyTa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_transit_gateway_policy_table_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$disassociate_transit_gateway_policy_table_output()
@@ -47291,7 +47699,8 @@ ec2_disassociate_transit_gateway_route_table <- function(TransitGatewayRouteTabl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_transit_gateway_route_table_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$disassociate_transit_gateway_route_table_output()
@@ -47351,7 +47760,8 @@ ec2_disassociate_trunk_interface <- function(AssociationId, ClientToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_trunk_interface_input(AssociationId = AssociationId, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$disassociate_trunk_interface_output()
@@ -47426,7 +47836,8 @@ ec2_disassociate_vpc_cidr_block <- function(AssociationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$disassociate_vpc_cidr_block_input(AssociationId = AssociationId)
   output <- .ec2$disassociate_vpc_cidr_block_output()
@@ -47496,7 +47907,8 @@ ec2_enable_address_transfer <- function(AllocationId, TransferAccountId, DryRun 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_address_transfer_input(AllocationId = AllocationId, TransferAccountId = TransferAccountId, DryRun = DryRun)
   output <- .ec2$enable_address_transfer_output()
@@ -47562,7 +47974,8 @@ ec2_enable_aws_network_performance_metric_subscription <- function(Source = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_aws_network_performance_metric_subscription_input(Source = Source, Destination = Destination, Metric = Metric, Statistic = Statistic, DryRun = DryRun)
   output <- .ec2$enable_aws_network_performance_metric_subscription_output()
@@ -47633,7 +48046,8 @@ ec2_enable_ebs_encryption_by_default <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_ebs_encryption_by_default_input(DryRun = DryRun)
   output <- .ec2$enable_ebs_encryption_by_default_output()
@@ -47735,7 +48149,8 @@ ec2_enable_fast_launch <- function(ImageId, ResourceType = NULL, SnapshotConfigu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_fast_launch_input(ImageId = ImageId, ResourceType = ResourceType, SnapshotConfiguration = SnapshotConfiguration, LaunchTemplate = LaunchTemplate, MaxParallelLaunches = MaxParallelLaunches, DryRun = DryRun)
   output <- .ec2$enable_fast_launch_output()
@@ -47847,7 +48262,8 @@ ec2_enable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshotI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_fast_snapshot_restores_input(AvailabilityZones = AvailabilityZones, SourceSnapshotIds = SourceSnapshotIds, DryRun = DryRun)
   output <- .ec2$enable_fast_snapshot_restores_output()
@@ -47911,7 +48327,8 @@ ec2_enable_image <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_image_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$enable_image_output()
@@ -47981,7 +48398,8 @@ ec2_enable_image_block_public_access <- function(ImageBlockPublicAccessState, Dr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_image_block_public_access_input(ImageBlockPublicAccessState = ImageBlockPublicAccessState, DryRun = DryRun)
   output <- .ec2$enable_image_block_public_access_output()
@@ -48048,7 +48466,8 @@ ec2_enable_image_deprecation <- function(ImageId, DeprecateAt, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_image_deprecation_input(ImageId = ImageId, DeprecateAt = DeprecateAt, DryRun = DryRun)
   output <- .ec2$enable_image_deprecation_output()
@@ -48114,7 +48533,8 @@ ec2_enable_image_deregistration_protection <- function(ImageId, WithCooldown = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_image_deregistration_protection_input(ImageId = ImageId, WithCooldown = WithCooldown, DryRun = DryRun)
   output <- .ec2$enable_image_deregistration_protection_output()
@@ -48173,7 +48593,8 @@ ec2_enable_ipam_organization_admin_account <- function(DryRun = NULL, DelegatedA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_ipam_organization_admin_account_input(DryRun = DryRun, DelegatedAdminAccountId = DelegatedAdminAccountId)
   output <- .ec2$enable_ipam_organization_admin_account_output()
@@ -48231,7 +48652,8 @@ ec2_enable_reachability_analyzer_organization_sharing <- function(DryRun = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_reachability_analyzer_organization_sharing_input(DryRun = DryRun)
   output <- .ec2$enable_reachability_analyzer_organization_sharing_output()
@@ -48288,7 +48710,8 @@ ec2_enable_serial_console_access <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_serial_console_access_input(DryRun = DryRun)
   output <- .ec2$enable_serial_console_access_output()
@@ -48376,7 +48799,8 @@ ec2_enable_snapshot_block_public_access <- function(State, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_snapshot_block_public_access_input(State = State, DryRun = DryRun)
   output <- .ec2$enable_snapshot_block_public_access_output()
@@ -48444,7 +48868,8 @@ ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_transit_gateway_route_table_propagation_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun, TransitGatewayRouteTableAnnouncementId = TransitGatewayRouteTableAnnouncementId)
   output <- .ec2$enable_transit_gateway_route_table_propagation_output()
@@ -48509,7 +48934,8 @@ ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_vgw_route_propagation_input(GatewayId = GatewayId, RouteTableId = RouteTableId, DryRun = DryRun)
   output <- .ec2$enable_vgw_route_propagation_output()
@@ -48567,7 +48993,8 @@ ec2_enable_volume_io <- function(DryRun = NULL, VolumeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_volume_io_input(DryRun = DryRun, VolumeId = VolumeId)
   output <- .ec2$enable_volume_io_output()
@@ -48627,7 +49054,8 @@ ec2_enable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_vpc_classic_link_input(DryRun = DryRun, VpcId = VpcId)
   output <- .ec2$enable_vpc_classic_link_output()
@@ -48684,7 +49112,8 @@ ec2_enable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$enable_vpc_classic_link_dns_support_input(VpcId = VpcId)
   output <- .ec2$enable_vpc_classic_link_dns_support_output()
@@ -48744,7 +49173,8 @@ ec2_export_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$export_client_vpn_client_certificate_revocation_list_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun)
   output <- .ec2$export_client_vpn_client_certificate_revocation_list_output()
@@ -48801,7 +49231,8 @@ ec2_export_client_vpn_client_configuration <- function(ClientVpnEndpointId, DryR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$export_client_vpn_client_configuration_input(ClientVpnEndpointId = ClientVpnEndpointId, DryRun = DryRun)
   output <- .ec2$export_client_vpn_client_configuration_output()
@@ -48904,7 +49335,8 @@ ec2_export_image <- function(ClientToken = NULL, Description = NULL, DiskImageFo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$export_image_input(ClientToken = ClientToken, Description = Description, DiskImageFormat = DiskImageFormat, DryRun = DryRun, ImageId = ImageId, S3ExportLocation = S3ExportLocation, RoleName = RoleName, TagSpecifications = TagSpecifications)
   output <- .ec2$export_image_output()
@@ -49004,7 +49436,8 @@ ec2_export_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$export_transit_gateway_routes_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, S3Bucket = S3Bucket, DryRun = DryRun)
   output <- .ec2$export_transit_gateway_routes_output()
@@ -49070,7 +49503,8 @@ ec2_get_associated_enclave_certificate_iam_roles <- function(CertificateArn, Dry
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_associated_enclave_certificate_iam_roles_input(CertificateArn = CertificateArn, DryRun = DryRun)
   output <- .ec2$get_associated_enclave_certificate_iam_roles_output()
@@ -49138,7 +49572,8 @@ ec2_get_associated_ipv_6_pool_cidrs <- function(PoolId, NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6CidrAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Ipv6CidrAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_associated_ipv_6_pool_cidrs_input(PoolId = PoolId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$get_associated_ipv_6_pool_cidrs_output()
@@ -49241,7 +49676,8 @@ ec2_get_aws_network_performance_data <- function(DataQueries = NULL, StartTime =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataResponses")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataResponses"),
+    stream_api = FALSE
   )
   input <- .ec2$get_aws_network_performance_data_input(DataQueries = DataQueries, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_aws_network_performance_data_output()
@@ -49317,7 +49753,8 @@ ec2_get_capacity_reservation_usage <- function(CapacityReservationId, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_capacity_reservation_usage_input(CapacityReservationId = CapacityReservationId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$get_capacity_reservation_usage_output()
@@ -49407,7 +49844,8 @@ ec2_get_coip_pool_usage <- function(PoolId, Filters = NULL, MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_coip_pool_usage_input(PoolId = PoolId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_coip_pool_usage_output()
@@ -49484,7 +49922,8 @@ ec2_get_console_output <- function(InstanceId, DryRun = NULL, Latest = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_console_output_input(InstanceId = InstanceId, DryRun = DryRun, Latest = Latest)
   output <- .ec2$get_console_output_output()
@@ -49549,7 +49988,8 @@ ec2_get_console_screenshot <- function(DryRun = NULL, InstanceId, WakeUp = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_console_screenshot_input(DryRun = DryRun, InstanceId = InstanceId, WakeUp = WakeUp)
   output <- .ec2$get_console_screenshot_output()
@@ -49611,7 +50051,8 @@ ec2_get_default_credit_specification <- function(DryRun = NULL, InstanceFamily) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_default_credit_specification_input(DryRun = DryRun, InstanceFamily = InstanceFamily)
   output <- .ec2$get_default_credit_specification_output()
@@ -49671,7 +50112,8 @@ ec2_get_ebs_default_kms_key_id <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_ebs_default_kms_key_id_input(DryRun = DryRun)
   output <- .ec2$get_ebs_default_kms_key_id_output()
@@ -49729,7 +50171,8 @@ ec2_get_ebs_encryption_by_default <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_ebs_encryption_by_default_input(DryRun = DryRun)
   output <- .ec2$get_ebs_encryption_by_default_output()
@@ -49820,7 +50263,8 @@ ec2_get_flow_logs_integration_template <- function(DryRun = NULL, FlowLogId, Con
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_flow_logs_integration_template_input(DryRun = DryRun, FlowLogId = FlowLogId, ConfigDeliveryS3DestinationArn = ConfigDeliveryS3DestinationArn, IntegrateServices = IntegrateServices)
   output <- .ec2$get_flow_logs_integration_template_output()
@@ -49890,7 +50334,8 @@ ec2_get_groups_for_capacity_reservation <- function(CapacityReservationId, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CapacityReservationGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$get_groups_for_capacity_reservation_input(CapacityReservationId = CapacityReservationId, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$get_groups_for_capacity_reservation_output()
@@ -49965,7 +50410,8 @@ ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_host_reservation_purchase_preview_input(HostIdSet = HostIdSet, OfferingId = OfferingId)
   output <- .ec2$get_host_reservation_purchase_preview_output()
@@ -50022,7 +50468,8 @@ ec2_get_image_block_public_access_state <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_image_block_public_access_state_input(DryRun = DryRun)
   output <- .ec2$get_image_block_public_access_state_output()
@@ -50084,7 +50531,8 @@ ec2_get_instance_metadata_defaults <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_instance_metadata_defaults_input(DryRun = DryRun)
   output <- .ec2$get_instance_metadata_defaults_output()
@@ -50149,7 +50597,8 @@ ec2_get_instance_tpm_ek_pub <- function(InstanceId, KeyType, KeyFormat, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_instance_tpm_ek_pub_input(InstanceId = InstanceId, KeyType = KeyType, KeyFormat = KeyFormat, DryRun = DryRun)
   output <- .ec2$get_instance_tpm_ek_pub_output()
@@ -50313,7 +50762,8 @@ ec2_get_instance_types_from_instance_requirements <- function(DryRun = NULL, Arc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceTypes"),
+    stream_api = FALSE
   )
   input <- .ec2$get_instance_types_from_instance_requirements_input(DryRun = DryRun, ArchitectureTypes = ArchitectureTypes, VirtualizationTypes = VirtualizationTypes, InstanceRequirements = InstanceRequirements, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_instance_types_from_instance_requirements_output()
@@ -50383,7 +50833,8 @@ ec2_get_instance_uefi_data <- function(InstanceId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_instance_uefi_data_input(InstanceId = InstanceId, DryRun = DryRun)
   output <- .ec2$get_instance_uefi_data_output()
@@ -50481,7 +50932,8 @@ ec2_get_ipam_address_history <- function(DryRun = NULL, Cidr, IpamScopeId, VpcId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HistoryRecords")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "HistoryRecords"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_address_history_input(DryRun = DryRun, Cidr = Cidr, IpamScopeId = IpamScopeId, VpcId = VpcId, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_address_history_output()
@@ -50573,7 +51025,8 @@ ec2_get_ipam_discovered_accounts <- function(DryRun = NULL, IpamResourceDiscover
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredAccounts")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredAccounts"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_discovered_accounts_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, DiscoveryRegion = DiscoveryRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_ipam_discovered_accounts_output()
@@ -50683,7 +51136,8 @@ ec2_get_ipam_discovered_public_addresses <- function(DryRun = NULL, IpamResource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_discovered_public_addresses_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, AddressRegion = AddressRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_ipam_discovered_public_addresses_output()
@@ -50782,7 +51236,8 @@ ec2_get_ipam_discovered_resource_cidrs <- function(DryRun = NULL, IpamResourceDi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredResourceCidrs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamDiscoveredResourceCidrs"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_discovered_resource_cidrs_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, ResourceRegion = ResourceRegion, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_ipam_discovered_resource_cidrs_output()
@@ -50873,7 +51328,8 @@ ec2_get_ipam_pool_allocations <- function(DryRun = NULL, IpamPoolId, IpamPoolAll
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolAllocations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolAllocations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_pool_allocations_input(DryRun = DryRun, IpamPoolId = IpamPoolId, IpamPoolAllocationId = IpamPoolAllocationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_pool_allocations_output()
@@ -50954,7 +51410,8 @@ ec2_get_ipam_pool_cidrs <- function(DryRun = NULL, IpamPoolId, Filters = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolCidrs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamPoolCidrs"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_pool_cidrs_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_ipam_pool_cidrs_output()
@@ -51066,7 +51523,8 @@ ec2_get_ipam_resource_cidrs <- function(DryRun = NULL, Filters = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceCidrs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "IpamResourceCidrs"),
+    stream_api = FALSE
   )
   input <- .ec2$get_ipam_resource_cidrs_input(DryRun = DryRun, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, IpamScopeId = IpamScopeId, IpamPoolId = IpamPoolId, ResourceId = ResourceId, ResourceType = ResourceType, ResourceTag = ResourceTag, ResourceOwner = ResourceOwner)
   output <- .ec2$get_ipam_resource_cidrs_output()
@@ -51389,7 +51847,8 @@ ec2_get_launch_template_data <- function(DryRun = NULL, InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_launch_template_data_input(DryRun = DryRun, InstanceId = InstanceId)
   output <- .ec2$get_launch_template_data_output()
@@ -51457,7 +51916,8 @@ ec2_get_managed_prefix_list_associations <- function(DryRun = NULL, PrefixListId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixListAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PrefixListAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_managed_prefix_list_associations_input(DryRun = DryRun, PrefixListId = PrefixListId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_managed_prefix_list_associations_output()
@@ -51526,7 +51986,8 @@ ec2_get_managed_prefix_list_entries <- function(DryRun = NULL, PrefixListId, Tar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entries")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entries"),
+    stream_api = FALSE
   )
   input <- .ec2$get_managed_prefix_list_entries_input(DryRun = DryRun, PrefixListId = PrefixListId, TargetVersion = TargetVersion, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_managed_prefix_list_entries_output()
@@ -52119,7 +52580,8 @@ ec2_get_network_insights_access_scope_analysis_findings <- function(NetworkInsig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnalysisFindings")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnalysisFindings"),
+    stream_api = FALSE
   )
   input <- .ec2$get_network_insights_access_scope_analysis_findings_input(NetworkInsightsAccessScopeAnalysisId = NetworkInsightsAccessScopeAnalysisId, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_network_insights_access_scope_analysis_findings_output()
@@ -52339,7 +52801,8 @@ ec2_get_network_insights_access_scope_content <- function(NetworkInsightsAccessS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_network_insights_access_scope_content_input(NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId, DryRun = DryRun)
   output <- .ec2$get_network_insights_access_scope_content_output()
@@ -52418,7 +52881,8 @@ ec2_get_password_data <- function(InstanceId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_password_data_input(InstanceId = InstanceId, DryRun = DryRun)
   output <- .ec2$get_password_data_output()
@@ -52528,7 +52992,8 @@ ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedIns
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_reserved_instances_exchange_quote_input(DryRun = DryRun, ReservedInstanceIds = ReservedInstanceIds, TargetConfigurations = TargetConfigurations)
   output <- .ec2$get_reserved_instances_exchange_quote_output()
@@ -52628,7 +53093,8 @@ ec2_get_security_groups_for_vpc <- function(VpcId, NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupForVpcs")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityGroupForVpcs"),
+    stream_api = FALSE
   )
   input <- .ec2$get_security_groups_for_vpc_input(VpcId = VpcId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, DryRun = DryRun)
   output <- .ec2$get_security_groups_for_vpc_output()
@@ -52685,7 +53151,8 @@ ec2_get_serial_console_access_status <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_serial_console_access_status_input(DryRun = DryRun)
   output <- .ec2$get_serial_console_access_status_output()
@@ -52742,7 +53209,8 @@ ec2_get_snapshot_block_public_access_state <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_snapshot_block_public_access_state_input(DryRun = DryRun)
   output <- .ec2$get_snapshot_block_public_access_state_output()
@@ -52931,7 +53399,8 @@ ec2_get_spot_placement_scores <- function(InstanceTypes = NULL, TargetCapacity, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPlacementScores")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SpotPlacementScores"),
+    stream_api = FALSE
   )
   input <- .ec2$get_spot_placement_scores_input(InstanceTypes = InstanceTypes, TargetCapacity = TargetCapacity, TargetCapacityUnitType = TargetCapacityUnitType, SingleAvailabilityZone = SingleAvailabilityZone, RegionNames = RegionNames, InstanceRequirementsWithMetadata = InstanceRequirementsWithMetadata, DryRun = DryRun, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ec2$get_spot_placement_scores_output()
@@ -53046,7 +53515,8 @@ ec2_get_subnet_cidr_reservations <- function(Filters = NULL, SubnetId, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_subnet_cidr_reservations_input(Filters = Filters, SubnetId = SubnetId, DryRun = DryRun, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ec2$get_subnet_cidr_reservations_output()
@@ -53126,7 +53596,8 @@ ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttach
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachmentPropagations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayAttachmentPropagations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_attachment_propagations_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_attachment_propagations_output()
@@ -53221,7 +53692,8 @@ ec2_get_transit_gateway_multicast_domain_associations <- function(TransitGateway
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastDomainAssociations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastDomainAssociations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_multicast_domain_associations_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_multicast_domain_associations_output()
@@ -53299,7 +53771,8 @@ ec2_get_transit_gateway_policy_table_associations <- function(TransitGatewayPoli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_policy_table_associations_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_policy_table_associations_output()
@@ -53384,7 +53857,8 @@ ec2_get_transit_gateway_policy_table_entries <- function(TransitGatewayPolicyTab
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_policy_table_entries_input(TransitGatewayPolicyTableId = TransitGatewayPolicyTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_policy_table_entries_output()
@@ -53489,7 +53963,8 @@ ec2_get_transit_gateway_prefix_list_references <- function(TransitGatewayRouteTa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPrefixListReferences")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayPrefixListReferences"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_prefix_list_references_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_prefix_list_references_output()
@@ -53575,7 +54050,8 @@ ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_route_table_associations_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_route_table_associations_output()
@@ -53662,7 +54138,8 @@ ec2_get_transit_gateway_route_table_propagations <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTablePropagations")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TransitGatewayRouteTablePropagations"),
+    stream_api = FALSE
   )
   input <- .ec2$get_transit_gateway_route_table_propagations_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_transit_gateway_route_table_propagations_output()
@@ -53717,7 +54194,8 @@ ec2_get_verified_access_endpoint_policy <- function(VerifiedAccessEndpointId, Dr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_verified_access_endpoint_policy_input(VerifiedAccessEndpointId = VerifiedAccessEndpointId, DryRun = DryRun)
   output <- .ec2$get_verified_access_endpoint_policy_output()
@@ -53773,7 +54251,8 @@ ec2_get_verified_access_group_policy <- function(VerifiedAccessGroupId, DryRun =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_verified_access_group_policy_input(VerifiedAccessGroupId = VerifiedAccessGroupId, DryRun = DryRun)
   output <- .ec2$get_verified_access_group_policy_output()
@@ -53840,7 +54319,8 @@ ec2_get_vpn_connection_device_sample_configuration <- function(VpnConnectionId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_vpn_connection_device_sample_configuration_input(VpnConnectionId = VpnConnectionId, VpnConnectionDeviceTypeId = VpnConnectionDeviceTypeId, InternetKeyExchangeVersion = InternetKeyExchangeVersion, DryRun = DryRun)
   output <- .ec2$get_vpn_connection_device_sample_configuration_output()
@@ -53925,7 +54405,8 @@ ec2_get_vpn_connection_device_types <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpnConnectionDeviceTypes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "VpnConnectionDeviceTypes"),
+    stream_api = FALSE
   )
   input <- .ec2$get_vpn_connection_device_types_input(MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$get_vpn_connection_device_types_output()
@@ -53994,7 +54475,8 @@ ec2_get_vpn_tunnel_replacement_status <- function(VpnConnectionId, VpnTunnelOuts
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$get_vpn_tunnel_replacement_status_input(VpnConnectionId = VpnConnectionId, VpnTunnelOutsideIpAddress = VpnTunnelOutsideIpAddress, DryRun = DryRun)
   output <- .ec2$get_vpn_tunnel_replacement_status_output()
@@ -54060,7 +54542,8 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_client_vpn_client_certificate_revocation_list_input(ClientVpnEndpointId = ClientVpnEndpointId, CertificateRevocationList = CertificateRevocationList, DryRun = DryRun)
   output <- .ec2$import_client_vpn_client_certificate_revocation_list_output()
@@ -54303,7 +54786,8 @@ ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_image_input(Architecture = Architecture, ClientData = ClientData, ClientToken = ClientToken, Description = Description, DiskContainers = DiskContainers, DryRun = DryRun, Encrypted = Encrypted, Hypervisor = Hypervisor, KmsKeyId = KmsKeyId, LicenseType = LicenseType, Platform = Platform, RoleName = RoleName, LicenseSpecifications = LicenseSpecifications, TagSpecifications = TagSpecifications, UsageOperation = UsageOperation, BootMode = BootMode)
   output <- .ec2$import_image_output()
@@ -54473,7 +54957,8 @@ ec2_import_instance <- function(Description = NULL, DiskImages = NULL, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_instance_input(Description = Description, DiskImages = DiskImages, DryRun = DryRun, LaunchSpecification = LaunchSpecification, Platform = Platform)
   output <- .ec2$import_instance_output()
@@ -54561,7 +55046,8 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_key_pair_input(DryRun = DryRun, KeyName = KeyName, PublicKeyMaterial = PublicKeyMaterial, TagSpecifications = TagSpecifications)
   output <- .ec2$import_key_pair_output()
@@ -54719,7 +55205,8 @@ ec2_import_snapshot <- function(ClientData = NULL, ClientToken = NULL, Descripti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_snapshot_input(ClientData = ClientData, ClientToken = ClientToken, Description = Description, DiskContainer = DiskContainer, DryRun = DryRun, Encrypted = Encrypted, KmsKeyId = KmsKeyId, RoleName = RoleName, TagSpecifications = TagSpecifications)
   output <- .ec2$import_snapshot_output()
@@ -54850,7 +55337,8 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$import_volume_input(AvailabilityZone = AvailabilityZone, Description = Description, DryRun = DryRun, Image = Image, Volume = Volume)
   output <- .ec2$import_volume_output()
@@ -54931,7 +55419,8 @@ ec2_list_images_in_recycle_bin <- function(ImageIds = NULL, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Images"),
+    stream_api = FALSE
   )
   input <- .ec2$list_images_in_recycle_bin_input(ImageIds = ImageIds, NextToken = NextToken, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$list_images_in_recycle_bin_output()
@@ -55009,7 +55498,8 @@ ec2_list_snapshots_in_recycle_bin <- function(MaxResults = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Snapshots"),
+    stream_api = FALSE
   )
   input <- .ec2$list_snapshots_in_recycle_bin_input(MaxResults = MaxResults, NextToken = NextToken, SnapshotIds = SnapshotIds, DryRun = DryRun)
   output <- .ec2$list_snapshots_in_recycle_bin_output()
@@ -55161,7 +55651,8 @@ ec2_lock_snapshot <- function(SnapshotId, DryRun = NULL, LockMode, CoolOffPeriod
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$lock_snapshot_input(SnapshotId = SnapshotId, DryRun = DryRun, LockMode = LockMode, CoolOffPeriod = CoolOffPeriod, LockDuration = LockDuration, ExpirationDate = ExpirationDate)
   output <- .ec2$lock_snapshot_output()
@@ -55227,7 +55718,8 @@ ec2_modify_address_attribute <- function(AllocationId, DomainName = NULL, DryRun
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_address_attribute_input(AllocationId = AllocationId, DomainName = DomainName, DryRun = DryRun)
   output <- .ec2$modify_address_attribute_output()
@@ -55285,7 +55777,8 @@ ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_availability_zone_group_input(GroupName = GroupName, OptInStatus = OptInStatus, DryRun = DryRun)
   output <- .ec2$modify_availability_zone_group_output()
@@ -55394,7 +55887,8 @@ ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_capacity_reservation_input(CapacityReservationId = CapacityReservationId, InstanceCount = InstanceCount, EndDate = EndDate, EndDateType = EndDateType, Accept = Accept, DryRun = DryRun, AdditionalInfo = AdditionalInfo, InstanceMatchCriteria = InstanceMatchCriteria)
   output <- .ec2$modify_capacity_reservation_output()
@@ -55484,7 +55978,8 @@ ec2_modify_capacity_reservation_fleet <- function(CapacityReservationFleetId, To
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_capacity_reservation_fleet_input(CapacityReservationFleetId = CapacityReservationFleetId, TotalTargetCapacity = TotalTargetCapacity, EndDate = EndDate, DryRun = DryRun, RemoveEndDate = RemoveEndDate)
   output <- .ec2$modify_capacity_reservation_fleet_output()
@@ -55615,7 +56110,8 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_client_vpn_endpoint_input(ClientVpnEndpointId = ClientVpnEndpointId, ServerCertificateArn = ServerCertificateArn, ConnectionLogOptions = ConnectionLogOptions, DnsServers = DnsServers, VpnPort = VpnPort, Description = Description, SplitTunnel = SplitTunnel, DryRun = DryRun, SecurityGroupIds = SecurityGroupIds, VpcId = VpcId, SelfServicePortal = SelfServicePortal, ClientConnectOptions = ClientConnectOptions, SessionTimeoutHours = SessionTimeoutHours, ClientLoginBannerOptions = ClientLoginBannerOptions)
   output <- .ec2$modify_client_vpn_endpoint_output()
@@ -55695,7 +56191,8 @@ ec2_modify_default_credit_specification <- function(DryRun = NULL, InstanceFamil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_default_credit_specification_input(DryRun = DryRun, InstanceFamily = InstanceFamily, CpuCredits = CpuCredits)
   output <- .ec2$modify_default_credit_specification_output()
@@ -55785,7 +56282,8 @@ ec2_modify_ebs_default_kms_key_id <- function(KmsKeyId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ebs_default_kms_key_id_input(KmsKeyId = KmsKeyId, DryRun = DryRun)
   output <- .ec2$modify_ebs_default_kms_key_id_output()
@@ -55986,7 +56484,8 @@ ec2_modify_fleet <- function(DryRun = NULL, ExcessCapacityTerminationPolicy = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_fleet_input(DryRun = DryRun, ExcessCapacityTerminationPolicy = ExcessCapacityTerminationPolicy, LaunchTemplateConfigs = LaunchTemplateConfigs, FleetId = FleetId, TargetCapacitySpecification = TargetCapacitySpecification, Context = Context)
   output <- .ec2$modify_fleet_output()
@@ -56098,7 +56597,8 @@ ec2_modify_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_fpga_image_attribute_input(DryRun = DryRun, FpgaImageId = FpgaImageId, Attribute = Attribute, OperationType = OperationType, UserIds = UserIds, UserGroups = UserGroups, ProductCodes = ProductCodes, LoadPermission = LoadPermission, Description = Description, Name = Name)
   output <- .ec2$modify_fpga_image_attribute_output()
@@ -56200,7 +56700,8 @@ ec2_modify_hosts <- function(AutoPlacement = NULL, HostIds, HostRecovery = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_hosts_input(AutoPlacement = AutoPlacement, HostIds = HostIds, HostRecovery = HostRecovery, InstanceType = InstanceType, InstanceFamily = InstanceFamily, HostMaintenance = HostMaintenance)
   output <- .ec2$modify_hosts_output()
@@ -56283,7 +56784,8 @@ ec2_modify_id_format <- function(Resource, UseLongIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_id_format_input(Resource = Resource, UseLongIds = UseLongIds)
   output <- .ec2$modify_id_format_output()
@@ -56371,7 +56873,8 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_identity_id_format_input(PrincipalArn = PrincipalArn, Resource = Resource, UseLongIds = UseLongIds)
   output <- .ec2$modify_identity_id_format_output()
@@ -56534,7 +57037,8 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_image_attribute_input(Attribute = Attribute, Description = Description, ImageId = ImageId, LaunchPermission = LaunchPermission, OperationType = OperationType, ProductCodes = ProductCodes, UserGroups = UserGroups, UserIds = UserIds, Value = Value, DryRun = DryRun, OrganizationArns = OrganizationArns, OrganizationalUnitArns = OrganizationalUnitArns, ImdsSupport = ImdsSupport)
   output <- .ec2$modify_image_attribute_output()
@@ -56745,7 +57249,8 @@ ec2_modify_instance_attribute <- function(SourceDestCheck = NULL, Attribute = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_attribute_input(SourceDestCheck = SourceDestCheck, Attribute = Attribute, BlockDeviceMappings = BlockDeviceMappings, DisableApiTermination = DisableApiTermination, DryRun = DryRun, EbsOptimized = EbsOptimized, EnaSupport = EnaSupport, Groups = Groups, InstanceId = InstanceId, InstanceInitiatedShutdownBehavior = InstanceInitiatedShutdownBehavior, InstanceType = InstanceType, Kernel = Kernel, Ramdisk = Ramdisk, SriovNetSupport = SriovNetSupport, UserData = UserData, Value = Value, DisableApiStop = DisableApiStop)
   output <- .ec2$modify_instance_attribute_output()
@@ -56810,7 +57315,8 @@ ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, Capa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_capacity_reservation_attributes_input(InstanceId = InstanceId, CapacityReservationSpecification = CapacityReservationSpecification, DryRun = DryRun)
   output <- .ec2$modify_instance_capacity_reservation_attributes_output()
@@ -56893,7 +57399,8 @@ ec2_modify_instance_credit_specification <- function(DryRun = NULL, ClientToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_credit_specification_input(DryRun = DryRun, ClientToken = ClientToken, InstanceCreditSpecifications = InstanceCreditSpecifications)
   output <- .ec2$modify_instance_credit_specification_output()
@@ -56966,7 +57473,8 @@ ec2_modify_instance_event_start_time <- function(DryRun = NULL, InstanceId, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_event_start_time_input(DryRun = DryRun, InstanceId = InstanceId, InstanceEventId = InstanceEventId, NotBefore = NotBefore)
   output <- .ec2$modify_instance_event_start_time_output()
@@ -57103,7 +57611,8 @@ ec2_modify_instance_event_window <- function(DryRun = NULL, Name = NULL, Instanc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_event_window_input(DryRun = DryRun, Name = Name, InstanceEventWindowId = InstanceEventWindowId, TimeRanges = TimeRanges, CronExpression = CronExpression)
   output <- .ec2$modify_instance_event_window_output()
@@ -57167,7 +57676,8 @@ ec2_modify_instance_maintenance_options <- function(InstanceId, AutoRecovery = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_maintenance_options_input(InstanceId = InstanceId, AutoRecovery = AutoRecovery, DryRun = DryRun)
   output <- .ec2$modify_instance_maintenance_options_output()
@@ -57252,7 +57762,8 @@ ec2_modify_instance_metadata_defaults <- function(HttpTokens = NULL, HttpPutResp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_metadata_defaults_input(HttpTokens = HttpTokens, HttpPutResponseHopLimit = HttpPutResponseHopLimit, HttpEndpoint = HttpEndpoint, InstanceMetadataTags = InstanceMetadataTags, DryRun = DryRun)
   output <- .ec2$modify_instance_metadata_defaults_output()
@@ -57375,7 +57886,8 @@ ec2_modify_instance_metadata_options <- function(InstanceId, HttpTokens = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_metadata_options_input(InstanceId = InstanceId, HttpTokens = HttpTokens, HttpPutResponseHopLimit = HttpPutResponseHopLimit, HttpEndpoint = HttpEndpoint, DryRun = DryRun, HttpProtocolIpv6 = HttpProtocolIpv6, InstanceMetadataTags = InstanceMetadataTags)
   output <- .ec2$modify_instance_metadata_options_output()
@@ -57477,7 +57989,8 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_instance_placement_input(Affinity = Affinity, GroupName = GroupName, HostId = HostId, InstanceId = InstanceId, Tenancy = Tenancy, PartitionNumber = PartitionNumber, HostResourceGroupArn = HostResourceGroupArn, GroupId = GroupId)
   output <- .ec2$modify_instance_placement_output()
@@ -57587,7 +58100,8 @@ ec2_modify_ipam <- function(DryRun = NULL, IpamId, Description = NULL, AddOperat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_input(DryRun = DryRun, IpamId = IpamId, Description = Description, AddOperatingRegions = AddOperatingRegions, RemoveOperatingRegions = RemoveOperatingRegions, Tier = Tier, EnablePrivateGua = EnablePrivateGua)
   output <- .ec2$modify_ipam_output()
@@ -57735,7 +58249,8 @@ ec2_modify_ipam_pool <- function(DryRun = NULL, IpamPoolId, Description = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_pool_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Description = Description, AutoImport = AutoImport, AllocationMinNetmaskLength = AllocationMinNetmaskLength, AllocationMaxNetmaskLength = AllocationMaxNetmaskLength, AllocationDefaultNetmaskLength = AllocationDefaultNetmaskLength, ClearAllocationDefaultNetmaskLength = ClearAllocationDefaultNetmaskLength, AddAllocationResourceTags = AddAllocationResourceTags, RemoveAllocationResourceTags = RemoveAllocationResourceTags)
   output <- .ec2$modify_ipam_pool_output()
@@ -57833,7 +58348,8 @@ ec2_modify_ipam_resource_cidr <- function(DryRun = NULL, ResourceId, ResourceCid
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_resource_cidr_input(DryRun = DryRun, ResourceId = ResourceId, ResourceCidr = ResourceCidr, ResourceRegion = ResourceRegion, CurrentIpamScopeId = CurrentIpamScopeId, DestinationIpamScopeId = DestinationIpamScopeId, Monitored = Monitored)
   output <- .ec2$modify_ipam_resource_cidr_output()
@@ -57925,7 +58441,8 @@ ec2_modify_ipam_resource_discovery <- function(DryRun = NULL, IpamResourceDiscov
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_resource_discovery_input(DryRun = DryRun, IpamResourceDiscoveryId = IpamResourceDiscoveryId, Description = Description, AddOperatingRegions = AddOperatingRegions, RemoveOperatingRegions = RemoveOperatingRegions)
   output <- .ec2$modify_ipam_resource_discovery_output()
@@ -57997,7 +58514,8 @@ ec2_modify_ipam_scope <- function(DryRun = NULL, IpamScopeId, Description = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_ipam_scope_input(DryRun = DryRun, IpamScopeId = IpamScopeId, Description = Description)
   output <- .ec2$modify_ipam_scope_output()
@@ -58094,7 +58612,8 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_launch_template_input(DryRun = DryRun, ClientToken = ClientToken, LaunchTemplateId = LaunchTemplateId, LaunchTemplateName = LaunchTemplateName, DefaultVersion = DefaultVersion)
   output <- .ec2$modify_launch_template_output()
@@ -58172,7 +58691,8 @@ ec2_modify_local_gateway_route <- function(DestinationCidrBlock = NULL, LocalGat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_local_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, LocalGatewayRouteTableId = LocalGatewayRouteTableId, LocalGatewayVirtualInterfaceGroupId = LocalGatewayVirtualInterfaceGroupId, NetworkInterfaceId = NetworkInterfaceId, DryRun = DryRun, DestinationPrefixListId = DestinationPrefixListId)
   output <- .ec2$modify_local_gateway_route_output()
@@ -58275,7 +58795,8 @@ ec2_modify_managed_prefix_list <- function(DryRun = NULL, PrefixListId, CurrentV
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_managed_prefix_list_input(DryRun = DryRun, PrefixListId = PrefixListId, CurrentVersion = CurrentVersion, PrefixListName = PrefixListName, AddEntries = AddEntries, RemoveEntries = RemoveEntries, MaxEntries = MaxEntries)
   output <- .ec2$modify_managed_prefix_list_output()
@@ -58430,7 +58951,8 @@ ec2_modify_network_interface_attribute <- function(Attachment = NULL, Descriptio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_network_interface_attribute_input(Attachment = Attachment, Description = Description, DryRun = DryRun, Groups = Groups, NetworkInterfaceId = NetworkInterfaceId, SourceDestCheck = SourceDestCheck, EnaSrdSpecification = EnaSrdSpecification, EnablePrimaryIpv6 = EnablePrimaryIpv6, ConnectionTrackingSpecification = ConnectionTrackingSpecification, AssociatePublicIpAddress = AssociatePublicIpAddress)
   output <- .ec2$modify_network_interface_attribute_output()
@@ -58497,7 +59019,8 @@ ec2_modify_private_dns_name_options <- function(DryRun = NULL, InstanceId, Priva
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_private_dns_name_options_input(DryRun = DryRun, InstanceId = InstanceId, PrivateDnsHostnameType = PrivateDnsHostnameType, EnableResourceNameDnsARecord = EnableResourceNameDnsARecord, EnableResourceNameDnsAAAARecord = EnableResourceNameDnsAAAARecord)
   output <- .ec2$modify_private_dns_name_options_output()
@@ -58570,7 +59093,8 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_reserved_instances_input(ReservedInstancesIds = ReservedInstancesIds, ClientToken = ClientToken, TargetConfigurations = TargetConfigurations)
   output <- .ec2$modify_reserved_instances_output()
@@ -58639,7 +59163,8 @@ ec2_modify_security_group_rules <- function(GroupId, SecurityGroupRules, DryRun 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_security_group_rules_input(GroupId = GroupId, SecurityGroupRules = SecurityGroupRules, DryRun = DryRun)
   output <- .ec2$modify_security_group_rules_output()
@@ -58754,7 +59279,8 @@ ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermissi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_snapshot_attribute_input(Attribute = Attribute, CreateVolumePermission = CreateVolumePermission, GroupNames = GroupNames, OperationType = OperationType, SnapshotId = SnapshotId, UserIds = UserIds, DryRun = DryRun)
   output <- .ec2$modify_snapshot_attribute_output()
@@ -58818,7 +59344,8 @@ ec2_modify_snapshot_tier <- function(SnapshotId, StorageTier = NULL, DryRun = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_snapshot_tier_input(SnapshotId = SnapshotId, StorageTier = StorageTier, DryRun = DryRun)
   output <- .ec2$modify_snapshot_tier_output()
@@ -59022,7 +59549,8 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_spot_fleet_request_input(ExcessCapacityTerminationPolicy = ExcessCapacityTerminationPolicy, LaunchTemplateConfigs = LaunchTemplateConfigs, SpotFleetRequestId = SpotFleetRequestId, TargetCapacity = TargetCapacity, OnDemandTargetCapacity = OnDemandTargetCapacity, Context = Context)
   output <- .ec2$modify_spot_fleet_request_output()
@@ -59176,7 +59704,8 @@ ec2_modify_subnet_attribute <- function(AssignIpv6AddressOnCreation = NULL, MapP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_subnet_attribute_input(AssignIpv6AddressOnCreation = AssignIpv6AddressOnCreation, MapPublicIpOnLaunch = MapPublicIpOnLaunch, SubnetId = SubnetId, MapCustomerOwnedIpOnLaunch = MapCustomerOwnedIpOnLaunch, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool, EnableDns64 = EnableDns64, PrivateDnsHostnameTypeOnLaunch = PrivateDnsHostnameTypeOnLaunch, EnableResourceNameDnsARecordOnLaunch = EnableResourceNameDnsARecordOnLaunch, EnableResourceNameDnsAAAARecordOnLaunch = EnableResourceNameDnsAAAARecordOnLaunch, EnableLniAtDeviceIndex = EnableLniAtDeviceIndex, DisableLniAtDeviceIndex = DisableLniAtDeviceIndex)
   output <- .ec2$modify_subnet_attribute_output()
@@ -59313,7 +59842,8 @@ ec2_modify_traffic_mirror_filter_network_services <- function(TrafficMirrorFilte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_traffic_mirror_filter_network_services_input(TrafficMirrorFilterId = TrafficMirrorFilterId, AddNetworkServices = AddNetworkServices, RemoveNetworkServices = RemoveNetworkServices, DryRun = DryRun)
   output <- .ec2$modify_traffic_mirror_filter_network_services_output()
@@ -59430,7 +59960,8 @@ ec2_modify_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Tra
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_traffic_mirror_filter_rule_input(TrafficMirrorFilterRuleId = TrafficMirrorFilterRuleId, TrafficDirection = TrafficDirection, RuleNumber = RuleNumber, RuleAction = RuleAction, DestinationPortRange = DestinationPortRange, SourcePortRange = SourcePortRange, Protocol = Protocol, DestinationCidrBlock = DestinationCidrBlock, SourceCidrBlock = SourceCidrBlock, Description = Description, RemoveFields = RemoveFields, DryRun = DryRun)
   output <- .ec2$modify_traffic_mirror_filter_rule_output()
@@ -59534,7 +60065,8 @@ ec2_modify_traffic_mirror_session <- function(TrafficMirrorSessionId, TrafficMir
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_traffic_mirror_session_input(TrafficMirrorSessionId = TrafficMirrorSessionId, TrafficMirrorTargetId = TrafficMirrorTargetId, TrafficMirrorFilterId = TrafficMirrorFilterId, PacketLength = PacketLength, SessionNumber = SessionNumber, VirtualNetworkId = VirtualNetworkId, Description = Description, RemoveFields = RemoveFields, DryRun = DryRun)
   output <- .ec2$modify_traffic_mirror_session_output()
@@ -59641,7 +60173,8 @@ ec2_modify_transit_gateway <- function(TransitGatewayId, Description = NULL, Opt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_transit_gateway_input(TransitGatewayId = TransitGatewayId, Description = Description, Options = Options, DryRun = DryRun)
   output <- .ec2$modify_transit_gateway_output()
@@ -59715,7 +60248,8 @@ ec2_modify_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_transit_gateway_prefix_list_reference_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, PrefixListId = PrefixListId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, Blackhole = Blackhole, DryRun = DryRun)
   output <- .ec2$modify_transit_gateway_prefix_list_reference_output()
@@ -59809,7 +60343,8 @@ ec2_modify_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, AddSubnetIds = AddSubnetIds, RemoveSubnetIds = RemoveSubnetIds, Options = Options, DryRun = DryRun)
   output <- .ec2$modify_transit_gateway_vpc_attachment_output()
@@ -59932,7 +60467,8 @@ ec2_modify_verified_access_endpoint <- function(VerifiedAccessEndpointId, Verifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_endpoint_input(VerifiedAccessEndpointId = VerifiedAccessEndpointId, VerifiedAccessGroupId = VerifiedAccessGroupId, LoadBalancerOptions = LoadBalancerOptions, NetworkInterfaceOptions = NetworkInterfaceOptions, Description = Description, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$modify_verified_access_endpoint_output()
@@ -60006,7 +60542,8 @@ ec2_modify_verified_access_endpoint_policy <- function(VerifiedAccessEndpointId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_endpoint_policy_input(VerifiedAccessEndpointId = VerifiedAccessEndpointId, PolicyEnabled = PolicyEnabled, PolicyDocument = PolicyDocument, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$modify_verified_access_endpoint_policy_output()
@@ -60089,7 +60626,8 @@ ec2_modify_verified_access_group <- function(VerifiedAccessGroupId, VerifiedAcce
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_group_input(VerifiedAccessGroupId = VerifiedAccessGroupId, VerifiedAccessInstanceId = VerifiedAccessInstanceId, Description = Description, ClientToken = ClientToken, DryRun = DryRun)
   output <- .ec2$modify_verified_access_group_output()
@@ -60161,7 +60699,8 @@ ec2_modify_verified_access_group_policy <- function(VerifiedAccessGroupId, Polic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_group_policy_input(VerifiedAccessGroupId = VerifiedAccessGroupId, PolicyEnabled = PolicyEnabled, PolicyDocument = PolicyDocument, ClientToken = ClientToken, DryRun = DryRun, SseSpecification = SseSpecification)
   output <- .ec2$modify_verified_access_group_policy_output()
@@ -60244,7 +60783,8 @@ ec2_modify_verified_access_instance <- function(VerifiedAccessInstanceId, Descri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_instance_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, Description = Description, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$modify_verified_access_instance_output()
@@ -60355,7 +60895,8 @@ ec2_modify_verified_access_instance_logging_configuration <- function(VerifiedAc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_instance_logging_configuration_input(VerifiedAccessInstanceId = VerifiedAccessInstanceId, AccessLogs = AccessLogs, DryRun = DryRun, ClientToken = ClientToken)
   output <- .ec2$modify_verified_access_instance_logging_configuration_output()
@@ -60471,7 +61012,8 @@ ec2_modify_verified_access_trust_provider <- function(VerifiedAccessTrustProvide
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_verified_access_trust_provider_input(VerifiedAccessTrustProviderId = VerifiedAccessTrustProviderId, OidcOptions = OidcOptions, DeviceOptions = DeviceOptions, Description = Description, DryRun = DryRun, ClientToken = ClientToken, SseSpecification = SseSpecification)
   output <- .ec2$modify_verified_access_trust_provider_output()
@@ -60632,7 +61174,8 @@ ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_volume_input(DryRun = DryRun, VolumeId = VolumeId, Size = Size, VolumeType = VolumeType, Iops = Iops, Throughput = Throughput, MultiAttachEnabled = MultiAttachEnabled)
   output <- .ec2$modify_volume_output()
@@ -60708,7 +61251,8 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_volume_attribute_input(AutoEnableIO = AutoEnableIO, VolumeId = VolumeId, DryRun = DryRun)
   output <- .ec2$modify_volume_attribute_output()
@@ -60805,7 +61349,8 @@ ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_attribute_input(EnableDnsHostnames = EnableDnsHostnames, EnableDnsSupport = EnableDnsSupport, VpcId = VpcId, EnableNetworkAddressUsageMetrics = EnableNetworkAddressUsageMetrics)
   output <- .ec2$modify_vpc_attribute_output()
@@ -60921,7 +61466,8 @@ ec2_modify_vpc_endpoint <- function(DryRun = NULL, VpcEndpointId, ResetPolicy = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_input(DryRun = DryRun, VpcEndpointId = VpcEndpointId, ResetPolicy = ResetPolicy, PolicyDocument = PolicyDocument, AddRouteTableIds = AddRouteTableIds, RemoveRouteTableIds = RemoveRouteTableIds, AddSubnetIds = AddSubnetIds, RemoveSubnetIds = RemoveSubnetIds, AddSecurityGroupIds = AddSecurityGroupIds, RemoveSecurityGroupIds = RemoveSecurityGroupIds, IpAddressType = IpAddressType, DnsOptions = DnsOptions, PrivateDnsEnabled = PrivateDnsEnabled, SubnetConfigurations = SubnetConfigurations)
   output <- .ec2$modify_vpc_endpoint_output()
@@ -60985,7 +61531,8 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_connection_notification_input(DryRun = DryRun, ConnectionNotificationId = ConnectionNotificationId, ConnectionNotificationArn = ConnectionNotificationArn, ConnectionEvents = ConnectionEvents)
   output <- .ec2$modify_vpc_endpoint_connection_notification_output()
@@ -61085,7 +61632,8 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_service_configuration_input(DryRun = DryRun, ServiceId = ServiceId, PrivateDnsName = PrivateDnsName, RemovePrivateDnsName = RemovePrivateDnsName, AcceptanceRequired = AcceptanceRequired, AddNetworkLoadBalancerArns = AddNetworkLoadBalancerArns, RemoveNetworkLoadBalancerArns = RemoveNetworkLoadBalancerArns, AddGatewayLoadBalancerArns = AddGatewayLoadBalancerArns, RemoveGatewayLoadBalancerArns = RemoveGatewayLoadBalancerArns, AddSupportedIpAddressTypes = AddSupportedIpAddressTypes, RemoveSupportedIpAddressTypes = RemoveSupportedIpAddressTypes)
   output <- .ec2$modify_vpc_endpoint_service_configuration_output()
@@ -61143,7 +61691,8 @@ ec2_modify_vpc_endpoint_service_payer_responsibility <- function(DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_service_payer_responsibility_input(DryRun = DryRun, ServiceId = ServiceId, PayerResponsibility = PayerResponsibility)
   output <- .ec2$modify_vpc_endpoint_service_payer_responsibility_output()
@@ -61223,7 +61772,8 @@ ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_endpoint_service_permissions_input(DryRun = DryRun, ServiceId = ServiceId, AddAllowedPrincipals = AddAllowedPrincipals, RemoveAllowedPrincipals = RemoveAllowedPrincipals)
   output <- .ec2$modify_vpc_endpoint_service_permissions_output()
@@ -61316,7 +61866,8 @@ ec2_modify_vpc_peering_connection_options <- function(AccepterPeeringConnectionO
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_peering_connection_options_input(AccepterPeeringConnectionOptions = AccepterPeeringConnectionOptions, DryRun = DryRun, RequesterPeeringConnectionOptions = RequesterPeeringConnectionOptions, VpcPeeringConnectionId = VpcPeeringConnectionId)
   output <- .ec2$modify_vpc_peering_connection_options_output()
@@ -61382,7 +61933,8 @@ ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpc_tenancy_input(VpcId = VpcId, InstanceTenancy = InstanceTenancy, DryRun = DryRun)
   output <- .ec2$modify_vpc_tenancy_output()
@@ -61597,7 +62149,8 @@ ec2_modify_vpn_connection <- function(VpnConnectionId, TransitGatewayId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpn_connection_input(VpnConnectionId = VpnConnectionId, TransitGatewayId = TransitGatewayId, CustomerGatewayId = CustomerGatewayId, VpnGatewayId = VpnGatewayId, DryRun = DryRun)
   output <- .ec2$modify_vpn_connection_output()
@@ -61782,7 +62335,8 @@ ec2_modify_vpn_connection_options <- function(VpnConnectionId, LocalIpv4NetworkC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpn_connection_options_input(VpnConnectionId = VpnConnectionId, LocalIpv4NetworkCidr = LocalIpv4NetworkCidr, RemoteIpv4NetworkCidr = RemoteIpv4NetworkCidr, LocalIpv6NetworkCidr = LocalIpv6NetworkCidr, RemoteIpv6NetworkCidr = RemoteIpv6NetworkCidr, DryRun = DryRun)
   output <- .ec2$modify_vpn_connection_options_output()
@@ -61945,7 +62499,8 @@ ec2_modify_vpn_tunnel_certificate <- function(VpnConnectionId, VpnTunnelOutsideI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpn_tunnel_certificate_input(VpnConnectionId = VpnConnectionId, VpnTunnelOutsideIpAddress = VpnTunnelOutsideIpAddress, DryRun = DryRun)
   output <- .ec2$modify_vpn_tunnel_certificate_output()
@@ -62177,7 +62732,8 @@ ec2_modify_vpn_tunnel_options <- function(VpnConnectionId, VpnTunnelOutsideIpAdd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$modify_vpn_tunnel_options_input(VpnConnectionId = VpnConnectionId, VpnTunnelOutsideIpAddress = VpnTunnelOutsideIpAddress, TunnelOptions = TunnelOptions, DryRun = DryRun, SkipTunnelReplacement = SkipTunnelReplacement)
   output <- .ec2$modify_vpn_tunnel_options_output()
@@ -62246,7 +62802,8 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$monitor_instances_input(InstanceIds = InstanceIds, DryRun = DryRun)
   output <- .ec2$monitor_instances_output()
@@ -62318,7 +62875,8 @@ ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$move_address_to_vpc_input(DryRun = DryRun, PublicIp = PublicIp)
   output <- .ec2$move_address_to_vpc_output()
@@ -62396,7 +62954,8 @@ ec2_move_byoip_cidr_to_ipam <- function(DryRun = NULL, Cidr, IpamPoolId, IpamPoo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$move_byoip_cidr_to_ipam_input(DryRun = DryRun, Cidr = Cidr, IpamPoolId = IpamPoolId, IpamPoolOwner = IpamPoolOwner)
   output <- .ec2$move_byoip_cidr_to_ipam_output()
@@ -62560,7 +63119,8 @@ ec2_move_capacity_reservation_instances <- function(DryRun = NULL, ClientToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$move_capacity_reservation_instances_input(DryRun = DryRun, ClientToken = ClientToken, SourceCapacityReservationId = SourceCapacityReservationId, DestinationCapacityReservationId = DestinationCapacityReservationId, InstanceCount = InstanceCount)
   output <- .ec2$move_capacity_reservation_instances_output()
@@ -62703,7 +63263,8 @@ ec2_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext = NULL, Publ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$provision_byoip_cidr_input(Cidr = Cidr, CidrAuthorizationContext = CidrAuthorizationContext, PubliclyAdvertisable = PubliclyAdvertisable, Description = Description, DryRun = DryRun, PoolTagSpecifications = PoolTagSpecifications, MultiRegion = MultiRegion, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$provision_byoip_cidr_output()
@@ -62774,7 +63335,8 @@ ec2_provision_ipam_byoasn <- function(DryRun = NULL, IpamId, Asn, AsnAuthorizati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$provision_ipam_byoasn_input(DryRun = DryRun, IpamId = IpamId, Asn = Asn, AsnAuthorizationContext = AsnAuthorizationContext)
   output <- .ec2$provision_ipam_byoasn_output()
@@ -62872,7 +63434,8 @@ ec2_provision_ipam_pool_cidr <- function(DryRun = NULL, IpamPoolId, Cidr = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$provision_ipam_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr, CidrAuthorizationContext = CidrAuthorizationContext, NetmaskLength = NetmaskLength, ClientToken = ClientToken, VerificationMethod = VerificationMethod, IpamExternalResourceVerificationTokenId = IpamExternalResourceVerificationTokenId)
   output <- .ec2$provision_ipam_pool_cidr_output()
@@ -62948,7 +63511,8 @@ ec2_provision_public_ipv_4_pool_cidr <- function(DryRun = NULL, IpamPoolId, Pool
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$provision_public_ipv_4_pool_cidr_input(DryRun = DryRun, IpamPoolId = IpamPoolId, PoolId = PoolId, NetmaskLength = NetmaskLength, NetworkBorderGroup = NetworkBorderGroup)
   output <- .ec2$provision_public_ipv_4_pool_cidr_output()
@@ -63060,7 +63624,8 @@ ec2_purchase_capacity_block <- function(DryRun = NULL, TagSpecifications = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$purchase_capacity_block_input(DryRun = DryRun, TagSpecifications = TagSpecifications, CapacityBlockOfferingId = CapacityBlockOfferingId, InstancePlatform = InstancePlatform)
   output <- .ec2$purchase_capacity_block_output()
@@ -63163,7 +63728,8 @@ ec2_purchase_host_reservation <- function(ClientToken = NULL, CurrencyCode = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$purchase_host_reservation_input(ClientToken = ClientToken, CurrencyCode = CurrencyCode, HostIdSet = HostIdSet, LimitPrice = LimitPrice, OfferingId = OfferingId, TagSpecifications = TagSpecifications)
   output <- .ec2$purchase_host_reservation_output()
@@ -63249,7 +63815,8 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$purchase_reserved_instances_offering_input(InstanceCount = InstanceCount, ReservedInstancesOfferingId = ReservedInstancesOfferingId, DryRun = DryRun, LimitPrice = LimitPrice, PurchaseTime = PurchaseTime)
   output <- .ec2$purchase_reserved_instances_offering_output()
@@ -63361,7 +63928,8 @@ ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$purchase_scheduled_instances_input(ClientToken = ClientToken, DryRun = DryRun, PurchaseRequests = PurchaseRequests)
   output <- .ec2$purchase_scheduled_instances_output()
@@ -63432,7 +64000,8 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reboot_instances_input(InstanceIds = InstanceIds, DryRun = DryRun)
   output <- .ec2$reboot_instances_output()
@@ -63694,7 +64263,8 @@ ec2_register_image <- function(ImageLocation = NULL, Architecture = NULL, BlockD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$register_image_input(ImageLocation = ImageLocation, Architecture = Architecture, BlockDeviceMappings = BlockDeviceMappings, Description = Description, DryRun = DryRun, EnaSupport = EnaSupport, KernelId = KernelId, Name = Name, BillingProducts = BillingProducts, RamdiskId = RamdiskId, RootDeviceName = RootDeviceName, SriovNetSupport = SriovNetSupport, VirtualizationType = VirtualizationType, BootMode = BootMode, TpmSupport = TpmSupport, UefiData = UefiData, ImdsSupport = ImdsSupport, TagSpecifications = TagSpecifications)
   output <- .ec2$register_image_output()
@@ -63763,7 +64333,8 @@ ec2_register_instance_event_notification_attributes <- function(DryRun = NULL, I
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$register_instance_event_notification_attributes_input(DryRun = DryRun, InstanceTagAttribute = InstanceTagAttribute)
   output <- .ec2$register_instance_event_notification_attributes_output()
@@ -63842,7 +64413,8 @@ ec2_register_transit_gateway_multicast_group_members <- function(TransitGatewayM
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$register_transit_gateway_multicast_group_members_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, GroupIpAddress = GroupIpAddress, NetworkInterfaceIds = NetworkInterfaceIds, DryRun = DryRun)
   output <- .ec2$register_transit_gateway_multicast_group_members_output()
@@ -63922,7 +64494,8 @@ ec2_register_transit_gateway_multicast_group_sources <- function(TransitGatewayM
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$register_transit_gateway_multicast_group_sources_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, GroupIpAddress = GroupIpAddress, NetworkInterfaceIds = NetworkInterfaceIds, DryRun = DryRun)
   output <- .ec2$register_transit_gateway_multicast_group_sources_output()
@@ -63998,7 +64571,8 @@ ec2_reject_transit_gateway_multicast_domain_associations <- function(TransitGate
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_transit_gateway_multicast_domain_associations_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, SubnetIds = SubnetIds, DryRun = DryRun)
   output <- .ec2$reject_transit_gateway_multicast_domain_associations_output()
@@ -64084,7 +64658,8 @@ ec2_reject_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_transit_gateway_peering_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$reject_transit_gateway_peering_attachment_output()
@@ -64168,7 +64743,8 @@ ec2_reject_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_transit_gateway_vpc_attachment_input(TransitGatewayAttachmentId = TransitGatewayAttachmentId, DryRun = DryRun)
   output <- .ec2$reject_transit_gateway_vpc_attachment_output()
@@ -64233,7 +64809,8 @@ ec2_reject_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_vpc_endpoint_connections_input(DryRun = DryRun, ServiceId = ServiceId, VpcEndpointIds = VpcEndpointIds)
   output <- .ec2$reject_vpc_endpoint_connections_output()
@@ -64292,7 +64869,8 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reject_vpc_peering_connection_input(DryRun = DryRun, VpcPeeringConnectionId = VpcPeeringConnectionId)
   output <- .ec2$reject_vpc_peering_connection_output()
@@ -64376,7 +64954,8 @@ ec2_release_address <- function(AllocationId = NULL, PublicIp = NULL, NetworkBor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$release_address_input(AllocationId = AllocationId, PublicIp = PublicIp, NetworkBorderGroup = NetworkBorderGroup, DryRun = DryRun)
   output <- .ec2$release_address_output()
@@ -64451,7 +65030,8 @@ ec2_release_hosts <- function(HostIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$release_hosts_input(HostIds = HostIds)
   output <- .ec2$release_hosts_output()
@@ -64522,7 +65102,8 @@ ec2_release_ipam_pool_allocation <- function(DryRun = NULL, IpamPoolId, Cidr, Ip
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$release_ipam_pool_allocation_input(DryRun = DryRun, IpamPoolId = IpamPoolId, Cidr = Cidr, IpamPoolAllocationId = IpamPoolAllocationId)
   output <- .ec2$release_ipam_pool_allocation_output()
@@ -64594,7 +65175,8 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_iam_instance_profile_association_input(IamInstanceProfile = IamInstanceProfile, AssociationId = AssociationId)
   output <- .ec2$replace_iam_instance_profile_association_output()
@@ -64666,7 +65248,8 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_network_acl_association_input(AssociationId = AssociationId, DryRun = DryRun, NetworkAclId = NetworkAclId)
   output <- .ec2$replace_network_acl_association_output()
@@ -64773,7 +65356,8 @@ ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egres
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_network_acl_entry_input(CidrBlock = CidrBlock, DryRun = DryRun, Egress = Egress, IcmpTypeCode = IcmpTypeCode, Ipv6CidrBlock = Ipv6CidrBlock, NetworkAclId = NetworkAclId, PortRange = PortRange, Protocol = Protocol, RuleAction = RuleAction, RuleNumber = RuleNumber)
   output <- .ec2$replace_network_acl_entry_output()
@@ -64880,7 +65464,8 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_route_input(DestinationCidrBlock = DestinationCidrBlock, DestinationIpv6CidrBlock = DestinationIpv6CidrBlock, DestinationPrefixListId = DestinationPrefixListId, DryRun = DryRun, VpcEndpointId = VpcEndpointId, EgressOnlyInternetGatewayId = EgressOnlyInternetGatewayId, GatewayId = GatewayId, InstanceId = InstanceId, LocalTarget = LocalTarget, NatGatewayId = NatGatewayId, TransitGatewayId = TransitGatewayId, LocalGatewayId = LocalGatewayId, CarrierGatewayId = CarrierGatewayId, NetworkInterfaceId = NetworkInterfaceId, RouteTableId = RouteTableId, VpcPeeringConnectionId = VpcPeeringConnectionId, CoreNetworkArn = CoreNetworkArn)
   output <- .ec2$replace_route_output()
@@ -64959,7 +65544,8 @@ ec2_replace_route_table_association <- function(AssociationId, DryRun = NULL, Ro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_route_table_association_input(AssociationId = AssociationId, DryRun = DryRun, RouteTableId = RouteTableId)
   output <- .ec2$replace_route_table_association_output()
@@ -65036,7 +65622,8 @@ ec2_replace_transit_gateway_route <- function(DestinationCidrBlock, TransitGatew
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_transit_gateway_route_input(DestinationCidrBlock = DestinationCidrBlock, TransitGatewayRouteTableId = TransitGatewayRouteTableId, TransitGatewayAttachmentId = TransitGatewayAttachmentId, Blackhole = Blackhole, DryRun = DryRun)
   output <- .ec2$replace_transit_gateway_route_output()
@@ -65094,7 +65681,8 @@ ec2_replace_vpn_tunnel <- function(VpnConnectionId, VpnTunnelOutsideIpAddress, A
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$replace_vpn_tunnel_input(VpnConnectionId = VpnConnectionId, VpnTunnelOutsideIpAddress = VpnTunnelOutsideIpAddress, ApplyPendingMaintenance = ApplyPendingMaintenance, DryRun = DryRun)
   output <- .ec2$replace_vpn_tunnel_output()
@@ -65195,7 +65783,8 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$report_instance_status_input(Description = Description, DryRun = DryRun, EndTime = EndTime, Instances = Instances, ReasonCodes = ReasonCodes, StartTime = StartTime, Status = Status)
   output <- .ec2$report_instance_status_output()
@@ -65741,7 +66330,8 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$request_spot_fleet_input(DryRun = DryRun, SpotFleetRequestConfig = SpotFleetRequestConfig)
   output <- .ec2$request_spot_fleet_output()
@@ -66194,7 +66784,8 @@ ec2_request_spot_instances <- function(AvailabilityZoneGroup = NULL, BlockDurati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$request_spot_instances_input(AvailabilityZoneGroup = AvailabilityZoneGroup, BlockDurationMinutes = BlockDurationMinutes, ClientToken = ClientToken, DryRun = DryRun, InstanceCount = InstanceCount, LaunchGroup = LaunchGroup, LaunchSpecification = LaunchSpecification, SpotPrice = SpotPrice, Type = Type, ValidFrom = ValidFrom, ValidUntil = ValidUntil, TagSpecifications = TagSpecifications, InstanceInterruptionBehavior = InstanceInterruptionBehavior)
   output <- .ec2$request_spot_instances_output()
@@ -66260,7 +66851,8 @@ ec2_reset_address_attribute <- function(AllocationId, Attribute, DryRun = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_address_attribute_input(AllocationId = AllocationId, Attribute = Attribute, DryRun = DryRun)
   output <- .ec2$reset_address_attribute_output()
@@ -66320,7 +66912,8 @@ ec2_reset_ebs_default_kms_key_id <- function(DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_ebs_default_kms_key_id_input(DryRun = DryRun)
   output <- .ec2$reset_ebs_default_kms_key_id_output()
@@ -66377,7 +66970,8 @@ ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_fpga_image_attribute_input(DryRun = DryRun, FpgaImageId = FpgaImageId, Attribute = Attribute)
   output <- .ec2$reset_fpga_image_attribute_output()
@@ -66438,7 +67032,8 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_image_attribute_input(Attribute = Attribute, ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$reset_image_attribute_output()
@@ -66510,7 +67105,8 @@ ec2_reset_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_instance_attribute_input(Attribute = Attribute, DryRun = DryRun, InstanceId = InstanceId)
   output <- .ec2$reset_instance_attribute_output()
@@ -66562,7 +67158,8 @@ ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfac
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_network_interface_attribute_input(DryRun = DryRun, NetworkInterfaceId = NetworkInterfaceId, SourceDestCheck = SourceDestCheck)
   output <- .ec2$reset_network_interface_attribute_output()
@@ -66628,7 +67225,8 @@ ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$reset_snapshot_attribute_input(Attribute = Attribute, SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$reset_snapshot_attribute_output()
@@ -66687,7 +67285,8 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_address_to_classic_input(DryRun = DryRun, PublicIp = PublicIp)
   output <- .ec2$restore_address_to_classic_output()
@@ -66742,7 +67341,8 @@ ec2_restore_image_from_recycle_bin <- function(ImageId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_image_from_recycle_bin_input(ImageId = ImageId, DryRun = DryRun)
   output <- .ec2$restore_image_from_recycle_bin_output()
@@ -66818,7 +67418,8 @@ ec2_restore_managed_prefix_list_version <- function(DryRun = NULL, PrefixListId,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_managed_prefix_list_version_input(DryRun = DryRun, PrefixListId = PrefixListId, PreviousVersion = PreviousVersion, CurrentVersion = CurrentVersion)
   output <- .ec2$restore_managed_prefix_list_version_output()
@@ -66886,7 +67487,8 @@ ec2_restore_snapshot_from_recycle_bin <- function(SnapshotId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_snapshot_from_recycle_bin_input(SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$restore_snapshot_from_recycle_bin_output()
@@ -66908,10 +67510,10 @@ ec2_restore_snapshot_from_recycle_bin <- function(SnapshotId, DryRun = NULL) {
 #' snapshot that was previously temporarily restored.
 #' 
 #' For more information see [Restore an archived
-#' snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/working-with-snapshot-archiving.html#restore-archived-snapshot)
+#' snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/#restore-archived-snapshot)
 #' and [modify the restore period or restore type for a temporarily
 #' restored
-#' snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/working-with-snapshot-archiving.html#modify-temp-restore-period)
+#' snapshot](https://docs.aws.amazon.com/ebs/latest/userguide/#modify-temp-restore-period)
 #' in the *Amazon EBS User Guide*.
 #'
 #' @usage
@@ -66967,7 +67569,8 @@ ec2_restore_snapshot_tier <- function(SnapshotId, TemporaryRestoreDays = NULL, P
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$restore_snapshot_tier_input(SnapshotId = SnapshotId, TemporaryRestoreDays = TemporaryRestoreDays, PermanentRestore = PermanentRestore, DryRun = DryRun)
   output <- .ec2$restore_snapshot_tier_output()
@@ -67032,7 +67635,8 @@ ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$revoke_client_vpn_ingress_input(ClientVpnEndpointId = ClientVpnEndpointId, TargetNetworkCidr = TargetNetworkCidr, AccessGroupId = AccessGroupId, RevokeAllGroups = RevokeAllGroups, DryRun = DryRun)
   output <- .ec2$revoke_client_vpn_ingress_output()
@@ -67202,7 +67806,8 @@ ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$revoke_security_group_egress_input(DryRun = DryRun, GroupId = GroupId, IpPermissions = IpPermissions, SecurityGroupRuleIds = SecurityGroupRuleIds, CidrIp = CidrIp, FromPort = FromPort, IpProtocol = IpProtocol, ToPort = ToPort, SourceSecurityGroupName = SourceSecurityGroupName, SourceSecurityGroupOwnerId = SourceSecurityGroupOwnerId)
   output <- .ec2$revoke_security_group_egress_output()
@@ -67386,7 +67991,8 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$revoke_security_group_ingress_input(CidrIp = CidrIp, FromPort = FromPort, GroupId = GroupId, GroupName = GroupName, IpPermissions = IpPermissions, IpProtocol = IpProtocol, SourceSecurityGroupName = SourceSecurityGroupName, SourceSecurityGroupOwnerId = SourceSecurityGroupOwnerId, ToPort = ToPort, DryRun = DryRun, SecurityGroupRuleIds = SecurityGroupRuleIds)
   output <- .ec2$revoke_security_group_ingress_output()
@@ -67616,7 +68222,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' 
 #' Amazon Elastic Inference (EI) is no longer available to new customers.
 #' For more information, see [Amazon Elastic Inference
-#' FAQs](https://aws.amazon.com/machine-learning/elastic-inference/faqs/).
+#' FAQs](https://aws.amazon.com/sagemaker-ai/deploy/).
 #' @param TagSpecifications The tags to apply to the resources that are created during instance
 #' launch.
 #' 
@@ -68213,7 +68819,8 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$run_instances_input(BlockDeviceMappings = BlockDeviceMappings, ImageId = ImageId, InstanceType = InstanceType, Ipv6AddressCount = Ipv6AddressCount, Ipv6Addresses = Ipv6Addresses, KernelId = KernelId, KeyName = KeyName, MaxCount = MaxCount, MinCount = MinCount, Monitoring = Monitoring, Placement = Placement, RamdiskId = RamdiskId, SecurityGroupIds = SecurityGroupIds, SecurityGroups = SecurityGroups, SubnetId = SubnetId, UserData = UserData, AdditionalInfo = AdditionalInfo, ClientToken = ClientToken, DisableApiTermination = DisableApiTermination, DryRun = DryRun, EbsOptimized = EbsOptimized, IamInstanceProfile = IamInstanceProfile, InstanceInitiatedShutdownBehavior = InstanceInitiatedShutdownBehavior, NetworkInterfaces = NetworkInterfaces, PrivateIpAddress = PrivateIpAddress, ElasticGpuSpecification = ElasticGpuSpecification, ElasticInferenceAccelerators = ElasticInferenceAccelerators, TagSpecifications = TagSpecifications, LaunchTemplate = LaunchTemplate, InstanceMarketOptions = InstanceMarketOptions, CreditSpecification = CreditSpecification, CpuOptions = CpuOptions, CapacityReservationSpecification = CapacityReservationSpecification, HibernationOptions = HibernationOptions, LicenseSpecifications = LicenseSpecifications, MetadataOptions = MetadataOptions, EnclaveOptions = EnclaveOptions, PrivateDnsNameOptions = PrivateDnsNameOptions, MaintenanceOptions = MaintenanceOptions, DisableApiStop = DisableApiStop, EnablePrimaryIpv6 = EnablePrimaryIpv6)
   output <- .ec2$run_instances_output()
@@ -68354,7 +68961,8 @@ ec2_run_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, Insta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$run_scheduled_instances_input(ClientToken = ClientToken, DryRun = DryRun, InstanceCount = InstanceCount, LaunchSpecification = LaunchSpecification, ScheduledInstanceId = ScheduledInstanceId)
   output <- .ec2$run_scheduled_instances_output()
@@ -68459,7 +69067,8 @@ ec2_search_local_gateway_routes <- function(LocalGatewayRouteTableId, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Routes"),
+    stream_api = FALSE
   )
   input <- .ec2$search_local_gateway_routes_input(LocalGatewayRouteTableId = LocalGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$search_local_gateway_routes_output()
@@ -68568,7 +69177,8 @@ ec2_search_transit_gateway_multicast_groups <- function(TransitGatewayMulticastD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastGroups")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MulticastGroups"),
+    stream_api = FALSE
   )
   input <- .ec2$search_transit_gateway_multicast_groups_input(TransitGatewayMulticastDomainId = TransitGatewayMulticastDomainId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, DryRun = DryRun)
   output <- .ec2$search_transit_gateway_multicast_groups_output()
@@ -68681,7 +69291,8 @@ ec2_search_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$search_transit_gateway_routes_input(TransitGatewayRouteTableId = TransitGatewayRouteTableId, Filters = Filters, MaxResults = MaxResults, DryRun = DryRun)
   output <- .ec2$search_transit_gateway_routes_output()
@@ -68749,7 +69360,8 @@ ec2_send_diagnostic_interrupt <- function(InstanceId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$send_diagnostic_interrupt_input(InstanceId = InstanceId, DryRun = DryRun)
   output <- .ec2$send_diagnostic_interrupt_output()
@@ -68854,7 +69466,8 @@ ec2_start_instances <- function(InstanceIds, AdditionalInfo = NULL, DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$start_instances_input(InstanceIds = InstanceIds, AdditionalInfo = AdditionalInfo, DryRun = DryRun)
   output <- .ec2$start_instances_output()
@@ -68945,7 +69558,8 @@ ec2_start_network_insights_access_scope_analysis <- function(NetworkInsightsAcce
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$start_network_insights_access_scope_analysis_input(NetworkInsightsAccessScopeId = NetworkInsightsAccessScopeId, DryRun = DryRun, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$start_network_insights_access_scope_analysis_output()
@@ -70395,7 +71009,8 @@ ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, Additiona
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$start_network_insights_analysis_input(NetworkInsightsPathId = NetworkInsightsPathId, AdditionalAccounts = AdditionalAccounts, FilterInArns = FilterInArns, DryRun = DryRun, TagSpecifications = TagSpecifications, ClientToken = ClientToken)
   output <- .ec2$start_network_insights_analysis_output()
@@ -70457,7 +71072,8 @@ ec2_start_vpc_endpoint_service_private_dns_verification <- function(DryRun = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$start_vpc_endpoint_service_private_dns_verification_input(DryRun = DryRun, ServiceId = ServiceId)
   output <- .ec2$start_vpc_endpoint_service_private_dns_verification_output()
@@ -70599,7 +71215,8 @@ ec2_stop_instances <- function(InstanceIds, Hibernate = NULL, DryRun = NULL, For
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$stop_instances_input(InstanceIds = InstanceIds, Hibernate = Hibernate, DryRun = DryRun, Force = Force)
   output <- .ec2$stop_instances_output()
@@ -70675,7 +71292,8 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$terminate_client_vpn_connections_input(ClientVpnEndpointId = ClientVpnEndpointId, ConnectionId = ConnectionId, Username = Username, DryRun = DryRun)
   output <- .ec2$terminate_client_vpn_connections_output()
@@ -70815,7 +71433,8 @@ ec2_terminate_instances <- function(InstanceIds, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$terminate_instances_input(InstanceIds = InstanceIds, DryRun = DryRun)
   output <- .ec2$terminate_instances_output()
@@ -70880,7 +71499,8 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses = NULL, Ipv6Prefixes = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unassign_ipv_6_addresses_input(Ipv6Addresses = Ipv6Addresses, Ipv6Prefixes = Ipv6Prefixes, NetworkInterfaceId = NetworkInterfaceId)
   output <- .ec2$unassign_ipv_6_addresses_output()
@@ -70948,7 +71568,8 @@ ec2_unassign_private_ip_addresses <- function(NetworkInterfaceId, PrivateIpAddre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unassign_private_ip_addresses_input(NetworkInterfaceId = NetworkInterfaceId, PrivateIpAddresses = PrivateIpAddresses, Ipv4Prefixes = Ipv4Prefixes)
   output <- .ec2$unassign_private_ip_addresses_output()
@@ -71037,7 +71658,8 @@ ec2_unassign_private_nat_gateway_address <- function(NatGatewayId, PrivateIpAddr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unassign_private_nat_gateway_address_input(NatGatewayId = NatGatewayId, PrivateIpAddresses = PrivateIpAddresses, MaxDrainDurationSeconds = MaxDrainDurationSeconds, DryRun = DryRun)
   output <- .ec2$unassign_private_nat_gateway_address_output()
@@ -71094,7 +71716,8 @@ ec2_unlock_snapshot <- function(SnapshotId, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unlock_snapshot_input(SnapshotId = SnapshotId, DryRun = DryRun)
   output <- .ec2$unlock_snapshot_output()
@@ -71159,7 +71782,8 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$unmonitor_instances_input(InstanceIds = InstanceIds, DryRun = DryRun)
   output <- .ec2$unmonitor_instances_output()
@@ -71289,7 +71913,8 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$update_security_group_rule_descriptions_egress_input(DryRun = DryRun, GroupId = GroupId, GroupName = GroupName, IpPermissions = IpPermissions, SecurityGroupRuleDescriptions = SecurityGroupRuleDescriptions)
   output <- .ec2$update_security_group_rule_descriptions_egress_output()
@@ -71420,7 +72045,8 @@ ec2_update_security_group_rule_descriptions_ingress <- function(DryRun = NULL, G
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$update_security_group_rule_descriptions_ingress_input(DryRun = DryRun, GroupId = GroupId, GroupName = GroupName, IpPermissions = IpPermissions, SecurityGroupRuleDescriptions = SecurityGroupRuleDescriptions)
   output <- .ec2$update_security_group_rule_descriptions_ingress_output()
@@ -71495,7 +72121,8 @@ ec2_withdraw_byoip_cidr <- function(Cidr, DryRun = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .ec2$withdraw_byoip_cidr_input(Cidr = Cidr, DryRun = DryRun)
   output <- .ec2$withdraw_byoip_cidr_output()

@@ -4,7 +4,12 @@
 \alias{s3_list_buckets}
 \title{This operation is not supported by directory buckets}
 \usage{
-s3_list_buckets(MaxBuckets = NULL, ContinuationToken = NULL)
+s3_list_buckets(
+  MaxBuckets = NULL,
+  ContinuationToken = NULL,
+  Prefix = NULL,
+  BucketRegion = NULL
+)
 }
 \arguments{
 \item{MaxBuckets}{Maximum number of buckets to be returned in response. When the number is
@@ -19,6 +24,20 @@ pagination of the list results.
 Length Constraints: Minimum length of 0. Maximum length of 1024.
 
 Required: No.}
+
+\item{Prefix}{Limits the response to bucket names that begin with the specified bucket
+name prefix.}
+
+\item{BucketRegion}{Limits the response to buckets that are located in the specified Amazon
+Web Services Region. The Amazon Web Services Region must be expressed
+according to the Amazon Web Services Region code, such as \code{us-west-2}
+for the US West (Oregon) Region. For a list of the valid values for all
+of the Amazon Web Services Regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region}{Regions and Endpoints}.
+
+Requests made to a Regional endpoint that is different from the
+\code{bucket-region} parameter are not supported. For example, if you want to
+limit the response to your buckets in Region \code{us-west-2}, the request
+must be made to an endpoint in Region \code{us-west-2}.}
 }
 \description{
 This operation is not supported by directory buckets.

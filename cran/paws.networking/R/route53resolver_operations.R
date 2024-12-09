@@ -47,7 +47,8 @@ route53resolver_associate_firewall_rule_group <- function(CreatorRequestId, Fire
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$associate_firewall_rule_group_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Name = Name, MutationProtection = MutationProtection, Tags = Tags)
   output <- .route53resolver$associate_firewall_rule_group_output()
@@ -81,7 +82,8 @@ route53resolver_associate_resolver_endpoint_ip_address <- function(ResolverEndpo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$associate_resolver_endpoint_ip_address_input(ResolverEndpointId = ResolverEndpointId, IpAddress = IpAddress)
   output <- .route53resolver$associate_resolver_endpoint_ip_address_output()
@@ -116,7 +118,8 @@ route53resolver_associate_resolver_query_log_config <- function(ResolverQueryLog
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$associate_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId, ResourceId = ResourceId)
   output <- .route53resolver$associate_resolver_query_log_config_output()
@@ -151,7 +154,8 @@ route53resolver_associate_resolver_rule <- function(ResolverRuleId, Name = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$associate_resolver_rule_input(ResolverRuleId = ResolverRuleId, Name = Name, VPCId = VPCId)
   output <- .route53resolver$associate_resolver_rule_output()
@@ -187,7 +191,8 @@ route53resolver_create_firewall_domain_list <- function(CreatorRequestId, Name, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_firewall_domain_list_input(CreatorRequestId = CreatorRequestId, Name = Name, Tags = Tags)
   output <- .route53resolver$create_firewall_domain_list_output()
@@ -316,7 +321,8 @@ route53resolver_create_firewall_rule <- function(CreatorRequestId, FirewallRuleG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_firewall_rule_input(CreatorRequestId = CreatorRequestId, FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype)
   output <- .route53resolver$create_firewall_rule_output()
@@ -352,7 +358,8 @@ route53resolver_create_firewall_rule_group <- function(CreatorRequestId, Name, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_firewall_rule_group_input(CreatorRequestId = CreatorRequestId, Name = Name, Tags = Tags)
   output <- .route53resolver$create_firewall_rule_group_output()
@@ -395,7 +402,8 @@ route53resolver_create_outpost_resolver <- function(CreatorRequestId, Name, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_outpost_resolver_input(CreatorRequestId = CreatorRequestId, Name = Name, InstanceCount = InstanceCount, PreferredInstanceType = PreferredInstanceType, OutpostArn = OutpostArn, Tags = Tags)
   output <- .route53resolver$create_outpost_resolver_output()
@@ -492,7 +500,8 @@ route53resolver_create_resolver_endpoint <- function(CreatorRequestId, Name = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_resolver_endpoint_input(CreatorRequestId = CreatorRequestId, Name = Name, SecurityGroupIds = SecurityGroupIds, Direction = Direction, IpAddresses = IpAddresses, OutpostArn = OutpostArn, PreferredInstanceType = PreferredInstanceType, Tags = Tags, ResolverEndpointType = ResolverEndpointType, Protocols = Protocols)
   output <- .route53resolver$create_resolver_endpoint_output()
@@ -549,7 +558,8 @@ route53resolver_create_resolver_query_log_config <- function(Name, DestinationAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_resolver_query_log_config_input(Name = Name, DestinationArn = DestinationArn, CreatorRequestId = CreatorRequestId, Tags = Tags)
   output <- .route53resolver$create_resolver_query_log_config_output()
@@ -616,7 +626,8 @@ route53resolver_create_resolver_rule <- function(CreatorRequestId, Name = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$create_resolver_rule_input(CreatorRequestId = CreatorRequestId, Name = Name, RuleType = RuleType, DomainName = DomainName, TargetIps = TargetIps, ResolverEndpointId = ResolverEndpointId, Tags = Tags)
   output <- .route53resolver$create_resolver_rule_output()
@@ -646,7 +657,8 @@ route53resolver_delete_firewall_domain_list <- function(FirewallDomainListId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_firewall_domain_list_input(FirewallDomainListId = FirewallDomainListId)
   output <- .route53resolver$delete_firewall_domain_list_output()
@@ -714,7 +726,8 @@ route53resolver_delete_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Qtype = Qtype)
   output <- .route53resolver$delete_firewall_rule_output()
@@ -745,7 +758,8 @@ route53resolver_delete_firewall_rule_group <- function(FirewallRuleGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_firewall_rule_group_input(FirewallRuleGroupId = FirewallRuleGroupId)
   output <- .route53resolver$delete_firewall_rule_group_output()
@@ -775,7 +789,8 @@ route53resolver_delete_outpost_resolver <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_outpost_resolver_input(Id = Id)
   output <- .route53resolver$delete_outpost_resolver_output()
@@ -805,7 +820,8 @@ route53resolver_delete_resolver_endpoint <- function(ResolverEndpointId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId)
   output <- .route53resolver$delete_resolver_endpoint_output()
@@ -835,7 +851,8 @@ route53resolver_delete_resolver_query_log_config <- function(ResolverQueryLogCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId)
   output <- .route53resolver$delete_resolver_query_log_config_output()
@@ -865,7 +882,8 @@ route53resolver_delete_resolver_rule <- function(ResolverRuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$delete_resolver_rule_input(ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$delete_resolver_rule_output()
@@ -896,7 +914,8 @@ route53resolver_disassociate_firewall_rule_group <- function(FirewallRuleGroupAs
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$disassociate_firewall_rule_group_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId)
   output <- .route53resolver$disassociate_firewall_rule_group_output()
@@ -928,7 +947,8 @@ route53resolver_disassociate_resolver_endpoint_ip_address <- function(ResolverEn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$disassociate_resolver_endpoint_ip_address_input(ResolverEndpointId = ResolverEndpointId, IpAddress = IpAddress)
   output <- .route53resolver$disassociate_resolver_endpoint_ip_address_output()
@@ -961,7 +981,8 @@ route53resolver_disassociate_resolver_query_log_config <- function(ResolverQuery
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$disassociate_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId, ResourceId = ResourceId)
   output <- .route53resolver$disassociate_resolver_query_log_config_output()
@@ -994,7 +1015,8 @@ route53resolver_disassociate_resolver_rule <- function(VPCId, ResolverRuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$disassociate_resolver_rule_input(VPCId = VPCId, ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$disassociate_resolver_rule_output()
@@ -1025,7 +1047,8 @@ route53resolver_get_firewall_config <- function(ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_firewall_config_output()
@@ -1055,7 +1078,8 @@ route53resolver_get_firewall_domain_list <- function(FirewallDomainListId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_domain_list_input(FirewallDomainListId = FirewallDomainListId)
   output <- .route53resolver$get_firewall_domain_list_output()
@@ -1085,7 +1109,8 @@ route53resolver_get_firewall_rule_group <- function(FirewallRuleGroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_rule_group_input(FirewallRuleGroupId = FirewallRuleGroupId)
   output <- .route53resolver$get_firewall_rule_group_output()
@@ -1116,7 +1141,8 @@ route53resolver_get_firewall_rule_group_association <- function(FirewallRuleGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_rule_group_association_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId)
   output <- .route53resolver$get_firewall_rule_group_association_output()
@@ -1147,7 +1173,8 @@ route53resolver_get_firewall_rule_group_policy <- function(Arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_firewall_rule_group_policy_input(Arn = Arn)
   output <- .route53resolver$get_firewall_rule_group_policy_output()
@@ -1178,7 +1205,8 @@ route53resolver_get_outpost_resolver <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_outpost_resolver_input(Id = Id)
   output <- .route53resolver$get_outpost_resolver_output()
@@ -1209,7 +1237,8 @@ route53resolver_get_resolver_config <- function(ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_resolver_config_output()
@@ -1240,7 +1269,8 @@ route53resolver_get_resolver_dnssec_config <- function(ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_dnssec_config_input(ResourceId = ResourceId)
   output <- .route53resolver$get_resolver_dnssec_config_output()
@@ -1272,7 +1302,8 @@ route53resolver_get_resolver_endpoint <- function(ResolverEndpointId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId)
   output <- .route53resolver$get_resolver_endpoint_output()
@@ -1305,7 +1336,8 @@ route53resolver_get_resolver_query_log_config <- function(ResolverQueryLogConfig
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_query_log_config_input(ResolverQueryLogConfigId = ResolverQueryLogConfigId)
   output <- .route53resolver$get_resolver_query_log_config_output()
@@ -1337,7 +1369,8 @@ route53resolver_get_resolver_query_log_config_association <- function(ResolverQu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_query_log_config_association_input(ResolverQueryLogConfigAssociationId = ResolverQueryLogConfigAssociationId)
   output <- .route53resolver$get_resolver_query_log_config_association_output()
@@ -1368,7 +1401,8 @@ route53resolver_get_resolver_query_log_config_policy <- function(Arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_query_log_config_policy_input(Arn = Arn)
   output <- .route53resolver$get_resolver_query_log_config_policy_output()
@@ -1400,7 +1434,8 @@ route53resolver_get_resolver_rule <- function(ResolverRuleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_rule_input(ResolverRuleId = ResolverRuleId)
   output <- .route53resolver$get_resolver_rule_output()
@@ -1432,7 +1467,8 @@ route53resolver_get_resolver_rule_association <- function(ResolverRuleAssociatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_rule_association_input(ResolverRuleAssociationId = ResolverRuleAssociationId)
   output <- .route53resolver$get_resolver_rule_association_output()
@@ -1463,7 +1499,8 @@ route53resolver_get_resolver_rule_policy <- function(Arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$get_resolver_rule_policy_input(Arn = Arn)
   output <- .route53resolver$get_resolver_rule_policy_output()
@@ -1504,7 +1541,8 @@ route53resolver_import_firewall_domains <- function(FirewallDomainListId, Operat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$import_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, Operation = Operation, DomainFileUrl = DomainFileUrl)
   output <- .route53resolver$import_firewall_domains_output()
@@ -1547,7 +1585,8 @@ route53resolver_list_firewall_configs <- function(MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallConfigs"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_configs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_configs_output()
@@ -1590,7 +1629,8 @@ route53resolver_list_firewall_domain_lists <- function(MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallDomainLists")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallDomainLists"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_domain_lists_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_domain_lists_output()
@@ -1635,7 +1675,8 @@ route53resolver_list_firewall_domains <- function(FirewallDomainListId, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_domains_output()
@@ -1690,7 +1731,8 @@ route53resolver_list_firewall_rule_group_associations <- function(FirewallRuleGr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroupAssociations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroupAssociations"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_rule_group_associations_input(FirewallRuleGroupId = FirewallRuleGroupId, VpcId = VpcId, Priority = Priority, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_group_associations_output()
@@ -1734,7 +1776,8 @@ route53resolver_list_firewall_rule_groups <- function(MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroups")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRuleGroups"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_rule_groups_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rule_groups_output()
@@ -1797,7 +1840,8 @@ route53resolver_list_firewall_rules <- function(FirewallRuleGroupId, Priority = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRules")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallRules"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_firewall_rules_input(FirewallRuleGroupId = FirewallRuleGroupId, Priority = Priority, Action = Action, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_firewall_rules_output()
@@ -1832,7 +1876,8 @@ route53resolver_list_outpost_resolvers <- function(OutpostArn = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OutpostResolvers")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OutpostResolvers"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_outpost_resolvers_input(OutpostArn = OutpostArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_outpost_resolvers_output()
@@ -1877,7 +1922,8 @@ route53resolver_list_resolver_configs <- function(MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverConfigs"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_configs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_resolver_configs_output()
@@ -1923,7 +1969,8 @@ route53resolver_list_resolver_dnssec_configs <- function(MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverDnssecConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverDnssecConfigs"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_dnssec_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_dnssec_configs_output()
@@ -1967,7 +2014,8 @@ route53resolver_list_resolver_endpoint_ip_addresses <- function(ResolverEndpoint
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpAddresses")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "IpAddresses"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_endpoint_ip_addresses_input(ResolverEndpointId = ResolverEndpointId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_resolver_endpoint_ip_addresses_output()
@@ -2018,7 +2066,8 @@ route53resolver_list_resolver_endpoints <- function(MaxResults = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverEndpoints")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverEndpoints"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_endpoints_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_endpoints_output()
@@ -2126,7 +2175,8 @@ route53resolver_list_resolver_query_log_config_associations <- function(MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigAssociations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigAssociations"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_query_log_config_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53resolver$list_resolver_query_log_config_associations_output()
@@ -2238,7 +2288,8 @@ route53resolver_list_resolver_query_log_configs <- function(MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigs")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverQueryLogConfigs"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_query_log_configs_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53resolver$list_resolver_query_log_configs_output()
@@ -2286,7 +2337,8 @@ route53resolver_list_resolver_rule_associations <- function(MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRuleAssociations")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRuleAssociations"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_rule_associations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_rule_associations_output()
@@ -2336,7 +2388,8 @@ route53resolver_list_resolver_rules <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRules")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResolverRules"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_resolver_rules_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .route53resolver$list_resolver_rules_output()
@@ -2379,7 +2432,8 @@ route53resolver_list_tags_for_resource <- function(ResourceArn, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
+    stream_api = FALSE
   )
   input <- .route53resolver$list_tags_for_resource_input(ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53resolver$list_tags_for_resource_output()
@@ -2413,7 +2467,8 @@ route53resolver_put_firewall_rule_group_policy <- function(Arn, FirewallRuleGrou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$put_firewall_rule_group_policy_input(Arn = Arn, FirewallRuleGroupPolicy = FirewallRuleGroupPolicy)
   output <- .route53resolver$put_firewall_rule_group_policy_output()
@@ -2462,7 +2517,8 @@ route53resolver_put_resolver_query_log_config_policy <- function(Arn, ResolverQu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$put_resolver_query_log_config_policy_input(Arn = Arn, ResolverQueryLogConfigPolicy = ResolverQueryLogConfigPolicy)
   output <- .route53resolver$put_resolver_query_log_config_policy_output()
@@ -2515,7 +2571,8 @@ route53resolver_put_resolver_rule_policy <- function(Arn, ResolverRulePolicy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$put_resolver_rule_policy_input(Arn = Arn, ResolverRulePolicy = ResolverRulePolicy)
   output <- .route53resolver$put_resolver_rule_policy_output()
@@ -2560,7 +2617,8 @@ route53resolver_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .route53resolver$tag_resource_output()
@@ -2605,7 +2663,8 @@ route53resolver_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .route53resolver$untag_resource_output()
@@ -2650,7 +2709,8 @@ route53resolver_update_firewall_config <- function(ResourceId, FirewallFailOpen)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_firewall_config_input(ResourceId = ResourceId, FirewallFailOpen = FirewallFailOpen)
   output <- .route53resolver$update_firewall_config_output()
@@ -2704,7 +2764,8 @@ route53resolver_update_firewall_domains <- function(FirewallDomainListId, Operat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_firewall_domains_input(FirewallDomainListId = FirewallDomainListId, Operation = Operation, Domains = Domains)
   output <- .route53resolver$update_firewall_domains_output()
@@ -2819,7 +2880,8 @@ route53resolver_update_firewall_rule <- function(FirewallRuleGroupId, FirewallDo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_firewall_rule_input(FirewallRuleGroupId = FirewallRuleGroupId, FirewallDomainListId = FirewallDomainListId, Priority = Priority, Action = Action, BlockResponse = BlockResponse, BlockOverrideDomain = BlockOverrideDomain, BlockOverrideDnsType = BlockOverrideDnsType, BlockOverrideTtl = BlockOverrideTtl, Name = Name, FirewallDomainRedirectionAction = FirewallDomainRedirectionAction, Qtype = Qtype)
   output <- .route53resolver$update_firewall_rule_output()
@@ -2863,7 +2925,8 @@ route53resolver_update_firewall_rule_group_association <- function(FirewallRuleG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_firewall_rule_group_association_input(FirewallRuleGroupAssociationId = FirewallRuleGroupAssociationId, Priority = Priority, MutationProtection = MutationProtection, Name = Name)
   output <- .route53resolver$update_firewall_rule_group_association_output()
@@ -2897,7 +2960,8 @@ route53resolver_update_outpost_resolver <- function(Id, Name = NULL, InstanceCou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_outpost_resolver_input(Id = Id, Name = Name, InstanceCount = InstanceCount, PreferredInstanceType = PreferredInstanceType)
   output <- .route53resolver$update_outpost_resolver_output()
@@ -2945,7 +3009,8 @@ route53resolver_update_resolver_config <- function(ResourceId, AutodefinedRevers
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_resolver_config_input(ResourceId = ResourceId, AutodefinedReverseFlag = AutodefinedReverseFlag)
   output <- .route53resolver$update_resolver_config_output()
@@ -2979,7 +3044,8 @@ route53resolver_update_resolver_dnssec_config <- function(ResourceId, Validation
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_resolver_dnssec_config_input(ResourceId = ResourceId, Validation = Validation)
   output <- .route53resolver$update_resolver_dnssec_config_output()
@@ -3051,7 +3117,8 @@ route53resolver_update_resolver_endpoint <- function(ResolverEndpointId, Name = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_resolver_endpoint_input(ResolverEndpointId = ResolverEndpointId, Name = Name, ResolverEndpointType = ResolverEndpointType, UpdateIpAddresses = UpdateIpAddresses, Protocols = Protocols)
   output <- .route53resolver$update_resolver_endpoint_output()
@@ -3082,7 +3149,8 @@ route53resolver_update_resolver_rule <- function(ResolverRuleId, Config) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .route53resolver$update_resolver_rule_input(ResolverRuleId = ResolverRuleId, Config = Config)
   output <- .route53resolver$update_resolver_rule_output()

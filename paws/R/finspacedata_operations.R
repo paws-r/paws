@@ -46,7 +46,8 @@ finspacedata_associate_user_to_permission_group <- function(permissionGroupId, u
     http_method = "POST",
     http_path = "/permission-group/{permissionGroupId}/users/{userId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$associate_user_to_permission_group_input(permissionGroupId = permissionGroupId, userId = userId, clientToken = clientToken)
   output <- .finspacedata$associate_user_to_permission_group_output()
@@ -158,7 +159,8 @@ finspacedata_create_changeset <- function(clientToken = NULL, datasetId, changeT
     http_method = "POST",
     http_path = "/datasets/{datasetId}/changesetsv2",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$create_changeset_input(clientToken = clientToken, datasetId = datasetId, changeType = changeType, sourceParams = sourceParams, formatParams = formatParams)
   output <- .finspacedata$create_changeset_output()
@@ -232,7 +234,8 @@ finspacedata_create_data_view <- function(clientToken = NULL, datasetId, autoUpd
     http_method = "POST",
     http_path = "/datasets/{datasetId}/dataviewsv2",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$create_data_view_input(clientToken = clientToken, datasetId = datasetId, autoUpdate = autoUpdate, sortColumns = sortColumns, partitionColumns = partitionColumns, asOfTimestamp = asOfTimestamp, destinationTypeParams = destinationTypeParams)
   output <- .finspacedata$create_data_view_output()
@@ -324,7 +327,8 @@ finspacedata_create_dataset <- function(clientToken = NULL, datasetTitle, kind, 
     http_method = "POST",
     http_path = "/datasetsv2",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$create_dataset_input(clientToken = clientToken, datasetTitle = datasetTitle, kind = kind, datasetDescription = datasetDescription, ownerInfo = ownerInfo, permissionGroupParams = permissionGroupParams, alias = alias, schemaDefinition = schemaDefinition)
   output <- .finspacedata$create_dataset_output()
@@ -410,7 +414,8 @@ finspacedata_create_permission_group <- function(name, description = NULL, appli
     http_method = "POST",
     http_path = "/permission-group",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$create_permission_group_input(name = name, description = description, applicationPermissions = applicationPermissions, clientToken = clientToken)
   output <- .finspacedata$create_permission_group_output()
@@ -490,7 +495,8 @@ finspacedata_create_user <- function(emailAddress, type, firstName = NULL, lastN
     http_method = "POST",
     http_path = "/user",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$create_user_input(emailAddress = emailAddress, type = type, firstName = firstName, lastName = lastName, apiAccess = apiAccess, apiAccessPrincipalArn = apiAccessPrincipalArn, clientToken = clientToken)
   output <- .finspacedata$create_user_output()
@@ -540,7 +546,8 @@ finspacedata_delete_dataset <- function(clientToken = NULL, datasetId) {
     http_method = "DELETE",
     http_path = "/datasetsv2/{datasetId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$delete_dataset_input(clientToken = clientToken, datasetId = datasetId)
   output <- .finspacedata$delete_dataset_output()
@@ -590,7 +597,8 @@ finspacedata_delete_permission_group <- function(permissionGroupId, clientToken 
     http_method = "DELETE",
     http_path = "/permission-group/{permissionGroupId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$delete_permission_group_input(permissionGroupId = permissionGroupId, clientToken = clientToken)
   output <- .finspacedata$delete_permission_group_output()
@@ -642,7 +650,8 @@ finspacedata_disable_user <- function(userId, clientToken = NULL) {
     http_method = "POST",
     http_path = "/user/{userId}/disable",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$disable_user_input(userId = userId, clientToken = clientToken)
   output <- .finspacedata$disable_user_output()
@@ -695,7 +704,8 @@ finspacedata_disassociate_user_from_permission_group <- function(permissionGroup
     http_method = "DELETE",
     http_path = "/permission-group/{permissionGroupId}/users/{userId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$disassociate_user_from_permission_group_input(permissionGroupId = permissionGroupId, userId = userId, clientToken = clientToken)
   output <- .finspacedata$disassociate_user_from_permission_group_output()
@@ -746,7 +756,8 @@ finspacedata_enable_user <- function(userId, clientToken = NULL) {
     http_method = "POST",
     http_path = "/user/{userId}/enable",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$enable_user_input(userId = userId, clientToken = clientToken)
   output <- .finspacedata$enable_user_output()
@@ -816,7 +827,8 @@ finspacedata_get_changeset <- function(datasetId, changesetId) {
     http_method = "GET",
     http_path = "/datasets/{datasetId}/changesetsv2/{changesetId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$get_changeset_input(datasetId = datasetId, changesetId = changesetId)
   output <- .finspacedata$get_changeset_output()
@@ -890,7 +902,8 @@ finspacedata_get_data_view <- function(dataViewId, datasetId) {
     http_method = "GET",
     http_path = "/datasets/{datasetId}/dataviewsv2/{dataviewId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$get_data_view_input(dataViewId = dataViewId, datasetId = datasetId)
   output <- .finspacedata$get_data_view_output()
@@ -960,7 +973,8 @@ finspacedata_get_dataset <- function(datasetId) {
     http_method = "GET",
     http_path = "/datasetsv2/{datasetId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$get_dataset_input(datasetId = datasetId)
   output <- .finspacedata$get_dataset_output()
@@ -1027,7 +1041,8 @@ finspacedata_get_external_data_view_access_details <- function(dataViewId, datas
     http_method = "POST",
     http_path = "/datasets/{datasetId}/dataviewsv2/{dataviewId}/external-access-details",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$get_external_data_view_access_details_input(dataViewId = dataViewId, datasetId = datasetId)
   output <- .finspacedata$get_external_data_view_access_details_output()
@@ -1085,7 +1100,8 @@ finspacedata_get_permission_group <- function(permissionGroupId) {
     http_method = "GET",
     http_path = "/permission-group/{permissionGroupId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$get_permission_group_input(permissionGroupId = permissionGroupId)
   output <- .finspacedata$get_permission_group_output()
@@ -1144,7 +1160,8 @@ finspacedata_get_programmatic_access_credentials <- function(durationInMinutes =
     http_method = "GET",
     http_path = "/credentials/programmatic",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$get_programmatic_access_credentials_input(durationInMinutes = durationInMinutes, environmentId = environmentId)
   output <- .finspacedata$get_programmatic_access_credentials_output()
@@ -1204,7 +1221,8 @@ finspacedata_get_user <- function(userId) {
     http_method = "GET",
     http_path = "/user/{userId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$get_user_input(userId = userId)
   output <- .finspacedata$get_user_output()
@@ -1264,7 +1282,8 @@ finspacedata_get_working_location <- function(locationType = NULL) {
     http_method = "POST",
     http_path = "/workingLocationV1",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$get_working_location_input(locationType = locationType)
   output <- .finspacedata$get_working_location_output()
@@ -1341,7 +1360,8 @@ finspacedata_list_changesets <- function(datasetId, maxResults = NULL, nextToken
     http_method = "GET",
     http_path = "/datasets/{datasetId}/changesetsv2",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "changesets")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "changesets"),
+    stream_api = FALSE
   )
   input <- .finspacedata$list_changesets_input(datasetId = datasetId, maxResults = maxResults, nextToken = nextToken)
   output <- .finspacedata$list_changesets_output()
@@ -1422,7 +1442,8 @@ finspacedata_list_data_views <- function(datasetId, nextToken = NULL, maxResults
     http_method = "GET",
     http_path = "/datasets/{datasetId}/dataviewsv2",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataViews")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "dataViews"),
+    stream_api = FALSE
   )
   input <- .finspacedata$list_data_views_input(datasetId = datasetId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_data_views_output()
@@ -1503,7 +1524,8 @@ finspacedata_list_datasets <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "GET",
     http_path = "/datasetsv2",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "datasets")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "datasets"),
+    stream_api = FALSE
   )
   input <- .finspacedata$list_datasets_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_datasets_output()
@@ -1566,7 +1588,8 @@ finspacedata_list_permission_groups <- function(nextToken = NULL, maxResults) {
     http_method = "GET",
     http_path = "/permission-group",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissionGroups")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissionGroups"),
+    stream_api = FALSE
   )
   input <- .finspacedata$list_permission_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_permission_groups_output()
@@ -1627,7 +1650,8 @@ finspacedata_list_permission_groups_by_user <- function(userId, nextToken = NULL
     http_method = "GET",
     http_path = "/user/{userId}/permission-groups",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$list_permission_groups_by_user_input(userId = userId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_permission_groups_by_user_output()
@@ -1694,7 +1718,8 @@ finspacedata_list_users <- function(nextToken = NULL, maxResults) {
     http_method = "GET",
     http_path = "/user",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "users")
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "users"),
+    stream_api = FALSE
   )
   input <- .finspacedata$list_users_input(nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_users_output()
@@ -1760,7 +1785,8 @@ finspacedata_list_users_by_permission_group <- function(permissionGroupId, nextT
     http_method = "GET",
     http_path = "/permission-group/{permissionGroupId}/users",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$list_users_by_permission_group_input(permissionGroupId = permissionGroupId, nextToken = nextToken, maxResults = maxResults)
   output <- .finspacedata$list_users_by_permission_group_output()
@@ -1816,7 +1842,8 @@ finspacedata_reset_user_password <- function(userId, clientToken = NULL) {
     http_method = "POST",
     http_path = "/user/{userId}/password",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$reset_user_password_input(userId = userId, clientToken = clientToken)
   output <- .finspacedata$reset_user_password_output()
@@ -1918,7 +1945,8 @@ finspacedata_update_changeset <- function(clientToken = NULL, datasetId, changes
     http_method = "PUT",
     http_path = "/datasets/{datasetId}/changesetsv2/{changesetId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$update_changeset_input(clientToken = clientToken, datasetId = datasetId, changesetId = changesetId, sourceParams = sourceParams, formatParams = formatParams)
   output <- .finspacedata$update_changeset_output()
@@ -1996,7 +2024,8 @@ finspacedata_update_dataset <- function(clientToken = NULL, datasetId, datasetTi
     http_method = "PUT",
     http_path = "/datasetsv2/{datasetId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$update_dataset_input(clientToken = clientToken, datasetId = datasetId, datasetTitle = datasetTitle, kind = kind, datasetDescription = datasetDescription, alias = alias, schemaDefinition = schemaDefinition)
   output <- .finspacedata$update_dataset_output()
@@ -2083,7 +2112,8 @@ finspacedata_update_permission_group <- function(permissionGroupId, name = NULL,
     http_method = "PUT",
     http_path = "/permission-group/{permissionGroupId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$update_permission_group_input(permissionGroupId = permissionGroupId, name = name, description = description, applicationPermissions = applicationPermissions, clientToken = clientToken)
   output <- .finspacedata$update_permission_group_output()
@@ -2161,7 +2191,8 @@ finspacedata_update_user <- function(userId, type = NULL, firstName = NULL, last
     http_method = "PUT",
     http_path = "/user/{userId}",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .finspacedata$update_user_input(userId = userId, type = type, firstName = firstName, lastName = lastName, apiAccess = apiAccess, apiAccessPrincipalArn = apiAccessPrincipalArn, clientToken = clientToken)
   output <- .finspacedata$update_user_output()

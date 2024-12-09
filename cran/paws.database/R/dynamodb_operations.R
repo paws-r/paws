@@ -23,7 +23,8 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$batch_execute_statement_input(Statements = Statements, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_execute_statement_output()
@@ -128,7 +129,8 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "RequestItems", output_token = "UnprocessedKeys")
+    paginator = list(input_token = "RequestItems", output_token = "UnprocessedKeys"),
+    stream_api = FALSE
   )
   input <- .dynamodb$batch_get_item_input(RequestItems = RequestItems, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_get_item_output()
@@ -193,7 +195,8 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$batch_write_item_input(RequestItems = RequestItems, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics)
   output <- .dynamodb$batch_write_item_output()
@@ -225,7 +228,8 @@ dynamodb_create_backup <- function(TableName, BackupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$create_backup_input(TableName = TableName, BackupName = BackupName)
   output <- .dynamodb$create_backup_output()
@@ -256,7 +260,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$create_global_table_input(GlobalTableName = GlobalTableName, ReplicationGroup = ReplicationGroup)
   output <- .dynamodb$create_global_table_output()
@@ -471,7 +476,8 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput)
   output <- .dynamodb$create_table_output()
@@ -501,7 +507,8 @@ dynamodb_delete_backup <- function(BackupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$delete_backup_input(BackupArn = BackupArn)
   output <- .dynamodb$delete_backup_output()
@@ -649,7 +656,8 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$delete_item_input(TableName = TableName, Key = Key, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$delete_item_output()
@@ -689,7 +697,8 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$delete_resource_policy_input(ResourceArn = ResourceArn, ExpectedRevisionId = ExpectedRevisionId)
   output <- .dynamodb$delete_resource_policy_output()
@@ -720,7 +729,8 @@ dynamodb_delete_table <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$delete_table_input(TableName = TableName)
   output <- .dynamodb$delete_table_output()
@@ -750,7 +760,8 @@ dynamodb_describe_backup <- function(BackupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_backup_input(BackupArn = BackupArn)
   output <- .dynamodb$describe_backup_output()
@@ -785,7 +796,8 @@ dynamodb_describe_continuous_backups <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_continuous_backups_input(TableName = TableName)
   output <- .dynamodb$describe_continuous_backups_output()
@@ -818,7 +830,8 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_contributor_insights_input(TableName = TableName, IndexName = IndexName)
   output <- .dynamodb$describe_contributor_insights_output()
@@ -848,7 +861,8 @@ dynamodb_describe_endpoints <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_endpoints_input()
   output <- .dynamodb$describe_endpoints_output()
@@ -878,7 +892,8 @@ dynamodb_describe_export <- function(ExportArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_export_input(ExportArn = ExportArn)
   output <- .dynamodb$describe_export_output()
@@ -908,7 +923,8 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_global_table_input(GlobalTableName = GlobalTableName)
   output <- .dynamodb$describe_global_table_output()
@@ -938,7 +954,8 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_global_table_settings_input(GlobalTableName = GlobalTableName)
   output <- .dynamodb$describe_global_table_settings_output()
@@ -969,7 +986,8 @@ dynamodb_describe_import <- function(ImportArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_import_input(ImportArn = ImportArn)
   output <- .dynamodb$describe_import_output()
@@ -1000,7 +1018,8 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_kinesis_streaming_destination_input(TableName = TableName)
   output <- .dynamodb$describe_kinesis_streaming_destination_output()
@@ -1032,7 +1051,8 @@ dynamodb_describe_limits <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_limits_input()
   output <- .dynamodb$describe_limits_output()
@@ -1065,7 +1085,8 @@ dynamodb_describe_table <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_table_input(TableName = TableName)
   output <- .dynamodb$describe_table_output()
@@ -1097,7 +1118,8 @@ dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_table_replica_auto_scaling_input(TableName = TableName)
   output <- .dynamodb$describe_table_replica_auto_scaling_output()
@@ -1129,7 +1151,8 @@ dynamodb_describe_time_to_live <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$describe_time_to_live_input(TableName = TableName)
   output <- .dynamodb$describe_time_to_live_output()
@@ -1162,7 +1185,8 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$disable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, EnableKinesisStreamingConfiguration = EnableKinesisStreamingConfiguration)
   output <- .dynamodb$disable_kinesis_streaming_destination_output()
@@ -1196,7 +1220,8 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$enable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, EnableKinesisStreamingConfiguration = EnableKinesisStreamingConfiguration)
   output <- .dynamodb$enable_kinesis_streaming_destination_output()
@@ -1250,7 +1275,8 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken, ReturnConsumedCapacity = ReturnConsumedCapacity, Limit = Limit, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$execute_statement_output()
@@ -1287,7 +1313,8 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$execute_transaction_input(TransactStatements = TransactStatements, ClientRequestToken = ClientRequestToken, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$execute_transaction_output()
@@ -1357,7 +1384,8 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$export_table_to_point_in_time_input(TableArn = TableArn, ExportTime = ExportTime, ClientToken = ClientToken, S3Bucket = S3Bucket, S3BucketOwner = S3BucketOwner, S3Prefix = S3Prefix, S3SseAlgorithm = S3SseAlgorithm, S3SseKmsKeyId = S3SseKmsKeyId, ExportFormat = ExportFormat, ExportType = ExportType, IncrementalExportSpecification = IncrementalExportSpecification)
   output <- .dynamodb$export_table_to_point_in_time_output()
@@ -1452,7 +1480,8 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$get_item_input(TableName = TableName, Key = Key, AttributesToGet = AttributesToGet, ConsistentRead = ConsistentRead, ReturnConsumedCapacity = ReturnConsumedCapacity, ProjectionExpression = ProjectionExpression, ExpressionAttributeNames = ExpressionAttributeNames)
   output <- .dynamodb$get_item_output()
@@ -1485,7 +1514,8 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .dynamodb$get_resource_policy_output()
@@ -1534,7 +1564,8 @@ dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputForma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$import_table_input(ClientToken = ClientToken, S3BucketSource = S3BucketSource, InputFormat = InputFormat, InputFormatOptions = InputFormatOptions, InputCompressionType = InputCompressionType, TableCreationParameters = TableCreationParameters)
   output <- .dynamodb$import_table_output()
@@ -1587,7 +1618,8 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$list_backups_input(TableName = TableName, Limit = Limit, TimeRangeLowerBound = TimeRangeLowerBound, TimeRangeUpperBound = TimeRangeUpperBound, ExclusiveStartBackupArn = ExclusiveStartBackupArn, BackupType = BackupType)
   output <- .dynamodb$list_backups_output()
@@ -1621,7 +1653,8 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .dynamodb$list_contributor_insights_input(TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .dynamodb$list_contributor_insights_output()
@@ -1655,7 +1688,8 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .dynamodb$list_exports_input(TableArn = TableArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dynamodb$list_exports_output()
@@ -1694,7 +1728,8 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$list_global_tables_input(ExclusiveStartGlobalTableName = ExclusiveStartGlobalTableName, Limit = Limit, RegionName = RegionName)
   output <- .dynamodb$list_global_tables_output()
@@ -1729,7 +1764,8 @@ dynamodb_list_imports <- function(TableArn = NULL, PageSize = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken")
+    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken"),
+    stream_api = FALSE
   )
   input <- .dynamodb$list_imports_input(TableArn = TableArn, PageSize = PageSize, NextToken = NextToken)
   output <- .dynamodb$list_imports_output()
@@ -1764,7 +1800,8 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartTableName", limit_key = "Limit", output_token = "LastEvaluatedTableName", result_key = "TableNames")
+    paginator = list(input_token = "ExclusiveStartTableName", limit_key = "Limit", output_token = "LastEvaluatedTableName", result_key = "TableNames"),
+    stream_api = FALSE
   )
   input <- .dynamodb$list_tables_input(ExclusiveStartTableName = ExclusiveStartTableName, Limit = Limit)
   output <- .dynamodb$list_tables_output()
@@ -1798,7 +1835,8 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$list_tags_of_resource_input(ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .dynamodb$list_tags_of_resource_output()
@@ -1965,7 +2003,8 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$put_item_input(TableName = TableName, Item = Item, Expected = Expected, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionalOperator = ConditionalOperator, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$put_item_output()
@@ -2032,7 +2071,8 @@ dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy, ExpectedRevisionId = ExpectedRevisionId, ConfirmRemoveSelfResourceAccess = ConfirmRemoveSelfResourceAccess)
   output <- .dynamodb$put_resource_policy_output()
@@ -2331,7 +2371,8 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items")
+    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items"),
+    stream_api = FALSE
   )
   input <- .dynamodb$query_input(TableName = TableName, IndexName = IndexName, Select = Select, AttributesToGet = AttributesToGet, Limit = Limit, ConsistentRead = ConsistentRead, KeyConditions = KeyConditions, QueryFilter = QueryFilter, ConditionalOperator = ConditionalOperator, ScanIndexForward = ScanIndexForward, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, KeyConditionExpression = KeyConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues)
   output <- .dynamodb$query_output()
@@ -2372,7 +2413,8 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$restore_table_from_backup_input(TargetTableName = TargetTableName, BackupArn = BackupArn, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
   output <- .dynamodb$restore_table_from_backup_output()
@@ -2420,7 +2462,8 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$restore_table_to_point_in_time_input(SourceTableArn = SourceTableArn, SourceTableName = SourceTableName, TargetTableName = TargetTableName, UseLatestRestorableTime = UseLatestRestorableTime, RestoreDateTime = RestoreDateTime, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
   output <- .dynamodb$restore_table_to_point_in_time_output()
@@ -2672,7 +2715,8 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items")
+    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items"),
+    stream_api = FALSE
   )
   input <- .dynamodb$scan_input(TableName = TableName, IndexName = IndexName, AttributesToGet = AttributesToGet, Limit = Limit, Select = Select, ScanFilter = ScanFilter, ConditionalOperator = ConditionalOperator, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, TotalSegments = TotalSegments, Segment = Segment, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ConsistentRead = ConsistentRead)
   output <- .dynamodb$scan_output()
@@ -2704,7 +2748,8 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .dynamodb$tag_resource_output()
@@ -2740,7 +2785,8 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$transact_get_items_input(TransactItems = TransactItems, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$transact_get_items_output()
@@ -2804,7 +2850,8 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$transact_write_items_input(TransactItems = TransactItems, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ClientRequestToken = ClientRequestToken)
   output <- .dynamodb$transact_write_items_output()
@@ -2837,7 +2884,8 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .dynamodb$untag_resource_output()
@@ -2870,7 +2918,8 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_continuous_backups_input(TableName = TableName, PointInTimeRecoverySpecification = PointInTimeRecoverySpecification)
   output <- .dynamodb$update_continuous_backups_output()
@@ -2904,7 +2953,8 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_contributor_insights_input(TableName = TableName, IndexName = IndexName, ContributorInsightsAction = ContributorInsightsAction)
   output <- .dynamodb$update_contributor_insights_output()
@@ -2935,7 +2985,8 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_global_table_input(GlobalTableName = GlobalTableName, ReplicaUpdates = ReplicaUpdates)
   output <- .dynamodb$update_global_table_output()
@@ -2986,7 +3037,8 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_global_table_settings_input(GlobalTableName = GlobalTableName, GlobalTableBillingMode = GlobalTableBillingMode, GlobalTableProvisionedWriteCapacityUnits = GlobalTableProvisionedWriteCapacityUnits, GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate, GlobalTableGlobalSecondaryIndexSettingsUpdate = GlobalTableGlobalSecondaryIndexSettingsUpdate, ReplicaSettingsUpdate = ReplicaSettingsUpdate)
   output <- .dynamodb$update_global_table_settings_output()
@@ -3231,7 +3283,8 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_item_input(TableName = TableName, Key = Key, AttributeUpdates = AttributeUpdates, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, UpdateExpression = UpdateExpression, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$update_item_output()
@@ -3264,7 +3317,8 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, UpdateKinesisStreamingConfiguration = UpdateKinesisStreamingConfiguration)
   output <- .dynamodb$update_kinesis_streaming_destination_output()
@@ -3351,7 +3405,8 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, OnDemandThroughput = OnDemandThroughput)
   output <- .dynamodb$update_table_output()
@@ -3387,7 +3442,8 @@ dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_table_replica_auto_scaling_input(GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, TableName = TableName, ProvisionedWriteCapacityAutoScalingUpdate = ProvisionedWriteCapacityAutoScalingUpdate, ReplicaUpdates = ReplicaUpdates)
   output <- .dynamodb$update_table_replica_auto_scaling_output()
@@ -3421,7 +3477,8 @@ dynamodb_update_time_to_live <- function(TableName, TimeToLiveSpecification) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list()
+    paginator = list(),
+    stream_api = FALSE
   )
   input <- .dynamodb$update_time_to_live_input(TableName = TableName, TimeToLiveSpecification = TimeToLiveSpecification)
   output <- .dynamodb$update_time_to_live_output()

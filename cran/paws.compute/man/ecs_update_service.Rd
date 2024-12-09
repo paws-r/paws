@@ -102,7 +102,7 @@ You can specify a maximum of five strategy rules for each service.}
 \item{platformVersion}{The platform version that your tasks in the service run on. A platform
 version is only specified for tasks using the Fargate launch type. If a
 platform version is not specified, the \code{LATEST} platform version is
-used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Fargate Platform Versions}
+used. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform-fargate.html}{Fargate Platform Versions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
 
 \item{forceNewDeployment}{Determines whether to force a new deployment of the service. By default,

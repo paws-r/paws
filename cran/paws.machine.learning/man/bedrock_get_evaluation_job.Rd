@@ -11,7 +11,7 @@ bedrock_get_evaluation_job(jobIdentifier)
 \item{jobIdentifier}{[required] The Amazon Resource Name (ARN) of the model evaluation job.}
 }
 \description{
-Retrieves the properties associated with a model evaluation job, including the status of the job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/model-evaluation.html}{Model evaluation}.
+Retrieves the properties associated with a model evaluation job, including the status of the job. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/}{Model evaluation}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_get_evaluation_job/} for full documentation.
 }
