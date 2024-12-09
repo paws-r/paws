@@ -40,7 +40,7 @@ resp$stream(\(chunk) chunk$contentBlockDelta$delta$text)
 
 ### paws_connection:
 
-`paws` allows for the raw connection to be retrieved. The connection is a child class of `httr2::httr2_response` class.
+`paws` allows for the raw connection to be retrieved. The connection is a sub class of `httr2::httr2_response` class.
 This allows paws_connection to be handle both a paws parser or httr2 stream parser.
 
 ```r
