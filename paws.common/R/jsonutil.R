@@ -16,6 +16,20 @@ decode_json <- function(raw) {
   return(obj)
 }
 
+# Read a JSON string into an R list object.
+json_to_list <- function(string) {
+  if (length(string) == 0 || string == "") {
+    return(list())
+  }
+  l <- jsonlite::fromJSON(
+    string,
+    simplifyVector = FALSE,
+    simplifyDataFrame = FALSE,
+    simplifyMatrix = FALSE
+  )
+  return(l)
+}
+
 #-------------------------------------------------------------------------------
 
 # Build a JSON string for a given object.
