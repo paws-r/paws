@@ -91,7 +91,8 @@ test_that("make_operation", {
         http_method = \"POST\",
         http_path = \"/abc\",
         host_prefix = \"\",
-        paginator = list()
+        paginator = list(),
+        stream_api = FALSE
       )
       input <- .api$operation_input(Input1 = Input1, Input2 = Input2, Input3 = Input3)
       output <- .api$operation_output()
