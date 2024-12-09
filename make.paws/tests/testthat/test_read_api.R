@@ -7,7 +7,10 @@ test_that("read_api", {
 
   write_json(list(foo = "examples"), file.path(api_path, "foo-2018-11-01.examples.json"))
   write_json(list(foo = "min"), file.path(api_path, "foo-2018-11-01.min.json"))
-  write_json(list(foo = "normal", name = "foo", metadata = list(endpointPrefix = "baz")), file.path(api_path, "foo-2018-11-01.normal.json"))
+  write_json(
+    list(foo = "normal", name = "foo", metadata = list(endpointPrefix = "baz"), shapes = list(foo = list(eventstream = "TRUE"))),
+    file.path(api_path, "foo-2018-11-01.normal.json")
+  )
   write_json(list(foo = "paginators"), file.path(api_path, "foo-2018-11-01.paginators.json"))
 
   write_json(list(foo = "wrong1"), file.path(api_path, "foo-2017-11-01.examples.json"))
