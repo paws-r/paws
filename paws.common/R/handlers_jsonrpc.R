@@ -34,14 +34,26 @@ jsonrpc_unmarshal_meta <- function(request) {
 jsonrpc_unmarshal <- function(request) {
   body <- request$http_response$body
   if (data_filled(request) && length(body) > 0) {
-    data <- decode_json(body)
-    request$data <- tag_del(json_parse(data, request$data))
+    if (request$operation$stream_api) {
+      request$data <- stream_unmarshal(request, body, json_parse_stream)
+    } else {
+      data <- decode_json(body)
+      request$data <- tag_del(json_parse(data, request$data))
+    }
   }
   return(request)
 }
 
+json_parse_stream <- function(bytes, format) {
+  payload <- decode_json(bytes)
+  json_parse(payload, format)
+}
+
 # Unmarshal errors from a JSON RPC response.
 jsonrpc_unmarshal_error <- function(request) {
+  request$http_response$body <- get_connection_error(
+    request$http_response$body, request$operation$stream_api
+  )
   error <- decode_json(request$http_response$body)
   if (length(error) == 0) {
     return(request)

@@ -8,12 +8,13 @@ TEST_DIR <- "tests/testthat"
 #'
 #' @keywords internal
 make_sdk_for_api <- function(api_name, in_dir) {
-  result <- list()
   api <- read_api(api_name, in_dir)
-  result$name <- package_name(api)
-  result$code <- make_code_files(api)
-  result$tests <- make_tests_files(api)
-  result$docs <- make_docs_files(api)
+  result <- list(
+    name = package_name(api),
+    code = make_code_files(api),
+    tests = make_tests_files(api),
+    docs = make_docs_files(api)
+  )
   return(result)
 }
 
@@ -21,12 +22,13 @@ make_sdk_for_api <- function(api_name, in_dir) {
 
 # Write code for a given API.
 make_code_files <- function(api) {
-  result <- list()
-  result$operations <- make_operations_files(api, doc_maker = make_docs_short)
-  result$interfaces <- make_interfaces_files(api)
-  result$service <- make_service_files(api)
-  result$custom <- make_custom_operations_files(api)
-  result$reexports <- make_reexports()
+  result <- list(
+    operations = make_operations_files(api, doc_maker = make_docs_short),
+    interfaces = make_interfaces_files(api),
+    service = make_service_files(api),
+    custom = make_custom_operations_files(api),
+    reexports = make_reexports()
+  )
   return(result)
 }
 
@@ -90,11 +92,12 @@ make_reexports <- function() {
 }
 
 make_docs_files <- function(api) {
-  result <- list()
-  result$operations <- make_operations_files(api, doc_maker = make_docs_long)
-  result$service <- make_service_files(api)
-  result$custom <- make_custom_operations_files(api)
-  result$reexports <- make_reexports()
+  result <- list(
+    operations = make_operations_files(api, doc_maker = make_docs_long),
+    service = make_service_files(api),
+    custom = make_custom_operations_files(api),
+    reexports = make_reexports()
+  )
   return(result)
 }
 

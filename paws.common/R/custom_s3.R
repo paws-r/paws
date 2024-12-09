@@ -1,5 +1,4 @@
 #' @include service.R
-#' @include stream.R
 #' @include util.R
 #' @include error.R
 #' @include head_bucket.R
@@ -236,18 +235,6 @@ content_md5 <- function(request) {
 
 ################################################################################
 
-s3_unmarshal_select_object_content <- function(request) {
-  if (request$operation$name != "SelectObjectContent") {
-    return(request)
-  }
-  payload <- stream_decode(request$http_response$body)
-  request$data <- populate(list(Payload = payload), request$data)
-  request$http_response$body <- raw()
-  return(request)
-}
-
-################################################################################
-
 s3_unmarshal_get_bucket_location <- function(request) {
   if (request$operation$name != "GetBucketLocation") {
     return(request)
@@ -269,6 +256,9 @@ s3_unmarshal_get_bucket_location <- function(request) {
 ################################################################################
 
 s3_unmarshal_error <- function(request) {
+  request$http_response$body <- get_connection_error(
+    request$http_response$body, request$operation$stream_api
+  )
   data <- tryCatch(
     decode_xml(request$http_response$body),
     error = function(e) NULL
@@ -349,13 +339,15 @@ s3_redirect_from_error <- function(request) {
     return(request)
   }
   error_code <- request$http_response$status_code
-
   # Exit s3_redirect_from_error function if initial request is successful
   # https://docs.aws.amazon.com/waf/latest/developerguide/customizing-the-response-status-codes.html
   http_success_code <- c(200, 201, 202, 204, 206)
   if (error_code %in% http_success_code) {
     return(request)
   }
+  request$http_response$body <- get_connection_error(
+    request$http_response$body, request$operation$stream_api
+  )
   error <- decode_xml(request$http_response$body)$Error
   if (!can_be_redirected(request, error_code, error)) {
     return(request)
@@ -484,7 +476,6 @@ set_request_url <- function(original_endpoint,
 
 ################################################################################
 handle_copy_source_param <- function(request) {
-
   if (!(request$operation$name %in% c("CopyObject", "CopyPart")) | isTRUE(request$context$s3_redirect)) {
     return(request)
   }
@@ -554,10 +545,6 @@ customizations$s3 <- function(handlers) {
     content_md5
   )
   handlers$send <- handlers_add_back(handlers$send, s3_redirect_from_error)
-  handlers$unmarshal <- handlers_add_front(
-    handlers$unmarshal,
-    s3_unmarshal_select_object_content
-  )
   handlers$unmarshal <- handlers_add_back(
     handlers$unmarshal,
     s3_unmarshal_get_bucket_location

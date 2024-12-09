@@ -50,8 +50,11 @@ restjson_unmarshal <- function(request) {
 
 # Unmarshal errors from a REST JSON protocol API response.
 restjson_unmarshal_error <- function(request) {
+  if (request$operation$stream_api) {
+    con <- request$http_response$body
+    request$http_response$body <- stream_raw(con$body)
+  }
   error <- decode_json(request$http_response$body)
-
   code <- request$http_response$header[["X-Amzn-Errortype"]]
   if (is.null(code)) code <- error$code
   if (is.null(code)) code <- error$`__type`

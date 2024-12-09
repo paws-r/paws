@@ -38,7 +38,8 @@ operation_template <- template(
       http_method = ${http_method},
       http_path = ${http_path},
       host_prefix = ${host_prefix},
-      paginator = ${paginator}
+      paginator = ${paginator},
+      stream_api = ${stream_api}
     )
     input <- .${service}$${operation_input}
     output <- .${service}$${operation_output}
@@ -66,7 +67,8 @@ make_operation <- function(operation, api, doc_maker) {
     http_method = quoted(operation$http$method),
     http_path = quoted(operation$http$requestUri),
     host_prefix = quoted(operation[["endpoint"]][["hostPrefix"]] %||% ""),
-    paginator = set_paginator(operation$paginators)
+    paginator = set_paginator(operation$paginators),
+    stream_api = set_stream_api(operation)
   )
 }
 
@@ -89,6 +91,10 @@ set_paginator <- function(paginator) {
   } else {
     "list()"
   }
+}
+
+set_stream_api <- function(operation) {
+  as.character(operation$eventstream %||% FALSE)
 }
 
 # Override operation name from extdata/operation_name_override.yml

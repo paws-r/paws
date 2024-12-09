@@ -1,4 +1,6 @@
 # Read a given API's definition and documentation files.
+# aws-sdk-js deprecated and apis is not being updated
+# TODO: short term migrate to botocore jsons
 read_api <- function(api_name, path) {
   api_path <- file.path(path, "apis")
   region_config_path <- file.path(path, "lib/region_config_data.json")
@@ -18,6 +20,7 @@ read_api <- function(api_name, path) {
     paginators <- jsonlite::read_json(files$paginators)
     api <- merge_paginators(api, paginators$pagination)
   }
+  api <- merge_eventstream(api)
   region_config <- jsonlite::read_json(region_config_path)
   api <- merge_region_config(api, region_config)
   api <- fix_region_config(api)
@@ -58,6 +61,24 @@ merge_paginators <- function(api, paginators) {
     operation <- api$operations[[name]]
     operation[["paginators"]] <- paginators[[name]]
     api$operations[[name]] <- operation
+  }
+  return(api)
+}
+
+merge_eventstream <- function(api) {
+  flat_shape <- unlist(api$shapes)
+  eventstream <- flat_shape[endsWith(names(flat_shape),"eventstream")]
+  names(eventstream) <- stringr::str_extract(names(eventstream), "([a-zA-Z]+)")
+
+  shape <- flat_shape[endsWith(names(flat_shape), "shape")]
+  shape <- shape[shape %in% names(eventstream)]
+  names(shape) <- gsub(
+    "Output$|Response$", "", stringr::str_extract(names(shape), "([a-zA-Z]+)")
+  )
+  names(eventstream) <- names(shape)
+
+  for (nms in names(eventstream)) {
+    api$operations[[nms]]$eventstream <- eventstream[nms]
   }
   return(api)
 }

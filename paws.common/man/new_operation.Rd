@@ -10,6 +10,7 @@ new_operation(
   http_path,
   host_prefix,
   paginator,
+  stream_api = FALSE,
   before_presign_fn = NULL
 )
 }
@@ -22,7 +23,9 @@ new_operation(
 
 \item{host_prefix}{The HTTP prefix}
 
-\item{paginator}{Currently unused.}
+\item{paginator}{List input_token and output_token.}
+
+\item{stream_api}{Set if operation is stream api or not}
 
 \item{before_presign_fn}{Currently unused.}
 }
