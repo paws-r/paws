@@ -26,6 +26,7 @@ jobs:
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -78,9 +79,6 @@ jobs:
         run: |
           remotes::install_local('paws.common', force = TRUE)
           remotes::install_local('make.paws', force = TRUE)
-          for (package in rev(list.dirs("cran", recursive = FALSE))) {
-            remotes::install_local(package, force = TRUE)
-          }
         shell: Rscript {0}
 
       - name: Check
@@ -89,7 +87,6 @@ jobs:
         run: |
           rcmdcheck::rcmdcheck('paws.common', args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
           rcmdcheck::rcmdcheck('make.paws', args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
-          rcmdcheck::rcmdcheck('cran/paws', args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
       - name: Show testthat output
