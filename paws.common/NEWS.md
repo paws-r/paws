@@ -1,4 +1,4 @@
-# paws.common 0.7.7.9000
+# paws.common 0.8.0
 * migrate backend from httr to httr2
 * enrich sso message (#844). Thanks to @hadley for raising issue.
 * attempt to automatically set/refresh `sso` credentials by calling `aws cli` (#844)
