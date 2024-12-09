@@ -3,14 +3,12 @@
 
 .PAYLOAD_KB <- 1024 * 65
 
-
 #' @title Iterate over AWS Event Stream connection
-#' @usage
-#' paws_stream_handler(FUN, .connection = FALSE)
 #' @param FUN function to iterate over stream connection.
-#' @param .connection return \code{httr2::req_perform_connection} object (default \code{FALSE})
+#' @param con A streaming response created by \code{paws_stream_handler}.
+#' @param .connection return \code{paws_connection} object a subclass of \code{httr2::req_perform_connection} (default \code{FALSE})
 #' @name paws_stream
-#' @return list of responses from the operation or a \code{httr2::req_perform_connection} object
+#' @return list of responses from the operation or a \code{paws_connection} object
 #' @examples
 #' \dontrun{
 #' # Developed from:
@@ -55,6 +53,11 @@
 #' }
 NULL
 
+#' @name paws_stream
+paws_stream_handler <- function(FUN, .connection = FALSE) {
+  stop("This is an abstract function please don't call directly", .call = FALSE)
+}
+
 StreamHandler <- function(body, unmarshal, interface, metadata) {
   con <- paws_con(body, unmarshal, interface)
   paws_stream_handler <- function(FUN, .connection = FALSE) {
@@ -72,10 +75,7 @@ StreamHandler <- function(body, unmarshal, interface, metadata) {
 }
 
 paws_con <- function(con, unmarshal, interface) {
-  con$paws_metadata <- list(
-    unmarshal=unmarshal,
-    interface=interface
-  )
+  con$paws_metadata <- list(unmarshal=unmarshal, interface=interface)
   class(con) <- c("paws_connection", class(con))
   return(con)
 }
@@ -92,7 +92,7 @@ print.PawsStreamHandler <- function(x, ...) {
     metadata$service_name,
     op_name
   )
-  cat(msg, sep = "\n")
+  cat(msg, file = stdout(), sep = "\n")
 }
 
 #' @name paws_stream
@@ -166,20 +166,18 @@ eventstream_parser <- function(buffer, unmarshal, interface, boundary) {
 }
 
 aws_boundary <- function(buffer) {
+  len <- length(buffer)
   # No valid AWS event message is less than 16 bytes
-  if (length(buffer) < 16) {
+  if (len < 16) {
     return(NULL)
   }
-
   # Read first 4 bytes as a big endian number
   event_size <- parse_int32(buffer[1:4])
-  if (event_size > length(buffer)) {
+  if (event_size > len) {
     return(NULL)
   }
-
   event_size + 1
 }
-
 
 # Modified from httr2:
 # https://github.com/r-lib/httr2/blob/e972770199f674eca4c64ca8161235e5745683dd/R/utils.R#L314C1-L326C2
@@ -216,7 +214,7 @@ parse_aws_event <- function(bytes) {
   # The prelude for an event stream message has the following format:
   #   [total_length][header_length][prelude_crc]
   prelude_bytes <- read_bytes(8)
-  tot_hd <- parse_int32(prelude_bytes)
+  tot_hd <- parse_int32(prelude_bytes, 8)
   total_length <- tot_hd[1]
   header_length <- tot_hd[2]
 
@@ -230,17 +228,17 @@ parse_aws_event <- function(bytes) {
   # Parse headers
   headers <- list()
   while(i <= 12 + header_length) {
-    name_length <- parse_int8(read_bytes(1))
+    name_length <- parse_int8(read_bytes(1), 1)
     name <- rawToChar(read_bytes(name_length))
-    type <- parse_int8(read_bytes(1))
-    delayedAssign("len", parse_int16(read_bytes(2)))
+    type <- parse_int8(read_bytes(1), 1)
+    delayedAssign("len", parse_int16(read_bytes(2), 2))
     value <- switch(
       type_enum(type),
       'TRUE' = TRUE,
       'FALSE' = FALSE,
-      BYTE = parse_int8(read_bytes(1)),
-      SHORT = parse_int16(read_bytes(2)),
-      INTEGER = parse_int32(read_bytes(4)),
+      BYTE = parse_int8(read_bytes(1), 1),
+      SHORT = parse_int16(read_bytes(2), 2),
+      INTEGER = parse_int32(read_bytes(4), 4),
       LONG = parse_int64(read_bytes(8)),
       BYTE_ARRAY = read_bytes(len),
       CHARACTER = rawToChar(read_bytes(len)),
@@ -285,22 +283,29 @@ type_enum <- function(value) {
   )
 }
 
+big_endian <- function(vec) {
+  c(
+    vec[8:1], vec[16:9], vec[24:17], vec[32:25],
+    vec[40:33], vec[48:41], vec[56:49], vec[64:57]
+  )
+}
+
 # Convert raw vector into integers with big-endian
 parse_int64 <- function(x) {
-  bits <- as.integer(big_endian_int64(rawToBits(x)))
+  bits <- as.integer(big_endian(rawToBits(x)))
   sum(bits[-1] * 2^(62:0)) - bits[[1]] * 2^63
 }
 
-parse_int32 <- function(x) {
-  readBin(x, "integer", n=length(x), size=4, endian = "big")
+parse_int32 <- function(x, len=length(x)) {
+  readBin(x, "integer", n=len, size=4, endian = "big")
 }
 
-parse_int16 <- function(x) {
-  readBin(x, "integer", n=length(x), size=2, endian = "big")
+parse_int16 <- function(x, len=length(x)) {
+  readBin(x, "integer", n=len, size=2, endian = "big")
 }
 
-parse_int8 <- function(x) {
-  readBin(x, "integer", n=length(x), size=1, endian = "big")
+parse_int8 <- function(x, len=length(x)) {
+  readBin(x, "integer", n=len, size=1, endian = "big")
 }
 
 hex_to_raw <- function(x) {

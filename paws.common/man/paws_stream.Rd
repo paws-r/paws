@@ -2,6 +2,7 @@
 % Please edit documentation in R/handlers_stream.R
 \name{paws_stream}
 \alias{paws_stream}
+\alias{paws_stream_handler}
 \alias{paws_stream_parser}
 \title{Iterate over AWS Event Stream connection}
 \usage{
@@ -12,10 +13,12 @@ paws_stream_parser(con)
 \arguments{
 \item{FUN}{function to iterate over stream connection.}
 
-\item{.connection}{return \code{httr2::req_perform_connection} object (default \code{FALSE})}
+\item{.connection}{return \code{paws_connection} object a subclass of \code{httr2::req_perform_connection} (default \code{FALSE})}
+
+\item{con}{A streaming response created by \code{paws_stream_handler}.}
 }
 \value{
-list of responses from the operation or a \code{httr2::req_perform_connection} object
+list of responses from the operation or a \code{paws_connection} object
 }
 \description{
 Iterate over AWS Event Stream connection
