@@ -55,21 +55,21 @@ fields and options are specified in JSON using the form
 You can specify the following faceting options:
 \itemize{
 \item \code{buckets} specifies an array of the facet values or ranges to count.
-Ranges are specified using the same syntax that you use to search for
-a range of values. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-ranges.html}{Searching for a Range of Values}
+Ranges are specified using the same syntax that you use to search
+for a range of values. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-ranges.html}{Searching for a Range of Values}
 in the \emph{Amazon CloudSearch Developer Guide}. Buckets are returned in
 the order they are specified in the request. The \code{sort} and \code{size}
 options are not valid if you specify \code{buckets}.
 \item \code{size} specifies the maximum number of facets to include in the
-results. By default, Amazon CloudSearch returns counts for the top 10.
-The \code{size} parameter is only valid when you specify the \code{sort} option;
-it cannot be used in conjunction with \code{buckets}.
+results. By default, Amazon CloudSearch returns counts for the
+top 10. The \code{size} parameter is only valid when you specify the
+\code{sort} option; it cannot be used in conjunction with \code{buckets}.
 \item \code{sort} specifies how you want to sort the facets in the results:
 \code{bucket} or \code{count}. Specify \code{bucket} to sort alphabetically or
 numerically by facet value (in ascending order). Specify \code{count} to
-sort by the facet counts computed for each facet value (in descending
-order). To retrieve facet counts for particular values or ranges of
-values, use the \code{buckets} option instead of \code{sort}.
+sort by the facet counts computed for each facet value (in
+descending order). To retrieve facet counts for particular values or
+ranges of values, use the \code{buckets} option instead of \code{sort}.
 }
 
 If no facet options are specified, facet counts are computed for all
@@ -122,8 +122,8 @@ You can specify the following highlight options:
 or \code{html}. When data is returned as HTML, all non-alphanumeric
 characters are encoded. The default is \code{html}.
 \item \code{max_phrases}: specifies the maximum number of occurrences of the
-search term(s) you want to highlight. By default, the first occurrence
-is highlighted.
+search term(s) you want to highlight. By default, the first
+occurrence is highlighted.
 \item \code{pre_tag}: specifies the string to prepend to an occurrence of a
 search term. The default for HTML highlights is \verb{&lt;em&gt;}. The
 default for text highlights is \code{*}.
@@ -171,85 +171,89 @@ parameter. You specify the options in JSON using the following form
 The options you can configure vary according to which parser you use:
 \itemize{
 \item \code{defaultOperator}: The default operator used to combine individual
-terms in the search string. For example: \code{defaultOperator: 'or'}. For
-the \code{dismax} parser, you specify a percentage that represents the
-percentage of terms in the search string (rounded down) that must
-match, rather than a default operator. A value of \verb{0\%} is the
+terms in the search string. For example: \code{defaultOperator: 'or'}.
+For the \code{dismax} parser, you specify a percentage that represents
+the percentage of terms in the search string (rounded down) that
+must match, rather than a default operator. A value of \verb{0\%} is the
 equivalent to OR, and a value of \verb{100\%} is equivalent to AND. The
-percentage must be specified as a value in the range 0-100 followed by
-the percent (\%) symbol. For example, \verb{defaultOperator: 50\%}. Valid
-values: \code{and}, \code{or}, a percentage in the range 0\%-100\% (\code{dismax}).
-Default: \code{and} (\code{simple}, \code{structured}, \code{lucene}) or \code{100} (\code{dismax}).
-Valid for: \code{simple}, \code{structured}, \code{lucene}, and \code{dismax}.
+percentage must be specified as a value in the range 0-100 followed
+by the percent (\%) symbol. For example, \verb{defaultOperator: 50\%}.
+Valid values: \code{and}, \code{or}, a percentage in the range 0\%-100\%
+(\code{dismax}). Default: \code{and} (\code{simple}, \code{structured}, \code{lucene}) or
+\code{100} (\code{dismax}). Valid for: \code{simple}, \code{structured}, \code{lucene}, and
+\code{dismax}.
 \item \code{fields}: An array of the fields to search when no fields are
-specified in a search. If no fields are specified in a search and this
-option is not specified, all text and text-array fields are searched.
-You can specify a weight for each field to control the relative
-importance of each field when Amazon CloudSearch calculates relevance
-scores. To specify a field weight, append a caret (\code{^}) symbol and the
-weight to the field name. For example, to boost the importance of the
-\code{title} field over the \code{description} field you could specify:
-\verb{"fields":["title^5","description"]}. Valid values: The name of any
-configured field and an optional numeric value greater than zero.
-Default: All \code{text} and \code{text-array} fields. Valid for: \code{simple},
-\code{structured}, \code{lucene}, and \code{dismax}.
-\item \code{operators}: An array of the operators or special characters you want
-to disable for the simple query parser. If you disable the \code{and},
-\code{or}, or \code{not} operators, the corresponding operators (\code{+}, \code{|}, \code{-})
-have no special meaning and are dropped from the search string.
-Similarly, disabling \code{prefix} disables the wildcard operator (\code{*}) and
-disabling \code{phrase} disables the ability to search for phrases by
-enclosing phrases in double quotes. Disabling precedence disables the
-ability to control order of precedence using parentheses. Disabling
-\code{near} disables the ability to use the ~ operator to perform a sloppy
-phrase search. Disabling the \code{fuzzy} operator disables the ability to
-use the ~ operator to perform a fuzzy search. \code{escape} disables the
-ability to use a backslash (\verb{\\}) to escape special characters within
-the search string. Disabling whitespace is an advanced option that
-prevents the parser from tokenizing on whitespace, which can be useful
-for Vietnamese. (It prevents Vietnamese words from being split
-incorrectly.) For example, you could disable all operators other than
-the phrase operator to support just simple term and phrase queries:
+specified in a search. If no fields are specified in a search and
+this option is not specified, all text and text-array fields are
+searched. You can specify a weight for each field to control the
+relative importance of each field when Amazon CloudSearch calculates
+relevance scores. To specify a field weight, append a caret (\code{^})
+symbol and the weight to the field name. For example, to boost the
+importance of the \code{title} field over the \code{description} field you
+could specify: \verb{"fields":["title^5","description"]}. Valid values:
+The name of any configured field and an optional numeric value
+greater than zero. Default: All \code{text} and \code{text-array} fields.
+Valid for: \code{simple}, \code{structured}, \code{lucene}, and \code{dismax}.
+\item \code{operators}: An array of the operators or special characters you
+want to disable for the simple query parser. If you disable the
+\code{and}, \code{or}, or \code{not} operators, the corresponding operators (\code{+},
+\code{|}, \code{-}) have no special meaning and are dropped from the search
+string. Similarly, disabling \code{prefix} disables the wildcard operator
+(\code{*}) and disabling \code{phrase} disables the ability to search for
+phrases by enclosing phrases in double quotes. Disabling precedence
+disables the ability to control order of precedence using
+parentheses. Disabling \code{near} disables the ability to use the ~
+operator to perform a sloppy phrase search. Disabling the \code{fuzzy}
+operator disables the ability to use the ~ operator to perform a
+fuzzy search. \code{escape} disables the ability to use a backslash (\verb{\\})
+to escape special characters within the search string. Disabling
+whitespace is an advanced option that prevents the parser from
+tokenizing on whitespace, which can be useful for Vietnamese. (It
+prevents Vietnamese words from being split incorrectly.) For
+example, you could disable all operators other than the phrase
+operator to support just simple term and phrase queries:
 \verb{"operators":["and","not","or", "prefix"]}. Valid values: \code{and},
 \code{escape}, \code{fuzzy}, \code{near}, \code{not}, \code{or}, \code{phrase}, \code{precedence},
-\code{prefix}, \code{whitespace}. Default: All operators and special characters
-are enabled. Valid for: \code{simple}.
-\item \code{phraseFields}: An array of the \code{text} or \code{text-array} fields you want
-to use for phrase searches. When the terms in the search string appear
-in close proximity within a field, the field scores higher. You can
-specify a weight for each field to boost that score. The \code{phraseSlop}
-option controls how much the matches can deviate from the search
-string and still be boosted. To specify a field weight, append a caret
-(\code{^}) symbol and the weight to the field name. For example, to boost
-phrase matches in the \code{title} field over the \code{abstract} field, you
-could specify: \verb{"phraseFields":["title^3", "plot"]} Valid values: The
-name of any \code{text} or \code{text-array} field and an optional numeric value
-greater than zero. Default: No fields. If you don't specify any fields
-with \code{phraseFields}, proximity scoring is disabled even if
-\code{phraseSlop} is specified. Valid for: \code{dismax}.
+\code{prefix}, \code{whitespace}. Default: All operators and special
+characters are enabled. Valid for: \code{simple}.
+\item \code{phraseFields}: An array of the \code{text} or \code{text-array} fields you
+want to use for phrase searches. When the terms in the search string
+appear in close proximity within a field, the field scores higher.
+You can specify a weight for each field to boost that score. The
+\code{phraseSlop} option controls how much the matches can deviate from
+the search string and still be boosted. To specify a field weight,
+append a caret (\code{^}) symbol and the weight to the field name. For
+example, to boost phrase matches in the \code{title} field over the
+\code{abstract} field, you could specify:
+\verb{"phraseFields":["title^3", "plot"]} Valid values: The name of any
+\code{text} or \code{text-array} field and an optional numeric value greater
+than zero. Default: No fields. If you don't specify any fields with
+\code{phraseFields}, proximity scoring is disabled even if \code{phraseSlop}
+is specified. Valid for: \code{dismax}.
 \item \code{phraseSlop}: An integer value that specifies how much matches can
 deviate from the search phrase and still be boosted according to the
 weights specified in the \code{phraseFields} option; for example,
 \code{phraseSlop: 2}. You must also specify \code{phraseFields} to enable
-proximity scoring. Valid values: positive integers. Default: 0. Valid
-for: \code{dismax}.
-\item \code{explicitPhraseSlop}: An integer value that specifies how much a match
-can deviate from the search phrase when the phrase is enclosed in
-double quotes in the search string. (Phrases that exceed this
+proximity scoring. Valid values: positive integers. Default: 0.
+Valid for: \code{dismax}.
+\item \code{explicitPhraseSlop}: An integer value that specifies how much a
+match can deviate from the search phrase when the phrase is enclosed
+in double quotes in the search string. (Phrases that exceed this
 proximity distance are not considered a match.) For example, to
 specify a slop of three for dismax phrase queries, you would specify
-\code{"explicitPhraseSlop":3}. Valid values: positive integers. Default: 0.
-Valid for: \code{dismax}.
+\code{"explicitPhraseSlop":3}. Valid values: positive integers.
+Default: 0. Valid for: \code{dismax}.
 \item \code{tieBreaker}: When a term in the search string is found in a
 document's field, a score is calculated for that field based on how
 common the word is in that field compared to other documents. If the
-term occurs in multiple fields within a document, by default only the
-highest scoring field contributes to the document's overall score. You
-can specify a \code{tieBreaker} value to enable the matches in
-lower-scoring fields to contribute to the document's score. That way,
-if two documents have the same max field score for a particular term,
-the score for the document that has matches in more fields will be
-higher. The formula for calculating the score with a tieBreaker is
+term occurs in multiple fields within a document, by default only
+the highest scoring field contributes to the document's overall
+score. You can specify a \code{tieBreaker} value to enable the matches in
+lower-scoring fields to contribute to the document's score. That
+way, if two documents have the same max field score for a particular
+term, the score for the document that has matches in more fields
+will be higher. The formula for calculating the score with a
+tieBreaker is
 \verb{(max field score) + (tieBreaker) * (sum of the scores for the rest of the matching fields)}.
 Set \code{tieBreaker} to 0 to disregard all but the highest scoring field
 (pure max): \code{"tieBreaker":0}. Set to 1 to sum the scores from all
@@ -266,23 +270,24 @@ Amazon CloudSearch supports four query parsers:
 \item \code{simple}: perform simple searches of \code{text} and \code{text-array} fields.
 By default, the \code{simple} query parser searches all \code{text} and
 \code{text-array} fields. You can specify which fields to search by with
-the \code{queryOptions} parameter. If you prefix a search term with a plus
-sign (+) documents must contain the term to be considered a match.
-(This is the default, unless you configure the default operator with
-the \code{queryOptions} parameter.) You can use the \code{-} (NOT), \code{|} (OR),
-and \code{*} (wildcard) operators to exclude particular terms, find results
-that match any of the specified terms, or search for a prefix. To
-search for a phrase rather than individual terms, enclose the phrase
-in double quotes. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-text.html}{Searching for Text}
+the \code{queryOptions} parameter. If you prefix a search term with a
+plus sign (+) documents must contain the term to be considered a
+match. (This is the default, unless you configure the default
+operator with the \code{queryOptions} parameter.) You can use the \code{-}
+(NOT), \code{|} (OR), and \code{*} (wildcard) operators to exclude particular
+terms, find results that match any of the specified terms, or search
+for a prefix. To search for a phrase rather than individual terms,
+enclose the phrase in double quotes. For more information, see
+\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-text.html}{Searching for Text}
 in the \emph{Amazon CloudSearch Developer Guide}.
 \item \code{structured}: perform advanced searches by combining multiple
-expressions to define the search criteria. You can also search within
-particular fields, search for values and ranges of values, and use
-advanced options such as term boosting, \code{matchall}, and \code{near}. For
-more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html}{Constructing Compound Queries}
+expressions to define the search criteria. You can also search
+within particular fields, search for values and ranges of values,
+and use advanced options such as term boosting, \code{matchall}, and
+\code{near}. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html}{Constructing Compound Queries}
 in the \emph{Amazon CloudSearch Developer Guide}.
-\item \code{lucene}: search using the Apache Lucene query parser syntax. For more
-information, see \href{https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}{Apache Lucene Query Parser Syntax}.
+\item \code{lucene}: search using the Apache Lucene query parser syntax. For
+more information, see \href{https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description}{Apache Lucene Query Parser Syntax}.
 \item \code{dismax}: search using the simplified subset of the Apache Lucene
 query parser syntax defined by the DisMax query parser. For more
 information, see \href{https://cwiki.apache.org/confluence/display/solr/DisMaxQParserPlugin#Query_Syntax}{DisMax Query Parser Syntax}.

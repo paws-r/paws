@@ -34,19 +34,19 @@ If the NumberOfLines parameter is specified, then the block of lines
 returned can be from the beginning or the end of the log file, depending
 on the value of the Marker parameter.
 \itemize{
-\item If neither Marker or NumberOfLines are specified, the entire log file
-is returned up to a maximum of 10000 lines, starting with the most
-recent log entries first.
+\item If neither Marker or NumberOfLines are specified, the entire log
+file is returned up to a maximum of 10000 lines, starting with the
+most recent log entries first.
 \item If NumberOfLines is specified and Marker isn't specified, then the
 most recent lines from the end of the log file are returned.
-\item If Marker is specified as "0", then the specified number of lines from
-the beginning of the log file are returned.
+\item If Marker is specified as "0", then the specified number of lines
+from the beginning of the log file are returned.
 \item You can download the log file in blocks of lines by specifying the
-size of the block using the NumberOfLines parameter, and by specifying
-a value of "0" for the Marker parameter in your first request. Include
-the Marker value returned in the response as the Marker value for the
-next request, continuing until the AdditionalDataPending response
-element returns false.
+size of the block using the NumberOfLines parameter, and by
+specifying a value of "0" for the Marker parameter in your first
+request. Include the Marker value returned in the response as the
+Marker value for the next request, continuing until the
+AdditionalDataPending response element returns false.
 }}
 }
 \description{

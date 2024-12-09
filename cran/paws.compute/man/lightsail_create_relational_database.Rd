@@ -99,8 +99,9 @@ Constraints:
 \item First character must be a letter.
 \item Can't be a reserved word for the chosen database engine.
 
-For more information about reserved words in MySQL 5.6 or 5.7, see the
-Keywords and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/8.4/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, or \href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 8.0}.
+For more information about reserved words in MySQL 5.6 or 5.7, see
+the Keywords and Reserved Words articles for \href{https://dev.mysql.com/doc/refman/8.4/en/keywords.html}{MySQL 5.6}, \href{https://dev.mysql.com/doc/refman/5.7/en/keywords.html}{MySQL 5.7}, or
+\href{https://dev.mysql.com/doc/refman/8.0/en/keywords.html}{MySQL 8.0}.
 }
 
 \strong{PostgreSQL}
@@ -112,8 +113,8 @@ Constraints:
 \item First character must be a letter.
 \item Can't be a reserved word for the chosen database engine.
 
-For more information about reserved words in MySQL 5.6 or 5.7, see the
-Keywords and Reserved Words articles for \href{https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html}{PostgreSQL 9.6},
+For more information about reserved words in MySQL 5.6 or 5.7, see
+the Keywords and Reserved Words articles for \href{https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html}{PostgreSQL 9.6},
 \href{https://www.postgresql.org/docs/10/sql-keywords-appendix.html}{PostgreSQL 10},
 \href{https://www.postgresql.org/docs/11/sql-keywords-appendix.html}{PostgreSQL 11},
 and \href{https://www.postgresql.org/docs/12/sql-keywords-appendix.html}{PostgreSQL 12}.

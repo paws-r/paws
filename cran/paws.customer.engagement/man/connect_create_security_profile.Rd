@@ -29,7 +29,7 @@ permissions, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/sec
 in the Amazon Resource Name (ARN) of the instance.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
+For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 
 \item{AllowedAccessControlTags}{The list of tags that a security profile uses to restrict access to
 resources in Amazon Connect.}

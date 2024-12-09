@@ -40,12 +40,12 @@ method response from the backend. The key is a method response header
 parameter name and the mapped value is an integration response header
 value, a static value enclosed within a pair of single quotes, or a JSON
 expression from the integration response body. The mapping key must
-match the pattern of method.response.header.\\name\\, where \\name\\ is
-a valid and unique header name. The mapped non-static value must match
-the pattern of integration.response.header.\\name\\ or
-integration.response.body.\\JSON-expression\\, where \\name\\ is a valid
-and unique response header name and \\JSON-expression\\ is a valid JSON
-expression without the $ prefix.}
+match the pattern of method.response.header.\{name\}, where \{name\}
+is a valid and unique header name. The mapped non-static value must
+match the pattern of integration.response.header.\{name\} or
+integration.response.body.\{JSON-expression\}, where \{name\} is a
+valid and unique response header name and \{JSON-expression\} is a
+valid JSON expression without the $ prefix.}
 
 \item{ResponseTemplates}{The collection of response templates for the integration response as a
 string-to-string map of key-value pairs. Response templates are

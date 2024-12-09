@@ -21,9 +21,9 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 
 \item{JourneyId}{[required] The unique identifier for the journey.}
 
-\item{NextToken}{The string that specifies which page of results to return in a paginated
-response. This parameter is not supported for application, campaign, and
-journey metrics.}
+\item{NextToken}{The `` string that specifies which page of results to return in a
+paginated response. This parameter is not supported for application,
+campaign, and journey metrics.}
 
 \item{PageSize}{The maximum number of items to include in each page of a paginated
 response. This parameter is not supported for application, campaign, and

@@ -17,73 +17,73 @@ NULL
 #'   SpdxLicenseId, TemplateBody, TemplateUrl)
 #'
 #' @param Author &#91;required&#93; The name of the author publishing the app.
-#' 
+#'
 #' Minimum length=1. Maximum length=127.
-#' 
+#'
 #' Pattern "^\[a-z0-9\]((\[a-z0-9\]|-(?!-))*\[a-z0-9\])?$";
 #' @param Description &#91;required&#93; The description of the application.
-#' 
+#'
 #' Minimum length=1. Maximum length=256
 #' @param HomePageUrl A URL with more information about the application, for example the
 #' location of your GitHub repository for the application.
 #' @param Labels Labels to improve discovery of apps in search results.
-#' 
+#'
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
-#' 
+#'
 #' Pattern: "^\[a-zA-Z0-9+\\-_:\\/@@\]+$";
 #' @param LicenseBody A local text file that contains the license of the app that matches the
 #' spdxLicenseID value of your application. The file has the format
 #' file://\<path\>/\<filename\>.
-#' 
+#'
 #' Maximum size 5 MB
-#' 
+#'
 #' You can specify only one of licenseBody and licenseUrl; otherwise, an
 #' error results.
 #' @param LicenseUrl A link to the S3 object that contains the license of the app that
 #' matches the spdxLicenseID value of your application.
-#' 
+#'
 #' Maximum size 5 MB
-#' 
+#'
 #' You can specify only one of licenseBody and licenseUrl; otherwise, an
 #' error results.
 #' @param Name &#91;required&#93; The name of the application that you want to publish.
-#' 
+#'
 #' Minimum length=1. Maximum length=140
-#' 
+#'
 #' Pattern: "\[a-zA-Z0-9\\-\]+";
 #' @param ReadmeBody A local text readme file in Markdown language that contains a more
 #' detailed description of the application and how it works. The file has
 #' the format file://\<path\>/\<filename\>.
-#' 
+#'
 #' Maximum size 5 MB
-#' 
+#'
 #' You can specify only one of readmeBody and readmeUrl; otherwise, an
 #' error results.
 #' @param ReadmeUrl A link to the S3 object in Markdown language that contains a more
 #' detailed description of the application and how it works.
-#' 
+#'
 #' Maximum size 5 MB
-#' 
+#'
 #' You can specify only one of readmeBody and readmeUrl; otherwise, an
 #' error results.
 #' @param SemanticVersion The semantic version of the application:
-#' 
+#'
 #' <https://semver.org/>
 #' @param SourceCodeArchiveUrl A link to the S3 object that contains the ZIP archive of the source code
 #' for this version of your application.
-#' 
+#'
 #' Maximum size 50 MB
 #' @param SourceCodeUrl A link to a public repository for the source code of your application,
 #' for example the URL of a specific GitHub commit.
 #' @param SpdxLicenseId A valid identifier from <https://spdx.org/licenses/>.
 #' @param TemplateBody The local raw packaged AWS SAM template file of your application. The
 #' file has the format file://\<path\>/\<filename\>.
-#' 
+#'
 #' You can specify only one of templateBody and templateUrl; otherwise an
 #' error results.
 #' @param TemplateUrl A link to the S3 object containing the packaged AWS SAM template of your
 #' application.
-#' 
+#'
 #' You can specify only one of templateBody and templateUrl; otherwise an
 #' error results.
 #'
@@ -175,8 +175,7 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
     http_method = "POST",
     http_path = "/applications",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$create_application_input(Author = Author, Description = Description, HomePageUrl = HomePageUrl, Labels = Labels, LicenseBody = LicenseBody, LicenseUrl = LicenseUrl, Name = Name, ReadmeBody = ReadmeBody, ReadmeUrl = ReadmeUrl, SemanticVersion = SemanticVersion, SourceCodeArchiveUrl = SourceCodeArchiveUrl, SourceCodeUrl = SourceCodeUrl, SpdxLicenseId = SpdxLicenseId, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
   output <- .serverlessapplicationrepository$create_application_output()
@@ -202,7 +201,7 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #' @param SemanticVersion &#91;required&#93; The semantic version of the new version.
 #' @param SourceCodeArchiveUrl A link to the S3 object that contains the ZIP archive of the source code
 #' for this version of your application.
-#' 
+#'
 #' Maximum size 50 MB
 #' @param SourceCodeUrl A link to a public repository for the source code of your application,
 #' for example the URL of a specific GitHub commit.
@@ -270,8 +269,7 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
     http_method = "PUT",
     http_path = "/applications/{applicationId}/versions/{semanticVersion}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$create_application_version_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion, SourceCodeArchiveUrl = SourceCodeArchiveUrl, SourceCodeUrl = SourceCodeUrl, TemplateBody = TemplateBody, TemplateUrl = TemplateUrl)
   output <- .serverlessapplicationrepository$create_application_version_output()
@@ -301,10 +299,10 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' Identity and Access Management (IAM) users. For those applications, you
 #' must explicitly acknowledge their capabilities by specifying this
 #' parameter.
-#' 
+#'
 #' The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM,
 #' CAPABILITY_RESOURCE_POLICY, and CAPABILITY_AUTO_EXPAND.
-#' 
+#'
 #' The following resources require you to specify CAPABILITY_IAM or
 #' CAPABILITY_NAMED_IAM:
 #' [AWS::IAM::Group](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html),
@@ -315,7 +313,7 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' If the application contains IAM resources, you can specify either
 #' CAPABILITY_IAM or CAPABILITY_NAMED_IAM. If the application contains IAM
 #' resources with custom names, you must specify CAPABILITY_NAMED_IAM.
-#' 
+#'
 #' The following resources require you to specify
 #' CAPABILITY_RESOURCE_POLICY:
 #' [AWS::Lambda::Permission](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html),
@@ -325,54 +323,46 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sqs-queuepolicy.html),
 #' and
 #' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topicpolicy.html).
-#' 
+#'
 #' Applications that contain one or more nested applications require you to
 #' specify CAPABILITY_AUTO_EXPAND.
-#' 
+#'
 #' If your application template contains any of the above resources, we
 #' recommend that you review all permissions associated with the
 #' application before deploying. If you don't specify this parameter for an
 #' application that requires capabilities, the call will fail.
 #' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param ClientToken This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param Description This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param NotificationArns This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param ParameterOverrides A list of parameter values for the parameters of the application.
 #' @param ResourceTypes This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param RollbackConfiguration This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param SemanticVersion The semantic version of the application:
-#' 
+#'
 #' <https://semver.org/>
 #' @param StackName &#91;required&#93; This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param Tags This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation
-#' \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
+#' CloudFormation \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateChangeSet.html}{CreateChangeSet}*
 #' API.
 #' @param TemplateId The UUID returned by CreateCloudFormationTemplate.
-#' 
+#'
 #' Pattern:
-#' \[0-9a-fA-F\]\\8\\[0-9a-fA-F\]\\4\\[0-9a-fA-F\]\\4\\[0-9a-fA-F\]\\4\\[0-9a-fA-F\]\\12\\
+#' \[0-9a-fA-F\]\{8\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{12\}
 #'
 #' @return
 #' A list with the following syntax:
@@ -439,8 +429,7 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
     http_method = "POST",
     http_path = "/applications/{applicationId}/changesets",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$create_cloud_formation_change_set_input(ApplicationId = ApplicationId, Capabilities = Capabilities, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, NotificationArns = NotificationArns, ParameterOverrides = ParameterOverrides, ResourceTypes = ResourceTypes, RollbackConfiguration = RollbackConfiguration, SemanticVersion = SemanticVersion, StackName = StackName, Tags = Tags, TemplateId = TemplateId)
   output <- .serverlessapplicationrepository$create_cloud_formation_change_set_output()
@@ -463,7 +452,7 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion The semantic version of the application:
-#' 
+#'
 #' <https://semver.org/>
 #'
 #' @return
@@ -499,8 +488,7 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
     http_method = "POST",
     http_path = "/applications/{applicationId}/templates",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$create_cloud_formation_template_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$create_cloud_formation_template_output()
@@ -543,8 +531,7 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
     http_method = "DELETE",
     http_path = "/applications/{applicationId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$delete_application_input(ApplicationId = ApplicationId)
   output <- .serverlessapplicationrepository$delete_application_output()
@@ -641,8 +628,7 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
     http_method = "GET",
     http_path = "/applications/{applicationId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$get_application_input(ApplicationId = ApplicationId, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$get_application_output()
@@ -703,8 +689,7 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
     http_method = "GET",
     http_path = "/applications/{applicationId}/policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$get_application_policy_input(ApplicationId = ApplicationId)
   output <- .serverlessapplicationrepository$get_application_policy_output()
@@ -727,9 +712,9 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param TemplateId &#91;required&#93; The UUID returned by CreateCloudFormationTemplate.
-#' 
+#'
 #' Pattern:
-#' \[0-9a-fA-F\]\\8\\[0-9a-fA-F\]\\4\\[0-9a-fA-F\]\\4\\[0-9a-fA-F\]\\4\\[0-9a-fA-F\]\\12\\
+#' \[0-9a-fA-F\]\{8\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{4\}\\-\[0-9a-fA-F\]\{12\}
 #'
 #' @return
 #' A list with the following syntax:
@@ -764,8 +749,7 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
     http_method = "GET",
     http_path = "/applications/{applicationId}/templates/{templateId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$get_cloud_formation_template_input(ApplicationId = ApplicationId, TemplateId = TemplateId)
   output <- .serverlessapplicationrepository$get_cloud_formation_template_output()
@@ -826,8 +810,7 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
     http_method = "GET",
     http_path = "/applications/{applicationId}/dependencies",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_dependencies_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$list_application_dependencies_output()
@@ -888,8 +871,7 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
     http_method = "GET",
     http_path = "/applications/{applicationId}/versions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_versions_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_application_versions_output()
@@ -953,8 +935,7 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
     http_method = "GET",
     http_path = "/applications",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_applications_input(MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_applications_output()
@@ -1034,8 +1015,7 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
     http_method = "PUT",
     http_path = "/applications/{applicationId}/policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$put_application_policy_input(ApplicationId = ApplicationId, Statements = Statements)
   output <- .serverlessapplicationrepository$put_application_policy_output()
@@ -1051,7 +1031,7 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 #'
 #' @description
 #' Unshares an application from an AWS Organization.
-#' 
+#'
 #' This operation can be called only from the organization's master
 #' account.
 #'
@@ -1084,8 +1064,7 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
     http_method = "POST",
     http_path = "/applications/{applicationId}/unshare",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$unshare_application_input(ApplicationId = ApplicationId, OrganizationId = OrganizationId)
   output <- .serverlessapplicationrepository$unshare_application_output()
@@ -1108,27 +1087,27 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param Author The name of the author publishing the app.
-#' 
+#'
 #' Minimum length=1. Maximum length=127.
-#' 
+#'
 #' Pattern "^\[a-z0-9\]((\[a-z0-9\]|-(?!-))*\[a-z0-9\])?$";
 #' @param Description The description of the application.
-#' 
+#'
 #' Minimum length=1. Maximum length=256
 #' @param HomePageUrl A URL with more information about the application, for example the
 #' location of your GitHub repository for the application.
 #' @param Labels Labels to improve discovery of apps in search results.
-#' 
+#'
 #' Minimum length=1. Maximum length=127. Maximum number of labels: 10
-#' 
+#'
 #' Pattern: "^\[a-zA-Z0-9+\\-_:\\/@@\]+$";
 #' @param ReadmeBody A text readme file in Markdown language that contains a more detailed
 #' description of the application and how it works.
-#' 
+#'
 #' Maximum size 5 MB
 #' @param ReadmeUrl A link to the readme file in Markdown language that contains a more
 #' detailed description of the application and how it works.
-#' 
+#'
 #' Maximum size 5 MB
 #'
 #' @return
@@ -1211,8 +1190,7 @@ serverlessapplicationrepository_update_application <- function(ApplicationId, Au
     http_method = "PATCH",
     http_path = "/applications/{applicationId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .serverlessapplicationrepository$update_application_input(ApplicationId = ApplicationId, Author = Author, Description = Description, HomePageUrl = HomePageUrl, Labels = Labels, ReadmeBody = ReadmeBody, ReadmeUrl = ReadmeUrl)
   output <- .serverlessapplicationrepository$update_application_output()

@@ -77,11 +77,11 @@ For more information about Resource Groups, see the \href{https://docs.aws.amazo
 Resource Groups uses a REST-compliant API that you can use to perform
 the following types of operations.
 \itemize{
-\item Create, Read, Update, and Delete (CRUD) operations on resource groups
-and resource query entities
+\item Create, Read, Update, and Delete (CRUD) operations on resource
+groups and resource query entities
 \item Applying, editing, and removing tags from resource groups
-\item Resolving resource group member ARNs so they can be returned as search
-results
+\item Resolving resource group member ARNs so they can be returned as
+search results
 \item Getting data about resources that are members of a group
 \item Searching Amazon Web Services resources based on a resource query
 }

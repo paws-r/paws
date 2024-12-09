@@ -77,27 +77,27 @@ NULL
 #' 
 #' The following throttling limits apply to Security Hub API operations.
 #' 
-#' - [`batch_enable_standards`][securityhub_batch_enable_standards] -
-#'   `RateLimit` of 1 request per second. `BurstLimit` of 1 request per
-#'   second.
+#' -   [`batch_enable_standards`][securityhub_batch_enable_standards] -
+#'     `RateLimit` of 1 request per second. `BurstLimit` of 1 request per
+#'     second.
 #' 
-#' - [`get_findings`][securityhub_get_findings] - `RateLimit` of 3 requests
-#'   per second. `BurstLimit` of 6 requests per second.
+#' -   [`get_findings`][securityhub_get_findings] - `RateLimit` of 3
+#'     requests per second. `BurstLimit` of 6 requests per second.
 #' 
-#' - [`batch_import_findings`][securityhub_batch_import_findings] -
-#'   `RateLimit` of 10 requests per second. `BurstLimit` of 30 requests per
-#'   second.
+#' -   [`batch_import_findings`][securityhub_batch_import_findings] -
+#'     `RateLimit` of 10 requests per second. `BurstLimit` of 30 requests
+#'     per second.
 #' 
-#' - [`batch_update_findings`][securityhub_batch_update_findings] -
-#'   `RateLimit` of 10 requests per second. `BurstLimit` of 30 requests per
-#'   second.
+#' -   [`batch_update_findings`][securityhub_batch_update_findings] -
+#'     `RateLimit` of 10 requests per second. `BurstLimit` of 30 requests
+#'     per second.
 #' 
-#' - [`update_standards_control`][securityhub_update_standards_control] -
-#'   `RateLimit` of 1 request per second. `BurstLimit` of 5 requests per
-#'   second.
+#' -   [`update_standards_control`][securityhub_update_standards_control] -
+#'     `RateLimit` of 1 request per second. `BurstLimit` of 5 requests per
+#'     second.
 #' 
-#' - All other operations - `RateLimit` of 10 requests per second.
-#'   `BurstLimit` of 30 requests per second.
+#' -   All other operations - `RateLimit` of 10 requests per second.
+#'     `BurstLimit` of 30 requests per second.
 #'
 #' @param
 #' config

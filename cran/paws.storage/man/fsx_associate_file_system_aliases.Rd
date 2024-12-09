@@ -21,8 +21,8 @@ DNS aliases.}
 system. The alias name has to comply with the following formatting
 requirements:
 \itemize{
-\item Formatted as a fully-qualified domain name (FQDN), \emph{hostname.domain} ,
-for example, \code{accounting.corp.example.com}.
+\item Formatted as a fully-qualified domain name (FQDN), \emph{hostname.domain}
+, for example, \code{accounting.corp.example.com}.
 \item Can contain alphanumeric characters and the hyphen (-).
 \item Cannot start or end with a hyphen.
 \item Can start with a numeric.

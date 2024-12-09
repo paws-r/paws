@@ -111,8 +111,8 @@ To call these APIs, you'll need to know:
 \itemize{
 \item the \code{controlIdentifier} for the control--or guardrail--you are
 targeting.
-\item the ARN associated with the target organizational unit (OU), which we
-call the \code{targetIdentifier}.
+\item the ARN associated with the target organizational unit (OU), which
+we call the \code{targetIdentifier}.
 \item the ARN associated with a resource that you wish to tag or untag.
 }
 
@@ -204,15 +204,15 @@ be called by specifying either the Amazon Web Services Control Tower
 identifer or the Amazon Web Services Control Catalog identifier. The
 API response returns the same type of identifier that you specified
 when calling the API.
-\item If you use an Amazon Web Services Control Tower identifier to call the
-\code{\link[=controltower_enable_control]{enable_control}} API, and then call
-\code{\link[=controltower_enable_control]{enable_control}} again with an Amazon
-Web Services Control Catalog identifier, Amazon Web Services Control
-Tower returns an error message stating that the control is already
-enabled. Similar behavior applies to the
+\item If you use an Amazon Web Services Control Tower identifier to call
+the \code{\link[=controltower_enable_control]{enable_control}} API, and then
+call \code{\link[=controltower_enable_control]{enable_control}} again with an
+Amazon Web Services Control Catalog identifier, Amazon Web Services
+Control Tower returns an error message stating that the control is
+already enabled. Similar behavior applies to the
 \code{\link[=controltower_disable_control]{disable_control}} API operation.
-\item Mandatory controls and the landing-zone-level Region deny control have
-Amazon Web Services Control Tower identifiers only.
+\item Mandatory controls and the landing-zone-level Region deny control
+have Amazon Web Services Control Tower identifiers only.
 }
 
 \strong{Details and examples}

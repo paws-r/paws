@@ -89,8 +89,8 @@ following occurs:
 \item If the snapshot or cluster snapshot in \code{SnapshotIdentifier} is
 encrypted, then the restored cluster is encrypted using the KMS key
 that was used to encrypt the snapshot or the cluster snapshot.
-\item If the snapshot or the cluster snapshot in \code{SnapshotIdentifier} is not
-encrypted, then the restored DB cluster is not encrypted.
+\item If the snapshot or the cluster snapshot in \code{SnapshotIdentifier} is
+not encrypted, then the restored DB cluster is not encrypted.
 }}
 
 \item{EnableCloudwatchLogsExports}{A list of log types that must be enabled for exporting to Amazon

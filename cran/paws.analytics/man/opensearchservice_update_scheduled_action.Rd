@@ -28,15 +28,15 @@ request.}
 
 \item{ScheduleAt}{[required] When to schedule the action.
 \itemize{
-\item \code{NOW} - Immediately schedules the update to happen in the current hour
-if there's capacity available.
+\item \code{NOW} - Immediately schedules the update to happen in the current
+hour if there's capacity available.
 \item \code{TIMESTAMP} - Lets you specify a custom date and time to apply the
 update. If you specify this value, you must also provide a value for
 \code{DesiredStartTime}.
 \item \code{OFF_PEAK_WINDOW} - Marks the action to be picked up during an
-upcoming off-peak window. There's no guarantee that the change will be
-implemented during the next immediate window. Depending on capacity,
-it might happen in subsequent days.
+upcoming off-peak window. There's no guarantee that the change will
+be implemented during the next immediate window. Depending on
+capacity, it might happen in subsequent days.
 }}
 
 \item{DesiredStartTime}{The time to implement the change, in Coordinated Universal Time (UTC).

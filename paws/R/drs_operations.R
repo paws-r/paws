@@ -98,8 +98,7 @@ drs_associate_source_network_stack <- function(cfnStackName, sourceNetworkID) {
     http_method = "POST",
     http_path = "/AssociateSourceNetworkStack",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$associate_source_network_stack_input(cfnStackName = cfnStackName, sourceNetworkID = sourceNetworkID)
   output <- .drs$associate_source_network_stack_output()
@@ -259,8 +258,7 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
     http_method = "POST",
     http_path = "/CreateExtendedSourceServer",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$create_extended_source_server_input(sourceServerArn = sourceServerArn, tags = tags)
   output <- .drs$create_extended_source_server_output()
@@ -349,8 +347,7 @@ drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
     http_method = "POST",
     http_path = "/CreateLaunchConfigurationTemplate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchDisposition = launchDisposition, launchIntoSourceInstance = launchIntoSourceInstance, licensing = licensing, postLaunchEnabled = postLaunchEnabled, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$create_launch_configuration_template_output()
@@ -484,8 +481,7 @@ drs_create_replication_configuration_template <- function(associateDefaultSecuri
     http_method = "POST",
     http_path = "/CreateReplicationConfigurationTemplate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$create_replication_configuration_template_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, tags = tags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$create_replication_configuration_template_output()
@@ -541,8 +537,7 @@ drs_create_source_network <- function(originAccountID, originRegion, tags = NULL
     http_method = "POST",
     http_path = "/CreateSourceNetwork",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$create_source_network_input(originAccountID = originAccountID, originRegion = originRegion, tags = tags, vpcID = vpcID)
   output <- .drs$create_source_network_output()
@@ -585,8 +580,7 @@ drs_delete_job <- function(jobID) {
     http_method = "POST",
     http_path = "/DeleteJob",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$delete_job_input(jobID = jobID)
   output <- .drs$delete_job_output()
@@ -631,8 +625,7 @@ drs_delete_launch_action <- function(actionId, resourceId) {
     http_method = "POST",
     http_path = "/DeleteLaunchAction",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$delete_launch_action_input(actionId = actionId, resourceId = resourceId)
   output <- .drs$delete_launch_action_output()
@@ -675,8 +668,7 @@ drs_delete_launch_configuration_template <- function(launchConfigurationTemplate
     http_method = "POST",
     http_path = "/DeleteLaunchConfigurationTemplate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$delete_launch_configuration_template_input(launchConfigurationTemplateID = launchConfigurationTemplateID)
   output <- .drs$delete_launch_configuration_template_output()
@@ -721,8 +713,7 @@ drs_delete_recovery_instance <- function(recoveryInstanceID) {
     http_method = "POST",
     http_path = "/DeleteRecoveryInstance",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$delete_recovery_instance_input(recoveryInstanceID = recoveryInstanceID)
   output <- .drs$delete_recovery_instance_output()
@@ -766,8 +757,7 @@ drs_delete_replication_configuration_template <- function(replicationConfigurati
     http_method = "POST",
     http_path = "/DeleteReplicationConfigurationTemplate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$delete_replication_configuration_template_input(replicationConfigurationTemplateID = replicationConfigurationTemplateID)
   output <- .drs$delete_replication_configuration_template_output()
@@ -810,8 +800,7 @@ drs_delete_source_network <- function(sourceNetworkID) {
     http_method = "POST",
     http_path = "/DeleteSourceNetwork",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$delete_source_network_input(sourceNetworkID = sourceNetworkID)
   output <- .drs$delete_source_network_output()
@@ -855,8 +844,7 @@ drs_delete_source_server <- function(sourceServerID) {
     http_method = "POST",
     http_path = "/DeleteSourceServer",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$delete_source_server_input(sourceServerID = sourceServerID)
   output <- .drs$delete_source_server_output()
@@ -949,8 +937,7 @@ drs_describe_job_log_items <- function(jobID, maxResults = NULL, nextToken = NUL
     http_method = "POST",
     http_path = "/DescribeJobLogItems",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_job_log_items_input(jobID = jobID, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_job_log_items_output()
@@ -1071,8 +1058,7 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
     http_method = "POST",
     http_path = "/DescribeJobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_jobs_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_jobs_output()
@@ -1149,8 +1135,7 @@ drs_describe_launch_configuration_templates <- function(launchConfigurationTempl
     http_method = "POST",
     http_path = "/DescribeLaunchConfigurationTemplates",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_launch_configuration_templates_input(launchConfigurationTemplateIDs = launchConfigurationTemplateIDs, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_launch_configuration_templates_output()
@@ -1304,8 +1289,7 @@ drs_describe_recovery_instances <- function(filters = NULL, maxResults = NULL, n
     http_method = "POST",
     http_path = "/DescribeRecoveryInstances",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_recovery_instances_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_recovery_instances_output()
@@ -1376,8 +1360,7 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
     http_method = "POST",
     http_path = "/DescribeRecoverySnapshots",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_recovery_snapshots_input(filters = filters, maxResults = maxResults, nextToken = nextToken, order = order, sourceServerID = sourceServerID)
   output <- .drs$describe_recovery_snapshots_output()
@@ -1470,8 +1453,7 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
     http_method = "POST",
     http_path = "/DescribeReplicationConfigurationTemplates",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_replication_configuration_templates_input(maxResults = maxResults, nextToken = nextToken, replicationConfigurationTemplateIDs = replicationConfigurationTemplateIDs)
   output <- .drs$describe_replication_configuration_templates_output()
@@ -1552,8 +1534,7 @@ drs_describe_source_networks <- function(filters = NULL, maxResults = NULL, next
     http_method = "POST",
     http_path = "/DescribeSourceNetworks",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_source_networks_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_source_networks_output()
@@ -1721,8 +1702,7 @@ drs_describe_source_servers <- function(filters = NULL, maxResults = NULL, nextT
     http_method = "POST",
     http_path = "/DescribeSourceServers",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_source_servers_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_source_servers_output()
@@ -1777,8 +1757,7 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
     http_method = "POST",
     http_path = "/DisconnectRecoveryInstance",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$disconnect_recovery_instance_input(recoveryInstanceID = recoveryInstanceID)
   output <- .drs$disconnect_recovery_instance_output()
@@ -1942,8 +1921,7 @@ drs_disconnect_source_server <- function(sourceServerID) {
     http_method = "POST",
     http_path = "/DisconnectSourceServer",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$disconnect_source_server_input(sourceServerID = sourceServerID)
   output <- .drs$disconnect_source_server_output()
@@ -1992,8 +1970,7 @@ drs_export_source_network_cfn_template <- function(sourceNetworkID) {
     http_method = "POST",
     http_path = "/ExportSourceNetworkCfnTemplate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$export_source_network_cfn_template_input(sourceNetworkID = sourceNetworkID)
   output <- .drs$export_source_network_cfn_template_output()
@@ -2047,8 +2024,7 @@ drs_get_failback_replication_configuration <- function(recoveryInstanceID) {
     http_method = "POST",
     http_path = "/GetFailbackReplicationConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$get_failback_replication_configuration_input(recoveryInstanceID = recoveryInstanceID)
   output <- .drs$get_failback_replication_configuration_output()
@@ -2110,8 +2086,7 @@ drs_get_launch_configuration <- function(sourceServerID) {
     http_method = "POST",
     http_path = "/GetLaunchConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$get_launch_configuration_input(sourceServerID = sourceServerID)
   output <- .drs$get_launch_configuration_output()
@@ -2196,8 +2171,7 @@ drs_get_replication_configuration <- function(sourceServerID) {
     http_method = "POST",
     http_path = "/GetReplicationConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$get_replication_configuration_input(sourceServerID = sourceServerID)
   output <- .drs$get_replication_configuration_output()
@@ -2238,8 +2212,7 @@ drs_initialize_service <- function() {
     http_method = "POST",
     http_path = "/InitializeService",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$initialize_service_input()
   output <- .drs$initialize_service_output()
@@ -2306,8 +2279,7 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
     http_method = "POST",
     http_path = "/ListExtensibleSourceServers",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$list_extensible_source_servers_input(maxResults = maxResults, nextToken = nextToken, stagingAccountID = stagingAccountID)
   output <- .drs$list_extensible_source_servers_output()
@@ -2385,8 +2357,7 @@ drs_list_launch_actions <- function(filters = NULL, maxResults = NULL, nextToken
     http_method = "POST",
     http_path = "/ListLaunchActions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$list_launch_actions_input(filters = filters, maxResults = maxResults, nextToken = nextToken, resourceId = resourceId)
   output <- .drs$list_launch_actions_output()
@@ -2443,8 +2414,7 @@ drs_list_staging_accounts <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/ListStagingAccounts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accounts"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accounts")
   )
   input <- .drs$list_staging_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .drs$list_staging_accounts_output()
@@ -2494,8 +2464,7 @@ drs_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .drs$list_tags_for_resource_output()
@@ -2585,8 +2554,7 @@ drs_put_launch_action <- function(actionCode, actionId, actionVersion, active, c
     http_method = "POST",
     http_path = "/PutLaunchAction",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$put_launch_action_input(actionCode = actionCode, actionId = actionId, actionVersion = actionVersion, active = active, category = category, description = description, name = name, optional = optional, order = order, parameters = parameters, resourceId = resourceId)
   output <- .drs$put_launch_action_output()
@@ -2741,8 +2709,7 @@ drs_retry_data_replication <- function(sourceServerID) {
     http_method = "POST",
     http_path = "/RetryDataReplication",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$retry_data_replication_input(sourceServerID = sourceServerID)
   output <- .drs$retry_data_replication_output()
@@ -2796,8 +2763,7 @@ drs_reverse_replication <- function(recoveryInstanceID) {
     http_method = "POST",
     http_path = "/ReverseReplication",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$reverse_replication_input(recoveryInstanceID = recoveryInstanceID)
   output <- .drs$reverse_replication_output()
@@ -2910,8 +2876,7 @@ drs_start_failback_launch <- function(recoveryInstanceIDs, tags = NULL) {
     http_method = "POST",
     http_path = "/StartFailbackLaunch",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$start_failback_launch_input(recoveryInstanceIDs = recoveryInstanceIDs, tags = tags)
   output <- .drs$start_failback_launch_output()
@@ -3026,8 +2991,7 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
     http_method = "POST",
     http_path = "/StartRecovery",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$start_recovery_input(isDrill = isDrill, sourceServers = sourceServers, tags = tags)
   output <- .drs$start_recovery_output()
@@ -3181,8 +3145,7 @@ drs_start_replication <- function(sourceServerID) {
     http_method = "POST",
     http_path = "/StartReplication",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$start_replication_input(sourceServerID = sourceServerID)
   output <- .drs$start_replication_output()
@@ -3299,8 +3262,7 @@ drs_start_source_network_recovery <- function(deployAsNew = NULL, sourceNetworks
     http_method = "POST",
     http_path = "/StartSourceNetworkRecovery",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$start_source_network_recovery_input(deployAsNew = deployAsNew, sourceNetworks = sourceNetworks, tags = tags)
   output <- .drs$start_source_network_recovery_output()
@@ -3369,8 +3331,7 @@ drs_start_source_network_replication <- function(sourceNetworkID) {
     http_method = "POST",
     http_path = "/StartSourceNetworkReplication",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$start_source_network_replication_input(sourceNetworkID = sourceNetworkID)
   output <- .drs$start_source_network_replication_output()
@@ -3415,8 +3376,7 @@ drs_stop_failback <- function(recoveryInstanceID) {
     http_method = "POST",
     http_path = "/StopFailback",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$stop_failback_input(recoveryInstanceID = recoveryInstanceID)
   output <- .drs$stop_failback_output()
@@ -3571,8 +3531,7 @@ drs_stop_replication <- function(sourceServerID) {
     http_method = "POST",
     http_path = "/StopReplication",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$stop_replication_input(sourceServerID = sourceServerID)
   output <- .drs$stop_replication_output()
@@ -3641,8 +3600,7 @@ drs_stop_source_network_replication <- function(sourceNetworkID) {
     http_method = "POST",
     http_path = "/StopSourceNetworkReplication",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$stop_source_network_replication_input(sourceNetworkID = sourceNetworkID)
   output <- .drs$stop_source_network_replication_output()
@@ -3694,8 +3652,7 @@ drs_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .drs$tag_resource_output()
@@ -3803,8 +3760,7 @@ drs_terminate_recovery_instances <- function(recoveryInstanceIDs) {
     http_method = "POST",
     http_path = "/TerminateRecoveryInstances",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$terminate_recovery_instances_input(recoveryInstanceIDs = recoveryInstanceIDs)
   output <- .drs$terminate_recovery_instances_output()
@@ -3853,8 +3809,7 @@ drs_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .drs$untag_resource_output()
@@ -3908,8 +3863,7 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
     http_method = "POST",
     http_path = "/UpdateFailbackReplicationConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$update_failback_replication_configuration_input(bandwidthThrottling = bandwidthThrottling, name = name, recoveryInstanceID = recoveryInstanceID, usePrivateIP = usePrivateIP)
   output <- .drs$update_failback_replication_configuration_output()
@@ -3997,8 +3951,7 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
     http_method = "POST",
     http_path = "/UpdateLaunchConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$update_launch_configuration_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, launchIntoInstanceProperties = launchIntoInstanceProperties, licensing = licensing, name = name, postLaunchEnabled = postLaunchEnabled, sourceServerID = sourceServerID, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$update_launch_configuration_output()
@@ -4085,8 +4038,7 @@ drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
     http_method = "POST",
     http_path = "/UpdateLaunchConfigurationTemplate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, launchIntoSourceInstance = launchIntoSourceInstance, licensing = licensing, postLaunchEnabled = postLaunchEnabled, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$update_launch_configuration_template_output()
@@ -4237,8 +4189,7 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
     http_method = "POST",
     http_path = "/UpdateReplicationConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$update_replication_configuration_input(associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, name = name, pitPolicy = pitPolicy, replicatedDisks = replicatedDisks, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, sourceServerID = sourceServerID, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$update_replication_configuration_output()
@@ -4371,8 +4322,7 @@ drs_update_replication_configuration_template <- function(arn = NULL, associateD
     http_method = "POST",
     http_path = "/UpdateReplicationConfigurationTemplate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .drs$update_replication_configuration_template_input(arn = arn, associateDefaultSecurityGroup = associateDefaultSecurityGroup, autoReplicateNewDisks = autoReplicateNewDisks, bandwidthThrottling = bandwidthThrottling, createPublicIP = createPublicIP, dataPlaneRouting = dataPlaneRouting, defaultLargeStagingDiskType = defaultLargeStagingDiskType, ebsEncryption = ebsEncryption, ebsEncryptionKeyArn = ebsEncryptionKeyArn, pitPolicy = pitPolicy, replicationConfigurationTemplateID = replicationConfigurationTemplateID, replicationServerInstanceType = replicationServerInstanceType, replicationServersSecurityGroupsIDs = replicationServersSecurityGroupsIDs, stagingAreaSubnetId = stagingAreaSubnetId, stagingAreaTags = stagingAreaTags, useDedicatedReplicationServer = useDedicatedReplicationServer)
   output <- .drs$update_replication_configuration_template_output()

@@ -46,8 +46,7 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$add_tags_to_on_premises_instances_input(tags = tags, instanceNames = instanceNames)
   output <- .codedeploy$add_tags_to_on_premises_instances_output()
@@ -166,8 +165,7 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$batch_get_application_revisions_input(applicationName = applicationName, revisions = revisions)
   output <- .codedeploy$batch_get_application_revisions_output()
@@ -230,8 +228,7 @@ codedeploy_batch_get_applications <- function(applicationNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$batch_get_applications_input(applicationNames = applicationNames)
   output <- .codedeploy$batch_get_applications_output()
@@ -460,8 +457,7 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$batch_get_deployment_groups_input(applicationName = applicationName, deploymentGroupNames = deploymentGroupNames)
   output <- .codedeploy$batch_get_deployment_groups_output()
@@ -552,8 +548,7 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$batch_get_deployment_instances_input(deploymentId = deploymentId, instanceIds = instanceIds)
   output <- .codedeploy$batch_get_deployment_instances_output()
@@ -577,14 +572,14 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' The type of targets returned depends on the deployment's compute
 #' platform or deployment method:
 #' 
-#' - **EC2/On-premises**: Information about Amazon EC2 instance targets.
+#' -   **EC2/On-premises**: Information about Amazon EC2 instance targets.
 #' 
-#' - **Lambda**: Information about Lambda functions targets.
+#' -   **Lambda**: Information about Lambda functions targets.
 #' 
-#' - **Amazon ECS**: Information about Amazon ECS service targets.
+#' -   **Amazon ECS**: Information about Amazon ECS service targets.
 #' 
-#' - **CloudFormation**: Information about targets of blue/green
-#'   deployments initiated by a CloudFormation stack update.
+#' -   **CloudFormation**: Information about targets of blue/green
+#'     deployments initiated by a CloudFormation stack update.
 #'
 #' @usage
 #' codedeploy_batch_get_deployment_targets(deploymentId, targetIds)
@@ -594,22 +589,22 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 #' deployment determines the type of the targets and their formats. The
 #' maximum number of deployment target IDs you can specify is 25.
 #' 
-#' - For deployments that use the EC2/On-premises compute platform, the
-#'   target IDs are Amazon EC2 or on-premises instances IDs, and their
-#'   target type is `instanceTarget`.
+#' -   For deployments that use the EC2/On-premises compute platform, the
+#'     target IDs are Amazon EC2 or on-premises instances IDs, and their
+#'     target type is `instanceTarget`.
 #' 
-#' - For deployments that use the Lambda compute platform, the target IDs
-#'   are the names of Lambda functions, and their target type is
-#'   `instanceTarget`.
+#' -   For deployments that use the Lambda compute platform, the target IDs
+#'     are the names of Lambda functions, and their target type is
+#'     `instanceTarget`.
 #' 
-#' - For deployments that use the Amazon ECS compute platform, the target
-#'   IDs are pairs of Amazon ECS clusters and services specified using the
-#'   format `<clustername>:<servicename>`. Their target type is
-#'   `ecsTarget`.
+#' -   For deployments that use the Amazon ECS compute platform, the target
+#'     IDs are pairs of Amazon ECS clusters and services specified using
+#'     the format `<clustername>:<servicename>`. Their target type is
+#'     `ecsTarget`.
 #' 
-#' - For deployments that are deployed with CloudFormation, the target IDs
-#'   are CloudFormation stack IDs. Their target type is
-#'   `cloudFormationTarget`.
+#' -   For deployments that are deployed with CloudFormation, the target
+#'     IDs are CloudFormation stack IDs. Their target type is
+#'     `cloudFormationTarget`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -775,8 +770,7 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId, targetIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$batch_get_deployment_targets_input(deploymentId = deploymentId, targetIds = targetIds)
   output <- .codedeploy$batch_get_deployment_targets_output()
@@ -1010,8 +1004,7 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$batch_get_deployments_input(deploymentIds = deploymentIds)
   output <- .codedeploy$batch_get_deployments_output()
@@ -1082,8 +1075,7 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$batch_get_on_premises_instances_input(instanceNames = instanceNames)
   output <- .codedeploy$batch_get_on_premises_instances_output()
@@ -1140,8 +1132,7 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$continue_deployment_input(deploymentId = deploymentId, deploymentWaitType = deploymentWaitType)
   output <- .codedeploy$continue_deployment_output()
@@ -1202,8 +1193,7 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$create_application_input(applicationName = applicationName, computePlatform = computePlatform, tags = tags)
   output <- .codedeploy$create_application_output()
@@ -1277,14 +1267,15 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #' 
 #' The `fileExistsBehavior` parameter takes any of the following values:
 #' 
-#' - DISALLOW: The deployment fails. This is also the default behavior if
-#'   no option is specified.
+#' -   DISALLOW: The deployment fails. This is also the default behavior if
+#'     no option is specified.
 #' 
-#' - OVERWRITE: The version of the file from the application revision
-#'   currently being deployed replaces the version already on the instance.
+#' -   OVERWRITE: The version of the file from the application revision
+#'     currently being deployed replaces the version already on the
+#'     instance.
 #' 
-#' - RETAIN: The version of the file already on the instance is kept and
-#'   used as part of the new deployment.
+#' -   RETAIN: The version of the file already on the instance is kept and
+#'     used as part of the new deployment.
 #' @param overrideAlarmConfiguration Allows you to specify information about alarms associated with a
 #' deployment. The alarm configuration that you specify here will override
 #' the alarm configuration at the deployment group level. Consider
@@ -1394,8 +1385,7 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$create_deployment_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, revision = revision, deploymentConfigName = deploymentConfigName, description = description, ignoreApplicationStopFailures = ignoreApplicationStopFailures, targetInstances = targetInstances, autoRollbackConfiguration = autoRollbackConfiguration, updateOutdatedInstancesOnly = updateOutdatedInstancesOnly, fileExistsBehavior = fileExistsBehavior, overrideAlarmConfiguration = overrideAlarmConfiguration)
   output <- .codedeploy$create_deployment_output()
@@ -1423,14 +1413,14 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' 
 #' The type parameter takes either of the following values:
 #' 
-#' - HOST_COUNT: The value parameter represents the minimum number of
-#'   healthy instances as an absolute value.
+#' -   HOST_COUNT: The value parameter represents the minimum number of
+#'     healthy instances as an absolute value.
 #' 
-#' - FLEET_PERCENT: The value parameter represents the minimum number of
-#'   healthy instances as a percentage of the total number of instances in
-#'   the deployment. If you specify FLEET_PERCENT, at the start of the
-#'   deployment, CodeDeploy converts the percentage to the equivalent
-#'   number of instances and rounds up fractional instances.
+#' -   FLEET_PERCENT: The value parameter represents the minimum number of
+#'     healthy instances as a percentage of the total number of instances
+#'     in the deployment. If you specify FLEET_PERCENT, at the start of the
+#'     deployment, CodeDeploy converts the percentage to the equivalent
+#'     number of instances and rounds up fractional instances.
 #' 
 #' The value parameter takes an integer.
 #' 
@@ -1498,8 +1488,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$create_deployment_config_input(deploymentConfigName = deploymentConfigName, minimumHealthyHosts = minimumHealthyHosts, trafficRoutingConfig = trafficRoutingConfig, computePlatform = computePlatform, zonalConfig = zonalConfig)
   output <- .codedeploy$create_deployment_config_output()
@@ -1761,8 +1750,7 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$create_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, tags = tags, terminationHookEnabled = terminationHookEnabled)
   output <- .codedeploy$create_deployment_group_output()
@@ -1806,8 +1794,7 @@ codedeploy_delete_application <- function(applicationName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$delete_application_input(applicationName = applicationName)
   output <- .codedeploy$delete_application_output()
@@ -1854,8 +1841,7 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$delete_deployment_config_input(deploymentConfigName = deploymentConfigName)
   output <- .codedeploy$delete_deployment_config_output()
@@ -1912,8 +1898,7 @@ codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$delete_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName)
   output <- .codedeploy$delete_deployment_group_output()
@@ -1961,8 +1946,7 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$delete_git_hub_account_token_input(tokenName = tokenName)
   output <- .codedeploy$delete_git_hub_account_token_output()
@@ -2012,8 +1996,7 @@ codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$delete_resources_by_external_id_input(externalId = externalId)
   output <- .codedeploy$delete_resources_by_external_id_output()
@@ -2056,8 +2039,7 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$deregister_on_premises_instance_input(instanceName = instanceName)
   output <- .codedeploy$deregister_on_premises_instance_output()
@@ -2115,8 +2097,7 @@ codedeploy_get_application <- function(applicationName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$get_application_input(applicationName = applicationName)
   output <- .codedeploy$get_application_output()
@@ -2225,8 +2206,7 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$get_application_revision_input(applicationName = applicationName, revision = revision)
   output <- .codedeploy$get_application_revision_output()
@@ -2461,8 +2441,7 @@ codedeploy_get_deployment <- function(deploymentId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$get_deployment_input(deploymentId = deploymentId)
   output <- .codedeploy$get_deployment_output()
@@ -2541,8 +2520,7 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$get_deployment_config_input(deploymentConfigName = deploymentConfigName)
   output <- .codedeploy$get_deployment_config_output()
@@ -2765,8 +2743,7 @@ codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$get_deployment_group_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName)
   output <- .codedeploy$get_deployment_group_output()
@@ -2842,8 +2819,7 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$get_deployment_instance_input(deploymentId = deploymentId, instanceId = instanceId)
   output <- .codedeploy$get_deployment_instance_output()
@@ -3026,8 +3002,7 @@ codedeploy_get_deployment_target <- function(deploymentId, targetId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$get_deployment_target_input(deploymentId = deploymentId, targetId = targetId)
   output <- .codedeploy$get_deployment_target_output()
@@ -3092,8 +3067,7 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$get_on_premises_instance_input(instanceName = instanceName)
   output <- .codedeploy$get_on_premises_instance_output()
@@ -3118,22 +3092,22 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' Web Services account.
 #' @param sortBy The column name to use to sort the list results:
 #' 
-#' - `registerTime`: Sort by the time the revisions were registered with
-#'   CodeDeploy.
+#' -   `registerTime`: Sort by the time the revisions were registered with
+#'     CodeDeploy.
 #' 
-#' - `firstUsedTime`: Sort by the time the revisions were first used in a
-#'   deployment.
+#' -   `firstUsedTime`: Sort by the time the revisions were first used in a
+#'     deployment.
 #' 
-#' - `lastUsedTime`: Sort by the time the revisions were last used in a
-#'   deployment.
+#' -   `lastUsedTime`: Sort by the time the revisions were last used in a
+#'     deployment.
 #' 
 #' If not specified or set to null, the results are returned in an
 #' arbitrary order.
 #' @param sortOrder The order in which to sort the list results:
 #' 
-#' - `ascending`: ascending order.
+#' -   `ascending`: ascending order.
 #' 
-#' - `descending`: descending order.
+#' -   `descending`: descending order.
 #' 
 #' If not specified, the results are sorted in ascending order.
 #' 
@@ -3146,13 +3120,13 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' @param deployed Whether to list revisions based on whether the revision is the target
 #' revision of a deployment group:
 #' 
-#' - `include`: List revisions that are target revisions of a deployment
-#'   group.
+#' -   `include`: List revisions that are target revisions of a deployment
+#'     group.
 #' 
-#' - `exclude`: Do not list revisions that are target revisions of a
-#'   deployment group.
+#' -   `exclude`: Do not list revisions that are target revisions of a
+#'     deployment group.
 #' 
-#' - `ignore`: List all revisions.
+#' -   `ignore`: List all revisions.
 #' @param nextToken An identifier returned from the previous
 #' [`list_application_revisions`][codedeploy_list_application_revisions]
 #' call. It can be used to return the next set of applications in the list.
@@ -3213,8 +3187,7 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "revisions"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "revisions")
   )
   input <- .codedeploy$list_application_revisions_input(applicationName = applicationName, sortBy = sortBy, sortOrder = sortOrder, s3Bucket = s3Bucket, s3KeyPrefix = s3KeyPrefix, deployed = deployed, nextToken = nextToken)
   output <- .codedeploy$list_application_revisions_output()
@@ -3268,8 +3241,7 @@ codedeploy_list_applications <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "applications"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "applications")
   )
   input <- .codedeploy$list_applications_input(nextToken = nextToken)
   output <- .codedeploy$list_applications_output()
@@ -3325,8 +3297,7 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentConfigsList"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentConfigsList")
   )
   input <- .codedeploy$list_deployment_configs_input(nextToken = nextToken)
   output <- .codedeploy$list_deployment_configs_output()
@@ -3384,8 +3355,7 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentGroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deploymentGroups")
   )
   input <- .codedeploy$list_deployment_groups_input(applicationName = applicationName, nextToken = nextToken)
   output <- .codedeploy$list_deployment_groups_output()
@@ -3421,19 +3391,19 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' list.
 #' @param instanceStatusFilter A subset of instances to list by status:
 #' 
-#' - `Pending`: Include those instances with pending deployments.
+#' -   `Pending`: Include those instances with pending deployments.
 #' 
-#' - `InProgress`: Include those instances where deployments are still in
-#'   progress.
+#' -   `InProgress`: Include those instances where deployments are still in
+#'     progress.
 #' 
-#' - `Succeeded`: Include those instances with successful deployments.
+#' -   `Succeeded`: Include those instances with successful deployments.
 #' 
-#' - `Failed`: Include those instances with failed deployments.
+#' -   `Failed`: Include those instances with failed deployments.
 #' 
-#' - `Skipped`: Include those instances with skipped deployments.
+#' -   `Skipped`: Include those instances with skipped deployments.
 #' 
-#' - `Unknown`: Include those instances with deployments in an unknown
-#'   state.
+#' -   `Unknown`: Include those instances with deployments in an unknown
+#'     state.
 #' @param instanceTypeFilter The set of instances in a blue/green deployment, either those in the
 #' original environment ("BLUE") or those in the replacement environment
 #' ("GREEN"), for which you want to view instance information.
@@ -3474,8 +3444,7 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "instancesList"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "instancesList")
   )
   input <- .codedeploy$list_deployment_instances_input(deploymentId = deploymentId, nextToken = nextToken, instanceStatusFilter = instanceStatusFilter, instanceTypeFilter = instanceTypeFilter)
   output <- .codedeploy$list_deployment_instances_output()
@@ -3502,12 +3471,12 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 #' can be used to return the next set of deployment targets in the list.
 #' @param targetFilters A key used to filter the returned targets. The two valid values are:
 #' 
-#' - `TargetStatus` - A `TargetStatus` filter string can be `Failed`,
-#'   `InProgress`, `Pending`, `Ready`, `Skipped`, `Succeeded`, or
-#'   `Unknown`.
+#' -   `TargetStatus` - A `TargetStatus` filter string can be `Failed`,
+#'     `InProgress`, `Pending`, `Ready`, `Skipped`, `Succeeded`, or
+#'     `Unknown`.
 #' 
-#' - `ServerInstanceLabel` - A `ServerInstanceLabel` filter string can be
-#'   `Blue` or `Green`.
+#' -   `ServerInstanceLabel` - A `ServerInstanceLabel` filter string can be
+#'     `Blue` or `Green`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3544,8 +3513,7 @@ codedeploy_list_deployment_targets <- function(deploymentId, nextToken = NULL, t
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$list_deployment_targets_input(deploymentId = deploymentId, nextToken = nextToken, targetFilters = targetFilters)
   output <- .codedeploy$list_deployment_targets_output()
@@ -3583,17 +3551,18 @@ codedeploy_list_deployment_targets <- function(deploymentId, nextToken = NULL, t
 #' to the external resource.
 #' @param includeOnlyStatuses A subset of deployments to list by status:
 #' 
-#' - `Created`: Include created deployments in the resulting list.
+#' -   `Created`: Include created deployments in the resulting list.
 #' 
-#' - `Queued`: Include queued deployments in the resulting list.
+#' -   `Queued`: Include queued deployments in the resulting list.
 #' 
-#' - `In Progress`: Include in-progress deployments in the resulting list.
+#' -   `In Progress`: Include in-progress deployments in the resulting
+#'     list.
 #' 
-#' - `Succeeded`: Include successful deployments in the resulting list.
+#' -   `Succeeded`: Include successful deployments in the resulting list.
 #' 
-#' - `Failed`: Include failed deployments in the resulting list.
+#' -   `Failed`: Include failed deployments in the resulting list.
 #' 
-#' - `Stopped`: Include stopped deployments in the resulting list.
+#' -   `Stopped`: Include stopped deployments in the resulting list.
 #' @param createTimeRange A time range (start and end) for returning a subset of the list of
 #' deployments.
 #' @param nextToken An identifier returned from the previous list deployments call. It can
@@ -3642,8 +3611,7 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deployments"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "deployments")
   )
   input <- .codedeploy$list_deployments_input(applicationName = applicationName, deploymentGroupName = deploymentGroupName, externalId = externalId, includeOnlyStatuses = includeOnlyStatuses, createTimeRange = createTimeRange, nextToken = nextToken)
   output <- .codedeploy$list_deployments_output()
@@ -3696,8 +3664,7 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$list_git_hub_account_token_names_input(nextToken = nextToken)
   output <- .codedeploy$list_git_hub_account_token_names_output()
@@ -3724,11 +3691,11 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
 #'
 #' @param registrationStatus The registration status of the on-premises instances:
 #' 
-#' - `Deregistered`: Include deregistered on-premises instances in the
-#'   resulting list.
+#' -   `Deregistered`: Include deregistered on-premises instances in the
+#'     resulting list.
 #' 
-#' - `Registered`: Include registered on-premises instances in the
-#'   resulting list.
+#' -   `Registered`: Include registered on-premises instances in the
+#'     resulting list.
 #' @param tagFilters The on-premises instance tags that are used to restrict the on-premises
 #' instance names returned.
 #' @param nextToken An identifier returned from the previous list on-premises instances
@@ -3772,8 +3739,7 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$list_on_premises_instances_input(registrationStatus = registrationStatus, tagFilters = tagFilters, nextToken = nextToken)
   output <- .codedeploy$list_on_premises_instances_output()
@@ -3837,8 +3803,7 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .codedeploy$list_tags_for_resource_output()
@@ -3907,8 +3872,7 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$put_lifecycle_event_hook_execution_status_input(deploymentId = deploymentId, lifecycleEventHookExecutionId = lifecycleEventHookExecutionId, status = status)
   output <- .codedeploy$put_lifecycle_event_hook_execution_status_output()
@@ -3979,8 +3943,7 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$register_application_revision_input(applicationName = applicationName, description = description, revision = revision)
   output <- .codedeploy$register_application_revision_output()
@@ -4031,8 +3994,7 @@ codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$register_on_premises_instance_input(instanceName = instanceName, iamSessionArn = iamSessionArn, iamUserArn = iamUserArn)
   output <- .codedeploy$register_on_premises_instance_output()
@@ -4084,8 +4046,7 @@ codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$remove_tags_from_on_premises_instances_input(tags = tags, instanceNames = instanceNames)
   output <- .codedeploy$remove_tags_from_on_premises_instances_output()
@@ -4131,8 +4092,7 @@ codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$skip_wait_time_for_instance_termination_input(deploymentId = deploymentId)
   output <- .codedeploy$skip_wait_time_for_instance_termination_output()
@@ -4185,8 +4145,7 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$stop_deployment_input(deploymentId = deploymentId, autoRollbackEnabled = autoRollbackEnabled)
   output <- .codedeploy$stop_deployment_output()
@@ -4241,8 +4200,7 @@ codedeploy_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .codedeploy$tag_resource_output()
@@ -4294,8 +4252,7 @@ codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .codedeploy$untag_resource_output()
@@ -4340,8 +4297,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$update_application_input(applicationName = applicationName, newApplicationName = newApplicationName)
   output <- .codedeploy$update_application_output()
@@ -4382,15 +4338,16 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @param autoScalingGroups The replacement list of Auto Scaling groups to be included in the
 #' deployment group, if you want to change them.
 #' 
-#' - To keep the Auto Scaling groups, enter their names or do not specify
-#'   this parameter.
+#' -   To keep the Auto Scaling groups, enter their names or do not specify
+#'     this parameter.
 #' 
-#' - To remove Auto Scaling groups, specify a non-null empty list of Auto
-#'   Scaling group names to detach all CodeDeploy-managed Auto Scaling
-#'   lifecycle hooks. For examples, see [Amazon EC2 instances in an Amazon
-#'   EC2 Auto Scaling group fail to launch and receive the error "Heartbeat
-#'   Timeout"](https://docs.aws.amazon.com/codedeploy/latest/userguide/troubleshooting-auto-scaling.html#troubleshooting-auto-scaling-heartbeat)
-#'   in the *CodeDeploy User Guide*.
+#' -   To remove Auto Scaling groups, specify a non-null empty list of Auto
+#'     Scaling group names to detach all CodeDeploy-managed Auto Scaling
+#'     lifecycle hooks. For examples, see [Amazon EC2 instances in an
+#'     Amazon EC2 Auto Scaling group fail to launch and receive the error
+#'     "Heartbeat
+#'     Timeout"](https://docs.aws.amazon.com/codedeploy/latest/userguide/troubleshooting-auto-scaling.html#troubleshooting-auto-scaling-heartbeat)
+#'     in the *CodeDeploy User Guide*.
 #' @param serviceRoleArn A replacement ARN for the service role, if you want to change it.
 #' @param triggerConfigurations Information about triggers to change when the deployment group is
 #' updated. For examples, see [Edit a Trigger in a CodeDeploy Deployment
@@ -4599,8 +4556,7 @@ codedeploy_update_deployment_group <- function(applicationName, currentDeploymen
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codedeploy$update_deployment_group_input(applicationName = applicationName, currentDeploymentGroupName = currentDeploymentGroupName, newDeploymentGroupName = newDeploymentGroupName, deploymentConfigName = deploymentConfigName, ec2TagFilters = ec2TagFilters, onPremisesInstanceTagFilters = onPremisesInstanceTagFilters, autoScalingGroups = autoScalingGroups, serviceRoleArn = serviceRoleArn, triggerConfigurations = triggerConfigurations, alarmConfiguration = alarmConfiguration, autoRollbackConfiguration = autoRollbackConfiguration, outdatedInstancesStrategy = outdatedInstancesStrategy, deploymentStyle = deploymentStyle, blueGreenDeploymentConfiguration = blueGreenDeploymentConfiguration, loadBalancerInfo = loadBalancerInfo, ec2TagSet = ec2TagSet, ecsServices = ecsServices, onPremisesTagSet = onPremisesTagSet, terminationHookEnabled = terminationHookEnabled)
   output <- .codedeploy$update_deployment_group_output()

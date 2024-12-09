@@ -14,17 +14,17 @@ NULL
 #' you want to add a source identifier to.
 #' @param SourceIdentifier &#91;required&#93; The identifier of the event source to be added:
 #' 
-#' - If the source type is an instance, a `DBInstanceIdentifier` must be
-#'   provided.
+#' -   If the source type is an instance, a `DBInstanceIdentifier` must be
+#'     provided.
 #' 
-#' - If the source type is a security group, a `DBSecurityGroupName` must
-#'   be provided.
+#' -   If the source type is a security group, a `DBSecurityGroupName` must
+#'     be provided.
 #' 
-#' - If the source type is a parameter group, a `DBParameterGroupName` must
-#'   be provided.
+#' -   If the source type is a parameter group, a `DBParameterGroupName`
+#'     must be provided.
 #' 
-#' - If the source type is a snapshot, a `DBSnapshotIdentifier` must be
-#'   provided.
+#' -   If the source type is a snapshot, a `DBSnapshotIdentifier` must be
+#'     provided.
 #'
 #' @keywords internal
 #'
@@ -35,8 +35,7 @@ docdb_add_source_identifier_to_subscription <- function(SubscriptionName, Source
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$add_source_identifier_to_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .docdb$add_source_identifier_to_subscription_output()
@@ -68,8 +67,7 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$add_tags_to_resource_input(ResourceName = ResourceName, Tags = Tags)
   output <- .docdb$add_tags_to_resource_output()
@@ -99,13 +97,13 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 #' 
 #' Valid values:
 #' 
-#' - `immediate` - Apply the maintenance action immediately.
+#' -   `immediate` - Apply the maintenance action immediately.
 #' 
-#' - `next-maintenance` - Apply the maintenance action during the next
-#'   maintenance window for the resource.
+#' -   `next-maintenance` - Apply the maintenance action during the next
+#'     maintenance window for the resource.
 #' 
-#' - `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
-#'   requests.
+#' -   `undo-opt-in` - Cancel any existing `next-maintenance` opt-in
+#'     requests.
 #'
 #' @keywords internal
 #'
@@ -116,8 +114,7 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$apply_pending_maintenance_action_input(ResourceIdentifier = ResourceIdentifier, ApplyAction = ApplyAction, OptInType = OptInType)
   output <- .docdb$apply_pending_maintenance_action_output()
@@ -141,27 +138,28 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' 
 #' Constraints:
 #' 
-#' - Must specify a valid cluster parameter group.
+#' -   Must specify a valid cluster parameter group.
 #' 
-#' - If the source cluster parameter group is in the same Amazon Web
-#'   Services Region as the copy, specify a valid parameter group
-#'   identifier; for example, `my-db-cluster-param-group`, or a valid ARN.
+#' -   If the source cluster parameter group is in the same Amazon Web
+#'     Services Region as the copy, specify a valid parameter group
+#'     identifier; for example, `my-db-cluster-param-group`, or a valid
+#'     ARN.
 #' 
-#' - If the source parameter group is in a different Amazon Web Services
-#'   Region than the copy, specify a valid cluster parameter group ARN; for
-#'   example,
-#'   `arn:aws:rds:us-east-1:123456789012:sample-cluster:sample-parameter-group`.
+#' -   If the source parameter group is in a different Amazon Web Services
+#'     Region than the copy, specify a valid cluster parameter group ARN;
+#'     for example,
+#'     `arn:aws:rds:us-east-1:123456789012:sample-cluster:sample-parameter-group`.
 #' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied cluster parameter group.
 #' 
 #' Constraints:
 #' 
-#' - Cannot be null, empty, or blank.
+#' -   Cannot be null, empty, or blank.
 #' 
-#' - Must contain from 1 to 255 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 255 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-param-group1`
 #' @param TargetDBClusterParameterGroupDescription &#91;required&#93; A description for the copied cluster parameter group.
@@ -176,8 +174,7 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$copy_db_cluster_parameter_group_input(SourceDBClusterParameterGroupIdentifier = SourceDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupIdentifier = TargetDBClusterParameterGroupIdentifier, TargetDBClusterParameterGroupDescription = TargetDBClusterParameterGroupDescription, Tags = Tags)
   output <- .docdb$copy_db_cluster_parameter_group_output()
@@ -201,13 +198,13 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' 
 #' Constraints:
 #' 
-#' - Must specify a valid system snapshot in the *available* state.
+#' -   Must specify a valid system snapshot in the *available* state.
 #' 
-#' - If the source snapshot is in the same Amazon Web Services Region as
-#'   the copy, specify a valid snapshot identifier.
+#' -   If the source snapshot is in the same Amazon Web Services Region as
+#'     the copy, specify a valid snapshot identifier.
 #' 
-#' - If the source snapshot is in a different Amazon Web Services Region
-#'   than the copy, specify a valid cluster snapshot ARN.
+#' -   If the source snapshot is in a different Amazon Web Services Region
+#'     than the copy, specify a valid cluster snapshot ARN.
 #' 
 #' Example: `my-cluster-snapshot1`
 #' @param TargetDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the new cluster snapshot to create from the source
@@ -215,11 +212,11 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot2`
 #' @param KmsKeyId The KMS key ID for an encrypted cluster snapshot. The KMS key ID is the
@@ -263,20 +260,20 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' contains the cluster snapshot to be copied. The presigned URL request
 #' must contain the following parameter values:
 #' 
-#' - `SourceRegion` - The ID of the region that contains the snapshot to be
-#'   copied.
+#' -   `SourceRegion` - The ID of the region that contains the snapshot to
+#'     be copied.
 #' 
-#' - `SourceDBClusterSnapshotIdentifier` - The identifier for the the
-#'   encrypted cluster snapshot to be copied. This identifier must be in
-#'   the Amazon Resource Name (ARN) format for the source Amazon Web
-#'   Services Region. For example, if you are copying an encrypted cluster
-#'   snapshot from the us-east-1 Amazon Web Services Region, then your
-#'   `SourceDBClusterSnapshotIdentifier` looks something like the
-#'   following:
-#'   `arn:aws:rds:us-east-1:12345678012:sample-cluster:sample-cluster-snapshot`.
+#' -   `SourceDBClusterSnapshotIdentifier` - The identifier for the the
+#'     encrypted cluster snapshot to be copied. This identifier must be in
+#'     the Amazon Resource Name (ARN) format for the source Amazon Web
+#'     Services Region. For example, if you are copying an encrypted
+#'     cluster snapshot from the us-east-1 Amazon Web Services Region, then
+#'     your `SourceDBClusterSnapshotIdentifier` looks something like the
+#'     following:
+#'     `arn:aws:rds:us-east-1:12345678012:sample-cluster:sample-cluster-snapshot`.
 #' 
-#' - `TargetDBClusterSnapshotIdentifier` - The identifier for the new
-#'   cluster snapshot to be created. This parameter isn't case sensitive.
+#' -   `TargetDBClusterSnapshotIdentifier` - The identifier for the new
+#'     cluster snapshot to be created. This parameter isn't case sensitive.
 #' @param CopyTags Set to `true` to copy all tags from the source cluster snapshot to the
 #' target cluster snapshot, and otherwise `false`. The default is `false`.
 #' @param Tags The tags to be assigned to the cluster snapshot.
@@ -290,8 +287,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$copy_db_cluster_snapshot_input(SourceDBClusterSnapshotIdentifier = SourceDBClusterSnapshotIdentifier, TargetDBClusterSnapshotIdentifier = TargetDBClusterSnapshotIdentifier, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, CopyTags = CopyTags, Tags = Tags)
   output <- .docdb$copy_db_cluster_snapshot_output()
@@ -319,16 +315,16 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' 
 #' Constraints:
 #' 
-#' - Must be a value from 1 to 35.
+#' -   Must be a value from 1 to 35.
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier. This parameter is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster`
 #' @param DBClusterParameterGroupName The name of the cluster parameter group to associate with this cluster.
@@ -352,11 +348,11 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' 
 #' Constraints:
 #' 
-#' - Must be from 1 to 63 letters or numbers.
+#' -   Must be from 1 to 63 letters or numbers.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot be a reserved word for the chosen database engine.
+#' -   Cannot be a reserved word for the chosen database engine.
 #' @param MasterUserPassword The password for the master database user. This password can contain any
 #' printable ASCII character except forward slash (/), double quote ("), or
 #' the "at" symbol (@@).
@@ -371,13 +367,13 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' 
 #' Constraints:
 #' 
-#' - Must be in the format `hh24:mi-hh24:mi`.
+#' -   Must be in the format `hh24:mi-hh24:mi`.
 #' 
-#' - Must be in Universal Coordinated Time (UTC).
+#' -   Must be in Universal Coordinated Time (UTC).
 #' 
-#' - Must not conflict with the preferred maintenance window.
+#' -   Must not conflict with the preferred maintenance window.
 #' 
-#' - Must be at least 30 minutes.
+#' -   Must be at least 30 minutes.
 #' @param PreferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
@@ -402,8 +398,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' 
 #' If an encryption key is not specified in `KmsKeyId`:
 #' 
-#' - If the `StorageEncrypted` parameter is `true`, Amazon DocumentDB uses
-#'   your default encryption key.
+#' -   If the `StorageEncrypted` parameter is `true`, Amazon DocumentDB
+#'     uses your default encryption key.
 #' 
 #' KMS creates the default encryption key for your Amazon Web Services
 #' account. Your Amazon Web Services account has a different default
@@ -443,8 +439,7 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, StorageType = StorageType)
   output <- .docdb$create_db_cluster_output()
@@ -467,7 +462,7 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 #' 
 #' Constraints:
 #' 
-#' - Must not match the name of an existing `DBClusterParameterGroup`.
+#' -   Must not match the name of an existing `DBClusterParameterGroup`.
 #' 
 #' This value is stored as a lowercase string.
 #' @param DBParameterGroupFamily &#91;required&#93; The cluster parameter group family name.
@@ -483,8 +478,7 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$create_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, DBParameterGroupFamily = DBParameterGroupFamily, Description = Description, Tags = Tags)
   output <- .docdb$create_db_cluster_parameter_group_output()
@@ -508,11 +502,11 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster-snapshot1`
 #' @param DBClusterIdentifier &#91;required&#93; The identifier of the cluster to create a snapshot for. This parameter
@@ -520,7 +514,7 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing `DBCluster`.
+#' -   Must match the identifier of an existing `DBCluster`.
 #' 
 #' Example: `my-cluster`
 #' @param Tags The tags to be assigned to the cluster snapshot.
@@ -534,8 +528,7 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$create_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, DBClusterIdentifier = DBClusterIdentifier, Tags = Tags)
   output <- .docdb$create_db_cluster_snapshot_output()
@@ -558,11 +551,11 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
 #' @param DBInstanceClass &#91;required&#93; The compute and memory capacity of the instance; for example,
@@ -634,8 +627,7 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CACertificateIdentifier = CACertificateIdentifier)
   output <- .docdb$create_db_instance_output()
@@ -674,8 +666,7 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$create_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds, Tags = Tags)
   output <- .docdb$create_db_subnet_group_output()
@@ -717,19 +708,19 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 #' 
 #' Constraints:
 #' 
-#' - If `SourceIds` are provided, `SourceType` must also be provided.
+#' -   If `SourceIds` are provided, `SourceType` must also be provided.
 #' 
-#' - If the source type is an instance, a `DBInstanceIdentifier` must be
-#'   provided.
+#' -   If the source type is an instance, a `DBInstanceIdentifier` must be
+#'     provided.
 #' 
-#' - If the source type is a security group, a `DBSecurityGroupName` must
-#'   be provided.
+#' -   If the source type is a security group, a `DBSecurityGroupName` must
+#'     be provided.
 #' 
-#' - If the source type is a parameter group, a `DBParameterGroupName` must
-#'   be provided.
+#' -   If the source type is a parameter group, a `DBParameterGroupName`
+#'     must be provided.
 #' 
-#' - If the source type is a snapshot, a `DBSnapshotIdentifier` must be
-#'   provided.
+#' -   If the source type is a snapshot, a `DBSnapshotIdentifier` must be
+#'     provided.
 #' @param Enabled A Boolean value; set to `true` to activate the subscription, set to
 #' `false` to create the subscription but not active it.
 #' @param Tags The tags to be assigned to the event subscription.
@@ -743,8 +734,7 @@ docdb_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$create_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, SourceIds = SourceIds, Enabled = Enabled, Tags = Tags)
   output <- .docdb$create_event_subscription_output()
@@ -785,8 +775,7 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$create_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, SourceDBClusterIdentifier = SourceDBClusterIdentifier, Engine = Engine, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection, DatabaseName = DatabaseName, StorageEncrypted = StorageEncrypted)
   output <- .docdb$create_global_cluster_output()
@@ -810,7 +799,7 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
 #' 
 #' Constraints:
 #' 
-#' - Must match an existing `DBClusterIdentifier`.
+#' -   Must match an existing `DBClusterIdentifier`.
 #' @param SkipFinalSnapshot Determines whether a final cluster snapshot is created before the
 #' cluster is deleted. If `true` is specified, no cluster snapshot is
 #' created. If `false` is specified, a cluster snapshot is created before
@@ -828,11 +817,11 @@ docdb_create_global_cluster <- function(GlobalClusterIdentifier, SourceDBCluster
 #' 
 #' Constraints:
 #' 
-#' - Must be from 1 to 255 letters, numbers, or hyphens.
+#' -   Must be from 1 to 255 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #'
 #' @keywords internal
 #'
@@ -843,8 +832,7 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$delete_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
   output <- .docdb$delete_db_cluster_output()
@@ -867,11 +855,11 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 #' 
 #' Constraints:
 #' 
-#' - Must be the name of an existing cluster parameter group.
+#' -   Must be the name of an existing cluster parameter group.
 #' 
-#' - You can't delete a default cluster parameter group.
+#' -   You can't delete a default cluster parameter group.
 #' 
-#' - Cannot be associated with any clusters.
+#' -   Cannot be associated with any clusters.
 #'
 #' @keywords internal
 #'
@@ -882,8 +870,7 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$delete_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName)
   output <- .docdb$delete_db_cluster_parameter_group_output()
@@ -916,8 +903,7 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$delete_db_cluster_snapshot_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .docdb$delete_db_cluster_snapshot_output()
@@ -941,7 +927,7 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #' 
 #' Constraints:
 #' 
-#' - Must match the name of an existing instance.
+#' -   Must match the name of an existing instance.
 #'
 #' @keywords internal
 #'
@@ -952,8 +938,7 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$delete_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier)
   output <- .docdb$delete_db_instance_output()
@@ -991,8 +976,7 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$delete_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName)
   output <- .docdb$delete_db_subnet_group_output()
@@ -1023,8 +1007,7 @@ docdb_delete_event_subscription <- function(SubscriptionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$delete_event_subscription_input(SubscriptionName = SubscriptionName)
   output <- .docdb$delete_event_subscription_output()
@@ -1054,8 +1037,7 @@ docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$delete_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier)
   output <- .docdb$delete_global_cluster_output()
@@ -1082,7 +1064,7 @@ docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #' 
 #' Constraints
 #' 
-#' - Must match an existing `CertificateIdentifier`.
+#' -   Must match an existing `CertificateIdentifier`.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -1093,9 +1075,9 @@ docdb_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #' 
 #' Constraints:
 #' 
-#' - Minimum: 20
+#' -   Minimum: 20
 #' 
-#' - Maximum: 100
+#' -   Maximum: 100
 #' @param Marker An optional pagination token provided by a previous
 #' [`describe_certificates`][docdb_describe_certificates] request. If this
 #' parameter is specified, the response includes only records beyond the
@@ -1110,8 +1092,7 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Certificates"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Certificates")
   )
   input <- .docdb$describe_certificates_input(CertificateIdentifier = CertificateIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_certificates_output()
@@ -1134,8 +1115,8 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
 #' 
 #' Constraints:
 #' 
-#' - If provided, must match the name of an existing
-#'   `DBClusterParameterGroup`.
+#' -   If provided, must match the name of an existing
+#'     `DBClusterParameterGroup`.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -1158,8 +1139,7 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups")
   )
   input <- .docdb$describe_db_cluster_parameter_groups_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_cluster_parameter_groups_output()
@@ -1184,8 +1164,8 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
 #' 
 #' Constraints:
 #' 
-#' - If provided, must match the name of an existing
-#'   `DBClusterParameterGroup`.
+#' -   If provided, must match the name of an existing
+#'     `DBClusterParameterGroup`.
 #' @param Source A value that indicates to return only parameters for a specific source.
 #' Parameter sources can be `engine`, `service`, or `customer`.
 #' @param Filters This parameter is not currently supported.
@@ -1210,8 +1190,7 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .docdb$describe_db_cluster_parameters_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_cluster_parameters_output()
@@ -1242,8 +1221,7 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$describe_db_cluster_snapshot_attributes_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier)
   output <- .docdb$describe_db_cluster_snapshot_attributes_output()
@@ -1268,32 +1246,32 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 #' 
 #' Constraints:
 #' 
-#' - If provided, must match the identifier of an existing `DBCluster`.
+#' -   If provided, must match the identifier of an existing `DBCluster`.
 #' @param DBClusterSnapshotIdentifier A specific cluster snapshot identifier to describe. This parameter can't
 #' be used with the `DBClusterIdentifier` parameter. This value is stored
 #' as a lowercase string.
 #' 
 #' Constraints:
 #' 
-#' - If provided, must match the identifier of an existing
-#'   `DBClusterSnapshot`.
+#' -   If provided, must match the identifier of an existing
+#'     `DBClusterSnapshot`.
 #' 
-#' - If this identifier is for an automated snapshot, the `SnapshotType`
-#'   parameter must also be specified.
+#' -   If this identifier is for an automated snapshot, the `SnapshotType`
+#'     parameter must also be specified.
 #' @param SnapshotType The type of cluster snapshots to be returned. You can specify one of the
 #' following values:
 #' 
-#' - `automated` - Return all cluster snapshots that Amazon DocumentDB has
-#'   automatically created for your Amazon Web Services account.
+#' -   `automated` - Return all cluster snapshots that Amazon DocumentDB
+#'     has automatically created for your Amazon Web Services account.
 #' 
-#' - `manual` - Return all cluster snapshots that you have manually created
-#'   for your Amazon Web Services account.
+#' -   `manual` - Return all cluster snapshots that you have manually
+#'     created for your Amazon Web Services account.
 #' 
-#' - `shared` - Return all manual cluster snapshots that have been shared
-#'   to your Amazon Web Services account.
+#' -   `shared` - Return all manual cluster snapshots that have been shared
+#'     to your Amazon Web Services account.
 #' 
-#' - `public` - Return all cluster snapshots that have been marked as
-#'   public.
+#' -   `public` - Return all cluster snapshots that have been marked as
+#'     public.
 #' 
 #' If you don't specify a `SnapshotType` value, then both automated and
 #' manual cluster snapshots are returned. You can include shared cluster
@@ -1335,8 +1313,7 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots")
   )
   input <- .docdb$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic)
   output <- .docdb$describe_db_cluster_snapshots_output()
@@ -1361,14 +1338,14 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 #' 
 #' Constraints:
 #' 
-#' - If provided, must match an existing `DBClusterIdentifier`.
+#' -   If provided, must match an existing `DBClusterIdentifier`.
 #' @param Filters A filter that specifies one or more clusters to describe.
 #' 
 #' Supported filters:
 #' 
-#' - `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
-#'   Resource Names (ARNs). The results list only includes information
-#'   about the clusters identified by these ARNs.
+#' -   `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
+#'     Resource Names (ARNs). The results list only includes information
+#'     about the clusters identified by these ARNs.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' (marker) is included in the response so that the remaining results can
@@ -1390,8 +1367,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters")
   )
   input <- .docdb$describe_db_clusters_input(DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_clusters_output()
@@ -1418,7 +1394,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #' 
 #' Constraints:
 #' 
-#' - If provided, must match an existing `DBParameterGroupFamily`.
+#' -   If provided, must match an existing `DBParameterGroupFamily`.
 #' @param Filters This parameter is not currently supported.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
@@ -1451,8 +1427,7 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions")
   )
   input <- .docdb$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones)
   output <- .docdb$describe_db_engine_versions_output()
@@ -1477,19 +1452,19 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #' 
 #' Constraints:
 #' 
-#' - If provided, must match the identifier of an existing `DBInstance`.
+#' -   If provided, must match the identifier of an existing `DBInstance`.
 #' @param Filters A filter that specifies one or more instances to describe.
 #' 
 #' Supported filters:
 #' 
-#' - `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
-#'   Resource Names (ARNs). The results list includes only the information
-#'   about the instances that are associated with the clusters that are
-#'   identified by these ARNs.
+#' -   `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
+#'     Resource Names (ARNs). The results list includes only the
+#'     information about the instances that are associated with the
+#'     clusters that are identified by these ARNs.
 #' 
-#' - `db-instance-id` - Accepts instance identifiers and instance ARNs. The
-#'   results list includes only the information about the instances that
-#'   are identified by these ARNs.
+#' -   `db-instance-id` - Accepts instance identifiers and instance ARNs.
+#'     The results list includes only the information about the instances
+#'     that are identified by these ARNs.
 #' @param MaxRecords The maximum number of records to include in the response. If more
 #' records exist than the specified `MaxRecords` value, a pagination token
 #' (marker) is included in the response so that the remaining results can
@@ -1511,8 +1486,7 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances")
   )
   input <- .docdb$describe_db_instances_input(DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_instances_output()
@@ -1554,8 +1528,7 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups")
   )
   input <- .docdb$describe_db_subnet_groups_input(DBSubnetGroupName = DBSubnetGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_subnet_groups_output()
@@ -1599,8 +1572,7 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$describe_engine_default_cluster_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_engine_default_cluster_parameters_output()
@@ -1634,8 +1606,7 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$describe_event_categories_input(SourceType = SourceType, Filters = Filters)
   output <- .docdb$describe_event_categories_output()
@@ -1678,8 +1649,7 @@ docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList")
   )
   input <- .docdb$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_event_subscriptions_output()
@@ -1704,21 +1674,22 @@ docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters 
 #' 
 #' Constraints:
 #' 
-#' - If `SourceIdentifier` is provided, `SourceType` must also be provided.
+#' -   If `SourceIdentifier` is provided, `SourceType` must also be
+#'     provided.
 #' 
-#' - If the source type is `DBInstance`, a `DBInstanceIdentifier` must be
-#'   provided.
+#' -   If the source type is `DBInstance`, a `DBInstanceIdentifier` must be
+#'     provided.
 #' 
-#' - If the source type is `DBSecurityGroup`, a `DBSecurityGroupName` must
-#'   be provided.
+#' -   If the source type is `DBSecurityGroup`, a `DBSecurityGroupName`
+#'     must be provided.
 #' 
-#' - If the source type is `DBParameterGroup`, a `DBParameterGroupName`
-#'   must be provided.
+#' -   If the source type is `DBParameterGroup`, a `DBParameterGroupName`
+#'     must be provided.
 #' 
-#' - If the source type is `DBSnapshot`, a `DBSnapshotIdentifier` must be
-#'   provided.
+#' -   If the source type is `DBSnapshot`, a `DBSnapshotIdentifier` must be
+#'     provided.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' @param SourceType The event source to retrieve events for. If no value is specified, all
 #' events are returned.
 #' @param StartTime The beginning of the time interval to retrieve events for, specified in
@@ -1756,8 +1727,7 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .docdb$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, EventCategories = EventCategories, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_events_output()
@@ -1802,8 +1772,7 @@ docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters")
   )
   input <- .docdb$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_global_clusters_output()
@@ -1853,8 +1822,7 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions")
   )
   input <- .docdb$describe_orderable_db_instance_options_input(Engine = Engine, EngineVersion = EngineVersion, DBInstanceClass = DBInstanceClass, LicenseModel = LicenseModel, Vpc = Vpc, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_orderable_db_instance_options_output()
@@ -1880,13 +1848,13 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 #' 
 #' Supported filters:
 #' 
-#' - `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
-#'   Resource Names (ARNs). The results list includes only pending
-#'   maintenance actions for the clusters identified by these ARNs.
+#' -   `db-cluster-id` - Accepts cluster identifiers and cluster Amazon
+#'     Resource Names (ARNs). The results list includes only pending
+#'     maintenance actions for the clusters identified by these ARNs.
 #' 
-#' - `db-instance-id` - Accepts instance identifiers and instance ARNs. The
-#'   results list includes only pending maintenance actions for the DB
-#'   instances identified by these ARNs.
+#' -   `db-instance-id` - Accepts instance identifiers and instance ARNs.
+#'     The results list includes only pending maintenance actions for the
+#'     DB instances identified by these ARNs.
 #' @param Marker An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' marker, up to the value specified by `MaxRecords`.
@@ -1908,8 +1876,7 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions")
   )
   input <- .docdb$describe_pending_maintenance_actions_input(ResourceIdentifier = ResourceIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .docdb$describe_pending_maintenance_actions_output()
@@ -1933,7 +1900,7 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing `DBCluster`.
+#' -   Must match the identifier of an existing `DBCluster`.
 #' @param TargetDBInstanceIdentifier The name of the instance to promote to the primary instance.
 #' 
 #' You must specify the instance identifier for an Amazon DocumentDB
@@ -1948,8 +1915,7 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$failover_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, TargetDBInstanceIdentifier = TargetDBInstanceIdentifier)
   output <- .docdb$failover_db_cluster_output()
@@ -1976,9 +1942,9 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing global cluster.
+#' -   Must match the identifier of an existing global cluster.
 #' 
-#' - Minimum length of 1. Maximum length of 255.
+#' -   Minimum length of 1. Maximum length of 255.
 #' 
 #' Pattern: `[A-Za-z][0-9A-Za-z-:._]*`
 #' @param TargetDbClusterIdentifier &#91;required&#93; The identifier of the secondary Amazon DocumentDB cluster that you want
@@ -1988,9 +1954,9 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing secondary cluster.
+#' -   Must match the identifier of an existing secondary cluster.
 #' 
-#' - Minimum length of 1. Maximum length of 255.
+#' -   Minimum length of 1. Maximum length of 255.
 #' 
 #' Pattern: `[A-Za-z][0-9A-Za-z-:._]*`
 #' @param AllowDataLoss Specifies whether to allow data loss for this global cluster operation.
@@ -2001,12 +1967,12 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 #' 
 #' Constraints:
 #' 
-#' - Can't be specified together with the `Switchover` parameter.
+#' -   Can't be specified together with the `Switchover` parameter.
 #' @param Switchover Specifies whether to switch over this global database cluster.
 #' 
 #' Constraints:
 #' 
-#' - Can't be specified together with the `AllowDataLoss` parameter.
+#' -   Can't be specified together with the `AllowDataLoss` parameter.
 #'
 #' @keywords internal
 #'
@@ -2017,8 +1983,7 @@ docdb_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClust
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier, AllowDataLoss = AllowDataLoss, Switchover = Switchover)
   output <- .docdb$failover_global_cluster_output()
@@ -2050,8 +2015,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "TagList"),
-    stream_api = FALSE
+    paginator = list(result_key = "TagList")
   )
   input <- .docdb$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)
   output <- .docdb$list_tags_for_resource_output()
@@ -2075,17 +2039,17 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing `DBCluster`.
+#' -   Must match the identifier of an existing `DBCluster`.
 #' @param NewDBClusterIdentifier The new cluster identifier for the cluster when renaming a cluster. This
 #' value is stored as a lowercase string.
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-cluster2`
 #' @param ApplyImmediately A value that specifies whether the changes in this request and any
@@ -2110,7 +2074,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraints:
 #' 
-#' - Must be a value from 1 to 35.
+#' -   Must be a value from 1 to 35.
 #' @param DBClusterParameterGroupName The name of the cluster parameter group to use for the cluster.
 #' @param VpcSecurityGroupIds A list of virtual private cloud (VPC) security groups that the cluster
 #' will belong to.
@@ -2133,13 +2097,13 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' 
 #' Constraints:
 #' 
-#' - Must be in the format `hh24:mi-hh24:mi`.
+#' -   Must be in the format `hh24:mi-hh24:mi`.
 #' 
-#' - Must be in Universal Coordinated Time (UTC).
+#' -   Must be in Universal Coordinated Time (UTC).
 #' 
-#' - Must not conflict with the preferred maintenance window.
+#' -   Must not conflict with the preferred maintenance window.
 #' 
-#' - Must be at least 30 minutes.
+#' -   Must be at least 30 minutes.
 #' @param PreferredMaintenanceWindow The weekly time range during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
@@ -2192,8 +2156,7 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection, StorageType = StorageType)
   output <- .docdb$modify_db_cluster_output()
@@ -2224,8 +2187,7 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$modify_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Parameters = Parameters)
   output <- .docdb$modify_db_cluster_parameter_group_output()
@@ -2279,8 +2241,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$modify_db_cluster_snapshot_attribute_input(DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, AttributeName = AttributeName, ValuesToAdd = ValuesToAdd, ValuesToRemove = ValuesToRemove)
   output <- .docdb$modify_db_cluster_snapshot_attribute_output()
@@ -2303,7 +2264,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing `DBInstance`.
+#' -   Must match the identifier of an existing `DBInstance`.
 #' @param DBInstanceClass The new compute and memory capacity of the instance; for example,
 #' `db.r5.large`. Not all instance classes are available in all Amazon Web
 #' Services Regions.
@@ -2349,11 +2310,11 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `mydbinstance`
 #' @param CACertificateIdentifier Indicates the certificate that needs to be associated with the instance.
@@ -2404,8 +2365,7 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CertificateRotationRestart = CertificateRotationRestart)
   output <- .docdb$modify_db_instance_output()
@@ -2443,8 +2403,7 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$modify_db_subnet_group_input(DBSubnetGroupName = DBSubnetGroupName, DBSubnetGroupDescription = DBSubnetGroupDescription, SubnetIds = SubnetIds)
   output <- .docdb$modify_db_subnet_group_output()
@@ -2486,8 +2445,7 @@ docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$modify_event_subscription_input(SubscriptionName = SubscriptionName, SnsTopicArn = SnsTopicArn, SourceType = SourceType, EventCategories = EventCategories, Enabled = Enabled)
   output <- .docdb$modify_event_subscription_output()
@@ -2511,15 +2469,15 @@ docdb_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing global cluster.
+#' -   Must match the identifier of an existing global cluster.
 #' @param NewGlobalClusterIdentifier The new identifier for a global cluster when you modify a global
 #' cluster. This value is stored as a lowercase string.
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens
 #' 
-#'   The first character must be a letter
+#'     The first character must be a letter
 #' 
-#'   Can't end with a hyphen or contain two consecutive hyphens
+#'     Can't end with a hyphen or contain two consecutive hyphens
 #' 
 #' Example: `my-cluster2`
 #' @param DeletionProtection Indicates if the global cluster has deletion protection enabled. The
@@ -2534,8 +2492,7 @@ docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalCluste
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$modify_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, NewGlobalClusterIdentifier = NewGlobalClusterIdentifier, DeletionProtection = DeletionProtection)
   output <- .docdb$modify_global_cluster_output()
@@ -2558,7 +2515,7 @@ docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalCluste
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing `DBInstance`.
+#' -   Must match the identifier of an existing `DBInstance`.
 #' @param ForceFailover When `true`, the reboot is conducted through a Multi-AZ failover.
 #' 
 #' Constraint: You can't specify `true` if the instance is not configured
@@ -2573,8 +2530,7 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$reboot_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, ForceFailover = ForceFailover)
   output <- .docdb$reboot_db_instance_output()
@@ -2607,8 +2563,7 @@ docdb_remove_from_global_cluster <- function(GlobalClusterIdentifier, DbClusterI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$remove_from_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, DbClusterIdentifier = DbClusterIdentifier)
   output <- .docdb$remove_from_global_cluster_output()
@@ -2642,8 +2597,7 @@ docdb_remove_source_identifier_from_subscription <- function(SubscriptionName, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$remove_source_identifier_from_subscription_input(SubscriptionName = SubscriptionName, SourceIdentifier = SourceIdentifier)
   output <- .docdb$remove_source_identifier_from_subscription_output()
@@ -2675,8 +2629,7 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$remove_tags_from_resource_input(ResourceName = ResourceName, TagKeys = TagKeys)
   output <- .docdb$remove_tags_from_resource_output()
@@ -2714,8 +2667,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$reset_db_cluster_parameter_group_input(DBClusterParameterGroupName = DBClusterParameterGroupName, ResetAllParameters = ResetAllParameters, Parameters = Parameters)
   output <- .docdb$reset_db_cluster_parameter_group_output()
@@ -2741,11 +2693,11 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' 
 #' Example: `my-snapshot-id`
 #' @param SnapshotIdentifier &#91;required&#93; The identifier for the snapshot or cluster snapshot to restore from.
@@ -2756,7 +2708,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing snapshot.
+#' -   Must match the identifier of an existing snapshot.
 #' @param Engine &#91;required&#93; The database engine to use for the new cluster.
 #' 
 #' Default: The same as source.
@@ -2789,12 +2741,12 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
-#' - If the snapshot or cluster snapshot in `SnapshotIdentifier` is
-#'   encrypted, then the restored cluster is encrypted using the KMS key
-#'   that was used to encrypt the snapshot or the cluster snapshot.
+#' -   If the snapshot or cluster snapshot in `SnapshotIdentifier` is
+#'     encrypted, then the restored cluster is encrypted using the KMS key
+#'     that was used to encrypt the snapshot or the cluster snapshot.
 #' 
-#' - If the snapshot or the cluster snapshot in `SnapshotIdentifier` is not
-#'   encrypted, then the restored DB cluster is not encrypted.
+#' -   If the snapshot or the cluster snapshot in `SnapshotIdentifier` is
+#'     not encrypted, then the restored DB cluster is not encrypted.
 #' @param EnableCloudwatchLogsExports A list of log types that must be enabled for exporting to Amazon
 #' CloudWatch Logs.
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`
@@ -2830,8 +2782,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$restore_db_cluster_from_snapshot_input(AvailabilityZones = AvailabilityZones, DBClusterIdentifier = DBClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, Engine = Engine, EngineVersion = EngineVersion, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, DBClusterParameterGroupName = DBClusterParameterGroupName, StorageType = StorageType)
   output <- .docdb$restore_db_cluster_from_snapshot_output()
@@ -2854,19 +2805,19 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 1 to 63 letters, numbers, or hyphens.
+#' -   Must contain from 1 to 63 letters, numbers, or hyphens.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Cannot end with a hyphen or contain two consecutive hyphens.
+#' -   Cannot end with a hyphen or contain two consecutive hyphens.
 #' @param RestoreType The type of restore to be performed. You can specify one of the
 #' following values:
 #' 
-#' - `full-copy` - The new DB cluster is restored as a full copy of the
-#'   source DB cluster.
+#' -   `full-copy` - The new DB cluster is restored as a full copy of the
+#'     source DB cluster.
 #' 
-#' - `copy-on-write` - The new DB cluster is restored as a clone of the
-#'   source DB cluster.
+#' -   `copy-on-write` - The new DB cluster is restored as a clone of the
+#'     source DB cluster.
 #' 
 #' Constraints: You can't specify `copy-on-write` if the engine version of
 #' the source DB cluster is earlier than 1.11.
@@ -2877,22 +2828,23 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing `DBCluster`.
+#' -   Must match the identifier of an existing `DBCluster`.
 #' @param RestoreToTime The date and time to restore the cluster to.
 #' 
 #' Valid values: A time in Universal Coordinated Time (UTC) format.
 #' 
 #' Constraints:
 #' 
-#' - Must be before the latest restorable time for the instance.
+#' -   Must be before the latest restorable time for the instance.
 #' 
-#' - Must be specified if the `UseLatestRestorableTime` parameter is not
-#'   provided.
+#' -   Must be specified if the `UseLatestRestorableTime` parameter is not
+#'     provided.
 #' 
-#' - Cannot be specified if the `UseLatestRestorableTime` parameter is
-#'   `true`.
+#' -   Cannot be specified if the `UseLatestRestorableTime` parameter is
+#'     `true`.
 #' 
-#' - Cannot be specified if the `RestoreType` parameter is `copy-on-write`.
+#' -   Cannot be specified if the `RestoreType` parameter is
+#'     `copy-on-write`.
 #' 
 #' Example: `2015-03-07T23:45:00Z`
 #' @param UseLatestRestorableTime A value that is set to `true` to restore the cluster to the latest
@@ -2932,11 +2884,11 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 #' If you do not specify a value for the `KmsKeyId` parameter, then the
 #' following occurs:
 #' 
-#' - If the cluster is encrypted, then the restored cluster is encrypted
-#'   using the KMS key that was used to encrypt the source cluster.
+#' -   If the cluster is encrypted, then the restored cluster is encrypted
+#'     using the KMS key that was used to encrypt the source cluster.
 #' 
-#' - If the cluster is not encrypted, then the restored cluster is not
-#'   encrypted.
+#' -   If the cluster is not encrypted, then the restored cluster is not
+#'     encrypted.
 #' 
 #' If `DBClusterIdentifier` refers to a cluster that is not encrypted, then
 #' the restore request is rejected.
@@ -2965,8 +2917,7 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Resto
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection, StorageType = StorageType)
   output <- .docdb$restore_db_cluster_to_point_in_time_output()
@@ -2997,8 +2948,7 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$start_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .docdb$start_db_cluster_output()
@@ -3029,8 +2979,7 @@ docdb_stop_db_cluster <- function(DBClusterIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$stop_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier)
   output <- .docdb$stop_db_cluster_output()
@@ -3057,10 +3006,10 @@ docdb_stop_db_cluster <- function(DBClusterIdentifier) {
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing global cluster (Amazon
-#'   DocumentDB global database).
+#' -   Must match the identifier of an existing global cluster (Amazon
+#'     DocumentDB global database).
 #' 
-#' - Minimum length of 1. Maximum length of 255.
+#' -   Minimum length of 1. Maximum length of 255.
 #' 
 #' Pattern: `[A-Za-z][0-9A-Za-z-:._]*`
 #' @param TargetDbClusterIdentifier &#91;required&#93; The identifier of the secondary Amazon DocumentDB cluster to promote to
@@ -3070,9 +3019,9 @@ docdb_stop_db_cluster <- function(DBClusterIdentifier) {
 #' 
 #' Constraints:
 #' 
-#' - Must match the identifier of an existing secondary cluster.
+#' -   Must match the identifier of an existing secondary cluster.
 #' 
-#' - Minimum length of 1. Maximum length of 255.
+#' -   Minimum length of 1. Maximum length of 255.
 #' 
 #' Pattern: `[A-Za-z][0-9A-Za-z-:._]*`
 #'
@@ -3085,8 +3034,7 @@ docdb_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .docdb$switchover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
   output <- .docdb$switchover_global_cluster_output()

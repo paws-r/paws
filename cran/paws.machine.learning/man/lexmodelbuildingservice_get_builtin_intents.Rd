@@ -17,7 +17,8 @@ lexmodelbuildingservice_get_builtin_intents(
 \item{signatureContains}{Substring to match in built-in intent signatures. An intent will be
 returned if any part of its signature matches the substring. For
 example, "xyz" matches both "xyzabc" and "abcxyz." To find the signature
-for an intent, see Standard Built-in Intents in the \emph{Alexa Skills Kit}.}
+for an intent, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
+in the \emph{Alexa Skills Kit}.}
 
 \item{nextToken}{A pagination token that fetches the next page of intents. If this API
 call is truncated, Amazon Lex returns a pagination token in the

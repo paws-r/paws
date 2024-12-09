@@ -47,8 +47,7 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$acknowledge_job_input(jobId = jobId, nonce = nonce)
   output <- .codepipeline$acknowledge_job_output()
@@ -107,8 +106,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$acknowledge_third_party_job_input(jobId = jobId, nonce = nonce, clientToken = clientToken)
   output <- .codepipeline$acknowledge_third_party_job_output()
@@ -142,8 +140,9 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' 
 #' You can refer to a name in the configuration properties of the custom
 #' action within the URL templates by following the format of
-#' \\Config:name\\, as long as the configuration property is both required
-#' and not secret. For more information, see [Create a Custom Action for a
+#' \{Config:name\}, as long as the configuration property is both
+#' required and not secret. For more information, see [Create a Custom
+#' Action for a
 #' Pipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-create-custom-action.html).
 #' @param inputArtifactDetails &#91;required&#93; The details of the input artifact for the action, such as its commit ID.
 #' @param outputArtifactDetails &#91;required&#93; The details of the output artifact of the action, such as its commit ID.
@@ -246,8 +245,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$create_custom_action_type_input(category = category, provider = provider, version = version, settings = settings, configurationProperties = configurationProperties, inputArtifactDetails = inputArtifactDetails, outputArtifactDetails = outputArtifactDetails, tags = tags)
   output <- .codepipeline$create_custom_action_type_output()
@@ -750,8 +748,7 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$create_pipeline_input(pipeline = pipeline, tags = tags)
   output <- .codepipeline$create_pipeline_output()
@@ -809,8 +806,7 @@ codepipeline_delete_custom_action_type <- function(category, provider, version) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$delete_custom_action_type_input(category = category, provider = provider, version = version)
   output <- .codepipeline$delete_custom_action_type_output()
@@ -853,8 +849,7 @@ codepipeline_delete_pipeline <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$delete_pipeline_input(name = name)
   output <- .codepipeline$delete_pipeline_output()
@@ -901,8 +896,7 @@ codepipeline_delete_webhook <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$delete_webhook_input(name = name)
   output <- .codepipeline$delete_webhook_output()
@@ -948,8 +942,7 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$deregister_webhook_with_third_party_input(webhookName = webhookName)
   output <- .codepipeline$deregister_webhook_with_third_party_output()
@@ -1008,8 +1001,7 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$disable_stage_transition_input(pipelineName = pipelineName, stageName = stageName, transitionType = transitionType, reason = reason)
   output <- .codepipeline$disable_stage_transition_output()
@@ -1063,8 +1055,7 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$enable_stage_transition_input(pipelineName = pipelineName, stageName = stageName, transitionType = transitionType)
   output <- .codepipeline$enable_stage_transition_output()
@@ -1092,17 +1083,17 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 #' @param category &#91;required&#93; Defines what kind of action can be taken in the stage. The following are
 #' the valid values:
 #' 
-#' - `Source`
+#' -   `Source`
 #' 
-#' - `Build`
+#' -   `Build`
 #' 
-#' - `Test`
+#' -   `Test`
 #' 
-#' - `Deploy`
+#' -   `Deploy`
 #' 
-#' - `Approval`
+#' -   `Approval`
 #' 
-#' - `Invoke`
+#' -   `Invoke`
 #' @param owner &#91;required&#93; The creator of an action type that was created with any supported
 #' integration model. There are two valid values: `AWS` and `ThirdParty`.
 #' @param provider &#91;required&#93; The provider of the action type being called. The provider name is
@@ -1193,8 +1184,7 @@ codepipeline_get_action_type <- function(category, owner, provider, version) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$get_action_type_input(category = category, owner = owner, provider = provider, version = version)
   output <- .codepipeline$get_action_type_output()
@@ -1311,8 +1301,7 @@ codepipeline_get_job_details <- function(jobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$get_job_details_input(jobId = jobId)
   output <- .codepipeline$get_job_details_output()
@@ -1597,8 +1586,7 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$get_pipeline_input(name = name, version = version)
   output <- .codepipeline$get_pipeline_output()
@@ -1686,8 +1674,7 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$get_pipeline_execution_input(pipelineName = pipelineName, pipelineExecutionId = pipelineExecutionId)
   output <- .codepipeline$get_pipeline_execution_output()
@@ -1950,8 +1937,7 @@ codepipeline_get_pipeline_state <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$get_pipeline_state_input(name = name)
   output <- .codepipeline$get_pipeline_state_output()
@@ -2073,8 +2059,7 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$get_third_party_job_details_input(jobId = jobId, clientToken = clientToken)
   output <- .codepipeline$get_third_party_job_details_output()
@@ -2208,8 +2193,7 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "actionExecutionDetails"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "actionExecutionDetails")
   )
   input <- .codepipeline$list_action_executions_input(pipelineName = pipelineName, filter = filter, maxResults = maxResults, nextToken = nextToken)
   output <- .codepipeline$list_action_executions_output()
@@ -2301,8 +2285,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "actionTypes"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "actionTypes")
   )
   input <- .codepipeline$list_action_types_input(actionOwnerFilter = actionOwnerFilter, nextToken = nextToken, regionFilter = regionFilter)
   output <- .codepipeline$list_action_types_output()
@@ -2405,8 +2388,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelineExecutionSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelineExecutionSummaries")
   )
   input <- .codepipeline$list_pipeline_executions_input(pipelineName = pipelineName, maxResults = maxResults, filter = filter, nextToken = nextToken)
   output <- .codepipeline$list_pipeline_executions_output()
@@ -2474,8 +2456,7 @@ codepipeline_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelines"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "pipelines")
   )
   input <- .codepipeline$list_pipelines_input(nextToken = nextToken, maxResults = maxResults)
   output <- .codepipeline$list_pipelines_output()
@@ -2597,8 +2578,7 @@ codepipeline_list_rule_executions <- function(pipelineName, filter = NULL, maxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ruleExecutionDetails"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "ruleExecutionDetails")
   )
   input <- .codepipeline$list_rule_executions_input(pipelineName = pipelineName, filter = filter, maxResults = maxResults, nextToken = nextToken)
   output <- .codepipeline$list_rule_executions_output()
@@ -2678,8 +2658,7 @@ codepipeline_list_rule_types <- function(ruleOwnerFilter = NULL, regionFilter = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$list_rule_types_input(ruleOwnerFilter = ruleOwnerFilter, regionFilter = regionFilter)
   output <- .codepipeline$list_rule_types_output()
@@ -2741,8 +2720,7 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .codepipeline$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .codepipeline$list_tags_for_resource_output()
@@ -2761,8 +2739,6 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
 #' Gets a listing of all the webhooks in this Amazon Web Services Region
 #' for this account. The output lists all webhooks and includes the webhook
 #' URL and ARN and the configuration for each webhook.
-#' 
-#' If a secret token was provided, it will be redacted in the response.
 #'
 #' @usage
 #' codepipeline_list_webhooks(NextToken, MaxResults)
@@ -2833,8 +2809,7 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "webhooks"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "webhooks")
   )
   input <- .codepipeline$list_webhooks_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .codepipeline$list_webhooks_output()
@@ -2886,8 +2861,7 @@ codepipeline_override_stage_condition <- function(pipelineName, stageName, pipel
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$override_stage_condition_input(pipelineName = pipelineName, stageName = stageName, pipelineExecutionId = pipelineExecutionId, conditionType = conditionType)
   output <- .codepipeline$override_stage_condition_output()
@@ -3026,8 +3000,7 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$poll_for_jobs_input(actionTypeId = actionTypeId, maxBatchSize = maxBatchSize, queryParam = queryParam)
   output <- .codepipeline$poll_for_jobs_output()
@@ -3093,8 +3066,7 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$poll_for_third_party_jobs_input(actionTypeId = actionTypeId, maxBatchSize = maxBatchSize)
   output <- .codepipeline$poll_for_third_party_jobs_output()
@@ -3158,8 +3130,7 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$put_action_revision_input(pipelineName = pipelineName, stageName = stageName, actionName = actionName, actionRevision = actionRevision)
   output <- .codepipeline$put_action_revision_output()
@@ -3226,8 +3197,7 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$put_approval_result_input(pipelineName = pipelineName, stageName = stageName, actionName = actionName, result = result, token = token)
   output <- .codepipeline$put_approval_result_output()
@@ -3279,8 +3249,7 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$put_job_failure_result_input(jobId = jobId, failureDetails = failureDetails)
   output <- .codepipeline$put_job_failure_result_output()
@@ -3357,8 +3326,7 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$put_job_success_result_input(jobId = jobId, currentRevision = currentRevision, continuationToken = continuationToken, executionDetails = executionDetails, outputVariables = outputVariables)
   output <- .codepipeline$put_job_success_result_output()
@@ -3415,8 +3383,7 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$put_third_party_job_failure_result_input(jobId = jobId, clientToken = clientToken, failureDetails = failureDetails)
   output <- .codepipeline$put_third_party_job_failure_result_output()
@@ -3491,8 +3458,7 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$put_third_party_job_success_result_input(jobId = jobId, clientToken = clientToken, currentRevision = currentRevision, continuationToken = continuationToken, executionDetails = executionDetails)
   output <- .codepipeline$put_third_party_job_success_result_output()
@@ -3517,17 +3483,6 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' RegisterWebhookWithThirdParty and DeregisterWebhookWithThirdParty APIs
 #' can be used to automatically configure supported third parties to call
 #' the generated webhook URL.
-#' 
-#' When creating CodePipeline webhooks, do not use your own credentials or
-#' reuse the same secret token across multiple webhooks. For optimal
-#' security, generate a unique secret token for each webhook you create.
-#' The secret token is an arbitrary string that you provide, which GitHub
-#' uses to compute and sign the webhook payloads sent to CodePipeline, for
-#' protecting the integrity and authenticity of the webhook payloads. Using
-#' your own credentials or reusing the same token across multiple webhooks
-#' can lead to security vulnerabilities.
-#' 
-#' If a secret token was provided, it will be redacted in the response.
 #'
 #' @usage
 #' codepipeline_put_webhook(webhook, tags)
@@ -3616,8 +3571,7 @@ codepipeline_put_webhook <- function(webhook, tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$put_webhook_input(webhook = webhook, tags = tags)
   output <- .codepipeline$put_webhook_output()
@@ -3663,8 +3617,7 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$register_webhook_with_third_party_input(webhookName = webhookName)
   output <- .codepipeline$register_webhook_with_third_party_output()
@@ -3730,8 +3683,7 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$retry_stage_execution_input(pipelineName = pipelineName, stageName = stageName, pipelineExecutionId = pipelineExecutionId, retryMode = retryMode)
   output <- .codepipeline$retry_stage_execution_output()
@@ -3784,8 +3736,7 @@ codepipeline_rollback_stage <- function(pipelineName, stageName, targetPipelineE
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$rollback_stage_input(pipelineName = pipelineName, stageName = stageName, targetPipelineExecutionId = targetPipelineExecutionId)
   output <- .codepipeline$rollback_stage_output()
@@ -3858,8 +3809,7 @@ codepipeline_start_pipeline_execution <- function(name, variables = NULL, client
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$start_pipeline_execution_input(name = name, variables = variables, clientRequestToken = clientRequestToken, sourceRevisions = sourceRevisions)
   output <- .codepipeline$start_pipeline_execution_output()
@@ -3925,8 +3875,7 @@ codepipeline_stop_pipeline_execution <- function(pipelineName, pipelineExecution
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$stop_pipeline_execution_input(pipelineName = pipelineName, pipelineExecutionId = pipelineExecutionId, abandon = abandon, reason = reason)
   output <- .codepipeline$stop_pipeline_execution_output()
@@ -3977,8 +3926,7 @@ codepipeline_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .codepipeline$tag_resource_output()
@@ -4025,8 +3973,7 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .codepipeline$untag_resource_output()
@@ -4130,8 +4077,7 @@ codepipeline_update_action_type <- function(actionType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$update_action_type_input(actionType = actionType)
   output <- .codepipeline$update_action_type_output()
@@ -4619,8 +4565,7 @@ codepipeline_update_pipeline <- function(pipeline) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codepipeline$update_pipeline_input(pipeline = pipeline)
   output <- .codepipeline$update_pipeline_output()

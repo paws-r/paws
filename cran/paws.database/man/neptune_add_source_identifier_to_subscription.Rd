@@ -23,8 +23,8 @@ must be supplied.
 must be supplied.
 \item If the source type is a DB parameter group, a \code{DBParameterGroupName}
 must be supplied.
-\item If the source type is a DB snapshot, a \code{DBSnapshotIdentifier} must be
-supplied.
+\item If the source type is a DB snapshot, a \code{DBSnapshotIdentifier} must
+be supplied.
 }}
 }
 \description{

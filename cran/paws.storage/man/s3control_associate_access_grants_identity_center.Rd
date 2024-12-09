@@ -8,7 +8,7 @@ Identity Center instance}
 s3control_associate_access_grants_identity_center(AccountId, IdentityCenterArn)
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
+\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
 
 \item{IdentityCenterArn}{[required] The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
 Center instance that you are associating with your S3 Access Grants

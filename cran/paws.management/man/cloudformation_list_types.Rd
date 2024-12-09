@@ -21,10 +21,11 @@ CloudFormation operations.
 
 Valid values include:
 \itemize{
-\item \code{PRIVATE}: Extensions that are visible and usable within this account
-and Region. This includes:
+\item \code{PRIVATE}: Extensions that are visible and usable within this
+account and Region. This includes:
 \itemize{
-\item Private extensions you have registered in this account and Region.
+\item Private extensions you have registered in this account and
+Region.
 \item Public extensions that you have activated in this account and
 Region.
 }
@@ -60,8 +61,8 @@ Valid values include:
 \itemize{
 \item \code{LIVE}: The extension is registered for use in CloudFormation
 operations.
-\item \code{DEPRECATED}: The extension has been deregistered and can no longer be
-used in CloudFormation operations.
+\item \code{DEPRECATED}: The extension has been deregistered and can no longer
+be used in CloudFormation operations.
 }}
 
 \item{Type}{The type of extension.}

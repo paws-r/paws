@@ -26,8 +26,7 @@ mturk_accept_qualification_request <- function(QualificationRequestId, IntegerVa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$accept_qualification_request_input(QualificationRequestId = QualificationRequestId, IntegerValue = IntegerValue)
   output <- .mturk$accept_qualification_request_output()
@@ -63,8 +62,7 @@ mturk_approve_assignment <- function(AssignmentId, RequesterFeedback = NULL, Ove
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$approve_assignment_input(AssignmentId = AssignmentId, RequesterFeedback = RequesterFeedback, OverrideRejection = OverrideRejection)
   output <- .mturk$approve_assignment_output()
@@ -102,8 +100,7 @@ mturk_associate_qualification_with_worker <- function(QualificationTypeId, Worke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$associate_qualification_with_worker_input(QualificationTypeId = QualificationTypeId, WorkerId = WorkerId, IntegerValue = IntegerValue, SendNotification = SendNotification)
   output <- .mturk$associate_qualification_with_worker_output()
@@ -142,8 +139,7 @@ mturk_create_additional_assignments_for_hit <- function(HITId, NumberOfAdditiona
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$create_additional_assignments_for_hit_input(HITId = HITId, NumberOfAdditionalAssignments = NumberOfAdditionalAssignments, UniqueRequestToken = UniqueRequestToken)
   output <- .mturk$create_additional_assignments_for_hit_output()
@@ -250,8 +246,7 @@ mturk_create_hit <- function(MaxAssignments = NULL, AutoApprovalDelayInSeconds =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$create_hit_input(MaxAssignments = MaxAssignments, AutoApprovalDelayInSeconds = AutoApprovalDelayInSeconds, LifetimeInSeconds = LifetimeInSeconds, AssignmentDurationInSeconds = AssignmentDurationInSeconds, Reward = Reward, Title = Title, Keywords = Keywords, Description = Description, Question = Question, RequesterAnnotation = RequesterAnnotation, QualificationRequirements = QualificationRequirements, UniqueRequestToken = UniqueRequestToken, AssignmentReviewPolicy = AssignmentReviewPolicy, HITReviewPolicy = HITReviewPolicy, HITLayoutId = HITLayoutId, HITLayoutParameters = HITLayoutParameters)
   output <- .mturk$create_hit_output()
@@ -307,8 +302,7 @@ mturk_create_hit_type <- function(AutoApprovalDelayInSeconds = NULL, AssignmentD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$create_hit_type_input(AutoApprovalDelayInSeconds = AutoApprovalDelayInSeconds, AssignmentDurationInSeconds = AssignmentDurationInSeconds, Reward = Reward, Title = Title, Keywords = Keywords, Description = Description, QualificationRequirements = QualificationRequirements)
   output <- .mturk$create_hit_type_output()
@@ -391,8 +385,7 @@ mturk_create_hit_with_hit_type <- function(HITTypeId, MaxAssignments = NULL, Lif
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$create_hit_with_hit_type_input(HITTypeId = HITTypeId, MaxAssignments = MaxAssignments, LifetimeInSeconds = LifetimeInSeconds, Question = Question, RequesterAnnotation = RequesterAnnotation, UniqueRequestToken = UniqueRequestToken, AssignmentReviewPolicy = AssignmentReviewPolicy, HITReviewPolicy = HITReviewPolicy, HITLayoutId = HITLayoutId, HITLayoutParameters = HITLayoutParameters)
   output <- .mturk$create_hit_with_hit_type_output()
@@ -472,8 +465,7 @@ mturk_create_qualification_type <- function(Name, Keywords = NULL, Description, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$create_qualification_type_input(Name = Name, Keywords = Keywords, Description = Description, QualificationTypeStatus = QualificationTypeStatus, RetryDelayInSeconds = RetryDelayInSeconds, Test = Test, AnswerKey = AnswerKey, TestDurationInSeconds = TestDurationInSeconds, AutoGranted = AutoGranted, AutoGrantedValue = AutoGrantedValue)
   output <- .mturk$create_qualification_type_output()
@@ -507,8 +499,7 @@ mturk_create_worker_block <- function(WorkerId, Reason) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$create_worker_block_input(WorkerId = WorkerId, Reason = Reason)
   output <- .mturk$create_worker_block_output()
@@ -538,8 +529,7 @@ mturk_delete_hit <- function(HITId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$delete_hit_input(HITId = HITId)
   output <- .mturk$delete_hit_output()
@@ -570,8 +560,7 @@ mturk_delete_qualification_type <- function(QualificationTypeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$delete_qualification_type_input(QualificationTypeId = QualificationTypeId)
   output <- .mturk$delete_qualification_type_output()
@@ -604,8 +593,7 @@ mturk_delete_worker_block <- function(WorkerId, Reason = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$delete_worker_block_input(WorkerId = WorkerId, Reason = Reason)
   output <- .mturk$delete_worker_block_output()
@@ -639,8 +627,7 @@ mturk_disassociate_qualification_from_worker <- function(WorkerId, Qualification
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$disassociate_qualification_from_worker_input(WorkerId = WorkerId, QualificationTypeId = QualificationTypeId, Reason = Reason)
   output <- .mturk$disassociate_qualification_from_worker_output()
@@ -671,8 +658,7 @@ mturk_get_account_balance <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$get_account_balance_input()
   output <- .mturk$get_account_balance_output()
@@ -703,8 +689,7 @@ mturk_get_assignment <- function(AssignmentId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$get_assignment_input(AssignmentId = AssignmentId)
   output <- .mturk$get_assignment_output()
@@ -737,8 +722,7 @@ mturk_get_file_upload_url <- function(AssignmentId, QuestionIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$get_file_upload_url_input(AssignmentId = AssignmentId, QuestionIdentifier = QuestionIdentifier)
   output <- .mturk$get_file_upload_url_output()
@@ -768,8 +752,7 @@ mturk_get_hit <- function(HITId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$get_hit_input(HITId = HITId)
   output <- .mturk$get_hit_output()
@@ -801,8 +784,7 @@ mturk_get_qualification_score <- function(QualificationTypeId, WorkerId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$get_qualification_score_input(QualificationTypeId = QualificationTypeId, WorkerId = WorkerId)
   output <- .mturk$get_qualification_score_output()
@@ -833,8 +815,7 @@ mturk_get_qualification_type <- function(QualificationTypeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$get_qualification_type_input(QualificationTypeId = QualificationTypeId)
   output <- .mturk$get_qualification_type_output()
@@ -868,8 +849,7 @@ mturk_list_assignments_for_hit <- function(HITId, NextToken = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_assignments_for_hit_input(HITId = HITId, NextToken = NextToken, MaxResults = MaxResults, AssignmentStatuses = AssignmentStatuses)
   output <- .mturk$list_assignments_for_hit_output()
@@ -909,8 +889,7 @@ mturk_list_bonus_payments <- function(HITId = NULL, AssignmentId = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_bonus_payments_input(HITId = HITId, AssignmentId = AssignmentId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_bonus_payments_output()
@@ -941,8 +920,7 @@ mturk_list_hi_ts <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_hi_ts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_hi_ts_output()
@@ -975,8 +953,7 @@ mturk_list_hi_ts_for_qualification_type <- function(QualificationTypeId, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_hi_ts_for_qualification_type_input(QualificationTypeId = QualificationTypeId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_hi_ts_for_qualification_type_output()
@@ -1009,8 +986,7 @@ mturk_list_qualification_requests <- function(QualificationTypeId = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_qualification_requests_input(QualificationTypeId = QualificationTypeId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_qualification_requests_output()
@@ -1052,8 +1028,7 @@ mturk_list_qualification_types <- function(Query = NULL, MustBeRequestable, Must
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_qualification_types_input(Query = Query, MustBeRequestable = MustBeRequestable, MustBeOwnedByCaller = MustBeOwnedByCaller, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_qualification_types_output()
@@ -1094,8 +1069,7 @@ mturk_list_review_policy_results_for_hit <- function(HITId, PolicyLevels = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_review_policy_results_for_hit_input(HITId = HITId, PolicyLevels = PolicyLevels, RetrieveActions = RetrieveActions, RetrieveResults = RetrieveResults, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_review_policy_results_for_hit_output()
@@ -1132,8 +1106,7 @@ mturk_list_reviewable_hi_ts <- function(HITTypeId = NULL, Status = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_reviewable_hi_ts_input(HITTypeId = HITTypeId, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_reviewable_hi_ts_output()
@@ -1165,8 +1138,7 @@ mturk_list_worker_blocks <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_worker_blocks_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_worker_blocks_output()
@@ -1200,8 +1172,7 @@ mturk_list_workers_with_qualification_type <- function(QualificationTypeId, Stat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .mturk$list_workers_with_qualification_type_input(QualificationTypeId = QualificationTypeId, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .mturk$list_workers_with_qualification_type_output()
@@ -1237,8 +1208,7 @@ mturk_notify_workers <- function(Subject, MessageText, WorkerIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$notify_workers_input(Subject = Subject, MessageText = MessageText, WorkerIds = WorkerIds)
   output <- .mturk$notify_workers_output()
@@ -1272,8 +1242,7 @@ mturk_reject_assignment <- function(AssignmentId, RequesterFeedback) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$reject_assignment_input(AssignmentId = AssignmentId, RequesterFeedback = RequesterFeedback)
   output <- .mturk$reject_assignment_output()
@@ -1308,8 +1277,7 @@ mturk_reject_qualification_request <- function(QualificationRequestId, Reason = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$reject_qualification_request_input(QualificationRequestId = QualificationRequestId, Reason = Reason)
   output <- .mturk$reject_qualification_request_output()
@@ -1352,8 +1320,7 @@ mturk_send_bonus <- function(WorkerId, BonusAmount, AssignmentId, Reason, Unique
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$send_bonus_input(WorkerId = WorkerId, BonusAmount = BonusAmount, AssignmentId = AssignmentId, Reason = Reason, UniqueRequestToken = UniqueRequestToken)
   output <- .mturk$send_bonus_output()
@@ -1391,8 +1358,7 @@ mturk_send_test_event_notification <- function(Notification, TestEventType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$send_test_event_notification_input(Notification = Notification, TestEventType = TestEventType)
   output <- .mturk$send_test_event_notification_output()
@@ -1424,8 +1390,7 @@ mturk_update_expiration_for_hit <- function(HITId, ExpireAt) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$update_expiration_for_hit_input(HITId = HITId, ExpireAt = ExpireAt)
   output <- .mturk$update_expiration_for_hit_output()
@@ -1447,11 +1412,11 @@ mturk_update_expiration_for_hit <- function(HITId, ExpireAt) {
 #' @param HITId &#91;required&#93; The ID of the HIT to update.
 #' @param Revert Specifies how to update the HIT status. Default is `False`.
 #' 
-#' - Setting this to false will only transition a HIT from `Reviewable` to
-#'   `Reviewing`
+#' -   Setting this to false will only transition a HIT from `Reviewable`
+#'     to `Reviewing`
 #' 
-#' - Setting this to true will only transition a HIT from `Reviewing` to
-#'   `Reviewable`
+#' -   Setting this to true will only transition a HIT from `Reviewing` to
+#'     `Reviewable`
 #'
 #' @keywords internal
 #'
@@ -1462,8 +1427,7 @@ mturk_update_hit_review_status <- function(HITId, Revert = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$update_hit_review_status_input(HITId = HITId, Revert = Revert)
   output <- .mturk$update_hit_review_status_output()
@@ -1495,8 +1459,7 @@ mturk_update_hit_type_of_hit <- function(HITId, HITTypeId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$update_hit_type_of_hit_input(HITId = HITId, HITTypeId = HITTypeId)
   output <- .mturk$update_hit_type_of_hit_output()
@@ -1533,8 +1496,7 @@ mturk_update_notification_settings <- function(HITTypeId, Notification = NULL, A
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$update_notification_settings_input(HITTypeId = HITTypeId, Notification = Notification, Active = Active)
   output <- .mturk$update_notification_settings_output()
@@ -1597,8 +1559,7 @@ mturk_update_qualification_type <- function(QualificationTypeId, Description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .mturk$update_qualification_type_input(QualificationTypeId = QualificationTypeId, Description = Description, QualificationTypeStatus = QualificationTypeStatus, Test = Test, AnswerKey = AnswerKey, TestDurationInSeconds = TestDurationInSeconds, RetryDelayInSeconds = RetryDelayInSeconds, AutoGranted = AutoGranted, AutoGrantedValue = AutoGrantedValue)
   output <- .mturk$update_qualification_type_output()

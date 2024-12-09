@@ -44,7 +44,7 @@ request.}
 \item{sortOrder}{Specifies whether to sort the results by ascending or descending order.}
 }
 \description{
-Lists all batch inference jobs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/#batch-inference-view}{View details about a batch inference job}.
+Lists all batch inference jobs in the account. For more information, see \href{https://docs.aws.amazon.com/bedrock/latest/userguide/batch-inference-manage.html#batch-inference-view}{View details about a batch inference job}.
 
 See \url{https://www.paws-r-sdk.com/docs/bedrock_list_model_invocation_jobs/} for full documentation.
 }

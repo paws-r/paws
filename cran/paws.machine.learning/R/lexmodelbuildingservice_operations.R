@@ -27,8 +27,7 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
     http_method = "POST",
     http_path = "/bots/{name}/versions",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$create_bot_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_bot_version_output()
@@ -66,8 +65,7 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
     http_method = "POST",
     http_path = "/intents/{name}/versions",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$create_intent_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_intent_version_output()
@@ -105,8 +103,7 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
     http_method = "POST",
     http_path = "/slottypes/{name}/versions",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$create_slot_type_version_input(name = name, checksum = checksum)
   output <- .lexmodelbuildingservice$create_slot_type_version_output()
@@ -136,8 +133,7 @@ lexmodelbuildingservice_delete_bot <- function(name) {
     http_method = "DELETE",
     http_path = "/bots/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_bot_input(name = name)
   output <- .lexmodelbuildingservice$delete_bot_output()
@@ -168,8 +164,7 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
     http_method = "DELETE",
     http_path = "/bots/{botName}/aliases/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_bot_alias_input(name = name, botName = botName)
   output <- .lexmodelbuildingservice$delete_bot_alias_output()
@@ -203,8 +198,7 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
     http_method = "DELETE",
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_bot_channel_association_input(name = name, botName = botName, botAlias = botAlias)
   output <- .lexmodelbuildingservice$delete_bot_channel_association_output()
@@ -237,8 +231,7 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
     http_method = "DELETE",
     http_path = "/bots/{name}/versions/{version}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_bot_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_bot_version_output()
@@ -268,8 +261,7 @@ lexmodelbuildingservice_delete_intent <- function(name) {
     http_method = "DELETE",
     http_path = "/intents/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_intent_input(name = name)
   output <- .lexmodelbuildingservice$delete_intent_output()
@@ -302,8 +294,7 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
     http_method = "DELETE",
     http_path = "/intents/{name}/versions/{version}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_intent_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_intent_version_output()
@@ -333,8 +324,7 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
     http_method = "DELETE",
     http_path = "/slottypes/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_slot_type_input(name = name)
   output <- .lexmodelbuildingservice$delete_slot_type_output()
@@ -368,8 +358,7 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
     http_method = "DELETE",
     http_path = "/slottypes/{name}/version/{version}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_slot_type_version_input(name = name, version = version)
   output <- .lexmodelbuildingservice$delete_slot_type_version_output()
@@ -405,8 +394,7 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
     http_method = "DELETE",
     http_path = "/bots/{botName}/utterances/{userId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$delete_utterances_input(botName = botName, userId = userId)
   output <- .lexmodelbuildingservice$delete_utterances_output()
@@ -437,8 +425,7 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
     http_method = "GET",
     http_path = "/bots/{name}/versions/{versionoralias}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_bot_input(name = name, versionOrAlias = versionOrAlias)
   output <- .lexmodelbuildingservice$get_bot_output()
@@ -469,8 +456,7 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_bot_alias_input(name = name, botName = botName)
   output <- .lexmodelbuildingservice$get_bot_alias_output()
@@ -509,8 +495,7 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_aliases_input(botName = botName, nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bot_aliases_output()
@@ -545,8 +530,7 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_bot_channel_association_input(name = name, botName = botName, botAlias = botAlias)
   output <- .lexmodelbuildingservice$get_bot_channel_association_output()
@@ -588,8 +572,7 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
     http_method = "GET",
     http_path = "/bots/{botName}/aliases/{aliasName}/channels/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_channel_associations_input(botName = botName, botAlias = botAlias, nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bot_channel_associations_output()
@@ -625,8 +608,7 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
     http_method = "GET",
     http_path = "/bots/{name}/versions/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bot_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_bot_versions_output()
@@ -664,8 +646,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
     http_method = "GET",
     http_path = "/bots/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_bots_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_bots_output()
@@ -685,7 +666,9 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/) for full documentation.
 #'
 #' @param signature &#91;required&#93; The unique identifier for a built-in intent. To find the signature for
-#' an intent, see Standard Built-in Intents in the *Alexa Skills Kit*.
+#' an intent, see [Standard Built-in
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
+#' in the *Alexa Skills Kit*.
 #'
 #' @keywords internal
 #'
@@ -696,8 +679,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
     http_method = "GET",
     http_path = "/builtins/intents/{signature}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_builtin_intent_input(signature = signature)
   output <- .lexmodelbuildingservice$get_builtin_intent_output()
@@ -720,7 +702,9 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' @param signatureContains Substring to match in built-in intent signatures. An intent will be
 #' returned if any part of its signature matches the substring. For
 #' example, "xyz" matches both "xyzabc" and "abcxyz." To find the signature
-#' for an intent, see Standard Built-in Intents in the *Alexa Skills Kit*.
+#' for an intent, see [Standard Built-in
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
+#' in the *Alexa Skills Kit*.
 #' @param nextToken A pagination token that fetches the next page of intents. If this API
 #' call is truncated, Amazon Lex returns a pagination token in the
 #' response. To fetch the next page of intents, use the pagination token in
@@ -737,8 +721,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
     http_method = "GET",
     http_path = "/builtins/intents/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_builtin_intents_input(locale = locale, signatureContains = signatureContains, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_builtin_intents_output()
@@ -777,8 +760,7 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
     http_method = "GET",
     http_path = "/builtins/slottypes/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_builtin_slot_types_input(locale = locale, signatureContains = signatureContains, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_builtin_slot_types_output()
@@ -811,8 +793,7 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
     http_method = "GET",
     http_path = "/exports/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_export_input(name = name, version = version, resourceType = resourceType, exportType = exportType)
   output <- .lexmodelbuildingservice$get_export_output()
@@ -843,8 +824,7 @@ lexmodelbuildingservice_get_import <- function(importId) {
     http_method = "GET",
     http_path = "/imports/{importId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_import_input(importId = importId)
   output <- .lexmodelbuildingservice$get_import_output()
@@ -875,8 +855,7 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
     http_method = "GET",
     http_path = "/intents/{name}/versions/{version}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_intent_input(name = name, version = version)
   output <- .lexmodelbuildingservice$get_intent_output()
@@ -912,8 +891,7 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
     http_method = "GET",
     http_path = "/intents/{name}/versions/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_intent_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_intent_versions_output()
@@ -951,8 +929,7 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
     http_method = "GET",
     http_path = "/intents/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_intents_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_intents_output()
@@ -984,8 +961,7 @@ lexmodelbuildingservice_get_migration <- function(migrationId) {
     http_method = "GET",
     http_path = "/migrations/{migrationId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_migration_input(migrationId = migrationId)
   output <- .lexmodelbuildingservice$get_migration_output()
@@ -1026,8 +1002,7 @@ lexmodelbuildingservice_get_migrations <- function(sortByAttribute = NULL, sortB
     http_method = "GET",
     http_path = "/migrations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_migrations_input(sortByAttribute = sortByAttribute, sortByOrder = sortByOrder, v1BotNameContains = v1BotNameContains, migrationStatusEquals = migrationStatusEquals, maxResults = maxResults, nextToken = nextToken)
   output <- .lexmodelbuildingservice$get_migrations_output()
@@ -1058,8 +1033,7 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
     http_method = "GET",
     http_path = "/slottypes/{name}/versions/{version}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_slot_type_input(name = name, version = version)
   output <- .lexmodelbuildingservice$get_slot_type_output()
@@ -1095,8 +1069,7 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
     http_method = "GET",
     http_path = "/slottypes/{name}/versions/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_slot_type_versions_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .lexmodelbuildingservice$get_slot_type_versions_output()
@@ -1134,8 +1107,7 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
     http_method = "GET",
     http_path = "/slottypes/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .lexmodelbuildingservice$get_slot_types_input(nextToken = nextToken, maxResults = maxResults, nameContains = nameContains)
   output <- .lexmodelbuildingservice$get_slot_types_output()
@@ -1170,8 +1142,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
     http_method = "GET",
     http_path = "/bots/{botname}/utterances?view=aggregation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$get_utterances_view_input(botName = botName, botVersions = botVersions, statusType = statusType)
   output <- .lexmodelbuildingservice$get_utterances_view_output()
@@ -1202,8 +1173,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .lexmodelbuildingservice$list_tags_for_resource_output()
@@ -1218,7 +1188,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' Creates an Amazon Lex conversational bot or replaces an existing bot
 #'
 #' @description
-#' Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the response `FAILED`. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works.
+#' Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the `` response `FAILED`. You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see how-it-works.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot/](https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_bot/) for full documentation.
 #'
@@ -1242,13 +1212,13 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' The Regions where you can set the `enableModelImprovements` parameter to
 #' `true` are:
 #' 
-#' - US East (N. Virginia) (us-east-1)
+#' -   US East (N. Virginia) (us-east-1)
 #' 
-#' - US West (Oregon) (us-west-2)
+#' -   US West (Oregon) (us-west-2)
 #' 
-#' - Asia Pacific (Sydney) (ap-southeast-2)
+#' -   Asia Pacific (Sydney) (ap-southeast-2)
 #' 
-#' - EU (Ireland) (eu-west-1)
+#' -   EU (Ireland) (eu-west-1)
 #' 
 #' In other Regions, the `enableModelImprovements` parameter is set to
 #' `true` by default. In these Regions setting the parameter to `false`
@@ -1265,13 +1235,13 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' You must set the `enableModelImprovements` parameter to `true` to use
 #' confidence scores in the following regions.
 #' 
-#' - US East (N. Virginia) (us-east-1)
+#' -   US East (N. Virginia) (us-east-1)
 #' 
-#' - US West (Oregon) (us-west-2)
+#' -   US West (Oregon) (us-west-2)
 #' 
-#' - Asia Pacific (Sydney) (ap-southeast-2)
+#' -   Asia Pacific (Sydney) (ap-southeast-2)
 #' 
-#' - EU (Ireland) (eu-west-1)
+#' -   EU (Ireland) (eu-west-1)
 #' 
 #' In other Regions, the `enableModelImprovements` parameter is set to
 #' `true` by default.
@@ -1282,13 +1252,13 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' (0.70), IntentB (0.60), IntentC (0.50). The response from the `PostText`
 #' operation would be:
 #' 
-#' - AMAZON.FallbackIntent
+#' -   AMAZON.FallbackIntent
 #' 
-#' - IntentA
+#' -   IntentA
 #' 
-#' - IntentB
+#' -   IntentB
 #' 
-#' - IntentC
+#' -   IntentC
 #' @param clarificationPrompt When Amazon Lex doesn't understand the user's intent, it uses this
 #' message to get clarification. To specify how many times Amazon Lex
 #' should repeat the clarification prompt, use the `maxAttempts` field. If
@@ -1308,22 +1278,22 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' If you don't define a clarification prompt, at runtime Amazon Lex will
 #' return a 400 Bad Request exception in three cases:
 #' 
-#' - Follow-up prompt - When the user responds to a follow-up prompt but
-#'   does not provide an intent. For example, in response to a follow-up
-#'   prompt that says "Would you like anything else today?" the user says
-#'   "Yes." Amazon Lex will return a 400 Bad Request exception because it
-#'   does not have a clarification prompt to send to the user to get an
-#'   intent.
+#' -   Follow-up prompt - When the user responds to a follow-up prompt but
+#'     does not provide an intent. For example, in response to a follow-up
+#'     prompt that says "Would you like anything else today?" the user says
+#'     "Yes." Amazon Lex will return a 400 Bad Request exception because it
+#'     does not have a clarification prompt to send to the user to get an
+#'     intent.
 #' 
-#' - Lambda function - When using a Lambda function, you return an
-#'   `ElicitIntent` dialog type. Since Amazon Lex does not have a
-#'   clarification prompt to get an intent from the user, it returns a 400
-#'   Bad Request exception.
+#' -   Lambda function - When using a Lambda function, you return an
+#'     `ElicitIntent` dialog type. Since Amazon Lex does not have a
+#'     clarification prompt to get an intent from the user, it returns a
+#'     400 Bad Request exception.
 #' 
-#' - PutSession operation - When using the `PutSession` operation, you send
-#'   an `ElicitIntent` dialog type. Since Amazon Lex does not have a
-#'   clarification prompt to get an intent from the user, it returns a 400
-#'   Bad Request exception.
+#' -   PutSession operation - When using the `PutSession` operation, you
+#'     send an `ElicitIntent` dialog type. Since Amazon Lex does not have a
+#'     clarification prompt to get an intent from the user, it returns a
+#'     400 Bad Request exception.
 #' @param abortStatement When Amazon Lex can't understand the user's input in context, it tries
 #' to elicit the information a few times. After that, Amazon Lex sends the
 #' message defined in `abortStatement` to the user, and then cancels the
@@ -1431,8 +1401,7 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
     http_method = "PUT",
     http_path = "/bots/{name}/versions/$LATEST",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, enableModelImprovements = enableModelImprovements, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, detectSentiment = detectSentiment, createVersion = createVersion, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_output()
@@ -1482,8 +1451,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
     http_method = "PUT",
     http_path = "/bots/{botName}/aliases/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$put_bot_alias_input(name = name, description = description, botVersion = botVersion, botName = botName, checksum = checksum, conversationLogs = conversationLogs, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_alias_output()
@@ -1509,15 +1477,16 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' called `AMAZON.HelpIntent`, you can't create a custom intent called
 #' `HelpIntent`.
 #' 
-#' For a list of built-in intents, see Standard Built-in Intents in the
-#' *Alexa Skills Kit*.
+#' For a list of built-in intents, see [Standard Built-in
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
+#' in the *Alexa Skills Kit*.
 #' @param description A description of the intent.
 #' @param slots An array of intent slots. At runtime, Amazon Lex elicits required slot
 #' values from the user using prompts defined in the slots. For more
 #' information, see how-it-works.
 #' @param sampleUtterances An array of utterances (strings) that a user might say to signal the
-#' intent. For example, "I want \\PizzaSize\\ pizza", "Order \\Quantity\\
-#' \\PizzaSize\\ pizzas".
+#' intent. For example, "I want \{PizzaSize\} pizza", "Order
+#' \{Quantity\} \{PizzaSize\} pizzas".
 #' 
 #' In each utterance, a slot name is enclosed in curly braces.
 #' @param confirmationPrompt Prompts the user to confirm the intent. This question should have a yes
@@ -1545,17 +1514,17 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' The action that Amazon Lex takes depends on the user's response, as
 #' follows:
 #' 
-#' - If the user says "Yes" it responds with the clarification prompt that
-#'   is configured for the bot.
+#' -   If the user says "Yes" it responds with the clarification prompt
+#'     that is configured for the bot.
 #' 
-#' - if the user says "Yes" and continues with an utterance that triggers
-#'   an intent it starts a conversation for the intent.
+#' -   if the user says "Yes" and continues with an utterance that triggers
+#'     an intent it starts a conversation for the intent.
 #' 
-#' - If the user says "No" it responds with the rejection statement
-#'   configured for the the follow-up prompt.
+#' -   If the user says "No" it responds with the rejection statement
+#'     configured for the the follow-up prompt.
 #' 
-#' - If it doesn't recognize the utterance it repeats the follow-up prompt
-#'   again.
+#' -   If it doesn't recognize the utterance it repeats the follow-up
+#'     prompt again.
 #' 
 #' The `followUpPrompt` field and the `conclusionStatement` field are
 #' mutually exclusive. You can specify only one.
@@ -1586,8 +1555,9 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' to the client application, or direct it to invoke a Lambda function that
 #' can process the intent (for example, place an order with a pizzeria).
 #' @param parentIntentSignature A unique identifier for the built-in intent to base this intent on. To
-#' find the signature for an intent, see Standard Built-in Intents in the
-#' *Alexa Skills Kit*.
+#' find the signature for an intent, see [Standard Built-in
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
+#' in the *Alexa Skills Kit*.
 #' @param checksum Identifies a specific revision of the `$LATEST` version.
 #' 
 #' When you create a new intent, leave the `checksum` field blank. If you
@@ -1622,8 +1592,7 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
     http_method = "PUT",
     http_path = "/intents/{name}/versions/$LATEST",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$put_intent_input(name = name, description = description, slots = slots, sampleUtterances = sampleUtterances, confirmationPrompt = confirmationPrompt, rejectionStatement = rejectionStatement, followUpPrompt = followUpPrompt, conclusionStatement = conclusionStatement, dialogCodeHook = dialogCodeHook, fulfillmentActivity = fulfillmentActivity, parentIntentSignature = parentIntentSignature, checksum = checksum, createVersion = createVersion, kendraConfiguration = kendraConfiguration, inputContexts = inputContexts, outputContexts = outputContexts)
   output <- .lexmodelbuildingservice$put_intent_output()
@@ -1649,8 +1618,9 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' slot type called `AMAZON.DATE`, you can't create a custom slot type
 #' called `DATE`.
 #' 
-#' For a list of built-in slot types, see Slot Type Reference in the *Alexa
-#' Skills Kit*.
+#' For a list of built-in slot types, see [Slot Type
+#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
+#' in the *Alexa Skills Kit*.
 #' @param description A description of the slot type.
 #' @param enumerationValues A list of `EnumerationValue` objects that defines the values that the
 #' slot type can take. Each value can have a list of `synonyms`, which are
@@ -1680,12 +1650,12 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' @param valueSelectionStrategy Determines the slot resolution strategy that Amazon Lex uses to return
 #' slot type values. The field can be set to one of the following values:
 #' 
-#' - `ORIGINAL_VALUE` - Returns the value entered by the user, if the user
-#'   value is similar to the slot value.
+#' -   `ORIGINAL_VALUE` - Returns the value entered by the user, if the
+#'     user value is similar to the slot value.
 #' 
-#' - `TOP_RESOLUTION` - If there is a resolution list for the slot, return
-#'   the first value in the resolution list as the slot type value. If
-#'   there is no resolution list, null is returned.
+#' -   `TOP_RESOLUTION` - If there is a resolution list for the slot,
+#'     return the first value in the resolution list as the slot type
+#'     value. If there is no resolution list, null is returned.
 #' 
 #' If you don't specify the `valueSelectionStrategy`, the default is
 #' `ORIGINAL_VALUE`.
@@ -1711,8 +1681,7 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
     http_method = "PUT",
     http_path = "/slottypes/{name}/versions/$LATEST",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$put_slot_type_input(name = name, description = description, enumerationValues = enumerationValues, checksum = checksum, valueSelectionStrategy = valueSelectionStrategy, createVersion = createVersion, parentSlotTypeSignature = parentSlotTypeSignature, slotTypeConfigurations = slotTypeConfigurations)
   output <- .lexmodelbuildingservice$put_slot_type_output()
@@ -1737,22 +1706,22 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 #' @param resourceType &#91;required&#93; Specifies the type of resource to export. Each resource also exports any
 #' resources that it depends on.
 #' 
-#' - A bot exports dependent intents.
+#' -   A bot exports dependent intents.
 #' 
-#' - An intent exports dependent slot types.
+#' -   An intent exports dependent slot types.
 #' @param mergeStrategy &#91;required&#93; Specifies the action that the
 #' [`start_import`][lexmodelbuildingservice_start_import] operation should
 #' take when there is an existing resource with the same name.
 #' 
-#' - FAIL_ON_CONFLICT - The import operation is stopped on the first
-#'   conflict between a resource in the import file and an existing
-#'   resource. The name of the resource causing the conflict is in the
-#'   `failureReason` field of the response to the
-#'   [`get_import`][lexmodelbuildingservice_get_import] operation.
+#' -   FAIL_ON_CONFLICT - The import operation is stopped on the first
+#'     conflict between a resource in the import file and an existing
+#'     resource. The name of the resource causing the conflict is in the
+#'     `failureReason` field of the response to the
+#'     [`get_import`][lexmodelbuildingservice_get_import] operation.
 #' 
-#'   OVERWRITE_LATEST - The import operation proceeds even if there is a
-#'   conflict with an existing resource. The $LASTEST version of the
-#'   existing resource is overwritten with the data from the import file.
+#'     OVERWRITE_LATEST - The import operation proceeds even if there is a
+#'     conflict with an existing resource. The $LASTEST version of the
+#'     existing resource is overwritten with the data from the import file.
 #' @param tags A list of tags to add to the imported bot. You can only add tags when
 #' you import a bot, you can't add tags to an intent or slot type.
 #'
@@ -1765,8 +1734,7 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
     http_method = "POST",
     http_path = "/imports/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$start_import_input(payload = payload, resourceType = resourceType, mergeStrategy = mergeStrategy, tags = tags)
   output <- .lexmodelbuildingservice$start_import_output()
@@ -1792,21 +1760,21 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
 #' @param v2BotName &#91;required&#93; The name of the Amazon Lex V2 bot that you are migrating the Amazon Lex
 #' V1 bot to.
 #' 
-#' - If the Amazon Lex V2 bot doesn't exist, you must use the `CREATE_NEW`
-#'   migration strategy.
+#' -   If the Amazon Lex V2 bot doesn't exist, you must use the
+#'     `CREATE_NEW` migration strategy.
 #' 
-#' - If the Amazon Lex V2 bot exists, you must use the `UPDATE_EXISTING`
-#'   migration strategy to change the contents of the Amazon Lex V2 bot.
+#' -   If the Amazon Lex V2 bot exists, you must use the `UPDATE_EXISTING`
+#'     migration strategy to change the contents of the Amazon Lex V2 bot.
 #' @param v2BotRole &#91;required&#93; The IAM role that Amazon Lex uses to run the Amazon Lex V2 bot.
 #' @param migrationStrategy &#91;required&#93; The strategy used to conduct the migration.
 #' 
-#' - `CREATE_NEW` - Creates a new Amazon Lex V2 bot and migrates the Amazon
-#'   Lex V1 bot to the new bot.
+#' -   `CREATE_NEW` - Creates a new Amazon Lex V2 bot and migrates the
+#'     Amazon Lex V1 bot to the new bot.
 #' 
-#' - `UPDATE_EXISTING` - Overwrites the existing Amazon Lex V2 bot metadata
-#'   and the locale being migrated. It doesn't change any other locales in
-#'   the Amazon Lex V2 bot. If the locale doesn't exist, a new locale is
-#'   created in the Amazon Lex V2 bot.
+#' -   `UPDATE_EXISTING` - Overwrites the existing Amazon Lex V2 bot
+#'     metadata and the locale being migrated. It doesn't change any other
+#'     locales in the Amazon Lex V2 bot. If the locale doesn't exist, a new
+#'     locale is created in the Amazon Lex V2 bot.
 #'
 #' @keywords internal
 #'
@@ -1817,8 +1785,7 @@ lexmodelbuildingservice_start_migration <- function(v1BotName, v1BotVersion, v2B
     http_method = "POST",
     http_path = "/migrations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$start_migration_input(v1BotName = v1BotName, v1BotVersion = v1BotVersion, v2BotName = v2BotName, v2BotRole = v2BotRole, migrationStrategy = migrationStrategy)
   output <- .lexmodelbuildingservice$start_migration_output()
@@ -1851,8 +1818,7 @@ lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .lexmodelbuildingservice$tag_resource_output()
@@ -1884,8 +1850,7 @@ lexmodelbuildingservice_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexmodelbuildingservice$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .lexmodelbuildingservice$untag_resource_output()

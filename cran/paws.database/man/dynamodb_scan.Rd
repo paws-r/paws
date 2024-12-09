@@ -59,10 +59,10 @@ index.
 \itemize{
 \item \code{ALL_ATTRIBUTES} - Returns all of the item attributes from the
 specified table or index. If you query a local secondary index, then
-for each matching item in the index, DynamoDB fetches the entire item
-from the parent table. If the index is configured to project all item
-attributes, then all of the data can be obtained from the local
-secondary index, and no fetching is required.
+for each matching item in the index, DynamoDB fetches the entire
+item from the parent table. If the index is configured to project
+all item attributes, then all of the data can be obtained from the
+local secondary index, and no fetching is required.
 \item \code{ALL_PROJECTED_ATTRIBUTES} - Allowed only when querying an index.
 Retrieves all attributes that have been projected into the index. If
 the index is configured to project all attributes, this return value
@@ -72,8 +72,9 @@ matching items themselves. Note that this uses the same quantity of
 read capacity units as getting the items, and is subject to the same
 item size calculations.
 \item \code{SPECIFIC_ATTRIBUTES} - Returns only the attributes listed in
-\code{ProjectionExpression}. This return value is equivalent to specifying
-\code{ProjectionExpression} without specifying any value for \code{Select}.
+\code{ProjectionExpression}. This return value is equivalent to
+specifying \code{ProjectionExpression} without specifying any value for
+\code{Select}.
 
 If you query or scan a local secondary index and request only
 attributes that are projected into that index, the operation reads
@@ -184,8 +185,8 @@ The following are some use cases for using \code{ExpressionAttributeNames}:
 \itemize{
 \item To access an attribute whose name conflicts with a DynamoDB reserved
 word.
-\item To create a placeholder for repeating occurrences of an attribute name
-in an expression.
+\item To create a placeholder for repeating occurrences of an attribute
+name in an expression.
 \item To prevent special characters in an attribute name from being
 misinterpreted in an expression.
 }
@@ -241,7 +242,8 @@ scan:
 \itemize{
 \item If \code{ConsistentRead} is \code{false}, then the data returned from
 \code{\link[=dynamodb_scan]{scan}} might not contain the results from other
-recently completed write operations (\code{\link[=dynamodb_put_item]{put_item}},
+recently completed write operations
+(\code{\link[=dynamodb_put_item]{put_item}},
 \code{\link[=dynamodb_update_item]{update_item}}, or
 \code{\link[=dynamodb_delete_item]{delete_item}}).
 \item If \code{ConsistentRead} is \code{true}, then all of the write operations that

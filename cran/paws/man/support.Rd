@@ -77,18 +77,18 @@ Support API operations:
 \code{describe_cases},
 \code{describe_attachment}, and
 \code{resolve_case} operations create Amazon Web
-Services Support cases, retrieve information about cases, and resolve
-cases.
+Services Support cases, retrieve information about cases, and
+resolve cases.
 \item The \code{describe_communications},
-\code{add_communication_to_case}, and
-\code{add_attachments_to_set} operations
-retrieve and add communications and attachments to Amazon Web Services
-Support cases.
+\code{add_communication_to_case},
+and \code{add_attachments_to_set}
+operations retrieve and add communications and attachments to Amazon
+Web Services Support cases.
 \item The \code{describe_services} and
 \code{describe_severity_levels}
 operations return Amazon Web Service names, service codes, service
-categories, and problem severity levels. You use these values when you
-call the \code{create_case} operation.
+categories, and problem severity levels. You use these values when
+you call the \code{create_case} operation.
 }
 
 You can also use the Amazon Web Services Support API to call the Trusted
@@ -96,7 +96,7 @@ Advisor operations. For more information, see \href{https://docs.aws.amazon.com/
 in the \emph{Amazon Web Services Support User Guide}.
 
 For authentication of requests, Amazon Web Services Support uses
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 For more information about this service and the endpoints to use, see
 \href{https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html}{About the Amazon Web Services Support API}

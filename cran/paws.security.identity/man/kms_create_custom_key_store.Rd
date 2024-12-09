@@ -95,11 +95,11 @@ be unique in the Amazon Web Services account and Region.
 the same \code{XksProxyUriEndpoint} value as an external key store with
 \code{VPC_ENDPOINT_SERVICE} connectivity in this Amazon Web Services
 Region.
-\item Each external key store with \code{VPC_ENDPOINT_SERVICE} connectivity must
-have its own private DNS name. The \code{XksProxyUriEndpoint} value for
-external key stores with \code{VPC_ENDPOINT_SERVICE} connectivity (private
-DNS name) must be unique in the Amazon Web Services account and
-Region.
+\item Each external key store with \code{VPC_ENDPOINT_SERVICE} connectivity
+must have its own private DNS name. The \code{XksProxyUriEndpoint} value
+for external key stores with \code{VPC_ENDPOINT_SERVICE} connectivity
+(private DNS name) must be unique in the Amazon Web Services account
+and Region.
 }}
 
 \item{XksProxyUriPath}{Specifies the base path to the proxy APIs for this external key store.
@@ -129,9 +129,9 @@ for use with an external key store.
 
 \strong{Uniqueness requirements:}
 \itemize{
-\item External key stores with \code{VPC_ENDPOINT_SERVICE} connectivity can share
-an Amazon VPC, but each external key store must have its own VPC
-endpoint service and private DNS name.
+\item External key stores with \code{VPC_ENDPOINT_SERVICE} connectivity can
+share an Amazon VPC, but each external key store must have its own
+VPC endpoint service and private DNS name.
 }}
 
 \item{XksProxyAuthenticationCredential}{Specifies an authentication credential for the external key store proxy
@@ -161,7 +161,7 @@ of \code{EXTERNAL_KEY_STORE}.
 If the external key store proxy uses a public endpoint, specify
 \code{PUBLIC_ENDPOINT}. If the external key store proxy uses a Amazon VPC
 endpoint service for communication with KMS, specify
-\code{VPC_ENDPOINT_SERVICE}. For help making this choice, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/choose-xks-connectivity.html#choose-xks-connectivity}{Choosing a connectivity option}
+\code{VPC_ENDPOINT_SERVICE}. For help making this choice, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/plan-xks-keystore.html#choose-xks-connectivity}{Choosing a connectivity option}
 in the \emph{Key Management Service Developer Guide}.
 
 An Amazon VPC endpoint service keeps your communication with KMS in a
@@ -177,7 +177,7 @@ choose a VPC endpoint service, the proxy can be hosted within the VPC or
 outside of Amazon Web Services such as in your corporate data center.}
 }
 \description{
-Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store} backed by a key store that you own and manage. When you use a KMS key in a custom key store for a cryptographic operation, the cryptographic operation is actually performed in your key store using your keys. KMS supports \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html}{CloudHSM key stores} backed by an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{CloudHSM cluster} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html}{external key stores} backed by an external key store proxy and external key manager outside of Amazon Web Services.
+Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store} backed by a key store that you own and manage. When you use a KMS key in a custom key store for a cryptographic operation, the cryptographic operation is actually performed in your key store using your keys. KMS supports \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html}{CloudHSM key stores} backed by an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{CloudHSM cluster} and \href{https://docs.aws.amazon.com/kms/latest/developerguide/keystore-external.html}{external key stores} backed by an external key store proxy and external key manager outside of Amazon Web Services.
 
 See \url{https://www.paws-r-sdk.com/docs/kms_create_custom_key_store/} for full documentation.
 }

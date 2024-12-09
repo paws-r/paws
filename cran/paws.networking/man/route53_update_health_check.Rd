@@ -60,12 +60,13 @@ DNS, Route 53 then checks the health of the endpoint.
 
 Use one of the following formats for the value of \code{IPAddress}:
 \itemize{
-\item \strong{IPv4 address}: four values between 0 and 255, separated by periods
-(.), for example, \verb{192.0.2.44}.
+\item \strong{IPv4 address}: four values between 0 and 255, separated by
+periods (.), for example, \verb{192.0.2.44}.
 \item \strong{IPv6 address}: eight groups of four hexadecimal values, separated
-by colons (:), for example, \verb{2001:0db8:85a3:0000:0000:abcd:0001:2345}.
-You can also shorten IPv6 addresses as described in RFC 5952, for
-example, \verb{2001:db8:85a3::abcd:1:2345}.
+by colons (:), for example,
+\verb{2001:0db8:85a3:0000:0000:abcd:0001:2345}. You can also shorten IPv6
+addresses as described in RFC 5952, for example,
+\verb{2001:db8:85a3::abcd:1:2345}.
 }
 
 If the endpoint is an EC2 instance, we recommend that you create an
@@ -135,8 +136,8 @@ constructs the \code{Host} header:
 \item If you specify a value of \code{443} for \code{Port} and \code{HTTPS} or
 \code{HTTPS_STR_MATCH} for \code{Type}, Route 53 passes the value of
 \code{FullyQualifiedDomainName} to the endpoint in the \code{Host} header.
-\item If you specify another value for \code{Port} and any value except \code{TCP} for
-\code{Type}, Route 53 passes \emph{FullyQualifiedDomainName:Port} to the
+\item If you specify another value for \code{Port} and any value except \code{TCP}
+for \code{Type}, Route 53 passes \emph{FullyQualifiedDomainName:Port} to the
 endpoint in the \code{Host} header.
 }
 
@@ -206,8 +207,8 @@ check, here's what happens:
 \itemize{
 \item \strong{Health checks that check the health of endpoints:} Route 53 stops
 submitting requests to your application, server, or other resource.
-\item \strong{Calculated health checks:} Route 53 stops aggregating the status of
-the referenced health checks.
+\item \strong{Calculated health checks:} Route 53 stops aggregating the status
+of the referenced health checks.
 \item \strong{Health checks that monitor CloudWatch alarms:} Route 53 stops
 monitoring the corresponding CloudWatch metrics.
 }
@@ -231,8 +232,8 @@ Note the following:
 \itemize{
 \item If you specify a number greater than the number of child health
 checks, Route 53 always considers this health check to be unhealthy.
-\item If you specify \code{0}, Route 53 always considers this health check to be
-healthy.
+\item If you specify \code{0}, Route 53 always considers this health check to
+be healthy.
 }}
 
 \item{ChildHealthChecks}{A complex type that contains one \code{ChildHealthCheck} element for each
@@ -276,10 +277,10 @@ health check:
 \itemize{
 \item \code{Healthy}: Route 53 considers the health check to be healthy.
 \item \code{Unhealthy}: Route 53 considers the health check to be unhealthy.
-\item \code{LastKnownStatus}: By default, Route 53 uses the status of the health
-check from the last time CloudWatch had sufficient data to determine
-the alarm state. For new health checks that have no last known status,
-the status for the health check is healthy.
+\item \code{LastKnownStatus}: By default, Route 53 uses the status of the
+health check from the last time CloudWatch had sufficient data to
+determine the alarm state. For new health checks that have no last
+known status, the status for the health check is healthy.
 }}
 
 \item{ResetElements}{A complex type that contains one \code{ResettableElementName} element for

@@ -91,12 +91,12 @@ current date and time.}
 (\emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).
 \itemize{
 \item For a persistent request, the request remains active until the
-\code{ValidUntil} date and time is reached. Otherwise, the request remains
-active until you cancel it.
-\item For a one-time request, the request remains active until all instances
-launch, the request is canceled, or the \code{ValidUntil} date and time is
-reached. By default, the request is valid for 7 days from the date the
-request was created.
+\code{ValidUntil} date and time is reached. Otherwise, the request
+remains active until you cancel it.
+\item For a one-time request, the request remains active until all
+instances launch, the request is canceled, or the \code{ValidUntil} date
+and time is reached. By default, the request is valid for 7 days
+from the date the request was created.
 }}
 
 \item{TagSpecifications}{The key-value pair for tagging the Spot Instance request on creation.

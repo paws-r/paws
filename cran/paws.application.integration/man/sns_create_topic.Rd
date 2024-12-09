@@ -34,23 +34,24 @@ subscriptions.
 \item \code{FifoTopic} – Set to true to create a FIFO topic.
 \item \code{Policy} – The policy that defines who can access your topic. By
 default, only the topic owner can publish or subscribe to the topic.
-\item \code{SignatureVersion} – The signature version corresponds to the hashing
-algorithm used while creating the signature of the notifications,
-subscription confirmations, or unsubscribe confirmation messages sent
-by Amazon SNS. By default, \code{SignatureVersion} is set to \code{1}.
+\item \code{SignatureVersion} – The signature version corresponds to the
+hashing algorithm used while creating the signature of the
+notifications, subscription confirmations, or unsubscribe
+confirmation messages sent by Amazon SNS. By default,
+\code{SignatureVersion} is set to \code{1}.
 \item \code{TracingConfig} – Tracing mode of an Amazon SNS topic. By default
-\code{TracingConfig} is set to \code{PassThrough}, and the topic passes through
-the tracing header it receives from an Amazon SNS publisher to its
-subscriptions. If set to \code{Active}, Amazon SNS will vend X-Ray segment
-data to topic owner account if the sampled flag in the tracing header
-is true. This is only supported on standard topics.
+\code{TracingConfig} is set to \code{PassThrough}, and the topic passes
+through the tracing header it receives from an Amazon SNS publisher
+to its subscriptions. If set to \code{Active}, Amazon SNS will vend X-Ray
+segment data to topic owner account if the sampled flag in the
+tracing header is true. This is only supported on standard topics.
 }
 
 The following attribute applies only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html}{server-side encryption}:
 \itemize{
 \item \code{KmsMasterKeyId} – The ID of an Amazon Web Services managed customer
-master key (CMK) for Amazon SNS or a custom CMK. For more information,
-see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms}{Key Terms}.
+master key (CMK) for Amazon SNS or a custom CMK. For more
+information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms}{Key Terms}.
 For more examples, see
 \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters}{KeyId}
 in the \emph{Key Management Service API Reference}.
@@ -58,25 +59,26 @@ in the \emph{Key Management Service API Reference}.
 
 The following attributes apply only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html}{FIFO topics}:
 \itemize{
-\item \code{ArchivePolicy} – Adds or updates an inline policy document to archive
-messages stored in the specified Amazon SNS topic.
+\item \code{ArchivePolicy} – Adds or updates an inline policy document to
+archive messages stored in the specified Amazon SNS topic.
 \item \code{BeginningArchiveTime} – The earliest starting point at which a
 message in the topic’s archive can be replayed from. This point in
 time is based on the configured message retention period set by the
 topic’s message archiving policy.
-\item \code{ContentBasedDeduplication} – Enables content-based deduplication for
-FIFO topics.
+\item \code{ContentBasedDeduplication} – Enables content-based deduplication
+for FIFO topics.
 \itemize{
-\item By default, \code{ContentBasedDeduplication} is set to \code{false}. If you
-create a FIFO topic and this attribute is \code{false}, you must specify
-a value for the \code{MessageDeduplicationId} parameter for the
-\code{\link[=sns_publish]{publish}} action.
-\item When you set \code{ContentBasedDeduplication} to \code{true}, Amazon SNS uses
-a SHA-256 hash to generate the \code{MessageDeduplicationId} using the
-body of the message (but not the attributes of the message).
+\item By default, \code{ContentBasedDeduplication} is set to \code{false}. If
+you create a FIFO topic and this attribute is \code{false}, you must
+specify a value for the \code{MessageDeduplicationId} parameter for
+the \code{\link[=sns_publish]{publish}} action.
+\item When you set \code{ContentBasedDeduplication} to \code{true}, Amazon SNS
+uses a SHA-256 hash to generate the \code{MessageDeduplicationId}
+using the body of the message (but not the attributes of the
+message).
 
-(Optional) To override the generated value, you can specify a value
-for the \code{MessageDeduplicationId} parameter for the
+(Optional) To override the generated value, you can specify a
+value for the \code{MessageDeduplicationId} parameter for the
 \code{\link[=sns_publish]{publish}} action.
 }
 }}

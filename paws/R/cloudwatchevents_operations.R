@@ -36,8 +36,7 @@ cloudwatchevents_activate_event_source <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$activate_event_source_input(Name = Name)
   output <- .cloudwatchevents$activate_event_source_output()
@@ -87,8 +86,7 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$cancel_replay_input(ReplayName = ReplayName)
   output <- .cloudwatchevents$cancel_replay_output()
@@ -160,8 +158,7 @@ cloudwatchevents_create_api_destination <- function(Name, Description = NULL, Co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$create_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
   output <- .cloudwatchevents$create_api_destination_output()
@@ -229,8 +226,7 @@ cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Descrip
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$create_archive_input(ArchiveName = ArchiveName, EventSourceArn = EventSourceArn, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
   output <- .cloudwatchevents$create_archive_output()
@@ -358,8 +354,7 @@ cloudwatchevents_create_connection <- function(Name, Description = NULL, Authori
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$create_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
   output <- .cloudwatchevents$create_connection_output()
@@ -427,8 +422,7 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$create_event_bus_input(Name = Name, EventSourceName = EventSourceName, Tags = Tags)
   output <- .cloudwatchevents$create_event_bus_output()
@@ -510,8 +504,7 @@ cloudwatchevents_create_partner_event_source <- function(Name, Account) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$create_partner_event_source_input(Name = Name, Account = Account)
   output <- .cloudwatchevents$create_partner_event_source_output()
@@ -563,8 +556,7 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$deactivate_event_source_input(Name = Name)
   output <- .cloudwatchevents$deactivate_event_source_output()
@@ -624,8 +616,7 @@ cloudwatchevents_deauthorize_connection <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$deauthorize_connection_input(Name = Name)
   output <- .cloudwatchevents$deauthorize_connection_output()
@@ -668,8 +659,7 @@ cloudwatchevents_delete_api_destination <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$delete_api_destination_input(Name = Name)
   output <- .cloudwatchevents$delete_api_destination_output()
@@ -712,8 +702,7 @@ cloudwatchevents_delete_archive <- function(ArchiveName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$delete_archive_input(ArchiveName = ArchiveName)
   output <- .cloudwatchevents$delete_archive_output()
@@ -771,8 +760,7 @@ cloudwatchevents_delete_connection <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$delete_connection_input(Name = Name)
   output <- .cloudwatchevents$delete_connection_output()
@@ -817,8 +805,7 @@ cloudwatchevents_delete_event_bus <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$delete_event_bus_input(Name = Name)
   output <- .cloudwatchevents$delete_event_bus_output()
@@ -868,8 +855,7 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$delete_partner_event_source_input(Name = Name, Account = Account)
   output <- .cloudwatchevents$delete_partner_event_source_output()
@@ -939,8 +925,7 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$delete_rule_input(Name = Name, EventBusName = EventBusName, Force = Force)
   output <- .cloudwatchevents$delete_rule_output()
@@ -1001,8 +986,7 @@ cloudwatchevents_describe_api_destination <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$describe_api_destination_input(Name = Name)
   output <- .cloudwatchevents$describe_api_destination_output()
@@ -1062,8 +1046,7 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$describe_archive_input(ArchiveName = ArchiveName)
   output <- .cloudwatchevents$describe_archive_output()
@@ -1187,8 +1170,7 @@ cloudwatchevents_describe_connection <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$describe_connection_input(Name = Name)
   output <- .cloudwatchevents$describe_connection_output()
@@ -1250,8 +1232,7 @@ cloudwatchevents_describe_event_bus <- function(Name = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$describe_event_bus_input(Name = Name)
   output <- .cloudwatchevents$describe_event_bus_output()
@@ -1310,8 +1291,7 @@ cloudwatchevents_describe_event_source <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$describe_event_source_input(Name = Name)
   output <- .cloudwatchevents$describe_event_source_output()
@@ -1365,8 +1345,7 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$describe_partner_event_source_input(Name = Name)
   output <- .cloudwatchevents$describe_partner_event_source_output()
@@ -1451,8 +1430,7 @@ cloudwatchevents_describe_replay <- function(ReplayName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$describe_replay_input(ReplayName = ReplayName)
   output <- .cloudwatchevents$describe_replay_output()
@@ -1516,8 +1494,7 @@ cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$describe_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .cloudwatchevents$describe_rule_output()
@@ -1567,8 +1544,7 @@ cloudwatchevents_disable_rule <- function(Name, EventBusName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$disable_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .cloudwatchevents$disable_rule_output()
@@ -1619,8 +1595,7 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$enable_rule_input(Name = Name, EventBusName = EventBusName)
   output <- .cloudwatchevents$enable_rule_output()
@@ -1695,8 +1670,7 @@ cloudwatchevents_list_api_destinations <- function(NamePrefix = NULL, Connection
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_api_destinations_input(NamePrefix = NamePrefix, ConnectionArn = ConnectionArn, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_api_destinations_output()
@@ -1771,8 +1745,7 @@ cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_archives_input(NamePrefix = NamePrefix, EventSourceArn = EventSourceArn, State = State, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_archives_output()
@@ -1847,8 +1820,7 @@ cloudwatchevents_list_connections <- function(NamePrefix = NULL, ConnectionState
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_connections_input(NamePrefix = NamePrefix, ConnectionState = ConnectionState, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_connections_output()
@@ -1913,8 +1885,7 @@ cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_event_buses_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_event_buses_output()
@@ -1988,8 +1959,7 @@ cloudwatchevents_list_event_sources <- function(NamePrefix = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_event_sources_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_event_sources_output()
@@ -2063,8 +2033,7 @@ cloudwatchevents_list_partner_event_source_accounts <- function(EventSourceName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_partner_event_source_accounts_input(EventSourceName = EventSourceName, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_partner_event_source_accounts_output()
@@ -2130,8 +2099,7 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_partner_event_sources_input(NamePrefix = NamePrefix, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_partner_event_sources_output()
@@ -2215,8 +2183,7 @@ cloudwatchevents_list_replays <- function(NamePrefix = NULL, State = NULL, Event
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_replays_input(NamePrefix = NamePrefix, State = State, EventSourceArn = EventSourceArn, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_replays_output()
@@ -2277,8 +2244,7 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_rule_names_by_target_input(TargetArn = TargetArn, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_rule_names_by_target_output()
@@ -2352,8 +2318,7 @@ cloudwatchevents_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_rules_input(NamePrefix = NamePrefix, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_rules_output()
@@ -2407,8 +2372,7 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .cloudwatchevents$list_tags_for_resource_output()
@@ -2587,8 +2551,7 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$list_targets_by_rule_input(Rule = Rule, EventBusName = EventBusName, NextToken = NextToken, Limit = Limit)
   output <- .cloudwatchevents$list_targets_by_rule_output()
@@ -2661,8 +2624,7 @@ cloudwatchevents_put_events <- function(Entries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$put_events_input(Entries = Entries)
   output <- .cloudwatchevents$put_events_output()
@@ -2731,8 +2693,7 @@ cloudwatchevents_put_partner_events <- function(Entries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$put_partner_events_input(Entries = Entries)
   output <- .cloudwatchevents$put_partner_events_output()
@@ -2845,8 +2806,7 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$put_permission_input(EventBusName = EventBusName, Action = Action, Principal = Principal, StatementId = StatementId, Condition = Condition, Policy = Policy)
   output <- .cloudwatchevents$put_permission_output()
@@ -2988,8 +2948,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$put_rule_input(Name = Name, ScheduleExpression = ScheduleExpression, EventPattern = EventPattern, State = State, Description = Description, RoleArn = RoleArn, Tags = Tags, EventBusName = EventBusName)
   output <- .cloudwatchevents$put_rule_output()
@@ -3012,58 +2971,58 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' 
 #' You can configure the following as targets for Events:
 #' 
-#' - [API
-#'   destination](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html)
+#' -   [API
+#'     destination](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html)
 #' 
-#' - Amazon API Gateway REST API endpoints
+#' -   Amazon API Gateway REST API endpoints
 #' 
-#' - API Gateway
+#' -   API Gateway
 #' 
-#' - Batch job queue
+#' -   Batch job queue
 #' 
-#' - CloudWatch Logs group
+#' -   CloudWatch Logs group
 #' 
-#' - CodeBuild project
+#' -   CodeBuild project
 #' 
-#' - CodePipeline
+#' -   CodePipeline
 #' 
-#' - Amazon EC2 `CreateSnapshot` API call
+#' -   Amazon EC2 `CreateSnapshot` API call
 #' 
-#' - Amazon EC2 `RebootInstances` API call
+#' -   Amazon EC2 `RebootInstances` API call
 #' 
-#' - Amazon EC2 `StopInstances` API call
+#' -   Amazon EC2 `StopInstances` API call
 #' 
-#' - Amazon EC2 `TerminateInstances` API call
+#' -   Amazon EC2 `TerminateInstances` API call
 #' 
-#' - Amazon ECS tasks
+#' -   Amazon ECS tasks
 #' 
-#' - Event bus in a different Amazon Web Services account or Region.
+#' -   Event bus in a different Amazon Web Services account or Region.
 #' 
-#'   You can use an event bus in the US East (N. Virginia) us-east-1, US
-#'   West (Oregon) us-west-2, or Europe (Ireland) eu-west-1 Regions as a
-#'   target for a rule.
+#'     You can use an event bus in the US East (N. Virginia) us-east-1, US
+#'     West (Oregon) us-west-2, or Europe (Ireland) eu-west-1 Regions as a
+#'     target for a rule.
 #' 
-#' - Firehose delivery stream (Kinesis Data Firehose)
+#' -   Firehose delivery stream (Kinesis Data Firehose)
 #' 
-#' - Inspector assessment template (Amazon Inspector)
+#' -   Inspector assessment template (Amazon Inspector)
 #' 
-#' - Kinesis stream (Kinesis Data Stream)
+#' -   Kinesis stream (Kinesis Data Stream)
 #' 
-#' - Lambda function
+#' -   Lambda function
 #' 
-#' - Redshift clusters (Data API statement execution)
+#' -   Redshift clusters (Data API statement execution)
 #' 
-#' - Amazon SNS topic
+#' -   Amazon SNS topic
 #' 
-#' - Amazon SQS queues (includes FIFO queues
+#' -   Amazon SQS queues (includes FIFO queues
 #' 
-#' - SSM Automation
+#' -   SSM Automation
 #' 
-#' - SSM OpsItem
+#' -   SSM OpsItem
 #' 
-#' - SSM Run Command
+#' -   SSM Run Command
 #' 
-#' - Step Functions state machines
+#' -   Step Functions state machines
 #' 
 #' Creating rules with built-in targets is supported only in the Amazon Web
 #' Services Management Console. The built-in targets are
@@ -3119,22 +3078,22 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' exclusive and optional parameters of a target. When a rule is triggered
 #' due to a matched event:
 #' 
-#' - If none of the following arguments are specified for a target, then
-#'   the entire event is passed to the target in JSON format (unless the
-#'   target is Amazon EC2 Run Command or Amazon ECS task, in which case
-#'   nothing from the event is passed to the target).
+#' -   If none of the following arguments are specified for a target, then
+#'     the entire event is passed to the target in JSON format (unless the
+#'     target is Amazon EC2 Run Command or Amazon ECS task, in which case
+#'     nothing from the event is passed to the target).
 #' 
-#' - If **Input** is specified in the form of valid JSON, then the matched
-#'   event is overridden with this constant.
+#' -   If **Input** is specified in the form of valid JSON, then the
+#'     matched event is overridden with this constant.
 #' 
-#' - If **InputPath** is specified in the form of JSONPath (for example,
-#'   `$.detail`), then only the part of the event specified in the path is
-#'   passed to the target (for example, only the detail part of the event
-#'   is passed).
+#' -   If **InputPath** is specified in the form of JSONPath (for example,
+#'     `$.detail`), then only the part of the event specified in the path
+#'     is passed to the target (for example, only the detail part of the
+#'     event is passed).
 #' 
-#' - If **InputTransformer** is specified, then one or more specified
-#'   JSONPaths are extracted from the event and used as values in a
-#'   template that you specify as the input to the target.
+#' -   If **InputTransformer** is specified, then one or more specified
+#'     JSONPaths are extracted from the event and used as values in a
+#'     template that you specify as the input to the target.
 #' 
 #' When you specify `InputPath` or `InputTransformer`, you must use JSON
 #' dot notation, not bracket notation.
@@ -3312,8 +3271,7 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$put_targets_input(Rule = Rule, EventBusName = EventBusName, Targets = Targets)
   output <- .cloudwatchevents$put_targets_output()
@@ -3370,8 +3328,7 @@ cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPerm
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$remove_permission_input(StatementId = StatementId, RemoveAllPermissions = RemoveAllPermissions, EventBusName = EventBusName)
   output <- .cloudwatchevents$remove_permission_output()
@@ -3451,8 +3408,7 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$remove_targets_input(Rule = Rule, EventBusName = EventBusName, Ids = Ids, Force = Force)
   output <- .cloudwatchevents$remove_targets_output()
@@ -3538,8 +3494,7 @@ cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$start_replay_input(ReplayName = ReplayName, Description = Description, EventSourceArn = EventSourceArn, EventStartTime = EventStartTime, EventEndTime = EventEndTime, Destination = Destination)
   output <- .cloudwatchevents$start_replay_output()
@@ -3606,8 +3561,7 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .cloudwatchevents$tag_resource_output()
@@ -3641,19 +3595,19 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 #' Events](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-events.html),
 #' and the following fields are mandatory:
 #' 
-#' - `id`
+#' -   `id`
 #' 
-#' - `account`
+#' -   `account`
 #' 
-#' - `source`
+#' -   `source`
 #' 
-#' - `time`
+#' -   `time`
 #' 
-#' - `region`
+#' -   `region`
 #' 
-#' - `resources`
+#' -   `resources`
 #' 
-#' - `detail-type`
+#' -   `detail-type`
 #'
 #' @return
 #' A list with the following syntax:
@@ -3682,8 +3636,7 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$test_event_pattern_input(EventPattern = EventPattern, Event = Event)
   output <- .cloudwatchevents$test_event_pattern_output()
@@ -3732,8 +3685,7 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .cloudwatchevents$untag_resource_output()
@@ -3801,8 +3753,7 @@ cloudwatchevents_update_api_destination <- function(Name, Description = NULL, Co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$update_api_destination_input(Name = Name, Description = Description, ConnectionArn = ConnectionArn, InvocationEndpoint = InvocationEndpoint, HttpMethod = HttpMethod, InvocationRateLimitPerSecond = InvocationRateLimitPerSecond)
   output <- .cloudwatchevents$update_api_destination_output()
@@ -3862,8 +3813,7 @@ cloudwatchevents_update_archive <- function(ArchiveName, Description = NULL, Eve
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$update_archive_input(ArchiveName = ArchiveName, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
   output <- .cloudwatchevents$update_archive_output()
@@ -3991,8 +3941,7 @@ cloudwatchevents_update_connection <- function(Name, Description = NULL, Authori
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchevents$update_connection_input(Name = Name, Description = Description, AuthorizationType = AuthorizationType, AuthParameters = AuthParameters)
   output <- .cloudwatchevents$update_connection_output()

@@ -13,8 +13,8 @@ finspacedata_get_working_location(locationType = NULL)
 \item \code{SAGEMAKER} – Use the Amazon S3 location as a temporary location to
 store data content when working with FinSpace Notebooks that run on
 SageMaker studio.
-\item \code{INGESTION} – Use the Amazon S3 location as a staging location to copy
-your data content and then use the location with the Changeset
+\item \code{INGESTION} – Use the Amazon S3 location as a staging location to
+copy your data content and then use the location with the Changeset
 creation operation.
 }}
 }

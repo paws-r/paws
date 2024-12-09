@@ -184,10 +184,10 @@ The \code{Duration} parameter applies only when both these conditions are
 true:
 \itemize{
 \item The association for which you specify a duration is cancelable
-according to the parameters of the SSM command document or Automation
-runbook associated with this execution.
-\item The command specifies the \code{ApplyOnlyAtCronInterval} parameter, which
-means that the association doesn't run immediately after it is
+according to the parameters of the SSM command document or
+Automation runbook associated with this execution.
+\item The command specifies the \code{ApplyOnlyAtCronInterval} parameter,
+which means that the association doesn't run immediately after it is
 updated, but only according to the specified schedule.
 }}
 

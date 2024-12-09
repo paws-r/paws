@@ -23,8 +23,7 @@ licensemanagerlinuxsubscriptions_deregister_subscription_provider <- function(Su
     http_method = "POST",
     http_path = "/subscription/DeregisterSubscriptionProvider",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$deregister_subscription_provider_input(SubscriptionProviderArn = SubscriptionProviderArn)
   output <- .licensemanagerlinuxsubscriptions$deregister_subscription_provider_output()
@@ -56,8 +55,7 @@ licensemanagerlinuxsubscriptions_get_registered_subscription_provider <- functio
     http_method = "POST",
     http_path = "/subscription/GetRegisteredSubscriptionProvider",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$get_registered_subscription_provider_input(SubscriptionProviderArn = SubscriptionProviderArn)
   output <- .licensemanagerlinuxsubscriptions$get_registered_subscription_provider_output()
@@ -87,8 +85,7 @@ licensemanagerlinuxsubscriptions_get_service_settings <- function() {
     http_method = "POST",
     http_path = "/subscription/GetServiceSettings",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$get_service_settings_input()
   output <- .licensemanagerlinuxsubscriptions$get_service_settings_output()
@@ -116,32 +113,32 @@ licensemanagerlinuxsubscriptions_get_service_settings <- function() {
 #' For each filter, you can specify one of the following values for the
 #' `Name` key to streamline results:
 #' 
-#' - `AccountID`
+#' -   `AccountID`
 #' 
-#' - `AmiID`
+#' -   `AmiID`
 #' 
-#' - `DualSubscription`
+#' -   `DualSubscription`
 #' 
-#' - `InstanceID`
+#' -   `InstanceID`
 #' 
-#' - `InstanceType`
+#' -   `InstanceType`
 #' 
-#' - `ProductCode`
+#' -   `ProductCode`
 #' 
-#' - `Region`
+#' -   `Region`
 #' 
-#' - `Status`
+#' -   `Status`
 #' 
-#' - `UsageOperation`
+#' -   `UsageOperation`
 #' 
 #' For each filter, you can use one of the following `Operator` values to
 #' define the behavior of the filter:
 #' 
-#' - `contains`
+#' -   `contains`
 #' 
-#' - `equals`
+#' -   `equals`
 #' 
-#' - `Notequal`
+#' -   `Notequal`
 #' @param MaxResults The maximum items to return in a request.
 #' @param NextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
@@ -155,8 +152,7 @@ licensemanagerlinuxsubscriptions_list_linux_subscription_instances <- function(F
     http_method = "POST",
     http_path = "/subscription/ListLinuxSubscriptionInstances",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Instances"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Instances")
   )
   input <- .licensemanagerlinuxsubscriptions$list_linux_subscription_instances_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerlinuxsubscriptions$list_linux_subscription_instances_output()
@@ -183,15 +179,15 @@ licensemanagerlinuxsubscriptions_list_linux_subscription_instances <- function(F
 #' 
 #' The valid names for this filter are:
 #' 
-#' - `Subscription`
+#' -   `Subscription`
 #' 
 #' The valid Operators for this filter are:
 #' 
-#' - `contains`
+#' -   `contains`
 #' 
-#' - `equals`
+#' -   `equals`
 #' 
-#' - `Notequal`
+#' -   `Notequal`
 #' @param MaxResults The maximum items to return in a request.
 #' @param NextToken A token to specify where to start paginating. This is the nextToken from
 #' a previously truncated response.
@@ -205,8 +201,7 @@ licensemanagerlinuxsubscriptions_list_linux_subscriptions <- function(Filters = 
     http_method = "POST",
     http_path = "/subscription/ListLinuxSubscriptions",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Subscriptions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Subscriptions")
   )
   input <- .licensemanagerlinuxsubscriptions$list_linux_subscriptions_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .licensemanagerlinuxsubscriptions$list_linux_subscriptions_output()
@@ -241,8 +236,7 @@ licensemanagerlinuxsubscriptions_list_registered_subscription_providers <- funct
     http_method = "POST",
     http_path = "/subscription/ListRegisteredSubscriptionProviders",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegisteredSubscriptionProviders"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegisteredSubscriptionProviders")
   )
   input <- .licensemanagerlinuxsubscriptions$list_registered_subscription_providers_input(MaxResults = MaxResults, NextToken = NextToken, SubscriptionProviderSources = SubscriptionProviderSources)
   output <- .licensemanagerlinuxsubscriptions$list_registered_subscription_providers_output()
@@ -274,8 +268,7 @@ licensemanagerlinuxsubscriptions_list_tags_for_resource <- function(resourceArn)
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .licensemanagerlinuxsubscriptions$list_tags_for_resource_output()
@@ -312,8 +305,7 @@ licensemanagerlinuxsubscriptions_register_subscription_provider <- function(Secr
     http_method = "POST",
     http_path = "/subscription/RegisterSubscriptionProvider",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$register_subscription_provider_input(SecretArn = SecretArn, SubscriptionProviderSource = SubscriptionProviderSource, Tags = Tags)
   output <- .licensemanagerlinuxsubscriptions$register_subscription_provider_output()
@@ -346,8 +338,7 @@ licensemanagerlinuxsubscriptions_tag_resource <- function(resourceArn, tags) {
     http_method = "PUT",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .licensemanagerlinuxsubscriptions$tag_resource_output()
@@ -380,8 +371,7 @@ licensemanagerlinuxsubscriptions_untag_resource <- function(resourceArn, tagKeys
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .licensemanagerlinuxsubscriptions$untag_resource_output()
@@ -417,8 +407,7 @@ licensemanagerlinuxsubscriptions_update_service_settings <- function(AllowUpdate
     http_method = "POST",
     http_path = "/subscription/UpdateServiceSettings",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .licensemanagerlinuxsubscriptions$update_service_settings_input(AllowUpdate = AllowUpdate, LinuxSubscriptionsDiscovery = LinuxSubscriptionsDiscovery, LinuxSubscriptionsDiscoverySettings = LinuxSubscriptionsDiscoverySettings)
   output <- .licensemanagerlinuxsubscriptions$update_service_settings_output()

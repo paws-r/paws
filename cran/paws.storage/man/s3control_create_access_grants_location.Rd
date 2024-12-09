@@ -13,7 +13,7 @@ s3control_create_access_grants_location(
 )
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
+\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
 
 \item{LocationScope}{[required] The S3 path to the location that you are registering. The location scope
 can be the default S3 location \verb{s3://}, the S3 path to a bucket

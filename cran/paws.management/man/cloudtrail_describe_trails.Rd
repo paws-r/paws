@@ -16,10 +16,10 @@ describe. The format of a trail ARN is:
 If an empty list is specified, information for the trail in the current
 Region is returned.
 \itemize{
-\item If an empty list is specified and \code{IncludeShadowTrails} is false, then
-information for all trails in the current Region is returned.
-\item If an empty list is specified and IncludeShadowTrails is null or true,
-then information for all trails in the current Region and any
+\item If an empty list is specified and \code{IncludeShadowTrails} is false,
+then information for all trails in the current Region is returned.
+\item If an empty list is specified and IncludeShadowTrails is null or
+true, then information for all trails in the current Region and any
 associated shadow trails in other Regions is returned.
 }
 

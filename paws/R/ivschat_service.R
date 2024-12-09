@@ -25,24 +25,24 @@ NULL
 #' 
 #' **Notes on terminology:**
 #' 
-#' - You create service applications using the Amazon IVS Chat API. We
-#'   refer to these as *applications*.
+#' -   You create service applications using the Amazon IVS Chat API. We
+#'     refer to these as *applications*.
 #' 
-#' - You create front-end client applications (browser and Android/iOS
-#'   apps) using the Amazon IVS Chat Messaging API. We refer to these as
-#'   *clients*.
+#' -   You create front-end client applications (browser and Android/iOS
+#'     apps) using the Amazon IVS Chat Messaging API. We refer to these as
+#'     *clients*.
 #' 
 #' **Resources**
 #' 
 #' The following resources are part of Amazon IVS Chat:
 #' 
-#' - **LoggingConfiguration** — A configuration that allows customers to
-#'   store and record sent messages in a chat room. See the Logging
-#'   Configuration endpoints for more information.
+#' -   **LoggingConfiguration** — A configuration that allows customers to
+#'     store and record sent messages in a chat room. See the Logging
+#'     Configuration endpoints for more information.
 #' 
-#' - **Room** — The central Amazon IVS Chat resource through which clients
-#'   connect to and exchange chat messages. See the Room endpoints for more
-#'   information.
+#' -   **Room** — The central Amazon IVS Chat resource through which
+#'     clients connect to and exchange chat messages. See the Room
+#'     endpoints for more information.
 #' 
 #' **Tagging**
 #' 
@@ -74,11 +74,11 @@ NULL
 #' must be authenticated and authorized to access Amazon IVS Chat
 #' resources. Note the differences between these concepts:
 #' 
-#' - *Authentication* is about verifying identity. Requests to the Amazon
-#'   IVS Chat API must be signed to verify your identity.
+#' -   *Authentication* is about verifying identity. Requests to the Amazon
+#'     IVS Chat API must be signed to verify your identity.
 #' 
-#' - *Authorization* is about granting permissions. Your IAM roles need to
-#'   have permissions for Amazon IVS Chat API requests.
+#' -   *Authorization* is about granting permissions. Your IAM roles need
+#'     to have permissions for Amazon IVS Chat API requests.
 #' 
 #' Users (viewers) connect to a room using secure access tokens that you
 #' create using the [`create_chat_token`][ivschat_create_chat_token]
@@ -101,14 +101,14 @@ NULL
 #' 
 #' For more information:
 #' 
-#' - Authentication and generating signatures — See [Authenticating
-#'   Requests (Amazon Web Services Signature Version
-#'   4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
-#'   in the *Amazon Web Services General Reference*.
+#' -   Authentication and generating signatures — See [Authenticating
+#'     Requests (Amazon Web Services Signature Version
+#'     4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
+#'     in the *Amazon Web Services General Reference*.
 #' 
-#' - Managing Amazon IVS permissions — See [Identity and Access
-#'   Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
-#'   on the Security page of the *Amazon IVS User Guide*.
+#' -   Managing Amazon IVS permissions — See [Identity and Access
+#'     Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
+#'     on the Security page of the *Amazon IVS User Guide*.
 #' 
 #' **Amazon Resource Names (ARNs)**
 #' 

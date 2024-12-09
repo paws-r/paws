@@ -9,7 +9,7 @@ elbv2_modify_target_group_attributes(TargetGroupArn, Attributes)
 \arguments{
 \item{TargetGroupArn}{[required] The Amazon Resource Name (ARN) of the target group.}
 
-\item{Attributes}{[required] The target group attributes.}
+\item{Attributes}{[required] The attributes.}
 }
 \description{
 Modifies the specified attributes of the specified target group.

@@ -11,8 +11,8 @@ mturk_update_hit_review_status(HITId, Revert = NULL)
 
 \item{Revert}{Specifies how to update the HIT status. Default is \code{False}.
 \itemize{
-\item Setting this to false will only transition a HIT from \code{Reviewable} to
-\code{Reviewing}
+\item Setting this to false will only transition a HIT from \code{Reviewable}
+to \code{Reviewing}
 \item Setting this to true will only transition a HIT from \code{Reviewing} to
 \code{Reviewable}
 }}

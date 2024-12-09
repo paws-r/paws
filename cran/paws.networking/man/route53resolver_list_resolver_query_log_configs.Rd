@@ -57,8 +57,8 @@ configuration was created
 \item \code{DestinationArn}: The location that logs are sent to
 \item \code{Id}: The ID of the configuration
 \item \code{Name}: The name of the configuration
-\item \code{OwnerId}: The Amazon Web Services account number of the account that
-created the configuration
+\item \code{OwnerId}: The Amazon Web Services account number of the account
+that created the configuration
 \item \code{ShareStatus}: Whether the configuration is shared with other Amazon
 Web Services accounts or shared with the current account by another
 Amazon Web Services account. Sharing is configured through Resource
@@ -66,15 +66,18 @@ Access Manager (RAM).
 \item \code{Status}: The current status of the configuration. Valid values
 include the following:
 \itemize{
-\item \code{CREATING}: Resolver is creating the query logging configuration.
-\item \code{CREATED}: The query logging configuration was successfully created.
-Resolver is logging queries that originate in the specified VPC.
-\item \code{DELETING}: Resolver is deleting this query logging configuration.
+\item \code{CREATING}: Resolver is creating the query logging
+configuration.
+\item \code{CREATED}: The query logging configuration was successfully
+created. Resolver is logging queries that originate in the
+specified VPC.
+\item \code{DELETING}: Resolver is deleting this query logging
+configuration.
 \item \code{FAILED}: Resolver either couldn't create or couldn't delete the
 query logging configuration. Here are two common causes:
 \itemize{
-\item The specified destination (for example, an Amazon S3 bucket) was
-deleted.
+\item The specified destination (for example, an Amazon S3 bucket)
+was deleted.
 \item Permissions don't allow sending logs to the destination.
 }
 }

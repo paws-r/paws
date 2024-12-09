@@ -21,8 +21,7 @@ ivs_batch_get_channel <- function(arns) {
     http_method = "POST",
     http_path = "/BatchGetChannel",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$batch_get_channel_input(arns = arns)
   output <- .ivs$batch_get_channel_output()
@@ -52,8 +51,7 @@ ivs_batch_get_stream_key <- function(arns) {
     http_method = "POST",
     http_path = "/BatchGetStreamKey",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$batch_get_stream_key_input(arns = arns)
   output <- .ivs$batch_get_stream_key_output()
@@ -84,8 +82,7 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
     http_method = "POST",
     http_path = "/BatchStartViewerSessionRevocation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$batch_start_viewer_session_revocation_input(viewerSessions = viewerSessions)
   output <- .ivs$batch_start_viewer_session_revocation_output()
@@ -143,8 +140,7 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, aut
     http_method = "POST",
     http_path = "/CreateChannel",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$create_channel_input(name = name, latencyMode = latencyMode, type = type, authorized = authorized, recordingConfigurationArn = recordingConfigurationArn, tags = tags, insecureIngest = insecureIngest, preset = preset, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn)
   output <- .ivs$create_channel_output()
@@ -191,8 +187,7 @@ ivs_create_playback_restriction_policy <- function(allowedCountries = NULL, allo
     http_method = "POST",
     http_path = "/CreatePlaybackRestrictionPolicy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$create_playback_restriction_policy_input(allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name, tags = tags)
   output <- .ivs$create_playback_restriction_policy_output()
@@ -238,8 +233,7 @@ ivs_create_recording_configuration <- function(name = NULL, destinationConfigura
     http_method = "POST",
     http_path = "/CreateRecordingConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$create_recording_configuration_input(name = name, destinationConfiguration = destinationConfiguration, tags = tags, thumbnailConfiguration = thumbnailConfiguration, recordingReconnectWindowSeconds = recordingReconnectWindowSeconds, renditionConfiguration = renditionConfiguration)
   output <- .ivs$create_recording_configuration_output()
@@ -276,8 +270,7 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
     http_method = "POST",
     http_path = "/CreateStreamKey",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$create_stream_key_input(channelArn = channelArn, tags = tags)
   output <- .ivs$create_stream_key_output()
@@ -307,8 +300,7 @@ ivs_delete_channel <- function(arn) {
     http_method = "POST",
     http_path = "/DeleteChannel",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$delete_channel_input(arn = arn)
   output <- .ivs$delete_channel_output()
@@ -338,8 +330,7 @@ ivs_delete_playback_key_pair <- function(arn) {
     http_method = "POST",
     http_path = "/DeletePlaybackKeyPair",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$delete_playback_key_pair_input(arn = arn)
   output <- .ivs$delete_playback_key_pair_output()
@@ -369,8 +360,7 @@ ivs_delete_playback_restriction_policy <- function(arn) {
     http_method = "POST",
     http_path = "/DeletePlaybackRestrictionPolicy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$delete_playback_restriction_policy_input(arn = arn)
   output <- .ivs$delete_playback_restriction_policy_output()
@@ -400,8 +390,7 @@ ivs_delete_recording_configuration <- function(arn) {
     http_method = "POST",
     http_path = "/DeleteRecordingConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$delete_recording_configuration_input(arn = arn)
   output <- .ivs$delete_recording_configuration_output()
@@ -432,8 +421,7 @@ ivs_delete_stream_key <- function(arn) {
     http_method = "POST",
     http_path = "/DeleteStreamKey",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$delete_stream_key_input(arn = arn)
   output <- .ivs$delete_stream_key_output()
@@ -463,8 +451,7 @@ ivs_get_channel <- function(arn) {
     http_method = "POST",
     http_path = "/GetChannel",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$get_channel_input(arn = arn)
   output <- .ivs$get_channel_output()
@@ -495,8 +482,7 @@ ivs_get_playback_key_pair <- function(arn) {
     http_method = "POST",
     http_path = "/GetPlaybackKeyPair",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$get_playback_key_pair_input(arn = arn)
   output <- .ivs$get_playback_key_pair_output()
@@ -526,8 +512,7 @@ ivs_get_playback_restriction_policy <- function(arn) {
     http_method = "POST",
     http_path = "/GetPlaybackRestrictionPolicy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$get_playback_restriction_policy_input(arn = arn)
   output <- .ivs$get_playback_restriction_policy_output()
@@ -557,8 +542,7 @@ ivs_get_recording_configuration <- function(arn) {
     http_method = "POST",
     http_path = "/GetRecordingConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$get_recording_configuration_input(arn = arn)
   output <- .ivs$get_recording_configuration_output()
@@ -588,8 +572,7 @@ ivs_get_stream <- function(channelArn) {
     http_method = "POST",
     http_path = "/GetStream",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$get_stream_input(channelArn = channelArn)
   output <- .ivs$get_stream_output()
@@ -619,8 +602,7 @@ ivs_get_stream_key <- function(arn) {
     http_method = "POST",
     http_path = "/GetStreamKey",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$get_stream_key_input(arn = arn)
   output <- .ivs$get_stream_key_output()
@@ -653,8 +635,7 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
     http_method = "POST",
     http_path = "/GetStreamSession",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$get_stream_session_input(channelArn = channelArn, streamId = streamId)
   output <- .ivs$get_stream_session_output()
@@ -692,8 +673,7 @@ ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = 
     http_method = "POST",
     http_path = "/ImportPlaybackKeyPair",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$import_playback_key_pair_input(publicKeyMaterial = publicKeyMaterial, name = name, tags = tags)
   output <- .ivs$import_playback_key_pair_output()
@@ -730,8 +710,7 @@ ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfiguratio
     http_method = "POST",
     http_path = "/ListChannels",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_channels_input(filterByName = filterByName, filterByRecordingConfigurationArn = filterByRecordingConfigurationArn, filterByPlaybackRestrictionPolicyArn = filterByPlaybackRestrictionPolicyArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_channels_output()
@@ -764,8 +743,7 @@ ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/ListPlaybackKeyPairs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_playback_key_pairs_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_playback_key_pairs_output()
@@ -797,8 +775,7 @@ ivs_list_playback_restriction_policies <- function(nextToken = NULL, maxResults 
     http_method = "POST",
     http_path = "/ListPlaybackRestrictionPolicies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_playback_restriction_policies_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_playback_restriction_policies_output()
@@ -833,8 +810,7 @@ ivs_list_recording_configurations <- function(nextToken = NULL, maxResults = NUL
     http_method = "POST",
     http_path = "/ListRecordingConfigurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_recording_configurations_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_recording_configurations_output()
@@ -867,8 +843,7 @@ ivs_list_stream_keys <- function(channelArn, nextToken = NULL, maxResults = NULL
     http_method = "POST",
     http_path = "/ListStreamKeys",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_stream_keys_input(channelArn = channelArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_stream_keys_output()
@@ -902,8 +877,7 @@ ivs_list_stream_sessions <- function(channelArn, nextToken = NULL, maxResults = 
     http_method = "POST",
     http_path = "/ListStreamSessions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_stream_sessions_input(channelArn = channelArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_stream_sessions_output()
@@ -937,8 +911,7 @@ ivs_list_streams <- function(filterBy = NULL, nextToken = NULL, maxResults = NUL
     http_method = "POST",
     http_path = "/ListStreams",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivs$list_streams_input(filterBy = filterBy, nextToken = nextToken, maxResults = maxResults)
   output <- .ivs$list_streams_output()
@@ -968,8 +941,7 @@ ivs_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .ivs$list_tags_for_resource_output()
@@ -1001,8 +973,7 @@ ivs_put_metadata <- function(channelArn, metadata) {
     http_method = "POST",
     http_path = "/PutMetadata",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$put_metadata_input(channelArn = channelArn, metadata = metadata)
   output <- .ivs$put_metadata_output()
@@ -1039,8 +1010,7 @@ ivs_start_viewer_session_revocation <- function(channelArn, viewerId, viewerSess
     http_method = "POST",
     http_path = "/StartViewerSessionRevocation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$start_viewer_session_revocation_input(channelArn = channelArn, viewerId = viewerId, viewerSessionVersionsLessThanOrEqualTo = viewerSessionVersionsLessThanOrEqualTo)
   output <- .ivs$start_viewer_session_revocation_output()
@@ -1070,8 +1040,7 @@ ivs_stop_stream <- function(channelArn) {
     http_method = "POST",
     http_path = "/StopStream",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$stop_stream_input(channelArn = channelArn)
   output <- .ivs$stop_stream_output()
@@ -1109,8 +1078,7 @@ ivs_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .ivs$tag_resource_output()
@@ -1147,8 +1115,7 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .ivs$untag_resource_output()
@@ -1199,8 +1166,7 @@ ivs_update_channel <- function(arn, name = NULL, latencyMode = NULL, type = NULL
     http_method = "POST",
     http_path = "/UpdateChannel",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$update_channel_input(arn = arn, name = name, latencyMode = latencyMode, type = type, authorized = authorized, recordingConfigurationArn = recordingConfigurationArn, insecureIngest = insecureIngest, preset = preset, playbackRestrictionPolicyArn = playbackRestrictionPolicyArn)
   output <- .ivs$update_channel_output()
@@ -1241,8 +1207,7 @@ ivs_update_playback_restriction_policy <- function(arn, allowedCountries = NULL,
     http_method = "POST",
     http_path = "/UpdatePlaybackRestrictionPolicy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ivs$update_playback_restriction_policy_input(arn = arn, allowedCountries = allowedCountries, allowedOrigins = allowedOrigins, enableStrictOriginEnforcement = enableStrictOriginEnforcement, name = name)
   output <- .ivs$update_playback_restriction_policy_output()

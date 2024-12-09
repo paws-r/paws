@@ -10,21 +10,21 @@ NULL
 #' 
 #' You can use Route 53 to:
 #' 
-#' - Register domain names.
+#' -   Register domain names.
 #' 
-#'   For more information, see [How domain registration
-#'   works](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-domain-registration.html).
+#'     For more information, see [How domain registration
+#'     works](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-domain-registration.html).
 #' 
-#' - Route internet traffic to the resources for your domain
+#' -   Route internet traffic to the resources for your domain
 #' 
-#'   For more information, see [How internet traffic is routed to your
-#'   website or web
-#'   application](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html).
+#'     For more information, see [How internet traffic is routed to your
+#'     website or web
+#'     application](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html).
 #' 
-#' - Check the health of your resources.
+#' -   Check the health of your resources.
 #' 
-#'   For more information, see [How Route 53 checks the health of your
-#'   resources](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-health-checks.html).
+#'     For more information, see [How Route 53 checks the health of your
+#'     resources](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-health-checks.html).
 #'
 #' @param
 #' config
@@ -217,7 +217,7 @@ route53 <- function(config = list(), credentials = list(), endpoint = NULL, regi
 
 .route53$metadata <- list(
   service_name = "route53",
-  endpoints = list("*" = list(endpoint = "https://route53.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "route53.amazonaws.com.cn", global = TRUE), "us-gov-*" = list(endpoint = "route53.us-gov.amazonaws.com", global = TRUE), "us-iso-*" = list(endpoint = "route53.c2s.ic.gov", global = TRUE), "us-isob-*" = list(endpoint = "route53.sc2s.sgov.gov", global = TRUE), "us-isof-*" = list(endpoint = "route53.csp.hci.ic.gov", global = TRUE), "eu-isoe-*" = list(endpoint = "route53.cloud.adc-e.uk", global = TRUE)),
+  endpoints = list("*" = list(endpoint = "https://route53.amazonaws.com", global = TRUE), "cn-*" = list(endpoint = "route53.amazonaws.com.cn", global = TRUE), "us-gov-*" = list(endpoint = "route53.us-gov.amazonaws.com", global = TRUE), "us-iso-*" = list(endpoint = "route53.c2s.ic.gov", global = TRUE), "us-isob-*" = list(endpoint = "route53.sc2s.sgov.gov", global = TRUE), "eu-isoe-*" = list(endpoint = "route53.{region}.cloud.adc-e.uk", global = FALSE), "us-isof-*" = list(endpoint = "route53.{region}.csp.hci.ic.gov", global = FALSE)),
   service_id = "Route 53",
   api_version = "2013-04-01",
   signing_name = "route53",

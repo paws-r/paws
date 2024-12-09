@@ -61,15 +61,15 @@ following objects.
 Spaces, by calling the following:
 \itemize{
 \item \code{\link[=codecatalyst_delete_space]{delete_space}}, which deletes a space.
-\item \code{\link[=codecatalyst_get_space]{get_space}}, which returns information about
-a space.
+\item \code{\link[=codecatalyst_get_space]{get_space}}, which returns information
+about a space.
 \item \code{\link[=codecatalyst_get_subscription]{get_subscription}}, which returns
 information about the Amazon Web Services account used for billing
 purposes and the billing plan for the space.
 \item \code{\link[=codecatalyst_list_spaces]{list_spaces}}, which retrieves a list of
 spaces.
-\item \code{\link[=codecatalyst_update_space]{update_space}}, which changes one or more
-values for a space.
+\item \code{\link[=codecatalyst_update_space]{update_space}}, which changes one or
+more values for a space.
 }
 
 Projects, by calling the following:
@@ -78,8 +78,8 @@ Projects, by calling the following:
 project in a specified space.
 \item \code{\link[=codecatalyst_get_project]{get_project}}, which returns information
 about a project.
-\item \code{\link[=codecatalyst_list_projects]{list_projects}}, which retrieves a list
-of projects in a space.
+\item \code{\link[=codecatalyst_list_projects]{list_projects}}, which retrieves a
+list of projects in a space.
 }
 
 Users, by calling the following:
@@ -94,8 +94,8 @@ Source repositories, by calling the following:
 which creates an empty Git-based source repository in a specified
 project.
 \item \code{\link[=codecatalyst_create_source_repository_branch]{create_source_repository_branch}},
-which creates a branch in a specified repository where you can work on
-code.
+which creates a branch in a specified repository where you can work
+on code.
 \item \code{\link[=codecatalyst_delete_source_repository]{delete_source_repository}},
 which deletes a source repository.
 \item \code{\link[=codecatalyst_get_source_repository]{get_source_repository}}, which
@@ -112,11 +112,11 @@ which retrieves a list of branches in a source repository.
 Dev Environments and the Amazon Web Services Toolkits, by calling the
 following:
 \itemize{
-\item \code{\link[=codecatalyst_create_dev_environment]{create_dev_environment}}, which
-creates a Dev Environment, where you can quickly work on the code
-stored in the source repositories of your project.
-\item \code{\link[=codecatalyst_delete_dev_environment]{delete_dev_environment}}, which
-deletes a Dev Environment.
+\item \code{\link[=codecatalyst_create_dev_environment]{create_dev_environment}},
+which creates a Dev Environment, where you can quickly work on the
+code stored in the source repositories of your project.
+\item \code{\link[=codecatalyst_delete_dev_environment]{delete_dev_environment}},
+which deletes a Dev Environment.
 \item \code{\link[=codecatalyst_get_dev_environment]{get_dev_environment}}, which
 returns information about a Dev Environment.
 \item \code{\link[=codecatalyst_list_dev_environments]{list_dev_environments}}, which
@@ -132,22 +132,22 @@ which starts a session to a specified Dev Environment.
 stops a specified Dev Environment and puts it into an stopped state.
 \item \code{\link[=codecatalyst_stop_dev_environment_session]{stop_dev_environment_session}},
 which stops a session for a specified Dev Environment.
-\item \code{\link[=codecatalyst_update_dev_environment]{update_dev_environment}}, which
-changes one or more values for a Dev Environment.
+\item \code{\link[=codecatalyst_update_dev_environment]{update_dev_environment}},
+which changes one or more values for a Dev Environment.
 }
 
 Workflows, by calling the following:
 \itemize{
-\item \code{\link[=codecatalyst_get_workflow]{get_workflow}}, which returns information
-about a workflow.
+\item \code{\link[=codecatalyst_get_workflow]{get_workflow}}, which returns
+information about a workflow.
 \item \code{\link[=codecatalyst_get_workflow_run]{get_workflow_run}}, which returns
 information about a specified run of a workflow.
 \item \code{\link[=codecatalyst_list_workflow_runs]{list_workflow_runs}}, which
 retrieves a list of runs of a specified workflow.
 \item \code{\link[=codecatalyst_list_workflows]{list_workflows}}, which retrieves a
 list of workflows in a specified project.
-\item \code{\link[=codecatalyst_start_workflow_run]{start_workflow_run}}, which starts
-a run of a specified workflow.
+\item \code{\link[=codecatalyst_start_workflow_run]{start_workflow_run}}, which
+starts a run of a specified workflow.
 }
 
 Security, activity, and resource management in Amazon CodeCatalyst, by

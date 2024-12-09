@@ -18,8 +18,8 @@ lambda_invoke(
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} – \verb{my-function} (name-only), \verb{my-function:v1} (with
-alias).
+\item \strong{Function name} – \verb{my-function} (name-only), \verb{my-function:v1}
+(with alias).
 \item \strong{Function ARN} –
 \verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
 \item \strong{Partial ARN} – \verb{123456789012:function:my-function}.
@@ -31,15 +31,15 @@ function name, it is limited to 64 characters in length.}
 
 \item{InvocationType}{Choose from the following options.
 \itemize{
-\item \code{RequestResponse} (default) – Invoke the function synchronously. Keep
-the connection open until the function returns a response or times
-out. The API response includes the function response and additional
-data.
+\item \code{RequestResponse} (default) – Invoke the function synchronously.
+Keep the connection open until the function returns a response or
+times out. The API response includes the function response and
+additional data.
 \item \code{Event} – Invoke the function asynchronously. Send events that fail
 multiple times to the function's dead-letter queue (if one is
 configured). The API response only includes a status code.
-\item \code{DryRun} – Validate parameter values and verify that the user or role
-has permission to invoke the function.
+\item \code{DryRun} – Validate parameter values and verify that the user or
+role has permission to invoke the function.
 }}
 
 \item{LogType}{Set to \code{Tail} to include the execution log in the response. Applies to

@@ -65,11 +65,11 @@ The API reference to Amazon EMR Serverless is \code{emr-serverless}. The
 \itemize{
 \item It is the prefix in the CLI commands for Amazon EMR Serverless. For
 example, \verb{aws emr-serverless start-job-run}.
-\item It is the prefix before IAM policy actions for Amazon EMR Serverless.
-For example, \verb{"Action": ["emr-serverless:StartJobRun"]}. For more
-information, see \href{https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions}{Policy actions for Amazon EMR Serverless}.
-\item It is the prefix used in Amazon EMR Serverless service endpoints. For
-example, \verb{emr-serverless.us-east-2.amazonaws.com}.
+\item It is the prefix before IAM policy actions for Amazon EMR
+Serverless. For example, \verb{"Action": ["emr-serverless:StartJobRun"]}.
+For more information, see \href{https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions}{Policy actions for Amazon EMR Serverless}.
+\item It is the prefix used in Amazon EMR Serverless service endpoints.
+For example, \verb{emr-serverless.us-east-2.amazonaws.com}.
 }
 }
 \section{Service syntax}{

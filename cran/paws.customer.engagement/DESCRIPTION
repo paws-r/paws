@@ -1,6 +1,6 @@
 Package: paws.customer.engagement
 Title: 'Amazon Web Services' Customer Engagement Services
-Version: 0.8.0
+Version: 0.7.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),

@@ -58,10 +58,10 @@ information, see the \href{https://aws.amazon.com/glue/pricing/}{Glue pricing pa
 \code{MaxCapacity} is a mutually exclusive option with \code{NumberOfWorkers} and
 \code{WorkerType}.
 \itemize{
-\item If either \code{NumberOfWorkers} or \code{WorkerType} is set, then \code{MaxCapacity}
-cannot be set.
-\item If \code{MaxCapacity} is set then neither \code{NumberOfWorkers} or \code{WorkerType}
-can be set.
+\item If either \code{NumberOfWorkers} or \code{WorkerType} is set, then
+\code{MaxCapacity} cannot be set.
+\item If \code{MaxCapacity} is set then neither \code{NumberOfWorkers} or
+\code{WorkerType} can be set.
 \item If \code{WorkerType} is set, then \code{NumberOfWorkers} is required (and vice
 versa).
 \item \code{MaxCapacity} and \code{NumberOfWorkers} must both be at least 1.
@@ -76,8 +76,8 @@ When the \code{WorkerType} field is set to a value other than \code{Standard}, t
 \item{WorkerType}{The type of predefined worker that is allocated when this task runs.
 Accepts a value of Standard, G.1X, or G.2X.
 \itemize{
-\item For the \code{Standard} worker type, each worker provides 4 vCPU, 16 GB of
-memory and a 50GB disk, and 2 executors per worker.
+\item For the \code{Standard} worker type, each worker provides 4 vCPU, 16 GB
+of memory and a 50GB disk, and 2 executors per worker.
 \item For the \code{G.1X} worker type, each worker provides 4 vCPU, 16 GB of
 memory and a 64GB disk, and 1 executor per worker.
 \item For the \code{G.2X} worker type, each worker provides 8 vCPU, 32 GB of
@@ -87,10 +87,10 @@ memory and a 128GB disk, and 1 executor per worker.
 \code{MaxCapacity} is a mutually exclusive option with \code{NumberOfWorkers} and
 \code{WorkerType}.
 \itemize{
-\item If either \code{NumberOfWorkers} or \code{WorkerType} is set, then \code{MaxCapacity}
-cannot be set.
-\item If \code{MaxCapacity} is set then neither \code{NumberOfWorkers} or \code{WorkerType}
-can be set.
+\item If either \code{NumberOfWorkers} or \code{WorkerType} is set, then
+\code{MaxCapacity} cannot be set.
+\item If \code{MaxCapacity} is set then neither \code{NumberOfWorkers} or
+\code{WorkerType} can be set.
 \item If \code{WorkerType} is set, then \code{NumberOfWorkers} is required (and vice
 versa).
 \item \code{MaxCapacity} and \code{NumberOfWorkers} must both be at least 1.

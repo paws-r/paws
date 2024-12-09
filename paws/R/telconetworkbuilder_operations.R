@@ -37,8 +37,7 @@ telconetworkbuilder_cancel_sol_network_operation <- function(nsLcmOpOccId) {
     http_method = "POST",
     http_path = "/sol/nslcm/v1/ns_lcm_op_occs/{nsLcmOpOccId}/cancel",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$cancel_sol_network_operation_input(nsLcmOpOccId = nsLcmOpOccId)
   output <- .telconetworkbuilder$cancel_sol_network_operation_output()
@@ -112,8 +111,7 @@ telconetworkbuilder_create_sol_function_package <- function(tags = NULL) {
     http_method = "POST",
     http_path = "/sol/vnfpkgm/v1/vnf_packages",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$create_sol_function_package_input(tags = tags)
   output <- .telconetworkbuilder$create_sol_function_package_output()
@@ -191,8 +189,7 @@ telconetworkbuilder_create_sol_network_instance <- function(nsDescription = NULL
     http_method = "POST",
     http_path = "/sol/nslcm/v1/ns_instances",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$create_sol_network_instance_input(nsDescription = nsDescription, nsName = nsName, nsdInfoId = nsdInfoId, tags = tags)
   output <- .telconetworkbuilder$create_sol_network_instance_output()
@@ -270,8 +267,7 @@ telconetworkbuilder_create_sol_network_package <- function(tags = NULL) {
     http_method = "POST",
     http_path = "/sol/nsd/v1/ns_descriptors",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$create_sol_network_package_input(tags = tags)
   output <- .telconetworkbuilder$create_sol_network_package_output()
@@ -324,8 +320,7 @@ telconetworkbuilder_delete_sol_function_package <- function(vnfPkgId) {
     http_method = "DELETE",
     http_path = "/sol/vnfpkgm/v1/vnf_packages/{vnfPkgId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$delete_sol_function_package_input(vnfPkgId = vnfPkgId)
   output <- .telconetworkbuilder$delete_sol_function_package_output()
@@ -376,8 +371,7 @@ telconetworkbuilder_delete_sol_network_instance <- function(nsInstanceId) {
     http_method = "DELETE",
     http_path = "/sol/nslcm/v1/ns_instances/{nsInstanceId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$delete_sol_network_instance_input(nsInstanceId = nsInstanceId)
   output <- .telconetworkbuilder$delete_sol_network_instance_output()
@@ -428,8 +422,7 @@ telconetworkbuilder_delete_sol_network_package <- function(nsdInfoId) {
     http_method = "DELETE",
     http_path = "/sol/nsd/v1/ns_descriptors/{nsdInfoId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$delete_sol_network_package_input(nsdInfoId = nsdInfoId)
   output <- .telconetworkbuilder$delete_sol_network_package_output()
@@ -514,8 +507,7 @@ telconetworkbuilder_get_sol_function_instance <- function(vnfInstanceId) {
     http_method = "GET",
     http_path = "/sol/vnflcm/v1/vnf_instances/{vnfInstanceId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_function_instance_input(vnfInstanceId = vnfInstanceId)
   output <- .telconetworkbuilder$get_sol_function_instance_output()
@@ -598,8 +590,7 @@ telconetworkbuilder_get_sol_function_package <- function(vnfPkgId) {
     http_method = "GET",
     http_path = "/sol/vnfpkgm/v1/vnf_packages/{vnfPkgId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_function_package_input(vnfPkgId = vnfPkgId)
   output <- .telconetworkbuilder$get_sol_function_package_output()
@@ -657,8 +648,7 @@ telconetworkbuilder_get_sol_function_package_content <- function(accept, vnfPkgI
     http_method = "GET",
     http_path = "/sol/vnfpkgm/v1/vnf_packages/{vnfPkgId}/package_content",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_function_package_content_input(accept = accept, vnfPkgId = vnfPkgId)
   output <- .telconetworkbuilder$get_sol_function_package_content_output()
@@ -721,8 +711,7 @@ telconetworkbuilder_get_sol_function_package_descriptor <- function(accept, vnfP
     http_method = "GET",
     http_path = "/sol/vnfpkgm/v1/vnf_packages/{vnfPkgId}/vnfd",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_function_package_descriptor_input(accept = accept, vnfPkgId = vnfPkgId)
   output <- .telconetworkbuilder$get_sol_function_package_descriptor_output()
@@ -794,8 +783,7 @@ telconetworkbuilder_get_sol_network_instance <- function(nsInstanceId) {
     http_method = "GET",
     http_path = "/sol/nslcm/v1/ns_instances/{nsInstanceId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_network_instance_input(nsInstanceId = nsInstanceId)
   output <- .telconetworkbuilder$get_sol_network_instance_output()
@@ -899,8 +887,7 @@ telconetworkbuilder_get_sol_network_operation <- function(nsLcmOpOccId) {
     http_method = "GET",
     http_path = "/sol/nslcm/v1/ns_lcm_op_occs/{nsLcmOpOccId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_network_operation_input(nsLcmOpOccId = nsLcmOpOccId)
   output <- .telconetworkbuilder$get_sol_network_operation_output()
@@ -981,8 +968,7 @@ telconetworkbuilder_get_sol_network_package <- function(nsdInfoId) {
     http_method = "GET",
     http_path = "/sol/nsd/v1/ns_descriptors/{nsdInfoId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_network_package_input(nsdInfoId = nsdInfoId)
   output <- .telconetworkbuilder$get_sol_network_package_output()
@@ -1037,8 +1023,7 @@ telconetworkbuilder_get_sol_network_package_content <- function(accept, nsdInfoI
     http_method = "GET",
     http_path = "/sol/nsd/v1/ns_descriptors/{nsdInfoId}/nsd_content",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_network_package_content_input(accept = accept, nsdInfoId = nsdInfoId)
   output <- .telconetworkbuilder$get_sol_network_package_content_output()
@@ -1092,8 +1077,7 @@ telconetworkbuilder_get_sol_network_package_descriptor <- function(nsdInfoId) {
     http_method = "GET",
     http_path = "/sol/nsd/v1/ns_descriptors/{nsdInfoId}/nsd",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$get_sol_network_package_descriptor_input(nsdInfoId = nsdInfoId)
   output <- .telconetworkbuilder$get_sol_network_package_descriptor_output()
@@ -1168,8 +1152,7 @@ telconetworkbuilder_instantiate_sol_network_instance <- function(additionalParam
     http_method = "POST",
     http_path = "/sol/nslcm/v1/ns_instances/{nsInstanceId}/instantiate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$instantiate_sol_network_instance_input(additionalParamsForNs = additionalParamsForNs, dryRun = dryRun, nsInstanceId = nsInstanceId, tags = tags)
   output <- .telconetworkbuilder$instantiate_sol_network_instance_output()
@@ -1242,8 +1225,7 @@ telconetworkbuilder_list_sol_function_instances <- function(maxResults = NULL, n
     http_method = "GET",
     http_path = "/sol/vnflcm/v1/vnf_instances",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "functionInstances"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "functionInstances")
   )
   input <- .telconetworkbuilder$list_sol_function_instances_input(maxResults = maxResults, nextToken = nextToken)
   output <- .telconetworkbuilder$list_sol_function_instances_output()
@@ -1320,8 +1302,7 @@ telconetworkbuilder_list_sol_function_packages <- function(maxResults = NULL, ne
     http_method = "GET",
     http_path = "/sol/vnfpkgm/v1/vnf_packages",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "functionPackages"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "functionPackages")
   )
   input <- .telconetworkbuilder$list_sol_function_packages_input(maxResults = maxResults, nextToken = nextToken)
   output <- .telconetworkbuilder$list_sol_function_packages_output()
@@ -1394,8 +1375,7 @@ telconetworkbuilder_list_sol_network_instances <- function(maxResults = NULL, ne
     http_method = "GET",
     http_path = "/sol/nslcm/v1/ns_instances",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "networkInstances"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "networkInstances")
   )
   input <- .telconetworkbuilder$list_sol_network_instances_input(maxResults = maxResults, nextToken = nextToken)
   output <- .telconetworkbuilder$list_sol_network_instances_output()
@@ -1478,8 +1458,7 @@ telconetworkbuilder_list_sol_network_operations <- function(maxResults = NULL, n
     http_method = "GET",
     http_path = "/sol/nslcm/v1/ns_lcm_op_occs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "networkOperations"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "networkOperations")
   )
   input <- .telconetworkbuilder$list_sol_network_operations_input(maxResults = maxResults, nextToken = nextToken, nsInstanceId = nsInstanceId)
   output <- .telconetworkbuilder$list_sol_network_operations_output()
@@ -1558,8 +1537,7 @@ telconetworkbuilder_list_sol_network_packages <- function(maxResults = NULL, nex
     http_method = "GET",
     http_path = "/sol/nsd/v1/ns_descriptors",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "networkPackages"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "networkPackages")
   )
   input <- .telconetworkbuilder$list_sol_network_packages_input(maxResults = maxResults, nextToken = nextToken)
   output <- .telconetworkbuilder$list_sol_network_packages_output()
@@ -1609,8 +1587,7 @@ telconetworkbuilder_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .telconetworkbuilder$list_tags_for_resource_output()
@@ -1683,8 +1660,7 @@ telconetworkbuilder_put_sol_function_package_content <- function(contentType = N
     http_method = "PUT",
     http_path = "/sol/vnfpkgm/v1/vnf_packages/{vnfPkgId}/package_content",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$put_sol_function_package_content_input(contentType = contentType, file = file, vnfPkgId = vnfPkgId)
   output <- .telconetworkbuilder$put_sol_function_package_content_output()
@@ -1758,8 +1734,7 @@ telconetworkbuilder_put_sol_network_package_content <- function(contentType = NU
     http_method = "PUT",
     http_path = "/sol/nsd/v1/ns_descriptors/{nsdInfoId}/nsd_content",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$put_sol_network_package_content_input(contentType = contentType, file = file, nsdInfoId = nsdInfoId)
   output <- .telconetworkbuilder$put_sol_network_package_content_output()
@@ -1814,8 +1789,7 @@ telconetworkbuilder_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .telconetworkbuilder$tag_resource_output()
@@ -1880,8 +1854,7 @@ telconetworkbuilder_terminate_sol_network_instance <- function(nsInstanceId, tag
     http_method = "POST",
     http_path = "/sol/nslcm/v1/ns_instances/{nsInstanceId}/terminate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$terminate_sol_network_instance_input(nsInstanceId = nsInstanceId, tags = tags)
   output <- .telconetworkbuilder$terminate_sol_network_instance_output()
@@ -1933,8 +1906,7 @@ telconetworkbuilder_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .telconetworkbuilder$untag_resource_output()
@@ -1991,8 +1963,7 @@ telconetworkbuilder_update_sol_function_package <- function(operationalState, vn
     http_method = "PATCH",
     http_path = "/sol/vnfpkgm/v1/vnf_packages/{vnfPkgId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$update_sol_function_package_input(operationalState = operationalState, vnfPkgId = vnfPkgId)
   output <- .telconetworkbuilder$update_sol_function_package_output()
@@ -2037,11 +2008,11 @@ telconetworkbuilder_update_sol_function_package <- function(operationalState, vn
 #' Include this property only if the update type is `UPDATE_NS`.
 #' @param updateType &#91;required&#93; The type of update.
 #' 
-#' - Use the `MODIFY_VNF_INFORMATION` update type, to update a specific
-#'   network function configuration, in the network instance.
+#' -   Use the `MODIFY_VNF_INFORMATION` update type, to update a specific
+#'     network function configuration, in the network instance.
 #' 
-#' - Use the `UPDATE_NS` update type, to update the network instance to a
-#'   new network service descriptor.
+#' -   Use the `UPDATE_NS` update type, to update the network instance to a
+#'     new network service descriptor.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2084,8 +2055,7 @@ telconetworkbuilder_update_sol_network_instance <- function(modifyVnfInfoData = 
     http_method = "POST",
     http_path = "/sol/nslcm/v1/ns_instances/{nsInstanceId}/update",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$update_sol_network_instance_input(modifyVnfInfoData = modifyVnfInfoData, nsInstanceId = nsInstanceId, tags = tags, updateNs = updateNs, updateType = updateType)
   output <- .telconetworkbuilder$update_sol_network_instance_output()
@@ -2146,8 +2116,7 @@ telconetworkbuilder_update_sol_network_package <- function(nsdInfoId, nsdOperati
     http_method = "PATCH",
     http_path = "/sol/nsd/v1/ns_descriptors/{nsdInfoId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$update_sol_network_package_input(nsdInfoId = nsdInfoId, nsdOperationalState = nsdOperationalState)
   output <- .telconetworkbuilder$update_sol_network_package_output()
@@ -2222,8 +2191,7 @@ telconetworkbuilder_validate_sol_function_package_content <- function(contentTyp
     http_method = "PUT",
     http_path = "/sol/vnfpkgm/v1/vnf_packages/{vnfPkgId}/package_content/validate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$validate_sol_function_package_content_input(contentType = contentType, file = file, vnfPkgId = vnfPkgId)
   output <- .telconetworkbuilder$validate_sol_function_package_content_output()
@@ -2299,8 +2267,7 @@ telconetworkbuilder_validate_sol_network_package_content <- function(contentType
     http_method = "PUT",
     http_path = "/sol/nsd/v1/ns_descriptors/{nsdInfoId}/nsd_content/validate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .telconetworkbuilder$validate_sol_network_package_content_input(contentType = contentType, file = file, nsdInfoId = nsdInfoId)
   output <- .telconetworkbuilder$validate_sol_network_package_content_output()

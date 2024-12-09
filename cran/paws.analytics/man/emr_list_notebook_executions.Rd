@@ -18,16 +18,16 @@ emr_list_notebook_executions(
 
 \item{Status}{The status filter for listing notebook executions.
 \itemize{
-\item \code{START_PENDING} indicates that the cluster has received the execution
-request but execution has not begun.
+\item \code{START_PENDING} indicates that the cluster has received the
+execution request but execution has not begun.
 \item \code{STARTING} indicates that the execution is starting on the cluster.
 \item \code{RUNNING} indicates that the execution is being processed by the
 cluster.
 \item \code{FINISHING} indicates that execution processing is in the final
 stages.
 \item \code{FINISHED} indicates that the execution has completed without error.
-\item \code{FAILING} indicates that the execution is failing and will not finish
-successfully.
+\item \code{FAILING} indicates that the execution is failing and will not
+finish successfully.
 \item \code{FAILED} indicates that the execution failed.
 \item \code{STOP_PENDING} indicates that the cluster has received a
 \code{\link[=emr_stop_notebook_execution]{stop_notebook_execution}} request and

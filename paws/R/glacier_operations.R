@@ -77,8 +77,7 @@ glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$abort_multipart_upload_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId)
   output <- .glacier$abort_multipart_upload_output()
@@ -159,8 +158,7 @@ glacier_abort_vault_lock <- function(accountId, vaultName) {
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/lock-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$abort_vault_lock_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$abort_vault_lock_output()
@@ -234,8 +232,7 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/tags?operation=add",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$add_tags_to_vault_input(accountId = accountId, vaultName = vaultName, Tags = Tags)
   output <- .glacier$add_tags_to_vault_output()
@@ -366,8 +363,7 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$complete_multipart_upload_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, archiveSize = archiveSize, checksum = checksum)
   output <- .glacier$complete_multipart_upload_output()
@@ -451,8 +447,7 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/lock-policy/{lockId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$complete_vault_lock_input(accountId = accountId, vaultName = vaultName, lockId = lockId)
   output <- .glacier$complete_vault_lock_output()
@@ -474,10 +469,10 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #' 
 #' You must use the following guidelines when naming a vault.
 #' 
-#' - Names can be between 1 and 255 characters long.
+#' -   Names can be between 1 and 255 characters long.
 #' 
-#' - Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-' (hyphen),
-#'   and '.' (period).
+#' -   Allowed characters are a-z, A-Z, 0-9, '_' (underscore), '-'
+#'     (hyphen), and '.' (period).
 #' 
 #' This operation is idempotent.
 #' 
@@ -542,8 +537,7 @@ glacier_create_vault <- function(accountId, vaultName) {
     http_method = "PUT",
     http_path = "/{accountId}/vaults/{vaultName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$create_vault_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$create_vault_output()
@@ -563,13 +557,13 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' are in progress for this archive ID may or may not succeed according to
 #' the following scenarios:
 #' 
-#' - If the archive retrieval job is actively preparing the data for
-#'   download when Amazon S3 Glacier receives the delete archive request,
-#'   the archival retrieval operation might fail.
+#' -   If the archive retrieval job is actively preparing the data for
+#'     download when Amazon S3 Glacier receives the delete archive request,
+#'     the archival retrieval operation might fail.
 #' 
-#' - If the archive retrieval job has successfully prepared the archive for
-#'   download when Amazon S3 Glacier receives the delete archive request,
-#'   you will be able to download the output.
+#' -   If the archive retrieval job has successfully prepared the archive
+#'     for download when Amazon S3 Glacier receives the delete archive
+#'     request, you will be able to download the output.
 #' 
 #' This operation is idempotent. Attempting to delete an already-deleted
 #' archive does not result in an error.
@@ -632,8 +626,7 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/archives/{archiveId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$delete_archive_input(accountId = accountId, vaultName = vaultName, archiveId = archiveId)
   output <- .glacier$delete_archive_output()
@@ -718,8 +711,7 @@ glacier_delete_vault <- function(accountId, vaultName) {
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$delete_vault_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$delete_vault_output()
@@ -789,8 +781,7 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/access-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$delete_vault_access_policy_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$delete_vault_access_policy_output()
@@ -867,8 +858,7 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
     http_method = "DELETE",
     http_path = "/{accountId}/vaults/{vaultName}/notification-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$delete_vault_notifications_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$delete_vault_notifications_output()
@@ -1040,8 +1030,7 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs/{jobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$describe_job_input(accountId = accountId, vaultName = vaultName, jobId = jobId)
   output <- .glacier$describe_job_output()
@@ -1137,8 +1126,7 @@ glacier_describe_vault <- function(accountId, vaultName) {
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$describe_vault_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$describe_vault_output()
@@ -1210,8 +1198,7 @@ glacier_get_data_retrieval_policy <- function(accountId) {
     http_method = "GET",
     http_path = "/{accountId}/policies/data-retrieval",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$get_data_retrieval_policy_input(accountId = accountId)
   output <- .glacier$get_data_retrieval_policy_output()
@@ -1367,8 +1354,7 @@ glacier_get_job_output <- function(accountId, vaultName, jobId, range = NULL) {
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs/{jobId}/output",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$get_job_output_input(accountId = accountId, vaultName = vaultName, jobId = jobId, range = range)
   output <- .glacier$get_job_output_output()
@@ -1443,8 +1429,7 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/access-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$get_vault_access_policy_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$get_vault_access_policy_output()
@@ -1463,14 +1448,16 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
 #' This operation retrieves the following attributes from the `lock-policy`
 #' subresource set on the specified vault:
 #' 
-#' - The vault lock policy set on the vault.
+#' -   The vault lock policy set on the vault.
 #' 
-#' - The state of the vault lock, which is either `InProgess` or `Locked`.
+#' -   The state of the vault lock, which is either `InProgess` or
+#'     `Locked`.
 #' 
-#' - When the lock ID expires. The lock ID is used to complete the vault
-#'   locking process.
+#' -   When the lock ID expires. The lock ID is used to complete the vault
+#'     locking process.
 #' 
-#' - When the vault lock was initiated and put into the `InProgress` state.
+#' -   When the vault lock was initiated and put into the `InProgress`
+#'     state.
 #' 
 #' A vault lock is put into the `InProgress` state by calling
 #' [`initiate_vault_lock`][glacier_initiate_vault_lock]. A vault lock is
@@ -1536,8 +1523,7 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/lock-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$get_vault_lock_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$get_vault_lock_output()
@@ -1629,8 +1615,7 @@ glacier_get_vault_notifications <- function(accountId, vaultName) {
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/notification-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$get_vault_notifications_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$get_vault_notifications_output()
@@ -1777,8 +1762,7 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$initiate_job_input(accountId = accountId, vaultName = vaultName, jobParameters = jobParameters)
   output <- .glacier$initiate_job_output()
@@ -1894,8 +1878,7 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$initiate_multipart_upload_input(accountId = accountId, vaultName = vaultName, archiveDescription = archiveDescription, partSize = partSize)
   output <- .glacier$initiate_multipart_upload_output()
@@ -1914,12 +1897,12 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' This operation initiates the vault locking process by doing the
 #' following:
 #' 
-#' - Installing a vault lock policy on the specified vault.
+#' -   Installing a vault lock policy on the specified vault.
 #' 
-#' - Setting the lock state of vault lock to `InProgress`.
+#' -   Setting the lock state of vault lock to `InProgress`.
 #' 
-#' - Returning a lock ID, which is used to complete the vault locking
-#'   process.
+#' -   Returning a lock ID, which is used to complete the vault locking
+#'     process.
 #' 
 #' You can set one vault lock policy for each vault and this policy can be
 #' up to 20 KB in size. For more information about vault lock policies, see
@@ -1960,7 +1943,7 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' associated with the credentials used to sign the request. If you specify
 #' your account ID, do not include any hyphens ('-') in the ID.
 #' @param vaultName &#91;required&#93; The name of the vault.
-#' @param policy The vault lock policy as a JSON string, which uses "\\ as an escape
+#' @param policy The vault lock policy as a JSON string, which uses "\\" as an escape
 #' character.
 #'
 #' @return
@@ -2006,8 +1989,7 @@ glacier_initiate_vault_lock <- function(accountId, vaultName, policy = NULL) {
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/lock-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$initiate_vault_lock_input(accountId = accountId, vaultName = vaultName, policy = policy)
   output <- .glacier$initiate_vault_lock_output()
@@ -2206,8 +2188,7 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "JobList"),
-    stream_api = FALSE
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "JobList")
   )
   input <- .glacier$list_jobs_input(accountId = accountId, vaultName = vaultName, limit = limit, marker = marker, statuscode = statuscode, completed = completed)
   output <- .glacier$list_jobs_output()
@@ -2326,8 +2307,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "UploadsList"),
-    stream_api = FALSE
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "UploadsList")
   )
   input <- .glacier$list_multipart_uploads_input(accountId = accountId, vaultName = vaultName, marker = marker, limit = limit)
   output <- .glacier$list_multipart_uploads_output()
@@ -2443,8 +2423,7 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "Parts"),
-    stream_api = FALSE
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "Parts")
   )
   input <- .glacier$list_parts_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, marker = marker, limit = limit)
   output <- .glacier$list_parts_output()
@@ -2512,8 +2491,7 @@ glacier_list_provisioned_capacity <- function(accountId) {
     http_method = "GET",
     http_path = "/{accountId}/provisioned-capacity",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$list_provisioned_capacity_input(accountId = accountId)
   output <- .glacier$list_provisioned_capacity_output()
@@ -2581,8 +2559,7 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/tags",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$list_tags_for_vault_input(accountId = accountId, vaultName = vaultName)
   output <- .glacier$list_tags_for_vault_output()
@@ -2686,8 +2663,7 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/{accountId}/vaults",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "VaultList"),
-    stream_api = FALSE
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "VaultList")
   )
   input <- .glacier$list_vaults_input(accountId = accountId, marker = marker, limit = limit)
   output <- .glacier$list_vaults_output()
@@ -2747,8 +2723,7 @@ glacier_purchase_provisioned_capacity <- function(accountId) {
     http_method = "POST",
     http_path = "/{accountId}/provisioned-capacity",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$purchase_provisioned_capacity_input(accountId = accountId)
   output <- .glacier$purchase_provisioned_capacity_output()
@@ -2819,8 +2794,7 @@ glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL)
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/tags?operation=remove",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$remove_tags_from_vault_input(accountId = accountId, vaultName = vaultName, TagKeys = TagKeys)
   output <- .glacier$remove_tags_from_vault_output()
@@ -2902,8 +2876,7 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
     http_method = "PUT",
     http_path = "/{accountId}/policies/data-retrieval",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$set_data_retrieval_policy_input(accountId = accountId, Policy = Policy)
   output <- .glacier$set_data_retrieval_policy_output()
@@ -2977,8 +2950,7 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
     http_method = "PUT",
     http_path = "/{accountId}/vaults/{vaultName}/access-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$set_vault_access_policy_input(accountId = accountId, vaultName = vaultName, policy = policy)
   output <- .glacier$set_vault_access_policy_output()
@@ -3007,19 +2979,19 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' publish notifications to the topic. You can configure a vault to publish
 #' a notification for the following vault events:
 #' 
-#' - **ArchiveRetrievalCompleted** This event occurs when a job that was
-#'   initiated for an archive retrieval is completed
-#'   ([`initiate_job`][glacier_initiate_job]). The status of the completed
-#'   job can be "Succeeded" or "Failed". The notification sent to the SNS
-#'   topic is the same output as returned from
-#'   [`describe_job`][glacier_describe_job].
+#' -   **ArchiveRetrievalCompleted** This event occurs when a job that was
+#'     initiated for an archive retrieval is completed
+#'     ([`initiate_job`][glacier_initiate_job]). The status of the
+#'     completed job can be "Succeeded" or "Failed". The notification sent
+#'     to the SNS topic is the same output as returned from
+#'     [`describe_job`][glacier_describe_job].
 #' 
-#' - **InventoryRetrievalCompleted** This event occurs when a job that was
-#'   initiated for an inventory retrieval is completed
-#'   ([`initiate_job`][glacier_initiate_job]). The status of the completed
-#'   job can be "Succeeded" or "Failed". The notification sent to the SNS
-#'   topic is the same output as returned from
-#'   [`describe_job`][glacier_describe_job].
+#' -   **InventoryRetrievalCompleted** This event occurs when a job that
+#'     was initiated for an inventory retrieval is completed
+#'     ([`initiate_job`][glacier_initiate_job]). The status of the
+#'     completed job can be "Succeeded" or "Failed". The notification sent
+#'     to the SNS topic is the same output as returned from
+#'     [`describe_job`][glacier_describe_job].
 #' 
 #' An AWS account has full permission to perform all operations (actions).
 #' However, AWS Identity and Access Management (IAM) users don't have any
@@ -3091,8 +3063,7 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
     http_method = "PUT",
     http_path = "/{accountId}/vaults/{vaultName}/notification-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$set_vault_notifications_input(accountId = accountId, vaultName = vaultName, vaultNotificationConfig = vaultNotificationConfig)
   output <- .glacier$set_vault_notifications_output()
@@ -3209,8 +3180,7 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
     http_method = "POST",
     http_path = "/{accountId}/vaults/{vaultName}/archives",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$upload_archive_input(vaultName = vaultName, accountId = accountId, archiveDescription = archiveDescription, checksum = checksum, body = body)
   output <- .glacier$upload_archive_output()
@@ -3232,32 +3202,32 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #' Amazon Glacier rejects your upload part request if any of the following
 #' conditions is true:
 #' 
-#' - **SHA256 tree hash does not match**To ensure that part data is not
-#'   corrupted in transmission, you compute a SHA256 tree hash of the part
-#'   and include it in your request. Upon receiving the part data, Amazon
-#'   S3 Glacier also computes a SHA256 tree hash. If these hash values
-#'   don't match, the operation fails. For information about computing a
-#'   SHA256 tree hash, see [Computing
-#'   Checksums](https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html).
+#' -   **SHA256 tree hash does not match**To ensure that part data is not
+#'     corrupted in transmission, you compute a SHA256 tree hash of the
+#'     part and include it in your request. Upon receiving the part data,
+#'     Amazon S3 Glacier also computes a SHA256 tree hash. If these hash
+#'     values don't match, the operation fails. For information about
+#'     computing a SHA256 tree hash, see [Computing
+#'     Checksums](https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html).
 #' 
-#' - **Part size does not match**The size of each part except the last must
-#'   match the size specified in the corresponding
-#'   [`initiate_multipart_upload`][glacier_initiate_multipart_upload]
-#'   request. The size of the last part must be the same size as, or
-#'   smaller than, the specified size.
+#' -   **Part size does not match**The size of each part except the last
+#'     must match the size specified in the corresponding
+#'     [`initiate_multipart_upload`][glacier_initiate_multipart_upload]
+#'     request. The size of the last part must be the same size as, or
+#'     smaller than, the specified size.
 #' 
-#'   If you upload a part whose size is smaller than the part size you
-#'   specified in your initiate multipart upload request and that part is
-#'   not the last part, then the upload part request will succeed. However,
-#'   the subsequent Complete Multipart Upload request will fail.
+#'     If you upload a part whose size is smaller than the part size you
+#'     specified in your initiate multipart upload request and that part is
+#'     not the last part, then the upload part request will succeed.
+#'     However, the subsequent Complete Multipart Upload request will fail.
 #' 
-#' - **Range does not align**The byte range value in the request does not
-#'   align with the part size specified in the corresponding initiate
-#'   request. For example, if you specify a part size of 4194304 bytes (4
-#'   MB), then 0 to 4194303 bytes (4 MB - 1) and 4194304 (4 MB) to 8388607
-#'   (8 MB - 1) are valid part ranges. However, if you set a range value of
-#'   2 MB to 6 MB, the range does not align with the part size and the
-#'   upload will fail.
+#' -   **Range does not align**The byte range value in the request does not
+#'     align with the part size specified in the corresponding initiate
+#'     request. For example, if you specify a part size of 4194304 bytes (4
+#'     MB), then 0 to 4194303 bytes (4 MB - 1) and 4194304 (4 MB) to
+#'     8388607 (8 MB - 1) are valid part ranges. However, if you set a
+#'     range value of 2 MB to 6 MB, the range does not align with the part
+#'     size and the upload will fail.
 #' 
 #' This operation is idempotent. If you upload the same part multiple
 #' times, the data included in the most recent request overwrites the
@@ -3340,8 +3310,7 @@ glacier_upload_multipart_part <- function(accountId, vaultName, uploadId, checks
     http_method = "PUT",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glacier$upload_multipart_part_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, checksum = checksum, range = range, body = body)
   output <- .glacier$upload_multipart_part_output()

@@ -26,7 +26,8 @@ Kinesis Data Streams by specifying the alias \code{aws/kinesis}.
 \code{arn:aws:kms:us-east-1:123456789012:key/12345678-1234-1234-1234-123456789012}
 \item Alias ARN example:
 \code{arn:aws:kms:us-east-1:123456789012:alias/MyAliasName}
-\item Globally unique key ID example: \code{12345678-1234-1234-1234-123456789012}
+\item Globally unique key ID example:
+\code{12345678-1234-1234-1234-123456789012}
 \item Alias name example: \code{alias/MyAliasName}
 \item Master key owned by Kinesis Data Streams: \code{alias/aws/kinesis}
 }}

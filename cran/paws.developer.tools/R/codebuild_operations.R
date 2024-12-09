@@ -21,8 +21,7 @@ codebuild_batch_delete_builds <- function(ids) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$batch_delete_builds_input(ids = ids)
   output <- .codebuild$batch_delete_builds_output()
@@ -52,8 +51,7 @@ codebuild_batch_get_build_batches <- function(ids) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$batch_get_build_batches_input(ids = ids)
   output <- .codebuild$batch_get_build_batches_output()
@@ -83,8 +81,7 @@ codebuild_batch_get_builds <- function(ids) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$batch_get_builds_input(ids = ids)
   output <- .codebuild$batch_get_builds_output()
@@ -114,8 +111,7 @@ codebuild_batch_get_fleets <- function(names) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$batch_get_fleets_input(names = names)
   output <- .codebuild$batch_get_fleets_output()
@@ -147,8 +143,7 @@ codebuild_batch_get_projects <- function(names) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$batch_get_projects_input(names = names)
   output <- .codebuild$batch_get_projects_output()
@@ -178,8 +173,7 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$batch_get_report_groups_input(reportGroupArns = reportGroupArns)
   output <- .codebuild$batch_get_report_groups_output()
@@ -209,8 +203,7 @@ codebuild_batch_get_reports <- function(reportArns) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$batch_get_reports_input(reportArns = reportArns)
   output <- .codebuild$batch_get_reports_output()
@@ -234,40 +227,41 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' number of builds that can run in parallel.
 #' @param environmentType &#91;required&#93; The environment type of the compute fleet.
 #' 
-#' - The environment type `ARM_CONTAINER` is available only in regions US
-#'   East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
-#'   Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific (Singapore),
-#'   Asia Pacific (Sydney), EU (Frankfurt), and South America (São Paulo).
+#' -   The environment type `ARM_CONTAINER` is available only in regions US
+#'     East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+#'     Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), EU (Frankfurt), and South
+#'     America (São Paulo).
 #' 
-#' - The environment type `LINUX_CONTAINER` is available only in regions US
-#'   East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland), EU
-#'   (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
-#'   Pacific (Sydney), South America (São Paulo), and Asia Pacific
-#'   (Mumbai).
+#' -   The environment type `LINUX_CONTAINER` is available only in regions
+#'     US East (N. Virginia), US East (Ohio), US West (Oregon), EU
+#'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), South America (São Paulo), and
+#'     Asia Pacific (Mumbai).
 #' 
-#' - The environment type `LINUX_GPU_CONTAINER` is available only in
-#'   regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
-#'   (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
-#'   (Sydney).
+#' -   The environment type `LINUX_GPU_CONTAINER` is available only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
+#'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
+#'     (Sydney).
 #' 
-#' - The environment type `MAC_ARM` is available for Medium fleets only in
-#'   regions US East (N. Virginia), US East (Ohio), US West (Oregon), Asia
-#'   Pacific (Sydney), and EU (Frankfurt)
+#' -   The environment type `MAC_ARM` is available for Medium fleets only
+#'     in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
+#'     Asia Pacific (Sydney), and EU (Frankfurt)
 #' 
-#' - The environment type `MAC_ARM` is available for Large fleets only in
-#'   regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
-#'   Asia Pacific (Sydney).
+#' -   The environment type `MAC_ARM` is available for Large fleets only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
+#'     Asia Pacific (Sydney).
 #' 
-#' - The environment type `WINDOWS_SERVER_2019_CONTAINER` is available only
-#'   in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
-#'   Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific (Mumbai) and
-#'   EU (Ireland).
+#' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
+#'     only in regions US East (N. Virginia), US East (Ohio), US West
+#'     (Oregon), Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific
+#'     (Mumbai) and EU (Ireland).
 #' 
-#' - The environment type `WINDOWS_SERVER_2022_CONTAINER` is available only
-#'   in regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
-#'   (Ireland), EU (Frankfurt), Asia Pacific (Sydney), Asia Pacific
-#'   (Singapore), Asia Pacific (Tokyo), South America (São Paulo) and Asia
-#'   Pacific (Mumbai).
+#' -   The environment type `WINDOWS_SERVER_2022_CONTAINER` is available
+#'     only in regions US East (N. Virginia), US East (Ohio), US West
+#'     (Oregon), EU (Ireland), EU (Frankfurt), Asia Pacific (Sydney), Asia
+#'     Pacific (Singapore), Asia Pacific (Tokyo), South America (São Paulo)
+#'     and Asia Pacific (Mumbai).
 #' 
 #' For more information, see [Build environment compute
 #' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
@@ -275,41 +269,43 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @param computeType &#91;required&#93; Information about the compute resources the compute fleet uses.
 #' Available values include:
 #' 
-#' - `BUILD_GENERAL1_SMALL`: Use up to 3 GB memory and 2 vCPUs for builds.
+#' -   `BUILD_GENERAL1_SMALL`: Use up to 3 GB memory and 2 vCPUs for
+#'     builds.
 #' 
-#' - `BUILD_GENERAL1_MEDIUM`: Use up to 7 GB memory and 4 vCPUs for builds.
+#' -   `BUILD_GENERAL1_MEDIUM`: Use up to 7 GB memory and 4 vCPUs for
+#'     builds.
 #' 
-#' - `BUILD_GENERAL1_LARGE`: Use up to 16 GB memory and 8 vCPUs for builds,
-#'   depending on your environment type.
+#' -   `BUILD_GENERAL1_LARGE`: Use up to 16 GB memory and 8 vCPUs for
+#'     builds, depending on your environment type.
 #' 
-#' - `BUILD_GENERAL1_XLARGE`: Use up to 70 GB memory and 36 vCPUs for
-#'   builds, depending on your environment type.
+#' -   `BUILD_GENERAL1_XLARGE`: Use up to 70 GB memory and 36 vCPUs for
+#'     builds, depending on your environment type.
 #' 
-#' - `BUILD_GENERAL1_2XLARGE`: Use up to 145 GB memory, 72 vCPUs, and 824
-#'   GB of SSD storage for builds. This compute type supports Docker images
-#'   up to 100 GB uncompressed.
+#' -   `BUILD_GENERAL1_2XLARGE`: Use up to 145 GB memory, 72 vCPUs, and 824
+#'     GB of SSD storage for builds. This compute type supports Docker
+#'     images up to 100 GB uncompressed.
 #' 
 #' If you use `BUILD_GENERAL1_SMALL`:
 #' 
-#' - For environment type `LINUX_CONTAINER`, you can use up to 3 GB memory
-#'   and 2 vCPUs for builds.
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 3 GB
+#'     memory and 2 vCPUs for builds.
 #' 
-#' - For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GB
-#'   memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GB
+#'     memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
 #' 
-#' - For environment type `ARM_CONTAINER`, you can use up to 4 GB memory
-#'   and 2 vCPUs on ARM-based processors for builds.
+#' -   For environment type `ARM_CONTAINER`, you can use up to 4 GB memory
+#'     and 2 vCPUs on ARM-based processors for builds.
 #' 
 #' If you use `BUILD_GENERAL1_LARGE`:
 #' 
-#' - For environment type `LINUX_CONTAINER`, you can use up to 15 GB memory
-#'   and 8 vCPUs for builds.
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 15 GB
+#'     memory and 8 vCPUs for builds.
 #' 
-#' - For environment type `LINUX_GPU_CONTAINER`, you can use up to 255 GB
-#'   memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 255 GB
+#'     memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
 #' 
-#' - For environment type `ARM_CONTAINER`, you can use up to 16 GB memory
-#'   and 8 vCPUs on ARM-based processors for builds.
+#' -   For environment type `ARM_CONTAINER`, you can use up to 16 GB memory
+#'     and 8 vCPUs on ARM-based processors for builds.
 #' 
 #' For more information, see [Build environment compute
 #' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
@@ -317,18 +313,18 @@ codebuild_batch_get_reports <- function(reportArns) {
 #' @param scalingConfiguration The scaling configuration of the compute fleet.
 #' @param overflowBehavior The compute fleet overflow behavior.
 #' 
-#' - For overflow behavior `QUEUE`, your overflow builds need to wait on
-#'   the existing fleet instance to become available.
+#' -   For overflow behavior `QUEUE`, your overflow builds need to wait on
+#'     the existing fleet instance to become available.
 #' 
-#' - For overflow behavior `ON_DEMAND`, your overflow builds run on
-#'   CodeBuild on-demand.
+#' -   For overflow behavior `ON_DEMAND`, your overflow builds run on
+#'     CodeBuild on-demand.
 #' 
-#'   If you choose to set your overflow behavior to on-demand while
-#'   creating a VPC-connected fleet, make sure that you add the required
-#'   VPC permissions to your project service role. For more information,
-#'   see [Example policy statement to allow CodeBuild access to Amazon Web
-#'   Services services required to create a VPC network
-#'   interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
+#'     If you choose to set your overflow behavior to on-demand while
+#'     creating a VPC-connected fleet, make sure that you add the required
+#'     VPC permissions to your project service role. For more information,
+#'     see [Example policy statement to allow CodeBuild access to Amazon
+#'     Web Services services required to create a VPC network
+#'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
 #' @param vpcConfig 
 #' @param imageId The Amazon Machine Image (AMI) of the compute fleet.
 #' @param fleetServiceRole The service role associated with the compute fleet. For more
@@ -350,8 +346,7 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$create_fleet_input(name = name, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$create_fleet_output()
@@ -377,24 +372,24 @@ codebuild_create_fleet <- function(name, baseCapacity, environmentType, computeT
 #' @param sourceVersion A version of the build input to be built for this project. If not
 #' specified, the latest version is used. If specified, it must be one of:
 #' 
-#' - For CodeCommit: the commit ID, branch, or Git tag to use.
+#' -   For CodeCommit: the commit ID, branch, or Git tag to use.
 #' 
-#' - For GitHub: the commit ID, pull request ID, branch name, or tag name
-#'   that corresponds to the version of the source code you want to build.
-#'   If a pull request ID is specified, it must use the format
-#'   `pr/pull-request-ID` (for example `pr/25`). If a branch name is
-#'   specified, the branch's HEAD commit ID is used. If not specified, the
-#'   default branch's HEAD commit ID is used.
+#' -   For GitHub: the commit ID, pull request ID, branch name, or tag name
+#'     that corresponds to the version of the source code you want to
+#'     build. If a pull request ID is specified, it must use the format
+#'     `pr/pull-request-ID` (for example `pr/25`). If a branch name is
+#'     specified, the branch's HEAD commit ID is used. If not specified,
+#'     the default branch's HEAD commit ID is used.
 #' 
-#' - For GitLab: the commit ID, branch, or Git tag to use.
+#' -   For GitLab: the commit ID, branch, or Git tag to use.
 #' 
-#' - For Bitbucket: the commit ID, branch name, or tag name that
-#'   corresponds to the version of the source code you want to build. If a
-#'   branch name is specified, the branch's HEAD commit ID is used. If not
-#'   specified, the default branch's HEAD commit ID is used.
+#' -   For Bitbucket: the commit ID, branch name, or tag name that
+#'     corresponds to the version of the source code you want to build. If
+#'     a branch name is specified, the branch's HEAD commit ID is used. If
+#'     not specified, the default branch's HEAD commit ID is used.
 #' 
-#' - For Amazon S3: the version ID of the object that represents the build
-#'   input ZIP file to use.
+#' -   For Amazon S3: the version ID of the object that represents the
+#'     build input ZIP file to use.
 #' 
 #' If `sourceVersion` is specified at the build level, then that version
 #' takes precedence over this `sourceVersion` (at the project level).
@@ -460,8 +455,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$create_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$create_project_output()
@@ -498,8 +492,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$create_report_group_input(name = name, type = type, exportConfig = exportConfig, tags = tags)
   output <- .codebuild$create_report_group_output()
@@ -556,8 +549,7 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$create_webhook_input(projectName = projectName, branchFilter = branchFilter, filterGroups = filterGroups, buildType = buildType, manualCreation = manualCreation, scopeConfiguration = scopeConfiguration)
   output <- .codebuild$create_webhook_output()
@@ -587,8 +579,7 @@ codebuild_delete_build_batch <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$delete_build_batch_input(id = id)
   output <- .codebuild$delete_build_batch_output()
@@ -618,8 +609,7 @@ codebuild_delete_fleet <- function(arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$delete_fleet_input(arn = arn)
   output <- .codebuild$delete_fleet_output()
@@ -649,8 +639,7 @@ codebuild_delete_project <- function(name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$delete_project_input(name = name)
   output <- .codebuild$delete_project_output()
@@ -680,8 +669,7 @@ codebuild_delete_report <- function(arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$delete_report_input(arn = arn)
   output <- .codebuild$delete_report_output()
@@ -720,8 +708,7 @@ codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$delete_report_group_input(arn = arn, deleteReports = deleteReports)
   output <- .codebuild$delete_report_group_output()
@@ -751,8 +738,7 @@ codebuild_delete_resource_policy <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$delete_resource_policy_input(resourceArn = resourceArn)
   output <- .codebuild$delete_resource_policy_output()
@@ -783,8 +769,7 @@ codebuild_delete_source_credentials <- function(arn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$delete_source_credentials_input(arn = arn)
   output <- .codebuild$delete_source_credentials_output()
@@ -816,8 +801,7 @@ codebuild_delete_webhook <- function(projectName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$delete_webhook_input(projectName = projectName)
   output <- .codebuild$delete_webhook_output()
@@ -864,8 +848,7 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "codeCoverages"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "codeCoverages")
   )
   input <- .codebuild$describe_code_coverages_input(reportArn = reportArn, nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy, minLineCoveragePercentage = minLineCoveragePercentage, maxLineCoveragePercentage = maxLineCoveragePercentage)
   output <- .codebuild$describe_code_coverages_output()
@@ -906,8 +889,7 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "testCases"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "testCases")
   )
   input <- .codebuild$describe_test_cases_input(reportArn = reportArn, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .codebuild$describe_test_cases_output()
@@ -986,8 +968,7 @@ codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$get_report_group_trend_input(reportGroupArn = reportGroupArn, numOfReports = numOfReports, trendField = trendField)
   output <- .codebuild$get_report_group_trend_output()
@@ -1017,8 +998,7 @@ codebuild_get_resource_policy <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$get_resource_policy_input(resourceArn = resourceArn)
   output <- .codebuild$get_resource_policy_output()
@@ -1063,8 +1043,7 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$import_source_credentials_input(username = username, token = token, serverType = serverType, authType = authType, shouldOverwrite = shouldOverwrite)
   output <- .codebuild$import_source_credentials_output()
@@ -1094,8 +1073,7 @@ codebuild_invalidate_project_cache <- function(projectName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$invalidate_project_cache_input(projectName = projectName)
   output <- .codebuild$invalidate_project_cache_output()
@@ -1118,11 +1096,11 @@ codebuild_invalidate_project_cache <- function(projectName) {
 #' @param maxResults The maximum number of results to return.
 #' @param sortOrder Specifies the sort order of the returned items. Valid values include:
 #' 
-#' - `ASCENDING`: List the batch build identifiers in ascending order by
-#'   identifier.
+#' -   `ASCENDING`: List the batch build identifiers in ascending order by
+#'     identifier.
 #' 
-#' - `DESCENDING`: List the batch build identifiers in descending order by
-#'   identifier.
+#' -   `DESCENDING`: List the batch build identifiers in descending order
+#'     by identifier.
 #' @param nextToken The `nextToken` value returned from a previous call to
 #' [`list_build_batches`][codebuild_list_build_batches]. This specifies the
 #' next item to return. To return the beginning of the list, exclude this
@@ -1137,8 +1115,7 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_build_batches_input(filter = filter, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_build_batches_output()
@@ -1162,11 +1139,11 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
 #' @param maxResults The maximum number of results to return.
 #' @param sortOrder Specifies the sort order of the returned items. Valid values include:
 #' 
-#' - `ASCENDING`: List the batch build identifiers in ascending order by
-#'   identifier.
+#' -   `ASCENDING`: List the batch build identifiers in ascending order by
+#'     identifier.
 #' 
-#' - `DESCENDING`: List the batch build identifiers in descending order by
-#'   identifier.
+#' -   `DESCENDING`: List the batch build identifiers in descending order
+#'     by identifier.
 #' @param nextToken The `nextToken` value returned from a previous call to
 #' [`list_build_batches_for_project`][codebuild_list_build_batches_for_project].
 #' This specifies the next item to return. To return the beginning of the
@@ -1181,8 +1158,7 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_build_batches_for_project_input(projectName = projectName, filter = filter, maxResults = maxResults, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_build_batches_for_project_output()
@@ -1203,9 +1179,9 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
 #'
 #' @param sortOrder The order to list build IDs. Valid values include:
 #' 
-#' - `ASCENDING`: List the build IDs in ascending order by build ID.
+#' -   `ASCENDING`: List the build IDs in ascending order by build ID.
 #' 
-#' - `DESCENDING`: List the build IDs in descending order by build ID.
+#' -   `DESCENDING`: List the build IDs in descending order by build ID.
 #' @param nextToken During a previous call, if there are more than 100 items in the list,
 #' only the first 100 items are returned, along with a unique string called
 #' a *nextToken*. To get the next batch of items in the list, call this
@@ -1222,8 +1198,7 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_builds_input(sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_builds_output()
@@ -1250,11 +1225,11 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 #' 
 #' Valid values include:
 #' 
-#' - `ASCENDING`: List the build identifiers in ascending order, by build
-#'   number.
+#' -   `ASCENDING`: List the build identifiers in ascending order, by build
+#'     number.
 #' 
-#' - `DESCENDING`: List the build identifiers in descending order, by build
-#'   number.
+#' -   `DESCENDING`: List the build identifiers in descending order, by
+#'     build number.
 #' 
 #' If the project has more than 100 builds, setting the sort order will
 #' result in an error.
@@ -1274,8 +1249,7 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "ids")
   )
   input <- .codebuild$list_builds_for_project_input(projectName = projectName, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_builds_for_project_output()
@@ -1305,8 +1279,7 @@ codebuild_list_curated_environment_images <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$list_curated_environment_images_input()
   output <- .codebuild$list_curated_environment_images_output()
@@ -1336,21 +1309,21 @@ codebuild_list_curated_environment_images <- function() {
 #' Use `nextToken` to iterate pages in the list of returned compute fleets.
 #' @param sortOrder The order in which to list compute fleets. Valid values include:
 #' 
-#' - `ASCENDING`: List in ascending order.
+#' -   `ASCENDING`: List in ascending order.
 #' 
-#' - `DESCENDING`: List in descending order.
+#' -   `DESCENDING`: List in descending order.
 #' 
 #' Use `sortBy` to specify the criterion to be used to list compute fleet
 #' names.
 #' @param sortBy The criterion to be used to list compute fleet names. Valid values
 #' include:
 #' 
-#' - `CREATED_TIME`: List based on when each compute fleet was created.
+#' -   `CREATED_TIME`: List based on when each compute fleet was created.
 #' 
-#' - `LAST_MODIFIED_TIME`: List based on when information about each
-#'   compute fleet was last changed.
+#' -   `LAST_MODIFIED_TIME`: List based on when information about each
+#'     compute fleet was last changed.
 #' 
-#' - `NAME`: List based on each compute fleet's name.
+#' -   `NAME`: List based on each compute fleet's name.
 #' 
 #' Use `sortOrder` to specify in what order to list the compute fleet names
 #' based on the preceding criteria.
@@ -1364,8 +1337,7 @@ codebuild_list_fleets <- function(nextToken = NULL, maxResults = NULL, sortOrder
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
   )
   input <- .codebuild$list_fleets_input(nextToken = nextToken, maxResults = maxResults, sortOrder = sortOrder, sortBy = sortBy)
   output <- .codebuild$list_fleets_output()
@@ -1388,20 +1360,20 @@ codebuild_list_fleets <- function(nextToken = NULL, maxResults = NULL, sortOrder
 #' @param sortBy The criterion to be used to list build project names. Valid values
 #' include:
 #' 
-#' - `CREATED_TIME`: List based on when each build project was created.
+#' -   `CREATED_TIME`: List based on when each build project was created.
 #' 
-#' - `LAST_MODIFIED_TIME`: List based on when information about each build
-#'   project was last changed.
+#' -   `LAST_MODIFIED_TIME`: List based on when information about each
+#'     build project was last changed.
 #' 
-#' - `NAME`: List based on each build project's name.
+#' -   `NAME`: List based on each build project's name.
 #' 
 #' Use `sortOrder` to specify in what order to list the build project names
 #' based on the preceding criteria.
 #' @param sortOrder The order in which to list build projects. Valid values include:
 #' 
-#' - `ASCENDING`: List in ascending order.
+#' -   `ASCENDING`: List in ascending order.
 #' 
-#' - `DESCENDING`: List in descending order.
+#' -   `DESCENDING`: List in descending order.
 #' 
 #' Use `sortBy` to specify the criterion to be used to list build project
 #' names.
@@ -1421,8 +1393,7 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "projects"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "projects")
   )
   input <- .codebuild$list_projects_input(sortBy = sortBy, sortOrder = sortOrder, nextToken = nextToken)
   output <- .codebuild$list_projects_output()
@@ -1447,12 +1418,12 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 #' @param sortBy The criterion to be used to list build report groups. Valid values
 #' include:
 #' 
-#' - `CREATED_TIME`: List based on when each report group was created.
+#' -   `CREATED_TIME`: List based on when each report group was created.
 #' 
-#' - `LAST_MODIFIED_TIME`: List based on when each report group was last
-#'   changed.
+#' -   `LAST_MODIFIED_TIME`: List based on when each report group was last
+#'     changed.
 #' 
-#' - `NAME`: List based on each report group's name.
+#' -   `NAME`: List based on each report group's name.
 #' @param nextToken During a previous call, the maximum number of items that can be returned
 #' is the value specified in `maxResults`. If there more items in the list,
 #' then a unique string called a *nextToken* is returned. To get the next
@@ -1473,8 +1444,7 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups")
   )
   input <- .codebuild$list_report_groups_input(sortOrder = sortOrder, sortBy = sortBy, nextToken = nextToken, maxResults = maxResults)
   output <- .codebuild$list_report_groups_output()
@@ -1497,11 +1467,11 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
 #' @param sortOrder Specifies the sort order for the list of returned reports. Valid values
 #' are:
 #' 
-#' - `ASCENDING`: return reports in chronological order based on their
-#'   creation date.
+#' -   `ASCENDING`: return reports in chronological order based on their
+#'     creation date.
 #' 
-#' - `DESCENDING`: return reports in the reverse chronological order based
-#'   on their creation date.
+#' -   `DESCENDING`: return reports in the reverse chronological order
+#'     based on their creation date.
 #' @param nextToken During a previous call, the maximum number of items that can be returned
 #' is the value specified in `maxResults`. If there more items in the list,
 #' then a unique string called a *nextToken* is returned. To get the next
@@ -1523,8 +1493,7 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports")
   )
   input <- .codebuild$list_reports_input(sortOrder = sortOrder, nextToken = nextToken, maxResults = maxResults, filter = filter)
   output <- .codebuild$list_reports_output()
@@ -1567,8 +1536,7 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reports")
   )
   input <- .codebuild$list_reports_for_report_group_input(reportGroupArn = reportGroupArn, nextToken = nextToken, sortOrder = sortOrder, maxResults = maxResults, filter = filter)
   output <- .codebuild$list_reports_for_report_group_output()
@@ -1591,15 +1559,15 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 #' @param sortBy The criterion to be used to list build projects shared with the current
 #' Amazon Web Services account or user. Valid values include:
 #' 
-#' - `ARN`: List based on the ARN.
+#' -   `ARN`: List based on the ARN.
 #' 
-#' - `MODIFIED_TIME`: List based on when information about the shared
-#'   project was last changed.
+#' -   `MODIFIED_TIME`: List based on when information about the shared
+#'     project was last changed.
 #' @param sortOrder The order in which to list shared build projects. Valid values include:
 #' 
-#' - `ASCENDING`: List in ascending order.
+#' -   `ASCENDING`: List in ascending order.
 #' 
-#' - `DESCENDING`: List in descending order.
+#' -   `DESCENDING`: List in descending order.
 #' @param maxResults The maximum number of paginated shared build projects returned per
 #' response. Use `nextToken` to iterate pages in the list of returned
 #' `Project` objects. The default value is 100.
@@ -1620,8 +1588,7 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "projects"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "projects")
   )
   input <- .codebuild$list_shared_projects_input(sortBy = sortBy, sortOrder = sortOrder, maxResults = maxResults, nextToken = nextToken)
   output <- .codebuild$list_shared_projects_output()
@@ -1643,16 +1610,16 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 #'
 #' @param sortOrder The order in which to list shared report groups. Valid values include:
 #' 
-#' - `ASCENDING`: List in ascending order.
+#' -   `ASCENDING`: List in ascending order.
 #' 
-#' - `DESCENDING`: List in descending order.
+#' -   `DESCENDING`: List in descending order.
 #' @param sortBy The criterion to be used to list report groups shared with the current
 #' Amazon Web Services account or user. Valid values include:
 #' 
-#' - `ARN`: List based on the ARN.
+#' -   `ARN`: List based on the ARN.
 #' 
-#' - `MODIFIED_TIME`: List based on when information about the shared
-#'   report group was last changed.
+#' -   `MODIFIED_TIME`: List based on when information about the shared
+#'     report group was last changed.
 #' @param nextToken During a previous call, the maximum number of items that can be returned
 #' is the value specified in `maxResults`. If there more items in the list,
 #' then a unique string called a *nextToken* is returned. To get the next
@@ -1673,8 +1640,7 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "reportGroups")
   )
   input <- .codebuild$list_shared_report_groups_input(sortOrder = sortOrder, sortBy = sortBy, nextToken = nextToken, maxResults = maxResults)
   output <- .codebuild$list_shared_report_groups_output()
@@ -1704,8 +1670,7 @@ codebuild_list_source_credentials <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$list_source_credentials_input()
   output <- .codebuild$list_source_credentials_output()
@@ -1741,8 +1706,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$put_resource_policy_input(policy = policy, resourceArn = resourceArn)
   output <- .codebuild$put_resource_policy_output()
@@ -1778,8 +1742,7 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$retry_build_input(id = id, idempotencyToken = idempotencyToken)
   output <- .codebuild$retry_build_output()
@@ -1818,8 +1781,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$retry_build_batch_input(id = id, idempotencyToken = idempotencyToken, retryType = retryType)
   output <- .codebuild$retry_build_batch_output()
@@ -2006,8 +1968,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$start_build_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildStatusOverride = reportBuildStatusOverride, buildStatusConfigOverride = buildStatusConfigOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, timeoutInMinutesOverride = timeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, debugSessionEnabled = debugSessionEnabled, fleetOverride = fleetOverride)
   output <- .codebuild$start_build_output()
@@ -2176,8 +2137,7 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$start_build_batch_input(projectName = projectName, secondarySourcesOverride = secondarySourcesOverride, secondarySourcesVersionOverride = secondarySourcesVersionOverride, sourceVersion = sourceVersion, artifactsOverride = artifactsOverride, secondaryArtifactsOverride = secondaryArtifactsOverride, environmentVariablesOverride = environmentVariablesOverride, sourceTypeOverride = sourceTypeOverride, sourceLocationOverride = sourceLocationOverride, sourceAuthOverride = sourceAuthOverride, gitCloneDepthOverride = gitCloneDepthOverride, gitSubmodulesConfigOverride = gitSubmodulesConfigOverride, buildspecOverride = buildspecOverride, insecureSslOverride = insecureSslOverride, reportBuildBatchStatusOverride = reportBuildBatchStatusOverride, environmentTypeOverride = environmentTypeOverride, imageOverride = imageOverride, computeTypeOverride = computeTypeOverride, certificateOverride = certificateOverride, cacheOverride = cacheOverride, serviceRoleOverride = serviceRoleOverride, privilegedModeOverride = privilegedModeOverride, buildTimeoutInMinutesOverride = buildTimeoutInMinutesOverride, queuedTimeoutInMinutesOverride = queuedTimeoutInMinutesOverride, encryptionKeyOverride = encryptionKeyOverride, idempotencyToken = idempotencyToken, logsConfigOverride = logsConfigOverride, registryCredentialOverride = registryCredentialOverride, imagePullCredentialsTypeOverride = imagePullCredentialsTypeOverride, buildBatchConfigOverride = buildBatchConfigOverride, debugSessionEnabled = debugSessionEnabled)
   output <- .codebuild$start_build_batch_output()
@@ -2207,8 +2167,7 @@ codebuild_stop_build <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$stop_build_input(id = id)
   output <- .codebuild$stop_build_output()
@@ -2238,8 +2197,7 @@ codebuild_stop_build_batch <- function(id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$stop_build_batch_input(id = id)
   output <- .codebuild$stop_build_batch_output()
@@ -2263,40 +2221,41 @@ codebuild_stop_build_batch <- function(id) {
 #' defines the number of builds that can run in parallel.
 #' @param environmentType The environment type of the compute fleet.
 #' 
-#' - The environment type `ARM_CONTAINER` is available only in regions US
-#'   East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
-#'   Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific (Singapore),
-#'   Asia Pacific (Sydney), EU (Frankfurt), and South America (São Paulo).
+#' -   The environment type `ARM_CONTAINER` is available only in regions US
+#'     East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland),
+#'     Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), EU (Frankfurt), and South
+#'     America (São Paulo).
 #' 
-#' - The environment type `LINUX_CONTAINER` is available only in regions US
-#'   East (N. Virginia), US East (Ohio), US West (Oregon), EU (Ireland), EU
-#'   (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Singapore), Asia
-#'   Pacific (Sydney), South America (São Paulo), and Asia Pacific
-#'   (Mumbai).
+#' -   The environment type `LINUX_CONTAINER` is available only in regions
+#'     US East (N. Virginia), US East (Ohio), US West (Oregon), EU
+#'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), Asia Pacific
+#'     (Singapore), Asia Pacific (Sydney), South America (São Paulo), and
+#'     Asia Pacific (Mumbai).
 #' 
-#' - The environment type `LINUX_GPU_CONTAINER` is available only in
-#'   regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
-#'   (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
-#'   (Sydney).
+#' -   The environment type `LINUX_GPU_CONTAINER` is available only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
+#'     (Ireland), EU (Frankfurt), Asia Pacific (Tokyo), and Asia Pacific
+#'     (Sydney).
 #' 
-#' - The environment type `MAC_ARM` is available for Medium fleets only in
-#'   regions US East (N. Virginia), US East (Ohio), US West (Oregon), Asia
-#'   Pacific (Sydney), and EU (Frankfurt)
+#' -   The environment type `MAC_ARM` is available for Medium fleets only
+#'     in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
+#'     Asia Pacific (Sydney), and EU (Frankfurt)
 #' 
-#' - The environment type `MAC_ARM` is available for Large fleets only in
-#'   regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
-#'   Asia Pacific (Sydney).
+#' -   The environment type `MAC_ARM` is available for Large fleets only in
+#'     regions US East (N. Virginia), US East (Ohio), US West (Oregon), and
+#'     Asia Pacific (Sydney).
 #' 
-#' - The environment type `WINDOWS_SERVER_2019_CONTAINER` is available only
-#'   in regions US East (N. Virginia), US East (Ohio), US West (Oregon),
-#'   Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific (Mumbai) and
-#'   EU (Ireland).
+#' -   The environment type `WINDOWS_SERVER_2019_CONTAINER` is available
+#'     only in regions US East (N. Virginia), US East (Ohio), US West
+#'     (Oregon), Asia Pacific (Sydney), Asia Pacific (Tokyo), Asia Pacific
+#'     (Mumbai) and EU (Ireland).
 #' 
-#' - The environment type `WINDOWS_SERVER_2022_CONTAINER` is available only
-#'   in regions US East (N. Virginia), US East (Ohio), US West (Oregon), EU
-#'   (Ireland), EU (Frankfurt), Asia Pacific (Sydney), Asia Pacific
-#'   (Singapore), Asia Pacific (Tokyo), South America (São Paulo) and Asia
-#'   Pacific (Mumbai).
+#' -   The environment type `WINDOWS_SERVER_2022_CONTAINER` is available
+#'     only in regions US East (N. Virginia), US East (Ohio), US West
+#'     (Oregon), EU (Ireland), EU (Frankfurt), Asia Pacific (Sydney), Asia
+#'     Pacific (Singapore), Asia Pacific (Tokyo), South America (São Paulo)
+#'     and Asia Pacific (Mumbai).
 #' 
 #' For more information, see [Build environment compute
 #' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
@@ -2304,41 +2263,43 @@ codebuild_stop_build_batch <- function(id) {
 #' @param computeType Information about the compute resources the compute fleet uses.
 #' Available values include:
 #' 
-#' - `BUILD_GENERAL1_SMALL`: Use up to 3 GB memory and 2 vCPUs for builds.
+#' -   `BUILD_GENERAL1_SMALL`: Use up to 3 GB memory and 2 vCPUs for
+#'     builds.
 #' 
-#' - `BUILD_GENERAL1_MEDIUM`: Use up to 7 GB memory and 4 vCPUs for builds.
+#' -   `BUILD_GENERAL1_MEDIUM`: Use up to 7 GB memory and 4 vCPUs for
+#'     builds.
 #' 
-#' - `BUILD_GENERAL1_LARGE`: Use up to 16 GB memory and 8 vCPUs for builds,
-#'   depending on your environment type.
+#' -   `BUILD_GENERAL1_LARGE`: Use up to 16 GB memory and 8 vCPUs for
+#'     builds, depending on your environment type.
 #' 
-#' - `BUILD_GENERAL1_XLARGE`: Use up to 70 GB memory and 36 vCPUs for
-#'   builds, depending on your environment type.
+#' -   `BUILD_GENERAL1_XLARGE`: Use up to 70 GB memory and 36 vCPUs for
+#'     builds, depending on your environment type.
 #' 
-#' - `BUILD_GENERAL1_2XLARGE`: Use up to 145 GB memory, 72 vCPUs, and 824
-#'   GB of SSD storage for builds. This compute type supports Docker images
-#'   up to 100 GB uncompressed.
+#' -   `BUILD_GENERAL1_2XLARGE`: Use up to 145 GB memory, 72 vCPUs, and 824
+#'     GB of SSD storage for builds. This compute type supports Docker
+#'     images up to 100 GB uncompressed.
 #' 
 #' If you use `BUILD_GENERAL1_SMALL`:
 #' 
-#' - For environment type `LINUX_CONTAINER`, you can use up to 3 GB memory
-#'   and 2 vCPUs for builds.
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 3 GB
+#'     memory and 2 vCPUs for builds.
 #' 
-#' - For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GB
-#'   memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 16 GB
+#'     memory, 4 vCPUs, and 1 NVIDIA A10G Tensor Core GPU for builds.
 #' 
-#' - For environment type `ARM_CONTAINER`, you can use up to 4 GB memory
-#'   and 2 vCPUs on ARM-based processors for builds.
+#' -   For environment type `ARM_CONTAINER`, you can use up to 4 GB memory
+#'     and 2 vCPUs on ARM-based processors for builds.
 #' 
 #' If you use `BUILD_GENERAL1_LARGE`:
 #' 
-#' - For environment type `LINUX_CONTAINER`, you can use up to 15 GB memory
-#'   and 8 vCPUs for builds.
+#' -   For environment type `LINUX_CONTAINER`, you can use up to 15 GB
+#'     memory and 8 vCPUs for builds.
 #' 
-#' - For environment type `LINUX_GPU_CONTAINER`, you can use up to 255 GB
-#'   memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
+#' -   For environment type `LINUX_GPU_CONTAINER`, you can use up to 255 GB
+#'     memory, 32 vCPUs, and 4 NVIDIA Tesla V100 GPUs for builds.
 #' 
-#' - For environment type `ARM_CONTAINER`, you can use up to 16 GB memory
-#'   and 8 vCPUs on ARM-based processors for builds.
+#' -   For environment type `ARM_CONTAINER`, you can use up to 16 GB memory
+#'     and 8 vCPUs on ARM-based processors for builds.
 #' 
 #' For more information, see [Build environment compute
 #' types](https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
@@ -2346,18 +2307,18 @@ codebuild_stop_build_batch <- function(id) {
 #' @param scalingConfiguration The scaling configuration of the compute fleet.
 #' @param overflowBehavior The compute fleet overflow behavior.
 #' 
-#' - For overflow behavior `QUEUE`, your overflow builds need to wait on
-#'   the existing fleet instance to become available.
+#' -   For overflow behavior `QUEUE`, your overflow builds need to wait on
+#'     the existing fleet instance to become available.
 #' 
-#' - For overflow behavior `ON_DEMAND`, your overflow builds run on
-#'   CodeBuild on-demand.
+#' -   For overflow behavior `ON_DEMAND`, your overflow builds run on
+#'     CodeBuild on-demand.
 #' 
-#'   If you choose to set your overflow behavior to on-demand while
-#'   creating a VPC-connected fleet, make sure that you add the required
-#'   VPC permissions to your project service role. For more information,
-#'   see [Example policy statement to allow CodeBuild access to Amazon Web
-#'   Services services required to create a VPC network
-#'   interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
+#'     If you choose to set your overflow behavior to on-demand while
+#'     creating a VPC-connected fleet, make sure that you add the required
+#'     VPC permissions to your project service role. For more information,
+#'     see [Example policy statement to allow CodeBuild access to Amazon
+#'     Web Services services required to create a VPC network
+#'     interface](https://docs.aws.amazon.com/codebuild/latest/userguide/auth-and-access-control-iam-identity-based-access-control.html#customer-managed-policies-example-create-vpc-network-interface).
 #' @param vpcConfig 
 #' @param imageId The Amazon Machine Image (AMI) of the compute fleet.
 #' @param fleetServiceRole The service role associated with the compute fleet. For more
@@ -2379,8 +2340,7 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$update_fleet_input(arn = arn, baseCapacity = baseCapacity, environmentType = environmentType, computeType = computeType, scalingConfiguration = scalingConfiguration, overflowBehavior = overflowBehavior, vpcConfig = vpcConfig, imageId = imageId, fleetServiceRole = fleetServiceRole, tags = tags)
   output <- .codebuild$update_fleet_output()
@@ -2409,24 +2369,24 @@ codebuild_update_fleet <- function(arn, baseCapacity = NULL, environmentType = N
 #' @param sourceVersion A version of the build input to be built for this project. If not
 #' specified, the latest version is used. If specified, it must be one of:
 #' 
-#' - For CodeCommit: the commit ID, branch, or Git tag to use.
+#' -   For CodeCommit: the commit ID, branch, or Git tag to use.
 #' 
-#' - For GitHub: the commit ID, pull request ID, branch name, or tag name
-#'   that corresponds to the version of the source code you want to build.
-#'   If a pull request ID is specified, it must use the format
-#'   `pr/pull-request-ID` (for example `pr/25`). If a branch name is
-#'   specified, the branch's HEAD commit ID is used. If not specified, the
-#'   default branch's HEAD commit ID is used.
+#' -   For GitHub: the commit ID, pull request ID, branch name, or tag name
+#'     that corresponds to the version of the source code you want to
+#'     build. If a pull request ID is specified, it must use the format
+#'     `pr/pull-request-ID` (for example `pr/25`). If a branch name is
+#'     specified, the branch's HEAD commit ID is used. If not specified,
+#'     the default branch's HEAD commit ID is used.
 #' 
-#' - For GitLab: the commit ID, branch, or Git tag to use.
+#' -   For GitLab: the commit ID, branch, or Git tag to use.
 #' 
-#' - For Bitbucket: the commit ID, branch name, or tag name that
-#'   corresponds to the version of the source code you want to build. If a
-#'   branch name is specified, the branch's HEAD commit ID is used. If not
-#'   specified, the default branch's HEAD commit ID is used.
+#' -   For Bitbucket: the commit ID, branch name, or tag name that
+#'     corresponds to the version of the source code you want to build. If
+#'     a branch name is specified, the branch's HEAD commit ID is used. If
+#'     not specified, the default branch's HEAD commit ID is used.
 #' 
-#' - For Amazon S3: the version ID of the object that represents the build
-#'   input ZIP file to use.
+#' -   For Amazon S3: the version ID of the object that represents the
+#'     build input ZIP file to use.
 #' 
 #' If `sourceVersion` is specified at the build level, then that version
 #' takes precedence over this `sourceVersion` (at the project level).
@@ -2493,8 +2453,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$update_project_input(name = name, description = description, source = source, secondarySources = secondarySources, sourceVersion = sourceVersion, secondarySourceVersions = secondarySourceVersions, artifacts = artifacts, secondaryArtifacts = secondaryArtifacts, cache = cache, environment = environment, serviceRole = serviceRole, timeoutInMinutes = timeoutInMinutes, queuedTimeoutInMinutes = queuedTimeoutInMinutes, encryptionKey = encryptionKey, tags = tags, vpcConfig = vpcConfig, badgeEnabled = badgeEnabled, logsConfig = logsConfig, fileSystemLocations = fileSystemLocations, buildBatchConfig = buildBatchConfig, concurrentBuildLimit = concurrentBuildLimit)
   output <- .codebuild$update_project_output()
@@ -2527,8 +2486,7 @@ codebuild_update_project_visibility <- function(projectArn, projectVisibility, r
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$update_project_visibility_input(projectArn = projectArn, projectVisibility = projectVisibility, resourceAccessRole = resourceAccessRole)
   output <- .codebuild$update_project_visibility_output()
@@ -2550,9 +2508,9 @@ codebuild_update_project_visibility <- function(projectArn, projectVisibility, r
 #' @param arn &#91;required&#93; The ARN of the report group to update.
 #' @param exportConfig Used to specify an updated export type. Valid values are:
 #' 
-#' - `S3`: The report results are exported to an S3 bucket.
+#' -   `S3`: The report results are exported to an S3 bucket.
 #' 
-#' - `NO_EXPORT`: The report results are not exported.
+#' -   `NO_EXPORT`: The report results are not exported.
 #' @param tags An updated list of tag key and value pairs associated with this report
 #' group.
 #' 
@@ -2568,8 +2526,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$update_report_group_input(arn = arn, exportConfig = exportConfig, tags = tags)
   output <- .codebuild$update_report_group_output()
@@ -2612,8 +2569,7 @@ codebuild_update_webhook <- function(projectName, branchFilter = NULL, rotateSec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codebuild$update_webhook_input(projectName = projectName, branchFilter = branchFilter, rotateSecret = rotateSecret, filterGroups = filterGroups, buildType = buildType)
   output <- .codebuild$update_webhook_output()

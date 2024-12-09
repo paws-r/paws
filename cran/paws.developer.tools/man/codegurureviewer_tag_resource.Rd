@@ -17,9 +17,10 @@ is a custom attribute label with two parts:
 \itemize{
 \item A \emph{tag key} (for example, \code{CostCenter}, \code{Environment}, \code{Project}, or
 \code{Secret}). Tag keys are case sensitive.
-\item An optional field known as a \emph{tag value} (for example, \code{111122223333},
-\code{Production}, or a team name). Omitting the tag value is the same as
-using an empty string. Like tag keys, tag values are case sensitive.
+\item An optional field known as a \emph{tag value} (for example,
+\code{111122223333}, \code{Production}, or a team name). Omitting the tag
+value is the same as using an empty string. Like tag keys, tag
+values are case sensitive.
 }}
 }
 \description{

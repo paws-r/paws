@@ -35,7 +35,7 @@ state continue to progress normally. Managed compute environments in the
 Compute environments in a \code{DISABLED} state may continue to incur billing
 charges. To prevent additional charges, turn off and then delete the
 compute environment. For more information, see
-\href{https://docs.aws.amazon.com/batch/latest/APIReference/API_JobQueueDetail.html#compute_environment_state}{State}
+\href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environment_parameters.html#compute_environment_state}{State}
 in the \emph{Batch User Guide}.
 
 When an instance is idle, the instance scales down to the \code{minvCpus}

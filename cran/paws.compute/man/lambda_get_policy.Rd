@@ -11,8 +11,8 @@ lambda_get_policy(FunctionName, Qualifier = NULL)
 
 \strong{Name formats}
 \itemize{
-\item \strong{Function name} – \verb{my-function} (name-only), \verb{my-function:v1} (with
-alias).
+\item \strong{Function name} – \verb{my-function} (name-only), \verb{my-function:v1}
+(with alias).
 \item \strong{Function ARN} –
 \verb{arn:aws:lambda:us-west-2:123456789012:function:my-function}.
 \item \strong{Partial ARN} – \verb{123456789012:function:my-function}.

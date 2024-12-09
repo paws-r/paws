@@ -30,10 +30,10 @@ the function name, it is limited to 64 characters in length.}
 
 \item{InvocationType}{Use one of the following options:
 \itemize{
-\item \code{RequestResponse} (default) – Invoke the function synchronously. Keep
-the connection open until the function returns a response or times
-out. The API operation response includes the function response and
-additional data.
+\item \code{RequestResponse} (default) – Invoke the function synchronously.
+Keep the connection open until the function returns a response or
+times out. The API operation response includes the function response
+and additional data.
 \item \code{DryRun} – Validate parameter values and verify that the IAM user or
 role has permission to invoke the function.
 }}

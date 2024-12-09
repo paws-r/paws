@@ -18,39 +18,40 @@ locationservice_get_map_glyphs(
 preference. For example, \verb{Noto Sans Regular, Arial Unicode}.
 
 Valid font stacks for
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{Esri}
+\href{https://docs.aws.amazon.com/location/latest/developerguide/esri.html}{Esri}
 styles:
 \itemize{
-\item VectorEsriDarkGrayCanvas – \verb{Ubuntu Medium Italic} | \verb{Ubuntu Medium} |
-\verb{Ubuntu Italic} | \verb{Ubuntu Regular} | \verb{Ubuntu Bold}
+\item VectorEsriDarkGrayCanvas – \verb{Ubuntu Medium Italic} | \verb{Ubuntu Medium}
+| \verb{Ubuntu Italic} | \verb{Ubuntu Regular} | \verb{Ubuntu Bold}
 \item VectorEsriLightGrayCanvas – \verb{Ubuntu Italic} | \verb{Ubuntu Regular} |
 \verb{Ubuntu Light} | \verb{Ubuntu Bold}
 \item VectorEsriTopographic – \verb{Noto Sans Italic} | \verb{Noto Sans Regular} |
 \verb{Noto Sans Bold} | \verb{Noto Serif Regular} |
 \verb{Roboto Condensed Light Italic}
 \item VectorEsriStreets – \verb{Arial Regular} | \verb{Arial Italic} | \verb{Arial Bold}
-\item VectorEsriNavigation – \verb{Arial Regular} | \verb{Arial Italic} | \verb{Arial Bold}
+\item VectorEsriNavigation – \verb{Arial Regular} | \verb{Arial Italic} |
+\verb{Arial Bold}
 }
 
-Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/}{HERE Technologies}
+Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/HERE.html}{HERE Technologies}
 styles:
 \itemize{
 \item VectorHereContrast – \verb{Fira GO Regular} | \verb{Fira GO Bold}
-\item VectorHereExplore, VectorHereExploreTruck, HybridHereExploreSatellite
-– \verb{Fira GO Italic} | \verb{Fira GO Map} | \verb{Fira GO Map Bold} |
-\verb{Noto Sans CJK JP Bold} | \verb{Noto Sans CJK JP Light} |
-\verb{Noto Sans CJK JP Regular}
+\item VectorHereExplore, VectorHereExploreTruck,
+HybridHereExploreSatellite – \verb{Fira GO Italic} | \verb{Fira GO Map} |
+\verb{Fira GO Map Bold} | \verb{Noto Sans CJK JP Bold} |
+\verb{Noto Sans CJK JP Light} | \verb{Noto Sans CJK JP Regular}
 }
 
 Valid font stacks for
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}
+\href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}
 styles:
 \itemize{
-\item VectorGrabStandardLight, VectorGrabStandardDark – \verb{Noto Sans Regular}
-| \verb{Noto Sans Medium} | \verb{Noto Sans Bold}
+\item VectorGrabStandardLight, VectorGrabStandardDark –
+\verb{Noto Sans Regular} | \verb{Noto Sans Medium} | \verb{Noto Sans Bold}
 }
 
-Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/}{Open Data}
+Valid font stacks for \href{https://docs.aws.amazon.com/location/latest/developerguide/open-data.html}{Open Data}
 styles:
 \itemize{
 \item VectorOpenDataStandardLight, VectorOpenDataStandardDark,

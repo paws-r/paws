@@ -55,7 +55,7 @@ NULL
 #' credentials and use those to sign requests.
 #' 
 #' All KMS requests must be signed with [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' **Logging API Requests**
 #' 
@@ -73,20 +73,20 @@ NULL
 #' For more information about credentials and request signing, see the
 #' following:
 #' 
-#' - [Amazon Web Services Security
-#'   Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) -
-#'   This topic provides general information about the types of credentials
-#'   used to access Amazon Web Services.
+#' -   [Amazon Web Services Security
+#'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) -
+#'     This topic provides general information about the types of
+#'     credentials used to access Amazon Web Services.
 #' 
-#' - [Temporary Security
-#'   Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) -
-#'   This section of the *IAM User Guide* describes how to create and use
-#'   temporary security credentials.
+#' -   [Temporary Security
+#'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) -
+#'     This section of the *IAM User Guide* describes how to create and use
+#'     temporary security credentials.
 #' 
-#' - [Signature Version 4 Signing
-#'   Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html) -
-#'   This set of topics walks you through the process of signing a request
-#'   using an access key ID and a secret access key.
+#' -   [Signature Version 4 Signing
+#'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) -
+#'     This set of topics walks you through the process of signing a
+#'     request using an access key ID and a secret access key.
 #' 
 #' **Commonly Used API Operations**
 #' 
@@ -95,13 +95,13 @@ NULL
 #' operations other than these, such as creating keys and assigning
 #' policies, by using the console.
 #' 
-#' - [`encrypt`][kms_encrypt]
+#' -   [`encrypt`][kms_encrypt]
 #' 
-#' - [`decrypt`][kms_decrypt]
+#' -   [`decrypt`][kms_decrypt]
 #' 
-#' - [`generate_data_key`][kms_generate_data_key]
+#' -   [`generate_data_key`][kms_generate_data_key]
 #' 
-#' - [`generate_data_key_without_plaintext`][kms_generate_data_key_without_plaintext]
+#' -   [`generate_data_key_without_plaintext`][kms_generate_data_key_without_plaintext]
 #'
 #' @param
 #' config

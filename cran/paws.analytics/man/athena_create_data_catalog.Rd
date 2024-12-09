@@ -29,32 +29,34 @@ Catalog.}
 catalog. This is a mapping whose values depend on the catalog type.
 \itemize{
 \item For the \code{HIVE} data catalog type, use the following syntax. The
-\verb{metadata-function} parameter is required. \verb{The sdk-version} parameter
-is optional and defaults to the currently supported version.
+\verb{metadata-function} parameter is required. \verb{The sdk-version}
+parameter is optional and defaults to the currently supported
+version.
 
 \verb{metadata-function=lambda_arn, sdk-version=version_number }
 \item For the \code{LAMBDA} data catalog type, use one of the following sets of
 required parameters, but not both.
 \itemize{
-\item If you have one Lambda function that processes metadata and another
-for reading the actual data, use the following syntax. Both
-parameters are required.
+\item If you have one Lambda function that processes metadata and
+another for reading the actual data, use the following syntax.
+Both parameters are required.
 
 \verb{metadata-function=lambda_arn, record-function=lambda_arn }
-\item If you have a composite Lambda function that processes both metadata
-and data, use the following syntax to specify your Lambda function.
+\item If you have a composite Lambda function that processes both
+metadata and data, use the following syntax to specify your
+Lambda function.
 
 \verb{function=lambda_arn }
 }
 \item The \code{GLUE} type takes a catalog ID parameter and is required. The
-\code{catalog_id} is the account ID of the Amazon Web Services account to
-which the Glue Data Catalog belongs.
+\code{catalog_id} is the account ID of the Amazon Web Services account
+to which the Glue Data Catalog belongs.
 
 \code{catalog-id=catalog_id }
 \itemize{
 \item The \code{GLUE} data catalog type also applies to the default
-\code{AwsDataCatalog} that already exists in your account, of which you
-can have only one and cannot modify.
+\code{AwsDataCatalog} that already exists in your account, of which
+you can have only one and cannot modify.
 }
 }}
 

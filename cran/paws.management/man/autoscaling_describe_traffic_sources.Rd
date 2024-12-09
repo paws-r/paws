@@ -20,8 +20,8 @@ autoscaling_describe_traffic_sources(
 The following lists the valid values:
 \itemize{
 \item \code{elb} if the traffic source is a Classic Load Balancer.
-\item \code{elbv2} if the traffic source is a Application Load Balancer, Gateway
-Load Balancer, or Network Load Balancer.
+\item \code{elbv2} if the traffic source is a Application Load Balancer,
+Gateway Load Balancer, or Network Load Balancer.
 \item \code{vpc-lattice} if the traffic source is VPC Lattice.
 }}
 

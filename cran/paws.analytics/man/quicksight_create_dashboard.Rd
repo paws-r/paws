@@ -66,17 +66,17 @@ assigned to the dashboard.}
 \item{DashboardPublishOptions}{Options for publishing the dashboard when you create it:
 \itemize{
 \item \code{AvailabilityStatus} for \code{AdHocFilteringOption} - This status can be
-either \code{ENABLED} or \code{DISABLED}. When this is set to \code{DISABLED}, Amazon
-QuickSight disables the left filter pane on the published dashboard,
-which can be used for ad hoc (one-time) filtering. This option is
-\code{ENABLED} by default.
+either \code{ENABLED} or \code{DISABLED}. When this is set to \code{DISABLED},
+Amazon QuickSight disables the left filter pane on the published
+dashboard, which can be used for ad hoc (one-time) filtering. This
+option is \code{ENABLED} by default.
 \item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. The visual option to export data to
-.CSV format isn't enabled when this is set to \code{DISABLED}. This option
-is \code{ENABLED} by default.
+.CSV format isn't enabled when this is set to \code{DISABLED}. This
+option is \code{ENABLED} by default.
 \item \code{VisibilityState} for \code{SheetControlsOption} - This visibility state
-can be either \code{COLLAPSED} or \code{EXPANDED}. This option is \code{COLLAPSED} by
-default.
+can be either \code{COLLAPSED} or \code{EXPANDED}. This option is \code{COLLAPSED}
+by default.
 }}
 
 \item{ThemeArn}{The Amazon Resource Name (ARN) of the theme that is being used for this

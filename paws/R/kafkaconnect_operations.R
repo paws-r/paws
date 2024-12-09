@@ -144,8 +144,7 @@ kafkaconnect_create_connector <- function(capacity, connectorConfiguration, conn
     http_method = "POST",
     http_path = "/v1/connectors",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$create_connector_input(capacity = capacity, connectorConfiguration = connectorConfiguration, connectorDescription = connectorDescription, connectorName = connectorName, kafkaCluster = kafkaCluster, kafkaClusterClientAuthentication = kafkaClusterClientAuthentication, kafkaClusterEncryptionInTransit = kafkaClusterEncryptionInTransit, kafkaConnectVersion = kafkaConnectVersion, logDelivery = logDelivery, plugins = plugins, serviceExecutionRoleArn = serviceExecutionRoleArn, tags = tags, workerConfiguration = workerConfiguration)
   output <- .kafkaconnect$create_connector_output()
@@ -213,8 +212,7 @@ kafkaconnect_create_custom_plugin <- function(contentType, description = NULL, l
     http_method = "POST",
     http_path = "/v1/custom-plugins",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$create_custom_plugin_input(contentType = contentType, description = description, location = location, name = name, tags = tags)
   output <- .kafkaconnect$create_custom_plugin_output()
@@ -283,8 +281,7 @@ kafkaconnect_create_worker_configuration <- function(description = NULL, name, p
     http_method = "POST",
     http_path = "/v1/worker-configurations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$create_worker_configuration_input(description = description, name = name, propertiesFileContent = propertiesFileContent, tags = tags)
   output <- .kafkaconnect$create_worker_configuration_output()
@@ -335,8 +332,7 @@ kafkaconnect_delete_connector <- function(connectorArn, currentVersion = NULL) {
     http_method = "DELETE",
     http_path = "/v1/connectors/{connectorArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$delete_connector_input(connectorArn = connectorArn, currentVersion = currentVersion)
   output <- .kafkaconnect$delete_connector_output()
@@ -386,8 +382,7 @@ kafkaconnect_delete_custom_plugin <- function(customPluginArn) {
     http_method = "DELETE",
     http_path = "/v1/custom-plugins/{customPluginArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$delete_custom_plugin_input(customPluginArn = customPluginArn)
   output <- .kafkaconnect$delete_custom_plugin_output()
@@ -437,8 +432,7 @@ kafkaconnect_delete_worker_configuration <- function(workerConfigurationArn) {
     http_method = "DELETE",
     http_path = "/v1/worker-configurations/{workerConfigurationArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$delete_worker_configuration_input(workerConfigurationArn = workerConfigurationArn)
   output <- .kafkaconnect$delete_worker_configuration_output()
@@ -568,8 +562,7 @@ kafkaconnect_describe_connector <- function(connectorArn) {
     http_method = "GET",
     http_path = "/v1/connectors/{connectorArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$describe_connector_input(connectorArn = connectorArn)
   output <- .kafkaconnect$describe_connector_output()
@@ -646,8 +639,7 @@ kafkaconnect_describe_custom_plugin <- function(customPluginArn) {
     http_method = "GET",
     http_path = "/v1/custom-plugins/{customPluginArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$describe_custom_plugin_input(customPluginArn = customPluginArn)
   output <- .kafkaconnect$describe_custom_plugin_output()
@@ -710,8 +702,7 @@ kafkaconnect_describe_worker_configuration <- function(workerConfigurationArn) {
     http_method = "GET",
     http_path = "/v1/worker-configurations/{workerConfigurationArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$describe_worker_configuration_input(workerConfigurationArn = workerConfigurationArn)
   output <- .kafkaconnect$describe_worker_configuration_output()
@@ -847,8 +838,7 @@ kafkaconnect_list_connectors <- function(connectorNamePrefix = NULL, maxResults 
     http_method = "GET",
     http_path = "/v1/connectors",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "connectors"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "connectors")
   )
   input <- .kafkaconnect$list_connectors_input(connectorNamePrefix = connectorNamePrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .kafkaconnect$list_connectors_output()
@@ -932,8 +922,7 @@ kafkaconnect_list_custom_plugins <- function(maxResults = NULL, namePrefix = NUL
     http_method = "GET",
     http_path = "/v1/custom-plugins",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "customPlugins"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "customPlugins")
   )
   input <- .kafkaconnect$list_custom_plugins_input(maxResults = maxResults, namePrefix = namePrefix, nextToken = nextToken)
   output <- .kafkaconnect$list_custom_plugins_output()
@@ -984,8 +973,7 @@ kafkaconnect_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .kafkaconnect$list_tags_for_resource_output()
@@ -1061,8 +1049,7 @@ kafkaconnect_list_worker_configurations <- function(maxResults = NULL, namePrefi
     http_method = "GET",
     http_path = "/v1/worker-configurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workerConfigurations"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workerConfigurations")
   )
   input <- .kafkaconnect$list_worker_configurations_input(maxResults = maxResults, namePrefix = namePrefix, nextToken = nextToken)
   output <- .kafkaconnect$list_worker_configurations_output()
@@ -1110,8 +1097,7 @@ kafkaconnect_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .kafkaconnect$tag_resource_output()
@@ -1159,8 +1145,7 @@ kafkaconnect_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .kafkaconnect$untag_resource_output()
@@ -1229,8 +1214,7 @@ kafkaconnect_update_connector <- function(capacity, connectorArn, currentVersion
     http_method = "PUT",
     http_path = "/v1/connectors/{connectorArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .kafkaconnect$update_connector_input(capacity = capacity, connectorArn = connectorArn, currentVersion = currentVersion)
   output <- .kafkaconnect$update_connector_output()

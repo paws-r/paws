@@ -18,8 +18,8 @@ ec2_get_transit_gateway_attachment_propagations(
 
 \item{Filters}{One or more filters. The possible values are:
 \itemize{
-\item \code{transit-gateway-route-table-id} - The ID of the transit gateway route
-table.
+\item \code{transit-gateway-route-table-id} - The ID of the transit gateway
+route table.
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve

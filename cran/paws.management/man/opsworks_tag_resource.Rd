@@ -18,8 +18,8 @@ or layer.
 Unicode letters, numbers, or separators, or the following special
 characters: \verb{+ - = . _ : /}
 \item The value can be a maximum 255 characters, and contain only Unicode
-letters, numbers, or separators, or the following special characters:
-\verb{+ - = . _ : /}
+letters, numbers, or separators, or the following special
+characters: \verb{+ - = . _ : /}
 \item Leading and trailing white spaces are trimmed from both the key and
 value.
 \item A maximum of 40 tags is allowed for any resource.

@@ -76,9 +76,9 @@ This section of the Developer Guide describes the underlying data
 model, the operations it supports, and the AWS SDKs that you can use
 to interact with the service.
 \item \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html}{Getting Started with Amazon S3 Glacier} -
-The Getting Started section walks you through the process of creating
-a vault, uploading archives, creating jobs to download archives,
-retrieving the job output, and deleting archives.
+The Getting Started section walks you through the process of
+creating a vault, uploading archives, creating jobs to download
+archives, retrieving the job output, and deleting archives.
 }
 }
 \section{Service syntax}{

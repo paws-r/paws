@@ -60,8 +60,7 @@ cloudtrail_add_tags <- function(ResourceId, TagsList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$add_tags_input(ResourceId = ResourceId, TagsList = TagsList)
   output <- .cloudtrail$add_tags_output()
@@ -120,8 +119,7 @@ cloudtrail_cancel_query <- function(EventDataStore = NULL, QueryId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$cancel_query_input(EventDataStore = EventDataStore, QueryId = QueryId)
   output <- .cloudtrail$cancel_query_output()
@@ -212,8 +210,7 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$create_channel_input(Name = Name, Source = Source, Destinations = Destinations, Tags = Tags)
   output <- .cloudtrail$create_channel_output()
@@ -302,13 +299,13 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 #' 
 #' Examples:
 #' 
-#' - `alias/MyAliasName`
+#' -   `alias/MyAliasName`
 #' 
-#' - `arn:aws:kms:us-east-2:123456789012:alias/MyAliasName`
+#' -   `arn:aws:kms:us-east-2:123456789012:alias/MyAliasName`
 #' 
-#' - `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
+#' -   `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
-#' - `12345678-1234-1234-1234-123456789012`
+#' -   `12345678-1234-1234-1234-123456789012`
 #' @param StartIngestion Specifies whether the event data store should start ingesting live
 #' events. The default is true.
 #' @param BillingMode The billing mode for the event data store determines the cost for
@@ -317,15 +314,15 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 #' 
 #' The following are the possible values:
 #' 
-#' - `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally
-#'   recommended if you want a flexible retention period of up to 3653 days
-#'   (about 10 years). The default retention period for this billing mode
-#'   is 366 days.
+#' -   `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally
+#'     recommended if you want a flexible retention period of up to 3653
+#'     days (about 10 years). The default retention period for this billing
+#'     mode is 366 days.
 #' 
-#' - `FIXED_RETENTION_PRICING` - This billing mode is recommended if you
-#'   expect to ingest more than 25 TB of event data per month and need a
-#'   retention period of up to 2557 days (about 7 years). The default
-#'   retention period for this billing mode is 2557 days.
+#' -   `FIXED_RETENTION_PRICING` - This billing mode is recommended if you
+#'     expect to ingest more than 25 TB of event data per month and need a
+#'     retention period of up to 2557 days (about 7 years). The default
+#'     retention period for this billing mode is 2557 days.
 #' 
 #' The default value is `EXTENDABLE_RETENTION_PRICING`.
 #' 
@@ -449,8 +446,7 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$create_event_data_store_input(Name = Name, AdvancedEventSelectors = AdvancedEventSelectors, MultiRegionEnabled = MultiRegionEnabled, OrganizationEnabled = OrganizationEnabled, RetentionPeriod = RetentionPeriod, TerminationProtectionEnabled = TerminationProtectionEnabled, TagsList = TagsList, KmsKeyId = KmsKeyId, StartIngestion = StartIngestion, BillingMode = BillingMode)
   output <- .cloudtrail$create_event_data_store_output()
@@ -478,17 +474,17 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' @param Name &#91;required&#93; Specifies the name of the trail. The name must meet the following
 #' requirements:
 #' 
-#' - Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'   underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+#'     underscores (_), or dashes (-)
 #' 
-#' - Start with a letter or number, and end with a letter or number
+#' -   Start with a letter or number, and end with a letter or number
 #' 
-#' - Be between 3 and 128 characters
+#' -   Be between 3 and 128 characters
 #' 
-#' - Have no adjacent periods, underscores or dashes. Names like
-#'   `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like
+#'     `my-_namespace` and `my--namespace` are not valid.
 #' 
-#' - Not be in IP address format (for example, 192.168.5.4)
+#' -   Not be in IP address format (for example, 192.168.5.4)
 #' @param S3BucketName &#91;required&#93; Specifies the name of the Amazon S3 bucket designated for publishing log
 #' files. For information about bucket naming rules, see [Bucket naming
 #' rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html)
@@ -537,13 +533,13 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' 
 #' Examples:
 #' 
-#' - `alias/MyAliasName`
+#' -   `alias/MyAliasName`
 #' 
-#' - `arn:aws:kms:us-east-2:123456789012:alias/MyAliasName`
+#' -   `arn:aws:kms:us-east-2:123456789012:alias/MyAliasName`
 #' 
-#' - `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
+#' -   `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
-#' - `12345678-1234-1234-1234-123456789012`
+#' -   `12345678-1234-1234-1234-123456789012`
 #' @param IsOrganizationTrail Specifies whether the trail is created for all accounts in an
 #' organization in Organizations, or only for the current Amazon Web
 #' Services account. The default is false, and cannot be true unless the
@@ -606,8 +602,7 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$create_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail, TagsList = TagsList)
   output <- .cloudtrail$create_trail_output()
@@ -650,8 +645,7 @@ cloudtrail_delete_channel <- function(Channel) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$delete_channel_input(Channel = Channel)
   output <- .cloudtrail$delete_channel_output()
@@ -712,8 +706,7 @@ cloudtrail_delete_event_data_store <- function(EventDataStore) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$delete_event_data_store_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$delete_event_data_store_output()
@@ -759,8 +752,7 @@ cloudtrail_delete_resource_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$delete_resource_policy_input(ResourceArn = ResourceArn)
   output <- .cloudtrail$delete_resource_policy_output()
@@ -808,8 +800,7 @@ cloudtrail_delete_trail <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$delete_trail_input(Name = Name)
   output <- .cloudtrail$delete_trail_output()
@@ -856,8 +847,7 @@ cloudtrail_deregister_organization_delegated_admin <- function(DelegatedAdminAcc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$deregister_organization_delegated_admin_input(DelegatedAdminAccountId = DelegatedAdminAccountId)
   output <- .cloudtrail$deregister_organization_delegated_admin_output()
@@ -932,8 +922,7 @@ cloudtrail_describe_query <- function(EventDataStore = NULL, QueryId = NULL, Que
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$describe_query_input(EventDataStore = EventDataStore, QueryId = QueryId, QueryAlias = QueryAlias)
   output <- .cloudtrail$describe_query_output()
@@ -963,12 +952,12 @@ cloudtrail_describe_query <- function(EventDataStore = NULL, QueryId = NULL, Que
 #' If an empty list is specified, information for the trail in the current
 #' Region is returned.
 #' 
-#' - If an empty list is specified and `IncludeShadowTrails` is false, then
-#'   information for all trails in the current Region is returned.
+#' -   If an empty list is specified and `IncludeShadowTrails` is false,
+#'     then information for all trails in the current Region is returned.
 #' 
-#' - If an empty list is specified and IncludeShadowTrails is null or true,
-#'   then information for all trails in the current Region and any
-#'   associated shadow trails in other Regions is returned.
+#' -   If an empty list is specified and IncludeShadowTrails is null or
+#'     true, then information for all trails in the current Region and any
+#'     associated shadow trails in other Regions is returned.
 #' 
 #' If one or more trail names are specified, information is returned only
 #' if the names match the names of trails belonging only to the current
@@ -1029,8 +1018,7 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "trailList"),
-    stream_api = FALSE
+    paginator = list(result_key = "trailList")
   )
   input <- .cloudtrail$describe_trails_input(trailNameList = trailNameList, includeShadowTrails = includeShadowTrails)
   output <- .cloudtrail$describe_trails_output()
@@ -1086,8 +1074,7 @@ cloudtrail_disable_federation <- function(EventDataStore) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$disable_federation_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$disable_federation_output()
@@ -1164,8 +1151,7 @@ cloudtrail_enable_federation <- function(EventDataStore, FederationRoleArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$enable_federation_input(EventDataStore = EventDataStore, FederationRoleArn = FederationRoleArn)
   output <- .cloudtrail$enable_federation_output()
@@ -1263,8 +1249,7 @@ cloudtrail_get_channel <- function(Channel) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$get_channel_input(Channel = Channel)
   output <- .cloudtrail$get_channel_output()
@@ -1365,8 +1350,7 @@ cloudtrail_get_event_data_store <- function(EventDataStore) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$get_event_data_store_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$get_event_data_store_output()
@@ -1386,22 +1370,23 @@ cloudtrail_get_event_data_store <- function(EventDataStore) {
 #' your trail. The information returned for your event selectors includes
 #' the following:
 #' 
-#' - If your event selector includes read-only events, write-only events,
-#'   or all events. This applies to both management events and data events.
+#' -   If your event selector includes read-only events, write-only events,
+#'     or all events. This applies to both management events and data
+#'     events.
 #' 
-#' - If your event selector includes management events.
+#' -   If your event selector includes management events.
 #' 
-#' - If your event selector includes data events, the resources on which
-#'   you are logging data events.
+#' -   If your event selector includes data events, the resources on which
+#'     you are logging data events.
 #' 
 #' For more information about logging management and data events, see the
 #' following topics in the *CloudTrail User Guide*:
 #' 
-#' - [Logging management
-#'   events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html)
+#' -   [Logging management
+#'     events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-events-with-cloudtrail.html)
 #' 
-#' - [Logging data
-#'   events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
+#' -   [Logging data
+#'     events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
 #'
 #' @usage
 #' cloudtrail_get_event_selectors(TrailName)
@@ -1409,17 +1394,17 @@ cloudtrail_get_event_data_store <- function(EventDataStore) {
 #' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail
 #' name, the string must meet the following requirements:
 #' 
-#' - Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'   underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+#'     underscores (_), or dashes (-)
 #' 
-#' - Start with a letter or number, and end with a letter or number
+#' -   Start with a letter or number, and end with a letter or number
 #' 
-#' - Be between 3 and 128 characters
+#' -   Be between 3 and 128 characters
 #' 
-#' - Have no adjacent periods, underscores or dashes. Names like
-#'   `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like
+#'     `my-_namespace` and `my--namespace` are not valid.
 #' 
-#' - Not be in IP address format (for example, 192.168.5.4)
+#' -   Not be in IP address format (for example, 192.168.5.4)
 #' 
 #' If you specify a trail ARN, it must be in the format:
 #' 
@@ -1496,8 +1481,7 @@ cloudtrail_get_event_selectors <- function(TrailName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$get_event_selectors_input(TrailName = TrailName)
   output <- .cloudtrail$get_event_selectors_output()
@@ -1575,8 +1559,7 @@ cloudtrail_get_import <- function(ImportId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$get_import_input(ImportId = ImportId)
   output <- .cloudtrail$get_import_output()
@@ -1616,17 +1599,17 @@ cloudtrail_get_import <- function(ImportId) {
 #' @param TrailName Specifies the name of the trail or trail ARN. If you specify a trail
 #' name, the string must meet the following requirements:
 #' 
-#' - Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'   underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+#'     underscores (_), or dashes (-)
 #' 
-#' - Start with a letter or number, and end with a letter or number
+#' -   Start with a letter or number, and end with a letter or number
 #' 
-#' - Be between 3 and 128 characters
+#' -   Be between 3 and 128 characters
 #' 
-#' - Have no adjacent periods, underscores or dashes. Names like
-#'   `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like
+#'     `my-_namespace` and `my--namespace` are not valid.
 #' 
-#' - Not be in IP address format (for example, 192.168.5.4)
+#' -   Not be in IP address format (for example, 192.168.5.4)
 #' 
 #' If you specify a trail ARN, it must be in the format:
 #' 
@@ -1672,8 +1655,7 @@ cloudtrail_get_insight_selectors <- function(TrailName = NULL, EventDataStore = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$get_insight_selectors_input(TrailName = TrailName, EventDataStore = EventDataStore)
   output <- .cloudtrail$get_insight_selectors_output()
@@ -1744,8 +1726,7 @@ cloudtrail_get_query_results <- function(EventDataStore = NULL, QueryId, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .cloudtrail$get_query_results_input(EventDataStore = EventDataStore, QueryId = QueryId, NextToken = NextToken, MaxQueryResults = MaxQueryResults)
   output <- .cloudtrail$get_query_results_output()
@@ -1798,8 +1779,7 @@ cloudtrail_get_resource_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .cloudtrail$get_resource_policy_output()
@@ -1865,8 +1845,7 @@ cloudtrail_get_trail <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$get_trail_input(Name = Name)
   output <- .cloudtrail$get_trail_output()
@@ -1951,8 +1930,7 @@ cloudtrail_get_trail_status <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$get_trail_status_input(Name = Name)
   output <- .cloudtrail$get_trail_status_output()
@@ -2012,8 +1990,7 @@ cloudtrail_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudtrail$list_channels_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_channels_output()
@@ -2110,8 +2087,7 @@ cloudtrail_list_event_data_stores <- function(NextToken = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudtrail$list_event_data_stores_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudtrail$list_event_data_stores_output()
@@ -2174,8 +2150,7 @@ cloudtrail_list_import_failures <- function(ImportId, MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Failures"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Failures")
   )
   input <- .cloudtrail$list_import_failures_input(ImportId = ImportId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_import_failures_output()
@@ -2247,8 +2222,7 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Imports"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Imports")
   )
   input <- .cloudtrail$list_imports_input(MaxResults = MaxResults, Destination = Destination, ImportStatus = ImportStatus, NextToken = NextToken)
   output <- .cloudtrail$list_imports_output()
@@ -2274,14 +2248,14 @@ cloudtrail_list_imports <- function(MaxResults = NULL, Destination = NULL, Impor
 #' [`list_insights_metric_data`][cloudtrail_list_insights_metric_data].
 #' Each cutoff is inclusive.
 #' 
-#' - Data points with a period of 60 seconds (1-minute) are available for
-#'   15 days.
+#' -   Data points with a period of 60 seconds (1-minute) are available for
+#'     15 days.
 #' 
-#' - Data points with a period of 300 seconds (5-minute) are available for
-#'   63 days.
+#' -   Data points with a period of 300 seconds (5-minute) are available
+#'     for 63 days.
 #' 
-#' - Data points with a period of 3600 seconds (1 hour) are available for
-#'   90 days.
+#' -   Data points with a period of 3600 seconds (1 hour) are available for
+#'     90 days.
 #' 
 #' Access to the
 #' [`list_insights_metric_data`][cloudtrail_list_insights_metric_data] API
@@ -2383,8 +2357,7 @@ cloudtrail_list_insights_metric_data <- function(EventSource, EventName, Insight
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudtrail$list_insights_metric_data_input(EventSource = EventSource, EventName = EventName, InsightType = InsightType, ErrorCode = ErrorCode, StartTime = StartTime, EndTime = EndTime, Period = Period, DataType = DataType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$list_insights_metric_data_output()
@@ -2465,8 +2438,7 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PublicKeyList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PublicKeyList")
   )
   input <- .cloudtrail$list_public_keys_input(StartTime = StartTime, EndTime = EndTime, NextToken = NextToken)
   output <- .cloudtrail$list_public_keys_output()
@@ -2550,8 +2522,7 @@ cloudtrail_list_queries <- function(EventDataStore, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudtrail$list_queries_input(EventDataStore = EventDataStore, NextToken = NextToken, MaxResults = MaxResults, StartTime = StartTime, EndTime = EndTime, QueryStatus = QueryStatus)
   output <- .cloudtrail$list_queries_output()
@@ -2626,8 +2597,7 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ResourceTagList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "ResourceTagList")
   )
   input <- .cloudtrail$list_tags_input(ResourceIdList = ResourceIdList, NextToken = NextToken)
   output <- .cloudtrail$list_tags_output()
@@ -2686,8 +2656,7 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Trails"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Trails")
   )
   input <- .cloudtrail$list_trails_input(NextToken = NextToken)
   output <- .cloudtrail$list_trails_output()
@@ -2717,29 +2686,29 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #' 
 #' Lookup supports the following attributes for management events:
 #' 
-#' - Amazon Web Services access key
+#' -   Amazon Web Services access key
 #' 
-#' - Event ID
+#' -   Event ID
 #' 
-#' - Event name
+#' -   Event name
 #' 
-#' - Event source
+#' -   Event source
 #' 
-#' - Read only
+#' -   Read only
 #' 
-#' - Resource name
+#' -   Resource name
 #' 
-#' - Resource type
+#' -   Resource type
 #' 
-#' - User name
+#' -   User name
 #' 
 #' Lookup supports the following attributes for Insights events:
 #' 
-#' - Event ID
+#' -   Event ID
 #' 
-#' - Event name
+#' -   Event name
 #' 
-#' - Event source
+#' -   Event source
 #' 
 #' All attributes are optional. The default number of results returned is
 #' 50, with a maximum of 50 possible. The response includes a token that
@@ -2832,8 +2801,7 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events")
   )
   input <- .cloudtrail$lookup_events_input(LookupAttributes = LookupAttributes, StartTime = StartTime, EndTime = EndTime, EventCategory = EventCategory, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudtrail$lookup_events_output()
@@ -2910,17 +2878,17 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail
 #' name, the string must meet the following requirements:
 #' 
-#' - Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'   underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+#'     underscores (_), or dashes (-)
 #' 
-#' - Start with a letter or number, and end with a letter or number
+#' -   Start with a letter or number, and end with a letter or number
 #' 
-#' - Be between 3 and 128 characters
+#' -   Be between 3 and 128 characters
 #' 
-#' - Have no adjacent periods, underscores or dashes. Names like
-#'   `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like
+#'     `my-_namespace` and `my--namespace` are not valid.
 #' 
-#' - Not be in IP address format (for example, 192.168.5.4)
+#' -   Not be in IP address format (for example, 192.168.5.4)
 #' 
 #' If you specify a trail ARN, it must be in the following format.
 #' 
@@ -3057,8 +3025,7 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$put_event_selectors_input(TrailName = TrailName, EventSelectors = EventSelectors, AdvancedEventSelectors = AdvancedEventSelectors)
   output <- .cloudtrail$put_event_selectors_output()
@@ -3182,8 +3149,7 @@ cloudtrail_put_insight_selectors <- function(TrailName = NULL, InsightSelectors,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$put_insight_selectors_input(TrailName = TrailName, InsightSelectors = InsightSelectors, EventDataStore = EventDataStore, InsightsDestination = InsightsDestination)
   output <- .cloudtrail$put_insight_selectors_output()
@@ -3218,13 +3184,13 @@ cloudtrail_put_insight_selectors <- function(TrailName = NULL, InsightSelectors,
 #' 
 #' The following are requirements for the resource policy:
 #' 
-#' - Contains only one action: cloudtrail-data:PutAuditEvents
+#' -   Contains only one action: cloudtrail-data:PutAuditEvents
 #' 
-#' - Contains at least one statement. The policy can have a maximum of 20
-#'   statements.
+#' -   Contains at least one statement. The policy can have a maximum of 20
+#'     statements.
 #' 
-#' - Each statement contains at least one principal. A statement can have a
-#'   maximum of 50 principals.
+#' -   Each statement contains at least one principal. A statement can have
+#'     a maximum of 50 principals.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3254,8 +3220,7 @@ cloudtrail_put_resource_policy <- function(ResourceArn, ResourcePolicy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$put_resource_policy_input(ResourceArn = ResourceArn, ResourcePolicy = ResourcePolicy)
   output <- .cloudtrail$put_resource_policy_output()
@@ -3301,8 +3266,7 @@ cloudtrail_register_organization_delegated_admin <- function(MemberAccountId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$register_organization_delegated_admin_input(MemberAccountId = MemberAccountId)
   output <- .cloudtrail$register_organization_delegated_admin_output()
@@ -3362,8 +3326,7 @@ cloudtrail_remove_tags <- function(ResourceId, TagsList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$remove_tags_input(ResourceId = ResourceId, TagsList = TagsList)
   output <- .cloudtrail$remove_tags_output()
@@ -3459,8 +3422,7 @@ cloudtrail_restore_event_data_store <- function(EventDataStore) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$restore_event_data_store_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$restore_event_data_store_output()
@@ -3508,8 +3470,7 @@ cloudtrail_start_event_data_store_ingestion <- function(EventDataStore) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$start_event_data_store_ingestion_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$start_event_data_store_ingestion_output()
@@ -3637,8 +3598,7 @@ cloudtrail_start_import <- function(Destinations = NULL, ImportSource = NULL, St
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$start_import_input(Destinations = Destinations, ImportSource = ImportSource, StartEventTime = StartEventTime, EndEventTime = EndEventTime, ImportId = ImportId)
   output <- .cloudtrail$start_import_output()
@@ -3690,8 +3650,7 @@ cloudtrail_start_logging <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$start_logging_input(Name = Name)
   output <- .cloudtrail$start_logging_output()
@@ -3757,8 +3716,7 @@ cloudtrail_start_query <- function(QueryStatement = NULL, DeliveryS3Uri = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$start_query_input(QueryStatement = QueryStatement, DeliveryS3Uri = DeliveryS3Uri, QueryAlias = QueryAlias, QueryParameters = QueryParameters)
   output <- .cloudtrail$start_query_output()
@@ -3806,8 +3764,7 @@ cloudtrail_stop_event_data_store_ingestion <- function(EventDataStore) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$stop_event_data_store_ingestion_input(EventDataStore = EventDataStore)
   output <- .cloudtrail$stop_event_data_store_ingestion_output()
@@ -3885,8 +3842,7 @@ cloudtrail_stop_import <- function(ImportId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$stop_import_input(ImportId = ImportId)
   output <- .cloudtrail$stop_import_output()
@@ -3941,8 +3897,7 @@ cloudtrail_stop_logging <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$stop_logging_input(Name = Name)
   output <- .cloudtrail$stop_logging_output()
@@ -4008,8 +3963,7 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$update_channel_input(Channel = Channel, Destinations = Destinations, Name = Name)
   output <- .cloudtrail$update_channel_output()
@@ -4101,13 +4055,13 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' 
 #' Examples:
 #' 
-#' - `alias/MyAliasName`
+#' -   `alias/MyAliasName`
 #' 
-#' - `arn:aws:kms:us-east-2:123456789012:alias/MyAliasName`
+#' -   `arn:aws:kms:us-east-2:123456789012:alias/MyAliasName`
 #' 
-#' - `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
+#' -   `arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012`
 #' 
-#' - `12345678-1234-1234-1234-123456789012`
+#' -   `12345678-1234-1234-1234-123456789012`
 #' @param BillingMode You can't change the billing mode from `EXTENDABLE_RETENTION_PRICING` to
 #' `FIXED_RETENTION_PRICING`. If `BillingMode` is set to
 #' `EXTENDABLE_RETENTION_PRICING` and you want to use
@@ -4121,15 +4075,15 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' 
 #' The following are the possible values:
 #' 
-#' - `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally
-#'   recommended if you want a flexible retention period of up to 3653 days
-#'   (about 10 years). The default retention period for this billing mode
-#'   is 366 days.
+#' -   `EXTENDABLE_RETENTION_PRICING` - This billing mode is generally
+#'     recommended if you want a flexible retention period of up to 3653
+#'     days (about 10 years). The default retention period for this billing
+#'     mode is 366 days.
 #' 
-#' - `FIXED_RETENTION_PRICING` - This billing mode is recommended if you
-#'   expect to ingest more than 25 TB of event data per month and need a
-#'   retention period of up to 2557 days (about 7 years). The default
-#'   retention period for this billing mode is 2557 days.
+#' -   `FIXED_RETENTION_PRICING` - This billing mode is recommended if you
+#'     expect to ingest more than 25 TB of event data per month and need a
+#'     retention period of up to 2557 days (about 7 years). The default
+#'     retention period for this billing mode is 2557 days.
 #' 
 #' For more information about CloudTrail pricing, see [CloudTrail
 #' Pricing](https://aws.amazon.com/cloudtrail/pricing/) and [Managing
@@ -4241,8 +4195,7 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$update_event_data_store_input(EventDataStore = EventDataStore, Name = Name, AdvancedEventSelectors = AdvancedEventSelectors, MultiRegionEnabled = MultiRegionEnabled, OrganizationEnabled = OrganizationEnabled, RetentionPeriod = RetentionPeriod, TerminationProtectionEnabled = TerminationProtectionEnabled, KmsKeyId = KmsKeyId, BillingMode = BillingMode)
   output <- .cloudtrail$update_event_data_store_output()
@@ -4276,17 +4229,17 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' @param Name &#91;required&#93; Specifies the name of the trail or trail ARN. If `Name` is a trail name,
 #' the string must meet the following requirements:
 #' 
-#' - Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
-#'   underscores (_), or dashes (-)
+#' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
+#'     underscores (_), or dashes (-)
 #' 
-#' - Start with a letter or number, and end with a letter or number
+#' -   Start with a letter or number, and end with a letter or number
 #' 
-#' - Be between 3 and 128 characters
+#' -   Be between 3 and 128 characters
 #' 
-#' - Have no adjacent periods, underscores or dashes. Names like
-#'   `my-_namespace` and `my--namespace` are not valid.
+#' -   Have no adjacent periods, underscores or dashes. Names like
+#'     `my-_namespace` and `my--namespace` are not valid.
 #' 
-#' - Not be in IP address format (for example, 192.168.5.4)
+#' -   Not be in IP address format (for example, 192.168.5.4)
 #' 
 #' If `Name` is a trail ARN, it must be in the following format.
 #' 
@@ -4341,13 +4294,13 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' 
 #' Examples:
 #' 
-#' - alias/MyAliasName
+#' -   alias/MyAliasName
 #' 
-#' - arn:aws:kms:us-east-2:123456789012:alias/MyAliasName
+#' -   arn:aws:kms:us-east-2:123456789012:alias/MyAliasName
 #' 
-#' - arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
+#' -   arn:aws:kms:us-east-2:123456789012:key/12345678-1234-1234-1234-123456789012
 #' 
-#' - 12345678-1234-1234-1234-123456789012
+#' -   12345678-1234-1234-1234-123456789012
 #' @param IsOrganizationTrail Specifies whether the trail is applied to all accounts in an
 #' organization in Organizations, or only for the current Amazon Web
 #' Services account. The default is false, and cannot be true unless the
@@ -4411,8 +4364,7 @@ cloudtrail_update_trail <- function(Name, S3BucketName = NULL, S3KeyPrefix = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudtrail$update_trail_input(Name = Name, S3BucketName = S3BucketName, S3KeyPrefix = S3KeyPrefix, SnsTopicName = SnsTopicName, IncludeGlobalServiceEvents = IncludeGlobalServiceEvents, IsMultiRegionTrail = IsMultiRegionTrail, EnableLogFileValidation = EnableLogFileValidation, CloudWatchLogsLogGroupArn = CloudWatchLogsLogGroupArn, CloudWatchLogsRoleArn = CloudWatchLogsRoleArn, KmsKeyId = KmsKeyId, IsOrganizationTrail = IsOrganizationTrail)
   output <- .cloudtrail$update_trail_output()

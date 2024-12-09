@@ -20,17 +20,17 @@ NULL
 #' This documentation contains reference information related to the
 #' following:
 #' 
-#' - [Amazon SES API
-#'   Actions](https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html)
+#' -   [Amazon SES API
+#'     Actions](https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html)
 #' 
-#' - [Amazon SES API Data
-#'   Types](https://docs.aws.amazon.com/ses/latest/APIReference/API_Types.html)
+#' -   [Amazon SES API Data
+#'     Types](https://docs.aws.amazon.com/ses/latest/APIReference/API_Types.html)
 #' 
-#' - [Common
-#'   Parameters](https://docs.aws.amazon.com/ses/latest/APIReference/CommonParameters.html)
+#' -   [Common
+#'     Parameters](https://docs.aws.amazon.com/ses/latest/APIReference/CommonParameters.html)
 #' 
-#' - [Common
-#'   Errors](https://docs.aws.amazon.com/ses/latest/APIReference/CommonErrors.html)
+#' -   [Common
+#'     Errors](https://docs.aws.amazon.com/ses/latest/APIReference/CommonErrors.html)
 #'
 #' @param
 #' config

@@ -55,8 +55,7 @@ datapipeline_activate_pipeline <- function(pipelineId, parameterValues = NULL, s
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$activate_pipeline_input(pipelineId = pipelineId, parameterValues = parameterValues, startTimestamp = startTimestamp)
   output <- .datapipeline$activate_pipeline_output()
@@ -106,8 +105,7 @@ datapipeline_add_tags <- function(pipelineId, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$add_tags_input(pipelineId = pipelineId, tags = tags)
   output <- .datapipeline$add_tags_output()
@@ -188,8 +186,7 @@ datapipeline_create_pipeline <- function(name, uniqueId, description = NULL, tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$create_pipeline_input(name = name, uniqueId = uniqueId, description = description, tags = tags)
   output <- .datapipeline$create_pipeline_output()
@@ -242,8 +239,7 @@ datapipeline_deactivate_pipeline <- function(pipelineId, cancelActive = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$deactivate_pipeline_input(pipelineId = pipelineId, cancelActive = cancelActive)
   output <- .datapipeline$deactivate_pipeline_output()
@@ -294,8 +290,7 @@ datapipeline_delete_pipeline <- function(pipelineId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$delete_pipeline_input(pipelineId = pipelineId)
   output <- .datapipeline$delete_pipeline_output()
@@ -375,8 +370,7 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineObjects"),
-    stream_api = FALSE
+    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineObjects")
   )
   input <- .datapipeline$describe_objects_input(pipelineId = pipelineId, objectIds = objectIds, evaluateExpressions = evaluateExpressions, marker = marker)
   output <- .datapipeline$describe_objects_output()
@@ -457,8 +451,7 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "pipelineDescriptionList"),
-    stream_api = FALSE
+    paginator = list(result_key = "pipelineDescriptionList")
   )
   input <- .datapipeline$describe_pipelines_input(pipelineIds = pipelineIds)
   output <- .datapipeline$describe_pipelines_output()
@@ -514,8 +507,7 @@ datapipeline_evaluate_expression <- function(pipelineId, objectId, expression) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$evaluate_expression_input(pipelineId = pipelineId, objectId = objectId, expression = expression)
   output <- .datapipeline$evaluate_expression_output()
@@ -599,8 +591,7 @@ datapipeline_get_pipeline_definition <- function(pipelineId, version = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$get_pipeline_definition_input(pipelineId = pipelineId, version = version)
   output <- .datapipeline$get_pipeline_definition_output()
@@ -660,8 +651,7 @@ datapipeline_list_pipelines <- function(marker = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineIdList"),
-    stream_api = FALSE
+    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineIdList")
   )
   input <- .datapipeline$list_pipelines_input(marker = marker)
   output <- .datapipeline$list_pipelines_output()
@@ -765,8 +755,7 @@ datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIde
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$poll_for_task_input(workerGroup = workerGroup, hostname = hostname, instanceIdentity = instanceIdentity)
   output <- .datapipeline$poll_for_task_output()
@@ -885,8 +874,7 @@ datapipeline_put_pipeline_definition <- function(pipelineId, pipelineObjects, pa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$put_pipeline_definition_input(pipelineId = pipelineId, pipelineObjects = pipelineObjects, parameterObjects = parameterObjects, parameterValues = parameterValues)
   output <- .datapipeline$put_pipeline_definition_output()
@@ -969,8 +957,7 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "marker", limit_key = "limit", more_results = "hasMoreResults", output_token = "marker", result_key = "ids"),
-    stream_api = FALSE
+    paginator = list(input_token = "marker", limit_key = "limit", more_results = "hasMoreResults", output_token = "marker", result_key = "ids")
   )
   input <- .datapipeline$query_objects_input(pipelineId = pipelineId, query = query, sphere = sphere, marker = marker, limit = limit)
   output <- .datapipeline$query_objects_output()
@@ -1017,8 +1004,7 @@ datapipeline_remove_tags <- function(pipelineId, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$remove_tags_input(pipelineId = pipelineId, tagKeys = tagKeys)
   output <- .datapipeline$remove_tags_output()
@@ -1092,8 +1078,7 @@ datapipeline_report_task_progress <- function(taskId, fields = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$report_task_progress_input(taskId = taskId, fields = fields)
   output <- .datapipeline$report_task_progress_output()
@@ -1161,8 +1146,7 @@ datapipeline_report_task_runner_heartbeat <- function(taskrunnerId, workerGroup 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$report_task_runner_heartbeat_input(taskrunnerId = taskrunnerId, workerGroup = workerGroup, hostname = hostname)
   output <- .datapipeline$report_task_runner_heartbeat_output()
@@ -1220,8 +1204,7 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$set_status_input(pipelineId = pipelineId, objectIds = objectIds, status = status)
   output <- .datapipeline$set_status_output()
@@ -1291,8 +1274,7 @@ datapipeline_set_task_status <- function(taskId, taskStatus, errorId = NULL, err
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$set_task_status_input(taskId = taskId, taskStatus = taskStatus, errorId = errorId, errorMessage = errorMessage, errorStackTrace = errorStackTrace)
   output <- .datapipeline$set_task_status_output()
@@ -1393,8 +1375,7 @@ datapipeline_validate_pipeline_definition <- function(pipelineId, pipelineObject
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .datapipeline$validate_pipeline_definition_input(pipelineId = pipelineId, pipelineObjects = pipelineObjects, parameterObjects = parameterObjects, parameterValues = parameterValues)
   output <- .datapipeline$validate_pipeline_definition_output()

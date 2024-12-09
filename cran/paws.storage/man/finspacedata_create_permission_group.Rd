@@ -27,12 +27,12 @@ should only be granted to trusted users.
 \itemize{
 \item \code{\link[=finspacedata_create_dataset]{create_dataset}} – Group members can
 create new datasets.
-\item \code{ManageClusters} – Group members can manage Apache Spark clusters from
-FinSpace notebooks.
-\item \code{ManageUsersAndGroups} – Group members can manage users and permission
-groups. This is a privileged permission that allows users to grant
-themselves or others access to any functionality in the application.
-It should only be granted to trusted users.
+\item \code{ManageClusters} – Group members can manage Apache Spark clusters
+from FinSpace notebooks.
+\item \code{ManageUsersAndGroups} – Group members can manage users and
+permission groups. This is a privileged permission that allows users
+to grant themselves or others access to any functionality in the
+application. It should only be granted to trusted users.
 \item \code{ManageAttributeSets} – Group members can manage attribute sets.
 \item \code{ViewAuditData} – Group members can view audit data.
 \item \code{AccessNotebooks} – Group members will have access to FinSpace

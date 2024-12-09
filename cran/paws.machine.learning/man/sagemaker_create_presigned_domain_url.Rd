@@ -31,18 +31,19 @@ presigned URL. Using this value, users can access Studio or Studio
 Classic, even if it is not the default experience for the domain. The
 supported values are:
 \itemize{
-\item \code{studio::relative/path}: Directs users to the relative path in Studio.
-\item \code{app:JupyterServer:relative/path}: Directs users to the relative path
-in the Studio Classic application.
-\item \code{app:JupyterLab:relative/path}: Directs users to the relative path in
-the JupyterLab application.
+\item \code{studio::relative/path}: Directs users to the relative path in
+Studio.
+\item \code{app:JupyterServer:relative/path}: Directs users to the relative
+path in the Studio Classic application.
+\item \code{app:JupyterLab:relative/path}: Directs users to the relative path
+in the JupyterLab application.
 \item \code{app:RStudioServerPro:relative/path}: Directs users to the relative
 path in the RStudio application.
-\item \code{app:CodeEditor:relative/path}: Directs users to the relative path in
-the Code Editor, based on Code-OSS, Visual Studio Code - Open Source
-application.
-\item \code{app:Canvas:relative/path}: Directs users to the relative path in the
-Canvas application.
+\item \code{app:CodeEditor:relative/path}: Directs users to the relative path
+in the Code Editor, based on Code-OSS, Visual Studio Code - Open
+Source application.
+\item \code{app:Canvas:relative/path}: Directs users to the relative path in
+the Canvas application.
 }}
 }
 \description{

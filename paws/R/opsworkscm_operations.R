@@ -38,17 +38,17 @@ NULL
 #' 
 #' **Attributes accepted in a AssociateNode request for Chef**
 #' 
-#' - `CHEF_ORGANIZATION`: The Chef organization with which the node is
-#'   associated. By default only one organization named `default` can
-#'   exist.
+#' -   `CHEF_ORGANIZATION`: The Chef organization with which the node is
+#'     associated. By default only one organization named `default` can
+#'     exist.
 #' 
-#' - `CHEF_NODE_PUBLIC_KEY`: A PEM-formatted public key. This key is
-#'   required for the `chef-client` agent to access the Chef API.
+#' -   `CHEF_NODE_PUBLIC_KEY`: A PEM-formatted public key. This key is
+#'     required for the `chef-client` agent to access the Chef API.
 #' 
 #' **Attributes accepted in a AssociateNode request for Puppet**
 #' 
-#' - `PUPPET_NODE_CSR`: A PEM-formatted certificate-signing request (CSR)
-#'   that is created by the node.
+#' -   `PUPPET_NODE_CSR`: A PEM-formatted certificate-signing request (CSR)
+#'     that is created by the node.
 #'
 #' @return
 #' A list with the following syntax:
@@ -83,8 +83,7 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$associate_node_input(ServerName = ServerName, NodeName = NodeName, EngineAttributes = EngineAttributes)
   output <- .opsworkscm$associate_node_output()
@@ -124,21 +123,21 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 #' @param Tags A map that contains tag keys and tag values to attach to an AWS
 #' OpsWorks-CM server backup.
 #' 
-#' - The key cannot be empty.
+#' -   The key cannot be empty.
 #' 
-#' - The key can be a maximum of 127 characters, and can contain only
-#'   Unicode letters, numbers, or separators, or the following special
-#'   characters: `+ - = . _ : /`
+#' -   The key can be a maximum of 127 characters, and can contain only
+#'     Unicode letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
 #' 
-#' - The value can be a maximum 255 characters, and contain only Unicode
-#'   letters, numbers, or separators, or the following special characters:
-#'   `+ - = . _ : /`
+#' -   The value can be a maximum 255 characters, and contain only Unicode
+#'     letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
 #' 
-#' - Leading and trailing white spaces are trimmed from both the key and
-#'   value.
+#' -   Leading and trailing white spaces are trimmed from both the key and
+#'     value.
 #' 
-#' - A maximum of 50 user-applied tags is allowed for tag-supported AWS
-#'   OpsWorks-CM resources.
+#' -   A maximum of 50 user-applied tags is allowed for tag-supported AWS
+#'     OpsWorks-CM resources.
 #'
 #' @return
 #' A list with the following syntax:
@@ -204,8 +203,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$create_backup_input(ServerName = ServerName, Description = Description, Tags = Tags)
   output <- .opsworkscm$create_backup_output()
@@ -278,21 +276,21 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' `CustomPrivateKey`. The following are requirements for the
 #' `CustomCertificate` value:
 #' 
-#' - You can provide either a self-signed, custom certificate, or the full
-#'   certificate chain.
+#' -   You can provide either a self-signed, custom certificate, or the
+#'     full certificate chain.
 #' 
-#' - The certificate must be a valid X509 certificate, or a certificate
-#'   chain in PEM format.
+#' -   The certificate must be a valid X509 certificate, or a certificate
+#'     chain in PEM format.
 #' 
-#' - The certificate must be valid at the time of upload. A certificate
-#'   can't be used before its validity period begins (the certificate's
-#'   `NotBefore` date), or after it expires (the certificate's `NotAfter`
-#'   date).
+#' -   The certificate must be valid at the time of upload. A certificate
+#'     can't be used before its validity period begins (the certificate's
+#'     `NotBefore` date), or after it expires (the certificate's `NotAfter`
+#'     date).
 #' 
-#' - The certificate’s common name or subject alternative names (SANs), if
-#'   present, must match the value of `CustomDomain`.
+#' -   The certificate’s common name or subject alternative names (SANs),
+#'     if present, must match the value of `CustomDomain`.
 #' 
-#' - The certificate must match the value of `CustomPrivateKey`.
+#' -   The certificate must match the value of `CustomPrivateKey`.
 #' @param CustomPrivateKey A private key in PEM format for connecting to the server by using HTTPS.
 #' The private key must not be encrypted; it cannot be protected by a
 #' password or passphrase. If you specify a custom private key, you must
@@ -310,32 +308,33 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' 
 #' **Attributes accepted in a Chef createServer request:**
 #' 
-#' - `CHEF_AUTOMATE_PIVOTAL_KEY`: A base64-encoded RSA public key. The
-#'   corresponding private key is required to access the Chef API. When no
-#'   CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
-#'   returned in the response.
+#' -   `CHEF_AUTOMATE_PIVOTAL_KEY`: A base64-encoded RSA public key. The
+#'     corresponding private key is required to access the Chef API. When
+#'     no CHEF_AUTOMATE_PIVOTAL_KEY is set, a private key is generated and
+#'     returned in the response.
 #' 
-#' - `CHEF_AUTOMATE_ADMIN_PASSWORD`: The password for the administrative
-#'   user in the Chef Automate web-based dashboard. The password length is
-#'   a minimum of eight characters, and a maximum of 32. The password can
-#'   contain letters, numbers, and special characters (!/@@#$%^&+=_). The
-#'   password must contain at least one lower case letter, one upper case
-#'   letter, one number, and one special character. When no
-#'   CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned in
-#'   the response.
+#' -   `CHEF_AUTOMATE_ADMIN_PASSWORD`: The password for the administrative
+#'     user in the Chef Automate web-based dashboard. The password length
+#'     is a minimum of eight characters, and a maximum of 32. The password
+#'     can contain letters, numbers, and special characters (!/@@#$%^&+=_).
+#'     The password must contain at least one lower case letter, one upper
+#'     case letter, one number, and one special character. When no
+#'     CHEF_AUTOMATE_ADMIN_PASSWORD is set, one is generated and returned
+#'     in the response.
 #' 
 #' **Attributes accepted in a Puppet createServer request:**
 #' 
-#' - `PUPPET_ADMIN_PASSWORD`: To work with the Puppet Enterprise console, a
-#'   password must use ASCII characters.
+#' -   `PUPPET_ADMIN_PASSWORD`: To work with the Puppet Enterprise console,
+#'     a password must use ASCII characters.
 #' 
-#' - `PUPPET_R10K_REMOTE`: The r10k remote is the URL of your control
-#'   repository (for example,
-#'   ssh://git@@your.git-repo.com:user/control-repo.git). Specifying an r10k
-#'   remote opens TCP port 8170.
+#' -   `PUPPET_R10K_REMOTE`: The r10k remote is the URL of your control
+#'     repository (for example,
+#'     ssh://git@@your.git-repo.com:user/control-repo.git). Specifying an
+#'     r10k remote opens TCP port 8170.
 #' 
-#' - `PUPPET_R10K_PRIVATE_KEY`: If you are using a private Git repository,
-#'   add PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded private SSH key.
+#' -   `PUPPET_R10K_PRIVATE_KEY`: If you are using a private Git
+#'     repository, add PUPPET_R10K_PRIVATE_KEY to specify a PEM-encoded
+#'     private SSH key.
 #' @param BackupRetentionCount The number of automated backups that you want to keep. Whenever a new
 #' backup is created, AWS OpsWorks CM deletes the oldest backups if this
 #' number is exceeded. The default value is `1`.
@@ -367,9 +366,9 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' up application-level data on your server if automated backups are
 #' enabled. Valid values must be specified in one of the following formats:
 #' 
-#' - `HH:MM` for daily backups
+#' -   `HH:MM` for daily backups
 #' 
-#' - `DDD:HH:MM` for weekly backups
+#' -   `DDD:HH:MM` for weekly backups
 #' 
 #' `MM` must be specified as `00`. The specified time is in coordinated
 #' universal time (UTC). The default value is a random, daily start time.
@@ -409,21 +408,21 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' @param Tags A map that contains tag keys and tag values to attach to an AWS OpsWorks
 #' for Chef Automate or AWS OpsWorks for Puppet Enterprise server.
 #' 
-#' - The key cannot be empty.
+#' -   The key cannot be empty.
 #' 
-#' - The key can be a maximum of 127 characters, and can contain only
-#'   Unicode letters, numbers, or separators, or the following special
-#'   characters: `+ - = . _ : / @@`
+#' -   The key can be a maximum of 127 characters, and can contain only
+#'     Unicode letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : / @@`
 #' 
-#' - The value can be a maximum 255 characters, and contain only Unicode
-#'   letters, numbers, or separators, or the following special characters:
-#'   `+ - = . _ : / @@`
+#' -   The value can be a maximum 255 characters, and contain only Unicode
+#'     letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : / @@`
 #' 
-#' - Leading and trailing white spaces are trimmed from both the key and
-#'   value.
+#' -   Leading and trailing white spaces are trimmed from both the key and
+#'     value.
 #' 
-#' - A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
-#'   server.
+#' -   A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
+#'     server.
 #' @param BackupId If you specify this field, AWS OpsWorks CM creates the server by using
 #' the backup represented by BackupId.
 #'
@@ -523,8 +522,7 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDoma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$create_server_input(AssociatePublicIpAddress = AssociatePublicIpAddress, CustomDomain = CustomDomain, CustomCertificate = CustomCertificate, CustomPrivateKey = CustomPrivateKey, DisableAutomatedBackup = DisableAutomatedBackup, Engine = Engine, EngineModel = EngineModel, EngineVersion = EngineVersion, EngineAttributes = EngineAttributes, BackupRetentionCount = BackupRetentionCount, ServerName = ServerName, InstanceProfileArn = InstanceProfileArn, InstanceType = InstanceType, KeyPair = KeyPair, PreferredMaintenanceWindow = PreferredMaintenanceWindow, PreferredBackupWindow = PreferredBackupWindow, SecurityGroupIds = SecurityGroupIds, ServiceRoleArn = ServiceRoleArn, SubnetIds = SubnetIds, Tags = Tags, BackupId = BackupId)
   output <- .opsworkscm$create_server_output()
@@ -575,8 +573,7 @@ opsworkscm_delete_backup <- function(BackupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$delete_backup_input(BackupId = BackupId)
   output <- .opsworkscm$delete_backup_output()
@@ -631,8 +628,7 @@ opsworkscm_delete_server <- function(ServerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$delete_server_input(ServerName = ServerName)
   output <- .opsworkscm$delete_server_output()
@@ -686,8 +682,7 @@ opsworkscm_describe_account_attributes <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$describe_account_attributes_input()
   output <- .opsworkscm$describe_account_attributes_output()
@@ -785,8 +780,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Backups"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Backups")
   )
   input <- .opsworkscm$describe_backups_input(BackupId = BackupId, ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_backups_output()
@@ -867,8 +861,7 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerEvents"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerEvents")
   )
   input <- .opsworkscm$describe_events_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_events_output()
@@ -933,8 +926,7 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$describe_node_association_status_input(NodeAssociationStatusToken = NodeAssociationStatusToken, ServerName = ServerName)
   output <- .opsworkscm$describe_node_association_status_output()
@@ -1036,8 +1028,7 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Servers"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Servers")
   )
   input <- .opsworkscm$describe_servers_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_servers_output()
@@ -1075,9 +1066,9 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' 
 #' **Attributes required in a DisassociateNode request for Chef**
 #' 
-#' - `CHEF_ORGANIZATION`: The Chef organization with which the node was
-#'   associated. By default only one organization named `default` can
-#'   exist.
+#' -   `CHEF_ORGANIZATION`: The Chef organization with which the node was
+#'     associated. By default only one organization named `default` can
+#'     exist.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1112,8 +1103,7 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$disassociate_node_input(ServerName = ServerName, NodeName = NodeName, EngineAttributes = EngineAttributes)
   output <- .opsworkscm$disassociate_node_output()
@@ -1152,21 +1142,21 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 #' and its value. For the `Userdata` ExportAttributeName, the following are
 #' supported engine attribute names.
 #' 
-#' - **RunList** In Chef, a list of roles or recipes that are run in the
-#'   specified order. In Puppet, this parameter is ignored.
+#' -   **RunList** In Chef, a list of roles or recipes that are run in the
+#'     specified order. In Puppet, this parameter is ignored.
 #' 
-#' - **OrganizationName** In Chef, an organization name. AWS OpsWorks for
-#'   Chef Automate always creates the organization `default`. In Puppet,
-#'   this parameter is ignored.
+#' -   **OrganizationName** In Chef, an organization name. AWS OpsWorks for
+#'     Chef Automate always creates the organization `default`. In Puppet,
+#'     this parameter is ignored.
 #' 
-#' - **NodeEnvironment** In Chef, a node environment (for example,
-#'   development, staging, or one-box). In Puppet, this parameter is
-#'   ignored.
+#' -   **NodeEnvironment** In Chef, a node environment (for example,
+#'     development, staging, or one-box). In Puppet, this parameter is
+#'     ignored.
 #' 
-#' - **NodeClientVersion** In Chef, the version of the Chef engine (three
-#'   numbers separated by dots, such as 13.8.5). If this attribute is
-#'   empty, OpsWorks for Chef Automate uses the most current version. In
-#'   Puppet, this parameter is ignored.
+#' -   **NodeClientVersion** In Chef, the version of the Chef engine (three
+#'     numbers separated by dots, such as 13.8.5). If this attribute is
+#'     empty, OpsWorks for Chef Automate uses the most current version. In
+#'     Puppet, this parameter is ignored.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1205,8 +1195,7 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$export_server_engine_attribute_input(ExportAttributeName = ExportAttributeName, ServerName = ServerName, InputAttributes = InputAttributes)
   output <- .opsworkscm$export_server_engine_attribute_output()
@@ -1284,8 +1273,7 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .opsworkscm$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$list_tags_for_resource_output()
@@ -1399,8 +1387,7 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$restore_server_input(BackupId = BackupId, ServerName = ServerName, InstanceType = InstanceType, KeyPair = KeyPair)
   output <- .opsworkscm$restore_server_output()
@@ -1435,13 +1422,13 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #' 
 #' **Attributes accepted in a StartMaintenance request for Chef**
 #' 
-#' - `CHEF_MAJOR_UPGRADE`: If a Chef Automate server is eligible for
-#'   upgrade to Chef Automate 2, add this engine attribute to a
-#'   [`start_maintenance`][opsworkscm_start_maintenance] request and set
-#'   the value to `true` to upgrade the server to Chef Automate 2. For more
-#'   information, see [Upgrade an AWS OpsWorks for Chef Automate Server to
-#'   Chef Automate
-#'   2](https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html).
+#' -   `CHEF_MAJOR_UPGRADE`: If a Chef Automate server is eligible for
+#'     upgrade to Chef Automate 2, add this engine attribute to a
+#'     [`start_maintenance`][opsworkscm_start_maintenance] request and set
+#'     the value to `true` to upgrade the server to Chef Automate 2. For
+#'     more information, see [Upgrade an AWS OpsWorks for Chef Automate
+#'     Server to Chef Automate
+#'     2](https://docs.aws.amazon.com/opsworks/latest/userguide/opscm-a2upgrade.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -1511,8 +1498,7 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$start_maintenance_input(ServerName = ServerName, EngineAttributes = EngineAttributes)
   output <- .opsworkscm$start_maintenance_output()
@@ -1540,21 +1526,21 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #' @param Tags &#91;required&#93; A map that contains tag keys and tag values to attach to AWS OpsWorks-CM
 #' servers or backups.
 #' 
-#' - The key cannot be empty.
+#' -   The key cannot be empty.
 #' 
-#' - The key can be a maximum of 127 characters, and can contain only
-#'   Unicode letters, numbers, or separators, or the following special
-#'   characters: `+ - = . _ : /`
+#' -   The key can be a maximum of 127 characters, and can contain only
+#'     Unicode letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
 #' 
-#' - The value can be a maximum 255 characters, and contain only Unicode
-#'   letters, numbers, or separators, or the following special characters:
-#'   `+ - = . _ : /`
+#' -   The value can be a maximum 255 characters, and contain only Unicode
+#'     letters, numbers, or separators, or the following special
+#'     characters: `+ - = . _ : /`
 #' 
-#' - Leading and trailing white spaces are trimmed from both the key and
-#'   value.
+#' -   Leading and trailing white spaces are trimmed from both the key and
+#'     value.
 #' 
-#' - A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
-#'   server or backup.
+#' -   A maximum of 50 user-applied tags is allowed for any AWS OpsWorks-CM
+#'     server or backup.
 #'
 #' @return
 #' An empty list.
@@ -1583,8 +1569,7 @@ opsworkscm_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .opsworkscm$tag_resource_output()
@@ -1633,8 +1618,7 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .opsworkscm$untag_resource_output()
@@ -1730,8 +1714,7 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$update_server_input(DisableAutomatedBackup = DisableAutomatedBackup, BackupRetentionCount = BackupRetentionCount, ServerName = ServerName, PreferredMaintenanceWindow = PreferredMaintenanceWindow, PreferredBackupWindow = PreferredBackupWindow)
   output <- .opsworkscm$update_server_output()
@@ -1832,8 +1815,7 @@ opsworkscm_update_server_engine_attributes <- function(ServerName, AttributeName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .opsworkscm$update_server_engine_attributes_input(ServerName = ServerName, AttributeName = AttributeName, AttributeValue = AttributeValue)
   output <- .opsworkscm$update_server_engine_attributes_output()

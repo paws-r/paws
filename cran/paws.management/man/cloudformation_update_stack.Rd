@@ -98,18 +98,18 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, CloudFormation
-returns an \code{InsufficientCapabilities} error.
+\item If you don't specify either of these capabilities,
+CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
 If your stack template contains these resources, we suggest that you
-review all permissions associated with them and edit their permissions
-if necessary.
+review all permissions associated with them and edit their
+permissions if necessary.
 \itemize{
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
@@ -122,12 +122,12 @@ Some template contain macros. Macros perform custom processing on
 templates; this can include simple actions like find-and-replace
 operations, all the way to extensive transformations of entire
 templates. Because of this, users typically create a change set from
-the processed template, so that they can review the changes resulting
-from the macros before actually updating the stack. If your stack
-template contains one or more macros, and you choose to update a stack
-directly from the processed template, without first reviewing the
-resulting changes in a change set, you must acknowledge this
-capability. This includes the
+the processed template, so that they can review the changes
+resulting from the macros before actually updating the stack. If
+your stack template contains one or more macros, and you choose to
+update a stack directly from the processed template, without first
+reviewing the resulting changes in a change set, you must
+acknowledge this capability. This includes the
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
 and
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}

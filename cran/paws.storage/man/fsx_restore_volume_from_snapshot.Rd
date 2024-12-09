@@ -27,9 +27,9 @@ current state and the specified snapshot. If there are intermediate
 snapshots and this option isn't used,
 \code{\link[=fsx_restore_volume_from_snapshot]{restore_volume_from_snapshot}}
 fails.
-\item \code{DELETE_CLONED_VOLUMES} - Deletes any dependent clone volumes created
-from intermediate snapshots. If there are any dependent clone volumes
-and this option isn't used,
+\item \code{DELETE_CLONED_VOLUMES} - Deletes any dependent clone volumes
+created from intermediate snapshots. If there are any dependent
+clone volumes and this option isn't used,
 \code{\link[=fsx_restore_volume_from_snapshot]{restore_volume_from_snapshot}}
 fails.
 }}

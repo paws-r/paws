@@ -30,11 +30,11 @@ the event sequence number specified jointly by the \code{commitNum} and
 right after the event sequence number specified jointly by the
 \code{commitNum} and \code{opNum} parameters.
 \item \code{TRIM_HORIZON}   –   Indicates that reading should start at the last
-untrimmed record in the system, which is the oldest unexpired (not yet
+untrimmed record in the system, which is the oldest unexpired (not
+yet deleted) record in the change-log stream.
+\item \code{LATEST}   –   Indicates that reading should start at the most
+recent record in the system, which is the latest unexpired (not yet
 deleted) record in the change-log stream.
-\item \code{LATEST}   –   Indicates that reading should start at the most recent
-record in the system, which is the latest unexpired (not yet deleted)
-record in the change-log stream.
 }}
 
 \item{commitNum}{The commit number of the starting record to read from the change-log

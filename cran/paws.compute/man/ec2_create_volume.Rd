@@ -28,7 +28,7 @@ example, \verb{us-east-1a}.}
 \item{Encrypted}{Indicates whether the volume should be encrypted. The effect of setting
 the encryption state to \code{true} depends on the volume origin (new or from
 a snapshot), starting encryption state, ownership, and whether
-encryption by default is enabled. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/#encryption-by-default}{Encryption by default}
+encryption by default is enabled. For more information, see \href{https://docs.aws.amazon.com/ebs/latest/userguide/work-with-ebs-encr.html#encryption-by-default}{Encryption by default}
 in the \emph{Amazon EBS User Guide}.
 
 Encrypted Amazon EBS volumes must be attached to instances that support

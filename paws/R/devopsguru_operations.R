@@ -69,8 +69,7 @@ devopsguru_add_notification_channel <- function(Config) {
     http_method = "PUT",
     http_path = "/channels",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$add_notification_channel_input(Config = Config)
   output <- .devopsguru$add_notification_channel_output()
@@ -115,8 +114,7 @@ devopsguru_delete_insight <- function(Id) {
     http_method = "DELETE",
     http_path = "/insights/{Id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$delete_insight_input(Id = Id)
   output <- .devopsguru$delete_insight_output()
@@ -171,8 +169,7 @@ devopsguru_describe_account_health <- function() {
     http_method = "GET",
     http_path = "/accounts/health",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_account_health_input()
   output <- .devopsguru$describe_account_health_output()
@@ -239,8 +236,7 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
     http_method = "POST",
     http_path = "/accounts/overview",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_account_overview_input(FromTime = FromTime, ToTime = ToTime)
   output <- .devopsguru$describe_account_overview_output()
@@ -565,8 +561,7 @@ devopsguru_describe_anomaly <- function(Id, AccountId = NULL) {
     http_method = "GET",
     http_path = "/anomalies/{Id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_anomaly_input(Id = Id, AccountId = AccountId)
   output <- .devopsguru$describe_anomaly_output()
@@ -621,8 +616,7 @@ devopsguru_describe_event_sources_config <- function() {
     http_method = "POST",
     http_path = "/event-sources",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_event_sources_config_input()
   output <- .devopsguru$describe_event_sources_config_output()
@@ -675,8 +669,7 @@ devopsguru_describe_feedback <- function(InsightId = NULL) {
     http_method = "POST",
     http_path = "/feedback",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_feedback_input(InsightId = InsightId)
   output <- .devopsguru$describe_feedback_output()
@@ -795,8 +788,7 @@ devopsguru_describe_insight <- function(Id, AccountId = NULL) {
     http_method = "GET",
     http_path = "/insights/{Id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_insight_input(Id = Id, AccountId = AccountId)
   output <- .devopsguru$describe_insight_output()
@@ -856,8 +848,7 @@ devopsguru_describe_organization_health <- function(AccountIds = NULL, Organizat
     http_method = "POST",
     http_path = "/organization/health",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_organization_health_input(AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds)
   output <- .devopsguru$describe_organization_health_output()
@@ -929,8 +920,7 @@ devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, A
     http_method = "POST",
     http_path = "/organization/overview",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_organization_overview_input(FromTime = FromTime, ToTime = ToTime, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds)
   output <- .devopsguru$describe_organization_overview_output()
@@ -1046,8 +1036,7 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
     http_method = "POST",
     http_path = "/organization/health/resource-collection",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Account", "Service", "Tags")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Account", "Service", "Tags"))
   )
   input <- .devopsguru$describe_organization_resource_collection_health_input(OrganizationResourceCollectionType = OrganizationResourceCollectionType, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .devopsguru$describe_organization_resource_collection_health_output()
@@ -1150,8 +1139,7 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
     http_method = "GET",
     http_path = "/accounts/health/resource-collection/{ResourceCollectionType}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Service", "Tags")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Service", "Tags"))
   )
   input <- .devopsguru$describe_resource_collection_health_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
   output <- .devopsguru$describe_resource_collection_health_output()
@@ -1213,8 +1201,7 @@ devopsguru_describe_service_integration <- function() {
     http_method = "GET",
     http_path = "/service-integrations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$describe_service_integration_input()
   output <- .devopsguru$describe_service_integration_output()
@@ -1303,8 +1290,7 @@ devopsguru_get_cost_estimation <- function(NextToken = NULL) {
     http_method = "GET",
     http_path = "/cost-estimation",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("Status", "TotalCost", "TimeRange", "ResourceCollection"), output_token = "NextToken", result_key = list("Costs")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("Status", "TotalCost", "TimeRange", "ResourceCollection"), output_token = "NextToken", result_key = list("Costs"))
   )
   input <- .devopsguru$get_cost_estimation_input(NextToken = NextToken)
   output <- .devopsguru$get_cost_estimation_output()
@@ -1380,8 +1366,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
     http_method = "GET",
     http_path = "/resource-collections/{ResourceCollectionType}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", non_aggregate_keys = list("ResourceCollection"), output_token = "NextToken", result_key = list("ResourceCollection.CloudFormation.StackNames", "ResourceCollection.Tags")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("ResourceCollection"), output_token = "NextToken", result_key = list("ResourceCollection.CloudFormation.StackNames", "ResourceCollection.Tags"))
   )
   input <- .devopsguru$get_resource_collection_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
   output <- .devopsguru$get_resource_collection_output()
@@ -1739,8 +1724,7 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
     http_method = "POST",
     http_path = "/anomalies/insight/{InsightId}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ReactiveAnomalies", "ProactiveAnomalies")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ReactiveAnomalies", "ProactiveAnomalies"))
   )
   input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId, Filters = Filters)
   output <- .devopsguru$list_anomalies_for_insight_output()
@@ -1825,8 +1809,7 @@ devopsguru_list_anomalous_log_groups <- function(InsightId, MaxResults = NULL, N
     http_method = "POST",
     http_path = "/list-log-anomalies",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("InsightId", "AnomalousLogGroups")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("InsightId", "AnomalousLogGroups"))
   )
   input <- .devopsguru$list_anomalous_log_groups_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_anomalous_log_groups_output()
@@ -1948,8 +1931,7 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL,
     http_method = "POST",
     http_path = "/events",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events")
   )
   input <- .devopsguru$list_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .devopsguru$list_events_output()
@@ -2119,8 +2101,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/insights",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$list_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_insights_output()
@@ -2208,8 +2189,7 @@ devopsguru_list_monitored_resources <- function(Filters = NULL, MaxResults = NUL
     http_method = "POST",
     http_path = "/monitoredResources",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("MonitoredResourceIdentifiers")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("MonitoredResourceIdentifiers"))
   )
   input <- .devopsguru$list_monitored_resources_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_monitored_resources_output()
@@ -2280,8 +2260,7 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/channels",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Channels"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Channels")
   )
   input <- .devopsguru$list_notification_channels_input(NextToken = NextToken)
   output <- .devopsguru$list_notification_channels_output()
@@ -2455,8 +2434,7 @@ devopsguru_list_organization_insights <- function(StatusFilter, MaxResults = NUL
     http_method = "POST",
     http_path = "/organization/insights",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$list_organization_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken)
   output <- .devopsguru$list_organization_insights_output()
@@ -2554,8 +2532,7 @@ devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale 
     http_method = "POST",
     http_path = "/recommendations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Recommendations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Recommendations")
   )
   input <- .devopsguru$list_recommendations_input(InsightId = InsightId, NextToken = NextToken, Locale = Locale, AccountId = AccountId)
   output <- .devopsguru$list_recommendations_output()
@@ -2602,8 +2579,7 @@ devopsguru_put_feedback <- function(InsightFeedback = NULL) {
     http_method = "PUT",
     http_path = "/feedback",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$put_feedback_input(InsightFeedback = InsightFeedback)
   output <- .devopsguru$put_feedback_output()
@@ -2648,8 +2624,7 @@ devopsguru_remove_notification_channel <- function(Id) {
     http_method = "DELETE",
     http_path = "/channels/{Id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$remove_notification_channel_input(Id = Id)
   output <- .devopsguru$remove_notification_channel_output()
@@ -2838,8 +2813,7 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
     http_method = "POST",
     http_path = "/insights/search",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$search_insights_input(StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
   output <- .devopsguru$search_insights_output()
@@ -3031,8 +3005,7 @@ devopsguru_search_organization_insights <- function(AccountIds, StartTimeRange, 
     http_method = "POST",
     http_path = "/organization/insights/search",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$search_organization_insights_input(AccountIds = AccountIds, StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
   output <- .devopsguru$search_organization_insights_output()
@@ -3094,8 +3067,7 @@ devopsguru_start_cost_estimation <- function(ResourceCollection, ClientToken = N
     http_method = "PUT",
     http_path = "/cost-estimation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$start_cost_estimation_input(ResourceCollection = ResourceCollection, ClientToken = ClientToken)
   output <- .devopsguru$start_cost_estimation_output()
@@ -3147,8 +3119,7 @@ devopsguru_update_event_sources_config <- function(EventSources = NULL) {
     http_method = "PUT",
     http_path = "/event-sources",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$update_event_sources_config_input(EventSources = EventSources)
   output <- .devopsguru$update_event_sources_config_output()
@@ -3215,8 +3186,7 @@ devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
     http_method = "PUT",
     http_path = "/resource-collections",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$update_resource_collection_input(Action = Action, ResourceCollection = ResourceCollection)
   output <- .devopsguru$update_resource_collection_output()
@@ -3277,8 +3247,7 @@ devopsguru_update_service_integration <- function(ServiceIntegration) {
     http_method = "PUT",
     http_path = "/service-integrations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .devopsguru$update_service_integration_input(ServiceIntegration = ServiceIntegration)
   output <- .devopsguru$update_service_integration_output()

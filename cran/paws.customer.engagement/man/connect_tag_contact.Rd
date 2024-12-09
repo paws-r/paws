@@ -12,8 +12,8 @@ connect_tag_contact(ContactId, InstanceId, Tags)
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
-\item{Tags}{[required] The tags to be assigned to the contact resource. For example, \\ "Tags":
-\\"key1":"value1", "key2":"value2"\\ \\.
+\item{Tags}{[required] The tags to be assigned to the contact resource. For example, \{
+"Tags": \{"key1":"value1", "key2":"value2"\} \}.
 
 Authorization is not supported by this tag.}
 }

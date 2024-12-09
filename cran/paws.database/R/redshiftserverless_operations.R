@@ -26,8 +26,7 @@ redshiftserverless_convert_recovery_point_to_snapshot <- function(recoveryPointI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$convert_recovery_point_to_snapshot_input(recoveryPointId = recoveryPointId, retentionPeriod = retentionPeriod, snapshotName = snapshotName, tags = tags)
   output <- .redshiftserverless$convert_recovery_point_to_snapshot_output()
@@ -59,8 +58,7 @@ redshiftserverless_create_custom_domain_association <- function(customDomainCert
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$create_custom_domain_association_input(customDomainCertificateArn = customDomainCertificateArn, customDomainName = customDomainName, workgroupName = workgroupName)
   output <- .redshiftserverless$create_custom_domain_association_output()
@@ -101,8 +99,7 @@ redshiftserverless_create_endpoint_access <- function(endpointName, ownerAccount
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$create_endpoint_access_input(endpointName = endpointName, ownerAccount = ownerAccount, subnetIds = subnetIds, vpcSecurityGroupIds = vpcSecurityGroupIds, workgroupName = workgroupName)
   output <- .redshiftserverless$create_endpoint_access_output()
@@ -157,8 +154,7 @@ redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$create_namespace_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, adminUserPassword = adminUserPassword, adminUsername = adminUsername, dbName = dbName, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, redshiftIdcApplicationArn = redshiftIdcApplicationArn, tags = tags)
   output <- .redshiftserverless$create_namespace_output()
@@ -197,14 +193,14 @@ redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NU
 #' format) scheduled action. Schedule invocations must be separated by at
 #' least one hour. Times are in UTC.
 #' 
-#' - Format of at timestamp is `yyyy-mm-ddThh:mm:ss`. For example,
-#'   `2016-03-04T17:27:00`.
+#' -   Format of at timestamp is `yyyy-mm-ddThh:mm:ss`. For example,
+#'     `2016-03-04T17:27:00`.
 #' 
-#' - Format of cron expression is
-#'   `(Minutes Hours Day-of-month Month Day-of-week Year)`. For example,
-#'   `"(0 10 ? * MON *)"`. For more information, see [Cron
-#'   Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
-#'   in the *Amazon CloudWatch Events User Guide*.
+#' -   Format of cron expression is
+#'     `(Minutes Hours Day-of-month Month Day-of-week Year)`. For example,
+#'     `"(0 10 ? * MON *)"`. For more information, see [Cron
+#'     Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
+#'     in the *Amazon CloudWatch Events User Guide*.
 #' @param scheduledActionDescription The description of the scheduled action.
 #' @param scheduledActionName &#91;required&#93; The name of the scheduled action.
 #' @param startTime The start time in UTC when the schedule is active. Before this time, the
@@ -220,8 +216,7 @@ redshiftserverless_create_scheduled_action <- function(enabled = NULL, endTime =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$create_scheduled_action_input(enabled = enabled, endTime = endTime, namespaceName = namespaceName, roleArn = roleArn, schedule = schedule, scheduledActionDescription = scheduledActionDescription, scheduledActionName = scheduledActionName, startTime = startTime, targetAction = targetAction)
   output <- .redshiftserverless$create_scheduled_action_output()
@@ -256,8 +251,7 @@ redshiftserverless_create_snapshot <- function(namespaceName, retentionPeriod = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$create_snapshot_input(namespaceName = namespaceName, retentionPeriod = retentionPeriod, snapshotName = snapshotName, tags = tags)
   output <- .redshiftserverless$create_snapshot_output()
@@ -294,8 +288,7 @@ redshiftserverless_create_snapshot_copy_configuration <- function(destinationKms
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$create_snapshot_copy_configuration_input(destinationKmsKeyId = destinationKmsKeyId, destinationRegion = destinationRegion, namespaceName = namespaceName, snapshotRetentionPeriod = snapshotRetentionPeriod)
   output <- .redshiftserverless$create_snapshot_copy_configuration_output()
@@ -337,8 +330,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$create_usage_limit_input(amount = amount, breachAction = breachAction, period = period, resourceArn = resourceArn, usageType = usageType)
   output <- .redshiftserverless$create_usage_limit_output()
@@ -393,8 +385,7 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
@@ -425,8 +416,7 @@ redshiftserverless_delete_custom_domain_association <- function(customDomainName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_custom_domain_association_input(customDomainName = customDomainName, workgroupName = workgroupName)
   output <- .redshiftserverless$delete_custom_domain_association_output()
@@ -456,8 +446,7 @@ redshiftserverless_delete_endpoint_access <- function(endpointName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_endpoint_access_input(endpointName = endpointName)
   output <- .redshiftserverless$delete_endpoint_access_output()
@@ -489,8 +478,7 @@ redshiftserverless_delete_namespace <- function(finalSnapshotName = NULL, finalS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_namespace_input(finalSnapshotName = finalSnapshotName, finalSnapshotRetentionPeriod = finalSnapshotRetentionPeriod, namespaceName = namespaceName)
   output <- .redshiftserverless$delete_namespace_output()
@@ -520,8 +508,7 @@ redshiftserverless_delete_resource_policy <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_resource_policy_input(resourceArn = resourceArn)
   output <- .redshiftserverless$delete_resource_policy_output()
@@ -551,8 +538,7 @@ redshiftserverless_delete_scheduled_action <- function(scheduledActionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_scheduled_action_input(scheduledActionName = scheduledActionName)
   output <- .redshiftserverless$delete_scheduled_action_output()
@@ -582,8 +568,7 @@ redshiftserverless_delete_snapshot <- function(snapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_snapshot_input(snapshotName = snapshotName)
   output <- .redshiftserverless$delete_snapshot_output()
@@ -613,8 +598,7 @@ redshiftserverless_delete_snapshot_copy_configuration <- function(snapshotCopyCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_snapshot_copy_configuration_input(snapshotCopyConfigurationId = snapshotCopyConfigurationId)
   output <- .redshiftserverless$delete_snapshot_copy_configuration_output()
@@ -644,8 +628,7 @@ redshiftserverless_delete_usage_limit <- function(usageLimitId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_usage_limit_input(usageLimitId = usageLimitId)
   output <- .redshiftserverless$delete_usage_limit_output()
@@ -675,8 +658,7 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$delete_workgroup_input(workgroupName = workgroupName)
   output <- .redshiftserverless$delete_workgroup_output()
@@ -702,19 +684,19 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
 #' 
 #' Constraints:
 #' 
-#' - Must be 1 to 64 alphanumeric characters or hyphens.
+#' -   Must be 1 to 64 alphanumeric characters or hyphens.
 #' 
-#' - Must contain only uppercase or lowercase letters, numbers, underscore,
-#'   plus sign, period (dot), at symbol (@@), or hyphen.
+#' -   Must contain only uppercase or lowercase letters, numbers,
+#'     underscore, plus sign, period (dot), at symbol (@@), or hyphen.
 #' 
-#' - The first character must be a letter.
+#' -   The first character must be a letter.
 #' 
-#' - Must not contain a colon ( : ) or slash ( / ).
+#' -   Must not contain a colon ( : ) or slash ( / ).
 #' 
-#' - Cannot be a reserved word. A list of reserved words can be found in
-#'   [Reserved
-#'   Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
-#'   in the Amazon Redshift Database Developer Guide
+#' -   Cannot be a reserved word. A list of reserved words can be found in
+#'     [Reserved
+#'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
+#'     in the Amazon Redshift Database Developer Guide
 #' @param durationSeconds The number of seconds until the returned temporary password expires. The
 #' minimum is 900 seconds, and the maximum is 3600 seconds.
 #' @param workgroupName The name of the workgroup associated with the database.
@@ -728,8 +710,7 @@ redshiftserverless_get_credentials <- function(customDomainName = NULL, dbName =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_credentials_input(customDomainName = customDomainName, dbName = dbName, durationSeconds = durationSeconds, workgroupName = workgroupName)
   output <- .redshiftserverless$get_credentials_output()
@@ -760,8 +741,7 @@ redshiftserverless_get_custom_domain_association <- function(customDomainName, w
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_custom_domain_association_input(customDomainName = customDomainName, workgroupName = workgroupName)
   output <- .redshiftserverless$get_custom_domain_association_output()
@@ -791,8 +771,7 @@ redshiftserverless_get_endpoint_access <- function(endpointName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_endpoint_access_input(endpointName = endpointName)
   output <- .redshiftserverless$get_endpoint_access_output()
@@ -822,8 +801,7 @@ redshiftserverless_get_namespace <- function(namespaceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_namespace_input(namespaceName = namespaceName)
   output <- .redshiftserverless$get_namespace_output()
@@ -853,8 +831,7 @@ redshiftserverless_get_recovery_point <- function(recoveryPointId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_recovery_point_input(recoveryPointId = recoveryPointId)
   output <- .redshiftserverless$get_recovery_point_output()
@@ -884,8 +861,7 @@ redshiftserverless_get_resource_policy <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_resource_policy_input(resourceArn = resourceArn)
   output <- .redshiftserverless$get_resource_policy_output()
@@ -915,8 +891,7 @@ redshiftserverless_get_scheduled_action <- function(scheduledActionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_scheduled_action_input(scheduledActionName = scheduledActionName)
   output <- .redshiftserverless$get_scheduled_action_output()
@@ -949,8 +924,7 @@ redshiftserverless_get_snapshot <- function(ownerAccount = NULL, snapshotArn = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_snapshot_input(ownerAccount = ownerAccount, snapshotArn = snapshotArn, snapshotName = snapshotName)
   output <- .redshiftserverless$get_snapshot_output()
@@ -982,8 +956,7 @@ redshiftserverless_get_table_restore_status <- function(tableRestoreRequestId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_table_restore_status_input(tableRestoreRequestId = tableRestoreRequestId)
   output <- .redshiftserverless$get_table_restore_status_output()
@@ -1013,8 +986,7 @@ redshiftserverless_get_usage_limit <- function(usageLimitId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_usage_limit_input(usageLimitId = usageLimitId)
   output <- .redshiftserverless$get_usage_limit_output()
@@ -1044,8 +1016,7 @@ redshiftserverless_get_workgroup <- function(workgroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$get_workgroup_input(workgroupName = workgroupName)
   output <- .redshiftserverless$get_workgroup_output()
@@ -1081,8 +1052,7 @@ redshiftserverless_list_custom_domain_associations <- function(customDomainCerti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "associations"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "associations")
   )
   input <- .redshiftserverless$list_custom_domain_associations_input(customDomainCertificateArn = customDomainCertificateArn, customDomainName = customDomainName, maxResults = maxResults, nextToken = nextToken)
   output <- .redshiftserverless$list_custom_domain_associations_output()
@@ -1124,8 +1094,7 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints")
   )
   input <- .redshiftserverless$list_endpoint_access_input(maxResults = maxResults, nextToken = nextToken, ownerAccount = ownerAccount, vpcId = vpcId, workgroupName = workgroupName)
   output <- .redshiftserverless$list_endpoint_access_output()
@@ -1161,8 +1130,7 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "namespaces"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "namespaces")
   )
   input <- .redshiftserverless$list_namespaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .redshiftserverless$list_namespaces_output()
@@ -1204,8 +1172,7 @@ redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recoveryPoints"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recoveryPoints")
   )
   input <- .redshiftserverless$list_recovery_points_input(endTime = endTime, maxResults = maxResults, namespaceArn = namespaceArn, namespaceName = namespaceName, nextToken = nextToken, startTime = startTime)
   output <- .redshiftserverless$list_recovery_points_output()
@@ -1240,8 +1207,7 @@ redshiftserverless_list_scheduled_actions <- function(maxResults = NULL, namespa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scheduledActions"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "scheduledActions")
   )
   input <- .redshiftserverless$list_scheduled_actions_input(maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken)
   output <- .redshiftserverless$list_scheduled_actions_output()
@@ -1276,8 +1242,7 @@ redshiftserverless_list_snapshot_copy_configurations <- function(maxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshotCopyConfigurations"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshotCopyConfigurations")
   )
   input <- .redshiftserverless$list_snapshot_copy_configurations_input(maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken)
   output <- .redshiftserverless$list_snapshot_copy_configurations_output()
@@ -1317,8 +1282,7 @@ redshiftserverless_list_snapshots <- function(endTime = NULL, maxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshots"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshots")
   )
   input <- .redshiftserverless$list_snapshots_input(endTime = endTime, maxResults = maxResults, namespaceArn = namespaceArn, namespaceName = namespaceName, nextToken = nextToken, ownerAccount = ownerAccount, startTime = startTime)
   output <- .redshiftserverless$list_snapshots_output()
@@ -1361,8 +1325,7 @@ redshiftserverless_list_table_restore_status <- function(maxResults = NULL, name
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tableRestoreStatuses"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tableRestoreStatuses")
   )
   input <- .redshiftserverless$list_table_restore_status_input(maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken, workgroupName = workgroupName)
   output <- .redshiftserverless$list_table_restore_status_output()
@@ -1392,8 +1355,7 @@ redshiftserverless_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .redshiftserverless$list_tags_for_resource_output()
@@ -1433,8 +1395,7 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "usageLimits"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "usageLimits")
   )
   input <- .redshiftserverless$list_usage_limits_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn, usageType = usageType)
   output <- .redshiftserverless$list_usage_limits_output()
@@ -1470,8 +1431,7 @@ redshiftserverless_list_workgroups <- function(maxResults = NULL, nextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workgroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workgroups")
   )
   input <- .redshiftserverless$list_workgroups_input(maxResults = maxResults, nextToken = nextToken, ownerAccount = ownerAccount)
   output <- .redshiftserverless$list_workgroups_output()
@@ -1506,8 +1466,7 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$put_resource_policy_input(policy = policy, resourceArn = resourceArn)
   output <- .redshiftserverless$put_resource_policy_output()
@@ -1539,8 +1498,7 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$restore_from_recovery_point_input(namespaceName = namespaceName, recoveryPointId = recoveryPointId, workgroupName = workgroupName)
   output <- .redshiftserverless$restore_from_recovery_point_output()
@@ -1586,8 +1544,7 @@ redshiftserverless_restore_from_snapshot <- function(adminPasswordSecretKmsKeyId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$restore_from_snapshot_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, ownerAccount = ownerAccount, snapshotArn = snapshotArn, snapshotName = snapshotName, workgroupName = workgroupName)
   output <- .redshiftserverless$restore_from_snapshot_output()
@@ -1629,8 +1586,7 @@ redshiftserverless_restore_table_from_recovery_point <- function(activateCaseSen
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$restore_table_from_recovery_point_input(activateCaseSensitiveIdentifier = activateCaseSensitiveIdentifier, namespaceName = namespaceName, newTableName = newTableName, recoveryPointId = recoveryPointId, sourceDatabaseName = sourceDatabaseName, sourceSchemaName = sourceSchemaName, sourceTableName = sourceTableName, targetDatabaseName = targetDatabaseName, targetSchemaName = targetSchemaName, workgroupName = workgroupName)
   output <- .redshiftserverless$restore_table_from_recovery_point_output()
@@ -1672,8 +1628,7 @@ redshiftserverless_restore_table_from_snapshot <- function(activateCaseSensitive
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$restore_table_from_snapshot_input(activateCaseSensitiveIdentifier = activateCaseSensitiveIdentifier, namespaceName = namespaceName, newTableName = newTableName, snapshotName = snapshotName, sourceDatabaseName = sourceDatabaseName, sourceSchemaName = sourceSchemaName, sourceTableName = sourceTableName, targetDatabaseName = targetDatabaseName, targetSchemaName = targetSchemaName, workgroupName = workgroupName)
   output <- .redshiftserverless$restore_table_from_snapshot_output()
@@ -1704,8 +1659,7 @@ redshiftserverless_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .redshiftserverless$tag_resource_output()
@@ -1736,8 +1690,7 @@ redshiftserverless_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .redshiftserverless$untag_resource_output()
@@ -1771,8 +1724,7 @@ redshiftserverless_update_custom_domain_association <- function(customDomainCert
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$update_custom_domain_association_input(customDomainCertificateArn = customDomainCertificateArn, customDomainName = customDomainName, workgroupName = workgroupName)
   output <- .redshiftserverless$update_custom_domain_association_output()
@@ -1804,8 +1756,7 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$update_endpoint_access_input(endpointName = endpointName, vpcSecurityGroupIds = vpcSecurityGroupIds)
   output <- .redshiftserverless$update_endpoint_access_output()
@@ -1859,8 +1810,7 @@ redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$update_namespace_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, adminUserPassword = adminUserPassword, adminUsername = adminUsername, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName)
   output <- .redshiftserverless$update_namespace_output()
@@ -1894,14 +1844,14 @@ redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NU
 #' format) scheduled action. Schedule invocations must be separated by at
 #' least one hour. Times are in UTC.
 #' 
-#' - Format of at timestamp is `yyyy-mm-ddThh:mm:ss`. For example,
-#'   `2016-03-04T17:27:00`.
+#' -   Format of at timestamp is `yyyy-mm-ddThh:mm:ss`. For example,
+#'     `2016-03-04T17:27:00`.
 #' 
-#' - Format of cron expression is
-#'   `(Minutes Hours Day-of-month Month Day-of-week Year)`. For example,
-#'   `"(0 10 ? * MON *)"`. For more information, see [Cron
-#'   Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
-#'   in the *Amazon CloudWatch Events User Guide*.
+#' -   Format of cron expression is
+#'     `(Minutes Hours Day-of-month Month Day-of-week Year)`. For example,
+#'     `"(0 10 ? * MON *)"`. For more information, see [Cron
+#'     Expressions](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-create-rule-schedule.html#CronExpressions)
+#'     in the *Amazon CloudWatch Events User Guide*.
 #' @param scheduledActionDescription The descripion of the scheduled action to update to.
 #' @param scheduledActionName &#91;required&#93; The name of the scheduled action to update to.
 #' @param startTime The start time in UTC of the scheduled action to update to.
@@ -1916,8 +1866,7 @@ redshiftserverless_update_scheduled_action <- function(enabled = NULL, endTime =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$update_scheduled_action_input(enabled = enabled, endTime = endTime, roleArn = roleArn, schedule = schedule, scheduledActionDescription = scheduledActionDescription, scheduledActionName = scheduledActionName, startTime = startTime, targetAction = targetAction)
   output <- .redshiftserverless$update_scheduled_action_output()
@@ -1948,8 +1897,7 @@ redshiftserverless_update_snapshot <- function(retentionPeriod = NULL, snapshotN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$update_snapshot_input(retentionPeriod = retentionPeriod, snapshotName = snapshotName)
   output <- .redshiftserverless$update_snapshot_output()
@@ -1981,8 +1929,7 @@ redshiftserverless_update_snapshot_copy_configuration <- function(snapshotCopyCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$update_snapshot_copy_configuration_input(snapshotCopyConfigurationId = snapshotCopyConfigurationId, snapshotRetentionPeriod = snapshotRetentionPeriod)
   output <- .redshiftserverless$update_snapshot_copy_configuration_output()
@@ -2018,8 +1965,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$update_usage_limit_input(amount = amount, breachAction = breachAction, usageLimitId = usageLimitId)
   output <- .redshiftserverless$update_usage_limit_output()
@@ -2073,8 +2019,7 @@ redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, ipAddressType = ipAddressType, maxCapacity = maxCapacity, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()

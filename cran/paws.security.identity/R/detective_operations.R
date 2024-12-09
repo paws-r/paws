@@ -25,8 +25,7 @@ detective_accept_invitation <- function(GraphArn) {
     http_method = "PUT",
     http_path = "/invitation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$accept_invitation_input(GraphArn = GraphArn)
   output <- .detective$accept_invitation_output()
@@ -58,8 +57,7 @@ detective_batch_get_graph_member_datasources <- function(GraphArn, AccountIds) {
     http_method = "POST",
     http_path = "/graph/datasources/get",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$batch_get_graph_member_datasources_input(GraphArn = GraphArn, AccountIds = AccountIds)
   output <- .detective$batch_get_graph_member_datasources_output()
@@ -89,8 +87,7 @@ detective_batch_get_membership_datasources <- function(GraphArns) {
     http_method = "POST",
     http_path = "/membership/datasources/get",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$batch_get_membership_datasources_input(GraphArns = GraphArns)
   output <- .detective$batch_get_membership_datasources_output()
@@ -124,8 +121,7 @@ detective_create_graph <- function(Tags = NULL) {
     http_method = "POST",
     http_path = "/graph",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$create_graph_input(Tags = Tags)
   output <- .detective$create_graph_output()
@@ -168,8 +164,7 @@ detective_create_members <- function(GraphArn, Message = NULL, DisableEmailNotif
     http_method = "POST",
     http_path = "/graph/members",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$create_members_input(GraphArn = GraphArn, Message = Message, DisableEmailNotification = DisableEmailNotification, Accounts = Accounts)
   output <- .detective$create_members_output()
@@ -199,8 +194,7 @@ detective_delete_graph <- function(GraphArn) {
     http_method = "POST",
     http_path = "/graph/removal",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$delete_graph_input(GraphArn = GraphArn)
   output <- .detective$delete_graph_output()
@@ -233,8 +227,7 @@ detective_delete_members <- function(GraphArn, AccountIds) {
     http_method = "POST",
     http_path = "/graph/members/removal",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$delete_members_input(GraphArn = GraphArn, AccountIds = AccountIds)
   output <- .detective$delete_members_output()
@@ -265,8 +258,7 @@ detective_describe_organization_configuration <- function(GraphArn) {
     http_method = "POST",
     http_path = "/orgs/describeOrganizationConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$describe_organization_configuration_input(GraphArn = GraphArn)
   output <- .detective$describe_organization_configuration_output()
@@ -296,8 +288,7 @@ detective_disable_organization_admin_account <- function() {
     http_method = "POST",
     http_path = "/orgs/disableAdminAccount",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$disable_organization_admin_account_input()
   output <- .detective$disable_organization_admin_account_output()
@@ -330,8 +321,7 @@ detective_disassociate_membership <- function(GraphArn) {
     http_method = "POST",
     http_path = "/membership/removal",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$disassociate_membership_input(GraphArn = GraphArn)
   output <- .detective$disassociate_membership_output()
@@ -363,8 +353,7 @@ detective_enable_organization_admin_account <- function(AccountId) {
     http_method = "POST",
     http_path = "/orgs/enableAdminAccount",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$enable_organization_admin_account_input(AccountId = AccountId)
   output <- .detective$enable_organization_admin_account_output()
@@ -396,8 +385,7 @@ detective_get_investigation <- function(GraphArn, InvestigationId) {
     http_method = "POST",
     http_path = "/investigations/getInvestigation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$get_investigation_input(GraphArn = GraphArn, InvestigationId = InvestigationId)
   output <- .detective$get_investigation_output()
@@ -435,8 +423,7 @@ detective_get_members <- function(GraphArn, AccountIds) {
     http_method = "POST",
     http_path = "/graph/members/get",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$get_members_input(GraphArn = GraphArn, AccountIds = AccountIds)
   output <- .detective$get_members_output()
@@ -470,8 +457,7 @@ detective_list_datasource_packages <- function(GraphArn, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/graph/datasources/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_datasource_packages_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_datasource_packages_output()
@@ -507,8 +493,7 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/graphs/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_graphs_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_graphs_output()
@@ -550,8 +535,7 @@ detective_list_indicators <- function(GraphArn, InvestigationId, IndicatorType =
     http_method = "POST",
     http_path = "/investigations/listIndicators",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$list_indicators_input(GraphArn = GraphArn, InvestigationId = InvestigationId, IndicatorType = IndicatorType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_indicators_output()
@@ -592,8 +576,7 @@ detective_list_investigations <- function(GraphArn, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/investigations/listInvestigations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$list_investigations_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults, FilterCriteria = FilterCriteria, SortCriteria = SortCriteria)
   output <- .detective$list_investigations_output()
@@ -629,8 +612,7 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/invitations/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_invitations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_invitations_output()
@@ -667,8 +649,7 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/graph/members/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_members_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_members_output()
@@ -702,8 +683,7 @@ detective_list_organization_admin_accounts <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/orgs/adminAccountslist",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_organization_admin_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_organization_admin_accounts_output()
@@ -733,8 +713,7 @@ detective_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .detective$list_tags_for_resource_output()
@@ -767,8 +746,7 @@ detective_reject_invitation <- function(GraphArn) {
     http_method = "POST",
     http_path = "/invitation/removal",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$reject_invitation_input(GraphArn = GraphArn)
   output <- .detective$reject_invitation_output()
@@ -804,8 +782,7 @@ detective_start_investigation <- function(GraphArn, EntityArn, ScopeStartTime, S
     http_method = "POST",
     http_path = "/investigations/startInvestigation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$start_investigation_input(GraphArn = GraphArn, EntityArn = EntityArn, ScopeStartTime = ScopeStartTime, ScopeEndTime = ScopeEndTime)
   output <- .detective$start_investigation_output()
@@ -840,8 +817,7 @@ detective_start_monitoring_member <- function(GraphArn, AccountId) {
     http_method = "POST",
     http_path = "/graph/member/monitoringstate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$start_monitoring_member_input(GraphArn = GraphArn, AccountId = AccountId)
   output <- .detective$start_monitoring_member_output()
@@ -875,8 +851,7 @@ detective_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .detective$tag_resource_output()
@@ -908,8 +883,7 @@ detective_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .detective$untag_resource_output()
@@ -940,8 +914,7 @@ detective_update_datasource_packages <- function(GraphArn, DatasourcePackages) {
     http_method = "POST",
     http_path = "/graph/datasources/update",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$update_datasource_packages_input(GraphArn = GraphArn, DatasourcePackages = DatasourcePackages)
   output <- .detective$update_datasource_packages_output()
@@ -974,8 +947,7 @@ detective_update_investigation_state <- function(GraphArn, InvestigationId, Stat
     http_method = "POST",
     http_path = "/investigations/updateInvestigationState",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$update_investigation_state_input(GraphArn = GraphArn, InvestigationId = InvestigationId, State = State)
   output <- .detective$update_investigation_state_output()
@@ -1008,8 +980,7 @@ detective_update_organization_configuration <- function(GraphArn, AutoEnable = N
     http_method = "POST",
     http_path = "/orgs/updateOrganizationConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .detective$update_organization_configuration_input(GraphArn = GraphArn, AutoEnable = AutoEnable)
   output <- .detective$update_organization_configuration_output()

@@ -15,7 +15,7 @@ s3control_get_data_access(
 )
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
+\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
 
 \item{Target}{[required] The S3 URI path of the data to which you are requesting temporary access
 credentials. If the requesting account has an access grant for this

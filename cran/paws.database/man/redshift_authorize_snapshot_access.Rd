@@ -19,9 +19,9 @@ redshift_authorize_snapshot_access(
 
 \item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from.
 \itemize{
-\item \emph{If the snapshot to access doesn't exist and the associated IAM policy
-doesn't allow access to all (}) snapshots* - This parameter is
-required. Otherwise, permissions aren't available to check if the
+\item \emph{If the snapshot to access doesn't exist and the associated IAM
+policy doesn't allow access to all (}) snapshots* - This parameter
+is required. Otherwise, permissions aren't available to check if the
 snapshot exists.
 \item \emph{If the snapshot to access exists} - This parameter isn't required.
 Redshift can retrieve the cluster identifier and use it to validate

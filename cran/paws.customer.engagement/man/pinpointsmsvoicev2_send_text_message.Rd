@@ -59,9 +59,9 @@ received after completing the sender ID registration process.
 the sender ID registration process.
 
 Make sure that the Template ID that you specify matches your message
-template exactly. If your message doesn't match the template that you
-provided during the registration process, the mobile carriers might
-reject your message.
+template exactly. If your message doesn't match the template that
+you provided during the registration process, the mobile carriers
+might reject your message.
 }}
 
 \item{DryRun}{When set to true, the message is checked and validated, but isn't sent

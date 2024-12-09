@@ -18,8 +18,8 @@ ec2_describe_local_gateway_virtual_interfaces(
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{local-address} - The local address.
-\item \code{local-bgp-asn} - The Border Gateway Protocol (BGP) Autonomous System
-Number (ASN) of the local gateway.
+\item \code{local-bgp-asn} - The Border Gateway Protocol (BGP) Autonomous
+System Number (ASN) of the local gateway.
 \item \code{local-gateway-id} - The ID of the local gateway.
 \item \code{local-gateway-virtual-interface-id} - The ID of the virtual
 interface.

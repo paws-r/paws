@@ -25,7 +25,8 @@ within the Amazon Web Services account.}
 \itemize{
 \item \code{ENABLED} - Anything specified in this assignment is used when
 creating the data source.
-\item \code{DISABLED} - This assignment isn't used when creating the data source.
+\item \code{DISABLED} - This assignment isn't used when creating the data
+source.
 \item \code{DRAFT} - This assignment is an unfinished draft and isn't used when
 creating the data source.
 }}

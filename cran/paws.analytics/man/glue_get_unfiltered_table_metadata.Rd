@@ -37,16 +37,17 @@ capable of enforcing when calling the
 \code{\link[=glue_get_unfiltered_table_metadata]{get_unfiltered_table_metadata}}
 API operation. Accepted values are:
 \itemize{
-\item \code{COLUMN_PERMISSION} - Column permissions ensure that users can access
-only specific columns in the table. If there are particular columns
-contain sensitive data, data lake administrators can define column
-filters that exclude access to specific columns.
+\item \code{COLUMN_PERMISSION} - Column permissions ensure that users can
+access only specific columns in the table. If there are particular
+columns contain sensitive data, data lake administrators can define
+column filters that exclude access to specific columns.
 \item \code{CELL_FILTER_PERMISSION} - Cell-level filtering combines column
 filtering (include or exclude columns) and row filter expressions to
 restrict access to individual elements in the table.
-\item \code{NESTED_PERMISSION} - Nested permissions combines cell-level filtering
-and nested column filtering to restrict access to columns and/or
-nested columns in specific rows based on row filter expressions.
+\item \code{NESTED_PERMISSION} - Nested permissions combines cell-level
+filtering and nested column filtering to restrict access to columns
+and/or nested columns in specific rows based on row filter
+expressions.
 \item \code{NESTED_CELL_PERMISSION} - Nested cell permissions combines nested
 permission with nested cell-level filtering. This allows different
 subsets of nested columns to be restricted based on an array of row

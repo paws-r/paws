@@ -43,7 +43,8 @@ in the \emph{Amazon EKS User Guide}.}
 changed a value from the Amazon EKS default value. Conflicts are handled
 based on the option you choose:
 \itemize{
-\item \strong{None} – Amazon EKS doesn't change the value. The update might fail.
+\item \strong{None} – Amazon EKS doesn't change the value. The update might
+fail.
 \item \strong{Overwrite} – Amazon EKS overwrites the changed value back to the
 Amazon EKS default value.
 \item \strong{Preserve} – Amazon EKS preserves the value. If you choose this

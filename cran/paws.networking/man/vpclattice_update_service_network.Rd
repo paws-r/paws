@@ -9,7 +9,8 @@ vpclattice_update_service_network(authType, serviceNetworkIdentifier)
 \arguments{
 \item{authType}{[required] The type of IAM policy.
 \itemize{
-\item \code{NONE}: The resource does not use an IAM policy. This is the default.
+\item \code{NONE}: The resource does not use an IAM policy. This is the
+default.
 \item \code{AWS_IAM}: The resource uses an IAM policy. When this type is used,
 auth is enabled and an auth policy is required.
 }}

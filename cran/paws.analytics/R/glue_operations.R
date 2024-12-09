@@ -27,8 +27,7 @@ glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_create_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionInputList = PartitionInputList)
   output <- .glue$batch_create_partition_output()
@@ -60,8 +59,7 @@ glue_batch_delete_connection <- function(CatalogId = NULL, ConnectionNameList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_delete_connection_input(CatalogId = CatalogId, ConnectionNameList = ConnectionNameList)
   output <- .glue$batch_delete_connection_output()
@@ -96,8 +94,7 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_delete_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionsToDelete = PartitionsToDelete)
   output <- .glue$batch_delete_partition_output()
@@ -132,8 +129,7 @@ glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDele
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_delete_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TablesToDelete = TablesToDelete, TransactionId = TransactionId)
   output <- .glue$batch_delete_table_output()
@@ -170,8 +166,7 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_delete_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionIds = VersionIds)
   output <- .glue$batch_delete_table_version_output()
@@ -204,8 +199,7 @@ glue_batch_get_blueprints <- function(Names, IncludeBlueprint = NULL, IncludePar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_blueprints_input(Names = Names, IncludeBlueprint = IncludeBlueprint, IncludeParameterSpec = IncludeParameterSpec)
   output <- .glue$batch_get_blueprints_output()
@@ -236,8 +230,7 @@ glue_batch_get_crawlers <- function(CrawlerNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_crawlers_input(CrawlerNames = CrawlerNames)
   output <- .glue$batch_get_crawlers_output()
@@ -268,8 +261,7 @@ glue_batch_get_custom_entity_types <- function(Names) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_custom_entity_types_input(Names = Names)
   output <- .glue$batch_get_custom_entity_types_output()
@@ -299,8 +291,7 @@ glue_batch_get_data_quality_result <- function(ResultIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_data_quality_result_input(ResultIds = ResultIds)
   output <- .glue$batch_get_data_quality_result_output()
@@ -332,8 +323,7 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_dev_endpoints_input(DevEndpointNames = DevEndpointNames)
   output <- .glue$batch_get_dev_endpoints_output()
@@ -364,8 +354,7 @@ glue_batch_get_jobs <- function(JobNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_jobs_input(JobNames = JobNames)
   output <- .glue$batch_get_jobs_output()
@@ -399,8 +388,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionsToGet = PartitionsToGet)
   output <- .glue$batch_get_partition_output()
@@ -431,8 +419,7 @@ glue_batch_get_table_optimizer <- function(Entries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_table_optimizer_input(Entries = Entries)
   output <- .glue$batch_get_table_optimizer_output()
@@ -463,8 +450,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_triggers_input(TriggerNames = TriggerNames)
   output <- .glue$batch_get_triggers_output()
@@ -497,8 +483,7 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_get_workflows_input(Names = Names, IncludeGraph = IncludeGraph)
   output <- .glue$batch_get_workflows_output()
@@ -529,8 +514,7 @@ glue_batch_put_data_quality_statistic_annotation <- function(InclusionAnnotation
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_put_data_quality_statistic_annotation_input(InclusionAnnotations = InclusionAnnotations, ClientToken = ClientToken)
   output <- .glue$batch_put_data_quality_statistic_annotation_output()
@@ -562,8 +546,7 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_stop_job_run_input(JobName = JobName, JobRunIds = JobRunIds)
   output <- .glue$batch_stop_job_run_output()
@@ -599,8 +582,7 @@ glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$batch_update_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Entries = Entries)
   output <- .glue$batch_update_partition_output()
@@ -631,8 +613,7 @@ glue_cancel_data_quality_rule_recommendation_run <- function(RunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$cancel_data_quality_rule_recommendation_run_input(RunId = RunId)
   output <- .glue$cancel_data_quality_rule_recommendation_run_output()
@@ -662,8 +643,7 @@ glue_cancel_data_quality_ruleset_evaluation_run <- function(RunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$cancel_data_quality_ruleset_evaluation_run_input(RunId = RunId)
   output <- .glue$cancel_data_quality_ruleset_evaluation_run_output()
@@ -694,8 +674,7 @@ glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$cancel_ml_task_run_input(TransformId = TransformId, TaskRunId = TaskRunId)
   output <- .glue$cancel_ml_task_run_output()
@@ -727,8 +706,7 @@ glue_cancel_statement <- function(SessionId, Id, RequestOrigin = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$cancel_statement_input(SessionId = SessionId, Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$cancel_statement_output()
@@ -760,8 +738,7 @@ glue_check_schema_version_validity <- function(DataFormat, SchemaDefinition) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$check_schema_version_validity_input(DataFormat = DataFormat, SchemaDefinition = SchemaDefinition)
   output <- .glue$check_schema_version_validity_output()
@@ -794,8 +771,7 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_blueprint_input(Name = Name, Description = Description, BlueprintLocation = BlueprintLocation, Tags = Tags)
   output <- .glue$create_blueprint_output()
@@ -828,8 +804,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_classifier_input(GrokClassifier = GrokClassifier, XMLClassifier = XMLClassifier, JsonClassifier = JsonClassifier, CsvClassifier = CsvClassifier)
   output <- .glue$create_classifier_output()
@@ -862,8 +837,7 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput, Tags = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_connection_input(CatalogId = CatalogId, ConnectionInput = ConnectionInput, Tags = Tags)
   output <- .glue$create_connection_output()
@@ -926,8 +900,7 @@ glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, LakeFormationConfiguration = LakeFormationConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration, Tags = Tags)
   output <- .glue$create_crawler_output()
@@ -967,8 +940,7 @@ glue_create_custom_entity_type <- function(Name, RegexString, ContextWords = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_custom_entity_type_input(Name = Name, RegexString = RegexString, ContextWords = ContextWords, Tags = Tags)
   output <- .glue$create_custom_entity_type_output()
@@ -1009,8 +981,7 @@ glue_create_data_quality_ruleset <- function(Name, Description = NULL, Ruleset, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_data_quality_ruleset_input(Name = Name, Description = Description, Ruleset = Ruleset, Tags = Tags, TargetTable = TargetTable, DataQualitySecurityConfiguration = DataQualitySecurityConfiguration, ClientToken = ClientToken)
   output <- .glue$create_data_quality_ruleset_output()
@@ -1043,8 +1014,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_database_input(CatalogId = CatalogId, DatabaseInput = DatabaseInput, Tags = Tags)
   output <- .glue$create_database_output()
@@ -1086,16 +1056,16 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput, Tags = NULL) {
 #' @param WorkerType The type of predefined worker that is allocated to the development
 #' endpoint. Accepts a value of Standard, G.1X, or G.2X.
 #' 
-#' - For the `Standard` worker type, each worker provides 4 vCPU, 16 GB of
-#'   memory and a 50GB disk, and 2 executors per worker.
+#' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
+#'     of memory and a 50GB disk, and 2 executors per worker.
 #' 
-#' - For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
-#'   of memory, 64 GB disk), and provides 1 executor per worker. We
-#'   recommend this worker type for memory-intensive jobs.
+#' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
+#'     of memory, 64 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for memory-intensive jobs.
 #' 
-#' - For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
-#'   of memory, 128 GB disk), and provides 1 executor per worker. We
-#'   recommend this worker type for memory-intensive jobs.
+#' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPU, 32 GB
+#'     of memory, 128 GB disk), and provides 1 executor per worker. We
+#'     recommend this worker type for memory-intensive jobs.
 #' 
 #' Known issue: when a development endpoint is created with the `G.2X`
 #' `WorkerType` configuration, the Spark drivers for the development
@@ -1150,8 +1120,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_dev_endpoint_input(EndpointName = EndpointName, RoleArn = RoleArn, SecurityGroupIds = SecurityGroupIds, SubnetId = SubnetId, PublicKey = PublicKey, PublicKeys = PublicKeys, NumberOfNodes = NumberOfNodes, WorkerType = WorkerType, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, ExtraPythonLibsS3Path = ExtraPythonLibsS3Path, ExtraJarsS3Path = ExtraJarsS3Path, SecurityConfiguration = SecurityConfiguration, Tags = Tags, Arguments = Arguments)
   output <- .glue$create_dev_endpoint_output()
@@ -1174,12 +1143,12 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' account.
 #' @param JobMode A mode that describes how a job was created. Valid values are:
 #' 
-#' - `SCRIPT` - The job was created using the Glue Studio script editor.
+#' -   `SCRIPT` - The job was created using the Glue Studio script editor.
 #' 
-#' - `VISUAL` - The job was created using the Glue Studio visual editor.
+#' -   `VISUAL` - The job was created using the Glue Studio visual editor.
 #' 
-#' - `NOTEBOOK` - The job was created using an interactive sessions
-#'   notebook.
+#' -   `NOTEBOOK` - The job was created using an interactive sessions
+#'     notebook.
 #' 
 #' When the `JobMode` field is missing or null, `SCRIPT` is assigned as the
 #' default value.
@@ -1259,13 +1228,15 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' are running a Python shell job, an Apache Spark ETL job, or an Apache
 #' Spark streaming ETL job:
 #' 
-#' - When you specify a Python shell job (`JobCommand.Name`="pythonshell"),
-#'   you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
+#' -   When you specify a Python shell job
+#'     (`JobCommand.Name`="pythonshell"), you can allocate either 0.0625 or
+#'     1 DPU. The default is 0.0625 DPU.
 #' 
-#' - When you specify an Apache Spark ETL job (`JobCommand.Name`="glueetl")
-#'   or Apache Spark streaming ETL job (`JobCommand.Name`="gluestreaming"),
-#'   you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
-#'   type cannot have a fractional DPU allocation.
+#' -   When you specify an Apache Spark ETL job
+#'     (`JobCommand.Name`="glueetl") or Apache Spark streaming ETL job
+#'     (`JobCommand.Name`="gluestreaming"), you can allocate from 2 to 100
+#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
+#'     DPU allocation.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job.
 #' @param Tags The tags to use with this job. You may use tags to limit access to the
@@ -1295,46 +1266,46 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #' a value of G.1X, G.2X, G.4X, G.8X or G.025X for Spark jobs. Accepts the
 #' value Z.2X for Ray jobs.
 #' 
-#' - For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16 GB
-#'   of memory) with 84GB disk (approximately 34GB free), and provides 1
-#'   executor per worker. We recommend this worker type for workloads such
-#'   as data transforms, joins, and queries, to offers a scalable and cost
-#'   effective way to run most jobs.
+#' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16
+#'     GB of memory) with 84GB disk (approximately 34GB free), and provides
+#'     1 executor per worker. We recommend this worker type for workloads
+#'     such as data transforms, joins, and queries, to offers a scalable
+#'     and cost effective way to run most jobs.
 #' 
-#' - For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32 GB
-#'   of memory) with 128GB disk (approximately 77GB free), and provides 1
-#'   executor per worker. We recommend this worker type for workloads such
-#'   as data transforms, joins, and queries, to offers a scalable and cost
-#'   effective way to run most jobs.
+#' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32
+#'     GB of memory) with 128GB disk (approximately 77GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     workloads such as data transforms, joins, and queries, to offers a
+#'     scalable and cost effective way to run most jobs.
 #' 
-#' - For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64 GB
-#'   of memory) with 256GB disk (approximately 235GB free), and provides 1
-#'   executor per worker. We recommend this worker type for jobs whose
-#'   workloads contain your most demanding transforms, aggregations, joins,
-#'   and queries. This worker type is available only for Glue version 3.0
-#'   or later Spark ETL jobs in the following Amazon Web Services Regions:
-#'   US East (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific
-#'   (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Canada
-#'   (Central), Europe (Frankfurt), Europe (Ireland), and Europe
-#'   (Stockholm).
+#' -   For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64
+#'     GB of memory) with 256GB disk (approximately 235GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     jobs whose workloads contain your most demanding transforms,
+#'     aggregations, joins, and queries. This worker type is available only
+#'     for Glue version 3.0 or later Spark ETL jobs in the following Amazon
+#'     Web Services Regions: US East (Ohio), US East (N. Virginia), US West
+#'     (Oregon), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia
+#'     Pacific (Tokyo), Canada (Central), Europe (Frankfurt), Europe
+#'     (Ireland), and Europe (Stockholm).
 #' 
-#' - For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
-#'   GB of memory) with 512GB disk (approximately 487GB free), and provides
-#'   1 executor per worker. We recommend this worker type for jobs whose
-#'   workloads contain your most demanding transforms, aggregations, joins,
-#'   and queries. This worker type is available only for Glue version 3.0
-#'   or later Spark ETL jobs, in the same Amazon Web Services Regions as
-#'   supported for the `G.4X` worker type.
+#' -   For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
+#'     GB of memory) with 512GB disk (approximately 487GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     jobs whose workloads contain your most demanding transforms,
+#'     aggregations, joins, and queries. This worker type is available only
+#'     for Glue version 3.0 or later Spark ETL jobs, in the same Amazon Web
+#'     Services Regions as supported for the `G.4X` worker type.
 #' 
-#' - For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPUs, 4
-#'   GB of memory) with 84GB disk (approximately 34GB free), and provides 1
-#'   executor per worker. We recommend this worker type for low volume
-#'   streaming jobs. This worker type is only available for Glue version
-#'   3.0 streaming jobs.
+#' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPUs,
+#'     4 GB of memory) with 84GB disk (approximately 34GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     low volume streaming jobs. This worker type is only available for
+#'     Glue version 3.0 streaming jobs.
 #' 
-#' - For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64 GB
-#'   of memory) with 128 GB disk (approximately 120GB free), and provides
-#'   up to 8 Ray workers based on the autoscaler.
+#' -   For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64
+#'     GB of memory) with 128 GB disk (approximately 120GB free), and
+#'     provides up to 8 Ray workers based on the autoscaler.
 #' @param CodeGenConfigurationNodes The representation of a directed acyclic graph on which both the Glue
 #' Studio visual component and Glue Studio code generation is based.
 #' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
@@ -1368,8 +1339,7 @@ glue_create_job <- function(Name, JobMode = NULL, JobRunQueuingEnabled = NULL, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_job_input(Name = Name, JobMode = JobMode, JobRunQueuingEnabled = JobRunQueuingEnabled, Description = Description, LogUri = LogUri, Role = Role, ExecutionProperty = ExecutionProperty, Command = Command, DefaultArguments = DefaultArguments, NonOverridableArguments = NonOverridableArguments, Connections = Connections, MaxRetries = MaxRetries, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, Tags = Tags, NotificationProperty = NotificationProperty, GlueVersion = GlueVersion, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, CodeGenConfigurationNodes = CodeGenConfigurationNodes, ExecutionClass = ExecutionClass, SourceControlDetails = SourceControlDetails, MaintenanceWindow = MaintenanceWindow)
   output <- .glue$create_job_output()
@@ -1399,13 +1369,13 @@ glue_create_job <- function(Name, JobMode = NULL, JobRunQueuingEnabled = NULL, D
 #' permissions to Glue resources, and Amazon S3 permissions required by the
 #' transform.
 #' 
-#' - This role needs Glue service role permissions to allow access to
-#'   resources in Glue. See [Attach a Policy to IAM Users That Access
-#'   Glue](https://docs.aws.amazon.com/glue/latest/dg/attach-policy-iam-user.html).
+#' -   This role needs Glue service role permissions to allow access to
+#'     resources in Glue. See [Attach a Policy to IAM Users That Access
+#'     Glue](https://docs.aws.amazon.com/glue/latest/dg/attach-policy-iam-user.html).
 #' 
-#' - This role needs permission to your Amazon Simple Storage Service
-#'   (Amazon S3) sources, targets, temporary directory, scripts, and any
-#'   libraries used by the task run for this transform.
+#' -   This role needs permission to your Amazon Simple Storage Service
+#'     (Amazon S3) sources, targets, temporary directory, scripts, and any
+#'     libraries used by the task run for this transform.
 #' @param GlueVersion This value determines which version of Glue this machine learning
 #' transform is compatible with. Glue 1.0 is recommended for most
 #' customers. If the value is not set, the Glue compatibility defaults to
@@ -1422,16 +1392,16 @@ glue_create_job <- function(Name, JobMode = NULL, JobRunQueuingEnabled = NULL, D
 #' `MaxCapacity` is a mutually exclusive option with `NumberOfWorkers` and
 #' `WorkerType`.
 #' 
-#' - If either `NumberOfWorkers` or `WorkerType` is set, then `MaxCapacity`
-#'   cannot be set.
+#' -   If either `NumberOfWorkers` or `WorkerType` is set, then
+#'     `MaxCapacity` cannot be set.
 #' 
-#' - If `MaxCapacity` is set then neither `NumberOfWorkers` or `WorkerType`
-#'   can be set.
+#' -   If `MaxCapacity` is set then neither `NumberOfWorkers` or
+#'     `WorkerType` can be set.
 #' 
-#' - If `WorkerType` is set, then `NumberOfWorkers` is required (and vice
-#'   versa).
+#' -   If `WorkerType` is set, then `NumberOfWorkers` is required (and vice
+#'     versa).
 #' 
-#' - `MaxCapacity` and `NumberOfWorkers` must both be at least 1.
+#' -   `MaxCapacity` and `NumberOfWorkers` must both be at least 1.
 #' 
 #' When the `WorkerType` field is set to a value other than `Standard`, the
 #' `MaxCapacity` field is set automatically and becomes read-only.
@@ -1441,28 +1411,28 @@ glue_create_job <- function(Name, JobMode = NULL, JobRunQueuingEnabled = NULL, D
 #' @param WorkerType The type of predefined worker that is allocated when this task runs.
 #' Accepts a value of Standard, G.1X, or G.2X.
 #' 
-#' - For the `Standard` worker type, each worker provides 4 vCPU, 16 GB of
-#'   memory and a 50GB disk, and 2 executors per worker.
+#' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
+#'     of memory and a 50GB disk, and 2 executors per worker.
 #' 
-#' - For the `G.1X` worker type, each worker provides 4 vCPU, 16 GB of
-#'   memory and a 64GB disk, and 1 executor per worker.
+#' -   For the `G.1X` worker type, each worker provides 4 vCPU, 16 GB of
+#'     memory and a 64GB disk, and 1 executor per worker.
 #' 
-#' - For the `G.2X` worker type, each worker provides 8 vCPU, 32 GB of
-#'   memory and a 128GB disk, and 1 executor per worker.
+#' -   For the `G.2X` worker type, each worker provides 8 vCPU, 32 GB of
+#'     memory and a 128GB disk, and 1 executor per worker.
 #' 
 #' `MaxCapacity` is a mutually exclusive option with `NumberOfWorkers` and
 #' `WorkerType`.
 #' 
-#' - If either `NumberOfWorkers` or `WorkerType` is set, then `MaxCapacity`
-#'   cannot be set.
+#' -   If either `NumberOfWorkers` or `WorkerType` is set, then
+#'     `MaxCapacity` cannot be set.
 #' 
-#' - If `MaxCapacity` is set then neither `NumberOfWorkers` or `WorkerType`
-#'   can be set.
+#' -   If `MaxCapacity` is set then neither `NumberOfWorkers` or
+#'     `WorkerType` can be set.
 #' 
-#' - If `WorkerType` is set, then `NumberOfWorkers` is required (and vice
-#'   versa).
+#' -   If `WorkerType` is set, then `NumberOfWorkers` is required (and vice
+#'     versa).
 #' 
-#' - `MaxCapacity` and `NumberOfWorkers` must both be at least 1.
+#' -   `MaxCapacity` and `NumberOfWorkers` must both be at least 1.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' this task runs.
 #' 
@@ -1492,8 +1462,7 @@ glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_ml_transform_input(Name = Name, Description = Description, InputRecordTables = InputRecordTables, Parameters = Parameters, Role = Role, GlueVersion = GlueVersion, MaxCapacity = MaxCapacity, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, MaxRetries = MaxRetries, Tags = Tags, TransformEncryption = TransformEncryption)
   output <- .glue$create_ml_transform_output()
@@ -1528,8 +1497,7 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionInput = PartitionInput)
   output <- .glue$create_partition_output()
@@ -1565,8 +1533,7 @@ glue_create_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_partition_index_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionIndex = PartitionIndex)
   output <- .glue$create_partition_index_output()
@@ -1602,8 +1569,7 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_registry_input(RegistryName = RegistryName, Description = Description, Tags = Tags)
   output <- .glue$create_registry_output()
@@ -1633,47 +1599,47 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 #' `PROTOBUF` are supported.
 #' @param Compatibility The compatibility mode of the schema. The possible values are:
 #' 
-#' - *NONE*: No compatibility mode applies. You can use this choice in
-#'   development scenarios or if you do not know the compatibility mode
-#'   that you want to apply to schemas. Any new version added will be
-#'   accepted without undergoing a compatibility check.
+#' -   *NONE*: No compatibility mode applies. You can use this choice in
+#'     development scenarios or if you do not know the compatibility mode
+#'     that you want to apply to schemas. Any new version added will be
+#'     accepted without undergoing a compatibility check.
 #' 
-#' - *DISABLED*: This compatibility choice prevents versioning for a
-#'   particular schema. You can use this choice to prevent future
-#'   versioning of a schema.
+#' -   *DISABLED*: This compatibility choice prevents versioning for a
+#'     particular schema. You can use this choice to prevent future
+#'     versioning of a schema.
 #' 
-#' - *BACKWARD*: This compatibility choice is recommended as it allows data
-#'   receivers to read both the current and one previous schema version.
-#'   This means that for instance, a new schema version cannot drop data
-#'   fields or change the type of these fields, so they can't be read by
-#'   readers using the previous version.
+#' -   *BACKWARD*: This compatibility choice is recommended as it allows
+#'     data receivers to read both the current and one previous schema
+#'     version. This means that for instance, a new schema version cannot
+#'     drop data fields or change the type of these fields, so they can't
+#'     be read by readers using the previous version.
 #' 
-#' - *BACKWARD_ALL*: This compatibility choice allows data receivers to
-#'   read both the current and all previous schema versions. You can use
-#'   this choice when you need to delete fields or add optional fields, and
-#'   check compatibility against all previous schema versions.
+#' -   *BACKWARD_ALL*: This compatibility choice allows data receivers to
+#'     read both the current and all previous schema versions. You can use
+#'     this choice when you need to delete fields or add optional fields,
+#'     and check compatibility against all previous schema versions.
 #' 
-#' - *FORWARD*: This compatibility choice allows data receivers to read
-#'   both the current and one next schema version, but not necessarily
-#'   later versions. You can use this choice when you need to add fields or
-#'   delete optional fields, but only check compatibility against the last
-#'   schema version.
+#' -   *FORWARD*: This compatibility choice allows data receivers to read
+#'     both the current and one next schema version, but not necessarily
+#'     later versions. You can use this choice when you need to add fields
+#'     or delete optional fields, but only check compatibility against the
+#'     last schema version.
 #' 
-#' - *FORWARD_ALL*: This compatibility choice allows data receivers to read
-#'   written by producers of any new registered schema. You can use this
-#'   choice when you need to add fields or delete optional fields, and
-#'   check compatibility against all previous schema versions.
+#' -   *FORWARD_ALL*: This compatibility choice allows data receivers to
+#'     read written by producers of any new registered schema. You can use
+#'     this choice when you need to add fields or delete optional fields,
+#'     and check compatibility against all previous schema versions.
 #' 
-#' - *FULL*: This compatibility choice allows data receivers to read data
-#'   written by producers using the previous or next version of the schema,
-#'   but not necessarily earlier or later versions. You can use this choice
-#'   when you need to add or remove optional fields, but only check
-#'   compatibility against the last schema version.
+#' -   *FULL*: This compatibility choice allows data receivers to read data
+#'     written by producers using the previous or next version of the
+#'     schema, but not necessarily earlier or later versions. You can use
+#'     this choice when you need to add or remove optional fields, but only
+#'     check compatibility against the last schema version.
 #' 
-#' - *FULL_ALL*: This compatibility choice allows data receivers to read
-#'   data written by producers using all previous schema versions. You can
-#'   use this choice when you need to add or remove optional fields, and
-#'   check compatibility against all previous schema versions.
+#' -   *FULL_ALL*: This compatibility choice allows data receivers to read
+#'     data written by producers using all previous schema versions. You
+#'     can use this choice when you need to add or remove optional fields,
+#'     and check compatibility against all previous schema versions.
 #' @param Description An optional description of the schema. If description is not provided,
 #' there will not be any automatic default value for this.
 #' @param Tags Amazon Web Services tags that contain a key value pair and may be
@@ -1690,8 +1656,7 @@ glue_create_schema <- function(RegistryId = NULL, SchemaName, DataFormat, Compat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_schema_input(RegistryId = RegistryId, SchemaName = SchemaName, DataFormat = DataFormat, Compatibility = Compatibility, Description = Description, Tags = Tags, SchemaDefinition = SchemaDefinition)
   output <- .glue$create_schema_output()
@@ -1723,8 +1688,7 @@ glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_script_input(DagNodes = DagNodes, DagEdges = DagEdges, Language = Language)
   output <- .glue$create_script_output()
@@ -1755,8 +1719,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_security_configuration_input(Name = Name, EncryptionConfiguration = EncryptionConfiguration)
   output <- .glue$create_security_configuration_output()
@@ -1795,40 +1758,40 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #' a value of G.1X, G.2X, G.4X, or G.8X for Spark jobs. Accepts the value
 #' Z.2X for Ray notebooks.
 #' 
-#' - For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16 GB
-#'   of memory) with 84GB disk (approximately 34GB free), and provides 1
-#'   executor per worker. We recommend this worker type for workloads such
-#'   as data transforms, joins, and queries, to offers a scalable and cost
-#'   effective way to run most jobs.
+#' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16
+#'     GB of memory) with 84GB disk (approximately 34GB free), and provides
+#'     1 executor per worker. We recommend this worker type for workloads
+#'     such as data transforms, joins, and queries, to offers a scalable
+#'     and cost effective way to run most jobs.
 #' 
-#' - For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32 GB
-#'   of memory) with 128GB disk (approximately 77GB free), and provides 1
-#'   executor per worker. We recommend this worker type for workloads such
-#'   as data transforms, joins, and queries, to offers a scalable and cost
-#'   effective way to run most jobs.
+#' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32
+#'     GB of memory) with 128GB disk (approximately 77GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     workloads such as data transforms, joins, and queries, to offers a
+#'     scalable and cost effective way to run most jobs.
 #' 
-#' - For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64 GB
-#'   of memory) with 256GB disk (approximately 235GB free), and provides 1
-#'   executor per worker. We recommend this worker type for jobs whose
-#'   workloads contain your most demanding transforms, aggregations, joins,
-#'   and queries. This worker type is available only for Glue version 3.0
-#'   or later Spark ETL jobs in the following Amazon Web Services Regions:
-#'   US East (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific
-#'   (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Canada
-#'   (Central), Europe (Frankfurt), Europe (Ireland), and Europe
-#'   (Stockholm).
+#' -   For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64
+#'     GB of memory) with 256GB disk (approximately 235GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     jobs whose workloads contain your most demanding transforms,
+#'     aggregations, joins, and queries. This worker type is available only
+#'     for Glue version 3.0 or later Spark ETL jobs in the following Amazon
+#'     Web Services Regions: US East (Ohio), US East (N. Virginia), US West
+#'     (Oregon), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia
+#'     Pacific (Tokyo), Canada (Central), Europe (Frankfurt), Europe
+#'     (Ireland), and Europe (Stockholm).
 #' 
-#' - For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
-#'   GB of memory) with 512GB disk (approximately 487GB free), and provides
-#'   1 executor per worker. We recommend this worker type for jobs whose
-#'   workloads contain your most demanding transforms, aggregations, joins,
-#'   and queries. This worker type is available only for Glue version 3.0
-#'   or later Spark ETL jobs, in the same Amazon Web Services Regions as
-#'   supported for the `G.4X` worker type.
+#' -   For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
+#'     GB of memory) with 512GB disk (approximately 487GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     jobs whose workloads contain your most demanding transforms,
+#'     aggregations, joins, and queries. This worker type is available only
+#'     for Glue version 3.0 or later Spark ETL jobs, in the same Amazon Web
+#'     Services Regions as supported for the `G.4X` worker type.
 #' 
-#' - For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64 GB
-#'   of memory) with 128 GB disk (approximately 120GB free), and provides
-#'   up to 8 Ray workers based on the autoscaler.
+#' -   For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64
+#'     GB of memory) with 128 GB disk (approximately 120GB free), and
+#'     provides up to 8 Ray workers based on the autoscaler.
 #' @param SecurityConfiguration The name of the SecurityConfiguration structure to be used with the
 #' session
 #' @param GlueVersion The Glue version determines the versions of Apache Spark and Python that
@@ -1845,8 +1808,7 @@ glue_create_session <- function(Id, Description = NULL, Role, Command, Timeout =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_session_input(Id = Id, Description = Description, Role = Role, Command = Command, Timeout = Timeout, IdleTimeout = IdleTimeout, DefaultArguments = DefaultArguments, Connections = Connections, MaxCapacity = MaxCapacity, NumberOfWorkers = NumberOfWorkers, WorkerType = WorkerType, SecurityConfiguration = SecurityConfiguration, GlueVersion = GlueVersion, Tags = Tags, RequestOrigin = RequestOrigin)
   output <- .glue$create_session_output()
@@ -1886,8 +1848,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, PartitionIndexes = PartitionIndexes, TransactionId = TransactionId, OpenTableFormatInput = OpenTableFormatInput)
   output <- .glue$create_table_output()
@@ -1923,8 +1884,7 @@ glue_create_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, TableOptimizerConfiguration = TableOptimizerConfiguration)
   output <- .glue$create_table_optimizer_output()
@@ -1977,8 +1937,7 @@ glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_trigger_input(Name = Name, WorkflowName = WorkflowName, Type = Type, Schedule = Schedule, Predicate = Predicate, Actions = Actions, Description = Description, StartOnCreation = StartOnCreation, Tags = Tags, EventBatchingCondition = EventBatchingCondition)
   output <- .glue$create_trigger_output()
@@ -2012,8 +1971,7 @@ glue_create_usage_profile <- function(Name, Description = NULL, Configuration, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_usage_profile_input(Name = Name, Description = Description, Configuration = Configuration, Tags = Tags)
   output <- .glue$create_usage_profile_output()
@@ -2047,8 +2005,7 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_user_defined_function_input(CatalogId = CatalogId, DatabaseName = DatabaseName, FunctionInput = FunctionInput)
   output <- .glue$create_user_defined_function_output()
@@ -2088,8 +2045,7 @@ glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$create_workflow_input(Name = Name, Description = Description, DefaultRunProperties = DefaultRunProperties, Tags = Tags, MaxConcurrentRuns = MaxConcurrentRuns)
   output <- .glue$create_workflow_output()
@@ -2119,8 +2075,7 @@ glue_delete_blueprint <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_blueprint_input(Name = Name)
   output <- .glue$delete_blueprint_output()
@@ -2150,8 +2105,7 @@ glue_delete_classifier <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_classifier_input(Name = Name)
   output <- .glue$delete_classifier_output()
@@ -2186,8 +2140,7 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnName = ColumnName)
   output <- .glue$delete_column_statistics_for_partition_output()
@@ -2221,8 +2174,7 @@ glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnName = ColumnName)
   output <- .glue$delete_column_statistics_for_table_output()
@@ -2254,8 +2206,7 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_connection_input(CatalogId = CatalogId, ConnectionName = ConnectionName)
   output <- .glue$delete_connection_output()
@@ -2286,8 +2237,7 @@ glue_delete_crawler <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_crawler_input(Name = Name)
   output <- .glue$delete_crawler_output()
@@ -2317,8 +2267,7 @@ glue_delete_custom_entity_type <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_custom_entity_type_input(Name = Name)
   output <- .glue$delete_custom_entity_type_output()
@@ -2348,8 +2297,7 @@ glue_delete_data_quality_ruleset <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_data_quality_ruleset_input(Name = Name)
   output <- .glue$delete_data_quality_ruleset_output()
@@ -2382,8 +2330,7 @@ glue_delete_database <- function(CatalogId = NULL, Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_database_input(CatalogId = CatalogId, Name = Name)
   output <- .glue$delete_database_output()
@@ -2413,8 +2360,7 @@ glue_delete_dev_endpoint <- function(EndpointName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_dev_endpoint_input(EndpointName = EndpointName)
   output <- .glue$delete_dev_endpoint_output()
@@ -2444,8 +2390,7 @@ glue_delete_job <- function(JobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_job_input(JobName = JobName)
   output <- .glue$delete_job_output()
@@ -2475,8 +2420,7 @@ glue_delete_ml_transform <- function(TransformId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_ml_transform_input(TransformId = TransformId)
   output <- .glue$delete_ml_transform_output()
@@ -2510,8 +2454,7 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues)
   output <- .glue$delete_partition_output()
@@ -2546,8 +2489,7 @@ glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_partition_index_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, IndexName = IndexName)
   output <- .glue$delete_partition_index_output()
@@ -2578,8 +2520,7 @@ glue_delete_registry <- function(RegistryId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_registry_input(RegistryId = RegistryId)
   output <- .glue$delete_registry_output()
@@ -2610,8 +2551,7 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_resource_policy_input(PolicyHashCondition = PolicyHashCondition, ResourceArn = ResourceArn)
   output <- .glue$delete_resource_policy_output()
@@ -2643,8 +2583,7 @@ glue_delete_schema <- function(SchemaId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_schema_input(SchemaId = SchemaId)
   output <- .glue$delete_schema_output()
@@ -2667,9 +2606,9 @@ glue_delete_schema <- function(SchemaId) {
 #' Resource Name (ARN).
 #' @param Versions &#91;required&#93; A version range may be supplied which may be of the format:
 #' 
-#' - a single version number, 5
+#' -   a single version number, 5
 #' 
-#' - a range, 5-8 : deletes versions 5, 6, 7, 8
+#' -   a range, 5-8 : deletes versions 5, 6, 7, 8
 #'
 #' @keywords internal
 #'
@@ -2680,8 +2619,7 @@ glue_delete_schema_versions <- function(SchemaId, Versions) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_schema_versions_input(SchemaId = SchemaId, Versions = Versions)
   output <- .glue$delete_schema_versions_output()
@@ -2711,8 +2649,7 @@ glue_delete_security_configuration <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_security_configuration_input(Name = Name)
   output <- .glue$delete_security_configuration_output()
@@ -2743,8 +2680,7 @@ glue_delete_session <- function(Id, RequestOrigin = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_session_input(Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$delete_session_output()
@@ -2780,8 +2716,7 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId)
   output <- .glue$delete_table_output()
@@ -2814,8 +2749,7 @@ glue_delete_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type)
   output <- .glue$delete_table_optimizer_output()
@@ -2852,8 +2786,7 @@ glue_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionId = VersionId)
   output <- .glue$delete_table_version_output()
@@ -2883,8 +2816,7 @@ glue_delete_trigger <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_trigger_input(Name = Name)
   output <- .glue$delete_trigger_output()
@@ -2914,8 +2846,7 @@ glue_delete_usage_profile <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_usage_profile_input(Name = Name)
   output <- .glue$delete_usage_profile_output()
@@ -2949,8 +2880,7 @@ glue_delete_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_user_defined_function_input(CatalogId = CatalogId, DatabaseName = DatabaseName, FunctionName = FunctionName)
   output <- .glue$delete_user_defined_function_output()
@@ -2980,8 +2910,7 @@ glue_delete_workflow <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$delete_workflow_input(Name = Name)
   output <- .glue$delete_workflow_output()
@@ -3013,8 +2942,7 @@ glue_get_blueprint <- function(Name, IncludeBlueprint = NULL, IncludeParameterSp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_blueprint_input(Name = Name, IncludeBlueprint = IncludeBlueprint, IncludeParameterSpec = IncludeParameterSpec)
   output <- .glue$get_blueprint_output()
@@ -3045,8 +2973,7 @@ glue_get_blueprint_run <- function(BlueprintName, RunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_blueprint_run_input(BlueprintName = BlueprintName, RunId = RunId)
   output <- .glue$get_blueprint_run_output()
@@ -3078,8 +3005,7 @@ glue_get_blueprint_runs <- function(BlueprintName, NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_blueprint_runs_input(BlueprintName = BlueprintName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_blueprint_runs_output()
@@ -3110,8 +3036,7 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_catalog_import_status_input(CatalogId = CatalogId)
   output <- .glue$get_catalog_import_status_output()
@@ -3141,8 +3066,7 @@ glue_get_classifier <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_classifier_input(Name = Name)
   output <- .glue$get_classifier_output()
@@ -3173,8 +3097,7 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_classifiers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_classifiers_output()
@@ -3209,8 +3132,7 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnNames = ColumnNames)
   output <- .glue$get_column_statistics_for_partition_output()
@@ -3244,8 +3166,7 @@ glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnNames = ColumnNames)
   output <- .glue$get_column_statistics_for_table_output()
@@ -3276,8 +3197,7 @@ glue_get_column_statistics_task_run <- function(ColumnStatisticsTaskRunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_column_statistics_task_run_input(ColumnStatisticsTaskRunId = ColumnStatisticsTaskRunId)
   output <- .glue$get_column_statistics_task_run_output()
@@ -3310,8 +3230,7 @@ glue_get_column_statistics_task_runs <- function(DatabaseName, TableName, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_column_statistics_task_runs_input(DatabaseName = DatabaseName, TableName = TableName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_column_statistics_task_runs_output()
@@ -3349,8 +3268,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_connection_input(CatalogId = CatalogId, Name = Name, HidePassword = HidePassword)
   output <- .glue$get_connection_output()
@@ -3390,8 +3308,7 @@ glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_connections_input(CatalogId = CatalogId, Filter = Filter, HidePassword = HidePassword, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_connections_output()
@@ -3421,8 +3338,7 @@ glue_get_crawler <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_crawler_input(Name = Name)
   output <- .glue$get_crawler_output()
@@ -3454,8 +3370,7 @@ glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_crawler_metrics_input(CrawlerNameList = CrawlerNameList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_crawler_metrics_output()
@@ -3486,8 +3401,7 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_crawlers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_crawlers_output()
@@ -3517,8 +3431,7 @@ glue_get_custom_entity_type <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_custom_entity_type_input(Name = Name)
   output <- .glue$get_custom_entity_type_output()
@@ -3550,8 +3463,7 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_data_catalog_encryption_settings_input(CatalogId = CatalogId)
   output <- .glue$get_data_catalog_encryption_settings_output()
@@ -3583,8 +3495,7 @@ glue_get_data_quality_model <- function(StatisticId = NULL, ProfileId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_data_quality_model_input(StatisticId = StatisticId, ProfileId = ProfileId)
   output <- .glue$get_data_quality_model_output()
@@ -3615,8 +3526,7 @@ glue_get_data_quality_model_result <- function(StatisticId, ProfileId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_data_quality_model_result_input(StatisticId = StatisticId, ProfileId = ProfileId)
   output <- .glue$get_data_quality_model_result_output()
@@ -3646,8 +3556,7 @@ glue_get_data_quality_result <- function(ResultId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_data_quality_result_input(ResultId = ResultId)
   output <- .glue$get_data_quality_result_output()
@@ -3677,8 +3586,7 @@ glue_get_data_quality_rule_recommendation_run <- function(RunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_data_quality_rule_recommendation_run_input(RunId = RunId)
   output <- .glue$get_data_quality_rule_recommendation_run_output()
@@ -3708,8 +3616,7 @@ glue_get_data_quality_ruleset <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_data_quality_ruleset_input(Name = Name)
   output <- .glue$get_data_quality_ruleset_output()
@@ -3740,8 +3647,7 @@ glue_get_data_quality_ruleset_evaluation_run <- function(RunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_data_quality_ruleset_evaluation_run_input(RunId = RunId)
   output <- .glue$get_data_quality_ruleset_evaluation_run_output()
@@ -3774,8 +3680,7 @@ glue_get_database <- function(CatalogId = NULL, Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_database_input(CatalogId = CatalogId, Name = Name)
   output <- .glue$get_database_output()
@@ -3801,13 +3706,14 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 #' @param ResourceShareType Allows you to specify that you want to list the databases shared with
 #' your account. The allowable values are `FEDERATED`, `FOREIGN` or `ALL`.
 #' 
-#' - If set to `FEDERATED`, will list the federated databases (referencing
-#'   an external entity) shared with your account.
+#' -   If set to `FEDERATED`, will list the federated databases
+#'     (referencing an external entity) shared with your account.
 #' 
-#' - If set to `FOREIGN`, will list the databases shared with your account.
+#' -   If set to `FOREIGN`, will list the databases shared with your
+#'     account.
 #' 
-#' - If set to `ALL`, will list the databases shared with your account, as
-#'   well as the databases in yor local account.
+#' -   If set to `ALL`, will list the databases shared with your account,
+#'     as well as the databases in yor local account.
 #' @param AttributesToGet Specifies the database fields returned by the
 #' [`get_databases`][glue_get_databases] call. This parameter doesn’t
 #' accept an empty list. The request must include the `NAME`.
@@ -3821,8 +3727,7 @@ glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_databases_input(CatalogId = CatalogId, NextToken = NextToken, MaxResults = MaxResults, ResourceShareType = ResourceShareType, AttributesToGet = AttributesToGet)
   output <- .glue$get_databases_output()
@@ -3852,8 +3757,7 @@ glue_get_dataflow_graph <- function(PythonScript = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_dataflow_graph_input(PythonScript = PythonScript)
   output <- .glue$get_dataflow_graph_output()
@@ -3883,8 +3787,7 @@ glue_get_dev_endpoint <- function(EndpointName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_dev_endpoint_input(EndpointName = EndpointName)
   output <- .glue$get_dev_endpoint_output()
@@ -3916,8 +3819,7 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_dev_endpoints_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_dev_endpoints_output()
@@ -3947,8 +3849,7 @@ glue_get_job <- function(JobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_job_input(JobName = JobName)
   output <- .glue$get_job_output()
@@ -3979,8 +3880,7 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_job_bookmark_input(JobName = JobName, RunId = RunId)
   output <- .glue$get_job_bookmark_output()
@@ -4012,8 +3912,7 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_job_run_input(JobName = JobName, RunId = RunId, PredecessorsIncluded = PredecessorsIncluded)
   output <- .glue$get_job_run_output()
@@ -4045,8 +3944,7 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobRuns"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobRuns")
   )
   input <- .glue$get_job_runs_input(JobName = JobName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_job_runs_output()
@@ -4077,8 +3975,7 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Jobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Jobs")
   )
   input <- .glue$get_jobs_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_jobs_output()
@@ -4109,8 +4006,7 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_ml_task_run_input(TransformId = TransformId, TaskRunId = TaskRunId)
   output <- .glue$get_ml_task_run_output()
@@ -4146,8 +4042,7 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_ml_task_runs_input(TransformId = TransformId, NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort)
   output <- .glue$get_ml_task_runs_output()
@@ -4179,8 +4074,7 @@ glue_get_ml_transform <- function(TransformId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_ml_transform_input(TransformId = TransformId)
   output <- .glue$get_ml_transform_output()
@@ -4214,8 +4108,7 @@ glue_get_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_ml_transforms_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort)
   output <- .glue$get_ml_transforms_output()
@@ -4247,8 +4140,7 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_mapping_input(Source = Source, Sinks = Sinks, Location = Location)
   output <- .glue$get_mapping_output()
@@ -4282,8 +4174,7 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues)
   output <- .glue$get_partition_output()
@@ -4318,8 +4209,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PartitionIndexDescriptorList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PartitionIndexDescriptorList")
   )
   input <- .glue$get_partition_indexes_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken)
   output <- .glue$get_partition_indexes_output()
@@ -4403,23 +4293,23 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 #' *Supported Partition Key Types*: The following are the supported
 #' partition keys.
 #' 
-#' - `string`
+#' -   `string`
 #' 
-#' - `date`
+#' -   `date`
 #' 
-#' - `timestamp`
+#' -   `timestamp`
 #' 
-#' - `int`
+#' -   `int`
 #' 
-#' - `bigint`
+#' -   `bigint`
 #' 
-#' - `long`
+#' -   `long`
 #' 
-#' - `tinyint`
+#' -   `tinyint`
 #' 
-#' - `smallint`
+#' -   `smallint`
 #' 
-#' - `decimal`
+#' -   `decimal`
 #' 
 #' If an type is encountered that is not valid, an exception is thrown.
 #' 
@@ -4450,8 +4340,7 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_partitions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, ExcludeColumnSchema = ExcludeColumnSchema, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime)
   output <- .glue$get_partitions_output()
@@ -4479,11 +4368,11 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 #' 
 #' Currently, these key-value pairs are supported:
 #' 
-#' - `inferSchema`  —  Specifies whether to set `inferSchema` to true or
-#'   false for the default script generated by an Glue job. For example, to
-#'   set `inferSchema` to true, pass the following key value pair:
+#' -   `inferSchema`  —  Specifies whether to set `inferSchema` to true or
+#'     false for the default script generated by an Glue job. For example,
+#'     to set `inferSchema` to true, pass the following key value pair:
 #' 
-#'   `--additional-plan-options-map '{"inferSchema":"true"}'`
+#'     `--additional-plan-options-map '{"inferSchema":"true"}'`
 #'
 #' @keywords internal
 #'
@@ -4494,8 +4383,7 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_plan_input(Mapping = Mapping, Source = Source, Sinks = Sinks, Location = Location, Language = Language, AdditionalPlanOptionsMap = AdditionalPlanOptionsMap)
   output <- .glue$get_plan_output()
@@ -4526,8 +4414,7 @@ glue_get_registry <- function(RegistryId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_registry_input(RegistryId = RegistryId)
   output <- .glue$get_registry_output()
@@ -4559,8 +4446,7 @@ glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "GetResourcePoliciesResponseList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "GetResourcePoliciesResponseList")
   )
   input <- .glue$get_resource_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_resource_policies_output()
@@ -4595,8 +4481,7 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .glue$get_resource_policy_output()
@@ -4618,12 +4503,12 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
 #' 
-#' - SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
-#'   Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
-#'   provided.
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
+#'     provided.
 #' 
-#' - SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
-#'   `SchemaName` and `RegistryName` has to be provided.
+#' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
+#'     `SchemaName` and `RegistryName` has to be provided.
 #'
 #' @keywords internal
 #'
@@ -4634,8 +4519,7 @@ glue_get_schema <- function(SchemaId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_schema_input(SchemaId = SchemaId)
   output <- .glue$get_schema_output()
@@ -4657,11 +4541,11 @@ glue_get_schema <- function(SchemaId) {
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
 #' 
-#' - SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema. One
-#'   of `SchemaArn` or `SchemaName` has to be provided.
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     One of `SchemaArn` or `SchemaName` has to be provided.
 #' 
-#' - SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
-#'   `SchemaName` has to be provided.
+#' -   SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
+#'     `SchemaName` has to be provided.
 #' @param SchemaDefinition &#91;required&#93; The definition of the schema for which schema details are required.
 #'
 #' @keywords internal
@@ -4673,8 +4557,7 @@ glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_schema_by_definition_input(SchemaId = SchemaId, SchemaDefinition = SchemaDefinition)
   output <- .glue$get_schema_by_definition_output()
@@ -4697,12 +4580,12 @@ glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
 #' @param SchemaId This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
 #' 
-#' - SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
-#'   Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
-#'   provided.
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
+#'     provided.
 #' 
-#' - SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
-#'   `SchemaName` and `RegistryName` has to be provided.
+#' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
+#'     `SchemaName` and `RegistryName` has to be provided.
 #' @param SchemaVersionId The `SchemaVersionId` of the schema version. This field is required for
 #' fetching by schema ID. Either this or the `SchemaId` wrapper has to be
 #' provided.
@@ -4717,8 +4600,7 @@ glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, Sch
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_schema_version_input(SchemaId = SchemaId, SchemaVersionId = SchemaVersionId, SchemaVersionNumber = SchemaVersionNumber)
   output <- .glue$get_schema_version_output()
@@ -4741,11 +4623,11 @@ glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, Sch
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
 #' 
-#' - SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema. One
-#'   of `SchemaArn` or `SchemaName` has to be provided.
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     One of `SchemaArn` or `SchemaName` has to be provided.
 #' 
-#' - SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
-#'   `SchemaName` has to be provided.
+#' -   SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
+#'     `SchemaName` has to be provided.
 #' @param FirstSchemaVersionNumber &#91;required&#93; The first of the two schema versions to be compared.
 #' @param SecondSchemaVersionNumber &#91;required&#93; The second of the two schema versions to be compared.
 #' @param SchemaDiffType &#91;required&#93; Refers to `SYNTAX_DIFF`, which is the currently supported diff type.
@@ -4759,8 +4641,7 @@ glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, Se
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_schema_versions_diff_input(SchemaId = SchemaId, FirstSchemaVersionNumber = FirstSchemaVersionNumber, SecondSchemaVersionNumber = SecondSchemaVersionNumber, SchemaDiffType = SchemaDiffType)
   output <- .glue$get_schema_versions_diff_output()
@@ -4790,8 +4671,7 @@ glue_get_security_configuration <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_security_configuration_input(Name = Name)
   output <- .glue$get_security_configuration_output()
@@ -4822,8 +4702,7 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityConfigurations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "SecurityConfigurations")
   )
   input <- .glue$get_security_configurations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$get_security_configurations_output()
@@ -4854,8 +4733,7 @@ glue_get_session <- function(Id, RequestOrigin = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_session_input(Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$get_session_output()
@@ -4887,8 +4765,7 @@ glue_get_statement <- function(SessionId, Id, RequestOrigin = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_statement_input(SessionId = SessionId, Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$get_statement_output()
@@ -4929,8 +4806,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name, TransactionId =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails)
   output <- .glue$get_table_output()
@@ -4964,8 +4840,7 @@ glue_get_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type)
   output <- .glue$get_table_optimizer_output()
@@ -5002,8 +4877,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_table_version_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, VersionId = VersionId)
   output <- .glue$get_table_version_output()
@@ -5041,8 +4915,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_table_versions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_table_versions_output()
@@ -5082,9 +4955,9 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' 
 #' The following are the valid combinations of values:
 #' 
-#' - `NAME` - Names of all tables in the database.
+#' -   `NAME` - Names of all tables in the database.
 #' 
-#' - `NAME`, `TABLE_TYPE` - Names of all tables and the table types.
+#' -   `NAME`, `TABLE_TYPE` - Names of all tables and the table types.
 #'
 #' @keywords internal
 #'
@@ -5095,8 +4968,7 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_tables_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults, TransactionId = TransactionId, QueryAsOfTime = QueryAsOfTime, IncludeStatusDetails = IncludeStatusDetails, AttributesToGet = AttributesToGet)
   output <- .glue$get_tables_output()
@@ -5127,8 +4999,7 @@ glue_get_tags <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_tags_input(ResourceArn = ResourceArn)
   output <- .glue$get_tags_output()
@@ -5158,8 +5029,7 @@ glue_get_trigger <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_trigger_input(Name = Name)
   output <- .glue$get_trigger_output()
@@ -5193,8 +5063,7 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Triggers"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Triggers")
   )
   input <- .glue$get_triggers_input(NextToken = NextToken, DependentJobName = DependentJobName, MaxResults = MaxResults)
   output <- .glue$get_triggers_output()
@@ -5235,8 +5104,7 @@ glue_get_unfiltered_partition_metadata <- function(Region = NULL, CatalogId, Dat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_unfiltered_partition_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_partition_metadata_output()
@@ -5323,23 +5191,23 @@ glue_get_unfiltered_partition_metadata <- function(Region = NULL, CatalogId, Dat
 #' *Supported Partition Key Types*: The following are the supported
 #' partition keys.
 #' 
-#' - `string`
+#' -   `string`
 #' 
-#' - `date`
+#' -   `date`
 #' 
-#' - `timestamp`
+#' -   `timestamp`
 #' 
-#' - `int`
+#' -   `int`
 #' 
-#' - `bigint`
+#' -   `bigint`
 #' 
-#' - `long`
+#' -   `long`
 #' 
-#' - `tinyint`
+#' -   `tinyint`
 #' 
-#' - `smallint`
+#' -   `smallint`
 #' 
-#' - `decimal`
+#' -   `decimal`
 #' 
 #' If an type is encountered that is not valid, an exception is thrown.
 #' @param AuditContext A structure containing Lake Formation audit context information.
@@ -5361,8 +5229,7 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_unfiltered_partitions_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Expression = Expression, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, NextToken = NextToken, Segment = Segment, MaxResults = MaxResults, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_partitions_metadata_output()
@@ -5394,23 +5261,24 @@ glue_get_unfiltered_partitions_metadata <- function(Region = NULL, CatalogId, Da
 #' [`get_unfiltered_table_metadata`][glue_get_unfiltered_table_metadata]
 #' API operation. Accepted values are:
 #' 
-#' - `COLUMN_PERMISSION` - Column permissions ensure that users can access
-#'   only specific columns in the table. If there are particular columns
-#'   contain sensitive data, data lake administrators can define column
-#'   filters that exclude access to specific columns.
+#' -   `COLUMN_PERMISSION` - Column permissions ensure that users can
+#'     access only specific columns in the table. If there are particular
+#'     columns contain sensitive data, data lake administrators can define
+#'     column filters that exclude access to specific columns.
 #' 
-#' - `CELL_FILTER_PERMISSION` - Cell-level filtering combines column
-#'   filtering (include or exclude columns) and row filter expressions to
-#'   restrict access to individual elements in the table.
+#' -   `CELL_FILTER_PERMISSION` - Cell-level filtering combines column
+#'     filtering (include or exclude columns) and row filter expressions to
+#'     restrict access to individual elements in the table.
 #' 
-#' - `NESTED_PERMISSION` - Nested permissions combines cell-level filtering
-#'   and nested column filtering to restrict access to columns and/or
-#'   nested columns in specific rows based on row filter expressions.
+#' -   `NESTED_PERMISSION` - Nested permissions combines cell-level
+#'     filtering and nested column filtering to restrict access to columns
+#'     and/or nested columns in specific rows based on row filter
+#'     expressions.
 #' 
-#' - `NESTED_CELL_PERMISSION` - Nested cell permissions combines nested
-#'   permission with nested cell-level filtering. This allows different
-#'   subsets of nested columns to be restricted based on an array of row
-#'   filter expressions.
+#' -   `NESTED_CELL_PERMISSION` - Nested cell permissions combines nested
+#'     permission with nested cell-level filtering. This allows different
+#'     subsets of nested columns to be restricted based on an array of row
+#'     filter expressions.
 #' 
 #' Note: Each of these permission types follows a hierarchical order where
 #' each subsequent permission type includes all permission of the previous
@@ -5443,8 +5311,7 @@ glue_get_unfiltered_table_metadata <- function(Region = NULL, CatalogId, Databas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_unfiltered_table_metadata_input(Region = Region, CatalogId = CatalogId, DatabaseName = DatabaseName, Name = Name, AuditContext = AuditContext, SupportedPermissionTypes = SupportedPermissionTypes, ParentResourceArn = ParentResourceArn, RootResourceArn = RootResourceArn, SupportedDialect = SupportedDialect, Permissions = Permissions, QuerySessionContext = QuerySessionContext)
   output <- .glue$get_unfiltered_table_metadata_output()
@@ -5474,8 +5341,7 @@ glue_get_usage_profile <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_usage_profile_input(Name = Name)
   output <- .glue$get_usage_profile_output()
@@ -5509,8 +5375,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_user_defined_function_input(CatalogId = CatalogId, DatabaseName = DatabaseName, FunctionName = FunctionName)
   output <- .glue$get_user_defined_function_output()
@@ -5549,8 +5414,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$get_user_defined_functions_input(CatalogId = CatalogId, DatabaseName = DatabaseName, Pattern = Pattern, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_user_defined_functions_output()
@@ -5582,8 +5446,7 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_workflow_input(Name = Name, IncludeGraph = IncludeGraph)
   output <- .glue$get_workflow_output()
@@ -5615,8 +5478,7 @@ glue_get_workflow_run <- function(Name, RunId, IncludeGraph = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_workflow_run_input(Name = Name, RunId = RunId, IncludeGraph = IncludeGraph)
   output <- .glue$get_workflow_run_output()
@@ -5647,8 +5509,7 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$get_workflow_run_properties_input(Name = Name, RunId = RunId)
   output <- .glue$get_workflow_run_properties_output()
@@ -5681,8 +5542,7 @@ glue_get_workflow_runs <- function(Name, IncludeGraph = NULL, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Runs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Runs")
   )
   input <- .glue$get_workflow_runs_input(Name = Name, IncludeGraph = IncludeGraph, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$get_workflow_runs_output()
@@ -5713,8 +5573,7 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$import_catalog_to_glue_input(CatalogId = CatalogId)
   output <- .glue$import_catalog_to_glue_output()
@@ -5746,8 +5605,7 @@ glue_list_blueprints <- function(NextToken = NULL, MaxResults = NULL, Tags = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Blueprints"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Blueprints")
   )
   input <- .glue$list_blueprints_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_blueprints_output()
@@ -5778,8 +5636,7 @@ glue_list_column_statistics_task_runs <- function(MaxResults = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_column_statistics_task_runs_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_column_statistics_task_runs_output()
@@ -5812,8 +5669,7 @@ glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_crawlers_input(MaxResults = MaxResults, NextToken = NextToken, Tags = Tags)
   output <- .glue$list_crawlers_output()
@@ -5848,8 +5704,7 @@ glue_list_crawls <- function(CrawlerName, MaxResults = NULL, Filters = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$list_crawls_input(CrawlerName = CrawlerName, MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .glue$list_crawls_output()
@@ -5881,8 +5736,7 @@ glue_list_custom_entity_types <- function(NextToken = NULL, MaxResults = NULL, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_custom_entity_types_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_custom_entity_types_output()
@@ -5914,8 +5768,7 @@ glue_list_data_quality_results <- function(Filter = NULL, NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_data_quality_results_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_data_quality_results_output()
@@ -5947,8 +5800,7 @@ glue_list_data_quality_rule_recommendation_runs <- function(Filter = NULL, NextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_data_quality_rule_recommendation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_data_quality_rule_recommendation_runs_output()
@@ -5981,8 +5833,7 @@ glue_list_data_quality_ruleset_evaluation_runs <- function(Filter = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_data_quality_ruleset_evaluation_runs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_data_quality_ruleset_evaluation_runs_output()
@@ -6016,8 +5867,7 @@ glue_list_data_quality_rulesets <- function(NextToken = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_data_quality_rulesets_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Tags = Tags)
   output <- .glue$list_data_quality_rulesets_output()
@@ -6051,8 +5901,7 @@ glue_list_data_quality_statistic_annotations <- function(StatisticId = NULL, Pro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$list_data_quality_statistic_annotations_input(StatisticId = StatisticId, ProfileId = ProfileId, TimestampFilter = TimestampFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_data_quality_statistic_annotations_output()
@@ -6086,8 +5935,7 @@ glue_list_data_quality_statistics <- function(StatisticId = NULL, ProfileId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$list_data_quality_statistics_input(StatisticId = StatisticId, ProfileId = ProfileId, TimestampFilter = TimestampFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_data_quality_statistics_output()
@@ -6120,8 +5968,7 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_dev_endpoints_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_dev_endpoints_output()
@@ -6154,8 +6001,7 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobNames"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "JobNames")
   )
   input <- .glue$list_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_jobs_output()
@@ -6192,8 +6038,7 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_ml_transforms_input(NextToken = NextToken, MaxResults = MaxResults, Filter = Filter, Sort = Sort, Tags = Tags)
   output <- .glue$list_ml_transforms_output()
@@ -6226,8 +6071,7 @@ glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Registries"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Registries")
   )
   input <- .glue$list_registries_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_registries_output()
@@ -6250,12 +6094,12 @@ glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
 #' 
-#' - SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
-#'   Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
-#'   provided.
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
+#'     provided.
 #' 
-#' - SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
-#'   `SchemaName` and `RegistryName` has to be provided.
+#' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
+#'     `SchemaName` and `RegistryName` has to be provided.
 #' @param MaxResults Maximum number of results required per page. If the value is not
 #' supplied, this will be defaulted to 25 per page.
 #' @param NextToken A continuation token, if this is a continuation call.
@@ -6269,8 +6113,7 @@ glue_list_schema_versions <- function(SchemaId, MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas")
   )
   input <- .glue$list_schema_versions_input(SchemaId = SchemaId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_schema_versions_output()
@@ -6304,8 +6147,7 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas")
   )
   input <- .glue$list_schemas_input(RegistryId = RegistryId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_schemas_output()
@@ -6339,8 +6181,7 @@ glue_list_sessions <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_sessions_input(NextToken = NextToken, MaxResults = MaxResults, Tags = Tags, RequestOrigin = RequestOrigin)
   output <- .glue$list_sessions_output()
@@ -6372,8 +6213,7 @@ glue_list_statements <- function(SessionId, RequestOrigin = NULL, NextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$list_statements_input(SessionId = SessionId, RequestOrigin = RequestOrigin, NextToken = NextToken)
   output <- .glue$list_statements_output()
@@ -6409,8 +6249,7 @@ glue_list_table_optimizer_runs <- function(CatalogId, DatabaseName, TableName, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$list_table_optimizer_runs_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$list_table_optimizer_runs_output()
@@ -6446,8 +6285,7 @@ glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TriggerNames"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TriggerNames")
   )
   input <- .glue$list_triggers_input(NextToken = NextToken, DependentJobName = DependentJobName, MaxResults = MaxResults, Tags = Tags)
   output <- .glue$list_triggers_output()
@@ -6478,8 +6316,7 @@ glue_list_usage_profiles <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Profiles"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Profiles")
   )
   input <- .glue$list_usage_profiles_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_usage_profiles_output()
@@ -6510,8 +6347,7 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Workflows"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Workflows")
   )
   input <- .glue$list_workflows_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .glue$list_workflows_output()
@@ -6543,8 +6379,7 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$put_data_catalog_encryption_settings_input(CatalogId = CatalogId, DataCatalogEncryptionSettings = DataCatalogEncryptionSettings)
   output <- .glue$put_data_catalog_encryption_settings_output()
@@ -6575,8 +6410,7 @@ glue_put_data_quality_profile_annotation <- function(ProfileId, InclusionAnnotat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$put_data_quality_profile_annotation_input(ProfileId = ProfileId, InclusionAnnotation = InclusionAnnotation)
   output <- .glue$put_data_quality_profile_annotation_output()
@@ -6608,10 +6442,10 @@ glue_put_data_quality_profile_annotation <- function(ProfileId, InclusionAnnotat
 #' @param EnableHybrid If `'TRUE'`, indicates that you are using both methods to grant
 #' cross-account access to Data Catalog resources:
 #' 
-#' - By directly updating the resource policy with `PutResourePolicy`
+#' -   By directly updating the resource policy with `PutResourePolicy`
 #' 
-#' - By using the **Grant permissions** command on the Amazon Web Services
-#'   Management Console.
+#' -   By using the **Grant permissions** command on the Amazon Web
+#'     Services Management Console.
 #' 
 #' Must be set to `'TRUE'` if you have already used the Management Console
 #' to grant cross-account access, otherwise the call fails. Default is
@@ -6626,8 +6460,7 @@ glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$put_resource_policy_input(PolicyInJson = PolicyInJson, ResourceArn = ResourceArn, PolicyHashCondition = PolicyHashCondition, PolicyExistsCondition = PolicyExistsCondition, EnableHybrid = EnableHybrid)
   output <- .glue$put_resource_policy_output()
@@ -6660,8 +6493,7 @@ glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumbe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$put_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataKeyValue = MetadataKeyValue)
   output <- .glue$put_schema_version_metadata_output()
@@ -6694,8 +6526,7 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$put_workflow_run_properties_input(Name = Name, RunId = RunId, RunProperties = RunProperties)
   output <- .glue$put_workflow_run_properties_output()
@@ -6733,8 +6564,7 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$query_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataList = MetadataList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .glue$query_schema_version_metadata_output()
@@ -6756,12 +6586,12 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
 #' 
-#' - SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
-#'   Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
-#'   provided.
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     Either `SchemaArn` or `SchemaName` and `RegistryName` has to be
+#'     provided.
 #' 
-#' - SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
-#'   `SchemaName` and `RegistryName` has to be provided.
+#' -   SchemaId$SchemaName: The name of the schema. Either `SchemaArn` or
+#'     `SchemaName` and `RegistryName` has to be provided.
 #' @param SchemaDefinition &#91;required&#93; The schema definition using the `DataFormat` setting for the
 #' `SchemaName`.
 #'
@@ -6774,8 +6604,7 @@ glue_register_schema_version <- function(SchemaId, SchemaDefinition) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$register_schema_version_input(SchemaId = SchemaId, SchemaDefinition = SchemaDefinition)
   output <- .glue$register_schema_version_output()
@@ -6810,8 +6639,7 @@ glue_remove_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$remove_schema_version_metadata_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, SchemaVersionId = SchemaVersionId, MetadataKeyValue = MetadataKeyValue)
   output <- .glue$remove_schema_version_metadata_output()
@@ -6842,8 +6670,7 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$reset_job_bookmark_input(JobName = JobName, RunId = RunId)
   output <- .glue$reset_job_bookmark_output()
@@ -6877,8 +6704,7 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$resume_workflow_run_input(Name = Name, RunId = RunId, NodeIds = NodeIds)
   output <- .glue$resume_workflow_run_output()
@@ -6910,8 +6736,7 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$run_statement_input(SessionId = SessionId, Code = Code, RequestOrigin = RequestOrigin)
   output <- .glue$run_statement_output()
@@ -6955,10 +6780,11 @@ glue_run_statement <- function(SessionId, Code, RequestOrigin = NULL) {
 #' @param ResourceShareType Allows you to specify that you want to search the tables shared with
 #' your account. The allowable values are `FOREIGN` or `ALL`.
 #' 
-#' - If set to `FOREIGN`, will search the tables shared with your account.
+#' -   If set to `FOREIGN`, will search the tables shared with your
+#'     account.
 #' 
-#' - If set to `ALL`, will search the tables shared with your account, as
-#'   well as the tables in yor local account.
+#' -   If set to `ALL`, will search the tables shared with your account, as
+#'     well as the tables in yor local account.
 #' @param IncludeStatusDetails Specifies whether to include status details related to a request to
 #' create or update an Glue Data Catalog view.
 #'
@@ -6971,8 +6797,7 @@ glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .glue$search_tables_input(CatalogId = CatalogId, NextToken = NextToken, Filters = Filters, SearchText = SearchText, SortCriteria = SortCriteria, MaxResults = MaxResults, ResourceShareType = ResourceShareType, IncludeStatusDetails = IncludeStatusDetails)
   output <- .glue$search_tables_output()
@@ -7004,8 +6829,7 @@ glue_start_blueprint_run <- function(BlueprintName, Parameters = NULL, RoleArn) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_blueprint_run_input(BlueprintName = BlueprintName, Parameters = Parameters, RoleArn = RoleArn)
   output <- .glue$start_blueprint_run_output()
@@ -7045,8 +6869,7 @@ glue_start_column_statistics_task_run <- function(DatabaseName, TableName, Colum
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_column_statistics_task_run_input(DatabaseName = DatabaseName, TableName = TableName, ColumnNameList = ColumnNameList, Role = Role, SampleSize = SampleSize, CatalogID = CatalogID, SecurityConfiguration = SecurityConfiguration)
   output <- .glue$start_column_statistics_task_run_output()
@@ -7077,8 +6900,7 @@ glue_start_crawler <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_crawler_input(Name = Name)
   output <- .glue$start_crawler_output()
@@ -7110,8 +6932,7 @@ glue_start_crawler_schedule <- function(CrawlerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_crawler_schedule_input(CrawlerName = CrawlerName)
   output <- .glue$start_crawler_schedule_output()
@@ -7153,8 +6974,7 @@ glue_start_data_quality_rule_recommendation_run <- function(DataSource, Role, Nu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_data_quality_rule_recommendation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, CreatedRulesetName = CreatedRulesetName, DataQualitySecurityConfiguration = DataQualitySecurityConfiguration, ClientToken = ClientToken)
   output <- .glue$start_data_quality_rule_recommendation_run_output()
@@ -7198,8 +7018,7 @@ glue_start_data_quality_ruleset_evaluation_run <- function(DataSource, Role, Num
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_data_quality_ruleset_evaluation_run_input(DataSource = DataSource, Role = Role, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, ClientToken = ClientToken, AdditionalRunOptions = AdditionalRunOptions, RulesetNames = RulesetNames, AdditionalDataSources = AdditionalDataSources)
   output <- .glue$start_data_quality_ruleset_evaluation_run_output()
@@ -7231,8 +7050,7 @@ glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_export_labels_task_run_input(TransformId = TransformId, OutputS3Path = OutputS3Path)
   output <- .glue$start_export_labels_task_run_output()
@@ -7266,8 +7084,7 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_import_labels_task_run_input(TransformId = TransformId, InputS3Path = InputS3Path, ReplaceAllLabels = ReplaceAllLabels)
   output <- .glue$start_import_labels_task_run_output()
@@ -7348,13 +7165,15 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' are running a Python shell job, an Apache Spark ETL job, or an Apache
 #' Spark streaming ETL job:
 #' 
-#' - When you specify a Python shell job (`JobCommand.Name`="pythonshell"),
-#'   you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
+#' -   When you specify a Python shell job
+#'     (`JobCommand.Name`="pythonshell"), you can allocate either 0.0625 or
+#'     1 DPU. The default is 0.0625 DPU.
 #' 
-#' - When you specify an Apache Spark ETL job (`JobCommand.Name`="glueetl")
-#'   or Apache Spark streaming ETL job (`JobCommand.Name`="gluestreaming"),
-#'   you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
-#'   type cannot have a fractional DPU allocation.
+#' -   When you specify an Apache Spark ETL job
+#'     (`JobCommand.Name`="glueetl") or Apache Spark streaming ETL job
+#'     (`JobCommand.Name`="gluestreaming"), you can allocate from 2 to 100
+#'     DPUs. The default is 10 DPUs. This job type cannot have a fractional
+#'     DPU allocation.
 #' @param SecurityConfiguration The name of the `SecurityConfiguration` structure to be used with this
 #' job run.
 #' @param NotificationProperty Specifies configuration properties of a job run notification.
@@ -7362,46 +7181,46 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 #' a value of G.1X, G.2X, G.4X, G.8X or G.025X for Spark jobs. Accepts the
 #' value Z.2X for Ray jobs.
 #' 
-#' - For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16 GB
-#'   of memory) with 84GB disk (approximately 34GB free), and provides 1
-#'   executor per worker. We recommend this worker type for workloads such
-#'   as data transforms, joins, and queries, to offers a scalable and cost
-#'   effective way to run most jobs.
+#' -   For the `G.1X` worker type, each worker maps to 1 DPU (4 vCPUs, 16
+#'     GB of memory) with 84GB disk (approximately 34GB free), and provides
+#'     1 executor per worker. We recommend this worker type for workloads
+#'     such as data transforms, joins, and queries, to offers a scalable
+#'     and cost effective way to run most jobs.
 #' 
-#' - For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32 GB
-#'   of memory) with 128GB disk (approximately 77GB free), and provides 1
-#'   executor per worker. We recommend this worker type for workloads such
-#'   as data transforms, joins, and queries, to offers a scalable and cost
-#'   effective way to run most jobs.
+#' -   For the `G.2X` worker type, each worker maps to 2 DPU (8 vCPUs, 32
+#'     GB of memory) with 128GB disk (approximately 77GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     workloads such as data transforms, joins, and queries, to offers a
+#'     scalable and cost effective way to run most jobs.
 #' 
-#' - For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64 GB
-#'   of memory) with 256GB disk (approximately 235GB free), and provides 1
-#'   executor per worker. We recommend this worker type for jobs whose
-#'   workloads contain your most demanding transforms, aggregations, joins,
-#'   and queries. This worker type is available only for Glue version 3.0
-#'   or later Spark ETL jobs in the following Amazon Web Services Regions:
-#'   US East (Ohio), US East (N. Virginia), US West (Oregon), Asia Pacific
-#'   (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), Canada
-#'   (Central), Europe (Frankfurt), Europe (Ireland), and Europe
-#'   (Stockholm).
+#' -   For the `G.4X` worker type, each worker maps to 4 DPU (16 vCPUs, 64
+#'     GB of memory) with 256GB disk (approximately 235GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     jobs whose workloads contain your most demanding transforms,
+#'     aggregations, joins, and queries. This worker type is available only
+#'     for Glue version 3.0 or later Spark ETL jobs in the following Amazon
+#'     Web Services Regions: US East (Ohio), US East (N. Virginia), US West
+#'     (Oregon), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia
+#'     Pacific (Tokyo), Canada (Central), Europe (Frankfurt), Europe
+#'     (Ireland), and Europe (Stockholm).
 #' 
-#' - For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
-#'   GB of memory) with 512GB disk (approximately 487GB free), and provides
-#'   1 executor per worker. We recommend this worker type for jobs whose
-#'   workloads contain your most demanding transforms, aggregations, joins,
-#'   and queries. This worker type is available only for Glue version 3.0
-#'   or later Spark ETL jobs, in the same Amazon Web Services Regions as
-#'   supported for the `G.4X` worker type.
+#' -   For the `G.8X` worker type, each worker maps to 8 DPU (32 vCPUs, 128
+#'     GB of memory) with 512GB disk (approximately 487GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     jobs whose workloads contain your most demanding transforms,
+#'     aggregations, joins, and queries. This worker type is available only
+#'     for Glue version 3.0 or later Spark ETL jobs, in the same Amazon Web
+#'     Services Regions as supported for the `G.4X` worker type.
 #' 
-#' - For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPUs, 4
-#'   GB of memory) with 84GB disk (approximately 34GB free), and provides 1
-#'   executor per worker. We recommend this worker type for low volume
-#'   streaming jobs. This worker type is only available for Glue version
-#'   3.0 streaming jobs.
+#' -   For the `G.025X` worker type, each worker maps to 0.25 DPU (2 vCPUs,
+#'     4 GB of memory) with 84GB disk (approximately 34GB free), and
+#'     provides 1 executor per worker. We recommend this worker type for
+#'     low volume streaming jobs. This worker type is only available for
+#'     Glue version 3.0 streaming jobs.
 #' 
-#' - For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64 GB
-#'   of memory) with 128 GB disk (approximately 120GB free), and provides
-#'   up to 8 Ray workers based on the autoscaler.
+#' -   For the `Z.2X` worker type, each worker maps to 2 M-DPU (8vCPUs, 64
+#'     GB of memory) with 128 GB disk (approximately 120GB free), and
+#'     provides up to 8 Ray workers based on the autoscaler.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' a job runs.
 #' @param ExecutionClass Indicates whether the job is run with a standard or flexible execution
@@ -7424,8 +7243,7 @@ glue_start_job_run <- function(JobName, JobRunQueuingEnabled = NULL, JobRunId = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_job_run_input(JobName = JobName, JobRunQueuingEnabled = JobRunQueuingEnabled, JobRunId = JobRunId, Arguments = Arguments, AllocatedCapacity = AllocatedCapacity, Timeout = Timeout, MaxCapacity = MaxCapacity, SecurityConfiguration = SecurityConfiguration, NotificationProperty = NotificationProperty, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, ExecutionClass = ExecutionClass)
   output <- .glue$start_job_run_output()
@@ -7455,8 +7273,7 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_ml_evaluation_task_run_input(TransformId = TransformId)
   output <- .glue$start_ml_evaluation_task_run_output()
@@ -7490,8 +7307,7 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_ml_labeling_set_generation_task_run_input(TransformId = TransformId, OutputS3Path = OutputS3Path)
   output <- .glue$start_ml_labeling_set_generation_task_run_output()
@@ -7521,8 +7337,7 @@ glue_start_trigger <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_trigger_input(Name = Name)
   output <- .glue$start_trigger_output()
@@ -7553,8 +7368,7 @@ glue_start_workflow_run <- function(Name, RunProperties = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$start_workflow_run_input(Name = Name, RunProperties = RunProperties)
   output <- .glue$start_workflow_run_output()
@@ -7585,8 +7399,7 @@ glue_stop_column_statistics_task_run <- function(DatabaseName, TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$stop_column_statistics_task_run_input(DatabaseName = DatabaseName, TableName = TableName)
   output <- .glue$stop_column_statistics_task_run_output()
@@ -7616,8 +7429,7 @@ glue_stop_crawler <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$stop_crawler_input(Name = Name)
   output <- .glue$stop_crawler_output()
@@ -7648,8 +7460,7 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$stop_crawler_schedule_input(CrawlerName = CrawlerName)
   output <- .glue$stop_crawler_schedule_output()
@@ -7680,8 +7491,7 @@ glue_stop_session <- function(Id, RequestOrigin = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$stop_session_input(Id = Id, RequestOrigin = RequestOrigin)
   output <- .glue$stop_session_output()
@@ -7711,8 +7521,7 @@ glue_stop_trigger <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$stop_trigger_input(Name = Name)
   output <- .glue$stop_trigger_output()
@@ -7743,8 +7552,7 @@ glue_stop_workflow_run <- function(Name, RunId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$stop_workflow_run_input(Name = Name, RunId = RunId)
   output <- .glue$stop_workflow_run_output()
@@ -7777,8 +7585,7 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$tag_resource_input(ResourceArn = ResourceArn, TagsToAdd = TagsToAdd)
   output <- .glue$tag_resource_output()
@@ -7810,8 +7617,7 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$untag_resource_input(ResourceArn = ResourceArn, TagsToRemove = TagsToRemove)
   output <- .glue$untag_resource_output()
@@ -7843,8 +7649,7 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_blueprint_input(Name = Name, Description = Description, BlueprintLocation = BlueprintLocation)
   output <- .glue$update_blueprint_output()
@@ -7878,8 +7683,7 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_classifier_input(GrokClassifier = GrokClassifier, XMLClassifier = XMLClassifier, JsonClassifier = JsonClassifier, CsvClassifier = CsvClassifier)
   output <- .glue$update_classifier_output()
@@ -7914,8 +7718,7 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_column_statistics_for_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValues = PartitionValues, ColumnStatisticsList = ColumnStatisticsList)
   output <- .glue$update_column_statistics_for_partition_output()
@@ -7949,8 +7752,7 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_column_statistics_for_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, ColumnStatisticsList = ColumnStatisticsList)
   output <- .glue$update_column_statistics_for_table_output()
@@ -7983,8 +7785,7 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_connection_input(CatalogId = CatalogId, Name = Name, ConnectionInput = ConnectionInput)
   output <- .glue$update_connection_output()
@@ -8041,8 +7842,7 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_crawler_input(Name = Name, Role = Role, DatabaseName = DatabaseName, Description = Description, Targets = Targets, Schedule = Schedule, Classifiers = Classifiers, TablePrefix = TablePrefix, SchemaChangePolicy = SchemaChangePolicy, RecrawlPolicy = RecrawlPolicy, LineageConfiguration = LineageConfiguration, LakeFormationConfiguration = LakeFormationConfiguration, Configuration = Configuration, CrawlerSecurityConfiguration = CrawlerSecurityConfiguration)
   output <- .glue$update_crawler_output()
@@ -8077,8 +7877,7 @@ glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_crawler_schedule_input(CrawlerName = CrawlerName, Schedule = Schedule)
   output <- .glue$update_crawler_schedule_output()
@@ -8111,8 +7910,7 @@ glue_update_data_quality_ruleset <- function(Name, Description = NULL, Ruleset =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_data_quality_ruleset_input(Name = Name, Description = Description, Ruleset = Ruleset)
   output <- .glue$update_data_quality_ruleset_output()
@@ -8147,8 +7945,7 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_database_input(CatalogId = CatalogId, Name = Name, DatabaseInput = DatabaseInput)
   output <- .glue$update_database_output()
@@ -8181,7 +7978,7 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 #' 
 #' Valid arguments are:
 #' 
-#' - `"--enable-glue-datacatalog": ""`
+#' -   `"--enable-glue-datacatalog": ""`
 #' 
 #' You can specify a version of Python support for development endpoints by
 #' using the `Arguments` parameter in the
@@ -8198,8 +7995,7 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_dev_endpoint_input(EndpointName = EndpointName, PublicKey = PublicKey, AddPublicKeys = AddPublicKeys, DeletePublicKeys = DeletePublicKeys, CustomLibraries = CustomLibraries, UpdateEtlLibraries = UpdateEtlLibraries, DeleteArguments = DeleteArguments, AddArguments = AddArguments)
   output <- .glue$update_dev_endpoint_output()
@@ -8231,8 +8027,7 @@ glue_update_job <- function(JobName, JobUpdate) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_job_input(JobName = JobName, JobUpdate = JobUpdate)
   output <- .glue$update_job_output()
@@ -8275,8 +8070,7 @@ glue_update_job_from_source_control <- function(JobName = NULL, Provider = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_job_from_source_control_input(JobName = JobName, Provider = Provider, RepositoryName = RepositoryName, RepositoryOwner = RepositoryOwner, BranchName = BranchName, Folder = Folder, CommitId = CommitId, AuthStrategy = AuthStrategy, AuthToken = AuthToken)
   output <- .glue$update_job_from_source_control_output()
@@ -8320,14 +8114,14 @@ glue_update_job_from_source_control <- function(JobName = NULL, Provider = NULL,
 #' @param WorkerType The type of predefined worker that is allocated when this task runs.
 #' Accepts a value of Standard, G.1X, or G.2X.
 #' 
-#' - For the `Standard` worker type, each worker provides 4 vCPU, 16 GB of
-#'   memory and a 50GB disk, and 2 executors per worker.
+#' -   For the `Standard` worker type, each worker provides 4 vCPU, 16 GB
+#'     of memory and a 50GB disk, and 2 executors per worker.
 #' 
-#' - For the `G.1X` worker type, each worker provides 4 vCPU, 16 GB of
-#'   memory and a 64GB disk, and 1 executor per worker.
+#' -   For the `G.1X` worker type, each worker provides 4 vCPU, 16 GB of
+#'     memory and a 64GB disk, and 1 executor per worker.
 #' 
-#' - For the `G.2X` worker type, each worker provides 8 vCPU, 32 GB of
-#'   memory and a 128GB disk, and 1 executor per worker.
+#' -   For the `G.2X` worker type, each worker provides 8 vCPU, 32 GB of
+#'     memory and a 128GB disk, and 1 executor per worker.
 #' @param NumberOfWorkers The number of workers of a defined `workerType` that are allocated when
 #' this task runs.
 #' @param Timeout The timeout for a task run for this transform in minutes. This is the
@@ -8346,8 +8140,7 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_ml_transform_input(TransformId = TransformId, Name = Name, Description = Description, Parameters = Parameters, Role = Role, GlueVersion = GlueVersion, MaxCapacity = MaxCapacity, WorkerType = WorkerType, NumberOfWorkers = NumberOfWorkers, Timeout = Timeout, MaxRetries = MaxRetries)
   output <- .glue$update_ml_transform_output()
@@ -8385,8 +8178,7 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_partition_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, PartitionValueList = PartitionValueList, PartitionInput = PartitionInput)
   output <- .glue$update_partition_output()
@@ -8420,8 +8212,7 @@ glue_update_registry <- function(RegistryId, Description) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_registry_input(RegistryId = RegistryId, Description = Description)
   output <- .glue$update_registry_output()
@@ -8444,11 +8235,11 @@ glue_update_registry <- function(RegistryId, Description) {
 #' @param SchemaId &#91;required&#93; This is a wrapper structure to contain schema identity fields. The
 #' structure contains:
 #' 
-#' - SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema. One
-#'   of `SchemaArn` or `SchemaName` has to be provided.
+#' -   SchemaId$SchemaArn: The Amazon Resource Name (ARN) of the schema.
+#'     One of `SchemaArn` or `SchemaName` has to be provided.
 #' 
-#' - SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
-#'   `SchemaName` has to be provided.
+#' -   SchemaId$SchemaName: The name of the schema. One of `SchemaArn` or
+#'     `SchemaName` has to be provided.
 #' @param SchemaVersionNumber Version number required for check pointing. One of `VersionNumber` or
 #' `Compatibility` has to be provided.
 #' @param Compatibility The new compatibility setting for the schema.
@@ -8463,8 +8254,7 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_schema_input(SchemaId = SchemaId, SchemaVersionNumber = SchemaVersionNumber, Compatibility = Compatibility, Description = Description)
   output <- .glue$update_schema_output()
@@ -8507,8 +8297,7 @@ glue_update_source_control_from_job <- function(JobName = NULL, Provider = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_source_control_from_job_input(JobName = JobName, Provider = Provider, RepositoryName = RepositoryName, RepositoryOwner = RepositoryOwner, BranchName = BranchName, Folder = Folder, CommitId = CommitId, AuthStrategy = AuthStrategy, AuthToken = AuthToken)
   output <- .glue$update_source_control_from_job_output()
@@ -8552,8 +8341,7 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_table_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableInput = TableInput, SkipArchive = SkipArchive, TransactionId = TransactionId, VersionId = VersionId, ViewUpdateAction = ViewUpdateAction, Force = Force)
   output <- .glue$update_table_output()
@@ -8589,8 +8377,7 @@ glue_update_table_optimizer <- function(CatalogId, DatabaseName, TableName, Type
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_table_optimizer_input(CatalogId = CatalogId, DatabaseName = DatabaseName, TableName = TableName, Type = Type, TableOptimizerConfiguration = TableOptimizerConfiguration)
   output <- .glue$update_table_optimizer_output()
@@ -8621,8 +8408,7 @@ glue_update_trigger <- function(Name, TriggerUpdate) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_trigger_input(Name = Name, TriggerUpdate = TriggerUpdate)
   output <- .glue$update_trigger_output()
@@ -8655,8 +8441,7 @@ glue_update_usage_profile <- function(Name, Description = NULL, Configuration) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_usage_profile_input(Name = Name, Description = Description, Configuration = Configuration)
   output <- .glue$update_usage_profile_output()
@@ -8693,8 +8478,7 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_user_defined_function_input(CatalogId = CatalogId, DatabaseName = DatabaseName, FunctionName = FunctionName, FunctionInput = FunctionInput)
   output <- .glue$update_user_defined_function_output()
@@ -8732,8 +8516,7 @@ glue_update_workflow <- function(Name, Description = NULL, DefaultRunProperties 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .glue$update_workflow_input(Name = Name, Description = Description, DefaultRunProperties = DefaultRunProperties, MaxConcurrentRuns = MaxConcurrentRuns)
   output <- .glue$update_workflow_output()

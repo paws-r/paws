@@ -30,8 +30,8 @@ environment is terminated:
 \item \code{true}: The specified environment as well as the associated AWS
 resources, such as Auto Scaling group and LoadBalancer, are
 terminated.
-\item \code{false}: AWS Elastic Beanstalk resource management is removed from the
-environment, but the AWS resources continue to operate.
+\item \code{false}: AWS Elastic Beanstalk resource management is removed from
+the environment, but the AWS resources continue to operate.
 }
 
 For more information, see the \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/}{AWS Elastic Beanstalk User Guide.}

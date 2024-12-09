@@ -12,15 +12,16 @@ NULL
 #' action. You can also use rules to take action on a predetermined
 #' schedule. For example, you can configure rules to:
 #' 
-#' - Automatically invoke an Lambda function to update DNS entries when an
-#'   event notifies you that Amazon EC2 instance enters the running state.
+#' -   Automatically invoke an Lambda function to update DNS entries when
+#'     an event notifies you that Amazon EC2 instance enters the running
+#'     state.
 #' 
-#' - Direct specific API records from CloudTrail to an Amazon Kinesis data
-#'   stream for detailed analysis of potential security or availability
-#'   risks.
+#' -   Direct specific API records from CloudTrail to an Amazon Kinesis
+#'     data stream for detailed analysis of potential security or
+#'     availability risks.
 #' 
-#' - Periodically invoke a built-in target to create a snapshot of an
-#'   Amazon EBS volume.
+#' -   Periodically invoke a built-in target to create a snapshot of an
+#'     Amazon EBS volume.
 #' 
 #' For more information about the features of Amazon EventBridge, see the
 #' [Amazon EventBridge User

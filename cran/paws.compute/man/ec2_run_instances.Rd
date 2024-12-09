@@ -208,7 +208,7 @@ Amazon Elastic Graphics reached end of life on January 8, 2024.}
 \item{ElasticInferenceAccelerators}{An elastic inference accelerator to associate with the instance.
 
 Amazon Elastic Inference (EI) is no longer available to new customers.
-For more information, see \href{https://aws.amazon.com/sagemaker/deploy/}{Amazon Elastic Inference FAQs}.}
+For more information, see \href{https://aws.amazon.com/machine-learning/elastic-inference/faqs/}{Amazon Elastic Inference FAQs}.}
 
 \item{TagSpecifications}{The tags to apply to the resources that are created during instance
 launch.

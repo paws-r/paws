@@ -76,7 +76,7 @@ you can get the latest information from the API. For more information,
 see \href{https://docs.aws.amazon.com/health/latest/ug/health-api.html}{Accessing the Health API} in
 the \emph{Health User Guide}.
 
-For authentication of requests, Health uses the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+For authentication of requests, Health uses the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 If your Amazon Web Services account is part of Organizations, you can
 use the Health organizational view feature. This feature provides a

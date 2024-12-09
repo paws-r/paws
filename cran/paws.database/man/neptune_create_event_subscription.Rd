@@ -50,8 +50,8 @@ must be supplied.
 must be supplied.
 \item If the source type is a DB parameter group, a \code{DBParameterGroupName}
 must be supplied.
-\item If the source type is a DB snapshot, a \code{DBSnapshotIdentifier} must be
-supplied.
+\item If the source type is a DB snapshot, a \code{DBSnapshotIdentifier} must
+be supplied.
 }}
 
 \item{Enabled}{A Boolean value; set to \strong{true} to activate the subscription, set to

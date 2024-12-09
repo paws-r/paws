@@ -25,7 +25,7 @@ encoding of
 The value must be URL encoded.}
 }
 \description{
-Gets an Amazon S3 on Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{Using Amazon S3 on Outposts} in the \emph{Amazon S3 User Guide}.
+Gets an Amazon S3 on Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{Using Amazon S3 on Outposts} in the \emph{Amazon S3 User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3control_get_bucket/} for full documentation.
 }

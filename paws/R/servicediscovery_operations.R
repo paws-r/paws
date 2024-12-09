@@ -75,8 +75,7 @@ servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$create_http_namespace_input(Name = Name, CreatorRequestId = CreatorRequestId, Description = Description, Tags = Tags)
   output <- .servicediscovery$create_http_namespace_output()
@@ -175,8 +174,7 @@ servicediscovery_create_private_dns_namespace <- function(Name, CreatorRequestId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$create_private_dns_namespace_input(Name = Name, CreatorRequestId = CreatorRequestId, Description = Description, Vpc = Vpc, Tags = Tags, Properties = Properties)
   output <- .servicediscovery$create_private_dns_namespace_output()
@@ -279,8 +277,7 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$create_public_dns_namespace_input(Name = Name, CreatorRequestId = CreatorRequestId, Description = Description, Tags = Tags, Properties = Properties)
   output <- .servicediscovery$create_public_dns_namespace_output()
@@ -298,20 +295,20 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' Creates a service. This action defines the configuration for the
 #' following entities:
 #' 
-#' - For public and private DNS namespaces, one of the following
-#'   combinations of DNS records in Amazon Route 53:
+#' -   For public and private DNS namespaces, one of the following
+#'     combinations of DNS records in Amazon Route 53:
 #' 
-#'   - `A`
+#'     -   `A`
 #' 
-#'   - `AAAA`
+#'     -   `AAAA`
 #' 
-#'   - `A` and `AAAA`
+#'     -   `A` and `AAAA`
 #' 
-#'   - `SRV`
+#'     -   `SRV`
 #' 
-#'   - `CNAME`
+#'     -   `CNAME`
 #' 
-#' - Optionally, a health check
+#' -   Optionally, a health check
 #' 
 #' After you create the service, you can submit a
 #' [`register_instance`][servicediscovery_register_instance] request, and
@@ -338,9 +335,9 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' format, such as [HAProxy](http://www.haproxy.org/), specify the
 #' following for `Name`:
 #' 
-#' - Start the name with an underscore (_), such as `_exampleservice`.
+#' -   Start the name with an underscore (_), such as `_exampleservice`.
 #' 
-#' - End the name with *._protocol*, such as `._tcp`.
+#' -   End the name with *._protocol*, such as `._tcp`.
 #' 
 #' When you register an instance, Cloud Map creates an `SRV` record and
 #' assigns a name to the record by concatenating the service name and the
@@ -495,8 +492,7 @@ servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorReq
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$create_service_input(Name = Name, NamespaceId = NamespaceId, CreatorRequestId = CreatorRequestId, Description = Description, DnsConfig = DnsConfig, HealthCheckConfig = HealthCheckConfig, HealthCheckCustomConfig = HealthCheckCustomConfig, Tags = Tags, Type = Type)
   output <- .servicediscovery$create_service_output()
@@ -553,8 +549,7 @@ servicediscovery_delete_namespace <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$delete_namespace_input(Id = Id)
   output <- .servicediscovery$delete_namespace_output()
@@ -606,8 +601,7 @@ servicediscovery_delete_service <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$delete_service_input(Id = Id)
   output <- .servicediscovery$delete_service_output()
@@ -669,8 +663,7 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$deregister_instance_input(ServiceId = ServiceId, InstanceId = InstanceId)
   output <- .servicediscovery$deregister_instance_output()
@@ -796,8 +789,7 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "data-",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$discover_instances_input(NamespaceName = NamespaceName, ServiceName = ServiceName, MaxResults = MaxResults, QueryParameters = QueryParameters, OptionalParameters = OptionalParameters, HealthStatus = HealthStatus)
   output <- .servicediscovery$discover_instances_output()
@@ -859,8 +851,7 @@ servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceN
     http_method = "POST",
     http_path = "/",
     host_prefix = "data-",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$discover_instances_revision_input(NamespaceName = NamespaceName, ServiceName = ServiceName)
   output <- .servicediscovery$discover_instances_revision_output()
@@ -925,8 +916,7 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$get_instance_input(ServiceId = ServiceId, InstanceId = InstanceId)
   output <- .servicediscovery$get_instance_output()
@@ -1020,8 +1010,7 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$get_instances_health_status_input(ServiceId = ServiceId, Instances = Instances, MaxResults = MaxResults, NextToken = NextToken)
   output <- .servicediscovery$get_instances_health_status_output()
@@ -1099,8 +1088,7 @@ servicediscovery_get_namespace <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$get_namespace_input(Id = Id)
   output <- .servicediscovery$get_namespace_output()
@@ -1178,8 +1166,7 @@ servicediscovery_get_operation <- function(OperationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$get_operation_input(OperationId = OperationId)
   output <- .servicediscovery$get_operation_output()
@@ -1265,8 +1252,7 @@ servicediscovery_get_service <- function(Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$get_service_input(Id = Id)
   output <- .servicediscovery$get_service_output()
@@ -1345,8 +1331,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_instances_input(ServiceId = ServiceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicediscovery$list_instances_output()
@@ -1457,8 +1442,7 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_namespaces_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_namespaces_output()
@@ -1562,8 +1546,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_operations_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_operations_output()
@@ -1681,8 +1664,7 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_services_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_services_output()
@@ -1744,8 +1726,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .servicediscovery$list_tags_for_resource_output()
@@ -1766,15 +1747,15 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' [`register_instance`][servicediscovery_register_instance] request, the
 #' following occurs:
 #' 
-#' - For each DNS record that you define in the service that's specified by
-#'   `ServiceId`, a record is created or updated in the hosted zone that's
-#'   associated with the corresponding namespace.
+#' -   For each DNS record that you define in the service that's specified
+#'     by `ServiceId`, a record is created or updated in the hosted zone
+#'     that's associated with the corresponding namespace.
 #' 
-#' - If the service includes `HealthCheckConfig`, a health check is created
-#'   based on the settings in the health check configuration.
+#' -   If the service includes `HealthCheckConfig`, a health check is
+#'     created based on the settings in the health check configuration.
 #' 
-#' - The health check, if any, is associated with each of the new or
-#'   updated records.
+#' -   The health check, if any, is associated with each of the new or
+#'     updated records.
 #' 
 #' One [`register_instance`][servicediscovery_register_instance] request
 #' must complete before you can submit another request and specify the same
@@ -1786,13 +1767,13 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' When Cloud Map receives a DNS query for the specified DNS name, it
 #' returns the applicable value:
 #' 
-#' - **If the health check is healthy**: returns all the records
+#' -   **If the health check is healthy**: returns all the records
 #' 
-#' - **If the health check is unhealthy**: returns the applicable value for
-#'   the last healthy instance
+#' -   **If the health check is unhealthy**: returns the applicable value
+#'     for the last healthy instance
 #' 
-#' - **If you didn't specify a health check configuration**: returns all
-#'   the records
+#' -   **If you didn't specify a health check configuration**: returns all
+#'     the records
 #' 
 #' For the current quota on the number of instances that you can register
 #' using the same namespace and using the same service, see [Cloud Map
@@ -1808,24 +1789,24 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' @param InstanceId &#91;required&#93; An identifier that you want to associate with the instance. Note the
 #' following:
 #' 
-#' - If the service that's specified by `ServiceId` includes settings for
-#'   an `SRV` record, the value of `InstanceId` is automatically included
-#'   as part of the value for the `SRV` record. For more information, see
-#'   [DnsRecord \>
-#'   Type](https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type).
+#' -   If the service that's specified by `ServiceId` includes settings for
+#'     an `SRV` record, the value of `InstanceId` is automatically included
+#'     as part of the value for the `SRV` record. For more information, see
+#'     [DnsRecord \>
+#'     Type](https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type).
 #' 
-#' - You can use this value to update an existing instance.
+#' -   You can use this value to update an existing instance.
 #' 
-#' - To register a new instance, you must specify a value that's unique
-#'   among instances that you register by using the same service.
+#' -   To register a new instance, you must specify a value that's unique
+#'     among instances that you register by using the same service.
 #' 
-#' - If you specify an existing `InstanceId` and `ServiceId`, Cloud Map
-#'   updates the existing DNS records, if any. If there's also an existing
-#'   health check, Cloud Map deletes the old health check and creates a new
-#'   one.
+#' -   If you specify an existing `InstanceId` and `ServiceId`, Cloud Map
+#'     updates the existing DNS records, if any. If there's also an
+#'     existing health check, Cloud Map deletes the old health check and
+#'     creates a new one.
 #' 
-#'   The health check isn't deleted immediately, so it will still appear
-#'   for a while if you submit a `ListHealthChecks` request, for example.
+#'     The health check isn't deleted immediately, so it will still appear
+#'     for a while if you submit a `ListHealthChecks` request, for example.
 #' 
 #' Do not include sensitive information in `InstanceId` if the namespace is
 #' discoverable by public DNS queries and any `Type` member of `DnsRecord`
@@ -1842,10 +1823,10 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' @param Attributes &#91;required&#93; A string map that contains the following information for the service
 #' that you specify in `ServiceId`:
 #' 
-#' - The attributes that apply to the records that are defined in the
-#'   service.
+#' -   The attributes that apply to the records that are defined in the
+#'     service.
 #' 
-#' - For each attribute, the applicable value.
+#' -   For each attribute, the applicable value.
 #' 
 #' Do not include sensitive information in the attributes if the namespace
 #' is discoverable by public DNS queries.
@@ -1863,26 +1844,26 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' 
 #' Note the following:
 #' 
-#' - The configuration for the service that's specified by `ServiceId` must
-#'   include settings for an `A` record, an `AAAA` record, or both.
+#' -   The configuration for the service that's specified by `ServiceId`
+#'     must include settings for an `A` record, an `AAAA` record, or both.
 #' 
-#' - In the service that's specified by `ServiceId`, the value of
-#'   `RoutingPolicy` must be `WEIGHTED`.
+#' -   In the service that's specified by `ServiceId`, the value of
+#'     `RoutingPolicy` must be `WEIGHTED`.
 #' 
-#' - If the service that's specified by `ServiceId` includes
-#'   `HealthCheckConfig` settings, Cloud Map will create the Route 53
-#'   health check, but it doesn't associate the health check with the alias
-#'   record.
+#' -   If the service that's specified by `ServiceId` includes
+#'     `HealthCheckConfig` settings, Cloud Map will create the Route 53
+#'     health check, but it doesn't associate the health check with the
+#'     alias record.
 #' 
-#' - Cloud Map currently doesn't support creating alias records that route
-#'   traffic to Amazon Web Services resources other than Elastic Load
-#'   Balancing load balancers.
+#' -   Cloud Map currently doesn't support creating alias records that
+#'     route traffic to Amazon Web Services resources other than Elastic
+#'     Load Balancing load balancers.
 #' 
-#' - If you specify a value for `AWS_ALIAS_DNS_NAME`, don't specify values
-#'   for any of the `AWS_INSTANCE` attributes.
+#' -   If you specify a value for `AWS_ALIAS_DNS_NAME`, don't specify
+#'     values for any of the `AWS_INSTANCE` attributes.
 #' 
-#' - The `AWS_ALIAS_DNS_NAME` is not supported in the GovCloud (US)
-#'   Regions.
+#' -   The `AWS_ALIAS_DNS_NAME` is not supported in the GovCloud (US)
+#'     Regions.
 #' 
 #' **AWS_EC2_INSTANCE_ID**
 #' 
@@ -1995,8 +1976,7 @@ servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorReq
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$register_instance_input(ServiceId = ServiceId, InstanceId = InstanceId, CreatorRequestId = CreatorRequestId, Attributes = Attributes)
   output <- .servicediscovery$register_instance_output()
@@ -2067,8 +2047,7 @@ servicediscovery_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .servicediscovery$tag_resource_output()
@@ -2129,8 +2108,7 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .servicediscovery$untag_resource_output()
@@ -2199,8 +2177,7 @@ servicediscovery_update_http_namespace <- function(Id, UpdaterRequestId = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$update_http_namespace_input(Id = Id, UpdaterRequestId = UpdaterRequestId, Namespace = Namespace)
   output <- .servicediscovery$update_http_namespace_output()
@@ -2273,8 +2250,7 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$update_instance_custom_health_status_input(ServiceId = ServiceId, InstanceId = InstanceId, Status = Status)
   output <- .servicediscovery$update_instance_custom_health_status_output()
@@ -2362,8 +2338,7 @@ servicediscovery_update_private_dns_namespace <- function(Id, UpdaterRequestId =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$update_private_dns_namespace_input(Id = Id, UpdaterRequestId = UpdaterRequestId, Namespace = Namespace)
   output <- .servicediscovery$update_private_dns_namespace_output()
@@ -2429,8 +2404,7 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$update_public_dns_namespace_input(Id = Id, UpdaterRequestId = UpdaterRequestId, Namespace = Namespace)
   output <- .servicediscovery$update_public_dns_namespace_output()
@@ -2447,23 +2421,23 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
 #' @description
 #' Submits a request to perform the following operations:
 #' 
-#' - Update the TTL setting for existing `DnsRecords` configurations
+#' -   Update the TTL setting for existing `DnsRecords` configurations
 #' 
-#' - Add, update, or delete `HealthCheckConfig` for a specified service
+#' -   Add, update, or delete `HealthCheckConfig` for a specified service
 #' 
-#'   You can't add, update, or delete a `HealthCheckCustomConfig`
-#'   configuration.
+#'     You can't add, update, or delete a `HealthCheckCustomConfig`
+#'     configuration.
 #' 
 #' For public and private DNS namespaces, note the following:
 #' 
-#' - If you omit any existing `DnsRecords` or `HealthCheckConfig`
-#'   configurations from an
-#'   [`update_service`][servicediscovery_update_service] request, the
-#'   configurations are deleted from the service.
+#' -   If you omit any existing `DnsRecords` or `HealthCheckConfig`
+#'     configurations from an
+#'     [`update_service`][servicediscovery_update_service] request, the
+#'     configurations are deleted from the service.
 #' 
-#' - If you omit an existing `HealthCheckCustomConfig` configuration from
-#'   an [`update_service`][servicediscovery_update_service] request, the
-#'   configuration isn't deleted from the service.
+#' -   If you omit an existing `HealthCheckCustomConfig` configuration from
+#'     an [`update_service`][servicediscovery_update_service] request, the
+#'     configuration isn't deleted from the service.
 #' 
 #' When you update settings for a service, Cloud Map also updates the
 #' corresponding settings in all the records and health checks that were
@@ -2541,8 +2515,7 @@ servicediscovery_update_service <- function(Id, Service) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .servicediscovery$update_service_input(Id = Id, Service = Service)
   output <- .servicediscovery$update_service_output()

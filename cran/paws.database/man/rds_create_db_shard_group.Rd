@@ -22,7 +22,8 @@ rds_create_db_shard_group(
 Valid values are the following:
 \itemize{
 \item 0 - Creates a single, primary DB instance for each physical shard.
-This is the default value, and the only one supported for the preview.
+This is the default value, and the only one supported for the
+preview.
 \item 1 - Creates a primary DB instance and a standby instance in a
 different Availability Zone (AZ) for each physical shard.
 \item 2 - Creates a primary DB instance and two standby instances in
@@ -63,10 +64,10 @@ attached to it, the DB shard group is public.
 If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the subnets are part of a VPC that doesn’t have an internet gateway
-attached to it, the DB shard group is private.
-\item If the subnets are part of a VPC that has an internet gateway attached
-to it, the DB shard group is public.
+\item If the subnets are part of a VPC that doesn’t have an internet
+gateway attached to it, the DB shard group is private.
+\item If the subnets are part of a VPC that has an internet gateway
+attached to it, the DB shard group is public.
 }}
 }
 \description{

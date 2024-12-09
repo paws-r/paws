@@ -91,11 +91,11 @@ NULL
 #' 
 #' Idempotent create APIs with a client token:
 #' 
-#' - CreateEnvironmentTemplateVersion
+#' -   CreateEnvironmentTemplateVersion
 #' 
-#' - CreateServiceTemplateVersion
+#' -   CreateServiceTemplateVersion
 #' 
-#' - CreateEnvironmentAccountConnection
+#' -   CreateEnvironmentAccountConnection
 #' 
 #' **Idempotent create APIs**
 #' 
@@ -114,13 +114,13 @@ NULL
 #' 
 #' Idempotent create APIs:
 #' 
-#' - CreateEnvironmentTemplate
+#' -   CreateEnvironmentTemplate
 #' 
-#' - CreateServiceTemplate
+#' -   CreateServiceTemplate
 #' 
-#' - CreateEnvironment
+#' -   CreateEnvironment
 #' 
-#' - CreateService
+#' -   CreateService
 #' 
 #' **Idempotent delete APIs**
 #' 
@@ -135,15 +135,15 @@ NULL
 #' 
 #' Idempotent delete APIs:
 #' 
-#' - DeleteEnvironmentTemplate
+#' -   DeleteEnvironmentTemplate
 #' 
-#' - DeleteEnvironmentTemplateVersion
+#' -   DeleteEnvironmentTemplateVersion
 #' 
-#' - DeleteServiceTemplate
+#' -   DeleteServiceTemplate
 #' 
-#' - DeleteServiceTemplateVersion
+#' -   DeleteServiceTemplateVersion
 #' 
-#' - DeleteEnvironmentAccountConnection
+#' -   DeleteEnvironmentAccountConnection
 #' 
 #' **Asynchronous idempotent delete APIs**
 #' 
@@ -159,9 +159,9 @@ NULL
 #' 
 #' Asynchronous idempotent delete APIs:
 #' 
-#' - DeleteEnvironment
+#' -   DeleteEnvironment
 #' 
-#' - DeleteService
+#' -   DeleteService
 #'
 #' @param
 #' config

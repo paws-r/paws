@@ -294,9 +294,9 @@ Amazon Web Services account, specify the key ARN or alias ARN.
 
 When a KMS key isn't specified in \code{KmsKeyId}:
 \itemize{
-\item If \code{ReplicationSourceIdentifier} identifies an encrypted source, then
-Amazon RDS uses the KMS key used to encrypt the source. Otherwise,
-Amazon RDS uses your default KMS key.
+\item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
+then Amazon RDS uses the KMS key used to encrypt the source.
+Otherwise, Amazon RDS uses your default KMS key.
 \item If the \code{StorageEncrypted} parameter is enabled and
 \code{ReplicationSourceIdentifier} isn't specified, then Amazon RDS uses
 your default KMS key.
@@ -329,14 +329,14 @@ cluster to copy.
 
 The presigned URL request must contain the following parameter values:
 \itemize{
-\item \code{KmsKeyId} - The KMS key identifier for the KMS key to use to encrypt
-the copy of the DB cluster in the destination Amazon Web Services
-Region. This should refer to the same KMS key for both the
-\code{\link[=rds_create_db_cluster]{create_db_cluster}} operation that is called
-in the destination Amazon Web Services Region, and the operation
-contained in the presigned URL.
-\item \code{DestinationRegion} - The name of the Amazon Web Services Region that
-Aurora read replica will be created in.
+\item \code{KmsKeyId} - The KMS key identifier for the KMS key to use to
+encrypt the copy of the DB cluster in the destination Amazon Web
+Services Region. This should refer to the same KMS key for both the
+\code{\link[=rds_create_db_cluster]{create_db_cluster}} operation that is
+called in the destination Amazon Web Services Region, and the
+operation contained in the presigned URL.
+\item \code{DestinationRegion} - The name of the Amazon Web Services Region
+that Aurora read replica will be created in.
 \item \code{ReplicationSourceIdentifier} - The DB cluster identifier for the
 encrypted DB cluster to be copied. This identifier must be in the
 Amazon Resource Name (ARN) format for the source Amazon Web Services
@@ -348,7 +348,7 @@ the us-west-2 Amazon Web Services Region, then your
 
 To learn how to generate a Signature Version 4 signed request, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)}
-and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can
 specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of
@@ -379,8 +379,8 @@ Default: \code{0}
 
 Constraints:
 \itemize{
-\item If specified, this value must be set to a number from 0 to 259,200 (72
-hours).
+\item If specified, this value must be set to a number from 0 to 259,200
+(72 hours).
 }}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
@@ -552,8 +552,8 @@ Valid for Cluster Type: Multi-AZ DB clusters only
 
 Constraints:
 \itemize{
-\item Must be a multiple between .5 and 50 of the storage amount for the DB
-cluster.
+\item Must be a multiple between .5 and 50 of the storage amount for the
+DB cluster.
 }}
 
 \item{PubliclyAccessible}{Specifies whether the DB cluster is publicly accessible.
@@ -586,10 +586,10 @@ attached to it, the DB cluster is public.
 If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the subnets are part of a VPC that doesn’t have an internet gateway
-attached to it, the DB cluster is private.
-\item If the subnets are part of a VPC that has an internet gateway attached
-to it, the DB cluster is public.
+\item If the subnets are part of a VPC that doesn’t have an internet
+gateway attached to it, the DB cluster is private.
+\item If the subnets are part of a VPC that has an internet gateway
+attached to it, the DB cluster is public.
 }}
 
 \item{AutoMinorVersionUpgrade}{Specifies whether minor engine upgrades are applied automatically to the
@@ -693,8 +693,8 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Constraints:
 \itemize{
-\item Can't manage the master user password with Amazon Web Services Secrets
-Manager if \code{MasterUserPassword} is specified.
+\item Can't manage the master user password with Amazon Web Services
+Secrets Manager if \code{MasterUserPassword} is specified.
 }}
 
 \item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is

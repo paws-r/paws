@@ -27,15 +27,15 @@ Supported filters are the following:
 \itemize{
 \item \code{status}
 \itemize{
-\item \code{retained} - Automated backups for deleted clusters and after backup
-replication is stopped.
+\item \code{retained} - Automated backups for deleted clusters and after
+backup replication is stopped.
 }
 \item \code{db-cluster-id} - Accepts DB cluster identifiers and Amazon Resource
-Names (ARNs). The results list includes only information about the DB
-cluster automated backups identified by these ARNs.
-\item \code{db-cluster-resource-id} - Accepts DB resource identifiers and Amazon
-Resource Names (ARNs). The results list includes only information
-about the DB cluster resources identified by these ARNs.
+Names (ARNs). The results list includes only information about the
+DB cluster automated backups identified by these ARNs.
+\item \code{db-cluster-resource-id} - Accepts DB resource identifiers and
+Amazon Resource Names (ARNs). The results list includes only
+information about the DB cluster resources identified by these ARNs.
 }
 
 Returns all resources by default. The status for each resource is

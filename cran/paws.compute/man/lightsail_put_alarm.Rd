@@ -38,8 +38,8 @@ The following metrics are available for each resource type:
 \code{HTTPCode_Instance_5XX_Count}, \code{InstanceResponseTime},
 \code{RejectedConnectionCount}, and \code{RequestCount}.
 \item \strong{Relational databases}: \code{CPUUtilization}, \code{DatabaseConnections},
-\code{DiskQueueDepth}, \code{FreeStorageSpace}, \code{NetworkReceiveThroughput}, and
-\code{NetworkTransmitThroughput}.
+\code{DiskQueueDepth}, \code{FreeStorageSpace}, \code{NetworkReceiveThroughput},
+and \code{NetworkTransmitThroughput}.
 }
 
 For more information about these metrics, see \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-resource-health-metrics.html#available-metrics}{Metrics available in Lightsail}.}
@@ -82,9 +82,10 @@ An alarm can treat missing data in the following ways:
 Missing data counts towards the number of times the metric is not
 within the threshold.
 \item \code{notBreaching} - Assume the missing data is within the threshold.
-Missing data does not count towards the number of times the metric is
-not within the threshold.
-\item \code{ignore} - Ignore the missing data. Maintains the current alarm state.
+Missing data does not count towards the number of times the metric
+is not within the threshold.
+\item \code{ignore} - Ignore the missing data. Maintains the current alarm
+state.
 \item \code{missing} - Missing data is treated as missing.
 }
 
@@ -112,8 +113,8 @@ An alarm has the following possible states:
 \itemize{
 \item \code{ALARM} - The metric is outside of the defined threshold.
 \item \code{INSUFFICIENT_DATA} - The alarm has just started, the metric is not
-available, or not enough data is available for the metric to determine
-the alarm state.
+available, or not enough data is available for the metric to
+determine the alarm state.
 \item \code{OK} - The metric is within the defined threshold.
 }
 
@@ -122,9 +123,9 @@ specified. The \code{INSUFFICIENT_DATA} and \code{OK} states can be specified in
 addition to the \code{ALARM} state.
 \itemize{
 \item If you specify \code{OK} as an alarm trigger, a notification is sent when
-the alarm switches from an \code{ALARM} or \code{INSUFFICIENT_DATA} alarm state
-to an \code{OK} state. This can be thought of as an \emph{all clear} alarm
-notification.
+the alarm switches from an \code{ALARM} or \code{INSUFFICIENT_DATA} alarm
+state to an \code{OK} state. This can be thought of as an \emph{all clear}
+alarm notification.
 \item If you specify \code{INSUFFICIENT_DATA} as the alarm trigger, a
 notification is sent when the alarm switches from an \code{OK} or \code{ALARM}
 alarm state to an \code{INSUFFICIENT_DATA} state.

@@ -22,7 +22,8 @@ Constraints:
 \item Alphabetic characters must be lowercase.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for all clusters within an Amazon Web Services account.
+\item Must be unique for all clusters within an Amazon Web Services
+account.
 }}
 
 \item{KmsKeyId}{The unique identifier of the encrypted symmetric key to which to grant

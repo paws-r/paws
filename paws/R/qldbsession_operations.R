@@ -11,19 +11,19 @@ NULL
 #' Instead of interacting directly with this API, we recommend using the
 #' QLDB driver or the QLDB shell to execute data transactions on a ledger.
 #' 
-#' - If you are working with an AWS SDK, use the QLDB driver. The driver
-#'   provides a high-level abstraction layer above this *QLDB Session* data
-#'   plane and manages [`send_command`][qldbsession_send_command] API calls
-#'   for you. For information and a list of supported programming
-#'   languages, see [Getting started with the
-#'   driver](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html)
-#'   in the *Amazon QLDB Developer Guide*.
+#' -   If you are working with an AWS SDK, use the QLDB driver. The driver
+#'     provides a high-level abstraction layer above this *QLDB Session*
+#'     data plane and manages [`send_command`][qldbsession_send_command]
+#'     API calls for you. For information and a list of supported
+#'     programming languages, see [Getting started with the
+#'     driver](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html)
+#'     in the *Amazon QLDB Developer Guide*.
 #' 
-#' - If you are working with the AWS Command Line Interface (AWS CLI), use
-#'   the QLDB shell. The shell is a command line interface that uses the
-#'   QLDB driver to interact with a ledger. For information, see [Accessing
-#'   Amazon QLDB using the QLDB
-#'   shell](https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html).
+#' -   If you are working with the AWS Command Line Interface (AWS CLI),
+#'     use the QLDB shell. The shell is a command line interface that uses
+#'     the QLDB driver to interact with a ledger. For information, see
+#'     [Accessing Amazon QLDB using the QLDB
+#'     shell](https://docs.aws.amazon.com/qldb/latest/developerguide/data-shell.html).
 #'
 #' @usage
 #' qldbsession_send_command(SessionToken, StartSession, StartTransaction,
@@ -163,8 +163,7 @@ qldbsession_send_command <- function(SessionToken = NULL, StartSession = NULL, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .qldbsession$send_command_input(SessionToken = SessionToken, StartSession = StartSession, StartTransaction = StartTransaction, EndSession = EndSession, CommitTransaction = CommitTransaction, AbortTransaction = AbortTransaction, ExecuteStatement = ExecuteStatement, FetchPage = FetchPage)
   output <- .qldbsession$send_command_output()

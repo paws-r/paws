@@ -30,7 +30,7 @@ in the Amazon Resource Name (ARN) of the instance. You must enter
 \item{PhoneNumberDescription}{The description of the phone number.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
+For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK

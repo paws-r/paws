@@ -55,12 +55,13 @@ An \code{EventTime} can be a \code{String} or \code{Fractional}.
 \itemize{
 \item \code{Fractional}: \code{EventTime} feature values must be a Unix timestamp in
 seconds.
-\item \code{String}: \code{EventTime} feature values must be an ISO-8601 string in the
-format. The following formats are supported \verb{yyyy-MM-dd'T'HH:mm:ssZ}
-and \verb{yyyy-MM-dd'T'HH:mm:ss.SSSZ} where \code{yyyy}, \code{MM}, and \code{dd}
-represent the year, month, and day respectively and \code{HH}, \code{mm}, \code{ss},
-and if applicable, \code{SSS} represent the hour, month, second and
-milliseconds respsectively. \code{'T'} and \code{Z} are constants.
+\item \code{String}: \code{EventTime} feature values must be an ISO-8601 string in
+the format. The following formats are supported
+\verb{yyyy-MM-dd'T'HH:mm:ssZ} and \verb{yyyy-MM-dd'T'HH:mm:ss.SSSZ} where
+\code{yyyy}, \code{MM}, and \code{dd} represent the year, month, and day
+respectively and \code{HH}, \code{mm}, \code{ss}, and if applicable, \code{SSS}
+represent the hour, month, second and milliseconds respsectively.
+\code{'T'} and \code{Z} are constants.
 }}
 
 \item{FeatureDefinitions}{[required] A list of \code{Feature} names and types. \code{Name} and \code{Type} is compulsory per
@@ -86,11 +87,11 @@ you to specify:
 \itemize{
 \item The Amazon Simple Storage Service (Amazon S3) location of an
 \code{OfflineStore}.
-\item A configuration for an Amazon Web Services Glue or Amazon Web Services
-Hive data catalog.
+\item A configuration for an Amazon Web Services Glue or Amazon Web
+Services Hive data catalog.
 \item An KMS encryption key to encrypt the Amazon S3 location used for
-\code{OfflineStore}. If KMS encryption key is not specified, by default we
-encrypt all data at rest using Amazon Web Services KMS key. By
+\code{OfflineStore}. If KMS encryption key is not specified, by default
+we encrypt all data at rest using Amazon Web Services KMS key. By
 defining your \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{bucket-level key}
 for SSE, you can reduce Amazon Web Services KMS requests costs by up
 to 99 percent.

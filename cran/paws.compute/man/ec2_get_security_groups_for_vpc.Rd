@@ -31,7 +31,8 @@ groups which match all filters.
 \item \code{description}: The security group's description.
 \item \code{group-name}: The security group name.
 \item \code{owner-id}: The security group owner ID.
-\item \code{primary-vpc-id}: The VPC ID in which the security group was created.
+\item \code{primary-vpc-id}: The VPC ID in which the security group was
+created.
 }}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without

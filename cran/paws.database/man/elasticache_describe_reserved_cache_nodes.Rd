@@ -39,7 +39,7 @@ previous generation counterparts.
 \code{cache.m7g.2xlarge}, \code{cache.m7g.4xlarge}, \code{cache.m7g.8xlarge},
 \code{cache.m7g.12xlarge}, \code{cache.m7g.16xlarge}
 
-For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -63,9 +63,9 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
-\item Previous generation: (not recommended. Existing clusters are still
-supported but creation of new clusters is not supported for these
-types.)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{T1 node types:} \code{cache.t1.micro}
 
@@ -77,9 +77,9 @@ types.)
 }
 \item Compute optimized:
 \itemize{
-\item Previous generation: (not recommended. Existing clusters are still
-supported but creation of new clusters is not supported for these
-types.)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{C1 node types:} \code{cache.c1.xlarge}
 }
@@ -91,7 +91,7 @@ types.)
 \code{cache.r7g.2xlarge}, \code{cache.r7g.4xlarge}, \code{cache.r7g.8xlarge},
 \code{cache.r7g.12xlarge}, \code{cache.r7g.16xlarge}
 
-For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -106,9 +106,9 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 \strong{R4 node types:} \code{cache.r4.large}, \code{cache.r4.xlarge},
 \code{cache.r4.2xlarge}, \code{cache.r4.4xlarge}, \code{cache.r4.8xlarge},
 \code{cache.r4.16xlarge}
-\item Previous generation: (not recommended. Existing clusters are still
-supported but creation of new clusters is not supported for these
-types.)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{M2 node types:} \code{cache.m2.xlarge}, \code{cache.m2.2xlarge},
 \code{cache.m2.4xlarge}

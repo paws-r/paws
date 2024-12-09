@@ -35,7 +35,8 @@ to the external resource.}
 \itemize{
 \item \code{Created}: Include created deployments in the resulting list.
 \item \code{Queued}: Include queued deployments in the resulting list.
-\item \verb{In Progress}: Include in-progress deployments in the resulting list.
+\item \verb{In Progress}: Include in-progress deployments in the resulting
+list.
 \item \code{Succeeded}: Include successful deployments in the resulting list.
 \item \code{Failed}: Include failed deployments in the resulting list.
 \item \code{Stopped}: Include stopped deployments in the resulting list.

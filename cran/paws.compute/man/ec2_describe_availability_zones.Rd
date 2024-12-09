@@ -16,25 +16,27 @@ ec2_describe_availability_zones(
 \arguments{
 \item{Filters}{The filters.
 \itemize{
-\item \code{group-name} - For Availability Zones, use the Region name. For Local
-Zones, use the name of the group associated with the Local Zone (for
-example, \code{us-west-2-lax-1}) For Wavelength Zones, use the name of the
-group associated with the Wavelength Zone (for example,
+\item \code{group-name} - For Availability Zones, use the Region name. For
+Local Zones, use the name of the group associated with the Local
+Zone (for example, \code{us-west-2-lax-1}) For Wavelength Zones, use the
+name of the group associated with the Wavelength Zone (for example,
 \code{us-east-1-wl1}).
 \item \code{message} - The Zone message.
 \item \verb{opt-in-status} - The opt-in status (\verb{opted-in} | \verb{not-opted-in} |
 \verb{opt-in-not-required}).
 \item \code{parent-zone-id} - The ID of the zone that handles some of the Local
-Zone and Wavelength Zone control plane operations, such as API calls.
-\item \code{parent-zone-name} - The ID of the zone that handles some of the Local
-Zone and Wavelength Zone control plane operations, such as API calls.
+Zone and Wavelength Zone control plane operations, such as API
+calls.
+\item \code{parent-zone-name} - The ID of the zone that handles some of the
+Local Zone and Wavelength Zone control plane operations, such as API
+calls.
 \item \code{region-name} - The name of the Region for the Zone (for example,
 \code{us-east-1}).
 \item \code{state} - The state of the Availability Zone, the Local Zone, or the
 Wavelength Zone (\code{available}).
-\item \code{zone-id} - The ID of the Availability Zone (for example, \code{use1-az1}),
-the Local Zone (for example, \code{usw2-lax1-az1}), or the Wavelength Zone
-(for example, \code{us-east-1-wl1-bos-wlz-1}).
+\item \code{zone-id} - The ID of the Availability Zone (for example,
+\code{use1-az1}), the Local Zone (for example, \code{usw2-lax1-az1}), or the
+Wavelength Zone (for example, \code{us-east-1-wl1-bos-wlz-1}).
 \item \code{zone-name} - The name of the Availability Zone (for example,
 \verb{us-east-1a}), the Local Zone (for example, \verb{us-west-2-lax-1a}), or
 the Wavelength Zone (for example, \code{us-east-1-wl1-bos-wlz-1}).

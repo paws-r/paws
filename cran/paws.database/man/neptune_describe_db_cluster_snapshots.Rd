@@ -43,8 +43,8 @@ the following values:
 \itemize{
 \item \code{automated} - Return all DB cluster snapshots that have been
 automatically taken by Amazon Neptune for my Amazon account.
-\item \code{manual} - Return all DB cluster snapshots that have been taken by my
-Amazon account.
+\item \code{manual} - Return all DB cluster snapshots that have been taken by
+my Amazon account.
 \item \code{shared} - Return all manual DB cluster snapshots that have been
 shared to my Amazon account.
 \item \code{public} - Return all DB cluster snapshots that have been marked as

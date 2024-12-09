@@ -19,8 +19,8 @@ finspacedata_update_user(
 
 \item{type}{The option to indicate the type of user.
 \itemize{
-\item \code{SUPER_USER}– A user with permission to all the functionality and data
-in FinSpace.
+\item \code{SUPER_USER}– A user with permission to all the functionality and
+data in FinSpace.
 \item \code{APP_USER} – A user with specific permissions in FinSpace. The users
 are assigned permissions by adding them to a permission group.
 }}

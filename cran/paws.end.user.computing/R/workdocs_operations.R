@@ -25,8 +25,7 @@ workdocs_abort_document_version_upload <- function(AuthenticationToken = NULL, D
     http_method = "DELETE",
     http_path = "/api/v1/documents/{DocumentId}/versions/{VersionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$abort_document_version_upload_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId)
   output <- .workdocs$abort_document_version_upload_output()
@@ -58,8 +57,7 @@ workdocs_activate_user <- function(UserId, AuthenticationToken = NULL) {
     http_method = "POST",
     http_path = "/api/v1/users/{UserId}/activation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$activate_user_input(UserId = UserId, AuthenticationToken = AuthenticationToken)
   output <- .workdocs$activate_user_output()
@@ -93,8 +91,7 @@ workdocs_add_resource_permissions <- function(AuthenticationToken = NULL, Resour
     http_method = "POST",
     http_path = "/api/v1/resources/{ResourceId}/permissions",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$add_resource_permissions_input(AuthenticationToken = AuthenticationToken, ResourceId = ResourceId, Principals = Principals, NotificationOptions = NotificationOptions)
   output <- .workdocs$add_resource_permissions_output()
@@ -136,8 +133,7 @@ workdocs_create_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
     http_method = "POST",
     http_path = "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$create_comment_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId, ParentId = ParentId, ThreadId = ThreadId, Text = Text, Visibility = Visibility, NotifyCollaborators = NotifyCollaborators)
   output <- .workdocs$create_comment_output()
@@ -173,8 +169,7 @@ workdocs_create_custom_metadata <- function(AuthenticationToken = NULL, Resource
     http_method = "PUT",
     http_path = "/api/v1/resources/{ResourceId}/customMetadata",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$create_custom_metadata_input(AuthenticationToken = AuthenticationToken, ResourceId = ResourceId, VersionId = VersionId, CustomMetadata = CustomMetadata)
   output <- .workdocs$create_custom_metadata_output()
@@ -207,8 +202,7 @@ workdocs_create_folder <- function(AuthenticationToken = NULL, Name = NULL, Pare
     http_method = "POST",
     http_path = "/api/v1/folders",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$create_folder_input(AuthenticationToken = AuthenticationToken, Name = Name, ParentFolderId = ParentFolderId)
   output <- .workdocs$create_folder_output()
@@ -242,8 +236,7 @@ workdocs_create_labels <- function(ResourceId, Labels, AuthenticationToken = NUL
     http_method = "PUT",
     http_path = "/api/v1/resources/{ResourceId}/labels",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$create_labels_input(ResourceId = ResourceId, Labels = Labels, AuthenticationToken = AuthenticationToken)
   output <- .workdocs$create_labels_output()
@@ -278,8 +271,7 @@ workdocs_create_notification_subscription <- function(OrganizationId, Endpoint, 
     http_method = "POST",
     http_path = "/api/v1/organizations/{OrganizationId}/subscriptions",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$create_notification_subscription_input(OrganizationId = OrganizationId, Endpoint = Endpoint, Protocol = Protocol, SubscriptionType = SubscriptionType)
   output <- .workdocs$create_notification_subscription_output()
@@ -318,8 +310,7 @@ workdocs_create_user <- function(OrganizationId = NULL, Username, EmailAddress =
     http_method = "POST",
     http_path = "/api/v1/users",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$create_user_input(OrganizationId = OrganizationId, Username = Username, EmailAddress = EmailAddress, GivenName = GivenName, Surname = Surname, Password = Password, TimeZoneId = TimeZoneId, StorageRule = StorageRule, AuthenticationToken = AuthenticationToken)
   output <- .workdocs$create_user_output()
@@ -352,8 +343,7 @@ workdocs_deactivate_user <- function(UserId, AuthenticationToken = NULL) {
     http_method = "DELETE",
     http_path = "/api/v1/users/{UserId}/activation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$deactivate_user_input(UserId = UserId, AuthenticationToken = AuthenticationToken)
   output <- .workdocs$deactivate_user_output()
@@ -387,8 +377,7 @@ workdocs_delete_comment <- function(AuthenticationToken = NULL, DocumentId, Vers
     http_method = "DELETE",
     http_path = "/api/v1/documents/{DocumentId}/versions/{VersionId}/comment/{CommentId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_comment_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId, CommentId = CommentId)
   output <- .workdocs$delete_comment_output()
@@ -425,8 +414,7 @@ workdocs_delete_custom_metadata <- function(AuthenticationToken = NULL, Resource
     http_method = "DELETE",
     http_path = "/api/v1/resources/{ResourceId}/customMetadata",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_custom_metadata_input(AuthenticationToken = AuthenticationToken, ResourceId = ResourceId, VersionId = VersionId, Keys = Keys, DeleteAll = DeleteAll)
   output <- .workdocs$delete_custom_metadata_output()
@@ -458,8 +446,7 @@ workdocs_delete_document <- function(AuthenticationToken = NULL, DocumentId) {
     http_method = "DELETE",
     http_path = "/api/v1/documents/{DocumentId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_document_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId)
   output <- .workdocs$delete_document_output()
@@ -493,8 +480,7 @@ workdocs_delete_document_version <- function(AuthenticationToken = NULL, Documen
     http_method = "DELETE",
     http_path = "/api/v1/documentVersions/{DocumentId}/versions/{VersionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_document_version_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId, DeletePriorVersions = DeletePriorVersions)
   output <- .workdocs$delete_document_version_output()
@@ -526,8 +512,7 @@ workdocs_delete_folder <- function(AuthenticationToken = NULL, FolderId) {
     http_method = "DELETE",
     http_path = "/api/v1/folders/{FolderId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_folder_input(AuthenticationToken = AuthenticationToken, FolderId = FolderId)
   output <- .workdocs$delete_folder_output()
@@ -559,8 +544,7 @@ workdocs_delete_folder_contents <- function(AuthenticationToken = NULL, FolderId
     http_method = "DELETE",
     http_path = "/api/v1/folders/{FolderId}/contents",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_folder_contents_input(AuthenticationToken = AuthenticationToken, FolderId = FolderId)
   output <- .workdocs$delete_folder_contents_output()
@@ -594,8 +578,7 @@ workdocs_delete_labels <- function(ResourceId, AuthenticationToken = NULL, Label
     http_method = "DELETE",
     http_path = "/api/v1/resources/{ResourceId}/labels",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_labels_input(ResourceId = ResourceId, AuthenticationToken = AuthenticationToken, Labels = Labels, DeleteAll = DeleteAll)
   output <- .workdocs$delete_labels_output()
@@ -626,8 +609,7 @@ workdocs_delete_notification_subscription <- function(SubscriptionId, Organizati
     http_method = "DELETE",
     http_path = "/api/v1/organizations/{OrganizationId}/subscriptions/{SubscriptionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_notification_subscription_input(SubscriptionId = SubscriptionId, OrganizationId = OrganizationId)
   output <- .workdocs$delete_notification_subscription_output()
@@ -660,8 +642,7 @@ workdocs_delete_user <- function(AuthenticationToken = NULL, UserId) {
     http_method = "DELETE",
     http_path = "/api/v1/users/{UserId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$delete_user_input(AuthenticationToken = AuthenticationToken, UserId = UserId)
   output <- .workdocs$delete_user_output()
@@ -712,8 +693,7 @@ workdocs_describe_activities <- function(AuthenticationToken = NULL, StartTime =
     http_method = "GET",
     http_path = "/api/v1/activities",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "UserActivities"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "UserActivities")
   )
   input <- .workdocs$describe_activities_input(AuthenticationToken = AuthenticationToken, StartTime = StartTime, EndTime = EndTime, OrganizationId = OrganizationId, ActivityTypes = ActivityTypes, ResourceId = ResourceId, UserId = UserId, IncludeIndirectActivities = IncludeIndirectActivities, Limit = Limit, Marker = Marker)
   output <- .workdocs$describe_activities_output()
@@ -749,8 +729,7 @@ workdocs_describe_comments <- function(AuthenticationToken = NULL, DocumentId, V
     http_method = "GET",
     http_path = "/api/v1/documents/{DocumentId}/versions/{VersionId}/comments",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Comments"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Comments")
   )
   input <- .workdocs$describe_comments_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId, Limit = Limit, Marker = Marker)
   output <- .workdocs$describe_comments_output()
@@ -789,8 +768,7 @@ workdocs_describe_document_versions <- function(AuthenticationToken = NULL, Docu
     http_method = "GET",
     http_path = "/api/v1/documents/{DocumentId}/versions",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "DocumentVersions"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "DocumentVersions")
   )
   input <- .workdocs$describe_document_versions_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, Marker = Marker, Limit = Limit, Include = Include, Fields = Fields)
   output <- .workdocs$describe_document_versions_output()
@@ -831,8 +809,7 @@ workdocs_describe_folder_contents <- function(AuthenticationToken = NULL, Folder
     http_method = "GET",
     http_path = "/api/v1/folders/{FolderId}/contents",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = list("Folders", "Documents")),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = list("Folders", "Documents"))
   )
   input <- .workdocs$describe_folder_contents_input(AuthenticationToken = AuthenticationToken, FolderId = FolderId, Sort = Sort, Order = Order, Limit = Limit, Marker = Marker, Type = Type, Include = Include)
   output <- .workdocs$describe_folder_contents_output()
@@ -868,8 +845,7 @@ workdocs_describe_groups <- function(AuthenticationToken = NULL, SearchQuery, Or
     http_method = "GET",
     http_path = "/api/v1/groups",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Groups"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Groups")
   )
   input <- .workdocs$describe_groups_input(AuthenticationToken = AuthenticationToken, SearchQuery = SearchQuery, OrganizationId = OrganizationId, Marker = Marker, Limit = Limit)
   output <- .workdocs$describe_groups_output()
@@ -902,8 +878,7 @@ workdocs_describe_notification_subscriptions <- function(OrganizationId, Marker 
     http_method = "GET",
     http_path = "/api/v1/organizations/{OrganizationId}/subscriptions",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Subscriptions"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Subscriptions")
   )
   input <- .workdocs$describe_notification_subscriptions_input(OrganizationId = OrganizationId, Marker = Marker, Limit = Limit)
   output <- .workdocs$describe_notification_subscriptions_output()
@@ -939,8 +914,7 @@ workdocs_describe_resource_permissions <- function(AuthenticationToken = NULL, R
     http_method = "GET",
     http_path = "/api/v1/resources/{ResourceId}/permissions",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Principals"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Principals")
   )
   input <- .workdocs$describe_resource_permissions_input(AuthenticationToken = AuthenticationToken, ResourceId = ResourceId, PrincipalId = PrincipalId, Limit = Limit, Marker = Marker)
   output <- .workdocs$describe_resource_permissions_output()
@@ -974,8 +948,7 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
     http_method = "GET",
     http_path = "/api/v1/me/root",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Folders"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Folders")
   )
   input <- .workdocs$describe_root_folders_input(AuthenticationToken = AuthenticationToken, Limit = Limit, Marker = Marker)
   output <- .workdocs$describe_root_folders_output()
@@ -1001,21 +974,21 @@ workdocs_describe_root_folders <- function(AuthenticationToken, Limit = NULL, Ma
 #' @param Query A query to filter users by user name. Remember the following about the
 #' `Userids` and `Query` parameters:
 #' 
-#' - If you don't use either parameter, the API returns a paginated list of
-#'   all users on the site.
+#' -   If you don't use either parameter, the API returns a paginated list
+#'     of all users on the site.
 #' 
-#' - If you use both parameters, the API ignores the `Query` parameter.
+#' -   If you use both parameters, the API ignores the `Query` parameter.
 #' 
-#' - The `Userid` parameter only returns user names that match a
-#'   corresponding user ID.
+#' -   The `Userid` parameter only returns user names that match a
+#'     corresponding user ID.
 #' 
-#' - The `Query` parameter runs a "prefix" search for users by the
-#'   `GivenName`, `SurName`, or `UserName` fields included in a
-#'   [`create_user`][workdocs_create_user] API call. For example, querying
-#'   on `Ma` returns Márcia Oliveira, María García, and Mateo Jackson. If
-#'   you use multiple characters, the API only returns data that matches
-#'   all characters. For example, querying on `Ma J` only returns Mateo
-#'   Jackson.
+#' -   The `Query` parameter runs a "prefix" search for users by the
+#'     `GivenName`, `SurName`, or `UserName` fields included in a
+#'     [`create_user`][workdocs_create_user] API call. For example,
+#'     querying on `Ma` returns Márcia Oliveira, María García, and Mateo
+#'     Jackson. If you use multiple characters, the API only returns data
+#'     that matches all characters. For example, querying on `Ma J` only
+#'     returns Mateo Jackson.
 #' @param Include The state of the users. Specify "ALL" to include inactive users.
 #' @param Order The order for the results.
 #' @param Sort The sorting criteria.
@@ -1034,8 +1007,7 @@ workdocs_describe_users <- function(AuthenticationToken = NULL, OrganizationId =
     http_method = "GET",
     http_path = "/api/v1/users",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Users"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Users")
   )
   input <- .workdocs$describe_users_input(AuthenticationToken = AuthenticationToken, OrganizationId = OrganizationId, UserIds = UserIds, Query = Query, Include = Include, Order = Order, Sort = Sort, Marker = Marker, Limit = Limit, Fields = Fields)
   output <- .workdocs$describe_users_output()
@@ -1066,8 +1038,7 @@ workdocs_get_current_user <- function(AuthenticationToken) {
     http_method = "GET",
     http_path = "/api/v1/me",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$get_current_user_input(AuthenticationToken = AuthenticationToken)
   output <- .workdocs$get_current_user_output()
@@ -1100,8 +1071,7 @@ workdocs_get_document <- function(AuthenticationToken = NULL, DocumentId, Includ
     http_method = "GET",
     http_path = "/api/v1/documents/{DocumentId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$get_document_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, IncludeCustomMetadata = IncludeCustomMetadata)
   output <- .workdocs$get_document_output()
@@ -1138,8 +1108,7 @@ workdocs_get_document_path <- function(AuthenticationToken = NULL, DocumentId, L
     http_method = "GET",
     http_path = "/api/v1/documents/{DocumentId}/path",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$get_document_path_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, Limit = Limit, Fields = Fields, Marker = Marker)
   output <- .workdocs$get_document_path_output()
@@ -1175,8 +1144,7 @@ workdocs_get_document_version <- function(AuthenticationToken = NULL, DocumentId
     http_method = "GET",
     http_path = "/api/v1/documents/{DocumentId}/versions/{VersionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$get_document_version_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId, Fields = Fields, IncludeCustomMetadata = IncludeCustomMetadata)
   output <- .workdocs$get_document_version_output()
@@ -1209,8 +1177,7 @@ workdocs_get_folder <- function(AuthenticationToken = NULL, FolderId, IncludeCus
     http_method = "GET",
     http_path = "/api/v1/folders/{FolderId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$get_folder_input(AuthenticationToken = AuthenticationToken, FolderId = FolderId, IncludeCustomMetadata = IncludeCustomMetadata)
   output <- .workdocs$get_folder_output()
@@ -1247,8 +1214,7 @@ workdocs_get_folder_path <- function(AuthenticationToken = NULL, FolderId, Limit
     http_method = "GET",
     http_path = "/api/v1/folders/{FolderId}/path",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$get_folder_path_input(AuthenticationToken = AuthenticationToken, FolderId = FolderId, Limit = Limit, Fields = Fields, Marker = Marker)
   output <- .workdocs$get_folder_path_output()
@@ -1285,8 +1251,7 @@ workdocs_get_resources <- function(AuthenticationToken = NULL, UserId = NULL, Co
     http_method = "GET",
     http_path = "/api/v1/resources",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$get_resources_input(AuthenticationToken = AuthenticationToken, UserId = UserId, CollectionType = CollectionType, Limit = Limit, Marker = Marker)
   output <- .workdocs$get_resources_output()
@@ -1324,8 +1289,7 @@ workdocs_initiate_document_version_upload <- function(AuthenticationToken = NULL
     http_method = "POST",
     http_path = "/api/v1/documents",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$initiate_document_version_upload_input(AuthenticationToken = AuthenticationToken, Id = Id, Name = Name, ContentCreatedTimestamp = ContentCreatedTimestamp, ContentModifiedTimestamp = ContentModifiedTimestamp, ContentType = ContentType, DocumentSizeInBytes = DocumentSizeInBytes, ParentFolderId = ParentFolderId)
   output <- .workdocs$initiate_document_version_upload_output()
@@ -1357,8 +1321,7 @@ workdocs_remove_all_resource_permissions <- function(AuthenticationToken = NULL,
     http_method = "DELETE",
     http_path = "/api/v1/resources/{ResourceId}/permissions",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$remove_all_resource_permissions_input(AuthenticationToken = AuthenticationToken, ResourceId = ResourceId)
   output <- .workdocs$remove_all_resource_permissions_output()
@@ -1393,8 +1356,7 @@ workdocs_remove_resource_permission <- function(AuthenticationToken = NULL, Reso
     http_method = "DELETE",
     http_path = "/api/v1/resources/{ResourceId}/permissions/{PrincipalId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$remove_resource_permission_input(AuthenticationToken = AuthenticationToken, ResourceId = ResourceId, PrincipalId = PrincipalId, PrincipalType = PrincipalType)
   output <- .workdocs$remove_resource_permission_output()
@@ -1426,8 +1388,7 @@ workdocs_restore_document_versions <- function(AuthenticationToken = NULL, Docum
     http_method = "POST",
     http_path = "/api/v1/documentVersions/restore/{DocumentId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$restore_document_versions_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId)
   output <- .workdocs$restore_document_versions_output()
@@ -1473,8 +1434,7 @@ workdocs_search_resources <- function(AuthenticationToken = NULL, QueryText = NU
     http_method = "POST",
     http_path = "/api/v1/search",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Items"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "Marker", result_key = "Items")
   )
   input <- .workdocs$search_resources_input(AuthenticationToken = AuthenticationToken, QueryText = QueryText, QueryScopes = QueryScopes, OrganizationId = OrganizationId, AdditionalResponseFields = AdditionalResponseFields, Filters = Filters, OrderBy = OrderBy, Limit = Limit, Marker = Marker)
   output <- .workdocs$search_resources_output()
@@ -1510,8 +1470,7 @@ workdocs_update_document <- function(AuthenticationToken = NULL, DocumentId, Nam
     http_method = "PATCH",
     http_path = "/api/v1/documents/{DocumentId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$update_document_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, Name = Name, ParentFolderId = ParentFolderId, ResourceState = ResourceState)
   output <- .workdocs$update_document_output()
@@ -1545,8 +1504,7 @@ workdocs_update_document_version <- function(AuthenticationToken = NULL, Documen
     http_method = "PATCH",
     http_path = "/api/v1/documents/{DocumentId}/versions/{VersionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$update_document_version_input(AuthenticationToken = AuthenticationToken, DocumentId = DocumentId, VersionId = VersionId, VersionStatus = VersionStatus)
   output <- .workdocs$update_document_version_output()
@@ -1582,8 +1540,7 @@ workdocs_update_folder <- function(AuthenticationToken = NULL, FolderId, Name = 
     http_method = "PATCH",
     http_path = "/api/v1/folders/{FolderId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$update_folder_input(AuthenticationToken = AuthenticationToken, FolderId = FolderId, Name = Name, ParentFolderId = ParentFolderId, ResourceState = ResourceState)
   output <- .workdocs$update_folder_output()
@@ -1624,8 +1581,7 @@ workdocs_update_user <- function(AuthenticationToken = NULL, UserId, GivenName =
     http_method = "PATCH",
     http_path = "/api/v1/users/{UserId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workdocs$update_user_input(AuthenticationToken = AuthenticationToken, UserId = UserId, GivenName = GivenName, Surname = Surname, Type = Type, StorageRule = StorageRule, TimeZoneId = TimeZoneId, Locale = Locale, GrantPoweruserPrivileges = GrantPoweruserPrivileges)
   output <- .workdocs$update_user_output()

@@ -103,8 +103,8 @@ CPU utilization:
 Memory utilization:
 \itemize{
 \item \code{PERCENT_20} for headroom
-\item You can only set CPU and memory utilization preferences for the Amazon
-EC2 instance resource type.
+\item You can only set CPU and memory utilization preferences for the
+Amazon EC2 instance resource type.
 \item The threshold setting isn’t available for memory utilization.
 }}
 

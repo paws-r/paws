@@ -38,10 +38,10 @@ Neo to store the compiled artifacts.}
 \item{InferenceSpecification}{Specifies details about inference jobs that you can run with models
 based on this model package, including the following information:
 \itemize{
-\item The Amazon ECR paths of containers that contain the inference code and
-model artifacts.
-\item The instance types that the model package supports for transform jobs
-and real-time endpoints used for inference.
+\item The Amazon ECR paths of containers that contain the inference code
+and model artifacts.
+\item The instance types that the model package supports for transform
+jobs and real-time endpoints used for inference.
 \item The input and output content formats that the model package supports
 for inference.
 }}

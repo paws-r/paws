@@ -24,8 +24,7 @@ cognitosync_bulk_publish <- function(IdentityPoolId) {
     http_method = "POST",
     http_path = "/identitypools/{IdentityPoolId}/bulkpublish",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$bulk_publish_input(IdentityPoolId = IdentityPoolId)
   output <- .cognitosync$bulk_publish_output()
@@ -62,8 +61,7 @@ cognitosync_delete_dataset <- function(IdentityPoolId, IdentityId, DatasetName) 
     http_method = "DELETE",
     http_path = "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$delete_dataset_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, DatasetName = DatasetName)
   output <- .cognitosync$delete_dataset_output()
@@ -100,8 +98,7 @@ cognitosync_describe_dataset <- function(IdentityPoolId, IdentityId, DatasetName
     http_method = "GET",
     http_path = "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$describe_dataset_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, DatasetName = DatasetName)
   output <- .cognitosync$describe_dataset_output()
@@ -134,8 +131,7 @@ cognitosync_describe_identity_pool_usage <- function(IdentityPoolId) {
     http_method = "GET",
     http_path = "/identitypools/{IdentityPoolId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$describe_identity_pool_usage_input(IdentityPoolId = IdentityPoolId)
   output <- .cognitosync$describe_identity_pool_usage_output()
@@ -171,8 +167,7 @@ cognitosync_describe_identity_usage <- function(IdentityPoolId, IdentityId) {
     http_method = "GET",
     http_path = "/identitypools/{IdentityPoolId}/identities/{IdentityId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$describe_identity_usage_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId)
   output <- .cognitosync$describe_identity_usage_output()
@@ -204,8 +199,7 @@ cognitosync_get_bulk_publish_details <- function(IdentityPoolId) {
     http_method = "POST",
     http_path = "/identitypools/{IdentityPoolId}/getBulkPublishDetails",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$get_bulk_publish_details_input(IdentityPoolId = IdentityPoolId)
   output <- .cognitosync$get_bulk_publish_details_output()
@@ -236,8 +230,7 @@ cognitosync_get_cognito_events <- function(IdentityPoolId) {
     http_method = "GET",
     http_path = "/identitypools/{IdentityPoolId}/events",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$get_cognito_events_input(IdentityPoolId = IdentityPoolId)
   output <- .cognitosync$get_cognito_events_output()
@@ -269,8 +262,7 @@ cognitosync_get_identity_pool_configuration <- function(IdentityPoolId) {
     http_method = "GET",
     http_path = "/identitypools/{IdentityPoolId}/configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$get_identity_pool_configuration_input(IdentityPoolId = IdentityPoolId)
   output <- .cognitosync$get_identity_pool_configuration_output()
@@ -307,8 +299,7 @@ cognitosync_list_datasets <- function(IdentityPoolId, IdentityId, NextToken = NU
     http_method = "GET",
     http_path = "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$list_datasets_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cognitosync$list_datasets_output()
@@ -339,8 +330,7 @@ cognitosync_list_identity_pool_usage <- function(NextToken = NULL, MaxResults = 
     http_method = "GET",
     http_path = "/identitypools",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$list_identity_pool_usage_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cognitosync$list_identity_pool_usage_output()
@@ -382,8 +372,7 @@ cognitosync_list_records <- function(IdentityPoolId, IdentityId, DatasetName, La
     http_method = "GET",
     http_path = "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/records",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$list_records_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, DatasetName = DatasetName, LastSyncCount = LastSyncCount, NextToken = NextToken, MaxResults = MaxResults, SyncSessionToken = SyncSessionToken)
   output <- .cognitosync$list_records_output()
@@ -418,8 +407,7 @@ cognitosync_register_device <- function(IdentityPoolId, IdentityId, Platform, To
     http_method = "POST",
     http_path = "/identitypools/{IdentityPoolId}/identity/{IdentityId}/device",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$register_device_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, Platform = Platform, Token = Token)
   output <- .cognitosync$register_device_output()
@@ -450,8 +438,7 @@ cognitosync_set_cognito_events <- function(IdentityPoolId, Events) {
     http_method = "POST",
     http_path = "/identitypools/{IdentityPoolId}/events",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$set_cognito_events_input(IdentityPoolId = IdentityPoolId, Events = Events)
   output <- .cognitosync$set_cognito_events_output()
@@ -485,8 +472,7 @@ cognitosync_set_identity_pool_configuration <- function(IdentityPoolId, PushSync
     http_method = "POST",
     http_path = "/identitypools/{IdentityPoolId}/configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$set_identity_pool_configuration_input(IdentityPoolId = IdentityPoolId, PushSync = PushSync, CognitoStreams = CognitoStreams)
   output <- .cognitosync$set_identity_pool_configuration_output()
@@ -522,8 +508,7 @@ cognitosync_subscribe_to_dataset <- function(IdentityPoolId, IdentityId, Dataset
     http_method = "POST",
     http_path = "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$subscribe_to_dataset_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, DatasetName = DatasetName, DeviceId = DeviceId)
   output <- .cognitosync$subscribe_to_dataset_output()
@@ -559,8 +544,7 @@ cognitosync_unsubscribe_from_dataset <- function(IdentityPoolId, IdentityId, Dat
     http_method = "DELETE",
     http_path = "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}/subscriptions/{DeviceId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$unsubscribe_from_dataset_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, DatasetName = DatasetName, DeviceId = DeviceId)
   output <- .cognitosync$unsubscribe_from_dataset_output()
@@ -605,8 +589,7 @@ cognitosync_update_records <- function(IdentityPoolId, IdentityId, DatasetName, 
     http_method = "POST",
     http_path = "/identitypools/{IdentityPoolId}/identities/{IdentityId}/datasets/{DatasetName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cognitosync$update_records_input(IdentityPoolId = IdentityPoolId, IdentityId = IdentityId, DatasetName = DatasetName, DeviceId = DeviceId, RecordPatches = RecordPatches, SyncSessionToken = SyncSessionToken, ClientContext = ClientContext)
   output <- .cognitosync$update_records_output()

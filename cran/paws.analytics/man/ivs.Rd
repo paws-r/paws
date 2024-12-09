@@ -77,14 +77,14 @@ For a summary of notable documentation changes in each release, see
 \item \strong{Channel} — Stores configuration data related to your live stream.
 You first create a channel and then use the channel’s stream key to
 start your live stream.
-\item \strong{Stream key} — An identifier assigned by Amazon IVS when you create
-a channel, which is then used to authorize streaming. \emph{Treat the
-stream key like a secret, since it allows anyone to stream to the
-channel.}
+\item \strong{Stream key} — An identifier assigned by Amazon IVS when you
+create a channel, which is then used to authorize streaming. \emph{Treat
+the stream key like a secret, since it allows anyone to stream to
+the channel.}
 \item \strong{Playback key pair} — Video playback may be restricted using
 playback-authorization tokens, which use public-key encryption. A
-playback key pair is the public-private pair of keys used to sign and
-validate the playback-authorization token.
+playback key pair is the public-private pair of keys used to sign
+and validate the playback-authorization token.
 \item \strong{Recording configuration} — Stores configuration related to
 recording a live stream and where to store the recorded content.
 Multiple channels can reference the same recording configuration.
@@ -124,8 +124,8 @@ Note the differences between these concepts:
 \itemize{
 \item \emph{Authentication} is about verifying identity. You need to be
 authenticated to sign Amazon IVS API requests.
-\item \emph{Authorization} is about granting permissions. Your IAM roles need to
-have permissions for Amazon IVS API requests. In addition,
+\item \emph{Authorization} is about granting permissions. Your IAM roles need
+to have permissions for Amazon IVS API requests. In addition,
 authorization is needed to view \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html}{Amazon IVS private channels}.
 (Private channels are channels that are enabled for "playback
 authorization.")

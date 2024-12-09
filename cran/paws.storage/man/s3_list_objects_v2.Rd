@@ -50,7 +50,7 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Delimiter}{A delimiter is a character that you use to group keys.
@@ -59,10 +59,10 @@ in the \emph{Amazon S3 User Guide}.}
 supported delimiter.
 \item \strong{Directory buckets} - When you query
 \code{\link[=s3_list_objects_v2]{list_objects_v2}} with a delimiter during
-in-progress multipart uploads, the \code{CommonPrefixes} response parameter
-contains the prefixes that are associated with the in-progress
-multipart uploads. For more information about multipart uploads, see
-\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview}
+in-progress multipart uploads, the \code{CommonPrefixes} response
+parameter contains the prefixes that are associated with the
+in-progress multipart uploads. For more information about multipart
+uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html}{Multipart Upload Overview}
 in the \emph{Amazon S3 User Guide}.
 }}
 

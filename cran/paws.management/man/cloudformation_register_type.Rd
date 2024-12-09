@@ -63,8 +63,7 @@ adding trust relationships, see \href{https://docs.aws.amazon.com/IAM/latest/Use
 in the \emph{Identity and Access Management User Guide}.
 
 If your extension calls Amazon Web Services APIs in any of its handlers,
-you must create an
-\emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}} that includes the necessary permissions to call
+you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}} that includes the necessary permissions to call
 those Amazon Web Services APIs, and provision that execution role in
 your account. When CloudFormation needs to invoke the resource type
 handler, CloudFormation assumes this execution role to create a

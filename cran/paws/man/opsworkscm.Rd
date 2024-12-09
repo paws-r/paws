@@ -63,28 +63,28 @@ to manage.
 \itemize{
 \item \strong{Server}: A configuration management server that can be
 highly-available. The configuration management server runs on an
-Amazon Elastic Compute Cloud (EC2) instance, and may use various other
-AWS services, such as Amazon Relational Database Service (RDS) and
-Elastic Load Balancing. A server is a generic abstraction over the
-configuration manager that you want to use, much like Amazon RDS. In
-AWS OpsWorks CM, you do not start or stop servers. After you create
-servers, they continue to run until they are deleted.
-\item \strong{Engine}: The engine is the specific configuration manager that you
-want to use. Valid values in this release include \code{ChefAutomate} and
-\code{Puppet}.
+Amazon Elastic Compute Cloud (EC2) instance, and may use various
+other AWS services, such as Amazon Relational Database Service (RDS)
+and Elastic Load Balancing. A server is a generic abstraction over
+the configuration manager that you want to use, much like Amazon
+RDS. In AWS OpsWorks CM, you do not start or stop servers. After you
+create servers, they continue to run until they are deleted.
+\item \strong{Engine}: The engine is the specific configuration manager that
+you want to use. Valid values in this release include \code{ChefAutomate}
+and \code{Puppet}.
 \item \strong{Backup}: This is an application-level backup of the data that the
-configuration manager stores. AWS OpsWorks CM creates an S3 bucket for
-backups when you launch the first server. A backup maintains a
+configuration manager stores. AWS OpsWorks CM creates an S3 bucket
+for backups when you launch the first server. A backup maintains a
 snapshot of a server's configuration-related attributes at the time
 the backup starts.
-\item \strong{Events}: Events are always related to a server. Events are written
-during server creation, when health checks run, when backups are
-created, when system maintenance is performed, etc. When you delete a
-server, the server's events are also deleted.
-\item \strong{Account attributes}: Every account has attributes that are assigned
-in the AWS OpsWorks CM database. These attributes store information
-about configuration limits (servers, backups, etc.) and your customer
-account.
+\item \strong{Events}: Events are always related to a server. Events are
+written during server creation, when health checks run, when backups
+are created, when system maintenance is performed, etc. When you
+delete a server, the server's events are also deleted.
+\item \strong{Account attributes}: Every account has attributes that are
+assigned in the AWS OpsWorks CM database. These attributes store
+information about configuration limits (servers, backups, etc.) and
+your customer account.
 }
 
 \strong{Endpoints}

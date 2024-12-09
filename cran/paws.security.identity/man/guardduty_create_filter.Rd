@@ -47,8 +47,8 @@ You can only use the following attributes to query findings:
 \item region
 \item severity
 
-To filter on the basis of severity, the API and CLI use the following
-input list for the
+To filter on the basis of severity, the API and CLI use the
+following input list for the
 \href{https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingCriteria.html}{FindingCriteria}
 condition:
 \itemize{

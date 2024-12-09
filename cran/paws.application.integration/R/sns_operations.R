@@ -30,8 +30,7 @@ sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$add_permission_input(TopicArn = TopicArn, Label = Label, AWSAccountId = AWSAccountId, ActionName = ActionName)
   output <- .sns$add_permission_output()
@@ -62,8 +61,7 @@ sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$check_if_phone_number_is_opted_out_input(phoneNumber = phoneNumber)
   output <- .sns$check_if_phone_number_is_opted_out_output()
@@ -101,8 +99,7 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$confirm_subscription_input(TopicArn = TopicArn, Token = Token, AuthenticateOnUnsubscribe = AuthenticateOnUnsubscribe)
   output <- .sns$confirm_subscription_output()
@@ -142,8 +139,7 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$create_platform_application_input(Name = Name, Platform = Platform, Attributes = Attributes)
   output <- .sns$create_platform_application_output()
@@ -187,8 +183,7 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$create_platform_endpoint_input(PlatformApplicationArn = PlatformApplicationArn, Token = Token, CustomUserData = CustomUserData, Attributes = Attributes)
   output <- .sns$create_platform_endpoint_output()
@@ -222,8 +217,7 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$create_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber, LanguageCode = LanguageCode)
   output <- .sns$create_sms_sandbox_phone_number_output()
@@ -256,66 +250,68 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' request parameters that the [`create_topic`][sns_create_topic] action
 #' uses:
 #' 
-#' - `DeliveryPolicy` – The policy that defines how Amazon SNS retries
-#'   failed deliveries to HTTP/S endpoints.
+#' -   `DeliveryPolicy` – The policy that defines how Amazon SNS retries
+#'     failed deliveries to HTTP/S endpoints.
 #' 
-#' - `DisplayName` – The display name to use for a topic with SMS
-#'   subscriptions.
+#' -   `DisplayName` – The display name to use for a topic with SMS
+#'     subscriptions.
 #' 
-#' - `FifoTopic` – Set to true to create a FIFO topic.
+#' -   `FifoTopic` – Set to true to create a FIFO topic.
 #' 
-#' - `Policy` – The policy that defines who can access your topic. By
-#'   default, only the topic owner can publish or subscribe to the topic.
+#' -   `Policy` – The policy that defines who can access your topic. By
+#'     default, only the topic owner can publish or subscribe to the topic.
 #' 
-#' - `SignatureVersion` – The signature version corresponds to the hashing
-#'   algorithm used while creating the signature of the notifications,
-#'   subscription confirmations, or unsubscribe confirmation messages sent
-#'   by Amazon SNS. By default, `SignatureVersion` is set to `1`.
+#' -   `SignatureVersion` – The signature version corresponds to the
+#'     hashing algorithm used while creating the signature of the
+#'     notifications, subscription confirmations, or unsubscribe
+#'     confirmation messages sent by Amazon SNS. By default,
+#'     `SignatureVersion` is set to `1`.
 #' 
-#' - `TracingConfig` – Tracing mode of an Amazon SNS topic. By default
-#'   `TracingConfig` is set to `PassThrough`, and the topic passes through
-#'   the tracing header it receives from an Amazon SNS publisher to its
-#'   subscriptions. If set to `Active`, Amazon SNS will vend X-Ray segment
-#'   data to topic owner account if the sampled flag in the tracing header
-#'   is true. This is only supported on standard topics.
+#' -   `TracingConfig` – Tracing mode of an Amazon SNS topic. By default
+#'     `TracingConfig` is set to `PassThrough`, and the topic passes
+#'     through the tracing header it receives from an Amazon SNS publisher
+#'     to its subscriptions. If set to `Active`, Amazon SNS will vend X-Ray
+#'     segment data to topic owner account if the sampled flag in the
+#'     tracing header is true. This is only supported on standard topics.
 #' 
 #' The following attribute applies only to [server-side
 #' encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
 #' 
-#' - `KmsMasterKeyId` – The ID of an Amazon Web Services managed customer
-#'   master key (CMK) for Amazon SNS or a custom CMK. For more information,
-#'   see [Key
-#'   Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
-#'   For more examples, see
-#'   [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
-#'   in the *Key Management Service API Reference*.
+#' -   `KmsMasterKeyId` – The ID of an Amazon Web Services managed customer
+#'     master key (CMK) for Amazon SNS or a custom CMK. For more
+#'     information, see [Key
+#'     Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
+#'     For more examples, see
+#'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+#'     in the *Key Management Service API Reference*.
 #' 
 #' The following attributes apply only to [FIFO
 #' topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
 #' 
-#' - `ArchivePolicy` – Adds or updates an inline policy document to archive
-#'   messages stored in the specified Amazon SNS topic.
+#' -   `ArchivePolicy` – Adds or updates an inline policy document to
+#'     archive messages stored in the specified Amazon SNS topic.
 #' 
-#' - `BeginningArchiveTime` – The earliest starting point at which a
-#'   message in the topic’s archive can be replayed from. This point in
-#'   time is based on the configured message retention period set by the
-#'   topic’s message archiving policy.
+#' -   `BeginningArchiveTime` – The earliest starting point at which a
+#'     message in the topic’s archive can be replayed from. This point in
+#'     time is based on the configured message retention period set by the
+#'     topic’s message archiving policy.
 #' 
-#' - `ContentBasedDeduplication` – Enables content-based deduplication for
-#'   FIFO topics.
+#' -   `ContentBasedDeduplication` – Enables content-based deduplication
+#'     for FIFO topics.
 #' 
-#'   - By default, `ContentBasedDeduplication` is set to `false`. If you
-#'     create a FIFO topic and this attribute is `false`, you must specify
-#'     a value for the `MessageDeduplicationId` parameter for the
-#'     [`publish`][sns_publish] action.
+#'     -   By default, `ContentBasedDeduplication` is set to `false`. If
+#'         you create a FIFO topic and this attribute is `false`, you must
+#'         specify a value for the `MessageDeduplicationId` parameter for
+#'         the [`publish`][sns_publish] action.
 #' 
-#'   - When you set `ContentBasedDeduplication` to `true`, Amazon SNS uses
-#'     a SHA-256 hash to generate the `MessageDeduplicationId` using the
-#'     body of the message (but not the attributes of the message).
+#'     -   When you set `ContentBasedDeduplication` to `true`, Amazon SNS
+#'         uses a SHA-256 hash to generate the `MessageDeduplicationId`
+#'         using the body of the message (but not the attributes of the
+#'         message).
 #' 
-#'     (Optional) To override the generated value, you can specify a value
-#'     for the `MessageDeduplicationId` parameter for the
-#'     [`publish`][sns_publish] action.
+#'         (Optional) To override the generated value, you can specify a
+#'         value for the `MessageDeduplicationId` parameter for the
+#'         [`publish`][sns_publish] action.
 #' @param Tags The list of tags to add to a new topic.
 #' 
 #' To be able to tag a topic on creation, you must have the
@@ -337,8 +333,7 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL, DataProtectio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$create_topic_input(Name = Name, Attributes = Attributes, Tags = Tags, DataProtectionPolicy = DataProtectionPolicy)
   output <- .sns$create_topic_output()
@@ -368,8 +363,7 @@ sns_delete_endpoint <- function(EndpointArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$delete_endpoint_input(EndpointArn = EndpointArn)
   output <- .sns$delete_endpoint_output()
@@ -400,8 +394,7 @@ sns_delete_platform_application <- function(PlatformApplicationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$delete_platform_application_input(PlatformApplicationArn = PlatformApplicationArn)
   output <- .sns$delete_platform_application_output()
@@ -432,8 +425,7 @@ sns_delete_sms_sandbox_phone_number <- function(PhoneNumber) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$delete_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber)
   output <- .sns$delete_sms_sandbox_phone_number_output()
@@ -463,8 +455,7 @@ sns_delete_topic <- function(TopicArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$delete_topic_input(TopicArn = TopicArn)
   output <- .sns$delete_topic_output()
@@ -499,8 +490,7 @@ sns_get_data_protection_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$get_data_protection_policy_input(ResourceArn = ResourceArn)
   output <- .sns$get_data_protection_policy_output()
@@ -533,8 +523,7 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$get_endpoint_attributes_input(EndpointArn = EndpointArn)
   output <- .sns$get_endpoint_attributes_output()
@@ -566,8 +555,7 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$get_platform_application_attributes_input(PlatformApplicationArn = PlatformApplicationArn)
   output <- .sns$get_platform_application_attributes_output()
@@ -604,8 +592,7 @@ sns_get_sms_attributes <- function(attributes = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$get_sms_attributes_input(attributes = attributes)
   output <- .sns$get_sms_attributes_output()
@@ -636,8 +623,7 @@ sns_get_sms_sandbox_account_status <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$get_sms_sandbox_account_status_input()
   output <- .sns$get_sms_sandbox_account_status_output()
@@ -667,8 +653,7 @@ sns_get_subscription_attributes <- function(SubscriptionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$get_subscription_attributes_input(SubscriptionArn = SubscriptionArn)
   output <- .sns$get_subscription_attributes_output()
@@ -698,8 +683,7 @@ sns_get_topic_attributes <- function(TopicArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$get_topic_attributes_input(TopicArn = TopicArn)
   output <- .sns$get_topic_attributes_output()
@@ -736,8 +720,7 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Endpoints"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Endpoints")
   )
   input <- .sns$list_endpoints_by_platform_application_input(PlatformApplicationArn = PlatformApplicationArn, NextToken = NextToken)
   output <- .sns$list_endpoints_by_platform_application_output()
@@ -753,7 +736,7 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #' numbers and their metadata
 #'
 #' @description
-#' Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more information about origination numbers, see [Origination numbers](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS Developer Guide*.
+#' Lists the calling Amazon Web Services account's dedicated origination numbers and their metadata. For more information about origination numbers, see [Origination numbers](https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html) in the *Amazon SNS Developer Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/sns_list_origination_numbers/](https://www.paws-r-sdk.com/docs/sns_list_origination_numbers/) for full documentation.
 #'
@@ -771,8 +754,7 @@ sns_list_origination_numbers <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers")
   )
   input <- .sns$list_origination_numbers_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sns$list_origination_numbers_output()
@@ -806,8 +788,7 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "phoneNumbers"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "phoneNumbers")
   )
   input <- .sns$list_phone_numbers_opted_out_input(nextToken = nextToken)
   output <- .sns$list_phone_numbers_opted_out_output()
@@ -841,8 +822,7 @@ sns_list_platform_applications <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PlatformApplications"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "PlatformApplications")
   )
   input <- .sns$list_platform_applications_input(NextToken = NextToken)
   output <- .sns$list_platform_applications_output()
@@ -875,8 +855,7 @@ sns_list_sms_sandbox_phone_numbers <- function(NextToken = NULL, MaxResults = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PhoneNumbers")
   )
   input <- .sns$list_sms_sandbox_phone_numbers_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sns$list_sms_sandbox_phone_numbers_output()
@@ -907,8 +886,7 @@ sns_list_subscriptions <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions")
   )
   input <- .sns$list_subscriptions_input(NextToken = NextToken)
   output <- .sns$list_subscriptions_output()
@@ -941,8 +919,7 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Subscriptions")
   )
   input <- .sns$list_subscriptions_by_topic_input(TopicArn = TopicArn, NextToken = NextToken)
   output <- .sns$list_subscriptions_by_topic_output()
@@ -972,8 +949,7 @@ sns_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .sns$list_tags_for_resource_output()
@@ -1003,8 +979,7 @@ sns_list_topics <- function(NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Topics"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Topics")
   )
   input <- .sns$list_topics_input(NextToken = NextToken)
   output <- .sns$list_topics_output()
@@ -1035,8 +1010,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$opt_in_phone_number_input(phoneNumber = phoneNumber)
   output <- .sns$opt_in_phone_number_output()
@@ -1078,48 +1052,49 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' 
 #' Constraints:
 #' 
-#' - With the exception of SMS, messages must be UTF-8 encoded strings and
-#'   at most 256 KB in size (262,144 bytes, not 262,144 characters).
+#' -   With the exception of SMS, messages must be UTF-8 encoded strings
+#'     and at most 256 KB in size (262,144 bytes, not 262,144 characters).
 #' 
-#' - For SMS, each message can contain up to 140 characters. This character
-#'   limit depends on the encoding schema. For example, an SMS message can
-#'   contain 160 GSM characters, 140 ASCII characters, or 70 UCS-2
-#'   characters.
+#' -   For SMS, each message can contain up to 140 characters. This
+#'     character limit depends on the encoding schema. For example, an SMS
+#'     message can contain 160 GSM characters, 140 ASCII characters, or 70
+#'     UCS-2 characters.
 #' 
-#'   If you publish a message that exceeds this size limit, Amazon SNS
-#'   sends the message as multiple messages, each fitting within the size
-#'   limit. Messages aren't truncated mid-word but are cut off at
-#'   whole-word boundaries.
+#'     If you publish a message that exceeds this size limit, Amazon SNS
+#'     sends the message as multiple messages, each fitting within the size
+#'     limit. Messages aren't truncated mid-word but are cut off at
+#'     whole-word boundaries.
 #' 
-#'   The total size limit for a single SMS [`publish`][sns_publish] action
-#'   is 1,600 characters.
+#'     The total size limit for a single SMS [`publish`][sns_publish]
+#'     action is 1,600 characters.
 #' 
 #' JSON-specific constraints:
 #' 
-#' - Keys in the JSON object that correspond to supported transport
-#'   protocols must have simple JSON string values.
+#' -   Keys in the JSON object that correspond to supported transport
+#'     protocols must have simple JSON string values.
 #' 
-#' - The values will be parsed (unescaped) before they are used in outgoing
-#'   messages.
+#' -   The values will be parsed (unescaped) before they are used in
+#'     outgoing messages.
 #' 
-#' - Outbound notifications are JSON encoded (meaning that the characters
-#'   will be reescaped for sending).
+#' -   Outbound notifications are JSON encoded (meaning that the characters
+#'     will be reescaped for sending).
 #' 
-#' - Values have a minimum length of 0 (the empty string, "", is allowed).
+#' -   Values have a minimum length of 0 (the empty string, "", is
+#'     allowed).
 #' 
-#' - Values have a maximum length bounded by the overall message size (so,
-#'   including multiple protocols may limit message sizes).
+#' -   Values have a maximum length bounded by the overall message size
+#'     (so, including multiple protocols may limit message sizes).
 #' 
-#' - Non-string values will cause the key to be ignored.
+#' -   Non-string values will cause the key to be ignored.
 #' 
-#' - Keys that do not correspond to supported transport protocols are
-#'   ignored.
+#' -   Keys that do not correspond to supported transport protocols are
+#'     ignored.
 #' 
-#' - Duplicate keys are not allowed.
+#' -   Duplicate keys are not allowed.
 #' 
-#' - Failure to parse or validate any key or value in the message will
-#'   cause the [`publish`][sns_publish] call to return an error (no partial
-#'   delivery).
+#' -   Failure to parse or validate any key or value in the message will
+#'     cause the [`publish`][sns_publish] call to return an error (no
+#'     partial delivery).
 #' @param Subject Optional parameter to be used as the "Subject" line when the message is
 #' delivered to email endpoints. This field will also be included, if
 #' present, in the standard JSON messages delivered to other endpoints.
@@ -1132,10 +1107,10 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' subscribers. If you set `MessageStructure` to `json`, the value of the
 #' `Message` parameter must:
 #' 
-#' - be a syntactically valid JSON object; and
+#' -   be a syntactically valid JSON object; and
 #' 
-#' - contain at least a top-level JSON key of "default" with a value that
-#'   is a string.
+#' -   contain at least a top-level JSON key of "default" with a value that
+#'     is a string.
 #' 
 #' You can define other top-level keys that define the message you want to
 #' send to a specific transport protocol (e.g., "http").
@@ -1176,8 +1151,7 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$publish_input(TopicArn = TopicArn, TargetArn = TargetArn, PhoneNumber = PhoneNumber, Message = Message, Subject = Subject, MessageStructure = MessageStructure, MessageAttributes = MessageAttributes, MessageDeduplicationId = MessageDeduplicationId, MessageGroupId = MessageGroupId)
   output <- .sns$publish_output()
@@ -1210,8 +1184,7 @@ sns_publish_batch <- function(TopicArn, PublishBatchRequestEntries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$publish_batch_input(TopicArn = TopicArn, PublishBatchRequestEntries = PublishBatchRequestEntries)
   output <- .sns$publish_batch_output()
@@ -1252,8 +1225,7 @@ sns_put_data_protection_policy <- function(ResourceArn, DataProtectionPolicy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$put_data_protection_policy_input(ResourceArn = ResourceArn, DataProtectionPolicy = DataProtectionPolicy)
   output <- .sns$put_data_protection_policy_output()
@@ -1284,8 +1256,7 @@ sns_remove_permission <- function(TopicArn, Label) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$remove_permission_input(TopicArn = TopicArn, Label = Label)
   output <- .sns$remove_permission_output()
@@ -1311,19 +1282,19 @@ sns_remove_permission <- function(TopicArn, Label) {
 #' @param Attributes &#91;required&#93; A map of the endpoint attributes. Attributes in this map include the
 #' following:
 #' 
-#' - `CustomUserData` – arbitrary user data to associate with the endpoint.
-#'   Amazon SNS does not use this data. The data must be in UTF-8 format
-#'   and less than 2KB.
+#' -   `CustomUserData` – arbitrary user data to associate with the
+#'     endpoint. Amazon SNS does not use this data. The data must be in
+#'     UTF-8 format and less than 2KB.
 #' 
-#' - `Enabled` – flag that enables/disables delivery to the endpoint.
-#'   Amazon SNS will set this to false when a notification service
-#'   indicates to Amazon SNS that the endpoint is invalid. Users can set it
-#'   back to true, typically after updating Token.
+#' -   `Enabled` – flag that enables/disables delivery to the endpoint.
+#'     Amazon SNS will set this to false when a notification service
+#'     indicates to Amazon SNS that the endpoint is invalid. Users can set
+#'     it back to true, typically after updating Token.
 #' 
-#' - `Token` – device token, also referred to as a registration id, for an
-#'   app and mobile device. This is returned from the notification service
-#'   when an app and mobile device are registered with the notification
-#'   service.
+#' -   `Token` – device token, also referred to as a registration id, for
+#'     an app and mobile device. This is returned from the notification
+#'     service when an app and mobile device are registered with the
+#'     notification service.
 #'
 #' @keywords internal
 #'
@@ -1334,8 +1305,7 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$set_endpoint_attributes_input(EndpointArn = EndpointArn, Attributes = Attributes)
   output <- .sns$set_endpoint_attributes_output()
@@ -1362,72 +1332,75 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #' @param Attributes &#91;required&#93; A map of the platform application attributes. Attributes in this map
 #' include the following:
 #' 
-#' - `PlatformCredential` – The credential received from the notification
-#'   service.
+#' -   `PlatformCredential` – The credential received from the notification
+#'     service.
 #' 
-#'   - For ADM, `PlatformCredential`is client secret.
+#'     -   For ADM, `PlatformCredential`is client secret.
 #' 
-#'   - For Apple Services using certificate credentials,
-#'     `PlatformCredential` is private key.
+#'     -   For Apple Services using certificate credentials,
+#'         `PlatformCredential` is private key.
 #' 
-#'   - For Apple Services using token credentials, `PlatformCredential` is
-#'     signing key.
+#'     -   For Apple Services using token credentials, `PlatformCredential`
+#'         is signing key.
 #' 
-#'   - For GCM (Firebase Cloud Messaging) using key credentials, there is
-#'     no `PlatformPrincipal`. The `PlatformCredential` is `API key`.
+#'     -   For GCM (Firebase Cloud Messaging) using key credentials, there
+#'         is no `PlatformPrincipal`. The `PlatformCredential` is
+#'         `API key`.
 #' 
-#'   - For GCM (Firebase Cloud Messaging) using token credentials, there is
-#'     no `PlatformPrincipal`. The `PlatformCredential` is a JSON formatted
-#'     private key file. When using the Amazon Web Services CLI, the file
-#'     must be in string format and special characters must be ignored. To
-#'     format the file correctly, Amazon SNS recommends using the following
-#'     command: `` SERVICE_JSON=`jq @@json <<< cat service.json` ``.
-#' 
-#' 
-#' - `PlatformPrincipal` – The principal received from the notification
-#'   service.
-#' 
-#'   - For ADM, `PlatformPrincipal`is client id.
-#' 
-#'   - For Apple Services using certificate credentials,
-#'     `PlatformPrincipal` is SSL certificate.
-#' 
-#'   - For Apple Services using token credentials, `PlatformPrincipal` is
-#'     signing key ID.
-#' 
-#'   - For GCM (Firebase Cloud Messaging), there is no `PlatformPrincipal`.
+#'     -   For GCM (Firebase Cloud Messaging) using token credentials,
+#'         there is no `PlatformPrincipal`. The `PlatformCredential` is a
+#'         JSON formatted private key file. When using the Amazon Web
+#'         Services CLI, the file must be in string format and special
+#'         characters must be ignored. To format the file correctly, Amazon
+#'         SNS recommends using the following command:
+#'         `` SERVICE_JSON=`jq @@json <<< cat service.json` ``.
 #' 
 #' 
-#' - `EventEndpointCreated` – Topic ARN to which `EndpointCreated` event
-#'   notifications are sent.
+#' -   `PlatformPrincipal` – The principal received from the notification
+#'     service.
 #' 
-#' - `EventEndpointDeleted` – Topic ARN to which `EndpointDeleted` event
-#'   notifications are sent.
+#'     -   For ADM, `PlatformPrincipal`is client id.
 #' 
-#' - `EventEndpointUpdated` – Topic ARN to which `EndpointUpdate` event
-#'   notifications are sent.
+#'     -   For Apple Services using certificate credentials,
+#'         `PlatformPrincipal` is SSL certificate.
 #' 
-#' - `EventDeliveryFailure` – Topic ARN to which `DeliveryFailure` event
-#'   notifications are sent upon Direct Publish delivery failure
-#'   (permanent) to one of the application's endpoints.
+#'     -   For Apple Services using token credentials, `PlatformPrincipal`
+#'         is signing key ID.
 #' 
-#' - `SuccessFeedbackRoleArn` – IAM role ARN used to give Amazon SNS write
-#'   access to use CloudWatch Logs on your behalf.
+#'     -   For GCM (Firebase Cloud Messaging), there is no
+#'         `PlatformPrincipal`.
 #' 
-#' - `FailureFeedbackRoleArn` – IAM role ARN used to give Amazon SNS write
-#'   access to use CloudWatch Logs on your behalf.
 #' 
-#' - `SuccessFeedbackSampleRate` – Sample rate percentage (0-100) of
-#'   successfully delivered messages.
+#' -   `EventEndpointCreated` – Topic ARN to which `EndpointCreated` event
+#'     notifications are sent.
+#' 
+#' -   `EventEndpointDeleted` – Topic ARN to which `EndpointDeleted` event
+#'     notifications are sent.
+#' 
+#' -   `EventEndpointUpdated` – Topic ARN to which `EndpointUpdate` event
+#'     notifications are sent.
+#' 
+#' -   `EventDeliveryFailure` – Topic ARN to which `DeliveryFailure` event
+#'     notifications are sent upon Direct Publish delivery failure
+#'     (permanent) to one of the application's endpoints.
+#' 
+#' -   `SuccessFeedbackRoleArn` – IAM role ARN used to give Amazon SNS
+#'     write access to use CloudWatch Logs on your behalf.
+#' 
+#' -   `FailureFeedbackRoleArn` – IAM role ARN used to give Amazon SNS
+#'     write access to use CloudWatch Logs on your behalf.
+#' 
+#' -   `SuccessFeedbackSampleRate` – Sample rate percentage (0-100) of
+#'     successfully delivered messages.
 #' 
 #' The following attributes only apply to `APNs` token-based
 #' authentication:
 #' 
-#' - `ApplePlatformTeamID` – The identifier that's assigned to your Apple
-#'   developer account team.
+#' -   `ApplePlatformTeamID` – The identifier that's assigned to your Apple
+#'     developer account team.
 #' 
-#' - `ApplePlatformBundleID` – The bundle identifier that's assigned to
-#'   your iOS app.
+#' -   `ApplePlatformBundleID` – The bundle identifier that's assigned to
+#'     your iOS app.
 #'
 #' @keywords internal
 #'
@@ -1438,8 +1411,7 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$set_platform_application_attributes_input(PlatformApplicationArn = PlatformApplicationArn, Attributes = Attributes)
   output <- .sns$set_platform_application_attributes_output()
@@ -1497,14 +1469,14 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' `DefaultSMSType` – The type of SMS message that you will send by
 #' default. You can assign the following values:
 #' 
-#' - `Promotional` – (Default) Noncritical messages, such as marketing
-#'   messages. Amazon SNS optimizes the message delivery to incur the
-#'   lowest cost.
+#' -   `Promotional` – (Default) Noncritical messages, such as marketing
+#'     messages. Amazon SNS optimizes the message delivery to incur the
+#'     lowest cost.
 #' 
-#' - `Transactional` – Critical messages that support customer
-#'   transactions, such as one-time passcodes for multi-factor
-#'   authentication. Amazon SNS optimizes the message delivery to achieve
-#'   the highest reliability.
+#' -   `Transactional` – Critical messages that support customer
+#'     transactions, such as one-time passcodes for multi-factor
+#'     authentication. Amazon SNS optimizes the message delivery to achieve
+#'     the highest reliability.
 #' 
 #' `UsageReportS3Bucket` – The name of the Amazon S3 bucket to receive
 #' daily SMS usage reports from Amazon SNS. Each day, Amazon SNS will
@@ -1512,22 +1484,22 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' the following information for each SMS message that was successfully
 #' delivered by your Amazon Web Services account:
 #' 
-#' - Time that the message was published (in UTC)
+#' -   Time that the message was published (in UTC)
 #' 
-#' - Message ID
+#' -   Message ID
 #' 
-#' - Destination phone number
+#' -   Destination phone number
 #' 
-#' - Message type
+#' -   Message type
 #' 
-#' - Delivery status
+#' -   Delivery status
 #' 
-#' - Message price (in USD)
+#' -   Message price (in USD)
 #' 
-#' - Part number (a message is split into multiple parts if it is too long
-#'   for a single message)
+#' -   Part number (a message is split into multiple parts if it is too
+#'     long for a single message)
 #' 
-#' - Total number of parts
+#' -   Total number of parts
 #' 
 #' To receive the report, the bucket must have a policy that allows the
 #' Amazon SNS service principal to perform the `s3:PutObject` and
@@ -1546,8 +1518,7 @@ sns_set_sms_attributes <- function(attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$set_sms_attributes_input(attributes = attributes)
   output <- .sns$set_sms_attributes_output()
@@ -1573,48 +1544,48 @@ sns_set_sms_attributes <- function(attributes) {
 #' The following lists the names, descriptions, and values of the special
 #' request parameters that this action uses:
 #' 
-#' - `DeliveryPolicy` – The policy that defines how Amazon SNS retries
-#'   failed deliveries to HTTP/S endpoints.
+#' -   `DeliveryPolicy` – The policy that defines how Amazon SNS retries
+#'     failed deliveries to HTTP/S endpoints.
 #' 
-#' - `FilterPolicy` – The simple JSON object that lets your subscriber
-#'   receive only a subset of messages, rather than receiving every message
-#'   published to the topic.
+#' -   `FilterPolicy` – The simple JSON object that lets your subscriber
+#'     receive only a subset of messages, rather than receiving every
+#'     message published to the topic.
 #' 
-#' - `FilterPolicyScope` – This attribute lets you choose the filtering
-#'   scope by using one of the following string value types:
+#' -   `FilterPolicyScope` – This attribute lets you choose the filtering
+#'     scope by using one of the following string value types:
 #' 
-#'   - `MessageAttributes` (default) – The filter is applied on the message
-#'     attributes.
+#'     -   `MessageAttributes` (default) – The filter is applied on the
+#'         message attributes.
 #' 
-#'   - `MessageBody` – The filter is applied on the message body.
+#'     -   `MessageBody` – The filter is applied on the message body.
 #' 
-#' - `RawMessageDelivery` – When set to `true`, enables raw message
-#'   delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
-#'   for the endpoints to process JSON formatting, which is otherwise
-#'   created for Amazon SNS metadata.
+#' -   `RawMessageDelivery` – When set to `true`, enables raw message
+#'     delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
+#'     for the endpoints to process JSON formatting, which is otherwise
+#'     created for Amazon SNS metadata.
 #' 
-#' - `RedrivePolicy` – When specified, sends undeliverable messages to the
-#'   specified Amazon SQS dead-letter queue. Messages that can't be
-#'   delivered due to client errors (for example, when the subscribed
-#'   endpoint is unreachable) or server errors (for example, when the
-#'   service that powers the subscribed endpoint becomes unavailable) are
-#'   held in the dead-letter queue for further analysis or reprocessing.
+#' -   `RedrivePolicy` – When specified, sends undeliverable messages to
+#'     the specified Amazon SQS dead-letter queue. Messages that can't be
+#'     delivered due to client errors (for example, when the subscribed
+#'     endpoint is unreachable) or server errors (for example, when the
+#'     service that powers the subscribed endpoint becomes unavailable) are
+#'     held in the dead-letter queue for further analysis or reprocessing.
 #' 
 #' The following attribute applies only to Amazon Data Firehose delivery
 #' stream subscriptions:
 #' 
-#' - `SubscriptionRoleArn` – The ARN of the IAM role that has the
-#'   following:
+#' -   `SubscriptionRoleArn` – The ARN of the IAM role that has the
+#'     following:
 #' 
-#'   - Permission to write to the Firehose delivery stream
+#'     -   Permission to write to the Firehose delivery stream
 #' 
-#'   - Amazon SNS listed as a trusted entity
+#'     -   Amazon SNS listed as a trusted entity
 #' 
-#'   Specifying a valid ARN for this attribute is required for Firehose
-#'   delivery stream subscriptions. For more information, see [Fanout to
-#'   Firehose delivery
-#'   streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
-#'   in the *Amazon SNS Developer Guide*.
+#'     Specifying a valid ARN for this attribute is required for Firehose
+#'     delivery stream subscriptions. For more information, see [Fanout to
+#'     Firehose delivery
+#'     streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
+#'     in the *Amazon SNS Developer Guide*.
 #' @param AttributeValue The new value for the attribute in JSON format.
 #'
 #' @keywords internal
@@ -1626,8 +1597,7 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$set_subscription_attributes_input(SubscriptionArn = SubscriptionArn, AttributeName = AttributeName, AttributeValue = AttributeValue)
   output <- .sns$set_subscription_attributes_output()
@@ -1653,105 +1623,105 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' request parameters that the
 #' [`set_topic_attributes`][sns_set_topic_attributes] action uses:
 #' 
-#' - `ApplicationSuccessFeedbackRoleArn` – Indicates failed message
-#'   delivery status for an Amazon SNS topic that is subscribed to a
-#'   platform application endpoint.
+#' -   `ApplicationSuccessFeedbackRoleArn` – Indicates failed message
+#'     delivery status for an Amazon SNS topic that is subscribed to a
+#'     platform application endpoint.
 #' 
-#' - `DeliveryPolicy` – The policy that defines how Amazon SNS retries
-#'   failed deliveries to HTTP/S endpoints.
+#' -   `DeliveryPolicy` – The policy that defines how Amazon SNS retries
+#'     failed deliveries to HTTP/S endpoints.
 #' 
-#' - `DisplayName` – The display name to use for a topic with SMS
-#'   subscriptions.
+#' -   `DisplayName` – The display name to use for a topic with SMS
+#'     subscriptions.
 #' 
-#' - `Policy` – The policy that defines who can access your topic. By
-#'   default, only the topic owner can publish or subscribe to the topic.
+#' -   `Policy` – The policy that defines who can access your topic. By
+#'     default, only the topic owner can publish or subscribe to the topic.
 #' 
-#' - `TracingConfig` – Tracing mode of an Amazon SNS topic. By default
-#'   `TracingConfig` is set to `PassThrough`, and the topic passes through
-#'   the tracing header it receives from an Amazon SNS publisher to its
-#'   subscriptions. If set to `Active`, Amazon SNS will vend X-Ray segment
-#'   data to topic owner account if the sampled flag in the tracing header
-#'   is true. This is only supported on standard topics.
+#' -   `TracingConfig` – Tracing mode of an Amazon SNS topic. By default
+#'     `TracingConfig` is set to `PassThrough`, and the topic passes
+#'     through the tracing header it receives from an Amazon SNS publisher
+#'     to its subscriptions. If set to `Active`, Amazon SNS will vend X-Ray
+#'     segment data to topic owner account if the sampled flag in the
+#'     tracing header is true. This is only supported on standard topics.
 #' 
-#' - HTTP
+#' -   HTTP
 #' 
-#'   - `HTTPSuccessFeedbackRoleArn` – Indicates successful message delivery
-#'     status for an Amazon SNS topic that is subscribed to an HTTP
-#'     endpoint.
+#'     -   `HTTPSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         HTTP endpoint.
 #' 
-#'   - `HTTPSuccessFeedbackSampleRate` – Indicates percentage of successful
-#'     messages to sample for an Amazon SNS topic that is subscribed to an
-#'     HTTP endpoint.
+#'     -   `HTTPSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an HTTP endpoint.
 #' 
-#'   - `HTTPFailureFeedbackRoleArn` – Indicates failed message delivery
-#'     status for an Amazon SNS topic that is subscribed to an HTTP
-#'     endpoint.
+#'     -   `HTTPFailureFeedbackRoleArn` – Indicates failed message delivery
+#'         status for an Amazon SNS topic that is subscribed to an HTTP
+#'         endpoint.
 #' 
-#' - Amazon Kinesis Data Firehose
+#' -   Amazon Kinesis Data Firehose
 #' 
-#'   - `FirehoseSuccessFeedbackRoleArn` – Indicates successful message
-#'     delivery status for an Amazon SNS topic that is subscribed to an
-#'     Amazon Kinesis Data Firehose endpoint.
+#'     -   `FirehoseSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon Kinesis Data Firehose endpoint.
 #' 
-#'   - `FirehoseSuccessFeedbackSampleRate` – Indicates percentage of
-#'     successful messages to sample for an Amazon SNS topic that is
-#'     subscribed to an Amazon Kinesis Data Firehose endpoint.
+#'     -   `FirehoseSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Amazon Kinesis Data Firehose endpoint.
 #' 
-#'   - `FirehoseFailureFeedbackRoleArn` – Indicates failed message delivery
-#'     status for an Amazon SNS topic that is subscribed to an Amazon
-#'     Kinesis Data Firehose endpoint.
+#'     -   `FirehoseFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon Kinesis Data Firehose endpoint.
 #' 
-#' - Lambda
+#' -   Lambda
 #' 
-#'   - `LambdaSuccessFeedbackRoleArn` – Indicates successful message
-#'     delivery status for an Amazon SNS topic that is subscribed to an
-#'     Lambda endpoint.
+#'     -   `LambdaSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Lambda endpoint.
 #' 
-#'   - `LambdaSuccessFeedbackSampleRate` – Indicates percentage of
-#'     successful messages to sample for an Amazon SNS topic that is
-#'     subscribed to an Lambda endpoint.
+#'     -   `LambdaSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Lambda endpoint.
 #' 
-#'   - `LambdaFailureFeedbackRoleArn` – Indicates failed message delivery
-#'     status for an Amazon SNS topic that is subscribed to an Lambda
-#'     endpoint.
+#'     -   `LambdaFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Lambda endpoint.
 #' 
-#' - Platform application endpoint
+#' -   Platform application endpoint
 #' 
-#'   - `ApplicationSuccessFeedbackRoleArn` – Indicates successful message
-#'     delivery status for an Amazon SNS topic that is subscribed to an
-#'     Amazon Web Services application endpoint.
+#'     -   `ApplicationSuccessFeedbackRoleArn` – Indicates successful
+#'         message delivery status for an Amazon SNS topic that is
+#'         subscribed to an Amazon Web Services application endpoint.
 #' 
-#'   - `ApplicationSuccessFeedbackSampleRate` – Indicates percentage of
-#'     successful messages to sample for an Amazon SNS topic that is
-#'     subscribed to an Amazon Web Services application endpoint.
+#'     -   `ApplicationSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Amazon Web Services application endpoint.
 #' 
-#'   - `ApplicationFailureFeedbackRoleArn` – Indicates failed message
-#'     delivery status for an Amazon SNS topic that is subscribed to an
-#'     Amazon Web Services application endpoint.
+#'     -   `ApplicationFailureFeedbackRoleArn` – Indicates failed message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon Web Services application endpoint.
 #' 
-#'   In addition to being able to configure topic attributes for message
-#'   delivery status of notification messages sent to Amazon SNS
-#'   application endpoints, you can also configure application attributes
-#'   for the delivery status of push notification messages sent to push
-#'   notification services.
+#'     In addition to being able to configure topic attributes for message
+#'     delivery status of notification messages sent to Amazon SNS
+#'     application endpoints, you can also configure application attributes
+#'     for the delivery status of push notification messages sent to push
+#'     notification services.
 #' 
-#'   For example, For more information, see [Using Amazon SNS Application
-#'   Attributes for Message Delivery
-#'   Status](https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
+#'     For example, For more information, see [Using Amazon SNS Application
+#'     Attributes for Message Delivery
+#'     Status](https://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html).
 #' 
-#' - Amazon SQS
+#' -   Amazon SQS
 #' 
-#'   - `SQSSuccessFeedbackRoleArn` – Indicates successful message delivery
-#'     status for an Amazon SNS topic that is subscribed to an Amazon SQS
-#'     endpoint.
+#'     -   `SQSSuccessFeedbackRoleArn` – Indicates successful message
+#'         delivery status for an Amazon SNS topic that is subscribed to an
+#'         Amazon SQS endpoint.
 #' 
-#'   - `SQSSuccessFeedbackSampleRate` – Indicates percentage of successful
-#'     messages to sample for an Amazon SNS topic that is subscribed to an
-#'     Amazon SQS endpoint.
+#'     -   `SQSSuccessFeedbackSampleRate` – Indicates percentage of
+#'         successful messages to sample for an Amazon SNS topic that is
+#'         subscribed to an Amazon SQS endpoint.
 #' 
-#'   - `SQSFailureFeedbackRoleArn` – Indicates failed message delivery
-#'     status for an Amazon SNS topic that is subscribed to an Amazon SQS
-#'     endpoint.
+#'     -   `SQSFailureFeedbackRoleArn` – Indicates failed message delivery
+#'         status for an Amazon SNS topic that is subscribed to an Amazon
+#'         SQS endpoint.
 #' 
 #' The \<ENDPOINT\>SuccessFeedbackRoleArn and
 #' \<ENDPOINT\>FailureFeedbackRoleArn attributes are used to give Amazon
@@ -1764,37 +1734,39 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 #' The following attribute applies only to
 #' [server-side-encryption](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html):
 #' 
-#' - `KmsMasterKeyId` – The ID of an Amazon Web Services managed customer
-#'   master key (CMK) for Amazon SNS or a custom CMK. For more information,
-#'   see [Key
-#'   Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
-#'   For more examples, see
-#'   [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
-#'   in the *Key Management Service API Reference*.
+#' -   `KmsMasterKeyId` – The ID of an Amazon Web Services managed customer
+#'     master key (CMK) for Amazon SNS or a custom CMK. For more
+#'     information, see [Key
+#'     Terms](https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
+#'     For more examples, see
+#'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+#'     in the *Key Management Service API Reference*.
 #' 
-#' - `SignatureVersion` – The signature version corresponds to the hashing
-#'   algorithm used while creating the signature of the notifications,
-#'   subscription confirmations, or unsubscribe confirmation messages sent
-#'   by Amazon SNS. By default, `SignatureVersion` is set to `1`.
+#' -   `SignatureVersion` – The signature version corresponds to the
+#'     hashing algorithm used while creating the signature of the
+#'     notifications, subscription confirmations, or unsubscribe
+#'     confirmation messages sent by Amazon SNS. By default,
+#'     `SignatureVersion` is set to `1`.
 #' 
 #' The following attribute applies only to [FIFO
 #' topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
 #' 
-#' - `ContentBasedDeduplication` – Enables content-based deduplication for
-#'   FIFO topics.
+#' -   `ContentBasedDeduplication` – Enables content-based deduplication
+#'     for FIFO topics.
 #' 
-#'   - By default, `ContentBasedDeduplication` is set to `false`. If you
-#'     create a FIFO topic and this attribute is `false`, you must specify
-#'     a value for the `MessageDeduplicationId` parameter for the
-#'     [`publish`][sns_publish] action.
+#'     -   By default, `ContentBasedDeduplication` is set to `false`. If
+#'         you create a FIFO topic and this attribute is `false`, you must
+#'         specify a value for the `MessageDeduplicationId` parameter for
+#'         the [`publish`][sns_publish] action.
 #' 
-#'   - When you set `ContentBasedDeduplication` to `true`, Amazon SNS uses
-#'     a SHA-256 hash to generate the `MessageDeduplicationId` using the
-#'     body of the message (but not the attributes of the message).
+#'     -   When you set `ContentBasedDeduplication` to `true`, Amazon SNS
+#'         uses a SHA-256 hash to generate the `MessageDeduplicationId`
+#'         using the body of the message (but not the attributes of the
+#'         message).
 #' 
-#'     (Optional) To override the generated value, you can specify a value
-#'     for the `MessageDeduplicationId` parameter for the
-#'     [`publish`][sns_publish] action.
+#'         (Optional) To override the generated value, you can specify a
+#'         value for the `MessageDeduplicationId` parameter for the
+#'         [`publish`][sns_publish] action.
 #' @param AttributeValue The new value for the attribute.
 #'
 #' @keywords internal
@@ -1806,8 +1778,7 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$set_topic_attributes_input(TopicArn = TopicArn, AttributeName = AttributeName, AttributeValue = AttributeValue)
   output <- .sns$set_topic_attributes_output()
@@ -1829,121 +1800,121 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #' @param TopicArn &#91;required&#93; The ARN of the topic you want to subscribe to.
 #' @param Protocol &#91;required&#93; The protocol that you want to use. Supported protocols include:
 #' 
-#' - `http` – delivery of JSON-encoded message via HTTP POST
+#' -   `http` – delivery of JSON-encoded message via HTTP POST
 #' 
-#' - `https` – delivery of JSON-encoded message via HTTPS POST
+#' -   `https` – delivery of JSON-encoded message via HTTPS POST
 #' 
-#' - `email` – delivery of message via SMTP
+#' -   `email` – delivery of message via SMTP
 #' 
-#' - `email-json` – delivery of JSON-encoded message via SMTP
+#' -   `email-json` – delivery of JSON-encoded message via SMTP
 #' 
-#' - `sms` – delivery of message via SMS
+#' -   `sms` – delivery of message via SMS
 #' 
-#' - `sqs` – delivery of JSON-encoded message to an Amazon SQS queue
+#' -   `sqs` – delivery of JSON-encoded message to an Amazon SQS queue
 #' 
-#' - `application` – delivery of JSON-encoded message to an EndpointArn for
-#'   a mobile app and device
+#' -   `application` – delivery of JSON-encoded message to an EndpointArn
+#'     for a mobile app and device
 #' 
-#' - `lambda` – delivery of JSON-encoded message to an Lambda function
+#' -   `lambda` – delivery of JSON-encoded message to an Lambda function
 #' 
-#' - `firehose` – delivery of JSON-encoded message to an Amazon Kinesis
-#'   Data Firehose delivery stream.
+#' -   `firehose` – delivery of JSON-encoded message to an Amazon Kinesis
+#'     Data Firehose delivery stream.
 #' @param Endpoint The endpoint that you want to receive notifications. Endpoints vary by
 #' protocol:
 #' 
-#' - For the `http` protocol, the (public) endpoint is a URL beginning with
-#'   `http://`.
+#' -   For the `http` protocol, the (public) endpoint is a URL beginning
+#'     with `http://`.
 #' 
-#' - For the `https` protocol, the (public) endpoint is a URL beginning
-#'   with `https://`.
+#' -   For the `https` protocol, the (public) endpoint is a URL beginning
+#'     with `https://`.
 #' 
-#' - For the `email` protocol, the endpoint is an email address.
+#' -   For the `email` protocol, the endpoint is an email address.
 #' 
-#' - For the `email-json` protocol, the endpoint is an email address.
+#' -   For the `email-json` protocol, the endpoint is an email address.
 #' 
-#' - For the `sms` protocol, the endpoint is a phone number of an
-#'   SMS-enabled device.
+#' -   For the `sms` protocol, the endpoint is a phone number of an
+#'     SMS-enabled device.
 #' 
-#' - For the `sqs` protocol, the endpoint is the ARN of an Amazon SQS
-#'   queue.
+#' -   For the `sqs` protocol, the endpoint is the ARN of an Amazon SQS
+#'     queue.
 #' 
-#' - For the `application` protocol, the endpoint is the EndpointArn of a
-#'   mobile app and device.
+#' -   For the `application` protocol, the endpoint is the EndpointArn of a
+#'     mobile app and device.
 #' 
-#' - For the `lambda` protocol, the endpoint is the ARN of an Lambda
-#'   function.
+#' -   For the `lambda` protocol, the endpoint is the ARN of an Lambda
+#'     function.
 #' 
-#' - For the `firehose` protocol, the endpoint is the ARN of an Amazon
-#'   Kinesis Data Firehose delivery stream.
+#' -   For the `firehose` protocol, the endpoint is the ARN of an Amazon
+#'     Kinesis Data Firehose delivery stream.
 #' @param Attributes A map of attributes with their corresponding values.
 #' 
 #' The following lists the names, descriptions, and values of the special
 #' request parameters that the [`subscribe`][sns_subscribe] action uses:
 #' 
-#' - `DeliveryPolicy` – The policy that defines how Amazon SNS retries
-#'   failed deliveries to HTTP/S endpoints.
+#' -   `DeliveryPolicy` – The policy that defines how Amazon SNS retries
+#'     failed deliveries to HTTP/S endpoints.
 #' 
-#' - `FilterPolicy` – The simple JSON object that lets your subscriber
-#'   receive only a subset of messages, rather than receiving every message
-#'   published to the topic.
+#' -   `FilterPolicy` – The simple JSON object that lets your subscriber
+#'     receive only a subset of messages, rather than receiving every
+#'     message published to the topic.
 #' 
-#' - `FilterPolicyScope` – This attribute lets you choose the filtering
-#'   scope by using one of the following string value types:
+#' -   `FilterPolicyScope` – This attribute lets you choose the filtering
+#'     scope by using one of the following string value types:
 #' 
-#'   - `MessageAttributes` (default) – The filter is applied on the message
-#'     attributes.
+#'     -   `MessageAttributes` (default) – The filter is applied on the
+#'         message attributes.
 #' 
-#'   - `MessageBody` – The filter is applied on the message body.
+#'     -   `MessageBody` – The filter is applied on the message body.
 #' 
-#' - `RawMessageDelivery` – When set to `true`, enables raw message
-#'   delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
-#'   for the endpoints to process JSON formatting, which is otherwise
-#'   created for Amazon SNS metadata.
+#' -   `RawMessageDelivery` – When set to `true`, enables raw message
+#'     delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
+#'     for the endpoints to process JSON formatting, which is otherwise
+#'     created for Amazon SNS metadata.
 #' 
-#' - `RedrivePolicy` – When specified, sends undeliverable messages to the
-#'   specified Amazon SQS dead-letter queue. Messages that can't be
-#'   delivered due to client errors (for example, when the subscribed
-#'   endpoint is unreachable) or server errors (for example, when the
-#'   service that powers the subscribed endpoint becomes unavailable) are
-#'   held in the dead-letter queue for further analysis or reprocessing.
+#' -   `RedrivePolicy` – When specified, sends undeliverable messages to
+#'     the specified Amazon SQS dead-letter queue. Messages that can't be
+#'     delivered due to client errors (for example, when the subscribed
+#'     endpoint is unreachable) or server errors (for example, when the
+#'     service that powers the subscribed endpoint becomes unavailable) are
+#'     held in the dead-letter queue for further analysis or reprocessing.
 #' 
 #' The following attribute applies only to Amazon Data Firehose delivery
 #' stream subscriptions:
 #' 
-#' - `SubscriptionRoleArn` – The ARN of the IAM role that has the
-#'   following:
+#' -   `SubscriptionRoleArn` – The ARN of the IAM role that has the
+#'     following:
 #' 
-#'   - Permission to write to the Firehose delivery stream
+#'     -   Permission to write to the Firehose delivery stream
 #' 
-#'   - Amazon SNS listed as a trusted entity
+#'     -   Amazon SNS listed as a trusted entity
 #' 
-#'   Specifying a valid ARN for this attribute is required for Firehose
-#'   delivery stream subscriptions. For more information, see [Fanout to
-#'   Firehose delivery
-#'   streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
-#'   in the *Amazon SNS Developer Guide*.
+#'     Specifying a valid ARN for this attribute is required for Firehose
+#'     delivery stream subscriptions. For more information, see [Fanout to
+#'     Firehose delivery
+#'     streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
+#'     in the *Amazon SNS Developer Guide*.
 #' 
 #' The following attributes apply only to [FIFO
 #' topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
 #' 
-#' - `ReplayPolicy` – Adds or updates an inline policy document for a
-#'   subscription to replay messages stored in the specified Amazon SNS
-#'   topic.
+#' -   `ReplayPolicy` – Adds or updates an inline policy document for a
+#'     subscription to replay messages stored in the specified Amazon SNS
+#'     topic.
 #' 
-#' - `ReplayStatus` – Retrieves the status of the subscription message
-#'   replay, which can be one of the following:
+#' -   `ReplayStatus` – Retrieves the status of the subscription message
+#'     replay, which can be one of the following:
 #' 
-#'   - `Completed` – The replay has successfully redelivered all messages,
-#'     and is now delivering newly published messages. If an ending point
-#'     was specified in the `ReplayPolicy` then the subscription will no
-#'     longer receive newly published messages.
+#'     -   `Completed` – The replay has successfully redelivered all
+#'         messages, and is now delivering newly published messages. If an
+#'         ending point was specified in the `ReplayPolicy` then the
+#'         subscription will no longer receive newly published messages.
 #' 
-#'   - `In progress` – The replay is currently replaying the selected
-#'     messages.
+#'     -   `In progress` – The replay is currently replaying the selected
+#'         messages.
 #' 
-#'   - `Failed` – The replay was unable to complete.
+#'     -   `Failed` – The replay was unable to complete.
 #' 
-#'   - `Pending` – The default state while the replay initiates.
+#'     -   `Pending` – The default state while the replay initiates.
 #' @param ReturnSubscriptionArn Sets whether the response from the [`subscribe`][sns_subscribe] request
 #' includes the subscription ARN, even if the subscription is not yet
 #' confirmed.
@@ -1967,8 +1938,7 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$subscribe_input(TopicArn = TopicArn, Protocol = Protocol, Endpoint = Endpoint, Attributes = Attributes, ReturnSubscriptionArn = ReturnSubscriptionArn)
   output <- .sns$subscribe_output()
@@ -2000,8 +1970,7 @@ sns_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .sns$tag_resource_output()
@@ -2031,8 +2000,7 @@ sns_unsubscribe <- function(SubscriptionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$unsubscribe_input(SubscriptionArn = SubscriptionArn)
   output <- .sns$unsubscribe_output()
@@ -2063,8 +2031,7 @@ sns_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .sns$untag_resource_output()
@@ -2097,8 +2064,7 @@ sns_verify_sms_sandbox_phone_number <- function(PhoneNumber, OneTimePassword) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sns$verify_sms_sandbox_phone_number_input(PhoneNumber = PhoneNumber, OneTimePassword = OneTimePassword)
   output <- .sns$verify_sms_sandbox_phone_number_output()

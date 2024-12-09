@@ -39,7 +39,8 @@ seconds is limited to a maximum of 9 digits. The offset is bounded by
 \item \code{YYYY-MM-DDTHH:MM:SSZ} (for example, \verb{2019-01-31T23:00:00Z})
 \item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmmZ} (for example,
 \verb{2019-01-31T23:00:00.123456789Z})
-\item \code{YYYY-MM-DDTHH:MM:SS+HH:MM} (for example, \verb{2024-01-04T15:25:10+17:59})
+\item \code{YYYY-MM-DDTHH:MM:SS+HH:MM} (for example,
+\verb{2024-01-04T15:25:10+17:59})
 \item \code{YYYY-MM-DDTHH:MM:SS-HHMM} (for example, \verb{2024-01-04T15:25:10-1759})
 \item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmm+HH:MM} (for example,
 \verb{2024-01-04T15:25:10.123456789+17:59})
@@ -69,7 +70,8 @@ seconds is limited to a maximum of 9 digits. The offset is bounded by
 \item \code{YYYY-MM-DDTHH:MM:SSZ} (for example, \verb{2019-01-31T23:00:00Z})
 \item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmmZ} (for example,
 \verb{2019-01-31T23:00:00.123456789Z})
-\item \code{YYYY-MM-DDTHH:MM:SS+HH:MM} (for example, \verb{2024-01-04T15:25:10+17:59})
+\item \code{YYYY-MM-DDTHH:MM:SS+HH:MM} (for example,
+\verb{2024-01-04T15:25:10+17:59})
 \item \code{YYYY-MM-DDTHH:MM:SS-HHMM} (for example, \verb{2024-01-04T15:25:10-1759})
 \item \code{YYYY-MM-DDTHH:MM:SS.mmmmmmmmm+HH:MM} (for example,
 \verb{2024-01-04T15:25:10.123456789+17:59})

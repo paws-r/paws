@@ -73,15 +73,15 @@ CloudWatch Logs log group. For example:
 arn:aws:logs:\emph{region}:\emph{account_id}:log-group:\emph{my_group}
 
 Alternatively, use the \code{LogGroupName} parameter.
-\item If the destination type is \code{s3}, specify the ARN of an S3 bucket. For
-example:
+\item If the destination type is \code{s3}, specify the ARN of an S3 bucket.
+For example:
 
 arn:aws:s3:::\emph{my_bucket}/\emph{my_subfolder}/
 
 The subfolder is optional. Note that you can't use \code{AWSLogs} as a
 subfolder name.
-\item If the destination type is \code{kinesis-data-firehose}, specify the ARN of
-a Kinesis Data Firehose delivery stream. For example:
+\item If the destination type is \code{kinesis-data-firehose}, specify the ARN
+of a Kinesis Data Firehose delivery stream. For example:
 
 arn:aws:firehose:\emph{region}:\emph{account_id}:deliverystream:\emph{my_stream}
 }}

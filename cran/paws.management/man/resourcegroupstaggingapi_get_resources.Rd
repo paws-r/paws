@@ -30,11 +30,11 @@ include up to 20 values.
 Note the following when deciding how to use TagFilters:
 \itemize{
 \item If you \emph{don't} specify a \code{TagFilter}, the response includes all
-resources that are currently tagged or ever had a tag. Resources that
-currently don't have tags are shown with an empty tag set, like this:
-\verb{"Tags": []}.
-\item If you specify more than one filter in a single request, the response
-returns only those resources that satisfy all filters.
+resources that are currently tagged or ever had a tag. Resources
+that currently don't have tags are shown with an empty tag set, like
+this: \verb{"Tags": []}.
+\item If you specify more than one filter in a single request, the
+response returns only those resources that satisfy all filters.
 \item If you specify a filter that contains more than one value for a key,
 the response returns resources that match \emph{any} of the specified
 values for that key.
@@ -48,10 +48,10 @@ For example, for the following filters: \verb{filter1= \{keyA,\{value1\}\}},
 \code{key1=value1}
 \item \code{GetResources({filter2})} returns resources tagged with
 \code{key2=value2} or \code{key2=value3} or \code{key2=value4}
-\item \code{GetResources({filter3})} returns resources tagged with any tag with
-the key \code{key3}, and with any or no value
-\item \verb{GetResources(\{filter1,filter2,filter3\})} returns resources tagged
-with
+\item \code{GetResources({filter3})} returns resources tagged with any tag
+with the key \code{key3}, and with any or no value
+\item \verb{GetResources(\{filter1,filter2,filter3\})} returns resources
+tagged with
 \verb{(key1=value1) and (key2=value2 or key2=value3 or key2=value4) and (key3, any or no value)}
 }
 }}

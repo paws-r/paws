@@ -26,16 +26,17 @@ this value less than 30 days after you paused the job, Macie
 immediately resumes processing from the point where you paused the
 job. Otherwise, Macie resumes the job according to the schedule and
 other settings for the job.
-\item USER_PAUSED - Pauses the job temporarily. This value is valid only if
-the job's current status is IDLE, PAUSED, or RUNNING. If you specify
-this value and the job's current status is RUNNING, Macie immediately
-begins to pause all processing tasks for the job.
+\item USER_PAUSED - Pauses the job temporarily. This value is valid only
+if the job's current status is IDLE, PAUSED, or RUNNING. If you
+specify this value and the job's current status is RUNNING, Macie
+immediately begins to pause all processing tasks for the job.
 
 If you pause a one-time job and you don't resume it within 30 days,
 the job expires and Macie cancels the job. If you pause a recurring
-job when its status is RUNNING and you don't resume it within 30 days,
-the job run expires and Macie cancels the run. To check the expiration
-date, refer to the UserPausedDetails.jobExpiresAt property.
+job when its status is RUNNING and you don't resume it within 30
+days, the job run expires and Macie cancels the run. To check the
+expiration date, refer to the UserPausedDetails.jobExpiresAt
+property.
 }}
 }
 \description{

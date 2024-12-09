@@ -67,7 +67,7 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
@@ -139,18 +139,18 @@ By default, the \code{\link[=s3_get_object]{get_object}} operation returns the
 current version of an object. To return a different version, use the
 \code{versionId} subresource.
 \itemize{
-\item If you include a \code{versionId} in your request header, you must have the
-\code{s3:GetObjectVersion} permission to access a specific version of an
-object. The \code{s3:GetObject} permission is not required in this
+\item If you include a \code{versionId} in your request header, you must have
+the \code{s3:GetObjectVersion} permission to access a specific version of
+an object. The \code{s3:GetObject} permission is not required in this
 scenario.
 \item If you request the current version of an object without a specific
-\code{versionId} in the request header, only the \code{s3:GetObject} permission
-is required. The \code{s3:GetObjectVersion} permission is not required in
-this scenario.
-\item \strong{Directory buckets} - S3 Versioning isn't enabled and supported for
-directory buckets. For this API operation, only the \code{null} value of
-the version ID is supported by directory buckets. You can only specify
-\code{null} to the \code{versionId} query parameter in the request.
+\code{versionId} in the request header, only the \code{s3:GetObject}
+permission is required. The \code{s3:GetObjectVersion} permission is not
+required in this scenario.
+\item \strong{Directory buckets} - S3 Versioning isn't enabled and supported
+for directory buckets. For this API operation, only the \code{null} value
+of the version ID is supported by directory buckets. You can only
+specify \code{null} to the \code{versionId} query parameter in the request.
 }
 
 For more information about versioning, see
@@ -228,8 +228,8 @@ with the HTTP status code \verb{403 Forbidden} (access denied).}
 
 \item{ChecksumMode}{To retrieve the checksum, this mode must be enabled.
 
-\strong{General purpose buckets} - In addition, if you enable checksum mode
-and the object is uploaded with a
+In addition, if you enable checksum mode and the object is uploaded with
+a
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_Checksum.html}{checksum}
 and encrypted with an Key Management Service (KMS) key, you must have
 permission to use the \code{kms:Decrypt} action to retrieve the checksum.}

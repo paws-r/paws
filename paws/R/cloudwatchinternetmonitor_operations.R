@@ -141,8 +141,7 @@ cloudwatchinternetmonitor_create_monitor <- function(MonitorName, Resources = NU
     http_method = "POST",
     http_path = "/v20210603/Monitors",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$create_monitor_input(MonitorName = MonitorName, Resources = Resources, ClientToken = ClientToken, Tags = Tags, MaxCityNetworksToMonitor = MaxCityNetworksToMonitor, InternetMeasurementsLogDelivery = InternetMeasurementsLogDelivery, TrafficPercentageToMonitor = TrafficPercentageToMonitor, HealthEventsConfig = HealthEventsConfig)
   output <- .cloudwatchinternetmonitor$create_monitor_output()
@@ -185,8 +184,7 @@ cloudwatchinternetmonitor_delete_monitor <- function(MonitorName) {
     http_method = "DELETE",
     http_path = "/v20210603/Monitors/{MonitorName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$delete_monitor_input(MonitorName = MonitorName)
   output <- .cloudwatchinternetmonitor$delete_monitor_output()
@@ -325,8 +323,7 @@ cloudwatchinternetmonitor_get_health_event <- function(MonitorName, EventId, Lin
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/HealthEvents/{EventId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$get_health_event_input(MonitorName = MonitorName, EventId = EventId, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$get_health_event_output()
@@ -402,8 +399,7 @@ cloudwatchinternetmonitor_get_internet_event <- function(EventId) {
     http_method = "GET",
     http_path = "/v20210603/InternetEvents/{EventId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$get_internet_event_input(EventId = EventId)
   output <- .cloudwatchinternetmonitor$get_internet_event_output()
@@ -501,8 +497,7 @@ cloudwatchinternetmonitor_get_monitor <- function(MonitorName, LinkedAccountId =
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$get_monitor_input(MonitorName = MonitorName, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$get_monitor_output()
@@ -578,8 +573,7 @@ cloudwatchinternetmonitor_get_query_results <- function(MonitorName, QueryId, Ne
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Results",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudwatchinternetmonitor$get_query_results_input(MonitorName = MonitorName, QueryId = QueryId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatchinternetmonitor$get_query_results_output()
@@ -600,15 +594,15 @@ cloudwatchinternetmonitor_get_query_results <- function(MonitorName, QueryId, Ne
 #' run a query, check the status to make sure that the query has
 #' `SUCCEEDED` before you review the results.
 #' 
-#' - `QUEUED`: The query is scheduled to run.
+#' -   `QUEUED`: The query is scheduled to run.
 #' 
-#' - `RUNNING`: The query is in progress but not complete.
+#' -   `RUNNING`: The query is in progress but not complete.
 #' 
-#' - `SUCCEEDED`: The query completed sucessfully.
+#' -   `SUCCEEDED`: The query completed sucessfully.
 #' 
-#' - `FAILED`: The query failed due to an error.
+#' -   `FAILED`: The query failed due to an error.
 #' 
-#' - `CANCELED`: The query was canceled.
+#' -   `CANCELED`: The query was canceled.
 #'
 #' @usage
 #' cloudwatchinternetmonitor_get_query_status(MonitorName, QueryId)
@@ -644,8 +638,7 @@ cloudwatchinternetmonitor_get_query_status <- function(MonitorName, QueryId) {
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}/Status",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$get_query_status_input(MonitorName = MonitorName, QueryId = QueryId)
   output <- .cloudwatchinternetmonitor$get_query_status_output()
@@ -797,8 +790,7 @@ cloudwatchinternetmonitor_list_health_events <- function(MonitorName, StartTime 
     http_method = "GET",
     http_path = "/v20210603/Monitors/{MonitorName}/HealthEvents",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HealthEvents"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HealthEvents")
   )
   input <- .cloudwatchinternetmonitor$list_health_events_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxResults = MaxResults, EventStatus = EventStatus, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$list_health_events_output()
@@ -902,8 +894,7 @@ cloudwatchinternetmonitor_list_internet_events <- function(NextToken = NULL, Max
     http_method = "GET",
     http_path = "/v20210603/InternetEvents",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InternetEvents"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InternetEvents")
   )
   input <- .cloudwatchinternetmonitor$list_internet_events_input(NextToken = NextToken, MaxResults = MaxResults, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, EventType = EventType)
   output <- .cloudwatchinternetmonitor$list_internet_events_output()
@@ -981,8 +972,7 @@ cloudwatchinternetmonitor_list_monitors <- function(NextToken = NULL, MaxResults
     http_method = "GET",
     http_path = "/v20210603/Monitors",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Monitors"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Monitors")
   )
   input <- .cloudwatchinternetmonitor$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, MonitorStatus = MonitorStatus, IncludeLinkedAccounts = IncludeLinkedAccounts)
   output <- .cloudwatchinternetmonitor$list_monitors_output()
@@ -1033,8 +1023,7 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cloudwatchinternetmonitor$list_tags_for_resource_output()
@@ -1073,26 +1062,26 @@ cloudwatchinternetmonitor_list_tags_for_resource <- function(ResourceArn) {
 #' @param QueryType &#91;required&#93; The type of query to run. The following are the three types of queries
 #' that you can run using the Internet Monitor query interface:
 #' 
-#' - `MEASUREMENTS`: Provides availability score, performance score, total
-#'   traffic, and round-trip times, at 5 minute intervals.
+#' -   `MEASUREMENTS`: Provides availability score, performance score,
+#'     total traffic, and round-trip times, at 5 minute intervals.
 #' 
-#' - `TOP_LOCATIONS`: Provides availability score, performance score, total
-#'   traffic, and time to first byte (TTFB) information, for the top
-#'   location and ASN combinations that you're monitoring, by traffic
-#'   volume.
+#' -   `TOP_LOCATIONS`: Provides availability score, performance score,
+#'     total traffic, and time to first byte (TTFB) information, for the
+#'     top location and ASN combinations that you're monitoring, by traffic
+#'     volume.
 #' 
-#' - `TOP_LOCATION_DETAILS`: Provides TTFB for Amazon CloudFront, your
-#'   current configuration, and the best performing EC2 configuration, at 1
-#'   hour intervals.
+#' -   `TOP_LOCATION_DETAILS`: Provides TTFB for Amazon CloudFront, your
+#'     current configuration, and the best performing EC2 configuration, at
+#'     1 hour intervals.
 #' 
-#' - `OVERALL_TRAFFIC_SUGGESTIONS`: Provides TTFB, using a 30-day weighted
-#'   average, for all traffic in each Amazon Web Services location that is
-#'   monitored.
+#' -   `OVERALL_TRAFFIC_SUGGESTIONS`: Provides TTFB, using a 30-day
+#'     weighted average, for all traffic in each Amazon Web Services
+#'     location that is monitored.
 #' 
-#' - `OVERALL_TRAFFIC_SUGGESTIONS_DETAILS`: Provides TTFB, using a 30-day
-#'   weighted average, for each top location, for a proposed Amazon Web
-#'   Services location. Must provide a Amazon Web Services location to
-#'   search.
+#' -   `OVERALL_TRAFFIC_SUGGESTIONS_DETAILS`: Provides TTFB, using a 30-day
+#'     weighted average, for each top location, for a proposed Amazon Web
+#'     Services location. Must provide a Amazon Web Services location to
+#'     search.
 #' 
 #' For lists of the fields returned with each query type and more
 #' information about how each type of query is performed, see [Using the
@@ -1159,8 +1148,7 @@ cloudwatchinternetmonitor_start_query <- function(MonitorName, StartTime, EndTim
     http_method = "POST",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$start_query_input(MonitorName = MonitorName, StartTime = StartTime, EndTime = EndTime, QueryType = QueryType, FilterParameters = FilterParameters, LinkedAccountId = LinkedAccountId)
   output <- .cloudwatchinternetmonitor$start_query_output()
@@ -1206,8 +1194,7 @@ cloudwatchinternetmonitor_stop_query <- function(MonitorName, QueryId) {
     http_method = "DELETE",
     http_path = "/v20210603/Monitors/{MonitorName}/Queries/{QueryId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$stop_query_input(MonitorName = MonitorName, QueryId = QueryId)
   output <- .cloudwatchinternetmonitor$stop_query_output()
@@ -1263,8 +1250,7 @@ cloudwatchinternetmonitor_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cloudwatchinternetmonitor$tag_resource_output()
@@ -1311,8 +1297,7 @@ cloudwatchinternetmonitor_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cloudwatchinternetmonitor$untag_resource_output()
@@ -1448,8 +1433,7 @@ cloudwatchinternetmonitor_update_monitor <- function(MonitorName, ResourcesToAdd
     http_method = "PATCH",
     http_path = "/v20210603/Monitors/{MonitorName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchinternetmonitor$update_monitor_input(MonitorName = MonitorName, ResourcesToAdd = ResourcesToAdd, ResourcesToRemove = ResourcesToRemove, Status = Status, ClientToken = ClientToken, MaxCityNetworksToMonitor = MaxCityNetworksToMonitor, InternetMeasurementsLogDelivery = InternetMeasurementsLogDelivery, TrafficPercentageToMonitor = TrafficPercentageToMonitor, HealthEventsConfig = HealthEventsConfig)
   output <- .cloudwatchinternetmonitor$update_monitor_output()

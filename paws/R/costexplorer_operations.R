@@ -22,23 +22,23 @@ NULL
 #' Each tag consists of a key and a value, and each key must be unique for
 #' the resource. The following restrictions apply to resource tags:
 #' 
-#' - Although the maximum number of array members is 200, you can assign a
-#'   maximum of 50 user-tags to one resource. The remaining are reserved
-#'   for Amazon Web Services use
+#' -   Although the maximum number of array members is 200, you can assign
+#'     a maximum of 50 user-tags to one resource. The remaining are
+#'     reserved for Amazon Web Services use
 #' 
-#' - The maximum length of a key is 128 characters
+#' -   The maximum length of a key is 128 characters
 #' 
-#' - The maximum length of a value is 256 characters
+#' -   The maximum length of a value is 256 characters
 #' 
-#' - Keys and values can only contain alphanumeric characters, spaces, and
-#'   any of the following: `_.:/=+@@-`
+#' -   Keys and values can only contain alphanumeric characters, spaces,
+#'     and any of the following: `_.:/=+@@-`
 #' 
-#' - Keys and values are case sensitive
+#' -   Keys and values are case sensitive
 #' 
-#' - Keys and values are trimmed for any leading or trailing whitespaces
+#' -   Keys and values are trimmed for any leading or trailing whitespaces
 #' 
-#' - Don’t use `aws:` as a prefix for your keys. This prefix is reserved
-#'   for Amazon Web Services use
+#' -   Don’t use `aws:` as a prefix for your keys. This prefix is reserved
+#'     for Amazon Web Services use
 #'
 #' @return
 #' A list with the following syntax:
@@ -117,8 +117,7 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$create_anomaly_monitor_input(AnomalyMonitor = AnomalyMonitor, ResourceTags = ResourceTags)
   output <- .costexplorer$create_anomaly_monitor_output()
@@ -151,23 +150,23 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor, ResourceTags = N
 #' Each tag consists of a key and a value, and each key must be unique for
 #' the resource. The following restrictions apply to resource tags:
 #' 
-#' - Although the maximum number of array members is 200, you can assign a
-#'   maximum of 50 user-tags to one resource. The remaining are reserved
-#'   for Amazon Web Services use
+#' -   Although the maximum number of array members is 200, you can assign
+#'     a maximum of 50 user-tags to one resource. The remaining are
+#'     reserved for Amazon Web Services use
 #' 
-#' - The maximum length of a key is 128 characters
+#' -   The maximum length of a key is 128 characters
 #' 
-#' - The maximum length of a value is 256 characters
+#' -   The maximum length of a value is 256 characters
 #' 
-#' - Keys and values can only contain alphanumeric characters, spaces, and
-#'   any of the following: `_.:/=+@@-`
+#' -   Keys and values can only contain alphanumeric characters, spaces,
+#'     and any of the following: `_.:/=+@@-`
 #' 
-#' - Keys and values are case sensitive
+#' -   Keys and values are case sensitive
 #' 
-#' - Keys and values are trimmed for any leading or trailing whitespaces
+#' -   Keys and values are trimmed for any leading or trailing whitespaces
 #' 
-#' - Don’t use `aws:` as a prefix for your keys. This prefix is reserved
-#'   for Amazon Web Services use
+#' -   Don’t use `aws:` as a prefix for your keys. This prefix is reserved
+#'     for Amazon Web Services use
 #'
 #' @return
 #' A list with the following syntax:
@@ -253,8 +252,7 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$create_anomaly_subscription_input(AnomalySubscription = AnomalySubscription, ResourceTags = ResourceTags)
   output <- .costexplorer$create_anomaly_subscription_output()
@@ -295,23 +293,23 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription, Resour
 #' Each tag consists of a key and a value, and each key must be unique for
 #' the resource. The following restrictions apply to resource tags:
 #' 
-#' - Although the maximum number of array members is 200, you can assign a
-#'   maximum of 50 user-tags to one resource. The remaining are reserved
-#'   for Amazon Web Services use
+#' -   Although the maximum number of array members is 200, you can assign
+#'     a maximum of 50 user-tags to one resource. The remaining are
+#'     reserved for Amazon Web Services use
 #' 
-#' - The maximum length of a key is 128 characters
+#' -   The maximum length of a key is 128 characters
 #' 
-#' - The maximum length of a value is 256 characters
+#' -   The maximum length of a value is 256 characters
 #' 
-#' - Keys and values can only contain alphanumeric characters, spaces, and
-#'   any of the following: `_.:/=+@@-`
+#' -   Keys and values can only contain alphanumeric characters, spaces,
+#'     and any of the following: `_.:/=+@@-`
 #' 
-#' - Keys and values are case sensitive
+#' -   Keys and values are case sensitive
 #' 
-#' - Keys and values are trimmed for any leading or trailing whitespaces
+#' -   Keys and values are trimmed for any leading or trailing whitespaces
 #' 
-#' - Don’t use `aws:` as a prefix for your keys. This prefix is reserved
-#'   for Amazon Web Services use
+#' -   Don’t use `aws:` as a prefix for your keys. This prefix is reserved
+#'     for Amazon Web Services use
 #'
 #' @return
 #' A list with the following syntax:
@@ -412,8 +410,7 @@ costexplorer_create_cost_category_definition <- function(Name, EffectiveStart = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$create_cost_category_definition_input(Name = Name, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules, ResourceTags = ResourceTags)
   output <- .costexplorer$create_cost_category_definition_output()
@@ -457,8 +454,7 @@ costexplorer_delete_anomaly_monitor <- function(MonitorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$delete_anomaly_monitor_input(MonitorArn = MonitorArn)
   output <- .costexplorer$delete_anomaly_monitor_output()
@@ -502,8 +498,7 @@ costexplorer_delete_anomaly_subscription <- function(SubscriptionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$delete_anomaly_subscription_input(SubscriptionArn = SubscriptionArn)
   output <- .costexplorer$delete_anomaly_subscription_output()
@@ -553,8 +548,7 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$delete_cost_category_definition_input(CostCategoryArn = CostCategoryArn)
   output <- .costexplorer$delete_cost_category_definition_output()
@@ -688,8 +682,7 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$describe_cost_category_definition_input(CostCategoryArn = CostCategoryArn, EffectiveOn = EffectiveOn)
   output <- .costexplorer$describe_cost_category_definition_output()
@@ -795,8 +788,7 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_anomalies_input(MonitorArn = MonitorArn, DateInterval = DateInterval, Feedback = Feedback, TotalImpact = TotalImpact, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomalies_output()
@@ -903,8 +895,7 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_anomaly_monitors_input(MonitorArnList = MonitorArnList, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomaly_monitors_output()
@@ -1020,8 +1011,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_anomaly_subscriptions_input(SubscriptionArnList = SubscriptionArnList, MonitorArn = MonitorArn, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_anomaly_subscriptions_output()
@@ -1089,8 +1079,7 @@ costexplorer_get_approximate_usage_records <- function(Granularity, Services = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_approximate_usage_records_input(Granularity = Granularity, Services = Services, ApproximationDimension = ApproximationDimension)
   output <- .costexplorer$get_approximate_usage_records_output()
@@ -1294,8 +1283,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity, Filter = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_cost_and_usage_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_output()
@@ -1506,8 +1494,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_cost_and_usage_with_resources_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, Metrics = Metrics, GroupBy = GroupBy, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_and_usage_with_resources_output()
@@ -1545,19 +1532,19 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 #' The key represents the cost and usage metrics. The following values are
 #' supported:
 #' 
-#' - `BlendedCost`
+#' -   `BlendedCost`
 #' 
-#' - `UnblendedCost`
+#' -   `UnblendedCost`
 #' 
-#' - `AmortizedCost`
+#' -   `AmortizedCost`
 #' 
-#' - `NetAmortizedCost`
+#' -   `NetAmortizedCost`
 #' 
-#' - `NetUnblendedCost`
+#' -   `NetUnblendedCost`
 #' 
-#' - `UsageQuantity`
+#' -   `UsageQuantity`
 #' 
-#' - `NormalizedUsageAmount`
+#' -   `NormalizedUsageAmount`
 #' 
 #' The supported key values for the `SortOrder` value are `ASCENDING` and
 #' `DESCENDING`.
@@ -1661,8 +1648,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_cost_categories_input(SearchString = SearchString, TimePeriod = TimePeriod, CostCategoryName = CostCategoryName, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_cost_categories_output()
@@ -1697,15 +1683,15 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' Valid values for a [`get_cost_forecast`][costexplorer_get_cost_forecast]
 #' call are the following:
 #' 
-#' - AMORTIZED_COST
+#' -   AMORTIZED_COST
 #' 
-#' - BLENDED_COST
+#' -   BLENDED_COST
 #' 
-#' - NET_AMORTIZED_COST
+#' -   NET_AMORTIZED_COST
 #' 
-#' - NET_UNBLENDED_COST
+#' -   NET_UNBLENDED_COST
 #' 
-#' - UNBLENDED_COST
+#' -   UNBLENDED_COST
 #' @param Granularity &#91;required&#93; How granular you want the forecast to be. You can get 3 months of
 #' `DAILY` forecasts or 12 months of `MONTHLY` forecasts.
 #' 
@@ -1715,51 +1701,51 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' [`get_cost_forecast`][costexplorer_get_cost_forecast] API supports
 #' filtering by the following dimensions:
 #' 
-#' - `AZ`
+#' -   `AZ`
 #' 
-#' - `INSTANCE_TYPE`
+#' -   `INSTANCE_TYPE`
 #' 
-#' - `LINKED_ACCOUNT`
+#' -   `LINKED_ACCOUNT`
 #' 
-#' - `LINKED_ACCOUNT_NAME`
+#' -   `LINKED_ACCOUNT_NAME`
 #' 
-#' - `OPERATION`
+#' -   `OPERATION`
 #' 
-#' - `PURCHASE_TYPE`
+#' -   `PURCHASE_TYPE`
 #' 
-#' - `REGION`
+#' -   `REGION`
 #' 
-#' - `SERVICE`
+#' -   `SERVICE`
 #' 
-#' - `USAGE_TYPE`
+#' -   `USAGE_TYPE`
 #' 
-#' - `USAGE_TYPE_GROUP`
+#' -   `USAGE_TYPE_GROUP`
 #' 
-#' - `RECORD_TYPE`
+#' -   `RECORD_TYPE`
 #' 
-#' - `OPERATING_SYSTEM`
+#' -   `OPERATING_SYSTEM`
 #' 
-#' - `TENANCY`
+#' -   `TENANCY`
 #' 
-#' - `SCOPE`
+#' -   `SCOPE`
 #' 
-#' - `PLATFORM`
+#' -   `PLATFORM`
 #' 
-#' - `SUBSCRIPTION_ID`
+#' -   `SUBSCRIPTION_ID`
 #' 
-#' - `LEGAL_ENTITY_NAME`
+#' -   `LEGAL_ENTITY_NAME`
 #' 
-#' - `DEPLOYMENT_OPTION`
+#' -   `DEPLOYMENT_OPTION`
 #' 
-#' - `DATABASE_ENGINE`
+#' -   `DATABASE_ENGINE`
 #' 
-#' - `INSTANCE_TYPE_FAMILY`
+#' -   `INSTANCE_TYPE_FAMILY`
 #' 
-#' - `BILLING_ENTITY`
+#' -   `BILLING_ENTITY`
 #' 
-#' - `RESERVATION_ID`
+#' -   `RESERVATION_ID`
 #' 
-#' - `SAVINGS_PLAN_ARN`
+#' -   `SAVINGS_PLAN_ARN`
 #' @param PredictionIntervalLevel Cost Explorer always returns the mean forecast as a single point. You
 #' can request a prediction interval around the mean by specifying a
 #' confidence level. The higher the confidence level, the more confident
@@ -1848,8 +1834,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_cost_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, PredictionIntervalLevel = PredictionIntervalLevel)
   output <- .costexplorer$get_cost_forecast_output()
@@ -1896,157 +1881,160 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' If you set the context to `COST_AND_USAGE`, you can use the following
 #' dimensions for searching:
 #' 
-#' - AZ - The Availability Zone. An example is `us-east-1a`.
+#' -   AZ - The Availability Zone. An example is `us-east-1a`.
 #' 
-#' - BILLING_ENTITY - The Amazon Web Services seller that your account is
-#'   with. Possible values are the following:
+#' -   BILLING_ENTITY - The Amazon Web Services seller that your account is
+#'     with. Possible values are the following:
 #' 
-#'   \- Amazon Web Services(Amazon Web Services): The entity that sells
-#'   Amazon Web Services.
+#'     \- Amazon Web Services(Amazon Web Services): The entity that sells
+#'     Amazon Web Services.
 #' 
-#'   \- AISPL (Amazon Internet Services Pvt. Ltd.): The local Indian entity
-#'   that's an acting reseller for Amazon Web Services in India.
+#'     \- AISPL (Amazon Internet Services Pvt. Ltd.): The local Indian
+#'     entity that's an acting reseller for Amazon Web Services in India.
 #' 
-#'   \- Amazon Web Services Marketplace: The entity that supports the sale
-#'   of solutions that are built on Amazon Web Services by third-party
-#'   software providers.
+#'     \- Amazon Web Services Marketplace: The entity that supports the
+#'     sale of solutions that are built on Amazon Web Services by
+#'     third-party software providers.
 #' 
-#' - CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
-#'   Windows or Linux.
+#' -   CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
+#'     Windows or Linux.
 #' 
-#' - DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
-#'   deployments. Valid values are `SingleAZ` and `MultiAZ`.
+#' -   DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
+#'     deployments. Valid values are `SingleAZ` and `MultiAZ`.
 #' 
-#' - DATABASE_ENGINE - The Amazon Relational Database Service database.
-#'   Examples are Aurora or MySQL.
+#' -   DATABASE_ENGINE - The Amazon Relational Database Service database.
+#'     Examples are Aurora or MySQL.
 #' 
-#' - INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
-#'   `m4.xlarge`.
+#' -   INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
+#'     `m4.xlarge`.
 #' 
-#' - INSTANCE_TYPE_FAMILY - A family of instance types optimized to fit
-#'   different use cases. Examples are `Compute Optimized` (for example,
-#'   `C4`, `C5`, `C6g`, and `C7g`), `Memory Optimization` (for example,
-#'   `R4`, `R5n`, `R5b`, and `R6g`).
+#' -   INSTANCE_TYPE_FAMILY - A family of instance types optimized to fit
+#'     different use cases. Examples are `Compute Optimized` (for example,
+#'     `C4`, `C5`, `C6g`, and `C7g`), `Memory Optimization` (for example,
+#'     `R4`, `R5n`, `R5b`, and `R6g`).
 #' 
-#' - INVOICING_ENTITY - The name of the entity that issues the Amazon Web
-#'   Services invoice.
+#' -   INVOICING_ENTITY - The name of the entity that issues the Amazon Web
+#'     Services invoice.
 #' 
-#' - LEGAL_ENTITY_NAME - The name of the organization that sells you Amazon
-#'   Web Services services, such as Amazon Web Services.
+#' -   LEGAL_ENTITY_NAME - The name of the organization that sells you
+#'     Amazon Web Services services, such as Amazon Web Services.
 #' 
-#' - LINKED_ACCOUNT - The description in the attribute map that includes
-#'   the full name of the member account. The value field contains the
-#'   Amazon Web Services ID of the member account.
+#' -   LINKED_ACCOUNT - The description in the attribute map that includes
+#'     the full name of the member account. The value field contains the
+#'     Amazon Web Services ID of the member account.
 #' 
-#' - OPERATING_SYSTEM - The operating system. Examples are Windows or
-#'   Linux.
+#' -   OPERATING_SYSTEM - The operating system. Examples are Windows or
+#'     Linux.
 #' 
-#' - OPERATION - The action performed. Examples include `RunInstance` and
-#'   `CreateBucket`.
+#' -   OPERATION - The action performed. Examples include `RunInstance` and
+#'     `CreateBucket`.
 #' 
-#' - PLATFORM - The Amazon EC2 operating system. Examples are Windows or
-#'   Linux.
+#' -   PLATFORM - The Amazon EC2 operating system. Examples are Windows or
+#'     Linux.
 #' 
-#' - PURCHASE_TYPE - The reservation type of the purchase that this usage
-#'   is related to. Examples include On-Demand Instances and Standard
-#'   Reserved Instances.
+#' -   PURCHASE_TYPE - The reservation type of the purchase that this usage
+#'     is related to. Examples include On-Demand Instances and Standard
+#'     Reserved Instances.
 #' 
-#' - RESERVATION_ID - The unique identifier for an Amazon Web Services
-#'   Reservation Instance.
+#' -   RESERVATION_ID - The unique identifier for an Amazon Web Services
+#'     Reservation Instance.
 #' 
-#' - SAVINGS_PLAN_ARN - The unique identifier for your Savings Plans.
+#' -   SAVINGS_PLAN_ARN - The unique identifier for your Savings Plans.
 #' 
-#' - SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute).
+#' -   SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or
+#'     Compute).
 #' 
-#' - SERVICE - The Amazon Web Services service such as Amazon DynamoDB.
+#' -   SERVICE - The Amazon Web Services service such as Amazon DynamoDB.
 #' 
-#' - TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+#' -   TENANCY - The tenancy of a resource. Examples are shared or
+#'     dedicated.
 #' 
-#' - USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
-#'   The response for the
-#'   [`get_dimension_values`][costexplorer_get_dimension_values] operation
-#'   includes a unit attribute. Examples include GB and Hrs.
+#' -   USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
+#'     The response for the
+#'     [`get_dimension_values`][costexplorer_get_dimension_values]
+#'     operation includes a unit attribute. Examples include GB and Hrs.
 #' 
-#' - USAGE_TYPE_GROUP - The grouping of common usage types. An example is
-#'   Amazon EC2: CloudWatch – Alarms. The response for this operation
-#'   includes a unit attribute.
+#' -   USAGE_TYPE_GROUP - The grouping of common usage types. An example is
+#'     Amazon EC2: CloudWatch – Alarms. The response for this operation
+#'     includes a unit attribute.
 #' 
-#' - REGION - The Amazon Web Services Region.
+#' -   REGION - The Amazon Web Services Region.
 #' 
-#' - RECORD_TYPE - The different types of charges such as Reserved Instance
-#'   (RI) fees, usage costs, tax refunds, and credits.
+#' -   RECORD_TYPE - The different types of charges such as Reserved
+#'     Instance (RI) fees, usage costs, tax refunds, and credits.
 #' 
-#' - RESOURCE_ID - The unique identifier of the resource. ResourceId is an
-#'   opt-in feature only available for last 14 days for EC2-Compute
-#'   Service.
+#' -   RESOURCE_ID - The unique identifier of the resource. ResourceId is
+#'     an opt-in feature only available for last 14 days for EC2-Compute
+#'     Service.
 #' 
 #' If you set the context to `RESERVATIONS`, you can use the following
 #' dimensions for searching:
 #' 
-#' - AZ - The Availability Zone. An example is `us-east-1a`.
+#' -   AZ - The Availability Zone. An example is `us-east-1a`.
 #' 
-#' - CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
-#'   Windows or Linux.
+#' -   CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
+#'     Windows or Linux.
 #' 
-#' - DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
-#'   deployments. Valid values are `SingleAZ` and `MultiAZ`.
+#' -   DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
+#'     deployments. Valid values are `SingleAZ` and `MultiAZ`.
 #' 
-#' - INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
-#'   `m4.xlarge`.
+#' -   INSTANCE_TYPE - The type of Amazon EC2 instance. An example is
+#'     `m4.xlarge`.
 #' 
-#' - LINKED_ACCOUNT - The description in the attribute map that includes
-#'   the full name of the member account. The value field contains the
-#'   Amazon Web Services ID of the member account.
+#' -   LINKED_ACCOUNT - The description in the attribute map that includes
+#'     the full name of the member account. The value field contains the
+#'     Amazon Web Services ID of the member account.
 #' 
-#' - PLATFORM - The Amazon EC2 operating system. Examples are Windows or
-#'   Linux.
+#' -   PLATFORM - The Amazon EC2 operating system. Examples are Windows or
+#'     Linux.
 #' 
-#' - REGION - The Amazon Web Services Region.
+#' -   REGION - The Amazon Web Services Region.
 #' 
-#' - SCOPE (Utilization only) - The scope of a Reserved Instance (RI).
-#'   Values are regional or a single Availability Zone.
+#' -   SCOPE (Utilization only) - The scope of a Reserved Instance (RI).
+#'     Values are regional or a single Availability Zone.
 #' 
-#' - TAG (Coverage only) - The tags that are associated with a Reserved
-#'   Instance (RI).
+#' -   TAG (Coverage only) - The tags that are associated with a Reserved
+#'     Instance (RI).
 #' 
-#' - TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+#' -   TENANCY - The tenancy of a resource. Examples are shared or
+#'     dedicated.
 #' 
 #' If you set the context to `SAVINGS_PLANS`, you can use the following
 #' dimensions for searching:
 #' 
-#' - SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
+#' -   SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute)
 #' 
-#' - PAYMENT_OPTION - The payment option for the given Savings Plans (for
-#'   example, All Upfront)
+#' -   PAYMENT_OPTION - The payment option for the given Savings Plans (for
+#'     example, All Upfront)
 #' 
-#' - REGION - The Amazon Web Services Region.
+#' -   REGION - The Amazon Web Services Region.
 #' 
-#' - INSTANCE_TYPE_FAMILY - The family of instances (For example, `m5`)
+#' -   INSTANCE_TYPE_FAMILY - The family of instances (For example, `m5`)
 #' 
-#' - LINKED_ACCOUNT - The description in the attribute map that includes
-#'   the full name of the member account. The value field contains the
-#'   Amazon Web Services ID of the member account.
+#' -   LINKED_ACCOUNT - The description in the attribute map that includes
+#'     the full name of the member account. The value field contains the
+#'     Amazon Web Services ID of the member account.
 #' 
-#' - SAVINGS_PLAN_ARN - The unique identifier for your Savings Plans.
+#' -   SAVINGS_PLAN_ARN - The unique identifier for your Savings Plans.
 #' @param Filter 
 #' @param SortBy The value that you want to sort the data by.
 #' 
 #' The key represents cost and usage metrics. The following values are
 #' supported:
 #' 
-#' - `BlendedCost`
+#' -   `BlendedCost`
 #' 
-#' - `UnblendedCost`
+#' -   `UnblendedCost`
 #' 
-#' - `AmortizedCost`
+#' -   `AmortizedCost`
 #' 
-#' - `NetAmortizedCost`
+#' -   `NetAmortizedCost`
 #' 
-#' - `NetUnblendedCost`
+#' -   `NetUnblendedCost`
 #' 
-#' - `UsageQuantity`
+#' -   `UsageQuantity`
 #' 
-#' - `NormalizedUsageAmount`
+#' -   `NormalizedUsageAmount`
 #' 
 #' The supported values for the `SortOrder` key are `ASCENDING` or
 #' `DESCENDING`.
@@ -2151,8 +2139,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_dimension_values_input(SearchString = SearchString, TimePeriod = TimePeriod, Dimension = Dimension, Context = Context, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_dimension_values_output()
@@ -2179,29 +2166,29 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' period, you can filter data about reservation usage by the following
 #' dimensions:
 #' 
-#' - AZ
+#' -   AZ
 #' 
-#' - CACHE_ENGINE
+#' -   CACHE_ENGINE
 #' 
-#' - DATABASE_ENGINE
+#' -   DATABASE_ENGINE
 #' 
-#' - DEPLOYMENT_OPTION
+#' -   DEPLOYMENT_OPTION
 #' 
-#' - INSTANCE_TYPE
+#' -   INSTANCE_TYPE
 #' 
-#' - LINKED_ACCOUNT
+#' -   LINKED_ACCOUNT
 #' 
-#' - OPERATING_SYSTEM
+#' -   OPERATING_SYSTEM
 #' 
-#' - PLATFORM
+#' -   PLATFORM
 #' 
-#' - REGION
+#' -   REGION
 #' 
-#' - SERVICE
+#' -   SERVICE
 #' 
-#' - TAG
+#' -   TAG
 #' 
-#' - TENANCY
+#' -   TENANCY
 #' 
 #' To determine valid values for a dimension, use the
 #' [`get_dimension_values`][costexplorer_get_dimension_values] operation.
@@ -2219,27 +2206,27 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' including `2017-05-01`.
 #' @param GroupBy You can group the data by the following attributes:
 #' 
-#' - AZ
+#' -   AZ
 #' 
-#' - CACHE_ENGINE
+#' -   CACHE_ENGINE
 #' 
-#' - DATABASE_ENGINE
+#' -   DATABASE_ENGINE
 #' 
-#' - DEPLOYMENT_OPTION
+#' -   DEPLOYMENT_OPTION
 #' 
-#' - INSTANCE_TYPE
+#' -   INSTANCE_TYPE
 #' 
-#' - INVOICING_ENTITY
+#' -   INVOICING_ENTITY
 #' 
-#' - LINKED_ACCOUNT
+#' -   LINKED_ACCOUNT
 #' 
-#' - OPERATING_SYSTEM
+#' -   OPERATING_SYSTEM
 #' 
-#' - PLATFORM
+#' -   PLATFORM
 #' 
-#' - REGION
+#' -   REGION
 #' 
-#' - TENANCY
+#' -   TENANCY
 #' @param Granularity The granularity of the Amazon Web Services cost data for the
 #' reservation. Valid values are `MONTHLY` and `DAILY`.
 #' 
@@ -2252,29 +2239,29 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' @param Filter Filters utilization data by dimensions. You can filter by the following
 #' dimensions:
 #' 
-#' - AZ
+#' -   AZ
 #' 
-#' - CACHE_ENGINE
+#' -   CACHE_ENGINE
 #' 
-#' - DATABASE_ENGINE
+#' -   DATABASE_ENGINE
 #' 
-#' - DEPLOYMENT_OPTION
+#' -   DEPLOYMENT_OPTION
 #' 
-#' - INSTANCE_TYPE
+#' -   INSTANCE_TYPE
 #' 
-#' - LINKED_ACCOUNT
+#' -   LINKED_ACCOUNT
 #' 
-#' - OPERATING_SYSTEM
+#' -   OPERATING_SYSTEM
 #' 
-#' - PLATFORM
+#' -   PLATFORM
 #' 
-#' - REGION
+#' -   REGION
 #' 
-#' - SERVICE
+#' -   SERVICE
 #' 
-#' - TAG
+#' -   TAG
 #' 
-#' - TENANCY
+#' -   TENANCY
 #' 
 #' [`get_reservation_coverage`][costexplorer_get_reservation_coverage] uses
 #' the same
@@ -2297,25 +2284,25 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 #' 
 #' The following values are supported for `Key`:
 #' 
-#' - `OnDemandCost`
+#' -   `OnDemandCost`
 #' 
-#' - `CoverageHoursPercentage`
+#' -   `CoverageHoursPercentage`
 #' 
-#' - `OnDemandHours`
+#' -   `OnDemandHours`
 #' 
-#' - `ReservedHours`
+#' -   `ReservedHours`
 #' 
-#' - `TotalRunningHours`
+#' -   `TotalRunningHours`
 #' 
-#' - `CoverageNormalizedUnitsPercentage`
+#' -   `CoverageNormalizedUnitsPercentage`
 #' 
-#' - `OnDemandNormalizedUnits`
+#' -   `OnDemandNormalizedUnits`
 #' 
-#' - `ReservedNormalizedUnits`
+#' -   `ReservedNormalizedUnits`
 #' 
-#' - `TotalRunningNormalizedUnits`
+#' -   `TotalRunningNormalizedUnits`
 #' 
-#' - `Time`
+#' -   `Time`
 #' 
 #' Supported values for `SortOrder` are `ASCENDING` or `DESCENDING`.
 #' @param MaxResults The maximum number of objects that you returned for this request. If
@@ -2470,8 +2457,7 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_reservation_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextPageToken = NextPageToken, SortBy = SortBy, MaxResults = MaxResults)
   output <- .costexplorer$get_reservation_coverage_output()
@@ -2705,8 +2691,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_reservation_purchase_recommendation_input(AccountId = AccountId, Service = Service, Filter = Filter, AccountScope = AccountScope, LookbackPeriodInDays = LookbackPeriodInDays, TermInYears = TermInYears, PaymentOption = PaymentOption, ServiceSpecification = ServiceSpecification, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$get_reservation_purchase_recommendation_output()
@@ -2750,27 +2735,27 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' @param Filter Filters utilization data by dimensions. You can filter by the following
 #' dimensions:
 #' 
-#' - AZ
+#' -   AZ
 #' 
-#' - CACHE_ENGINE
+#' -   CACHE_ENGINE
 #' 
-#' - DEPLOYMENT_OPTION
+#' -   DEPLOYMENT_OPTION
 #' 
-#' - INSTANCE_TYPE
+#' -   INSTANCE_TYPE
 #' 
-#' - LINKED_ACCOUNT
+#' -   LINKED_ACCOUNT
 #' 
-#' - OPERATING_SYSTEM
+#' -   OPERATING_SYSTEM
 #' 
-#' - PLATFORM
+#' -   PLATFORM
 #' 
-#' - REGION
+#' -   REGION
 #' 
-#' - SERVICE
+#' -   SERVICE
 #' 
-#' - SCOPE
+#' -   SCOPE
 #' 
-#' - TENANCY
+#' -   TENANCY
 #' 
 #' [`get_reservation_utilization`][costexplorer_get_reservation_utilization]
 #' uses the same
@@ -2782,39 +2767,39 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 #' 
 #' The following values are supported for `Key`:
 #' 
-#' - `UtilizationPercentage`
+#' -   `UtilizationPercentage`
 #' 
-#' - `UtilizationPercentageInUnits`
+#' -   `UtilizationPercentageInUnits`
 #' 
-#' - `PurchasedHours`
+#' -   `PurchasedHours`
 #' 
-#' - `PurchasedUnits`
+#' -   `PurchasedUnits`
 #' 
-#' - `TotalActualHours`
+#' -   `TotalActualHours`
 #' 
-#' - `TotalActualUnits`
+#' -   `TotalActualUnits`
 #' 
-#' - `UnusedHours`
+#' -   `UnusedHours`
 #' 
-#' - `UnusedUnits`
+#' -   `UnusedUnits`
 #' 
-#' - `OnDemandCostOfRIHoursUsed`
+#' -   `OnDemandCostOfRIHoursUsed`
 #' 
-#' - `NetRISavings`
+#' -   `NetRISavings`
 #' 
-#' - `TotalPotentialRISavings`
+#' -   `TotalPotentialRISavings`
 #' 
-#' - `AmortizedUpfrontFee`
+#' -   `AmortizedUpfrontFee`
 #' 
-#' - `AmortizedRecurringFee`
+#' -   `AmortizedRecurringFee`
 #' 
-#' - `TotalAmortizedFee`
+#' -   `TotalAmortizedFee`
 #' 
-#' - `RICostForUnusedHours`
+#' -   `RICostForUnusedHours`
 #' 
-#' - `RealizedSavings`
+#' -   `RealizedSavings`
 #' 
-#' - `UnrealizedSavings`
+#' -   `UnrealizedSavings`
 #' 
 #' The supported values for `SortOrder` are `ASCENDING` and `DESCENDING`.
 #' @param NextPageToken The token to retrieve the next set of results. Amazon Web Services
@@ -2977,8 +2962,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_reservation_utilization_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, SortBy = SortBy, NextPageToken = NextPageToken, MaxResults = MaxResults)
   output <- .costexplorer$get_reservation_utilization_output()
@@ -3231,8 +3215,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_rightsizing_recommendation_input(Filter = Filter, Configuration = Configuration, Service = Service, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$get_rightsizing_recommendation_output()
@@ -3322,8 +3305,7 @@ costexplorer_get_savings_plan_purchase_recommendation_details <- function(Recomm
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_savings_plan_purchase_recommendation_details_input(RecommendationDetailId = RecommendationDetailId)
   output <- .costexplorer$get_savings_plan_purchase_recommendation_details_output()
@@ -3345,13 +3327,13 @@ costexplorer_get_savings_plan_purchase_recommendation_details <- function(Recomm
 #' expressions. For any time period, you can filter data for Savings Plans
 #' usage with the following dimensions:
 #' 
-#' - `LINKED_ACCOUNT`
+#' -   `LINKED_ACCOUNT`
 #' 
-#' - `REGION`
+#' -   `REGION`
 #' 
-#' - `SERVICE`
+#' -   `SERVICE`
 #' 
-#' - `INSTANCE_FAMILY`
+#' -   `INSTANCE_FAMILY`
 #' 
 #' To determine valid values for a dimension, use the
 #' [`get_dimension_values`][costexplorer_get_dimension_values] operation.
@@ -3375,13 +3357,13 @@ costexplorer_get_savings_plan_purchase_recommendation_details <- function(Recomm
 #' @param Filter Filters Savings Plans coverage data by dimensions. You can filter data
 #' for Savings Plans usage with the following dimensions:
 #' 
-#' - `LINKED_ACCOUNT`
+#' -   `LINKED_ACCOUNT`
 #' 
-#' - `REGION`
+#' -   `REGION`
 #' 
-#' - `SERVICE`
+#' -   `SERVICE`
 #' 
-#' - `INSTANCE_FAMILY`
+#' -   `INSTANCE_FAMILY`
 #' 
 #' [`get_savings_plans_coverage`][costexplorer_get_savings_plans_coverage]
 #' uses the same
@@ -3402,19 +3384,19 @@ costexplorer_get_savings_plan_purchase_recommendation_details <- function(Recomm
 #' 
 #' The following values are supported for `Key`:
 #' 
-#' - `SpendCoveredBySavingsPlan`
+#' -   `SpendCoveredBySavingsPlan`
 #' 
-#' - `OnDemandCost`
+#' -   `OnDemandCost`
 #' 
-#' - `CoveragePercentage`
+#' -   `CoveragePercentage`
 #' 
-#' - `TotalCost`
+#' -   `TotalCost`
 #' 
-#' - `InstanceFamily`
+#' -   `InstanceFamily`
 #' 
-#' - `Region`
+#' -   `Region`
 #' 
-#' - `Service`
+#' -   `Service`
 #' 
 #' The supported values for `SortOrder` are `ASCENDING` and `DESCENDING`.
 #'
@@ -3516,8 +3498,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$get_savings_plans_coverage_input(TimePeriod = TimePeriod, GroupBy = GroupBy, Granularity = Granularity, Filter = Filter, Metrics = Metrics, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_coverage_output()
@@ -3689,8 +3670,7 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_savings_plans_purchase_recommendation_input(SavingsPlansType = SavingsPlansType, TermInYears = TermInYears, PaymentOption = PaymentOption, AccountScope = AccountScope, NextPageToken = NextPageToken, PageSize = PageSize, LookbackPeriodInDays = LookbackPeriodInDays, Filter = Filter)
   output <- .costexplorer$get_savings_plans_purchase_recommendation_output()
@@ -3732,17 +3712,17 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #' @param Filter Filters Savings Plans utilization coverage data for active Savings Plans
 #' dimensions. You can filter data with the following dimensions:
 #' 
-#' - `LINKED_ACCOUNT`
+#' -   `LINKED_ACCOUNT`
 #' 
-#' - `SAVINGS_PLAN_ARN`
+#' -   `SAVINGS_PLAN_ARN`
 #' 
-#' - `SAVINGS_PLANS_TYPE`
+#' -   `SAVINGS_PLANS_TYPE`
 #' 
-#' - `REGION`
+#' -   `REGION`
 #' 
-#' - `PAYMENT_OPTION`
+#' -   `PAYMENT_OPTION`
 #' 
-#' - `INSTANCE_TYPE_FAMILY`
+#' -   `INSTANCE_TYPE_FAMILY`
 #' 
 #' [`get_savings_plans_utilization`][costexplorer_get_savings_plans_utilization]
 #' uses the same
@@ -3753,15 +3733,15 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #' 
 #' The following values are supported for `Key`:
 #' 
-#' - `UtilizationPercentage`
+#' -   `UtilizationPercentage`
 #' 
-#' - `TotalCommitment`
+#' -   `TotalCommitment`
 #' 
-#' - `UsedCommitment`
+#' -   `UsedCommitment`
 #' 
-#' - `UnusedCommitment`
+#' -   `UnusedCommitment`
 #' 
-#' - `NetSavings`
+#' -   `NetSavings`
 #' 
 #' The supported values for `SortOrder` are `ASCENDING` and `DESCENDING`.
 #'
@@ -3874,8 +3854,7 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_savings_plans_utilization_input(TimePeriod = TimePeriod, Granularity = Granularity, Filter = Filter, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_utilization_output()
@@ -3914,15 +3893,15 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #' @param Filter Filters Savings Plans utilization coverage data for active Savings Plans
 #' dimensions. You can filter data with the following dimensions:
 #' 
-#' - `LINKED_ACCOUNT`
+#' -   `LINKED_ACCOUNT`
 #' 
-#' - `SAVINGS_PLAN_ARN`
+#' -   `SAVINGS_PLAN_ARN`
 #' 
-#' - `REGION`
+#' -   `REGION`
 #' 
-#' - `PAYMENT_OPTION`
+#' -   `PAYMENT_OPTION`
 #' 
-#' - `INSTANCE_TYPE_FAMILY`
+#' -   `INSTANCE_TYPE_FAMILY`
 #' 
 #' [`get_savings_plans_utilization_details`][costexplorer_get_savings_plans_utilization_details]
 #' uses the same
@@ -3939,19 +3918,19 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #' 
 #' The following values are supported for `Key`:
 #' 
-#' - `UtilizationPercentage`
+#' -   `UtilizationPercentage`
 #' 
-#' - `TotalCommitment`
+#' -   `TotalCommitment`
 #' 
-#' - `UsedCommitment`
+#' -   `UsedCommitment`
 #' 
-#' - `UnusedCommitment`
+#' -   `UnusedCommitment`
 #' 
-#' - `NetSavings`
+#' -   `NetSavings`
 #' 
-#' - `AmortizedRecurringCommitment`
+#' -   `AmortizedRecurringCommitment`
 #' 
-#' - `AmortizedUpfrontCommitment`
+#' -   `AmortizedUpfrontCommitment`
 #' 
 #' The supported values for `SortOrder` are `ASCENDING` and `DESCENDING`.
 #'
@@ -4073,8 +4052,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$get_savings_plans_utilization_details_input(TimePeriod = TimePeriod, Filter = Filter, DataType = DataType, NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy)
   output <- .costexplorer$get_savings_plans_utilization_details_output()
@@ -4109,19 +4087,19 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 #' The key represents cost and usage metrics. The following values are
 #' supported:
 #' 
-#' - `BlendedCost`
+#' -   `BlendedCost`
 #' 
-#' - `UnblendedCost`
+#' -   `UnblendedCost`
 #' 
-#' - `AmortizedCost`
+#' -   `AmortizedCost`
 #' 
-#' - `NetAmortizedCost`
+#' -   `NetAmortizedCost`
 #' 
-#' - `NetUnblendedCost`
+#' -   `NetUnblendedCost`
 #' 
-#' - `UsageQuantity`
+#' -   `UsageQuantity`
 #' 
-#' - `NormalizedUsageAmount`
+#' -   `NormalizedUsageAmount`
 #' 
 #' The supported values for `SortOrder` are `ASCENDING` and `DESCENDING`.
 #' 
@@ -4218,8 +4196,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_tags_input(SearchString = SearchString, TimePeriod = TimePeriod, TagKey = TagKey, Filter = Filter, SortBy = SortBy, MaxResults = MaxResults, NextPageToken = NextPageToken)
   output <- .costexplorer$get_tags_output()
@@ -4257,9 +4234,9 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' [`get_usage_forecast`][costexplorer_get_usage_forecast] call are the
 #' following:
 #' 
-#' - USAGE_QUANTITY
+#' -   USAGE_QUANTITY
 #' 
-#' - NORMALIZED_USAGE_AMOUNT
+#' -   NORMALIZED_USAGE_AMOUNT
 #' @param Granularity &#91;required&#93; How granular you want the forecast to be. You can get 3 months of
 #' `DAILY` forecasts or 12 months of `MONTHLY` forecasts.
 #' 
@@ -4269,51 +4246,51 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' [`get_usage_forecast`][costexplorer_get_usage_forecast] API supports
 #' filtering by the following dimensions:
 #' 
-#' - `AZ`
+#' -   `AZ`
 #' 
-#' - `INSTANCE_TYPE`
+#' -   `INSTANCE_TYPE`
 #' 
-#' - `LINKED_ACCOUNT`
+#' -   `LINKED_ACCOUNT`
 #' 
-#' - `LINKED_ACCOUNT_NAME`
+#' -   `LINKED_ACCOUNT_NAME`
 #' 
-#' - `OPERATION`
+#' -   `OPERATION`
 #' 
-#' - `PURCHASE_TYPE`
+#' -   `PURCHASE_TYPE`
 #' 
-#' - `REGION`
+#' -   `REGION`
 #' 
-#' - `SERVICE`
+#' -   `SERVICE`
 #' 
-#' - `USAGE_TYPE`
+#' -   `USAGE_TYPE`
 #' 
-#' - `USAGE_TYPE_GROUP`
+#' -   `USAGE_TYPE_GROUP`
 #' 
-#' - `RECORD_TYPE`
+#' -   `RECORD_TYPE`
 #' 
-#' - `OPERATING_SYSTEM`
+#' -   `OPERATING_SYSTEM`
 #' 
-#' - `TENANCY`
+#' -   `TENANCY`
 #' 
-#' - `SCOPE`
+#' -   `SCOPE`
 #' 
-#' - `PLATFORM`
+#' -   `PLATFORM`
 #' 
-#' - `SUBSCRIPTION_ID`
+#' -   `SUBSCRIPTION_ID`
 #' 
-#' - `LEGAL_ENTITY_NAME`
+#' -   `LEGAL_ENTITY_NAME`
 #' 
-#' - `DEPLOYMENT_OPTION`
+#' -   `DEPLOYMENT_OPTION`
 #' 
-#' - `DATABASE_ENGINE`
+#' -   `DATABASE_ENGINE`
 #' 
-#' - `INSTANCE_TYPE_FAMILY`
+#' -   `INSTANCE_TYPE_FAMILY`
 #' 
-#' - `BILLING_ENTITY`
+#' -   `BILLING_ENTITY`
 #' 
-#' - `RESERVATION_ID`
+#' -   `RESERVATION_ID`
 #' 
-#' - `SAVINGS_PLAN_ARN`
+#' -   `SAVINGS_PLAN_ARN`
 #' @param PredictionIntervalLevel Amazon Web Services Cost Explorer always returns the mean forecast as a
 #' single point. You can request a prediction interval around the mean by
 #' specifying a confidence level. The higher the confidence level, the more
@@ -4403,8 +4380,7 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$get_usage_forecast_input(TimePeriod = TimePeriod, Metric = Metric, Granularity = Granularity, Filter = Filter, PredictionIntervalLevel = PredictionIntervalLevel)
   output <- .costexplorer$get_usage_forecast_output()
@@ -4468,8 +4444,7 @@ costexplorer_list_cost_allocation_tag_backfill_history <- function(NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$list_cost_allocation_tag_backfill_history_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_allocation_tag_backfill_history_output()
@@ -4546,8 +4521,7 @@ costexplorer_list_cost_allocation_tags <- function(Status = NULL, TagKeys = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$list_cost_allocation_tags_input(Status = Status, TagKeys = TagKeys, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_allocation_tags_output()
@@ -4631,8 +4605,7 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costexplorer$list_cost_category_definitions_input(EffectiveOn = EffectiveOn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .costexplorer$list_cost_category_definitions_output()
@@ -4701,8 +4674,7 @@ costexplorer_list_savings_plans_purchase_recommendation_generation <- function(G
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$list_savings_plans_purchase_recommendation_generation_input(GenerationStatus = GenerationStatus, RecommendationIds = RecommendationIds, PageSize = PageSize, NextPageToken = NextPageToken)
   output <- .costexplorer$list_savings_plans_purchase_recommendation_generation_output()
@@ -4759,8 +4731,7 @@ costexplorer_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .costexplorer$list_tags_for_resource_output()
@@ -4811,8 +4782,7 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$provide_anomaly_feedback_input(AnomalyId = AnomalyId, Feedback = Feedback)
   output <- .costexplorer$provide_anomaly_feedback_output()
@@ -4872,8 +4842,7 @@ costexplorer_start_cost_allocation_tag_backfill <- function(BackfillFrom) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$start_cost_allocation_tag_backfill_input(BackfillFrom = BackfillFrom)
   output <- .costexplorer$start_cost_allocation_tag_backfill_output()
@@ -4929,8 +4898,7 @@ costexplorer_start_savings_plans_purchase_recommendation_generation <- function(
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$start_savings_plans_purchase_recommendation_generation_input()
   output <- .costexplorer$start_savings_plans_purchase_recommendation_generation_output()
@@ -4970,23 +4938,23 @@ costexplorer_start_savings_plans_purchase_recommendation_generation <- function(
 #' Each tag consists of a key and a value, and each key must be unique for
 #' the resource. The following restrictions apply to resource tags:
 #' 
-#' - Although the maximum number of array members is 200, you can assign a
-#'   maximum of 50 user-tags to one resource. The remaining are reserved
-#'   for Amazon Web Services use
+#' -   Although the maximum number of array members is 200, you can assign
+#'     a maximum of 50 user-tags to one resource. The remaining are
+#'     reserved for Amazon Web Services use
 #' 
-#' - The maximum length of a key is 128 characters
+#' -   The maximum length of a key is 128 characters
 #' 
-#' - The maximum length of a value is 256 characters
+#' -   The maximum length of a value is 256 characters
 #' 
-#' - Keys and values can only contain alphanumeric characters, spaces, and
-#'   any of the following: `_.:/=+@@-`
+#' -   Keys and values can only contain alphanumeric characters, spaces,
+#'     and any of the following: `_.:/=+@@-`
 #' 
-#' - Keys and values are case sensitive
+#' -   Keys and values are case sensitive
 #' 
-#' - Keys and values are trimmed for any leading or trailing whitespaces
+#' -   Keys and values are trimmed for any leading or trailing whitespaces
 #' 
-#' - Don’t use `aws:` as a prefix for your keys. This prefix is reserved
-#'   for Amazon Web Services use
+#' -   Don’t use `aws:` as a prefix for your keys. This prefix is reserved
+#'     for Amazon Web Services use
 #'
 #' @return
 #' An empty list.
@@ -5015,8 +4983,7 @@ costexplorer_tag_resource <- function(ResourceArn, ResourceTags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$tag_resource_input(ResourceArn = ResourceArn, ResourceTags = ResourceTags)
   output <- .costexplorer$tag_resource_output()
@@ -5069,8 +5036,7 @@ costexplorer_untag_resource <- function(ResourceArn, ResourceTagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$untag_resource_input(ResourceArn = ResourceArn, ResourceTagKeys = ResourceTagKeys)
   output <- .costexplorer$untag_resource_output()
@@ -5121,8 +5087,7 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$update_anomaly_monitor_input(MonitorArn = MonitorArn, MonitorName = MonitorName)
   output <- .costexplorer$update_anomaly_monitor_output()
@@ -5181,17 +5146,17 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 #' 
 #' The following are examples of valid ThresholdExpressions:
 #' 
-#' - Absolute threshold:
-#'   `{ "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }`
+#' -   Absolute threshold:
+#'     `{ "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }`
 #' 
-#' - Percentage threshold:
-#'   `{ "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }`
+#' -   Percentage threshold:
+#'     `{ "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }`
 #' 
-#' - `AND` two thresholds together:
-#'   `{ "And": [ { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }, { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } } ] }`
+#' -   `AND` two thresholds together:
+#'     `{ "And": [ { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }, { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } } ] }`
 #' 
-#' - `OR` two thresholds together:
-#'   `{ "Or": [ { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }, { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } } ] }`
+#' -   `OR` two thresholds together:
+#'     `{ "Or": [ { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_ABSOLUTE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } }, { "Dimensions": { "Key": "ANOMALY_TOTAL_IMPACT_PERCENTAGE", "MatchOptions": [ "GREATER_THAN_OR_EQUAL" ], "Values": [ "100" ] } } ] }`
 #'
 #' @return
 #' A list with the following syntax:
@@ -5268,8 +5233,7 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$update_anomaly_subscription_input(SubscriptionArn = SubscriptionArn, Threshold = Threshold, Frequency = Frequency, MonitorArnList = MonitorArnList, Subscribers = Subscribers, SubscriptionName = SubscriptionName, ThresholdExpression = ThresholdExpression)
   output <- .costexplorer$update_anomaly_subscription_output()
@@ -5334,8 +5298,7 @@ costexplorer_update_cost_allocation_tags_status <- function(CostAllocationTagsSt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$update_cost_allocation_tags_status_input(CostAllocationTagsStatus = CostAllocationTagsStatus)
   output <- .costexplorer$update_cost_allocation_tags_status_output()
@@ -5465,8 +5428,7 @@ costexplorer_update_cost_category_definition <- function(CostCategoryArn, Effect
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .costexplorer$update_cost_category_definition_input(CostCategoryArn = CostCategoryArn, EffectiveStart = EffectiveStart, RuleVersion = RuleVersion, Rules = Rules, DefaultValue = DefaultValue, SplitChargeRules = SplitChargeRules)
   output <- .costexplorer$update_cost_category_definition_output()

@@ -27,10 +27,10 @@ on the following Saturday.
 Sunday and ending on the following Saturday.
 \item \code{THIS_MONTH}: The current month, starting on the first day of the
 month and ending on the day before the current date.
-\item \code{ONE_MONTH_AGO}: The previous month, starting on the first day of the
-month and ending on the last day of the month.
-\item \code{TWO_MONTHS_AGO}: The month before the previous month, starting on the
-first day of the month and ending on last day of the month.
+\item \code{ONE_MONTH_AGO}: The previous month, starting on the first day of
+the month and ending on the last day of the month.
+\item \code{TWO_MONTHS_AGO}: The month before the previous month, starting on
+the first day of the month and ending on last day of the month.
 }}
 
 \item{MetricType}{[required] The metric you want to retrieve. You can specify only one metric per

@@ -35,8 +35,8 @@ parameter to get the next set of results.}
 \itemize{
 \item \code{DELETED}: The resource differs from its expected template
 configuration in that the resource has been deleted.
-\item \code{MODIFIED}: One or more resource properties differ from their expected
-template values.
+\item \code{MODIFIED}: One or more resource properties differ from their
+expected template values.
 \item \code{IN_SYNC}: The resource's actual configuration matches its expected
 template configuration.
 \item \code{NOT_CHECKED}: CloudFormation doesn't currently return this value.

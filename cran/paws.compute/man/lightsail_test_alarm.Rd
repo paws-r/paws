@@ -15,8 +15,8 @@ An alarm has the following possible states that can be tested:
 \itemize{
 \item \code{ALARM} - The metric is outside of the defined threshold.
 \item \code{INSUFFICIENT_DATA} - The alarm has just started, the metric is not
-available, or not enough data is available for the metric to determine
-the alarm state.
+available, or not enough data is available for the metric to
+determine the alarm state.
 \item \code{OK} - The metric is within the defined threshold.
 }}
 }

@@ -66,7 +66,7 @@ information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-r
 
 \item{AcceleratorTypes}{A list of the Elastic Inference (EI) instance types to associate with
 this notebook instance. Currently only one EI instance type can be
-associated with a notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{Using Elastic Inference in Amazon SageMaker}.}
+associated with a notebook instance. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ei.html}{Using Elastic Inference in Amazon SageMaker}.}
 
 \item{DisassociateAcceleratorTypes}{A list of the Elastic Inference (EI) instance types to remove from this
 notebook instance. This operation is idempotent. If you specify an

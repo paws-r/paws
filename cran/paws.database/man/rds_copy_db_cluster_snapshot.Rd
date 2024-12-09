@@ -90,27 +90,27 @@ that can run in the source Amazon Web Services Region that contains the
 encrypted DB cluster snapshot to copy. The presigned URL request must
 contain the following parameter values:
 \itemize{
-\item \code{KmsKeyId} - The KMS key identifier for the KMS key to use to encrypt
-the copy of the DB cluster snapshot in the destination Amazon Web
-Services Region. This is the same identifier for both the
+\item \code{KmsKeyId} - The KMS key identifier for the KMS key to use to
+encrypt the copy of the DB cluster snapshot in the destination
+Amazon Web Services Region. This is the same identifier for both the
 \code{\link[=rds_copy_db_cluster_snapshot]{copy_db_cluster_snapshot}} operation
-that is called in the destination Amazon Web Services Region, and the
-operation contained in the presigned URL.
-\item \code{DestinationRegion} - The name of the Amazon Web Services Region that
-the DB cluster snapshot is to be created in.
+that is called in the destination Amazon Web Services Region, and
+the operation contained in the presigned URL.
+\item \code{DestinationRegion} - The name of the Amazon Web Services Region
+that the DB cluster snapshot is to be created in.
 \item \code{SourceDBClusterSnapshotIdentifier} - The DB cluster snapshot
 identifier for the encrypted DB cluster snapshot to be copied. This
 identifier must be in the Amazon Resource Name (ARN) format for the
-source Amazon Web Services Region. For example, if you are copying an
-encrypted DB cluster snapshot from the us-west-2 Amazon Web Services
-Region, then your \code{SourceDBClusterSnapshotIdentifier} looks like the
-following example:
+source Amazon Web Services Region. For example, if you are copying
+an encrypted DB cluster snapshot from the us-west-2 Amazon Web
+Services Region, then your \code{SourceDBClusterSnapshotIdentifier} looks
+like the following example:
 \code{arn:aws:rds:us-west-2:123456789012:cluster-snapshot:aurora-cluster1-snapshot-20161115}.
 }
 
 To learn how to generate a Signature Version 4 signed request, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)}
-and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can
 specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of

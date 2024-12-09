@@ -54,8 +54,8 @@ limit for synchronous invocation (6 MB).
 \itemize{
 \item \strong{Amazon Kinesis} – Default 100. Max 10,000.
 \item \strong{Amazon DynamoDB Streams} – Default 100. Max 10,000.
-\item \strong{Amazon Simple Queue Service} – Default 10. For standard queues the
-max is 10,000. For FIFO queues the max is 10.
+\item \strong{Amazon Simple Queue Service} – Default 10. For standard queues
+the max is 10,000. For FIFO queues the max is 10.
 \item \strong{Amazon Managed Streaming for Apache Kafka} – Default 100. Max
 10,000.
 \item \strong{Self-managed Apache Kafka} – Default 100. Max 10,000.

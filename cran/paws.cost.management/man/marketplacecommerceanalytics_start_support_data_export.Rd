@@ -26,10 +26,11 @@ Time.
 \itemize{
 \item \emph{customer_support_contacts_data} Customer support contact data. The
 data set will contain all changes (Creates, Updates, and Deletes) to
-customer support contact data from the date specified in the from_date
-parameter.
+customer support contact data from the date specified in the
+from_date parameter.
 \item \emph{test_customer_support_contacts_data} An example data set containing
-static test data in the same format as customer_support_contacts_data
+static test data in the same format as
+customer_support_contacts_data
 }}
 
 \item{fromDate}{[required] \emph{This target has been deprecated.} The start date from which to retrieve
@@ -60,7 +61,7 @@ be returned, unmodified, in the Amazon SNS notification message and the
 data set metadata file.}
 }
 \description{
-\emph{This target has been deprecated.} Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \\data_set_type_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
+\emph{This target has been deprecated.} Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available. Returns a unique request identifier that can be used to correlate requests with notifications from the SNS topic. Data sets will be published in comma-separated values (CSV) format with the file name \{data_set_type\}_YYYY-MM-DD'T'HH-mm-ss'Z'.csv. If a file with the same name already exists (e.g. if the same data set is requested twice), the original file will be overwritten by the new file. Requires a Role with an attached permissions policy providing Allow permissions for the following actions: s3:PutObject, s3:GetBucketLocation, sns:GetTopicAttributes, sns:Publish, iam:GetRolePolicy.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacecommerceanalytics_start_support_data_export/} for full documentation.
 }

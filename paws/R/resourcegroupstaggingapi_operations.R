@@ -44,8 +44,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourcegroupstaggingapi$describe_report_creation_input()
   output <- .resourcegroupstaggingapi$describe_report_creation_output()
@@ -98,18 +97,17 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' Specifying a resource type of `ec2:instance` returns only EC2 instances.
 #' 
 #' The string for each service name and resource type is the same as that
-#' embedded in a resource's Amazon Resource Name (ARN). Consult the
-#' *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
+#' embedded in a resource's Amazon Resource Name (ARN). Consult the *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
 #' 
-#' - For a list of service name strings, see [Amazon Web Services Service
-#'   Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
+#' -   For a list of service name strings, see [Amazon Web Services Service
+#'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
 #' 
-#' - For resource type strings, see [Example
-#'   ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax).
+#' -   For resource type strings, see [Example
+#'     ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax).
 #' 
-#' - For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#'   Amazon Web Services Service
-#'   Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
+#'     and Amazon Web Services Service
+#'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' 
 #' You can specify multiple resource types by using a comma separated
 #' array. The array can include up to 100 items. Note that the length
@@ -181,8 +179,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", limit_key = "MaxResults", output_token = "PaginationToken", result_key = "SummaryList"),
-    stream_api = FALSE
+    paginator = list(input_token = "PaginationToken", limit_key = "MaxResults", output_token = "PaginationToken", result_key = "SummaryList")
   )
   input <- .resourcegroupstaggingapi$get_compliance_summary_input(TargetIdFilters = TargetIdFilters, RegionFilters = RegionFilters, ResourceTypeFilters = ResourceTypeFilters, TagKeyFilters = TagKeyFilters, GroupBy = GroupBy, MaxResults = MaxResults, PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_compliance_summary_output()
@@ -204,14 +201,14 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' Depending on what information you want returned, you can also specify
 #' the following:
 #' 
-#' - *Filters* that specify what tags and resource types you want returned.
-#'   The response includes all tags that are associated with the requested
-#'   resources.
+#' -   *Filters* that specify what tags and resource types you want
+#'     returned. The response includes all tags that are associated with
+#'     the requested resources.
 #' 
-#' - Information about compliance with the account's effective tag policy.
-#'   For more information on tag policies, see [Tag
-#'   Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
-#'   in the *Organizations User Guide.*
+#' -   Information about compliance with the account's effective tag
+#'     policy. For more information on tag policies, see [Tag
+#'     Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+#'     in the *Organizations User Guide.*
 #' 
 #' This operation supports pagination, where the response can be sent in
 #' multiple pages. You should check the `PaginationToken` response
@@ -237,36 +234,36 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' 
 #' Note the following when deciding how to use TagFilters:
 #' 
-#' - If you *don't* specify a `TagFilter`, the response includes all
-#'   resources that are currently tagged or ever had a tag. Resources that
-#'   currently don't have tags are shown with an empty tag set, like this:
-#'   `"Tags": []`.
+#' -   If you *don't* specify a `TagFilter`, the response includes all
+#'     resources that are currently tagged or ever had a tag. Resources
+#'     that currently don't have tags are shown with an empty tag set, like
+#'     this: `"Tags": []`.
 #' 
-#' - If you specify more than one filter in a single request, the response
-#'   returns only those resources that satisfy all filters.
+#' -   If you specify more than one filter in a single request, the
+#'     response returns only those resources that satisfy all filters.
 #' 
-#' - If you specify a filter that contains more than one value for a key,
-#'   the response returns resources that match *any* of the specified
-#'   values for that key.
+#' -   If you specify a filter that contains more than one value for a key,
+#'     the response returns resources that match *any* of the specified
+#'     values for that key.
 #' 
-#' - If you don't specify a value for a key, the response returns all
-#'   resources that are tagged with that key, with any or no value.
+#' -   If you don't specify a value for a key, the response returns all
+#'     resources that are tagged with that key, with any or no value.
 #' 
-#'   For example, for the following filters: `filter1= {keyA,{value1}}`,
-#'   `filter2={keyB,{value2,value3,value4}}`, `filter3= {keyC}`:
+#'     For example, for the following filters: `filter1= {keyA,{value1}}`,
+#'     `filter2={keyB,{value2,value3,value4}}`, `filter3= {keyC}`:
 #' 
-#'   - `GetResources({filter1})` returns resources tagged with
-#'     `key1=value1`
+#'     -   `GetResources({filter1})` returns resources tagged with
+#'         `key1=value1`
 #' 
-#'   - `GetResources({filter2})` returns resources tagged with
-#'     `key2=value2` or `key2=value3` or `key2=value4`
+#'     -   `GetResources({filter2})` returns resources tagged with
+#'         `key2=value2` or `key2=value3` or `key2=value4`
 #' 
-#'   - `GetResources({filter3})` returns resources tagged with any tag with
-#'     the key `key3`, and with any or no value
+#'     -   `GetResources({filter3})` returns resources tagged with any tag
+#'         with the key `key3`, and with any or no value
 #' 
-#'   - `GetResources({filter1,filter2,filter3})` returns resources tagged
-#'     with
-#'     `(key1=value1) and (key2=value2 or key2=value3 or key2=value4) and (key3, any or no value)`
+#'     -   `GetResources({filter1,filter2,filter3})` returns resources
+#'         tagged with
+#'         `(key1=value1) and (key2=value2 or key2=value3 or key2=value4) and (key3, any or no value)`
 #' @param ResourcesPerPage Specifies the maximum number of results to be returned in each page. A
 #' query can return fewer than this maximum, even if there are more results
 #' still to return. You should always check the `PaginationToken` response
@@ -401,8 +398,7 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", limit_key = "ResourcesPerPage", output_token = "PaginationToken", result_key = "ResourceTagMappingList"),
-    stream_api = FALSE
+    paginator = list(input_token = "PaginationToken", limit_key = "ResourcesPerPage", output_token = "PaginationToken", result_key = "ResourceTagMappingList")
   )
   input <- .resourcegroupstaggingapi$get_resources_input(PaginationToken = PaginationToken, TagFilters = TagFilters, ResourcesPerPage = ResourcesPerPage, TagsPerPage = TagsPerPage, ResourceTypeFilters = ResourceTypeFilters, IncludeComplianceDetails = IncludeComplianceDetails, ExcludeCompliantResources = ExcludeCompliantResources, ResourceARNList = ResourceARNList)
   output <- .resourcegroupstaggingapi$get_resources_output()
@@ -465,8 +461,7 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagKeys"),
-    stream_api = FALSE
+    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagKeys")
   )
   input <- .resourcegroupstaggingapi$get_tag_keys_input(PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_tag_keys_output()
@@ -533,8 +528,7 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagValues"),
-    stream_api = FALSE
+    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagValues")
   )
   input <- .resourcegroupstaggingapi$get_tag_values_input(PaginationToken = PaginationToken, Key = Key)
   output <- .resourcegroupstaggingapi$get_tag_values_output()
@@ -595,8 +589,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourcegroupstaggingapi$start_report_creation_input(S3Bucket = S3Bucket)
   output <- .resourcegroupstaggingapi$start_report_creation_output()
@@ -613,25 +606,26 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' @description
 #' Applies one or more tags to the specified resources. Note the following:
 #' 
-#' - Not all resources can have tags. For a list of services with resources
-#'   that support tagging using this operation, see [Services that support
-#'   the Resource Groups Tagging
-#'   API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html).
-#'   If the resource doesn't yet support this operation, the resource's
-#'   service might support tagging using its own API operations. For more
-#'   information, refer to the documentation for that service.
+#' -   Not all resources can have tags. For a list of services with
+#'     resources that support tagging using this operation, see [Services
+#'     that support the Resource Groups Tagging
+#'     API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html).
+#'     If the resource doesn't yet support this operation, the resource's
+#'     service might support tagging using its own API operations. For more
+#'     information, refer to the documentation for that service.
 #' 
-#' - Each resource can have up to 50 tags. For other limits, see [Tag
-#'   Naming and Usage
-#'   Conventions](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html#tag-conventions)
-#'   in the *Amazon Web Services General Reference.*
+#' -   Each resource can have up to 50 tags. For other limits, see [Tag
+#'     Naming and Usage
+#'     Conventions](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html#tag-conventions)
+#'     in the *Amazon Web Services General Reference.*
 #' 
-#' - You can only tag resources that are located in the specified Amazon
-#'   Web Services Region for the Amazon Web Services account.
+#' -   You can only tag resources that are located in the specified Amazon
+#'     Web Services Region for the Amazon Web Services account.
 #' 
-#' - To add tags to a resource, you need the necessary permissions for the
-#'   service that the resource belongs to as well as permissions for adding
-#'   tags. For more information, see the documentation for each service.
+#' -   To add tags to a resource, you need the necessary permissions for
+#'     the service that the resource belongs to as well as permissions for
+#'     adding tags. For more information, see the documentation for each
+#'     service.
 #' 
 #' Do not store personally identifiable information (PII) or other
 #' confidential or sensitive information in tags. We use tags to provide
@@ -647,9 +641,9 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' [`tag_resources`][resourcegroupstaggingapi_tag_resources] operation, you
 #' must have both of the following permissions:
 #' 
-#' - `tag:TagResource`
+#' -   `tag:TagResource`
 #' 
-#' - `ec2:CreateTags`
+#' -   `ec2:CreateTags`
 #'
 #' @usage
 #' resourcegroupstaggingapi_tag_resources(ResourceARNList, Tags)
@@ -702,8 +696,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourcegroupstaggingapi$tag_resources_input(ResourceARNList = ResourceARNList, Tags = Tags)
   output <- .resourcegroupstaggingapi$tag_resources_output()
@@ -723,13 +716,13 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' value. The operation succeeds even if you attempt to remove tags from a
 #' resource that were already removed. Note the following:
 #' 
-#' - To remove tags from a resource, you need the necessary permissions for
-#'   the service that the resource belongs to as well as permissions for
-#'   removing tags. For more information, see the documentation for the
-#'   service whose resource you want to untag.
+#' -   To remove tags from a resource, you need the necessary permissions
+#'     for the service that the resource belongs to as well as permissions
+#'     for removing tags. For more information, see the documentation for
+#'     the service whose resource you want to untag.
 #' 
-#' - You can only tag resources that are located in the specified Amazon
-#'   Web Services Region for the calling Amazon Web Services account.
+#' -   You can only tag resources that are located in the specified Amazon
+#'     Web Services Region for the calling Amazon Web Services account.
 #' 
 #' **Minimum permissions**
 #' 
@@ -740,9 +733,9 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' [`untag_resources`][resourcegroupstaggingapi_untag_resources] operation,
 #' you must have both of the following permissions:
 #' 
-#' - `tag:UntagResource`
+#' -   `tag:UntagResource`
 #' 
-#' - `ec2:DeleteTags`
+#' -   `ec2:DeleteTags`
 #'
 #' @usage
 #' resourcegroupstaggingapi_untag_resources(ResourceARNList, TagKeys)
@@ -795,8 +788,7 @@ resourcegroupstaggingapi_untag_resources <- function(ResourceARNList, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourcegroupstaggingapi$untag_resources_input(ResourceARNList = ResourceARNList, TagKeys = TagKeys)
   output <- .resourcegroupstaggingapi$untag_resources_output()

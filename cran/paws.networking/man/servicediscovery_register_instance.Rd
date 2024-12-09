@@ -27,9 +27,9 @@ as part of the value for the \code{SRV} record. For more information, see
 \item To register a new instance, you must specify a value that's unique
 among instances that you register by using the same service.
 \item If you specify an existing \code{InstanceId} and \code{ServiceId}, Cloud Map
-updates the existing DNS records, if any. If there's also an existing
-health check, Cloud Map deletes the old health check and creates a new
-one.
+updates the existing DNS records, if any. If there's also an
+existing health check, Cloud Map deletes the old health check and
+creates a new one.
 
 The health check isn't deleted immediately, so it will still appear
 for a while if you submit a \code{ListHealthChecks} request, for example.
@@ -73,19 +73,19 @@ in the \emph{Route 53 API Reference}.
 
 Note the following:
 \itemize{
-\item The configuration for the service that's specified by \code{ServiceId} must
-include settings for an \code{A} record, an \code{AAAA} record, or both.
+\item The configuration for the service that's specified by \code{ServiceId}
+must include settings for an \code{A} record, an \code{AAAA} record, or both.
 \item In the service that's specified by \code{ServiceId}, the value of
 \code{RoutingPolicy} must be \code{WEIGHTED}.
 \item If the service that's specified by \code{ServiceId} includes
 \code{HealthCheckConfig} settings, Cloud Map will create the Route 53
-health check, but it doesn't associate the health check with the alias
-record.
-\item Cloud Map currently doesn't support creating alias records that route
-traffic to Amazon Web Services resources other than Elastic Load
-Balancing load balancers.
-\item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify values
-for any of the \code{AWS_INSTANCE} attributes.
+health check, but it doesn't associate the health check with the
+alias record.
+\item Cloud Map currently doesn't support creating alias records that
+route traffic to Amazon Web Services resources other than Elastic
+Load Balancing load balancers.
+\item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify
+values for any of the \code{AWS_INSTANCE} attributes.
 \item The \code{AWS_ALIAS_DNS_NAME} is not supported in the GovCloud (US)
 Regions.
 }

@@ -74,21 +74,21 @@ You can work with pipelines by calling:
 uniquely named pipeline.
 \item \code{\link[=codepipeline_delete_pipeline]{delete_pipeline}}, which deletes the
 specified pipeline.
-\item \code{\link[=codepipeline_get_pipeline]{get_pipeline}}, which returns information
-about the pipeline structure and pipeline metadata, including the
-pipeline Amazon Resource Name (ARN).
-\item \code{\link[=codepipeline_get_pipeline_execution]{get_pipeline_execution}}, which
-returns information about a specific execution of a pipeline.
-\item \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}}, which returns
-information about the current state of the stages and actions of a
-pipeline.
-\item \code{\link[=codepipeline_list_action_executions]{list_action_executions}}, which
-returns action-level details for past executions. The details include
-full stage and action-level details, including individual action
-duration, status, any errors that occurred during the execution, and
-input and output artifact location details.
-\item \code{\link[=codepipeline_list_pipelines]{list_pipelines}}, which gets a summary
-of all of the pipelines associated with your account.
+\item \code{\link[=codepipeline_get_pipeline]{get_pipeline}}, which returns
+information about the pipeline structure and pipeline metadata,
+including the pipeline Amazon Resource Name (ARN).
+\item \code{\link[=codepipeline_get_pipeline_execution]{get_pipeline_execution}},
+which returns information about a specific execution of a pipeline.
+\item \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}}, which
+returns information about the current state of the stages and
+actions of a pipeline.
+\item \code{\link[=codepipeline_list_action_executions]{list_action_executions}},
+which returns action-level details for past executions. The details
+include full stage and action-level details, including individual
+action duration, status, any errors that occurred during the
+execution, and input and output artifact location details.
+\item \code{\link[=codepipeline_list_pipelines]{list_pipelines}}, which gets a
+summary of all of the pipelines associated with your account.
 \item \code{\link[=codepipeline_list_pipeline_executions]{list_pipeline_executions}},
 which gets a summary of the most recent executions for a pipeline.
 \item \code{\link[=codepipeline_start_pipeline_execution]{start_pipeline_execution}},
@@ -163,10 +163,10 @@ whether a job worker has received the specified job.
 details of a job.
 \item \code{\link[=codepipeline_poll_for_jobs]{poll_for_jobs}}, which determines
 whether there are any jobs to act on.
-\item \code{\link[=codepipeline_put_job_failure_result]{put_job_failure_result}}, which
-provides details of a job failure.
-\item \code{\link[=codepipeline_put_job_success_result]{put_job_success_result}}, which
-provides details of a job success.
+\item \code{\link[=codepipeline_put_job_failure_result]{put_job_failure_result}},
+which provides details of a job failure.
+\item \code{\link[=codepipeline_put_job_success_result]{put_job_success_result}},
+which provides details of a job success.
 }
 
 \strong{Third party jobs}, which are instances of an action created by a

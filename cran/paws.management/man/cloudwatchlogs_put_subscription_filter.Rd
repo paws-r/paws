@@ -33,11 +33,12 @@ subscription filter, for same-account delivery.
 different account, for cross-account delivery.
 
 If you're setting up a cross-account subscription, the destination
-must have an IAM policy associated with it. The IAM policy must allow
-the sender to send logs to the destination. For more information, see
+must have an IAM policy associated with it. The IAM policy must
+allow the sender to send logs to the destination. For more
+information, see
 \code{\link[=cloudwatchlogs_put_destination_policy]{put_destination_policy}}.
-\item A Kinesis Data Firehose delivery stream belonging to the same account
-as the subscription filter, for same-account delivery.
+\item A Kinesis Data Firehose delivery stream belonging to the same
+account as the subscription filter, for same-account delivery.
 \item A Lambda function belonging to the same account as the subscription
 filter, for same-account delivery.
 }}

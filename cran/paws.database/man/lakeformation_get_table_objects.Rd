@@ -39,8 +39,8 @@ defined in the governed table.
 \item The comparison operators supported are: =, \>, \<, \>=, \<=
 \item The logical operators supported are: AND
 \item The data types supported are integer, long, date(yyyy-MM-dd),
-timestamp(yyyy-MM-dd HH:mm:ssXXX or yyyy-MM-dd HH:mm:ss"), string and
-decimal.
+timestamp(yyyy-MM-dd HH:mm:ssXXX or yyyy-MM-dd HH:mm:ss"), string
+and decimal.
 }}
 
 \item{MaxResults}{Specifies how many values to return in a page.}

@@ -34,7 +34,7 @@ To learn more about how to use this parameter, see \href{https://docs.aws.amazon
 in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
-Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant-delete}{Retiring and revoking grants} in the \emph{Key Management Service Developer Guide} .
+Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#grant-delete}{Retiring and revoking grants} in the \emph{Key Management Service Developer Guide} .
 
 See \url{https://www.paws-r-sdk.com/docs/kms_revoke_grant/} for full documentation.
 }

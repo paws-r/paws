@@ -47,7 +47,8 @@ ascending or descending order.}
 \item{ResourceShareType}{Allows you to specify that you want to search the tables shared with
 your account. The allowable values are \code{FOREIGN} or \code{ALL}.
 \itemize{
-\item If set to \code{FOREIGN}, will search the tables shared with your account.
+\item If set to \code{FOREIGN}, will search the tables shared with your
+account.
 \item If set to \code{ALL}, will search the tables shared with your account, as
 well as the tables in yor local account.
 }}

@@ -91,8 +91,8 @@ For the valid values for allocated storage for each engine, see
 Constraints:
 \itemize{
 \item When you increase the allocated storage for a DB instance that uses
-Provisioned IOPS (\code{gp3}, \code{io1}, or \code{io2} storage type), you must also
-specify the \code{Iops} parameter. You can use the current value for
+Provisioned IOPS (\code{gp3}, \code{io1}, or \code{io2} storage type), you must
+also specify the \code{Iops} parameter. You can use the current value for
 \code{Iops}.
 }}
 
@@ -113,10 +113,11 @@ Default: Uses existing setting
 Constraints:
 \itemize{
 \item If you are modifying the DB instance class and upgrading the engine
-version at the same time, the currently running engine version must be
-supported on the specified DB instance class. Otherwise, the operation
-returns an error. In this case, first run the operation to upgrade the
-engine version, and then run it again to modify the DB instance class.
+version at the same time, the currently running engine version must
+be supported on the specified DB instance class. Otherwise, the
+operation returns an error. In this case, first run the operation to
+upgrade the engine version, and then run it again to modify the DB
+instance class.
 }}
 
 \item{DBSubnetGroupName}{The new DB subnet group for the DB instance. You can use this parameter
@@ -205,16 +206,17 @@ Default: Uses existing setting
 Constraints:
 \itemize{
 \item Can't be specified if \code{ManageMasterUserPassword} is turned on.
-\item Can include any printable ASCII character except "/", """, or "@". For
-RDS for Oracle, can't include the "&" (ampersand) or the "'" (single
-quotes) character.
+\item Can include any printable ASCII character except "/", """, or "@".
+For RDS for Oracle, can't include the "&" (ampersand) or the "'"
+(single quotes) character.
 }
 
 Length Constraints:
 \itemize{
 \item RDS for Db2 - Must contain from 8 to 255 characters.
 \item RDS for MariaDB - Must contain from 8 to 41 characters.
-\item RDS for Microsoft SQL Server - Must contain from 8 to 128 characters.
+\item RDS for Microsoft SQL Server - Must contain from 8 to 128
+characters.
 \item RDS for MySQL - Must contain from 8 to 41 characters.
 \item RDS for Oracle - Must contain from 8 to 30 characters.
 \item RDS for PostgreSQL - Must contain from 8 to 128 characters.
@@ -342,11 +344,12 @@ only if they are in the \code{PATCH_DB_FAILURE} lifecycle.
 
 Constraints:
 \itemize{
-\item If you are upgrading the engine version and modifying the DB instance
-class at the same time, the currently running engine version must be
-supported on the specified DB instance class. Otherwise, the operation
-returns an error. In this case, first run the operation to upgrade the
-engine version, and then run it again to modify the DB instance class.
+\item If you are upgrading the engine version and modifying the DB
+instance class at the same time, the currently running engine
+version must be supported on the specified DB instance class.
+Otherwise, the operation returns an error. In this case, first run
+the operation to upgrade the engine version, and then run it again
+to modify the DB instance class.
 }}
 
 \item{AllowMajorVersionUpgrade}{Specifies whether major version upgrades are allowed. Changing this
@@ -357,9 +360,9 @@ This setting doesn't apply to RDS Custom DB instances.
 
 Constraints:
 \itemize{
-\item Major version upgrades must be allowed when specifying a value for the
-\code{EngineVersion} parameter that's a different major version than the DB
-instance's current version.
+\item Major version upgrades must be allowed when specifying a value for
+the \code{EngineVersion} parameter that's a different major version than
+the DB instance's current version.
 }}
 
 \item{AutoMinorVersionUpgrade}{Specifies whether minor version upgrades are applied automatically to
@@ -419,8 +422,8 @@ creating a DB snapshot of the instance.
 Constraints:
 \itemize{
 \item For RDS for MariaDB, RDS for MySQL, RDS for Oracle, and RDS for
-PostgreSQL - The value supplied must be at least 10\% greater than the
-current value. Values that are not at least 10\% greater than the
+PostgreSQL - The value supplied must be at least 10\% greater than
+the current value. Values that are not at least 10\% greater than the
 existing value are rounded up so that they are 10\% greater than the
 current value.
 \item When you increase the Provisioned IOPS, you must also specify the
@@ -854,8 +857,8 @@ in the \emph{Amazon RDS User Guide.}
 
 Constraints:
 \itemize{
-\item Can't manage the master user password with Amazon Web Services Secrets
-Manager if \code{MasterUserPassword} is specified.
+\item Can't manage the master user password with Amazon Web Services
+Secrets Manager if \code{MasterUserPassword} is specified.
 }}
 
 \item{RotateMasterUserPassword}{Specifies whether to rotate the secret managed by Amazon Web Services
@@ -880,20 +883,21 @@ Manager.
 
 This setting is valid only if both of the following conditions are met:
 \itemize{
-\item The DB instance doesn't manage the master user password in Amazon Web
-Services Secrets Manager.
+\item The DB instance doesn't manage the master user password in Amazon
+Web Services Secrets Manager.
 
-If the DB instance already manages the master user password in Amazon
-Web Services Secrets Manager, you can't change the KMS key used to
-encrypt the secret.
+If the DB instance already manages the master user password in
+Amazon Web Services Secrets Manager, you can't change the KMS key
+used to encrypt the secret.
 \item You are turning on \code{ManageMasterUserPassword} to manage the master
 user password in Amazon Web Services Secrets Manager.
 
 If you are turning on \code{ManageMasterUserPassword} and don't specify
 \code{MasterUserSecretKmsKeyId}, then the \code{aws/secretsmanager} KMS key is
-used to encrypt the secret. If the secret is in a different Amazon Web
-Services account, then you can't use the \code{aws/secretsmanager} KMS key
-to encrypt the secret, and you must use a customer managed KMS key.
+used to encrypt the secret. If the secret is in a different Amazon
+Web Services account, then you can't use the \code{aws/secretsmanager}
+KMS key to encrypt the secret, and you must use a customer managed
+KMS key.
 }
 
 The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
@@ -919,14 +923,14 @@ Note the following limitations:
 \itemize{
 \item You can't convert a CDB to a non-CDB.
 \item You can't convert a replica database.
-\item You can't convert a non-CDB to a CDB and upgrade the engine version in
-the same command.
+\item You can't convert a non-CDB to a CDB and upgrade the engine version
+in the same command.
 \item You can't convert the existing custom parameter or option group when
-it has options or parameters that are permanent or persistent. In this
-situation, the DB instance reverts to the default option and parameter
-group. To avoid reverting to the default, specify a new parameter
-group with \code{--db-parameter-group-name} and a new option group with
-\code{--option-group-name}.
+it has options or parameters that are permanent or persistent. In
+this situation, the DB instance reverts to the default option and
+parameter group. To avoid reverting to the default, specify a new
+parameter group with \code{--db-parameter-group-name} and a new option
+group with \code{--option-group-name}.
 }}
 
 \item{DedicatedLogVolume}{Indicates whether the DB instance has a dedicated log volume (DLV)

@@ -11,8 +11,7 @@ emr_list_supported_instance_types(ReleaseLabel, Marker = NULL)
 that Amazon EMR has installed on the cluster. Release labels are in the
 format \code{emr-x.x.x}, where x.x.x is an Amazon EMR release number such as
 \verb{emr-6.10.0}. For more information about Amazon EMR releases and their
-included application versions and features, see the
-\emph{\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}} .}
+included application versions and features, see the \emph{\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}} .}
 
 \item{Marker}{The pagination token that marks the next set of results to retrieve.}
 }

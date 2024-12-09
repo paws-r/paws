@@ -63,8 +63,7 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
     http_method = "DELETE",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$delete_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId)
   output <- .lexruntimev2$delete_session_output()
@@ -242,8 +241,7 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
     http_method = "GET",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$get_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId)
   output <- .lexruntimev2$get_session_output()
@@ -285,8 +283,8 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
 #' @param responseContentType The message that Amazon Lex V2 returns in the response can be either
 #' text or speech depending on the value of this parameter.
 #' 
-#' - If the value is `text/plain; charset=utf-8`, Amazon Lex V2 returns
-#'   text in the response.
+#' -   If the value is `text/plain; charset=utf-8`, Amazon Lex V2 returns
+#'     text in the response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -405,8 +403,7 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$put_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, messages = messages, sessionState = sessionState, requestAttributes = requestAttributes, responseContentType = responseContentType)
   output <- .lexruntimev2$put_session_output()
@@ -433,18 +430,18 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #' returned as follows. For more information, see
 #' [PostFulfillmentStatusSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PostFulfillmentStatusSpecification.html).
 #' 
-#' - **Success message** - Returned if the Lambda function completes
-#'   successfully and the intent state is fulfilled or ready fulfillment if
-#'   the message is present.
+#' -   **Success message** - Returned if the Lambda function completes
+#'     successfully and the intent state is fulfilled or ready fulfillment
+#'     if the message is present.
 #' 
-#' - **Failed message** - The failed message is returned if the Lambda
-#'   function throws an exception or if the Lambda function returns a
-#'   failed intent state without a message.
+#' -   **Failed message** - The failed message is returned if the Lambda
+#'     function throws an exception or if the Lambda function returns a
+#'     failed intent state without a message.
 #' 
-#' - **Timeout message** - If you don't configure a timeout message and a
-#'   timeout, and the Lambda function doesn't return within 30 seconds, the
-#'   timeout message is returned. If you configure a timeout, the timeout
-#'   message is returned when the period times out.
+#' -   **Timeout message** - If you don't configure a timeout message and a
+#'     timeout, and the Lambda function doesn't return within 30 seconds,
+#'     the timeout message is returned. If you configure a timeout, the
+#'     timeout message is returned when the period times out.
 #' 
 #' For more information, see [Completion
 #' message](https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html).
@@ -684,8 +681,7 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/text",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$recognize_text_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, text = text, sessionState = sessionState, requestAttributes = requestAttributes)
   output <- .lexruntimev2$recognize_text_output()
@@ -708,23 +704,23 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' The following request fields must be compressed with gzip and then
 #' base64 encoded before you send them to Amazon Lex V2.
 #' 
-#' - requestAttributes
+#' -   requestAttributes
 #' 
-#' - sessionState
+#' -   sessionState
 #' 
 #' The following response fields are compressed using gzip and then base64
 #' encoded by Amazon Lex V2. Before you can use these fields, you must
 #' decode and decompress them.
 #' 
-#' - inputTranscript
+#' -   inputTranscript
 #' 
-#' - interpretations
+#' -   interpretations
 #' 
-#' - messages
+#' -   messages
 #' 
-#' - requestAttributes
+#' -   requestAttributes
 #' 
-#' - sessionState
+#' -   sessionState
 #' 
 #' The example contains a Java application that compresses and encodes a
 #' Java object to send to Amazon Lex V2, and a second that decodes and
@@ -734,18 +730,18 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' returned as follows. For more information, see
 #' [PostFulfillmentStatusSpecification](https://docs.aws.amazon.com/lexv2/latest/APIReference/API_PostFulfillmentStatusSpecification.html).
 #' 
-#' - **Success message** - Returned if the Lambda function completes
-#'   successfully and the intent state is fulfilled or ready fulfillment if
-#'   the message is present.
+#' -   **Success message** - Returned if the Lambda function completes
+#'     successfully and the intent state is fulfilled or ready fulfillment
+#'     if the message is present.
 #' 
-#' - **Failed message** - The failed message is returned if the Lambda
-#'   function throws an exception or if the Lambda function returns a
-#'   failed intent state without a message.
+#' -   **Failed message** - The failed message is returned if the Lambda
+#'     function throws an exception or if the Lambda function returns a
+#'     failed intent state without a message.
 #' 
-#' - **Timeout message** - If you don't configure a timeout message and a
-#'   timeout, and the Lambda function doesn't return within 30 seconds, the
-#'   timeout message is returned. If you configure a timeout, the timeout
-#'   message is returned when the period times out.
+#' -   **Timeout message** - If you don't configure a timeout message and a
+#'     timeout, and the Lambda function doesn't return within 30 seconds,
+#'     the timeout message is returned. If you configure a timeout, the
+#'     timeout message is returned when the period times out.
 #' 
 #' For more information, see [Completion
 #' message](https://docs.aws.amazon.com/lexv2/latest/dg/streaming-progress.html#progress-complete.html).
@@ -777,48 +773,49 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' @param requestContentType &#91;required&#93; Indicates the format for audio input or that the content is text. The
 #' header must start with one of the following prefixes:
 #' 
-#' - PCM format, audio data must be in little-endian byte order.
+#' -   PCM format, audio data must be in little-endian byte order.
 #' 
-#'   - audio/l16; rate=16000; channels=1
+#'     -   audio/l16; rate=16000; channels=1
 #' 
-#'   - audio/x-l16; sample-rate=16000; channel-count=1
+#'     -   audio/x-l16; sample-rate=16000; channel-count=1
 #' 
-#'   - audio/lpcm; sample-rate=8000; sample-size-bits=16; channel-count=1;
-#'     is-big-endian=false
+#'     -   audio/lpcm; sample-rate=8000; sample-size-bits=16;
+#'         channel-count=1; is-big-endian=false
 #' 
-#' - Opus format
+#' -   Opus format
 #' 
-#'   - audio/x-cbr-opus-with-preamble;preamble-size=0;bit-rate=256000;frame-size-milliseconds=4
+#'     -   audio/x-cbr-opus-with-preamble;preamble-size=0;bit-rate=256000;frame-size-milliseconds=4
 #' 
-#' - Text format
+#' -   Text format
 #' 
-#'   - text/plain; charset=utf-8
+#'     -   text/plain; charset=utf-8
 #' @param responseContentType The message that Amazon Lex V2 returns in the response can be either
 #' text or speech based on the `responseContentType` value.
 #' 
-#' - If the value is `text/plain;charset=utf-8`, Amazon Lex V2 returns text
-#'   in the response.
+#' -   If the value is `text/plain;charset=utf-8`, Amazon Lex V2 returns
+#'     text in the response.
 #' 
-#' - If the value begins with `audio/`, Amazon Lex V2 returns speech in the
-#'   response. Amazon Lex V2 uses Amazon Polly to generate the speech using
-#'   the configuration that you specified in the `responseContentType`
-#'   parameter. For example, if you specify `audio/mpeg` as the value,
-#'   Amazon Lex V2 returns speech in the MPEG format.
+#' -   If the value begins with `audio/`, Amazon Lex V2 returns speech in
+#'     the response. Amazon Lex V2 uses Amazon Polly to generate the speech
+#'     using the configuration that you specified in the
+#'     `responseContentType` parameter. For example, if you specify
+#'     `audio/mpeg` as the value, Amazon Lex V2 returns speech in the MPEG
+#'     format.
 #' 
-#' - If the value is `audio/pcm`, the speech returned is `audio/pcm` at 16
-#'   KHz in 16-bit, little-endian format.
+#' -   If the value is `audio/pcm`, the speech returned is `audio/pcm` at
+#'     16 KHz in 16-bit, little-endian format.
 #' 
-#' - The following are the accepted values:
+#' -   The following are the accepted values:
 #' 
-#'   - audio/mpeg
+#'     -   audio/mpeg
 #' 
-#'   - audio/ogg
+#'     -   audio/ogg
 #' 
-#'   - audio/pcm (16 KHz)
+#'     -   audio/pcm (16 KHz)
 #' 
-#'   - audio/* (defaults to mpeg)
+#'     -   audio/* (defaults to mpeg)
 #' 
-#'   - text/plain; charset=utf-8
+#'     -   text/plain; charset=utf-8
 #' @param inputStream User input in PCM or Opus audio format or text format as described in
 #' the `requestContentType` parameter.
 #'
@@ -865,8 +862,7 @@ lexruntimev2_recognize_utterance <- function(botId, botAliasId, localeId, sessio
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/utterance",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$recognize_utterance_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, sessionState = sessionState, requestAttributes = requestAttributes, requestContentType = requestContentType, responseContentType = responseContentType, inputStream = inputStream)
   output <- .lexruntimev2$recognize_utterance_output()

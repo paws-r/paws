@@ -35,8 +35,8 @@ The total uncompressed content has a maximum file size of 400kB.}
 
 \item{Tags}{The tags associated with the view resource (not specific to view
 version).These tags can be used to organize, track, or control access
-for this resource. For example, \\ "tags": \\"key1":"value1",
-"key2":"value2"\\ \\.}
+for this resource. For example, \{ "tags": \{"key1":"value1",
+"key2":"value2"\} \}.}
 }
 \description{
 Creates a new view with the possible status of \code{SAVED} or \code{PUBLISHED}.

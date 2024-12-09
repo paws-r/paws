@@ -250,8 +250,7 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$create_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules, InputType = InputType)
   output <- .transcribeservice$create_call_analytics_category_output()
@@ -270,15 +269,15 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
 #' 
 #' When creating a new custom language model, you must specify:
 #' 
-#' - If you want a Wideband (audio sample rates over 16,000 Hz) or
-#'   Narrowband (audio sample rates under 16,000 Hz) base model
+#' -   If you want a Wideband (audio sample rates over 16,000 Hz) or
+#'     Narrowband (audio sample rates under 16,000 Hz) base model
 #' 
-#' - The location of your training and tuning files (this must be an Amazon
-#'   S3 URI)
+#' -   The location of your training and tuning files (this must be an
+#'     Amazon S3 URI)
 #' 
-#' - The language of your model
+#' -   The language of your model
 #' 
-#' - A unique name for your model
+#' -   A unique name for your model
 #'
 #' @usage
 #' transcribeservice_create_language_model(LanguageCode, BaseModelName,
@@ -377,8 +376,7 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$create_language_model_input(LanguageCode = LanguageCode, BaseModelName = BaseModelName, ModelName = ModelName, InputDataConfig = InputDataConfig, Tags = Tags)
   output <- .transcribeservice$create_language_model_output()
@@ -477,8 +475,7 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$create_medical_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, VocabularyFileUri = VocabularyFileUri, Tags = Tags)
   output <- .transcribeservice$create_medical_vocabulary_output()
@@ -618,8 +615,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$create_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$create_vocabulary_output()
@@ -759,8 +755,7 @@ transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, Lan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$create_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, LanguageCode = LanguageCode, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$create_vocabulary_filter_output()
@@ -806,8 +801,7 @@ transcribeservice_delete_call_analytics_category <- function(CategoryName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_call_analytics_category_input(CategoryName = CategoryName)
   output <- .transcribeservice$delete_call_analytics_category_output()
@@ -853,8 +847,7 @@ transcribeservice_delete_call_analytics_job <- function(CallAnalyticsJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName)
   output <- .transcribeservice$delete_call_analytics_job_output()
@@ -900,8 +893,7 @@ transcribeservice_delete_language_model <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_language_model_input(ModelName = ModelName)
   output <- .transcribeservice$delete_language_model_output()
@@ -947,8 +939,7 @@ transcribeservice_delete_medical_scribe_job <- function(MedicalScribeJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName)
   output <- .transcribeservice$delete_medical_scribe_job_output()
@@ -995,8 +986,7 @@ transcribeservice_delete_medical_transcription_job <- function(MedicalTranscript
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName)
   output <- .transcribeservice$delete_medical_transcription_job_output()
@@ -1042,8 +1032,7 @@ transcribeservice_delete_medical_vocabulary <- function(VocabularyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_medical_vocabulary_input(VocabularyName = VocabularyName)
   output <- .transcribeservice$delete_medical_vocabulary_output()
@@ -1089,8 +1078,7 @@ transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_transcription_job_input(TranscriptionJobName = TranscriptionJobName)
   output <- .transcribeservice$delete_transcription_job_output()
@@ -1136,8 +1124,7 @@ transcribeservice_delete_vocabulary <- function(VocabularyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_vocabulary_input(VocabularyName = VocabularyName)
   output <- .transcribeservice$delete_vocabulary_output()
@@ -1184,8 +1171,7 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$delete_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName)
   output <- .transcribeservice$delete_vocabulary_filter_output()
@@ -1262,8 +1248,7 @@ transcribeservice_describe_language_model <- function(ModelName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$describe_language_model_input(ModelName = ModelName)
   output <- .transcribeservice$describe_language_model_output()
@@ -1399,8 +1384,7 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$get_call_analytics_category_input(CategoryName = CategoryName)
   output <- .transcribeservice$get_call_analytics_category_output()
@@ -1531,8 +1515,7 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$get_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName)
   output <- .transcribeservice$get_call_analytics_job_output()
@@ -1632,8 +1615,7 @@ transcribeservice_get_medical_scribe_job <- function(MedicalScribeJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$get_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName)
   output <- .transcribeservice$get_medical_scribe_job_output()
@@ -1731,8 +1713,7 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$get_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName)
   output <- .transcribeservice$get_medical_transcription_job_output()
@@ -1795,8 +1776,7 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$get_medical_vocabulary_input(VocabularyName = VocabularyName)
   output <- .transcribeservice$get_medical_vocabulary_output()
@@ -1945,8 +1925,7 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$get_transcription_job_input(TranscriptionJobName = TranscriptionJobName)
   output <- .transcribeservice$get_transcription_job_output()
@@ -2009,8 +1988,7 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$get_vocabulary_input(VocabularyName = VocabularyName)
   output <- .transcribeservice$get_vocabulary_output()
@@ -2066,8 +2044,7 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$get_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName)
   output <- .transcribeservice$get_vocabulary_filter_output()
@@ -2219,8 +2196,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_call_analytics_categories_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_call_analytics_categories_output()
@@ -2319,8 +2295,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_call_analytics_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_call_analytics_jobs_output()
@@ -2413,8 +2388,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_language_models_input(StatusEquals = StatusEquals, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_language_models_output()
@@ -2504,8 +2478,7 @@ transcribeservice_list_medical_scribe_jobs <- function(Status = NULL, JobNameCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_scribe_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_medical_scribe_jobs_output()
@@ -2600,8 +2573,7 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_medical_transcription_jobs_output()
@@ -2686,8 +2658,7 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
   output <- .transcribeservice$list_medical_vocabularies_output()
@@ -2755,8 +2726,7 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .transcribeservice$list_tags_for_resource_output()
@@ -2872,8 +2842,7 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_transcription_jobs_output()
@@ -2956,8 +2925,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
   output <- .transcribeservice$list_vocabularies_output()
@@ -3035,8 +3003,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_vocabulary_filters_input(NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains)
   output <- .transcribeservice$list_vocabulary_filters_output()
@@ -3084,21 +3051,21 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' [`start_call_analytics_job`][transcribeservice_start_call_analytics_job]
 #' request:
 #' 
-#' - `region`: The Amazon Web Services Region where you are making your
-#'   request. For a list of Amazon Web Services Regions supported with
-#'   Amazon Transcribe, refer to [Amazon Transcribe endpoints and
-#'   quotas](https://docs.aws.amazon.com/general/latest/gr/transcribe.html).
+#' -   `region`: The Amazon Web Services Region where you are making your
+#'     request. For a list of Amazon Web Services Regions supported with
+#'     Amazon Transcribe, refer to [Amazon Transcribe endpoints and
+#'     quotas](https://docs.aws.amazon.com/general/latest/gr/transcribe.html).
 #' 
-#' - `CallAnalyticsJobName`: A custom name that you create for your
-#'   transcription job that's unique within your Amazon Web Services
-#'   account.
+#' -   `CallAnalyticsJobName`: A custom name that you create for your
+#'     transcription job that's unique within your Amazon Web Services
+#'     account.
 #' 
-#' - `DataAccessRoleArn`: The Amazon Resource Name (ARN) of an IAM role
-#'   that has permissions to access the Amazon S3 bucket that contains your
-#'   input files.
+#' -   `DataAccessRoleArn`: The Amazon Resource Name (ARN) of an IAM role
+#'     that has permissions to access the Amazon S3 bucket that contains
+#'     your input files.
 #' 
-#' - `Media` (`MediaFileUri` or `RedactedMediaFileUri`): The Amazon S3
-#'   location of your media file.
+#' -   `Media` (`MediaFileUri` or `RedactedMediaFileUri`): The Amazon S3
+#'     location of your media file.
 #' 
 #' With Call Analytics, you can redact the audio contained in your media
 #' file by including `RedactedMediaFileUri`, instead of `MediaFileUri`, to
@@ -3326,8 +3293,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$start_call_analytics_job_input(CallAnalyticsJobName = CallAnalyticsJobName, Media = Media, OutputLocation = OutputLocation, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions)
   output <- .transcribeservice$start_call_analytics_job_output()
@@ -3361,29 +3327,29 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' [`start_medical_transcription_job`][transcribeservice_start_medical_transcription_job]
 #' request:
 #' 
-#' - `DataAccessRoleArn`: The ARN of an IAM role with the these minimum
-#'   permissions: read permission on input file Amazon S3 bucket specified
-#'   in `Media`, write permission on the Amazon S3 bucket specified in
-#'   `OutputBucketName`, and full permissions on the KMS key specified in
-#'   `OutputEncryptionKMSKeyId` (if set). The role should also allow
-#'   `transcribe.amazonaws.com` to assume it.
+#' -   `DataAccessRoleArn`: The ARN of an IAM role with the these minimum
+#'     permissions: read permission on input file Amazon S3 bucket
+#'     specified in `Media`, write permission on the Amazon S3 bucket
+#'     specified in `OutputBucketName`, and full permissions on the KMS key
+#'     specified in `OutputEncryptionKMSKeyId` (if set). The role should
+#'     also allow `transcribe.amazonaws.com` to assume it.
 #' 
-#' - `Media` (`MediaFileUri`): The Amazon S3 location of your media file.
+#' -   `Media` (`MediaFileUri`): The Amazon S3 location of your media file.
 #' 
-#' - `MedicalScribeJobName`: A custom name you create for your
-#'   MedicalScribe job that is unique within your Amazon Web Services
-#'   account.
+#' -   `MedicalScribeJobName`: A custom name you create for your
+#'     MedicalScribe job that is unique within your Amazon Web Services
+#'     account.
 #' 
-#' - `OutputBucketName`: The Amazon S3 bucket where you want your output
-#'   files stored.
+#' -   `OutputBucketName`: The Amazon S3 bucket where you want your output
+#'     files stored.
 #' 
-#' - `Settings`: A `MedicalScribeSettings` obect that must set exactly one
-#'   of `ShowSpeakerLabels` or `ChannelIdentification` to true. If
-#'   `ShowSpeakerLabels` is true, `MaxSpeakerLabels` must also be set.
+#' -   `Settings`: A `MedicalScribeSettings` obect that must set exactly
+#'     one of `ShowSpeakerLabels` or `ChannelIdentification` to true. If
+#'     `ShowSpeakerLabels` is true, `MaxSpeakerLabels` must also be set.
 #' 
-#' - `ChannelDefinitions`: A `MedicalScribeChannelDefinitions` array should
-#'   be set if and only if the `ChannelIdentification` value of `Settings`
-#'   is set to true.
+#' -   `ChannelDefinitions`: A `MedicalScribeChannelDefinitions` array
+#'     should be set if and only if the `ChannelIdentification` value of
+#'     `Settings` is set to true.
 #'
 #' @usage
 #' transcribeservice_start_medical_scribe_job(MedicalScribeJobName, Media,
@@ -3403,8 +3369,9 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' 
 #' Note that the role specified in the `DataAccessRoleArn` request
 #' parameter must have permission to use the specified location. You can
-#' change Amazon S3 permissions using the Amazon Web Services Management
-#' Console. See also [Permissions Required for IAM User
+#' change Amazon S3 permissions using the [Amazon Web Services Management
+#' Console](https://console.aws.amazon.com/s3/home). See also [Permissions
+#' Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' @param OutputEncryptionKMSKeyId The KMS key you want to use to encrypt your Medical Scribe output.
 #' 
@@ -3576,8 +3543,7 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$start_medical_scribe_job_input(MedicalScribeJobName = MedicalScribeJobName, Media = Media, OutputBucketName = OutputBucketName, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, DataAccessRoleArn = DataAccessRoleArn, Settings = Settings, ChannelDefinitions = ChannelDefinitions, Tags = Tags)
   output <- .transcribeservice$start_medical_scribe_job_output()
@@ -3615,26 +3581,26 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
 #' [`start_medical_transcription_job`][transcribeservice_start_medical_transcription_job]
 #' request:
 #' 
-#' - `region`: The Amazon Web Services Region where you are making your
-#'   request. For a list of Amazon Web Services Regions supported with
-#'   Amazon Transcribe, refer to [Amazon Transcribe endpoints and
-#'   quotas](https://docs.aws.amazon.com/general/latest/gr/transcribe.html).
+#' -   `region`: The Amazon Web Services Region where you are making your
+#'     request. For a list of Amazon Web Services Regions supported with
+#'     Amazon Transcribe, refer to [Amazon Transcribe endpoints and
+#'     quotas](https://docs.aws.amazon.com/general/latest/gr/transcribe.html).
 #' 
-#' - `MedicalTranscriptionJobName`: A custom name you create for your
-#'   transcription job that is unique within your Amazon Web Services
-#'   account.
+#' -   `MedicalTranscriptionJobName`: A custom name you create for your
+#'     transcription job that is unique within your Amazon Web Services
+#'     account.
 #' 
-#' - `Media` (`MediaFileUri`): The Amazon S3 location of your media file.
+#' -   `Media` (`MediaFileUri`): The Amazon S3 location of your media file.
 #' 
-#' - `LanguageCode`: This must be `en-US`.
+#' -   `LanguageCode`: This must be `en-US`.
 #' 
-#' - `OutputBucketName`: The Amazon S3 bucket where you want your
-#'   transcript stored. If you want your output stored in a sub-folder of
-#'   this bucket, you must also include `OutputKey`.
+#' -   `OutputBucketName`: The Amazon S3 bucket where you want your
+#'     transcript stored. If you want your output stored in a sub-folder of
+#'     this bucket, you must also include `OutputKey`.
 #' 
-#' - `Specialty`: This must be `PRIMARYCARE`.
+#' -   `Specialty`: This must be `PRIMARYCARE`.
 #' 
-#' - `Type`: Choose whether your audio is a conversation or a dictation.
+#' -   `Type`: Choose whether your audio is a conversation or a dictation.
 #'
 #' @usage
 #' transcribeservice_start_medical_transcription_job(
@@ -3682,8 +3648,9 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
 #' `DOC-EXAMPLE-BUCKET` and `OutputKey` to `test-files/`.
 #' 
 #' Note that Amazon Transcribe must have permission to use the specified
-#' location. You can change Amazon S3 permissions using the Amazon Web
-#' Services Management Console. See also [Permissions Required for IAM User
+#' location. You can change Amazon S3 permissions using the [Amazon Web
+#' Services Management Console](https://console.aws.amazon.com/s3/home).
+#' See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' @param OutputKey Use in combination with `OutputBucketName` to specify the output
 #' location of your transcript and, optionally, a unique name for your
@@ -3693,26 +3660,26 @@ transcribeservice_start_medical_scribe_job <- function(MedicalScribeJobName, Med
 #' 
 #' Here are some examples of how you can use `OutputKey`:
 #' 
-#' - If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
-#'   'my-transcript.json' as the `OutputKey`, your transcription output
-#'   path is `s3://DOC-EXAMPLE-BUCKET/my-transcript.json`.
+#' -   If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
+#'     'my-transcript.json' as the `OutputKey`, your transcription output
+#'     path is `s3://DOC-EXAMPLE-BUCKET/my-transcript.json`.
 #' 
-#' - If you specify 'my-first-transcription' as the
-#'   `MedicalTranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
-#'   `OutputBucketName`, and 'my-transcript' as the `OutputKey`, your
-#'   transcription output path is
-#'   `s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json`.
+#' -   If you specify 'my-first-transcription' as the
+#'     `MedicalTranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
+#'     `OutputBucketName`, and 'my-transcript' as the `OutputKey`, your
+#'     transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json`.
 #' 
-#' - If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
-#'   'test-files/my-transcript.json' as the `OutputKey`, your transcription
-#'   output path is
-#'   `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json`.
+#' -   If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
+#'     'test-files/my-transcript.json' as the `OutputKey`, your
+#'     transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json`.
 #' 
-#' - If you specify 'my-first-transcription' as the
-#'   `MedicalTranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
-#'   `OutputBucketName`, and 'test-files/my-transcript' as the `OutputKey`,
-#'   your transcription output path is
-#'   `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json`.
+#' -   If you specify 'my-first-transcription' as the
+#'     `MedicalTranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
+#'     `OutputBucketName`, and 'test-files/my-transcript' as the
+#'     `OutputKey`, your transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json`.
 #' 
 #' If you specify the name of an Amazon S3 bucket sub-folder that doesn't
 #' exist, one is created for you.
@@ -3876,8 +3843,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$start_medical_transcription_job_input(MedicalTranscriptionJobName = MedicalTranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ContentIdentificationType = ContentIdentificationType, Specialty = Specialty, Type = Type, Tags = Tags)
   output <- .transcribeservice$start_medical_transcription_job_output()
@@ -3906,25 +3872,25 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' [`start_transcription_job`][transcribeservice_start_transcription_job]
 #' request:
 #' 
-#' - `region`: The Amazon Web Services Region where you are making your
-#'   request. For a list of Amazon Web Services Regions supported with
-#'   Amazon Transcribe, refer to [Amazon Transcribe endpoints and
-#'   quotas](https://docs.aws.amazon.com/general/latest/gr/transcribe.html).
+#' -   `region`: The Amazon Web Services Region where you are making your
+#'     request. For a list of Amazon Web Services Regions supported with
+#'     Amazon Transcribe, refer to [Amazon Transcribe endpoints and
+#'     quotas](https://docs.aws.amazon.com/general/latest/gr/transcribe.html).
 #' 
-#' - `TranscriptionJobName`: A custom name you create for your
-#'   transcription job that is unique within your Amazon Web Services
-#'   account.
+#' -   `TranscriptionJobName`: A custom name you create for your
+#'     transcription job that is unique within your Amazon Web Services
+#'     account.
 #' 
-#' - `Media` (`MediaFileUri`): The Amazon S3 location of your media file.
+#' -   `Media` (`MediaFileUri`): The Amazon S3 location of your media file.
 #' 
-#' - One of `LanguageCode`, `IdentifyLanguage`, or
-#'   `IdentifyMultipleLanguages`: If you know the language of your media
-#'   file, specify it using the `LanguageCode` parameter; you can find all
-#'   valid language codes in the [Supported
-#'   languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
-#'   table. If you do not know the languages spoken in your media, use
-#'   either `IdentifyLanguage` or `IdentifyMultipleLanguages` and let
-#'   Amazon Transcribe identify the languages for you.
+#' -   One of `LanguageCode`, `IdentifyLanguage`, or
+#'     `IdentifyMultipleLanguages`: If you know the language of your media
+#'     file, specify it using the `LanguageCode` parameter; you can find
+#'     all valid language codes in the [Supported
+#'     languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html)
+#'     table. If you do not know the languages spoken in your media, use
+#'     either `IdentifyLanguage` or `IdentifyMultipleLanguages` and let
+#'     Amazon Transcribe identify the languages for you.
 #'
 #' @usage
 #' transcribeservice_start_transcription_job(TranscriptionJobName,
@@ -3987,8 +3953,9 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' `DOC-EXAMPLE-BUCKET` and `OutputKey` to `test-files/`.
 #' 
 #' Note that Amazon Transcribe must have permission to use the specified
-#' location. You can change Amazon S3 permissions using the Amazon Web
-#' Services Management Console. See also [Permissions Required for IAM User
+#' location. You can change Amazon S3 permissions using the [Amazon Web
+#' Services Management Console](https://console.aws.amazon.com/s3/home).
+#' See also [Permissions Required for IAM User
 #' Roles](https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user).
 #' 
 #' If you do not specify `OutputBucketName`, your transcript is placed in a
@@ -4002,25 +3969,26 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' Here are some examples of how you can use `OutputKey`:
 #' 
-#' - If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
-#'   'my-transcript.json' as the `OutputKey`, your transcription output
-#'   path is `s3://DOC-EXAMPLE-BUCKET/my-transcript.json`.
+#' -   If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
+#'     'my-transcript.json' as the `OutputKey`, your transcription output
+#'     path is `s3://DOC-EXAMPLE-BUCKET/my-transcript.json`.
 #' 
-#' - If you specify 'my-first-transcription' as the `TranscriptionJobName`,
-#'   'DOC-EXAMPLE-BUCKET' as the `OutputBucketName`, and 'my-transcript' as
-#'   the `OutputKey`, your transcription output path is
-#'   `s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json`.
+#' -   If you specify 'my-first-transcription' as the
+#'     `TranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
+#'     `OutputBucketName`, and 'my-transcript' as the `OutputKey`, your
+#'     transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json`.
 #' 
-#' - If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
-#'   'test-files/my-transcript.json' as the `OutputKey`, your transcription
-#'   output path is
-#'   `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json`.
+#' -   If you specify 'DOC-EXAMPLE-BUCKET' as the `OutputBucketName` and
+#'     'test-files/my-transcript.json' as the `OutputKey`, your
+#'     transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json`.
 #' 
-#' - If you specify 'my-first-transcription' as the `TranscriptionJobName`,
-#'   'DOC-EXAMPLE-BUCKET' as the `OutputBucketName`, and
-#'   'test-files/my-transcript' as the `OutputKey`, your transcription
-#'   output path is
-#'   `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json`.
+#' -   If you specify 'my-first-transcription' as the
+#'     `TranscriptionJobName`, 'DOC-EXAMPLE-BUCKET' as the
+#'     `OutputBucketName`, and 'test-files/my-transcript' as the
+#'     `OutputKey`, your transcription output path is
+#'     `s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json`.
 #' 
 #' If you specify the name of an Amazon S3 bucket sub-folder that doesn't
 #' exist, one is created for you.
@@ -4075,7 +4043,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' If you're using automatic language identification with your request and
 #' want to include a custom language model, a custom vocabulary, or a
-#' custom vocabulary filter, use instead the parameter with the
+#' custom vocabulary filter, use instead the `` parameter with the
 #' `LanguageModelName`, `VocabularyName` or `VocabularyFilterName`
 #' sub-parameters.
 #' @param ModelSettings Specify the custom language model you want to include with your
@@ -4182,11 +4150,11 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' 
 #' If you want to include a custom language model with your request but
 #' **do not** want to use automatic language identification, use instead
-#' the parameter with the `LanguageModelName` sub-parameter. If you want to
-#' include a custom vocabulary or a custom vocabulary filter (or both) with
-#' your request but **do not** want to use automatic language
-#' identification, use instead the parameter with the `VocabularyName` or
-#' `VocabularyFilterName` (or both) sub-parameter.
+#' the `` parameter with the `LanguageModelName` sub-parameter. If you want
+#' to include a custom vocabulary or a custom vocabulary filter (or both)
+#' with your request but **do not** want to use automatic language
+#' identification, use instead the `` parameter with the `VocabularyName`
+#' or `VocabularyFilterName` (or both) sub-parameter.
 #' @param ToxicityDetection Enables toxic speech detection in your transcript. If you include
 #' `ToxicityDetection` in your request, you must also include
 #' `ToxicityCategories`.
@@ -4378,8 +4346,7 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ModelSettings = ModelSettings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction, IdentifyLanguage = IdentifyLanguage, IdentifyMultipleLanguages = IdentifyMultipleLanguages, LanguageOptions = LanguageOptions, Subtitles = Subtitles, Tags = Tags, LanguageIdSettings = LanguageIdSettings, ToxicityDetection = ToxicityDetection)
   output <- .transcribeservice$start_transcription_job_output()
@@ -4447,8 +4414,7 @@ transcribeservice_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .transcribeservice$tag_resource_output()
@@ -4509,8 +4475,7 @@ transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .transcribeservice$untag_resource_output()
@@ -4736,8 +4701,7 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$update_call_analytics_category_input(CategoryName = CategoryName, Rules = Rules, InputType = InputType)
   output <- .transcribeservice$update_call_analytics_category_output()
@@ -4804,8 +4768,7 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$update_medical_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, VocabularyFileUri = VocabularyFileUri)
   output <- .transcribeservice$update_medical_vocabulary_output()
@@ -4917,8 +4880,7 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$update_vocabulary_input(VocabularyName = VocabularyName, LanguageCode = LanguageCode, Phrases = Phrases, VocabularyFileUri = VocabularyFileUri, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$update_vocabulary_output()
@@ -5016,8 +4978,7 @@ transcribeservice_update_vocabulary_filter <- function(VocabularyFilterName, Wor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .transcribeservice$update_vocabulary_filter_input(VocabularyFilterName = VocabularyFilterName, Words = Words, VocabularyFilterFileUri = VocabularyFilterFileUri, DataAccessRoleArn = DataAccessRoleArn)
   output <- .transcribeservice$update_vocabulary_filter_output()

@@ -24,9 +24,9 @@ For security group policies, the cleanup does the following for each
 security group in the policy:
 \itemize{
 \item Disassociates the security group from in-scope resources
-\item Deletes the security group if it was created through Firewall Manager
-and if it's no longer associated with any resources through another
-policy
+\item Deletes the security group if it was created through Firewall
+Manager and if it's no longer associated with any resources through
+another policy
 }
 
 For security group common policies, even if set to \code{False}, Firewall

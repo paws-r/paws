@@ -171,8 +171,7 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$batch_execute_statement_input(Statements = Statements, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_execute_statement_output()
@@ -262,72 +261,73 @@ dynamodb_batch_execute_statement <- function(Statements, ReturnConsumedCapacity 
 #' 
 #' Each element in the map of items to retrieve consists of the following:
 #' 
-#' - `ConsistentRead` - If `true`, a strongly consistent read is used; if
-#'   `false` (the default), an eventually consistent read is used.
+#' -   `ConsistentRead` - If `true`, a strongly consistent read is used; if
+#'     `false` (the default), an eventually consistent read is used.
 #' 
-#' - `ExpressionAttributeNames` - One or more substitution tokens for
-#'   attribute names in the `ProjectionExpression` parameter. The following
-#'   are some use cases for using `ExpressionAttributeNames`:
+#' -   `ExpressionAttributeNames` - One or more substitution tokens for
+#'     attribute names in the `ProjectionExpression` parameter. The
+#'     following are some use cases for using `ExpressionAttributeNames`:
 #' 
-#'   - To access an attribute whose name conflicts with a DynamoDB reserved
-#'     word.
+#'     -   To access an attribute whose name conflicts with a DynamoDB
+#'         reserved word.
 #' 
-#'   - To create a placeholder for repeating occurrences of an attribute
-#'     name in an expression.
+#'     -   To create a placeholder for repeating occurrences of an
+#'         attribute name in an expression.
 #' 
-#'   - To prevent special characters in an attribute name from being
-#'     misinterpreted in an expression.
+#'     -   To prevent special characters in an attribute name from being
+#'         misinterpreted in an expression.
 #' 
-#'   Use the **#** character in an expression to dereference an attribute
-#'   name. For example, consider the following attribute name:
+#'     Use the **#** character in an expression to dereference an
+#'     attribute name. For example, consider the following attribute name:
 #' 
-#'   - `Percentile`
+#'     -   `Percentile`
 #' 
-#'   The name of this attribute conflicts with a reserved word, so it
-#'   cannot be used directly in an expression. (For the complete list of
-#'   reserved words, see [Reserved
-#'   Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
-#'   in the *Amazon DynamoDB Developer Guide*). To work around this, you
-#'   could specify the following for `ExpressionAttributeNames`:
+#'     The name of this attribute conflicts with a reserved word, so it
+#'     cannot be used directly in an expression. (For the complete list of
+#'     reserved words, see [Reserved
+#'     Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+#'     in the *Amazon DynamoDB Developer Guide*). To work around this, you
+#'     could specify the following for `ExpressionAttributeNames`:
 #' 
-#'   - `{"#P":"Percentile"}`
+#'     -   `{"#P":"Percentile"}`
 #' 
-#'   You could then use this substitution in an expression, as in this
-#'   example:
+#'     You could then use this substitution in an expression, as in this
+#'     example:
 #' 
-#'   - `#P = :val`
+#'     -   `#P = :val`
 #' 
-#'   Tokens that begin with the **:** character are *expression attribute
-#'   values*, which are placeholders for the actual value at runtime.
+#'     Tokens that begin with the **:** character are *expression attribute
+#'     values*, which are placeholders for the actual value at runtime.
 #' 
-#'   For more information about expression attribute names, see [Accessing
-#'   Item
-#'   Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
-#'   in the *Amazon DynamoDB Developer Guide*.
+#'     For more information about expression attribute names, see
+#'     [Accessing Item
+#'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
+#'     in the *Amazon DynamoDB Developer Guide*.
 #' 
-#' - `Keys` - An array of primary key attribute values that define specific
-#'   items in the table. For each primary key, you must provide *all* of
-#'   the key attributes. For example, with a simple primary key, you only
-#'   need to provide the partition key value. For a composite key, you must
-#'   provide *both* the partition key value and the sort key value.
+#' -   `Keys` - An array of primary key attribute values that define
+#'     specific items in the table. For each primary key, you must provide
+#'     *all* of the key attributes. For example, with a simple primary key,
+#'     you only need to provide the partition key value. For a composite
+#'     key, you must provide *both* the partition key value and the sort
+#'     key value.
 #' 
-#' - `ProjectionExpression` - A string that identifies one or more
-#'   attributes to retrieve from the table. These attributes can include
-#'   scalars, sets, or elements of a JSON document. The attributes in the
-#'   expression must be separated by commas.
+#' -   `ProjectionExpression` - A string that identifies one or more
+#'     attributes to retrieve from the table. These attributes can include
+#'     scalars, sets, or elements of a JSON document. The attributes in the
+#'     expression must be separated by commas.
 #' 
-#'   If no attribute names are specified, then all attributes are returned.
-#'   If any of the requested attributes are not found, they do not appear
-#'   in the result.
+#'     If no attribute names are specified, then all attributes are
+#'     returned. If any of the requested attributes are not found, they do
+#'     not appear in the result.
 #' 
-#'   For more information, see [Accessing Item
-#'   Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
-#'   in the *Amazon DynamoDB Developer Guide*.
+#'     For more information, see [Accessing Item
+#'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
+#'     in the *Amazon DynamoDB Developer Guide*.
 #' 
-#' - `AttributesToGet` - This is a legacy parameter. Use
-#'   `ProjectionExpression` instead. For more information, see
-#'   [AttributesToGet](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
-#'   in the *Amazon DynamoDB Developer Guide*.
+#' -   `AttributesToGet` - This is a legacy parameter. Use
+#'     `ProjectionExpression` instead. For more information, see
+#'     [AttributesToGet](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+#'     in the *Amazon DynamoDB Developer Guide*.
 #' @param ReturnConsumedCapacity 
 #'
 #' @return
@@ -525,8 +525,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "RequestItems", output_token = "UnprocessedKeys"),
-    stream_api = FALSE
+    paginator = list(input_token = "RequestItems", output_token = "UnprocessedKeys")
   )
   input <- .dynamodb$batch_get_item_input(RequestItems = RequestItems, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$batch_get_item_output()
@@ -621,30 +620,30 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' If one or more of the following is true, DynamoDB rejects the entire
 #' batch write operation:
 #' 
-#' - One or more tables specified in the
-#'   [`batch_write_item`][dynamodb_batch_write_item] request does not
-#'   exist.
+#' -   One or more tables specified in the
+#'     [`batch_write_item`][dynamodb_batch_write_item] request does not
+#'     exist.
 #' 
-#' - Primary key attributes specified on an item in the request do not
-#'   match those in the corresponding table's primary key schema.
+#' -   Primary key attributes specified on an item in the request do not
+#'     match those in the corresponding table's primary key schema.
 #' 
-#' - You try to perform multiple operations on the same item in the same
-#'   [`batch_write_item`][dynamodb_batch_write_item] request. For example,
-#'   you cannot put and delete the same item in the same
-#'   [`batch_write_item`][dynamodb_batch_write_item] request.
+#' -   You try to perform multiple operations on the same item in the same
+#'     [`batch_write_item`][dynamodb_batch_write_item] request. For
+#'     example, you cannot put and delete the same item in the same
+#'     [`batch_write_item`][dynamodb_batch_write_item] request.
 #' 
-#' - Your request contains at least two items with identical hash and range
-#'   keys (which essentially is two put operations).
+#' -   Your request contains at least two items with identical hash and
+#'     range keys (which essentially is two put operations).
 #' 
-#' - There are more than 25 requests in the batch.
+#' -   There are more than 25 requests in the batch.
 #' 
-#' - Any individual item in a batch exceeds 400 KB.
+#' -   Any individual item in a batch exceeds 400 KB.
 #' 
-#' - The total request size exceeds 16 MB.
+#' -   The total request size exceeds 16 MB.
 #' 
-#' - Any individual items with keys exceeding the key length limits. For a
-#'   partition key, the limit is 2048 bytes and for a sort key, the limit
-#'   is 1024 bytes.
+#' -   Any individual items with keys exceeding the key length limits. For
+#'     a partition key, the limit is 2048 bytes and for a sort key, the
+#'     limit is 1024 bytes.
 #'
 #' @usage
 #' dynamodb_batch_write_item(RequestItems, ReturnConsumedCapacity,
@@ -654,32 +653,32 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' list of operations to be performed (`DeleteRequest` or `PutRequest`).
 #' Each element in the map consists of the following:
 #' 
-#' - `DeleteRequest` - Perform a [`delete_item`][dynamodb_delete_item]
-#'   operation on the specified item. The item to be deleted is identified
-#'   by a `Key` subelement:
+#' -   `DeleteRequest` - Perform a [`delete_item`][dynamodb_delete_item]
+#'     operation on the specified item. The item to be deleted is
+#'     identified by a `Key` subelement:
 #' 
-#'   - `Key` - A map of primary key attribute values that uniquely identify
-#'     the item. Each entry in this map consists of an attribute name and
-#'     an attribute value. For each primary key, you must provide *all* of
-#'     the key attributes. For example, with a simple primary key, you only
-#'     need to provide a value for the partition key. For a composite
-#'     primary key, you must provide values for *both* the partition key
-#'     and the sort key.
+#'     -   `Key` - A map of primary key attribute values that uniquely
+#'         identify the item. Each entry in this map consists of an
+#'         attribute name and an attribute value. For each primary key, you
+#'         must provide *all* of the key attributes. For example, with a
+#'         simple primary key, you only need to provide a value for the
+#'         partition key. For a composite primary key, you must provide
+#'         values for *both* the partition key and the sort key.
 #' 
-#' - `PutRequest` - Perform a [`put_item`][dynamodb_put_item] operation on
-#'   the specified item. The item to be put is identified by an `Item`
-#'   subelement:
+#' -   `PutRequest` - Perform a [`put_item`][dynamodb_put_item] operation
+#'     on the specified item. The item to be put is identified by an `Item`
+#'     subelement:
 #' 
-#'   - `Item` - A map of attributes and their values. Each entry in this
-#'     map consists of an attribute name and an attribute value. Attribute
-#'     values must not be null; string and binary type attributes must have
-#'     lengths greater than zero; and set type attributes must not be
-#'     empty. Requests that contain empty values are rejected with a
-#'     `ValidationException` exception.
+#'     -   `Item` - A map of attributes and their values. Each entry in
+#'         this map consists of an attribute name and an attribute value.
+#'         Attribute values must not be null; string and binary type
+#'         attributes must have lengths greater than zero; and set type
+#'         attributes must not be empty. Requests that contain empty values
+#'         are rejected with a `ValidationException` exception.
 #' 
-#'     If you specify any attributes that are part of an index key, then
-#'     the data types for those attributes must match those of the schema
-#'     in the table's attribute definition.
+#'         If you specify any attributes that are part of an index key,
+#'         then the data types for those attributes must match those of the
+#'         schema in the table's attribute definition.
 #' @param ReturnConsumedCapacity 
 #' @param ReturnItemCollectionMetrics Determines whether item collection metrics are returned. If set to
 #' `SIZE`, the response includes statistics about item collections, if any,
@@ -945,8 +944,7 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$batch_write_item_input(RequestItems = RequestItems, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics)
   output <- .dynamodb$batch_write_item_output()
@@ -987,13 +985,13 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 #' 
 #' Along with data, the following are also included on the backups:
 #' 
-#' - Global secondary indexes (GSIs)
+#' -   Global secondary indexes (GSIs)
 #' 
-#' - Local secondary indexes (LSIs)
+#' -   Local secondary indexes (LSIs)
 #' 
-#' - Streams
+#' -   Streams
 #' 
-#' - Provisioned read and write capacity
+#' -   Provisioned read and write capacity
 #'
 #' @usage
 #' dynamodb_create_backup(TableName, BackupName)
@@ -1041,8 +1039,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$create_backup_input(TableName = TableName, BackupName = BackupName)
   output <- .dynamodb$create_backup_output()
@@ -1078,30 +1075,31 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 #' If you want to add a new replica table to a global table, each of the
 #' following conditions must be true:
 #' 
-#' - The table must have the same primary key as all of the other replicas.
+#' -   The table must have the same primary key as all of the other
+#'     replicas.
 #' 
-#' - The table must have the same name as all of the other replicas.
+#' -   The table must have the same name as all of the other replicas.
 #' 
-#' - The table must have DynamoDB Streams enabled, with the stream
-#'   containing both the new and the old images of the item.
+#' -   The table must have DynamoDB Streams enabled, with the stream
+#'     containing both the new and the old images of the item.
 #' 
-#' - None of the replica tables in the global table can contain any data.
+#' -   None of the replica tables in the global table can contain any data.
 #' 
 #' If global secondary indexes are specified, then the following conditions
 #' must also be met:
 #' 
-#' - The global secondary indexes must have the same name.
+#' -   The global secondary indexes must have the same name.
 #' 
-#' - The global secondary indexes must have the same hash key and sort key
-#'   (if present).
+#' -   The global secondary indexes must have the same hash key and sort
+#'     key (if present).
 #' 
 #' If local secondary indexes are specified, then the following conditions
 #' must also be met:
 #' 
-#' - The local secondary indexes must have the same name.
+#' -   The local secondary indexes must have the same name.
 #' 
-#' - The local secondary indexes must have the same hash key and sort key
-#'   (if present).
+#' -   The local secondary indexes must have the same hash key and sort key
+#'     (if present).
 #' 
 #' Write capacity settings should be set consistently across your replica
 #' tables and secondary indexes. DynamoDB strongly recommends enabling auto
@@ -1192,8 +1190,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$create_global_table_input(GlobalTableName = GlobalTableName, ReplicationGroup = ReplicationGroup)
   output <- .dynamodb$create_global_table_output()
@@ -1248,13 +1245,13 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #' Each `KeySchemaElement` in the array is composed of:
 #' 
-#' - `AttributeName` - The name of this key attribute.
+#' -   `AttributeName` - The name of this key attribute.
 #' 
-#' - `KeyType` - The role that the key attribute will assume:
+#' -   `KeyType` - The role that the key attribute will assume:
 #' 
-#'   - `HASH` - partition key
+#'     -   `HASH` - partition key
 #' 
-#'   - `RANGE` - sort key
+#'     -   `RANGE` - sort key
 #' 
 #' The partition key of an item is also known as its *hash attribute*. The
 #' term "hash attribute" derives from the DynamoDB usage of an internal
@@ -1284,80 +1281,85 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' 
 #' Each local secondary index in the array includes the following:
 #' 
-#' - `IndexName` - The name of the local secondary index. Must be unique
-#'   only for this table.
+#' -   `IndexName` - The name of the local secondary index. Must be unique
+#'     only for this table.
 #' 
-#' - `KeySchema` - Specifies the key schema for the local secondary index.
-#'   The key schema must begin with the same partition key as the table.
+#' -   `KeySchema` - Specifies the key schema for the local secondary
+#'     index. The key schema must begin with the same partition key as the
+#'     table.
 #' 
-#' - `Projection` - Specifies attributes that are copied (projected) from
-#'   the table into the index. These are in addition to the primary key
-#'   attributes and index key attributes, which are automatically
-#'   projected. Each attribute specification is composed of:
+#' -   `Projection` - Specifies attributes that are copied (projected) from
+#'     the table into the index. These are in addition to the primary key
+#'     attributes and index key attributes, which are automatically
+#'     projected. Each attribute specification is composed of:
 #' 
-#'   - `ProjectionType` - One of the following:
+#'     -   `ProjectionType` - One of the following:
 #' 
-#'     - `KEYS_ONLY` - Only the index and primary keys are projected into
-#'       the index.
+#'         -   `KEYS_ONLY` - Only the index and primary keys are projected
+#'             into the index.
 #' 
-#'     - `INCLUDE` - Only the specified table attributes are projected into
-#'       the index. The list of projected attributes is in
-#'       `NonKeyAttributes`.
+#'         -   `INCLUDE` - Only the specified table attributes are
+#'             projected into the index. The list of projected attributes
+#'             is in `NonKeyAttributes`.
 #' 
-#'     - `ALL` - All of the table attributes are projected into the index.
+#'         -   `ALL` - All of the table attributes are projected into the
+#'             index.
 #' 
-#'   - `NonKeyAttributes` - A list of one or more non-key attribute names
-#'     that are projected into the secondary index. The total count of
-#'     attributes provided in `NonKeyAttributes`, summed across all of the
-#'     secondary indexes, must not exceed 100. If you project the same
-#'     attribute into two different indexes, this counts as two distinct
-#'     attributes when determining the total.
+#'     -   `NonKeyAttributes` - A list of one or more non-key attribute
+#'         names that are projected into the secondary index. The total
+#'         count of attributes provided in `NonKeyAttributes`, summed
+#'         across all of the secondary indexes, must not exceed 100. If you
+#'         project the same attribute into two different indexes, this
+#'         counts as two distinct attributes when determining the total.
 #' @param GlobalSecondaryIndexes One or more global secondary indexes (the maximum is 20) to be created
 #' on the table. Each global secondary index in the array includes the
 #' following:
 #' 
-#' - `IndexName` - The name of the global secondary index. Must be unique
-#'   only for this table.
+#' -   `IndexName` - The name of the global secondary index. Must be unique
+#'     only for this table.
 #' 
-#' - `KeySchema` - Specifies the key schema for the global secondary index.
+#' -   `KeySchema` - Specifies the key schema for the global secondary
+#'     index.
 #' 
-#' - `Projection` - Specifies attributes that are copied (projected) from
-#'   the table into the index. These are in addition to the primary key
-#'   attributes and index key attributes, which are automatically
-#'   projected. Each attribute specification is composed of:
+#' -   `Projection` - Specifies attributes that are copied (projected) from
+#'     the table into the index. These are in addition to the primary key
+#'     attributes and index key attributes, which are automatically
+#'     projected. Each attribute specification is composed of:
 #' 
-#'   - `ProjectionType` - One of the following:
+#'     -   `ProjectionType` - One of the following:
 #' 
-#'     - `KEYS_ONLY` - Only the index and primary keys are projected into
-#'       the index.
+#'         -   `KEYS_ONLY` - Only the index and primary keys are projected
+#'             into the index.
 #' 
-#'     - `INCLUDE` - Only the specified table attributes are projected into
-#'       the index. The list of projected attributes is in
-#'       `NonKeyAttributes`.
+#'         -   `INCLUDE` - Only the specified table attributes are
+#'             projected into the index. The list of projected attributes
+#'             is in `NonKeyAttributes`.
 #' 
-#'     - `ALL` - All of the table attributes are projected into the index.
+#'         -   `ALL` - All of the table attributes are projected into the
+#'             index.
 #' 
-#'   - `NonKeyAttributes` - A list of one or more non-key attribute names
-#'     that are projected into the secondary index. The total count of
-#'     attributes provided in `NonKeyAttributes`, summed across all of the
-#'     secondary indexes, must not exceed 100. If you project the same
-#'     attribute into two different indexes, this counts as two distinct
-#'     attributes when determining the total.
+#'     -   `NonKeyAttributes` - A list of one or more non-key attribute
+#'         names that are projected into the secondary index. The total
+#'         count of attributes provided in `NonKeyAttributes`, summed
+#'         across all of the secondary indexes, must not exceed 100. If you
+#'         project the same attribute into two different indexes, this
+#'         counts as two distinct attributes when determining the total.
 #' 
-#' - `ProvisionedThroughput` - The provisioned throughput settings for the
-#'   global secondary index, consisting of read and write capacity units.
+#' -   `ProvisionedThroughput` - The provisioned throughput settings for
+#'     the global secondary index, consisting of read and write capacity
+#'     units.
 #' @param BillingMode Controls how you are charged for read and write throughput and how you
 #' manage capacity. This setting can be changed later.
 #' 
-#' - `PROVISIONED` - We recommend using `PROVISIONED` for predictable
-#'   workloads. `PROVISIONED` sets the billing mode to [Provisioned
-#'   capacity
-#'   mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
+#' -   `PROVISIONED` - We recommend using `PROVISIONED` for predictable
+#'     workloads. `PROVISIONED` sets the billing mode to [Provisioned
+#'     capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 #' 
-#' - `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
-#'   unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
-#'   [On-demand capacity
-#'   mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
+#' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
+#'     unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
+#'     [On-demand capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
 #' @param ProvisionedThroughput Represents the provisioned throughput settings for a specified table or
 #' index. The settings can be modified using the
 #' [`update_table`][dynamodb_update_table] operation.
@@ -1373,24 +1375,24 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param StreamSpecification The settings for DynamoDB Streams on the table. These settings consist
 #' of:
 #' 
-#' - `StreamEnabled` - Indicates whether DynamoDB Streams is to be enabled
-#'   (true) or disabled (false).
+#' -   `StreamEnabled` - Indicates whether DynamoDB Streams is to be
+#'     enabled (true) or disabled (false).
 #' 
-#' - `StreamViewType` - When an item in the table is modified,
-#'   `StreamViewType` determines what information is written to the table's
-#'   stream. Valid values for `StreamViewType` are:
+#' -   `StreamViewType` - When an item in the table is modified,
+#'     `StreamViewType` determines what information is written to the
+#'     table's stream. Valid values for `StreamViewType` are:
 #' 
-#'   - `KEYS_ONLY` - Only the key attributes of the modified item are
-#'     written to the stream.
+#'     -   `KEYS_ONLY` - Only the key attributes of the modified item are
+#'         written to the stream.
 #' 
-#'   - `NEW_IMAGE` - The entire item, as it appears after it was modified,
-#'     is written to the stream.
+#'     -   `NEW_IMAGE` - The entire item, as it appears after it was
+#'         modified, is written to the stream.
 #' 
-#'   - `OLD_IMAGE` - The entire item, as it appeared before it was
-#'     modified, is written to the stream.
+#'     -   `OLD_IMAGE` - The entire item, as it appeared before it was
+#'         modified, is written to the stream.
 #' 
-#'   - `NEW_AND_OLD_IMAGES` - Both the new and the old item images of the
-#'     item are written to the stream.
+#'     -   `NEW_AND_OLD_IMAGES` - Both the new and the old item images of
+#'         the item are written to the stream.
 #' @param SSESpecification Represents the settings used to enable server-side encryption.
 #' @param Tags A list of key-value pairs to label the table. For more information, see
 #' [Tagging for
@@ -1729,8 +1731,7 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$create_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, KeySchema = KeySchema, LocalSecondaryIndexes = LocalSecondaryIndexes, GlobalSecondaryIndexes = GlobalSecondaryIndexes, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, Tags = Tags, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, ResourcePolicy = ResourcePolicy, OnDemandThroughput = OnDemandThroughput)
   output <- .dynamodb$create_table_output()
@@ -1880,8 +1881,7 @@ dynamodb_delete_backup <- function(BackupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$delete_backup_input(BackupArn = BackupArn)
   output <- .dynamodb$delete_backup_output()
@@ -1939,11 +1939,11 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' appeared before they were deleted. For
 #' [`delete_item`][dynamodb_delete_item], the valid values are:
 #' 
-#' - `NONE` - If `ReturnValues` is not specified, or if its value is
-#'   `NONE`, then nothing is returned. (This setting is the default for
-#'   `ReturnValues`.)
+#' -   `NONE` - If `ReturnValues` is not specified, or if its value is
+#'     `NONE`, then nothing is returned. (This setting is the default for
+#'     `ReturnValues`.)
 #' 
-#' - `ALL_OLD` - The content of the old item is returned.
+#' -   `ALL_OLD` - The content of the old item is returned.
 #' 
 #' There is no additional cost associated with requesting a return value
 #' aside from the small network and processing overhead of receiving a
@@ -1962,14 +1962,14 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' 
 #' An expression can contain any of the following:
 #' 
-#' - Functions:
-#'   `attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size`
+#' -   Functions:
+#'     `attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size`
 #' 
-#'   These function names are case-sensitive.
+#'     These function names are case-sensitive.
 #' 
-#' - Comparison operators: `= | <> | < | > | <= | >= | BETWEEN | IN `
+#' -   Comparison operators: `= | <> | < | > | <= | >= | BETWEEN | IN `
 #' 
-#' - Logical operators: `AND | OR | NOT`
+#' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information about condition expressions, see [Condition
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
@@ -1977,19 +1977,19 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
 #' 
-#' - To access an attribute whose name conflicts with a DynamoDB reserved
-#'   word.
+#' -   To access an attribute whose name conflicts with a DynamoDB reserved
+#'     word.
 #' 
-#' - To create a placeholder for repeating occurrences of an attribute name
-#'   in an expression.
+#' -   To create a placeholder for repeating occurrences of an attribute
+#'     name in an expression.
 #' 
-#' - To prevent special characters in an attribute name from being
-#'   misinterpreted in an expression.
+#' -   To prevent special characters in an attribute name from being
+#'     misinterpreted in an expression.
 #' 
 #' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
-#' - `Percentile`
+#' -   `Percentile`
 #' 
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
@@ -1998,12 +1998,12 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
-#' - `{"#P":"Percentile"}`
+#' -   `{"#P":"Percentile"}`
 #' 
 #' You could then use this substitution in an expression, as in this
 #' example:
 #' 
-#' - `#P = :val`
+#' -   `#P = :val`
 #' 
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
@@ -2266,8 +2266,7 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$delete_item_input(TableName = TableName, Key = Key, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$delete_item_output()
@@ -2349,8 +2348,7 @@ dynamodb_delete_resource_policy <- function(ResourceArn, ExpectedRevisionId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$delete_resource_policy_input(ResourceArn = ResourceArn, ExpectedRevisionId = ExpectedRevisionId)
   output <- .dynamodb$delete_resource_policy_output()
@@ -2604,8 +2602,7 @@ dynamodb_delete_table <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$delete_table_input(TableName = TableName)
   output <- .dynamodb$delete_table_output()
@@ -2755,8 +2752,7 @@ dynamodb_describe_backup <- function(BackupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_backup_input(BackupArn = BackupArn)
   output <- .dynamodb$describe_backup_output()
@@ -2835,8 +2831,7 @@ dynamodb_describe_continuous_backups <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_continuous_backups_input(TableName = TableName)
   output <- .dynamodb$describe_continuous_backups_output()
@@ -2901,8 +2896,7 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_contributor_insights_input(TableName = TableName, IndexName = IndexName)
   output <- .dynamodb$describe_contributor_insights_output()
@@ -2955,8 +2949,7 @@ dynamodb_describe_endpoints <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_endpoints_input()
   output <- .dynamodb$describe_endpoints_output()
@@ -3040,8 +3033,7 @@ dynamodb_describe_export <- function(ExportArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_export_input(ExportArn = ExportArn)
   output <- .dynamodb$describe_export_output()
@@ -3145,8 +3137,7 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_global_table_input(GlobalTableName = GlobalTableName)
   output <- .dynamodb$describe_global_table_output()
@@ -3304,8 +3295,7 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_global_table_settings_input(GlobalTableName = GlobalTableName)
   output <- .dynamodb$describe_global_table_settings_output()
@@ -3442,8 +3432,7 @@ dynamodb_describe_import <- function(ImportArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_import_input(ImportArn = ImportArn)
   output <- .dynamodb$describe_import_output()
@@ -3500,8 +3489,7 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_kinesis_streaming_destination_input(TableName = TableName)
   output <- .dynamodb$describe_kinesis_streaming_destination_output()
@@ -3555,17 +3543,17 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 #' 4.  For each table name listed by [`list_tables`][dynamodb_list_tables],
 #'     do the following:
 #' 
-#'     - Call [`describe_table`][dynamodb_describe_table] with the table
-#'       name.
+#'     -   Call [`describe_table`][dynamodb_describe_table] with the table
+#'         name.
 #' 
-#'     - Use the data returned by
-#'       [`describe_table`][dynamodb_describe_table] to add the read
-#'       capacity units and write capacity units provisioned for the table
-#'       itself to your variables.
+#'     -   Use the data returned by
+#'         [`describe_table`][dynamodb_describe_table] to add the read
+#'         capacity units and write capacity units provisioned for the
+#'         table itself to your variables.
 #' 
-#'     - If the table has one or more global secondary indexes (GSIs), loop
-#'       over these GSIs and add their provisioned capacity values to your
-#'       variables as well.
+#'     -   If the table has one or more global secondary indexes (GSIs),
+#'         loop over these GSIs and add their provisioned capacity values
+#'         to your variables as well.
 #' 
 #' 5.  Report the account quotas for that Region returned by
 #'     [`describe_limits`][dynamodb_describe_limits], along with the total
@@ -3629,8 +3617,7 @@ dynamodb_describe_limits <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_limits_input()
   output <- .dynamodb$describe_limits_output()
@@ -3874,8 +3861,7 @@ dynamodb_describe_table <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_table_input(TableName = TableName)
   output <- .dynamodb$describe_table_output()
@@ -4012,8 +3998,7 @@ dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_table_replica_auto_scaling_input(TableName = TableName)
   output <- .dynamodb$describe_table_replica_auto_scaling_output()
@@ -4067,8 +4052,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$describe_time_to_live_input(TableName = TableName)
   output <- .dynamodb$describe_time_to_live_output()
@@ -4130,8 +4114,7 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$disable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, EnableKinesisStreamingConfiguration = EnableKinesisStreamingConfiguration)
   output <- .dynamodb$disable_kinesis_streaming_destination_output()
@@ -4196,8 +4179,7 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$enable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, EnableKinesisStreamingConfiguration = EnableKinesisStreamingConfiguration)
   output <- .dynamodb$enable_kinesis_streaming_destination_output()
@@ -4390,8 +4372,7 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken, ReturnConsumedCapacity = ReturnConsumedCapacity, Limit = Limit, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$execute_statement_output()
@@ -4539,8 +4520,7 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$execute_transaction_input(TransactStatements = TransactStatements, ClientRequestToken = ClientRequestToken, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$execute_transaction_output()
@@ -4592,9 +4572,9 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' @param S3SseAlgorithm Type of encryption used on the bucket where export data will be stored.
 #' Valid values for `S3SseAlgorithm` are:
 #' 
-#' - `AES256` - server-side encryption with Amazon S3 managed keys
+#' -   `AES256` - server-side encryption with Amazon S3 managed keys
 #' 
-#' - `KMS` - server-side encryption with KMS managed keys
+#' -   `KMS` - server-side encryption with KMS managed keys
 #' @param S3SseKmsKeyId The ID of the KMS managed key used to encrypt the S3 bucket where export
 #' data will be stored (if applicable).
 #' @param ExportFormat The format for the exported data. Valid values for `ExportFormat` are
@@ -4688,8 +4668,7 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$export_table_to_point_in_time_input(TableArn = TableArn, ExportTime = ExportTime, ClientToken = ClientToken, S3Bucket = S3Bucket, S3BucketOwner = S3BucketOwner, S3Prefix = S3Prefix, S3SseAlgorithm = S3SseAlgorithm, S3SseKmsKeyId = S3SseKmsKeyId, ExportFormat = ExportFormat, ExportType = ExportType, IncrementalExportSpecification = IncrementalExportSpecification)
   output <- .dynamodb$export_table_to_point_in_time_output()
@@ -4751,19 +4730,19 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
 #' 
-#' - To access an attribute whose name conflicts with a DynamoDB reserved
-#'   word.
+#' -   To access an attribute whose name conflicts with a DynamoDB reserved
+#'     word.
 #' 
-#' - To create a placeholder for repeating occurrences of an attribute name
-#'   in an expression.
+#' -   To create a placeholder for repeating occurrences of an attribute
+#'     name in an expression.
 #' 
-#' - To prevent special characters in an attribute name from being
-#'   misinterpreted in an expression.
+#' -   To prevent special characters in an attribute name from being
+#'     misinterpreted in an expression.
 #' 
 #' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
-#' - `Percentile`
+#' -   `Percentile`
 #' 
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
@@ -4772,12 +4751,12 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
-#' - `{"#P":"Percentile"}`
+#' -   `{"#P":"Percentile"}`
 #' 
 #' You could then use this substitution in an expression, as in this
 #' example:
 #' 
-#' - `#P = :val`
+#' -   `#P = :val`
 #' 
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
@@ -4911,8 +4890,7 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$get_item_input(TableName = TableName, Key = Key, AttributesToGet = AttributesToGet, ConsistentRead = ConsistentRead, ReturnConsumedCapacity = ReturnConsumedCapacity, ProjectionExpression = ProjectionExpression, ExpressionAttributeNames = ExpressionAttributeNames)
   output <- .dynamodb$get_item_output()
@@ -4938,22 +4916,22 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #' [`get_resource_policy`][dynamodb_get_resource_policy] request
 #' immediately after issuing another request:
 #' 
-#' - If you issue a [`get_resource_policy`][dynamodb_get_resource_policy]
-#'   request immediately after a
-#'   [`put_resource_policy`][dynamodb_put_resource_policy] request,
-#'   DynamoDB might return a `PolicyNotFoundException`.
+#' -   If you issue a [`get_resource_policy`][dynamodb_get_resource_policy]
+#'     request immediately after a
+#'     [`put_resource_policy`][dynamodb_put_resource_policy] request,
+#'     DynamoDB might return a `PolicyNotFoundException`.
 #' 
-#' - If you issue a
-#'   [`get_resource_policy`][dynamodb_get_resource_policy]request
-#'   immediately after a
-#'   [`delete_resource_policy`][dynamodb_delete_resource_policy] request,
-#'   DynamoDB might return the policy that was present before the deletion
-#'   request.
+#' -   If you issue a
+#'     [`get_resource_policy`][dynamodb_get_resource_policy]request
+#'     immediately after a
+#'     [`delete_resource_policy`][dynamodb_delete_resource_policy] request,
+#'     DynamoDB might return the policy that was present before the
+#'     deletion request.
 #' 
-#' - If you issue a [`get_resource_policy`][dynamodb_get_resource_policy]
-#'   request immediately after a [`create_table`][dynamodb_create_table]
-#'   request, which includes a resource-based policy, DynamoDB might return
-#'   a `ResourceNotFoundException` or a `PolicyNotFoundException`.
+#' -   If you issue a [`get_resource_policy`][dynamodb_get_resource_policy]
+#'     request immediately after a [`create_table`][dynamodb_create_table]
+#'     request, which includes a resource-based policy, DynamoDB might
+#'     return a `ResourceNotFoundException` or a `PolicyNotFoundException`.
 #' 
 #' Because [`get_resource_policy`][dynamodb_get_resource_policy] uses an
 #' *eventually consistent* query, the metadata for your policy or table
@@ -5003,8 +4981,7 @@ dynamodb_get_resource_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$get_resource_policy_input(ResourceArn = ResourceArn)
   output <- .dynamodb$get_resource_policy_output()
@@ -5229,8 +5206,7 @@ dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputForma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$import_table_input(ClientToken = ClientToken, S3BucketSource = S3BucketSource, InputFormat = InputFormat, InputFormatOptions = InputFormatOptions, InputCompressionType = InputCompressionType, TableCreationParameters = TableCreationParameters)
   output <- .dynamodb$import_table_output()
@@ -5285,12 +5261,12 @@ dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputForma
 #' 
 #' Where `BackupType` can be:
 #' 
-#' - `USER` - On-demand backup created by you. (The default setting if no
-#'   other backup types are specified.)
+#' -   `USER` - On-demand backup created by you. (The default setting if no
+#'     other backup types are specified.)
 #' 
-#' - `SYSTEM` - On-demand backup automatically created by DynamoDB.
+#' -   `SYSTEM` - On-demand backup automatically created by DynamoDB.
 #' 
-#' - `ALL` - All types of on-demand backups (USER and SYSTEM).
+#' -   `ALL` - All types of on-demand backups (USER and SYSTEM).
 #'
 #' @return
 #' A list with the following syntax:
@@ -5345,8 +5321,7 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$list_backups_input(TableName = TableName, Limit = Limit, TimeRangeLowerBound = TimeRangeLowerBound, TimeRangeUpperBound = TimeRangeUpperBound, ExclusiveStartBackupArn = ExclusiveStartBackupArn, BackupType = BackupType)
   output <- .dynamodb$list_backups_output()
@@ -5408,8 +5383,7 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .dynamodb$list_contributor_insights_input(TableName = TableName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .dynamodb$list_contributor_insights_output()
@@ -5470,8 +5444,7 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .dynamodb$list_exports_input(TableArn = TableArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .dynamodb$list_exports_output()
@@ -5555,8 +5528,7 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$list_global_tables_input(ExclusiveStartGlobalTableName = ExclusiveStartGlobalTableName, Limit = Limit, RegionName = RegionName)
   output <- .dynamodb$list_global_tables_output()
@@ -5631,8 +5603,7 @@ dynamodb_list_imports <- function(TableArn = NULL, PageSize = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "PageSize", output_token = "NextToken")
   )
   input <- .dynamodb$list_imports_input(TableArn = TableArn, PageSize = PageSize, NextToken = NextToken)
   output <- .dynamodb$list_imports_output()
@@ -5698,8 +5669,7 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartTableName", limit_key = "Limit", output_token = "LastEvaluatedTableName", result_key = "TableNames"),
-    stream_api = FALSE
+    paginator = list(input_token = "ExclusiveStartTableName", limit_key = "Limit", output_token = "LastEvaluatedTableName", result_key = "TableNames")
   )
   input <- .dynamodb$list_tables_input(ExclusiveStartTableName = ExclusiveStartTableName, Limit = Limit)
   output <- .dynamodb$list_tables_output()
@@ -5763,8 +5733,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$list_tags_of_resource_input(ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .dynamodb$list_tags_of_resource_output()
@@ -5849,12 +5818,13 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' [`put_item`][dynamodb_put_item] request. For
 #' [`put_item`][dynamodb_put_item], the valid values are:
 #' 
-#' - `NONE` - If `ReturnValues` is not specified, or if its value is
-#'   `NONE`, then nothing is returned. (This setting is the default for
-#'   `ReturnValues`.)
+#' -   `NONE` - If `ReturnValues` is not specified, or if its value is
+#'     `NONE`, then nothing is returned. (This setting is the default for
+#'     `ReturnValues`.)
 #' 
-#' - `ALL_OLD` - If [`put_item`][dynamodb_put_item] overwrote an attribute
-#'   name-value pair, then the content of the old item is returned.
+#' -   `ALL_OLD` - If [`put_item`][dynamodb_put_item] overwrote an
+#'     attribute name-value pair, then the content of the old item is
+#'     returned.
 #' 
 #' The values returned are strongly consistent.
 #' 
@@ -5879,14 +5849,14 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' 
 #' An expression can contain any of the following:
 #' 
-#' - Functions:
-#'   `attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size`
+#' -   Functions:
+#'     `attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size`
 #' 
-#'   These function names are case-sensitive.
+#'     These function names are case-sensitive.
 #' 
-#' - Comparison operators: `= | <> | < | > | <= | >= | BETWEEN | IN `
+#' -   Comparison operators: `= | <> | < | > | <= | >= | BETWEEN | IN `
 #' 
-#' - Logical operators: `AND | OR | NOT`
+#' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information on condition expressions, see [Condition
 #' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
@@ -5894,19 +5864,19 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
 #' 
-#' - To access an attribute whose name conflicts with a DynamoDB reserved
-#'   word.
+#' -   To access an attribute whose name conflicts with a DynamoDB reserved
+#'     word.
 #' 
-#' - To create a placeholder for repeating occurrences of an attribute name
-#'   in an expression.
+#' -   To create a placeholder for repeating occurrences of an attribute
+#'     name in an expression.
 #' 
-#' - To prevent special characters in an attribute name from being
-#'   misinterpreted in an expression.
+#' -   To prevent special characters in an attribute name from being
+#'     misinterpreted in an expression.
 #' 
 #' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
-#' - `Percentile`
+#' -   `Percentile`
 #' 
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
@@ -5915,12 +5885,12 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
-#' - `{"#P":"Percentile"}`
+#' -   `{"#P":"Percentile"}`
 #' 
 #' You could then use this substitution in an expression, as in this
 #' example:
 #' 
-#' - `#P = :val`
+#' -   `#P = :val`
 #' 
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
@@ -6186,8 +6156,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$put_item_input(TableName = TableName, Item = Item, Expected = Expected, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ConditionalOperator = ConditionalOperator, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$put_item_output()
@@ -6244,13 +6213,13 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' document.
 #' @param Policy &#91;required&#93; An Amazon Web Services resource-based policy document in JSON format.
 #' 
-#' - The maximum size supported for a resource-based policy document is 20
-#'   KB. DynamoDB counts whitespaces when calculating the size of a policy
-#'   against this limit.
+#' -   The maximum size supported for a resource-based policy document is
+#'     20 KB. DynamoDB counts whitespaces when calculating the size of a
+#'     policy against this limit.
 #' 
-#' - Within a resource-based policy, if the action for a DynamoDB
-#'   service-linked role (SLR) to replicate data for a global table is
-#'   denied, adding or deleting a replica will fail with an error.
+#' -   Within a resource-based policy, if the action for a DynamoDB
+#'     service-linked role (SLR) to replicate data for a global table is
+#'     denied, adding or deleting a replica will fail with an error.
 #' 
 #' For a full list of all considerations that apply while attaching a
 #' resource-based policy, see [Resource-based policy
@@ -6298,8 +6267,7 @@ dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy, ExpectedRevisionId = ExpectedRevisionId, ConfirmRemoveSelfResourceAccess = ConfirmRemoveSelfResourceAccess)
   output <- .dynamodb$put_resource_policy_output()
@@ -6391,37 +6359,38 @@ dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId
 #' the case of an index, some or all of the attributes projected into the
 #' index.
 #' 
-#' - `ALL_ATTRIBUTES` - Returns all of the item attributes from the
-#'   specified table or index. If you query a local secondary index, then
-#'   for each matching item in the index, DynamoDB fetches the entire item
-#'   from the parent table. If the index is configured to project all item
-#'   attributes, then all of the data can be obtained from the local
-#'   secondary index, and no fetching is required.
+#' -   `ALL_ATTRIBUTES` - Returns all of the item attributes from the
+#'     specified table or index. If you query a local secondary index, then
+#'     for each matching item in the index, DynamoDB fetches the entire
+#'     item from the parent table. If the index is configured to project
+#'     all item attributes, then all of the data can be obtained from the
+#'     local secondary index, and no fetching is required.
 #' 
-#' - `ALL_PROJECTED_ATTRIBUTES` - Allowed only when querying an index.
-#'   Retrieves all attributes that have been projected into the index. If
-#'   the index is configured to project all attributes, this return value
-#'   is equivalent to specifying `ALL_ATTRIBUTES`.
+#' -   `ALL_PROJECTED_ATTRIBUTES` - Allowed only when querying an index.
+#'     Retrieves all attributes that have been projected into the index. If
+#'     the index is configured to project all attributes, this return value
+#'     is equivalent to specifying `ALL_ATTRIBUTES`.
 #' 
-#' - `COUNT` - Returns the number of matching items, rather than the
-#'   matching items themselves. Note that this uses the same quantity of
-#'   read capacity units as getting the items, and is subject to the same
-#'   item size calculations.
+#' -   `COUNT` - Returns the number of matching items, rather than the
+#'     matching items themselves. Note that this uses the same quantity of
+#'     read capacity units as getting the items, and is subject to the same
+#'     item size calculations.
 #' 
-#' - `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
-#'   `ProjectionExpression`. This return value is equivalent to specifying
-#'   `ProjectionExpression` without specifying any value for `Select`.
+#' -   `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
+#'     `ProjectionExpression`. This return value is equivalent to
+#'     specifying `ProjectionExpression` without specifying any value for
+#'     `Select`.
 #' 
-#'   If you query or scan a local secondary index and request only
-#'   attributes that are projected into that index, the operation will read
-#'   only the index and not the table. If any of the requested attributes
-#'   are not projected into the local secondary index, DynamoDB fetches
-#'   each of these attributes from the parent table. This extra fetching
-#'   incurs additional throughput cost and latency.
+#'     If you query or scan a local secondary index and request only
+#'     attributes that are projected into that index, the operation will
+#'     read only the index and not the table. If any of the requested
+#'     attributes are not projected into the local secondary index,
+#'     DynamoDB fetches each of these attributes from the parent table.
+#'     This extra fetching incurs additional throughput cost and latency.
 #' 
-#'   If you query or scan a global secondary index, you can only request
-#'   attributes that are projected into the index. Global secondary index
-#'   queries cannot fetch attributes from the parent table.
+#'     If you query or scan a global secondary index, you can only request
+#'     attributes that are projected into the index. Global secondary index
+#'     queries cannot fetch attributes from the parent table.
 #' 
 #' If neither `Select` nor `ProjectionExpression` are specified, DynamoDB
 #' defaults to `ALL_ATTRIBUTES` when accessing a table, and
@@ -6543,29 +6512,29 @@ dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId
 #' 
 #' Valid comparisons for the sort key condition are as follows:
 #' 
-#' - `sortKeyName` `=` `:sortkeyval` - true if the sort key value is equal
-#'   to `:sortkeyval`.
+#' -   `sortKeyName` `=` `:sortkeyval` - true if the sort key value is
+#'     equal to `:sortkeyval`.
 #' 
-#' - `sortKeyName` `<` `:sortkeyval` - true if the sort key value is less
-#'   than `:sortkeyval`.
+#' -   `sortKeyName` `<` `:sortkeyval` - true if the sort key value is less
+#'     than `:sortkeyval`.
 #' 
-#' - `sortKeyName` `<=` `:sortkeyval` - true if the sort key value is less
-#'   than or equal to `:sortkeyval`.
+#' -   `sortKeyName` `<=` `:sortkeyval` - true if the sort key value is
+#'     less than or equal to `:sortkeyval`.
 #' 
-#' - `sortKeyName` `>` `:sortkeyval` - true if the sort key value is
-#'   greater than `:sortkeyval`.
+#' -   `sortKeyName` `>` `:sortkeyval` - true if the sort key value is
+#'     greater than `:sortkeyval`.
 #' 
-#' - `sortKeyName` `>= ` `:sortkeyval` - true if the sort key value is
-#'   greater than or equal to `:sortkeyval`.
+#' -   `sortKeyName` `>= ` `:sortkeyval` - true if the sort key value is
+#'     greater than or equal to `:sortkeyval`.
 #' 
-#' - `sortKeyName` `BETWEEN` `:sortkeyval1` `AND` `:sortkeyval2` - true if
-#'   the sort key value is greater than or equal to `:sortkeyval1`, and
-#'   less than or equal to `:sortkeyval2`.
+#' -   `sortKeyName` `BETWEEN` `:sortkeyval1` `AND` `:sortkeyval2` - true
+#'     if the sort key value is greater than or equal to `:sortkeyval1`,
+#'     and less than or equal to `:sortkeyval2`.
 #' 
-#' - `begins_with (` `sortKeyName`, `:sortkeyval` `)` - true if the sort
-#'   key value begins with a particular operand. (You cannot use this
-#'   function with a sort key that is of type Number.) Note that the
-#'   function name `begins_with` is case-sensitive.
+#' -   `begins_with (` `sortKeyName`, `:sortkeyval` `)` - true if the sort
+#'     key value begins with a particular operand. (You cannot use this
+#'     function with a sort key that is of type Number.) Note that the
+#'     function name `begins_with` is case-sensitive.
 #' 
 #' Use the `ExpressionAttributeValues` parameter to replace tokens such as
 #' `:partitionval` and `:sortval` with actual values at runtime.
@@ -6577,12 +6546,12 @@ dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId
 #' `KeyConditionExpression` parameter causes an error because *Size* is a
 #' reserved word:
 #' 
-#' - `Size = :myval`
+#' -   `Size = :myval`
 #' 
 #' To work around this, define a placeholder (such a `#S`) to represent the
 #' attribute name *Size*. `KeyConditionExpression` then is as follows:
 #' 
-#' - `#S = :myval`
+#' -   `#S = :myval`
 #' 
 #' For a list of reserved words, see [Reserved
 #' Words](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
@@ -6596,19 +6565,19 @@ dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
 #' 
-#' - To access an attribute whose name conflicts with a DynamoDB reserved
-#'   word.
+#' -   To access an attribute whose name conflicts with a DynamoDB reserved
+#'     word.
 #' 
-#' - To create a placeholder for repeating occurrences of an attribute name
-#'   in an expression.
+#' -   To create a placeholder for repeating occurrences of an attribute
+#'     name in an expression.
 #' 
-#' - To prevent special characters in an attribute name from being
-#'   misinterpreted in an expression.
+#' -   To prevent special characters in an attribute name from being
+#'     misinterpreted in an expression.
 #' 
 #' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
-#' - `Percentile`
+#' -   `Percentile`
 #' 
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
@@ -6617,12 +6586,12 @@ dynamodb_put_resource_policy <- function(ResourceArn, Policy, ExpectedRevisionId
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
-#' - `{"#P":"Percentile"}`
+#' -   `{"#P":"Percentile"}`
 #' 
 #' You could then use this substitution in an expression, as in this
 #' example:
 #' 
-#' - `#P = :val`
+#' -   `#P = :val`
 #' 
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
@@ -6892,8 +6861,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items"),
-    stream_api = FALSE
+    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items")
   )
   input <- .dynamodb$query_input(TableName = TableName, IndexName = IndexName, Select = Select, AttributesToGet = AttributesToGet, Limit = Limit, ConsistentRead = ConsistentRead, KeyConditions = KeyConditions, QueryFilter = QueryFilter, ConditionalOperator = ConditionalOperator, ScanIndexForward = ScanIndexForward, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, KeyConditionExpression = KeyConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues)
   output <- .dynamodb$query_output()
@@ -6918,17 +6886,17 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 #' 
 #' You must manually set up the following on the restored table:
 #' 
-#' - Auto scaling policies
+#' -   Auto scaling policies
 #' 
-#' - IAM policies
+#' -   IAM policies
 #' 
-#' - Amazon CloudWatch metrics and alarms
+#' -   Amazon CloudWatch metrics and alarms
 #' 
-#' - Tags
+#' -   Tags
 #' 
-#' - Stream settings
+#' -   Stream settings
 #' 
-#' - Time to Live (TTL) settings
+#' -   Time to Live (TTL) settings
 #'
 #' @usage
 #' dynamodb_restore_table_from_backup(TargetTableName, BackupArn,
@@ -7204,8 +7172,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$restore_table_from_backup_input(TargetTableName = TargetTableName, BackupArn = BackupArn, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
   output <- .dynamodb$restore_table_from_backup_output()
@@ -7234,32 +7201,32 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' Along with data, the following are also included on the new restored
 #' table using point in time recovery:
 #' 
-#' - Global secondary indexes (GSIs)
+#' -   Global secondary indexes (GSIs)
 #' 
-#' - Local secondary indexes (LSIs)
+#' -   Local secondary indexes (LSIs)
 #' 
-#' - Provisioned read and write capacity
+#' -   Provisioned read and write capacity
 #' 
-#' - Encryption settings
+#' -   Encryption settings
 #' 
-#'   All these settings come from the current settings of the source table
-#'   at the time of restore.
+#'     All these settings come from the current settings of the source
+#'     table at the time of restore.
 #' 
 #' You must manually set up the following on the restored table:
 #' 
-#' - Auto scaling policies
+#' -   Auto scaling policies
 #' 
-#' - IAM policies
+#' -   IAM policies
 #' 
-#' - Amazon CloudWatch metrics and alarms
+#' -   Amazon CloudWatch metrics and alarms
 #' 
-#' - Tags
+#' -   Tags
 #' 
-#' - Stream settings
+#' -   Stream settings
 #' 
-#' - Time to Live (TTL) settings
+#' -   Time to Live (TTL) settings
 #' 
-#' - Point in time recovery settings
+#' -   Point in time recovery settings
 #'
 #' @usage
 #' dynamodb_restore_table_to_point_in_time(SourceTableArn, SourceTableName,
@@ -7547,8 +7514,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$restore_table_to_point_in_time_input(SourceTableArn = SourceTableArn, SourceTableName = SourceTableName, TargetTableName = TargetTableName, UseLatestRestorableTime = UseLatestRestorableTime, RestoreDateTime = RestoreDateTime, BillingModeOverride = BillingModeOverride, GlobalSecondaryIndexOverride = GlobalSecondaryIndexOverride, LocalSecondaryIndexOverride = LocalSecondaryIndexOverride, ProvisionedThroughputOverride = ProvisionedThroughputOverride, OnDemandThroughputOverride = OnDemandThroughputOverride, SSESpecificationOverride = SSESpecificationOverride)
   output <- .dynamodb$restore_table_to_point_in_time_output()
@@ -7650,37 +7616,38 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' the case of an index, some or all of the attributes projected into the
 #' index.
 #' 
-#' - `ALL_ATTRIBUTES` - Returns all of the item attributes from the
-#'   specified table or index. If you query a local secondary index, then
-#'   for each matching item in the index, DynamoDB fetches the entire item
-#'   from the parent table. If the index is configured to project all item
-#'   attributes, then all of the data can be obtained from the local
-#'   secondary index, and no fetching is required.
+#' -   `ALL_ATTRIBUTES` - Returns all of the item attributes from the
+#'     specified table or index. If you query a local secondary index, then
+#'     for each matching item in the index, DynamoDB fetches the entire
+#'     item from the parent table. If the index is configured to project
+#'     all item attributes, then all of the data can be obtained from the
+#'     local secondary index, and no fetching is required.
 #' 
-#' - `ALL_PROJECTED_ATTRIBUTES` - Allowed only when querying an index.
-#'   Retrieves all attributes that have been projected into the index. If
-#'   the index is configured to project all attributes, this return value
-#'   is equivalent to specifying `ALL_ATTRIBUTES`.
+#' -   `ALL_PROJECTED_ATTRIBUTES` - Allowed only when querying an index.
+#'     Retrieves all attributes that have been projected into the index. If
+#'     the index is configured to project all attributes, this return value
+#'     is equivalent to specifying `ALL_ATTRIBUTES`.
 #' 
-#' - `COUNT` - Returns the number of matching items, rather than the
-#'   matching items themselves. Note that this uses the same quantity of
-#'   read capacity units as getting the items, and is subject to the same
-#'   item size calculations.
+#' -   `COUNT` - Returns the number of matching items, rather than the
+#'     matching items themselves. Note that this uses the same quantity of
+#'     read capacity units as getting the items, and is subject to the same
+#'     item size calculations.
 #' 
-#' - `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
-#'   `ProjectionExpression`. This return value is equivalent to specifying
-#'   `ProjectionExpression` without specifying any value for `Select`.
+#' -   `SPECIFIC_ATTRIBUTES` - Returns only the attributes listed in
+#'     `ProjectionExpression`. This return value is equivalent to
+#'     specifying `ProjectionExpression` without specifying any value for
+#'     `Select`.
 #' 
-#'   If you query or scan a local secondary index and request only
-#'   attributes that are projected into that index, the operation reads
-#'   only the index and not the table. If any of the requested attributes
-#'   are not projected into the local secondary index, DynamoDB fetches
-#'   each of these attributes from the parent table. This extra fetching
-#'   incurs additional throughput cost and latency.
+#'     If you query or scan a local secondary index and request only
+#'     attributes that are projected into that index, the operation reads
+#'     only the index and not the table. If any of the requested attributes
+#'     are not projected into the local secondary index, DynamoDB fetches
+#'     each of these attributes from the parent table. This extra fetching
+#'     incurs additional throughput cost and latency.
 #' 
-#'   If you query or scan a global secondary index, you can only request
-#'   attributes that are projected into the index. Global secondary index
-#'   queries cannot fetch attributes from the parent table.
+#'     If you query or scan a global secondary index, you can only request
+#'     attributes that are projected into the index. Global secondary index
+#'     queries cannot fetch attributes from the parent table.
 #' 
 #' If neither `Select` nor `ProjectionExpression` are specified, DynamoDB
 #' defaults to `ALL_ATTRIBUTES` when accessing a table, and
@@ -7770,19 +7737,19 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
 #' 
-#' - To access an attribute whose name conflicts with a DynamoDB reserved
-#'   word.
+#' -   To access an attribute whose name conflicts with a DynamoDB reserved
+#'     word.
 #' 
-#' - To create a placeholder for repeating occurrences of an attribute name
-#'   in an expression.
+#' -   To create a placeholder for repeating occurrences of an attribute
+#'     name in an expression.
 #' 
-#' - To prevent special characters in an attribute name from being
-#'   misinterpreted in an expression.
+#' -   To prevent special characters in an attribute name from being
+#'     misinterpreted in an expression.
 #' 
 #' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
-#' - `Percentile`
+#' -   `Percentile`
 #' 
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
@@ -7791,12 +7758,12 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' in the *Amazon DynamoDB Developer Guide*). To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
-#' - `{"#P":"Percentile"}`
+#' -   `{"#P":"Percentile"}`
 #' 
 #' You could then use this substitution in an expression, as in this
 #' example:
 #' 
-#' - `#P = :val`
+#' -   `#P = :val`
 #' 
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
@@ -7826,15 +7793,16 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' @param ConsistentRead A Boolean value that determines the read consistency model during the
 #' scan:
 #' 
-#' - If `ConsistentRead` is `false`, then the data returned from
-#'   [`scan`][dynamodb_scan] might not contain the results from other
-#'   recently completed write operations ([`put_item`][dynamodb_put_item],
-#'   [`update_item`][dynamodb_update_item], or
-#'   [`delete_item`][dynamodb_delete_item]).
+#' -   If `ConsistentRead` is `false`, then the data returned from
+#'     [`scan`][dynamodb_scan] might not contain the results from other
+#'     recently completed write operations
+#'     ([`put_item`][dynamodb_put_item],
+#'     [`update_item`][dynamodb_update_item], or
+#'     [`delete_item`][dynamodb_delete_item]).
 #' 
-#' - If `ConsistentRead` is `true`, then all of the write operations that
-#'   completed before the [`scan`][dynamodb_scan] began are guaranteed to
-#'   be contained in the [`scan`][dynamodb_scan] response.
+#' -   If `ConsistentRead` is `true`, then all of the write operations that
+#'     completed before the [`scan`][dynamodb_scan] began are guaranteed to
+#'     be contained in the [`scan`][dynamodb_scan] response.
 #' 
 #' The default setting for `ConsistentRead` is `false`.
 #' 
@@ -8058,8 +8026,7 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items"),
-    stream_api = FALSE
+    paginator = list(input_token = "ExclusiveStartKey", limit_key = "Limit", output_token = "LastEvaluatedKey", result_key = "Items")
   )
   input <- .dynamodb$scan_input(TableName = TableName, IndexName = IndexName, AttributesToGet = AttributesToGet, Limit = Limit, Select = Select, ScanFilter = ScanFilter, ConditionalOperator = ConditionalOperator, ExclusiveStartKey = ExclusiveStartKey, ReturnConsumedCapacity = ReturnConsumedCapacity, TotalSegments = TotalSegments, Segment = Segment, ProjectionExpression = ProjectionExpression, FilterExpression = FilterExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ConsistentRead = ConsistentRead)
   output <- .dynamodb$scan_output()
@@ -8117,8 +8084,7 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .dynamodb$tag_resource_output()
@@ -8151,15 +8117,15 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #' [`transact_get_items`][dynamodb_transact_get_items] request if any of
 #' the following is true:
 #' 
-#' - A conflicting operation is in the process of updating an item to be
-#'   read.
+#' -   A conflicting operation is in the process of updating an item to be
+#'     read.
 #' 
-#' - There is insufficient provisioned capacity for the transaction to be
-#'   completed.
+#' -   There is insufficient provisioned capacity for the transaction to be
+#'     completed.
 #' 
-#' - There is a user error, such as an invalid data format.
+#' -   There is a user error, such as an invalid data format.
 #' 
-#' - The aggregate size of the items in the transaction exceeded 4 MB.
+#' -   The aggregate size of the items in the transaction exceeded 4 MB.
 #'
 #' @usage
 #' dynamodb_transact_get_items(TransactItems, ReturnConsumedCapacity)
@@ -8285,8 +8251,7 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$transact_get_items_input(TransactItems = TransactItems, ReturnConsumedCapacity = ReturnConsumedCapacity)
   output <- .dynamodb$transact_get_items_output()
@@ -8313,53 +8278,54 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' The actions are completed atomically so that either all of them succeed,
 #' or all of them fail. They are defined by the following objects:
 #' 
-#' - `Put`  —   Initiates a [`put_item`][dynamodb_put_item] operation to
-#'   write a new item. This structure specifies the primary key of the item
-#'   to be written, the name of the table to write it in, an optional
-#'   condition expression that must be satisfied for the write to succeed,
-#'   a list of the item's attributes, and a field indicating whether to
-#'   retrieve the item's attributes if the condition is not met.
+#' -   `Put`  —   Initiates a [`put_item`][dynamodb_put_item] operation to
+#'     write a new item. This structure specifies the primary key of the
+#'     item to be written, the name of the table to write it in, an
+#'     optional condition expression that must be satisfied for the write
+#'     to succeed, a list of the item's attributes, and a field indicating
+#'     whether to retrieve the item's attributes if the condition is not
+#'     met.
 #' 
-#' - `Update`  —   Initiates an [`update_item`][dynamodb_update_item]
-#'   operation to update an existing item. This structure specifies the
-#'   primary key of the item to be updated, the name of the table where it
-#'   resides, an optional condition expression that must be satisfied for
-#'   the update to succeed, an expression that defines one or more
-#'   attributes to be updated, and a field indicating whether to retrieve
-#'   the item's attributes if the condition is not met.
+#' -   `Update`  —   Initiates an [`update_item`][dynamodb_update_item]
+#'     operation to update an existing item. This structure specifies the
+#'     primary key of the item to be updated, the name of the table where
+#'     it resides, an optional condition expression that must be satisfied
+#'     for the update to succeed, an expression that defines one or more
+#'     attributes to be updated, and a field indicating whether to retrieve
+#'     the item's attributes if the condition is not met.
 #' 
-#' - `Delete`  —   Initiates a [`delete_item`][dynamodb_delete_item]
-#'   operation to delete an existing item. This structure specifies the
-#'   primary key of the item to be deleted, the name of the table where it
-#'   resides, an optional condition expression that must be satisfied for
-#'   the deletion to succeed, and a field indicating whether to retrieve
-#'   the item's attributes if the condition is not met.
+#' -   `Delete`  —   Initiates a [`delete_item`][dynamodb_delete_item]
+#'     operation to delete an existing item. This structure specifies the
+#'     primary key of the item to be deleted, the name of the table where
+#'     it resides, an optional condition expression that must be satisfied
+#'     for the deletion to succeed, and a field indicating whether to
+#'     retrieve the item's attributes if the condition is not met.
 #' 
-#' - `ConditionCheck`  —   Applies a condition to an item that is not being
-#'   modified by the transaction. This structure specifies the primary key
-#'   of the item to be checked, the name of the table where it resides, a
-#'   condition expression that must be satisfied for the transaction to
-#'   succeed, and a field indicating whether to retrieve the item's
-#'   attributes if the condition is not met.
+#' -   `ConditionCheck`  —   Applies a condition to an item that is not
+#'     being modified by the transaction. This structure specifies the
+#'     primary key of the item to be checked, the name of the table where
+#'     it resides, a condition expression that must be satisfied for the
+#'     transaction to succeed, and a field indicating whether to retrieve
+#'     the item's attributes if the condition is not met.
 #' 
 #' DynamoDB rejects the entire
 #' [`transact_write_items`][dynamodb_transact_write_items] request if any
 #' of the following is true:
 #' 
-#' - A condition in one of the condition expressions is not met.
+#' -   A condition in one of the condition expressions is not met.
 #' 
-#' - An ongoing operation is in the process of updating the same item.
+#' -   An ongoing operation is in the process of updating the same item.
 #' 
-#' - There is insufficient provisioned capacity for the transaction to be
-#'   completed.
+#' -   There is insufficient provisioned capacity for the transaction to be
+#'     completed.
 #' 
-#' - An item size becomes too large (bigger than 400 KB), a local secondary
-#'   index (LSI) becomes too large, or a similar validation error occurs
-#'   because of changes made by the transaction.
+#' -   An item size becomes too large (bigger than 400 KB), a local
+#'     secondary index (LSI) becomes too large, or a similar validation
+#'     error occurs because of changes made by the transaction.
 #' 
-#' - The aggregate size of the items in the transaction exceeds 4 MB.
+#' -   The aggregate size of the items in the transaction exceeds 4 MB.
 #' 
-#' - There is a user error, such as an invalid data format.
+#' -   There is a user error, such as an invalid data format.
 #'
 #' @usage
 #' dynamodb_transact_write_items(TransactItems, ReturnConsumedCapacity,
@@ -8716,8 +8682,7 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$transact_write_items_input(TransactItems = TransactItems, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, ClientRequestToken = ClientRequestToken)
   output <- .dynamodb$transact_write_items_output()
@@ -8772,8 +8737,7 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .dynamodb$untag_resource_output()
@@ -8853,8 +8817,7 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_continuous_backups_input(TableName = TableName, PointInTimeRecoverySpecification = PointInTimeRecoverySpecification)
   output <- .dynamodb$update_continuous_backups_output()
@@ -8918,8 +8881,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_contributor_insights_input(TableName = TableName, IndexName = IndexName, ContributorInsightsAction = ContributorInsightsAction)
   output <- .dynamodb$update_contributor_insights_output()
@@ -8968,13 +8930,13 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 #' If global secondary indexes are specified, then the following conditions
 #' must also be met:
 #' 
-#' - The global secondary indexes must have the same name.
+#' -   The global secondary indexes must have the same name.
 #' 
-#' - The global secondary indexes must have the same hash key and sort key
-#'   (if present).
+#' -   The global secondary indexes must have the same hash key and sort
+#'     key (if present).
 #' 
-#' - The global secondary indexes must have the same provisioned and
-#'   maximum write capacity units.
+#' -   The global secondary indexes must have the same provisioned and
+#'     maximum write capacity units.
 #'
 #' @usage
 #' dynamodb_update_global_table(GlobalTableName, ReplicaUpdates)
@@ -9060,8 +9022,7 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_global_table_input(GlobalTableName = GlobalTableName, ReplicaUpdates = ReplicaUpdates)
   output <- .dynamodb$update_global_table_output()
@@ -9103,15 +9064,15 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 #' specified, the global table defaults to `PROVISIONED` capacity billing
 #' mode.
 #' 
-#' - `PROVISIONED` - We recommend using `PROVISIONED` for predictable
-#'   workloads. `PROVISIONED` sets the billing mode to [Provisioned
-#'   capacity
-#'   mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
+#' -   `PROVISIONED` - We recommend using `PROVISIONED` for predictable
+#'     workloads. `PROVISIONED` sets the billing mode to [Provisioned
+#'     capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 #' 
-#' - `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
-#'   unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
-#'   [On-demand capacity
-#'   mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
+#' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
+#'     unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
+#'     [On-demand capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
 #' @param GlobalTableProvisionedWriteCapacityUnits The maximum number of writes consumed per second before DynamoDB returns
 #' a `ThrottlingException.`
 #' @param GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate Auto scaling settings for managing provisioned write capacity for the
@@ -9324,8 +9285,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_global_table_settings_input(GlobalTableName = GlobalTableName, GlobalTableBillingMode = GlobalTableBillingMode, GlobalTableProvisionedWriteCapacityUnits = GlobalTableProvisionedWriteCapacityUnits, GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate = GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate, GlobalTableGlobalSecondaryIndexSettingsUpdate = GlobalTableGlobalSecondaryIndexSettingsUpdate, ReplicaSettingsUpdate = ReplicaSettingsUpdate)
   output <- .dynamodb$update_global_table_settings_output()
@@ -9383,21 +9343,21 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' before or after they are successfully updated. For
 #' [`update_item`][dynamodb_update_item], the valid values are:
 #' 
-#' - `NONE` - If `ReturnValues` is not specified, or if its value is
-#'   `NONE`, then nothing is returned. (This setting is the default for
-#'   `ReturnValues`.)
+#' -   `NONE` - If `ReturnValues` is not specified, or if its value is
+#'     `NONE`, then nothing is returned. (This setting is the default for
+#'     `ReturnValues`.)
 #' 
-#' - `ALL_OLD` - Returns all of the attributes of the item, as they
-#'   appeared before the UpdateItem operation.
+#' -   `ALL_OLD` - Returns all of the attributes of the item, as they
+#'     appeared before the UpdateItem operation.
 #' 
-#' - `UPDATED_OLD` - Returns only the updated attributes, as they appeared
-#'   before the UpdateItem operation.
+#' -   `UPDATED_OLD` - Returns only the updated attributes, as they
+#'     appeared before the UpdateItem operation.
 #' 
-#' - `ALL_NEW` - Returns all of the attributes of the item, as they appear
-#'   after the UpdateItem operation.
+#' -   `ALL_NEW` - Returns all of the attributes of the item, as they
+#'     appear after the UpdateItem operation.
 #' 
-#' - `UPDATED_NEW` - Returns only the updated attributes, as they appear
-#'   after the UpdateItem operation.
+#' -   `UPDATED_NEW` - Returns only the updated attributes, as they appear
+#'     after the UpdateItem operation.
 #' 
 #' There is no additional cost associated with requesting a return value
 #' aside from the small network and processing overhead of receiving a
@@ -9414,74 +9374,77 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' 
 #' The following action values are available for `UpdateExpression`.
 #' 
-#' - `SET` - Adds one or more attributes and values to an item. If any of
-#'   these attributes already exist, they are replaced by the new values.
-#'   You can also use `SET` to add or subtract from an attribute that is of
-#'   type Number. For example: `SET myNum = myNum + :val`
+#' -   `SET` - Adds one or more attributes and values to an item. If any of
+#'     these attributes already exist, they are replaced by the new values.
+#'     You can also use `SET` to add or subtract from an attribute that is
+#'     of type Number. For example: `SET myNum = myNum + :val`
 #' 
-#'   `SET` supports the following functions:
+#'     `SET` supports the following functions:
 #' 
-#'   - `if_not_exists (path, operand)` - if the item does not contain an
-#'     attribute at the specified path, then `if_not_exists` evaluates to
-#'     operand; otherwise, it evaluates to path. You can use this function
-#'     to avoid overwriting an attribute that may already be present in the
-#'     item.
+#'     -   `if_not_exists (path, operand)` - if the item does not contain
+#'         an attribute at the specified path, then `if_not_exists`
+#'         evaluates to operand; otherwise, it evaluates to path. You can
+#'         use this function to avoid overwriting an attribute that may
+#'         already be present in the item.
 #' 
-#'   - `list_append (operand, operand)` - evaluates to a list with a new
-#'     element added to it. You can append the new element to the start or
-#'     the end of the list by reversing the order of the operands.
+#'     -   `list_append (operand, operand)` - evaluates to a list with a
+#'         new element added to it. You can append the new element to the
+#'         start or the end of the list by reversing the order of the
+#'         operands.
 #' 
-#'   These function names are case-sensitive.
+#'     These function names are case-sensitive.
 #' 
-#' - `REMOVE` - Removes one or more attributes from an item.
+#' -   `REMOVE` - Removes one or more attributes from an item.
 #' 
-#' - `ADD` - Adds the specified value to the item, if the attribute does
-#'   not already exist. If the attribute does exist, then the behavior of
-#'   `ADD` depends on the data type of the attribute:
+#' -   `ADD` - Adds the specified value to the item, if the attribute does
+#'     not already exist. If the attribute does exist, then the behavior of
+#'     `ADD` depends on the data type of the attribute:
 #' 
-#'   - If the existing attribute is a number, and if `Value` is also a
-#'     number, then `Value` is mathematically added to the existing
-#'     attribute. If `Value` is a negative number, then it is subtracted
-#'     from the existing attribute.
+#'     -   If the existing attribute is a number, and if `Value` is also a
+#'         number, then `Value` is mathematically added to the existing
+#'         attribute. If `Value` is a negative number, then it is
+#'         subtracted from the existing attribute.
 #' 
-#'     If you use `ADD` to increment or decrement a number value for an
-#'     item that doesn't exist before the update, DynamoDB uses `0` as the
-#'     initial value.
+#'         If you use `ADD` to increment or decrement a number value for an
+#'         item that doesn't exist before the update, DynamoDB uses `0` as
+#'         the initial value.
 #' 
-#'     Similarly, if you use `ADD` for an existing item to increment or
-#'     decrement an attribute value that doesn't exist before the update,
-#'     DynamoDB uses `0` as the initial value. For example, suppose that
-#'     the item you want to update doesn't have an attribute named
-#'     `itemcount`, but you decide to `ADD` the number `3` to this
-#'     attribute anyway. DynamoDB will create the `itemcount` attribute,
-#'     set its initial value to `0`, and finally add `3` to it. The result
-#'     will be a new `itemcount` attribute in the item, with a value of
-#'     `3`.
+#'         Similarly, if you use `ADD` for an existing item to increment or
+#'         decrement an attribute value that doesn't exist before the
+#'         update, DynamoDB uses `0` as the initial value. For example,
+#'         suppose that the item you want to update doesn't have an
+#'         attribute named `itemcount`, but you decide to `ADD` the number
+#'         `3` to this attribute anyway. DynamoDB will create the
+#'         `itemcount` attribute, set its initial value to `0`, and finally
+#'         add `3` to it. The result will be a new `itemcount` attribute in
+#'         the item, with a value of `3`.
 #' 
-#'   - If the existing data type is a set and if `Value` is also a set,
-#'     then `Value` is added to the existing set. For example, if the
-#'     attribute value is the set `[1,2]`, and the `ADD` action specified
-#'     `[3]`, then the final attribute value is `[1,2,3]`. An error occurs
-#'     if an `ADD` action is specified for a set attribute and the
-#'     attribute type specified does not match the existing set type.
+#'     -   If the existing data type is a set and if `Value` is also a set,
+#'         then `Value` is added to the existing set. For example, if the
+#'         attribute value is the set `[1,2]`, and the `ADD` action
+#'         specified `[3]`, then the final attribute value is `[1,2,3]`. An
+#'         error occurs if an `ADD` action is specified for a set attribute
+#'         and the attribute type specified does not match the existing set
+#'         type.
 #' 
-#'     Both sets must have the same primitive data type. For example, if
-#'     the existing data type is a set of strings, the `Value` must also be
-#'     a set of strings.
+#'         Both sets must have the same primitive data type. For example,
+#'         if the existing data type is a set of strings, the `Value` must
+#'         also be a set of strings.
 #' 
-#'   The `ADD` action only supports Number and set data types. In addition,
-#'   `ADD` can only be used on top-level attributes, not nested attributes.
+#'     The `ADD` action only supports Number and set data types. In
+#'     addition, `ADD` can only be used on top-level attributes, not nested
+#'     attributes.
 #' 
-#' - `DELETE` - Deletes an element from a set.
+#' -   `DELETE` - Deletes an element from a set.
 #' 
-#'   If a set of values is specified, then those values are subtracted from
-#'   the old set. For example, if the attribute value was the set `[a,b,c]`
-#'   and the `DELETE` action specifies `[a,c]`, then the final attribute
-#'   value is `[b]`. Specifying an empty set is an error.
+#'     If a set of values is specified, then those values are subtracted
+#'     from the old set. For example, if the attribute value was the set
+#'     `[a,b,c]` and the `DELETE` action specifies `[a,c]`, then the final
+#'     attribute value is `[b]`. Specifying an empty set is an error.
 #' 
-#'   The `DELETE` action only supports set data types. In addition,
-#'   `DELETE` can only be used on top-level attributes, not nested
-#'   attributes.
+#'     The `DELETE` action only supports set data types. In addition,
+#'     `DELETE` can only be used on top-level attributes, not nested
+#'     attributes.
 #' 
 #' You can have many actions in a single expression, such as the following:
 #' `SET a=:value1, b=:value2 DELETE :value3, :value4, :value5`
@@ -9494,14 +9457,14 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' 
 #' An expression can contain any of the following:
 #' 
-#' - Functions:
-#'   `attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size`
+#' -   Functions:
+#'     `attribute_exists | attribute_not_exists | attribute_type | contains | begins_with | size`
 #' 
-#'   These function names are case-sensitive.
+#'     These function names are case-sensitive.
 #' 
-#' - Comparison operators: `= | <> | < | > | <= | >= | BETWEEN | IN `
+#' -   Comparison operators: `= | <> | < | > | <= | >= | BETWEEN | IN `
 #' 
-#' - Logical operators: `AND | OR | NOT`
+#' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information about condition expressions, see [Specifying
 #' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
@@ -9509,19 +9472,19 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
 #' 
-#' - To access an attribute whose name conflicts with a DynamoDB reserved
-#'   word.
+#' -   To access an attribute whose name conflicts with a DynamoDB reserved
+#'     word.
 #' 
-#' - To create a placeholder for repeating occurrences of an attribute name
-#'   in an expression.
+#' -   To create a placeholder for repeating occurrences of an attribute
+#'     name in an expression.
 #' 
-#' - To prevent special characters in an attribute name from being
-#'   misinterpreted in an expression.
+#' -   To prevent special characters in an attribute name from being
+#'     misinterpreted in an expression.
 #' 
 #' Use the **#** character in an expression to dereference an attribute
 #' name. For example, consider the following attribute name:
 #' 
-#' - `Percentile`
+#' -   `Percentile`
 #' 
 #' The name of this attribute conflicts with a reserved word, so it cannot
 #' be used directly in an expression. (For the complete list of reserved
@@ -9530,12 +9493,12 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' in the *Amazon DynamoDB Developer Guide*.) To work around this, you
 #' could specify the following for `ExpressionAttributeNames`:
 #' 
-#' - `{"#P":"Percentile"}`
+#' -   `{"#P":"Percentile"}`
 #' 
 #' You could then use this substitution in an expression, as in this
 #' example:
 #' 
-#' - `#P = :val`
+#' -   `#P = :val`
 #' 
 #' Tokens that begin with the **:** character are *expression attribute
 #' values*, which are placeholders for the actual value at runtime.
@@ -9843,8 +9806,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_item_input(TableName = TableName, Key = Key, AttributeUpdates = AttributeUpdates, Expected = Expected, ConditionalOperator = ConditionalOperator, ReturnValues = ReturnValues, ReturnConsumedCapacity = ReturnConsumedCapacity, ReturnItemCollectionMetrics = ReturnItemCollectionMetrics, UpdateExpression = UpdateExpression, ConditionExpression = ConditionExpression, ExpressionAttributeNames = ExpressionAttributeNames, ExpressionAttributeValues = ExpressionAttributeValues, ReturnValuesOnConditionCheckFailure = ReturnValuesOnConditionCheckFailure)
   output <- .dynamodb$update_item_output()
@@ -9905,8 +9867,7 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn, UpdateKinesisStreamingConfiguration = UpdateKinesisStreamingConfiguration)
   output <- .dynamodb$update_kinesis_streaming_destination_output()
@@ -9930,13 +9891,13 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' 
 #' You can only perform one of the following operations at once:
 #' 
-#' - Modify the provisioned throughput settings of the table.
+#' -   Modify the provisioned throughput settings of the table.
 #' 
-#' - Remove a global secondary index from the table.
+#' -   Remove a global secondary index from the table.
 #' 
-#' - Create a new global secondary index on the table. After the index
-#'   begins backfilling, you can use
-#'   [`update_table`][dynamodb_update_table] to perform other operations.
+#' -   Create a new global secondary index on the table. After the index
+#'     begins backfilling, you can use
+#'     [`update_table`][dynamodb_update_table] to perform other operations.
 #' 
 #' [`update_table`][dynamodb_update_table] is an asynchronous operation;
 #' while it's executing, the table status changes from `ACTIVE` to
@@ -9963,26 +9924,26 @@ dynamodb_update_kinesis_streaming_destination <- function(TableName, StreamArn, 
 #' write capacity of your table and global secondary indexes over the past
 #' 30 minutes.
 #' 
-#' - `PROVISIONED` - We recommend using `PROVISIONED` for predictable
-#'   workloads. `PROVISIONED` sets the billing mode to [Provisioned
-#'   capacity
-#'   mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
+#' -   `PROVISIONED` - We recommend using `PROVISIONED` for predictable
+#'     workloads. `PROVISIONED` sets the billing mode to [Provisioned
+#'     capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/provisioned-capacity-mode.html).
 #' 
-#' - `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
-#'   unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
-#'   [On-demand capacity
-#'   mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
+#' -   `PAY_PER_REQUEST` - We recommend using `PAY_PER_REQUEST` for
+#'     unpredictable workloads. `PAY_PER_REQUEST` sets the billing mode to
+#'     [On-demand capacity
+#'     mode](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html).
 #' @param ProvisionedThroughput The new provisioned throughput settings for the specified table or
 #' index.
 #' @param GlobalSecondaryIndexUpdates An array of one or more global secondary indexes for the table. For each
 #' index in the array, you can request one action:
 #' 
-#' - `Create` - add a new global secondary index to the table.
+#' -   `Create` - add a new global secondary index to the table.
 #' 
-#' - `Update` - modify the provisioned throughput settings of an existing
-#'   global secondary index.
+#' -   `Update` - modify the provisioned throughput settings of an existing
+#'     global secondary index.
 #' 
-#' - `Delete` - remove a global secondary index from the table.
+#' -   `Delete` - remove a global secondary index from the table.
 #' 
 #' You can create or delete only one global secondary index per
 #' [`update_table`][dynamodb_update_table] operation.
@@ -10338,8 +10299,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_table_input(AttributeDefinitions = AttributeDefinitions, TableName = TableName, BillingMode = BillingMode, ProvisionedThroughput = ProvisionedThroughput, GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, StreamSpecification = StreamSpecification, SSESpecification = SSESpecification, ReplicaUpdates = ReplicaUpdates, TableClass = TableClass, DeletionProtectionEnabled = DeletionProtectionEnabled, OnDemandThroughput = OnDemandThroughput)
   output <- .dynamodb$update_table_output()
@@ -10555,8 +10515,7 @@ dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_table_replica_auto_scaling_input(GlobalSecondaryIndexUpdates = GlobalSecondaryIndexUpdates, TableName = TableName, ProvisionedWriteCapacityAutoScalingUpdate = ProvisionedWriteCapacityAutoScalingUpdate, ReplicaUpdates = ReplicaUpdates)
   output <- .dynamodb$update_table_replica_auto_scaling_output()
@@ -10645,8 +10604,7 @@ dynamodb_update_time_to_live <- function(TableName, TimeToLiveSpecification) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .dynamodb$update_time_to_live_input(TableName = TableName, TimeToLiveSpecification = TimeToLiveSpecification)
   output <- .dynamodb$update_time_to_live_output()

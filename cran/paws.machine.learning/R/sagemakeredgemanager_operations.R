@@ -23,8 +23,7 @@ sagemakeredgemanager_get_deployments <- function(DeviceName, DeviceFleetName) {
     http_method = "POST",
     http_path = "/GetDeployments",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakeredgemanager$get_deployments_input(DeviceName = DeviceName, DeviceFleetName = DeviceFleetName)
   output <- .sagemakeredgemanager$get_deployments_output()
@@ -56,8 +55,7 @@ sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleet
     http_method = "POST",
     http_path = "/GetDeviceRegistration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakeredgemanager$get_device_registration_input(DeviceName = DeviceName, DeviceFleetName = DeviceFleetName)
   output <- .sagemakeredgemanager$get_device_registration_output()
@@ -94,8 +92,7 @@ sagemakeredgemanager_send_heartbeat <- function(AgentMetrics = NULL, Models = NU
     http_method = "POST",
     http_path = "/SendHeartbeat",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakeredgemanager$send_heartbeat_input(AgentMetrics = AgentMetrics, Models = Models, AgentVersion = AgentVersion, DeviceName = DeviceName, DeviceFleetName = DeviceFleetName, DeploymentResult = DeploymentResult)
   output <- .sagemakeredgemanager$send_heartbeat_output()

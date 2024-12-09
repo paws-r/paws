@@ -9,7 +9,7 @@ NULL
 #' SageMaker Metrics. Use these APIs to put and retrieve (get) features
 #' related to your training run.
 #' 
-#' - [`batch_put_metrics`][sagemakermetrics_batch_put_metrics]
+#' -   [`batch_put_metrics`][sagemakermetrics_batch_put_metrics]
 #'
 #' @param
 #' config

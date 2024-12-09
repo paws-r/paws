@@ -37,8 +37,8 @@ the results by time.}
 can group by the following criteria:
 \itemize{
 \item \code{IntentStageName} – The name of the intent stage.
-\item \code{SwitchedToIntent} – The intent to which the conversation was switched
-(if any).
+\item \code{SwitchedToIntent} – The intent to which the conversation was
+switched (if any).
 }}
 
 \item{filters}{A list of objects, each of which describes a condition by which you want

@@ -20,11 +20,11 @@ target type is \code{instanceTarget}.
 are the names of Lambda functions, and their target type is
 \code{instanceTarget}.
 \item For deployments that use the Amazon ECS compute platform, the target
-IDs are pairs of Amazon ECS clusters and services specified using the
-format \verb{<clustername>:<servicename>}. Their target type is
+IDs are pairs of Amazon ECS clusters and services specified using
+the format \verb{<clustername>:<servicename>}. Their target type is
 \code{ecsTarget}.
-\item For deployments that are deployed with CloudFormation, the target IDs
-are CloudFormation stack IDs. Their target type is
+\item For deployments that are deployed with CloudFormation, the target
+IDs are CloudFormation stack IDs. Their target type is
 \code{cloudFormationTarget}.
 }}
 }

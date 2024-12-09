@@ -17,12 +17,12 @@ preferences for.}
 added to the suppression list for your account. This list can contain
 any or all of the following:
 \itemize{
-\item \code{COMPLAINT} – Amazon SES adds an email address to the suppression list
-for your account when a message sent to that address results in a
-complaint.
+\item \code{COMPLAINT} – Amazon SES adds an email address to the suppression
+list for your account when a message sent to that address results in
+a complaint.
 \item \code{BOUNCE} – Amazon SES adds an email address to the suppression list
-for your account when a message sent to that address results in a hard
-bounce.
+for your account when a message sent to that address results in a
+hard bounce.
 }}
 }
 \description{

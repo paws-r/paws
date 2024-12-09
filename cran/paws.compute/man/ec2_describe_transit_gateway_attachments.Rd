@@ -24,16 +24,16 @@ table for the transit gateway.
 \item \code{resource-id} - The ID of the resource.
 \item \code{resource-owner-id} - The ID of the Amazon Web Services account that
 owns the resource.
-\item \code{resource-type} - The resource type. Valid values are \code{vpc} | \code{vpn} |
-\code{direct-connect-gateway} | \code{peering} | \code{connect}.
-\item \code{state} - The state of the attachment. Valid values are \code{available} |
-\code{deleted} | \code{deleting} | \code{failed} | \code{failing} | \code{initiatingRequest} |
-\code{modifying} | \code{pendingAcceptance} | \code{pending} | \code{rollingBack} |
-\code{rejected} | \code{rejecting}.
+\item \code{resource-type} - The resource type. Valid values are \code{vpc} | \code{vpn}
+| \code{direct-connect-gateway} | \code{peering} | \code{connect}.
+\item \code{state} - The state of the attachment. Valid values are \code{available}
+| \code{deleted} | \code{deleting} | \code{failed} | \code{failing} |
+\code{initiatingRequest} | \code{modifying} | \code{pendingAcceptance} | \code{pending}
+| \code{rollingBack} | \code{rejected} | \code{rejecting}.
 \item \code{transit-gateway-attachment-id} - The ID of the attachment.
 \item \code{transit-gateway-id} - The ID of the transit gateway.
-\item \code{transit-gateway-owner-id} - The ID of the Amazon Web Services account
-that owns the transit gateway.
+\item \code{transit-gateway-owner-id} - The ID of the Amazon Web Services
+account that owns the transit gateway.
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve

@@ -12,134 +12,134 @@ NULL
 #' 
 #' Spaces, by calling the following:
 #' 
-#' - [`delete_space`][codecatalyst_delete_space], which deletes a space.
+#' -   [`delete_space`][codecatalyst_delete_space], which deletes a space.
 #' 
-#' - [`get_space`][codecatalyst_get_space], which returns information about
-#'   a space.
+#' -   [`get_space`][codecatalyst_get_space], which returns information
+#'     about a space.
 #' 
-#' - [`get_subscription`][codecatalyst_get_subscription], which returns
-#'   information about the Amazon Web Services account used for billing
-#'   purposes and the billing plan for the space.
+#' -   [`get_subscription`][codecatalyst_get_subscription], which returns
+#'     information about the Amazon Web Services account used for billing
+#'     purposes and the billing plan for the space.
 #' 
-#' - [`list_spaces`][codecatalyst_list_spaces], which retrieves a list of
-#'   spaces.
+#' -   [`list_spaces`][codecatalyst_list_spaces], which retrieves a list of
+#'     spaces.
 #' 
-#' - [`update_space`][codecatalyst_update_space], which changes one or more
-#'   values for a space.
+#' -   [`update_space`][codecatalyst_update_space], which changes one or
+#'     more values for a space.
 #' 
 #' Projects, by calling the following:
 #' 
-#' - [`create_project`][codecatalyst_create_project] which creates a
-#'   project in a specified space.
+#' -   [`create_project`][codecatalyst_create_project] which creates a
+#'     project in a specified space.
 #' 
-#' - [`get_project`][codecatalyst_get_project], which returns information
-#'   about a project.
+#' -   [`get_project`][codecatalyst_get_project], which returns information
+#'     about a project.
 #' 
-#' - [`list_projects`][codecatalyst_list_projects], which retrieves a list
-#'   of projects in a space.
+#' -   [`list_projects`][codecatalyst_list_projects], which retrieves a
+#'     list of projects in a space.
 #' 
 #' Users, by calling the following:
 #' 
-#' - [`get_user_details`][codecatalyst_get_user_details], which returns
-#'   information about a user in Amazon CodeCatalyst.
+#' -   [`get_user_details`][codecatalyst_get_user_details], which returns
+#'     information about a user in Amazon CodeCatalyst.
 #' 
 #' Source repositories, by calling the following:
 #' 
-#' - [`create_source_repository`][codecatalyst_create_source_repository],
-#'   which creates an empty Git-based source repository in a specified
-#'   project.
+#' -   [`create_source_repository`][codecatalyst_create_source_repository],
+#'     which creates an empty Git-based source repository in a specified
+#'     project.
 #' 
-#' - [`create_source_repository_branch`][codecatalyst_create_source_repository_branch],
-#'   which creates a branch in a specified repository where you can work on
-#'   code.
+#' -   [`create_source_repository_branch`][codecatalyst_create_source_repository_branch],
+#'     which creates a branch in a specified repository where you can work
+#'     on code.
 #' 
-#' - [`delete_source_repository`][codecatalyst_delete_source_repository],
-#'   which deletes a source repository.
+#' -   [`delete_source_repository`][codecatalyst_delete_source_repository],
+#'     which deletes a source repository.
 #' 
-#' - [`get_source_repository`][codecatalyst_get_source_repository], which
-#'   returns information about a source repository.
+#' -   [`get_source_repository`][codecatalyst_get_source_repository], which
+#'     returns information about a source repository.
 #' 
-#' - [`get_source_repository_clone_urls`][codecatalyst_get_source_repository_clone_urls],
-#'   which returns information about the URLs that can be used with a Git
-#'   client to clone a source repository.
+#' -   [`get_source_repository_clone_urls`][codecatalyst_get_source_repository_clone_urls],
+#'     which returns information about the URLs that can be used with a Git
+#'     client to clone a source repository.
 #' 
-#' - [`list_source_repositories`][codecatalyst_list_source_repositories],
-#'   which retrieves a list of source repositories in a project.
+#' -   [`list_source_repositories`][codecatalyst_list_source_repositories],
+#'     which retrieves a list of source repositories in a project.
 #' 
-#' - [`list_source_repository_branches`][codecatalyst_list_source_repository_branches],
-#'   which retrieves a list of branches in a source repository.
+#' -   [`list_source_repository_branches`][codecatalyst_list_source_repository_branches],
+#'     which retrieves a list of branches in a source repository.
 #' 
 #' Dev Environments and the Amazon Web Services Toolkits, by calling the
 #' following:
 #' 
-#' - [`create_dev_environment`][codecatalyst_create_dev_environment], which
-#'   creates a Dev Environment, where you can quickly work on the code
-#'   stored in the source repositories of your project.
+#' -   [`create_dev_environment`][codecatalyst_create_dev_environment],
+#'     which creates a Dev Environment, where you can quickly work on the
+#'     code stored in the source repositories of your project.
 #' 
-#' - [`delete_dev_environment`][codecatalyst_delete_dev_environment], which
-#'   deletes a Dev Environment.
+#' -   [`delete_dev_environment`][codecatalyst_delete_dev_environment],
+#'     which deletes a Dev Environment.
 #' 
-#' - [`get_dev_environment`][codecatalyst_get_dev_environment], which
-#'   returns information about a Dev Environment.
+#' -   [`get_dev_environment`][codecatalyst_get_dev_environment], which
+#'     returns information about a Dev Environment.
 #' 
-#' - [`list_dev_environments`][codecatalyst_list_dev_environments], which
-#'   retrieves a list of Dev Environments in a project.
+#' -   [`list_dev_environments`][codecatalyst_list_dev_environments], which
+#'     retrieves a list of Dev Environments in a project.
 #' 
-#' - [`list_dev_environment_sessions`][codecatalyst_list_dev_environment_sessions],
-#'   which retrieves a list of active Dev Environment sessions in a
-#'   project.
+#' -   [`list_dev_environment_sessions`][codecatalyst_list_dev_environment_sessions],
+#'     which retrieves a list of active Dev Environment sessions in a
+#'     project.
 #' 
-#' - [`start_dev_environment`][codecatalyst_start_dev_environment], which
-#'   starts a specified Dev Environment and puts it into an active state.
+#' -   [`start_dev_environment`][codecatalyst_start_dev_environment], which
+#'     starts a specified Dev Environment and puts it into an active state.
 #' 
-#' - [`start_dev_environment_session`][codecatalyst_start_dev_environment_session],
-#'   which starts a session to a specified Dev Environment.
+#' -   [`start_dev_environment_session`][codecatalyst_start_dev_environment_session],
+#'     which starts a session to a specified Dev Environment.
 #' 
-#' - [`stop_dev_environment`][codecatalyst_stop_dev_environment], which
-#'   stops a specified Dev Environment and puts it into an stopped state.
+#' -   [`stop_dev_environment`][codecatalyst_stop_dev_environment], which
+#'     stops a specified Dev Environment and puts it into an stopped state.
 #' 
-#' - [`stop_dev_environment_session`][codecatalyst_stop_dev_environment_session],
-#'   which stops a session for a specified Dev Environment.
+#' -   [`stop_dev_environment_session`][codecatalyst_stop_dev_environment_session],
+#'     which stops a session for a specified Dev Environment.
 #' 
-#' - [`update_dev_environment`][codecatalyst_update_dev_environment], which
-#'   changes one or more values for a Dev Environment.
+#' -   [`update_dev_environment`][codecatalyst_update_dev_environment],
+#'     which changes one or more values for a Dev Environment.
 #' 
 #' Workflows, by calling the following:
 #' 
-#' - [`get_workflow`][codecatalyst_get_workflow], which returns information
-#'   about a workflow.
+#' -   [`get_workflow`][codecatalyst_get_workflow], which returns
+#'     information about a workflow.
 #' 
-#' - [`get_workflow_run`][codecatalyst_get_workflow_run], which returns
-#'   information about a specified run of a workflow.
+#' -   [`get_workflow_run`][codecatalyst_get_workflow_run], which returns
+#'     information about a specified run of a workflow.
 #' 
-#' - [`list_workflow_runs`][codecatalyst_list_workflow_runs], which
-#'   retrieves a list of runs of a specified workflow.
+#' -   [`list_workflow_runs`][codecatalyst_list_workflow_runs], which
+#'     retrieves a list of runs of a specified workflow.
 #' 
-#' - [`list_workflows`][codecatalyst_list_workflows], which retrieves a
-#'   list of workflows in a specified project.
+#' -   [`list_workflows`][codecatalyst_list_workflows], which retrieves a
+#'     list of workflows in a specified project.
 #' 
-#' - [`start_workflow_run`][codecatalyst_start_workflow_run], which starts
-#'   a run of a specified workflow.
+#' -   [`start_workflow_run`][codecatalyst_start_workflow_run], which
+#'     starts a run of a specified workflow.
 #' 
 #' Security, activity, and resource management in Amazon CodeCatalyst, by
 #' calling the following:
 #' 
-#' - [`create_access_token`][codecatalyst_create_access_token], which
-#'   creates a personal access token (PAT) for the current user.
+#' -   [`create_access_token`][codecatalyst_create_access_token], which
+#'     creates a personal access token (PAT) for the current user.
 #' 
-#' - [`delete_access_token`][codecatalyst_delete_access_token], which
-#'   deletes a specified personal access token (PAT).
+#' -   [`delete_access_token`][codecatalyst_delete_access_token], which
+#'     deletes a specified personal access token (PAT).
 #' 
-#' - [`list_access_tokens`][codecatalyst_list_access_tokens], which lists
-#'   all personal access tokens (PATs) associated with a user.
+#' -   [`list_access_tokens`][codecatalyst_list_access_tokens], which lists
+#'     all personal access tokens (PATs) associated with a user.
 #' 
-#' - [`list_event_logs`][codecatalyst_list_event_logs], which retrieves a
-#'   list of events that occurred during a specified time period in a
-#'   space.
+#' -   [`list_event_logs`][codecatalyst_list_event_logs], which retrieves a
+#'     list of events that occurred during a specified time period in a
+#'     space.
 #' 
-#' - [`verify_session`][codecatalyst_verify_session], which verifies
-#'   whether the calling user has a valid Amazon CodeCatalyst login and
-#'   session.
+#' -   [`verify_session`][codecatalyst_verify_session], which verifies
+#'     whether the calling user has a valid Amazon CodeCatalyst login and
+#'     session.
 #' 
 #' If you are using the Amazon CodeCatalyst APIs with an SDK or the CLI,
 #' you must configure your computer to work with Amazon CodeCatalyst and

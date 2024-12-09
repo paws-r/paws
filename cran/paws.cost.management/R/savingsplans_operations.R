@@ -32,8 +32,7 @@ savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, 
     http_method = "POST",
     http_path = "/CreateSavingsPlan",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$create_savings_plan_input(savingsPlanOfferingId = savingsPlanOfferingId, commitment = commitment, upfrontPaymentAmount = upfrontPaymentAmount, purchaseTime = purchaseTime, clientToken = clientToken, tags = tags)
   output <- .savingsplans$create_savings_plan_output()
@@ -63,8 +62,7 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
     http_method = "POST",
     http_path = "/DeleteQueuedSavingsPlan",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$delete_queued_savings_plan_input(savingsPlanId = savingsPlanId)
   output <- .savingsplans$delete_queued_savings_plan_output()
@@ -98,8 +96,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
     http_method = "POST",
     http_path = "/DescribeSavingsPlanRates",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$describe_savings_plan_rates_input(savingsPlanId = savingsPlanId, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .savingsplans$describe_savings_plan_rates_output()
@@ -135,8 +132,7 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
     http_method = "POST",
     http_path = "/DescribeSavingsPlans",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$describe_savings_plans_input(savingsPlanArns = savingsPlanArns, savingsPlanIds = savingsPlanIds, nextToken = nextToken, maxResults = maxResults, states = states, filters = filters)
   output <- .savingsplans$describe_savings_plans_output()
@@ -177,8 +173,7 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
     http_method = "POST",
     http_path = "/DescribeSavingsPlansOfferingRates",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$describe_savings_plans_offering_rates_input(savingsPlanOfferingIds = savingsPlanOfferingIds, savingsPlanPaymentOptions = savingsPlanPaymentOptions, savingsPlanTypes = savingsPlanTypes, products = products, serviceCodes = serviceCodes, usageTypes = usageTypes, operations = operations, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .savingsplans$describe_savings_plans_offering_rates_output()
@@ -222,8 +217,7 @@ savingsplans_describe_savings_plans_offerings <- function(offeringIds = NULL, pa
     http_method = "POST",
     http_path = "/DescribeSavingsPlansOfferings",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$describe_savings_plans_offerings_input(offeringIds = offeringIds, paymentOptions = paymentOptions, productType = productType, planTypes = planTypes, durations = durations, currencies = currencies, descriptions = descriptions, serviceCodes = serviceCodes, usageTypes = usageTypes, operations = operations, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .savingsplans$describe_savings_plans_offerings_output()
@@ -253,8 +247,7 @@ savingsplans_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/ListTagsForResource",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .savingsplans$list_tags_for_resource_output()
@@ -286,8 +279,7 @@ savingsplans_return_savings_plan <- function(savingsPlanId, clientToken = NULL) 
     http_method = "POST",
     http_path = "/ReturnSavingsPlan",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$return_savings_plan_input(savingsPlanId = savingsPlanId, clientToken = clientToken)
   output <- .savingsplans$return_savings_plan_output()
@@ -307,8 +299,8 @@ savingsplans_return_savings_plan <- function(savingsPlanId, clientToken = NULL) 
 #' See [https://www.paws-r-sdk.com/docs/savingsplans_tag_resource/](https://www.paws-r-sdk.com/docs/savingsplans_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
-#' @param tags &#91;required&#93; One or more tags. For example, \\ "tags": \\"key1":"value1",
-#' "key2":"value2"\\ \\.
+#' @param tags &#91;required&#93; One or more tags. For example, \{ "tags": \{"key1":"value1",
+#' "key2":"value2"\} \}.
 #'
 #' @keywords internal
 #'
@@ -319,8 +311,7 @@ savingsplans_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/TagResource",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .savingsplans$tag_resource_output()
@@ -351,8 +342,7 @@ savingsplans_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/UntagResource",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .savingsplans$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .savingsplans$untag_resource_output()

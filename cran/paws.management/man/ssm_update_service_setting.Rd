@@ -38,8 +38,8 @@ enter the name of an IAM role.
 \code{CloudWatch}.
 \item For \verb{/ssm/automation/customer-script-log-group-name}, enter the name
 of an Amazon CloudWatch Logs log group.
-\item For \verb{/ssm/documents/console/public-sharing-permission}, enter \code{Enable}
-or \code{Disable}.
+\item For \verb{/ssm/documents/console/public-sharing-permission}, enter
+\code{Enable} or \code{Disable}.
 \item For \verb{/ssm/managed-instance/activation-tier}, enter \code{standard} or
 \code{advanced}.
 \item For \verb{/ssm/opsinsights/opscenter}, enter \code{Enabled} or \code{Disabled}.

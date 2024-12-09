@@ -81,33 +81,35 @@ want to deploy. CodeDeploy uses this name, which functions as a
 container, to ensure the correct combination of revision, deployment
 configuration, and deployment group are referenced during a
 deployment.
-\item \strong{Deployment group}: A set of individual instances, CodeDeploy Lambda
-deployment configuration settings, or an Amazon ECS service and
-network details. A Lambda deployment group specifies how to route
-traffic to a new version of a Lambda function. An Amazon ECS
+\item \strong{Deployment group}: A set of individual instances, CodeDeploy
+Lambda deployment configuration settings, or an Amazon ECS service
+and network details. A Lambda deployment group specifies how to
+route traffic to a new version of a Lambda function. An Amazon ECS
 deployment group specifies the service created in Amazon ECS to
-deploy, a load balancer, and a listener to reroute production traffic
-to an updated containerized application. An Amazon EC2/On-premises
-deployment group contains individually tagged instances, Amazon EC2
-instances in Amazon EC2 Auto Scaling groups, or both. All deployment
-groups can specify optional trigger, alarm, and rollback settings.
-\item \strong{Deployment configuration}: A set of deployment rules and deployment
-success and failure conditions used by CodeDeploy during a deployment.
+deploy, a load balancer, and a listener to reroute production
+traffic to an updated containerized application. An Amazon
+EC2/On-premises deployment group contains individually tagged
+instances, Amazon EC2 instances in Amazon EC2 Auto Scaling groups,
+or both. All deployment groups can specify optional trigger, alarm,
+and rollback settings.
+\item \strong{Deployment configuration}: A set of deployment rules and
+deployment success and failure conditions used by CodeDeploy during
+a deployment.
 \item \strong{Deployment}: The process and the components used when updating a
-Lambda function, a containerized application in an Amazon ECS service,
-or of installing content on one or more instances.
+Lambda function, a containerized application in an Amazon ECS
+service, or of installing content on one or more instances.
 \item \strong{Application revisions}: For an Lambda deployment, this is an
-AppSpec file that specifies the Lambda function to be updated and one
-or more functions to validate deployment lifecycle events. For an
-Amazon ECS deployment, this is an AppSpec file that specifies the
+AppSpec file that specifies the Lambda function to be updated and
+one or more functions to validate deployment lifecycle events. For
+an Amazon ECS deployment, this is an AppSpec file that specifies the
 Amazon ECS task definition, container, and port where production
 traffic is rerouted. For an EC2/On-premises deployment, this is an
 archive file that contains source content—source code, webpages,
 executable files, and deployment scripts—along with an AppSpec file.
-Revisions are stored in Amazon S3 buckets or GitHub repositories. For
-Amazon S3, a revision is uniquely identified by its Amazon S3 object
-key and its ETag, version, or both. For GitHub, a revision is uniquely
-identified by its commit ID.
+Revisions are stored in Amazon S3 buckets or GitHub repositories.
+For Amazon S3, a revision is uniquely identified by its Amazon S3
+object key and its ETag, version, or both. For GitHub, a revision is
+uniquely identified by its commit ID.
 }
 
 This guide also contains information to help you get details about the

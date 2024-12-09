@@ -78,8 +78,7 @@ sesv2_batch_get_metric_data <- function(Queries) {
     http_method = "POST",
     http_path = "/v2/email/metrics/batch",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$batch_get_metric_data_input(Queries = Queries)
   output <- .sesv2$batch_get_metric_data_output()
@@ -130,8 +129,7 @@ sesv2_cancel_export_job <- function(JobId) {
     http_method = "PUT",
     http_path = "/v2/email/export-jobs/{JobId}/cancel",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$cancel_export_job_input(JobId = JobId)
   output <- .sesv2$cancel_export_job_output()
@@ -231,8 +229,7 @@ sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions
     http_method = "POST",
     http_path = "/v2/email/configuration-sets",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, TrackingOptions = TrackingOptions, DeliveryOptions = DeliveryOptions, ReputationOptions = ReputationOptions, SendingOptions = SendingOptions, Tags = Tags, SuppressionOptions = SuppressionOptions, VdmOptions = VdmOptions)
   output <- .sesv2$create_configuration_set_output()
@@ -314,8 +311,7 @@ sesv2_create_configuration_set_event_destination <- function(ConfigurationSetNam
     http_method = "POST",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName, EventDestination = EventDestination)
   output <- .sesv2$create_configuration_set_event_destination_output()
@@ -375,8 +371,7 @@ sesv2_create_contact <- function(ContactListName, EmailAddress, TopicPreferences
     http_method = "POST",
     http_path = "/v2/email/contact-lists/{ContactListName}/contacts",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_contact_input(ContactListName = ContactListName, EmailAddress = EmailAddress, TopicPreferences = TopicPreferences, UnsubscribeAll = UnsubscribeAll, AttributesData = AttributesData)
   output <- .sesv2$create_contact_output()
@@ -438,8 +433,7 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
     http_method = "POST",
     http_path = "/v2/email/contact-lists",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_contact_list_input(ContactListName = ContactListName, Topics = Topics, Description = Description, Tags = Tags)
   output <- .sesv2$create_contact_list_output()
@@ -508,8 +502,7 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
     http_method = "POST",
     http_path = "/v2/email/custom-verification-email-templates",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
   output <- .sesv2$create_custom_verification_email_template_output()
@@ -566,8 +559,7 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL, ScalingMode = 
     http_method = "POST",
     http_path = "/v2/email/dedicated-ip-pools",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_dedicated_ip_pool_input(PoolName = PoolName, Tags = Tags, ScalingMode = ScalingMode)
   output <- .sesv2$create_dedicated_ip_pool_output()
@@ -678,8 +670,7 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
     http_method = "POST",
     http_path = "/v2/email/deliverability-dashboard/test",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_deliverability_test_report_input(ReportName = ReportName, FromEmailAddress = FromEmailAddress, Content = Content, Tags = Tags)
   output <- .sesv2$create_deliverability_test_report_output()
@@ -802,8 +793,7 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
     http_method = "POST",
     http_path = "/v2/email/identities",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_email_identity_input(EmailIdentity = EmailIdentity, Tags = Tags, DkimSigningAttributes = DkimSigningAttributes, ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$create_email_identity_output()
@@ -869,8 +859,7 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
     http_method = "POST",
     http_path = "/v2/email/identities/{EmailIdentity}/policies/{PolicyName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_email_identity_policy_input(EmailIdentity = EmailIdentity, PolicyName = PolicyName, Policy = Policy)
   output <- .sesv2$create_email_identity_policy_output()
@@ -925,8 +914,7 @@ sesv2_create_email_template <- function(TemplateName, TemplateContent) {
     http_method = "POST",
     http_path = "/v2/email/templates",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_email_template_input(TemplateName = TemplateName, TemplateContent = TemplateContent)
   output <- .sesv2$create_email_template_output()
@@ -1110,8 +1098,7 @@ sesv2_create_export_job <- function(ExportDataSource, ExportDestination) {
     http_method = "POST",
     http_path = "/v2/email/export-jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_export_job_input(ExportDataSource = ExportDataSource, ExportDestination = ExportDestination)
   output <- .sesv2$create_export_job_output()
@@ -1172,8 +1159,7 @@ sesv2_create_import_job <- function(ImportDestination, ImportDataSource) {
     http_method = "POST",
     http_path = "/v2/email/import-jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$create_import_job_input(ImportDestination = ImportDestination, ImportDataSource = ImportDataSource)
   output <- .sesv2$create_import_job_output()
@@ -1222,8 +1208,7 @@ sesv2_delete_configuration_set <- function(ConfigurationSetName) {
     http_method = "DELETE",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$delete_configuration_set_output()
@@ -1276,8 +1261,7 @@ sesv2_delete_configuration_set_event_destination <- function(ConfigurationSetNam
     http_method = "DELETE",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName)
   output <- .sesv2$delete_configuration_set_event_destination_output()
@@ -1322,8 +1306,7 @@ sesv2_delete_contact <- function(ContactListName, EmailAddress) {
     http_method = "DELETE",
     http_path = "/v2/email/contact-lists/{ContactListName}/contacts/{EmailAddress}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_contact_input(ContactListName = ContactListName, EmailAddress = EmailAddress)
   output <- .sesv2$delete_contact_output()
@@ -1366,8 +1349,7 @@ sesv2_delete_contact_list <- function(ContactListName) {
     http_method = "DELETE",
     http_path = "/v2/email/contact-lists/{ContactListName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_contact_list_input(ContactListName = ContactListName)
   output <- .sesv2$delete_contact_list_output()
@@ -1418,8 +1400,7 @@ sesv2_delete_custom_verification_email_template <- function(TemplateName) {
     http_method = "DELETE",
     http_path = "/v2/email/custom-verification-email-templates/{TemplateName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_custom_verification_email_template_input(TemplateName = TemplateName)
   output <- .sesv2$delete_custom_verification_email_template_output()
@@ -1462,8 +1443,7 @@ sesv2_delete_dedicated_ip_pool <- function(PoolName) {
     http_method = "DELETE",
     http_path = "/v2/email/dedicated-ip-pools/{PoolName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_dedicated_ip_pool_input(PoolName = PoolName)
   output <- .sesv2$delete_dedicated_ip_pool_output()
@@ -1507,8 +1487,7 @@ sesv2_delete_email_identity <- function(EmailIdentity) {
     http_method = "DELETE",
     http_path = "/v2/email/identities/{EmailIdentity}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_email_identity_input(EmailIdentity = EmailIdentity)
   output <- .sesv2$delete_email_identity_output()
@@ -1569,8 +1548,7 @@ sesv2_delete_email_identity_policy <- function(EmailIdentity, PolicyName) {
     http_method = "DELETE",
     http_path = "/v2/email/identities/{EmailIdentity}/policies/{PolicyName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_email_identity_policy_input(EmailIdentity = EmailIdentity, PolicyName = PolicyName)
   output <- .sesv2$delete_email_identity_policy_output()
@@ -1615,8 +1593,7 @@ sesv2_delete_email_template <- function(TemplateName) {
     http_method = "DELETE",
     http_path = "/v2/email/templates/{TemplateName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_email_template_input(TemplateName = TemplateName)
   output <- .sesv2$delete_email_template_output()
@@ -1660,8 +1637,7 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
     http_method = "DELETE",
     http_path = "/v2/email/suppression/addresses/{EmailAddress}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$delete_suppressed_destination_input(EmailAddress = EmailAddress)
   output <- .sesv2$delete_suppressed_destination_output()
@@ -1744,8 +1720,7 @@ sesv2_get_account <- function() {
     http_method = "GET",
     http_path = "/v2/email/account",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_account_input()
   output <- .sesv2$get_account_output()
@@ -1809,8 +1784,7 @@ sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/blacklist-report",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_blacklist_reports_input(BlacklistItemNames = BlacklistItemNames)
   output <- .sesv2$get_blacklist_reports_output()
@@ -1903,8 +1877,7 @@ sesv2_get_configuration_set <- function(ConfigurationSetName) {
     http_method = "GET",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$get_configuration_set_output()
@@ -1990,8 +1963,7 @@ sesv2_get_configuration_set_event_destinations <- function(ConfigurationSetName)
     http_method = "GET",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_configuration_set_event_destinations_input(ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$get_configuration_set_event_destinations_output()
@@ -2062,8 +2034,7 @@ sesv2_get_contact <- function(ContactListName, EmailAddress) {
     http_method = "GET",
     http_path = "/v2/email/contact-lists/{ContactListName}/contacts/{EmailAddress}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_contact_input(ContactListName = ContactListName, EmailAddress = EmailAddress)
   output <- .sesv2$get_contact_output()
@@ -2133,8 +2104,7 @@ sesv2_get_contact_list <- function(ContactListName) {
     http_method = "GET",
     http_path = "/v2/email/contact-lists/{ContactListName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_contact_list_input(ContactListName = ContactListName)
   output <- .sesv2$get_contact_list_output()
@@ -2197,8 +2167,7 @@ sesv2_get_custom_verification_email_template <- function(TemplateName) {
     http_method = "GET",
     http_path = "/v2/email/custom-verification-email-templates/{TemplateName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_custom_verification_email_template_input(TemplateName = TemplateName)
   output <- .sesv2$get_custom_verification_email_template_output()
@@ -2257,8 +2226,7 @@ sesv2_get_dedicated_ip <- function(Ip) {
     http_method = "GET",
     http_path = "/v2/email/dedicated-ips/{IP}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_dedicated_ip_input(Ip = Ip)
   output <- .sesv2$get_dedicated_ip_output()
@@ -2309,8 +2277,7 @@ sesv2_get_dedicated_ip_pool <- function(PoolName) {
     http_method = "GET",
     http_path = "/v2/email/dedicated-ip-pools/{PoolName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_dedicated_ip_pool_input(PoolName = PoolName)
   output <- .sesv2$get_dedicated_ip_pool_output()
@@ -2378,8 +2345,7 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
     http_method = "GET",
     http_path = "/v2/email/dedicated-ips",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$get_dedicated_ips_input(PoolName = PoolName, NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$get_dedicated_ips_output()
@@ -2469,8 +2435,7 @@ sesv2_get_deliverability_dashboard_options <- function() {
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_deliverability_dashboard_options_input()
   output <- .sesv2$get_deliverability_dashboard_options_output()
@@ -2553,8 +2518,7 @@ sesv2_get_deliverability_test_report <- function(ReportId) {
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/test-reports/{ReportId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_deliverability_test_report_input(ReportId = ReportId)
   output <- .sesv2$get_deliverability_test_report_output()
@@ -2628,8 +2592,7 @@ sesv2_get_domain_deliverability_campaign <- function(CampaignId) {
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/campaigns/{CampaignId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_domain_deliverability_campaign_input(CampaignId = CampaignId)
   output <- .sesv2$get_domain_deliverability_campaign_output()
@@ -2729,8 +2692,7 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/statistics-report/{Domain}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_domain_statistics_report_input(Domain = Domain, StartDate = StartDate, EndDate = EndDate)
   output <- .sesv2$get_domain_statistics_report_output()
@@ -2827,8 +2789,7 @@ sesv2_get_email_identity <- function(EmailIdentity) {
     http_method = "GET",
     http_path = "/v2/email/identities/{EmailIdentity}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_email_identity_input(EmailIdentity = EmailIdentity)
   output <- .sesv2$get_email_identity_output()
@@ -2892,8 +2853,7 @@ sesv2_get_email_identity_policies <- function(EmailIdentity) {
     http_method = "GET",
     http_path = "/v2/email/identities/{EmailIdentity}/policies",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_email_identity_policies_input(EmailIdentity = EmailIdentity)
   output <- .sesv2$get_email_identity_policies_output()
@@ -2950,8 +2910,7 @@ sesv2_get_email_template <- function(TemplateName) {
     http_method = "GET",
     http_path = "/v2/email/templates/{TemplateName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_email_template_input(TemplateName = TemplateName)
   output <- .sesv2$get_email_template_output()
@@ -3098,8 +3057,7 @@ sesv2_get_export_job <- function(JobId) {
     http_method = "GET",
     http_path = "/v2/email/export-jobs/{JobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_export_job_input(JobId = JobId)
   output <- .sesv2$get_export_job_output()
@@ -3173,8 +3131,7 @@ sesv2_get_import_job <- function(JobId) {
     http_method = "GET",
     http_path = "/v2/email/import-jobs/{JobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_import_job_input(JobId = JobId)
   output <- .sesv2$get_import_job_output()
@@ -3270,8 +3227,7 @@ sesv2_get_message_insights <- function(MessageId) {
     http_method = "GET",
     http_path = "/v2/email/insights/{MessageId}/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_message_insights_input(MessageId = MessageId)
   output <- .sesv2$get_message_insights_output()
@@ -3331,8 +3287,7 @@ sesv2_get_suppressed_destination <- function(EmailAddress) {
     http_method = "GET",
     http_path = "/v2/email/suppression/addresses/{EmailAddress}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$get_suppressed_destination_input(EmailAddress = EmailAddress)
   output <- .sesv2$get_suppressed_destination_output()
@@ -3399,8 +3354,7 @@ sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/configuration-sets",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_configuration_sets_input(NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_configuration_sets_output()
@@ -3464,8 +3418,7 @@ sesv2_list_contact_lists <- function(PageSize = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v2/email/contact-lists",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_contact_lists_input(PageSize = PageSize, NextToken = NextToken)
   output <- .sesv2$list_contact_lists_output()
@@ -3554,8 +3507,7 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
     http_method = "POST",
     http_path = "/v2/email/contact-lists/{ContactListName}/contacts/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_contacts_input(ContactListName = ContactListName, Filter = Filter, PageSize = PageSize, NextToken = NextToken)
   output <- .sesv2$list_contacts_output()
@@ -3632,8 +3584,7 @@ sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, Pag
     http_method = "GET",
     http_path = "/v2/email/custom-verification-email-templates",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_custom_verification_email_templates_input(NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_custom_verification_email_templates_output()
@@ -3694,8 +3645,7 @@ sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/dedicated-ip-pools",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_dedicated_ip_pools_input(NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_dedicated_ip_pools_output()
@@ -3772,8 +3722,7 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/test-reports",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_deliverability_test_reports_input(NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_deliverability_test_reports_output()
@@ -3874,8 +3823,7 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
     http_method = "GET",
     http_path = "/v2/email/deliverability-dashboard/domains/{SubscribedDomain}/campaigns",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_domain_deliverability_campaigns_input(StartDate = StartDate, EndDate = EndDate, SubscribedDomain = SubscribedDomain, NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_domain_deliverability_campaigns_output()
@@ -3947,8 +3895,7 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/identities",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_email_identities_input(NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_email_identities_output()
@@ -4018,8 +3965,7 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
     http_method = "GET",
     http_path = "/v2/email/templates",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_email_templates_input(NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_email_templates_output()
@@ -4103,8 +4049,7 @@ sesv2_list_export_jobs <- function(NextToken = NULL, PageSize = NULL, ExportSour
     http_method = "POST",
     http_path = "/v2/email/list-export-jobs",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_export_jobs_input(NextToken = NextToken, PageSize = PageSize, ExportSourceType = ExportSourceType, JobStatus = JobStatus)
   output <- .sesv2$list_export_jobs_output()
@@ -4184,8 +4129,7 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/v2/email/import-jobs/list",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_import_jobs_input(ImportDestinationType = ImportDestinationType, NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_import_jobs_output()
@@ -4268,8 +4212,7 @@ sesv2_list_recommendations <- function(Filter = NULL, NextToken = NULL, PageSize
     http_method = "POST",
     http_path = "/v2/email/vdm/recommendations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_recommendations_input(Filter = Filter, NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_recommendations_output()
@@ -4351,8 +4294,7 @@ sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL,
     http_method = "GET",
     http_path = "/v2/email/suppression/addresses",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
   )
   input <- .sesv2$list_suppressed_destinations_input(Reasons = Reasons, StartDate = StartDate, EndDate = EndDate, NextToken = NextToken, PageSize = PageSize)
   output <- .sesv2$list_suppressed_destinations_output()
@@ -4412,8 +4354,7 @@ sesv2_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/v2/email/tags",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .sesv2$list_tags_for_resource_output()
@@ -4461,8 +4402,7 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
     http_method = "PUT",
     http_path = "/v2/email/account/dedicated-ips/warmup",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_account_dedicated_ip_warmup_attributes_input(AutoWarmupEnabled = AutoWarmupEnabled)
   output <- .sesv2$put_account_dedicated_ip_warmup_attributes_output()
@@ -4531,8 +4471,7 @@ sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NU
     http_method = "POST",
     http_path = "/v2/email/account/details",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_account_details_input(MailType = MailType, WebsiteURL = WebsiteURL, ContactLanguage = ContactLanguage, UseCaseDescription = UseCaseDescription, AdditionalContactEmailAddresses = AdditionalContactEmailAddresses, ProductionAccessEnabled = ProductionAccessEnabled)
   output <- .sesv2$put_account_details_output()
@@ -4579,8 +4518,7 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
     http_method = "PUT",
     http_path = "/v2/email/account/sending",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_account_sending_attributes_input(SendingEnabled = SendingEnabled)
   output <- .sesv2$put_account_sending_attributes_output()
@@ -4604,13 +4542,13 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 #' automatically added to the suppression list for your account. This list
 #' can contain any or all of the following:
 #' 
-#' - `COMPLAINT` – Amazon SES adds an email address to the suppression list
-#'   for your account when a message sent to that address results in a
-#'   complaint.
+#' -   `COMPLAINT` – Amazon SES adds an email address to the suppression
+#'     list for your account when a message sent to that address results in
+#'     a complaint.
 #' 
-#' - `BOUNCE` – Amazon SES adds an email address to the suppression list
-#'   for your account when a message sent to that address results in a hard
-#'   bounce.
+#' -   `BOUNCE` – Amazon SES adds an email address to the suppression list
+#'     for your account when a message sent to that address results in a
+#'     hard bounce.
 #'
 #' @return
 #' An empty list.
@@ -4635,8 +4573,7 @@ sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
     http_method = "PUT",
     http_path = "/v2/email/account/suppression",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_account_suppression_attributes_input(SuppressedReasons = SuppressedReasons)
   output <- .sesv2$put_account_suppression_attributes_output()
@@ -4689,8 +4626,7 @@ sesv2_put_account_vdm_attributes <- function(VdmAttributes) {
     http_method = "PUT",
     http_path = "/v2/email/account/vdm",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_account_vdm_attributes_input(VdmAttributes = VdmAttributes)
   output <- .sesv2$put_account_vdm_attributes_output()
@@ -4745,8 +4681,7 @@ sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, T
     http_method = "PUT",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/delivery-options",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_configuration_set_delivery_options_input(ConfigurationSetName = ConfigurationSetName, TlsPolicy = TlsPolicy, SendingPoolName = SendingPoolName)
   output <- .sesv2$put_configuration_set_delivery_options_output()
@@ -4798,8 +4733,7 @@ sesv2_put_configuration_set_reputation_options <- function(ConfigurationSetName,
     http_method = "PUT",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/reputation-options",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_configuration_set_reputation_options_input(ConfigurationSetName = ConfigurationSetName, ReputationMetricsEnabled = ReputationMetricsEnabled)
   output <- .sesv2$put_configuration_set_reputation_options_output()
@@ -4849,8 +4783,7 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
     http_method = "PUT",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/sending",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_configuration_set_sending_options_input(ConfigurationSetName = ConfigurationSetName, SendingEnabled = SendingEnabled)
   output <- .sesv2$put_configuration_set_sending_options_output()
@@ -4878,13 +4811,13 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 #' added to the suppression list for your account. This list can contain
 #' any or all of the following:
 #' 
-#' - `COMPLAINT` – Amazon SES adds an email address to the suppression list
-#'   for your account when a message sent to that address results in a
-#'   complaint.
+#' -   `COMPLAINT` – Amazon SES adds an email address to the suppression
+#'     list for your account when a message sent to that address results in
+#'     a complaint.
 #' 
-#' - `BOUNCE` – Amazon SES adds an email address to the suppression list
-#'   for your account when a message sent to that address results in a hard
-#'   bounce.
+#' -   `BOUNCE` – Amazon SES adds an email address to the suppression list
+#'     for your account when a message sent to that address results in a
+#'     hard bounce.
 #'
 #' @return
 #' An empty list.
@@ -4910,8 +4843,7 @@ sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName
     http_method = "PUT",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/suppression-options",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_configuration_set_suppression_options_input(ConfigurationSetName = ConfigurationSetName, SuppressedReasons = SuppressedReasons)
   output <- .sesv2$put_configuration_set_suppression_options_output()
@@ -4959,8 +4891,7 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
     http_method = "PUT",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/tracking-options",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_configuration_set_tracking_options_input(ConfigurationSetName = ConfigurationSetName, CustomRedirectDomain = CustomRedirectDomain)
   output <- .sesv2$put_configuration_set_tracking_options_output()
@@ -5017,8 +4948,7 @@ sesv2_put_configuration_set_vdm_options <- function(ConfigurationSetName, VdmOpt
     http_method = "PUT",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/vdm-options",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_configuration_set_vdm_options_input(ConfigurationSetName = ConfigurationSetName, VdmOptions = VdmOptions)
   output <- .sesv2$put_configuration_set_vdm_options_output()
@@ -5073,8 +5003,7 @@ sesv2_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
     http_method = "PUT",
     http_path = "/v2/email/dedicated-ips/{IP}/pool",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_dedicated_ip_in_pool_input(Ip = Ip, DestinationPoolName = DestinationPoolName)
   output <- .sesv2$put_dedicated_ip_in_pool_output()
@@ -5132,8 +5061,7 @@ sesv2_put_dedicated_ip_pool_scaling_attributes <- function(PoolName, ScalingMode
     http_method = "PUT",
     http_path = "/v2/email/dedicated-ip-pools/{PoolName}/scaling",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_dedicated_ip_pool_scaling_attributes_input(PoolName = PoolName, ScalingMode = ScalingMode)
   output <- .sesv2$put_dedicated_ip_pool_scaling_attributes_output()
@@ -5180,8 +5108,7 @@ sesv2_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
     http_method = "PUT",
     http_path = "/v2/email/dedicated-ips/{IP}/warmup",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_dedicated_ip_warmup_attributes_input(Ip = Ip, WarmupPercentage = WarmupPercentage)
   output <- .sesv2$put_dedicated_ip_warmup_attributes_output()
@@ -5252,8 +5179,7 @@ sesv2_put_deliverability_dashboard_option <- function(DashboardEnabled, Subscrib
     http_method = "PUT",
     http_path = "/v2/email/deliverability-dashboard",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_deliverability_dashboard_option_input(DashboardEnabled = DashboardEnabled, SubscribedDomains = SubscribedDomains)
   output <- .sesv2$put_deliverability_dashboard_option_output()
@@ -5299,8 +5225,7 @@ sesv2_put_email_identity_configuration_set_attributes <- function(EmailIdentity,
     http_method = "PUT",
     http_path = "/v2/email/identities/{EmailIdentity}/configuration-set",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_email_identity_configuration_set_attributes_input(EmailIdentity = EmailIdentity, ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$put_email_identity_configuration_set_attributes_output()
@@ -5349,8 +5274,7 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
     http_method = "PUT",
     http_path = "/v2/email/identities/{EmailIdentity}/dkim",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_email_identity_dkim_attributes_input(EmailIdentity = EmailIdentity, SigningEnabled = SigningEnabled)
   output <- .sesv2$put_email_identity_dkim_attributes_output()
@@ -5370,18 +5294,18 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' email domain identity. You can use this operation to do any of the
 #' following:
 #' 
-#' - Update the signing attributes for an identity that uses Bring Your Own
-#'   DKIM (BYODKIM).
+#' -   Update the signing attributes for an identity that uses Bring Your
+#'     Own DKIM (BYODKIM).
 #' 
-#' - Update the key length that should be used for Easy DKIM.
+#' -   Update the key length that should be used for Easy DKIM.
 #' 
-#' - Change from using no DKIM authentication to using Easy DKIM.
+#' -   Change from using no DKIM authentication to using Easy DKIM.
 #' 
-#' - Change from using no DKIM authentication to using BYODKIM.
+#' -   Change from using no DKIM authentication to using BYODKIM.
 #' 
-#' - Change from using Easy DKIM to using BYODKIM.
+#' -   Change from using Easy DKIM to using BYODKIM.
 #' 
-#' - Change from using BYODKIM to using Easy DKIM.
+#' -   Change from using BYODKIM to using Easy DKIM.
 #'
 #' @usage
 #' sesv2_put_email_identity_dkim_signing_attributes(EmailIdentity,
@@ -5391,11 +5315,11 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' @param SigningAttributesOrigin &#91;required&#93; The method to use to configure DKIM for the identity. There are the
 #' following possible values:
 #' 
-#' - `AWS_SES` – Configure DKIM for the identity by using [Easy
-#'   DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
+#' -   `AWS_SES` – Configure DKIM for the identity by using [Easy
+#'     DKIM](https://docs.aws.amazon.com/ses/latest/dg/send-email-authentication-dkim-easy.html).
 #' 
-#' - `EXTERNAL` – Configure DKIM for the identity by using Bring Your Own
-#'   DKIM (BYODKIM).
+#' -   `EXTERNAL` – Configure DKIM for the identity by using Bring Your Own
+#'     DKIM (BYODKIM).
 #' @param SigningAttributes An object that contains information about the private key and selector
 #' that you want to use to configure DKIM for the identity for Bring Your
 #' Own DKIM (BYODKIM) for the identity, or, configures the key length to be
@@ -5437,8 +5361,7 @@ sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, Sign
     http_method = "PUT",
     http_path = "/v1/email/identities/{EmailIdentity}/dkim/signing",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_email_identity_dkim_signing_attributes_input(EmailIdentity = EmailIdentity, SigningAttributesOrigin = SigningAttributesOrigin, SigningAttributes = SigningAttributes)
   output <- .sesv2$put_email_identity_dkim_signing_attributes_output()
@@ -5506,8 +5429,7 @@ sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailFor
     http_method = "PUT",
     http_path = "/v2/email/identities/{EmailIdentity}/feedback",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_email_identity_feedback_attributes_input(EmailIdentity = EmailIdentity, EmailForwardingEnabled = EmailForwardingEnabled)
   output <- .sesv2$put_email_identity_feedback_attributes_output()
@@ -5534,12 +5456,12 @@ sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailFor
 #' @param MailFromDomain The custom MAIL FROM domain that you want the verified identity to use.
 #' The MAIL FROM domain must meet the following criteria:
 #' 
-#' - It has to be a subdomain of the verified identity.
+#' -   It has to be a subdomain of the verified identity.
 #' 
-#' - It can't be used to receive email.
+#' -   It can't be used to receive email.
 #' 
-#' - It can't be used in a "From" address if the MAIL FROM domain is a
-#'   destination for feedback forwarding emails.
+#' -   It can't be used in a "From" address if the MAIL FROM domain is a
+#'     destination for feedback forwarding emails.
 #' @param BehaviorOnMxFailure The action to take if the required MX record isn't found when you send
 #' an email. When you set this value to `UseDefaultValue`, the mail is sent
 #' using *amazonses.com* as the MAIL FROM domain. When you set this value
@@ -5573,8 +5495,7 @@ sesv2_put_email_identity_mail_from_attributes <- function(EmailIdentity, MailFro
     http_method = "PUT",
     http_path = "/v2/email/identities/{EmailIdentity}/mail-from",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_email_identity_mail_from_attributes_input(EmailIdentity = EmailIdentity, MailFromDomain = MailFromDomain, BehaviorOnMxFailure = BehaviorOnMxFailure)
   output <- .sesv2$put_email_identity_mail_from_attributes_output()
@@ -5621,8 +5542,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
     http_method = "PUT",
     http_path = "/v2/email/suppression/addresses",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$put_suppressed_destination_input(EmailAddress = EmailAddress, Reason = Reason)
   output <- .sesv2$put_suppressed_destination_output()
@@ -5780,8 +5700,7 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
     http_method = "POST",
     http_path = "/v2/email/outbound-bulk-emails",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$send_bulk_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags = DefaultEmailTags, DefaultContent = DefaultContent, BulkEmailEntries = BulkEmailEntries, ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$send_bulk_email_output()
@@ -5848,8 +5767,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
     http_method = "POST",
     http_path = "/v2/email/outbound-custom-verification-emails",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$send_custom_verification_email_input(EmailAddress = EmailAddress, TemplateName = TemplateName, ConfigurationSetName = ConfigurationSetName)
   output <- .sesv2$send_custom_verification_email_output()
@@ -5867,19 +5785,19 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 #' Sends an email message. You can use the Amazon SES API v2 to send the
 #' following types of messages:
 #' 
-#' - **Simple** – A standard email message. When you create this type of
-#'   message, you specify the sender, the recipient, and the message body,
-#'   and Amazon SES assembles the message for you.
+#' -   **Simple** – A standard email message. When you create this type of
+#'     message, you specify the sender, the recipient, and the message
+#'     body, and Amazon SES assembles the message for you.
 #' 
-#' - **Raw** – A raw, MIME-formatted email message. When you send this type
-#'   of email, you have to specify all of the message headers, as well as
-#'   the message body. You can use this message type to send messages that
-#'   contain attachments. The message that you specify has to be a valid
-#'   MIME message.
+#' -   **Raw** – A raw, MIME-formatted email message. When you send this
+#'     type of email, you have to specify all of the message headers, as
+#'     well as the message body. You can use this message type to send
+#'     messages that contain attachments. The message that you specify has
+#'     to be a valid MIME message.
 #' 
-#' - **Templated** – A message that contains personalization tags. When you
-#'   send this type of email, Amazon SES API v2 automatically replaces the
-#'   tags with values that you specify.
+#' -   **Templated** – A message that contains personalization tags. When
+#'     you send this type of email, Amazon SES API v2 automatically
+#'     replaces the tags with values that you specify.
 #'
 #' @usage
 #' sesv2_send_email(FromEmailAddress, FromEmailAddressIdentityArn,
@@ -6030,8 +5948,7 @@ sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityAr
     http_method = "POST",
     http_path = "/v2/email/outbound-emails",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName, ListManagementOptions = ListManagementOptions)
   output <- .sesv2$send_email_output()
@@ -6094,8 +6011,7 @@ sesv2_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/v2/email/tags",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .sesv2$tag_resource_output()
@@ -6151,8 +6067,7 @@ sesv2_test_render_email_template <- function(TemplateName, TemplateData) {
     http_method = "POST",
     http_path = "/v2/email/templates/{TemplateName}/render",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$test_render_email_template_input(TemplateName = TemplateName, TemplateData = TemplateData)
   output <- .sesv2$test_render_email_template_output()
@@ -6207,8 +6122,7 @@ sesv2_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/v2/email/tags",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .sesv2$untag_resource_output()
@@ -6291,8 +6205,7 @@ sesv2_update_configuration_set_event_destination <- function(ConfigurationSetNam
     http_method = "PUT",
     http_path = "/v2/email/configuration-sets/{ConfigurationSetName}/event-destinations/{EventDestinationName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$update_configuration_set_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName, EventDestination = EventDestination)
   output <- .sesv2$update_configuration_set_event_destination_output()
@@ -6354,8 +6267,7 @@ sesv2_update_contact <- function(ContactListName, EmailAddress, TopicPreferences
     http_method = "PUT",
     http_path = "/v2/email/contact-lists/{ContactListName}/contacts/{EmailAddress}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$update_contact_input(ContactListName = ContactListName, EmailAddress = EmailAddress, TopicPreferences = TopicPreferences, UnsubscribeAll = UnsubscribeAll, AttributesData = AttributesData)
   output <- .sesv2$update_contact_output()
@@ -6411,8 +6323,7 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
     http_method = "PUT",
     http_path = "/v2/email/contact-lists/{ContactListName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$update_contact_list_input(ContactListName = ContactListName, Topics = Topics, Description = Description)
   output <- .sesv2$update_contact_list_output()
@@ -6482,8 +6393,7 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
     http_method = "PUT",
     http_path = "/v2/email/custom-verification-email-templates/{TemplateName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$update_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
   output <- .sesv2$update_custom_verification_email_template_output()
@@ -6550,8 +6460,7 @@ sesv2_update_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
     http_method = "PUT",
     http_path = "/v2/email/identities/{EmailIdentity}/policies/{PolicyName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$update_email_identity_policy_input(EmailIdentity = EmailIdentity, PolicyName = PolicyName, Policy = Policy)
   output <- .sesv2$update_email_identity_policy_output()
@@ -6606,8 +6515,7 @@ sesv2_update_email_template <- function(TemplateName, TemplateContent) {
     http_method = "PUT",
     http_path = "/v2/email/templates/{TemplateName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sesv2$update_email_template_input(TemplateName = TemplateName, TemplateContent = TemplateContent)
   output <- .sesv2$update_email_template_output()

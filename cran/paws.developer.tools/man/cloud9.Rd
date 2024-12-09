@@ -57,9 +57,9 @@ For more information about Cloud9, see the \href{https://docs.aws.amazon.com/clo
 
 Cloud9 supports these operations:
 \itemize{
-\item \code{\link[=cloud9_create_environment_ec2]{create_environment_ec2}}: Creates an
-Cloud9 development environment, launches an Amazon EC2 instance, and
-then connects from the instance to the environment.
+\item \code{\link[=cloud9_create_environment_ec2]{create_environment_ec2}}: Creates
+an Cloud9 development environment, launches an Amazon EC2 instance,
+and then connects from the instance to the environment.
 \item \code{\link[=cloud9_create_environment_membership]{create_environment_membership}}:
 Adds an environment member to an environment.
 \item \code{\link[=cloud9_delete_environment]{delete_environment}}: Deletes an

@@ -68,8 +68,7 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Services"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Services")
   )
   input <- .pricing$describe_services_input(ServiceCode = ServiceCode, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$describe_services_output()
@@ -137,8 +136,7 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AttributeValues"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AttributeValues")
   )
   input <- .pricing$get_attribute_values_input(ServiceCode = ServiceCode, AttributeName = AttributeName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$get_attribute_values_output()
@@ -155,8 +153,7 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' @description
 #' *This feature is in preview release and is subject to change. Your use
 #' of Amazon Web Services Price List API is subject to the Beta Service
-#' Participation terms of the
-#' \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).*
+#' Participation terms of the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).*
 #' 
 #' This returns the URL that you can retrieve your Price List file from.
 #' This URL is based on the `PriceListArn` and `FileFormat` that you
@@ -200,8 +197,7 @@ pricing_get_price_list_file_url <- function(PriceListArn, FileFormat) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pricing$get_price_list_file_url_input(PriceListArn = PriceListArn, FileFormat = FileFormat)
   output <- .pricing$get_price_list_file_url_output()
@@ -272,8 +268,7 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceList")
   )
   input <- .pricing$get_products_input(ServiceCode = ServiceCode, Filters = Filters, FormatVersion = FormatVersion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$get_products_output()
@@ -290,8 +285,7 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
 #' @description
 #' *This feature is in preview release and is subject to change. Your use
 #' of Amazon Web Services Price List API is subject to the Beta Service
-#' Participation terms of the
-#' \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).*
+#' Participation terms of the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).*
 #' 
 #' This returns a list of Price List references that the requester if
 #' authorized to view, given a `ServiceCode`, `CurrencyCode`, and an
@@ -373,8 +367,7 @@ pricing_list_price_lists <- function(ServiceCode, EffectiveDate, RegionCode = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceLists"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PriceLists")
   )
   input <- .pricing$list_price_lists_input(ServiceCode = ServiceCode, EffectiveDate = EffectiveDate, RegionCode = RegionCode, CurrencyCode = CurrencyCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pricing$list_price_lists_output()

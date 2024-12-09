@@ -59,18 +59,19 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CopySource}{[required] Specifies the source object for the copy operation. You specify the
 value in one of two formats, depending on whether you want to access the
 source object through an \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{access point}:
 \itemize{
-\item For objects not accessed through an access point, specify the name of
-the source bucket and key of the source object, separated by a slash
-(/). For example, to copy the object \code{reports/january.pdf} from the
-bucket \code{awsexamplebucket}, use \code{awsexamplebucket/reports/january.pdf}.
-The value must be URL-encoded.
+\item For objects not accessed through an access point, specify the name
+of the source bucket and key of the source object, separated by a
+slash (/). For example, to copy the object \code{reports/january.pdf}
+from the bucket \code{awsexamplebucket}, use
+\code{awsexamplebucket/reports/january.pdf}. The value must be
+URL-encoded.
 \item For objects accessed through access points, specify the Amazon
 Resource Name (ARN) of the object as accessed through the access
 point, in the format
@@ -81,18 +82,18 @@ point \code{my-access-point} owned by account \code{123456789012} in Region
 \code{arn:aws:s3:us-west-2:123456789012:accesspoint/my-access-point/object/reports/january.pdf}.
 The value must be URL encoded.
 \itemize{
-\item Amazon S3 supports copy operations using Access points only when the
-source and destination buckets are in the same Amazon Web Services
-Region.
+\item Amazon S3 supports copy operations using Access points only when
+the source and destination buckets are in the same Amazon Web
+Services Region.
 \item Access points are not supported by directory buckets.
 }
 
 Alternatively, for objects accessed through Amazon S3 on Outposts,
 specify the ARN of the object as accessed in the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/object/<key>}.
-For example, to copy the object \code{reports/january.pdf} through outpost
-\code{my-outpost} owned by account \code{123456789012} in Region \code{us-west-2},
-use the URL encoding of
+For example, to copy the object \code{reports/january.pdf} through
+outpost \code{my-outpost} owned by account \code{123456789012} in Region
+\code{us-west-2}, use the URL encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/object/reports/january.pdf}.
 The value must be URL-encoded.
 }

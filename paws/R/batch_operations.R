@@ -63,8 +63,7 @@ batch_cancel_job <- function(jobId, reason) {
     http_method = "POST",
     http_path = "/v1/canceljob",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$cancel_job_input(jobId = jobId, reason = reason)
   output <- .batch$cancel_job_output()
@@ -140,33 +139,34 @@ batch_cancel_job <- function(jobId, reason) {
 #' To use the enhanced updating of compute environments to update AMIs,
 #' follow these rules:
 #' 
-#' - Either don't set the service role (`serviceRole`) parameter or set it
-#'   to the **AWSBatchServiceRole** service-linked role.
+#' -   Either don't set the service role (`serviceRole`) parameter or set
+#'     it to the **AWSBatchServiceRole** service-linked role.
 #' 
-#' - Set the allocation strategy (`allocationStrategy`) parameter to
-#'   `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED`, or
-#'   `SPOT_PRICE_CAPACITY_OPTIMIZED`.
+#' -   Set the allocation strategy (`allocationStrategy`) parameter to
+#'     `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED`, or
+#'     `SPOT_PRICE_CAPACITY_OPTIMIZED`.
 #' 
-#' - Set the update to latest image version (`updateToLatestImageVersion`)
-#'   parameter to `true`. The `updateToLatestImageVersion` parameter is
-#'   used when you update a compute environment. This parameter is ignored
-#'   when you create a compute environment.
+#' -   Set the update to latest image version
+#'     (`updateToLatestImageVersion`) parameter to `true`. The
+#'     `updateToLatestImageVersion` parameter is used when you update a
+#'     compute environment. This parameter is ignored when you create a
+#'     compute environment.
 #' 
-#' - Don't specify an AMI ID in `imageId`, `imageIdOverride` (in
-#'   [`ec2Configuration`](https://docs.aws.amazon.com/batch/latest/APIReference/API_Ec2Configuration.html)
-#'   ), or in the launch template (`launchTemplate`). In that case, Batch
-#'   selects the latest Amazon ECS optimized AMI that's supported by Batch
-#'   at the time the infrastructure update is initiated. Alternatively, you
-#'   can specify the AMI ID in the `imageId` or `imageIdOverride`
-#'   parameters, or the launch template identified by the `LaunchTemplate`
-#'   properties. Changing any of these properties starts an infrastructure
-#'   update. If the AMI ID is specified in the launch template, it can't be
-#'   replaced by specifying an AMI ID in either the `imageId` or
-#'   `imageIdOverride` parameters. It can only be replaced by specifying a
-#'   different launch template, or if the launch template version is set to
-#'   `$Default` or `$Latest`, by setting either a new default version for
-#'   the launch template (if `$Default`) or by adding a new version to the
-#'   launch template (if `$Latest`).
+#' -   Don't specify an AMI ID in `imageId`, `imageIdOverride` (in
+#'     [`ec2Configuration`](https://docs.aws.amazon.com/batch/latest/APIReference/API_Ec2Configuration.html)
+#'     ), or in the launch template (`launchTemplate`). In that case, Batch
+#'     selects the latest Amazon ECS optimized AMI that's supported by
+#'     Batch at the time the infrastructure update is initiated.
+#'     Alternatively, you can specify the AMI ID in the `imageId` or
+#'     `imageIdOverride` parameters, or the launch template identified by
+#'     the `LaunchTemplate` properties. Changing any of these properties
+#'     starts an infrastructure update. If the AMI ID is specified in the
+#'     launch template, it can't be replaced by specifying an AMI ID in
+#'     either the `imageId` or `imageIdOverride` parameters. It can only be
+#'     replaced by specifying a different launch template, or if the launch
+#'     template version is set to `$Default` or `$Latest`, by setting
+#'     either a new default version for the launch template (if `$Default`)
+#'     or by adding a new version to the launch template (if `$Latest`).
 #' 
 #' If these rules are followed, any update that starts an infrastructure
 #' update causes the AMI ID to be re-selected. If the `version` setting in
@@ -204,7 +204,7 @@ batch_cancel_job <- function(jobId, reason) {
 #' Compute environments in a `DISABLED` state may continue to incur billing
 #' charges. To prevent additional charges, turn off and then delete the
 #' compute environment. For more information, see
-#' [State](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobQueueDetail.html#compute_environment_state)
+#' [State](https://docs.aws.amazon.com/batch/latest/userguide/compute_environment_parameters.html#compute_environment_state)
 #' in the *Batch User Guide*.
 #' 
 #' When an instance is idle, the instance scales down to the `minvCpus`
@@ -415,8 +415,7 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
     http_method = "POST",
     http_path = "/v1/createcomputeenvironment",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$create_compute_environment_input(computeEnvironmentName = computeEnvironmentName, type = type, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, tags = tags, eksConfiguration = eksConfiguration, context = context)
   output <- .batch$create_compute_environment_output()
@@ -571,8 +570,7 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, schedulingPolicyA
     http_method = "POST",
     http_path = "/v1/createjobqueue",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$create_job_queue_input(jobQueueName = jobQueueName, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, tags = tags, jobStateTimeLimitActions = jobStateTimeLimitActions)
   output <- .batch$create_job_queue_output()
@@ -646,8 +644,7 @@ batch_create_scheduling_policy <- function(name, fairsharePolicy = NULL, tags = 
     http_method = "POST",
     http_path = "/v1/createschedulingpolicy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$create_scheduling_policy_input(name = name, fairsharePolicy = fairsharePolicy, tags = tags)
   output <- .batch$create_scheduling_policy_output()
@@ -708,8 +705,7 @@ batch_delete_compute_environment <- function(computeEnvironment) {
     http_method = "POST",
     http_path = "/v1/deletecomputeenvironment",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$delete_compute_environment_input(computeEnvironment = computeEnvironment)
   output <- .batch$delete_compute_environment_output()
@@ -768,8 +764,7 @@ batch_delete_job_queue <- function(jobQueue) {
     http_method = "POST",
     http_path = "/v1/deletejobqueue",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$delete_job_queue_input(jobQueue = jobQueue)
   output <- .batch$delete_job_queue_output()
@@ -814,8 +809,7 @@ batch_delete_scheduling_policy <- function(arn) {
     http_method = "POST",
     http_path = "/v1/deleteschedulingpolicy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$delete_scheduling_policy_input(arn = arn)
   output <- .batch$delete_scheduling_policy_output()
@@ -868,8 +862,7 @@ batch_deregister_job_definition <- function(jobDefinition) {
     http_method = "POST",
     http_path = "/v1/deregisterjobdefinition",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$deregister_job_definition_input(jobDefinition = jobDefinition)
   output <- .batch$deregister_job_definition_output()
@@ -1022,8 +1015,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
     http_method = "POST",
     http_path = "/v1/describecomputeenvironments",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "computeEnvironments"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "computeEnvironments")
   )
   input <- .batch$describe_compute_environments_input(computeEnvironments = computeEnvironments, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$describe_compute_environments_output()
@@ -1887,8 +1879,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
     http_method = "POST",
     http_path = "/v1/describejobdefinitions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobDefinitions"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobDefinitions")
   )
   input <- .batch$describe_job_definitions_input(jobDefinitions = jobDefinitions, maxResults = maxResults, jobDefinitionName = jobDefinitionName, status = status, nextToken = nextToken)
   output <- .batch$describe_job_definitions_output()
@@ -1999,8 +1990,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
     http_method = "POST",
     http_path = "/v1/describejobqueues",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobQueues"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobQueues")
   )
   input <- .batch$describe_job_queues_input(jobQueues = jobQueues, maxResults = maxResults, nextToken = nextToken)
   output <- .batch$describe_job_queues_output()
@@ -2952,8 +2942,7 @@ batch_describe_jobs <- function(jobs) {
     http_method = "POST",
     http_path = "/v1/describejobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$describe_jobs_input(jobs = jobs)
   output <- .batch$describe_jobs_output()
@@ -3022,8 +3011,7 @@ batch_describe_scheduling_policies <- function(arns) {
     http_method = "POST",
     http_path = "/v1/describeschedulingpolicies",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$describe_scheduling_policies_input(arns = arns)
   output <- .batch$describe_scheduling_policies_output()
@@ -3081,8 +3069,7 @@ batch_get_job_queue_snapshot <- function(jobQueue) {
     http_method = "POST",
     http_path = "/v1/getjobqueuesnapshot",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$get_job_queue_snapshot_input(jobQueue = jobQueue)
   output <- .batch$get_job_queue_snapshot_output()
@@ -3101,11 +3088,11 @@ batch_get_job_queue_snapshot <- function(jobQueue) {
 #' 
 #' You must specify only one of the following items:
 #' 
-#' - A job queue ID to return a list of jobs in that job queue
+#' -   A job queue ID to return a list of jobs in that job queue
 #' 
-#' - A multi-node parallel job ID to return a list of nodes for that job
+#' -   A multi-node parallel job ID to return a list of nodes for that job
 #' 
-#' - An array job ID to return a list of the children for that job
+#' -   An array job ID to return a list of the children for that job
 #' 
 #' You can filter the results by job status with the `jobStatus` parameter.
 #' If you don't specify a status, only `RUNNING` jobs are returned.
@@ -3135,15 +3122,15 @@ batch_get_job_queue_snapshot <- function(jobQueue) {
 #' 
 #' The following outlines key parameters and limitations:
 #' 
-#' - The minimum value is 1.
+#' -   The minimum value is 1.
 #' 
-#' - When `--job-status` is used, Batch returns up to 1000 values.
+#' -   When `--job-status` is used, Batch returns up to 1000 values.
 #' 
-#' - When `--filters` is used, Batch returns up to 100 values.
+#' -   When `--filters` is used, Batch returns up to 100 values.
 #' 
-#' - If neither parameter is used, then [`list_jobs`][batch_list_jobs]
-#'   returns up to 1000 results (jobs that are in the `RUNNING` status) and
-#'   a `nextToken` value, if applicable.
+#' -   If neither parameter is used, then [`list_jobs`][batch_list_jobs]
+#'     returns up to 1000 results (jobs that are in the `RUNNING` status)
+#'     and a `nextToken` value, if applicable.
 #' @param nextToken The `nextToken` value returned from a previous paginated
 #' [`list_jobs`][batch_list_jobs] request where `maxResults` was used and
 #' the results exceeded the value of that parameter. Pagination continues
@@ -3277,8 +3264,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
     http_method = "POST",
     http_path = "/v1/listjobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaryList"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobSummaryList")
   )
   input <- .batch$list_jobs_input(jobQueue = jobQueue, arrayJobId = arrayJobId, multiNodeJobId = multiNodeJobId, jobStatus = jobStatus, maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .batch$list_jobs_output()
@@ -3352,8 +3338,7 @@ batch_list_scheduling_policies <- function(maxResults = NULL, nextToken = NULL) 
     http_method = "POST",
     http_path = "/v1/listschedulingpolicies",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "schedulingPolicies"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "schedulingPolicies")
   )
   input <- .batch$list_scheduling_policies_input(maxResults = maxResults, nextToken = nextToken)
   output <- .batch$list_scheduling_policies_output()
@@ -3418,8 +3403,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .batch$list_tags_for_resource_output()
@@ -3450,10 +3434,10 @@ batch_list_tags_for_resource <- function(resourceArn) {
 #' definition](https://docs.aws.amazon.com/batch/latest/userguide/) in the
 #' *Batch User Guide*.
 #' 
-#' - If the value is `container`, then one of the following is required:
-#'   `containerProperties`, `ecsProperties`, or `eksProperties`.
+#' -   If the value is `container`, then one of the following is required:
+#'     `containerProperties`, `ecsProperties`, or `eksProperties`.
 #' 
-#' - If the value is `multinode`, then `nodeProperties` is required.
+#' -   If the value is `multinode`, then `nodeProperties` is required.
 #' 
 #' If the job is run on Fargate resources, then `multinode` isn't
 #' supported.
@@ -4371,8 +4355,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
     http_method = "POST",
     http_path = "/v1/registerjobdefinition",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$register_job_definition_input(jobDefinitionName = jobDefinitionName, type = type, parameters = parameters, schedulingPriority = schedulingPriority, containerProperties = containerProperties, nodeProperties = nodeProperties, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, platformCapabilities = platformCapabilities, eksProperties = eksProperties, ecsProperties = ecsProperties)
   output <- .batch$register_job_definition_output()
@@ -4799,8 +4782,7 @@ batch_submit_job <- function(jobName, jobQueue, shareIdentifier = NULL, scheduli
     http_method = "POST",
     http_path = "/v1/submitjob",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$submit_job_input(jobName = jobName, jobQueue = jobQueue, shareIdentifier = shareIdentifier, schedulingPriorityOverride = schedulingPriorityOverride, arrayProperties = arrayProperties, dependsOn = dependsOn, jobDefinition = jobDefinition, parameters = parameters, containerOverrides = containerOverrides, nodeOverrides = nodeOverrides, retryStrategy = retryStrategy, propagateTags = propagateTags, timeout = timeout, tags = tags, eksPropertiesOverride = eksPropertiesOverride, ecsPropertiesOverride = ecsPropertiesOverride)
   output <- .batch$submit_job_output()
@@ -4872,8 +4854,7 @@ batch_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .batch$tag_resource_output()
@@ -4933,8 +4914,7 @@ batch_terminate_job <- function(jobId, reason) {
     http_method = "POST",
     http_path = "/v1/terminatejob",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$terminate_job_input(jobId = jobId, reason = reason)
   output <- .batch$terminate_job_output()
@@ -4995,8 +4975,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/v1/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .batch$untag_resource_output()
@@ -5036,7 +5015,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #' Compute environments in a `DISABLED` state may continue to incur billing
 #' charges. To prevent additional charges, turn off and then delete the
 #' compute environment. For more information, see
-#' [State](https://docs.aws.amazon.com/batch/latest/APIReference/API_JobQueueDetail.html#compute_environment_state)
+#' [State](https://docs.aws.amazon.com/batch/latest/userguide/compute_environment_parameters.html#compute_environment_state)
 #' in the *Batch User Guide*.
 #' 
 #' When an instance is idle, the instance scales down to the `minvCpus`
@@ -5169,8 +5148,7 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, u
     http_method = "POST",
     http_path = "/v1/updatecomputeenvironment",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$update_compute_environment_input(computeEnvironment = computeEnvironment, state = state, unmanagedvCpus = unmanagedvCpus, computeResources = computeResources, serviceRole = serviceRole, updatePolicy = updatePolicy, context = context)
   output <- .batch$update_compute_environment_output()
@@ -5278,8 +5256,7 @@ batch_update_job_queue <- function(jobQueue, state = NULL, schedulingPolicyArn =
     http_method = "POST",
     http_path = "/v1/updatejobqueue",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$update_job_queue_input(jobQueue = jobQueue, state = state, schedulingPolicyArn = schedulingPolicyArn, priority = priority, computeEnvironmentOrder = computeEnvironmentOrder, jobStateTimeLimitActions = jobStateTimeLimitActions)
   output <- .batch$update_job_queue_output()
@@ -5333,8 +5310,7 @@ batch_update_scheduling_policy <- function(arn, fairsharePolicy = NULL) {
     http_method = "POST",
     http_path = "/v1/updateschedulingpolicy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .batch$update_scheduling_policy_input(arn = arn, fairsharePolicy = fairsharePolicy)
   output <- .batch$update_scheduling_policy_output()

@@ -57,8 +57,9 @@ options results in an error.}
 \item{FilterCountries}{An optional parameter that limits the search results by returning only
 places that are in a specified list of countries.
 \itemize{
-\item Valid values include \href{https://www.iso.org/iso-3166-country-codes.html}{ISO 3166} 3-digit country
-codes. For example, Australia uses three upper-case characters: \code{AUS}.
+\item Valid values include \href{https://www.iso.org/iso-3166-country-codes.html}{ISO 3166} 3-digit
+country codes. For example, Australia uses three upper-case
+characters: \code{AUS}.
 }}
 
 \item{MaxResults}{An optional parameter. The maximum number of results returned per
@@ -89,7 +90,7 @@ places. If you include more than one category, the results will include
 results that match \emph{any} of the categories listed.
 
 For more information about using categories, including a list of Amazon
-Location categories, see \href{https://docs.aws.amazon.com/location/latest/developerguide/}{Categories and filtering},
+Location categories, see \href{https://docs.aws.amazon.com/location/latest/developerguide/category-filtering.html}{Categories and filtering},
 in the \emph{Amazon Location Service Developer Guide}.}
 
 \item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}

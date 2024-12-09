@@ -22,8 +22,8 @@ cognitoidentityprovider_admin_create_user(
 \item{Username}{[required] The value that you want to set as the username sign-in attribute. The
 following conditions apply to the username parameter.
 \itemize{
-\item The username can't be a duplicate of another username in the same user
-pool.
+\item The username can't be a duplicate of another username in the same
+user pool.
 \item You can't change the value of a username after you create it.
 \item You can only provide a value if usernames are a valid sign-in
 attribute for your user pool. If your user pool only supports phone
@@ -138,13 +138,13 @@ in the \emph{Amazon Cognito Developer Guide}.
 When you use the ClientMetadata parameter, remember that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to Lambda
-triggers that are assigned to a user pool to support custom workflows.
-If your user pool configuration doesn't include triggers, the
-ClientMetadata parameter serves no purpose.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
 \item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
-sensitive information.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
 }
 \description{

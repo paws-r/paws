@@ -49,14 +49,14 @@ value to ensure uniqueness of your versions within the specified secret.
 \item If the \code{ClientRequestToken} value isn't already associated with a
 version of the secret then a new version of the secret is created.
 \item If a version with this value already exists and the version
-\code{SecretString} and \code{SecretBinary} values are the same as those in the
-request, then the request is ignored.
+\code{SecretString} and \code{SecretBinary} values are the same as those in
+the request, then the request is ignored.
 \item If a version with this value already exists and that version's
 \code{SecretString} and \code{SecretBinary} values are different from those in
 the request, then the request fails because you cannot modify an
 existing version. Instead, use
-\code{\link[=secretsmanager_put_secret_value]{put_secret_value}} to create a new
-version.
+\code{\link[=secretsmanager_put_secret_value]{put_secret_value}} to create a
+new version.
 }
 
 This value becomes the \code{VersionId} of the new version.}
@@ -66,7 +66,7 @@ This value becomes the \code{VersionId} of the new version.}
 \item{KmsKeyId}{The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
 encrypt the secret value in the secret. An alias is always prefixed by
 \verb{alias/}, for example \code{alias/aws/secretsmanager}. For more information,
-see \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about}{About aliases}.
+see \href{https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html}{About aliases}.
 
 To use a KMS key in a different account, use the key ARN or the alias
 ARN.
@@ -120,8 +120,8 @@ If you check tags in permissions policies as part of your security
 strategy, then adding or removing a tag can change permissions. If the
 completion of this operation would result in you losing your permissions
 for this secret, then Secrets Manager blocks the operation and returns
-an \verb{Access Denied} error. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#tag-secrets-abac}{Control access to secrets using tags}
-and \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#auth-and-access_tags2}{Limit access to identities with tags that match secrets' tags}.
+an \verb{Access Denied} error. For more information, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#tag-secrets-abac}{Control access to secrets using tags}
+and \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_tags2}{Limit access to identities with tags that match secrets' tags}.
 
 For information about how to format a JSON parameter for the various
 command line tool environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}.

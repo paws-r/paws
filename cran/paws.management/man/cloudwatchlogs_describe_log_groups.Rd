@@ -54,8 +54,8 @@ monitoring account.}
 \item{logGroupClass}{Specifies the log group class for this log group. There are two classes:
 \itemize{
 \item The \code{Standard} log class supports all CloudWatch Logs features.
-\item The \verb{Infrequent Access} log class supports a subset of CloudWatch Logs
-features and incurs lower costs.
+\item The \verb{Infrequent Access} log class supports a subset of CloudWatch
+Logs features and incurs lower costs.
 }
 
 For details about the features supported by each class, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CloudWatch_Logs_Log_Classes.html}{Log classes}}

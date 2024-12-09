@@ -112,8 +112,8 @@ Specify \code{NumCacheNodes=5} (3 + 2) and optionally specify two
 Availability Zones for the two new nodes.
 \item \strong{Scenario 2:} You have 3 active nodes and 2 nodes pending creation
 (from the scenario 1 call) and want to add 1 more node. Specify
-\code{NumCacheNodes=6} ((3 + 2) + 1) and optionally specify an Availability
-Zone for the new node.
+\code{NumCacheNodes=6} ((3 + 2) + 1) and optionally specify an
+Availability Zone for the new node.
 \item \strong{Scenario 3:} You want to cancel all pending operations. Specify
 \code{NumCacheNodes=3} to cancel all pending operations.
 }
@@ -126,7 +126,7 @@ If \code{cross-az} is specified, existing Memcached nodes remain in their
 current Availability Zone. Only newly created nodes can be located in
 different Availability Zones. For guidance on how to move existing
 Memcached nodes to different Availability Zones, see the \strong{Availability
-Zone Considerations} section of \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html}{Cache Node Considerations for Memcached}.
+Zone Considerations} section of \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/CacheNodes.SupportedTypes.html}{Cache Node Considerations for Memcached}.
 
 \strong{Impact of new add/remove requests upon pending requests}
 \itemize{
@@ -134,22 +134,22 @@ Zone Considerations} section of \href{https://docs.aws.amazon.com/AmazonElastiCa
 \itemize{
 \item Pending Action: Delete
 \item New Request: Delete
-\item Result: The new delete, pending or immediate, replaces the pending
-delete.
+\item Result: The new delete, pending or immediate, replaces the
+pending delete.
 }
 \item Scenario-2
 \itemize{
 \item Pending Action: Delete
 \item New Request: Create
-\item Result: The new create, pending or immediate, replaces the pending
-delete.
+\item Result: The new create, pending or immediate, replaces the
+pending delete.
 }
 \item Scenario-3
 \itemize{
 \item Pending Action: Create
 \item New Request: Delete
-\item Result: The new delete, pending or immediate, replaces the pending
-create.
+\item Result: The new delete, pending or immediate, replaces the
+pending create.
 }
 \item Scenario-4
 \itemize{
@@ -157,9 +157,10 @@ create.
 \item New Request: Create
 \item Result: The new create is added to the pending create.
 
-\strong{Important:} If the new create request is \strong{Apply Immediately -
-Yes}, all creates are performed immediately. If the new create
-request is \strong{Apply Immediately - No}, all creates are pending.
+\strong{Important:} If the new create request is \strong{Apply
+Immediately - Yes}, all creates are performed immediately. If
+the new create request is \strong{Apply Immediately - No}, all
+creates are pending.
 }
 }}
 
@@ -229,7 +230,7 @@ Default: \code{false}}
 
 \item{EngineVersion}{The upgraded version of the cache engine to be run on the cache nodes.
 
-\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
+\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version}),
 but you cannot downgrade to an earlier engine version. If you want to
 use an earlier engine version, you must delete the existing cluster and
 create it anew with the earlier engine version.}
@@ -258,7 +259,8 @@ parameter. Password constraints:
 \item Must be only printable ASCII characters
 \item Must be at least 16 characters and no more than 128 characters in
 length
-\item Cannot contain any of the following characters: '/', '"', or '@', '\%'
+\item Cannot contain any of the following characters: '/', '"', or '@',
+'\%'
 }
 
 For more information, see AUTH password at
@@ -272,7 +274,7 @@ must be specified with the \code{auth-token} parameter. Possible values:
 \item DELETE - allowed only when transitioning to RBAC
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/auth.html}{Authenticating Users with Redis OSS AUTH}}
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis OSS AUTH}}
 
 \item{LogDeliveryConfigurations}{Specifies the destination, format and type of the logs.}
 

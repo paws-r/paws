@@ -23,8 +23,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{Filters}{One or more filters.
 \itemize{
 \item \code{gre-key} - The ID of a trunk interface association.
-\item \code{interface-protocol} - The interface protocol. Valid values are \code{VLAN}
-and \code{GRE}.
+\item \code{interface-protocol} - The interface protocol. Valid values are
+\code{VLAN} and \code{GRE}.
 }}
 
 \item{NextToken}{The token for the next page of results.}

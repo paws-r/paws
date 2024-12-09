@@ -27,16 +27,17 @@ whether the EBS volume is deleted on instance termination.
 \item \code{launch.block-device-mapping.device-name} - The device name for the
 volume in the block device mapping (for example, \verb{/dev/sdh} or
 \code{xvdh}).
-\item \code{launch.block-device-mapping.snapshot-id} - The ID of the snapshot for
-the EBS volume.
+\item \code{launch.block-device-mapping.snapshot-id} - The ID of the snapshot
+for the EBS volume.
 \item \code{launch.block-device-mapping.volume-size} - The size of the EBS
 volume, in GiB.
 \item \code{launch.block-device-mapping.volume-type} - The type of EBS volume:
-\code{gp2} or \code{gp3} for General Purpose SSD, \code{io1} or \code{io2} for Provisioned
-IOPS SSD, \code{st1} for Throughput Optimized HDD, \code{sc1} for Cold HDD, or
-\code{standard} for Magnetic.
+\code{gp2} or \code{gp3} for General Purpose SSD, \code{io1} or \code{io2} for
+Provisioned IOPS SSD, \code{st1} for Throughput Optimized HDD, \code{sc1} for
+Cold HDD, or \code{standard} for Magnetic.
 \item \code{launch.group-id} - The ID of the security group for the instance.
-\item \code{launch.group-name} - The name of the security group for the instance.
+\item \code{launch.group-name} - The name of the security group for the
+instance.
 \item \code{launch.image-id} - The ID of the AMI.
 \item \code{launch.instance-type} - The type of instance (for example,
 \code{m3.medium}).
@@ -56,35 +57,36 @@ network interface is deleted when the instance is terminated.
 interface.
 \item \code{network-interface.device-index} - The index of the device for the
 network interface attachment on the instance.
-\item \code{network-interface.group-id} - The ID of the security group associated
-with the network interface.
+\item \code{network-interface.group-id} - The ID of the security group
+associated with the network interface.
 \item \code{network-interface.network-interface-id} - The ID of the network
 interface.
 \item \code{network-interface.private-ip-address} - The primary private IP
 address of the network interface.
-\item \code{network-interface.subnet-id} - The ID of the subnet for the instance.
+\item \code{network-interface.subnet-id} - The ID of the subnet for the
+instance.
 \item \code{product-description} - The product description associated with the
 instance (\code{Linux/UNIX} | \code{Windows}).
 \item \code{spot-instance-request-id} - The Spot Instance request ID.
-\item \code{spot-price} - The maximum hourly price for any Spot Instance launched
-to fulfill the request.
-\item \code{state} - The state of the Spot Instance request (\code{open} | \code{active} |
-\code{closed} | \code{cancelled} | \code{failed}). Spot request status information
-can help you track your Amazon EC2 Spot Instance requests. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-request-status.html}{Spot request status}
+\item \code{spot-price} - The maximum hourly price for any Spot Instance
+launched to fulfill the request.
+\item \code{state} - The state of the Spot Instance request (\code{open} | \code{active}
+| \code{closed} | \code{cancelled} | \code{failed}). Spot request status
+information can help you track your Amazon EC2 Spot Instance
+requests. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-request-status.html}{Spot request status}
 in the \emph{Amazon EC2 User Guide}.
 \item \code{status-code} - The short code describing the most recent evaluation
 of your Spot Instance request.
 \item \code{status-message} - The message explaining the status of the Spot
 Instance request.
 \item \verb{tag:<key>} - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as the
-filter value. For example, to find all resources that have a tag with
-the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
-filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
-to find all resources assigned a tag with a specific key, regardless
-of the tag value.
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this
+filter to find all resources assigned a tag with a specific key,
+regardless of the tag value.
 \item \code{type} - The type of Spot Instance request (\code{one-time} |
 \code{persistent}).
 \item \code{valid-from} - The start date of the request.

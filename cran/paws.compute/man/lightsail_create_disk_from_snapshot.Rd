@@ -25,9 +25,9 @@ new storage disk.
 
 Constraint:
 \itemize{
-\item This parameter cannot be defined together with the \verb{source disk name}
-parameter. The \verb{disk snapshot name} and \verb{source disk name} parameters
-are mutually exclusive.
+\item This parameter cannot be defined together with the
+\verb{source disk name} parameter. The \verb{disk snapshot name} and
+\verb{source disk name} parameters are mutually exclusive.
 }}
 
 \item{availabilityZone}{[required] The Availability Zone where you want to create the disk (\verb{us-east-2a}).
@@ -55,8 +55,8 @@ Constraints:
 \item This parameter cannot be defined together with the
 \verb{disk snapshot name} parameter. The \verb{source disk name} and
 \verb{disk snapshot name} parameters are mutually exclusive.
-\item Define this parameter only when creating a new disk from an automatic
-snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
+\item Define this parameter only when creating a new disk from an
+automatic snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
 }}
 
 \item{restoreDate}{The date of the automatic snapshot to use for the new disk. Use the
@@ -70,8 +70,8 @@ Constraints:
 \verb{use latest restorable auto snapshot} parameter. The \verb{restore date}
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
-\item Define this parameter only when creating a new disk from an automatic
-snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
+\item Define this parameter only when creating a new disk from an
+automatic snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -82,8 +82,8 @@ Constraints:
 \item This parameter cannot be defined together with the \verb{restore date}
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
-\item Define this parameter only when creating a new disk from an automatic
-snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
+\item Define this parameter only when creating a new disk from an
+automatic snapshot. For more information, see the \href{https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html}{Amazon Lightsail Developer Guide}.
 }}
 }
 \description{

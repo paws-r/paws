@@ -21,8 +21,8 @@ The following list shows valid attribute values for each of the
 \itemize{
 \item \code{Attribute = BranchName}:
 \itemize{
-\item \code{Operator}: \code{=} | \code{!=} | \code{begins_with} | \code{ends_with} | \code{contains} |
-\verb{in} | \code{not_in}
+\item \code{Operator}: \code{=} | \code{!=} | \code{begins_with} | \code{ends_with} |
+\code{contains} | \verb{in} | \code{not_in}
 }
 \item \code{Attribute = LifecycleState}:
 \itemize{
@@ -31,8 +31,8 @@ The following list shows valid attribute values for each of the
 }
 \item \code{Attribute = PlatformName}:
 \itemize{
-\item \code{Operator}: \code{=} | \code{!=} | \code{begins_with} | \code{ends_with} | \code{contains} |
-\verb{in} | \code{not_in}
+\item \code{Operator}: \code{=} | \code{!=} | \code{begins_with} | \code{ends_with} |
+\code{contains} | \verb{in} | \code{not_in}
 }
 \item \code{Attribute = TierType}:
 \itemize{

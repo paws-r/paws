@@ -25,8 +25,7 @@ route53recoveryreadiness_create_cell <- function(CellName, Cells = NULL, Tags = 
     http_method = "POST",
     http_path = "/cells",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$create_cell_input(CellName = CellName, Cells = Cells, Tags = Tags)
   output <- .route53recoveryreadiness$create_cell_output()
@@ -56,8 +55,7 @@ route53recoveryreadiness_create_cross_account_authorization <- function(CrossAcc
     http_method = "POST",
     http_path = "/crossaccountauthorizations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$create_cross_account_authorization_input(CrossAccountAuthorization = CrossAccountAuthorization)
   output <- .route53recoveryreadiness$create_cross_account_authorization_output()
@@ -89,8 +87,7 @@ route53recoveryreadiness_create_readiness_check <- function(ReadinessCheckName, 
     http_method = "POST",
     http_path = "/readinesschecks",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$create_readiness_check_input(ReadinessCheckName = ReadinessCheckName, ResourceSetName = ResourceSetName, Tags = Tags)
   output <- .route53recoveryreadiness$create_readiness_check_output()
@@ -122,8 +119,7 @@ route53recoveryreadiness_create_recovery_group <- function(Cells = NULL, Recover
     http_method = "POST",
     http_path = "/recoverygroups",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$create_recovery_group_input(Cells = Cells, RecoveryGroupName = RecoveryGroupName, Tags = Tags)
   output <- .route53recoveryreadiness$create_recovery_group_output()
@@ -167,8 +163,7 @@ route53recoveryreadiness_create_resource_set <- function(ResourceSetName, Resour
     http_method = "POST",
     http_path = "/resourcesets",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$create_resource_set_input(ResourceSetName = ResourceSetName, ResourceSetType = ResourceSetType, Resources = Resources, Tags = Tags)
   output <- .route53recoveryreadiness$create_resource_set_output()
@@ -198,8 +193,7 @@ route53recoveryreadiness_delete_cell <- function(CellName) {
     http_method = "DELETE",
     http_path = "/cells/{cellName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$delete_cell_input(CellName = CellName)
   output <- .route53recoveryreadiness$delete_cell_output()
@@ -229,8 +223,7 @@ route53recoveryreadiness_delete_cross_account_authorization <- function(CrossAcc
     http_method = "DELETE",
     http_path = "/crossaccountauthorizations/{crossAccountAuthorization}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$delete_cross_account_authorization_input(CrossAccountAuthorization = CrossAccountAuthorization)
   output <- .route53recoveryreadiness$delete_cross_account_authorization_output()
@@ -260,8 +253,7 @@ route53recoveryreadiness_delete_readiness_check <- function(ReadinessCheckName) 
     http_method = "DELETE",
     http_path = "/readinesschecks/{readinessCheckName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$delete_readiness_check_input(ReadinessCheckName = ReadinessCheckName)
   output <- .route53recoveryreadiness$delete_readiness_check_output()
@@ -291,8 +283,7 @@ route53recoveryreadiness_delete_recovery_group <- function(RecoveryGroupName) {
     http_method = "DELETE",
     http_path = "/recoverygroups/{recoveryGroupName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$delete_recovery_group_input(RecoveryGroupName = RecoveryGroupName)
   output <- .route53recoveryreadiness$delete_recovery_group_output()
@@ -322,8 +313,7 @@ route53recoveryreadiness_delete_resource_set <- function(ResourceSetName) {
     http_method = "DELETE",
     http_path = "/resourcesets/{resourceSetName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$delete_resource_set_input(ResourceSetName = ResourceSetName)
   output <- .route53recoveryreadiness$delete_resource_set_output()
@@ -356,8 +346,7 @@ route53recoveryreadiness_get_architecture_recommendations <- function(MaxResults
     http_method = "GET",
     http_path = "/recoverygroups/{recoveryGroupName}/architectureRecommendations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$get_architecture_recommendations_input(MaxResults = MaxResults, NextToken = NextToken, RecoveryGroupName = RecoveryGroupName)
   output <- .route53recoveryreadiness$get_architecture_recommendations_output()
@@ -389,8 +378,7 @@ route53recoveryreadiness_get_cell <- function(CellName) {
     http_method = "GET",
     http_path = "/cells/{cellName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$get_cell_input(CellName = CellName)
   output <- .route53recoveryreadiness$get_cell_output()
@@ -422,8 +410,7 @@ route53recoveryreadiness_get_cell_readiness_summary <- function(CellName, MaxRes
     http_method = "GET",
     http_path = "/cellreadiness/{cellName}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks", non_aggregate_keys = list( "Readiness")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks", non_aggregate_keys = list( "Readiness"))
   )
   input <- .route53recoveryreadiness$get_cell_readiness_summary_input(CellName = CellName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$get_cell_readiness_summary_output()
@@ -453,8 +440,7 @@ route53recoveryreadiness_get_readiness_check <- function(ReadinessCheckName) {
     http_method = "GET",
     http_path = "/readinesschecks/{readinessCheckName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$get_readiness_check_input(ReadinessCheckName = ReadinessCheckName)
   output <- .route53recoveryreadiness$get_readiness_check_output()
@@ -489,8 +475,7 @@ route53recoveryreadiness_get_readiness_check_resource_status <- function(MaxResu
     http_method = "GET",
     http_path = "/readinesschecks/{readinessCheckName}/resource/{resourceIdentifier}/status",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules", non_aggregate_keys = list("Readiness")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules", non_aggregate_keys = list("Readiness"))
   )
   input <- .route53recoveryreadiness$get_readiness_check_resource_status_input(MaxResults = MaxResults, NextToken = NextToken, ReadinessCheckName = ReadinessCheckName, ResourceIdentifier = ResourceIdentifier)
   output <- .route53recoveryreadiness$get_readiness_check_resource_status_output()
@@ -522,8 +507,7 @@ route53recoveryreadiness_get_readiness_check_status <- function(MaxResults = NUL
     http_method = "GET",
     http_path = "/readinesschecks/{readinessCheckName}/status",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources", non_aggregate_keys = list("Readiness", "Messages")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources", non_aggregate_keys = list("Readiness", "Messages"))
   )
   input <- .route53recoveryreadiness$get_readiness_check_status_input(MaxResults = MaxResults, NextToken = NextToken, ReadinessCheckName = ReadinessCheckName)
   output <- .route53recoveryreadiness$get_readiness_check_status_output()
@@ -554,8 +538,7 @@ route53recoveryreadiness_get_recovery_group <- function(RecoveryGroupName) {
     http_method = "GET",
     http_path = "/recoverygroups/{recoveryGroupName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$get_recovery_group_input(RecoveryGroupName = RecoveryGroupName)
   output <- .route53recoveryreadiness$get_recovery_group_output()
@@ -588,8 +571,7 @@ route53recoveryreadiness_get_recovery_group_readiness_summary <- function(MaxRes
     http_method = "GET",
     http_path = "/recoverygroupreadiness/{recoveryGroupName}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks", non_aggregate_keys = list( "Readiness")),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks", non_aggregate_keys = list( "Readiness"))
   )
   input <- .route53recoveryreadiness$get_recovery_group_readiness_summary_input(MaxResults = MaxResults, NextToken = NextToken, RecoveryGroupName = RecoveryGroupName)
   output <- .route53recoveryreadiness$get_recovery_group_readiness_summary_output()
@@ -620,8 +602,7 @@ route53recoveryreadiness_get_resource_set <- function(ResourceSetName) {
     http_method = "GET",
     http_path = "/resourcesets/{resourceSetName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$get_resource_set_input(ResourceSetName = ResourceSetName)
   output <- .route53recoveryreadiness$get_resource_set_output()
@@ -652,8 +633,7 @@ route53recoveryreadiness_list_cells <- function(MaxResults = NULL, NextToken = N
     http_method = "GET",
     http_path = "/cells",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Cells"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Cells")
   )
   input <- .route53recoveryreadiness$list_cells_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_cells_output()
@@ -685,8 +665,7 @@ route53recoveryreadiness_list_cross_account_authorizations <- function(MaxResult
     http_method = "GET",
     http_path = "/crossaccountauthorizations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountAuthorizations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountAuthorizations")
   )
   input <- .route53recoveryreadiness$list_cross_account_authorizations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_cross_account_authorizations_output()
@@ -717,8 +696,7 @@ route53recoveryreadiness_list_readiness_checks <- function(MaxResults = NULL, Ne
     http_method = "GET",
     http_path = "/readinesschecks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks")
   )
   input <- .route53recoveryreadiness$list_readiness_checks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_readiness_checks_output()
@@ -749,8 +727,7 @@ route53recoveryreadiness_list_recovery_groups <- function(MaxResults = NULL, Nex
     http_method = "GET",
     http_path = "/recoverygroups",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryGroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryGroups")
   )
   input <- .route53recoveryreadiness$list_recovery_groups_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_recovery_groups_output()
@@ -781,8 +758,7 @@ route53recoveryreadiness_list_resource_sets <- function(MaxResults = NULL, NextT
     http_method = "GET",
     http_path = "/resourcesets",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceSets"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceSets")
   )
   input <- .route53recoveryreadiness$list_resource_sets_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_resource_sets_output()
@@ -815,8 +791,7 @@ route53recoveryreadiness_list_rules <- function(MaxResults = NULL, NextToken = N
     http_method = "GET",
     http_path = "/rules",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules")
   )
   input <- .route53recoveryreadiness$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType)
   output <- .route53recoveryreadiness$list_rules_output()
@@ -846,8 +821,7 @@ route53recoveryreadiness_list_tags_for_resources <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{resource-arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$list_tags_for_resources_input(ResourceArn = ResourceArn)
   output <- .route53recoveryreadiness$list_tags_for_resources_output()
@@ -878,8 +852,7 @@ route53recoveryreadiness_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{resource-arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .route53recoveryreadiness$tag_resource_output()
@@ -910,8 +883,7 @@ route53recoveryreadiness_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resource-arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .route53recoveryreadiness$untag_resource_output()
@@ -944,8 +916,7 @@ route53recoveryreadiness_update_cell <- function(CellName, Cells) {
     http_method = "PUT",
     http_path = "/cells/{cellName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$update_cell_input(CellName = CellName, Cells = Cells)
   output <- .route53recoveryreadiness$update_cell_output()
@@ -976,8 +947,7 @@ route53recoveryreadiness_update_readiness_check <- function(ReadinessCheckName, 
     http_method = "PUT",
     http_path = "/readinesschecks/{readinessCheckName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$update_readiness_check_input(ReadinessCheckName = ReadinessCheckName, ResourceSetName = ResourceSetName)
   output <- .route53recoveryreadiness$update_readiness_check_output()
@@ -1009,8 +979,7 @@ route53recoveryreadiness_update_recovery_group <- function(Cells, RecoveryGroupN
     http_method = "PUT",
     http_path = "/recoverygroups/{recoveryGroupName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$update_recovery_group_input(Cells = Cells, RecoveryGroupName = RecoveryGroupName)
   output <- .route53recoveryreadiness$update_recovery_group_output()
@@ -1053,8 +1022,7 @@ route53recoveryreadiness_update_resource_set <- function(ResourceSetName, Resour
     http_method = "PUT",
     http_path = "/resourcesets/{resourceSetName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .route53recoveryreadiness$update_resource_set_input(ResourceSetName = ResourceSetName, ResourceSetType = ResourceSetType, Resources = Resources)
   output <- .route53recoveryreadiness$update_resource_set_output()

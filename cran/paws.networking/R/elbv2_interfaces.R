@@ -195,18 +195,6 @@ NULL
   return(populate(args, shape))
 }
 
-.elbv2$describe_listener_attributes_input <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.elbv2$describe_listener_attributes_output <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "DescribeListenerAttributesResult"))
-  return(populate(args, shape))
-}
-
 .elbv2$describe_listener_certificates_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), Marker = structure(logical(0), tags = list(type = "string")), PageSize = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -408,18 +396,6 @@ NULL
 .elbv2$modify_listener_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Listeners = structure(list(structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), LoadBalancerArn = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "integer")), Protocol = structure(logical(0), tags = list(type = "string")), Certificates = structure(list(structure(list(CertificateArn = structure(logical(0), tags = list(type = "string")), IsDefault = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), SslPolicy = structure(logical(0), tags = list(type = "string")), DefaultActions = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), TargetGroupArn = structure(logical(0), tags = list(type = "string")), AuthenticateOidcConfig = structure(list(Issuer = structure(logical(0), tags = list(type = "string")), AuthorizationEndpoint = structure(logical(0), tags = list(type = "string")), TokenEndpoint = structure(logical(0), tags = list(type = "string")), UserInfoEndpoint = structure(logical(0), tags = list(type = "string")), ClientId = structure(logical(0), tags = list(type = "string")), ClientSecret = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string")), UseExistingClientSecret = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), AuthenticateCognitoConfig = structure(list(UserPoolArn = structure(logical(0), tags = list(type = "string")), UserPoolClientId = structure(logical(0), tags = list(type = "string")), UserPoolDomain = structure(logical(0), tags = list(type = "string")), SessionCookieName = structure(logical(0), tags = list(type = "string")), Scope = structure(logical(0), tags = list(type = "string")), SessionTimeout = structure(logical(0), tags = list(type = "long")), AuthenticationRequestExtraParams = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OnUnauthenticatedRequest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Order = structure(logical(0), tags = list(type = "integer")), RedirectConfig = structure(list(Protocol = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(type = "string")), Host = structure(logical(0), tags = list(type = "string")), Path = structure(logical(0), tags = list(type = "string")), Query = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FixedResponseConfig = structure(list(MessageBody = structure(logical(0), tags = list(type = "string")), StatusCode = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ForwardConfig = structure(list(TargetGroups = structure(list(structure(list(TargetGroupArn = structure(logical(0), tags = list(type = "string")), Weight = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), TargetGroupStickinessConfig = structure(list(Enabled = structure(logical(0), tags = list(type = "boolean")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), AlpnPolicy = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), MutualAuthentication = structure(list(Mode = structure(logical(0), tags = list(type = "string")), TrustStoreArn = structure(logical(0), tags = list(type = "string")), IgnoreClientCertificateExpiry = structure(logical(0), tags = list(type = "boolean")), TrustStoreAssociationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyListenerResult"))
-  return(populate(args, shape))
-}
-
-.elbv2$modify_listener_attributes_input <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ListenerArn = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.elbv2$modify_listener_attributes_output <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Attributes = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure", resultWrapper = "ModifyListenerAttributesResult"))
   return(populate(args, shape))
 }
 

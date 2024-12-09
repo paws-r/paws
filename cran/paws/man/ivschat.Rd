@@ -78,9 +78,9 @@ The following resources are part of Amazon IVS Chat:
 \item \strong{LoggingConfiguration} — A configuration that allows customers to
 store and record sent messages in a chat room. See the Logging
 Configuration endpoints for more information.
-\item \strong{Room} — The central Amazon IVS Chat resource through which clients
-connect to and exchange chat messages. See the Room endpoints for more
-information.
+\item \strong{Room} — The central Amazon IVS Chat resource through which
+clients connect to and exchange chat messages. See the Room
+endpoints for more information.
 }
 
 \strong{Tagging}
@@ -113,8 +113,8 @@ resources. Note the differences between these concepts:
 \itemize{
 \item \emph{Authentication} is about verifying identity. Requests to the Amazon
 IVS Chat API must be signed to verify your identity.
-\item \emph{Authorization} is about granting permissions. Your IAM roles need to
-have permissions for Amazon IVS Chat API requests.
+\item \emph{Authorization} is about granting permissions. Your IAM roles need
+to have permissions for Amazon IVS Chat API requests.
 }
 
 Users (viewers) connect to a room using secure access tokens that you

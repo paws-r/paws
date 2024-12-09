@@ -30,8 +30,8 @@ Valid values include:
 \item \code{USER_SRP_AUTH}: Authentication flow for the Secure Remote Password
 (SRP) protocol.
 \item \code{REFRESH_TOKEN_AUTH}/\code{REFRESH_TOKEN}: Authentication flow for
-refreshing the access token and ID token by supplying a valid refresh
-token.
+refreshing the access token and ID token by supplying a valid
+refresh token.
 \item \code{CUSTOM_AUTH}: Custom authentication flow.
 \item \code{USER_PASSWORD_AUTH}: Non-SRP authentication flow; user name and
 password are passed directly. If a user migration Lambda trigger is
@@ -46,16 +46,16 @@ find the user name in the user pool.
 of \code{AuthFlow}:
 \itemize{
 \item For \code{USER_SRP_AUTH}: \code{USERNAME} (required), \code{SRP_A} (required),
-\code{SECRET_HASH} (required if the app client is configured with a client
-secret), \code{DEVICE_KEY}.
+\code{SECRET_HASH} (required if the app client is configured with a
+client secret), \code{DEVICE_KEY}.
 \item For \code{USER_PASSWORD_AUTH}: \code{USERNAME} (required), \code{PASSWORD}
 (required), \code{SECRET_HASH} (required if the app client is configured
 with a client secret), \code{DEVICE_KEY}.
 \item For \code{REFRESH_TOKEN_AUTH/REFRESH_TOKEN}: \code{REFRESH_TOKEN} (required),
-\code{SECRET_HASH} (required if the app client is configured with a client
-secret), \code{DEVICE_KEY}.
-\item For \code{CUSTOM_AUTH}: \code{USERNAME} (required), \code{SECRET_HASH} (if app client
-is configured with client secret), \code{DEVICE_KEY}. To start the
+\code{SECRET_HASH} (required if the app client is configured with a
+client secret), \code{DEVICE_KEY}.
+\item For \code{CUSTOM_AUTH}: \code{USERNAME} (required), \code{SECRET_HASH} (if app
+client is configured with client secret), \code{DEVICE_KEY}. To start the
 authentication flow with password verification, include
 \code{ChallengeName: SRP_A} and \verb{SRP_A: (The SRP_A Value)}.
 }
@@ -101,13 +101,13 @@ in the \emph{Amazon Cognito Developer Guide}.
 When you use the ClientMetadata parameter, remember that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to Lambda
-triggers that are assigned to a user pool to support custom workflows.
-If your user pool configuration doesn't include triggers, the
-ClientMetadata parameter serves no purpose.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
 \item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
-sensitive information.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
 
 \item{ClientId}{[required] The app client ID.}

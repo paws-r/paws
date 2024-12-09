@@ -17,9 +17,9 @@ Compute Optimizer begins analyzing the configuration and utilization
 metrics of your Amazon Web Services resources after you opt in. For
 more information, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html}{Metrics analyzed by Compute Optimizer}
 in the \emph{Compute Optimizer User Guide}.
-\item \code{Inactive} - Opts out your account from the Compute Optimizer service.
-Your account's recommendations and related metrics data will be
-deleted from Compute Optimizer after you opt out.
+\item \code{Inactive} - Opts out your account from the Compute Optimizer
+service. Your account's recommendations and related metrics data
+will be deleted from Compute Optimizer after you opt out.
 }
 
 The \code{Pending} and \code{Failed} options cannot be used to update the

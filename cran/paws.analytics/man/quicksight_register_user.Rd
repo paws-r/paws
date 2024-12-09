@@ -32,18 +32,18 @@ identity of users.}
 following:
 \itemize{
 \item \code{READER}: A user who has read-only access to dashboards.
-\item \code{AUTHOR}: A user who can create data sources, datasets, analyses, and
-dashboards.
+\item \code{AUTHOR}: A user who can create data sources, datasets, analyses,
+and dashboards.
 \item \code{ADMIN}: A user who is an author, who can also manage Amazon
 QuickSight settings.
-\item \code{READER_PRO}: Reader Pro adds Generative BI capabilities to the Reader
-role. Reader Pros have access to Amazon Q in Amazon QuickSight, can
-build stories with Amazon Q, and can generate executive summaries from
-dashboards.
-\item \code{AUTHOR_PRO}: Author Pro adds Generative BI capabilities to the Author
-role. Author Pros can author dashboards with natural language with
-Amazon Q, build stories with Amazon Q, create Topics for Q&A, and
-generate executive summaries from dashboards.
+\item \code{READER_PRO}: Reader Pro adds Generative BI capabilities to the
+Reader role. Reader Pros have access to Amazon Q in Amazon
+QuickSight, can build stories with Amazon Q, and can generate
+executive summaries from dashboards.
+\item \code{AUTHOR_PRO}: Author Pro adds Generative BI capabilities to the
+Author role. Author Pros can author dashboards with natural language
+with Amazon Q, build stories with Amazon Q, create Topics for Q&A,
+and generate executive summaries from dashboards.
 \item \code{ADMIN_PRO}: Admin Pros are Author Pros who can also manage Amazon
 QuickSight administrative settings. Admin Pro users are billed at
 Author Pro pricing.
@@ -110,8 +110,8 @@ cognito-identity.amazonaws.com. When choosing the \code{COGNITO} provider
 type, don’t use the "CustomFederationProviderUrl" parameter which is
 only needed when the external provider is custom.
 \item \code{CUSTOM_OIDC}: Custom OpenID Connect (OIDC) provider. When choosing
-\code{CUSTOM_OIDC} type, use the \code{CustomFederationProviderUrl} parameter to
-provide the custom OIDC provider URL.
+\code{CUSTOM_OIDC} type, use the \code{CustomFederationProviderUrl} parameter
+to provide the custom OIDC provider URL.
 }}
 
 \item{CustomFederationProviderUrl}{The URL of the custom OpenID Connect (OIDC) provider that provides

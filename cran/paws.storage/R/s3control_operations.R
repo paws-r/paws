@@ -11,7 +11,7 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_associate_access_grants_identity_center/](https://www.paws-r-sdk.com/docs/s3control_associate_access_grants_identity_center/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param IdentityCenterArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
 #' Center instance that you are associating with your S3 Access Grants
 #' instance. An IAM Identity Center instance is your corporate identity
@@ -29,8 +29,7 @@ s3control_associate_access_grants_identity_center <- function(AccountId, Identit
     http_method = "POST",
     http_path = "/v20180820/accessgrantsinstance/identitycenter",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$associate_access_grants_identity_center_input(AccountId = AccountId, IdentityCenterArn = IdentityCenterArn)
   output <- .s3control$associate_access_grants_identity_center_output()
@@ -49,7 +48,7 @@ s3control_associate_access_grants_identity_center <- function(AccountId, Identit
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grant/](https://www.paws-r-sdk.com/docs/s3control_create_access_grant/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location to which you are granting access. S3
 #' Access Grants assigns this ID when you register the location. S3 Access
 #' Grants assigns the ID `default` to the default location `s3://` and
@@ -70,11 +69,11 @@ s3control_associate_access_grants_identity_center <- function(AccountId, Identit
 #' @param Permission &#91;required&#93; The type of access that you are granting to your S3 data, which can be
 #' set to one of the following values:
 #' 
-#' - `READ` – Grant read-only access to the S3 data.
+#' -   `READ` – Grant read-only access to the S3 data.
 #' 
-#' - `WRITE` – Grant write-only access to the S3 data.
+#' -   `WRITE` – Grant write-only access to the S3 data.
 #' 
-#' - `READWRITE` – Grant both read and write access to the S3 data.
+#' -   `READWRITE` – Grant both read and write access to the S3 data.
 #' @param ApplicationArn The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity
 #' Center application associated with your Identity Center instance. If an
 #' application ARN is included in the request to create an access grant,
@@ -96,8 +95,7 @@ s3control_create_access_grant <- function(AccountId, AccessGrantsLocationId, Acc
     http_method = "POST",
     http_path = "/v20180820/accessgrantsinstance/grant",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_access_grant_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId, AccessGrantsLocationConfiguration = AccessGrantsLocationConfiguration, Grantee = Grantee, Permission = Permission, ApplicationArn = ApplicationArn, S3PrefixType = S3PrefixType, Tags = Tags)
   output <- .s3control$create_access_grant_output()
@@ -117,7 +115,7 @@ s3control_create_access_grant <- function(AccountId, AccessGrantsLocationId, Acc
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_create_access_grants_instance/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param IdentityCenterArn If you would like to associate your S3 Access Grants instance with an
 #' Amazon Web Services IAM Identity Center instance, use this field to pass
 #' the Amazon Resource Name (ARN) of the Amazon Web Services IAM Identity
@@ -141,8 +139,7 @@ s3control_create_access_grants_instance <- function(AccountId, IdentityCenterArn
     http_method = "POST",
     http_path = "/v20180820/accessgrantsinstance",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_access_grants_instance_input(AccountId = AccountId, IdentityCenterArn = IdentityCenterArn, Tags = Tags)
   output <- .s3control$create_access_grants_instance_output()
@@ -162,7 +159,7 @@ s3control_create_access_grants_instance <- function(AccountId, IdentityCenterArn
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_create_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_create_access_grants_location/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param LocationScope &#91;required&#93; The S3 path to the location that you are registering. The location scope
 #' can be the default S3 location `s3://`, the S3 path to a bucket
 #' `s3://<bucket>`, or the S3 path to a bucket and prefix
@@ -188,8 +185,7 @@ s3control_create_access_grants_location <- function(AccountId, LocationScope, IA
     http_method = "POST",
     http_path = "/v20180820/accessgrantsinstance/location",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_access_grants_location_input(AccountId = AccountId, LocationScope = LocationScope, IAMRoleArn = IAMRoleArn, Tags = Tags)
   output <- .s3control$create_access_grants_location_output()
@@ -250,8 +246,7 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
     http_method = "PUT",
     http_path = "/v20180820/accesspoint/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_access_point_input(AccountId = AccountId, Name = Name, Bucket = Bucket, VpcConfiguration = VpcConfiguration, PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, BucketAccountId = BucketAccountId)
   output <- .s3control$create_access_point_output()
@@ -284,8 +279,7 @@ s3control_create_access_point_for_object_lambda <- function(AccountId, Name, Con
     http_method = "PUT",
     http_path = "/v20180820/accesspointforobjectlambda/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_access_point_for_object_lambda_input(AccountId = AccountId, Name = Name, Configuration = Configuration)
   output <- .s3control$create_access_point_for_object_lambda_output()
@@ -345,8 +339,7 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_bucket_input(ACL = ACL, Bucket = Bucket, CreateBucketConfiguration = CreateBucketConfiguration, GrantFullControl = GrantFullControl, GrantRead = GrantRead, GrantReadACP = GrantReadACP, GrantWrite = GrantWrite, GrantWriteACP = GrantWriteACP, ObjectLockEnabledForBucket = ObjectLockEnabledForBucket, OutpostId = OutpostId)
   output <- .s3control$create_bucket_output()
@@ -400,8 +393,7 @@ s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operati
     http_method = "POST",
     http_path = "/v20180820/jobs",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_job_input(AccountId = AccountId, ConfirmationRequired = ConfirmationRequired, Operation = Operation, Report = Report, ClientRequestToken = ClientRequestToken, Manifest = Manifest, Description = Description, Priority = Priority, RoleArn = RoleArn, Tags = Tags, ManifestGenerator = ManifestGenerator)
   output <- .s3control$create_job_output()
@@ -437,8 +429,7 @@ s3control_create_multi_region_access_point <- function(AccountId, ClientToken, D
     http_method = "POST",
     http_path = "/v20180820/async-requests/mrap/create",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_multi_region_access_point_input(AccountId = AccountId, ClientToken = ClientToken, Details = Details)
   output <- .s3control$create_multi_region_access_point_output()
@@ -473,8 +464,7 @@ s3control_create_storage_lens_group <- function(AccountId, StorageLensGroup, Tag
     http_method = "POST",
     http_path = "/v20180820/storagelensgroup",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$create_storage_lens_group_input(AccountId = AccountId, StorageLensGroup = StorageLensGroup, Tags = Tags)
   output <- .s3control$create_storage_lens_group_output()
@@ -493,7 +483,7 @@ s3control_create_storage_lens_group <- function(AccountId, StorageLensGroup, Tag
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grant/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grant/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param AccessGrantId &#91;required&#93; The ID of the access grant. S3 Access Grants auto-generates this ID when
 #' you create the access grant.
 #'
@@ -506,8 +496,7 @@ s3control_delete_access_grant <- function(AccountId, AccessGrantId) {
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance/grant/{id}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_access_grant_input(AccountId = AccountId, AccessGrantId = AccessGrantId)
   output <- .s3control$delete_access_grant_output()
@@ -526,7 +515,7 @@ s3control_delete_access_grant <- function(AccountId, AccessGrantId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #'
 #' @keywords internal
 #'
@@ -537,8 +526,7 @@ s3control_delete_access_grants_instance <- function(AccountId) {
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_access_grants_instance_input(AccountId = AccountId)
   output <- .s3control$delete_access_grants_instance_output()
@@ -557,7 +545,7 @@ s3control_delete_access_grants_instance <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_instance_resource_policy/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #'
 #' @keywords internal
 #'
@@ -568,8 +556,7 @@ s3control_delete_access_grants_instance_resource_policy <- function(AccountId) {
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_access_grants_instance_resource_policy_input(AccountId = AccountId)
   output <- .s3control$delete_access_grants_instance_resource_policy_output()
@@ -588,7 +575,7 @@ s3control_delete_access_grants_instance_resource_policy <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_delete_access_grants_location/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are deregistering from your
 #' S3 Access Grants instance. S3 Access Grants assigned this ID when you
 #' registered the location. S3 Access Grants assigns the ID `default` to
@@ -604,8 +591,7 @@ s3control_delete_access_grants_location <- function(AccountId, AccessGrantsLocat
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance/location/{id}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId)
   output <- .s3control$delete_access_grants_location_output()
@@ -650,8 +636,7 @@ s3control_delete_access_point <- function(AccountId, Name) {
     http_method = "DELETE",
     http_path = "/v20180820/accesspoint/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_access_point_input(AccountId = AccountId, Name = Name)
   output <- .s3control$delete_access_point_output()
@@ -683,8 +668,7 @@ s3control_delete_access_point_for_object_lambda <- function(AccountId, Name) {
     http_method = "DELETE",
     http_path = "/v20180820/accesspointforobjectlambda/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_access_point_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$delete_access_point_for_object_lambda_output()
@@ -728,8 +712,7 @@ s3control_delete_access_point_policy <- function(AccountId, Name) {
     http_method = "DELETE",
     http_path = "/v20180820/accesspoint/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_access_point_policy_input(AccountId = AccountId, Name = Name)
   output <- .s3control$delete_access_point_policy_output()
@@ -762,8 +745,7 @@ s3control_delete_access_point_policy_for_object_lambda <- function(AccountId, Na
     http_method = "DELETE",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_access_point_policy_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$delete_access_point_policy_for_object_lambda_output()
@@ -807,8 +789,7 @@ s3control_delete_bucket <- function(AccountId, Bucket) {
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_bucket_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_output()
@@ -853,8 +834,7 @@ s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}/lifecycleconfiguration",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_bucket_lifecycle_configuration_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_lifecycle_configuration_output()
@@ -898,8 +878,7 @@ s3control_delete_bucket_policy <- function(AccountId, Bucket) {
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_bucket_policy_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_policy_output()
@@ -946,8 +925,7 @@ s3control_delete_bucket_replication <- function(AccountId, Bucket) {
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}/replication",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_bucket_replication_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_replication_output()
@@ -992,8 +970,7 @@ s3control_delete_bucket_tagging <- function(AccountId, Bucket) {
     http_method = "DELETE",
     http_path = "/v20180820/bucket/{name}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_bucket_tagging_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$delete_bucket_tagging_output()
@@ -1025,8 +1002,7 @@ s3control_delete_job_tagging <- function(AccountId, JobId) {
     http_method = "DELETE",
     http_path = "/v20180820/jobs/{id}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_job_tagging_input(AccountId = AccountId, JobId = JobId)
   output <- .s3control$delete_job_tagging_output()
@@ -1061,8 +1037,7 @@ s3control_delete_multi_region_access_point <- function(AccountId, ClientToken, D
     http_method = "POST",
     http_path = "/v20180820/async-requests/mrap/delete",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_multi_region_access_point_input(AccountId = AccountId, ClientToken = ClientToken, Details = Details)
   output <- .s3control$delete_multi_region_access_point_output()
@@ -1093,8 +1068,7 @@ s3control_delete_public_access_block <- function(AccountId) {
     http_method = "DELETE",
     http_path = "/v20180820/configuration/publicAccessBlock",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_public_access_block_input(AccountId = AccountId)
   output <- .s3control$delete_public_access_block_output()
@@ -1125,8 +1099,7 @@ s3control_delete_storage_lens_configuration <- function(ConfigId, AccountId) {
     http_method = "DELETE",
     http_path = "/v20180820/storagelens/{storagelensid}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_storage_lens_configuration_input(ConfigId = ConfigId, AccountId = AccountId)
   output <- .s3control$delete_storage_lens_configuration_output()
@@ -1157,8 +1130,7 @@ s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, Accoun
     http_method = "DELETE",
     http_path = "/v20180820/storagelens/{storagelensid}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_storage_lens_configuration_tagging_input(ConfigId = ConfigId, AccountId = AccountId)
   output <- .s3control$delete_storage_lens_configuration_tagging_output()
@@ -1190,8 +1162,7 @@ s3control_delete_storage_lens_group <- function(Name, AccountId) {
     http_method = "DELETE",
     http_path = "/v20180820/storagelensgroup/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$delete_storage_lens_group_input(Name = Name, AccountId = AccountId)
   output <- .s3control$delete_storage_lens_group_output()
@@ -1224,8 +1195,7 @@ s3control_describe_job <- function(AccountId, JobId) {
     http_method = "GET",
     http_path = "/v20180820/jobs/{id}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$describe_job_input(AccountId = AccountId, JobId = JobId)
   output <- .s3control$describe_job_output()
@@ -1260,8 +1230,7 @@ s3control_describe_multi_region_access_point_operation <- function(AccountId, Re
     http_method = "GET",
     http_path = "/v20180820/async-requests/mrap/{request_token+}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$describe_multi_region_access_point_operation_input(AccountId = AccountId, RequestTokenARN = RequestTokenARN)
   output <- .s3control$describe_multi_region_access_point_operation_output()
@@ -1281,7 +1250,7 @@ s3control_describe_multi_region_access_point_operation <- function(AccountId, Re
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_dissociate_access_grants_identity_center/](https://www.paws-r-sdk.com/docs/s3control_dissociate_access_grants_identity_center/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #'
 #' @keywords internal
 #'
@@ -1292,8 +1261,7 @@ s3control_dissociate_access_grants_identity_center <- function(AccountId) {
     http_method = "DELETE",
     http_path = "/v20180820/accessgrantsinstance/identitycenter",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$dissociate_access_grants_identity_center_input(AccountId = AccountId)
   output <- .s3control$dissociate_access_grants_identity_center_output()
@@ -1312,7 +1280,7 @@ s3control_dissociate_access_grants_identity_center <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grant/](https://www.paws-r-sdk.com/docs/s3control_get_access_grant/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param AccessGrantId &#91;required&#93; The ID of the access grant. S3 Access Grants auto-generates this ID when
 #' you create the access grant.
 #'
@@ -1325,8 +1293,7 @@ s3control_get_access_grant <- function(AccountId, AccessGrantId) {
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/grant/{id}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_grant_input(AccountId = AccountId, AccessGrantId = AccessGrantId)
   output <- .s3control$get_access_grant_output()
@@ -1345,7 +1312,7 @@ s3control_get_access_grant <- function(AccountId, AccessGrantId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #'
 #' @keywords internal
 #'
@@ -1356,8 +1323,7 @@ s3control_get_access_grants_instance <- function(AccountId) {
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_grants_instance_input(AccountId = AccountId)
   output <- .s3control$get_access_grants_instance_output()
@@ -1388,8 +1354,7 @@ s3control_get_access_grants_instance_for_prefix <- function(AccountId, S3Prefix)
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/prefix",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_grants_instance_for_prefix_input(AccountId = AccountId, S3Prefix = S3Prefix)
   output <- .s3control$get_access_grants_instance_for_prefix_output()
@@ -1408,7 +1373,7 @@ s3control_get_access_grants_instance_for_prefix <- function(AccountId, S3Prefix)
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_instance_resource_policy/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #'
 #' @keywords internal
 #'
@@ -1419,8 +1384,7 @@ s3control_get_access_grants_instance_resource_policy <- function(AccountId) {
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_grants_instance_resource_policy_input(AccountId = AccountId)
   output <- .s3control$get_access_grants_instance_resource_policy_output()
@@ -1440,7 +1404,7 @@ s3control_get_access_grants_instance_resource_policy <- function(AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_get_access_grants_location/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are retrieving. S3 Access
 #' Grants assigns this ID when you register the location. S3 Access Grants
 #' assigns the ID `default` to the default location `s3://` and assigns an
@@ -1455,8 +1419,7 @@ s3control_get_access_grants_location <- function(AccountId, AccessGrantsLocation
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/location/{id}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId)
   output <- .s3control$get_access_grants_location_output()
@@ -1502,8 +1465,7 @@ s3control_get_access_point <- function(AccountId, Name) {
     http_method = "GET",
     http_path = "/v20180820/accesspoint/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_point_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_output()
@@ -1536,8 +1498,7 @@ s3control_get_access_point_configuration_for_object_lambda <- function(AccountId
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/configuration",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_point_configuration_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_configuration_for_object_lambda_output()
@@ -1569,8 +1530,7 @@ s3control_get_access_point_for_object_lambda <- function(AccountId, Name) {
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_point_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_for_object_lambda_output()
@@ -1614,8 +1574,7 @@ s3control_get_access_point_policy <- function(AccountId, Name) {
     http_method = "GET",
     http_path = "/v20180820/accesspoint/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_point_policy_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_policy_output()
@@ -1647,8 +1606,7 @@ s3control_get_access_point_policy_for_object_lambda <- function(AccountId, Name)
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_point_policy_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_policy_for_object_lambda_output()
@@ -1679,8 +1637,7 @@ s3control_get_access_point_policy_status <- function(AccountId, Name) {
     http_method = "GET",
     http_path = "/v20180820/accesspoint/{name}/policyStatus",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_point_policy_status_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_policy_status_output()
@@ -1712,8 +1669,7 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/policyStatus",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_access_point_policy_status_for_object_lambda_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_access_point_policy_status_for_object_lambda_output()
@@ -1728,7 +1684,7 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
 #' Gets an Amazon S3 on Outposts bucket
 #'
 #' @description
-#' Gets an Amazon S3 on Outposts bucket. For more information, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html) in the *Amazon S3 User Guide*.
+#' Gets an Amazon S3 on Outposts bucket. For more information, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html) in the *Amazon S3 User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_bucket/](https://www.paws-r-sdk.com/docs/s3control_get_bucket/) for full documentation.
 #'
@@ -1757,8 +1713,7 @@ s3control_get_bucket <- function(AccountId, Bucket) {
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_bucket_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_output()
@@ -1803,8 +1758,7 @@ s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/lifecycleconfiguration",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_bucket_lifecycle_configuration_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_lifecycle_configuration_output()
@@ -1848,8 +1802,7 @@ s3control_get_bucket_policy <- function(AccountId, Bucket) {
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_bucket_policy_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_policy_output()
@@ -1894,8 +1847,7 @@ s3control_get_bucket_replication <- function(AccountId, Bucket) {
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/replication",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_bucket_replication_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_replication_output()
@@ -1939,8 +1891,7 @@ s3control_get_bucket_tagging <- function(AccountId, Bucket) {
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_bucket_tagging_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_tagging_output()
@@ -1972,8 +1923,7 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
     http_method = "GET",
     http_path = "/v20180820/bucket/{name}/versioning",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_bucket_versioning_input(AccountId = AccountId, Bucket = Bucket)
   output <- .s3control$get_bucket_versioning_output()
@@ -1993,7 +1943,7 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_get_data_access/](https://www.paws-r-sdk.com/docs/s3control_get_data_access/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param Target &#91;required&#93; The S3 URI path of the data to which you are requesting temporary access
 #' credentials. If the requesting account has an access grant for this
 #' data, S3 Access Grants vends temporary access credentials in the
@@ -2001,11 +1951,11 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #' @param Permission &#91;required&#93; The type of permission granted to your S3 data, which can be set to one
 #' of the following values:
 #' 
-#' - `READ` – Grant read-only access to the S3 data.
+#' -   `READ` – Grant read-only access to the S3 data.
 #' 
-#' - `WRITE` – Grant write-only access to the S3 data.
+#' -   `WRITE` – Grant write-only access to the S3 data.
 #' 
-#' - `READWRITE` – Grant both read and write access to the S3 data.
+#' -   `READWRITE` – Grant both read and write access to the S3 data.
 #' @param DurationSeconds The session duration, in seconds, of the temporary access credential
 #' that S3 Access Grants vends to the grantee or client application. The
 #' default value is 1 hour, but the grantee can specify a range from 900
@@ -2014,12 +1964,12 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #' @param Privilege The scope of the temporary access credential that S3 Access Grants vends
 #' to the grantee or client application.
 #' 
-#' - `Default` – The scope of the returned temporary access token is the
-#'   scope of the grant that is closest to the target scope.
+#' -   `Default` – The scope of the returned temporary access token is the
+#'     scope of the grant that is closest to the target scope.
 #' 
-#' - `Minimal` – The scope of the returned temporary access token is the
-#'   same as the requested target scope as long as the requested scope is
-#'   the same as or a subset of the grant scope.
+#' -   `Minimal` – The scope of the returned temporary access token is the
+#'     same as the requested target scope as long as the requested scope is
+#'     the same as or a subset of the grant scope.
 #' @param TargetType The type of `Target`. The only possible value is `Object`. Pass this
 #' value if the target data that you would like to access is a path to an
 #' object. Do not pass this value if the target data is a bucket or a
@@ -2034,8 +1984,7 @@ s3control_get_data_access <- function(AccountId, Target, Permission, DurationSec
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/dataaccess",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_data_access_input(AccountId = AccountId, Target = Target, Permission = Permission, DurationSeconds = DurationSeconds, Privilege = Privilege, TargetType = TargetType)
   output <- .s3control$get_data_access_output()
@@ -2067,8 +2016,7 @@ s3control_get_job_tagging <- function(AccountId, JobId) {
     http_method = "GET",
     http_path = "/v20180820/jobs/{id}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_job_tagging_input(AccountId = AccountId, JobId = JobId)
   output <- .s3control$get_job_tagging_output()
@@ -2106,8 +2054,7 @@ s3control_get_multi_region_access_point <- function(AccountId, Name) {
     http_method = "GET",
     http_path = "/v20180820/mrap/instances/{name+}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_multi_region_access_point_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_multi_region_access_point_output()
@@ -2144,8 +2091,7 @@ s3control_get_multi_region_access_point_policy <- function(AccountId, Name) {
     http_method = "GET",
     http_path = "/v20180820/mrap/instances/{name+}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_multi_region_access_point_policy_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_multi_region_access_point_policy_output()
@@ -2182,8 +2128,7 @@ s3control_get_multi_region_access_point_policy_status <- function(AccountId, Nam
     http_method = "GET",
     http_path = "/v20180820/mrap/instances/{name+}/policystatus",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_multi_region_access_point_policy_status_input(AccountId = AccountId, Name = Name)
   output <- .s3control$get_multi_region_access_point_policy_status_output()
@@ -2215,8 +2160,7 @@ s3control_get_multi_region_access_point_routes <- function(AccountId, Mrap) {
     http_method = "GET",
     http_path = "/v20180820/mrap/instances/{mrap+}/routes",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_multi_region_access_point_routes_input(AccountId = AccountId, Mrap = Mrap)
   output <- .s3control$get_multi_region_access_point_routes_output()
@@ -2247,8 +2191,7 @@ s3control_get_public_access_block <- function(AccountId) {
     http_method = "GET",
     http_path = "/v20180820/configuration/publicAccessBlock",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_public_access_block_input(AccountId = AccountId)
   output <- .s3control$get_public_access_block_output()
@@ -2279,8 +2222,7 @@ s3control_get_storage_lens_configuration <- function(ConfigId, AccountId) {
     http_method = "GET",
     http_path = "/v20180820/storagelens/{storagelensid}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_storage_lens_configuration_input(ConfigId = ConfigId, AccountId = AccountId)
   output <- .s3control$get_storage_lens_configuration_output()
@@ -2311,8 +2253,7 @@ s3control_get_storage_lens_configuration_tagging <- function(ConfigId, AccountId
     http_method = "GET",
     http_path = "/v20180820/storagelens/{storagelensid}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_storage_lens_configuration_tagging_input(ConfigId = ConfigId, AccountId = AccountId)
   output <- .s3control$get_storage_lens_configuration_tagging_output()
@@ -2345,8 +2286,7 @@ s3control_get_storage_lens_group <- function(Name, AccountId) {
     http_method = "GET",
     http_path = "/v20180820/storagelensgroup/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$get_storage_lens_group_input(Name = Name, AccountId = AccountId)
   output <- .s3control$get_storage_lens_group_output()
@@ -2365,7 +2305,7 @@ s3control_get_storage_lens_group <- function(Name, AccountId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants` request in order to retrieve the
 #' next page of results.
@@ -2376,17 +2316,17 @@ s3control_get_storage_lens_group <- function(Name, AccountId) {
 #' @param GranteeType The type of the grantee to which access has been granted. It can be one
 #' of the following values:
 #' 
-#' - `IAM` - An IAM user or role.
+#' -   `IAM` - An IAM user or role.
 #' 
-#' - `DIRECTORY_USER` - Your corporate directory user. You can use this
-#'   option if you have added your corporate identity directory to IAM
-#'   Identity Center and associated the IAM Identity Center instance with
-#'   your S3 Access Grants instance.
+#' -   `DIRECTORY_USER` - Your corporate directory user. You can use this
+#'     option if you have added your corporate identity directory to IAM
+#'     Identity Center and associated the IAM Identity Center instance with
+#'     your S3 Access Grants instance.
 #' 
-#' - `DIRECTORY_GROUP` - Your corporate directory group. You can use this
-#'   option if you have added your corporate identity directory to IAM
-#'   Identity Center and associated the IAM Identity Center instance with
-#'   your S3 Access Grants instance.
+#' -   `DIRECTORY_GROUP` - Your corporate directory group. You can use this
+#'     option if you have added your corporate identity directory to IAM
+#'     Identity Center and associated the IAM Identity Center instance with
+#'     your S3 Access Grants instance.
 #' @param GranteeIdentifier The unique identifer of the `Grantee`. If the grantee type is `IAM`, the
 #' identifier is the IAM Amazon Resource Name (ARN) of the user or role. If
 #' the grantee type is a directory user or group, the identifier is 128-bit
@@ -2396,11 +2336,11 @@ s3control_get_storage_lens_group <- function(Name, AccountId) {
 #' @param Permission The type of permission granted to your S3 data, which can be set to one
 #' of the following values:
 #' 
-#' - `READ` – Grant read-only access to the S3 data.
+#' -   `READ` – Grant read-only access to the S3 data.
 #' 
-#' - `WRITE` – Grant write-only access to the S3 data.
+#' -   `WRITE` – Grant write-only access to the S3 data.
 #' 
-#' - `READWRITE` – Grant both read and write access to the S3 data.
+#' -   `READWRITE` – Grant both read and write access to the S3 data.
 #' @param GrantScope The S3 path of the data to which you are granting access. It is the
 #' result of appending the `Subprefix` to the location scope.
 #' @param ApplicationArn The Amazon Resource Name (ARN) of an Amazon Web Services IAM Identity
@@ -2417,8 +2357,7 @@ s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/grants",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_grants_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, GranteeType = GranteeType, GranteeIdentifier = GranteeIdentifier, Permission = Permission, GrantScope = GrantScope, ApplicationArn = ApplicationArn)
   output <- .s3control$list_access_grants_output()
@@ -2437,7 +2376,7 @@ s3control_list_access_grants <- function(AccountId, NextToken = NULL, MaxResults
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants_instances/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants_instances/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants Instances` request in order to
 #' retrieve the next page of results.
@@ -2455,8 +2394,7 @@ s3control_list_access_grants_instances <- function(AccountId, NextToken = NULL, 
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstances",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_grants_instances_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_grants_instances_output()
@@ -2476,7 +2414,7 @@ s3control_list_access_grants_instances <- function(AccountId, NextToken = NULL, 
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_list_access_grants_locations/](https://www.paws-r-sdk.com/docs/s3control_list_access_grants_locations/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param NextToken A pagination token to request the next page of results. Pass this value
 #' into a subsequent `List Access Grants Locations` request in order to
 #' retrieve the next page of results.
@@ -2502,8 +2440,7 @@ s3control_list_access_grants_locations <- function(AccountId, NextToken = NULL, 
     http_method = "GET",
     http_path = "/v20180820/accessgrantsinstance/locations",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_grants_locations_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, LocationScope = LocationScope)
   output <- .s3control$list_access_grants_locations_output()
@@ -2557,8 +2494,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
     http_method = "GET",
     http_path = "/v20180820/accesspoint",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_points_output()
@@ -2597,8 +2533,7 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ObjectLambdaAccessPointList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ObjectLambdaAccessPointList")
   )
   input <- .s3control$list_access_points_for_object_lambda_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_points_for_object_lambda_output()
@@ -2609,54 +2544,6 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
   return(response)
 }
 .s3control$operations$list_access_points_for_object_lambda <- s3control_list_access_points_for_object_lambda
-
-#' Returns a list of the access grants that were given to the caller using
-#' S3 Access Grants and that allow the caller to access the S3 data of the
-#' Amazon Web Services account specified in the request
-#'
-#' @description
-#' Returns a list of the access grants that were given to the caller using S3 Access Grants and that allow the caller to access the S3 data of the Amazon Web Services account specified in the request.
-#'
-#' See [https://www.paws-r-sdk.com/docs/s3control_list_caller_access_grants/](https://www.paws-r-sdk.com/docs/s3control_list_caller_access_grants/) for full documentation.
-#'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
-#' @param GrantScope The S3 path of the data that you would like to access. Must start with
-#' `s3://`. You can optionally pass only the beginning characters of a
-#' path, and S3 Access Grants will search for all applicable grants for the
-#' path fragment.
-#' @param NextToken A pagination token to request the next page of results. Pass this value
-#' into a subsequent `List Caller Access Grants` request in order to
-#' retrieve the next page of results.
-#' @param MaxResults The maximum number of access grants that you would like returned in the
-#' `List Caller Access Grants` response. If the results include the
-#' pagination token `NextToken`, make another call using the `NextToken` to
-#' determine if there are more results.
-#' @param AllowedByApplication If this optional parameter is passed in the request, a filter is applied
-#' to the results. The results will include only the access grants for the
-#' caller's Identity Center application or for any other applications
-#' (`ALL`).
-#'
-#' @keywords internal
-#'
-#' @rdname s3control_list_caller_access_grants
-s3control_list_caller_access_grants <- function(AccountId, GrantScope = NULL, NextToken = NULL, MaxResults = NULL, AllowedByApplication = NULL) {
-  op <- new_operation(
-    name = "ListCallerAccessGrants",
-    http_method = "GET",
-    http_path = "/v20180820/accessgrantsinstance/caller/grants",
-    host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CallerAccessGrantsList"),
-    stream_api = FALSE
-  )
-  input <- .s3control$list_caller_access_grants_input(AccountId = AccountId, GrantScope = GrantScope, NextToken = NextToken, MaxResults = MaxResults, AllowedByApplication = AllowedByApplication)
-  output <- .s3control$list_caller_access_grants_output()
-  config <- get_config()
-  svc <- .s3control$service(config, op)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.s3control$operations$list_caller_access_grants <- s3control_list_caller_access_grants
 
 #' Lists current S3 Batch Operations jobs as well as the jobs that have
 #' ended within the last 90 days for the Amazon Web Services account making
@@ -2688,8 +2575,7 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
     http_method = "GET",
     http_path = "/v20180820/jobs",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_jobs_input(AccountId = AccountId, JobStatuses = JobStatuses, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_jobs_output()
@@ -2722,8 +2608,7 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
     http_method = "GET",
     http_path = "/v20180820/mrap/instances",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_multi_region_access_points_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_multi_region_access_points_output()
@@ -2758,8 +2643,7 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
     http_method = "GET",
     http_path = "/v20180820/bucket",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_regional_buckets_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
   output <- .s3control$list_regional_buckets_output()
@@ -2790,8 +2674,7 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
     http_method = "GET",
     http_path = "/v20180820/storagelens",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .s3control$list_storage_lens_configurations_input(AccountId = AccountId, NextToken = NextToken)
   output <- .s3control$list_storage_lens_configurations_output()
@@ -2823,8 +2706,7 @@ s3control_list_storage_lens_groups <- function(AccountId, NextToken = NULL) {
     http_method = "GET",
     http_path = "/v20180820/storagelensgroup",
     host_prefix = "{AccountId}.",
-    paginator = list(input_token = "NextToken", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .s3control$list_storage_lens_groups_input(AccountId = AccountId, NextToken = NextToken)
   output <- .s3control$list_storage_lens_groups_output()
@@ -2858,8 +2740,7 @@ s3control_list_tags_for_resource <- function(AccountId, ResourceArn) {
     http_method = "GET",
     http_path = "/v20180820/tags/{resourceArn+}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$list_tags_for_resource_input(AccountId = AccountId, ResourceArn = ResourceArn)
   output <- .s3control$list_tags_for_resource_output()
@@ -2878,7 +2759,7 @@ s3control_list_tags_for_resource <- function(AccountId, ResourceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_put_access_grants_instance_resource_policy/](https://www.paws-r-sdk.com/docs/s3control_put_access_grants_instance_resource_policy/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param Policy &#91;required&#93; The resource policy of the S3 Access Grants instance that you are
 #' updating.
 #' @param Organization The Organization of the resource policy of the S3 Access Grants
@@ -2893,8 +2774,7 @@ s3control_put_access_grants_instance_resource_policy <- function(AccountId, Poli
     http_method = "PUT",
     http_path = "/v20180820/accessgrantsinstance/resourcepolicy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_access_grants_instance_resource_policy_input(AccountId = AccountId, Policy = Policy, Organization = Organization)
   output <- .s3control$put_access_grants_instance_resource_policy_output()
@@ -2927,8 +2807,7 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
     http_method = "PUT",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/configuration",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_access_point_configuration_for_object_lambda_input(AccountId = AccountId, Name = Name, Configuration = Configuration)
   output <- .s3control$put_access_point_configuration_for_object_lambda_output()
@@ -2979,8 +2858,7 @@ s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
     http_method = "PUT",
     http_path = "/v20180820/accesspoint/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_access_point_policy_input(AccountId = AccountId, Name = Name, Policy = Policy)
   output <- .s3control$put_access_point_policy_output()
@@ -3013,8 +2891,7 @@ s3control_put_access_point_policy_for_object_lambda <- function(AccountId, Name,
     http_method = "PUT",
     http_path = "/v20180820/accesspointforobjectlambda/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_access_point_policy_for_object_lambda_input(AccountId = AccountId, Name = Name, Policy = Policy)
   output <- .s3control$put_access_point_policy_for_object_lambda_output()
@@ -3047,8 +2924,7 @@ s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, Life
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/lifecycleconfiguration",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_bucket_lifecycle_configuration_input(AccountId = AccountId, Bucket = Bucket, LifecycleConfiguration = LifecycleConfiguration)
   output <- .s3control$put_bucket_lifecycle_configuration_output()
@@ -3097,8 +2973,7 @@ s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBuck
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_bucket_policy_input(AccountId = AccountId, Bucket = Bucket, ConfirmRemoveSelfBucketAccess = ConfirmRemoveSelfBucketAccess, Policy = Policy)
   output <- .s3control$put_bucket_policy_output()
@@ -3144,8 +3019,7 @@ s3control_put_bucket_replication <- function(AccountId, Bucket, ReplicationConfi
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/replication",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_bucket_replication_input(AccountId = AccountId, Bucket = Bucket, ReplicationConfiguration = ReplicationConfiguration)
   output <- .s3control$put_bucket_replication_output()
@@ -3190,8 +3064,7 @@ s3control_put_bucket_tagging <- function(AccountId, Bucket, Tagging) {
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_bucket_tagging_input(AccountId = AccountId, Bucket = Bucket, Tagging = Tagging)
   output <- .s3control$put_bucket_tagging_output()
@@ -3225,8 +3098,7 @@ s3control_put_bucket_versioning <- function(AccountId, Bucket, MFA = NULL, Versi
     http_method = "PUT",
     http_path = "/v20180820/bucket/{name}/versioning",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_bucket_versioning_input(AccountId = AccountId, Bucket = Bucket, MFA = MFA, VersioningConfiguration = VersioningConfiguration)
   output <- .s3control$put_bucket_versioning_output()
@@ -3259,8 +3131,7 @@ s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
     http_method = "PUT",
     http_path = "/v20180820/jobs/{id}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_job_tagging_input(AccountId = AccountId, JobId = JobId, Tags = Tags)
   output <- .s3control$put_job_tagging_output()
@@ -3295,8 +3166,7 @@ s3control_put_multi_region_access_point_policy <- function(AccountId, ClientToke
     http_method = "POST",
     http_path = "/v20180820/async-requests/mrap/put-policy",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_multi_region_access_point_policy_input(AccountId = AccountId, ClientToken = ClientToken, Details = Details)
   output <- .s3control$put_multi_region_access_point_policy_output()
@@ -3329,8 +3199,7 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
     http_method = "PUT",
     http_path = "/v20180820/configuration/publicAccessBlock",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_public_access_block_input(PublicAccessBlockConfiguration = PublicAccessBlockConfiguration, AccountId = AccountId)
   output <- .s3control$put_public_access_block_output()
@@ -3365,8 +3234,7 @@ s3control_put_storage_lens_configuration <- function(ConfigId, AccountId, Storag
     http_method = "PUT",
     http_path = "/v20180820/storagelens/{storagelensid}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_storage_lens_configuration_input(ConfigId = ConfigId, AccountId = AccountId, StorageLensConfiguration = StorageLensConfiguration, Tags = Tags)
   output <- .s3control$put_storage_lens_configuration_output()
@@ -3400,8 +3268,7 @@ s3control_put_storage_lens_configuration_tagging <- function(ConfigId, AccountId
     http_method = "PUT",
     http_path = "/v20180820/storagelens/{storagelensid}/tagging",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$put_storage_lens_configuration_tagging_input(ConfigId = ConfigId, AccountId = AccountId, Tags = Tags)
   output <- .s3control$put_storage_lens_configuration_tagging_output()
@@ -3436,8 +3303,7 @@ s3control_submit_multi_region_access_point_routes <- function(AccountId, Mrap, R
     http_method = "PATCH",
     http_path = "/v20180820/mrap/instances/{mrap+}/routes",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$submit_multi_region_access_point_routes_input(AccountId = AccountId, Mrap = Mrap, RouteUpdates = RouteUpdates)
   output <- .s3control$submit_multi_region_access_point_routes_output()
@@ -3474,8 +3340,7 @@ s3control_tag_resource <- function(AccountId, ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/v20180820/tags/{resourceArn+}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$tag_resource_input(AccountId = AccountId, ResourceArn = ResourceArn, Tags = Tags)
   output <- .s3control$tag_resource_output()
@@ -3511,8 +3376,7 @@ s3control_untag_resource <- function(AccountId, ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/v20180820/tags/{resourceArn+}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$untag_resource_input(AccountId = AccountId, ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .s3control$untag_resource_output()
@@ -3532,7 +3396,7 @@ s3control_untag_resource <- function(AccountId, ResourceArn, TagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3control_update_access_grants_location/](https://www.paws-r-sdk.com/docs/s3control_update_access_grants_location/) for full documentation.
 #'
-#' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 Access Grants instance.
+#' @param AccountId &#91;required&#93; The ID of the Amazon Web Services account that is making this request.
 #' @param AccessGrantsLocationId &#91;required&#93; The ID of the registered location that you are updating. S3 Access
 #' Grants assigns this ID when you register the location. S3 Access Grants
 #' assigns the ID `default` to the default location `s3://` and assigns an
@@ -3559,8 +3423,7 @@ s3control_update_access_grants_location <- function(AccountId, AccessGrantsLocat
     http_method = "PUT",
     http_path = "/v20180820/accessgrantsinstance/location/{id}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$update_access_grants_location_input(AccountId = AccountId, AccessGrantsLocationId = AccessGrantsLocationId, IAMRoleArn = IAMRoleArn)
   output <- .s3control$update_access_grants_location_output()
@@ -3593,8 +3456,7 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
     http_method = "POST",
     http_path = "/v20180820/jobs/{id}/priority",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$update_job_priority_input(AccountId = AccountId, JobId = JobId, Priority = Priority)
   output <- .s3control$update_job_priority_output()
@@ -3629,8 +3491,7 @@ s3control_update_job_status <- function(AccountId, JobId, RequestedJobStatus, St
     http_method = "POST",
     http_path = "/v20180820/jobs/{id}/status",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$update_job_status_input(AccountId = AccountId, JobId = JobId, RequestedJobStatus = RequestedJobStatus, StatusUpdateReason = StatusUpdateReason)
   output <- .s3control$update_job_status_output()
@@ -3662,8 +3523,7 @@ s3control_update_storage_lens_group <- function(Name, AccountId, StorageLensGrou
     http_method = "PUT",
     http_path = "/v20180820/storagelensgroup/{name}",
     host_prefix = "{AccountId}.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .s3control$update_storage_lens_group_input(Name = Name, AccountId = AccountId, StorageLensGroup = StorageLensGroup)
   output <- .s3control$update_storage_lens_group_output()

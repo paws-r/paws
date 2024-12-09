@@ -60,11 +60,12 @@ Amazon Transcribe offers three main types of batch transcription:
 details.
 \item \strong{Medical transcriptions} are tailored to medical professionals and
 incorporate medical terms. A common use case for this service is
-transcribing doctor-patient dialogue into after-visit notes. Refer to
-for details.
+transcribing doctor-patient dialogue into after-visit notes. Refer
+to for details.
 \item \strong{Call Analytics transcriptions} are designed for use with call
-center audio on two different channels; if you're looking for insight
-into customer service calls, use this option. Refer to for details.
+center audio on two different channels; if you're looking for
+insight into customer service calls, use this option. Refer to for
+details.
 }
 }
 \section{Service syntax}{

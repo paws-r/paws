@@ -36,8 +36,8 @@ dataset previously, you can only specify \code{FULL}.
 \item Specify \code{FULL} to overwrite all existing bulk data in your dataset.
 Data you imported individually is not replaced.
 \item Specify \code{INCREMENTAL} to append the new records to the existing data
-in your dataset. Amazon Personalize replaces any record with the same
-ID with the new one.
+in your dataset. Amazon Personalize replaces any record with the
+same ID with the new one.
 }}
 
 \item{publishAttributionMetricsToS3}{If you created a metric attribution, specify whether to publish metrics

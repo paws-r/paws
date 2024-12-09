@@ -39,9 +39,9 @@ Constraints:
 Constraints:
 \itemize{
 \item Must be 8 to 30 characters.
-\item Can include any printable ASCII character except forward slash (\code{/}),
-double quote (\verb{\\"}), at symbol (\code{@}), ampersand (\code{&}), or single quote
-(\verb{\\'}).
+\item Can include any printable ASCII character except forward slash
+(\code{/}), double quote (\verb{\\"}), at symbol (\code{@}), ampersand (\code{&}), or
+single quote (\verb{\\'}).
 }}
 
 \item{CharacterSetName}{The character set for your tenant database. If you don't specify a

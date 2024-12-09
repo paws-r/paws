@@ -43,17 +43,17 @@ NULL
 #' equivalent to 1 hour. The valid values for each frequency are the
 #' following:
 #' 
-#' - Minute - 1-59
+#' -   Minute - 1-59
 #' 
-#' - Hour - 1-23
+#' -   Hour - 1-23
 #' 
-#' - Day - 1-6
+#' -   Day - 1-6
 #' 
-#' - Week - 1-4
+#' -   Week - 1-4
 #' 
-#' - Month - 1-11
+#' -   Month - 1-11
 #' 
-#' - Year - 1
+#' -   Year - 1
 #' 
 #' Thus, if you want every other week forecasts, specify "2W". Or, if you
 #' want quarterly forecasts, you specify "3M".
@@ -81,26 +81,26 @@ NULL
 #' 
 #' The following restrictions apply to tags:
 #' 
-#' - For each resource, each tag key must be unique and each tag key must
-#'   have one value.
+#' -   For each resource, each tag key must be unique and each tag key must
+#'     have one value.
 #' 
-#' - Maximum number of tags per resource: 50.
+#' -   Maximum number of tags per resource: 50.
 #' 
-#' - Maximum key length: 128 Unicode characters in UTF-8.
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length: 256 Unicode characters in UTF-8.
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
 #' 
-#' - Accepted characters: all letters and numbers, spaces representable in
-#'   UTF-8, and + - = . _ : / @@. If your tagging schema is used across
-#'   other services and resources, the character restrictions of those
-#'   services also apply.
+#' -   Accepted characters: all letters and numbers, spaces representable
+#'     in UTF-8, and + - = . _ : / @@. If your tagging schema is used
+#'     across other services and resources, the character restrictions of
+#'     those services also apply.
 #' 
-#' - Key prefixes cannot include any upper or lowercase combination of
-#'   `aws:` or `AWS:`. Values can have this prefix. If a tag value has
-#'   `aws` as its prefix but the key does not, Forecast considers it to be
-#'   a user tag and will count against the limit of 50 tags. Tags with only
-#'   the key prefix of `aws` do not count against your tags per resource
-#'   limit. You cannot edit or delete tag keys with this prefix.
+#' -   Key prefixes cannot include any upper or lowercase combination of
+#'     `aws:` or `AWS:`. Values can have this prefix. If a tag value has
+#'     `aws` as its prefix but the key does not, Forecast considers it to
+#'     be a user tag and will count against the limit of 50 tags. Tags with
+#'     only the key prefix of `aws` do not count against your tags per
+#'     resource limit. You cannot edit or delete tag keys with this prefix.
 #' @param MonitorConfig The configuration details for predictor monitoring. Provide a name for
 #' the monitor resource to enable predictor monitoring.
 #' 
@@ -125,8 +125,7 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_auto_predictor_input(PredictorName = PredictorName, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, ForecastDimensions = ForecastDimensions, ForecastFrequency = ForecastFrequency, DataConfig = DataConfig, EncryptionConfig = EncryptionConfig, ReferencePredictorArn = ReferencePredictorArn, OptimizationMetric = OptimizationMetric, ExplainPredictor = ExplainPredictor, Tags = Tags, MonitorConfig = MonitorConfig, TimeAlignmentBoundary = TimeAlignmentBoundary)
   output <- .forecastservice$create_auto_predictor_output()
@@ -171,17 +170,17 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
 #' equivalent to 1 hour. The valid values for each frequency are the
 #' following:
 #' 
-#' - Minute - 1-59
+#' -   Minute - 1-59
 #' 
-#' - Hour - 1-23
+#' -   Hour - 1-23
 #' 
-#' - Day - 1-6
+#' -   Day - 1-6
 #' 
-#' - Week - 1-4
+#' -   Week - 1-4
 #' 
-#' - Month - 1-11
+#' -   Month - 1-11
 #' 
-#' - Year - 1
+#' -   Year - 1
 #' 
 #' Thus, if you want every other week forecasts, specify "2W". Or, if you
 #' want quarterly forecasts, you specify "3M".
@@ -199,30 +198,30 @@ forecastservice_create_auto_predictor <- function(PredictorName, ForecastHorizon
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' - Maximum number of tags per resource - 50.
+#' -   Maximum number of tags per resource - 50.
 #' 
-#' - For each resource, each tag key must be unique, and each tag key can
-#'   have only one value.
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
 #' 
-#' - Maximum key length - 128 Unicode characters in UTF-8.
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length - 256 Unicode characters in UTF-8.
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
 #' 
-#' - If your tagging schema is used across multiple services and resources,
-#'   remember that other services may have restrictions on allowed
-#'   characters. Generally allowed characters are: letters, numbers, and
-#'   spaces representable in UTF-8, and the following characters: + - = .
-#'   _ : / @@.
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
 #' 
-#' - Tag keys and values are case sensitive.
+#' -   Tag keys and values are case sensitive.
 #' 
-#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'   such as a prefix for keys as it is reserved for Amazon Web Services
-#'   use. You cannot edit or delete tag keys with this prefix. Values can
-#'   have this prefix. If a tag value has `aws` as its prefix but the key
-#'   does not, then Forecast considers it to be a user tag and will count
-#'   against the limit of 50 tags. Tags with only the key prefix of `aws`
-#'   do not count against your tags per resource limit.
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #'
 #' @keywords internal
 #'
@@ -233,8 +232,7 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_dataset_input(DatasetName = DatasetName, Domain = Domain, DatasetType = DatasetType, DataFrequency = DataFrequency, Schema = Schema, EncryptionConfig = EncryptionConfig, Tags = Tags)
   output <- .forecastservice$create_dataset_output()
@@ -274,30 +272,30 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' - Maximum number of tags per resource - 50.
+#' -   Maximum number of tags per resource - 50.
 #' 
-#' - For each resource, each tag key must be unique, and each tag key can
-#'   have only one value.
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
 #' 
-#' - Maximum key length - 128 Unicode characters in UTF-8.
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length - 256 Unicode characters in UTF-8.
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
 #' 
-#' - If your tagging schema is used across multiple services and resources,
-#'   remember that other services may have restrictions on allowed
-#'   characters. Generally allowed characters are: letters, numbers, and
-#'   spaces representable in UTF-8, and the following characters: + - = .
-#'   _ : / @@.
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
 #' 
-#' - Tag keys and values are case sensitive.
+#' -   Tag keys and values are case sensitive.
 #' 
-#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'   such as a prefix for keys as it is reserved for Amazon Web Services
-#'   use. You cannot edit or delete tag keys with this prefix. Values can
-#'   have this prefix. If a tag value has `aws` as its prefix but the key
-#'   does not, then Forecast considers it to be a user tag and will count
-#'   against the limit of 50 tags. Tags with only the key prefix of `aws`
-#'   do not count against your tags per resource limit.
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #'
 #' @keywords internal
 #'
@@ -308,8 +306,7 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_dataset_group_input(DatasetGroupName = DatasetGroupName, Domain = Domain, DatasetArns = DatasetArns, Tags = Tags)
   output <- .forecastservice$create_dataset_group_output()
@@ -346,14 +343,14 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' depends on the `DataFrequency` specified when the dataset was created.
 #' The following formats are supported
 #' 
-#' - "yyyy-MM-dd"
+#' -   "yyyy-MM-dd"
 #' 
-#'   For the following data frequencies: Y, M, W, and D
+#'     For the following data frequencies: Y, M, W, and D
 #' 
-#' - "yyyy-MM-dd HH:mm:ss"
+#' -   "yyyy-MM-dd HH:mm:ss"
 #' 
-#'   For the following data frequencies: H, 30min, 15min, and 1min; and
-#'   optionally, for: Y, M, W, and D
+#'     For the following data frequencies: H, 30min, 15min, and 1min; and
+#'     optionally, for: Y, M, W, and D
 #' 
 #' If the format isn't specified, Amazon Forecast expects the format to be
 #' "yyyy-MM-dd HH:mm:ss".
@@ -370,41 +367,41 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' @param GeolocationFormat The format of the geolocation attribute. The geolocation attribute can
 #' be formatted in one of two ways:
 #' 
-#' - `LAT_LONG` - the latitude and longitude in decimal format (Example:
-#'   47.61_-122.33).
+#' -   `LAT_LONG` - the latitude and longitude in decimal format (Example:
+#'     47.61_-122.33).
 #' 
-#' - `CC_POSTALCODE` (US Only) - the country code (US), followed by the
-#'   5-digit ZIP code (Example: US_98121).
+#' -   `CC_POSTALCODE` (US Only) - the country code (US), followed by the
+#'     5-digit ZIP code (Example: US_98121).
 #' @param Tags The optional metadata that you apply to the dataset import job to help
 #' you categorize and organize them. Each tag consists of a key and an
 #' optional value, both of which you define.
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' - Maximum number of tags per resource - 50.
+#' -   Maximum number of tags per resource - 50.
 #' 
-#' - For each resource, each tag key must be unique, and each tag key can
-#'   have only one value.
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
 #' 
-#' - Maximum key length - 128 Unicode characters in UTF-8.
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length - 256 Unicode characters in UTF-8.
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
 #' 
-#' - If your tagging schema is used across multiple services and resources,
-#'   remember that other services may have restrictions on allowed
-#'   characters. Generally allowed characters are: letters, numbers, and
-#'   spaces representable in UTF-8, and the following characters: + - = .
-#'   _ : / @@.
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
 #' 
-#' - Tag keys and values are case sensitive.
+#' -   Tag keys and values are case sensitive.
 #' 
-#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'   such as a prefix for keys as it is reserved for Amazon Web Services
-#'   use. You cannot edit or delete tag keys with this prefix. Values can
-#'   have this prefix. If a tag value has `aws` as its prefix but the key
-#'   does not, then Forecast considers it to be a user tag and will count
-#'   against the limit of 50 tags. Tags with only the key prefix of `aws`
-#'   do not count against your tags per resource limit.
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #' @param Format The format of the imported data, CSV or PARQUET. The default value is
 #' CSV.
 #' @param ImportMode Specifies whether the dataset import job is a `FULL` or `INCREMENTAL`
@@ -421,8 +418,7 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, TimeZone = TimeZone, UseGeolocationForTimeZone = UseGeolocationForTimeZone, GeolocationFormat = GeolocationFormat, Tags = Tags, Format = Format, ImportMode = ImportMode)
   output <- .forecastservice$create_dataset_import_job_output()
@@ -467,26 +463,26 @@ forecastservice_create_dataset_import_job <- function(DatasetImportJobName, Data
 #' 
 #' The following restrictions apply to tags:
 #' 
-#' - For each resource, each tag key must be unique and each tag key must
-#'   have one value.
+#' -   For each resource, each tag key must be unique and each tag key must
+#'     have one value.
 #' 
-#' - Maximum number of tags per resource: 50.
+#' -   Maximum number of tags per resource: 50.
 #' 
-#' - Maximum key length: 128 Unicode characters in UTF-8.
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length: 256 Unicode characters in UTF-8.
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
 #' 
-#' - Accepted characters: all letters and numbers, spaces representable in
-#'   UTF-8, and + - = . _ : / @@. If your tagging schema is used across
-#'   other services and resources, the character restrictions of those
-#'   services also apply.
+#' -   Accepted characters: all letters and numbers, spaces representable
+#'     in UTF-8, and + - = . _ : / @@. If your tagging schema is used
+#'     across other services and resources, the character restrictions of
+#'     those services also apply.
 #' 
-#' - Key prefixes cannot include any upper or lowercase combination of
-#'   `aws:` or `AWS:`. Values can have this prefix. If a tag value has
-#'   `aws` as its prefix but the key does not, Forecast considers it to be
-#'   a user tag and will count against the limit of 50 tags. Tags with only
-#'   the key prefix of `aws` do not count against your tags per resource
-#'   limit. You cannot edit or delete tag keys with this prefix.
+#' -   Key prefixes cannot include any upper or lowercase combination of
+#'     `aws:` or `AWS:`. Values can have this prefix. If a tag value has
+#'     `aws` as its prefix but the key does not, Forecast considers it to
+#'     be a user tag and will count against the limit of 50 tags. Tags with
+#'     only the key prefix of `aws` do not count against your tags per
+#'     resource limit. You cannot edit or delete tag keys with this prefix.
 #'
 #' @keywords internal
 #'
@@ -497,8 +493,7 @@ forecastservice_create_explainability <- function(ExplainabilityName, ResourceAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_explainability_input(ExplainabilityName = ExplainabilityName, ResourceArn = ResourceArn, ExplainabilityConfig = ExplainabilityConfig, DataSource = DataSource, Schema = Schema, EnableVisualization = EnableVisualization, StartDateTime = StartDateTime, EndDateTime = EndDateTime, Tags = Tags)
   output <- .forecastservice$create_explainability_output()
@@ -527,26 +522,26 @@ forecastservice_create_explainability <- function(ExplainabilityName, ResourceAr
 #' 
 #' The following restrictions apply to tags:
 #' 
-#' - For each resource, each tag key must be unique and each tag key must
-#'   have one value.
+#' -   For each resource, each tag key must be unique and each tag key must
+#'     have one value.
 #' 
-#' - Maximum number of tags per resource: 50.
+#' -   Maximum number of tags per resource: 50.
 #' 
-#' - Maximum key length: 128 Unicode characters in UTF-8.
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length: 256 Unicode characters in UTF-8.
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
 #' 
-#' - Accepted characters: all letters and numbers, spaces representable in
-#'   UTF-8, and + - = . _ : / @@. If your tagging schema is used across
-#'   other services and resources, the character restrictions of those
-#'   services also apply.
+#' -   Accepted characters: all letters and numbers, spaces representable
+#'     in UTF-8, and + - = . _ : / @@. If your tagging schema is used
+#'     across other services and resources, the character restrictions of
+#'     those services also apply.
 #' 
-#' - Key prefixes cannot include any upper or lowercase combination of
-#'   `aws:` or `AWS:`. Values can have this prefix. If a tag value has
-#'   `aws` as its prefix but the key does not, Forecast considers it to be
-#'   a user tag and will count against the limit of 50 tags. Tags with only
-#'   the key prefix of `aws` do not count against your tags per resource
-#'   limit. You cannot edit or delete tag keys with this prefix.
+#' -   Key prefixes cannot include any upper or lowercase combination of
+#'     `aws:` or `AWS:`. Values can have this prefix. If a tag value has
+#'     `aws` as its prefix but the key does not, Forecast considers it to
+#'     be a user tag and will count against the limit of 50 tags. Tags with
+#'     only the key prefix of `aws` do not count against your tags per
+#'     resource limit. You cannot edit or delete tag keys with this prefix.
 #' @param Format The format of the exported data, CSV or PARQUET.
 #'
 #' @keywords internal
@@ -558,8 +553,7 @@ forecastservice_create_explainability_export <- function(ExplainabilityExportNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_explainability_export_input(ExplainabilityExportName = ExplainabilityExportName, ExplainabilityArn = ExplainabilityArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_explainability_export_output()
@@ -597,40 +591,40 @@ forecastservice_create_explainability_export <- function(ExplainabilityExportNam
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' - Maximum number of tags per resource - 50.
+#' -   Maximum number of tags per resource - 50.
 #' 
-#' - For each resource, each tag key must be unique, and each tag key can
-#'   have only one value.
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
 #' 
-#' - Maximum key length - 128 Unicode characters in UTF-8.
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length - 256 Unicode characters in UTF-8.
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
 #' 
-#' - If your tagging schema is used across multiple services and resources,
-#'   remember that other services may have restrictions on allowed
-#'   characters. Generally allowed characters are: letters, numbers, and
-#'   spaces representable in UTF-8, and the following characters: + - = .
-#'   _ : / @@.
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
 #' 
-#' - Tag keys and values are case sensitive.
+#' -   Tag keys and values are case sensitive.
 #' 
-#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'   such as a prefix for keys as it is reserved for Amazon Web Services
-#'   use. You cannot edit or delete tag keys with this prefix. Values can
-#'   have this prefix. If a tag value has `aws` as its prefix but the key
-#'   does not, then Forecast considers it to be a user tag and will count
-#'   against the limit of 50 tags. Tags with only the key prefix of `aws`
-#'   do not count against your tags per resource limit.
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #' @param TimeSeriesSelector Defines the set of time series that are used to create the forecasts in
 #' a `TimeSeriesIdentifiers` object.
 #' 
 #' The `TimeSeriesIdentifiers` object needs the following information:
 #' 
-#' - `DataSource`
+#' -   `DataSource`
 #' 
-#' - `Format`
+#' -   `Format`
 #' 
-#' - `Schema`
+#' -   `Schema`
 #'
 #' @keywords internal
 #'
@@ -641,8 +635,7 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_forecast_input(ForecastName = ForecastName, PredictorArn = PredictorArn, ForecastTypes = ForecastTypes, Tags = Tags, TimeSeriesSelector = TimeSeriesSelector)
   output <- .forecastservice$create_forecast_output()
@@ -677,30 +670,30 @@ forecastservice_create_forecast <- function(ForecastName, PredictorArn, Forecast
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' - Maximum number of tags per resource - 50.
+#' -   Maximum number of tags per resource - 50.
 #' 
-#' - For each resource, each tag key must be unique, and each tag key can
-#'   have only one value.
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
 #' 
-#' - Maximum key length - 128 Unicode characters in UTF-8.
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length - 256 Unicode characters in UTF-8.
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
 #' 
-#' - If your tagging schema is used across multiple services and resources,
-#'   remember that other services may have restrictions on allowed
-#'   characters. Generally allowed characters are: letters, numbers, and
-#'   spaces representable in UTF-8, and the following characters: + - = .
-#'   _ : / @@.
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
 #' 
-#' - Tag keys and values are case sensitive.
+#' -   Tag keys and values are case sensitive.
 #' 
-#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'   such as a prefix for keys as it is reserved for Amazon Web Services
-#'   use. You cannot edit or delete tag keys with this prefix. Values can
-#'   have this prefix. If a tag value has `aws` as its prefix but the key
-#'   does not, then Forecast considers it to be a user tag and will count
-#'   against the limit of 50 tags. Tags with only the key prefix of `aws`
-#'   do not count against your tags per resource limit.
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #' @param Format The format of the exported data, CSV or PARQUET. The default value is
 #' CSV.
 #'
@@ -713,8 +706,7 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_forecast_export_job_input(ForecastExportJobName = ForecastExportJobName, ForecastArn = ForecastArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_forecast_export_job_output()
@@ -748,8 +740,7 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_monitor_input(MonitorName = MonitorName, ResourceArn = ResourceArn, Tags = Tags)
   output <- .forecastservice$create_monitor_output()
@@ -775,17 +766,17 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
 #' 
 #' **Supported algorithms:**
 #' 
-#' - `arn:aws:forecast:::algorithm/ARIMA`
+#' -   `arn:aws:forecast:::algorithm/ARIMA`
 #' 
-#' - `arn:aws:forecast:::algorithm/CNN-QR`
+#' -   `arn:aws:forecast:::algorithm/CNN-QR`
 #' 
-#' - `arn:aws:forecast:::algorithm/Deep_AR_Plus`
+#' -   `arn:aws:forecast:::algorithm/Deep_AR_Plus`
 #' 
-#' - `arn:aws:forecast:::algorithm/ETS`
+#' -   `arn:aws:forecast:::algorithm/ETS`
 #' 
-#' - `arn:aws:forecast:::algorithm/NPTS`
+#' -   `arn:aws:forecast:::algorithm/NPTS`
 #' 
-#' - `arn:aws:forecast:::algorithm/Prophet`
+#' -   `arn:aws:forecast:::algorithm/Prophet`
 #' @param ForecastHorizon &#91;required&#93; Specifies the number of time-steps that the model is trained to predict.
 #' The forecast horizon is also called the prediction length.
 #' 
@@ -837,9 +828,9 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
 #' 
 #' The following algorithms support HPO:
 #' 
-#' - DeepAR+
+#' -   DeepAR+
 #' 
-#' - CNN-QR
+#' -   CNN-QR
 #' @param TrainingParameters The hyperparameters to override for model training. The hyperparameters
 #' that you can override are listed in the individual algorithms. For the
 #' list of supported algorithms, see aws-forecast-choosing-recipes.
@@ -866,30 +857,30 @@ forecastservice_create_monitor <- function(MonitorName, ResourceArn, Tags = NULL
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' - Maximum number of tags per resource - 50.
+#' -   Maximum number of tags per resource - 50.
 #' 
-#' - For each resource, each tag key must be unique, and each tag key can
-#'   have only one value.
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
 #' 
-#' - Maximum key length - 128 Unicode characters in UTF-8.
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length - 256 Unicode characters in UTF-8.
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
 #' 
-#' - If your tagging schema is used across multiple services and resources,
-#'   remember that other services may have restrictions on allowed
-#'   characters. Generally allowed characters are: letters, numbers, and
-#'   spaces representable in UTF-8, and the following characters: + - = .
-#'   _ : / @@.
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
 #' 
-#' - Tag keys and values are case sensitive.
+#' -   Tag keys and values are case sensitive.
 #' 
-#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'   such as a prefix for keys as it is reserved for Amazon Web Services
-#'   use. You cannot edit or delete tag keys with this prefix. Values can
-#'   have this prefix. If a tag value has `aws` as its prefix but the key
-#'   does not, then Forecast considers it to be a user tag and will count
-#'   against the limit of 50 tags. Tags with only the key prefix of `aws`
-#'   do not count against your tags per resource limit.
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #' @param OptimizationMetric The accuracy metric used to optimize the predictor.
 #'
 #' @keywords internal
@@ -901,8 +892,7 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, PerformAutoML = PerformAutoML, AutoMLOverrideStrategy = AutoMLOverrideStrategy, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig, Tags = Tags, OptimizationMetric = OptimizationMetric)
   output <- .forecastservice$create_predictor_output()
@@ -931,26 +921,26 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
 #' 
 #' The following restrictions apply to tags:
 #' 
-#' - For each resource, each tag key must be unique and each tag key must
-#'   have one value.
+#' -   For each resource, each tag key must be unique and each tag key must
+#'     have one value.
 #' 
-#' - Maximum number of tags per resource: 50.
+#' -   Maximum number of tags per resource: 50.
 #' 
-#' - Maximum key length: 128 Unicode characters in UTF-8.
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length: 256 Unicode characters in UTF-8.
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
 #' 
-#' - Accepted characters: all letters and numbers, spaces representable in
-#'   UTF-8, and + - = . _ : / @@. If your tagging schema is used across
-#'   other services and resources, the character restrictions of those
-#'   services also apply.
+#' -   Accepted characters: all letters and numbers, spaces representable
+#'     in UTF-8, and + - = . _ : / @@. If your tagging schema is used
+#'     across other services and resources, the character restrictions of
+#'     those services also apply.
 #' 
-#' - Key prefixes cannot include any upper or lowercase combination of
-#'   `aws:` or `AWS:`. Values can have this prefix. If a tag value has
-#'   `aws` as its prefix but the key does not, Forecast considers it to be
-#'   a user tag and will count against the limit of 50 tags. Tags with only
-#'   the key prefix of `aws` do not count against your tags per resource
-#'   limit. You cannot edit or delete tag keys with this prefix.
+#' -   Key prefixes cannot include any upper or lowercase combination of
+#'     `aws:` or `AWS:`. Values can have this prefix. If a tag value has
+#'     `aws` as its prefix but the key does not, Forecast considers it to
+#'     be a user tag and will count against the limit of 50 tags. Tags with
+#'     only the key prefix of `aws` do not count against your tags per
+#'     resource limit. You cannot edit or delete tag keys with this prefix.
 #' @param Format The format of the exported data, CSV or PARQUET. The default value is
 #' CSV.
 #'
@@ -963,8 +953,7 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_predictor_backtest_export_job_input(PredictorBacktestExportJobName = PredictorBacktestExportJobName, PredictorArn = PredictorArn, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_predictor_backtest_export_job_output()
@@ -993,11 +982,11 @@ forecastservice_create_predictor_backtest_export_job <- function(PredictorBackte
 #' 
 #' The `TimeSeriesIdentifiers` object needs the following information:
 #' 
-#' - `DataSource`
+#' -   `DataSource`
 #' 
-#' - `Format`
+#' -   `Format`
 #' 
-#' - `Schema`
+#' -   `Schema`
 #' @param Tags A list of
 #' [tags](https://docs.aws.amazon.com/forecast/latest/dg/tagging-forecast-resources.html)
 #' to apply to the what if forecast.
@@ -1011,8 +1000,7 @@ forecastservice_create_what_if_analysis <- function(WhatIfAnalysisName, Forecast
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_what_if_analysis_input(WhatIfAnalysisName = WhatIfAnalysisName, ForecastArn = ForecastArn, TimeSeriesSelector = TimeSeriesSelector, Tags = Tags)
   output <- .forecastservice$create_what_if_analysis_output()
@@ -1068,8 +1056,7 @@ forecastservice_create_what_if_forecast <- function(WhatIfForecastName, WhatIfAn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_what_if_forecast_input(WhatIfForecastName = WhatIfForecastName, WhatIfAnalysisArn = WhatIfAnalysisArn, TimeSeriesTransformations = TimeSeriesTransformations, TimeSeriesReplacementsDataSource = TimeSeriesReplacementsDataSource, Tags = Tags)
   output <- .forecastservice$create_what_if_forecast_output()
@@ -1112,8 +1099,7 @@ forecastservice_create_what_if_forecast_export <- function(WhatIfForecastExportN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$create_what_if_forecast_export_input(WhatIfForecastExportName = WhatIfForecastExportName, WhatIfForecastArns = WhatIfForecastArns, Destination = Destination, Tags = Tags, Format = Format)
   output <- .forecastservice$create_what_if_forecast_export_output()
@@ -1144,8 +1130,7 @@ forecastservice_delete_dataset <- function(DatasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_dataset_input(DatasetArn = DatasetArn)
   output <- .forecastservice$delete_dataset_output()
@@ -1175,8 +1160,7 @@ forecastservice_delete_dataset_group <- function(DatasetGroupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_dataset_group_input(DatasetGroupArn = DatasetGroupArn)
   output <- .forecastservice$delete_dataset_group_output()
@@ -1207,8 +1191,7 @@ forecastservice_delete_dataset_import_job <- function(DatasetImportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_dataset_import_job_input(DatasetImportJobArn = DatasetImportJobArn)
   output <- .forecastservice$delete_dataset_import_job_output()
@@ -1238,8 +1221,7 @@ forecastservice_delete_explainability <- function(ExplainabilityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_explainability_input(ExplainabilityArn = ExplainabilityArn)
   output <- .forecastservice$delete_explainability_output()
@@ -1269,8 +1251,7 @@ forecastservice_delete_explainability_export <- function(ExplainabilityExportArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_explainability_export_input(ExplainabilityExportArn = ExplainabilityExportArn)
   output <- .forecastservice$delete_explainability_export_output()
@@ -1300,8 +1281,7 @@ forecastservice_delete_forecast <- function(ForecastArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_forecast_input(ForecastArn = ForecastArn)
   output <- .forecastservice$delete_forecast_output()
@@ -1332,8 +1312,7 @@ forecastservice_delete_forecast_export_job <- function(ForecastExportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_forecast_export_job_input(ForecastExportJobArn = ForecastExportJobArn)
   output <- .forecastservice$delete_forecast_export_job_output()
@@ -1363,8 +1342,7 @@ forecastservice_delete_monitor <- function(MonitorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_monitor_input(MonitorArn = MonitorArn)
   output <- .forecastservice$delete_monitor_output()
@@ -1395,8 +1373,7 @@ forecastservice_delete_predictor <- function(PredictorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$delete_predictor_output()
@@ -1427,8 +1404,7 @@ forecastservice_delete_predictor_backtest_export_job <- function(PredictorBackte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_predictor_backtest_export_job_input(PredictorBacktestExportJobArn = PredictorBacktestExportJobArn)
   output <- .forecastservice$delete_predictor_backtest_export_job_output()
@@ -1459,8 +1435,7 @@ forecastservice_delete_resource_tree <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_resource_tree_input(ResourceArn = ResourceArn)
   output <- .forecastservice$delete_resource_tree_output()
@@ -1492,8 +1467,7 @@ forecastservice_delete_what_if_analysis <- function(WhatIfAnalysisArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_what_if_analysis_input(WhatIfAnalysisArn = WhatIfAnalysisArn)
   output <- .forecastservice$delete_what_if_analysis_output()
@@ -1525,8 +1499,7 @@ forecastservice_delete_what_if_forecast <- function(WhatIfForecastArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn)
   output <- .forecastservice$delete_what_if_forecast_output()
@@ -1558,8 +1531,7 @@ forecastservice_delete_what_if_forecast_export <- function(WhatIfForecastExportA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$delete_what_if_forecast_export_input(WhatIfForecastExportArn = WhatIfForecastExportArn)
   output <- .forecastservice$delete_what_if_forecast_export_output()
@@ -1589,8 +1561,7 @@ forecastservice_describe_auto_predictor <- function(PredictorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_auto_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$describe_auto_predictor_output()
@@ -1621,8 +1592,7 @@ forecastservice_describe_dataset <- function(DatasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_dataset_input(DatasetArn = DatasetArn)
   output <- .forecastservice$describe_dataset_output()
@@ -1652,8 +1622,7 @@ forecastservice_describe_dataset_group <- function(DatasetGroupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_dataset_group_input(DatasetGroupArn = DatasetGroupArn)
   output <- .forecastservice$describe_dataset_group_output()
@@ -1684,8 +1653,7 @@ forecastservice_describe_dataset_import_job <- function(DatasetImportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_dataset_import_job_input(DatasetImportJobArn = DatasetImportJobArn)
   output <- .forecastservice$describe_dataset_import_job_output()
@@ -1716,8 +1684,7 @@ forecastservice_describe_explainability <- function(ExplainabilityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_explainability_input(ExplainabilityArn = ExplainabilityArn)
   output <- .forecastservice$describe_explainability_output()
@@ -1748,8 +1715,7 @@ forecastservice_describe_explainability_export <- function(ExplainabilityExportA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_explainability_export_input(ExplainabilityExportArn = ExplainabilityExportArn)
   output <- .forecastservice$describe_explainability_export_output()
@@ -1779,8 +1745,7 @@ forecastservice_describe_forecast <- function(ForecastArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_forecast_input(ForecastArn = ForecastArn)
   output <- .forecastservice$describe_forecast_output()
@@ -1811,8 +1776,7 @@ forecastservice_describe_forecast_export_job <- function(ForecastExportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_forecast_export_job_input(ForecastExportJobArn = ForecastExportJobArn)
   output <- .forecastservice$describe_forecast_export_job_output()
@@ -1842,8 +1806,7 @@ forecastservice_describe_monitor <- function(MonitorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_monitor_input(MonitorArn = MonitorArn)
   output <- .forecastservice$describe_monitor_output()
@@ -1875,8 +1838,7 @@ forecastservice_describe_predictor <- function(PredictorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_predictor_input(PredictorArn = PredictorArn)
   output <- .forecastservice$describe_predictor_output()
@@ -1907,8 +1869,7 @@ forecastservice_describe_predictor_backtest_export_job <- function(PredictorBack
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_predictor_backtest_export_job_input(PredictorBacktestExportJobArn = PredictorBacktestExportJobArn)
   output <- .forecastservice$describe_predictor_backtest_export_job_output()
@@ -1940,8 +1901,7 @@ forecastservice_describe_what_if_analysis <- function(WhatIfAnalysisArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_what_if_analysis_input(WhatIfAnalysisArn = WhatIfAnalysisArn)
   output <- .forecastservice$describe_what_if_analysis_output()
@@ -1973,8 +1933,7 @@ forecastservice_describe_what_if_forecast <- function(WhatIfForecastArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_what_if_forecast_input(WhatIfForecastArn = WhatIfForecastArn)
   output <- .forecastservice$describe_what_if_forecast_output()
@@ -2006,8 +1965,7 @@ forecastservice_describe_what_if_forecast_export <- function(WhatIfForecastExpor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$describe_what_if_forecast_export_input(WhatIfForecastExportArn = WhatIfForecastExportArn)
   output <- .forecastservice$describe_what_if_forecast_export_output()
@@ -2038,8 +1996,7 @@ forecastservice_get_accuracy_metrics <- function(PredictorArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$get_accuracy_metrics_input(PredictorArn = PredictorArn)
   output <- .forecastservice$get_accuracy_metrics_output()
@@ -2073,8 +2030,7 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetGroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetGroups")
   )
   input <- .forecastservice$list_dataset_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .forecastservice$list_dataset_groups_output()
@@ -2106,14 +2062,14 @@ forecastservice_list_dataset_groups <- function(NextToken = NULL, MaxResults = N
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`. To include the datasets that match the statement, specify
-#'   `IS`. To exclude matching datasets, specify `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the datasets that match the statement, specify
+#'     `IS`. To exclude matching datasets, specify `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `DatasetArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `DatasetArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #' 
 #' For example, to list all dataset import jobs whose status is ACTIVE, you
 #' specify the following filter:
@@ -2129,8 +2085,7 @@ forecastservice_list_dataset_import_jobs <- function(NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetImportJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetImportJobs")
   )
   input <- .forecastservice$list_dataset_import_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_dataset_import_jobs_output()
@@ -2163,8 +2118,7 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Datasets"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Datasets")
   )
   input <- .forecastservice$list_datasets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .forecastservice$list_datasets_output()
@@ -2195,13 +2149,13 @@ forecastservice_list_datasets <- function(NextToken = NULL, MaxResults = NULL) {
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `ResourceArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `ResourceArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #'
 #' @keywords internal
 #'
@@ -2212,8 +2166,7 @@ forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Explainabilities"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Explainabilities")
   )
   input <- .forecastservice$list_explainabilities_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_explainabilities_output()
@@ -2244,13 +2197,13 @@ forecastservice_list_explainabilities <- function(NextToken = NULL, MaxResults =
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `ResourceArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `ResourceArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #'
 #' @keywords internal
 #'
@@ -2261,8 +2214,7 @@ forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExplainabilityExports"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ExplainabilityExports")
   )
   input <- .forecastservice$list_explainability_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_explainability_exports_output()
@@ -2294,15 +2246,15 @@ forecastservice_list_explainability_exports <- function(NextToken = NULL, MaxRes
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`. To include the forecast export jobs that match the
-#'   statement, specify `IS`. To exclude matching forecast export jobs,
-#'   specify `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the forecast export jobs that match the
+#'     statement, specify `IS`. To exclude matching forecast export jobs,
+#'     specify `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `ForecastArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `ForecastArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #' 
 #' For example, to list all jobs that export a forecast named
 #' *electricityforecast*, specify the following filter:
@@ -2318,8 +2270,7 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ForecastExportJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ForecastExportJobs")
   )
   input <- .forecastservice$list_forecast_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_forecast_export_jobs_output()
@@ -2350,14 +2301,14 @@ forecastservice_list_forecast_export_jobs <- function(NextToken = NULL, MaxResul
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`. To include the forecasts that match the statement, specify
-#'   `IS`. To exclude matching forecasts, specify `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the forecasts that match the statement, specify
+#'     `IS`. To exclude matching forecasts, specify `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `DatasetGroupArn`, `PredictorArn`, and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `DatasetGroupArn`, `PredictorArn`, and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #' 
 #' For example, to list all forecasts whose status is not ACTIVE, you would
 #' specify:
@@ -2373,8 +2324,7 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Forecasts"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Forecasts")
   )
   input <- .forecastservice$list_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_forecasts_output()
@@ -2407,14 +2357,14 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. The only valid value
-#'   is `EvaluationState`.
+#' -   `Key` - The name of the parameter to filter on. The only valid value
+#'     is `EvaluationState`.
 #' 
-#' - `Value` - The value to match. Valid values are only `SUCCESS` or
-#'   `FAILURE`.
+#' -   `Value` - The value to match. Valid values are only `SUCCESS` or
+#'     `FAILURE`.
 #' 
 #' For example, to list only successful monitor evaluations, you would
 #' specify:
@@ -2430,8 +2380,7 @@ forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorMonitorEvaluations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorMonitorEvaluations")
   )
   input <- .forecastservice$list_monitor_evaluations_input(NextToken = NextToken, MaxResults = MaxResults, MonitorArn = MonitorArn, Filters = Filters)
   output <- .forecastservice$list_monitor_evaluations_output()
@@ -2462,13 +2411,13 @@ forecastservice_list_monitor_evaluations <- function(NextToken = NULL, MaxResult
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. The only valid value
-#'   is `Status`.
+#' -   `Key` - The name of the parameter to filter on. The only valid value
+#'     is `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #' 
 #' For example, to list all monitors who's status is ACTIVE, you would
 #' specify:
@@ -2484,8 +2433,7 @@ forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, F
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Monitors"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Monitors")
   )
   input <- .forecastservice$list_monitors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_monitors_output()
@@ -2517,15 +2465,15 @@ forecastservice_list_monitors <- function(NextToken = NULL, MaxResults = NULL, F
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`. To include the predictor backtest export jobs that match the
-#'   statement, specify `IS`. To exclude matching predictor backtest export
-#'   jobs, specify `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the predictor backtest export jobs that match
+#'     the statement, specify `IS`. To exclude matching predictor backtest
+#'     export jobs, specify `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `PredictorArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `PredictorArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #'
 #' @keywords internal
 #'
@@ -2536,8 +2484,7 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorBacktestExportJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PredictorBacktestExportJobs")
   )
   input <- .forecastservice$list_predictor_backtest_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_predictor_backtest_export_jobs_output()
@@ -2569,14 +2516,14 @@ forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`. To include the predictors that match the statement, specify
-#'   `IS`. To exclude matching predictors, specify `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the predictors that match the statement,
+#'     specify `IS`. To exclude matching predictors, specify `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `DatasetGroupArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `DatasetGroupArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #' 
 #' For example, to list all predictors whose status is ACTIVE, you would
 #' specify:
@@ -2592,8 +2539,7 @@ forecastservice_list_predictors <- function(NextToken = NULL, MaxResults = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Predictors"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Predictors")
   )
   input <- .forecastservice$list_predictors_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_predictors_output()
@@ -2624,8 +2570,7 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$list_tags_for_resource_output()
@@ -2657,15 +2602,15 @@ forecastservice_list_tags_for_resource <- function(ResourceArn) {
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`. To include the what-if analysis jobs that match the
-#'   statement, specify `IS`. To exclude matching what-if analysis jobs,
-#'   specify `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the what-if analysis jobs that match the
+#'     statement, specify `IS`. To exclude matching what-if analysis jobs,
+#'     specify `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `WhatIfAnalysisArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `WhatIfAnalysisArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #' 
 #' For example, to list all jobs that export a forecast named
 #' *electricityWhatIf*, specify the following filter:
@@ -2681,8 +2626,7 @@ forecastservice_list_what_if_analyses <- function(NextToken = NULL, MaxResults =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfAnalyses"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfAnalyses")
   )
   input <- .forecastservice$list_what_if_analyses_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_analyses_output()
@@ -2714,15 +2658,15 @@ forecastservice_list_what_if_analyses <- function(NextToken = NULL, MaxResults =
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`. To include the forecast export jobs that match the
-#'   statement, specify `IS`. To exclude matching forecast export jobs,
-#'   specify `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the forecast export jobs that match the
+#'     statement, specify `IS`. To exclude matching forecast export jobs,
+#'     specify `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `WhatIfForecastExportArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `WhatIfForecastExportArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #' 
 #' For example, to list all jobs that export a forecast named
 #' *electricityWIFExport*, specify the following filter:
@@ -2738,8 +2682,7 @@ forecastservice_list_what_if_forecast_exports <- function(NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecastExports"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecastExports")
   )
   input <- .forecastservice$list_what_if_forecast_exports_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_forecast_exports_output()
@@ -2771,15 +2714,15 @@ forecastservice_list_what_if_forecast_exports <- function(NextToken = NULL, MaxR
 #' 
 #' **Filter properties**
 #' 
-#' - `Condition` - The condition to apply. Valid values are `IS` and
-#'   `IS_NOT`. To include the forecast export jobs that match the
-#'   statement, specify `IS`. To exclude matching forecast export jobs,
-#'   specify `IS_NOT`.
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the forecast export jobs that match the
+#'     statement, specify `IS`. To exclude matching forecast export jobs,
+#'     specify `IS_NOT`.
 #' 
-#' - `Key` - The name of the parameter to filter on. Valid values are
-#'   `WhatIfForecastArn` and `Status`.
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `WhatIfForecastArn` and `Status`.
 #' 
-#' - `Value` - The value to match.
+#' -   `Value` - The value to match.
 #' 
 #' For example, to list all jobs that export a forecast named
 #' *electricityWhatIfForecast*, specify the following filter:
@@ -2795,8 +2738,7 @@ forecastservice_list_what_if_forecasts <- function(NextToken = NULL, MaxResults 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecasts"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WhatIfForecasts")
   )
   input <- .forecastservice$list_what_if_forecasts_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .forecastservice$list_what_if_forecasts_output()
@@ -2826,8 +2768,7 @@ forecastservice_resume_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$resume_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$resume_resource_output()
@@ -2860,8 +2801,7 @@ forecastservice_stop_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$stop_resource_input(ResourceArn = ResourceArn)
   output <- .forecastservice$stop_resource_output()
@@ -2887,30 +2827,30 @@ forecastservice_stop_resource <- function(ResourceArn) {
 #' 
 #' The following basic restrictions apply to tags:
 #' 
-#' - Maximum number of tags per resource - 50.
+#' -   Maximum number of tags per resource - 50.
 #' 
-#' - For each resource, each tag key must be unique, and each tag key can
-#'   have only one value.
+#' -   For each resource, each tag key must be unique, and each tag key can
+#'     have only one value.
 #' 
-#' - Maximum key length - 128 Unicode characters in UTF-8.
+#' -   Maximum key length - 128 Unicode characters in UTF-8.
 #' 
-#' - Maximum value length - 256 Unicode characters in UTF-8.
+#' -   Maximum value length - 256 Unicode characters in UTF-8.
 #' 
-#' - If your tagging schema is used across multiple services and resources,
-#'   remember that other services may have restrictions on allowed
-#'   characters. Generally allowed characters are: letters, numbers, and
-#'   spaces representable in UTF-8, and the following characters: + - = .
-#'   _ : / @@.
+#' -   If your tagging schema is used across multiple services and
+#'     resources, remember that other services may have restrictions on
+#'     allowed characters. Generally allowed characters are: letters,
+#'     numbers, and spaces representable in UTF-8, and the following
+#'     characters: + - = . _ : / @@.
 #' 
-#' - Tag keys and values are case sensitive.
+#' -   Tag keys and values are case sensitive.
 #' 
-#' - Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
-#'   such as a prefix for keys as it is reserved for Amazon Web Services
-#'   use. You cannot edit or delete tag keys with this prefix. Values can
-#'   have this prefix. If a tag value has `aws` as its prefix but the key
-#'   does not, then Forecast considers it to be a user tag and will count
-#'   against the limit of 50 tags. Tags with only the key prefix of `aws`
-#'   do not count against your tags per resource limit.
+#' -   Do not use `aws:`, `AWS:`, or any upper or lowercase combination of
+#'     such as a prefix for keys as it is reserved for Amazon Web Services
+#'     use. You cannot edit or delete tag keys with this prefix. Values can
+#'     have this prefix. If a tag value has `aws` as its prefix but the key
+#'     does not, then Forecast considers it to be a user tag and will count
+#'     against the limit of 50 tags. Tags with only the key prefix of `aws`
+#'     do not count against your tags per resource limit.
 #'
 #' @keywords internal
 #'
@@ -2921,8 +2861,7 @@ forecastservice_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .forecastservice$tag_resource_output()
@@ -2954,8 +2893,7 @@ forecastservice_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .forecastservice$untag_resource_output()
@@ -2987,8 +2925,7 @@ forecastservice_update_dataset_group <- function(DatasetGroupArn, DatasetArns) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .forecastservice$update_dataset_group_input(DatasetGroupArn = DatasetGroupArn, DatasetArns = DatasetArns)
   output <- .forecastservice$update_dataset_group_output()

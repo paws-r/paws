@@ -41,13 +41,13 @@ using IAM policies.
 Each tag consists of a key and a value, and each key must be unique for
 the resource. The following restrictions apply to resource tags:
 \itemize{
-\item Although the maximum number of array members is 200, you can assign a
-maximum of 50 user-tags to one resource. The remaining are reserved
-for Amazon Web Services use
+\item Although the maximum number of array members is 200, you can assign
+a maximum of 50 user-tags to one resource. The remaining are
+reserved for Amazon Web Services use
 \item The maximum length of a key is 128 characters
 \item The maximum length of a value is 256 characters
-\item Keys and values can only contain alphanumeric characters, spaces, and
-any of the following: \verb{_.:/=+@-}
+\item Keys and values can only contain alphanumeric characters, spaces,
+and any of the following: \verb{_.:/=+@-}
 \item Keys and values are case sensitive
 \item Keys and values are trimmed for any leading or trailing whitespaces
 \item Don’t use \verb{aws:} as a prefix for your keys. This prefix is reserved

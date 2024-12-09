@@ -23,8 +23,8 @@ sns_subscribe(
 \item \code{email-json} – delivery of JSON-encoded message via SMTP
 \item \code{sms} – delivery of message via SMS
 \item \code{sqs} – delivery of JSON-encoded message to an Amazon SQS queue
-\item \code{application} – delivery of JSON-encoded message to an EndpointArn for
-a mobile app and device
+\item \code{application} – delivery of JSON-encoded message to an EndpointArn
+for a mobile app and device
 \item \code{lambda} – delivery of JSON-encoded message to an Lambda function
 \item \code{firehose} – delivery of JSON-encoded message to an Amazon Kinesis
 Data Firehose delivery stream.
@@ -33,8 +33,8 @@ Data Firehose delivery stream.
 \item{Endpoint}{The endpoint that you want to receive notifications. Endpoints vary by
 protocol:
 \itemize{
-\item For the \code{http} protocol, the (public) endpoint is a URL beginning with
-\verb{http://}.
+\item For the \code{http} protocol, the (public) endpoint is a URL beginning
+with \verb{http://}.
 \item For the \code{https} protocol, the (public) endpoint is a URL beginning
 with \verb{https://}.
 \item For the \code{email} protocol, the endpoint is an email address.
@@ -59,21 +59,21 @@ request parameters that the \code{\link[=sns_subscribe]{subscribe}} action uses:
 \item \code{DeliveryPolicy} – The policy that defines how Amazon SNS retries
 failed deliveries to HTTP/S endpoints.
 \item \code{FilterPolicy} – The simple JSON object that lets your subscriber
-receive only a subset of messages, rather than receiving every message
-published to the topic.
+receive only a subset of messages, rather than receiving every
+message published to the topic.
 \item \code{FilterPolicyScope} – This attribute lets you choose the filtering
 scope by using one of the following string value types:
 \itemize{
-\item \code{MessageAttributes} (default) – The filter is applied on the message
-attributes.
+\item \code{MessageAttributes} (default) – The filter is applied on the
+message attributes.
 \item \code{MessageBody} – The filter is applied on the message body.
 }
 \item \code{RawMessageDelivery} – When set to \code{true}, enables raw message
 delivery to Amazon SQS or HTTP/S endpoints. This eliminates the need
 for the endpoints to process JSON formatting, which is otherwise
 created for Amazon SNS metadata.
-\item \code{RedrivePolicy} – When specified, sends undeliverable messages to the
-specified Amazon SQS dead-letter queue. Messages that can't be
+\item \code{RedrivePolicy} – When specified, sends undeliverable messages to
+the specified Amazon SQS dead-letter queue. Messages that can't be
 delivered due to client errors (for example, when the subscribed
 endpoint is unreachable) or server errors (for example, when the
 service that powers the subscribed endpoint becomes unavailable) are
@@ -103,10 +103,10 @@ topic.
 \item \code{ReplayStatus} – Retrieves the status of the subscription message
 replay, which can be one of the following:
 \itemize{
-\item \code{Completed} – The replay has successfully redelivered all messages,
-and is now delivering newly published messages. If an ending point
-was specified in the \code{ReplayPolicy} then the subscription will no
-longer receive newly published messages.
+\item \code{Completed} – The replay has successfully redelivered all
+messages, and is now delivering newly published messages. If an
+ending point was specified in the \code{ReplayPolicy} then the
+subscription will no longer receive newly published messages.
 \item \verb{In progress} – The replay is currently replaying the selected
 messages.
 \item \code{Failed} – The replay was unable to complete.

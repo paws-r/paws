@@ -54,11 +54,11 @@ related to writable dataviews.
 \item You cannot create partial writable dataviews. When you create
 writeable dataviews you must provide the entire database path.
 \item You cannot perform updates on a writeable dataview. Hence,
-\code{autoUpdate} must be set as \strong{False} if \code{readWrite} is \strong{True} for a
-dataview.
+\code{autoUpdate} must be set as \strong{False} if \code{readWrite} is \strong{True} for
+a dataview.
 \item You must also use a unique volume for creating a writeable dataview.
-So, if you choose a volume that is already in use by another dataview,
-the dataview creation fails.
+So, if you choose a volume that is already in use by another
+dataview, the dataview creation fails.
 \item Once you create a dataview as writeable, you cannot change it to
 read-only. So, you cannot update the \code{readWrite} parameter later.
 }}

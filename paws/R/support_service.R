@@ -13,14 +13,14 @@ NULL
 #' support cases programmatically. The Amazon Web Services Support API uses
 #' HTTP methods that return results in JSON format.
 #' 
-#' - You must have a Business, Enterprise On-Ramp, or Enterprise Support
-#'   plan to use the Amazon Web Services Support API.
+#' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
+#'     plan to use the Amazon Web Services Support API.
 #' 
-#' - If you call the Amazon Web Services Support API from an account that
-#'   doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
-#'   plan, the `SubscriptionRequiredException` error message appears. For
-#'   information about changing your support plan, see [Amazon Web Services
-#'   Support](https://aws.amazon.com/premiumsupport/).
+#' -   If you call the Amazon Web Services Support API from an account that
+#'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
+#'     plan, the `SubscriptionRequiredException` error message appears. For
+#'     information about changing your support plan, see [Amazon Web
+#'     Services Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' You can also use the Amazon Web Services Support API to access features
 #' for [Trusted
@@ -32,24 +32,24 @@ NULL
 #' You can manage your support cases with the following Amazon Web Services
 #' Support API operations:
 #' 
-#' - The [`create_case`][support_create_case],
-#'   [`describe_cases`][support_describe_cases],
-#'   [`describe_attachment`][support_describe_attachment], and
-#'   [`resolve_case`][support_resolve_case] operations create Amazon Web
-#'   Services Support cases, retrieve information about cases, and resolve
-#'   cases.
+#' -   The [`create_case`][support_create_case],
+#'     [`describe_cases`][support_describe_cases],
+#'     [`describe_attachment`][support_describe_attachment], and
+#'     [`resolve_case`][support_resolve_case] operations create Amazon Web
+#'     Services Support cases, retrieve information about cases, and
+#'     resolve cases.
 #' 
-#' - The [`describe_communications`][support_describe_communications],
-#'   [`add_communication_to_case`][support_add_communication_to_case], and
-#'   [`add_attachments_to_set`][support_add_attachments_to_set] operations
-#'   retrieve and add communications and attachments to Amazon Web Services
-#'   Support cases.
+#' -   The [`describe_communications`][support_describe_communications],
+#'     [`add_communication_to_case`][support_add_communication_to_case],
+#'     and [`add_attachments_to_set`][support_add_attachments_to_set]
+#'     operations retrieve and add communications and attachments to Amazon
+#'     Web Services Support cases.
 #' 
-#' - The [`describe_services`][support_describe_services] and
-#'   [`describe_severity_levels`][support_describe_severity_levels]
-#'   operations return Amazon Web Service names, service codes, service
-#'   categories, and problem severity levels. You use these values when you
-#'   call the [`create_case`][support_create_case] operation.
+#' -   The [`describe_services`][support_describe_services] and
+#'     [`describe_severity_levels`][support_describe_severity_levels]
+#'     operations return Amazon Web Service names, service codes, service
+#'     categories, and problem severity levels. You use these values when
+#'     you call the [`create_case`][support_create_case] operation.
 #' 
 #' You can also use the Amazon Web Services Support API to call the Trusted
 #' Advisor operations. For more information, see [Trusted
@@ -58,7 +58,7 @@ NULL
 #' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' For more information about this service and the endpoints to use, see
 #' [About the Amazon Web Services Support

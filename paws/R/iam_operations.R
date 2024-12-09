@@ -60,8 +60,7 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$add_client_id_to_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ClientID = ClientID)
   output <- .iam$add_client_id_to_open_id_connect_provider_output()
@@ -146,8 +145,7 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$add_role_to_instance_profile_input(InstanceProfileName = InstanceProfileName, RoleName = RoleName)
   output <- .iam$add_role_to_instance_profile_output()
@@ -212,8 +210,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$add_user_to_group_input(GroupName = GroupName, UserName = UserName)
   output <- .iam$add_user_to_group_output()
@@ -291,8 +288,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$attach_group_policy_input(GroupName = GroupName, PolicyArn = PolicyArn)
   output <- .iam$attach_group_policy_output()
@@ -377,8 +373,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$attach_role_policy_input(RoleName = RoleName, PolicyArn = PolicyArn)
   output <- .iam$attach_role_policy_output()
@@ -457,8 +452,7 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$attach_user_policy_input(UserName = UserName, PolicyArn = PolicyArn)
   output <- .iam$attach_user_policy_output()
@@ -534,8 +528,7 @@ iam_change_password <- function(OldPassword, NewPassword) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$change_password_input(OldPassword = OldPassword, NewPassword = NewPassword)
   output <- .iam$change_password_output()
@@ -626,8 +619,7 @@ iam_create_access_key <- function(UserName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_access_key_input(UserName = UserName)
   output <- .iam$create_access_key_output()
@@ -645,7 +637,7 @@ iam_create_access_key <- function(UserName = NULL) {
 #' Creates an alias for your Amazon Web Services account. For information
 #' about using an Amazon Web Services account alias, see [Creating,
 #' deleting, and listing an Amazon Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/account-alias-create.html)
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html)
 #' in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
@@ -688,8 +680,7 @@ iam_create_account_alias <- function(AccountAlias) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_account_alias_input(AccountAlias = AccountAlias)
   output <- .iam$create_account_alias_output()
@@ -777,8 +768,7 @@ iam_create_group <- function(Path = NULL, GroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_group_input(Path = Path, GroupName = GroupName)
   output <- .iam$create_group_output()
@@ -926,8 +916,7 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL, Tags =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_instance_profile_input(InstanceProfileName = InstanceProfileName, Path = Path, Tags = Tags)
   output <- .iam$create_instance_profile_output()
@@ -1025,8 +1014,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_login_profile_input(UserName = UserName, Password = Password, PasswordResetRequired = PasswordResetRequired)
   output <- .iam$create_login_profile_output()
@@ -1043,7 +1031,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #'
 #' @description
 #' Creates an IAM entity to describe an identity provider (IdP) that
-#' supports OpenID Connect (OIDC).
+#' supports [OpenID Connect
+#' (OIDC)](https://openid.net/developers/how-connect-works/).
 #' 
 #' The OIDC provider that you create with this operation can be used as a
 #' principal in a role's trust policy. Such a policy establishes a trust
@@ -1060,16 +1049,16 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' 
 #' When you create the IAM OIDC provider, you specify the following:
 #' 
-#' - The URL of the OIDC identity provider (IdP) to trust
+#' -   The URL of the OIDC identity provider (IdP) to trust
 #' 
-#' - A list of client IDs (also known as audiences) that identify the
-#'   application or applications allowed to authenticate using the OIDC
-#'   provider
+#' -   A list of client IDs (also known as audiences) that identify the
+#'     application or applications allowed to authenticate using the OIDC
+#'     provider
 #' 
-#' - A list of tags that are attached to the specified IAM OIDC provider
+#' -   A list of tags that are attached to the specified IAM OIDC provider
 #' 
-#' - A list of thumbprints of one or more server certificates that the IdP
-#'   uses
+#' -   A list of thumbprints of one or more server certificates that the
+#'     IdP uses
 #' 
 #' You get all of this information from the OIDC IdP you want to use to
 #' access Amazon Web Services.
@@ -1208,8 +1197,7 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_open_id_connect_provider_input(Url = Url, ClientIDList = ClientIDList, ThumbprintList = ThumbprintList, Tags = Tags)
   output <- .iam$create_open_id_connect_provider_output()
@@ -1291,14 +1279,14 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param Description A friendly description of the policy.
 #' 
 #' Typically used to store information about the permissions defined in the
@@ -1373,8 +1361,7 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_policy_input(PolicyName = PolicyName, Path = Path, PolicyDocument = PolicyDocument, Description = Description, Tags = Tags)
   output <- .iam$create_policy_output()
@@ -1432,14 +1419,14 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param SetAsDefault Specifies whether to set this version as the policy's default version.
 #' 
 #' When this parameter is `true`, the new policy version becomes the
@@ -1486,8 +1473,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_policy_version_input(PolicyArn = PolicyArn, PolicyDocument = PolicyDocument, SetAsDefault = SetAsDefault)
   output <- .iam$create_policy_version_output()
@@ -1551,14 +1537,14 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' 
 #' Upon success, the response includes the same trust policy in JSON
 #' format.
@@ -1679,8 +1665,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_role_input(Path = Path, RoleName = RoleName, AssumeRolePolicyDocument = AssumeRolePolicyDocument, Description = Description, MaxSessionDuration = MaxSessionDuration, PermissionsBoundary = PermissionsBoundary, Tags = Tags)
   output <- .iam$create_role_output()
@@ -1714,7 +1699,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' that is used as your organization's IdP.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' For more information, see [Enabling SAML 2.0 federated users to access
 #' the Amazon Web Services Management
@@ -1791,8 +1776,7 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name, Tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, Name = Name, Tags = Tags)
   output <- .iam$create_saml_provider_output()
@@ -1903,8 +1887,7 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_service_linked_role_input(AWSServiceName = AWSServiceName, Description = Description, CustomSuffix = CustomSuffix)
   output <- .iam$create_service_linked_role_output()
@@ -1993,8 +1976,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_service_specific_credential_input(UserName = UserName, ServiceName = ServiceName)
   output <- .iam$create_service_specific_credential_output()
@@ -2126,8 +2108,7 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_user_input(Path = Path, UserName = UserName, PermissionsBoundary = PermissionsBoundary, Tags = Tags)
   output <- .iam$create_user_output()
@@ -2265,8 +2246,7 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName, Tag
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$create_virtual_mfa_device_input(Path = Path, VirtualMFADeviceName = VirtualMFADeviceName, Tags = Tags)
   output <- .iam$create_virtual_mfa_device_output()
@@ -2329,8 +2309,7 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$deactivate_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber)
   output <- .iam$deactivate_mfa_device_output()
@@ -2402,8 +2381,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_access_key_input(UserName = UserName, AccessKeyId = AccessKeyId)
   output <- .iam$delete_access_key_output()
@@ -2421,7 +2399,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' Deletes the specified Amazon Web Services account alias. For information
 #' about using an Amazon Web Services account alias, see [Creating,
 #' deleting, and listing an Amazon Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/account-alias-create.html)
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html)
 #' in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
@@ -2464,8 +2442,7 @@ iam_delete_account_alias <- function(AccountAlias) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_account_alias_input(AccountAlias = AccountAlias)
   output <- .iam$delete_account_alias_output()
@@ -2511,8 +2488,7 @@ iam_delete_account_password_policy <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_account_password_policy_input()
   output <- .iam$delete_account_password_policy_output()
@@ -2561,8 +2537,7 @@ iam_delete_group <- function(GroupName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_group_input(GroupName = GroupName)
   output <- .iam$delete_group_output()
@@ -2637,8 +2612,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_group_policy_input(GroupName = GroupName, PolicyName = PolicyName)
   output <- .iam$delete_group_policy_output()
@@ -2705,8 +2679,7 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_instance_profile_input(InstanceProfileName = InstanceProfileName)
   output <- .iam$delete_instance_profile_output()
@@ -2778,8 +2751,7 @@ iam_delete_login_profile <- function(UserName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_login_profile_input(UserName = UserName)
   output <- .iam$delete_login_profile_output()
@@ -2834,8 +2806,7 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn)
   output <- .iam$delete_open_id_connect_provider_output()
@@ -2857,23 +2828,24 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' you must delete all the policy's versions. The following steps describe
 #' the process for deleting a managed policy:
 #' 
-#' - Detach the policy from all users, groups, and roles that the policy is
-#'   attached to, using [`detach_user_policy`][iam_detach_user_policy],
-#'   [`detach_group_policy`][iam_detach_group_policy], or
-#'   [`detach_role_policy`][iam_detach_role_policy]. To list all the users,
-#'   groups, and roles that a policy is attached to, use
-#'   [`list_entities_for_policy`][iam_list_entities_for_policy].
+#' -   Detach the policy from all users, groups, and roles that the policy
+#'     is attached to, using
+#'     [`detach_user_policy`][iam_detach_user_policy],
+#'     [`detach_group_policy`][iam_detach_group_policy], or
+#'     [`detach_role_policy`][iam_detach_role_policy]. To list all the
+#'     users, groups, and roles that a policy is attached to, use
+#'     [`list_entities_for_policy`][iam_list_entities_for_policy].
 #' 
-#' - Delete all versions of the policy using
-#'   [`delete_policy_version`][iam_delete_policy_version]. To list the
-#'   policy's versions, use
-#'   [`list_policy_versions`][iam_list_policy_versions]. You cannot use
-#'   [`delete_policy_version`][iam_delete_policy_version] to delete the
-#'   version that is marked as the default version. You delete the policy's
-#'   default version in the next step of the process.
+#' -   Delete all versions of the policy using
+#'     [`delete_policy_version`][iam_delete_policy_version]. To list the
+#'     policy's versions, use
+#'     [`list_policy_versions`][iam_list_policy_versions]. You cannot use
+#'     [`delete_policy_version`][iam_delete_policy_version] to delete the
+#'     version that is marked as the default version. You delete the
+#'     policy's default version in the next step of the process.
 #' 
-#' - Delete the policy (this automatically deletes the policy's default
-#'   version) using this operation.
+#' -   Delete the policy (this automatically deletes the policy's default
+#'     version) using this operation.
 #' 
 #' For information about managed policies, see [Managed policies and inline
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
@@ -2909,8 +2881,7 @@ iam_delete_policy <- function(PolicyArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_policy_input(PolicyArn = PolicyArn)
   output <- .iam$delete_policy_output()
@@ -2982,8 +2953,7 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$delete_policy_version_output()
@@ -3005,17 +2975,17 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 #' role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_manage_delete.html#roles-managingrole-deleting-cli).
 #' Before attempting to delete a role, remove the following attached items:
 #' 
-#' - Inline policies ([`delete_role_policy`][iam_delete_role_policy])
+#' -   Inline policies ([`delete_role_policy`][iam_delete_role_policy])
 #' 
-#' - Attached managed policies
-#'   ([`detach_role_policy`][iam_detach_role_policy])
+#' -   Attached managed policies
+#'     ([`detach_role_policy`][iam_detach_role_policy])
 #' 
-#' - Instance profile
-#'   ([`remove_role_from_instance_profile`][iam_remove_role_from_instance_profile])
+#' -   Instance profile
+#'     ([`remove_role_from_instance_profile`][iam_remove_role_from_instance_profile])
 #' 
-#' - Optional – Delete instance profile after detaching from role for
-#'   resource clean up
-#'   ([`delete_instance_profile`][iam_delete_instance_profile])
+#' -   Optional – Delete instance profile after detaching from role for
+#'     resource clean up
+#'     ([`delete_instance_profile`][iam_delete_instance_profile])
 #' 
 #' Make sure that you do not have any Amazon EC2 instances running with the
 #' role you are about to delete. Deleting a role or instance profile that
@@ -3061,8 +3031,7 @@ iam_delete_role <- function(RoleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_role_input(RoleName = RoleName)
   output <- .iam$delete_role_output()
@@ -3112,8 +3081,7 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_role_permissions_boundary_input(RoleName = RoleName)
   output <- .iam$delete_role_permissions_boundary_output()
@@ -3188,8 +3156,7 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_role_policy_input(RoleName = RoleName, PolicyName = PolicyName)
   output <- .iam$delete_role_policy_output()
@@ -3212,7 +3179,7 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 #' provider resource ARN fails.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #'
 #' @usage
 #' iam_delete_saml_provider(SAMLProviderArn)
@@ -3240,8 +3207,7 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_saml_provider_input(SAMLProviderArn = SAMLProviderArn)
   output <- .iam$delete_saml_provider_output()
@@ -3302,8 +3268,7 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId)
   output <- .iam$delete_ssh_public_key_output()
@@ -3369,8 +3334,7 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_server_certificate_input(ServerCertificateName = ServerCertificateName)
   output <- .iam$delete_server_certificate_output()
@@ -3442,8 +3406,7 @@ iam_delete_service_linked_role <- function(RoleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_service_linked_role_input(RoleName = RoleName)
   output <- .iam$delete_service_linked_role_output()
@@ -3502,8 +3465,7 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId)
   output <- .iam$delete_service_specific_credential_output()
@@ -3574,8 +3536,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_signing_certificate_input(UserName = UserName, CertificateId = CertificateId)
   output <- .iam$delete_signing_certificate_output()
@@ -3597,29 +3558,30 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 #' user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_rename.html#id_users_deleting_cli).
 #' Before attempting to delete a user, remove the following items:
 #' 
-#' - Password ([`delete_login_profile`][iam_delete_login_profile])
+#' -   Password ([`delete_login_profile`][iam_delete_login_profile])
 #' 
-#' - Access keys ([`delete_access_key`][iam_delete_access_key])
+#' -   Access keys ([`delete_access_key`][iam_delete_access_key])
 #' 
-#' - Signing certificate
-#'   ([`delete_signing_certificate`][iam_delete_signing_certificate])
+#' -   Signing certificate
+#'     ([`delete_signing_certificate`][iam_delete_signing_certificate])
 #' 
-#' - SSH public key ([`delete_ssh_public_key`][iam_delete_ssh_public_key])
+#' -   SSH public key
+#'     ([`delete_ssh_public_key`][iam_delete_ssh_public_key])
 #' 
-#' - Git credentials
-#'   ([`delete_service_specific_credential`][iam_delete_service_specific_credential])
+#' -   Git credentials
+#'     ([`delete_service_specific_credential`][iam_delete_service_specific_credential])
 #' 
-#' - Multi-factor authentication (MFA) device
-#'   ([`deactivate_mfa_device`][iam_deactivate_mfa_device],
-#'   [`delete_virtual_mfa_device`][iam_delete_virtual_mfa_device])
+#' -   Multi-factor authentication (MFA) device
+#'     ([`deactivate_mfa_device`][iam_deactivate_mfa_device],
+#'     [`delete_virtual_mfa_device`][iam_delete_virtual_mfa_device])
 #' 
-#' - Inline policies ([`delete_user_policy`][iam_delete_user_policy])
+#' -   Inline policies ([`delete_user_policy`][iam_delete_user_policy])
 #' 
-#' - Attached managed policies
-#'   ([`detach_user_policy`][iam_detach_user_policy])
+#' -   Attached managed policies
+#'     ([`detach_user_policy`][iam_detach_user_policy])
 #' 
-#' - Group memberships
-#'   ([`remove_user_from_group`][iam_remove_user_from_group])
+#' -   Group memberships
+#'     ([`remove_user_from_group`][iam_remove_user_from_group])
 #'
 #' @usage
 #' iam_delete_user(UserName)
@@ -3661,8 +3623,7 @@ iam_delete_user <- function(UserName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_user_input(UserName = UserName)
   output <- .iam$delete_user_output()
@@ -3710,8 +3671,7 @@ iam_delete_user_permissions_boundary <- function(UserName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_user_permissions_boundary_input(UserName = UserName)
   output <- .iam$delete_user_permissions_boundary_output()
@@ -3786,8 +3746,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_user_policy_input(UserName = UserName, PolicyName = PolicyName)
   output <- .iam$delete_user_policy_output()
@@ -3849,8 +3808,7 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$delete_virtual_mfa_device_input(SerialNumber = SerialNumber)
   output <- .iam$delete_virtual_mfa_device_output()
@@ -3911,8 +3869,7 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$detach_group_policy_input(GroupName = GroupName, PolicyArn = PolicyArn)
   output <- .iam$detach_group_policy_output()
@@ -3973,8 +3930,7 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$detach_role_policy_input(RoleName = RoleName, PolicyArn = PolicyArn)
   output <- .iam$detach_role_policy_output()
@@ -4035,8 +3991,7 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$detach_user_policy_input(UserName = UserName, PolicyArn = PolicyArn)
   output <- .iam$detach_user_policy_output()
@@ -4120,8 +4075,7 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$enable_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber, AuthenticationCode1 = AuthenticationCode1, AuthenticationCode2 = AuthenticationCode2)
   output <- .iam$enable_mfa_device_output()
@@ -4168,8 +4122,7 @@ iam_generate_credential_report <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$generate_credential_report_input()
   output <- .iam$generate_credential_report_output()
@@ -4194,7 +4147,7 @@ iam_generate_credential_report <- function() {
 #' role. SCPs must be enabled for your organization root. You must have the
 #' required IAM and Organizations permissions. For more information, see
 #' [Refining permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #' 
 #' You can generate a service last accessed data report for entities by
@@ -4212,7 +4165,7 @@ iam_generate_credential_report <- function() {
 #' entity or the entity's children. For important information about the
 #' data, reporting period, permissions required, troubleshooting, and
 #' supported Regions see [Reducing permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #' 
 #' The data includes all attempts to access Amazon Web Services, not just
@@ -4240,65 +4193,65 @@ iam_generate_credential_report <- function() {
 #' type of entity that you specify determines the data returned in the
 #' report.
 #' 
-#' - **Root** – When you specify the organizations root as the entity, the
-#'   resulting report lists all of the services allowed by SCPs that are
-#'   attached to your root. For each service, the report includes data for
-#'   all accounts in your organization except the management account,
-#'   because the management account is not limited by SCPs.
+#' -   **Root** – When you specify the organizations root as the entity,
+#'     the resulting report lists all of the services allowed by SCPs that
+#'     are attached to your root. For each service, the report includes
+#'     data for all accounts in your organization except the management
+#'     account, because the management account is not limited by SCPs.
 #' 
-#' - **OU** – When you specify an organizational unit (OU) as the entity,
-#'   the resulting report lists all of the services allowed by SCPs that
-#'   are attached to the OU and its parents. For each service, the report
-#'   includes data for all accounts in the OU or its children. This data
-#'   excludes the management account, because the management account is not
-#'   limited by SCPs.
+#' -   **OU** – When you specify an organizational unit (OU) as the entity,
+#'     the resulting report lists all of the services allowed by SCPs that
+#'     are attached to the OU and its parents. For each service, the report
+#'     includes data for all accounts in the OU or its children. This data
+#'     excludes the management account, because the management account is
+#'     not limited by SCPs.
 #' 
-#' - **management account** – When you specify the management account, the
-#'   resulting report lists all Amazon Web Services services, because the
-#'   management account is not limited by SCPs. For each service, the
-#'   report includes data for only the management account.
+#' -   **management account** – When you specify the management account,
+#'     the resulting report lists all Amazon Web Services services, because
+#'     the management account is not limited by SCPs. For each service, the
+#'     report includes data for only the management account.
 #' 
-#' - **Account** – When you specify another account as the entity, the
-#'   resulting report lists all of the services allowed by SCPs that are
-#'   attached to the account and its parents. For each service, the report
-#'   includes data for only the specified account.
+#' -   **Account** – When you specify another account as the entity, the
+#'     resulting report lists all of the services allowed by SCPs that are
+#'     attached to the account and its parents. For each service, the
+#'     report includes data for only the specified account.
 #' 
 #' To generate a service last accessed data report for policies, specify an
 #' entity path and the optional Organizations policy ID. The type of entity
 #' that you specify determines the data returned for each service.
 #' 
-#' - **Root** – When you specify the root entity and a policy ID, the
-#'   resulting report lists all of the services that are allowed by the
-#'   specified SCP. For each service, the report includes data for all
-#'   accounts in your organization to which the SCP applies. This data
-#'   excludes the management account, because the management account is not
-#'   limited by SCPs. If the SCP is not attached to any entities in the
-#'   organization, then the report will return a list of services with no
-#'   data.
+#' -   **Root** – When you specify the root entity and a policy ID, the
+#'     resulting report lists all of the services that are allowed by the
+#'     specified SCP. For each service, the report includes data for all
+#'     accounts in your organization to which the SCP applies. This data
+#'     excludes the management account, because the management account is
+#'     not limited by SCPs. If the SCP is not attached to any entities in
+#'     the organization, then the report will return a list of services
+#'     with no data.
 #' 
-#' - **OU** – When you specify an OU entity and a policy ID, the resulting
-#'   report lists all of the services that are allowed by the specified
-#'   SCP. For each service, the report includes data for all accounts in
-#'   the OU or its children to which the SCP applies. This means that other
-#'   accounts outside the OU that are affected by the SCP might not be
-#'   included in the data. This data excludes the management account,
-#'   because the management account is not limited by SCPs. If the SCP is
-#'   not attached to the OU or one of its children, the report will return
-#'   a list of services with no data.
+#' -   **OU** – When you specify an OU entity and a policy ID, the
+#'     resulting report lists all of the services that are allowed by the
+#'     specified SCP. For each service, the report includes data for all
+#'     accounts in the OU or its children to which the SCP applies. This
+#'     means that other accounts outside the OU that are affected by the
+#'     SCP might not be included in the data. This data excludes the
+#'     management account, because the management account is not limited by
+#'     SCPs. If the SCP is not attached to the OU or one of its children,
+#'     the report will return a list of services with no data.
 #' 
-#' - **management account** – When you specify the management account, the
-#'   resulting report lists all Amazon Web Services services, because the
-#'   management account is not limited by SCPs. If you specify a policy ID
-#'   in the CLI or API, the policy is ignored. For each service, the report
-#'   includes data for only the management account.
+#' -   **management account** – When you specify the management account,
+#'     the resulting report lists all Amazon Web Services services, because
+#'     the management account is not limited by SCPs. If you specify a
+#'     policy ID in the CLI or API, the policy is ignored. For each
+#'     service, the report includes data for only the management account.
 #' 
-#' - **Account** – When you specify another account entity and a policy ID,
-#'   the resulting report lists all of the services that are allowed by the
-#'   specified SCP. For each service, the report includes data for only the
-#'   specified account. This means that other accounts in the organization
-#'   that are affected by the SCP might not be included in the data. If the
-#'   SCP is not attached to the account, the report will return a list of
-#'   services with no data.
+#' -   **Account** – When you specify another account entity and a policy
+#'     ID, the resulting report lists all of the services that are allowed
+#'     by the specified SCP. For each service, the report includes data for
+#'     only the specified account. This means that other accounts in the
+#'     organization that are affected by the SCP might not be included in
+#'     the data. If the SCP is not attached to the account, the report will
+#'     return a list of services with no data.
 #' 
 #' Service last accessed data does not use other policy types when
 #' determining whether a principal could access a service. These other
@@ -4311,7 +4264,7 @@ iam_generate_credential_report <- function() {
 #' 
 #' For more information about service last accessed data, see [Reducing
 #' policy scope by viewing user
-#' activity](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
+#' activity](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -4368,8 +4321,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$generate_organizations_access_report_input(EntityPath = EntityPath, OrganizationsPolicyId = OrganizationsPolicyId)
   output <- .iam$generate_organizations_access_report_output()
@@ -4392,11 +4344,11 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' four hours. IAM reports activity for at least the last 400 days, or less
 #' if your Region began supporting this feature within the last year. For
 #' more information, see [Regions where data is
-#' tracked](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html#access-advisor_tracking-period).
+#' tracked](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period).
 #' For more information about services and actions for which action last
 #' accessed information is displayed, see [IAM action last accessed
 #' information services and
-#' actions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed-action-last-accessed.html).
+#' actions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor-action-last-accessed.html).
 #' 
 #' The service last accessed data includes all attempts to access an Amazon
 #' Web Services API, not just the successful ones. This includes all
@@ -4416,20 +4368,20 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' operation returns a `JobId`. Use this parameter in the following
 #' operations to retrieve the following details from your report:
 #' 
-#' - [`get_service_last_accessed_details`][iam_get_service_last_accessed_details]
-#'   – Use this operation for users, groups, roles, or policies to list
-#'   every Amazon Web Services service that the resource could access using
-#'   permissions policies. For each service, the response includes
-#'   information about the most recent access attempt.
+#' -   [`get_service_last_accessed_details`][iam_get_service_last_accessed_details]
+#'     – Use this operation for users, groups, roles, or policies to list
+#'     every Amazon Web Services service that the resource could access
+#'     using permissions policies. For each service, the response includes
+#'     information about the most recent access attempt.
 #' 
-#'   The `JobId` returned by `GenerateServiceLastAccessedDetail` must be
-#'   used by the same role within a session, or by the same user when used
-#'   to call `GetServiceLastAccessedDetail`.
+#'     The `JobId` returned by `GenerateServiceLastAccessedDetail` must be
+#'     used by the same role within a session, or by the same user when
+#'     used to call `GetServiceLastAccessedDetail`.
 #' 
-#' - [`get_service_last_accessed_details_with_entities`][iam_get_service_last_accessed_details_with_entities]
-#'   – Use this operation for groups and policies to list information about
-#'   the associated entities (users or roles) that attempted to access a
-#'   specific Amazon Web Services service.
+#' -   [`get_service_last_accessed_details_with_entities`][iam_get_service_last_accessed_details_with_entities]
+#'     – Use this operation for groups and policies to list information
+#'     about the associated entities (users or roles) that attempted to
+#'     access a specific Amazon Web Services service.
 #' 
 #' To check the status of the
 #' [`generate_service_last_accessed_details`][iam_generate_service_last_accessed_details]
@@ -4452,7 +4404,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' 
 #' For more information about service and action last accessed data, see
 #' [Reducing permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -4504,8 +4456,7 @@ iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$generate_service_last_accessed_details_input(Arn = Arn, Granularity = Granularity)
   output <- .iam$generate_service_last_accessed_details_output()
@@ -4567,8 +4518,7 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_access_key_last_used_input(AccessKeyId = AccessKeyId)
   output <- .iam$get_access_key_last_used_output()
@@ -4831,8 +4781,7 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("UserDetailList", "GroupDetailList", "RoleDetailList", "Policies")),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("UserDetailList", "GroupDetailList", "RoleDetailList", "Policies"))
   )
   input <- .iam$get_account_authorization_details_input(Filter = Filter, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_account_authorization_details_output()
@@ -4897,8 +4846,7 @@ iam_get_account_password_policy <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_account_password_policy_input()
   output <- .iam$get_account_password_policy_output()
@@ -4956,8 +4904,7 @@ iam_get_account_summary <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_account_summary_input()
   output <- .iam$get_account_summary_output()
@@ -4999,14 +4946,14 @@ iam_get_account_summary <- function() {
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' A list with the following syntax:
@@ -5038,8 +4985,7 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_context_keys_for_custom_policy_input(PolicyInputList = PolicyInputList)
   output <- .iam$get_context_keys_for_custom_policy_output()
@@ -5104,14 +5050,14 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' A list with the following syntax:
@@ -5144,8 +5090,7 @@ iam_get_context_keys_for_principal_policy <- function(PolicySourceArn, PolicyInp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_context_keys_for_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList)
   output <- .iam$get_context_keys_for_principal_policy_output()
@@ -5195,8 +5140,7 @@ iam_get_credential_report <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_credential_report_input()
   output <- .iam$get_credential_report_output()
@@ -5299,8 +5243,7 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users")
   )
   input <- .iam$get_group_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$get_group_output()
@@ -5381,8 +5324,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_group_policy_input(GroupName = GroupName, PolicyName = PolicyName)
   output <- .iam$get_group_policy_output()
@@ -5493,8 +5435,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_instance_profile_input(InstanceProfileName = InstanceProfileName)
   output <- .iam$get_instance_profile_output()
@@ -5575,8 +5516,7 @@ iam_get_login_profile <- function(UserName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_login_profile_input(UserName = UserName)
   output <- .iam$get_login_profile_output()
@@ -5635,8 +5575,7 @@ iam_get_mfa_device <- function(SerialNumber, UserName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_mfa_device_input(SerialNumber = SerialNumber, UserName = UserName)
   output <- .iam$get_mfa_device_output()
@@ -5709,8 +5648,7 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn)
   output <- .iam$get_open_id_connect_provider_output()
@@ -5742,7 +5680,7 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' in your organization. SCPs must be enabled for your organization root.
 #' You must have permissions to perform this operation. For more
 #' information, see [Refining permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #' 
 #' For each service that principals in an account (root user, IAM users, or
@@ -5840,8 +5778,7 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_organizations_access_report_input(JobId = JobId, MaxItems = MaxItems, Marker = Marker, SortKey = SortKey)
   output <- .iam$get_organizations_access_report_output()
@@ -5935,8 +5872,7 @@ iam_get_policy <- function(PolicyArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_policy_input(PolicyArn = PolicyArn)
   output <- .iam$get_policy_output()
@@ -6032,8 +5968,7 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$get_policy_version_output()
@@ -6134,8 +6069,7 @@ iam_get_role <- function(RoleName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_role_input(RoleName = RoleName)
   output <- .iam$get_role_output()
@@ -6220,8 +6154,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_role_policy_input(RoleName = RoleName, PolicyName = PolicyName)
   output <- .iam$get_role_policy_output()
@@ -6241,7 +6174,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' SAML provider resource object was created or updated.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #'
 #' @usage
 #' iam_get_saml_provider(SAMLProviderArn)
@@ -6291,8 +6224,7 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_saml_provider_input(SAMLProviderArn = SAMLProviderArn)
   output <- .iam$get_saml_provider_output()
@@ -6372,8 +6304,7 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId, Encoding = Encoding)
   output <- .iam$get_ssh_public_key_output()
@@ -6457,8 +6388,7 @@ iam_get_server_certificate <- function(ServerCertificateName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_server_certificate_input(ServerCertificateName = ServerCertificateName)
   output <- .iam$get_server_certificate_output()
@@ -6507,15 +6437,15 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' of the last attempt. It also returns the ARN of the following entity,
 #' depending on the resource ARN that you used to generate the report:
 #' 
-#' - **User** – Returns the user ARN that you used to generate the report
+#' -   **User** – Returns the user ARN that you used to generate the report
 #' 
-#' - **Group** – Returns the ARN of the group member (user) that last
-#'   attempted to access the service
+#' -   **Group** – Returns the ARN of the group member (user) that last
+#'     attempted to access the service
 #' 
-#' - **Role** – Returns the role ARN that you used to generate the report
+#' -   **Role** – Returns the role ARN that you used to generate the report
 #' 
-#' - **Policy** – Returns the ARN of the user or role that last used the
-#'   policy to attempt to access the service
+#' -   **Policy** – Returns the ARN of the user or role that last used the
+#'     policy to attempt to access the service
 #' 
 #' By default, the list is sorted by service namespace.
 #' 
@@ -6526,7 +6456,7 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' 
 #' For more information about service and action last accessed data, see
 #' [Reducing permissions using service last accessed
-#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_last-accessed.html)
+#' data](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -6623,8 +6553,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_service_last_accessed_details_input(JobId = JobId, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_service_last_accessed_details_output()
@@ -6649,13 +6578,13 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' entities that could have used group or policy permissions to access the
 #' specified service.
 #' 
-#' - **Group** – For a group report, this operation returns a list of users
-#'   in the group that could have used the group’s policies in an attempt
-#'   to access the service.
+#' -   **Group** – For a group report, this operation returns a list of
+#'     users in the group that could have used the group’s policies in an
+#'     attempt to access the service.
 #' 
-#' - **Policy** – For a policy report, this operation returns a list of
-#'   entities (users or roles) that could have used the policy in an
-#'   attempt to access the service.
+#' -   **Policy** – For a policy report, this operation returns a list of
+#'     entities (users or roles) that could have used the policy in an
+#'     attempt to access the service.
 #' 
 #' You can also use this operation for user or role reports to retrieve
 #' details about those entities.
@@ -6766,8 +6695,7 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_service_last_accessed_details_with_entities_input(JobId = JobId, ServiceNamespace = ServiceNamespace, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_service_last_accessed_details_with_entities_output()
@@ -6836,8 +6764,7 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_service_linked_role_deletion_status_input(DeletionTaskId = DeletionTaskId)
   output <- .iam$get_service_linked_role_deletion_status_output()
@@ -6926,8 +6853,7 @@ iam_get_user <- function(UserName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_user_input(UserName = UserName)
   output <- .iam$get_user_output()
@@ -7008,8 +6934,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$get_user_policy_input(UserName = UserName, PolicyName = PolicyName)
   output <- .iam$get_user_policy_output()
@@ -7116,8 +7041,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccessKeyMetadata"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccessKeyMetadata")
   )
   input <- .iam$list_access_keys_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_access_keys_output()
@@ -7137,7 +7061,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' (Note: you can have only one). For information about using an Amazon Web
 #' Services account alias, see [Creating, deleting, and listing an Amazon
 #' Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/console-account-alias.html#CreateAccountAlias)
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#CreateAccountAlias)
 #' in the *IAM User Guide*.
 #'
 #' @usage
@@ -7194,8 +7118,7 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccountAliases"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccountAliases")
   )
   input <- .iam$list_account_aliases_input(Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_account_aliases_output()
@@ -7296,8 +7219,7 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_group_policies_input(GroupName = GroupName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_group_policies_output()
@@ -7397,8 +7319,7 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_role_policies_input(RoleName = RoleName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_role_policies_output()
@@ -7498,8 +7419,7 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_user_policies_input(UserName = UserName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_user_policies_output()
@@ -7626,8 +7546,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("PolicyGroups", "PolicyUsers", "PolicyRoles")),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("PolicyGroups", "PolicyUsers", "PolicyRoles"))
   )
   input <- .iam$list_entities_for_policy_input(PolicyArn = PolicyArn, EntityFilter = EntityFilter, PathPrefix = PathPrefix, PolicyUsageFilter = PolicyUsageFilter, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_entities_for_policy_output()
@@ -7721,8 +7640,7 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_group_policies_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_group_policies_output()
@@ -7817,8 +7735,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups")
   )
   input <- .iam$list_groups_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_groups_output()
@@ -7910,8 +7827,7 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups")
   )
   input <- .iam$list_groups_for_user_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_groups_for_user_output()
@@ -7990,8 +7906,7 @@ iam_list_instance_profile_tags <- function(InstanceProfileName, Marker = NULL, M
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_instance_profile_tags_input(InstanceProfileName = InstanceProfileName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profile_tags_output()
@@ -8126,8 +8041,7 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles")
   )
   input <- .iam$list_instance_profiles_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profiles_output()
@@ -8250,8 +8164,7 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles")
   )
   input <- .iam$list_instance_profiles_for_role_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profiles_for_role_output()
@@ -8333,8 +8246,7 @@ iam_list_mfa_device_tags <- function(SerialNumber, Marker = NULL, MaxItems = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_mfa_device_tags_input(SerialNumber = SerialNumber, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_mfa_device_tags_output()
@@ -8419,8 +8331,7 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "MFADevices"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "MFADevices")
   )
   input <- .iam$list_mfa_devices_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_mfa_devices_output()
@@ -8505,8 +8416,7 @@ iam_list_open_id_connect_provider_tags <- function(OpenIDConnectProviderArn, Mar
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_open_id_connect_provider_tags_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_open_id_connect_provider_tags_output()
@@ -8564,8 +8474,7 @@ iam_list_open_id_connect_providers <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$list_open_id_connect_providers_input()
   output <- .iam$list_open_id_connect_providers_output()
@@ -8713,8 +8622,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Policies"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Policies")
   )
   input <- .iam$list_policies_input(Scope = Scope, OnlyAttached = OnlyAttached, PathPrefix = PathPrefix, PolicyUsageFilter = PolicyUsageFilter, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policies_output()
@@ -8745,17 +8653,17 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' The list of policies returned by the operation depends on the ARN of the
 #' identity that you provide.
 #' 
-#' - **User** – The list of policies includes the managed and inline
-#'   policies that are attached to the user directly. The list also
-#'   includes any additional managed and inline policies that are attached
-#'   to the group to which the user belongs.
+#' -   **User** – The list of policies includes the managed and inline
+#'     policies that are attached to the user directly. The list also
+#'     includes any additional managed and inline policies that are
+#'     attached to the group to which the user belongs.
 #' 
-#' - **Group** – The list of policies includes only the managed and inline
-#'   policies that are attached to the group directly. Policies that are
-#'   attached to the group’s user are not included.
+#' -   **Group** – The list of policies includes only the managed and
+#'     inline policies that are attached to the group directly. Policies
+#'     that are attached to the group’s user are not included.
 #' 
-#' - **Role** – The list of policies includes only the managed and inline
-#'   policies that are attached to the role.
+#' -   **Role** – The list of policies includes only the managed and inline
+#'     policies that are attached to the role.
 #' 
 #' For each managed policy, this operation returns the ARN and policy name.
 #' For each inline policy, it returns the policy name and the entity to
@@ -8850,8 +8758,7 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$list_policies_granting_service_access_input(Marker = Marker, Arn = Arn, ServiceNamespaces = ServiceNamespaces)
   output <- .iam$list_policies_granting_service_access_output()
@@ -8931,8 +8838,7 @@ iam_list_policy_tags <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_policy_tags_input(PolicyArn = PolicyArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policy_tags_output()
@@ -9020,8 +8926,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Versions"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Versions")
   )
   input <- .iam$list_policy_versions_input(PolicyArn = PolicyArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policy_versions_output()
@@ -9106,8 +9011,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_role_policies_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_role_policies_output()
@@ -9194,8 +9098,7 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_role_tags_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_role_tags_output()
@@ -9221,11 +9124,11 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' following attributes, even though they are an attribute of the returned
 #' object:
 #' 
-#' - PermissionsBoundary
+#' -   PermissionsBoundary
 #' 
-#' - RoleLastUsed
+#' -   RoleLastUsed
 #' 
-#' - Tags
+#' -   Tags
 #' 
 #' To view all of the information for a role, see
 #' [`get_role`][iam_get_role].
@@ -9321,8 +9224,7 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Roles"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Roles")
   )
   input <- .iam$list_roles_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_roles_output()
@@ -9406,8 +9308,7 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_saml_provider_tags_input(SAMLProviderArn = SAMLProviderArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_saml_provider_tags_output()
@@ -9430,7 +9331,7 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
 #' [`get_saml_provider`][iam_get_saml_provider].
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #'
 #' @usage
 #' iam_list_saml_providers()
@@ -9471,8 +9372,7 @@ iam_list_saml_providers <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "SAMLProviderList"),
-    stream_api = FALSE
+    paginator = list(result_key = "SAMLProviderList")
   )
   input <- .iam$list_saml_providers_input()
   output <- .iam$list_saml_providers_output()
@@ -9565,8 +9465,7 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "SSHPublicKeys"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "SSHPublicKeys")
   )
   input <- .iam$list_ssh_public_keys_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_ssh_public_keys_output()
@@ -9653,8 +9552,7 @@ iam_list_server_certificate_tags <- function(ServerCertificateName, Marker = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_server_certificate_tags_input(ServerCertificateName = ServerCertificateName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_server_certificate_tags_output()
@@ -9761,8 +9659,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "ServerCertificateMetadataList"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "ServerCertificateMetadataList")
   )
   input <- .iam$list_server_certificates_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_server_certificates_output()
@@ -9841,8 +9738,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$list_service_specific_credentials_input(UserName = UserName, ServiceName = ServiceName)
   output <- .iam$list_service_specific_credentials_output()
@@ -9944,8 +9840,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Certificates"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Certificates")
   )
   input <- .iam$list_signing_certificates_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_signing_certificates_output()
@@ -10030,8 +9925,7 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_user_policies_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_user_policies_output()
@@ -10118,8 +10012,7 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_user_tags_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_user_tags_output()
@@ -10144,9 +10037,9 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' following attributes, even though they are an attribute of the returned
 #' object:
 #' 
-#' - PermissionsBoundary
+#' -   PermissionsBoundary
 #' 
-#' - Tags
+#' -   Tags
 #' 
 #' To view all of the information for a user, see
 #' [`get_user`][iam_get_user].
@@ -10242,8 +10135,7 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users")
   )
   input <- .iam$list_users_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_users_output()
@@ -10367,8 +10259,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "VirtualMFADevices"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "VirtualMFADevices")
   )
   input <- .iam$list_virtual_mfa_devices_input(AssignmentStatus = AssignmentStatus, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_virtual_mfa_devices_output()
@@ -10433,14 +10324,14 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' An empty list.
@@ -10476,8 +10367,7 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$put_group_policy_input(GroupName = GroupName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_group_policy_output()
@@ -10551,8 +10441,7 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$put_role_permissions_boundary_input(RoleName = RoleName, PermissionsBoundary = PermissionsBoundary)
   output <- .iam$put_role_permissions_boundary_output()
@@ -10627,14 +10516,14 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' An empty list.
@@ -10670,8 +10559,7 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$put_role_policy_input(RoleName = RoleName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_role_policy_output()
@@ -10743,8 +10631,7 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$put_user_permissions_boundary_input(UserName = UserName, PermissionsBoundary = PermissionsBoundary)
   output <- .iam$put_user_permissions_boundary_output()
@@ -10809,14 +10696,14 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' An empty list.
@@ -10851,8 +10738,7 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$put_user_policy_input(UserName = UserName, PolicyName = PolicyName, PolicyDocument = PolicyDocument)
   output <- .iam$put_user_policy_output()
@@ -10915,8 +10801,7 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$remove_client_id_from_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ClientID = ClientID)
   output <- .iam$remove_client_id_from_open_id_connect_provider_output()
@@ -10995,8 +10880,7 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$remove_role_from_instance_profile_input(InstanceProfileName = InstanceProfileName, RoleName = RoleName)
   output <- .iam$remove_role_from_instance_profile_output()
@@ -11061,8 +10945,7 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$remove_user_from_group_input(GroupName = GroupName, UserName = UserName)
   output <- .iam$remove_user_from_group_output()
@@ -11137,8 +11020,7 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$reset_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId)
   output <- .iam$reset_service_specific_credential_output()
@@ -11209,8 +11091,7 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$resync_mfa_device_input(UserName = UserName, SerialNumber = SerialNumber, AuthenticationCode1 = AuthenticationCode1, AuthenticationCode2 = AuthenticationCode2)
   output <- .iam$resync_mfa_device_output()
@@ -11276,8 +11157,7 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$set_default_policy_version_input(PolicyArn = PolicyArn, VersionId = VersionId)
   output <- .iam$set_default_policy_version_output()
@@ -11366,8 +11246,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$set_security_token_service_preferences_input(GlobalEndpointTokenVersion = GlobalEndpointTokenVersion)
   output <- .iam$set_security_token_service_preferences_output()
@@ -11446,14 +11325,14 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param PermissionsBoundaryPolicyInputList The IAM permissions boundary policy to simulate. The permissions
 #' boundary sets the maximum permissions that an IAM entity can have. You
 #' can input only one permissions boundary when you pass a policy to this
@@ -11473,14 +11352,14 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each
 #' operation is evaluated against each resource. Each operation must
 #' include the service identifier, such as `iam:CreateUser`. This operation
@@ -11522,14 +11401,14 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' 
 #' Simulation of resource-based policies isn't supported for IAM roles.
 #' @param ResourceOwner An ARN representing the Amazon Web Services account ID that specifies
@@ -11577,21 +11456,21 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)
 #' in the *Amazon EC2 User Guide*.
 #' 
-#' - **EC2-VPC-InstanceStore**
+#' -   **EC2-VPC-InstanceStore**
 #' 
-#'   instance, image, security group, network interface
+#'     instance, image, security group, network interface
 #' 
-#' - **EC2-VPC-InstanceStore-Subnet**
+#' -   **EC2-VPC-InstanceStore-Subnet**
 #' 
-#'   instance, image, security group, network interface, subnet
+#'     instance, image, security group, network interface, subnet
 #' 
-#' - **EC2-VPC-EBS**
+#' -   **EC2-VPC-EBS**
 #' 
-#'   instance, image, security group, network interface, volume
+#'     instance, image, security group, network interface, volume
 #' 
-#' - **EC2-VPC-EBS-Subnet**
+#' -   **EC2-VPC-EBS-Subnet**
 #' 
-#'   instance, image, security group, network interface, subnet, volume
+#'     instance, image, security group, network interface, subnet, volume
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
 #' maximum you specify, the `IsTruncated` response element is `true`.
@@ -11721,8 +11600,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults")
   )
   input <- .iam$simulate_custom_policy_input(PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_custom_policy_output()
@@ -11814,14 +11692,14 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param PermissionsBoundaryPolicyInputList The IAM permissions boundary policy to simulate. The permissions
 #' boundary sets the maximum permissions that the entity can have. You can
 #' input only one permissions boundary when you pass a policy to this
@@ -11846,14 +11724,14 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param ActionNames &#91;required&#93; A list of names of API operations to evaluate in the simulation. Each
 #' operation is evaluated for each resource. Each operation must include
 #' the service identifier, such as `iam:CreateUser`.
@@ -11890,14 +11768,14 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' 
 #' Simulation of resource-based policies isn't supported for IAM roles.
 #' @param ResourceOwner An Amazon Web Services account ID that specifies the owner of any
@@ -11951,21 +11829,21 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)
 #' in the *Amazon EC2 User Guide*.
 #' 
-#' - **EC2-VPC-InstanceStore**
+#' -   **EC2-VPC-InstanceStore**
 #' 
-#'   instance, image, security group, network interface
+#'     instance, image, security group, network interface
 #' 
-#' - **EC2-VPC-InstanceStore-Subnet**
+#' -   **EC2-VPC-InstanceStore-Subnet**
 #' 
-#'   instance, image, security group, network interface, subnet
+#'     instance, image, security group, network interface, subnet
 #' 
-#' - **EC2-VPC-EBS**
+#' -   **EC2-VPC-EBS**
 #' 
-#'   instance, image, security group, network interface, volume
+#'     instance, image, security group, network interface, volume
 #' 
-#' - **EC2-VPC-EBS-Subnet**
+#' -   **EC2-VPC-EBS-Subnet**
 #' 
-#'   instance, image, security group, network interface, subnet, volume
+#'     instance, image, security group, network interface, subnet, volume
 #' @param MaxItems Use this only when paginating results to indicate the maximum number of
 #' items you want in the response. If additional items exist beyond the
 #' maximum you specify, the `IsTruncated` response element is `true`.
@@ -12096,8 +11974,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults")
   )
   input <- .iam$simulate_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_principal_policy_output()
@@ -12119,31 +11996,32 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 #' Each tag consists of a key name and an associated value. By assigning
 #' tags to your resources, you can do the following:
 #' 
-#' - **Administrative grouping and discovery** - Attach tags to resources
-#'   to aid in organization and search. For example, you could search for
-#'   all resources with the key name *Project* and the value
-#'   *MyImportantProject*. Or search for all resources with the key name
-#'   *Cost Center* and the value *41200*.
+#' -   **Administrative grouping and discovery** - Attach tags to resources
+#'     to aid in organization and search. For example, you could search for
+#'     all resources with the key name *Project* and the value
+#'     *MyImportantProject*. Or search for all resources with the key name
+#'     *Cost Center* and the value *41200*.
 #' 
-#' - **Access control** - Include tags in IAM user-based and resource-based
-#'   policies. You can use tags to restrict access to only an IAM instance
-#'   profile that has a specified tag attached. For examples of policies
-#'   that show how to use tags to control access, see [Control access using
-#'   IAM
-#'   tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
-#'   in the *IAM User Guide*.
+#' -   **Access control** - Include tags in IAM user-based and
+#'     resource-based policies. You can use tags to restrict access to only
+#'     an IAM instance profile that has a specified tag attached. For
+#'     examples of policies that show how to use tags to control access,
+#'     see [Control access using IAM
+#'     tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
+#'     in the *IAM User Guide*.
 #' 
 #' 
-#' - If any one of the tags is invalid or if you exceed the allowed maximum
-#'   number of tags, then the entire request fails and the resource is not
-#'   created. For more information about tagging, see [Tagging IAM
-#'   resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
-#'   in the *IAM User Guide*.
+#' -   If any one of the tags is invalid or if you exceed the allowed
+#'     maximum number of tags, then the entire request fails and the
+#'     resource is not created. For more information about tagging, see
+#'     [Tagging IAM
+#'     resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - Amazon Web Services always interprets the tag `Value` as a single
-#'   string. If you need to store an array, you can store comma-separated
-#'   values in the string. However, you must interpret the value in your
-#'   code.
+#' -   Amazon Web Services always interprets the tag `Value` as a single
+#'     string. If you need to store an array, you can store comma-separated
+#'     values in the string. However, you must interpret the value in your
+#'     code.
 #'
 #' @usage
 #' iam_tag_instance_profile(InstanceProfileName, Tags)
@@ -12184,8 +12062,7 @@ iam_tag_instance_profile <- function(InstanceProfileName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$tag_instance_profile_input(InstanceProfileName = InstanceProfileName, Tags = Tags)
   output <- .iam$tag_instance_profile_output()
@@ -12208,31 +12085,32 @@ iam_tag_instance_profile <- function(InstanceProfileName, Tags) {
 #' A tag consists of a key name and an associated value. By assigning tags
 #' to your resources, you can do the following:
 #' 
-#' - **Administrative grouping and discovery** - Attach tags to resources
-#'   to aid in organization and search. For example, you could search for
-#'   all resources with the key name *Project* and the value
-#'   *MyImportantProject*. Or search for all resources with the key name
-#'   *Cost Center* and the value *41200*.
+#' -   **Administrative grouping and discovery** - Attach tags to resources
+#'     to aid in organization and search. For example, you could search for
+#'     all resources with the key name *Project* and the value
+#'     *MyImportantProject*. Or search for all resources with the key name
+#'     *Cost Center* and the value *41200*.
 #' 
-#' - **Access control** - Include tags in IAM user-based and resource-based
-#'   policies. You can use tags to restrict access to only an IAM virtual
-#'   MFA device that has a specified tag attached. For examples of policies
-#'   that show how to use tags to control access, see [Control access using
-#'   IAM
-#'   tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
-#'   in the *IAM User Guide*.
+#' -   **Access control** - Include tags in IAM user-based and
+#'     resource-based policies. You can use tags to restrict access to only
+#'     an IAM virtual MFA device that has a specified tag attached. For
+#'     examples of policies that show how to use tags to control access,
+#'     see [Control access using IAM
+#'     tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
+#'     in the *IAM User Guide*.
 #' 
 #' 
-#' - If any one of the tags is invalid or if you exceed the allowed maximum
-#'   number of tags, then the entire request fails and the resource is not
-#'   created. For more information about tagging, see [Tagging IAM
-#'   resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
-#'   in the *IAM User Guide*.
+#' -   If any one of the tags is invalid or if you exceed the allowed
+#'     maximum number of tags, then the entire request fails and the
+#'     resource is not created. For more information about tagging, see
+#'     [Tagging IAM
+#'     resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - Amazon Web Services always interprets the tag `Value` as a single
-#'   string. If you need to store an array, you can store comma-separated
-#'   values in the string. However, you must interpret the value in your
-#'   code.
+#' -   Amazon Web Services always interprets the tag `Value` as a single
+#'     string. If you need to store an array, you can store comma-separated
+#'     values in the string. However, you must interpret the value in your
+#'     code.
 #'
 #' @usage
 #' iam_tag_mfa_device(SerialNumber, Tags)
@@ -12275,8 +12153,7 @@ iam_tag_mfa_device <- function(SerialNumber, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$tag_mfa_device_input(SerialNumber = SerialNumber, Tags = Tags)
   output <- .iam$tag_mfa_device_output()
@@ -12302,31 +12179,32 @@ iam_tag_mfa_device <- function(SerialNumber, Tags) {
 #' A tag consists of a key name and an associated value. By assigning tags
 #' to your resources, you can do the following:
 #' 
-#' - **Administrative grouping and discovery** - Attach tags to resources
-#'   to aid in organization and search. For example, you could search for
-#'   all resources with the key name *Project* and the value
-#'   *MyImportantProject*. Or search for all resources with the key name
-#'   *Cost Center* and the value *41200*.
+#' -   **Administrative grouping and discovery** - Attach tags to resources
+#'     to aid in organization and search. For example, you could search for
+#'     all resources with the key name *Project* and the value
+#'     *MyImportantProject*. Or search for all resources with the key name
+#'     *Cost Center* and the value *41200*.
 #' 
-#' - **Access control** - Include tags in IAM identity-based and
-#'   resource-based policies. You can use tags to restrict access to only
-#'   an OIDC provider that has a specified tag attached. For examples of
-#'   policies that show how to use tags to control access, see [Control
-#'   access using IAM
-#'   tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
-#'   in the *IAM User Guide*.
+#' -   **Access control** - Include tags in IAM identity-based and
+#'     resource-based policies. You can use tags to restrict access to only
+#'     an OIDC provider that has a specified tag attached. For examples of
+#'     policies that show how to use tags to control access, see [Control
+#'     access using IAM
+#'     tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
+#'     in the *IAM User Guide*.
 #' 
 #' 
-#' - If any one of the tags is invalid or if you exceed the allowed maximum
-#'   number of tags, then the entire request fails and the resource is not
-#'   created. For more information about tagging, see [Tagging IAM
-#'   resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
-#'   in the *IAM User Guide*.
+#' -   If any one of the tags is invalid or if you exceed the allowed
+#'     maximum number of tags, then the entire request fails and the
+#'     resource is not created. For more information about tagging, see
+#'     [Tagging IAM
+#'     resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - Amazon Web Services always interprets the tag `Value` as a single
-#'   string. If you need to store an array, you can store comma-separated
-#'   values in the string. However, you must interpret the value in your
-#'   code.
+#' -   Amazon Web Services always interprets the tag `Value` as a single
+#'     string. If you need to store an array, you can store comma-separated
+#'     values in the string. However, you must interpret the value in your
+#'     code.
 #'
 #' @usage
 #' iam_tag_open_id_connect_provider(OpenIDConnectProviderArn, Tags)
@@ -12368,8 +12246,7 @@ iam_tag_open_id_connect_provider <- function(OpenIDConnectProviderArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$tag_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, Tags = Tags)
   output <- .iam$tag_open_id_connect_provider_output()
@@ -12391,31 +12268,32 @@ iam_tag_open_id_connect_provider <- function(OpenIDConnectProviderArn, Tags) {
 #' A tag consists of a key name and an associated value. By assigning tags
 #' to your resources, you can do the following:
 #' 
-#' - **Administrative grouping and discovery** - Attach tags to resources
-#'   to aid in organization and search. For example, you could search for
-#'   all resources with the key name *Project* and the value
-#'   *MyImportantProject*. Or search for all resources with the key name
-#'   *Cost Center* and the value *41200*.
+#' -   **Administrative grouping and discovery** - Attach tags to resources
+#'     to aid in organization and search. For example, you could search for
+#'     all resources with the key name *Project* and the value
+#'     *MyImportantProject*. Or search for all resources with the key name
+#'     *Cost Center* and the value *41200*.
 #' 
-#' - **Access control** - Include tags in IAM user-based and resource-based
-#'   policies. You can use tags to restrict access to only an IAM customer
-#'   managed policy that has a specified tag attached. For examples of
-#'   policies that show how to use tags to control access, see [Control
-#'   access using IAM
-#'   tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
-#'   in the *IAM User Guide*.
+#' -   **Access control** - Include tags in IAM user-based and
+#'     resource-based policies. You can use tags to restrict access to only
+#'     an IAM customer managed policy that has a specified tag attached.
+#'     For examples of policies that show how to use tags to control
+#'     access, see [Control access using IAM
+#'     tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
+#'     in the *IAM User Guide*.
 #' 
 #' 
-#' - If any one of the tags is invalid or if you exceed the allowed maximum
-#'   number of tags, then the entire request fails and the resource is not
-#'   created. For more information about tagging, see [Tagging IAM
-#'   resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
-#'   in the *IAM User Guide*.
+#' -   If any one of the tags is invalid or if you exceed the allowed
+#'     maximum number of tags, then the entire request fails and the
+#'     resource is not created. For more information about tagging, see
+#'     [Tagging IAM
+#'     resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - Amazon Web Services always interprets the tag `Value` as a single
-#'   string. If you need to store an array, you can store comma-separated
-#'   values in the string. However, you must interpret the value in your
-#'   code.
+#' -   Amazon Web Services always interprets the tag `Value` as a single
+#'     string. If you need to store an array, you can store comma-separated
+#'     values in the string. However, you must interpret the value in your
+#'     code.
 #'
 #' @usage
 #' iam_tag_policy(PolicyArn, Tags)
@@ -12457,8 +12335,7 @@ iam_tag_policy <- function(PolicyArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$tag_policy_input(PolicyArn = PolicyArn, Tags = Tags)
   output <- .iam$tag_policy_output()
@@ -12480,35 +12357,36 @@ iam_tag_policy <- function(PolicyArn, Tags) {
 #' A tag consists of a key name and an associated value. By assigning tags
 #' to your resources, you can do the following:
 #' 
-#' - **Administrative grouping and discovery** - Attach tags to resources
-#'   to aid in organization and search. For example, you could search for
-#'   all resources with the key name *Project* and the value
-#'   *MyImportantProject*. Or search for all resources with the key name
-#'   *Cost Center* and the value *41200*.
+#' -   **Administrative grouping and discovery** - Attach tags to resources
+#'     to aid in organization and search. For example, you could search for
+#'     all resources with the key name *Project* and the value
+#'     *MyImportantProject*. Or search for all resources with the key name
+#'     *Cost Center* and the value *41200*.
 #' 
-#' - **Access control** - Include tags in IAM user-based and resource-based
-#'   policies. You can use tags to restrict access to only an IAM role that
-#'   has a specified tag attached. You can also restrict access to only
-#'   those resources that have a certain tag attached. For examples of
-#'   policies that show how to use tags to control access, see [Control
-#'   access using IAM
-#'   tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
-#'   in the *IAM User Guide*.
+#' -   **Access control** - Include tags in IAM user-based and
+#'     resource-based policies. You can use tags to restrict access to only
+#'     an IAM role that has a specified tag attached. You can also restrict
+#'     access to only those resources that have a certain tag attached. For
+#'     examples of policies that show how to use tags to control access,
+#'     see [Control access using IAM
+#'     tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - **Cost allocation** - Use tags to help track which individuals and
-#'   teams are using which Amazon Web Services resources.
+#' -   **Cost allocation** - Use tags to help track which individuals and
+#'     teams are using which Amazon Web Services resources.
 #' 
 #' 
-#' - If any one of the tags is invalid or if you exceed the allowed maximum
-#'   number of tags, then the entire request fails and the resource is not
-#'   created. For more information about tagging, see [Tagging IAM
-#'   resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
-#'   in the *IAM User Guide*.
+#' -   If any one of the tags is invalid or if you exceed the allowed
+#'     maximum number of tags, then the entire request fails and the
+#'     resource is not created. For more information about tagging, see
+#'     [Tagging IAM
+#'     resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - Amazon Web Services always interprets the tag `Value` as a single
-#'   string. If you need to store an array, you can store comma-separated
-#'   values in the string. However, you must interpret the value in your
-#'   code.
+#' -   Amazon Web Services always interprets the tag `Value` as a single
+#'     string. If you need to store an array, you can store comma-separated
+#'     values in the string. However, you must interpret the value in your
+#'     code.
 #' 
 #' For more information about tagging, see [Tagging IAM
 #' identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
@@ -12571,8 +12449,7 @@ iam_tag_role <- function(RoleName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$tag_role_input(RoleName = RoleName, Tags = Tags)
   output <- .iam$tag_role_output()
@@ -12598,31 +12475,32 @@ iam_tag_role <- function(RoleName, Tags) {
 #' A tag consists of a key name and an associated value. By assigning tags
 #' to your resources, you can do the following:
 #' 
-#' - **Administrative grouping and discovery** - Attach tags to resources
-#'   to aid in organization and search. For example, you could search for
-#'   all resources with the key name *Project* and the value
-#'   *MyImportantProject*. Or search for all resources with the key name
-#'   *Cost Center* and the value *41200*.
+#' -   **Administrative grouping and discovery** - Attach tags to resources
+#'     to aid in organization and search. For example, you could search for
+#'     all resources with the key name *Project* and the value
+#'     *MyImportantProject*. Or search for all resources with the key name
+#'     *Cost Center* and the value *41200*.
 #' 
-#' - **Access control** - Include tags in IAM user-based and resource-based
-#'   policies. You can use tags to restrict access to only a SAML identity
-#'   provider that has a specified tag attached. For examples of policies
-#'   that show how to use tags to control access, see [Control access using
-#'   IAM
-#'   tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
-#'   in the *IAM User Guide*.
+#' -   **Access control** - Include tags in IAM user-based and
+#'     resource-based policies. You can use tags to restrict access to only
+#'     a SAML identity provider that has a specified tag attached. For
+#'     examples of policies that show how to use tags to control access,
+#'     see [Control access using IAM
+#'     tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
+#'     in the *IAM User Guide*.
 #' 
 #' 
-#' - If any one of the tags is invalid or if you exceed the allowed maximum
-#'   number of tags, then the entire request fails and the resource is not
-#'   created. For more information about tagging, see [Tagging IAM
-#'   resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
-#'   in the *IAM User Guide*.
+#' -   If any one of the tags is invalid or if you exceed the allowed
+#'     maximum number of tags, then the entire request fails and the
+#'     resource is not created. For more information about tagging, see
+#'     [Tagging IAM
+#'     resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - Amazon Web Services always interprets the tag `Value` as a single
-#'   string. If you need to store an array, you can store comma-separated
-#'   values in the string. However, you must interpret the value in your
-#'   code.
+#' -   Amazon Web Services always interprets the tag `Value` as a single
+#'     string. If you need to store an array, you can store comma-separated
+#'     values in the string. However, you must interpret the value in your
+#'     code.
 #'
 #' @usage
 #' iam_tag_saml_provider(SAMLProviderArn, Tags)
@@ -12664,8 +12542,7 @@ iam_tag_saml_provider <- function(SAMLProviderArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$tag_saml_provider_input(SAMLProviderArn = SAMLProviderArn, Tags = Tags)
   output <- .iam$tag_saml_provider_output()
@@ -12694,34 +12571,35 @@ iam_tag_saml_provider <- function(SAMLProviderArn, Tags) {
 #' A tag consists of a key name and an associated value. By assigning tags
 #' to your resources, you can do the following:
 #' 
-#' - **Administrative grouping and discovery** - Attach tags to resources
-#'   to aid in organization and search. For example, you could search for
-#'   all resources with the key name *Project* and the value
-#'   *MyImportantProject*. Or search for all resources with the key name
-#'   *Cost Center* and the value *41200*.
+#' -   **Administrative grouping and discovery** - Attach tags to resources
+#'     to aid in organization and search. For example, you could search for
+#'     all resources with the key name *Project* and the value
+#'     *MyImportantProject*. Or search for all resources with the key name
+#'     *Cost Center* and the value *41200*.
 #' 
-#' - **Access control** - Include tags in IAM user-based and resource-based
-#'   policies. You can use tags to restrict access to only a server
-#'   certificate that has a specified tag attached. For examples of
-#'   policies that show how to use tags to control access, see [Control
-#'   access using IAM
-#'   tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
-#'   in the *IAM User Guide*.
+#' -   **Access control** - Include tags in IAM user-based and
+#'     resource-based policies. You can use tags to restrict access to only
+#'     a server certificate that has a specified tag attached. For examples
+#'     of policies that show how to use tags to control access, see
+#'     [Control access using IAM
+#'     tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - **Cost allocation** - Use tags to help track which individuals and
-#'   teams are using which Amazon Web Services resources.
+#' -   **Cost allocation** - Use tags to help track which individuals and
+#'     teams are using which Amazon Web Services resources.
 #' 
 #' 
-#' - If any one of the tags is invalid or if you exceed the allowed maximum
-#'   number of tags, then the entire request fails and the resource is not
-#'   created. For more information about tagging, see [Tagging IAM
-#'   resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
-#'   in the *IAM User Guide*.
+#' -   If any one of the tags is invalid or if you exceed the allowed
+#'     maximum number of tags, then the entire request fails and the
+#'     resource is not created. For more information about tagging, see
+#'     [Tagging IAM
+#'     resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - Amazon Web Services always interprets the tag `Value` as a single
-#'   string. If you need to store an array, you can store comma-separated
-#'   values in the string. However, you must interpret the value in your
-#'   code.
+#' -   Amazon Web Services always interprets the tag `Value` as a single
+#'     string. If you need to store an array, you can store comma-separated
+#'     values in the string. However, you must interpret the value in your
+#'     code.
 #'
 #' @usage
 #' iam_tag_server_certificate(ServerCertificateName, Tags)
@@ -12762,8 +12640,7 @@ iam_tag_server_certificate <- function(ServerCertificateName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$tag_server_certificate_input(ServerCertificateName = ServerCertificateName, Tags = Tags)
   output <- .iam$tag_server_certificate_output()
@@ -12784,35 +12661,36 @@ iam_tag_server_certificate <- function(ServerCertificateName, Tags) {
 #' A tag consists of a key name and an associated value. By assigning tags
 #' to your resources, you can do the following:
 #' 
-#' - **Administrative grouping and discovery** - Attach tags to resources
-#'   to aid in organization and search. For example, you could search for
-#'   all resources with the key name *Project* and the value
-#'   *MyImportantProject*. Or search for all resources with the key name
-#'   *Cost Center* and the value *41200*.
+#' -   **Administrative grouping and discovery** - Attach tags to resources
+#'     to aid in organization and search. For example, you could search for
+#'     all resources with the key name *Project* and the value
+#'     *MyImportantProject*. Or search for all resources with the key name
+#'     *Cost Center* and the value *41200*.
 #' 
-#' - **Access control** - Include tags in IAM identity-based and
-#'   resource-based policies. You can use tags to restrict access to only
-#'   an IAM requesting user that has a specified tag attached. You can also
-#'   restrict access to only those resources that have a certain tag
-#'   attached. For examples of policies that show how to use tags to
-#'   control access, see [Control access using IAM
-#'   tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
-#'   in the *IAM User Guide*.
+#' -   **Access control** - Include tags in IAM identity-based and
+#'     resource-based policies. You can use tags to restrict access to only
+#'     an IAM requesting user that has a specified tag attached. You can
+#'     also restrict access to only those resources that have a certain tag
+#'     attached. For examples of policies that show how to use tags to
+#'     control access, see [Control access using IAM
+#'     tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - **Cost allocation** - Use tags to help track which individuals and
-#'   teams are using which Amazon Web Services resources.
+#' -   **Cost allocation** - Use tags to help track which individuals and
+#'     teams are using which Amazon Web Services resources.
 #' 
 #' 
-#' - If any one of the tags is invalid or if you exceed the allowed maximum
-#'   number of tags, then the entire request fails and the resource is not
-#'   created. For more information about tagging, see [Tagging IAM
-#'   resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
-#'   in the *IAM User Guide*.
+#' -   If any one of the tags is invalid or if you exceed the allowed
+#'     maximum number of tags, then the entire request fails and the
+#'     resource is not created. For more information about tagging, see
+#'     [Tagging IAM
+#'     resources](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - Amazon Web Services always interprets the tag `Value` as a single
-#'   string. If you need to store an array, you can store comma-separated
-#'   values in the string. However, you must interpret the value in your
-#'   code.
+#' -   Amazon Web Services always interprets the tag `Value` as a single
+#'     string. If you need to store an array, you can store comma-separated
+#'     values in the string. However, you must interpret the value in your
+#'     code.
 #' 
 #' For more information about tagging, see [Tagging IAM
 #' identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
@@ -12875,8 +12753,7 @@ iam_tag_user <- function(UserName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$tag_user_input(UserName = UserName, Tags = Tags)
   output <- .iam$tag_user_output()
@@ -12932,8 +12809,7 @@ iam_untag_instance_profile <- function(InstanceProfileName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$untag_instance_profile_input(InstanceProfileName = InstanceProfileName, TagKeys = TagKeys)
   output <- .iam$untag_instance_profile_output()
@@ -12993,8 +12869,7 @@ iam_untag_mfa_device <- function(SerialNumber, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$untag_mfa_device_input(SerialNumber = SerialNumber, TagKeys = TagKeys)
   output <- .iam$untag_mfa_device_output()
@@ -13054,8 +12929,7 @@ iam_untag_open_id_connect_provider <- function(OpenIDConnectProviderArn, TagKeys
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$untag_open_id_connect_provider_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, TagKeys = TagKeys)
   output <- .iam$untag_open_id_connect_provider_output()
@@ -13112,8 +12986,7 @@ iam_untag_policy <- function(PolicyArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$untag_policy_input(PolicyArn = PolicyArn, TagKeys = TagKeys)
   output <- .iam$untag_policy_output()
@@ -13181,8 +13054,7 @@ iam_untag_role <- function(RoleName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$untag_role_input(RoleName = RoleName, TagKeys = TagKeys)
   output <- .iam$untag_role_output()
@@ -13243,8 +13115,7 @@ iam_untag_saml_provider <- function(SAMLProviderArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$untag_saml_provider_input(SAMLProviderArn = SAMLProviderArn, TagKeys = TagKeys)
   output <- .iam$untag_saml_provider_output()
@@ -13308,8 +13179,7 @@ iam_untag_server_certificate <- function(ServerCertificateName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$untag_server_certificate_input(ServerCertificateName = ServerCertificateName, TagKeys = TagKeys)
   output <- .iam$untag_server_certificate_output()
@@ -13377,8 +13247,7 @@ iam_untag_user <- function(UserName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$untag_user_input(UserName = UserName, TagKeys = TagKeys)
   output <- .iam$untag_user_output()
@@ -13463,8 +13332,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_access_key_input(UserName = UserName, AccessKeyId = AccessKeyId, Status = Status)
   output <- .iam$update_access_key_output()
@@ -13508,7 +13376,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param RequireSymbols Specifies whether IAM user passwords must contain at least one of the
 #' following non-alphanumeric characters:
 #' 
-#' ! @@ # $ % ^ & * ( ) _ + - = \[ \] \\ \\ | '
+#' ! @@ # $ % ^ & * ( ) _ + - = \[ \] \{ \} | '
 #' 
 #' If you do not specify a value for this parameter, then the operation
 #' uses the default value of `false`. The result is that passwords do not
@@ -13611,8 +13479,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_account_password_policy_input(MinimumPasswordLength = MinimumPasswordLength, RequireSymbols = RequireSymbols, RequireNumbers = RequireNumbers, RequireUppercaseCharacters = RequireUppercaseCharacters, RequireLowercaseCharacters = RequireLowercaseCharacters, AllowUsersToChangePassword = AllowUsersToChangePassword, MaxPasswordAge = MaxPasswordAge, PasswordReusePrevention = PasswordReusePrevention, HardExpiry = HardExpiry)
   output <- .iam$update_account_password_policy_output()
@@ -13653,14 +13520,14 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' An empty list.
@@ -13694,8 +13561,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_assume_role_policy_input(RoleName = RoleName, PolicyDocument = PolicyDocument)
   output <- .iam$update_assume_role_policy_output()
@@ -13785,8 +13651,7 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_group_input(GroupName = GroupName, NewPath = NewPath, NewGroupName = NewGroupName)
   output <- .iam$update_group_output()
@@ -13827,14 +13692,14 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' 
 #' However, the format can be further restricted by the account
 #' administrator by setting a password policy on the Amazon Web Services
@@ -13876,8 +13741,7 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_login_profile_input(UserName = UserName, Password = Password, PasswordResetRequired = PasswordResetRequired)
   output <- .iam$update_login_profile_output()
@@ -13961,8 +13825,7 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_open_id_connect_provider_thumbprint_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, ThumbprintList = ThumbprintList)
   output <- .iam$update_open_id_connect_provider_thumbprint_output()
@@ -14027,8 +13890,7 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_role_input(RoleName = RoleName, Description = Description, MaxSessionDuration = MaxSessionDuration)
   output <- .iam$update_role_output()
@@ -14109,8 +13971,7 @@ iam_update_role_description <- function(RoleName, Description) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_role_description_input(RoleName = RoleName, Description = Description)
   output <- .iam$update_role_description_output()
@@ -14130,7 +13991,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #' object.
 #' 
 #' This operation requires [Signature Version
-#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #'
 #' @usage
 #' iam_update_saml_provider(SAMLMetadataDocument, SAMLProviderArn)
@@ -14174,8 +14035,7 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_saml_provider_input(SAMLMetadataDocument = SAMLMetadataDocument, SAMLProviderArn = SAMLProviderArn)
   output <- .iam$update_saml_provider_output()
@@ -14243,8 +14103,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_ssh_public_key_input(UserName = UserName, SSHPublicKeyId = SSHPublicKeyId, Status = Status)
   output <- .iam$update_ssh_public_key_output()
@@ -14337,8 +14196,7 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_server_certificate_input(ServerCertificateName = ServerCertificateName, NewPath = NewPath, NewServerCertificateName = NewServerCertificateName)
   output <- .iam$update_server_certificate_output()
@@ -14401,8 +14259,7 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_service_specific_credential_input(UserName = UserName, ServiceSpecificCredentialId = ServiceSpecificCredentialId, Status = Status)
   output <- .iam$update_service_specific_credential_output()
@@ -14481,8 +14338,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_signing_certificate_input(UserName = UserName, CertificateId = CertificateId, Status = Status)
   output <- .iam$update_signing_certificate_output()
@@ -14573,8 +14429,7 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$update_user_input(UserName = UserName, NewPath = NewPath, NewUserName = NewUserName)
   output <- .iam$update_user_output()
@@ -14616,14 +14471,14 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' A list with the following syntax:
@@ -14661,8 +14516,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$upload_ssh_public_key_input(UserName = UserName, SSHPublicKeyBody = SSHPublicKeyBody)
   output <- .iam$upload_ssh_public_key_output()
@@ -14707,7 +14561,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' calling [`upload_server_certificate`][iam_upload_server_certificate].
 #' For information about setting up signatures and authorization through
 #' the API, see [Signing Amazon Web Services API
-#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' in the *Amazon Web Services General Reference*. For general information
 #' about using the Query API with IAM, see [Calling the API by making HTTP
 #' query
@@ -14749,28 +14603,28 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param PrivateKey &#91;required&#93; The contents of the private key in PEM-encoded format.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param CertificateChain The contents of the certificate chain. This is typically a concatenation
 #' of the PEM-encoded public key certificates of the chain.
 #' 
@@ -14778,14 +14632,14 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #' @param Tags A list of tags that you want to attach to the new IAM server certificate
 #' resource. Each tag consists of a key name and an associated value. For
 #' more information about tagging, see [Tagging IAM
@@ -14861,8 +14715,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$upload_server_certificate_input(Path = Path, ServerCertificateName = ServerCertificateName, CertificateBody = CertificateBody, PrivateKey = PrivateKey, CertificateChain = CertificateChain, Tags = Tags)
   output <- .iam$upload_server_certificate_output()
@@ -14900,7 +14753,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' [`upload_signing_certificate`][iam_upload_signing_certificate]. For
 #' information about setting up signatures and authorization through the
 #' API, see [Signing Amazon Web Services API
-#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html)
+#' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' in the *Amazon Web Services General Reference*. For general information
 #' about using the Query API with IAM, see [Making query
 #' requests](https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html)
@@ -14921,14 +14774,14 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 #' validate this parameter is a string of characters consisting of the
 #' following:
 #' 
-#' - Any printable ASCII character ranging from the space character
-#'   (``U+0020``) through the end of the ASCII character range
+#' -   Any printable ASCII character ranging from the space character
+#'     (``U+0020``) through the end of the ASCII character range
 #' 
-#' - The printable characters in the Basic Latin and Latin-1 Supplement
-#'   character set (through ``U+00FF``)
+#' -   The printable characters in the Basic Latin and Latin-1 Supplement
+#'     character set (through ``U+00FF``)
 #' 
-#' - The special characters tab (``U+0009``), line feed (``U+000A``), and
-#'   carriage return (``U+000D``)
+#' -   The special characters tab (``U+0009``), line feed (``U+000A``), and
+#'     carriage return (``U+000D``)
 #'
 #' @return
 #' A list with the following syntax:
@@ -14975,8 +14828,7 @@ iam_upload_signing_certificate <- function(UserName = NULL, CertificateBody) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .iam$upload_signing_certificate_input(UserName = UserName, CertificateBody = CertificateBody)
   output <- .iam$upload_signing_certificate_output()

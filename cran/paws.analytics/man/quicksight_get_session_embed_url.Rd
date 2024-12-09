@@ -23,10 +23,10 @@ constrained to the following paths:
 \item \verb{/start/analyses}
 \item \verb{/start/dashboards}
 \item \verb{/start/favorites}
-\item \verb{/dashboards/DashboardId } - where \code{DashboardId} is the actual ID key
-from the Amazon QuickSight console URL of the dashboard
-\item \verb{/analyses/AnalysisId } - where \code{AnalysisId} is the actual ID key from
-the Amazon QuickSight console URL of the analysis
+\item \verb{/dashboards/DashboardId } - where \code{DashboardId} is the actual ID
+key from the Amazon QuickSight console URL of the dashboard
+\item \verb{/analyses/AnalysisId } - where \code{AnalysisId} is the actual ID key
+from the Amazon QuickSight console URL of the analysis
 }}
 
 \item{SessionLifetimeInMinutes}{How many minutes the session is valid. The session lifetime must be

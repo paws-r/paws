@@ -14,10 +14,10 @@ You can specify any of the following taggable resources.
 \item Amazon Web Services account – specify the account ID number.
 \item Organizational unit – specify the OU ID that begins with \verb{ou-} and
 looks similar to: \verb{ou-1a2b-34uvwxyz }
-\item Root – specify the root ID that begins with \verb{r-} and looks similar to:
-\verb{r-1a2b }
-\item Policy – specify the policy ID that begins with \verb{p-} andlooks similar
-to: \verb{p-12abcdefg3 }
+\item Root – specify the root ID that begins with \verb{r-} and looks similar
+to: \verb{r-1a2b }
+\item Policy – specify the policy ID that begins with \verb{p-} andlooks
+similar to: \verb{p-12abcdefg3 }
 }}
 
 \item{Tags}{[required] A list of tags to add to the specified resource.

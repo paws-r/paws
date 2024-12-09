@@ -43,8 +43,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
     http_method = "POST",
     http_path = "/2015-02-01/access-points",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$create_access_point_input(ClientToken = ClientToken, Tags = Tags, FileSystemId = FileSystemId, PosixUser = PosixUser, RootDirectory = RootDirectory)
   output <- .efs$create_access_point_output()
@@ -88,17 +87,17 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' Amazon EFS is used. You can specify a KMS key ID using the following
 #' formats:
 #' 
-#' - Key ID - A unique identifier of the key, for example
-#'   `1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' -   Key ID - A unique identifier of the key, for example
+#'     `1234abcd-12ab-34cd-56ef-1234567890ab`.
 #' 
-#' - ARN - An Amazon Resource Name (ARN) for the key, for example
-#'   `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
+#' -   ARN - An Amazon Resource Name (ARN) for the key, for example
+#'     `arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab`.
 #' 
-#' - Key alias - A previously created display name for a key, for example
-#'   `alias/projectKey1`.
+#' -   Key alias - A previously created display name for a key, for example
+#'     `alias/projectKey1`.
 #' 
-#' - Key alias ARN - An ARN for a key alias, for example
-#'   `arn:aws:kms:us-west-2:444455556666:alias/projectKey1`.
+#' -   Key alias ARN - An ARN for a key alias, for example
+#'     `arn:aws:kms:us-west-2:444455556666:alias/projectKey1`.
 #' 
 #' If you use `KmsKeyId`, you must set the
 #' CreateFileSystemRequest$Encrypted parameter to true.
@@ -161,8 +160,7 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
     http_method = "POST",
     http_path = "/2015-02-01/file-systems",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$create_file_system_input(CreationToken = CreationToken, PerformanceMode = PerformanceMode, Encrypted = Encrypted, KmsKeyId = KmsKeyId, ThroughputMode = ThroughputMode, ProvisionedThroughputInMibps = ProvisionedThroughputInMibps, AvailabilityZoneName = AvailabilityZoneName, Backup = Backup, Tags = Tags)
   output <- .efs$create_file_system_output()
@@ -198,8 +196,7 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
     http_method = "POST",
     http_path = "/2015-02-01/mount-targets",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$create_mount_target_input(FileSystemId = FileSystemId, SubnetId = SubnetId, IpAddress = IpAddress, SecurityGroups = SecurityGroups)
   output <- .efs$create_mount_target_output()
@@ -234,8 +231,7 @@ efs_create_replication_configuration <- function(SourceFileSystemId, Destination
     http_method = "POST",
     http_path = "/2015-02-01/file-systems/{SourceFileSystemId}/replication-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$create_replication_configuration_input(SourceFileSystemId = SourceFileSystemId, Destinations = Destinations)
   output <- .efs$create_replication_configuration_output()
@@ -267,8 +263,7 @@ efs_create_tags <- function(FileSystemId, Tags) {
     http_method = "POST",
     http_path = "/2015-02-01/create-tags/{FileSystemId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$create_tags_input(FileSystemId = FileSystemId, Tags = Tags)
   output <- .efs$create_tags_output()
@@ -298,8 +293,7 @@ efs_delete_access_point <- function(AccessPointId) {
     http_method = "DELETE",
     http_path = "/2015-02-01/access-points/{AccessPointId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$delete_access_point_input(AccessPointId = AccessPointId)
   output <- .efs$delete_access_point_output()
@@ -329,8 +323,7 @@ efs_delete_file_system <- function(FileSystemId) {
     http_method = "DELETE",
     http_path = "/2015-02-01/file-systems/{FileSystemId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$delete_file_system_input(FileSystemId = FileSystemId)
   output <- .efs$delete_file_system_output()
@@ -361,8 +354,7 @@ efs_delete_file_system_policy <- function(FileSystemId) {
     http_method = "DELETE",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$delete_file_system_policy_input(FileSystemId = FileSystemId)
   output <- .efs$delete_file_system_policy_output()
@@ -392,8 +384,7 @@ efs_delete_mount_target <- function(MountTargetId) {
     http_method = "DELETE",
     http_path = "/2015-02-01/mount-targets/{MountTargetId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$delete_mount_target_input(MountTargetId = MountTargetId)
   output <- .efs$delete_mount_target_output()
@@ -423,8 +414,7 @@ efs_delete_replication_configuration <- function(SourceFileSystemId) {
     http_method = "DELETE",
     http_path = "/2015-02-01/file-systems/{SourceFileSystemId}/replication-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$delete_replication_configuration_input(SourceFileSystemId = SourceFileSystemId)
   output <- .efs$delete_replication_configuration_output()
@@ -455,8 +445,7 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
     http_method = "POST",
     http_path = "/2015-02-01/delete-tags/{FileSystemId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$delete_tags_input(FileSystemId = FileSystemId, TagKeys = TagKeys)
   output <- .efs$delete_tags_output()
@@ -496,8 +485,7 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
     http_method = "GET",
     http_path = "/2015-02-01/access-points",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccessPoints"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccessPoints")
   )
   input <- .efs$describe_access_points_input(MaxResults = MaxResults, NextToken = NextToken, AccessPointId = AccessPointId, FileSystemId = FileSystemId)
   output <- .efs$describe_access_points_output()
@@ -534,8 +522,7 @@ efs_describe_account_preferences <- function(NextToken = NULL, MaxResults = NULL
     http_method = "GET",
     http_path = "/2015-02-01/account-preferences",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$describe_account_preferences_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .efs$describe_account_preferences_output()
@@ -566,8 +553,7 @@ efs_describe_backup_policy <- function(FileSystemId) {
     http_method = "GET",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/backup-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$describe_backup_policy_input(FileSystemId = FileSystemId)
   output <- .efs$describe_backup_policy_output()
@@ -597,8 +583,7 @@ efs_describe_file_system_policy <- function(FileSystemId) {
     http_method = "GET",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$describe_file_system_policy_input(FileSystemId = FileSystemId)
   output <- .efs$describe_file_system_policy_output()
@@ -641,8 +626,7 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
     http_method = "GET",
     http_path = "/2015-02-01/file-systems",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "FileSystems"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "FileSystems")
   )
   input <- .efs$describe_file_systems_input(MaxItems = MaxItems, Marker = Marker, CreationToken = CreationToken, FileSystemId = FileSystemId)
   output <- .efs$describe_file_systems_output()
@@ -674,8 +658,7 @@ efs_describe_lifecycle_configuration <- function(FileSystemId) {
     http_method = "GET",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/lifecycle-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$describe_lifecycle_configuration_input(FileSystemId = FileSystemId)
   output <- .efs$describe_lifecycle_configuration_output()
@@ -705,8 +688,7 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
     http_method = "GET",
     http_path = "/2015-02-01/mount-targets/{MountTargetId}/security-groups",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$describe_mount_target_security_groups_input(MountTargetId = MountTargetId)
   output <- .efs$describe_mount_target_security_groups_output()
@@ -755,8 +737,7 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
     http_method = "GET",
     http_path = "/2015-02-01/mount-targets",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "MountTargets"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "MountTargets")
   )
   input <- .efs$describe_mount_targets_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId, MountTargetId = MountTargetId, AccessPointId = AccessPointId)
   output <- .efs$describe_mount_targets_output()
@@ -791,8 +772,7 @@ efs_describe_replication_configurations <- function(FileSystemId = NULL, NextTok
     http_method = "GET",
     http_path = "/2015-02-01/file-systems/replication-configurations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Replications"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Replications")
   )
   input <- .efs$describe_replication_configurations_input(FileSystemId = FileSystemId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .efs$describe_replication_configurations_output()
@@ -829,8 +809,7 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
     http_method = "GET",
     http_path = "/2015-02-01/tags/{FileSystemId}/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems", result_key = "Tags")
   )
   input <- .efs$describe_tags_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId)
   output <- .efs$describe_tags_output()
@@ -867,8 +846,7 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
     http_method = "GET",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .efs$list_tags_for_resource_input(ResourceId = ResourceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .efs$list_tags_for_resource_output()
@@ -899,8 +877,7 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
     http_method = "PUT",
     http_path = "/2015-02-01/mount-targets/{MountTargetId}/security-groups",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$modify_mount_target_security_groups_input(MountTargetId = MountTargetId, SecurityGroups = SecurityGroups)
   output <- .efs$modify_mount_target_security_groups_output()
@@ -940,8 +917,7 @@ efs_put_account_preferences <- function(ResourceIdType) {
     http_method = "PUT",
     http_path = "/2015-02-01/account-preferences",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$put_account_preferences_input(ResourceIdType = ResourceIdType)
   output <- .efs$put_account_preferences_output()
@@ -973,8 +949,7 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/backup-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$put_backup_policy_input(FileSystemId = FileSystemId, BackupPolicy = BackupPolicy)
   output <- .efs$put_backup_policy_output()
@@ -999,7 +974,7 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' policy definition. EFS file system policies have a 20,000 character
 #' limit. To find out more about the elements that make up a file system
 #' policy, see [EFS Resource-based
-#' Policies](https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#access-control-manage-access-intro-resource-policies).
+#' Policies](https://docs.aws.amazon.com/efs/latest/ug/#access-control-manage-access-intro-resource-policies).
 #' @param BypassPolicyLockoutSafetyCheck (Optional) A boolean that specifies whether or not to bypass the
 #' `FileSystemPolicy` lockout safety check. The lockout safety check
 #' determines whether the policy in the request will lock out, or prevent,
@@ -1019,8 +994,7 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$put_file_system_policy_input(FileSystemId = FileSystemId, Policy = Policy, BypassPolicyLockoutSafetyCheck = BypassPolicyLockoutSafetyCheck)
   output <- .efs$put_file_system_policy_output()
@@ -1045,24 +1019,25 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' `LifecycleConfiguration` object. A `LifecycleConfiguration` object
 #' informs EFS Lifecycle management of the following:
 #' 
-#' - **`TransitionToIA`** – When to move files in the file system from
-#'   primary storage (Standard storage class) into the Infrequent Access
-#'   (IA) storage.
+#' -   **`TransitionToIA`** – When to move files in the file system from
+#'     primary storage (Standard storage class) into the Infrequent Access
+#'     (IA) storage.
 #' 
-#' - **`TransitionToArchive`** – When to move files in the file system from
-#'   their current storage class (either IA or Standard storage) into the
-#'   Archive storage.
+#' -   **`TransitionToArchive`** – When to move files in the file system
+#'     from their current storage class (either IA or Standard storage)
+#'     into the Archive storage.
 #' 
-#'   File systems cannot transition into Archive storage before
-#'   transitioning into IA storage. Therefore, TransitionToArchive must
-#'   either not be set or must be later than TransitionToIA.
+#'     File systems cannot transition into Archive storage before
+#'     transitioning into IA storage. Therefore, TransitionToArchive must
+#'     either not be set or must be later than TransitionToIA.
 #' 
-#'   The Archive storage class is available only for file systems that use
-#'   the Elastic Throughput mode and the General Purpose Performance mode.
+#'     The Archive storage class is available only for file systems that
+#'     use the Elastic Throughput mode and the General Purpose Performance
+#'     mode.
 #' 
-#' - **`TransitionToPrimaryStorageClass`** – Whether to move files in the
-#'   file system back to primary storage (Standard storage class) after
-#'   they are accessed in IA or Archive storage.
+#' -   **`TransitionToPrimaryStorageClass`** – Whether to move files in the
+#'     file system back to primary storage (Standard storage class) after
+#'     they are accessed in IA or Archive storage.
 #' 
 #' When using the `put-lifecycle-configuration` CLI command or the
 #' [`put_lifecycle_configuration`][efs_put_lifecycle_configuration] API
@@ -1081,8 +1056,7 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/lifecycle-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$put_lifecycle_configuration_input(FileSystemId = FileSystemId, LifecyclePolicies = LifecyclePolicies)
   output <- .efs$put_lifecycle_configuration_output()
@@ -1113,8 +1087,7 @@ efs_tag_resource <- function(ResourceId, Tags) {
     http_method = "POST",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$tag_resource_input(ResourceId = ResourceId, Tags = Tags)
   output <- .efs$tag_resource_output()
@@ -1146,8 +1119,7 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
     http_method = "DELETE",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$untag_resource_input(ResourceId = ResourceId, TagKeys = TagKeys)
   output <- .efs$untag_resource_output()
@@ -1190,8 +1162,7 @@ efs_update_file_system <- function(FileSystemId, ThroughputMode = NULL, Provisio
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$update_file_system_input(FileSystemId = FileSystemId, ThroughputMode = ThroughputMode, ProvisionedThroughputInMibps = ProvisionedThroughputInMibps)
   output <- .efs$update_file_system_output()
@@ -1213,17 +1184,17 @@ efs_update_file_system <- function(FileSystemId, ThroughputMode = NULL, Provisio
 #' @param FileSystemId &#91;required&#93; The ID of the file system to update.
 #' @param ReplicationOverwriteProtection The status of the file system's replication overwrite protection.
 #' 
-#' - `ENABLED` – The file system cannot be used as the destination file
-#'   system in a replication configuration. The file system is writeable.
-#'   Replication overwrite protection is `ENABLED` by default.
+#' -   `ENABLED` – The file system cannot be used as the destination file
+#'     system in a replication configuration. The file system is writeable.
+#'     Replication overwrite protection is `ENABLED` by default.
 #' 
-#' - `DISABLED` – The file system can be used as the destination file
-#'   system in a replication configuration. The file system is read-only
-#'   and can only be modified by EFS replication.
+#' -   `DISABLED` – The file system can be used as the destination file
+#'     system in a replication configuration. The file system is read-only
+#'     and can only be modified by EFS replication.
 #' 
-#' - `REPLICATING` – The file system is being used as the destination file
-#'   system in a replication configuration. The file system is read-only
-#'   and is only modified only by EFS replication.
+#' -   `REPLICATING` – The file system is being used as the destination
+#'     file system in a replication configuration. The file system is
+#'     read-only and is only modified only by EFS replication.
 #' 
 #' If the replication configuration is deleted, the file system's
 #' replication overwrite protection is re-enabled, the file system becomes
@@ -1238,8 +1209,7 @@ efs_update_file_system_protection <- function(FileSystemId, ReplicationOverwrite
     http_method = "PUT",
     http_path = "/2015-02-01/file-systems/{FileSystemId}/protection",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .efs$update_file_system_protection_input(FileSystemId = FileSystemId, ReplicationOverwriteProtection = ReplicationOverwriteProtection)
   output <- .efs$update_file_system_protection_output()

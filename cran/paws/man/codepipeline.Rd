@@ -74,21 +74,21 @@ You can work with pipelines by calling:
 uniquely named pipeline.
 \item \code{delete_pipeline}, which deletes the
 specified pipeline.
-\item \code{get_pipeline}, which returns information
-about the pipeline structure and pipeline metadata, including the
-pipeline Amazon Resource Name (ARN).
-\item \code{get_pipeline_execution}, which
-returns information about a specific execution of a pipeline.
-\item \code{get_pipeline_state}, which returns
-information about the current state of the stages and actions of a
-pipeline.
-\item \code{list_action_executions}, which
-returns action-level details for past executions. The details include
-full stage and action-level details, including individual action
-duration, status, any errors that occurred during the execution, and
-input and output artifact location details.
-\item \code{list_pipelines}, which gets a summary
-of all of the pipelines associated with your account.
+\item \code{get_pipeline}, which returns
+information about the pipeline structure and pipeline metadata,
+including the pipeline Amazon Resource Name (ARN).
+\item \code{get_pipeline_execution},
+which returns information about a specific execution of a pipeline.
+\item \code{get_pipeline_state}, which
+returns information about the current state of the stages and
+actions of a pipeline.
+\item \code{list_action_executions},
+which returns action-level details for past executions. The details
+include full stage and action-level details, including individual
+action duration, status, any errors that occurred during the
+execution, and input and output artifact location details.
+\item \code{list_pipelines}, which gets a
+summary of all of the pipelines associated with your account.
 \item \code{list_pipeline_executions},
 which gets a summary of the most recent executions for a pipeline.
 \item \code{start_pipeline_execution},
@@ -163,10 +163,10 @@ whether a job worker has received the specified job.
 details of a job.
 \item \code{poll_for_jobs}, which determines
 whether there are any jobs to act on.
-\item \code{put_job_failure_result}, which
-provides details of a job failure.
-\item \code{put_job_success_result}, which
-provides details of a job success.
+\item \code{put_job_failure_result},
+which provides details of a job failure.
+\item \code{put_job_success_result},
+which provides details of a job success.
 }
 
 \strong{Third party jobs}, which are instances of an action created by a

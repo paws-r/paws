@@ -20,8 +20,8 @@ codebuild_list_build_batches(
 \itemize{
 \item \code{ASCENDING}: List the batch build identifiers in ascending order by
 identifier.
-\item \code{DESCENDING}: List the batch build identifiers in descending order by
-identifier.
+\item \code{DESCENDING}: List the batch build identifiers in descending order
+by identifier.
 }}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous call to

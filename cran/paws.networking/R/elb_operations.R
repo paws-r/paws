@@ -22,8 +22,7 @@ elb_add_tags <- function(LoadBalancerNames, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$add_tags_input(LoadBalancerNames = LoadBalancerNames, Tags = Tags)
   output <- .elb$add_tags_output()
@@ -56,8 +55,7 @@ elb_apply_security_groups_to_load_balancer <- function(LoadBalancerName, Securit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$apply_security_groups_to_load_balancer_input(LoadBalancerName = LoadBalancerName, SecurityGroups = SecurityGroups)
   output <- .elb$apply_security_groups_to_load_balancer_output()
@@ -90,8 +88,7 @@ elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$attach_load_balancer_to_subnets_input(LoadBalancerName = LoadBalancerName, Subnets = Subnets)
   output <- .elb$attach_load_balancer_to_subnets_output()
@@ -123,8 +120,7 @@ elb_configure_health_check <- function(LoadBalancerName, HealthCheck) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$configure_health_check_input(LoadBalancerName = LoadBalancerName, HealthCheck = HealthCheck)
   output <- .elb$configure_health_check_output()
@@ -159,8 +155,7 @@ elb_create_app_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$create_app_cookie_stickiness_policy_input(LoadBalancerName = LoadBalancerName, PolicyName = PolicyName, CookieName = CookieName)
   output <- .elb$create_app_cookie_stickiness_policy_output()
@@ -199,8 +194,7 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$create_lb_cookie_stickiness_policy_input(LoadBalancerName = LoadBalancerName, PolicyName = PolicyName, CookieExpirationPeriod = CookieExpirationPeriod)
   output <- .elb$create_lb_cookie_stickiness_policy_output()
@@ -269,8 +263,7 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$create_load_balancer_input(LoadBalancerName = LoadBalancerName, Listeners = Listeners, AvailabilityZones = AvailabilityZones, Subnets = Subnets, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags)
   output <- .elb$create_load_balancer_output()
@@ -301,8 +294,7 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$create_load_balancer_listeners_input(LoadBalancerName = LoadBalancerName, Listeners = Listeners)
   output <- .elb$create_load_balancer_listeners_output()
@@ -338,8 +330,7 @@ elb_create_load_balancer_policy <- function(LoadBalancerName, PolicyName, Policy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$create_load_balancer_policy_input(LoadBalancerName = LoadBalancerName, PolicyName = PolicyName, PolicyTypeName = PolicyTypeName, PolicyAttributes = PolicyAttributes)
   output <- .elb$create_load_balancer_policy_output()
@@ -369,8 +360,7 @@ elb_delete_load_balancer <- function(LoadBalancerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$delete_load_balancer_input(LoadBalancerName = LoadBalancerName)
   output <- .elb$delete_load_balancer_output()
@@ -401,8 +391,7 @@ elb_delete_load_balancer_listeners <- function(LoadBalancerName, LoadBalancerPor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$delete_load_balancer_listeners_input(LoadBalancerName = LoadBalancerName, LoadBalancerPorts = LoadBalancerPorts)
   output <- .elb$delete_load_balancer_listeners_output()
@@ -433,8 +422,7 @@ elb_delete_load_balancer_policy <- function(LoadBalancerName, PolicyName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$delete_load_balancer_policy_input(LoadBalancerName = LoadBalancerName, PolicyName = PolicyName)
   output <- .elb$delete_load_balancer_policy_output()
@@ -465,8 +453,7 @@ elb_deregister_instances_from_load_balancer <- function(LoadBalancerName, Instan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$deregister_instances_from_load_balancer_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
   output <- .elb$deregister_instances_from_load_balancer_output()
@@ -499,8 +486,7 @@ elb_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$describe_account_limits_input(Marker = Marker, PageSize = PageSize)
   output <- .elb$describe_account_limits_output()
@@ -532,8 +518,7 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "InstanceStates"),
-    stream_api = FALSE
+    paginator = list(result_key = "InstanceStates")
   )
   input <- .elb$describe_instance_health_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
   output <- .elb$describe_instance_health_output()
@@ -563,8 +548,7 @@ elb_describe_load_balancer_attributes <- function(LoadBalancerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$describe_load_balancer_attributes_input(LoadBalancerName = LoadBalancerName)
   output <- .elb$describe_load_balancer_attributes_output()
@@ -595,8 +579,7 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "PolicyDescriptions"),
-    stream_api = FALSE
+    paginator = list(result_key = "PolicyDescriptions")
   )
   input <- .elb$describe_load_balancer_policies_input(LoadBalancerName = LoadBalancerName, PolicyNames = PolicyNames)
   output <- .elb$describe_load_balancer_policies_output()
@@ -628,8 +611,7 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(result_key = "PolicyTypeDescriptions"),
-    stream_api = FALSE
+    paginator = list(result_key = "PolicyTypeDescriptions")
   )
   input <- .elb$describe_load_balancer_policy_types_input(PolicyTypeNames = PolicyTypeNames)
   output <- .elb$describe_load_balancer_policy_types_output()
@@ -663,8 +645,7 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancerDescriptions"),
-    stream_api = FALSE
+    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancerDescriptions")
   )
   input <- .elb$describe_load_balancers_input(LoadBalancerNames = LoadBalancerNames, Marker = Marker, PageSize = PageSize)
   output <- .elb$describe_load_balancers_output()
@@ -694,8 +675,7 @@ elb_describe_tags <- function(LoadBalancerNames) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$describe_tags_input(LoadBalancerNames = LoadBalancerNames)
   output <- .elb$describe_tags_output()
@@ -727,8 +707,7 @@ elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$detach_load_balancer_from_subnets_input(LoadBalancerName = LoadBalancerName, Subnets = Subnets)
   output <- .elb$detach_load_balancer_from_subnets_output()
@@ -760,8 +739,7 @@ elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, A
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$disable_availability_zones_for_load_balancer_input(LoadBalancerName = LoadBalancerName, AvailabilityZones = AvailabilityZones)
   output <- .elb$disable_availability_zones_for_load_balancer_output()
@@ -794,8 +772,7 @@ elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, Av
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$enable_availability_zones_for_load_balancer_input(LoadBalancerName = LoadBalancerName, AvailabilityZones = AvailabilityZones)
   output <- .elb$enable_availability_zones_for_load_balancer_output()
@@ -826,8 +803,7 @@ elb_modify_load_balancer_attributes <- function(LoadBalancerName, LoadBalancerAt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$modify_load_balancer_attributes_input(LoadBalancerName = LoadBalancerName, LoadBalancerAttributes = LoadBalancerAttributes)
   output <- .elb$modify_load_balancer_attributes_output()
@@ -858,8 +834,7 @@ elb_register_instances_with_load_balancer <- function(LoadBalancerName, Instance
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$register_instances_with_load_balancer_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
   output <- .elb$register_instances_with_load_balancer_output()
@@ -891,8 +866,7 @@ elb_remove_tags <- function(LoadBalancerNames, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$remove_tags_input(LoadBalancerNames = LoadBalancerNames, Tags = Tags)
   output <- .elb$remove_tags_output()
@@ -925,8 +899,7 @@ elb_set_load_balancer_listener_ssl_certificate <- function(LoadBalancerName, Loa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$set_load_balancer_listener_ssl_certificate_input(LoadBalancerName = LoadBalancerName, LoadBalancerPort = LoadBalancerPort, SSLCertificateId = SSLCertificateId)
   output <- .elb$set_load_balancer_listener_ssl_certificate_output()
@@ -960,8 +933,7 @@ elb_set_load_balancer_policies_for_backend_server <- function(LoadBalancerName, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$set_load_balancer_policies_for_backend_server_input(LoadBalancerName = LoadBalancerName, InstancePort = InstancePort, PolicyNames = PolicyNames)
   output <- .elb$set_load_balancer_policies_for_backend_server_output()
@@ -996,8 +968,7 @@ elb_set_load_balancer_policies_of_listener <- function(LoadBalancerName, LoadBal
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .elb$set_load_balancer_policies_of_listener_input(LoadBalancerName = LoadBalancerName, LoadBalancerPort = LoadBalancerPort, PolicyNames = PolicyNames)
   output <- .elb$set_load_balancer_policies_of_listener_output()

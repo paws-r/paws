@@ -7,7 +7,7 @@
 s3control_delete_access_grants_instance_resource_policy(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
+\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
 }
 \description{
 Deletes the resource policy of the S3 Access Grants instance. The resource policy is used to manage cross-account access to your S3 Access Grants instance. By deleting the resource policy, you delete any cross-account permissions to your S3 Access Grants instance.

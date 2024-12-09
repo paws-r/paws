@@ -29,21 +29,21 @@ database instance.
 }
 \item DatabaseCredentials - AWS Identity and Access Management (IAM)
 credentials that are used to connect to the Amazon RDS database.
-\item ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by an
-EC2 instance to carry out the copy task from Amazon RDS to Amazon
+\item ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by
+an EC2 instance to carry out the copy task from Amazon RDS to Amazon
 Simple Storage Service (Amazon S3). For more information, see \href{https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html}{Role templates}
 for data pipelines.
-\item ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS Data
-Pipeline service to monitor the progress of the copy task from Amazon
-RDS to Amazon S3. For more information, see \href{https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html}{Role templates}
+\item ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS
+Data Pipeline service to monitor the progress of the copy task from
+Amazon RDS to Amazon S3. For more information, see \href{https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html}{Role templates}
 for data pipelines.
 \item SecurityInfo - The security information to use to access an RDS DB
 instance. You need to set up appropriate ingress rules for the
 security entity IDs provided to allow access to the Amazon RDS
 instance. Specify a [\code{SubnetId}, \code{SecurityGroupIds}] pair for a
 VPC-based RDS DB instance.
-\item SelectSqlQuery - A query that is used to retrieve the observation data
-for the \code{Datasource}.
+\item SelectSqlQuery - A query that is used to retrieve the observation
+data for the \code{Datasource}.
 \item S3StagingLocation - The Amazon S3 location for staging Amazon RDS
 data. The data retrieved from Amazon RDS using \code{SelectSqlQuery} is
 stored in this location.
@@ -53,7 +53,8 @@ required if \code{DataSchemaUri} is specified.
 \item DataRearrangement - A JSON string that represents the splitting and
 rearrangement requirements for the \code{Datasource}.
 
-Sample - \verb{ "\{\\"splitting\\":\{\\"percentBegin\\":10,\\"percentEnd\\":60\}\}"}
+Sample -
+\verb{ "\{\\"splitting\\":\{\\"percentBegin\\":10,\\"percentEnd\\":60\}\}"}
 }}
 
 \item{RoleARN}{[required] The role that Amazon ML assumes on behalf of the user to create and
@@ -63,7 +64,7 @@ activate a data pipeline in the user's account and copy data using the
 \item{ComputeStatistics}{The compute statistics for a \code{DataSource}. The statistics are generated
 from the observation data referenced by a \code{DataSource}. Amazon ML uses
 the statistics internally during \code{MLModel} training. This parameter must
-be set to \code{true} if the DataSource needs to be used for \code{MLModel}
+be set to \code{true} if the \code{DataSource} needs to be used for \code{MLModel}
 training.}
 }
 \description{

@@ -65,9 +65,9 @@ canned ACL or an equivalent form of this ACL expressed in the XML
 format. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/about-object-ownership.html}{Controlling ownership of objects and disabling ACLs}
 in the \emph{Amazon S3 User Guide}.
 \itemize{
-\item If your destination bucket uses the bucket owner enforced setting for
-Object Ownership, all objects written to the bucket by any account
-will be owned by the bucket owner.
+\item If your destination bucket uses the bucket owner enforced setting
+for Object Ownership, all objects written to the bucket by any
+account will be owned by the bucket owner.
 \item This functionality is not supported for directory buckets.
 \item This functionality is not supported for Amazon S3 on Outposts.
 }}
@@ -104,7 +104,7 @@ S3 on Outposts hostname takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/s3-outposts/S3onOutposts.html}{What is S3 on Outposts?}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CacheControl}{Specifies the caching behavior along the request/reply chain.}
@@ -150,15 +150,15 @@ You specify the value of the copy source in one of two formats,
 depending on whether you want to access the source object through an
 \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html}{access point}:
 \itemize{
-\item For objects not accessed through an access point, specify the name of
-the source bucket and the key of the source object, separated by a
-slash (/). For example, to copy the object \code{reports/january.pdf} from
-the general purpose bucket \code{awsexamplebucket}, use
-\code{awsexamplebucket/reports/january.pdf}. The value must be URL-encoded.
-To copy the object \code{reports/january.pdf} from the directory bucket
-\code{awsexamplebucket--use1-az5--x-s3}, use
-\code{awsexamplebucket--use1-az5--x-s3/reports/january.pdf}. The value must
-be URL-encoded.
+\item For objects not accessed through an access point, specify the name
+of the source bucket and the key of the source object, separated by
+a slash (/). For example, to copy the object \code{reports/january.pdf}
+from the general purpose bucket \code{awsexamplebucket}, use
+\code{awsexamplebucket/reports/january.pdf}. The value must be
+URL-encoded. To copy the object \code{reports/january.pdf} from the
+directory bucket \code{awsexamplebucket--use1-az5--x-s3}, use
+\code{awsexamplebucket--use1-az5--x-s3/reports/january.pdf}. The value
+must be URL-encoded.
 \item For objects accessed through access points, specify the Amazon
 Resource Name (ARN) of the object as accessed through the access
 point, in the format
@@ -169,18 +169,18 @@ point \code{my-access-point} owned by account \code{123456789012} in Region
 \code{arn:aws:s3:us-west-2:123456789012:accesspoint/my-access-point/object/reports/january.pdf}.
 The value must be URL encoded.
 \itemize{
-\item Amazon S3 supports copy operations using Access points only when the
-source and destination buckets are in the same Amazon Web Services
-Region.
+\item Amazon S3 supports copy operations using Access points only when
+the source and destination buckets are in the same Amazon Web
+Services Region.
 \item Access points are not supported by directory buckets.
 }
 
 Alternatively, for objects accessed through Amazon S3 on Outposts,
 specify the ARN of the object as accessed in the format
 \verb{arn:aws:s3-outposts:<Region>:<account-id>:outpost/<outpost-id>/object/<key>}.
-For example, to copy the object \code{reports/january.pdf} through outpost
-\code{my-outpost} owned by account \code{123456789012} in Region \code{us-west-2},
-use the URL encoding of
+For example, to copy the object \code{reports/january.pdf} through
+outpost \code{my-outpost} owned by account \code{123456789012} in Region
+\code{us-west-2}, use the URL encoding of
 \code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/object/reports/january.pdf}.
 The value must be URL-encoded.
 }
@@ -315,35 +315,37 @@ the destination bucket is a directory bucket, you will receive a
 \itemize{
 \item When you attempt to \code{COPY} the tag-set from an S3 source object that
 has non-empty tags.
-\item When you attempt to \code{REPLACE} the tag-set of a source object and set a
-non-empty value to \code{x-amz-tagging}.
-\item When you don't set the \code{x-amz-tagging-directive} header and the source
-object has non-empty tags. This is because the default value of
-\code{x-amz-tagging-directive} is \code{COPY}.
+\item When you attempt to \code{REPLACE} the tag-set of a source object and set
+a non-empty value to \code{x-amz-tagging}.
+\item When you don't set the \code{x-amz-tagging-directive} header and the
+source object has non-empty tags. This is because the default value
+of \code{x-amz-tagging-directive} is \code{COPY}.
 }
 
 Because only the empty tag-set is supported for directory buckets in a
 \code{\link[=s3_copy_object]{copy_object}} operation, the following situations are
 allowed:
 \itemize{
-\item When you attempt to \code{COPY} the tag-set from a directory bucket source
-object that has no tags to a general purpose bucket. It copies an
-empty tag-set to the destination object.
-\item When you attempt to \code{REPLACE} the tag-set of a directory bucket source
-object and set the \code{x-amz-tagging} value of the directory bucket
-destination object to empty.
-\item When you attempt to \code{REPLACE} the tag-set of a general purpose bucket
-source object that has non-empty tags and set the \code{x-amz-tagging}
-value of the directory bucket destination object to empty.
-\item When you attempt to \code{REPLACE} the tag-set of a directory bucket source
-object and don't set the \code{x-amz-tagging} value of the directory bucket
-destination object. This is because the default value of
-\code{x-amz-tagging} is the empty value.
+\item When you attempt to \code{COPY} the tag-set from a directory bucket
+source object that has no tags to a general purpose bucket. It
+copies an empty tag-set to the destination object.
+\item When you attempt to \code{REPLACE} the tag-set of a directory bucket
+source object and set the \code{x-amz-tagging} value of the directory
+bucket destination object to empty.
+\item When you attempt to \code{REPLACE} the tag-set of a general purpose
+bucket source object that has non-empty tags and set the
+\code{x-amz-tagging} value of the directory bucket destination object to
+empty.
+\item When you attempt to \code{REPLACE} the tag-set of a directory bucket
+source object and don't set the \code{x-amz-tagging} value of the
+directory bucket destination object. This is because the default
+value of \code{x-amz-tagging} is the empty value.
 }}
 
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
-Amazon S3. Unrecognized or unsupported values won’t write a destination
-object and will receive a \verb{400 Bad Request} response.
+Amazon S3 (for example, \code{AES256}, \code{aws:kms}, \code{aws:kms:dsse}).
+Unrecognized or unsupported values won’t write a destination object and
+will receive a \verb{400 Bad Request} response.
 
 Amazon S3 automatically encrypts all new objects that are copied to an
 S3 bucket. When copying an object, if you don't specify encryption
@@ -351,71 +353,39 @@ information in your copy request, the encryption setting of the target
 object is set to the default encryption configuration of the destination
 bucket. By default, all buckets have a base level of encryption
 configuration that uses server-side encryption with Amazon S3 managed
-keys (SSE-S3). If the destination bucket has a different default
-encryption configuration, Amazon S3 uses the corresponding encryption
-key to encrypt the target object copy.
+keys (SSE-S3). If the destination bucket has a default encryption
+configuration that uses server-side encryption with Key Management
+Service (KMS) keys (SSE-KMS), dual-layer server-side encryption with
+Amazon Web Services KMS keys (DSSE-KMS), or server-side encryption with
+customer-provided encryption keys (SSE-C), Amazon S3 uses the
+corresponding KMS key, or a customer-provided key to encrypt the target
+object copy.
+
+When you perform a \code{\link[=s3_copy_object]{copy_object}} operation, if you
+want to use a different type of encryption setting for the target
+object, you can specify appropriate encryption-related headers to
+encrypt the target object with an Amazon S3 managed key, a KMS key, or a
+customer-provided key. If the encryption setting in your request is
+different from the default encryption configuration of the destination
+bucket, the encryption setting in your request takes precedence.
 
 With server-side encryption, Amazon S3 encrypts your data as it writes
 your data to disks in its data centers and decrypts the data when you
 access it. For more information about server-side encryption, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html}{Using Server-Side Encryption}
 in the \emph{Amazon S3 User Guide}.
 
-\strong{General purpose buckets}
-\itemize{
-\item For general purpose buckets, there are the following supported options
-for server-side encryption: server-side encryption with Key Management
-Service (KMS) keys (SSE-KMS), dual-layer server-side encryption with
-Amazon Web Services KMS keys (DSSE-KMS), and server-side encryption
-with customer-provided encryption keys (SSE-C). Amazon S3 uses the
-corresponding KMS key, or a customer-provided key to encrypt the
-target object copy.
-\item When you perform a \code{\link[=s3_copy_object]{copy_object}} operation, if you
-want to use a different type of encryption setting for the target
-object, you can specify appropriate encryption-related headers to
-encrypt the target object with an Amazon S3 managed key, a KMS key, or
-a customer-provided key. If the encryption setting in your request is
-different from the default encryption configuration of the destination
-bucket, the encryption setting in your request takes precedence.
-}
-
-\strong{Directory buckets}
-\itemize{
-\item For directory buckets, there are only two supported options for
-server-side encryption: server-side encryption with Amazon S3 managed
-keys (SSE-S3) (\code{AES256}) and server-side encryption with KMS keys
-(SSE-KMS) (\code{aws:kms}). We recommend that the bucket's default
-encryption uses the desired encryption configuration and you don't
-override the bucket default encryption in your
-\code{\link[=s3_create_session]{create_session}} requests or \code{PUT} object
-requests. Then, new objects are automatically encrypted with the
-desired encryption settings. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/}{Protecting data with server-side encryption} in
-the \emph{Amazon S3 User Guide}. For more information about the encryption
-overriding behaviors in directory buckets, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-express-specifying-kms-encryption.html}{Specifying server-side encryption with KMS for new object uploads}.
-\item To encrypt new object copies to a directory bucket with SSE-KMS, we
-recommend you specify SSE-KMS as the directory bucket's default
-encryption configuration with a KMS key (specifically, a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}).
-The \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}
-(\code{aws/s3}) isn't supported. Your SSE-KMS configuration can only
-support 1 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
-per directory bucket for the lifetime of the bucket. After you specify
-a customer managed key for SSE-KMS, you can't override the customer
-managed key for the bucket's SSE-KMS configuration. Then, when you
-perform a \code{\link[=s3_copy_object]{copy_object}} operation and want to
-specify server-side encryption settings for new object copies with
-SSE-KMS in the encryption-related request headers, you must ensure the
-encryption key is the same customer managed key that you specified for
-the directory bucket's default encryption configuration.
-}}
+For directory buckets, only server-side encryption with Amazon S3
+managed keys (SSE-S3) (\code{AES256}) is supported.}
 
 \item{StorageClass}{If the \code{x-amz-storage-class} header is not used, the copied object will
 be stored in the \code{STANDARD} Storage Class by default. The \code{STANDARD}
 storage class provides high durability and high availability. Depending
 on performance needs, you can specify a different Storage Class.
 \itemize{
-\item \strong{Directory buckets} - For directory buckets, only the S3 Express One
-Zone storage class is supported to store newly created objects.
-Unsupported storage class values won't write a destination object and
-will respond with the HTTP status code \verb{400 Bad Request}.
+\item \strong{Directory buckets} - For directory buckets, only the S3 Express
+One Zone storage class is supported to store newly created objects.
+Unsupported storage class values won't write a destination object
+and will respond with the HTTP status code \verb{400 Bad Request}.
 \item \strong{Amazon S3 on Outposts} - S3 on Outposts only uses the \code{OUTPOSTS}
 Storage Class.
 }
@@ -428,7 +398,8 @@ in the \emph{Amazon S3 User Guide}.
 Before using an object as a source object for the copy operation, you
 must restore a copy of it if it meets any of the following conditions:
 \itemize{
-\item The storage class of the source object is \code{GLACIER} or \code{DEEP_ARCHIVE}.
+\item The storage class of the source object is \code{GLACIER} or
+\code{DEEP_ARCHIVE}.
 \item The storage class of the source object is \code{INTELLIGENT_TIERING} and
 it's \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html#intel-tiering-tier-definition}{S3 Intelligent-Tiering access tier}
 is \verb{Archive Access} or \verb{Deep Archive Access}.
@@ -478,43 +449,24 @@ that the encryption key was transmitted without error.
 This functionality is not supported when the destination bucket is a
 directory bucket.}
 
-\item{SSEKMSKeyId}{Specifies the KMS key ID (Key ID, Key ARN, or Key Alias) to use for
-object encryption. All GET and PUT requests for an object protected by
-KMS will fail if they're not made via SSL or using SigV4. For
-information about configuring any of the officially supported Amazon Web
-Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/#specify-signature-version}{Specifying the Signature Version in Request Authentication}
+\item{SSEKMSKeyId}{Specifies the KMS ID (Key ID, Key ARN, or Key Alias) to use for object
+encryption. All GET and PUT requests for an object protected by KMS will
+fail if they're not made via SSL or using SigV4. For information about
+configuring any of the officially supported Amazon Web Services SDKs and
+Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
 in the \emph{Amazon S3 User Guide}.
 
-\strong{Directory buckets} - If you specify \code{x-amz-server-side-encryption}
-with \code{aws:kms}, the \code{ x-amz-server-side-encryption-aws-kms-key-id}
-header is implicitly assigned the ID of the KMS symmetric encryption
-customer managed key that's configured for your directory bucket's
-default encryption setting. If you want to specify the
-\code{ x-amz-server-side-encryption-aws-kms-key-id} header explicitly, you
-can only specify it with the ID (Key ID or Key ARN) of the KMS customer
-managed key that's configured for your directory bucket's default
-encryption setting. Otherwise, you get an HTTP \verb{400 Bad Request} error.
-Only use the key ID or key ARN. The key alias format of the KMS key
-isn't supported. Your SSE-KMS configuration can only support 1 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}
-per directory bucket for the lifetime of the bucket. The \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{Amazon Web Services managed key}
-(\code{aws/s3}) isn't supported.}
+This functionality is not supported when the destination bucket is a
+directory bucket.}
 
-\item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context as an
-additional encryption context to use for the destination object
-encryption. The value of this header is a base64-encoded UTF-8 string
-holding JSON with the encryption context key-value pairs.
+\item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for
+object encryption. The value of this header is a base64-encoded UTF-8
+string holding JSON with the encryption context key-value pairs. This
+value must be explicitly added to specify encryption context for
+\code{\link[=s3_copy_object]{copy_object}} requests.
 
-\strong{General purpose buckets} - This value must be explicitly added to
-specify encryption context for \code{\link[=s3_copy_object]{copy_object}} requests
-if you want an additional encryption context for your destination
-object. The additional encryption context of the source object won't be
-copied to the destination object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html#encryption-context}{Encryption context}
-in the \emph{Amazon S3 User Guide}.
-
-\strong{Directory buckets} - You can optionally provide an explicit
-encryption context value. The value must match the default encryption
-context - the bucket Amazon Resource Name (ARN). An additional
-encryption context value is not supported.}
+This functionality is not supported when the destination bucket is a
+directory bucket.}
 
 \item{BucketKeyEnabled}{Specifies whether Amazon S3 should use an S3 Bucket Key for object
 encryption with server-side encryption using Key Management Service
@@ -528,12 +480,8 @@ action doesn’t affect bucket-level settings for S3 Bucket Key.
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html}{Amazon S3 Bucket Keys}
 in the \emph{Amazon S3 User Guide}.
 
-\strong{Directory buckets} - S3 Bucket Keys aren't supported, when you copy
-SSE-KMS encrypted objects from general purpose buckets to directory
-buckets, from directory buckets to general purpose buckets, or between
-directory buckets, through \code{\link[=s3_copy_object]{copy_object}}. In this
-case, Amazon S3 makes a call to KMS every time a copy request is made
-for a KMS-encrypted object.}
+This functionality is not supported when the destination bucket is a
+directory bucket.}
 
 \item{CopySourceSSECustomerAlgorithm}{Specifies the algorithm to use when decrypting the source object (for
 example, \code{AES256}).
@@ -588,30 +536,31 @@ the destination bucket is a directory bucket, you will receive a
 \itemize{
 \item When you attempt to \code{COPY} the tag-set from an S3 source object that
 has non-empty tags.
-\item When you attempt to \code{REPLACE} the tag-set of a source object and set a
-non-empty value to \code{x-amz-tagging}.
-\item When you don't set the \code{x-amz-tagging-directive} header and the source
-object has non-empty tags. This is because the default value of
-\code{x-amz-tagging-directive} is \code{COPY}.
+\item When you attempt to \code{REPLACE} the tag-set of a source object and set
+a non-empty value to \code{x-amz-tagging}.
+\item When you don't set the \code{x-amz-tagging-directive} header and the
+source object has non-empty tags. This is because the default value
+of \code{x-amz-tagging-directive} is \code{COPY}.
 }
 
 Because only the empty tag-set is supported for directory buckets in a
 \code{\link[=s3_copy_object]{copy_object}} operation, the following situations are
 allowed:
 \itemize{
-\item When you attempt to \code{COPY} the tag-set from a directory bucket source
-object that has no tags to a general purpose bucket. It copies an
-empty tag-set to the destination object.
-\item When you attempt to \code{REPLACE} the tag-set of a directory bucket source
-object and set the \code{x-amz-tagging} value of the directory bucket
-destination object to empty.
-\item When you attempt to \code{REPLACE} the tag-set of a general purpose bucket
-source object that has non-empty tags and set the \code{x-amz-tagging}
-value of the directory bucket destination object to empty.
-\item When you attempt to \code{REPLACE} the tag-set of a directory bucket source
-object and don't set the \code{x-amz-tagging} value of the directory bucket
-destination object. This is because the default value of
-\code{x-amz-tagging} is the empty value.
+\item When you attempt to \code{COPY} the tag-set from a directory bucket
+source object that has no tags to a general purpose bucket. It
+copies an empty tag-set to the destination object.
+\item When you attempt to \code{REPLACE} the tag-set of a directory bucket
+source object and set the \code{x-amz-tagging} value of the directory
+bucket destination object to empty.
+\item When you attempt to \code{REPLACE} the tag-set of a general purpose
+bucket source object that has non-empty tags and set the
+\code{x-amz-tagging} value of the directory bucket destination object to
+empty.
+\item When you attempt to \code{REPLACE} the tag-set of a directory bucket
+source object and don't set the \code{x-amz-tagging} value of the
+directory bucket destination object. This is because the default
+value of \code{x-amz-tagging} is the empty value.
 }}
 
 \item{ObjectLockMode}{The Object Lock mode that you want to apply to the object copy.

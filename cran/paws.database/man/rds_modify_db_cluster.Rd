@@ -192,8 +192,8 @@ Default: \code{0}
 
 Constraints:
 \itemize{
-\item If specified, this value must be set to a number from 0 to 259,200 (72
-hours).
+\item If specified, this value must be set to a number from 0 to 259,200
+(72 hours).
 }}
 
 \item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to
@@ -253,9 +253,9 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Constraints:
 \itemize{
-\item You must allow major version upgrades when specifying a value for the
-\code{EngineVersion} parameter that is a different major version than the
-DB cluster's current version.
+\item You must allow major version upgrades when specifying a value for
+the \code{EngineVersion} parameter that is a different major version than
+the DB cluster's current version.
 }}
 
 \item{DBInstanceParameterGroupName}{The name of the DB parameter group to apply to all instances of the DB
@@ -391,8 +391,8 @@ Valid for Cluster Type: Multi-AZ DB clusters only
 
 Constraints:
 \itemize{
-\item Must be a multiple between .5 and 50 of the storage amount for the DB
-cluster.
+\item Must be a multiple between .5 and 50 of the storage amount for the
+DB cluster.
 }}
 
 \item{AutoMinorVersionUpgrade}{Specifies whether minor engine upgrades are applied automatically to the
@@ -534,9 +534,10 @@ user password in Amazon Web Services Secrets Manager.
 
 If you are turning on \code{ManageMasterUserPassword} and don't specify
 \code{MasterUserSecretKmsKeyId}, then the \code{aws/secretsmanager} KMS key is
-used to encrypt the secret. If the secret is in a different Amazon Web
-Services account, then you can't use the \code{aws/secretsmanager} KMS key
-to encrypt the secret, and you must use a customer managed KMS key.
+used to encrypt the secret. If the secret is in a different Amazon
+Web Services account, then you can't use the \code{aws/secretsmanager}
+KMS key to encrypt the secret, and you must use a customer managed
+KMS key.
 }
 
 The Amazon Web Services KMS key identifier is the key ARN, key ID, alias

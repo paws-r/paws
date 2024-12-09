@@ -27,7 +27,8 @@ machinelearning_create_data_source_from_redshift(
 cluster.
 }
 \item DatabaseCredentials - The AWS Identity and Access Management (IAM)
-credentials that are used to connect to the Amazon Redshift database.
+credentials that are used to connect to the Amazon Redshift
+database.
 \item SelectSqlQuery - The query that is used to retrieve the observation
 data for the \code{Datasource}.
 \item S3StagingLocation - The Amazon Simple Storage Service (Amazon S3)
@@ -40,7 +41,8 @@ required if \code{DataSchemaUri} is specified.
 \item DataRearrangement - A JSON string that represents the splitting and
 rearrangement requirements for the \code{DataSource}.
 
-Sample - \verb{ "\{\\"splitting\\":\{\\"percentBegin\\":10,\\"percentEnd\\":60\}\}"}
+Sample -
+\verb{ "\{\\"splitting\\":\{\\"percentBegin\\":10,\\"percentEnd\\":60\}\}"}
 }}
 
 \item{RoleARN}{[required] A fully specified role Amazon Resource Name (ARN). Amazon ML assumes the

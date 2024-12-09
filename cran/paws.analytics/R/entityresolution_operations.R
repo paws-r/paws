@@ -39,8 +39,7 @@ entityresolution_add_policy_statement <- function(action, arn, condition = NULL,
     http_method = "POST",
     http_path = "/policies/{arn}/{statementId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$add_policy_statement_input(action = action, arn = arn, condition = condition, effect = effect, principal = principal, statementId = statementId)
   output <- .entityresolution$add_policy_statement_output()
@@ -72,8 +71,7 @@ entityresolution_batch_delete_unique_id <- function(inputSource = NULL, uniqueId
     http_method = "DELETE",
     http_path = "/matchingworkflows/{workflowName}/uniqueids",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$batch_delete_unique_id_input(inputSource = inputSource, uniqueIds = uniqueIds, workflowName = workflowName)
   output <- .entityresolution$batch_delete_unique_id_output()
@@ -116,8 +114,7 @@ entityresolution_create_id_mapping_workflow <- function(description = NULL, idMa
     http_method = "POST",
     http_path = "/idmappingworkflows",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$create_id_mapping_workflow_input(description = description, idMappingTechniques = idMappingTechniques, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, roleArn = roleArn, tags = tags, workflowName = workflowName)
   output <- .entityresolution$create_id_mapping_workflow_output()
@@ -164,8 +161,7 @@ entityresolution_create_id_namespace <- function(description = NULL, idMappingWo
     http_method = "POST",
     http_path = "/idnamespaces",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$create_id_namespace_input(description = description, idMappingWorkflowProperties = idMappingWorkflowProperties, idNamespaceName = idNamespaceName, inputSourceConfig = inputSourceConfig, roleArn = roleArn, tags = tags, type = type)
   output <- .entityresolution$create_id_namespace_output()
@@ -210,8 +206,7 @@ entityresolution_create_matching_workflow <- function(description = NULL, increm
     http_method = "POST",
     http_path = "/matchingworkflows",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$create_matching_workflow_input(description = description, incrementalRunConfig = incrementalRunConfig, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, resolutionTechniques = resolutionTechniques, roleArn = roleArn, tags = tags, workflowName = workflowName)
   output <- .entityresolution$create_matching_workflow_output()
@@ -248,8 +243,7 @@ entityresolution_create_schema_mapping <- function(description = NULL, mappedInp
     http_method = "POST",
     http_path = "/schemas",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$create_schema_mapping_input(description = description, mappedInputFields = mappedInputFields, schemaName = schemaName, tags = tags)
   output <- .entityresolution$create_schema_mapping_output()
@@ -279,8 +273,7 @@ entityresolution_delete_id_mapping_workflow <- function(workflowName) {
     http_method = "DELETE",
     http_path = "/idmappingworkflows/{workflowName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$delete_id_mapping_workflow_input(workflowName = workflowName)
   output <- .entityresolution$delete_id_mapping_workflow_output()
@@ -310,8 +303,7 @@ entityresolution_delete_id_namespace <- function(idNamespaceName) {
     http_method = "DELETE",
     http_path = "/idnamespaces/{idNamespaceName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$delete_id_namespace_input(idNamespaceName = idNamespaceName)
   output <- .entityresolution$delete_id_namespace_output()
@@ -341,8 +333,7 @@ entityresolution_delete_matching_workflow <- function(workflowName) {
     http_method = "DELETE",
     http_path = "/matchingworkflows/{workflowName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$delete_matching_workflow_input(workflowName = workflowName)
   output <- .entityresolution$delete_matching_workflow_output()
@@ -374,8 +365,7 @@ entityresolution_delete_policy_statement <- function(arn, statementId) {
     http_method = "DELETE",
     http_path = "/policies/{arn}/{statementId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$delete_policy_statement_input(arn = arn, statementId = statementId)
   output <- .entityresolution$delete_policy_statement_output()
@@ -405,8 +395,7 @@ entityresolution_delete_schema_mapping <- function(schemaName) {
     http_method = "DELETE",
     http_path = "/schemas/{schemaName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$delete_schema_mapping_input(schemaName = schemaName)
   output <- .entityresolution$delete_schema_mapping_output()
@@ -438,8 +427,7 @@ entityresolution_get_id_mapping_job <- function(jobId, workflowName) {
     http_method = "GET",
     http_path = "/idmappingworkflows/{workflowName}/jobs/{jobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_id_mapping_job_input(jobId = jobId, workflowName = workflowName)
   output <- .entityresolution$get_id_mapping_job_output()
@@ -469,8 +457,7 @@ entityresolution_get_id_mapping_workflow <- function(workflowName) {
     http_method = "GET",
     http_path = "/idmappingworkflows/{workflowName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_id_mapping_workflow_input(workflowName = workflowName)
   output <- .entityresolution$get_id_mapping_workflow_output()
@@ -500,8 +487,7 @@ entityresolution_get_id_namespace <- function(idNamespaceName) {
     http_method = "GET",
     http_path = "/idnamespaces/{idNamespaceName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_id_namespace_input(idNamespaceName = idNamespaceName)
   output <- .entityresolution$get_id_namespace_output()
@@ -537,8 +523,7 @@ entityresolution_get_match_id <- function(applyNormalization = NULL, record, wor
     http_method = "POST",
     http_path = "/matchingworkflows/{workflowName}/matches",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_match_id_input(applyNormalization = applyNormalization, record = record, workflowName = workflowName)
   output <- .entityresolution$get_match_id_output()
@@ -570,8 +555,7 @@ entityresolution_get_matching_job <- function(jobId, workflowName) {
     http_method = "GET",
     http_path = "/matchingworkflows/{workflowName}/jobs/{jobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_matching_job_input(jobId = jobId, workflowName = workflowName)
   output <- .entityresolution$get_matching_job_output()
@@ -601,8 +585,7 @@ entityresolution_get_matching_workflow <- function(workflowName) {
     http_method = "GET",
     http_path = "/matchingworkflows/{workflowName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_matching_workflow_input(workflowName = workflowName)
   output <- .entityresolution$get_matching_workflow_output()
@@ -633,8 +616,7 @@ entityresolution_get_policy <- function(arn) {
     http_method = "GET",
     http_path = "/policies/{arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_policy_input(arn = arn)
   output <- .entityresolution$get_policy_output()
@@ -666,8 +648,7 @@ entityresolution_get_provider_service <- function(providerName, providerServiceN
     http_method = "GET",
     http_path = "/providerservices/{providerName}/{providerServiceName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_provider_service_input(providerName = providerName, providerServiceName = providerServiceName)
   output <- .entityresolution$get_provider_service_output()
@@ -697,8 +678,7 @@ entityresolution_get_schema_mapping <- function(schemaName) {
     http_method = "GET",
     http_path = "/schemas/{schemaName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$get_schema_mapping_input(schemaName = schemaName)
   output <- .entityresolution$get_schema_mapping_output()
@@ -730,8 +710,7 @@ entityresolution_list_id_mapping_jobs <- function(maxResults = NULL, nextToken =
     http_method = "GET",
     http_path = "/idmappingworkflows/{workflowName}/jobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs")
   )
   input <- .entityresolution$list_id_mapping_jobs_input(maxResults = maxResults, nextToken = nextToken, workflowName = workflowName)
   output <- .entityresolution$list_id_mapping_jobs_output()
@@ -763,8 +742,7 @@ entityresolution_list_id_mapping_workflows <- function(maxResults = NULL, nextTo
     http_method = "GET",
     http_path = "/idmappingworkflows",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaries")
   )
   input <- .entityresolution$list_id_mapping_workflows_input(maxResults = maxResults, nextToken = nextToken)
   output <- .entityresolution$list_id_mapping_workflows_output()
@@ -795,8 +773,7 @@ entityresolution_list_id_namespaces <- function(maxResults = NULL, nextToken = N
     http_method = "GET",
     http_path = "/idnamespaces",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "idNamespaceSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "idNamespaceSummaries")
   )
   input <- .entityresolution$list_id_namespaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .entityresolution$list_id_namespaces_output()
@@ -828,8 +805,7 @@ entityresolution_list_matching_jobs <- function(maxResults = NULL, nextToken = N
     http_method = "GET",
     http_path = "/matchingworkflows/{workflowName}/jobs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs")
   )
   input <- .entityresolution$list_matching_jobs_input(maxResults = maxResults, nextToken = nextToken, workflowName = workflowName)
   output <- .entityresolution$list_matching_jobs_output()
@@ -861,8 +837,7 @@ entityresolution_list_matching_workflows <- function(maxResults = NULL, nextToke
     http_method = "GET",
     http_path = "/matchingworkflows",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workflowSummaries")
   )
   input <- .entityresolution$list_matching_workflows_input(maxResults = maxResults, nextToken = nextToken)
   output <- .entityresolution$list_matching_workflows_output()
@@ -895,8 +870,7 @@ entityresolution_list_provider_services <- function(maxResults = NULL, nextToken
     http_method = "GET",
     http_path = "/providerservices",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "providerServiceSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "providerServiceSummaries")
   )
   input <- .entityresolution$list_provider_services_input(maxResults = maxResults, nextToken = nextToken, providerName = providerName)
   output <- .entityresolution$list_provider_services_output()
@@ -928,8 +902,7 @@ entityresolution_list_schema_mappings <- function(maxResults = NULL, nextToken =
     http_method = "GET",
     http_path = "/schemas",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "schemaList"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "schemaList")
   )
   input <- .entityresolution$list_schema_mappings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .entityresolution$list_schema_mappings_output()
@@ -959,8 +932,7 @@ entityresolution_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .entityresolution$list_tags_for_resource_output()
@@ -999,8 +971,7 @@ entityresolution_put_policy <- function(arn, policy, token = NULL) {
     http_method = "PUT",
     http_path = "/policies/{arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$put_policy_input(arn = arn, policy = policy, token = token)
   output <- .entityresolution$put_policy_output()
@@ -1031,8 +1002,7 @@ entityresolution_start_id_mapping_job <- function(outputSourceConfig = NULL, wor
     http_method = "POST",
     http_path = "/idmappingworkflows/{workflowName}/jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$start_id_mapping_job_input(outputSourceConfig = outputSourceConfig, workflowName = workflowName)
   output <- .entityresolution$start_id_mapping_job_output()
@@ -1062,8 +1032,7 @@ entityresolution_start_matching_job <- function(workflowName) {
     http_method = "POST",
     http_path = "/matchingworkflows/{workflowName}/jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$start_matching_job_input(workflowName = workflowName)
   output <- .entityresolution$start_matching_job_output()
@@ -1095,8 +1064,7 @@ entityresolution_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .entityresolution$tag_resource_output()
@@ -1127,8 +1095,7 @@ entityresolution_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .entityresolution$untag_resource_output()
@@ -1168,8 +1135,7 @@ entityresolution_update_id_mapping_workflow <- function(description = NULL, idMa
     http_method = "PUT",
     http_path = "/idmappingworkflows/{workflowName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$update_id_mapping_workflow_input(description = description, idMappingTechniques = idMappingTechniques, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, roleArn = roleArn, workflowName = workflowName)
   output <- .entityresolution$update_id_mapping_workflow_output()
@@ -1207,8 +1173,7 @@ entityresolution_update_id_namespace <- function(description = NULL, idMappingWo
     http_method = "PUT",
     http_path = "/idnamespaces/{idNamespaceName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$update_id_namespace_input(description = description, idMappingWorkflowProperties = idMappingWorkflowProperties, idNamespaceName = idNamespaceName, inputSourceConfig = inputSourceConfig, roleArn = roleArn)
   output <- .entityresolution$update_id_namespace_output()
@@ -1250,8 +1215,7 @@ entityresolution_update_matching_workflow <- function(description = NULL, increm
     http_method = "PUT",
     http_path = "/matchingworkflows/{workflowName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$update_matching_workflow_input(description = description, incrementalRunConfig = incrementalRunConfig, inputSourceConfig = inputSourceConfig, outputSourceConfig = outputSourceConfig, resolutionTechniques = resolutionTechniques, roleArn = roleArn, workflowName = workflowName)
   output <- .entityresolution$update_matching_workflow_output()
@@ -1286,8 +1250,7 @@ entityresolution_update_schema_mapping <- function(description = NULL, mappedInp
     http_method = "PUT",
     http_path = "/schemas/{schemaName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .entityresolution$update_schema_mapping_input(description = description, mappedInputFields = mappedInputFields, schemaName = schemaName)
   output <- .entityresolution$update_schema_mapping_output()

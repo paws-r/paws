@@ -20,12 +20,12 @@ the \code{logGroup} parameter, but you can't specify both.}
 \item{resourceIdentifier}{Specifies the target for this operation. You must specify one of the
 following:
 \itemize{
-\item Specify the ARN of a log group to stop having CloudWatch Logs use the
-KMS key to encrypt log events that are ingested and stored by that log
-group. After you run this operation, CloudWatch Logs encrypts ingested
-log events with the default CloudWatch Logs method. The log group ARN
-must be in the following format. Replace \emph{REGION} and \emph{ACCOUNT_ID}
-with your Region and account ID.
+\item Specify the ARN of a log group to stop having CloudWatch Logs use
+the KMS key to encrypt log events that are ingested and stored by
+that log group. After you run this operation, CloudWatch Logs
+encrypts ingested log events with the default CloudWatch Logs
+method. The log group ARN must be in the following format. Replace
+\emph{REGION} and \emph{ACCOUNT_ID} with your Region and account ID.
 
 \code{arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME }
 \item Specify the following ARN to stop using this key to encrypt the

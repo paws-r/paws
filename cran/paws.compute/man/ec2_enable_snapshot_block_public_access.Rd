@@ -11,15 +11,15 @@ ec2_enable_snapshot_block_public_access(State, DryRun = NULL)
 \item{State}{[required] The mode in which to enable block public access for snapshots for the
 Region. Specify one of the following values:
 \itemize{
-\item \code{block-all-sharing} - Prevents all public sharing of snapshots in the
-Region. Users in the account will no longer be able to request new
-public sharing. Additionally, snapshots that are already publicly
-shared are treated as private and they are no longer publicly
-available.
-\item \code{block-new-sharing} - Prevents only new public sharing of snapshots in
-the Region. Users in the account will no longer be able to request new
-public sharing. However, snapshots that are already publicly shared,
-remain publicly available.
+\item \code{block-all-sharing} - Prevents all public sharing of snapshots in
+the Region. Users in the account will no longer be able to request
+new public sharing. Additionally, snapshots that are already
+publicly shared are treated as private and they are no longer
+publicly available.
+\item \code{block-new-sharing} - Prevents only new public sharing of snapshots
+in the Region. Users in the account will no longer be able to
+request new public sharing. However, snapshots that are already
+publicly shared, remain publicly available.
 }
 
 \code{unblocked} is not a valid value for

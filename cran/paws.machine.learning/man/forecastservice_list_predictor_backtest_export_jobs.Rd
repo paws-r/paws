@@ -27,9 +27,9 @@ and a value.
 \strong{Filter properties}
 \itemize{
 \item \code{Condition} - The condition to apply. Valid values are \code{IS} and
-\code{IS_NOT}. To include the predictor backtest export jobs that match the
-statement, specify \code{IS}. To exclude matching predictor backtest export
-jobs, specify \code{IS_NOT}.
+\code{IS_NOT}. To include the predictor backtest export jobs that match
+the statement, specify \code{IS}. To exclude matching predictor backtest
+export jobs, specify \code{IS_NOT}.
 \item \code{Key} - The name of the parameter to filter on. Valid values are
 \code{PredictorArn} and \code{Status}.
 \item \code{Value} - The value to match.

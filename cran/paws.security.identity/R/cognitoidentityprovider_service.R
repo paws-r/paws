@@ -48,32 +48,32 @@ NULL
 #' `CognitoIdentityProvider` client in other supported Amazon Web Services
 #' SDKs.
 #' 
-#' - [Amazon Web Services Command Line
-#'   Interface](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/#cli-aws-cognito-idp)
+#' -   [Amazon Web Services Command Line
+#'     Interface](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/#cli-aws-cognito-idp)
 #' 
-#' - [Amazon Web Services SDK for
-#'   .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CognitoIdentityProvider/TCognitoIdentityProviderClient.html)
+#' -   [Amazon Web Services SDK for
+#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CognitoIdentityProvider/TCognitoIdentityProviderClient.html)
 #' 
-#' - [Amazon Web Services SDK for
-#'   C++](https://sdk.amazonaws.com/cpp/api/LATEST/aws-cpp-sdk-cognito-idp/html/class_aws_1_1_cognito_identity_provider_1_1_cognito_identity_provider_client.html)
+#' -   [Amazon Web Services SDK for
+#'     C++](https://sdk.amazonaws.com/cpp/api/LATEST/aws-cpp-sdk-cognito-idp/html/class_aws_1_1_cognito_identity_provider_1_1_cognito_identity_provider_client.html)
 #' 
-#' - [Amazon Web Services SDK for
-#'   Go](https://docs.aws.amazon.com/sdk-for-go/api/service/cognitoidentityprovider/#CognitoIdentityProvider)
+#' -   [Amazon Web Services SDK for
+#'     Go](https://docs.aws.amazon.com/sdk-for-go/api/service/cognitoidentityprovider/#CognitoIdentityProvider)
 #' 
-#' - [Amazon Web Services SDK for Java
-#'   V2](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/cognitoidentityprovider/CognitoIdentityProviderClient.html)
+#' -   [Amazon Web Services SDK for Java
+#'     V2](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/cognitoidentityprovider/CognitoIdentityProviderClient.html)
 #' 
-#' - [Amazon Web Services SDK for
-#'   JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html)
+#' -   [Amazon Web Services SDK for
+#'     JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html)
 #' 
-#' - [Amazon Web Services SDK for PHP
-#'   V3](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-cognito-idp-2016-04-18.html)
+#' -   [Amazon Web Services SDK for PHP
+#'     V3](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-cognito-idp-2016-04-18.html)
 #' 
-#' - [Amazon Web Services SDK for
-#'   Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html)
+#' -   [Amazon Web Services SDK for
+#'     Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html)
 #' 
-#' - [Amazon Web Services SDK for Ruby
-#'   V3](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/CognitoIdentityProvider/Client.html)
+#' -   [Amazon Web Services SDK for Ruby
+#'     V3](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/CognitoIdentityProvider/Client.html)
 #' 
 #' To get started with an Amazon Web Services SDK, see [Tools to Build on
 #' Amazon Web Services](https://aws.amazon.com/developer/tools/). For

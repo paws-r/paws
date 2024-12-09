@@ -48,11 +48,11 @@ NULL
 #' 
 #' **Related operations:**
 #' 
-#' - [`encrypt_data`][paymentcryptographydataplane_encrypt_data]
+#' -   [`encrypt_data`][paymentcryptographydataplane_encrypt_data]
 #' 
-#' - [GetPublicCertificate](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html)
+#' -   [GetPublicCertificate](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html)
 #' 
-#' - [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
+#' -   [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
 #'
 #' @usage
 #' paymentcryptographydataplane_decrypt_data(KeyIdentifier, CipherText,
@@ -129,8 +129,7 @@ paymentcryptographydataplane_decrypt_data <- function(KeyIdentifier, CipherText,
     http_method = "POST",
     http_path = "/keys/{KeyIdentifier}/decrypt",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$decrypt_data_input(KeyIdentifier = KeyIdentifier, CipherText = CipherText, DecryptionAttributes = DecryptionAttributes, WrappedKey = WrappedKey)
   output <- .paymentcryptographydataplane$decrypt_data_output()
@@ -193,13 +192,13 @@ paymentcryptographydataplane_decrypt_data <- function(KeyIdentifier, CipherText,
 #' 
 #' **Related operations:**
 #' 
-#' - [`decrypt_data`][paymentcryptographydataplane_decrypt_data]
+#' -   [`decrypt_data`][paymentcryptographydataplane_decrypt_data]
 #' 
-#' - [GetPublicCertificate](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html)
+#' -   [GetPublicCertificate](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html)
 #' 
-#' - [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
+#' -   [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
 #' 
-#' - [`re_encrypt_data`][paymentcryptographydataplane_re_encrypt_data]
+#' -   [`re_encrypt_data`][paymentcryptographydataplane_re_encrypt_data]
 #'
 #' @usage
 #' paymentcryptographydataplane_encrypt_data(KeyIdentifier, PlainText,
@@ -283,8 +282,7 @@ paymentcryptographydataplane_encrypt_data <- function(KeyIdentifier, PlainText, 
     http_method = "POST",
     http_path = "/keys/{KeyIdentifier}/encrypt",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$encrypt_data_input(KeyIdentifier = KeyIdentifier, PlainText = PlainText, EncryptionAttributes = EncryptionAttributes, WrappedKey = WrappedKey)
   output <- .paymentcryptographydataplane$encrypt_data_output()
@@ -333,9 +331,9 @@ paymentcryptographydataplane_encrypt_data <- function(KeyIdentifier, PlainText, 
 #' 
 #' **Related operations:**
 #' 
-#' - [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
+#' -   [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
 #' 
-#' - [`verify_card_validation_data`][paymentcryptographydataplane_verify_card_validation_data]
+#' -   [`verify_card_validation_data`][paymentcryptographydataplane_verify_card_validation_data]
 #'
 #' @usage
 #' paymentcryptographydataplane_generate_card_validation_data(
@@ -414,8 +412,7 @@ paymentcryptographydataplane_generate_card_validation_data <- function(KeyIdenti
     http_method = "POST",
     http_path = "/cardvalidationdata/generate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$generate_card_validation_data_input(KeyIdentifier = KeyIdentifier, PrimaryAccountNumber = PrimaryAccountNumber, GenerationAttributes = GenerationAttributes, ValidationDataLength = ValidationDataLength)
   output <- .paymentcryptographydataplane$generate_card_validation_data_output()
@@ -460,7 +457,7 @@ paymentcryptographydataplane_generate_card_validation_data <- function(KeyIdenti
 #' 
 #' **Related operations:**
 #' 
-#' - [`verify_mac`][paymentcryptographydataplane_verify_mac]
+#' -   [`verify_mac`][paymentcryptographydataplane_verify_mac]
 #'
 #' @usage
 #' paymentcryptographydataplane_generate_mac(KeyIdentifier, MessageData,
@@ -531,8 +528,7 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
     http_method = "POST",
     http_path = "/mac/generate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$generate_mac_input(KeyIdentifier = KeyIdentifier, MessageData = MessageData, GenerationAttributes = GenerationAttributes, MacLength = MacLength)
   output <- .paymentcryptographydataplane$generate_mac_output()
@@ -573,11 +569,11 @@ paymentcryptographydataplane_generate_mac <- function(KeyIdentifier, MessageData
 #' 
 #' **Related operations:**
 #' 
-#' - [`generate_card_validation_data`][paymentcryptographydataplane_generate_card_validation_data]
+#' -   [`generate_card_validation_data`][paymentcryptographydataplane_generate_card_validation_data]
 #' 
-#' - [`translate_pin_data`][paymentcryptographydataplane_translate_pin_data]
+#' -   [`translate_pin_data`][paymentcryptographydataplane_translate_pin_data]
 #' 
-#' - [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
+#' -   [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
 #'
 #' @usage
 #' paymentcryptographydataplane_generate_pin_data(GenerationKeyIdentifier,
@@ -673,8 +669,7 @@ paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifi
     http_method = "POST",
     http_path = "/pindata/generate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$generate_pin_data_input(GenerationKeyIdentifier = GenerationKeyIdentifier, EncryptionKeyIdentifier = EncryptionKeyIdentifier, GenerationAttributes = GenerationAttributes, PinDataLength = PinDataLength, PrimaryAccountNumber = PrimaryAccountNumber, PinBlockFormat = PinBlockFormat)
   output <- .paymentcryptographydataplane$generate_pin_data_output()
@@ -718,13 +713,13 @@ paymentcryptographydataplane_generate_pin_data <- function(GenerationKeyIdentifi
 #' 
 #' **Related operations:**
 #' 
-#' - [`decrypt_data`][paymentcryptographydataplane_decrypt_data]
+#' -   [`decrypt_data`][paymentcryptographydataplane_decrypt_data]
 #' 
-#' - [`encrypt_data`][paymentcryptographydataplane_encrypt_data]
+#' -   [`encrypt_data`][paymentcryptographydataplane_encrypt_data]
 #' 
-#' - [GetPublicCertificate](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html)
+#' -   [GetPublicCertificate](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_GetPublicKeyCertificate.html)
 #' 
-#' - [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
+#' -   [ImportKey](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/API_ImportKey.html)
 #'
 #' @usage
 #' paymentcryptographydataplane_re_encrypt_data(IncomingKeyIdentifier,
@@ -818,8 +813,7 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
     http_method = "POST",
     http_path = "/keys/{IncomingKeyIdentifier}/reencrypt",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$re_encrypt_data_input(IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingKeyIdentifier = OutgoingKeyIdentifier, CipherText = CipherText, IncomingEncryptionAttributes = IncomingEncryptionAttributes, OutgoingEncryptionAttributes = OutgoingEncryptionAttributes, IncomingWrappedKey = IncomingWrappedKey, OutgoingWrappedKey = OutgoingWrappedKey)
   output <- .paymentcryptographydataplane$re_encrypt_data_output()
@@ -870,9 +864,9 @@ paymentcryptographydataplane_re_encrypt_data <- function(IncomingKeyIdentifier, 
 #' 
 #' **Related operations:**
 #' 
-#' - [`generate_pin_data`][paymentcryptographydataplane_generate_pin_data]
+#' -   [`generate_pin_data`][paymentcryptographydataplane_generate_pin_data]
 #' 
-#' - [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
+#' -   [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
 #'
 #' @usage
 #' paymentcryptographydataplane_translate_pin_data(IncomingKeyIdentifier,
@@ -980,8 +974,7 @@ paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifie
     http_method = "POST",
     http_path = "/pindata/translate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$translate_pin_data_input(IncomingKeyIdentifier = IncomingKeyIdentifier, OutgoingKeyIdentifier = OutgoingKeyIdentifier, IncomingTranslationAttributes = IncomingTranslationAttributes, OutgoingTranslationAttributes = OutgoingTranslationAttributes, EncryptedPinBlock = EncryptedPinBlock, IncomingDukptAttributes = IncomingDukptAttributes, OutgoingDukptAttributes = OutgoingDukptAttributes, IncomingWrappedKey = IncomingWrappedKey, OutgoingWrappedKey = OutgoingWrappedKey)
   output <- .paymentcryptographydataplane$translate_pin_data_output()
@@ -1028,9 +1021,9 @@ paymentcryptographydataplane_translate_pin_data <- function(IncomingKeyIdentifie
 #' 
 #' **Related operations:**
 #' 
-#' - [`verify_card_validation_data`][paymentcryptographydataplane_verify_card_validation_data]
+#' -   [`verify_card_validation_data`][paymentcryptographydataplane_verify_card_validation_data]
 #' 
-#' - [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
+#' -   [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
 #'
 #' @usage
 #' paymentcryptographydataplane_verify_auth_request_cryptogram(
@@ -1124,8 +1117,7 @@ paymentcryptographydataplane_verify_auth_request_cryptogram <- function(KeyIdent
     http_method = "POST",
     http_path = "/cryptogram/verify",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$verify_auth_request_cryptogram_input(KeyIdentifier = KeyIdentifier, TransactionData = TransactionData, AuthRequestCryptogram = AuthRequestCryptogram, MajorKeyDerivationMode = MajorKeyDerivationMode, SessionKeyDerivationAttributes = SessionKeyDerivationAttributes, AuthResponseAttributes = AuthResponseAttributes)
   output <- .paymentcryptographydataplane$verify_auth_request_cryptogram_output()
@@ -1172,11 +1164,11 @@ paymentcryptographydataplane_verify_auth_request_cryptogram <- function(KeyIdent
 #' 
 #' **Related operations:**
 #' 
-#' - [`generate_card_validation_data`][paymentcryptographydataplane_generate_card_validation_data]
+#' -   [`generate_card_validation_data`][paymentcryptographydataplane_generate_card_validation_data]
 #' 
-#' - [`verify_auth_request_cryptogram`][paymentcryptographydataplane_verify_auth_request_cryptogram]
+#' -   [`verify_auth_request_cryptogram`][paymentcryptographydataplane_verify_auth_request_cryptogram]
 #' 
-#' - [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
+#' -   [`verify_pin_data`][paymentcryptographydataplane_verify_pin_data]
 #'
 #' @usage
 #' paymentcryptographydataplane_verify_card_validation_data(KeyIdentifier,
@@ -1259,8 +1251,7 @@ paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifi
     http_method = "POST",
     http_path = "/cardvalidationdata/verify",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$verify_card_validation_data_input(KeyIdentifier = KeyIdentifier, PrimaryAccountNumber = PrimaryAccountNumber, VerificationAttributes = VerificationAttributes, ValidationData = ValidationData)
   output <- .paymentcryptographydataplane$verify_card_validation_data_output()
@@ -1295,7 +1286,7 @@ paymentcryptographydataplane_verify_card_validation_data <- function(KeyIdentifi
 #' 
 #' **Related operations:**
 #' 
-#' - [`generate_mac`][paymentcryptographydataplane_generate_mac]
+#' -   [`generate_mac`][paymentcryptographydataplane_generate_mac]
 #'
 #' @usage
 #' paymentcryptographydataplane_verify_mac(KeyIdentifier, MessageData, Mac,
@@ -1368,8 +1359,7 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
     http_method = "POST",
     http_path = "/mac/verify",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$verify_mac_input(KeyIdentifier = KeyIdentifier, MessageData = MessageData, Mac = Mac, VerificationAttributes = VerificationAttributes, MacLength = MacLength)
   output <- .paymentcryptographydataplane$verify_mac_output()
@@ -1409,9 +1399,9 @@ paymentcryptographydataplane_verify_mac <- function(KeyIdentifier, MessageData, 
 #' 
 #' **Related operations:**
 #' 
-#' - [`generate_pin_data`][paymentcryptographydataplane_generate_pin_data]
+#' -   [`generate_pin_data`][paymentcryptographydataplane_generate_pin_data]
 #' 
-#' - [`translate_pin_data`][paymentcryptographydataplane_translate_pin_data]
+#' -   [`translate_pin_data`][paymentcryptographydataplane_translate_pin_data]
 #'
 #' @usage
 #' paymentcryptographydataplane_verify_pin_data(VerificationKeyIdentifier,
@@ -1490,8 +1480,7 @@ paymentcryptographydataplane_verify_pin_data <- function(VerificationKeyIdentifi
     http_method = "POST",
     http_path = "/pindata/verify",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .paymentcryptographydataplane$verify_pin_data_input(VerificationKeyIdentifier = VerificationKeyIdentifier, EncryptionKeyIdentifier = EncryptionKeyIdentifier, VerificationAttributes = VerificationAttributes, EncryptedPinBlock = EncryptedPinBlock, PrimaryAccountNumber = PrimaryAccountNumber, PinBlockFormat = PinBlockFormat, PinDataLength = PinDataLength, DukptAttributes = DukptAttributes)
   output <- .paymentcryptographydataplane$verify_pin_data_output()

@@ -42,18 +42,18 @@ specified, the latest version is used. If specified, it must be one of:
 \itemize{
 \item For CodeCommit: the commit ID, branch, or Git tag to use.
 \item For GitHub: the commit ID, pull request ID, branch name, or tag name
-that corresponds to the version of the source code you want to build.
-If a pull request ID is specified, it must use the format
+that corresponds to the version of the source code you want to
+build. If a pull request ID is specified, it must use the format
 \code{pr/pull-request-ID} (for example \code{pr/25}). If a branch name is
-specified, the branch's HEAD commit ID is used. If not specified, the
-default branch's HEAD commit ID is used.
+specified, the branch's HEAD commit ID is used. If not specified,
+the default branch's HEAD commit ID is used.
 \item For GitLab: the commit ID, branch, or Git tag to use.
 \item For Bitbucket: the commit ID, branch name, or tag name that
-corresponds to the version of the source code you want to build. If a
-branch name is specified, the branch's HEAD commit ID is used. If not
-specified, the default branch's HEAD commit ID is used.
-\item For Amazon S3: the version ID of the object that represents the build
-input ZIP file to use.
+corresponds to the version of the source code you want to build. If
+a branch name is specified, the branch's HEAD commit ID is used. If
+not specified, the default branch's HEAD commit ID is used.
+\item For Amazon S3: the version ID of the object that represents the
+build input ZIP file to use.
 }
 
 If \code{sourceVersion} is specified at the build level, then that version

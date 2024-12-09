@@ -27,9 +27,9 @@ document.}
 
 \item{Policy}{[required] An Amazon Web Services resource-based policy document in JSON format.
 \itemize{
-\item The maximum size supported for a resource-based policy document is 20
-KB. DynamoDB counts whitespaces when calculating the size of a policy
-against this limit.
+\item The maximum size supported for a resource-based policy document is
+20 KB. DynamoDB counts whitespaces when calculating the size of a
+policy against this limit.
 \item Within a resource-based policy, if the action for a DynamoDB
 service-linked role (SLR) to replicate data for a global table is
 denied, adding or deleting a replica will fail with an error.

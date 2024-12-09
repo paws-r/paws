@@ -5,15 +5,12 @@
 \title{Accepts a subscription request to a specific asset}
 \usage{
 datazone_accept_subscription_request(
-  assetScopes = NULL,
   decisionComment = NULL,
   domainIdentifier,
   identifier
 )
 }
 \arguments{
-\item{assetScopes}{The asset scopes of the accept subscription request.}
-
 \item{decisionComment}{A description that specifies the reason for accepting the specified
 subscription request.}
 

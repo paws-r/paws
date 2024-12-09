@@ -17,8 +17,8 @@ ec2_describe_iam_instance_profile_associations(
 \item{Filters}{The filters.
 \itemize{
 \item \code{instance-id} - The ID of the instance.
-\item \code{state} - The state of the association (\code{associating} | \code{associated} |
-\code{disassociating}).
+\item \code{state} - The state of the association (\code{associating} | \code{associated}
+| \code{disassociating}).
 }}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next

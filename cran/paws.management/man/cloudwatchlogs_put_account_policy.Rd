@@ -24,24 +24,24 @@ cloudwatchlogs_put_account_policy(
 A data protection policy must include two JSON blocks:
 \itemize{
 \item The first block must include both a \code{DataIdentifer} array and an
-\code{Operation} property with an \code{Audit} action. The \code{DataIdentifer} array
-lists the types of sensitive data that you want to mask. For more
-information about the available options, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/}{Types of data that you can mask}.
+\code{Operation} property with an \code{Audit} action. The \code{DataIdentifer}
+array lists the types of sensitive data that you want to mask. For
+more information about the available options, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/}{Types of data that you can mask}.
 
 The \code{Operation} property with an \code{Audit} action is required to find
 the sensitive data terms. This \code{Audit} action must contain a
 \code{FindingsDestination} object. You can optionally use that
-\code{FindingsDestination} object to list one or more destinations to send
-audit findings to. If you specify destinations such as log groups,
-Firehose streams, and S3 buckets, they must already exist.
+\code{FindingsDestination} object to list one or more destinations to
+send audit findings to. If you specify destinations such as log
+groups, Firehose streams, and S3 buckets, they must already exist.
 \item The second block must include both a \code{DataIdentifer} array and an
-\code{Operation} property with an \code{Deidentify} action. The \code{DataIdentifer}
-array must exactly match the \code{DataIdentifer} array in the first block
-of the policy.
+\code{Operation} property with an \code{Deidentify} action. The
+\code{DataIdentifer} array must exactly match the \code{DataIdentifer} array
+in the first block of the policy.
 
-The \code{Operation} property with the \code{Deidentify} action is what actually
-masks the data, and it must contain the \code{ "MaskConfig": {}} object.
-The \code{ "MaskConfig": {}} object must be empty.
+The \code{Operation} property with the \code{Deidentify} action is what
+actually masks the data, and it must contain the \code{ "MaskConfig": {}}
+object. The \code{ "MaskConfig": {}} object must be empty.
 }
 
 For an example data protection policy, see the \strong{Examples} section on
@@ -70,17 +70,17 @@ to. Supported destinations are:
 subscription policy, for same-account delivery.
 \item An Firehose data stream in the same account as the subscription
 policy, for same-account delivery.
-\item A Lambda function in the same account as the subscription policy,
-for same-account delivery.
+\item A Lambda function in the same account as the subscription
+policy, for same-account delivery.
 \item A logical destination in a different account created with
 \code{\link[=cloudwatchlogs_put_destination]{put_destination}}, for
 cross-account delivery. Kinesis Data Streams and Firehose are
 supported as logical destinations.
 }
 \item \strong{RoleArn} The ARN of an IAM role that grants CloudWatch Logs
-permissions to deliver ingested log events to the destination stream.
-You don't need to provide the ARN when you are working with a logical
-destination for cross-account delivery.
+permissions to deliver ingested log events to the destination
+stream. You don't need to provide the ARN when you are working with
+a logical destination for cross-account delivery.
 \item \strong{FilterPattern} A filter pattern for subscribing to a filtered
 stream of log events.
 \item \strong{Distribution} The method used to distribute log data to the

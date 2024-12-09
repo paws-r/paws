@@ -26,8 +26,8 @@ default propagation route table for the transit gateway (\code{true} |
 \item \code{state} - The state of the route table (\code{available} | \code{deleting} |
 \code{deleted} | \code{pending}).
 \item \code{transit-gateway-id} - The ID of the transit gateway.
-\item \code{transit-gateway-route-table-id} - The ID of the transit gateway route
-table.
+\item \code{transit-gateway-route-table-id} - The ID of the transit gateway
+route table.
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve

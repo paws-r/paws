@@ -155,9 +155,10 @@ KMS encryption key.
 
 If an encryption key is not specified in \code{KmsKeyId}:
 \itemize{
-\item If \code{ReplicationSourceIdentifier} identifies an encrypted source, then
-Amazon Neptune will use the encryption key used to encrypt the source.
-Otherwise, Amazon Neptune will use your default encryption key.
+\item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
+then Amazon Neptune will use the encryption key used to encrypt the
+source. Otherwise, Amazon Neptune will use your default encryption
+key.
 \item If the \code{StorageEncrypted} parameter is true and
 \code{ReplicationSourceIdentifier} is not specified, then Amazon Neptune
 will use your default encryption key.

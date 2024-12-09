@@ -66,8 +66,8 @@ stack set and its associated stack instances.
 Some stack templates might include resources that can affect
 permissions in your Amazon Web Services account; for example, by
 creating new Identity and Access Management (IAM) users. For those
-stacks sets, you must explicitly acknowledge this by specifying one of
-these capabilities.
+stacks sets, you must explicitly acknowledge this by specifying one
+of these capabilities.
 
 The following IAM resources require you to specify either the
 \code{CAPABILITY_IAM} or \code{CAPABILITY_NAMED_IAM} capability.
@@ -75,18 +75,18 @@ The following IAM resources require you to specify either the
 \item If you have IAM resources, you can specify either capability.
 \item If you have IAM resources with custom names, you \emph{must} specify
 \code{CAPABILITY_NAMED_IAM}.
-\item If you don't specify either of these capabilities, CloudFormation
-returns an \code{InsufficientCapabilities} error.
+\item If you don't specify either of these capabilities,
+CloudFormation returns an \code{InsufficientCapabilities} error.
 }
 
-If your stack template contains these resources, we recommend that you
-review all permissions associated with them and edit their permissions
-if necessary.
+If your stack template contains these resources, we recommend that
+you review all permissions associated with them and edit their
+permissions if necessary.
 \itemize{
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
@@ -95,11 +95,12 @@ if necessary.
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
-Some templates reference macros. If your stack set template references
-one or more macros, you must update the stack set directly from the
-processed template, without first reviewing the resulting changes in a
-change set. To update the stack set directly, you must acknowledge
-this capability. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation Macros to Perform Custom Processing on Templates}.
+Some templates reference macros. If your stack set template
+references one or more macros, you must update the stack set
+directly from the processed template, without first reviewing the
+resulting changes in a change set. To update the stack set directly,
+you must acknowledge this capability. For more information, see
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation Macros to Perform Custom Processing on Templates}.
 
 Stack sets with service-managed permissions do not currently support
 the use of macros in templates. (This includes the
@@ -120,14 +121,14 @@ number of 50 tags.
 If you specify tags for this parameter, those tags replace any list of
 tags that are currently associated with this stack set. This means:
 \itemize{
-\item If you don't specify this parameter, CloudFormation doesn't modify the
-stack's tags.
-\item If you specify \emph{any} tags using this parameter, you must specify \emph{all}
-the tags that you want associated with this stack set, even tags
-you've specified before (for example, when creating the stack set or
-during a previous update of the stack set.). Any tags that you don't
-include in the updated list of tags are removed from the stack set,
-and therefore from the stacks and resources as well.
+\item If you don't specify this parameter, CloudFormation doesn't modify
+the stack's tags.
+\item If you specify \emph{any} tags using this parameter, you must specify
+\emph{all} the tags that you want associated with this stack set, even
+tags you've specified before (for example, when creating the stack
+set or during a previous update of the stack set.). Any tags that
+you don't include in the updated list of tags are removed from the
+stack set, and therefore from the stacks and resources as well.
 \item If you specify an empty value, CloudFormation removes all currently
 associated tags.
 }
@@ -192,12 +193,12 @@ stack instances with their existing stack instance status.}
 created. You cannot modify \code{PermissionModel} if there are stack
 instances associated with your stack set.
 \itemize{
-\item With \code{self-managed} permissions, you must create the administrator and
-execution roles required to deploy to target accounts. For more
+\item With \code{self-managed} permissions, you must create the administrator
+and execution roles required to deploy to target accounts. For more
 information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant Self-Managed Stack Set Permissions}.
 \item With \code{service-managed} permissions, StackSets automatically creates
-the IAM roles required to deploy to accounts managed by Organizations.
-For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{Grant Service-Managed Stack Set Permissions}.
+the IAM roles required to deploy to accounts managed by
+Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{Grant Service-Managed Stack Set Permissions}.
 }}
 
 \item{AutoDeployment}{[Service-managed permissions] Describes whether StackSets

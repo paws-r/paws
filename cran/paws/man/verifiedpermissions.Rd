@@ -86,14 +86,15 @@ someone else use the name \code{jane}, then that new user automatically
 gets access to everything granted by policies that still reference
 \code{User::"jane"}. Cedar can’t distinguish between the new user and the
 old. This applies to both principal and resource identifiers. Always
-use identifiers that are guaranteed unique and never reused to ensure
-that you don’t unintentionally grant access because of the presence of
-an old identifier in a policy.
+use identifiers that are guaranteed unique and never reused to
+ensure that you don’t unintentionally grant access because of the
+presence of an old identifier in a policy.
 
 Where you use a UUID for an entity, we recommend that you follow it
-with the // comment specifier and the ‘friendly’ name of your entity.
-This helps to make your policies easier to understand. For example:
-principal == User::"a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111", // alice
+with the // comment specifier and the ‘friendly’ name of your
+entity. This helps to make your policies easier to understand. For
+example: principal == User::"a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111",
+// alice
 \item \strong{Do not include personally identifying, confidential, or sensitive
 information as part of the unique identifier for your principals or
 resources.} These identifiers are included in log entries shared in

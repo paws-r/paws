@@ -75,11 +75,11 @@ in the \emph{Amazon RDS User Guide}.
 in the \emph{Amazon RDS User Guide}.
 \item The specified DB instance must have automatic backups enabled, that
 is, its backup retention period must be greater than 0.
-\item If the source DB instance is in the same Amazon Web Services Region as
-the read replica, specify a valid DB instance identifier.
-\item If the source DB instance is in a different Amazon Web Services Region
-from the read replica, specify a valid DB instance ARN. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
+\item If the source DB instance is in the same Amazon Web Services Region
+as the read replica, specify a valid DB instance identifier.
+\item If the source DB instance is in a different Amazon Web Services
+Region from the read replica, specify a valid DB instance ARN. For
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
 in the \emph{Amazon RDS User Guide}. This doesn't apply to SQL Server or
 RDS Custom, which don't support cross-Region replicas.
 }}
@@ -178,15 +178,15 @@ specified, then the new DB instance isn't created in a VPC.
 Constraints:
 \itemize{
 \item If supplied, must match the name of an existing DB subnet group.
-\item The specified DB subnet group must be in the same Amazon Web Services
-Region in which the operation is running.
+\item The specified DB subnet group must be in the same Amazon Web
+Services Region in which the operation is running.
 \item All read replicas in one Amazon Web Services Region that are created
 from the same source DB instance must either:
 \itemize{
-\item Specify DB subnet groups from the same VPC. All these read replicas
-are created in the same VPC.
-\item Not specify a DB subnet group. All these read replicas are created
-outside of any VPC.
+\item Specify DB subnet groups from the same VPC. All these read
+replicas are created in the same VPC.
+\item Not specify a DB subnet group. All these read replicas are
+created outside of any VPC.
 }
 }
 
@@ -289,14 +289,14 @@ contains the encrypted source DB instance. The presigned URL request
 must contain the following parameter values:
 \itemize{
 \item \code{DestinationRegion} - The Amazon Web Services Region that the
-encrypted read replica is created in. This Amazon Web Services Region
-is the same one where the
+encrypted read replica is created in. This Amazon Web Services
+Region is the same one where the
 \code{\link[=rds_create_db_instance_read_replica]{create_db_instance_read_replica}}
 operation is called that contains this presigned URL.
 
 For example, if you create an encrypted DB instance in the us-west-1
-Amazon Web Services Region, from a source DB instance in the us-east-2
-Amazon Web Services Region, then you call the
+Amazon Web Services Region, from a source DB instance in the
+us-east-2 Amazon Web Services Region, then you call the
 \code{\link[=rds_create_db_instance_read_replica]{create_db_instance_read_replica}}
 operation in the us-east-1 Amazon Web Services Region and provide a
 presigned URL that contains a call to the
@@ -304,24 +304,25 @@ presigned URL that contains a call to the
 operation in the us-west-2 Amazon Web Services Region. For this
 example, the \code{DestinationRegion} in the presigned URL must be set to
 the us-east-1 Amazon Web Services Region.
-\item \code{KmsKeyId} - The KMS key identifier for the key to use to encrypt the
-read replica in the destination Amazon Web Services Region. This is
-the same identifier for both the
+\item \code{KmsKeyId} - The KMS key identifier for the key to use to encrypt
+the read replica in the destination Amazon Web Services Region. This
+is the same identifier for both the
 \code{\link[=rds_create_db_instance_read_replica]{create_db_instance_read_replica}}
 operation that is called in the destination Amazon Web Services
 Region, and the operation contained in the presigned URL.
 \item \code{SourceDBInstanceIdentifier} - The DB instance identifier for the
-encrypted DB instance to be replicated. This identifier must be in the
-Amazon Resource Name (ARN) format for the source Amazon Web Services
-Region. For example, if you are creating an encrypted read replica
-from a DB instance in the us-west-2 Amazon Web Services Region, then
-your \code{SourceDBInstanceIdentifier} looks like the following example:
+encrypted DB instance to be replicated. This identifier must be in
+the Amazon Resource Name (ARN) format for the source Amazon Web
+Services Region. For example, if you are creating an encrypted read
+replica from a DB instance in the us-west-2 Amazon Web Services
+Region, then your \code{SourceDBInstanceIdentifier} looks like the
+following example:
 \code{arn:aws:rds:us-west-2:123456789012:instance:mysql-instance1-20161115}.
 }
 
 To learn how to generate a Signature Version 4 signed request, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (Amazon Web Services Signature Version 4)}
-and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process}.
+and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process}.
 
 If you are using an Amazon Web Services SDK tool or the CLI, you can
 specify \code{SourceRegion} (or \code{--source-region} for the CLI) instead of
@@ -490,8 +491,8 @@ following requirements:
 \item The profile must exist in your account.
 \item The profile must have an IAM role that Amazon EC2 has permissions to
 assume.
-\item The instance profile name and the associated IAM role name must start
-with the prefix \code{AWSRDSCustom}.
+\item The instance profile name and the associated IAM role name must
+start with the prefix \code{AWSRDSCustom}.
 }
 
 For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
@@ -548,8 +549,8 @@ Constraints:
 \item Must be the identifier of an existing Multi-AZ DB cluster.
 \item Can't be specified if the \code{SourceDBInstanceIdentifier} parameter is
 also specified.
-\item The specified DB cluster must have automatic backups enabled, that is,
-its backup retention period must be greater than 0.
+\item The specified DB cluster must have automatic backups enabled, that
+is, its backup retention period must be greater than 0.
 \item The source DB cluster must be in the same Amazon Web Services Region
 as the read replica. Cross-Region replication isn't supported.
 }}

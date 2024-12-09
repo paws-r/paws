@@ -21,21 +21,21 @@ single rule - match all filters.
 \item \code{description} - The description of the security group.
 \item \code{egress.ip-permission.cidr} - An IPv4 CIDR block for an outbound
 security group rule.
-\item \code{egress.ip-permission.from-port} - For an outbound rule, the start of
-port range for the TCP and UDP protocols, or an ICMP type number.
-\item \code{egress.ip-permission.group-id} - The ID of a security group that has
-been referenced in an outbound security group rule.
-\item \code{egress.ip-permission.group-name} - The name of a security group that
-is referenced in an outbound security group rule.
-\item \code{egress.ip-permission.ipv6-cidr} - An IPv6 CIDR block for an outbound
-security group rule.
+\item \code{egress.ip-permission.from-port} - For an outbound rule, the start
+of port range for the TCP and UDP protocols, or an ICMP type number.
+\item \code{egress.ip-permission.group-id} - The ID of a security group that
+has been referenced in an outbound security group rule.
+\item \code{egress.ip-permission.group-name} - The name of a security group
+that is referenced in an outbound security group rule.
+\item \code{egress.ip-permission.ipv6-cidr} - An IPv6 CIDR block for an
+outbound security group rule.
 \item \code{egress.ip-permission.prefix-list-id} - The ID of a prefix list to
 which a security group rule allows outbound access.
 \item \code{egress.ip-permission.protocol} - The IP protocol for an outbound
-security group rule (\code{tcp} | \code{udp} | \code{icmp}, a protocol number, or -1
-for all protocols).
-\item \code{egress.ip-permission.to-port} - For an outbound rule, the end of port
-range for the TCP and UDP protocols, or an ICMP code.
+security group rule (\code{tcp} | \code{udp} | \code{icmp}, a protocol number, or
+-1 for all protocols).
+\item \code{egress.ip-permission.to-port} - For an outbound rule, the end of
+port range for the TCP and UDP protocols, or an ICMP code.
 \item \code{egress.ip-permission.user-id} - The ID of an Amazon Web Services
 account that has been referenced in an outbound security group rule.
 \item \code{group-id} - The ID of the security group.
@@ -48,10 +48,10 @@ range for the TCP and UDP protocols, or an ICMP type number.
 referenced in an inbound security group rule.
 \item \code{ip-permission.group-name} - The name of a security group that is
 referenced in an inbound security group rule.
-\item \code{ip-permission.ipv6-cidr} - An IPv6 CIDR block for an inbound security
-group rule.
-\item \code{ip-permission.prefix-list-id} - The ID of a prefix list from which a
-security group rule allows inbound access.
+\item \code{ip-permission.ipv6-cidr} - An IPv6 CIDR block for an inbound
+security group rule.
+\item \code{ip-permission.prefix-list-id} - The ID of a prefix list from which
+a security group rule allows inbound access.
 \item \code{ip-permission.protocol} - The IP protocol for an inbound security
 group rule (\code{tcp} | \code{udp} | \code{icmp}, a protocol number, or -1 for all
 protocols).
@@ -62,13 +62,13 @@ that has been referenced in an inbound security group rule.
 \item \code{owner-id} - The Amazon Web Services account ID of the owner of the
 security group.
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as the
-filter value. For example, to find all resources that have a tag with
-the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
-filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
-to find all resources assigned a tag with a specific key, regardless
-of the tag value.
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this
+filter to find all resources assigned a tag with a specific key,
+regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC specified when the security group was
 created.
 }}

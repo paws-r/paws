@@ -18,7 +18,7 @@ elasticache_batch_stop_update_action(
 \item{ServiceUpdateName}{[required] The unique ID of the service update}
 }
 \description{
-Stop the service update. For more information on service updates and stopping them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/}{Stopping Service Updates}.
+Stop the service update. For more information on service updates and stopping them, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Stopping Service Updates}.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_batch_stop_update_action/} for full documentation.
 }

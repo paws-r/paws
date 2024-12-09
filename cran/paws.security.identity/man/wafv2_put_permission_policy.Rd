@@ -18,8 +18,8 @@ The policy specifications must conform to the following:
 \item The policy must include specifications for \code{Effect}, \code{Action}, and
 \code{Principal}.
 \item \code{Effect} must specify \code{Allow}.
-\item \code{Action} must specify \code{wafv2:CreateWebACL}, \code{wafv2:UpdateWebACL}, and
-\code{wafv2:PutFirewallManagerRuleGroups} and may optionally specify
+\item \code{Action} must specify \code{wafv2:CreateWebACL}, \code{wafv2:UpdateWebACL},
+and \code{wafv2:PutFirewallManagerRuleGroups} and may optionally specify
 \code{wafv2:GetRuleGroup}. WAF rejects any extra actions or wildcard
 actions in the policy.
 \item The policy must not include a \code{Resource} parameter.

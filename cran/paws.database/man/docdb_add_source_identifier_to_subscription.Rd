@@ -16,8 +16,8 @@ you want to add a source identifier to.}
 provided.
 \item If the source type is a security group, a \code{DBSecurityGroupName} must
 be provided.
-\item If the source type is a parameter group, a \code{DBParameterGroupName} must
-be provided.
+\item If the source type is a parameter group, a \code{DBParameterGroupName}
+must be provided.
 \item If the source type is a snapshot, a \code{DBSnapshotIdentifier} must be
 provided.
 }}

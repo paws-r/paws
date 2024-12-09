@@ -28,8 +28,7 @@ macie2_accept_invitation <- function(administratorAccountId = NULL, invitationId
     http_method = "POST",
     http_path = "/invitations/accept",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$accept_invitation_input(administratorAccountId = administratorAccountId, invitationId = invitationId, masterAccount = masterAccount)
   output <- .macie2$accept_invitation_output()
@@ -60,8 +59,7 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
     http_method = "POST",
     http_path = "/custom-data-identifiers/get",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$batch_get_custom_data_identifiers_input(ids = ids)
   output <- .macie2$batch_get_custom_data_identifiers_output()
@@ -95,8 +93,7 @@ macie2_batch_update_automated_discovery_accounts <- function(accounts = NULL) {
     http_method = "PATCH",
     http_path = "/automated-discovery/accounts",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$batch_update_automated_discovery_accounts_input(accounts = accounts)
   output <- .macie2$batch_update_automated_discovery_accounts_output()
@@ -141,8 +138,7 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
     http_method = "POST",
     http_path = "/allow-lists",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$create_allow_list_input(clientToken = clientToken, criteria = criteria, description = description, name = name, tags = tags)
   output <- .macie2$create_allow_list_output()
@@ -180,12 +176,12 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #' this property.
 #' @param jobType &#91;required&#93; The schedule for running the job. Valid values are:
 #' 
-#' - ONE_TIME - Run the job only once. If you specify this value, don't
-#'   specify a value for the scheduleFrequency property.
+#' -   ONE_TIME - Run the job only once. If you specify this value, don't
+#'     specify a value for the scheduleFrequency property.
 #' 
-#' - SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
-#'   specify this value, use the scheduleFrequency property to specify the
-#'   recurrence pattern for the job.
+#' -   SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
+#'     specify this value, use the scheduleFrequency property to specify
+#'     the recurrence pattern for the job.
 #' @param managedDataIdentifierIds An array of unique identifiers, one for each managed data identifier for
 #' the job to include (use) or exclude (not use) when it analyzes data.
 #' Inclusion or exclusion depends on the managed data identifier selection
@@ -196,23 +192,23 @@ macie2_create_allow_list <- function(clientToken, criteria, description = NULL, 
 #' @param managedDataIdentifierSelector The selection type to apply when determining which managed data
 #' identifiers the job uses to analyze data. Valid values are:
 #' 
-#' - ALL - Use all managed data identifiers. If you specify this value,
-#'   don't specify any values for the managedDataIdentifierIds property.
+#' -   ALL - Use all managed data identifiers. If you specify this value,
+#'     don't specify any values for the managedDataIdentifierIds property.
 #' 
-#' - EXCLUDE - Use all managed data identifiers except the ones specified
-#'   by the managedDataIdentifierIds property.
+#' -   EXCLUDE - Use all managed data identifiers except the ones specified
+#'     by the managedDataIdentifierIds property.
 #' 
-#' - INCLUDE - Use only the managed data identifiers specified by the
-#'   managedDataIdentifierIds property.
+#' -   INCLUDE - Use only the managed data identifiers specified by the
+#'     managedDataIdentifierIds property.
 #' 
-#' - NONE - Don't use any managed data identifiers. If you specify this
-#'   value, specify at least one value for the customDataIdentifierIds
-#'   property and don't specify any values for the managedDataIdentifierIds
-#'   property.
+#' -   NONE - Don't use any managed data identifiers. If you specify this
+#'     value, specify at least one value for the customDataIdentifierIds
+#'     property and don't specify any values for the
+#'     managedDataIdentifierIds property.
 #' 
-#' - RECOMMENDED (default) - Use the recommended set of managed data
-#'   identifiers. If you specify this value, don't specify any values for
-#'   the managedDataIdentifierIds property.
+#' -   RECOMMENDED (default) - Use the recommended set of managed data
+#'     identifiers. If you specify this value, don't specify any values for
+#'     the managedDataIdentifierIds property.
 #' 
 #' If you don't specify a value for this property, the job uses the
 #' recommended set of managed data identifiers.
@@ -258,8 +254,7 @@ macie2_create_classification_job <- function(allowListIds = NULL, clientToken, c
     http_method = "POST",
     http_path = "/jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$create_classification_job_input(allowListIds = allowListIds, clientToken = clientToken, customDataIdentifierIds = customDataIdentifierIds, description = description, initialRun = initialRun, jobType = jobType, managedDataIdentifierIds = managedDataIdentifierIds, managedDataIdentifierSelector = managedDataIdentifierSelector, name = name, s3JobDefinition = s3JobDefinition, samplingPercentage = samplingPercentage, scheduleFrequency = scheduleFrequency, tags = tags)
   output <- .macie2$create_classification_job_output()
@@ -344,8 +339,7 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
     http_method = "POST",
     http_path = "/custom-data-identifiers",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$create_custom_data_identifier_input(clientToken = clientToken, description = description, ignoreWords = ignoreWords, keywords = keywords, maximumMatchDistance = maximumMatchDistance, name = name, regex = regex, severityLevels = severityLevels, tags = tags)
   output <- .macie2$create_custom_data_identifier_output()
@@ -406,8 +400,7 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
     http_method = "POST",
     http_path = "/findingsfilters",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$create_findings_filter_input(action = action, clientToken = clientToken, description = description, findingCriteria = findingCriteria, name = name, position = position, tags = tags)
   output <- .macie2$create_findings_filter_output()
@@ -445,8 +438,7 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
     http_method = "POST",
     http_path = "/invitations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$create_invitations_input(accountIds = accountIds, disableEmailNotification = disableEmailNotification, message = message)
   output <- .macie2$create_invitations_output()
@@ -482,8 +474,7 @@ macie2_create_member <- function(account, tags = NULL) {
     http_method = "POST",
     http_path = "/members",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$create_member_input(account = account, tags = tags)
   output <- .macie2$create_member_output()
@@ -515,8 +506,7 @@ macie2_create_sample_findings <- function(findingTypes = NULL) {
     http_method = "POST",
     http_path = "/findings/sample",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$create_sample_findings_input(findingTypes = findingTypes)
   output <- .macie2$create_sample_findings_output()
@@ -548,8 +538,7 @@ macie2_decline_invitations <- function(accountIds) {
     http_method = "POST",
     http_path = "/invitations/decline",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$decline_invitations_input(accountIds = accountIds)
   output <- .macie2$decline_invitations_output()
@@ -589,8 +578,7 @@ macie2_delete_allow_list <- function(id, ignoreJobChecks = NULL) {
     http_method = "DELETE",
     http_path = "/allow-lists/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$delete_allow_list_input(id = id, ignoreJobChecks = ignoreJobChecks)
   output <- .macie2$delete_allow_list_output()
@@ -621,8 +609,7 @@ macie2_delete_custom_data_identifier <- function(id) {
     http_method = "DELETE",
     http_path = "/custom-data-identifiers/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$delete_custom_data_identifier_input(id = id)
   output <- .macie2$delete_custom_data_identifier_output()
@@ -653,8 +640,7 @@ macie2_delete_findings_filter <- function(id) {
     http_method = "DELETE",
     http_path = "/findingsfilters/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$delete_findings_filter_input(id = id)
   output <- .macie2$delete_findings_filter_output()
@@ -686,8 +672,7 @@ macie2_delete_invitations <- function(accountIds) {
     http_method = "POST",
     http_path = "/invitations/delete",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$delete_invitations_input(accountIds = accountIds)
   output <- .macie2$delete_invitations_output()
@@ -719,8 +704,7 @@ macie2_delete_member <- function(id) {
     http_method = "DELETE",
     http_path = "/members/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$delete_member_input(id = id)
   output <- .macie2$delete_member_output()
@@ -756,8 +740,7 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
     http_method = "POST",
     http_path = "/datasources/s3",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "buckets"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "buckets")
   )
   input <- .macie2$describe_buckets_input(criteria = criteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$describe_buckets_output()
@@ -787,8 +770,7 @@ macie2_describe_classification_job <- function(jobId) {
     http_method = "GET",
     http_path = "/jobs/{jobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$describe_classification_job_input(jobId = jobId)
   output <- .macie2$describe_classification_job_output()
@@ -819,8 +801,7 @@ macie2_describe_organization_configuration <- function() {
     http_method = "GET",
     http_path = "/admin/configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$describe_organization_configuration_input()
   output <- .macie2$describe_organization_configuration_output()
@@ -851,8 +832,7 @@ macie2_disable_macie <- function() {
     http_method = "DELETE",
     http_path = "/macie",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$disable_macie_input()
   output <- .macie2$disable_macie_output()
@@ -884,8 +864,7 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
     http_method = "DELETE",
     http_path = "/admin",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$disable_organization_admin_account_input(adminAccountId = adminAccountId)
   output <- .macie2$disable_organization_admin_account_output()
@@ -916,8 +895,7 @@ macie2_disassociate_from_administrator_account <- function() {
     http_method = "POST",
     http_path = "/administrator/disassociate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$disassociate_from_administrator_account_input()
   output <- .macie2$disassociate_from_administrator_account_output()
@@ -948,8 +926,7 @@ macie2_disassociate_from_master_account <- function() {
     http_method = "POST",
     http_path = "/master/disassociate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$disassociate_from_master_account_input()
   output <- .macie2$disassociate_from_master_account_output()
@@ -981,8 +958,7 @@ macie2_disassociate_member <- function(id) {
     http_method = "POST",
     http_path = "/members/disassociate/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$disassociate_member_input(id = id)
   output <- .macie2$disassociate_member_output()
@@ -1019,8 +995,7 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
     http_method = "POST",
     http_path = "/macie",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$enable_macie_input(clientToken = clientToken, findingPublishingFrequency = findingPublishingFrequency, status = status)
   output <- .macie2$enable_macie_output()
@@ -1054,8 +1029,7 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
     http_method = "POST",
     http_path = "/admin",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$enable_organization_admin_account_input(adminAccountId = adminAccountId, clientToken = clientToken)
   output <- .macie2$enable_organization_admin_account_output()
@@ -1086,8 +1060,7 @@ macie2_get_administrator_account <- function() {
     http_method = "GET",
     http_path = "/administrator",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_administrator_account_input()
   output <- .macie2$get_administrator_account_output()
@@ -1118,8 +1091,7 @@ macie2_get_allow_list <- function(id) {
     http_method = "GET",
     http_path = "/allow-lists/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_allow_list_input(id = id)
   output <- .macie2$get_allow_list_output()
@@ -1150,8 +1122,7 @@ macie2_get_automated_discovery_configuration <- function() {
     http_method = "GET",
     http_path = "/automated-discovery/configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_automated_discovery_configuration_input()
   output <- .macie2$get_automated_discovery_configuration_output()
@@ -1182,8 +1153,7 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
     http_method = "POST",
     http_path = "/datasources/s3/statistics",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_bucket_statistics_input(accountId = accountId)
   output <- .macie2$get_bucket_statistics_output()
@@ -1214,8 +1184,7 @@ macie2_get_classification_export_configuration <- function() {
     http_method = "GET",
     http_path = "/classification-export-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_classification_export_configuration_input()
   output <- .macie2$get_classification_export_configuration_output()
@@ -1246,8 +1215,7 @@ macie2_get_classification_scope <- function(id) {
     http_method = "GET",
     http_path = "/classification-scopes/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_classification_scope_input(id = id)
   output <- .macie2$get_classification_scope_output()
@@ -1278,8 +1246,7 @@ macie2_get_custom_data_identifier <- function(id) {
     http_method = "GET",
     http_path = "/custom-data-identifiers/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_custom_data_identifier_input(id = id)
   output <- .macie2$get_custom_data_identifier_output()
@@ -1302,17 +1269,17 @@ macie2_get_custom_data_identifier <- function(id) {
 #' @param groupBy &#91;required&#93; The finding property to use to group the query results. Valid values
 #' are:
 #' 
-#' - classificationDetails.jobId - The unique identifier for the
-#'   classification job that produced the finding.
+#' -   classificationDetails.jobId - The unique identifier for the
+#'     classification job that produced the finding.
 #' 
-#' - resourcesAffected.s3Bucket.name - The name of the S3 bucket that the
-#'   finding applies to.
+#' -   resourcesAffected.s3Bucket.name - The name of the S3 bucket that the
+#'     finding applies to.
 #' 
-#' - severity.description - The severity level of the finding, such as High
-#'   or Medium.
+#' -   severity.description - The severity level of the finding, such as
+#'     High or Medium.
 #' 
-#' - type - The type of finding, such as Policy:IAMUser/S3BucketPublic and
-#'   SensitiveData:S3Object/Personal.
+#' -   type - The type of finding, such as Policy:IAMUser/S3BucketPublic
+#'     and SensitiveData:S3Object/Personal.
 #' @param size The maximum number of items to include in each page of the response.
 #' @param sortCriteria The criteria to use to sort the query results.
 #'
@@ -1325,8 +1292,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
     http_method = "POST",
     http_path = "/findings/statistics",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_finding_statistics_input(findingCriteria = findingCriteria, groupBy = groupBy, size = size, sortCriteria = sortCriteria)
   output <- .macie2$get_finding_statistics_output()
@@ -1359,8 +1325,7 @@ macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
     http_method = "POST",
     http_path = "/findings/describe",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_findings_input(findingIds = findingIds, sortCriteria = sortCriteria)
   output <- .macie2$get_findings_output()
@@ -1391,8 +1356,7 @@ macie2_get_findings_filter <- function(id) {
     http_method = "GET",
     http_path = "/findingsfilters/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_findings_filter_input(id = id)
   output <- .macie2$get_findings_filter_output()
@@ -1423,8 +1387,7 @@ macie2_get_findings_publication_configuration <- function() {
     http_method = "GET",
     http_path = "/findings-publication-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_findings_publication_configuration_input()
   output <- .macie2$get_findings_publication_configuration_output()
@@ -1455,8 +1418,7 @@ macie2_get_invitations_count <- function() {
     http_method = "GET",
     http_path = "/invitations/count",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_invitations_count_input()
   output <- .macie2$get_invitations_count_output()
@@ -1487,8 +1449,7 @@ macie2_get_macie_session <- function() {
     http_method = "GET",
     http_path = "/macie",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_macie_session_input()
   output <- .macie2$get_macie_session_output()
@@ -1519,8 +1480,7 @@ macie2_get_master_account <- function() {
     http_method = "GET",
     http_path = "/master",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_master_account_input()
   output <- .macie2$get_master_account_output()
@@ -1552,8 +1512,7 @@ macie2_get_member <- function(id) {
     http_method = "GET",
     http_path = "/members/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_member_input(id = id)
   output <- .macie2$get_member_output()
@@ -1585,8 +1544,7 @@ macie2_get_resource_profile <- function(resourceArn) {
     http_method = "GET",
     http_path = "/resource-profiles",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_resource_profile_input(resourceArn = resourceArn)
   output <- .macie2$get_resource_profile_output()
@@ -1617,8 +1575,7 @@ macie2_get_reveal_configuration <- function() {
     http_method = "GET",
     http_path = "/reveal-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_reveal_configuration_input()
   output <- .macie2$get_reveal_configuration_output()
@@ -1648,8 +1605,7 @@ macie2_get_sensitive_data_occurrences <- function(findingId) {
     http_method = "GET",
     http_path = "/findings/{findingId}/reveal",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_sensitive_data_occurrences_input(findingId = findingId)
   output <- .macie2$get_sensitive_data_occurrences_output()
@@ -1680,8 +1636,7 @@ macie2_get_sensitive_data_occurrences_availability <- function(findingId) {
     http_method = "GET",
     http_path = "/findings/{findingId}/reveal/availability",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_sensitive_data_occurrences_availability_input(findingId = findingId)
   output <- .macie2$get_sensitive_data_occurrences_availability_output()
@@ -1713,8 +1668,7 @@ macie2_get_sensitivity_inspection_template <- function(id) {
     http_method = "GET",
     http_path = "/templates/sensitivity-inspections/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_sensitivity_inspection_template_input(id = id)
   output <- .macie2$get_sensitivity_inspection_template_output()
@@ -1755,8 +1709,7 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
     http_method = "POST",
     http_path = "/usage/statistics",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "records"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "records")
   )
   input <- .macie2$get_usage_statistics_input(filterBy = filterBy, maxResults = maxResults, nextToken = nextToken, sortBy = sortBy, timeRange = timeRange)
   output <- .macie2$get_usage_statistics_output()
@@ -1790,8 +1743,7 @@ macie2_get_usage_totals <- function(timeRange = NULL) {
     http_method = "GET",
     http_path = "/usage",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$get_usage_totals_input(timeRange = timeRange)
   output <- .macie2$get_usage_totals_output()
@@ -1825,8 +1777,7 @@ macie2_list_allow_lists <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/allow-lists",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "allowLists"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "allowLists")
   )
   input <- .macie2$list_allow_lists_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_allow_lists_output()
@@ -1865,8 +1816,7 @@ macie2_list_automated_discovery_accounts <- function(accountIds = NULL, maxResul
     http_method = "GET",
     http_path = "/automated-discovery/accounts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .macie2$list_automated_discovery_accounts_input(accountIds = accountIds, maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_automated_discovery_accounts_output()
@@ -1900,8 +1850,7 @@ macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = 
     http_method = "POST",
     http_path = "/jobs/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .macie2$list_classification_jobs_input(filterCriteria = filterCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$list_classification_jobs_output()
@@ -1935,8 +1884,7 @@ macie2_list_classification_scopes <- function(name = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/classification-scopes",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "classificationScopes"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "classificationScopes")
   )
   input <- .macie2$list_classification_scopes_input(name = name, nextToken = nextToken)
   output <- .macie2$list_classification_scopes_output()
@@ -1969,8 +1917,7 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
     http_method = "POST",
     http_path = "/custom-data-identifiers/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .macie2$list_custom_data_identifiers_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_custom_data_identifiers_output()
@@ -2004,8 +1951,7 @@ macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, next
     http_method = "POST",
     http_path = "/findings",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingIds"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingIds")
   )
   input <- .macie2$list_findings_input(findingCriteria = findingCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$list_findings_output()
@@ -2039,8 +1985,7 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/findingsfilters",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsFilterListItems"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "findingsFilterListItems")
   )
   input <- .macie2$list_findings_filters_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_findings_filters_output()
@@ -2074,8 +2019,7 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
     http_method = "GET",
     http_path = "/invitations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invitations"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "invitations")
   )
   input <- .macie2$list_invitations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_invitations_output()
@@ -2107,8 +2051,7 @@ macie2_list_managed_data_identifiers <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/managed-data-identifiers/list",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "items")
   )
   input <- .macie2$list_managed_data_identifiers_input(nextToken = nextToken)
   output <- .macie2$list_managed_data_identifiers_output()
@@ -2146,8 +2089,7 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
     http_method = "GET",
     http_path = "/members",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
   )
   input <- .macie2$list_members_input(maxResults = maxResults, nextToken = nextToken, onlyAssociated = onlyAssociated)
   output <- .macie2$list_members_output()
@@ -2181,8 +2123,7 @@ macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken
     http_method = "GET",
     http_path = "/admin",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "adminAccounts"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "adminAccounts")
   )
   input <- .macie2$list_organization_admin_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_organization_admin_accounts_output()
@@ -2216,8 +2157,7 @@ macie2_list_resource_profile_artifacts <- function(nextToken = NULL, resourceArn
     http_method = "GET",
     http_path = "/resource-profiles/artifacts",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "artifacts"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "artifacts")
   )
   input <- .macie2$list_resource_profile_artifacts_input(nextToken = nextToken, resourceArn = resourceArn)
   output <- .macie2$list_resource_profile_artifacts_output()
@@ -2253,8 +2193,7 @@ macie2_list_resource_profile_detections <- function(maxResults = NULL, nextToken
     http_method = "GET",
     http_path = "/resource-profiles/detections",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "detections"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "detections")
   )
   input <- .macie2$list_resource_profile_detections_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .macie2$list_resource_profile_detections_output()
@@ -2288,8 +2227,7 @@ macie2_list_sensitivity_inspection_templates <- function(maxResults = NULL, next
     http_method = "GET",
     http_path = "/templates/sensitivity-inspections",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sensitivityInspectionTemplates"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "sensitivityInspectionTemplates")
   )
   input <- .macie2$list_sensitivity_inspection_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .macie2$list_sensitivity_inspection_templates_output()
@@ -2320,8 +2258,7 @@ macie2_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .macie2$list_tags_for_resource_output()
@@ -2353,8 +2290,7 @@ macie2_put_classification_export_configuration <- function(configuration) {
     http_method = "PUT",
     http_path = "/classification-export-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$put_classification_export_configuration_input(configuration = configuration)
   output <- .macie2$put_classification_export_configuration_output()
@@ -2388,8 +2324,7 @@ macie2_put_findings_publication_configuration <- function(clientToken = NULL, se
     http_method = "PUT",
     http_path = "/findings-publication-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$put_findings_publication_configuration_input(clientToken = clientToken, securityHubConfiguration = securityHubConfiguration)
   output <- .macie2$put_findings_publication_configuration_output()
@@ -2426,8 +2361,7 @@ macie2_search_resources <- function(bucketCriteria = NULL, maxResults = NULL, ne
     http_method = "POST",
     http_path = "/datasources/search-resources",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "matchingResources"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "matchingResources")
   )
   input <- .macie2$search_resources_input(bucketCriteria = bucketCriteria, maxResults = maxResults, nextToken = nextToken, sortCriteria = sortCriteria)
   output <- .macie2$search_resources_output()
@@ -2464,8 +2398,7 @@ macie2_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .macie2$tag_resource_output()
@@ -2514,8 +2447,7 @@ macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NU
     http_method = "POST",
     http_path = "/custom-data-identifiers/test",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$test_custom_data_identifier_input(ignoreWords = ignoreWords, keywords = keywords, maximumMatchDistance = maximumMatchDistance, regex = regex, sampleText = sampleText)
   output <- .macie2$test_custom_data_identifier_output()
@@ -2548,8 +2480,7 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .macie2$untag_resource_output()
@@ -2592,8 +2523,7 @@ macie2_update_allow_list <- function(criteria, description = NULL, id, name) {
     http_method = "PUT",
     http_path = "/allow-lists/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_allow_list_input(criteria = criteria, description = description, id = id, name = name)
   output <- .macie2$update_allow_list_output()
@@ -2642,8 +2572,7 @@ macie2_update_automated_discovery_configuration <- function(autoEnableOrganizati
     http_method = "PUT",
     http_path = "/automated-discovery/configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_automated_discovery_configuration_input(autoEnableOrganizationMembers = autoEnableOrganizationMembers, status = status)
   output <- .macie2$update_automated_discovery_configuration_output()
@@ -2665,33 +2594,34 @@ macie2_update_automated_discovery_configuration <- function(autoEnableOrganizati
 #' @param jobId &#91;required&#93; The unique identifier for the classification job.
 #' @param jobStatus &#91;required&#93; The new status for the job. Valid values are:
 #' 
-#' - CANCELLED - Stops the job permanently and cancels it. This value is
-#'   valid only if the job's current status is IDLE, PAUSED, RUNNING, or
-#'   USER_PAUSED.
+#' -   CANCELLED - Stops the job permanently and cancels it. This value is
+#'     valid only if the job's current status is IDLE, PAUSED, RUNNING, or
+#'     USER_PAUSED.
 #' 
-#'   If you specify this value and the job's current status is RUNNING,
-#'   Amazon Macie immediately begins to stop all processing tasks for the
-#'   job. You can't resume or restart a job after you cancel it.
+#'     If you specify this value and the job's current status is RUNNING,
+#'     Amazon Macie immediately begins to stop all processing tasks for the
+#'     job. You can't resume or restart a job after you cancel it.
 #' 
-#' - RUNNING - Resumes the job. This value is valid only if the job's
-#'   current status is USER_PAUSED.
+#' -   RUNNING - Resumes the job. This value is valid only if the job's
+#'     current status is USER_PAUSED.
 #' 
-#'   If you paused the job while it was actively running and you specify
-#'   this value less than 30 days after you paused the job, Macie
-#'   immediately resumes processing from the point where you paused the
-#'   job. Otherwise, Macie resumes the job according to the schedule and
-#'   other settings for the job.
+#'     If you paused the job while it was actively running and you specify
+#'     this value less than 30 days after you paused the job, Macie
+#'     immediately resumes processing from the point where you paused the
+#'     job. Otherwise, Macie resumes the job according to the schedule and
+#'     other settings for the job.
 #' 
-#' - USER_PAUSED - Pauses the job temporarily. This value is valid only if
-#'   the job's current status is IDLE, PAUSED, or RUNNING. If you specify
-#'   this value and the job's current status is RUNNING, Macie immediately
-#'   begins to pause all processing tasks for the job.
+#' -   USER_PAUSED - Pauses the job temporarily. This value is valid only
+#'     if the job's current status is IDLE, PAUSED, or RUNNING. If you
+#'     specify this value and the job's current status is RUNNING, Macie
+#'     immediately begins to pause all processing tasks for the job.
 #' 
-#'   If you pause a one-time job and you don't resume it within 30 days,
-#'   the job expires and Macie cancels the job. If you pause a recurring
-#'   job when its status is RUNNING and you don't resume it within 30 days,
-#'   the job run expires and Macie cancels the run. To check the expiration
-#'   date, refer to the UserPausedDetails.jobExpiresAt property.
+#'     If you pause a one-time job and you don't resume it within 30 days,
+#'     the job expires and Macie cancels the job. If you pause a recurring
+#'     job when its status is RUNNING and you don't resume it within 30
+#'     days, the job run expires and Macie cancels the run. To check the
+#'     expiration date, refer to the UserPausedDetails.jobExpiresAt
+#'     property.
 #'
 #' @keywords internal
 #'
@@ -2702,8 +2632,7 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
     http_method = "PATCH",
     http_path = "/jobs/{jobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_classification_job_input(jobId = jobId, jobStatus = jobStatus)
   output <- .macie2$update_classification_job_output()
@@ -2736,8 +2665,7 @@ macie2_update_classification_scope <- function(id, s3 = NULL) {
     http_method = "PATCH",
     http_path = "/classification-scopes/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_classification_scope_input(id = id, s3 = s3)
   output <- .macie2$update_classification_scope_output()
@@ -2793,8 +2721,7 @@ macie2_update_findings_filter <- function(action = NULL, clientToken = NULL, des
     http_method = "PATCH",
     http_path = "/findingsfilters/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_findings_filter_input(action = action, clientToken = clientToken, description = description, findingCriteria = findingCriteria, id = id, name = name, position = position)
   output <- .macie2$update_findings_filter_output()
@@ -2830,8 +2757,7 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
     http_method = "PATCH",
     http_path = "/macie",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_macie_session_input(findingPublishingFrequency = findingPublishingFrequency, status = status)
   output <- .macie2$update_macie_session_output()
@@ -2866,8 +2792,7 @@ macie2_update_member_session <- function(id, status) {
     http_method = "PATCH",
     http_path = "/macie/members/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_member_session_input(id = id, status = status)
   output <- .macie2$update_member_session_output()
@@ -2899,8 +2824,7 @@ macie2_update_organization_configuration <- function(autoEnable) {
     http_method = "PATCH",
     http_path = "/admin/configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_organization_configuration_input(autoEnable = autoEnable)
   output <- .macie2$update_organization_configuration_output()
@@ -2935,8 +2859,7 @@ macie2_update_resource_profile <- function(resourceArn, sensitivityScoreOverride
     http_method = "PATCH",
     http_path = "/resource-profiles",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_resource_profile_input(resourceArn = resourceArn, sensitivityScoreOverride = sensitivityScoreOverride)
   output <- .macie2$update_resource_profile_output()
@@ -2971,8 +2894,7 @@ macie2_update_resource_profile_detections <- function(resourceArn, suppressDataI
     http_method = "PATCH",
     http_path = "/resource-profiles/detections",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_resource_profile_detections_input(resourceArn = resourceArn, suppressDataIdentifiers = suppressDataIdentifiers)
   output <- .macie2$update_resource_profile_detections_output()
@@ -3006,8 +2928,7 @@ macie2_update_reveal_configuration <- function(configuration, retrievalConfigura
     http_method = "PUT",
     http_path = "/reveal-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_reveal_configuration_input(configuration = configuration, retrievalConfiguration = retrievalConfiguration)
   output <- .macie2$update_reveal_configuration_output()
@@ -3052,8 +2973,7 @@ macie2_update_sensitivity_inspection_template <- function(description = NULL, ex
     http_method = "PUT",
     http_path = "/templates/sensitivity-inspections/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .macie2$update_sensitivity_inspection_template_input(description = description, excludes = excludes, id = id, includes = includes)
   output <- .macie2$update_sensitivity_inspection_template_output()

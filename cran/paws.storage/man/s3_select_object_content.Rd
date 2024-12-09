@@ -61,8 +61,8 @@ range.
 \item \verb{<scanrange><start>50</start><end>100</end></scanrange>} - process
 only the records starting between the bytes 50 and 100 (inclusive,
 counting from zero)
-\item \verb{<scanrange><start>50</start></scanrange>} - process only the records
-starting after the byte 50
+\item \verb{<scanrange><start>50</start></scanrange>} - process only the
+records starting after the byte 50
 \item \verb{<scanrange><end>50</end></scanrange>} - process only the records
 within the last 50 bytes of the file.
 }}

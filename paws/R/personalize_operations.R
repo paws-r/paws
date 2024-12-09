@@ -126,8 +126,7 @@ personalize_create_batch_inference_job <- function(jobName, solutionVersionArn, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_batch_inference_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, batchInferenceJobConfig = batchInferenceJobConfig, tags = tags, batchInferenceJobMode = batchInferenceJobMode, themeGenerationConfig = themeGenerationConfig)
   output <- .personalize$create_batch_inference_job_output()
@@ -218,8 +217,7 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_batch_segment_job_input(jobName = jobName, solutionVersionArn = solutionVersionArn, filterArn = filterArn, numResults = numResults, jobInput = jobInput, jobOutput = jobOutput, roleArn = roleArn, tags = tags)
   output <- .personalize$create_batch_segment_job_output()
@@ -280,9 +278,9 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
 #' 
 #' A campaign can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' - DELETE PENDING \> DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the campaign status, call
 #' [`describe_campaign`][personalize_describe_campaign].
@@ -292,13 +290,13 @@ personalize_create_batch_segment_job <- function(jobName, solutionVersionArn, fi
 #' 
 #' **Related APIs**
 #' 
-#' - [`list_campaigns`][personalize_list_campaigns]
+#' -   [`list_campaigns`][personalize_list_campaigns]
 #' 
-#' - [`describe_campaign`][personalize_describe_campaign]
+#' -   [`describe_campaign`][personalize_describe_campaign]
 #' 
-#' - [`update_campaign`][personalize_update_campaign]
+#' -   [`update_campaign`][personalize_update_campaign]
 #' 
-#' - [`delete_campaign`][personalize_delete_campaign]
+#' -   [`delete_campaign`][personalize_delete_campaign]
 #'
 #' @usage
 #' personalize_create_campaign(name, solutionVersionArn, minProvisionedTPS,
@@ -371,8 +369,7 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_campaign_input(name = name, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig, tags = tags)
   output <- .personalize$create_campaign_output()
@@ -396,20 +393,20 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' information about creating a data deletion job, see [Deleting
 #' users](https://docs.aws.amazon.com/personalize/latest/dg/delete-records.html).
 #' 
-#' - Your input file must be a CSV file with a single USER_ID column that
-#'   lists the users IDs. For more information about preparing the CSV
-#'   file, see [Preparing your data deletion file and uploading it to
-#'   Amazon
-#'   S3](https://docs.aws.amazon.com/personalize/latest/dg/delete-records.html).
+#' -   Your input file must be a CSV file with a single USER_ID column that
+#'     lists the users IDs. For more information about preparing the CSV
+#'     file, see [Preparing your data deletion file and uploading it to
+#'     Amazon
+#'     S3](https://docs.aws.amazon.com/personalize/latest/dg/delete-records.html).
 #' 
-#' - To give Amazon Personalize permission to access your input CSV file of
-#'   userIds, you must specify an IAM service role that has permission to
-#'   read from the data source. This role needs `GetObject` and
-#'   `ListBucket` permissions for the bucket and its content. These
-#'   permissions are the same as importing data. For information on
-#'   granting access to your Amazon S3 bucket, see [Giving Amazon
-#'   Personalize Access to Amazon S3
-#'   Resources](https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html).
+#' -   To give Amazon Personalize permission to access your input CSV file
+#'     of userIds, you must specify an IAM service role that has permission
+#'     to read from the data source. This role needs `GetObject` and
+#'     `ListBucket` permissions for the bucket and its content. These
+#'     permissions are the same as importing data. For information on
+#'     granting access to your Amazon S3 bucket, see [Giving Amazon
+#'     Personalize Access to Amazon S3
+#'     Resources](https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html).
 #' 
 #' After you create a job, it can take up to a day to delete all references
 #' to the users from datasets and models. Until the job completes, Amazon
@@ -420,7 +417,7 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' 
 #' A data deletion job can have one of the following statuses:
 #' 
-#' - PENDING \> IN_PROGRESS \> COMPLETED -or- FAILED
+#' -   PENDING \> IN_PROGRESS \> COMPLETED -or- FAILED
 #' 
 #' To get the status of the data deletion job, call
 #' [`describe_data_deletion_job`][personalize_describe_data_deletion_job]
@@ -430,9 +427,9 @@ personalize_create_campaign <- function(name, solutionVersionArn, minProvisioned
 #' 
 #' **Related APIs**
 #' 
-#' - [`list_data_deletion_jobs`][personalize_list_data_deletion_jobs]
+#' -   [`list_data_deletion_jobs`][personalize_list_data_deletion_jobs]
 #' 
-#' - [`describe_data_deletion_job`][personalize_describe_data_deletion_job]
+#' -   [`describe_data_deletion_job`][personalize_describe_data_deletion_job]
 #'
 #' @usage
 #' personalize_create_data_deletion_job(jobName, datasetGroupArn,
@@ -486,8 +483,7 @@ personalize_create_data_deletion_job <- function(jobName, datasetGroupArn, dataS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_data_deletion_job_input(jobName = jobName, datasetGroupArn = datasetGroupArn, dataSource = dataSource, roleArn = roleArn, tags = tags)
   output <- .personalize$create_data_deletion_job_output()
@@ -508,15 +504,15 @@ personalize_create_data_deletion_job <- function(jobName, datasetGroupArn, dataS
 #' 
 #' There are 5 types of datasets:
 #' 
-#' - Item interactions
+#' -   Item interactions
 #' 
-#' - Items
+#' -   Items
 #' 
-#' - Users
+#' -   Users
 #' 
-#' - Action interactions
+#' -   Action interactions
 #' 
-#' - Actions
+#' -   Actions
 #' 
 #' Each dataset type has an associated schema with required field types.
 #' Only the `Item interactions` dataset is required in order to train a
@@ -524,22 +520,22 @@ personalize_create_data_deletion_job <- function(jobName, datasetGroupArn, dataS
 #' 
 #' A dataset can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' - DELETE PENDING \> DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the status of the dataset, call
 #' [`describe_dataset`][personalize_describe_dataset].
 #' 
 #' **Related APIs**
 #' 
-#' - [`create_dataset_group`][personalize_create_dataset_group]
+#' -   [`create_dataset_group`][personalize_create_dataset_group]
 #' 
-#' - [`list_datasets`][personalize_list_datasets]
+#' -   [`list_datasets`][personalize_list_datasets]
 #' 
-#' - [`describe_dataset`][personalize_describe_dataset]
+#' -   [`describe_dataset`][personalize_describe_dataset]
 #' 
-#' - [`delete_dataset`][personalize_delete_dataset]
+#' -   [`delete_dataset`][personalize_delete_dataset]
 #'
 #' @usage
 #' personalize_create_dataset(name, schemaArn, datasetGroupArn,
@@ -554,15 +550,15 @@ personalize_create_data_deletion_job <- function(jobName, datasetGroupArn, dataS
 #' 
 #' One of the following (case insensitive) values:
 #' 
-#' - Interactions
+#' -   Interactions
 #' 
-#' - Items
+#' -   Items
 #' 
-#' - Users
+#' -   Users
 #' 
-#' - Actions
+#' -   Actions
 #' 
-#' - Action_Interactions
+#' -   Action_Interactions
 #' @param tags A list of
 #' [tags](https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html)
 #' to apply to the dataset.
@@ -602,8 +598,7 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_dataset_input(name = name, schemaArn = schemaArn, datasetGroupArn = datasetGroupArn, datasetType = datasetType, tags = tags)
   output <- .personalize$create_dataset_output()
@@ -630,7 +625,7 @@ personalize_create_dataset <- function(name, schemaArn, datasetGroupArn, dataset
 #' 
 #' A dataset export job can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
 #' To get the status of the export job, call
 #' [`describe_dataset_export_job`][personalize_describe_dataset_export_job],
@@ -699,8 +694,7 @@ personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestion
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_dataset_export_job_input(jobName = jobName, datasetArn = datasetArn, ingestionMode = ingestionMode, roleArn = roleArn, jobOutput = jobOutput, tags = tags)
   output <- .personalize$create_dataset_export_job_output()
@@ -719,15 +713,15 @@ personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestion
 #' Amazon Personalize resources. A dataset group can contain at most three
 #' datasets, one for each type of dataset:
 #' 
-#' - Item interactions
+#' -   Item interactions
 #' 
-#' - Items
+#' -   Items
 #' 
-#' - Users
+#' -   Users
 #' 
-#' - Actions
+#' -   Actions
 #' 
-#' - Action interactions
+#' -   Action interactions
 #' 
 #' A dataset group can be a Domain dataset group, where you specify a
 #' domain and use pre-configured resources like recommenders, or a Custom
@@ -739,9 +733,9 @@ personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestion
 #' 
 #' A dataset group can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' - DELETE PENDING
+#' -   DELETE PENDING
 #' 
 #' To get the status of the dataset group, call
 #' [`describe_dataset_group`][personalize_describe_dataset_group]. If the
@@ -758,19 +752,19 @@ personalize_create_dataset_export_job <- function(jobName, datasetArn, ingestion
 #' 
 #' **APIs that require a dataset group ARN in the request**
 #' 
-#' - [`create_dataset`][personalize_create_dataset]
+#' -   [`create_dataset`][personalize_create_dataset]
 #' 
-#' - [`create_event_tracker`][personalize_create_event_tracker]
+#' -   [`create_event_tracker`][personalize_create_event_tracker]
 #' 
-#' - [`create_solution`][personalize_create_solution]
+#' -   [`create_solution`][personalize_create_solution]
 #' 
 #' **Related APIs**
 #' 
-#' - [`list_dataset_groups`][personalize_list_dataset_groups]
+#' -   [`list_dataset_groups`][personalize_list_dataset_groups]
 #' 
-#' - [`describe_dataset_group`][personalize_describe_dataset_group]
+#' -   [`describe_dataset_group`][personalize_describe_dataset_group]
 #' 
-#' - [`delete_dataset_group`][personalize_delete_dataset_group]
+#' -   [`delete_dataset_group`][personalize_delete_dataset_group]
 #'
 #' @usage
 #' personalize_create_dataset_group(name, roleArn, kmsKeyArn, domain, tags)
@@ -826,8 +820,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_dataset_group_input(name = name, roleArn = roleArn, kmsKeyArn = kmsKeyArn, domain = domain, tags = tags)
   output <- .personalize$create_dataset_group_output()
@@ -867,7 +860,7 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' 
 #' A dataset import job can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
 #' To get the status of the import job, call
 #' [`describe_dataset_import_job`][personalize_describe_dataset_import_job],
@@ -881,9 +874,9 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' 
 #' **Related APIs**
 #' 
-#' - [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs]
+#' -   [`list_dataset_import_jobs`][personalize_list_dataset_import_jobs]
 #' 
-#' - [`describe_dataset_import_job`][personalize_describe_dataset_import_job]
+#' -   [`describe_dataset_import_job`][personalize_describe_dataset_import_job]
 #'
 #' @usage
 #' personalize_create_dataset_import_job(jobName, datasetArn, dataSource,
@@ -901,12 +894,12 @@ personalize_create_dataset_group <- function(name, roleArn = NULL, kmsKeyArn = N
 #' import mode is `FULL`. If you haven't imported bulk records into the
 #' dataset previously, you can only specify `FULL`.
 #' 
-#' - Specify `FULL` to overwrite all existing bulk data in your dataset.
-#'   Data you imported individually is not replaced.
+#' -   Specify `FULL` to overwrite all existing bulk data in your dataset.
+#'     Data you imported individually is not replaced.
 #' 
-#' - Specify `INCREMENTAL` to append the new records to the existing data
-#'   in your dataset. Amazon Personalize replaces any record with the same
-#'   ID with the new one.
+#' -   Specify `INCREMENTAL` to append the new records to the existing data
+#'     in your dataset. Amazon Personalize replaces any record with the
+#'     same ID with the new one.
 #' @param publishAttributionMetricsToS3 If you created a metric attribution, specify whether to publish metrics
 #' for this import job to Amazon S3
 #'
@@ -949,8 +942,7 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_dataset_import_job_input(jobName = jobName, datasetArn = datasetArn, dataSource = dataSource, roleArn = roleArn, tags = tags, importMode = importMode, publishAttributionMetricsToS3 = publishAttributionMetricsToS3)
   output <- .personalize$create_dataset_import_job_output()
@@ -985,9 +977,9 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' 
 #' The event tracker can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' - DELETE PENDING \> DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the status of the event tracker, call
 #' [`describe_event_tracker`][personalize_describe_event_tracker].
@@ -997,11 +989,11 @@ personalize_create_dataset_import_job <- function(jobName, datasetArn, dataSourc
 #' 
 #' **Related APIs**
 #' 
-#' - [`list_event_trackers`][personalize_list_event_trackers]
+#' -   [`list_event_trackers`][personalize_list_event_trackers]
 #' 
-#' - [`describe_event_tracker`][personalize_describe_event_tracker]
+#' -   [`describe_event_tracker`][personalize_describe_event_tracker]
 #' 
-#' - [`delete_event_tracker`][personalize_delete_event_tracker]
+#' -   [`delete_event_tracker`][personalize_delete_event_tracker]
 #'
 #' @usage
 #' personalize_create_event_tracker(name, datasetGroupArn, tags)
@@ -1047,8 +1039,7 @@ personalize_create_event_tracker <- function(name, datasetGroupArn, tags = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_event_tracker_input(name = name, datasetGroupArn = datasetGroupArn, tags = tags)
   output <- .personalize$create_event_tracker_output()
@@ -1115,8 +1106,7 @@ personalize_create_filter <- function(name, datasetGroupArn, filterExpression, t
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_filter_input(name = name, datasetGroupArn = datasetGroupArn, filterExpression = filterExpression, tags = tags)
   output <- .personalize$create_filter_output()
@@ -1192,8 +1182,7 @@ personalize_create_metric_attribution <- function(name, datasetGroupArn, metrics
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_metric_attribution_input(name = name, datasetGroupArn = datasetGroupArn, metrics = metrics, metricsOutputConfig = metricsOutputConfig)
   output <- .personalize$create_metric_attribution_output()
@@ -1250,12 +1239,12 @@ personalize_create_metric_attribution <- function(name, datasetGroupArn, metrics
 #' 
 #' A recommender can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' - STOP PENDING \> STOP IN_PROGRESS \> INACTIVE \> START PENDING \> START
-#'   IN_PROGRESS \> ACTIVE
+#' -   STOP PENDING \> STOP IN_PROGRESS \> INACTIVE \> START PENDING \>
+#'     START IN_PROGRESS \> ACTIVE
 #' 
-#' - DELETE PENDING \> DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the recommender status, call
 #' [`describe_recommender`][personalize_describe_recommender].
@@ -1265,13 +1254,13 @@ personalize_create_metric_attribution <- function(name, datasetGroupArn, metrics
 #' 
 #' **Related APIs**
 #' 
-#' - [`list_recommenders`][personalize_list_recommenders]
+#' -   [`list_recommenders`][personalize_list_recommenders]
 #' 
-#' - [`describe_recommender`][personalize_describe_recommender]
+#' -   [`describe_recommender`][personalize_describe_recommender]
 #' 
-#' - [`update_recommender`][personalize_update_recommender]
+#' -   [`update_recommender`][personalize_update_recommender]
 #' 
-#' - [`delete_recommender`][personalize_delete_recommender]
+#' -   [`delete_recommender`][personalize_delete_recommender]
 #'
 #' @usage
 #' personalize_create_recommender(name, datasetGroupArn, recipeArn,
@@ -1338,8 +1327,7 @@ personalize_create_recommender <- function(name, datasetGroupArn, recipeArn, rec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_recommender_input(name = name, datasetGroupArn = datasetGroupArn, recipeArn = recipeArn, recommenderConfig = recommenderConfig, tags = tags)
   output <- .personalize$create_recommender_output()
@@ -1365,11 +1353,11 @@ personalize_create_recommender <- function(name, datasetGroupArn, recipeArn, rec
 #' 
 #' **Related APIs**
 #' 
-#' - [`list_schemas`][personalize_list_schemas]
+#' -   [`list_schemas`][personalize_list_schemas]
 #' 
-#' - [`describe_schema`][personalize_describe_schema]
+#' -   [`describe_schema`][personalize_describe_schema]
 #' 
-#' - [`delete_schema`][personalize_delete_schema]
+#' -   [`delete_schema`][personalize_delete_schema]
 #'
 #' @usage
 #' personalize_create_schema(name, schema, domain)
@@ -1408,8 +1396,7 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_schema_input(name = name, schema = schema, domain = domain)
   output <- .personalize$create_schema_output()
@@ -1474,9 +1461,9 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' 
 #' A solution can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' - DELETE PENDING \> DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' To get the status of the solution, call
 #' [`describe_solution`][personalize_describe_solution]. If you use manual
@@ -1485,20 +1472,20 @@ personalize_create_schema <- function(name, schema, domain = NULL) {
 #' 
 #' **Related APIs**
 #' 
-#' - [`update_solution`][personalize_update_solution]
+#' -   [`update_solution`][personalize_update_solution]
 #' 
-#' - [`list_solutions`][personalize_list_solutions]
+#' -   [`list_solutions`][personalize_list_solutions]
 #' 
-#' - [`create_solution_version`][personalize_create_solution_version]
+#' -   [`create_solution_version`][personalize_create_solution_version]
 #' 
-#' - [`describe_solution`][personalize_describe_solution]
+#' -   [`describe_solution`][personalize_describe_solution]
 #' 
-#' - [`delete_solution`][personalize_delete_solution]
+#' -   [`delete_solution`][personalize_delete_solution]
 #' 
 #' 
-#' - [`list_solution_versions`][personalize_list_solution_versions]
+#' -   [`list_solution_versions`][personalize_list_solution_versions]
 #' 
-#' - [`describe_solution_version`][personalize_describe_solution_version]
+#' -   [`describe_solution_version`][personalize_describe_solution_version]
 #'
 #' @usage
 #' personalize_create_solution(name, performHPO, performAutoML,
@@ -1666,8 +1653,7 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_solution_input(name = name, performHPO = performHPO, performAutoML = performAutoML, performAutoTraining = performAutoTraining, recipeArn = recipeArn, datasetGroupArn = datasetGroupArn, eventType = eventType, solutionConfig = solutionConfig, tags = tags)
   output <- .personalize$create_solution_output()
@@ -1693,17 +1679,17 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' 
 #' A solution version can be in one of the following states:
 #' 
-#' - CREATE PENDING
+#' -   CREATE PENDING
 #' 
-#' - CREATE IN_PROGRESS
+#' -   CREATE IN_PROGRESS
 #' 
-#' - ACTIVE
+#' -   ACTIVE
 #' 
-#' - CREATE FAILED
+#' -   CREATE FAILED
 #' 
-#' - CREATE STOPPING
+#' -   CREATE STOPPING
 #' 
-#' - CREATE STOPPED
+#' -   CREATE STOPPED
 #' 
 #' To get the status of the version, call
 #' [`describe_solution_version`][personalize_describe_solution_version].
@@ -1715,17 +1701,17 @@ personalize_create_solution <- function(name, performHPO = NULL, performAutoML =
 #' 
 #' **Related APIs**
 #' 
-#' - [`list_solution_versions`][personalize_list_solution_versions]
+#' -   [`list_solution_versions`][personalize_list_solution_versions]
 #' 
-#' - [`describe_solution_version`][personalize_describe_solution_version]
+#' -   [`describe_solution_version`][personalize_describe_solution_version]
 #' 
-#' - [`list_solutions`][personalize_list_solutions]
+#' -   [`list_solutions`][personalize_list_solutions]
 #' 
-#' - [`create_solution`][personalize_create_solution]
+#' -   [`create_solution`][personalize_create_solution]
 #' 
-#' - [`describe_solution`][personalize_describe_solution]
+#' -   [`describe_solution`][personalize_describe_solution]
 #' 
-#' - [`delete_solution`][personalize_delete_solution]
+#' -   [`delete_solution`][personalize_delete_solution]
 #'
 #' @usage
 #' personalize_create_solution_version(name, solutionArn, trainingMode,
@@ -1795,8 +1781,7 @@ personalize_create_solution_version <- function(name = NULL, solutionArn, traini
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$create_solution_version_input(name = name, solutionArn = solutionArn, trainingMode = trainingMode, tags = tags)
   output <- .personalize$create_solution_version_output()
@@ -1844,8 +1829,7 @@ personalize_delete_campaign <- function(campaignArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_campaign_input(campaignArn = campaignArn)
   output <- .personalize$delete_campaign_output()
@@ -1891,8 +1875,7 @@ personalize_delete_dataset <- function(datasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_dataset_input(datasetArn = datasetArn)
   output <- .personalize$delete_dataset_output()
@@ -1910,11 +1893,11 @@ personalize_delete_dataset <- function(datasetArn) {
 #' Deletes a dataset group. Before you delete a dataset group, you must
 #' delete the following:
 #' 
-#' - All associated event trackers.
+#' -   All associated event trackers.
 #' 
-#' - All associated solutions.
+#' -   All associated solutions.
 #' 
-#' - All datasets in the dataset group.
+#' -   All datasets in the dataset group.
 #'
 #' @usage
 #' personalize_delete_dataset_group(datasetGroupArn)
@@ -1942,8 +1925,7 @@ personalize_delete_dataset_group <- function(datasetGroupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_dataset_group_input(datasetGroupArn = datasetGroupArn)
   output <- .personalize$delete_dataset_group_output()
@@ -1988,8 +1970,7 @@ personalize_delete_event_tracker <- function(eventTrackerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_event_tracker_input(eventTrackerArn = eventTrackerArn)
   output <- .personalize$delete_event_tracker_output()
@@ -2032,8 +2013,7 @@ personalize_delete_filter <- function(filterArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_filter_input(filterArn = filterArn)
   output <- .personalize$delete_filter_output()
@@ -2076,8 +2056,7 @@ personalize_delete_metric_attribution <- function(metricAttributionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_metric_attribution_input(metricAttributionArn = metricAttributionArn)
   output <- .personalize$delete_metric_attribution_output()
@@ -2123,8 +2102,7 @@ personalize_delete_recommender <- function(recommenderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$delete_recommender_output()
@@ -2169,8 +2147,7 @@ personalize_delete_schema <- function(schemaArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_schema_input(schemaArn = schemaArn)
   output <- .personalize$delete_schema_output()
@@ -2220,8 +2197,7 @@ personalize_delete_solution <- function(solutionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$delete_solution_input(solutionArn = solutionArn)
   output <- .personalize$delete_solution_output()
@@ -2317,8 +2293,7 @@ personalize_describe_algorithm <- function(algorithmArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_algorithm_input(algorithmArn = algorithmArn)
   output <- .personalize$describe_algorithm_output()
@@ -2408,8 +2383,7 @@ personalize_describe_batch_inference_job <- function(batchInferenceJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_batch_inference_job_input(batchInferenceJobArn = batchInferenceJobArn)
   output <- .personalize$describe_batch_inference_job_output()
@@ -2488,8 +2462,7 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_batch_segment_job_input(batchSegmentJobArn = batchSegmentJobArn)
   output <- .personalize$describe_batch_segment_job_output()
@@ -2508,9 +2481,9 @@ personalize_describe_batch_segment_job <- function(batchSegmentJobArn) {
 #' 
 #' A campaign can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' - DELETE PENDING \> DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' When the `status` is `CREATE FAILED`, the response includes the
 #' `failureReason` key, which describes why.
@@ -2588,8 +2561,7 @@ personalize_describe_campaign <- function(campaignArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_campaign_input(campaignArn = campaignArn)
   output <- .personalize$describe_campaign_output()
@@ -2657,8 +2629,7 @@ personalize_describe_data_deletion_job <- function(dataDeletionJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_data_deletion_job_input(dataDeletionJobArn = dataDeletionJobArn)
   output <- .personalize$describe_data_deletion_job_output()
@@ -2732,8 +2703,7 @@ personalize_describe_dataset <- function(datasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_dataset_input(datasetArn = datasetArn)
   output <- .personalize$describe_dataset_output()
@@ -2804,8 +2774,7 @@ personalize_describe_dataset_export_job <- function(datasetExportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_dataset_export_job_input(datasetExportJobArn = datasetExportJobArn)
   output <- .personalize$describe_dataset_export_job_output()
@@ -2868,8 +2837,7 @@ personalize_describe_dataset_group <- function(datasetGroupArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_dataset_group_input(datasetGroupArn = datasetGroupArn)
   output <- .personalize$describe_dataset_group_output()
@@ -2938,8 +2906,7 @@ personalize_describe_dataset_import_job <- function(datasetImportJobArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_dataset_import_job_input(datasetImportJobArn = datasetImportJobArn)
   output <- .personalize$describe_dataset_import_job_output()
@@ -3002,8 +2969,7 @@ personalize_describe_event_tracker <- function(eventTrackerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_event_tracker_input(eventTrackerArn = eventTrackerArn)
   output <- .personalize$describe_event_tracker_output()
@@ -3065,8 +3031,7 @@ personalize_describe_feature_transformation <- function(featureTransformationArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_feature_transformation_input(featureTransformationArn = featureTransformationArn)
   output <- .personalize$describe_feature_transformation_output()
@@ -3127,8 +3092,7 @@ personalize_describe_filter <- function(filterArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_filter_input(filterArn = filterArn)
   output <- .personalize$describe_filter_output()
@@ -3195,8 +3159,7 @@ personalize_describe_metric_attribution <- function(metricAttributionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_metric_attribution_input(metricAttributionArn = metricAttributionArn)
   output <- .personalize$describe_metric_attribution_output()
@@ -3215,12 +3178,12 @@ personalize_describe_metric_attribution <- function(metricAttributionArn) {
 #' 
 #' A recipe contains three items:
 #' 
-#' - An algorithm that trains a model.
+#' -   An algorithm that trains a model.
 #' 
-#' - Hyperparameters that govern the training.
+#' -   Hyperparameters that govern the training.
 #' 
-#' - Feature transformation information for modifying the input data before
-#'   training.
+#' -   Feature transformation information for modifying the input data
+#'     before training.
 #' 
 #' Amazon Personalize provides a set of predefined recipes. You specify a
 #' recipe when you create a solution with the
@@ -3277,8 +3240,7 @@ personalize_describe_recipe <- function(recipeArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_recipe_input(recipeArn = recipeArn)
   output <- .personalize$describe_recipe_output()
@@ -3297,12 +3259,12 @@ personalize_describe_recipe <- function(recipeArn) {
 #' 
 #' A recommender can be in one of the following states:
 #' 
-#' - CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
+#' -   CREATE PENDING \> CREATE IN_PROGRESS \> ACTIVE -or- CREATE FAILED
 #' 
-#' - STOP PENDING \> STOP IN_PROGRESS \> INACTIVE \> START PENDING \> START
-#'   IN_PROGRESS \> ACTIVE
+#' -   STOP PENDING \> STOP IN_PROGRESS \> INACTIVE \> START PENDING \>
+#'     START IN_PROGRESS \> ACTIVE
 #' 
-#' - DELETE PENDING \> DELETE IN_PROGRESS
+#' -   DELETE PENDING \> DELETE IN_PROGRESS
 #' 
 #' When the `status` is `CREATE FAILED`, the response includes the
 #' `failureReason` key, which describes why.
@@ -3398,8 +3360,7 @@ personalize_describe_recommender <- function(recommenderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$describe_recommender_output()
@@ -3459,8 +3420,7 @@ personalize_describe_schema <- function(schemaArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_schema_input(schemaArn = schemaArn)
   output <- .personalize$describe_schema_output()
@@ -3621,8 +3581,7 @@ personalize_describe_solution <- function(solutionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_solution_input(solutionArn = solutionArn)
   output <- .personalize$describe_solution_output()
@@ -3760,8 +3719,7 @@ personalize_describe_solution_version <- function(solutionVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$describe_solution_version_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$describe_solution_version_output()
@@ -3813,8 +3771,7 @@ personalize_get_solution_metrics <- function(solutionVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$get_solution_metrics_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$get_solution_metrics_output()
@@ -3887,8 +3844,7 @@ personalize_list_batch_inference_jobs <- function(solutionVersionArn = NULL, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchInferenceJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchInferenceJobs")
   )
   input <- .personalize$list_batch_inference_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_batch_inference_jobs_output()
@@ -3960,8 +3916,7 @@ personalize_list_batch_segment_jobs <- function(solutionVersionArn = NULL, nextT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchSegmentJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "batchSegmentJobs")
   )
   input <- .personalize$list_batch_segment_jobs_input(solutionVersionArn = solutionVersionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_batch_segment_jobs_output()
@@ -4035,8 +3990,7 @@ personalize_list_campaigns <- function(solutionArn = NULL, nextToken = NULL, max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "campaigns"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "campaigns")
   )
   input <- .personalize$list_campaigns_input(solutionArn = solutionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_campaigns_output()
@@ -4114,8 +4068,7 @@ personalize_list_data_deletion_jobs <- function(datasetGroupArn = NULL, nextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$list_data_deletion_jobs_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_data_deletion_jobs_output()
@@ -4191,8 +4144,7 @@ personalize_list_dataset_export_jobs <- function(datasetArn = NULL, nextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetExportJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetExportJobs")
   )
   input <- .personalize$list_dataset_export_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_export_jobs_output()
@@ -4262,8 +4214,7 @@ personalize_list_dataset_groups <- function(nextToken = NULL, maxResults = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetGroups"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetGroups")
   )
   input <- .personalize$list_dataset_groups_input(nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_groups_output()
@@ -4340,8 +4291,7 @@ personalize_list_dataset_import_jobs <- function(datasetArn = NULL, nextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetImportJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasetImportJobs")
   )
   input <- .personalize$list_dataset_import_jobs_input(datasetArn = datasetArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_dataset_import_jobs_output()
@@ -4413,8 +4363,7 @@ personalize_list_datasets <- function(datasetGroupArn = NULL, nextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasets"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "datasets")
   )
   input <- .personalize$list_datasets_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_datasets_output()
@@ -4485,8 +4434,7 @@ personalize_list_event_trackers <- function(datasetGroupArn = NULL, nextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTrackers"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "eventTrackers")
   )
   input <- .personalize$list_event_trackers_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_event_trackers_output()
@@ -4555,8 +4503,7 @@ personalize_list_filters <- function(datasetGroupArn = NULL, nextToken = NULL, m
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "Filters"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "Filters")
   )
   input <- .personalize$list_filters_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_filters_output()
@@ -4618,8 +4565,7 @@ personalize_list_metric_attribution_metrics <- function(metricAttributionArn = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metrics"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metrics")
   )
   input <- .personalize$list_metric_attribution_metrics_input(metricAttributionArn = metricAttributionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_metric_attribution_metrics_output()
@@ -4688,8 +4634,7 @@ personalize_list_metric_attributions <- function(datasetGroupArn = NULL, nextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metricAttributions"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "metricAttributions")
   )
   input <- .personalize$list_metric_attributions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_metric_attributions_output()
@@ -4763,8 +4708,7 @@ personalize_list_recipes <- function(recipeProvider = NULL, nextToken = NULL, ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recipes"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recipes")
   )
   input <- .personalize$list_recipes_input(recipeProvider = recipeProvider, nextToken = nextToken, maxResults = maxResults, domain = domain)
   output <- .personalize$list_recipes_output()
@@ -4854,8 +4798,7 @@ personalize_list_recommenders <- function(datasetGroupArn = NULL, nextToken = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recommenders"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "recommenders")
   )
   input <- .personalize$list_recommenders_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_recommenders_output()
@@ -4923,8 +4866,7 @@ personalize_list_schemas <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "schemas"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "schemas")
   )
   input <- .personalize$list_schemas_input(nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_schemas_output()
@@ -4996,8 +4938,7 @@ personalize_list_solution_versions <- function(solutionArn = NULL, nextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutionVersions"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutionVersions")
   )
   input <- .personalize$list_solution_versions_input(solutionArn = solutionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_solution_versions_output()
@@ -5069,8 +5010,7 @@ personalize_list_solutions <- function(datasetGroupArn = NULL, nextToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutions"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "solutions")
   )
   input <- .personalize$list_solutions_input(datasetGroupArn = datasetGroupArn, nextToken = nextToken, maxResults = maxResults)
   output <- .personalize$list_solutions_output()
@@ -5125,8 +5065,7 @@ personalize_list_tags_for_resource <- function(resourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .personalize$list_tags_for_resource_output()
@@ -5176,8 +5115,7 @@ personalize_start_recommender <- function(recommenderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$start_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$start_recommender_output()
@@ -5226,8 +5164,7 @@ personalize_stop_recommender <- function(recommenderArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$stop_recommender_input(recommenderArn = recommenderArn)
   output <- .personalize$stop_recommender_output()
@@ -5249,11 +5186,11 @@ personalize_stop_recommender <- function(recommenderArn) {
 #' Depending on the current state of the solution version, the solution
 #' version state changes as follows:
 #' 
-#' - CREATE_PENDING \> CREATE_STOPPED
+#' -   CREATE_PENDING \> CREATE_STOPPED
 #' 
-#'   or
+#'     or
 #' 
-#' - CREATE_IN_PROGRESS \> CREATE_STOPPING \> CREATE_STOPPED
+#' -   CREATE_IN_PROGRESS \> CREATE_STOPPING \> CREATE_STOPPED
 #' 
 #' You are billed for all of the training completed up until you stop the
 #' solution version creation. You cannot resume creating a solution version
@@ -5286,8 +5223,7 @@ personalize_stop_solution_version_creation <- function(solutionVersionArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$stop_solution_version_creation_input(solutionVersionArn = solutionVersionArn)
   output <- .personalize$stop_solution_version_creation_output()
@@ -5339,8 +5275,7 @@ personalize_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .personalize$tag_resource_output()
@@ -5389,8 +5324,7 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .personalize$untag_resource_output()
@@ -5415,11 +5349,11 @@ personalize_untag_resource <- function(resourceArn, tagKeys) {
 #' To update a campaign to start automatically using the latest solution
 #' version, specify the following:
 #' 
-#' - For the `SolutionVersionArn` parameter, specify the Amazon Resource
-#'   Name (ARN) of your solution in `SolutionArn/$LATEST` format.
+#' -   For the `SolutionVersionArn` parameter, specify the Amazon Resource
+#'     Name (ARN) of your solution in `SolutionArn/$LATEST` format.
 #' 
-#' - In the `campaignConfig`, set `syncWithLatestSolutionVersion` to
-#'   `true`.
+#' -   In the `campaignConfig`, set `syncWithLatestSolutionVersion` to
+#'     `true`.
 #' 
 #' To update a campaign, the campaign status must be ACTIVE or CREATE
 #' FAILED. Check the campaign status using the
@@ -5496,8 +5430,7 @@ personalize_update_campaign <- function(campaignArn, solutionVersionArn = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$update_campaign_input(campaignArn = campaignArn, solutionVersionArn = solutionVersionArn, minProvisionedTPS = minProvisionedTPS, campaignConfig = campaignConfig)
   output <- .personalize$update_campaign_output()
@@ -5549,8 +5482,7 @@ personalize_update_dataset <- function(datasetArn, schemaArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$update_dataset_input(datasetArn = datasetArn, schemaArn = schemaArn)
   output <- .personalize$update_dataset_output()
@@ -5619,8 +5551,7 @@ personalize_update_metric_attribution <- function(addMetrics = NULL, removeMetri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$update_metric_attribution_input(addMetrics = addMetrics, removeMetrics = removeMetrics, metricsOutputConfig = metricsOutputConfig, metricAttributionArn = metricAttributionArn)
   output <- .personalize$update_metric_attribution_output()
@@ -5690,8 +5621,7 @@ personalize_update_recommender <- function(recommenderArn, recommenderConfig) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$update_recommender_input(recommenderArn = recommenderArn, recommenderConfig = recommenderConfig)
   output <- .personalize$update_recommender_output()
@@ -5778,8 +5708,7 @@ personalize_update_solution <- function(solutionArn, performAutoTraining = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .personalize$update_solution_input(solutionArn = solutionArn, performAutoTraining = performAutoTraining, solutionUpdateConfig = solutionUpdateConfig)
   output <- .personalize$update_solution_output()

@@ -35,39 +35,41 @@ Reservation.
 \item \code{tenancy} - Indicates the tenancy of the Capacity Reservation. A
 Capacity Reservation can have one of the following tenancy settings:
 \itemize{
-\item \code{default} - The Capacity Reservation is created on hardware that is
-shared with other Amazon Web Services accounts.
-\item \code{dedicated} - The Capacity Reservation is created on single-tenant
-hardware that is dedicated to a single Amazon Web Services account.
+\item \code{default} - The Capacity Reservation is created on hardware that
+is shared with other Amazon Web Services accounts.
+\item \code{dedicated} - The Capacity Reservation is created on
+single-tenant hardware that is dedicated to a single Amazon Web
+Services account.
 }
-\item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost on which
-the Capacity Reservation was created.
+\item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost on
+which the Capacity Reservation was created.
 \item \code{state} - The current state of the Capacity Reservation. A Capacity
 Reservation can be in one of the following states:
 \itemize{
 \item \code{active}- The Capacity Reservation is active and the capacity is
 available for your use.
-\item \code{expired} - The Capacity Reservation expired automatically at the
-date and time specified in your request. The reserved capacity is no
-longer available for your use.
-\item \code{cancelled} - The Capacity Reservation was cancelled. The reserved
+\item \code{expired} - The Capacity Reservation expired automatically at
+the date and time specified in your request. The reserved
 capacity is no longer available for your use.
-\item \code{pending} - The Capacity Reservation request was successful but the
-capacity provisioning is still pending.
-\item \code{failed} - The Capacity Reservation request has failed. A request
-might fail due to invalid request parameters, capacity constraints,
-or instance limit constraints. Failed requests are retained for 60
-minutes.
+\item \code{cancelled} - The Capacity Reservation was cancelled. The
+reserved capacity is no longer available for your use.
+\item \code{pending} - The Capacity Reservation request was successful but
+the capacity provisioning is still pending.
+\item \code{failed} - The Capacity Reservation request has failed. A
+request might fail due to invalid request parameters, capacity
+constraints, or instance limit constraints. Failed requests are
+retained for 60 minutes.
 }
-\item \code{start-date} - The date and time at which the Capacity Reservation was
-started.
+\item \code{start-date} - The date and time at which the Capacity Reservation
+was started.
 \item \code{end-date} - The date and time at which the Capacity Reservation
-expires. When a Capacity Reservation expires, the reserved capacity is
-released and you can no longer launch instances into it. The Capacity
-Reservation's state changes to expired when it reaches its end date
-and time.
-\item \code{end-date-type} - Indicates the way in which the Capacity Reservation
-ends. A Capacity Reservation can have one of the following end types:
+expires. When a Capacity Reservation expires, the reserved capacity
+is released and you can no longer launch instances into it. The
+Capacity Reservation's state changes to expired when it reaches its
+end date and time.
+\item \code{end-date-type} - Indicates the way in which the Capacity
+Reservation ends. A Capacity Reservation can have one of the
+following end types:
 \itemize{
 \item \code{unlimited} - The Capacity Reservation remains active until you
 explicitly cancel it.
@@ -77,15 +79,16 @@ specified date and time.
 \item \code{instance-match-criteria} - Indicates the type of instance launches
 that the Capacity Reservation accepts. The options include:
 \itemize{
-\item \code{open} - The Capacity Reservation accepts all instances that have
-matching attributes (instance type, platform, and Availability
-Zone). Instances that have matching attributes launch into the
-Capacity Reservation automatically without specifying any additional
-parameters.
-\item \code{targeted} - The Capacity Reservation only accepts instances that
-have matching attributes (instance type, platform, and Availability
-Zone), and explicitly target the Capacity Reservation. This ensures
-that only permitted instances can use the reserved capacity.
+\item \code{open} - The Capacity Reservation accepts all instances that
+have matching attributes (instance type, platform, and
+Availability Zone). Instances that have matching attributes
+launch into the Capacity Reservation automatically without
+specifying any additional parameters.
+\item \code{targeted} - The Capacity Reservation only accepts instances
+that have matching attributes (instance type, platform, and
+Availability Zone), and explicitly target the Capacity
+Reservation. This ensures that only permitted instances can use
+the reserved capacity.
 }
 \item \code{placement-group-arn} - The ARN of the cluster placement group in
 which the Capacity Reservation was created.

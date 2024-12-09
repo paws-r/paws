@@ -85,10 +85,10 @@ supported only if you specify \strong{OutpostArn}. If you are allocating the
 Dedicated Hosts in a Region, omit this parameter.
 \itemize{
 \item If you specify this parameter, you can omit \strong{Quantity}. In this
-case, Amazon EC2 allocates a Dedicated Host on each specified hardware
-asset.
-\item If you specify both \strong{AssetIds} and \strong{Quantity}, then the value for
-\strong{Quantity} must be equal to the number of asset IDs specified.
+case, Amazon EC2 allocates a Dedicated Host on each specified
+hardware asset.
+\item If you specify both \strong{AssetIds} and \strong{Quantity}, then the value
+for \strong{Quantity} must be equal to the number of asset IDs specified.
 }}
 }
 \description{

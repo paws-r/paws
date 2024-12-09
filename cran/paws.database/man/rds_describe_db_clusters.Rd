@@ -28,17 +28,17 @@ Constraints:
 Supported Filters:
 \itemize{
 \item \code{clone-group-id} - Accepts clone group identifiers. The results list
-only includes information about the DB clusters associated with these
-clone groups.
-\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster Amazon
-Resource Names (ARNs). The results list only includes information
-about the DB clusters identified by these ARNs.
+only includes information about the DB clusters associated with
+these clone groups.
+\item \code{db-cluster-id} - Accepts DB cluster identifiers and DB cluster
+Amazon Resource Names (ARNs). The results list only includes
+information about the DB clusters identified by these ARNs.
 \item \code{db-cluster-resource-id} - Accepts DB cluster resource identifiers.
 The results list will only include information about the DB clusters
 identified by these DB cluster resource identifiers.
 \item \code{domain} - Accepts Active Directory directory IDs. The results list
-only includes information about the DB clusters associated with these
-domains.
+only includes information about the DB clusters associated with
+these domains.
 \item \code{engine} - Accepts engine names. The results list only includes
 information about the DB clusters for these engines.
 }}

@@ -20,9 +20,9 @@ Replication overwrite protection is \code{ENABLED} by default.
 \item \code{DISABLED} – The file system can be used as the destination file
 system in a replication configuration. The file system is read-only
 and can only be modified by EFS replication.
-\item \code{REPLICATING} – The file system is being used as the destination file
-system in a replication configuration. The file system is read-only
-and is only modified only by EFS replication.
+\item \code{REPLICATING} – The file system is being used as the destination
+file system in a replication configuration. The file system is
+read-only and is only modified only by EFS replication.
 }
 
 If the replication configuration is deleted, the file system's

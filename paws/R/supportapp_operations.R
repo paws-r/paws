@@ -10,9 +10,9 @@ NULL
 #' Creates a Slack channel configuration for your Amazon Web Services
 #' account.
 #' 
-#' - You can add up to 5 Slack workspaces for your account.
+#' -   You can add up to 5 Slack workspaces for your account.
 #' 
-#' - You can add up to 20 Slack channels for your account.
+#' -   You can add up to 20 Slack channels for your account.
 #' 
 #' A Slack channel can have up to 100 Amazon Web Services accounts. This
 #' means that only 100 accounts can add the same Slack channel to the
@@ -49,19 +49,19 @@ NULL
 #' If you specify `high` or `all`, you must specify `true` for at least one
 #' of the following parameters:
 #' 
-#' - `notifyOnAddCorrespondenceToCase`
+#' -   `notifyOnAddCorrespondenceToCase`
 #' 
-#' - `notifyOnCreateOrReopenCase`
+#' -   `notifyOnCreateOrReopenCase`
 #' 
-#' - `notifyOnResolveCase`
+#' -   `notifyOnResolveCase`
 #' 
 #' If you specify `none`, the following parameters must be null or `false`:
 #' 
-#' - `notifyOnAddCorrespondenceToCase`
+#' -   `notifyOnAddCorrespondenceToCase`
 #' 
-#' - `notifyOnCreateOrReopenCase`
+#' -   `notifyOnCreateOrReopenCase`
 #' 
-#' - `notifyOnResolveCase`
+#' -   `notifyOnResolveCase`
 #' 
 #' If you don't specify these parameters in your request, they default to
 #' `false`.
@@ -99,8 +99,7 @@ supportapp_create_slack_channel_configuration <- function(channelId, channelName
     http_method = "POST",
     http_path = "/control/create-slack-channel-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .supportapp$create_slack_channel_configuration_input(channelId = channelId, channelName = channelName, channelRoleArn = channelRoleArn, notifyOnAddCorrespondenceToCase = notifyOnAddCorrespondenceToCase, notifyOnCaseSeverity = notifyOnCaseSeverity, notifyOnCreateOrReopenCase = notifyOnCreateOrReopenCase, notifyOnResolveCase = notifyOnResolveCase, teamId = teamId)
   output <- .supportapp$create_slack_channel_configuration_output()
@@ -144,8 +143,7 @@ supportapp_delete_account_alias <- function() {
     http_method = "POST",
     http_path = "/control/delete-account-alias",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .supportapp$delete_account_alias_input()
   output <- .supportapp$delete_account_alias_output()
@@ -194,8 +192,7 @@ supportapp_delete_slack_channel_configuration <- function(channelId, teamId) {
     http_method = "POST",
     http_path = "/control/delete-slack-channel-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .supportapp$delete_slack_channel_configuration_input(channelId = channelId, teamId = teamId)
   output <- .supportapp$delete_slack_channel_configuration_output()
@@ -241,8 +238,7 @@ supportapp_delete_slack_workspace_configuration <- function(teamId) {
     http_method = "POST",
     http_path = "/control/delete-slack-workspace-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .supportapp$delete_slack_workspace_configuration_input(teamId = teamId)
   output <- .supportapp$delete_slack_workspace_configuration_output()
@@ -291,8 +287,7 @@ supportapp_get_account_alias <- function() {
     http_method = "POST",
     http_path = "/control/get-account-alias",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .supportapp$get_account_alias_input()
   output <- .supportapp$get_account_alias_output()
@@ -358,8 +353,7 @@ supportapp_list_slack_channel_configurations <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/control/list-slack-channel-configurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken")
   )
   input <- .supportapp$list_slack_channel_configurations_input(nextToken = nextToken)
   output <- .supportapp$list_slack_channel_configurations_output()
@@ -420,8 +414,7 @@ supportapp_list_slack_workspace_configurations <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/control/list-slack-workspace-configurations",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken")
   )
   input <- .supportapp$list_slack_workspace_configurations_input(nextToken = nextToken)
   output <- .supportapp$list_slack_workspace_configurations_output()
@@ -468,8 +461,7 @@ supportapp_put_account_alias <- function(accountAlias) {
     http_method = "POST",
     http_path = "/control/put-account-alias",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .supportapp$put_account_alias_input(accountAlias = accountAlias)
   output <- .supportapp$put_account_alias_output()
@@ -509,15 +501,15 @@ supportapp_put_account_alias <- function(accountAlias) {
 #' To use the Amazon Web Services Support App, each account must then
 #' complete the following tasks:
 #' 
-#' - Create an Identity and Access Management (IAM) role with the required
-#'   permission. For more information, see [Managing access to the Amazon
-#'   Web Services Support
-#'   App](https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html).
+#' -   Create an Identity and Access Management (IAM) role with the
+#'     required permission. For more information, see [Managing access to
+#'     the Amazon Web Services Support
+#'     App](https://docs.aws.amazon.com/awssupport/latest/user/support-app-permissions.html).
 #' 
-#' - Configure a Slack channel to use the Amazon Web Services Support App
-#'   for support cases for that account. For more information, see
-#'   [Configuring a Slack
-#'   channel](https://docs.aws.amazon.com/awssupport/latest/user/add-your-slack-channel.html).
+#' -   Configure a Slack channel to use the Amazon Web Services Support App
+#'     for support cases for that account. For more information, see
+#'     [Configuring a Slack
+#'     channel](https://docs.aws.amazon.com/awssupport/latest/user/add-your-slack-channel.html).
 #'
 #' @usage
 #' supportapp_register_slack_workspace_for_organization(teamId)
@@ -554,8 +546,7 @@ supportapp_register_slack_workspace_for_organization <- function(teamId) {
     http_method = "POST",
     http_path = "/control/register-slack-workspace-for-organization",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .supportapp$register_slack_workspace_for_organization_input(teamId = teamId)
   output <- .supportapp$register_slack_workspace_for_organization_output()
@@ -595,20 +586,20 @@ supportapp_register_slack_workspace_for_organization <- function(teamId) {
 #' If you specify `high` or `all`, at least one of the following parameters
 #' must be `true`:
 #' 
-#' - `notifyOnAddCorrespondenceToCase`
+#' -   `notifyOnAddCorrespondenceToCase`
 #' 
-#' - `notifyOnCreateOrReopenCase`
+#' -   `notifyOnCreateOrReopenCase`
 #' 
-#' - `notifyOnResolveCase`
+#' -   `notifyOnResolveCase`
 #' 
 #' If you specify `none`, any of the following parameters that you specify
 #' in your request must be `false`:
 #' 
-#' - `notifyOnAddCorrespondenceToCase`
+#' -   `notifyOnAddCorrespondenceToCase`
 #' 
-#' - `notifyOnCreateOrReopenCase`
+#' -   `notifyOnCreateOrReopenCase`
 #' 
-#' - `notifyOnResolveCase`
+#' -   `notifyOnResolveCase`
 #' 
 #' If you don't specify these parameters in your request, the Amazon Web
 #' Services Support App uses the current values by default.
@@ -658,8 +649,7 @@ supportapp_update_slack_channel_configuration <- function(channelId, channelName
     http_method = "POST",
     http_path = "/control/update-slack-channel-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .supportapp$update_slack_channel_configuration_input(channelId = channelId, channelName = channelName, channelRoleArn = channelRoleArn, notifyOnAddCorrespondenceToCase = notifyOnAddCorrespondenceToCase, notifyOnCaseSeverity = notifyOnCaseSeverity, notifyOnCreateOrReopenCase = notifyOnCreateOrReopenCase, notifyOnResolveCase = notifyOnResolveCase, teamId = teamId)
   output <- .supportapp$update_slack_channel_configuration_output()

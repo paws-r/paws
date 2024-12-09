@@ -19,7 +19,7 @@ rdsdataservice_execute_sql(
 DB cluster. Enter the database user name and password for the
 credentials in the secret.
 
-For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/}{Create a database secret}.}
+For information about creating the secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_database_secret.html}{Create a database secret}.}
 
 \item{sqlStatements}{[required] One or more SQL statements to run on the DB cluster.
 

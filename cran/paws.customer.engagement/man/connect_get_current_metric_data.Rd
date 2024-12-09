@@ -47,8 +47,8 @@ aggregated for all queues.
 \itemize{
 \item If you group by \code{CHANNEL}, you should include a Channels filter.
 VOICE, CHAT, and TASK channels are supported.
-\item If you group by \code{ROUTING_PROFILE}, you must include either a queue or
-routing profile filter. In addition, a routing profile filter is
+\item If you group by \code{ROUTING_PROFILE}, you must include either a queue
+or routing profile filter. In addition, a routing profile filter is
 required for metrics \code{CONTACTS_SCHEDULED}, \code{CONTACTS_IN_QUEUE}, and
 \code{ OLDEST_CONTACT_AGE}.
 \item If no \code{Grouping} is included in the request, a summary of metrics is
@@ -138,7 +138,7 @@ SECONDS.
 When you do not use groupings, Unit says SECONDS but the Value is
 returned in MILLISECONDS. For example, if you get a response like this:
 
-\verb{\\\{ "Metric": \\\{ "Name": "OLDEST_CONTACT_AGE", "Unit": "SECONDS" \\\}, "Value": 24113.0 }\\
+\verb{\\\{ "Metric": \\\{ "Name": "OLDEST_CONTACT_AGE", "Unit": "SECONDS" \\\}, "Value": 24113.0 }\}
 
 The actual OLDEST_CONTACT_AGE is 24 seconds.
 

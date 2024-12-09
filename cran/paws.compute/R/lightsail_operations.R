@@ -21,8 +21,7 @@ lightsail_allocate_static_ip <- function(staticIpName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$allocate_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$allocate_static_ip_output()
@@ -69,8 +68,7 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$attach_certificate_to_distribution_input(distributionName = distributionName, certificateName = certificateName)
   output <- .lightsail$attach_certificate_to_distribution_output()
@@ -108,8 +106,7 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath, autoMounting
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$attach_disk_input(diskName = diskName, instanceName = instanceName, diskPath = diskPath, autoMounting = autoMounting)
   output <- .lightsail$attach_disk_output()
@@ -148,8 +145,7 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$attach_instances_to_load_balancer_input(loadBalancerName = loadBalancerName, instanceNames = instanceNames)
   output <- .lightsail$attach_instances_to_load_balancer_output()
@@ -182,8 +178,7 @@ lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, cer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$attach_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName)
   output <- .lightsail$attach_load_balancer_tls_certificate_output()
@@ -214,8 +209,7 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$attach_static_ip_input(staticIpName = staticIpName, instanceName = instanceName)
   output <- .lightsail$attach_static_ip_output()
@@ -246,8 +240,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$close_instance_public_ports_input(portInfo = portInfo, instanceName = instanceName)
   output <- .lightsail$close_instance_public_ports_output()
@@ -272,47 +265,47 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' 
 #' Constraint:
 #' 
-#' - Define this parameter only when copying a manual snapshot as another
-#'   manual snapshot.
+#' -   Define this parameter only when copying a manual snapshot as another
+#'     manual snapshot.
 #' @param sourceResourceName The name of the source instance or disk from which the source automatic
 #' snapshot was created.
 #' 
 #' Constraint:
 #' 
-#' - Define this parameter only when copying an automatic snapshot as a
-#'   manual snapshot. For more information, see the [Amazon Lightsail
-#'   Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#' -   Define this parameter only when copying an automatic snapshot as a
+#'     manual snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param restoreDate The date of the source automatic snapshot to copy. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
 #' 
 #' Constraints:
 #' 
-#' - Must be specified in `YYYY-MM-DD` format.
+#' -   Must be specified in `YYYY-MM-DD` format.
 #' 
-#' - This parameter cannot be defined together with the
-#'   `use latest restorable auto snapshot` parameter. The `restore date`
-#'   and `use latest restorable auto snapshot` parameters are mutually
-#'   exclusive.
+#' -   This parameter cannot be defined together with the
+#'     `use latest restorable auto snapshot` parameter. The `restore date`
+#'     and `use latest restorable auto snapshot` parameters are mutually
+#'     exclusive.
 #' 
-#' - Define this parameter only when copying an automatic snapshot as a
-#'   manual snapshot. For more information, see the [Amazon Lightsail
-#'   Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#' -   Define this parameter only when copying an automatic snapshot as a
+#'     manual snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot of the specified source instance or disk.
 #' 
 #' Constraints:
 #' 
-#' - This parameter cannot be defined together with the `restore date`
-#'   parameter. The `use latest restorable auto snapshot` and
-#'   `restore date` parameters are mutually exclusive.
+#' -   This parameter cannot be defined together with the `restore date`
+#'     parameter. The `use latest restorable auto snapshot` and
+#'     `restore date` parameters are mutually exclusive.
 #' 
-#' - Define this parameter only when copying an automatic snapshot as a
-#'   manual snapshot. For more information, see the [Amazon Lightsail
-#'   Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
+#' -   Define this parameter only when copying an automatic snapshot as a
+#'     manual snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-keeping-automatic-snapshots.html).
 #' @param targetSnapshotName &#91;required&#93; The name of the new manual snapshot to be created as a copy.
 #' @param sourceRegion &#91;required&#93; The Amazon Web Services Region where the source manual or automatic
 #' snapshot is located.
@@ -326,8 +319,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$copy_snapshot_input(sourceSnapshotName = sourceSnapshotName, sourceResourceName = sourceResourceName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot, targetSnapshotName = targetSnapshotName, sourceRegion = sourceRegion)
   output <- .lightsail$copy_snapshot_output()
@@ -383,8 +375,7 @@ lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObj
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_bucket_input(bucketName = bucketName, bundleId = bundleId, tags = tags, enableObjectVersioning = enableObjectVersioning)
   output <- .lightsail$create_bucket_output()
@@ -415,8 +406,7 @@ lightsail_create_bucket_access_key <- function(bucketName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_bucket_access_key_input(bucketName = bucketName)
   output <- .lightsail$create_bucket_access_key_output()
@@ -460,8 +450,7 @@ lightsail_create_certificate <- function(certificateName, domainName, subjectAlt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_certificate_input(certificateName = certificateName, domainName = domainName, subjectAlternativeNames = subjectAlternativeNames, tags = tags)
   output <- .lightsail$create_certificate_output()
@@ -495,8 +484,7 @@ lightsail_create_cloud_formation_stack <- function(instances) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_cloud_formation_stack_input(instances = instances)
   output <- .lightsail$create_cloud_formation_stack_output()
@@ -521,22 +509,22 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' The `SMS` protocol is supported only in the following Amazon Web
 #' Services Regions.
 #' 
-#' - US East (N. Virginia) (`us-east-1`)
+#' -   US East (N. Virginia) (`us-east-1`)
 #' 
-#' - US West (Oregon) (`us-west-2`)
+#' -   US West (Oregon) (`us-west-2`)
 #' 
-#' - Europe (Ireland) (`eu-west-1`)
+#' -   Europe (Ireland) (`eu-west-1`)
 #' 
-#' - Asia Pacific (Tokyo) (`ap-northeast-1`)
+#' -   Asia Pacific (Tokyo) (`ap-northeast-1`)
 #' 
-#' - Asia Pacific (Singapore) (`ap-southeast-1`)
+#' -   Asia Pacific (Singapore) (`ap-southeast-1`)
 #' 
-#' - Asia Pacific (Sydney) (`ap-southeast-2`)
+#' -   Asia Pacific (Sydney) (`ap-southeast-2`)
 #' 
 #' For a list of countries/regions where SMS text messages can be sent, and
 #' the latest Amazon Web Services Regions where SMS text messaging is
 #' supported, see [Supported Regions and
-#' Countries](https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-numbers-sms-by-country.html)
+#' Countries](https://docs.aws.amazon.com/sns/latest/dg/sns-supported-regions-countries.html)
 #' in the *Amazon SNS Developer Guide*.
 #' 
 #' For more information about notifications in Amazon Lightsail, see
@@ -562,8 +550,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_contact_method_input(protocol = protocol, contactEndpoint = contactEndpoint)
   output <- .lightsail$create_contact_method_output()
@@ -596,15 +583,15 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' 
 #' The following are the requirements for container service names:
 #' 
-#' - Must be unique within each Amazon Web Services Region in your
-#'   Lightsail account.
+#' -   Must be unique within each Amazon Web Services Region in your
+#'     Lightsail account.
 #' 
-#' - Must contain 1 to 63 characters.
+#' -   Must contain 1 to 63 characters.
 #' 
-#' - Must contain only alphanumeric characters and hyphens.
+#' -   Must contain only alphanumeric characters and hyphens.
 #' 
-#' - A hyphen (-) can separate words but cannot be at the start or end of
-#'   the name.
+#' -   A hyphen (-) can separate words but cannot be at the start or end of
+#'     the name.
 #' @param power &#91;required&#93; The power specification for the container service.
 #' 
 #' The power specifies the amount of memory, vCPUs, and base monthly cost
@@ -678,8 +665,7 @@ lightsail_create_container_service <- function(serviceName, power, scale, tags =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_container_service_input(serviceName = serviceName, power = power, scale = scale, tags = tags, publicDomainNames = publicDomainNames, deployment = deployment, privateRegistryAccess = privateRegistryAccess)
   output <- .lightsail$create_container_service_output()
@@ -713,8 +699,7 @@ lightsail_create_container_service_deployment <- function(serviceName, container
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_container_service_deployment_input(serviceName = serviceName, containers = containers, publicEndpoint = publicEndpoint)
   output <- .lightsail$create_container_service_deployment_output()
@@ -745,8 +730,7 @@ lightsail_create_container_service_registry_login <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_container_service_registry_login_input()
   output <- .lightsail$create_container_service_registry_login_output()
@@ -790,8 +774,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_disk_input(diskName = diskName, availabilityZone = availabilityZone, sizeInGb = sizeInGb, tags = tags, addOns = addOns)
   output <- .lightsail$create_disk_output()
@@ -817,9 +800,9 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' 
 #' Constraint:
 #' 
-#' - This parameter cannot be defined together with the `source disk name`
-#'   parameter. The `disk snapshot name` and `source disk name` parameters
-#'   are mutually exclusive.
+#' -   This parameter cannot be defined together with the
+#'     `source disk name` parameter. The `disk snapshot name` and
+#'     `source disk name` parameters are mutually exclusive.
 #' @param availabilityZone &#91;required&#93; The Availability Zone where you want to create the disk (`us-east-2a`).
 #' Choose the same Availability Zone as the Lightsail instance where you
 #' want to create the disk.
@@ -838,41 +821,44 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' 
 #' Constraints:
 #' 
-#' - This parameter cannot be defined together with the
-#'   `disk snapshot name` parameter. The `source disk name` and
-#'   `disk snapshot name` parameters are mutually exclusive.
+#' -   This parameter cannot be defined together with the
+#'     `disk snapshot name` parameter. The `source disk name` and
+#'     `disk snapshot name` parameters are mutually exclusive.
 #' 
-#' - Define this parameter only when creating a new disk from an automatic
-#'   snapshot. For more information, see the [Amazon Lightsail Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' -   Define this parameter only when creating a new disk from an
+#'     automatic snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param restoreDate The date of the automatic snapshot to use for the new disk. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
 #' 
 #' Constraints:
 #' 
-#' - Must be specified in `YYYY-MM-DD` format.
+#' -   Must be specified in `YYYY-MM-DD` format.
 #' 
-#' - This parameter cannot be defined together with the
-#'   `use latest restorable auto snapshot` parameter. The `restore date`
-#'   and `use latest restorable auto snapshot` parameters are mutually
-#'   exclusive.
+#' -   This parameter cannot be defined together with the
+#'     `use latest restorable auto snapshot` parameter. The `restore date`
+#'     and `use latest restorable auto snapshot` parameters are mutually
+#'     exclusive.
 #' 
-#' - Define this parameter only when creating a new disk from an automatic
-#'   snapshot. For more information, see the [Amazon Lightsail Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' -   Define this parameter only when creating a new disk from an
+#'     automatic snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
 #' Constraints:
 #' 
-#' - This parameter cannot be defined together with the `restore date`
-#'   parameter. The `use latest restorable auto snapshot` and
-#'   `restore date` parameters are mutually exclusive.
+#' -   This parameter cannot be defined together with the `restore date`
+#'     parameter. The `use latest restorable auto snapshot` and
+#'     `restore date` parameters are mutually exclusive.
 #' 
-#' - Define this parameter only when creating a new disk from an automatic
-#'   snapshot. For more information, see the [Amazon Lightsail Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' -   Define this parameter only when creating a new disk from an
+#'     automatic snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @keywords internal
 #'
@@ -883,8 +869,7 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_disk_from_snapshot_input(diskName = diskName, diskSnapshotName = diskSnapshotName, availabilityZone = availabilityZone, sizeInGb = sizeInGb, tags = tags, addOns = addOns, sourceDiskName = sourceDiskName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot)
   output <- .lightsail$create_disk_from_snapshot_output()
@@ -931,8 +916,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_disk_snapshot_input(diskName = diskName, diskSnapshotName = diskSnapshotName, instanceName = instanceName, tags = tags)
   output <- .lightsail$create_disk_snapshot_output()
@@ -996,8 +980,7 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, bundleId = bundleId, ipAddressType = ipAddressType, tags = tags, certificateName = certificateName, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion)
   output <- .lightsail$create_distribution_output()
@@ -1031,8 +1014,7 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_domain_input(domainName = domainName, tags = tags)
   output <- .lightsail$create_domain_output()
@@ -1068,8 +1050,7 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$create_domain_entry_output()
@@ -1100,8 +1081,7 @@ lightsail_create_gui_session_access_details <- function(resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_gui_session_access_details_input(resourceName = resourceName)
   output <- .lightsail$create_gui_session_access_details_output()
@@ -1136,8 +1116,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName, instanceName = instanceName, tags = tags)
   output <- .lightsail$create_instance_snapshot_output()
@@ -1211,8 +1190,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_instances_input(instanceNames = instanceNames, availabilityZone = availabilityZone, customImageName = customImageName, blueprintId = blueprintId, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, ipAddressType = ipAddressType)
   output <- .lightsail$create_instances_output()
@@ -1246,9 +1224,9 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' 
 #' Constraint:
 #' 
-#' - This parameter cannot be defined together with the
-#'   `source instance name` parameter. The `instance snapshot name` and
-#'   `source instance name` parameters are mutually exclusive.
+#' -   This parameter cannot be defined together with the
+#'     `source instance name` parameter. The `instance snapshot name` and
+#'     `source instance name` parameters are mutually exclusive.
 #' @param bundleId &#91;required&#93; The bundle of specification information for your virtual private server
 #' (or *instance*), including the pricing plan (`micro_x_x`).
 #' @param userData You can create a launch script that configures a server with additional
@@ -1277,44 +1255,44 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' 
 #' Constraints:
 #' 
-#' - This parameter cannot be defined together with the
-#'   `instance snapshot name` parameter. The `source instance name` and
-#'   `instance snapshot name` parameters are mutually exclusive.
+#' -   This parameter cannot be defined together with the
+#'     `instance snapshot name` parameter. The `source instance name` and
+#'     `instance snapshot name` parameters are mutually exclusive.
 #' 
-#' - Define this parameter only when creating a new instance from an
-#'   automatic snapshot. For more information, see the [Amazon Lightsail
-#'   Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' -   Define this parameter only when creating a new instance from an
+#'     automatic snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param restoreDate The date of the automatic snapshot to use for the new instance. Use the
 #' `get auto snapshots` operation to identify the dates of the available
 #' automatic snapshots.
 #' 
 #' Constraints:
 #' 
-#' - Must be specified in `YYYY-MM-DD` format.
+#' -   Must be specified in `YYYY-MM-DD` format.
 #' 
-#' - This parameter cannot be defined together with the
-#'   `use latest restorable auto snapshot` parameter. The `restore date`
-#'   and `use latest restorable auto snapshot` parameters are mutually
-#'   exclusive.
+#' -   This parameter cannot be defined together with the
+#'     `use latest restorable auto snapshot` parameter. The `restore date`
+#'     and `use latest restorable auto snapshot` parameters are mutually
+#'     exclusive.
 #' 
-#' - Define this parameter only when creating a new instance from an
-#'   automatic snapshot. For more information, see the [Amazon Lightsail
-#'   Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' -   Define this parameter only when creating a new instance from an
+#'     automatic snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #' @param useLatestRestorableAutoSnapshot A Boolean value to indicate whether to use the latest available
 #' automatic snapshot.
 #' 
 #' Constraints:
 #' 
-#' - This parameter cannot be defined together with the `restore date`
-#'   parameter. The `use latest restorable auto snapshot` and
-#'   `restore date` parameters are mutually exclusive.
+#' -   This parameter cannot be defined together with the `restore date`
+#'     parameter. The `use latest restorable auto snapshot` and
+#'     `restore date` parameters are mutually exclusive.
 #' 
-#' - Define this parameter only when creating a new instance from an
-#'   automatic snapshot. For more information, see the [Amazon Lightsail
-#'   Developer
-#'   Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
+#' -   Define this parameter only when creating a new instance from an
+#'     automatic snapshot. For more information, see the [Amazon Lightsail
+#'     Developer
+#'     Guide](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-configuring-automatic-snapshots.html).
 #'
 #' @keywords internal
 #'
@@ -1325,8 +1303,7 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_instances_from_snapshot_input(instanceNames = instanceNames, attachedDiskMapping = attachedDiskMapping, availabilityZone = availabilityZone, instanceSnapshotName = instanceSnapshotName, bundleId = bundleId, userData = userData, keyPairName = keyPairName, tags = tags, addOns = addOns, ipAddressType = ipAddressType, sourceInstanceName = sourceInstanceName, restoreDate = restoreDate, useLatestRestorableAutoSnapshot = useLatestRestorableAutoSnapshot)
   output <- .lightsail$create_instances_from_snapshot_output()
@@ -1361,8 +1338,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_key_pair_input(keyPairName = keyPairName, tags = tags)
   output <- .lightsail$create_key_pair_output()
@@ -1432,8 +1408,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_load_balancer_input(loadBalancerName = loadBalancerName, instancePort = instancePort, healthCheckPath = healthCheckPath, certificateName = certificateName, certificateDomainName = certificateDomainName, certificateAlternativeNames = certificateAlternativeNames, tags = tags, ipAddressType = ipAddressType, tlsPolicyName = tlsPolicyName)
   output <- .lightsail$create_load_balancer_output()
@@ -1480,8 +1455,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName, certificateDomainName = certificateDomainName, certificateAlternativeNames = certificateAlternativeNames, tags = tags)
   output <- .lightsail$create_load_balancer_tls_certificate_output()
@@ -1504,9 +1478,9 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 2 to 255 alphanumeric characters, or hyphens.
+#' -   Must contain from 2 to 255 alphanumeric characters, or hyphens.
 #' 
-#' - The first and last character must be a letter or number.
+#' -   The first and last character must be a letter or number.
 #' @param availabilityZone The Availability Zone in which to create your new database. Use the
 #' `us-east-2a` case-sensitive format.
 #' 
@@ -1535,18 +1509,18 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' Constraints:
 #' 
-#' - Must contain 1 to 64 letters or numbers.
+#' -   Must contain 1 to 64 letters or numbers.
 #' 
-#' - Must begin with a letter. Subsequent characters can be letters,
-#'   underscores, or digits (0- 9).
+#' -   Must begin with a letter. Subsequent characters can be letters,
+#'     underscores, or digits (0- 9).
 #' 
-#' - Can't be a word reserved by the specified database engine.
+#' -   Can't be a word reserved by the specified database engine.
 #' 
-#'   For more information about reserved words in MySQL, see the Keywords
-#'   and Reserved Words articles for [MySQL
-#'   5.6](https://dev.mysql.com/doc/refman/8.4/en/keywords.html), [MySQL
-#'   5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), and
-#'   [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
+#'     For more information about reserved words in MySQL, see the Keywords
+#'     and Reserved Words articles for [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/8.4/en/keywords.html), [MySQL
+#'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), and
+#'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 
 #' **PostgreSQL**
 #' 
@@ -1556,63 +1530,63 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' Constraints:
 #' 
-#' - Must contain 1 to 63 letters or numbers.
+#' -   Must contain 1 to 63 letters or numbers.
 #' 
-#' - Must begin with a letter. Subsequent characters can be letters,
-#'   underscores, or digits (0- 9).
+#' -   Must begin with a letter. Subsequent characters can be letters,
+#'     underscores, or digits (0- 9).
 #' 
-#' - Can't be a word reserved by the specified database engine.
+#' -   Can't be a word reserved by the specified database engine.
 #' 
-#'   For more information about reserved words in PostgreSQL, see the SQL
-#'   Key Words articles for [PostgreSQL
-#'   9.6](https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html),
-#'   [PostgreSQL
-#'   10](https://www.postgresql.org/docs/10/sql-keywords-appendix.html),
-#'   [PostgreSQL
-#'   11](https://www.postgresql.org/docs/11/sql-keywords-appendix.html),
-#'   and [PostgreSQL
-#'   12](https://www.postgresql.org/docs/12/sql-keywords-appendix.html).
+#'     For more information about reserved words in PostgreSQL, see the SQL
+#'     Key Words articles for [PostgreSQL
+#'     9.6](https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html),
+#'     [PostgreSQL
+#'     10](https://www.postgresql.org/docs/10/sql-keywords-appendix.html),
+#'     [PostgreSQL
+#'     11](https://www.postgresql.org/docs/11/sql-keywords-appendix.html),
+#'     and [PostgreSQL
+#'     12](https://www.postgresql.org/docs/12/sql-keywords-appendix.html).
 #' @param masterUsername &#91;required&#93; The name for the master user.
 #' 
 #' **MySQL**
 #' 
 #' Constraints:
 #' 
-#' - Required for MySQL.
+#' -   Required for MySQL.
 #' 
-#' - Must be 1 to 16 letters or numbers. Can contain underscores.
+#' -   Must be 1 to 16 letters or numbers. Can contain underscores.
 #' 
-#' - First character must be a letter.
+#' -   First character must be a letter.
 #' 
-#' - Can't be a reserved word for the chosen database engine.
+#' -   Can't be a reserved word for the chosen database engine.
 #' 
-#'   For more information about reserved words in MySQL 5.6 or 5.7, see the
-#'   Keywords and Reserved Words articles for [MySQL
-#'   5.6](https://dev.mysql.com/doc/refman/8.4/en/keywords.html), [MySQL
-#'   5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), or [MySQL
-#'   8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
+#'     For more information about reserved words in MySQL 5.6 or 5.7, see
+#'     the Keywords and Reserved Words articles for [MySQL
+#'     5.6](https://dev.mysql.com/doc/refman/8.4/en/keywords.html), [MySQL
+#'     5.7](https://dev.mysql.com/doc/refman/5.7/en/keywords.html), or
+#'     [MySQL 8.0](https://dev.mysql.com/doc/refman/8.0/en/keywords.html).
 #' 
 #' **PostgreSQL**
 #' 
 #' Constraints:
 #' 
-#' - Required for PostgreSQL.
+#' -   Required for PostgreSQL.
 #' 
-#' - Must be 1 to 63 letters or numbers. Can contain underscores.
+#' -   Must be 1 to 63 letters or numbers. Can contain underscores.
 #' 
-#' - First character must be a letter.
+#' -   First character must be a letter.
 #' 
-#' - Can't be a reserved word for the chosen database engine.
+#' -   Can't be a reserved word for the chosen database engine.
 #' 
-#'   For more information about reserved words in MySQL 5.6 or 5.7, see the
-#'   Keywords and Reserved Words articles for [PostgreSQL
-#'   9.6](https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html),
-#'   [PostgreSQL
-#'   10](https://www.postgresql.org/docs/10/sql-keywords-appendix.html),
-#'   [PostgreSQL
-#'   11](https://www.postgresql.org/docs/11/sql-keywords-appendix.html),
-#'   and [PostgreSQL
-#'   12](https://www.postgresql.org/docs/12/sql-keywords-appendix.html).
+#'     For more information about reserved words in MySQL 5.6 or 5.7, see
+#'     the Keywords and Reserved Words articles for [PostgreSQL
+#'     9.6](https://www.postgresql.org/docs/9.6/sql-keywords-appendix.html),
+#'     [PostgreSQL
+#'     10](https://www.postgresql.org/docs/10/sql-keywords-appendix.html),
+#'     [PostgreSQL
+#'     11](https://www.postgresql.org/docs/11/sql-keywords-appendix.html),
+#'     and [PostgreSQL
+#'     12](https://www.postgresql.org/docs/12/sql-keywords-appendix.html).
 #' @param masterUserPassword The password for the master user. The password can include any printable
 #' ASCII character except "/", """, or "@@". It cannot contain spaces.
 #' 
@@ -1635,15 +1609,15 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' Constraints:
 #' 
-#' - Must be in the `hh24:mi-hh24:mi` format.
+#' -   Must be in the `hh24:mi-hh24:mi` format.
 #' 
-#'   Example: `16:00-16:30`
+#'     Example: `16:00-16:30`
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Must not conflict with the preferred maintenance window.
+#' -   Must not conflict with the preferred maintenance window.
 #' 
-#' - Must be at least 30 minutes.
+#' -   Must be at least 30 minutes.
 #' @param preferredMaintenanceWindow The weekly time range during which system maintenance can occur on your
 #' new database.
 #' 
@@ -1653,15 +1627,15 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' Constraints:
 #' 
-#' - Must be in the `ddd:hh24:mi-ddd:hh24:mi` format.
+#' -   Must be in the `ddd:hh24:mi-ddd:hh24:mi` format.
 #' 
-#' - Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
+#' -   Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
-#' - Must be at least 30 minutes.
+#' -   Must be at least 30 minutes.
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Example: `Tue:17:00-Tue:17:30`
+#' -   Example: `Tue:17:00-Tue:17:30`
 #' @param publiclyAccessible Specifies the accessibility options for your new database. A value of
 #' `true` specifies a database that is available to resources outside of
 #' your Lightsail account. A value of `false` specifies a database that is
@@ -1681,8 +1655,7 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_relational_database_input(relationalDatabaseName = relationalDatabaseName, availabilityZone = availabilityZone, relationalDatabaseBlueprintId = relationalDatabaseBlueprintId, relationalDatabaseBundleId = relationalDatabaseBundleId, masterDatabaseName = masterDatabaseName, masterUsername = masterUsername, masterUserPassword = masterUserPassword, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, publiclyAccessible = publiclyAccessible, tags = tags)
   output <- .lightsail$create_relational_database_output()
@@ -1706,9 +1679,9 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 2 to 255 alphanumeric characters, or hyphens.
+#' -   Must contain from 2 to 255 alphanumeric characters, or hyphens.
 #' 
-#' - The first and last character must be a letter or number.
+#' -   The first and last character must be a letter or number.
 #' @param availabilityZone The Availability Zone in which to create your new database. Use the
 #' `us-east-2a` case-sensitive format.
 #' 
@@ -1736,17 +1709,17 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' 
 #' Constraints:
 #' 
-#' - Must be before the latest restorable time for the database.
+#' -   Must be before the latest restorable time for the database.
 #' 
-#' - Cannot be specified if the `use latest restorable time` parameter is
-#'   `true`.
+#' -   Cannot be specified if the `use latest restorable time` parameter is
+#'     `true`.
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use a restore time of October 1, 2018, at
-#'   8 PM UTC, then you input `1538424000` as the restore time.
+#'     For example, if you wish to use a restore time of October 1, 2018,
+#'     at 8 PM UTC, then you input `1538424000` as the restore time.
 #' @param useLatestRestorableTime Specifies whether your database is restored from the latest backup time.
 #' A value of `true` restores from the latest backup time.
 #' 
@@ -1768,8 +1741,7 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_relational_database_from_snapshot_input(relationalDatabaseName = relationalDatabaseName, availabilityZone = availabilityZone, publiclyAccessible = publiclyAccessible, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName, relationalDatabaseBundleId = relationalDatabaseBundleId, sourceRelationalDatabaseName = sourceRelationalDatabaseName, restoreTime = restoreTime, useLatestRestorableTime = useLatestRestorableTime, tags = tags)
   output <- .lightsail$create_relational_database_from_snapshot_output()
@@ -1793,9 +1765,9 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 2 to 255 alphanumeric characters, or hyphens.
+#' -   Must contain from 2 to 255 alphanumeric characters, or hyphens.
 #' 
-#' - The first and last character must be a letter or number.
+#' -   The first and last character must be a letter or number.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
 #' Use the [`tag_resource`][lightsail_tag_resource] action to tag a
@@ -1810,8 +1782,7 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$create_relational_database_snapshot_input(relationalDatabaseName = relationalDatabaseName, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName, tags = tags)
   output <- .lightsail$create_relational_database_snapshot_output()
@@ -1841,8 +1812,7 @@ lightsail_delete_alarm <- function(alarmName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_alarm_input(alarmName = alarmName)
   output <- .lightsail$delete_alarm_output()
@@ -1876,8 +1846,7 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_auto_snapshot_input(resourceName = resourceName, date = date)
   output <- .lightsail$delete_auto_snapshot_output()
@@ -1905,15 +1874,15 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
 #' You must force delete the bucket if it has one of the following
 #' conditions:
 #' 
-#' - The bucket is the origin of a distribution.
+#' -   The bucket is the origin of a distribution.
 #' 
-#' - The bucket has instances that were granted access to it using the
-#'   [`set_resource_access_for_bucket`][lightsail_set_resource_access_for_bucket]
-#'   action.
+#' -   The bucket has instances that were granted access to it using the
+#'     [`set_resource_access_for_bucket`][lightsail_set_resource_access_for_bucket]
+#'     action.
 #' 
-#' - The bucket has objects.
+#' -   The bucket has objects.
 #' 
-#' - The bucket has access keys.
+#' -   The bucket has access keys.
 #' 
 #' Force deleting a bucket might impact other resources that rely on the
 #' bucket, such as instances, distributions, or software that use the
@@ -1928,8 +1897,7 @@ lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_bucket_input(bucketName = bucketName, forceDelete = forceDelete)
   output <- .lightsail$delete_bucket_output()
@@ -1963,8 +1931,7 @@ lightsail_delete_bucket_access_key <- function(bucketName, accessKeyId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_bucket_access_key_input(bucketName = bucketName, accessKeyId = accessKeyId)
   output <- .lightsail$delete_bucket_access_key_output()
@@ -1998,8 +1965,7 @@ lightsail_delete_certificate <- function(certificateName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_certificate_input(certificateName = certificateName)
   output <- .lightsail$delete_certificate_output()
@@ -2035,8 +2001,7 @@ lightsail_delete_contact_method <- function(protocol) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_contact_method_input(protocol = protocol)
   output <- .lightsail$delete_contact_method_output()
@@ -2079,8 +2044,7 @@ lightsail_delete_container_image <- function(serviceName, image) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_container_image_input(serviceName = serviceName, image = image)
   output <- .lightsail$delete_container_image_output()
@@ -2110,8 +2074,7 @@ lightsail_delete_container_service <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_container_service_input(serviceName = serviceName)
   output <- .lightsail$delete_container_service_output()
@@ -2142,8 +2105,7 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_disk_input(diskName = diskName, forceDeleteAddOns = forceDeleteAddOns)
   output <- .lightsail$delete_disk_output()
@@ -2173,8 +2135,7 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_disk_snapshot_input(diskSnapshotName = diskSnapshotName)
   output <- .lightsail$delete_disk_snapshot_output()
@@ -2208,8 +2169,7 @@ lightsail_delete_distribution <- function(distributionName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_distribution_input(distributionName = distributionName)
   output <- .lightsail$delete_distribution_output()
@@ -2239,8 +2199,7 @@ lightsail_delete_domain <- function(domainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_domain_input(domainName = domainName)
   output <- .lightsail$delete_domain_output()
@@ -2272,8 +2231,7 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$delete_domain_entry_output()
@@ -2305,8 +2263,7 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_instance_input(instanceName = instanceName, forceDeleteAddOns = forceDeleteAddOns)
   output <- .lightsail$delete_instance_output()
@@ -2336,8 +2293,7 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName)
   output <- .lightsail$delete_instance_snapshot_output()
@@ -2372,8 +2328,7 @@ lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_key_pair_input(keyPairName = keyPairName, expectedFingerprint = expectedFingerprint)
   output <- .lightsail$delete_key_pair_output()
@@ -2405,8 +2360,7 @@ lightsail_delete_known_host_keys <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_known_host_keys_input(instanceName = instanceName)
   output <- .lightsail$delete_known_host_keys_output()
@@ -2437,8 +2391,7 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_load_balancer_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$delete_load_balancer_output()
@@ -2475,8 +2428,7 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_load_balancer_tls_certificate_input(loadBalancerName = loadBalancerName, certificateName = certificateName, force = force)
   output <- .lightsail$delete_load_balancer_tls_certificate_output()
@@ -2513,9 +2465,9 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' Constraints:
 #' 
-#' - Must contain from 2 to 255 alphanumeric characters, or hyphens.
+#' -   Must contain from 2 to 255 alphanumeric characters, or hyphens.
 #' 
-#' - The first and last character must be a letter or number.
+#' -   The first and last character must be a letter or number.
 #'
 #' @keywords internal
 #'
@@ -2526,8 +2478,7 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_relational_database_input(relationalDatabaseName = relationalDatabaseName, skipFinalSnapshot = skipFinalSnapshot, finalRelationalDatabaseSnapshotName = finalRelationalDatabaseSnapshotName)
   output <- .lightsail$delete_relational_database_output()
@@ -2557,8 +2508,7 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$delete_relational_database_snapshot_input(relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$delete_relational_database_snapshot_output()
@@ -2592,8 +2542,7 @@ lightsail_detach_certificate_from_distribution <- function(distributionName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$detach_certificate_from_distribution_input(distributionName = distributionName)
   output <- .lightsail$detach_certificate_from_distribution_output()
@@ -2624,8 +2573,7 @@ lightsail_detach_disk <- function(diskName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$detach_disk_input(diskName = diskName)
   output <- .lightsail$detach_disk_output()
@@ -2657,8 +2605,7 @@ lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$detach_instances_from_load_balancer_input(loadBalancerName = loadBalancerName, instanceNames = instanceNames)
   output <- .lightsail$detach_instances_from_load_balancer_output()
@@ -2689,8 +2636,7 @@ lightsail_detach_static_ip <- function(staticIpName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$detach_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$detach_static_ip_output()
@@ -2721,8 +2667,7 @@ lightsail_disable_add_on <- function(addOnType, resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$disable_add_on_input(addOnType = addOnType, resourceName = resourceName)
   output <- .lightsail$disable_add_on_output()
@@ -2752,8 +2697,7 @@ lightsail_download_default_key_pair <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$download_default_key_pair_input()
   output <- .lightsail$download_default_key_pair_output()
@@ -2785,8 +2729,7 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$enable_add_on_input(resourceName = resourceName, addOnRequest = addOnRequest)
   output <- .lightsail$enable_add_on_output()
@@ -2817,8 +2760,7 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$export_snapshot_input(sourceSnapshotName = sourceSnapshotName)
   output <- .lightsail$export_snapshot_output()
@@ -2853,8 +2795,7 @@ lightsail_get_active_names <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_active_names_input(pageToken = pageToken)
   output <- .lightsail$get_active_names_output()
@@ -2896,8 +2837,7 @@ lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_alarms_input(alarmName = alarmName, pageToken = pageToken, monitoredResourceName = monitoredResourceName)
   output <- .lightsail$get_alarms_output()
@@ -2928,8 +2868,7 @@ lightsail_get_auto_snapshots <- function(resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_auto_snapshots_input(resourceName = resourceName)
   output <- .lightsail$get_auto_snapshots_output()
@@ -2970,8 +2909,7 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL, a
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_blueprints_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
   output <- .lightsail$get_blueprints_output()
@@ -3002,8 +2940,7 @@ lightsail_get_bucket_access_keys <- function(bucketName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_bucket_access_keys_input(bucketName = bucketName)
   output <- .lightsail$get_bucket_access_keys_output()
@@ -3034,8 +2971,7 @@ lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_bucket_bundles_input(includeInactive = includeInactive)
   output <- .lightsail$get_bucket_bundles_output()
@@ -3063,23 +2999,23 @@ lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
 #' 
 #' These bucket metrics are reported once per day.
 #' 
-#' - **`BucketSizeBytes`** - The amount of data in bytes stored in a
-#'   bucket. This value is calculated by summing the size of all objects in
-#'   the bucket (including object versions), including the size of all
-#'   parts for all incomplete multipart uploads to the bucket.
+#' -   **`BucketSizeBytes`** - The amount of data in bytes stored in a
+#'     bucket. This value is calculated by summing the size of all objects
+#'     in the bucket (including object versions), including the size of all
+#'     parts for all incomplete multipart uploads to the bucket.
 #' 
-#'   Statistics: The most useful statistic is `Maximum`.
+#'     Statistics: The most useful statistic is `Maximum`.
 #' 
-#'   Unit: The published unit is `Bytes`.
+#'     Unit: The published unit is `Bytes`.
 #' 
-#' - **`NumberOfObjects`** - The total number of objects stored in a
-#'   bucket. This value is calculated by counting all objects in the bucket
-#'   (including object versions) and the total number of parts for all
-#'   incomplete multipart uploads to the bucket.
+#' -   **`NumberOfObjects`** - The total number of objects stored in a
+#'     bucket. This value is calculated by counting all objects in the
+#'     bucket (including object versions) and the total number of parts for
+#'     all incomplete multipart uploads to the bucket.
 #' 
-#'   Statistics: The most useful statistic is `Average`.
+#'     Statistics: The most useful statistic is `Average`.
 #' 
-#'   Unit: The published unit is `Count`.
+#'     Unit: The published unit is `Count`.
 #' @param startTime &#91;required&#93; The timestamp indicating the earliest data to be returned.
 #' @param endTime &#91;required&#93; The timestamp indicating the latest data to be returned.
 #' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
@@ -3091,24 +3027,26 @@ lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
 #' 
 #' The following statistics are available:
 #' 
-#' - `Minimum` - The lowest value observed during the specified period. Use
-#'   this value to determine low volumes of activity for your application.
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
 #' 
-#' - `Maximum` - The highest value observed during the specified period.
-#'   Use this value to determine high volumes of activity for your
-#'   application.
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
 #' 
-#' - `Sum` - The sum of all values submitted for the matching metric. You
-#'   can use this statistic to determine the total volume of a metric.
+#' -   `Sum` - The sum of all values submitted for the matching metric. You
+#'     can use this statistic to determine the total volume of a metric.
 #' 
-#' - `Average` - The value of `Sum` / `SampleCount` during the specified
-#'   period. By comparing this statistic with the `Minimum` and `Maximum`
-#'   values, you can determine the full scope of a metric and how close the
-#'   average use is to the `Minimum` and `Maximum` values. This comparison
-#'   helps you to know when to increase or decrease your resources.
+#' -   `Average` - The value of `Sum` / `SampleCount` during the specified
+#'     period. By comparing this statistic with the `Minimum` and `Maximum`
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the `Minimum` and `Maximum` values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
 #' 
-#' - `SampleCount` - The count, or number, of data points used for the
-#'   statistical calculation.
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
 #' @param unit &#91;required&#93; The unit for the metric data request.
 #' 
 #' Valid units depend on the metric data being requested. For the valid
@@ -3123,8 +3061,7 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_bucket_metric_data_input(bucketName = bucketName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, statistics = statistics, unit = unit)
   output <- .lightsail$get_bucket_metric_data_output()
@@ -3167,8 +3104,7 @@ lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_buckets_input(bucketName = bucketName, pageToken = pageToken, includeConnectedResources = includeConnectedResources)
   output <- .lightsail$get_buckets_output()
@@ -3209,8 +3145,7 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_bundles_input(includeInactive = includeInactive, pageToken = pageToken, appCategory = appCategory)
   output <- .lightsail$get_bundles_output()
@@ -3263,8 +3198,7 @@ lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertif
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_certificates_input(certificateStatuses = certificateStatuses, includeCertificateDetails = includeCertificateDetails, certificateName = certificateName, pageToken = pageToken)
   output <- .lightsail$get_certificates_output()
@@ -3300,8 +3234,7 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_cloud_formation_stack_records_input(pageToken = pageToken)
   output <- .lightsail$get_cloud_formation_stack_records_output()
@@ -3335,8 +3268,7 @@ lightsail_get_contact_methods <- function(protocols = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_contact_methods_input(protocols = protocols)
   output <- .lightsail$get_contact_methods_output()
@@ -3367,8 +3299,7 @@ lightsail_get_container_api_metadata <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_container_api_metadata_input()
   output <- .lightsail$get_container_api_metadata_output()
@@ -3400,8 +3331,7 @@ lightsail_get_container_images <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_container_images_input(serviceName = serviceName)
   output <- .lightsail$get_container_images_output()
@@ -3428,12 +3358,12 @@ lightsail_get_container_images <- function(serviceName) {
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use a start time of October 1, 2018, at 8
-#'   PM UTC, specify `1538424000` as the start time.
+#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     8 PM UTC, specify `1538424000` as the start time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
 #' converter like [Epoch converter](https://www.epochconverter.com/).
@@ -3441,12 +3371,12 @@ lightsail_get_container_images <- function(serviceName) {
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use an end time of October 1, 2018, at 9
-#'   PM UTC, specify `1538427600` as the end time.
+#'     For example, if you wish to use an end time of October 1, 2018, at 9
+#'     PM UTC, specify `1538427600` as the end time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
 #' converter like [Epoch converter](https://www.epochconverter.com/).
@@ -3455,19 +3385,19 @@ lightsail_get_container_images <- function(serviceName) {
 #' The following are a few examples of filter patterns that you can
 #' specify:
 #' 
-#' - To return all log events, specify a filter pattern of `""`.
+#' -   To return all log events, specify a filter pattern of `""`.
 #' 
-#' - To exclude log events that contain the `ERROR` term, and return all
-#'   other log events, specify a filter pattern of `"-ERROR"`.
+#' -   To exclude log events that contain the `ERROR` term, and return all
+#'     other log events, specify a filter pattern of `"-ERROR"`.
 #' 
-#' - To return log events that contain the `ERROR` term, specify a filter
-#'   pattern of `"ERROR"`.
+#' -   To return log events that contain the `ERROR` term, specify a filter
+#'     pattern of `"ERROR"`.
 #' 
-#' - To return log events that contain both the `ERROR` and `Exception`
-#'   terms, specify a filter pattern of `"ERROR Exception"`.
+#' -   To return log events that contain both the `ERROR` and `Exception`
+#'     terms, specify a filter pattern of `"ERROR Exception"`.
 #' 
-#' - To return log events that contain the `ERROR` *or* the `Exception`
-#'   term, specify a filter pattern of `"?ERROR ?Exception"`.
+#' -   To return log events that contain the `ERROR` *or* the `Exception`
+#'     term, specify a filter pattern of `"?ERROR ?Exception"`.
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
 #' To get a page token, perform an initial
@@ -3484,8 +3414,7 @@ lightsail_get_container_log <- function(serviceName, containerName, startTime = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_container_log_input(serviceName = serviceName, containerName = containerName, startTime = startTime, endTime = endTime, filterPattern = filterPattern, pageToken = pageToken)
   output <- .lightsail$get_container_log_output()
@@ -3515,8 +3444,7 @@ lightsail_get_container_service_deployments <- function(serviceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_container_service_deployments_input(serviceName = serviceName)
   output <- .lightsail$get_container_service_deployments_output()
@@ -3543,23 +3471,23 @@ lightsail_get_container_service_deployments <- function(serviceName) {
 #' most useful statistics to include in your request, and the published
 #' unit value.
 #' 
-#' - `CPUUtilization` - The average percentage of compute units that are
-#'   currently in use across all nodes of the container service. This
-#'   metric identifies the processing power required to run containers on
-#'   each node of the container service.
+#' -   `CPUUtilization` - The average percentage of compute units that are
+#'     currently in use across all nodes of the container service. This
+#'     metric identifies the processing power required to run containers on
+#'     each node of the container service.
 #' 
-#'   Statistics: The most useful statistics are `Maximum` and `Average`.
+#'     Statistics: The most useful statistics are `Maximum` and `Average`.
 #' 
-#'   Unit: The published unit is `Percent`.
+#'     Unit: The published unit is `Percent`.
 #' 
-#' - `MemoryUtilization` - The average percentage of available memory that
-#'   is currently in use across all nodes of the container service. This
-#'   metric identifies the memory required to run containers on each node
-#'   of the container service.
+#' -   `MemoryUtilization` - The average percentage of available memory
+#'     that is currently in use across all nodes of the container service.
+#'     This metric identifies the memory required to run containers on each
+#'     node of the container service.
 #' 
-#'   Statistics: The most useful statistics are `Maximum` and `Average`.
+#'     Statistics: The most useful statistics are `Maximum` and `Average`.
 #' 
-#'   Unit: The published unit is `Percent`.
+#'     Unit: The published unit is `Percent`.
 #' @param startTime &#91;required&#93; The start time of the time period.
 #' @param endTime &#91;required&#93; The end time of the time period.
 #' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
@@ -3570,24 +3498,27 @@ lightsail_get_container_service_deployments <- function(serviceName) {
 #' 
 #' The following statistics are available:
 #' 
-#' - `Minimum` - The lowest value observed during the specified period. Use
-#'   this value to determine low volumes of activity for your application.
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
 #' 
-#' - `Maximum` - The highest value observed during the specified period.
-#'   Use this value to determine high volumes of activity for your
-#'   application.
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
 #' 
-#' - `Sum` - All values submitted for the matching metric added together.
-#'   You can use this statistic to determine the total volume of a metric.
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
 #' 
-#' - `Average` - The value of `Sum` / `SampleCount` during the specified
-#'   period. By comparing this statistic with the `Minimum` and `Maximum`
-#'   values, you can determine the full scope of a metric and how close the
-#'   average use is to the `Minimum` and `Maximum` values. This comparison
-#'   helps you to know when to increase or decrease your resources.
+#' -   `Average` - The value of `Sum` / `SampleCount` during the specified
+#'     period. By comparing this statistic with the `Minimum` and `Maximum`
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the `Minimum` and `Maximum` values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
 #' 
-#' - `SampleCount` - The count, or number, of data points used for the
-#'   statistical calculation.
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
 #'
 #' @keywords internal
 #'
@@ -3598,8 +3529,7 @@ lightsail_get_container_service_metric_data <- function(serviceName, metricName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_container_service_metric_data_input(serviceName = serviceName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, statistics = statistics)
   output <- .lightsail$get_container_service_metric_data_output()
@@ -3630,8 +3560,7 @@ lightsail_get_container_service_powers <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_container_service_powers_input()
   output <- .lightsail$get_container_service_powers_output()
@@ -3665,8 +3594,7 @@ lightsail_get_container_services <- function(serviceName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_container_services_input(serviceName = serviceName)
   output <- .lightsail$get_container_services_output()
@@ -3690,12 +3618,12 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you want to use a start time of October 1, 2018, at 8
-#'   PM UTC, specify `1538424000` as the start time.
+#'     For example, if you want to use a start time of October 1, 2018, at
+#'     8 PM UTC, specify `1538424000` as the start time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
 #' converter like [Epoch converter](https://www.epochconverter.com/).
@@ -3703,12 +3631,12 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you want to use an end time of October 1, 2018, at 9
-#'   PM UTC, specify `1538427600` as the end time.
+#'     For example, if you want to use an end time of October 1, 2018, at 9
+#'     PM UTC, specify `1538427600` as the end time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
 #' converter like [Epoch converter](https://www.epochconverter.com/).
@@ -3722,8 +3650,7 @@ lightsail_get_cost_estimate <- function(resourceName, startTime, endTime) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_cost_estimate_input(resourceName = resourceName, startTime = startTime, endTime = endTime)
   output <- .lightsail$get_cost_estimate_output()
@@ -3753,8 +3680,7 @@ lightsail_get_disk <- function(diskName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_disk_input(diskName = diskName)
   output <- .lightsail$get_disk_output()
@@ -3784,8 +3710,7 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_disk_snapshot_input(diskSnapshotName = diskSnapshotName)
   output <- .lightsail$get_disk_snapshot_output()
@@ -3821,8 +3746,7 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_disk_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_disk_snapshots_output()
@@ -3858,8 +3782,7 @@ lightsail_get_disks <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_disks_input(pageToken = pageToken)
   output <- .lightsail$get_disks_output()
@@ -3890,8 +3813,7 @@ lightsail_get_distribution_bundles <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_distribution_bundles_input()
   output <- .lightsail$get_distribution_bundles_output()
@@ -3929,8 +3851,7 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_distribution_latest_cache_reset_input(distributionName = distributionName)
   output <- .lightsail$get_distribution_latest_cache_reset_output()
@@ -3960,64 +3881,64 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
 #' useful `statistics` to include in your request, and the published `unit`
 #' value.
 #' 
-#' - **`Requests`** - The total number of viewer requests received by your
-#'   Lightsail distribution, for all HTTP methods, and for both HTTP and
-#'   HTTPS requests.
+#' -   **`Requests`** - The total number of viewer requests received by
+#'     your Lightsail distribution, for all HTTP methods, and for both HTTP
+#'     and HTTPS requests.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `None`.
+#'     `Unit`: The published unit is `None`.
 #' 
-#' - **`BytesDownloaded`** - The number of bytes downloaded by viewers for
-#'   GET, HEAD, and OPTIONS requests.
+#' -   **`BytesDownloaded`** - The number of bytes downloaded by viewers
+#'     for GET, HEAD, and OPTIONS requests.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `None`.
+#'     `Unit`: The published unit is `None`.
 #' 
-#' - **`BytesUploaded `** - The number of bytes uploaded to your origin by
-#'   your Lightsail distribution, using POST and PUT requests.
+#' -   **`BytesUploaded `** - The number of bytes uploaded to your origin
+#'     by your Lightsail distribution, using POST and PUT requests.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `None`.
+#'     `Unit`: The published unit is `None`.
 #' 
-#' - **`TotalErrorRate`** - The percentage of all viewer requests for which
-#'   the response's HTTP status code was 4xx or 5xx.
+#' -   **`TotalErrorRate`** - The percentage of all viewer requests for
+#'     which the response's HTTP status code was 4xx or 5xx.
 #' 
-#'   `Statistics`: The most useful statistic is `Average`.
+#'     `Statistics`: The most useful statistic is `Average`.
 #' 
-#'   `Unit`: The published unit is `Percent`.
+#'     `Unit`: The published unit is `Percent`.
 #' 
-#' - **`4xxErrorRate`** - The percentage of all viewer requests for which
-#'   the response's HTTP status cod was 4xx. In these cases, the client or
-#'   client viewer may have made an error. For example, a status code of
-#'   404 (Not Found) means that the client requested an object that could
-#'   not be found.
+#' -   **`4xxErrorRate`** - The percentage of all viewer requests for which
+#'     the response's HTTP status cod was 4xx. In these cases, the client
+#'     or client viewer may have made an error. For example, a status code
+#'     of 404 (Not Found) means that the client requested an object that
+#'     could not be found.
 #' 
-#'   `Statistics`: The most useful statistic is `Average`.
+#'     `Statistics`: The most useful statistic is `Average`.
 #' 
-#'   `Unit`: The published unit is `Percent`.
+#'     `Unit`: The published unit is `Percent`.
 #' 
-#' - **`5xxErrorRate`** - The percentage of all viewer requests for which
-#'   the response's HTTP status code was 5xx. In these cases, the origin
-#'   server did not satisfy the requests. For example, a status code of 503
-#'   (Service Unavailable) means that the origin server is currently
-#'   unavailable.
+#' -   **`5xxErrorRate`** - The percentage of all viewer requests for which
+#'     the response's HTTP status code was 5xx. In these cases, the origin
+#'     server did not satisfy the requests. For example, a status code of
+#'     503 (Service Unavailable) means that the origin server is currently
+#'     unavailable.
 #' 
-#'   `Statistics`: The most useful statistic is `Average`.
+#'     `Statistics`: The most useful statistic is `Average`.
 #' 
-#'   `Unit`: The published unit is `Percent`.
+#'     `Unit`: The published unit is `Percent`.
 #' @param startTime &#91;required&#93; The start of the time interval for which to get metric data.
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use a start time of October 1, 2018, at 8
-#'   PM UTC, specify `1538424000` as the start time.
+#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     8 PM UTC, specify `1538424000` as the start time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
 #' converter like [Epoch converter](https://www.epochconverter.com/).
@@ -4025,12 +3946,12 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use an end time of October 1, 2018, at 9
-#'   PM UTC, specify `1538427600` as the end time.
+#'     For example, if you wish to use an end time of October 1, 2018, at 9
+#'     PM UTC, specify `1538427600` as the end time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
 #' converter like [Epoch converter](https://www.epochconverter.com/).
@@ -4044,24 +3965,27 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
 #' 
 #' The following statistics are available:
 #' 
-#' - `Minimum` - The lowest value observed during the specified period. Use
-#'   this value to determine low volumes of activity for your application.
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
 #' 
-#' - `Maximum` - The highest value observed during the specified period.
-#'   Use this value to determine high volumes of activity for your
-#'   application.
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
 #' 
-#' - `Sum` - All values submitted for the matching metric added together.
-#'   You can use this statistic to determine the total volume of a metric.
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
 #' 
-#' - `Average` - The value of Sum / SampleCount during the specified
-#'   period. By comparing this statistic with the Minimum and Maximum
-#'   values, you can determine the full scope of a metric and how close the
-#'   average use is to the Minimum and Maximum values. This comparison
-#'   helps you to know when to increase or decrease your resources.
+#' -   `Average` - The value of Sum / SampleCount during the specified
+#'     period. By comparing this statistic with the Minimum and Maximum
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the Minimum and Maximum values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
 #' 
-#' - `SampleCount` - The count, or number, of data points used for the
-#'   statistical calculation.
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
 #'
 #' @keywords internal
 #'
@@ -4072,8 +3996,7 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_distribution_metric_data_input(distributionName = distributionName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, unit = unit, statistics = statistics)
   output <- .lightsail$get_distribution_metric_data_output()
@@ -4113,8 +4036,7 @@ lightsail_get_distributions <- function(distributionName = NULL, pageToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_distributions_input(distributionName = distributionName, pageToken = pageToken)
   output <- .lightsail$get_distributions_output()
@@ -4144,8 +4066,7 @@ lightsail_get_domain <- function(domainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_domain_input(domainName = domainName)
   output <- .lightsail$get_domain_output()
@@ -4180,8 +4101,7 @@ lightsail_get_domains <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_domains_input(pageToken = pageToken)
   output <- .lightsail$get_domains_output()
@@ -4218,8 +4138,7 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_export_snapshot_records_input(pageToken = pageToken)
   output <- .lightsail$get_export_snapshot_records_output()
@@ -4250,8 +4169,7 @@ lightsail_get_instance <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_instance_input(instanceName = instanceName)
   output <- .lightsail$get_instance_output()
@@ -4283,8 +4201,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_instance_access_details_input(instanceName = instanceName, protocol = protocol)
   output <- .lightsail$get_instance_access_details_output()
@@ -4310,105 +4227,109 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #' Valid instance metric names are listed below, along with the most useful
 #' `statistics` to include in your request, and the published `unit` value.
 #' 
-#' - **`BurstCapacityPercentage`** - The percentage of CPU performance
-#'   available for your instance to burst above its baseline. Your instance
-#'   continuously accrues and consumes burst capacity. Burst capacity stops
-#'   accruing when your instance's `BurstCapacityPercentage` reaches 100%.
-#'   For more information, see [Viewing instance burst capacity in Amazon
-#'   Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
+#' -   **`BurstCapacityPercentage`** - The percentage of CPU performance
+#'     available for your instance to burst above its baseline. Your
+#'     instance continuously accrues and consumes burst capacity. Burst
+#'     capacity stops accruing when your instance's
+#'     `BurstCapacityPercentage` reaches 100%. For more information, see
+#'     [Viewing instance burst capacity in Amazon
+#'     Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
 #' 
-#'   `Statistics`: The most useful statistics are `Maximum` and `Average`.
+#'     `Statistics`: The most useful statistics are `Maximum` and
+#'     `Average`.
 #' 
-#'   `Unit`: The published unit is `Percent`.
+#'     `Unit`: The published unit is `Percent`.
 #' 
-#' - **`BurstCapacityTime`** - The available amount of time for your
-#'   instance to burst at 100% CPU utilization. Your instance continuously
-#'   accrues and consumes burst capacity. Burst capacity time stops
-#'   accruing when your instance's `BurstCapacityPercentage` metric reaches
-#'   100%.
+#' -   **`BurstCapacityTime`** - The available amount of time for your
+#'     instance to burst at 100% CPU utilization. Your instance
+#'     continuously accrues and consumes burst capacity. Burst capacity
+#'     time stops accruing when your instance's `BurstCapacityPercentage`
+#'     metric reaches 100%.
 #' 
-#'   Burst capacity time is consumed at the full rate only when your
-#'   instance operates at 100% CPU utilization. For example, if your
-#'   instance operates at 50% CPU utilization in the burstable zone for a
-#'   5-minute period, then it consumes CPU burst capacity minutes at a 50%
-#'   rate in that period. Your instance consumed 2 minutes and 30 seconds
-#'   of CPU burst capacity minutes in the 5-minute period. For more
-#'   information, see [Viewing instance burst capacity in Amazon
-#'   Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
+#'     Burst capacity time is consumed at the full rate only when your
+#'     instance operates at 100% CPU utilization. For example, if your
+#'     instance operates at 50% CPU utilization in the burstable zone for a
+#'     5-minute period, then it consumes CPU burst capacity minutes at a
+#'     50% rate in that period. Your instance consumed 2 minutes and 30
+#'     seconds of CPU burst capacity minutes in the 5-minute period. For
+#'     more information, see [Viewing instance burst capacity in Amazon
+#'     Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-viewing-instance-burst-capacity.html).
 #' 
-#'   `Statistics`: The most useful statistics are `Maximum` and `Average`.
+#'     `Statistics`: The most useful statistics are `Maximum` and
+#'     `Average`.
 #' 
-#'   `Unit`: The published unit is `Seconds`.
+#'     `Unit`: The published unit is `Seconds`.
 #' 
-#' - **`CPUUtilization`** - The percentage of allocated compute units that
-#'   are currently in use on the instance. This metric identifies the
-#'   processing power to run the applications on the instance. Tools in
-#'   your operating system can show a lower percentage than Lightsail when
-#'   the instance is not allocated a full processor core.
+#' -   **`CPUUtilization`** - The percentage of allocated compute units
+#'     that are currently in use on the instance. This metric identifies
+#'     the processing power to run the applications on the instance. Tools
+#'     in your operating system can show a lower percentage than Lightsail
+#'     when the instance is not allocated a full processor core.
 #' 
-#'   `Statistics`: The most useful statistics are `Maximum` and `Average`.
+#'     `Statistics`: The most useful statistics are `Maximum` and
+#'     `Average`.
 #' 
-#'   `Unit`: The published unit is `Percent`.
+#'     `Unit`: The published unit is `Percent`.
 #' 
-#' - **`NetworkIn`** - The number of bytes received on all network
-#'   interfaces by the instance. This metric identifies the volume of
-#'   incoming network traffic to the instance. The number reported is the
-#'   number of bytes received during the period. Because this metric is
-#'   reported in 5-minute intervals, divide the reported number by 300 to
-#'   find Bytes/second.
+#' -   **`NetworkIn`** - The number of bytes received on all network
+#'     interfaces by the instance. This metric identifies the volume of
+#'     incoming network traffic to the instance. The number reported is the
+#'     number of bytes received during the period. Because this metric is
+#'     reported in 5-minute intervals, divide the reported number by 300 to
+#'     find Bytes/second.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Bytes`.
+#'     `Unit`: The published unit is `Bytes`.
 #' 
-#' - **`NetworkOut`** - The number of bytes sent out on all network
-#'   interfaces by the instance. This metric identifies the volume of
-#'   outgoing network traffic from the instance. The number reported is the
-#'   number of bytes sent during the period. Because this metric is
-#'   reported in 5-minute intervals, divide the reported number by 300 to
-#'   find Bytes/second.
+#' -   **`NetworkOut`** - The number of bytes sent out on all network
+#'     interfaces by the instance. This metric identifies the volume of
+#'     outgoing network traffic from the instance. The number reported is
+#'     the number of bytes sent during the period. Because this metric is
+#'     reported in 5-minute intervals, divide the reported number by 300 to
+#'     find Bytes/second.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Bytes`.
+#'     `Unit`: The published unit is `Bytes`.
 #' 
-#' - **`StatusCheckFailed`** - Reports whether the instance passed or
-#'   failed both the instance status check and the system status check.
-#'   This metric can be either 0 (passed) or 1 (failed). This metric data
-#'   is available in 1-minute (60 seconds) granularity.
+#' -   **`StatusCheckFailed`** - Reports whether the instance passed or
+#'     failed both the instance status check and the system status check.
+#'     This metric can be either 0 (passed) or 1 (failed). This metric data
+#'     is available in 1-minute (60 seconds) granularity.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`StatusCheckFailed_Instance`** - Reports whether the instance passed
-#'   or failed the instance status check. This metric can be either 0
-#'   (passed) or 1 (failed). This metric data is available in 1-minute (60
-#'   seconds) granularity.
+#' -   **`StatusCheckFailed_Instance`** - Reports whether the instance
+#'     passed or failed the instance status check. This metric can be
+#'     either 0 (passed) or 1 (failed). This metric data is available in
+#'     1-minute (60 seconds) granularity.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`StatusCheckFailed_System`** - Reports whether the instance passed
-#'   or failed the system status check. This metric can be either 0
-#'   (passed) or 1 (failed). This metric data is available in 1-minute (60
-#'   seconds) granularity.
+#' -   **`StatusCheckFailed_System`** - Reports whether the instance passed
+#'     or failed the system status check. This metric can be either 0
+#'     (passed) or 1 (failed). This metric data is available in 1-minute
+#'     (60 seconds) granularity.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`MetadataNoToken`** - Reports the number of times that the instance
-#'   metadata service was successfully accessed without a token. This
-#'   metric determines if there are any processes accessing instance
-#'   metadata by using Instance Metadata Service Version 1, which doesn't
-#'   use a token. If all requests use token-backed sessions, such as
-#'   Instance Metadata Service Version 2, then the value is 0.
+#' -   **`MetadataNoToken`** - Reports the number of times that the
+#'     instance metadata service was successfully accessed without a token.
+#'     This metric determines if there are any processes accessing instance
+#'     metadata by using Instance Metadata Service Version 1, which doesn't
+#'     use a token. If all requests use token-backed sessions, such as
+#'     Instance Metadata Service Version 2, then the value is 0.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
 #' 
 #' The `StatusCheckFailed`, `StatusCheckFailed_Instance`, and
@@ -4424,24 +4345,27 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #' 
 #' The following statistics are available:
 #' 
-#' - `Minimum` - The lowest value observed during the specified period. Use
-#'   this value to determine low volumes of activity for your application.
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
 #' 
-#' - `Maximum` - The highest value observed during the specified period.
-#'   Use this value to determine high volumes of activity for your
-#'   application.
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
 #' 
-#' - `Sum` - All values submitted for the matching metric added together.
-#'   You can use this statistic to determine the total volume of a metric.
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
 #' 
-#' - `Average` - The value of Sum / SampleCount during the specified
-#'   period. By comparing this statistic with the Minimum and Maximum
-#'   values, you can determine the full scope of a metric and how close the
-#'   average use is to the Minimum and Maximum values. This comparison
-#'   helps you to know when to increase or decrease your resources.
+#' -   `Average` - The value of Sum / SampleCount during the specified
+#'     period. By comparing this statistic with the Minimum and Maximum
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the Minimum and Maximum values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
 #' 
-#' - `SampleCount` - The count, or number, of data points used for the
-#'   statistical calculation.
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
 #'
 #' @keywords internal
 #'
@@ -4452,8 +4376,7 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_instance_metric_data_input(instanceName = instanceName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_instance_metric_data_output()
@@ -4485,8 +4408,7 @@ lightsail_get_instance_port_states <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_instance_port_states_input(instanceName = instanceName)
   output <- .lightsail$get_instance_port_states_output()
@@ -4516,8 +4438,7 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_instance_snapshot_input(instanceSnapshotName = instanceSnapshotName)
   output <- .lightsail$get_instance_snapshot_output()
@@ -4552,8 +4473,7 @@ lightsail_get_instance_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_instance_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_instance_snapshots_output()
@@ -4583,8 +4503,7 @@ lightsail_get_instance_state <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_instance_state_input(instanceName = instanceName)
   output <- .lightsail$get_instance_state_output()
@@ -4620,8 +4539,7 @@ lightsail_get_instances <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_instances_input(pageToken = pageToken)
   output <- .lightsail$get_instances_output()
@@ -4651,8 +4569,7 @@ lightsail_get_key_pair <- function(keyPairName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_key_pair_input(keyPairName = keyPairName)
   output <- .lightsail$get_key_pair_output()
@@ -4689,8 +4606,7 @@ lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_key_pairs_input(pageToken = pageToken, includeDefaultKeyPair = includeDefaultKeyPair)
   output <- .lightsail$get_key_pairs_output()
@@ -4720,8 +4636,7 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_load_balancer_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$get_load_balancer_output()
@@ -4748,114 +4663,114 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #' useful `statistics` to include in your request, and the published `unit`
 #' value.
 #' 
-#' - **`ClientTLSNegotiationErrorCount`** - The number of TLS connections
-#'   initiated by the client that did not establish a session with the load
-#'   balancer due to a TLS error generated by the load balancer. Possible
-#'   causes include a mismatch of ciphers or protocols.
+#' -   **`ClientTLSNegotiationErrorCount`** - The number of TLS connections
+#'     initiated by the client that did not establish a session with the
+#'     load balancer due to a TLS error generated by the load balancer.
+#'     Possible causes include a mismatch of ciphers or protocols.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`HealthyHostCount`** - The number of target instances that are
-#'   considered healthy.
+#' -   **`HealthyHostCount`** - The number of target instances that are
+#'     considered healthy.
 #' 
-#'   `Statistics`: The most useful statistic are `Average`, `Minimum`, and
-#'   `Maximum`.
+#'     `Statistics`: The most useful statistic are `Average`, `Minimum`,
+#'     and `Maximum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`HTTPCode_Instance_2XX_Count`** - The number of HTTP 2XX response
-#'   codes generated by the target instances. This does not include any
-#'   response codes generated by the load balancer.
+#' -   **`HTTPCode_Instance_2XX_Count`** - The number of HTTP 2XX response
+#'     codes generated by the target instances. This does not include any
+#'     response codes generated by the load balancer.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`. Note that `Minimum`,
-#'   `Maximum`, and `Average` all return `1`.
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`HTTPCode_Instance_3XX_Count`** - The number of HTTP 3XX response
-#'   codes generated by the target instances. This does not include any
-#'   response codes generated by the load balancer.
+#' -   **`HTTPCode_Instance_3XX_Count`** - The number of HTTP 3XX response
+#'     codes generated by the target instances. This does not include any
+#'     response codes generated by the load balancer.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`. Note that `Minimum`,
-#'   `Maximum`, and `Average` all return `1`.
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`HTTPCode_Instance_4XX_Count`** - The number of HTTP 4XX response
-#'   codes generated by the target instances. This does not include any
-#'   response codes generated by the load balancer.
+#' -   **`HTTPCode_Instance_4XX_Count`** - The number of HTTP 4XX response
+#'     codes generated by the target instances. This does not include any
+#'     response codes generated by the load balancer.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`. Note that `Minimum`,
-#'   `Maximum`, and `Average` all return `1`.
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`HTTPCode_Instance_5XX_Count`** - The number of HTTP 5XX response
-#'   codes generated by the target instances. This does not include any
-#'   response codes generated by the load balancer.
+#' -   **`HTTPCode_Instance_5XX_Count`** - The number of HTTP 5XX response
+#'     codes generated by the target instances. This does not include any
+#'     response codes generated by the load balancer.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`. Note that `Minimum`,
-#'   `Maximum`, and `Average` all return `1`.
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`HTTPCode_LB_4XX_Count`** - The number of HTTP 4XX client error
-#'   codes that originated from the load balancer. Client errors are
-#'   generated when requests are malformed or incomplete. These requests
-#'   were not received by the target instance. This count does not include
-#'   response codes generated by the target instances.
+#' -   **`HTTPCode_LB_4XX_Count`** - The number of HTTP 4XX client error
+#'     codes that originated from the load balancer. Client errors are
+#'     generated when requests are malformed or incomplete. These requests
+#'     were not received by the target instance. This count does not
+#'     include response codes generated by the target instances.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`. Note that `Minimum`,
-#'   `Maximum`, and `Average` all return `1`.
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`HTTPCode_LB_5XX_Count`** - The number of HTTP 5XX server error
-#'   codes that originated from the load balancer. This does not include
-#'   any response codes generated by the target instance. This metric is
-#'   reported if there are no healthy instances attached to the load
-#'   balancer, or if the request rate exceeds the capacity of the instances
-#'   (spillover) or the load balancer.
+#' -   **`HTTPCode_LB_5XX_Count`** - The number of HTTP 5XX server error
+#'     codes that originated from the load balancer. This does not include
+#'     any response codes generated by the target instance. This metric is
+#'     reported if there are no healthy instances attached to the load
+#'     balancer, or if the request rate exceeds the capacity of the
+#'     instances (spillover) or the load balancer.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`. Note that `Minimum`,
-#'   `Maximum`, and `Average` all return `1`.
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`InstanceResponseTime`** - The time elapsed, in seconds, after the
-#'   request leaves the load balancer until a response from the target
-#'   instance is received.
+#' -   **`InstanceResponseTime`** - The time elapsed, in seconds, after the
+#'     request leaves the load balancer until a response from the target
+#'     instance is received.
 #' 
-#'   `Statistics`: The most useful statistic is `Average`.
+#'     `Statistics`: The most useful statistic is `Average`.
 #' 
-#'   `Unit`: The published unit is `Seconds`.
+#'     `Unit`: The published unit is `Seconds`.
 #' 
-#' - **`RejectedConnectionCount`** - The number of connections that were
-#'   rejected because the load balancer had reached its maximum number of
-#'   connections.
+#' -   **`RejectedConnectionCount`** - The number of connections that were
+#'     rejected because the load balancer had reached its maximum number of
+#'     connections.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`RequestCount`** - The number of requests processed over IPv4. This
-#'   count includes only the requests with a response generated by a target
-#'   instance of the load balancer.
+#' -   **`RequestCount`** - The number of requests processed over IPv4.
+#'     This count includes only the requests with a response generated by a
+#'     target instance of the load balancer.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`. Note that `Minimum`,
-#'   `Maximum`, and `Average` all return `1`.
+#'     `Statistics`: The most useful statistic is `Sum`. Note that
+#'     `Minimum`, `Maximum`, and `Average` all return `1`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`UnhealthyHostCount`** - The number of target instances that are
-#'   considered unhealthy.
+#' -   **`UnhealthyHostCount`** - The number of target instances that are
+#'     considered unhealthy.
 #' 
-#'   `Statistics`: The most useful statistic are `Average`, `Minimum`, and
-#'   `Maximum`.
+#'     `Statistics`: The most useful statistic are `Average`, `Minimum`,
+#'     and `Maximum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
 #' @param startTime &#91;required&#93; The start time of the period.
 #' @param endTime &#91;required&#93; The end time of the period.
@@ -4866,24 +4781,27 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #' 
 #' The following statistics are available:
 #' 
-#' - `Minimum` - The lowest value observed during the specified period. Use
-#'   this value to determine low volumes of activity for your application.
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
 #' 
-#' - `Maximum` - The highest value observed during the specified period.
-#'   Use this value to determine high volumes of activity for your
-#'   application.
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
 #' 
-#' - `Sum` - All values submitted for the matching metric added together.
-#'   You can use this statistic to determine the total volume of a metric.
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
 #' 
-#' - `Average` - The value of Sum / SampleCount during the specified
-#'   period. By comparing this statistic with the Minimum and Maximum
-#'   values, you can determine the full scope of a metric and how close the
-#'   average use is to the Minimum and Maximum values. This comparison
-#'   helps you to know when to increase or decrease your resources.
+#' -   `Average` - The value of Sum / SampleCount during the specified
+#'     period. By comparing this statistic with the Minimum and Maximum
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the Minimum and Maximum values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
 #' 
-#' - `SampleCount` - The count, or number, of data points used for the
-#'   statistical calculation.
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
 #'
 #' @keywords internal
 #'
@@ -4894,8 +4812,7 @@ lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_load_balancer_metric_data_input(loadBalancerName = loadBalancerName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_load_balancer_metric_data_output()
@@ -4927,8 +4844,7 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_load_balancer_tls_certificates_input(loadBalancerName = loadBalancerName)
   output <- .lightsail$get_load_balancer_tls_certificates_output()
@@ -4965,8 +4881,7 @@ lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_load_balancer_tls_policies_input(pageToken = pageToken)
   output <- .lightsail$get_load_balancer_tls_policies_output()
@@ -5001,8 +4916,7 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_load_balancers_input(pageToken = pageToken)
   output <- .lightsail$get_load_balancers_output()
@@ -5032,8 +4946,7 @@ lightsail_get_operation <- function(operationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_operation_input(operationId = operationId)
   output <- .lightsail$get_operation_output()
@@ -5068,8 +4981,7 @@ lightsail_get_operations <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_operations_input(pageToken = pageToken)
   output <- .lightsail$get_operations_output()
@@ -5106,8 +5018,7 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_operations_for_resource_input(resourceName = resourceName, pageToken = pageToken)
   output <- .lightsail$get_operations_for_resource_output()
@@ -5142,8 +5053,7 @@ lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_regions_input(includeAvailabilityZones = includeAvailabilityZones, includeRelationalDatabaseAvailabilityZones = includeRelationalDatabaseAvailabilityZones)
   output <- .lightsail$get_regions_output()
@@ -5173,8 +5083,7 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$get_relational_database_output()
@@ -5210,8 +5119,7 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_blueprints_input(pageToken = pageToken)
   output <- .lightsail$get_relational_database_blueprints_output()
@@ -5249,8 +5157,7 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL, includeI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_bundles_input(pageToken = pageToken, includeInactive = includeInactive)
   output <- .lightsail$get_relational_database_bundles_output()
@@ -5293,8 +5200,7 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_events_input(relationalDatabaseName = relationalDatabaseName, durationInMinutes = durationInMinutes, pageToken = pageToken)
   output <- .lightsail$get_relational_database_events_output()
@@ -5322,22 +5228,22 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use a start time of October 1, 2018, at 8
-#'   PM UTC, then you input `1538424000` as the start time.
+#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     8 PM UTC, then you input `1538424000` as the start time.
 #' @param endTime The end of the time interval from which to get log events.
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use an end time of October 1, 2018, at 8
-#'   PM UTC, then you input `1538424000` as the end time.
+#'     For example, if you wish to use an end time of October 1, 2018, at 8
+#'     PM UTC, then you input `1538424000` as the end time.
 #' @param startFromHead Parameter to specify if the log should start from head or tail. If
 #' `true` is specified, the log event starts from the head of the log. If
 #' `false` is specified, the log event starts from the tail of the log.
@@ -5362,8 +5268,7 @@ lightsail_get_relational_database_log_events <- function(relationalDatabaseName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_log_events_input(relationalDatabaseName = relationalDatabaseName, logStreamName = logStreamName, startTime = startTime, endTime = endTime, startFromHead = startFromHead, pageToken = pageToken)
   output <- .lightsail$get_relational_database_log_events_output()
@@ -5394,8 +5299,7 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_log_streams_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$get_relational_database_log_streams_output()
@@ -5435,8 +5339,7 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_master_user_password_input(relationalDatabaseName = relationalDatabaseName, passwordVersion = passwordVersion)
   output <- .lightsail$get_relational_database_master_user_password_output()
@@ -5464,47 +5367,49 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #' `unit` value. All relational database metric data is available in
 #' 1-minute (60 seconds) granularity.
 #' 
-#' - **`CPUUtilization`** - The percentage of CPU utilization currently in
-#'   use on the database.
+#' -   **`CPUUtilization`** - The percentage of CPU utilization currently
+#'     in use on the database.
 #' 
-#'   `Statistics`: The most useful statistics are `Maximum` and `Average`.
+#'     `Statistics`: The most useful statistics are `Maximum` and
+#'     `Average`.
 #' 
-#'   `Unit`: The published unit is `Percent`.
+#'     `Unit`: The published unit is `Percent`.
 #' 
-#' - **`DatabaseConnections`** - The number of database connections in use.
+#' -   **`DatabaseConnections`** - The number of database connections in
+#'     use.
 #' 
-#'   `Statistics`: The most useful statistics are `Maximum` and `Sum`.
+#'     `Statistics`: The most useful statistics are `Maximum` and `Sum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`DiskQueueDepth`** - The number of outstanding IOs (read/write
-#'   requests) that are waiting to access the disk.
+#' -   **`DiskQueueDepth`** - The number of outstanding IOs (read/write
+#'     requests) that are waiting to access the disk.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Count`.
+#'     `Unit`: The published unit is `Count`.
 #' 
-#' - **`FreeStorageSpace`** - The amount of available storage space.
+#' -   **`FreeStorageSpace`** - The amount of available storage space.
 #' 
-#'   `Statistics`: The most useful statistic is `Sum`.
+#'     `Statistics`: The most useful statistic is `Sum`.
 #' 
-#'   `Unit`: The published unit is `Bytes`.
+#'     `Unit`: The published unit is `Bytes`.
 #' 
-#' - **`NetworkReceiveThroughput`** - The incoming (Receive) network
-#'   traffic on the database, including both customer database traffic and
-#'   AWS traffic used for monitoring and replication.
+#' -   **`NetworkReceiveThroughput`** - The incoming (Receive) network
+#'     traffic on the database, including both customer database traffic
+#'     and AWS traffic used for monitoring and replication.
 #' 
-#'   `Statistics`: The most useful statistic is `Average`.
+#'     `Statistics`: The most useful statistic is `Average`.
 #' 
-#'   `Unit`: The published unit is `Bytes/Second`.
+#'     `Unit`: The published unit is `Bytes/Second`.
 #' 
-#' - **`NetworkTransmitThroughput`** - The outgoing (Transmit) network
-#'   traffic on the database, including both customer database traffic and
-#'   AWS traffic used for monitoring and replication.
+#' -   **`NetworkTransmitThroughput`** - The outgoing (Transmit) network
+#'     traffic on the database, including both customer database traffic
+#'     and AWS traffic used for monitoring and replication.
 #' 
-#'   `Statistics`: The most useful statistic is `Average`.
+#'     `Statistics`: The most useful statistic is `Average`.
 #' 
-#'   `Unit`: The published unit is `Bytes/Second`.
+#'     `Unit`: The published unit is `Bytes/Second`.
 #' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
 #' 
 #' All relational database metric data is available in 1-minute (60
@@ -5513,22 +5418,22 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use a start time of October 1, 2018, at 8
-#'   PM UTC, then you input `1538424000` as the start time.
+#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     8 PM UTC, then you input `1538424000` as the start time.
 #' @param endTime &#91;required&#93; The end of the time interval from which to get metric data.
 #' 
 #' Constraints:
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Specified in the Unix time format.
+#' -   Specified in the Unix time format.
 #' 
-#'   For example, if you wish to use an end time of October 1, 2018, at 8
-#'   PM UTC, then you input `1538424000` as the end time.
+#'     For example, if you wish to use an end time of October 1, 2018, at 8
+#'     PM UTC, then you input `1538424000` as the end time.
 #' @param unit &#91;required&#93; The unit for the metric data request. Valid units depend on the metric
 #' data being requested. For the valid units with each available metric,
 #' see the `metricName` parameter.
@@ -5536,24 +5441,27 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #' 
 #' The following statistics are available:
 #' 
-#' - `Minimum` - The lowest value observed during the specified period. Use
-#'   this value to determine low volumes of activity for your application.
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
 #' 
-#' - `Maximum` - The highest value observed during the specified period.
-#'   Use this value to determine high volumes of activity for your
-#'   application.
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
 #' 
-#' - `Sum` - All values submitted for the matching metric added together.
-#'   You can use this statistic to determine the total volume of a metric.
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
 #' 
-#' - `Average` - The value of Sum / SampleCount during the specified
-#'   period. By comparing this statistic with the Minimum and Maximum
-#'   values, you can determine the full scope of a metric and how close the
-#'   average use is to the Minimum and Maximum values. This comparison
-#'   helps you to know when to increase or decrease your resources.
+#' -   `Average` - The value of Sum / SampleCount during the specified
+#'     period. By comparing this statistic with the Minimum and Maximum
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the Minimum and Maximum values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
 #' 
-#' - `SampleCount` - The count, or number, of data points used for the
-#'   statistical calculation.
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
 #'
 #' @keywords internal
 #'
@@ -5564,8 +5472,7 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_metric_data_input(relationalDatabaseName = relationalDatabaseName, metricName = metricName, period = period, startTime = startTime, endTime = endTime, unit = unit, statistics = statistics)
   output <- .lightsail$get_relational_database_metric_data_output()
@@ -5603,8 +5510,7 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_parameters_input(relationalDatabaseName = relationalDatabaseName, pageToken = pageToken)
   output <- .lightsail$get_relational_database_parameters_output()
@@ -5635,8 +5541,7 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_snapshot_input(relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$get_relational_database_snapshot_output()
@@ -5673,8 +5578,7 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_database_snapshots_input(pageToken = pageToken)
   output <- .lightsail$get_relational_database_snapshots_output()
@@ -5710,8 +5614,7 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_relational_databases_input(pageToken = pageToken)
   output <- .lightsail$get_relational_databases_output()
@@ -5748,8 +5651,7 @@ lightsail_get_setup_history <- function(resourceName, pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_setup_history_input(resourceName = resourceName, pageToken = pageToken)
   output <- .lightsail$get_setup_history_output()
@@ -5779,8 +5681,7 @@ lightsail_get_static_ip <- function(staticIpName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$get_static_ip_output()
@@ -5815,8 +5716,7 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$get_static_ips_input(pageToken = pageToken)
   output <- .lightsail$get_static_ips_output()
@@ -5847,8 +5747,7 @@ lightsail_import_key_pair <- function(keyPairName, publicKeyBase64) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$import_key_pair_input(keyPairName = keyPairName, publicKeyBase64 = publicKeyBase64)
   output <- .lightsail$import_key_pair_output()
@@ -5878,8 +5777,7 @@ lightsail_is_vpc_peered <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$is_vpc_peered_input()
   output <- .lightsail$is_vpc_peered_output()
@@ -5912,8 +5810,7 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$open_instance_public_ports_input(portInfo = portInfo, instanceName = instanceName)
   output <- .lightsail$open_instance_public_ports_output()
@@ -5943,8 +5840,7 @@ lightsail_peer_vpc <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$peer_vpc_input()
   output <- .lightsail$peer_vpc_output()
@@ -5971,20 +5867,20 @@ lightsail_peer_vpc <- function() {
 #' 
 #' The following metrics are available for each resource type:
 #' 
-#' - **Instances**: `BurstCapacityPercentage`, `BurstCapacityTime`,
-#'   `CPUUtilization`, `NetworkIn`, `NetworkOut`, `StatusCheckFailed`,
-#'   `StatusCheckFailed_Instance`, and `StatusCheckFailed_System`.
+#' -   **Instances**: `BurstCapacityPercentage`, `BurstCapacityTime`,
+#'     `CPUUtilization`, `NetworkIn`, `NetworkOut`, `StatusCheckFailed`,
+#'     `StatusCheckFailed_Instance`, and `StatusCheckFailed_System`.
 #' 
-#' - **Load balancers**: `ClientTLSNegotiationErrorCount`,
-#'   `HealthyHostCount`, `UnhealthyHostCount`, `HTTPCode_LB_4XX_Count`,
-#'   `HTTPCode_LB_5XX_Count`, `HTTPCode_Instance_2XX_Count`,
-#'   `HTTPCode_Instance_3XX_Count`, `HTTPCode_Instance_4XX_Count`,
-#'   `HTTPCode_Instance_5XX_Count`, `InstanceResponseTime`,
-#'   `RejectedConnectionCount`, and `RequestCount`.
+#' -   **Load balancers**: `ClientTLSNegotiationErrorCount`,
+#'     `HealthyHostCount`, `UnhealthyHostCount`, `HTTPCode_LB_4XX_Count`,
+#'     `HTTPCode_LB_5XX_Count`, `HTTPCode_Instance_2XX_Count`,
+#'     `HTTPCode_Instance_3XX_Count`, `HTTPCode_Instance_4XX_Count`,
+#'     `HTTPCode_Instance_5XX_Count`, `InstanceResponseTime`,
+#'     `RejectedConnectionCount`, and `RequestCount`.
 #' 
-#' - **Relational databases**: `CPUUtilization`, `DatabaseConnections`,
-#'   `DiskQueueDepth`, `FreeStorageSpace`, `NetworkReceiveThroughput`, and
-#'   `NetworkTransmitThroughput`.
+#' -   **Relational databases**: `CPUUtilization`, `DatabaseConnections`,
+#'     `DiskQueueDepth`, `FreeStorageSpace`, `NetworkReceiveThroughput`,
+#'     and `NetworkTransmitThroughput`.
 #' 
 #' For more information about these metrics, see [Metrics available in
 #' Lightsail](https://docs.aws.amazon.com/en_us/lightsail/latest/userguide/amazon-lightsail-resource-health-metrics.html#available-metrics).
@@ -6017,17 +5913,18 @@ lightsail_peer_vpc <- function() {
 #' 
 #' An alarm can treat missing data in the following ways:
 #' 
-#' - `breaching` - Assume the missing data is not within the threshold.
-#'   Missing data counts towards the number of times the metric is not
-#'   within the threshold.
+#' -   `breaching` - Assume the missing data is not within the threshold.
+#'     Missing data counts towards the number of times the metric is not
+#'     within the threshold.
 #' 
-#' - `notBreaching` - Assume the missing data is within the threshold.
-#'   Missing data does not count towards the number of times the metric is
-#'   not within the threshold.
+#' -   `notBreaching` - Assume the missing data is within the threshold.
+#'     Missing data does not count towards the number of times the metric
+#'     is not within the threshold.
 #' 
-#' - `ignore` - Ignore the missing data. Maintains the current alarm state.
+#' -   `ignore` - Ignore the missing data. Maintains the current alarm
+#'     state.
 #' 
-#' - `missing` - Missing data is treated as missing.
+#' -   `missing` - Missing data is treated as missing.
 #' 
 #' If `treatMissingData` is not specified, the default behavior of
 #' `missing` is used.
@@ -6049,26 +5946,26 @@ lightsail_peer_vpc <- function() {
 #' 
 #' An alarm has the following possible states:
 #' 
-#' - `ALARM` - The metric is outside of the defined threshold.
+#' -   `ALARM` - The metric is outside of the defined threshold.
 #' 
-#' - `INSUFFICIENT_DATA` - The alarm has just started, the metric is not
-#'   available, or not enough data is available for the metric to determine
-#'   the alarm state.
+#' -   `INSUFFICIENT_DATA` - The alarm has just started, the metric is not
+#'     available, or not enough data is available for the metric to
+#'     determine the alarm state.
 #' 
-#' - `OK` - The metric is within the defined threshold.
+#' -   `OK` - The metric is within the defined threshold.
 #' 
 #' When you specify a notification trigger, the `ALARM` state must be
 #' specified. The `INSUFFICIENT_DATA` and `OK` states can be specified in
 #' addition to the `ALARM` state.
 #' 
-#' - If you specify `OK` as an alarm trigger, a notification is sent when
-#'   the alarm switches from an `ALARM` or `INSUFFICIENT_DATA` alarm state
-#'   to an `OK` state. This can be thought of as an *all clear* alarm
-#'   notification.
+#' -   If you specify `OK` as an alarm trigger, a notification is sent when
+#'     the alarm switches from an `ALARM` or `INSUFFICIENT_DATA` alarm
+#'     state to an `OK` state. This can be thought of as an *all clear*
+#'     alarm notification.
 #' 
-#' - If you specify `INSUFFICIENT_DATA` as the alarm trigger, a
-#'   notification is sent when the alarm switches from an `OK` or `ALARM`
-#'   alarm state to an `INSUFFICIENT_DATA` state.
+#' -   If you specify `INSUFFICIENT_DATA` as the alarm trigger, a
+#'     notification is sent when the alarm switches from an `OK` or `ALARM`
+#'     alarm state to an `INSUFFICIENT_DATA` state.
 #' 
 #' The notification trigger defaults to `ALARM` if you don't specify this
 #' parameter.
@@ -6086,8 +5983,7 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$put_alarm_input(alarmName = alarmName, metricName = metricName, monitoredResourceName = monitoredResourceName, comparisonOperator = comparisonOperator, threshold = threshold, evaluationPeriods = evaluationPeriods, datapointsToAlarm = datapointsToAlarm, treatMissingData = treatMissingData, contactProtocols = contactProtocols, notificationTriggers = notificationTriggers, notificationEnabled = notificationEnabled)
   output <- .lightsail$put_alarm_output()
@@ -6121,8 +6017,7 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$put_instance_public_ports_input(portInfos = portInfos, instanceName = instanceName)
   output <- .lightsail$put_instance_public_ports_output()
@@ -6152,8 +6047,7 @@ lightsail_reboot_instance <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$reboot_instance_input(instanceName = instanceName)
   output <- .lightsail$reboot_instance_output()
@@ -6183,8 +6077,7 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$reboot_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$reboot_relational_database_output()
@@ -6216,7 +6109,7 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
 #' service. The label is the `<imagelabel>` portion of the following image
 #' name example:
 #' 
-#' - `:container-service-1.<imagelabel>.1`
+#' -   `:container-service-1.<imagelabel>.1`
 #' 
 #' If the name of your container service is `mycontainerservice`, and the
 #' label that you specify is `mystaticwebsite`, then the name of the
@@ -6240,8 +6133,7 @@ lightsail_register_container_image <- function(serviceName, label, digest) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$register_container_image_input(serviceName = serviceName, label = label, digest = digest)
   output <- .lightsail$register_container_image_output()
@@ -6271,8 +6163,7 @@ lightsail_release_static_ip <- function(staticIpName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$release_static_ip_input(staticIpName = staticIpName)
   output <- .lightsail$release_static_ip_output()
@@ -6306,8 +6197,7 @@ lightsail_reset_distribution_cache <- function(distributionName = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$reset_distribution_cache_input(distributionName = distributionName)
   output <- .lightsail$reset_distribution_cache_output()
@@ -6338,8 +6228,7 @@ lightsail_send_contact_method_verification <- function(protocol) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$send_contact_method_verification_input(protocol = protocol)
   output <- .lightsail$send_contact_method_verification_output()
@@ -6392,8 +6281,7 @@ lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressT
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$set_ip_address_type_input(resourceType = resourceType, resourceName = resourceName, ipAddressType = ipAddressType, acceptBundleUpdate = acceptBundleUpdate)
   output <- .lightsail$set_ip_address_type_output()
@@ -6421,10 +6309,10 @@ lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressT
 #' 
 #' The following access settings are available:
 #' 
-#' - `allow` - Allows access to the bucket and its objects.
+#' -   `allow` - Allows access to the bucket and its objects.
 #' 
-#' - `deny` - Denies access to the bucket and its objects. Use this setting
-#'   to remove access for a resource previously set to `allow`.
+#' -   `deny` - Denies access to the bucket and its objects. Use this
+#'     setting to remove access for a resource previously set to `allow`.
 #'
 #' @keywords internal
 #'
@@ -6435,8 +6323,7 @@ lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, a
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$set_resource_access_for_bucket_input(resourceName = resourceName, bucketName = bucketName, access = access)
   output <- .lightsail$set_resource_access_for_bucket_output()
@@ -6471,8 +6358,7 @@ lightsail_setup_instance_https <- function(instanceName, emailAddress, domainNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$setup_instance_https_input(instanceName = instanceName, emailAddress = emailAddress, domainNames = domainNames, certificateProvider = certificateProvider)
   output <- .lightsail$setup_instance_https_output()
@@ -6503,8 +6389,7 @@ lightsail_start_gui_session <- function(resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$start_gui_session_input(resourceName = resourceName)
   output <- .lightsail$start_gui_session_output()
@@ -6534,8 +6419,7 @@ lightsail_start_instance <- function(instanceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$start_instance_input(instanceName = instanceName)
   output <- .lightsail$start_instance_output()
@@ -6565,8 +6449,7 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$start_relational_database_input(relationalDatabaseName = relationalDatabaseName)
   output <- .lightsail$start_relational_database_output()
@@ -6597,8 +6480,7 @@ lightsail_stop_gui_session <- function(resourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$stop_gui_session_input(resourceName = resourceName)
   output <- .lightsail$stop_gui_session_output()
@@ -6634,8 +6516,7 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$stop_instance_input(instanceName = instanceName, force = force)
   output <- .lightsail$stop_instance_output()
@@ -6667,8 +6548,7 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$stop_relational_database_input(relationalDatabaseName = relationalDatabaseName, relationalDatabaseSnapshotName = relationalDatabaseSnapshotName)
   output <- .lightsail$stop_relational_database_output()
@@ -6701,8 +6581,7 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$tag_resource_input(resourceName = resourceName, resourceArn = resourceArn, tags = tags)
   output <- .lightsail$tag_resource_output()
@@ -6726,13 +6605,13 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
 #' 
 #' An alarm has the following possible states that can be tested:
 #' 
-#' - `ALARM` - The metric is outside of the defined threshold.
+#' -   `ALARM` - The metric is outside of the defined threshold.
 #' 
-#' - `INSUFFICIENT_DATA` - The alarm has just started, the metric is not
-#'   available, or not enough data is available for the metric to determine
-#'   the alarm state.
+#' -   `INSUFFICIENT_DATA` - The alarm has just started, the metric is not
+#'     available, or not enough data is available for the metric to
+#'     determine the alarm state.
 #' 
-#' - `OK` - The metric is within the defined threshold.
+#' -   `OK` - The metric is within the defined threshold.
 #'
 #' @keywords internal
 #'
@@ -6743,8 +6622,7 @@ lightsail_test_alarm <- function(alarmName, state) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$test_alarm_input(alarmName = alarmName, state = state)
   output <- .lightsail$test_alarm_output()
@@ -6774,8 +6652,7 @@ lightsail_unpeer_vpc <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$unpeer_vpc_input()
   output <- .lightsail$unpeer_vpc_output()
@@ -6809,8 +6686,7 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$untag_resource_input(resourceName = resourceName, resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .lightsail$untag_resource_output()
@@ -6837,10 +6713,10 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' 
 #' The following options can be specified:
 #' 
-#' - `Enabled` - Enables versioning of objects in the specified bucket.
+#' -   `Enabled` - Enables versioning of objects in the specified bucket.
 #' 
-#' - `Suspended` - Suspends versioning of objects in the specified bucket.
-#'   Existing object versions are retained.
+#' -   `Suspended` - Suspends versioning of objects in the specified
+#'     bucket. Existing object versions are retained.
 #' @param readonlyAccessAccounts An array of strings to specify the Amazon Web Services account IDs that
 #' can access the bucket.
 #' 
@@ -6857,8 +6733,7 @@ lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_bucket_input(bucketName = bucketName, accessRules = accessRules, versioning = versioning, readonlyAccessAccounts = readonlyAccessAccounts, accessLogConfig = accessLogConfig)
   output <- .lightsail$update_bucket_output()
@@ -6893,8 +6768,7 @@ lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_bucket_bundle_input(bucketName = bucketName, bundleId = bundleId)
   output <- .lightsail$update_bucket_bundle_output()
@@ -6971,8 +6845,7 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_container_service_input(serviceName = serviceName, power = power, scale = scale, isDisabled = isDisabled, publicDomainNames = publicDomainNames, privateRegistryAccess = privateRegistryAccess)
   output <- .lightsail$update_container_service_output()
@@ -7037,8 +6910,7 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, isEnabled = isEnabled, viewerMinimumTlsProtocolVersion = viewerMinimumTlsProtocolVersion, certificateName = certificateName, useDefaultCertificate = useDefaultCertificate)
   output <- .lightsail$update_distribution_output()
@@ -7076,8 +6948,7 @@ lightsail_update_distribution_bundle <- function(distributionName = NULL, bundle
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_distribution_bundle_input(distributionName = distributionName, bundleId = bundleId)
   output <- .lightsail$update_distribution_bundle_output()
@@ -7109,8 +6980,7 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_domain_entry_input(domainName = domainName, domainEntry = domainEntry)
   output <- .lightsail$update_domain_entry_output()
@@ -7168,8 +7038,7 @@ lightsail_update_instance_metadata_options <- function(instanceName, httpTokens 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_instance_metadata_options_input(instanceName = instanceName, httpTokens = httpTokens, httpEndpoint = httpEndpoint, httpPutResponseHopLimit = httpPutResponseHopLimit, httpProtocolIpv6 = httpProtocolIpv6)
   output <- .lightsail$update_instance_metadata_options_output()
@@ -7196,32 +7065,32 @@ lightsail_update_instance_metadata_options <- function(instanceName, httpTokens 
 #' The following values are supported depending on what you specify for the
 #' `attributeName` request parameter:
 #' 
-#' - If you specify `HealthCheckPath` for the `attributeName` request
-#'   parameter, then the `attributeValue` request parameter must be the
-#'   path to ping on the target (for example, `/weather/us/wa/seattle`).
+#' -   If you specify `HealthCheckPath` for the `attributeName` request
+#'     parameter, then the `attributeValue` request parameter must be the
+#'     path to ping on the target (for example, `/weather/us/wa/seattle`).
 #' 
-#' - If you specify `SessionStickinessEnabled` for the `attributeName`
-#'   request parameter, then the `attributeValue` request parameter must be
-#'   `true` to activate session stickiness or `false` to deactivate session
-#'   stickiness.
+#' -   If you specify `SessionStickinessEnabled` for the `attributeName`
+#'     request parameter, then the `attributeValue` request parameter must
+#'     be `true` to activate session stickiness or `false` to deactivate
+#'     session stickiness.
 #' 
-#' - If you specify `SessionStickiness_LB_CookieDurationSeconds` for the
-#'   `attributeName` request parameter, then the `attributeValue` request
-#'   parameter must be an interger that represents the cookie duration in
-#'   seconds.
+#' -   If you specify `SessionStickiness_LB_CookieDurationSeconds` for the
+#'     `attributeName` request parameter, then the `attributeValue` request
+#'     parameter must be an interger that represents the cookie duration in
+#'     seconds.
 #' 
-#' - If you specify `HttpsRedirectionEnabled` for the `attributeName`
-#'   request parameter, then the `attributeValue` request parameter must be
-#'   `true` to activate HTTP to HTTPS redirection or `false` to deactivate
-#'   HTTP to HTTPS redirection.
+#' -   If you specify `HttpsRedirectionEnabled` for the `attributeName`
+#'     request parameter, then the `attributeValue` request parameter must
+#'     be `true` to activate HTTP to HTTPS redirection or `false` to
+#'     deactivate HTTP to HTTPS redirection.
 #' 
-#' - If you specify `TlsPolicyName` for the `attributeName` request
-#'   parameter, then the `attributeValue` request parameter must be the
-#'   name of the TLS policy.
+#' -   If you specify `TlsPolicyName` for the `attributeName` request
+#'     parameter, then the `attributeValue` request parameter must be the
+#'     name of the TLS policy.
 #' 
-#'   Use the
-#'   [`get_load_balancer_tls_policies`][lightsail_get_load_balancer_tls_policies]
-#'   action to get a list of TLS policy names that you can specify.
+#'     Use the
+#'     [`get_load_balancer_tls_policies`][lightsail_get_load_balancer_tls_policies]
+#'     action to get a list of TLS policy names that you can specify.
 #'
 #' @keywords internal
 #'
@@ -7232,8 +7101,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_load_balancer_attribute_input(loadBalancerName = loadBalancerName, attributeName = attributeName, attributeValue = attributeValue)
   output <- .lightsail$update_load_balancer_attribute_output()
@@ -7274,15 +7142,15 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' 
 #' Constraints:
 #' 
-#' - Must be in the `hh24:mi-hh24:mi` format.
+#' -   Must be in the `hh24:mi-hh24:mi` format.
 #' 
-#'   Example: `16:00-16:30`
+#'     Example: `16:00-16:30`
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Must not conflict with the preferred maintenance window.
+#' -   Must not conflict with the preferred maintenance window.
 #' 
-#' - Must be at least 30 minutes.
+#' -   Must be at least 30 minutes.
 #' @param preferredMaintenanceWindow The weekly time range during which system maintenance can occur on your
 #' database.
 #' 
@@ -7292,15 +7160,15 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' 
 #' Constraints:
 #' 
-#' - Must be in the `ddd:hh24:mi-ddd:hh24:mi` format.
+#' -   Must be in the `ddd:hh24:mi-ddd:hh24:mi` format.
 #' 
-#' - Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
+#' -   Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
-#' - Must be at least 30 minutes.
+#' -   Must be at least 30 minutes.
 #' 
-#' - Specified in Coordinated Universal Time (UTC).
+#' -   Specified in Coordinated Universal Time (UTC).
 #' 
-#' - Example: `Tue:17:00-Tue:17:30`
+#' -   Example: `Tue:17:00-Tue:17:30`
 #' @param enableBackupRetention When `true`, enables automated backup retention for your database.
 #' 
 #' Updates are applied during the next maintenance window because this can
@@ -7341,8 +7209,7 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_relational_database_input(relationalDatabaseName = relationalDatabaseName, masterUserPassword = masterUserPassword, rotateMasterUserPassword = rotateMasterUserPassword, preferredBackupWindow = preferredBackupWindow, preferredMaintenanceWindow = preferredMaintenanceWindow, enableBackupRetention = enableBackupRetention, disableBackupRetention = disableBackupRetention, publiclyAccessible = publiclyAccessible, applyImmediately = applyImmediately, caCertificateIdentifier = caCertificateIdentifier, relationalDatabaseBlueprintId = relationalDatabaseBlueprintId)
   output <- .lightsail$update_relational_database_output()
@@ -7374,8 +7241,7 @@ lightsail_update_relational_database_parameters <- function(relationalDatabaseNa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lightsail$update_relational_database_parameters_input(relationalDatabaseName = relationalDatabaseName, parameters = parameters)
   output <- .lightsail$update_relational_database_parameters_output()

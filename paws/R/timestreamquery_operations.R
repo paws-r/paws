@@ -46,8 +46,7 @@ timestreamquery_cancel_query <- function(QueryId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$cancel_query_input(QueryId = QueryId)
   output <- .timestreamquery$cancel_query_output()
@@ -97,11 +96,11 @@ timestreamquery_cancel_query <- function(QueryId) {
 #' result. Making multiple identical CreateScheduledQuery requests has the
 #' same effect as making a single request.
 #' 
-#' - If CreateScheduledQuery is called without a `ClientToken`, the Query
-#'   SDK generates a `ClientToken` on your behalf.
+#' -   If CreateScheduledQuery is called without a `ClientToken`, the Query
+#'     SDK generates a `ClientToken` on your behalf.
 #' 
-#' - After 8 hours, any request with the same `ClientToken` is treated as a
-#'   new request.
+#' -   After 8 hours, any request with the same `ClientToken` is treated as
+#'     a new request.
 #' @param ScheduledQueryExecutionRoleArn &#91;required&#93; The ARN for the IAM role that Timestream will assume when running the
 #' scheduled query.
 #' @param Tags A list of key-value pairs to label the scheduled query.
@@ -206,8 +205,7 @@ timestreamquery_create_scheduled_query <- function(Name, QueryString, ScheduleCo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$create_scheduled_query_input(Name = Name, QueryString = QueryString, ScheduleConfiguration = ScheduleConfiguration, NotificationConfiguration = NotificationConfiguration, TargetConfiguration = TargetConfiguration, ClientToken = ClientToken, ScheduledQueryExecutionRoleArn = ScheduledQueryExecutionRoleArn, Tags = Tags, KmsKeyId = KmsKeyId, ErrorReportConfiguration = ErrorReportConfiguration)
   output <- .timestreamquery$create_scheduled_query_output()
@@ -250,8 +248,7 @@ timestreamquery_delete_scheduled_query <- function(ScheduledQueryArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$delete_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn)
   output <- .timestreamquery$delete_scheduled_query_output()
@@ -305,8 +302,7 @@ timestreamquery_describe_account_settings <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$describe_account_settings_input()
   output <- .timestreamquery$describe_account_settings_output()
@@ -330,13 +326,13 @@ timestreamquery_describe_account_settings <- function() {
 #' service’s architecture, including the management and mapping of the
 #' service endpoints, *it is not recommended that you use this API unless*:
 #' 
-#' - You are using [VPC endpoints (Amazon Web Services PrivateLink) with
-#'   Timestream](https://docs.aws.amazon.com/timestream/latest/developerguide/VPCEndpoints.html)
+#' -   You are using [VPC endpoints (Amazon Web Services PrivateLink) with
+#'     Timestream](https://docs.aws.amazon.com/timestream/latest/developerguide/VPCEndpoints.html)
 #' 
-#' - Your application uses a programming language that does not yet have
-#'   SDK support
+#' -   Your application uses a programming language that does not yet have
+#'     SDK support
 #' 
-#' - You require better control over the client-side implementation
+#' -   You require better control over the client-side implementation
 #' 
 #' For detailed information on how and when to use and implement
 #' DescribeEndpoints, see [The Endpoint Discovery
@@ -376,8 +372,7 @@ timestreamquery_describe_endpoints <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$describe_endpoints_input()
   output <- .timestreamquery$describe_endpoints_output()
@@ -545,8 +540,7 @@ timestreamquery_describe_scheduled_query <- function(ScheduledQueryArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$describe_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn)
   output <- .timestreamquery$describe_scheduled_query_output()
@@ -597,8 +591,7 @@ timestreamquery_execute_scheduled_query <- function(ScheduledQueryArn, Invocatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$execute_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn, InvocationTime = InvocationTime, ClientToken = ClientToken)
   output <- .timestreamquery$execute_scheduled_query_output()
@@ -686,8 +679,7 @@ timestreamquery_list_scheduled_queries <- function(MaxResults = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledQueries"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledQueries")
   )
   input <- .timestreamquery$list_scheduled_queries_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .timestreamquery$list_scheduled_queries_output()
@@ -747,8 +739,7 @@ timestreamquery_list_tags_for_resource <- function(ResourceARN, MaxResults = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .timestreamquery$list_tags_for_resource_input(ResourceARN = ResourceARN, MaxResults = MaxResults, NextToken = NextToken)
   output <- .timestreamquery$list_tags_for_resource_output()
@@ -852,8 +843,7 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$prepare_query_input(QueryString = QueryString, ValidateOnly = ValidateOnly)
   output <- .timestreamquery$prepare_query_output()
@@ -879,22 +869,22 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #' 
 #' Your query request will fail in the following cases:
 #' 
-#' - If you submit a [`query`][timestreamquery_query] request with the same
-#'   client token outside of the 5-minute idempotency window.
+#' -   If you submit a [`query`][timestreamquery_query] request with the
+#'     same client token outside of the 5-minute idempotency window.
 #' 
-#' - If you submit a [`query`][timestreamquery_query] request with the same
-#'   client token, but change other parameters, within the 5-minute
-#'   idempotency window.
+#' -   If you submit a [`query`][timestreamquery_query] request with the
+#'     same client token, but change other parameters, within the 5-minute
+#'     idempotency window.
 #' 
-#' - If the size of the row (including the query metadata) exceeds 1 MB,
-#'   then the query will fail with the following error message:
+#' -   If the size of the row (including the query metadata) exceeds 1 MB,
+#'     then the query will fail with the following error message:
 #' 
-#'   `Query aborted as max page response size has been exceeded by the output result row`
+#'     `Query aborted as max page response size has been exceeded by the output result row`
 #' 
-#' - If the IAM principal of the query initiator and the result reader are
-#'   not the same and/or the query initiator and the result reader do not
-#'   have the same query string in the query requests, the query will fail
-#'   with an `Invalid pagination token` error.
+#' -   If the IAM principal of the query initiator and the result reader
+#'     are not the same and/or the query initiator and the result reader do
+#'     not have the same query string in the query requests, the query will
+#'     fail with an `Invalid pagination token` error.
 #'
 #' @usage
 #' timestreamquery_query(QueryString, ClientToken, NextToken, MaxRows)
@@ -909,19 +899,19 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #' a single request. When using `ClientToken` in a query, note the
 #' following:
 #' 
-#' - If the Query API is instantiated without a `ClientToken`, the Query
-#'   SDK generates a `ClientToken` on your behalf.
+#' -   If the Query API is instantiated without a `ClientToken`, the Query
+#'     SDK generates a `ClientToken` on your behalf.
 #' 
-#' - If the [`query`][timestreamquery_query] invocation only contains the
-#'   `ClientToken` but does not include a `NextToken`, that invocation of
-#'   [`query`][timestreamquery_query] is assumed to be a new query run.
+#' -   If the [`query`][timestreamquery_query] invocation only contains the
+#'     `ClientToken` but does not include a `NextToken`, that invocation of
+#'     [`query`][timestreamquery_query] is assumed to be a new query run.
 #' 
-#' - If the invocation contains `NextToken`, that particular invocation is
-#'   assumed to be a subsequent invocation of a prior call to the Query
-#'   API, and a result set is returned.
+#' -   If the invocation contains `NextToken`, that particular invocation
+#'     is assumed to be a subsequent invocation of a prior call to the
+#'     Query API, and a result set is returned.
 #' 
-#' - After 4 hours, any request with the same `ClientToken` is treated as a
-#'   new request.
+#' -   After 4 hours, any request with the same `ClientToken` is treated as
+#'     a new request.
 #' @param NextToken A pagination token used to return a set of results. When the
 #' [`query`][timestreamquery_query] API is invoked using `NextToken`, that
 #' particular invocation is assumed to be a subsequent invocation of a
@@ -932,38 +922,38 @@ timestreamquery_prepare_query <- function(QueryString, ValidateOnly = NULL) {
 #' 
 #' Note the following when using NextToken in a query:
 #' 
-#' - A pagination token can be used for up to five
-#'   [`query`][timestreamquery_query] invocations, OR for a duration of up
-#'   to 1 hour – whichever comes first.
+#' -   A pagination token can be used for up to five
+#'     [`query`][timestreamquery_query] invocations, OR for a duration of
+#'     up to 1 hour – whichever comes first.
 #' 
-#' - Using the same `NextToken` will return the same set of records. To
-#'   keep paginating through the result set, you must to use the most
-#'   recent `nextToken`.
+#' -   Using the same `NextToken` will return the same set of records. To
+#'     keep paginating through the result set, you must to use the most
+#'     recent `nextToken`.
 #' 
-#' - Suppose a [`query`][timestreamquery_query] invocation returns two
-#'   `NextToken` values, `TokenA` and `TokenB`. If `TokenB` is used in a
-#'   subsequent [`query`][timestreamquery_query] invocation, then `TokenA`
-#'   is invalidated and cannot be reused.
+#' -   Suppose a [`query`][timestreamquery_query] invocation returns two
+#'     `NextToken` values, `TokenA` and `TokenB`. If `TokenB` is used in a
+#'     subsequent [`query`][timestreamquery_query] invocation, then
+#'     `TokenA` is invalidated and cannot be reused.
 #' 
-#' - To request a previous result set from a query after pagination has
-#'   begun, you must re-invoke the Query API.
+#' -   To request a previous result set from a query after pagination has
+#'     begun, you must re-invoke the Query API.
 #' 
-#' - The latest `NextToken` should be used to paginate until `null` is
-#'   returned, at which point a new `NextToken` should be used.
+#' -   The latest `NextToken` should be used to paginate until `null` is
+#'     returned, at which point a new `NextToken` should be used.
 #' 
-#' - If the IAM principal of the query initiator and the result reader are
-#'   not the same and/or the query initiator and the result reader do not
-#'   have the same query string in the query requests, the query will fail
-#'   with an `Invalid pagination token` error.
+#' -   If the IAM principal of the query initiator and the result reader
+#'     are not the same and/or the query initiator and the result reader do
+#'     not have the same query string in the query requests, the query will
+#'     fail with an `Invalid pagination token` error.
 #' @param MaxRows The total number of rows to be returned in the
 #' [`query`][timestreamquery_query] output. The initial run of
 #' [`query`][timestreamquery_query] with a `MaxRows` value specified will
 #' return the result set of the query in two cases:
 #' 
-#' - The size of the result is less than `1MB`.
+#' -   The size of the result is less than `1MB`.
 #' 
-#' - The number of rows in the result set is less than the value of
-#'   `maxRows`.
+#' -   The number of rows in the result set is less than the value of
+#'     `maxRows`.
 #' 
 #' Otherwise, the initial invocation of [`query`][timestreamquery_query]
 #' only returns a `NextToken`, which can then be used in subsequent calls
@@ -1039,8 +1029,7 @@ timestreamquery_query <- function(QueryString, ClientToken = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxRows", non_aggregate_keys = list( "ColumnInfo", "QueryId", "QueryStatus"), output_token = "NextToken", result_key = "Rows"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxRows", non_aggregate_keys = list( "ColumnInfo", "QueryId", "QueryStatus"), output_token = "NextToken", result_key = "Rows")
   )
   input <- .timestreamquery$query_input(QueryString = QueryString, ClientToken = ClientToken, NextToken = NextToken, MaxRows = MaxRows)
   output <- .timestreamquery$query_output()
@@ -1093,8 +1082,7 @@ timestreamquery_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .timestreamquery$tag_resource_output()
@@ -1143,8 +1131,7 @@ timestreamquery_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .timestreamquery$untag_resource_output()
@@ -1215,8 +1202,7 @@ timestreamquery_update_account_settings <- function(MaxQueryTCU = NULL, QueryPri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$update_account_settings_input(MaxQueryTCU = MaxQueryTCU, QueryPricingModel = QueryPricingModel)
   output <- .timestreamquery$update_account_settings_output()
@@ -1261,8 +1247,7 @@ timestreamquery_update_scheduled_query <- function(ScheduledQueryArn, State) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .timestreamquery$update_scheduled_query_input(ScheduledQueryArn = ScheduledQueryArn, State = State)
   output <- .timestreamquery$update_scheduled_query_output()

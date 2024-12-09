@@ -24,15 +24,17 @@ attachment.
 values are \code{vpc} | \code{vpn} | \code{direct-connect-gateway} | \code{peering} |
 \code{connect}.
 \item \code{prefix-list-id} - The ID of the prefix list.
-\item \code{route-search.exact-match} - The exact match of the specified filter.
-\item \code{route-search.longest-prefix-match} - The longest prefix that matches
-the route.
+\item \code{route-search.exact-match} - The exact match of the specified
+filter.
+\item \code{route-search.longest-prefix-match} - The longest prefix that
+matches the route.
 \item \code{route-search.subnet-of-match} - The routes with a subnet that match
 the specified CIDR filter.
 \item \code{route-search.supernet-of-match} - The routes with a CIDR that
 encompass the CIDR filter. For example, if you have 10.0.1.0/29 and
 10.0.1.0/31 routes in your route table and you specify
-supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
+supernet-of-match as 10.0.1.0/30, then the result returns
+10.0.1.0/29.
 \item \code{state} - The state of the route (\code{active} | \code{blackhole}).
 \item \code{type} - The type of route (\code{propagated} | \code{static}).
 }}

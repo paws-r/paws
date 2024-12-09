@@ -22,9 +22,9 @@ subnet. You can also use \code{availabilityZoneId} as the filter name.
 \item \code{available-ip-address-count} - The number of IPv4 addresses in the
 subnet that are available.
 \item \code{cidr-block} - The IPv4 CIDR block of the subnet. The CIDR block you
-specify must exactly match the subnet's CIDR block for information to
-be returned for the subnet. You can also use \code{cidr} or \code{cidrBlock} as
-the filter names.
+specify must exactly match the subnet's CIDR block for information
+to be returned for the subnet. You can also use \code{cidr} or
+\code{cidrBlock} as the filter names.
 \item \code{customer-owned-ipv4-pool} - The customer-owned IPv4 address pool
 associated with the subnet.
 \item \verb{default-for-az} - Indicates whether this is the default subnet for
@@ -33,18 +33,18 @@ the Availability Zone (\code{true} | \code{false}). You can also use
 \item \code{enable-dns64} - Indicates whether DNS queries made to the
 Amazon-provided DNS Resolver in this subnet should return synthetic
 IPv6 addresses for IPv4-only destinations.
-\item \code{enable-lni-at-device-index} - Indicates the device position for local
-network interfaces in this subnet. For example, \code{1} indicates local
-network interfaces in this subnet are the secondary network interface
-(eth1).
+\item \code{enable-lni-at-device-index} - Indicates the device position for
+local network interfaces in this subnet. For example, \code{1} indicates
+local network interfaces in this subnet are the secondary network
+interface (eth1).
 \item \code{ipv6-cidr-block-association.ipv6-cidr-block} - An IPv6 CIDR block
 associated with the subnet.
 \item \code{ipv6-cidr-block-association.association-id} - An association ID for
 an IPv6 CIDR block associated with the subnet.
-\item \code{ipv6-cidr-block-association.state} - The state of an IPv6 CIDR block
-associated with the subnet.
-\item \code{ipv6-native} - Indicates whether this is an IPv6 only subnet (\code{true}
-| \code{false}).
+\item \code{ipv6-cidr-block-association.state} - The state of an IPv6 CIDR
+block associated with the subnet.
+\item \code{ipv6-native} - Indicates whether this is an IPv6 only subnet
+(\code{true} | \code{false}).
 \item \code{map-customer-owned-ip-on-launch} - Indicates whether a network
 interface created in this subnet (including a network interface
 created by \code{\link[=ec2_run_instances]{run_instances}}) receives a
@@ -55,11 +55,11 @@ this subnet receive a public IPv4 address.
 \item \code{owner-id} - The ID of the Amazon Web Services account that owns the
 subnet.
 \item \code{private-dns-name-options-on-launch.hostname-type} - The type of
-hostname to assign to instances in the subnet at launch. For IPv4-only
-and dual-stack (IPv4 and IPv6) subnets, an instance DNS name can be
-based on the instance IPv4 address (ip-name) or the instance ID
-(resource-name). For IPv6 only subnets, an instance DNS name must be
-based on the instance ID (resource-name).
+hostname to assign to instances in the subnet at launch. For
+IPv4-only and dual-stack (IPv4 and IPv6) subnets, an instance DNS
+name can be based on the instance IPv4 address (ip-name) or the
+instance ID (resource-name). For IPv6 only subnets, an instance DNS
+name must be based on the instance ID (resource-name).
 \item \code{private-dns-name-options-on-launch.enable-resource-name-dns-a-record} -
 Indicates whether to respond to DNS queries for instance hostnames
 with DNS A records.
@@ -70,13 +70,13 @@ with DNS AAAA records.
 \item \code{subnet-arn} - The Amazon Resource Name (ARN) of the subnet.
 \item \code{subnet-id} - The ID of the subnet.
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as the
-filter value. For example, to find all resources that have a tag with
-the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
-filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
-to find all resources assigned a tag with a specific key, regardless
-of the tag value.
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this
+filter to find all resources assigned a tag with a specific key,
+regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC for the subnet.
 }}
 

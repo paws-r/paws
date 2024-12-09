@@ -66,36 +66,36 @@ package manager client.
 \itemize{
 \item \strong{Repository}: A CodeArtifact repository contains a set of \href{https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html#welcome-concepts-package-version}{package versions},
 each of which maps to a set of assets, or files. Repositories are
-polyglot, so a single repository can contain packages of any supported
-type. Each repository exposes endpoints for fetching and publishing
-packages using tools such as the \strong{\code{npm}} CLI or the Maven CLI (
-\strong{\code{mvn}} ). For a list of supported package managers, see the
-\href{https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html}{CodeArtifact User Guide}.
+polyglot, so a single repository can contain packages of any
+supported type. Each repository exposes endpoints for fetching and
+publishing packages using tools such as the \strong{\code{npm}} CLI or the
+Maven CLI ( \strong{\code{mvn}} ). For a list of supported package managers,
+see the \href{https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html}{CodeArtifact User Guide}.
 \item \strong{Domain}: Repositories are aggregated into a higher-level entity
-known as a \emph{domain}. All package assets and metadata are stored in the
-domain, but are consumed through repositories. A given package asset,
-such as a Maven JAR file, is stored once per domain, no matter how
-many repositories it's present in. All of the assets and metadata in a
-domain are encrypted with the same customer master key (CMK) stored in
-Key Management Service (KMS).
+known as a \emph{domain}. All package assets and metadata are stored in
+the domain, but are consumed through repositories. A given package
+asset, such as a Maven JAR file, is stored once per domain, no
+matter how many repositories it's present in. All of the assets and
+metadata in a domain are encrypted with the same customer master key
+(CMK) stored in Key Management Service (KMS).
 
-Each repository is a member of a single domain and can't be moved to a
-different domain.
+Each repository is a member of a single domain and can't be moved to
+a different domain.
 
-The domain allows organizational policy to be applied across multiple
-repositories, such as which accounts can access repositories in the
-domain, and which public repositories can be used as sources of
-packages.
+The domain allows organizational policy to be applied across
+multiple repositories, such as which accounts can access
+repositories in the domain, and which public repositories can be
+used as sources of packages.
 
 Although an organization can have multiple domains, we recommend a
-single production domain that contains all published artifacts so that
-teams can find and share packages across their organization.
+single production domain that contains all published artifacts so
+that teams can find and share packages across their organization.
 \item \strong{Package}: A \emph{package} is a bundle of software and the metadata
 required to resolve dependencies and install the software.
-CodeArtifact supports npm, PyPI, Maven, NuGet, Swift, Ruby, Cargo, and
-generic package formats. For more information about the supported
-package formats and how to use CodeArtifact with them, see the
-\href{https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html}{CodeArtifact User Guide}.
+CodeArtifact supports npm, PyPI, Maven, NuGet, Swift, Ruby, Cargo,
+and generic package formats. For more information about the
+supported package formats and how to use CodeArtifact with them, see
+the \href{https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html}{CodeArtifact User Guide}.
 
 In CodeArtifact, a package consists of:
 \itemize{
@@ -110,23 +110,24 @@ definition. Package groups can be used to apply configuration to
 multiple packages that match a defined pattern using package format,
 package namespace, and package name. You can use package groups to
 more conveniently configure package origin controls for multiple
-packages. Package origin controls are used to block or allow ingestion
-or publishing of new package versions, which protects users from
-malicious actions known as dependency substitution attacks.
+packages. Package origin controls are used to block or allow
+ingestion or publishing of new package versions, which protects
+users from malicious actions known as dependency substitution
+attacks.
 \item \strong{Package version}: A version of a package, such as
-\verb{@types/node 12.6.9}. The version number format and semantics vary for
-different package formats. For example, npm package versions must
-conform to the \href{https://semver.org/}{Semantic Versioning specification}. In CodeArtifact, a package
+\verb{@types/node 12.6.9}. The version number format and semantics vary
+for different package formats. For example, npm package versions
+must conform to the \href{https://semver.org/}{Semantic Versioning specification}. In CodeArtifact, a package
 version consists of the version identifier, metadata at the package
 version level, and a set of assets.
-\item \strong{Upstream repository}: One repository is \emph{upstream} of another when
-the package versions in it can be accessed from the repository
+\item \strong{Upstream repository}: One repository is \emph{upstream} of another
+when the package versions in it can be accessed from the repository
 endpoint of the downstream repository, effectively merging the
 contents of the two repositories from the point of view of a client.
 CodeArtifact allows creating an upstream relationship between two
 repositories.
-\item \strong{Asset}: An individual file stored in CodeArtifact associated with a
-package version, such as an npm \code{.tgz} file or Maven POM and JAR
+\item \strong{Asset}: An individual file stored in CodeArtifact associated with
+a package version, such as an npm \code{.tgz} file or Maven POM and JAR
 files.
 }
 
@@ -134,23 +135,23 @@ files.
 \itemize{
 \item \code{associate_external_connection}:
 Adds an existing external connection to a repository.
-\item \code{copy_package_versions}: Copies
-package versions from one repository to another repository in the same
-domain.
+\item \code{copy_package_versions}:
+Copies package versions from one repository to another repository in
+the same domain.
 \item \code{create_domain}: Creates a domain.
-\item \code{create_package_group}: Creates a
-package group.
+\item \code{create_package_group}: Creates
+a package group.
 \item \code{create_repository}: Creates a
 CodeArtifact repository in a domain.
 \item \code{delete_domain}: Deletes a domain. You
 cannot delete a domain that contains repositories.
 \item \code{delete_domain_permissions_policy}:
 Deletes the resource policy that is set on a domain.
-\item \code{delete_package}: Deletes a package and
-all associated package versions.
-\item \code{delete_package_group}: Deletes a
-package group. Does not delete packages or package versions that are
-associated with a package group.
+\item \code{delete_package}: Deletes a package
+and all associated package versions.
+\item \code{delete_package_group}: Deletes
+a package group. Does not delete packages or package versions that
+are associated with a package group.
 \item \code{delete_package_versions}:
 Deletes versions of a package. After a package has been deleted, it
 can be republished, but its assets and metadata cannot be restored
@@ -187,9 +188,9 @@ Returns the most closely associated package group to the specified
 package.
 \item \code{get_authorization_token}:
 Generates a temporary authorization token for accessing repositories
-in the domain. The token expires the authorization period has passed.
-The default authorization period is 12 hours and can be customized to
-any length with a maximum of 12 hours.
+in the domain. The token expires the authorization period has
+passed. The default authorization period is 12 hours and can be
+customized to any length with a maximum of 12 hours.
 \item \code{get_domain_permissions_policy}:
 Returns the policy of a resource that is attached to the specified
 domain.
@@ -198,8 +199,8 @@ Returns the contents of an asset that is in a package version.
 \item \code{get_package_version_readme}:
 Gets the readme file or descriptive text for a package version.
 \item \code{get_repository_endpoint}:
-Returns the endpoint of a repository for a specific package format. A
-repository has one endpoint for each package format:
+Returns the endpoint of a repository for a specific package format.
+A repository has one endpoint for each package format:
 \itemize{
 \item \code{cargo}
 \item \code{generic}
@@ -219,21 +220,22 @@ configuration set to \code{ALLOW_SPECIFIC_REPOSITORIES}.
 Returns a list of packages associated with the requested package
 group.
 \item \code{list_domains}: Returns a list of
-\code{DomainSummary} objects. Each returned \code{DomainSummary} object contains
-information about a domain.
-\item \code{list_packages}: Lists the packages in a
-repository.
+\code{DomainSummary} objects. Each returned \code{DomainSummary} object
+contains information about a domain.
+\item \code{list_packages}: Lists the packages in
+a repository.
 \item \code{list_package_groups}: Returns a
 list of package groups in the requested domain.
 \item \code{list_package_version_assets}:
 Lists the assets for a given package version.
 \item \code{list_package_version_dependencies}:
 Returns a list of the direct dependencies for a package version.
-\item \code{list_package_versions}: Returns
-a list of package versions for a specified package in a repository.
-\item \code{list_repositories}: Returns a list
-of repositories owned by the Amazon Web Services account that called
-this method.
+\item \code{list_package_versions}:
+Returns a list of package versions for a specified package in a
+repository.
+\item \code{list_repositories}: Returns a
+list of repositories owned by the Amazon Web Services account that
+called this method.
 \item \code{list_repositories_in_domain}:
 Returns a list of the repositories in a domain.
 \item \code{list_sub_package_groups}:
@@ -244,12 +246,13 @@ Creates a new package version containing one or more assets.
 Attaches a resource policy to a domain.
 \item \code{put_package_origin_configuration}:
 Sets the package origin configuration for a package, which determine
-how new versions of the package can be added to a specific repository.
+how new versions of the package can be added to a specific
+repository.
 \item \code{put_repository_permissions_policy}:
-Sets the resource policy on a repository that specifies permissions to
-access it.
-\item \code{update_package_group}: Updates a
-package group. This API cannot be used to update a package group's
+Sets the resource policy on a repository that specifies permissions
+to access it.
+\item \code{update_package_group}: Updates
+a package group. This API cannot be used to update a package group's
 origin configuration or pattern.
 \item \code{update_package_group_origin_configuration}:
 Updates the package origin configuration for a package group.

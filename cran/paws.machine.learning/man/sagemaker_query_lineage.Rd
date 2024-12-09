@@ -33,8 +33,8 @@ should be returned.
 \itemize{
 \item Properties - Key-value pairs to match on the lineage entities'
 properties.
-\item LineageTypes - A set of lineage entity types to match on. For example:
-\code{TrialComponent}, \code{Artifact}, or \code{Context}.
+\item LineageTypes - A set of lineage entity types to match on. For
+example: \code{TrialComponent}, \code{Artifact}, or \code{Context}.
 \item CreatedBefore - Filter entities created before this date.
 \item ModifiedBefore - Filter entities modified before this date.
 \item ModifiedAfter - Filter entities modified after this date.

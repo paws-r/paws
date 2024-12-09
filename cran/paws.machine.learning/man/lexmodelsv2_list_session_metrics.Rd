@@ -37,7 +37,8 @@ the results by time.}
 can group by the following criteria:
 \itemize{
 \item \code{ConversationEndState} – The final state of the conversation. The
-possible end states are detailed in Key definitions in the user guide.
+possible end states are detailed in Key definitions in the user
+guide.
 \item \code{LocaleId} – The unique identifier of the bot locale.
 }}
 

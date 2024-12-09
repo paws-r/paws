@@ -23,11 +23,11 @@ NULL
 #' 
 #' To learn more about AppStream 2.0, see the following resources:
 #' 
-#' - [Amazon AppStream 2.0 product
-#'   page](https://aws.amazon.com/appstream2/)
+#' -   [Amazon AppStream 2.0 product
+#'     page](https://aws.amazon.com/appstream2/)
 #' 
-#' - [Amazon AppStream 2.0
-#'   documentation](https://docs.aws.amazon.com/appstream2/)
+#' -   [Amazon AppStream 2.0
+#'     documentation](https://docs.aws.amazon.com/appstream2/)
 #'
 #' @param
 #' config

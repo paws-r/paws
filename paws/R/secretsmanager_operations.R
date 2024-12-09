@@ -30,7 +30,7 @@ NULL
 #' Services managed key `aws/secretsmanager`, then you also need
 #' `kms:Decrypt` permissions for the keys. For more information, see [IAM
 #' policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -126,8 +126,7 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .secretsmanager$batch_get_secret_value_input(SecretIdList = SecretIdList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .secretsmanager$batch_get_secret_value_output()
@@ -170,7 +169,7 @@ secretsmanager_batch_get_secret_value <- function(SecretIdList = NULL, Filters =
 #' 
 #' **Required permissions:** `secretsmanager:CancelRotateSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -222,8 +221,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$cancel_rotate_secret_input(SecretId = SecretId)
   output <- .secretsmanager$cancel_rotate_secret_output()
@@ -289,7 +287,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' replica Regions, you must also have
 #' `secretsmanager:ReplicateSecretToRegions`. For more information, see
 #' [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #' 
@@ -336,19 +334,19 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness of your versions within the specified secret.
 #' 
-#' - If the `ClientRequestToken` value isn't already associated with a
-#'   version of the secret then a new version of the secret is created.
+#' -   If the `ClientRequestToken` value isn't already associated with a
+#'     version of the secret then a new version of the secret is created.
 #' 
-#' - If a version with this value already exists and the version
-#'   `SecretString` and `SecretBinary` values are the same as those in the
-#'   request, then the request is ignored.
+#' -   If a version with this value already exists and the version
+#'     `SecretString` and `SecretBinary` values are the same as those in
+#'     the request, then the request is ignored.
 #' 
-#' - If a version with this value already exists and that version's
-#'   `SecretString` and `SecretBinary` values are different from those in
-#'   the request, then the request fails because you cannot modify an
-#'   existing version. Instead, use
-#'   [`put_secret_value`][secretsmanager_put_secret_value] to create a new
-#'   version.
+#' -   If a version with this value already exists and that version's
+#'     `SecretString` and `SecretBinary` values are different from those in
+#'     the request, then the request fails because you cannot modify an
+#'     existing version. Instead, use
+#'     [`put_secret_value`][secretsmanager_put_secret_value] to create a
+#'     new version.
 #' 
 #' This value becomes the `VersionId` of the new version.
 #' @param Description The description of the secret.
@@ -356,7 +354,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' encrypt the secret value in the secret. An alias is always prefixed by
 #' `alias/`, for example `alias/aws/secretsmanager`. For more information,
 #' see [About
-#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about).
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
 #' 
 #' To use a KMS key in a different account, use the key ARN or the alias
 #' ARN.
@@ -409,9 +407,9 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 #' for this secret, then Secrets Manager blocks the operation and returns
 #' an `Access Denied` error. For more information, see [Control access to
 #' secrets using
-#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#tag-secrets-abac)
+#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#tag-secrets-abac)
 #' and [Limit access to identities with tags that match secrets'
-#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html#auth-and-access_tags2).
+#' tags](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html#auth-and-access_tags2).
 #' 
 #' For information about how to format a JSON parameter for the various
 #' command line tool environments, see [Using JSON for
@@ -497,8 +495,7 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$create_secret_input(Name = Name, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString, Tags = Tags, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$create_secret_output()
@@ -525,7 +522,7 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 #' 
 #' **Required permissions:** `secretsmanager:DeleteResourcePolicy`. For
 #' more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -575,8 +572,7 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$delete_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$delete_resource_policy_output()
@@ -638,7 +634,7 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 #' 
 #' **Required permissions:** `secretsmanager:DeleteSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -719,8 +715,7 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$delete_secret_input(SecretId = SecretId, RecoveryWindowInDays = RecoveryWindowInDays, ForceDeleteWithoutRecovery = ForceDeleteWithoutRecovery)
   output <- .secretsmanager$delete_secret_output()
@@ -747,7 +742,7 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 #' 
 #' **Required permissions:** `secretsmanager:DescribeSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -846,8 +841,7 @@ secretsmanager_describe_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$describe_secret_input(SecretId = SecretId)
   output <- .secretsmanager$describe_secret_output()
@@ -873,7 +867,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' 
 #' **Required permissions:** `secretsmanager:GetRandomPassword`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -947,8 +941,7 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$get_random_password_input(PasswordLength = PasswordLength, ExcludeCharacters = ExcludeCharacters, ExcludeNumbers = ExcludeNumbers, ExcludePunctuation = ExcludePunctuation, ExcludeUppercase = ExcludeUppercase, ExcludeLowercase = ExcludeLowercase, IncludeSpace = IncludeSpace, RequireEachIncludedType = RequireEachIncludedType)
   output <- .secretsmanager$get_random_password_output()
@@ -977,7 +970,7 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' 
 #' **Required permissions:** `secretsmanager:GetResourcePolicy`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1028,8 +1021,7 @@ secretsmanager_get_resource_policy <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$get_resource_policy_input(SecretId = SecretId)
   output <- .secretsmanager$get_resource_policy_output()
@@ -1073,7 +1065,7 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' Services managed key `aws/secretsmanager`, then you also need
 #' `kms:Decrypt` permissions for that key. For more information, see [IAM
 #' policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1149,8 +1141,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$get_secret_value_input(SecretId = SecretId, VersionId = VersionId, VersionStage = VersionStage)
   output <- .secretsmanager$get_secret_value_output()
@@ -1181,7 +1172,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 #' 
 #' **Required permissions:** `secretsmanager:ListSecretVersionIds`. For
 #' more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1267,8 +1258,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .secretsmanager$list_secret_version_ids_input(SecretId = SecretId, MaxResults = MaxResults, NextToken = NextToken, IncludeDeprecated = IncludeDeprecated)
   output <- .secretsmanager$list_secret_version_ids_output()
@@ -1312,7 +1302,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' 
 #' **Required permissions:** `secretsmanager:ListSecrets`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1424,8 +1414,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .secretsmanager$list_secrets_input(IncludePlannedDeletion = IncludePlannedDeletion, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, SortOrder = SortOrder)
   output <- .secretsmanager$list_secrets_output()
@@ -1457,7 +1446,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' 
 #' **Required permissions:** `secretsmanager:PutResourcePolicy`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1472,7 +1461,7 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' ARN](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen).
 #' @param ResourcePolicy &#91;required&#93; A JSON-formatted string for an Amazon Web Services resource-based
 #' policy. For example policies, see [Permissions policy
-#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
+#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
 #' @param BlockPublicPolicy Specifies whether to block resource-based policies that allow broad
 #' access to the secret, for example those that use a wildcard for the
 #' principal. By default, public policies aren't blocked.
@@ -1483,11 +1472,11 @@ secretsmanager_list_secrets <- function(IncludePlannedDeletion = NULL, MaxResult
 #' secrets. In addition to using these features, carefully inspect the
 #' following policies to confirm that they do not grant public access:
 #' 
-#' - Identity-based policies attached to associated Amazon Web Services
-#'   principals (for example, IAM roles)
+#' -   Identity-based policies attached to associated Amazon Web Services
+#'     principals (for example, IAM roles)
 #' 
-#' - Resource-based policies attached to associated Amazon Web Services
-#'   resources (for example, Key Management Service (KMS) keys)
+#' -   Resource-based policies attached to associated Amazon Web Services
+#'     resources (for example, Key Management Service (KMS) keys)
 #' 
 #' To review permissions to your secrets, see [Determine who has
 #' permissions to your
@@ -1532,8 +1521,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$put_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy, BlockPublicPolicy = BlockPublicPolicy)
   output <- .secretsmanager$put_resource_policy_output()
@@ -1589,7 +1577,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' 
 #' **Required permissions:** `secretsmanager:PutSecretValue`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #' 
@@ -1629,17 +1617,18 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 #' [UUID-type](https://en.wikipedia.org/wiki/Universally_unique_identifier)
 #' value to ensure uniqueness of your versions within the specified secret.
 #' 
-#' - If the `ClientRequestToken` value isn't already associated with a
-#'   version of the secret then a new version of the secret is created.
+#' -   If the `ClientRequestToken` value isn't already associated with a
+#'     version of the secret then a new version of the secret is created.
 #' 
-#' - If a version with this value already exists and that version's
-#'   `SecretString` or `SecretBinary` values are the same as those in the
-#'   request then the request is ignored. The operation is idempotent.
+#' -   If a version with this value already exists and that version's
+#'     `SecretString` or `SecretBinary` values are the same as those in the
+#'     request then the request is ignored. The operation is idempotent.
 #' 
-#' - If a version with this value already exists and the version of the
-#'   `SecretString` and `SecretBinary` values are different from those in
-#'   the request, then the request fails because you can't modify a secret
-#'   version. You can only create new versions to store new secret values.
+#' -   If a version with this value already exists and the version of the
+#'     `SecretString` and `SecretBinary` values are different from those in
+#'     the request, then the request fails because you can't modify a
+#'     secret version. You can only create new versions to store new secret
+#'     values.
 #' 
 #' This value becomes the `VersionId` of the new version.
 #' @param SecretBinary The binary data to encrypt and store in the new version of the secret.
@@ -1738,8 +1727,7 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$put_secret_value_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, SecretBinary = SecretBinary, SecretString = SecretString, VersionStages = VersionStages, RotationToken = RotationToken)
   output <- .secretsmanager$put_secret_value_output()
@@ -1766,7 +1754,7 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' 
 #' **Required permissions:** `secretsmanager:RemoveRegionsFromReplication`.
 #' For more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1817,8 +1805,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$remove_regions_from_replication_input(SecretId = SecretId, RemoveReplicaRegions = RemoveReplicaRegions)
   output <- .secretsmanager$remove_regions_from_replication_output()
@@ -1848,7 +1835,7 @@ secretsmanager_remove_regions_from_replication <- function(SecretId, RemoveRepli
 #' To encrypt the replicated secret with a KMS key other than
 #' `aws/secretsmanager`, you need `kms:GenerateDataKey` and `kms:Encrypt`
 #' to the key. For more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1920,8 +1907,7 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$replicate_secret_to_regions_input(SecretId = SecretId, AddReplicaRegions = AddReplicaRegions, ForceOverwriteReplicaSecret = ForceOverwriteReplicaSecret)
   output <- .secretsmanager$replicate_secret_to_regions_output()
@@ -1948,7 +1934,7 @@ secretsmanager_replicate_secret_to_regions <- function(SecretId, AddReplicaRegio
 #' 
 #' **Required permissions:** `secretsmanager:RestoreSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -1997,8 +1983,7 @@ secretsmanager_restore_secret <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$restore_secret_input(SecretId = SecretId)
   output <- .secretsmanager$restore_secret_output()
@@ -2042,7 +2027,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 #' 
 #' **Required permissions:** `secretsmanager:RotateSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #' You also need `lambda:InvokeFunction` permissions on the rotation
@@ -2159,8 +2144,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$rotate_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, RotationLambdaARN = RotationLambdaARN, RotationRules = RotationRules, RotateImmediately = RotateImmediately)
   output <- .secretsmanager$rotate_secret_output()
@@ -2190,7 +2174,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' 
 #' **Required permissions:** `secretsmanager:StopReplicationToReplica`. For
 #' more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2225,8 +2209,7 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$stop_replication_to_replica_input(SecretId = SecretId)
   output <- .secretsmanager$stop_replication_to_replica_output()
@@ -2263,7 +2246,7 @@ secretsmanager_stop_replication_to_replica <- function(SecretId) {
 #' 
 #' **Required permissions:** `secretsmanager:TagResource`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2332,8 +2315,7 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$tag_resource_input(SecretId = SecretId, Tags = Tags)
   output <- .secretsmanager$tag_resource_output()
@@ -2366,7 +2348,7 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 #' 
 #' **Required permissions:** `secretsmanager:UntagResource`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2428,8 +2410,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$untag_resource_input(SecretId = SecretId, TagKeys = TagKeys)
   output <- .secretsmanager$untag_resource_output()
@@ -2487,7 +2468,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' **Required permissions:** `secretsmanager:UpdateSecret`. For more
 #' information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #' If you use a customer managed key, you must also have
@@ -2543,7 +2524,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 #' 
 #' A key alias is always prefixed by `alias/`, for example
 #' `alias/aws/secretsmanager`. For more information, see [About
-#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about).
+#' aliases](https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html).
 #' 
 #' If you set this to an empty string, Secrets Manager uses the Amazon Web
 #' Services managed key `aws/secretsmanager`. If this key doesn't already
@@ -2640,8 +2621,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$update_secret_input(SecretId = SecretId, ClientRequestToken = ClientRequestToken, Description = Description, KmsKeyId = KmsKeyId, SecretBinary = SecretBinary, SecretString = SecretString)
   output <- .secretsmanager$update_secret_output()
@@ -2686,7 +2666,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 #' 
 #' **Required permissions:** `secretsmanager:UpdateSecretVersionStage`. For
 #' more information, see [IAM policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2777,8 +2757,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$update_secret_version_stage_input(SecretId = SecretId, VersionStage = VersionStage, RemoveFromVersionId = RemoveFromVersionId, MoveToVersionId = MoveToVersionId)
   output <- .secretsmanager$update_secret_version_stage_output()
@@ -2800,15 +2779,15 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' 
 #' The API performs three checks when validating the policy:
 #' 
-#' - Sends a call to
-#'   [Zelkova](https://aws.amazon.com/blogs/security/protect-sensitive-data-in-the-cloud-with-automated-reasoning-zelkova/),
-#'   an automated reasoning engine, to ensure your resource policy does not
-#'   allow broad access to your secret, for example policies that use a
-#'   wildcard for the principal.
+#' -   Sends a call to
+#'     [Zelkova](https://aws.amazon.com/blogs/security/protect-sensitive-data-in-the-cloud-with-automated-reasoning-zelkova/),
+#'     an automated reasoning engine, to ensure your resource policy does
+#'     not allow broad access to your secret, for example policies that use
+#'     a wildcard for the principal.
 #' 
-#' - Checks for correct syntax in a policy.
+#' -   Checks for correct syntax in a policy.
 #' 
-#' - Verifies the policy does not lock out a caller.
+#' -   Verifies the policy does not lock out a caller.
 #' 
 #' Secrets Manager generates a CloudTrail log entry when you call this
 #' action. Do not include sensitive information in request parameters
@@ -2819,7 +2798,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' **Required permissions:** `secretsmanager:ValidateResourcePolicy` and
 #' `secretsmanager:PutResourcePolicy`. For more information, see [IAM
 #' policy actions for Secrets
-#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/#reference_iam-permissions_actions)
+#' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions)
 #' and [Authentication and access control in Secrets
 #' Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html).
 #'
@@ -2832,7 +2811,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' resource-based policy. The policy in the string identifies who can
 #' access or manage this secret and its versions. For example policies, see
 #' [Permissions policy
-#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_iam-policies.html).
+#' examples](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_examples.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -2877,8 +2856,7 @@ secretsmanager_validate_resource_policy <- function(SecretId = NULL, ResourcePol
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .secretsmanager$validate_resource_policy_input(SecretId = SecretId, ResourcePolicy = ResourcePolicy)
   output <- .secretsmanager$validate_resource_policy_output()

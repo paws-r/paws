@@ -16,7 +16,7 @@ s3control_list_access_grants(
 )
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
+\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
 
 \item{NextToken}{A pagination token to request the next page of results. Pass this value
 into a subsequent \verb{List Access Grants} request in order to retrieve the

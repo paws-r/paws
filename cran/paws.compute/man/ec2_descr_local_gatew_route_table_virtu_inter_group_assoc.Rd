@@ -25,8 +25,8 @@ the local gateway route table for the virtual interface group.
 table.
 \item \code{local-gateway-route-table-virtual-interface-group-association-id} -
 The ID of the association.
-\item \code{local-gateway-route-table-virtual-interface-group-id} - The ID of the
-virtual interface group.
+\item \code{local-gateway-route-table-virtual-interface-group-id} - The ID of
+the virtual interface group.
 \item \code{owner-id} - The ID of the Amazon Web Services account that owns the
 local gateway virtual interface group association.
 \item \code{state} - The state of the association.

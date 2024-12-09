@@ -49,7 +49,7 @@ not re-encrypt existing secret versions with the new key. For more
 information about versions and staging labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/#term_version}{Concepts: Version}.
 
 A key alias is always prefixed by \verb{alias/}, for example
-\code{alias/aws/secretsmanager}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-about}{About aliases}.
+\code{alias/aws/secretsmanager}. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/alias-about.html}{About aliases}.
 
 If you set this to an empty string, Secrets Manager uses the Amazon Web
 Services managed key \code{aws/secretsmanager}. If this key doesn't already

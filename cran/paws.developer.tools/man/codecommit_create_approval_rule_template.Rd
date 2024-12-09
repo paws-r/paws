@@ -26,9 +26,9 @@ When you create the content of the approval rule template, you can
 specify approvers in an approval pool in one of two ways:
 \itemize{
 \item \strong{CodeCommitApprovers}: This option only requires an Amazon Web
-Services account and a resource. It can be used for both IAM users and
-federated access users whose name matches the provided resource name.
-This is a very powerful option that offers a great deal of
+Services account and a resource. It can be used for both IAM users
+and federated access users whose name matches the provided resource
+name. This is a very powerful option that offers a great deal of
 flexibility. For example, if you specify the Amazon Web Services
 account \emph{123456789012} and \emph{Mary_Major}, all of the following are
 counted as approvals coming from that user:
@@ -40,7 +40,8 @@ counted as approvals coming from that user:
 }
 
 This option does not recognize an active session of someone assuming
-the role of CodeCommitReview with a role session name of \emph{Mary_Major}
+the role of CodeCommitReview with a role session name of
+\emph{Mary_Major}
 (arn:aws:sts::\emph{123456789012}:assumed-role/CodeCommitReview/\emph{Mary_Major})
 unless you include a wildcard (*Mary_Major).
 \item \strong{Fully qualified ARN}: This option allows you to specify the fully

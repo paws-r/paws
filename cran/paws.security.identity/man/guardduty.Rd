@@ -78,8 +78,7 @@ strength.
 GuardDuty informs you about the status of your Amazon Web Services
 environment by producing security findings that you can view in the
 GuardDuty console or through Amazon EventBridge. For more information,
-see the
-\emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}} .
+see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html}{Amazon GuardDuty User Guide}} .
 }
 \section{Service syntax}{
 

@@ -49,15 +49,15 @@ The maximum length of a SAN DNS name is 253 octets. The name is made up
 of multiple labels separated by periods. No label can be longer than 63
 octets. Consider the following examples:
 \itemize{
-\item \verb{(63 octets).(63 octets).(63 octets).(61 octets)} is legal because the
-total length is 253 octets (63+1+63+1+63+1+61) and no label exceeds 63
-octets.
-\item \verb{(64 octets).(63 octets).(63 octets).(61 octets)} is not legal because
-the total length exceeds 253 octets (64+1+63+1+63+1+61) and the first
-label exceeds 63 octets.
-\item \verb{(63 octets).(63 octets).(63 octets).(62 octets)} is not legal because
-the total length of the DNS name (63+1+63+1+63+1+62) exceeds 253
-octets.
+\item \verb{(63 octets).(63 octets).(63 octets).(61 octets)} is legal because
+the total length is 253 octets (63+1+63+1+63+1+61) and no label
+exceeds 63 octets.
+\item \verb{(64 octets).(63 octets).(63 octets).(61 octets)} is not legal
+because the total length exceeds 253 octets (64+1+63+1+63+1+61) and
+the first label exceeds 63 octets.
+\item \verb{(63 octets).(63 octets).(63 octets).(62 octets)} is not legal
+because the total length of the DNS name (63+1+63+1+63+1+62) exceeds
+253 octets.
 }}
 
 \item{IdempotencyToken}{Customer chosen string that can be used to distinguish between calls to
@@ -100,7 +100,7 @@ or only support ECDSA keys of a particular size, while others allow the
 use of either RSA and ECDSA keys to ensure that compatibility is not
 broken. Check the requirements for the Amazon Web Services service where
 you plan to deploy your certificate. For more information about
-selecting an algorithm, see \href{https://docs.aws.amazon.com/acm/latest/userguide/#algorithms}{Key algorithms}.
+selecting an algorithm, see \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-certificate.html#algorithms}{Key algorithms}.
 
 Algorithms supported for an ACM certificate request include:
 \itemize{

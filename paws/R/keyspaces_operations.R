@@ -29,14 +29,14 @@ NULL
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param replicationSpecification The replication specification of the keyspace includes:
 #' 
-#' - `replicationStrategy` - the required value is `SINGLE_REGION` or
-#'   `MULTI_REGION`.
+#' -   `replicationStrategy` - the required value is `SINGLE_REGION` or
+#'     `MULTI_REGION`.
 #' 
-#' - `regionList` - if the `replicationStrategy` is `MULTI_REGION`, the
-#'   `regionList` requires the current Region and at least one additional
-#'   Amazon Web Services Region where the keyspace is going to be
-#'   replicated in. The maximum number of supported replication Regions
-#'   including the current Region is six.
+#' -   `regionList` - if the `replicationStrategy` is `MULTI_REGION`, the
+#'     `regionList` requires the current Region and at least one additional
+#'     Amazon Web Services Region where the keyspace is going to be
+#'     replicated in. The maximum number of supported replication Regions
+#'     including the current Region is six.
 #'
 #' @return
 #' A list with the following syntax:
@@ -76,8 +76,7 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$create_keyspace_input(keyspaceName = keyspaceName, tags = tags, replicationSpecification = replicationSpecification)
   output <- .keyspaces$create_keyspace_output()
@@ -104,7 +103,7 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' status is `ACTIVE`.
 #' 
 #' For more information, see [Creating
-#' tables](https://docs.aws.amazon.com/keyspaces/latest/devguide/#tables-create)
+#' tables](https://docs.aws.amazon.com/keyspaces/latest/devguide/working-with-tables.html#tables-create)
 #' in the *Amazon Keyspaces Developer Guide*.
 #'
 #' @usage
@@ -119,45 +118,45 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' 
 #' For each column to be created:
 #' 
-#' - `name` - The name of the column.
+#' -   `name` - The name of the column.
 #' 
-#' - `type` - An Amazon Keyspaces data type. For more information, see
-#'   [Data
-#'   types](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types)
-#'   in the *Amazon Keyspaces Developer Guide*.
+#' -   `type` - An Amazon Keyspaces data type. For more information, see
+#'     [Data
+#'     types](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types)
+#'     in the *Amazon Keyspaces Developer Guide*.
 #' 
 #' The primary key of the table consists of the following columns:
 #' 
-#' - `partitionKeys` - The partition key can be a single column, or it can
-#'   be a compound value composed of two or more columns. The partition key
-#'   portion of the primary key is required and determines how Amazon
-#'   Keyspaces stores your data.
+#' -   `partitionKeys` - The partition key can be a single column, or it
+#'     can be a compound value composed of two or more columns. The
+#'     partition key portion of the primary key is required and determines
+#'     how Amazon Keyspaces stores your data.
 #' 
-#' - `name` - The name of each partition key column.
+#' -   `name` - The name of each partition key column.
 #' 
-#' - `clusteringKeys` - The optional clustering column portion of your
-#'   primary key determines how the data is clustered and sorted within
-#'   each partition.
+#' -   `clusteringKeys` - The optional clustering column portion of your
+#'     primary key determines how the data is clustered and sorted within
+#'     each partition.
 #' 
-#' - `name` - The name of the clustering column.
+#' -   `name` - The name of the clustering column.
 #' 
-#' - `orderBy` - Sets the ascendant (`ASC`) or descendant (`DESC`) order
-#'   modifier.
+#' -   `orderBy` - Sets the ascendant (`ASC`) or descendant (`DESC`) order
+#'     modifier.
 #' 
-#'   To define a column as static use `staticColumns` - Static columns
-#'   store values that are shared by all rows in the same partition:
+#'     To define a column as static use `staticColumns` - Static columns
+#'     store values that are shared by all rows in the same partition:
 #' 
-#' - `name` - The name of the column.
+#' -   `name` - The name of the column.
 #' 
-#' - `type` - An Amazon Keyspaces data type.
+#' -   `type` - An Amazon Keyspaces data type.
 #' @param comment This parameter allows to enter a description of the table.
 #' @param capacitySpecification Specifies the read/write throughput capacity mode for the table. The
 #' options are:
 #' 
-#' - `throughputMode:PAY_PER_REQUEST` and
+#' -   `throughputMode:PAY_PER_REQUEST` and
 #' 
-#' - `throughputMode:PROVISIONED` - Provisioned capacity mode requires
-#'   `readCapacityUnits` and `writeCapacityUnits` as input.
+#' -   `throughputMode:PROVISIONED` - Provisioned capacity mode requires
+#'     `readCapacityUnits` and `writeCapacityUnits` as input.
 #' 
 #' The default is `throughput_mode:PAY_PER_REQUEST`.
 #' 
@@ -167,12 +166,12 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' @param encryptionSpecification Specifies how the encryption key for encryption at rest is managed for
 #' the table. You can choose one of the following KMS key (KMS key):
 #' 
-#' - `type:AWS_OWNED_KMS_KEY` - This key is owned by Amazon Keyspaces.
+#' -   `type:AWS_OWNED_KMS_KEY` - This key is owned by Amazon Keyspaces.
 #' 
-#' - `type:CUSTOMER_MANAGED_KMS_KEY` - This key is stored in your account
-#'   and is created, owned, and managed by you. This option requires the
-#'   `kms_key_identifier` of the KMS key in Amazon Resource Name (ARN)
-#'   format as input.
+#' -   `type:CUSTOMER_MANAGED_KMS_KEY` - This key is stored in your account
+#'     and is created, owned, and managed by you. This option requires the
+#'     `kms_key_identifier` of the KMS key in Amazon Resource Name (ARN)
+#'     format as input.
 #' 
 #' The default is `type:AWS_OWNED_KMS_KEY`.
 #' 
@@ -182,9 +181,9 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' @param pointInTimeRecovery Specifies if `pointInTimeRecovery` is enabled or disabled for the table.
 #' The options are:
 #' 
-#' - `status=ENABLED`
+#' -   `status=ENABLED`
 #' 
-#' - `status=DISABLED`
+#' -   `status=DISABLED`
 #' 
 #' If it's not specified, the default is `status=DISABLED`.
 #' 
@@ -193,9 +192,9 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param ttl Enables Time to Live custom settings for the table. The options are:
 #' 
-#' - `status:enabled`
+#' -   `status:enabled`
 #' 
-#' - `status:disabled`
+#' -   `status:disabled`
 #' 
 #' The default is `status:disabled`. After `ttl` is enabled, you can't
 #' disable it for the table.
@@ -207,7 +206,7 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' @param defaultTimeToLive The default Time to Live setting in seconds for the table.
 #' 
 #' For more information, see [Setting the default TTL value for a
-#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/#ttl-howitworks_default_ttl)
+#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl)
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param tags A list of key-value pair tags to be attached to the resource.
 #' 
@@ -218,7 +217,7 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' disabled. You can enable client-side timestamps with the following
 #' option:
 #' 
-#' - `status: "enabled"`
+#' -   `status: "enabled"`
 #' 
 #' Once client-side timestamps are enabled for a table, this setting cannot
 #' be disabled.
@@ -246,12 +245,12 @@ keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpec
 #' Regions. To define the read capacity for a table replica in a specific
 #' Region, you can do so by configuring the following parameters.
 #' 
-#' - `region`: The Region where these settings are applied. (Required)
+#' -   `region`: The Region where these settings are applied. (Required)
 #' 
-#' - `readCapacityUnits`: The provisioned read capacity units. (Optional)
+#' -   `readCapacityUnits`: The provisioned read capacity units. (Optional)
 #' 
-#' - `readCapacityAutoScaling`: The read capacity auto scaling settings for
-#'   the table. (Optional)
+#' -   `readCapacityAutoScaling`: The read capacity auto scaling settings
+#'     for the table. (Optional)
 #'
 #' @return
 #' A list with the following syntax:
@@ -379,8 +378,7 @@ keyspaces_create_table <- function(keyspaceName, tableName, schemaDefinition, co
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$create_table_input(keyspaceName = keyspaceName, tableName = tableName, schemaDefinition = schemaDefinition, comment = comment, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, tags = tags, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$create_table_output()
@@ -424,8 +422,7 @@ keyspaces_delete_keyspace <- function(keyspaceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$delete_keyspace_input(keyspaceName = keyspaceName)
   output <- .keyspaces$delete_keyspace_output()
@@ -478,8 +475,7 @@ keyspaces_delete_table <- function(keyspaceName, tableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$delete_table_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$delete_table_output()
@@ -534,8 +530,7 @@ keyspaces_get_keyspace <- function(keyspaceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$get_keyspace_input(keyspaceName = keyspaceName)
   output <- .keyspaces$get_keyspace_output()
@@ -663,8 +658,7 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$get_table_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$get_table_output()
@@ -700,9 +694,9 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
 #' you must allow the following two actions in the IAM policy statement's
 #' `Action` element:
 #' 
-#' - `application-autoscaling:DescribeScalableTargets`
+#' -   `application-autoscaling:DescribeScalableTargets`
 #' 
-#' - `application-autoscaling:DescribeScalingPolicies`
+#' -   `application-autoscaling:DescribeScalingPolicies`
 #'
 #' @usage
 #' keyspaces_get_table_auto_scaling_settings(keyspaceName, tableName)
@@ -800,8 +794,7 @@ keyspaces_get_table_auto_scaling_settings <- function(keyspaceName, tableName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$get_table_auto_scaling_settings_input(keyspaceName = keyspaceName, tableName = tableName)
   output <- .keyspaces$get_table_auto_scaling_settings_output()
@@ -865,8 +858,7 @@ keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyspaces"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyspaces")
   )
   input <- .keyspaces$list_keyspaces_input(nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_keyspaces_output()
@@ -929,8 +921,7 @@ keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tables"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tables")
   )
   input <- .keyspaces$list_tables_input(nextToken = nextToken, maxResults = maxResults, keyspaceName = keyspaceName)
   output <- .keyspaces$list_tables_output()
@@ -994,8 +985,7 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .keyspaces$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_tags_for_resource_output()
@@ -1036,15 +1026,15 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 #' 
 #' You can also overwrite these settings during restore:
 #' 
-#' - Read/write capacity mode
+#' -   Read/write capacity mode
 #' 
-#' - Provisioned throughput capacity units
+#' -   Provisioned throughput capacity units
 #' 
-#' - Auto scaling settings
+#' -   Auto scaling settings
 #' 
-#' - Point-in-time (PITR) settings
+#' -   Point-in-time (PITR) settings
 #' 
-#' - Tags
+#' -   Tags
 #' 
 #' For more information, see [PITR restore
 #' settings](https://docs.aws.amazon.com/keyspaces/latest/devguide/PointInTimeRecovery_HowItWorks.html#howitworks_backup_settings)
@@ -1053,9 +1043,9 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 #' Note that the following settings are not restored, and you must
 #' configure them manually for the new table:
 #' 
-#' - Identity and Access Management (IAM) policies
+#' -   Identity and Access Management (IAM) policies
 #' 
-#' - Amazon CloudWatch metrics and alarms
+#' -   Amazon CloudWatch metrics and alarms
 #'
 #' @usage
 #' keyspaces_restore_table(sourceKeyspaceName, sourceTableName,
@@ -1072,10 +1062,10 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 #' @param capacitySpecificationOverride Specifies the read/write throughput capacity mode for the target table.
 #' The options are:
 #' 
-#' - `throughputMode:PAY_PER_REQUEST`
+#' -   `throughputMode:PAY_PER_REQUEST`
 #' 
-#' - `throughputMode:PROVISIONED` - Provisioned capacity mode requires
-#'   `readCapacityUnits` and `writeCapacityUnits` as input.
+#' -   `throughputMode:PROVISIONED` - Provisioned capacity mode requires
+#'     `readCapacityUnits` and `writeCapacityUnits` as input.
 #' 
 #' The default is `throughput_mode:PAY_PER_REQUEST`.
 #' 
@@ -1085,12 +1075,12 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 #' @param encryptionSpecificationOverride Specifies the encryption settings for the target table. You can choose
 #' one of the following KMS key (KMS key):
 #' 
-#' - `type:AWS_OWNED_KMS_KEY` - This key is owned by Amazon Keyspaces.
+#' -   `type:AWS_OWNED_KMS_KEY` - This key is owned by Amazon Keyspaces.
 #' 
-#' - `type:CUSTOMER_MANAGED_KMS_KEY` - This key is stored in your account
-#'   and is created, owned, and managed by you. This option requires the
-#'   `kms_key_identifier` of the KMS key in Amazon Resource Name (ARN)
-#'   format as input.
+#' -   `type:CUSTOMER_MANAGED_KMS_KEY` - This key is stored in your account
+#'     and is created, owned, and managed by you. This option requires the
+#'     `kms_key_identifier` of the KMS key in Amazon Resource Name (ARN)
+#'     format as input.
 #' 
 #' The default is `type:AWS_OWNED_KMS_KEY`.
 #' 
@@ -1100,9 +1090,9 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
 #' @param pointInTimeRecoveryOverride Specifies the `pointInTimeRecovery` settings for the target table. The
 #' options are:
 #' 
-#' - `status=ENABLED`
+#' -   `status=ENABLED`
 #' 
-#' - `status=DISABLED`
+#' -   `status=DISABLED`
 #' 
 #' If it's not specified, the default is `status=DISABLED`.
 #' 
@@ -1224,8 +1214,7 @@ keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetK
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$restore_table_input(sourceKeyspaceName = sourceKeyspaceName, sourceTableName = sourceTableName, targetKeyspaceName = targetKeyspaceName, targetTableName = targetTableName, restoreTimestamp = restoreTimestamp, capacitySpecificationOverride = capacitySpecificationOverride, encryptionSpecificationOverride = encryptionSpecificationOverride, pointInTimeRecoveryOverride = pointInTimeRecoveryOverride, tagsOverride = tagsOverride, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$restore_table_output()
@@ -1287,8 +1276,7 @@ keyspaces_tag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .keyspaces$tag_resource_output()
@@ -1340,8 +1328,7 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$untag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .keyspaces$untag_resource_output()
@@ -1373,19 +1360,19 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' @param tableName &#91;required&#93; The name of the table.
 #' @param addColumns For each column to be added to the specified table:
 #' 
-#' - `name` - The name of the column.
+#' -   `name` - The name of the column.
 #' 
-#' - `type` - An Amazon Keyspaces data type. For more information, see
-#'   [Data
-#'   types](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types)
-#'   in the *Amazon Keyspaces Developer Guide*.
+#' -   `type` - An Amazon Keyspaces data type. For more information, see
+#'     [Data
+#'     types](https://docs.aws.amazon.com/keyspaces/latest/devguide/cql.elements.html#cql.data-types)
+#'     in the *Amazon Keyspaces Developer Guide*.
 #' @param capacitySpecification Modifies the read/write throughput capacity mode for the table. The
 #' options are:
 #' 
-#' - `throughputMode:PAY_PER_REQUEST` and
+#' -   `throughputMode:PAY_PER_REQUEST` and
 #' 
-#' - `throughputMode:PROVISIONED` - Provisioned capacity mode requires
-#'   `readCapacityUnits` and `writeCapacityUnits` as input.
+#' -   `throughputMode:PROVISIONED` - Provisioned capacity mode requires
+#'     `readCapacityUnits` and `writeCapacityUnits` as input.
 #' 
 #' The default is `throughput_mode:PAY_PER_REQUEST`.
 #' 
@@ -1395,12 +1382,12 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' @param encryptionSpecification Modifies the encryption settings of the table. You can choose one of the
 #' following KMS key (KMS key):
 #' 
-#' - `type:AWS_OWNED_KMS_KEY` - This key is owned by Amazon Keyspaces.
+#' -   `type:AWS_OWNED_KMS_KEY` - This key is owned by Amazon Keyspaces.
 #' 
-#' - `type:CUSTOMER_MANAGED_KMS_KEY` - This key is stored in your account
-#'   and is created, owned, and managed by you. This option requires the
-#'   `kms_key_identifier` of the KMS key in Amazon Resource Name (ARN)
-#'   format as input.
+#' -   `type:CUSTOMER_MANAGED_KMS_KEY` - This key is stored in your account
+#'     and is created, owned, and managed by you. This option requires the
+#'     `kms_key_identifier` of the KMS key in Amazon Resource Name (ARN)
+#'     format as input.
 #' 
 #' The default is `AWS_OWNED_KMS_KEY`.
 #' 
@@ -1410,9 +1397,9 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' @param pointInTimeRecovery Modifies the `pointInTimeRecovery` settings of the table. The options
 #' are:
 #' 
-#' - `status=ENABLED`
+#' -   `status=ENABLED`
 #' 
-#' - `status=DISABLED`
+#' -   `status=DISABLED`
 #' 
 #' If it's not specified, the default is `status=DISABLED`.
 #' 
@@ -1421,9 +1408,9 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param ttl Modifies Time to Live custom settings for the table. The options are:
 #' 
-#' - `status:enabled`
+#' -   `status:enabled`
 #' 
-#' - `status:disabled`
+#' -   `status:disabled`
 #' 
 #' The default is `status:disabled`. After `ttl` is enabled, you can't
 #' disable it for the table.
@@ -1435,13 +1422,13 @@ keyspaces_untag_resource <- function(resourceArn, tags) {
 #' @param defaultTimeToLive The default Time to Live setting in seconds for the table.
 #' 
 #' For more information, see [Setting the default TTL value for a
-#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/#ttl-howitworks_default_ttl)
+#' table](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL-how-it-works.html#ttl-howitworks_default_ttl)
 #' in the *Amazon Keyspaces Developer Guide*.
 #' @param clientSideTimestamps Enables client-side timestamps for the table. By default, the setting is
 #' disabled. You can enable client-side timestamps with the following
 #' option:
 #' 
-#' - `status: "enabled"`
+#' -   `status: "enabled"`
 #' 
 #' Once client-side timestamps are enabled for a table, this setting cannot
 #' be disabled.
@@ -1561,8 +1548,7 @@ keyspaces_update_table <- function(keyspaceName, tableName, addColumns = NULL, c
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .keyspaces$update_table_input(keyspaceName = keyspaceName, tableName = tableName, addColumns = addColumns, capacitySpecification = capacitySpecification, encryptionSpecification = encryptionSpecification, pointInTimeRecovery = pointInTimeRecovery, ttl = ttl, defaultTimeToLive = defaultTimeToLive, clientSideTimestamps = clientSideTimestamps, autoScalingSpecification = autoScalingSpecification, replicaSpecifications = replicaSpecifications)
   output <- .keyspaces$update_table_output()

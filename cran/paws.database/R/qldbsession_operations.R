@@ -34,8 +34,7 @@ qldbsession_send_command <- function(SessionToken = NULL, StartSession = NULL, S
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .qldbsession$send_command_input(SessionToken = SessionToken, StartSession = StartSession, StartTransaction = StartTransaction, EndSession = EndSession, CommitTransaction = CommitTransaction, AbortTransaction = AbortTransaction, ExecuteStatement = ExecuteStatement, FetchPage = FetchPage)
   output <- .qldbsession$send_command_output()

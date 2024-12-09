@@ -24,8 +24,7 @@ codecatalyst_create_access_token <- function(name, expiresTime = NULL) {
     http_method = "PUT",
     http_path = "/v1/accessTokens",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$create_access_token_input(name = name, expiresTime = expiresTime)
   output <- .codecatalyst$create_access_token_output()
@@ -85,8 +84,7 @@ codecatalyst_create_dev_environment <- function(spaceName, projectName, reposito
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$create_dev_environment_input(spaceName = spaceName, projectName = projectName, repositories = repositories, clientToken = clientToken, alias = alias, ides = ides, instanceType = instanceType, inactivityTimeoutMinutes = inactivityTimeoutMinutes, persistentStorage = persistentStorage, vpcConnectionName = vpcConnectionName)
   output <- .codecatalyst$create_dev_environment_output()
@@ -120,8 +118,7 @@ codecatalyst_create_project <- function(spaceName, displayName, description = NU
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$create_project_input(spaceName = spaceName, displayName = displayName, description = description)
   output <- .codecatalyst$create_project_output()
@@ -156,8 +153,7 @@ codecatalyst_create_source_repository <- function(spaceName, projectName, name, 
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/sourceRepositories/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$create_source_repository_input(spaceName = spaceName, projectName = projectName, name = name, description = description)
   output <- .codecatalyst$create_source_repository_output()
@@ -192,8 +188,7 @@ codecatalyst_create_source_repository_branch <- function(spaceName, projectName,
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/sourceRepositories/{sourceRepositoryName}/branches/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$create_source_repository_branch_input(spaceName = spaceName, projectName = projectName, sourceRepositoryName = sourceRepositoryName, name = name, headCommitId = headCommitId)
   output <- .codecatalyst$create_source_repository_branch_output()
@@ -225,8 +220,7 @@ codecatalyst_delete_access_token <- function(id) {
     http_method = "DELETE",
     http_path = "/v1/accessTokens/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$delete_access_token_input(id = id)
   output <- .codecatalyst$delete_access_token_output()
@@ -260,8 +254,7 @@ codecatalyst_delete_dev_environment <- function(spaceName, projectName, id) {
     http_method = "DELETE",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$delete_dev_environment_input(spaceName = spaceName, projectName = projectName, id = id)
   output <- .codecatalyst$delete_dev_environment_output()
@@ -293,8 +286,7 @@ codecatalyst_delete_project <- function(spaceName, name) {
     http_method = "DELETE",
     http_path = "/v1/spaces/{spaceName}/projects/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$delete_project_input(spaceName = spaceName, name = name)
   output <- .codecatalyst$delete_project_output()
@@ -326,8 +318,7 @@ codecatalyst_delete_source_repository <- function(spaceName, projectName, name) 
     http_method = "DELETE",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/sourceRepositories/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$delete_source_repository_input(spaceName = spaceName, projectName = projectName, name = name)
   output <- .codecatalyst$delete_source_repository_output()
@@ -358,8 +349,7 @@ codecatalyst_delete_space <- function(name) {
     http_method = "DELETE",
     http_path = "/v1/spaces/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$delete_space_input(name = name)
   output <- .codecatalyst$delete_space_output()
@@ -394,8 +384,7 @@ codecatalyst_get_dev_environment <- function(spaceName, projectName, id) {
     http_method = "GET",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_dev_environment_input(spaceName = spaceName, projectName = projectName, id = id)
   output <- .codecatalyst$get_dev_environment_output()
@@ -426,8 +415,7 @@ codecatalyst_get_project <- function(spaceName, name) {
     http_method = "GET",
     http_path = "/v1/spaces/{spaceName}/projects/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_project_input(spaceName = spaceName, name = name)
   output <- .codecatalyst$get_project_output()
@@ -459,8 +447,7 @@ codecatalyst_get_source_repository <- function(spaceName, projectName, name) {
     http_method = "GET",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/sourceRepositories/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_source_repository_input(spaceName = spaceName, projectName = projectName, name = name)
   output <- .codecatalyst$get_source_repository_output()
@@ -493,8 +480,7 @@ codecatalyst_get_source_repository_clone_urls <- function(spaceName, projectName
     http_method = "GET",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/sourceRepositories/{sourceRepositoryName}/cloneUrls",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_source_repository_clone_urls_input(spaceName = spaceName, projectName = projectName, sourceRepositoryName = sourceRepositoryName)
   output <- .codecatalyst$get_source_repository_clone_urls_output()
@@ -524,8 +510,7 @@ codecatalyst_get_space <- function(name) {
     http_method = "GET",
     http_path = "/v1/spaces/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_space_input(name = name)
   output <- .codecatalyst$get_space_output()
@@ -556,8 +541,7 @@ codecatalyst_get_subscription <- function(spaceName) {
     http_method = "GET",
     http_path = "/v1/spaces/{spaceName}/subscription",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_subscription_input(spaceName = spaceName)
   output <- .codecatalyst$get_subscription_output()
@@ -588,8 +572,7 @@ codecatalyst_get_user_details <- function(id = NULL, userName = NULL) {
     http_method = "GET",
     http_path = "/userDetails",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_user_details_input(id = id, userName = userName)
   output <- .codecatalyst$get_user_details_output()
@@ -622,8 +605,7 @@ codecatalyst_get_workflow <- function(spaceName, id, projectName) {
     http_method = "GET",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflows/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_workflow_input(spaceName = spaceName, id = id, projectName = projectName)
   output <- .codecatalyst$get_workflow_output()
@@ -656,8 +638,7 @@ codecatalyst_get_workflow_run <- function(spaceName, id, projectName) {
     http_method = "GET",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflowRuns/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$get_workflow_run_input(spaceName = spaceName, id = id, projectName = projectName)
   output <- .codecatalyst$get_workflow_run_output()
@@ -693,8 +674,7 @@ codecatalyst_list_access_tokens <- function(maxResults = NULL, nextToken = NULL)
     http_method = "POST",
     http_path = "/v1/accessTokens",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_access_tokens_input(maxResults = maxResults, nextToken = nextToken)
   output <- .codecatalyst$list_access_tokens_output()
@@ -732,8 +712,7 @@ codecatalyst_list_dev_environment_sessions <- function(spaceName, projectName, d
     http_method = "POST",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments/{devEnvironmentId}/sessions",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_dev_environment_sessions_input(spaceName = spaceName, projectName = projectName, devEnvironmentId = devEnvironmentId, nextToken = nextToken, maxResults = maxResults)
   output <- .codecatalyst$list_dev_environment_sessions_output()
@@ -772,8 +751,7 @@ codecatalyst_list_dev_environments <- function(spaceName, projectName = NULL, fi
     http_method = "POST",
     http_path = "/v1/spaces/{spaceName}/devEnvironments",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_dev_environments_input(spaceName = spaceName, projectName = projectName, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .codecatalyst$list_dev_environments_output()
@@ -817,8 +795,7 @@ codecatalyst_list_event_logs <- function(spaceName, startTime, endTime, eventNam
     http_method = "POST",
     http_path = "/v1/spaces/{spaceName}/eventLogs",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_event_logs_input(spaceName = spaceName, startTime = startTime, endTime = endTime, eventName = eventName, nextToken = nextToken, maxResults = maxResults)
   output <- .codecatalyst$list_event_logs_output()
@@ -856,8 +833,7 @@ codecatalyst_list_projects <- function(spaceName, nextToken = NULL, maxResults =
     http_method = "POST",
     http_path = "/v1/spaces/{spaceName}/projects",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_projects_input(spaceName = spaceName, nextToken = nextToken, maxResults = maxResults, filters = filters)
   output <- .codecatalyst$list_projects_output()
@@ -894,8 +870,7 @@ codecatalyst_list_source_repositories <- function(spaceName, projectName, nextTo
     http_method = "POST",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/sourceRepositories",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_source_repositories_input(spaceName = spaceName, projectName = projectName, nextToken = nextToken, maxResults = maxResults)
   output <- .codecatalyst$list_source_repositories_output()
@@ -933,8 +908,7 @@ codecatalyst_list_source_repository_branches <- function(spaceName, projectName,
     http_method = "POST",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/sourceRepositories/{sourceRepositoryName}/branches",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_source_repository_branches_input(spaceName = spaceName, projectName = projectName, sourceRepositoryName = sourceRepositoryName, nextToken = nextToken, maxResults = maxResults)
   output <- .codecatalyst$list_source_repository_branches_output()
@@ -965,8 +939,7 @@ codecatalyst_list_spaces <- function(nextToken = NULL) {
     http_method = "POST",
     http_path = "/v1/spaces",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "items")
   )
   input <- .codecatalyst$list_spaces_input(nextToken = nextToken)
   output <- .codecatalyst$list_spaces_output()
@@ -1006,8 +979,7 @@ codecatalyst_list_workflow_runs <- function(spaceName, workflowId = NULL, projec
     http_method = "POST",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflowRuns",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_workflow_runs_input(spaceName = spaceName, workflowId = workflowId, projectName = projectName, nextToken = nextToken, maxResults = maxResults, sortBy = sortBy)
   output <- .codecatalyst$list_workflow_runs_output()
@@ -1045,8 +1017,7 @@ codecatalyst_list_workflows <- function(spaceName, projectName, nextToken = NULL
     http_method = "POST",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflows",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .codecatalyst$list_workflows_input(spaceName = spaceName, projectName = projectName, nextToken = nextToken, maxResults = maxResults, sortBy = sortBy)
   output <- .codecatalyst$list_workflows_output()
@@ -1084,8 +1055,7 @@ codecatalyst_start_dev_environment <- function(spaceName, projectName, id, ides 
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments/{id}/start",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$start_dev_environment_input(spaceName = spaceName, projectName = projectName, id = id, ides = ides, instanceType = instanceType, inactivityTimeoutMinutes = inactivityTimeoutMinutes)
   output <- .codecatalyst$start_dev_environment_output()
@@ -1118,8 +1088,7 @@ codecatalyst_start_dev_environment_session <- function(spaceName, projectName, i
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments/{id}/session",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$start_dev_environment_session_input(spaceName = spaceName, projectName = projectName, id = id, sessionConfiguration = sessionConfiguration)
   output <- .codecatalyst$start_dev_environment_session_output()
@@ -1156,8 +1125,7 @@ codecatalyst_start_workflow_run <- function(spaceName, projectName, workflowId, 
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/workflowRuns",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$start_workflow_run_input(spaceName = spaceName, projectName = projectName, workflowId = workflowId, clientToken = clientToken)
   output <- .codecatalyst$start_workflow_run_output()
@@ -1189,8 +1157,7 @@ codecatalyst_stop_dev_environment <- function(spaceName, projectName, id) {
     http_method = "PUT",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments/{id}/stop",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$stop_dev_environment_input(spaceName = spaceName, projectName = projectName, id = id)
   output <- .codecatalyst$stop_dev_environment_output()
@@ -1226,8 +1193,7 @@ codecatalyst_stop_dev_environment_session <- function(spaceName, projectName, id
     http_method = "DELETE",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments/{id}/session/{sessionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$stop_dev_environment_session_input(spaceName = spaceName, projectName = projectName, id = id, sessionId = sessionId)
   output <- .codecatalyst$stop_dev_environment_session_output()
@@ -1277,8 +1243,7 @@ codecatalyst_update_dev_environment <- function(spaceName, projectName, id, alia
     http_method = "PATCH",
     http_path = "/v1/spaces/{spaceName}/projects/{projectName}/devEnvironments/{id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$update_dev_environment_input(spaceName = spaceName, projectName = projectName, id = id, alias = alias, ides = ides, instanceType = instanceType, inactivityTimeoutMinutes = inactivityTimeoutMinutes, clientToken = clientToken)
   output <- .codecatalyst$update_dev_environment_output()
@@ -1310,8 +1275,7 @@ codecatalyst_update_project <- function(spaceName, name, description = NULL) {
     http_method = "PATCH",
     http_path = "/v1/spaces/{spaceName}/projects/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$update_project_input(spaceName = spaceName, name = name, description = description)
   output <- .codecatalyst$update_project_output()
@@ -1342,8 +1306,7 @@ codecatalyst_update_space <- function(name, description = NULL) {
     http_method = "PATCH",
     http_path = "/v1/spaces/{name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$update_space_input(name = name, description = description)
   output <- .codecatalyst$update_space_output()
@@ -1374,8 +1337,7 @@ codecatalyst_verify_session <- function() {
     http_method = "GET",
     http_path = "/session",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .codecatalyst$verify_session_input()
   output <- .codecatalyst$verify_session_output()

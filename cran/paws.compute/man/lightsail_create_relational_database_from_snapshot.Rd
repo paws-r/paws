@@ -64,8 +64,8 @@ Constraints:
 \item Specified in Coordinated Universal Time (UTC).
 \item Specified in the Unix time format.
 
-For example, if you wish to use a restore time of October 1, 2018, at
-8 PM UTC, then you input \code{1538424000} as the restore time.
+For example, if you wish to use a restore time of October 1, 2018,
+at 8 PM UTC, then you input \code{1538424000} as the restore time.
 }}
 
 \item{useLatestRestorableTime}{Specifies whether your database is restored from the latest backup time.

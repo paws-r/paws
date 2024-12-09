@@ -102,8 +102,8 @@ The Detective administrator account for an organization can use the
 Detective API to do the following:
 \itemize{
 \item Perform all of the functions of an administrator account.
-\item Determine whether to automatically enable new organization accounts as
-member accounts in the organization behavior graph.
+\item Determine whether to automatically enable new organization accounts
+as member accounts in the organization behavior graph.
 }
 
 An invited member account can use the Detective API to do the following:

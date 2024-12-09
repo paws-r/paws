@@ -71,8 +71,8 @@ product. \code{meter_usage} is called
 from an EC2 instance or a container running on EKS or ECS.
 \item \emph{BatchMeterUsage} - Submits the metering record for a set of
 customers.
-\code{batch_meter_usage} is called
-from a software-as-a-service (SaaS) application.
+\code{batch_meter_usage} is
+called from a software-as-a-service (SaaS) application.
 }
 
 \strong{Accepting New Customers}
@@ -92,11 +92,11 @@ integrate with the AWS Marketplace Metering Service and call the
 \code{register_usage} operation for
 software entitlement and metering. Free and BYOL products for Amazon
 ECS or Amazon EKS aren't required to call
-\code{register_usage}, but you can do
-so if you want to receive usage data in your seller reports. For more
-information on using the
-\code{register_usage} operation, see
-\href{https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html}{Container-Based Products}.
+\code{register_usage}, but you can
+do so if you want to receive usage data in your seller reports. For
+more information on using the
+\code{register_usage} operation,
+see \href{https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html}{Container-Based Products}.
 }
 
 \code{batch_meter_usage} API calls
@@ -105,8 +105,7 @@ the SaaS metering records that you sent are accurate by searching for
 records with the \code{eventName} of
 \code{batch_meter_usage}. You can
 also use CloudTrail to audit records over time. For more information,
-see the
-\emph{\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWSCloudTrail User Guide}.}
+see the \emph{\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWSCloudTrail User Guide}.}
 }
 \section{Service syntax}{
 

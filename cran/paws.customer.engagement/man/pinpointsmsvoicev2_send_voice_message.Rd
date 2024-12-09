@@ -28,8 +28,8 @@ PhoneNumber, PhoneNumberId, PhoneNumberArn, PoolId, or PoolArn.}
 
 \item{MessageBodyTextType}{Specifies if the MessageBody field contains text or \href{https://docs.aws.amazon.com/polly/latest/dg/what-is.html}{speech synthesis markup language (SSML)}.
 \itemize{
-\item TEXT: This is the default value. When used the maximum character limit
-is 3000.
+\item TEXT: This is the default value. When used the maximum character
+limit is 3000.
 \item SSML: When used the maximum character limit is 6000 including SSML
 tagging.
 }}

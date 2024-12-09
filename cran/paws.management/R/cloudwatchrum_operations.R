@@ -35,8 +35,7 @@ cloudwatchrum_batch_create_rum_metric_definitions <- function(AppMonitorName, De
     http_method = "POST",
     http_path = "/rummetrics/{AppMonitorName}/metrics",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$batch_create_rum_metric_definitions_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MetricDefinitions = MetricDefinitions)
   output <- .cloudwatchrum$batch_create_rum_metric_definitions_output()
@@ -80,8 +79,7 @@ cloudwatchrum_batch_delete_rum_metric_definitions <- function(AppMonitorName, De
     http_method = "DELETE",
     http_path = "/rummetrics/{AppMonitorName}/metrics",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$batch_delete_rum_metric_definitions_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MetricDefinitionIds = MetricDefinitionIds)
   output <- .cloudwatchrum$batch_delete_rum_metric_definitions_output()
@@ -126,8 +124,7 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
     http_method = "GET",
     http_path = "/rummetrics/{AppMonitorName}/metrics",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MetricDefinitions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MetricDefinitions")
   )
   input <- .cloudwatchrum$batch_get_rum_metric_definitions_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchrum$batch_get_rum_metric_definitions_output()
@@ -197,8 +194,7 @@ cloudwatchrum_create_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
     http_method = "POST",
     http_path = "/appmonitor",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$create_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name, Tags = Tags)
   output <- .cloudwatchrum$create_app_monitor_output()
@@ -228,8 +224,7 @@ cloudwatchrum_delete_app_monitor <- function(Name) {
     http_method = "DELETE",
     http_path = "/appmonitor/{Name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$delete_app_monitor_input(Name = Name)
   output <- .cloudwatchrum$delete_app_monitor_output()
@@ -267,8 +262,7 @@ cloudwatchrum_delete_rum_metrics_destination <- function(AppMonitorName, Destina
     http_method = "DELETE",
     http_path = "/rummetrics/{AppMonitorName}/metricsdestination",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$delete_rum_metrics_destination_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn)
   output <- .cloudwatchrum$delete_rum_metrics_destination_output()
@@ -298,8 +292,7 @@ cloudwatchrum_get_app_monitor <- function(Name) {
     http_method = "GET",
     http_path = "/appmonitor/{Name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$get_app_monitor_input(Name = Name)
   output <- .cloudwatchrum$get_app_monitor_output()
@@ -339,8 +332,7 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
     http_method = "POST",
     http_path = "/appmonitor/{Name}/data",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events")
   )
   input <- .cloudwatchrum$get_app_monitor_data_input(Filters = Filters, MaxResults = MaxResults, Name = Name, NextToken = NextToken, TimeRange = TimeRange)
   output <- .cloudwatchrum$get_app_monitor_data_output()
@@ -373,8 +365,7 @@ cloudwatchrum_list_app_monitors <- function(MaxResults = NULL, NextToken = NULL)
     http_method = "POST",
     http_path = "/appmonitors",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AppMonitorSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AppMonitorSummaries")
   )
   input <- .cloudwatchrum$list_app_monitors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchrum$list_app_monitors_output()
@@ -413,8 +404,7 @@ cloudwatchrum_list_rum_metrics_destinations <- function(AppMonitorName, MaxResul
     http_method = "GET",
     http_path = "/rummetrics/{AppMonitorName}/metricsdestination",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Destinations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Destinations")
   )
   input <- .cloudwatchrum$list_rum_metrics_destinations_input(AppMonitorName = AppMonitorName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchrum$list_rum_metrics_destinations_output()
@@ -444,8 +434,7 @@ cloudwatchrum_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .cloudwatchrum$list_tags_for_resource_output()
@@ -482,8 +471,7 @@ cloudwatchrum_put_rum_events <- function(AppMonitorDetails, BatchId, Id, RumEven
     http_method = "POST",
     http_path = "/appmonitors/{Id}/",
     host_prefix = "dataplane.",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$put_rum_events_input(AppMonitorDetails = AppMonitorDetails, BatchId = BatchId, Id = Id, RumEvents = RumEvents, UserDetails = UserDetails)
   output <- .cloudwatchrum$put_rum_events_output()
@@ -534,8 +522,7 @@ cloudwatchrum_put_rum_metrics_destination <- function(AppMonitorName, Destinatio
     http_method = "POST",
     http_path = "/rummetrics/{AppMonitorName}/metricsdestination",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$put_rum_metrics_destination_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, IamRoleArn = IamRoleArn)
   output <- .cloudwatchrum$put_rum_metrics_destination_output()
@@ -567,8 +554,7 @@ cloudwatchrum_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .cloudwatchrum$tag_resource_output()
@@ -599,8 +585,7 @@ cloudwatchrum_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .cloudwatchrum$untag_resource_output()
@@ -650,8 +635,7 @@ cloudwatchrum_update_app_monitor <- function(AppMonitorConfiguration = NULL, Cus
     http_method = "PATCH",
     http_path = "/appmonitor/{Name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$update_app_monitor_input(AppMonitorConfiguration = AppMonitorConfiguration, CustomEvents = CustomEvents, CwLogEnabled = CwLogEnabled, Domain = Domain, Name = Name)
   output <- .cloudwatchrum$update_app_monitor_output()
@@ -696,8 +680,7 @@ cloudwatchrum_update_rum_metric_definition <- function(AppMonitorName, Destinati
     http_method = "PATCH",
     http_path = "/rummetrics/{AppMonitorName}/metrics",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .cloudwatchrum$update_rum_metric_definition_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MetricDefinition = MetricDefinition, MetricDefinitionId = MetricDefinitionId)
   output <- .cloudwatchrum$update_rum_metric_definition_output()

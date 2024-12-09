@@ -21,8 +21,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourcegroupstaggingapi$describe_report_creation_input()
   output <- .resourcegroupstaggingapi$describe_report_creation_output()
@@ -56,18 +55,17 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' Specifying a resource type of `ec2:instance` returns only EC2 instances.
 #' 
 #' The string for each service name and resource type is the same as that
-#' embedded in a resource's Amazon Resource Name (ARN). Consult the
-#' *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
+#' embedded in a resource's Amazon Resource Name (ARN). Consult the *\href{https://docs.aws.amazon.com/general/latest/gr/}{Amazon Web Services General Reference}* for the following:
 #' 
-#' - For a list of service name strings, see [Amazon Web Services Service
-#'   Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
+#' -   For a list of service name strings, see [Amazon Web Services Service
+#'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#genref-aws-service-namespaces).
 #' 
-#' - For resource type strings, see [Example
-#'   ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax).
+#' -   For resource type strings, see [Example
+#'     ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html#arns-syntax).
 #' 
-#' - For more information about ARNs, see [Amazon Resource Names (ARNs) and
-#'   Amazon Web Services Service
-#'   Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' -   For more information about ARNs, see [Amazon Resource Names (ARNs)
+#'     and Amazon Web Services Service
+#'     Namespaces](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
 #' 
 #' You can specify multiple resource types by using a comma separated
 #' array. The array can include up to 100 items. Note that the length
@@ -96,8 +94,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", limit_key = "MaxResults", output_token = "PaginationToken", result_key = "SummaryList"),
-    stream_api = FALSE
+    paginator = list(input_token = "PaginationToken", limit_key = "MaxResults", output_token = "PaginationToken", result_key = "SummaryList")
   )
   input <- .resourcegroupstaggingapi$get_compliance_summary_input(TargetIdFilters = TargetIdFilters, RegionFilters = RegionFilters, ResourceTypeFilters = ResourceTypeFilters, TagKeyFilters = TagKeyFilters, GroupBy = GroupBy, MaxResults = MaxResults, PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_compliance_summary_output()
@@ -128,36 +125,36 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' 
 #' Note the following when deciding how to use TagFilters:
 #' 
-#' - If you *don't* specify a `TagFilter`, the response includes all
-#'   resources that are currently tagged or ever had a tag. Resources that
-#'   currently don't have tags are shown with an empty tag set, like this:
-#'   `"Tags": []`.
+#' -   If you *don't* specify a `TagFilter`, the response includes all
+#'     resources that are currently tagged or ever had a tag. Resources
+#'     that currently don't have tags are shown with an empty tag set, like
+#'     this: `"Tags": []`.
 #' 
-#' - If you specify more than one filter in a single request, the response
-#'   returns only those resources that satisfy all filters.
+#' -   If you specify more than one filter in a single request, the
+#'     response returns only those resources that satisfy all filters.
 #' 
-#' - If you specify a filter that contains more than one value for a key,
-#'   the response returns resources that match *any* of the specified
-#'   values for that key.
+#' -   If you specify a filter that contains more than one value for a key,
+#'     the response returns resources that match *any* of the specified
+#'     values for that key.
 #' 
-#' - If you don't specify a value for a key, the response returns all
-#'   resources that are tagged with that key, with any or no value.
+#' -   If you don't specify a value for a key, the response returns all
+#'     resources that are tagged with that key, with any or no value.
 #' 
-#'   For example, for the following filters: `filter1= {keyA,{value1}}`,
-#'   `filter2={keyB,{value2,value3,value4}}`, `filter3= {keyC}`:
+#'     For example, for the following filters: `filter1= {keyA,{value1}}`,
+#'     `filter2={keyB,{value2,value3,value4}}`, `filter3= {keyC}`:
 #' 
-#'   - `GetResources({filter1})` returns resources tagged with
-#'     `key1=value1`
+#'     -   `GetResources({filter1})` returns resources tagged with
+#'         `key1=value1`
 #' 
-#'   - `GetResources({filter2})` returns resources tagged with
-#'     `key2=value2` or `key2=value3` or `key2=value4`
+#'     -   `GetResources({filter2})` returns resources tagged with
+#'         `key2=value2` or `key2=value3` or `key2=value4`
 #' 
-#'   - `GetResources({filter3})` returns resources tagged with any tag with
-#'     the key `key3`, and with any or no value
+#'     -   `GetResources({filter3})` returns resources tagged with any tag
+#'         with the key `key3`, and with any or no value
 #' 
-#'   - `GetResources({filter1,filter2,filter3})` returns resources tagged
-#'     with
-#'     `(key1=value1) and (key2=value2 or key2=value3 or key2=value4) and (key3, any or no value)`
+#'     -   `GetResources({filter1,filter2,filter3})` returns resources
+#'         tagged with
+#'         `(key1=value1) and (key2=value2 or key2=value3 or key2=value4) and (key3, any or no value)`
 #' @param ResourcesPerPage Specifies the maximum number of results to be returned in each page. A
 #' query can return fewer than this maximum, even if there are more results
 #' still to return. You should always check the `PaginationToken` response
@@ -237,8 +234,7 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", limit_key = "ResourcesPerPage", output_token = "PaginationToken", result_key = "ResourceTagMappingList"),
-    stream_api = FALSE
+    paginator = list(input_token = "PaginationToken", limit_key = "ResourcesPerPage", output_token = "PaginationToken", result_key = "ResourceTagMappingList")
   )
   input <- .resourcegroupstaggingapi$get_resources_input(PaginationToken = PaginationToken, TagFilters = TagFilters, ResourcesPerPage = ResourcesPerPage, TagsPerPage = TagsPerPage, ResourceTypeFilters = ResourceTypeFilters, IncludeComplianceDetails = IncludeComplianceDetails, ExcludeCompliantResources = ExcludeCompliantResources, ResourceARNList = ResourceARNList)
   output <- .resourcegroupstaggingapi$get_resources_output()
@@ -271,8 +267,7 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagKeys"),
-    stream_api = FALSE
+    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagKeys")
   )
   input <- .resourcegroupstaggingapi$get_tag_keys_input(PaginationToken = PaginationToken)
   output <- .resourcegroupstaggingapi$get_tag_keys_output()
@@ -308,8 +303,7 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagValues"),
-    stream_api = FALSE
+    paginator = list(input_token = "PaginationToken", output_token = "PaginationToken", result_key = "TagValues")
   )
   input <- .resourcegroupstaggingapi$get_tag_values_input(PaginationToken = PaginationToken, Key = Key)
   output <- .resourcegroupstaggingapi$get_tag_values_output()
@@ -347,8 +341,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourcegroupstaggingapi$start_report_creation_input(S3Bucket = S3Bucket)
   output <- .resourcegroupstaggingapi$start_report_creation_output()
@@ -387,8 +380,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourcegroupstaggingapi$tag_resources_input(ResourceARNList = ResourceARNList, Tags = Tags)
   output <- .resourcegroupstaggingapi$tag_resources_output()
@@ -427,8 +419,7 @@ resourcegroupstaggingapi_untag_resources <- function(ResourceARNList, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourcegroupstaggingapi$untag_resources_input(ResourceARNList = ResourceARNList, TagKeys = TagKeys)
   output <- .resourcegroupstaggingapi$untag_resources_output()

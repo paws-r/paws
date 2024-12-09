@@ -54,8 +54,7 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$add_tags_input(Tags = Tags, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$add_tags_output()
@@ -140,8 +139,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$create_batch_prediction_input(BatchPredictionId = BatchPredictionId, BatchPredictionName = BatchPredictionName, MLModelId = MLModelId, BatchPredictionDataSourceId = BatchPredictionDataSourceId, OutputUri = OutputUri)
   output <- .machinelearning$create_batch_prediction_output()
@@ -191,57 +189,58 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' @param DataSourceName A user-supplied name or description of the `DataSource`.
 #' @param RDSData &#91;required&#93; The data specification of an Amazon RDS `DataSource`:
 #' 
-#' - DatabaseInformation -
+#' -   DatabaseInformation -
 #' 
-#'   - `DatabaseName` - The name of the Amazon RDS database.
+#'     -   `DatabaseName` - The name of the Amazon RDS database.
 #' 
-#'   - `InstanceIdentifier ` - A unique identifier for the Amazon RDS
-#'     database instance.
+#'     -   `InstanceIdentifier ` - A unique identifier for the Amazon RDS
+#'         database instance.
 #' 
-#' - DatabaseCredentials - AWS Identity and Access Management (IAM)
-#'   credentials that are used to connect to the Amazon RDS database.
+#' -   DatabaseCredentials - AWS Identity and Access Management (IAM)
+#'     credentials that are used to connect to the Amazon RDS database.
 #' 
-#' - ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by an
-#'   EC2 instance to carry out the copy task from Amazon RDS to Amazon
-#'   Simple Storage Service (Amazon S3). For more information, see [Role
-#'   templates](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
-#'   for data pipelines.
+#' -   ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by
+#'     an EC2 instance to carry out the copy task from Amazon RDS to Amazon
+#'     Simple Storage Service (Amazon S3). For more information, see [Role
+#'     templates](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+#'     for data pipelines.
 #' 
-#' - ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS Data
-#'   Pipeline service to monitor the progress of the copy task from Amazon
-#'   RDS to Amazon S3. For more information, see [Role
-#'   templates](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
-#'   for data pipelines.
+#' -   ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS
+#'     Data Pipeline service to monitor the progress of the copy task from
+#'     Amazon RDS to Amazon S3. For more information, see [Role
+#'     templates](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+#'     for data pipelines.
 #' 
-#' - SecurityInfo - The security information to use to access an RDS DB
-#'   instance. You need to set up appropriate ingress rules for the
-#'   security entity IDs provided to allow access to the Amazon RDS
-#'   instance. Specify a \[`SubnetId`, `SecurityGroupIds`\] pair for a
-#'   VPC-based RDS DB instance.
+#' -   SecurityInfo - The security information to use to access an RDS DB
+#'     instance. You need to set up appropriate ingress rules for the
+#'     security entity IDs provided to allow access to the Amazon RDS
+#'     instance. Specify a \[`SubnetId`, `SecurityGroupIds`\] pair for a
+#'     VPC-based RDS DB instance.
 #' 
-#' - SelectSqlQuery - A query that is used to retrieve the observation data
-#'   for the `Datasource`.
+#' -   SelectSqlQuery - A query that is used to retrieve the observation
+#'     data for the `Datasource`.
 #' 
-#' - S3StagingLocation - The Amazon S3 location for staging Amazon RDS
-#'   data. The data retrieved from Amazon RDS using `SelectSqlQuery` is
-#'   stored in this location.
+#' -   S3StagingLocation - The Amazon S3 location for staging Amazon RDS
+#'     data. The data retrieved from Amazon RDS using `SelectSqlQuery` is
+#'     stored in this location.
 #' 
-#' - DataSchemaUri - The Amazon S3 location of the `DataSchema`.
+#' -   DataSchemaUri - The Amazon S3 location of the `DataSchema`.
 #' 
-#' - DataSchema - A JSON string representing the schema. This is not
-#'   required if `DataSchemaUri` is specified.
+#' -   DataSchema - A JSON string representing the schema. This is not
+#'     required if `DataSchemaUri` is specified.
 #' 
-#' - DataRearrangement - A JSON string that represents the splitting and
-#'   rearrangement requirements for the `Datasource`.
+#' -   DataRearrangement - A JSON string that represents the splitting and
+#'     rearrangement requirements for the `Datasource`.
 #' 
-#'   Sample - ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
+#'     Sample -
+#'     ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
 #' @param RoleARN &#91;required&#93; The role that Amazon ML assumes on behalf of the user to create and
 #' activate a data pipeline in the user's account and copy data using the
 #' `SelectSqlQuery` query from Amazon RDS to Amazon S3.
 #' @param ComputeStatistics The compute statistics for a `DataSource`. The statistics are generated
 #' from the observation data referenced by a `DataSource`. Amazon ML uses
 #' the statistics internally during `MLModel` training. This parameter must
-#' be set to `true` if the DataSource needs to be used for `MLModel`
+#' be set to `true` if the ``DataSource`` needs to be used for `MLModel`
 #' training.
 #'
 #' @return
@@ -294,8 +293,7 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$create_data_source_from_rds_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, RDSData = RDSData, RoleARN = RoleARN, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_rds_output()
@@ -365,41 +363,43 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' @param DataSourceName A user-supplied name or description of the `DataSource`.
 #' @param DataSpec &#91;required&#93; The data specification of an Amazon Redshift `DataSource`:
 #' 
-#' - DatabaseInformation -
+#' -   DatabaseInformation -
 #' 
-#'   - `DatabaseName` - The name of the Amazon Redshift database.
+#'     -   `DatabaseName` - The name of the Amazon Redshift database.
 #' 
-#'   - ` ClusterIdentifier` - The unique ID for the Amazon Redshift
-#'     cluster.
+#'     -   ` ClusterIdentifier` - The unique ID for the Amazon Redshift
+#'         cluster.
 #' 
-#' - DatabaseCredentials - The AWS Identity and Access Management (IAM)
-#'   credentials that are used to connect to the Amazon Redshift database.
+#' -   DatabaseCredentials - The AWS Identity and Access Management (IAM)
+#'     credentials that are used to connect to the Amazon Redshift
+#'     database.
 #' 
-#' - SelectSqlQuery - The query that is used to retrieve the observation
-#'   data for the `Datasource`.
+#' -   SelectSqlQuery - The query that is used to retrieve the observation
+#'     data for the `Datasource`.
 #' 
-#' - S3StagingLocation - The Amazon Simple Storage Service (Amazon S3)
-#'   location for staging Amazon Redshift data. The data retrieved from
-#'   Amazon Redshift using the `SelectSqlQuery` query is stored in this
-#'   location.
+#' -   S3StagingLocation - The Amazon Simple Storage Service (Amazon S3)
+#'     location for staging Amazon Redshift data. The data retrieved from
+#'     Amazon Redshift using the `SelectSqlQuery` query is stored in this
+#'     location.
 #' 
-#' - DataSchemaUri - The Amazon S3 location of the `DataSchema`.
+#' -   DataSchemaUri - The Amazon S3 location of the `DataSchema`.
 #' 
-#' - DataSchema - A JSON string representing the schema. This is not
-#'   required if `DataSchemaUri` is specified.
+#' -   DataSchema - A JSON string representing the schema. This is not
+#'     required if `DataSchemaUri` is specified.
 #' 
-#' - DataRearrangement - A JSON string that represents the splitting and
-#'   rearrangement requirements for the `DataSource`.
+#' -   DataRearrangement - A JSON string that represents the splitting and
+#'     rearrangement requirements for the `DataSource`.
 #' 
-#'   Sample - ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
+#'     Sample -
+#'     ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
 #' @param RoleARN &#91;required&#93; A fully specified role Amazon Resource Name (ARN). Amazon ML assumes the
 #' role on behalf of the user to create the following:
 #' 
-#' - A security group to allow Amazon ML to execute the `SelectSqlQuery`
-#'   query on an Amazon Redshift cluster
+#' -   A security group to allow Amazon ML to execute the `SelectSqlQuery`
+#'     query on an Amazon Redshift cluster
 #' 
-#' - An Amazon S3 bucket policy to grant Amazon ML read/write permissions
-#'   on the `S3StagingLocation`
+#' -   An Amazon S3 bucket policy to grant Amazon ML read/write permissions
+#'     on the `S3StagingLocation`
 #' @param ComputeStatistics The compute statistics for a `DataSource`. The statistics are generated
 #' from the observation data referenced by a `DataSource`. Amazon ML uses
 #' the statistics internally during `MLModel` training. This parameter must
@@ -450,8 +450,7 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$create_data_source_from_redshift_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, DataSpec = DataSpec, RoleARN = RoleARN, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_redshift_output()
@@ -515,21 +514,22 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 #' @param DataSourceName A user-supplied name or description of the `DataSource`.
 #' @param DataSpec &#91;required&#93; The data specification of a `DataSource`:
 #' 
-#' - DataLocationS3 - The Amazon S3 location of the observation data.
+#' -   DataLocationS3 - The Amazon S3 location of the observation data.
 #' 
-#' - DataSchemaLocationS3 - The Amazon S3 location of the `DataSchema`.
+#' -   DataSchemaLocationS3 - The Amazon S3 location of the `DataSchema`.
 #' 
-#' - DataSchema - A JSON string representing the schema. This is not
-#'   required if `DataSchemaUri` is specified.
+#' -   DataSchema - A JSON string representing the schema. This is not
+#'     required if `DataSchemaUri` is specified.
 #' 
-#' - DataRearrangement - A JSON string that represents the splitting and
-#'   rearrangement requirements for the `Datasource`.
+#' -   DataRearrangement - A JSON string that represents the splitting and
+#'     rearrangement requirements for the `Datasource`.
 #' 
-#'   Sample - ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
+#'     Sample -
+#'     ` "{\"splitting\":{\"percentBegin\":10,\"percentEnd\":60}}"`
 #' @param ComputeStatistics The compute statistics for a `DataSource`. The statistics are generated
 #' from the observation data referenced by a `DataSource`. Amazon ML uses
 #' the statistics internally during `MLModel` training. This parameter must
-#' be set to `true` if the DataSource needs to be used for `MLModel`
+#' be set to `true` if the ``DataSource`` needs to be used for `MLModel`
 #' training.
 #'
 #' @return
@@ -566,8 +566,7 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$create_data_source_from_s3_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName, DataSpec = DataSpec, ComputeStatistics = ComputeStatistics)
   output <- .machinelearning$create_data_source_from_s3_output()
@@ -645,8 +644,7 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$create_evaluation_input(EvaluationId = EvaluationId, EvaluationName = EvaluationName, MLModelId = MLModelId, EvaluationDataSourceId = EvaluationDataSourceId)
   output <- .machinelearning$create_evaluation_output()
@@ -697,13 +695,13 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' @param MLModelType &#91;required&#93; The category of supervised learning that this `MLModel` will address.
 #' Choose from the following types:
 #' 
-#' - Choose `REGRESSION` if the `MLModel` will be used to predict a numeric
-#'   value.
+#' -   Choose `REGRESSION` if the `MLModel` will be used to predict a
+#'     numeric value.
 #' 
-#' - Choose `BINARY` if the `MLModel` result has two possible values.
+#' -   Choose `BINARY` if the `MLModel` result has two possible values.
 #' 
-#' - Choose `MULTICLASS` if the `MLModel` result has a limited number of
-#'   values.
+#' -   Choose `MULTICLASS` if the `MLModel` result has a limited number of
+#'     values.
 #' 
 #' For more information, see the [Amazon Machine Learning Developer
 #' Guide](https://docs.aws.amazon.com/machine-learning/latest/dg/).
@@ -712,41 +710,42 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' 
 #' The following is the current set of training parameters:
 #' 
-#' - `sgd.maxMLModelSizeInBytes` - The maximum allowed size of the model.
-#'   Depending on the input data, the size of the model might affect its
-#'   performance.
+#' -   `sgd.maxMLModelSizeInBytes` - The maximum allowed size of the model.
+#'     Depending on the input data, the size of the model might affect its
+#'     performance.
 #' 
-#'   The value is an integer that ranges from `100000` to `2147483648`. The
-#'   default value is `33554432`.
+#'     The value is an integer that ranges from `100000` to `2147483648`.
+#'     The default value is `33554432`.
 #' 
-#' - `sgd.maxPasses` - The number of times that the training process
-#'   traverses the observations to build the `MLModel`. The value is an
-#'   integer that ranges from `1` to `10000`. The default value is `10`.
+#' -   `sgd.maxPasses` - The number of times that the training process
+#'     traverses the observations to build the `MLModel`. The value is an
+#'     integer that ranges from `1` to `10000`. The default value is `10`.
 #' 
-#' - `sgd.shuffleType` - Whether Amazon ML shuffles the training data.
-#'   Shuffling the data improves a model's ability to find the optimal
-#'   solution for a variety of data types. The valid values are `auto` and
-#'   `none`. The default value is `none`. We strongly recommend that you
-#'   shuffle your data.
+#' -   `sgd.shuffleType` - Whether Amazon ML shuffles the training data.
+#'     Shuffling the data improves a model's ability to find the optimal
+#'     solution for a variety of data types. The valid values are `auto`
+#'     and `none`. The default value is `none`. We strongly recommend that
+#'     you shuffle your data.
 #' 
-#' - `sgd.l1RegularizationAmount` - The coefficient regularization L1 norm.
-#'   It controls overfitting the data by penalizing large coefficients.
-#'   This tends to drive coefficients to zero, resulting in a sparse
-#'   feature set. If you use this parameter, start by specifying a small
-#'   value, such as `1.0E-08`.
+#' -   `sgd.l1RegularizationAmount` - The coefficient regularization L1
+#'     norm. It controls overfitting the data by penalizing large
+#'     coefficients. This tends to drive coefficients to zero, resulting in
+#'     a sparse feature set. If you use this parameter, start by specifying
+#'     a small value, such as `1.0E-08`.
 #' 
-#'   The value is a double that ranges from `0` to `MAX_DOUBLE`. The
-#'   default is to not use L1 normalization. This parameter can't be used
-#'   when `L2` is specified. Use this parameter sparingly.
+#'     The value is a double that ranges from `0` to `MAX_DOUBLE`. The
+#'     default is to not use L1 normalization. This parameter can't be used
+#'     when `L2` is specified. Use this parameter sparingly.
 #' 
-#' - `sgd.l2RegularizationAmount` - The coefficient regularization L2 norm.
-#'   It controls overfitting the data by penalizing large coefficients.
-#'   This tends to drive coefficients to small, nonzero values. If you use
-#'   this parameter, start by specifying a small value, such as `1.0E-08`.
+#' -   `sgd.l2RegularizationAmount` - The coefficient regularization L2
+#'     norm. It controls overfitting the data by penalizing large
+#'     coefficients. This tends to drive coefficients to small, nonzero
+#'     values. If you use this parameter, start by specifying a small
+#'     value, such as `1.0E-08`.
 #' 
-#'   The value is a double that ranges from `0` to `MAX_DOUBLE`. The
-#'   default is to not use L2 normalization. This parameter can't be used
-#'   when `L1` is specified. Use this parameter sparingly.
+#'     The value is a double that ranges from `0` to `MAX_DOUBLE`. The
+#'     default is to not use L2 normalization. This parameter can't be used
+#'     when `L1` is specified. Use this parameter sparingly.
 #' @param TrainingDataSourceId &#91;required&#93; The `DataSource` that points to the training data.
 #' @param Recipe The data recipe for creating the `MLModel`. You must specify either the
 #' recipe or its URI. If you don't specify a recipe or its URI, Amazon ML
@@ -790,8 +789,7 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$create_ml_model_input(MLModelId = MLModelId, MLModelName = MLModelName, MLModelType = MLModelType, Parameters = Parameters, TrainingDataSourceId = TrainingDataSourceId, Recipe = Recipe, RecipeUri = RecipeUri)
   output <- .machinelearning$create_ml_model_output()
@@ -849,8 +847,7 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$create_realtime_endpoint_input(MLModelId = MLModelId)
   output <- .machinelearning$create_realtime_endpoint_output()
@@ -909,8 +906,7 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$delete_batch_prediction_input(BatchPredictionId = BatchPredictionId)
   output <- .machinelearning$delete_batch_prediction_output()
@@ -968,8 +964,7 @@ machinelearning_delete_data_source <- function(DataSourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$delete_data_source_input(DataSourceId = DataSourceId)
   output <- .machinelearning$delete_data_source_output()
@@ -1026,8 +1021,7 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$delete_evaluation_input(EvaluationId = EvaluationId)
   output <- .machinelearning$delete_evaluation_output()
@@ -1084,8 +1078,7 @@ machinelearning_delete_ml_model <- function(MLModelId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$delete_ml_model_input(MLModelId = MLModelId)
   output <- .machinelearning$delete_ml_model_output()
@@ -1141,8 +1134,7 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$delete_realtime_endpoint_input(MLModelId = MLModelId)
   output <- .machinelearning$delete_realtime_endpoint_output()
@@ -1200,8 +1192,7 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$delete_tags_input(TagKeys = TagKeys, ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$delete_tags_output()
@@ -1227,26 +1218,26 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' @param FilterVariable Use one of the following variables to filter a list of
 #' `BatchPrediction`:
 #' 
-#' - `CreatedAt` - Sets the search criteria to the `BatchPrediction`
-#'   creation date.
+#' -   `CreatedAt` - Sets the search criteria to the `BatchPrediction`
+#'     creation date.
 #' 
-#' - `Status` - Sets the search criteria to the `BatchPrediction` status.
+#' -   `Status` - Sets the search criteria to the `BatchPrediction` status.
 #' 
-#' - `Name` - Sets the search criteria to the contents of the
-#'   `BatchPrediction` `Name`.
+#' -   `Name` - Sets the search criteria to the contents of the
+#'     `BatchPrediction` `Name`.
 #' 
-#' - `IAMUser` - Sets the search criteria to the user account that invoked
-#'   the `BatchPrediction` creation.
+#' -   `IAMUser` - Sets the search criteria to the user account that
+#'     invoked the `BatchPrediction` creation.
 #' 
-#' - `MLModelId` - Sets the search criteria to the `MLModel` used in the
-#'   `BatchPrediction`.
+#' -   `MLModelId` - Sets the search criteria to the `MLModel` used in the
+#'     `BatchPrediction`.
 #' 
-#' - `DataSourceId` - Sets the search criteria to the `DataSource` used in
-#'   the `BatchPrediction`.
+#' -   `DataSourceId` - Sets the search criteria to the `DataSource` used
+#'     in the `BatchPrediction`.
 #' 
-#' - `DataURI` - Sets the search criteria to the data file(s) used in the
-#'   `BatchPrediction`. The URL can identify either a file or an Amazon
-#'   Simple Storage Solution (Amazon S3) bucket or directory.
+#' -   `DataURI` - Sets the search criteria to the data file(s) used in the
+#'     `BatchPrediction`. The URL can identify either a file or an Amazon
+#'     Simple Storage Solution (Amazon S3) bucket or directory.
 #' @param EQ The equal to operator. The `BatchPrediction` results will have
 #' `FilterVariable` values that exactly match the value specified with
 #' `EQ`.
@@ -1272,17 +1263,17 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' select `Name` for the `FilterVariable` and any of the following strings
 #' for the `Prefix`:
 #' 
-#' - 2014-09
+#' -   2014-09
 #' 
-#' - 2014-09-09
+#' -   2014-09-09
 #' 
-#' - 2014-09-09-Holiday
+#' -   2014-09-09-Holiday
 #' @param SortOrder A two-value parameter that determines the sequence of the resulting list
 #' of `MLModel`s.
 #' 
-#' - `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
 #' 
-#' - `dsc` - Arranges the list in descending order (Z-A, 9-0).
+#' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken An ID of the page in the paginated results.
@@ -1353,8 +1344,7 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_batch_predictions_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_batch_predictions_output()
@@ -1379,19 +1369,20 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #'
 #' @param FilterVariable Use one of the following variables to filter a list of `DataSource`:
 #' 
-#' - `CreatedAt` - Sets the search criteria to `DataSource` creation dates.
+#' -   `CreatedAt` - Sets the search criteria to `DataSource` creation
+#'     dates.
 #' 
-#' - `Status` - Sets the search criteria to `DataSource` statuses.
+#' -   `Status` - Sets the search criteria to `DataSource` statuses.
 #' 
-#' - `Name` - Sets the search criteria to the contents of `DataSource`
-#'   `Name`.
+#' -   `Name` - Sets the search criteria to the contents of `DataSource`
+#'     `Name`.
 #' 
-#' - `DataUri` - Sets the search criteria to the URI of data files used to
-#'   create the `DataSource`. The URI can identify either a file or an
-#'   Amazon Simple Storage Service (Amazon S3) bucket or directory.
+#' -   `DataUri` - Sets the search criteria to the URI of data files used
+#'     to create the `DataSource`. The URI can identify either a file or an
+#'     Amazon Simple Storage Service (Amazon S3) bucket or directory.
 #' 
-#' - `IAMUser` - Sets the search criteria to the user account that invoked
-#'   the `DataSource` creation.
+#' -   `IAMUser` - Sets the search criteria to the user account that
+#'     invoked the `DataSource` creation.
 #' @param EQ The equal to operator. The `DataSource` results will have
 #' `FilterVariable` values that exactly match the value specified with
 #' `EQ`.
@@ -1417,17 +1408,17 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' `Name` for the `FilterVariable` and any of the following strings for the
 #' `Prefix`:
 #' 
-#' - 2014-09
+#' -   2014-09
 #' 
-#' - 2014-09-09
+#' -   2014-09-09
 #' 
-#' - 2014-09-09-Holiday
+#' -   2014-09-09-Holiday
 #' @param SortOrder A two-value parameter that determines the sequence of the resulting list
 #' of `DataSource`.
 #' 
-#' - `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
 #' 
-#' - `dsc` - Arranges the list in descending order (Z-A, 9-0).
+#' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken The ID of the page in the paginated results.
@@ -1516,8 +1507,7 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_data_sources_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_data_sources_output()
@@ -1544,26 +1534,26 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' @param FilterVariable Use one of the following variable to filter a list of `Evaluation`
 #' objects:
 #' 
-#' - `CreatedAt` - Sets the search criteria to the `Evaluation` creation
-#'   date.
+#' -   `CreatedAt` - Sets the search criteria to the `Evaluation` creation
+#'     date.
 #' 
-#' - `Status` - Sets the search criteria to the `Evaluation` status.
+#' -   `Status` - Sets the search criteria to the `Evaluation` status.
 #' 
-#' - `Name` - Sets the search criteria to the contents of `Evaluation`
-#'   `Name`.
+#' -   `Name` - Sets the search criteria to the contents of `Evaluation`
+#'     `Name`.
 #' 
-#' - `IAMUser` - Sets the search criteria to the user account that invoked
-#'   an `Evaluation`.
+#' -   `IAMUser` - Sets the search criteria to the user account that
+#'     invoked an `Evaluation`.
 #' 
-#' - `MLModelId` - Sets the search criteria to the `MLModel` that was
-#'   evaluated.
+#' -   `MLModelId` - Sets the search criteria to the `MLModel` that was
+#'     evaluated.
 #' 
-#' - `DataSourceId` - Sets the search criteria to the `DataSource` used in
-#'   `Evaluation`.
+#' -   `DataSourceId` - Sets the search criteria to the `DataSource` used
+#'     in `Evaluation`.
 #' 
-#' - `DataUri` - Sets the search criteria to the data file(s) used in
-#'   `Evaluation`. The URL can identify either a file or an Amazon Simple
-#'   Storage Solution (Amazon S3) bucket or directory.
+#' -   `DataUri` - Sets the search criteria to the data file(s) used in
+#'     `Evaluation`. The URL can identify either a file or an Amazon Simple
+#'     Storage Solution (Amazon S3) bucket or directory.
 #' @param EQ The equal to operator. The `Evaluation` results will have
 #' `FilterVariable` values that exactly match the value specified with
 #' `EQ`.
@@ -1589,17 +1579,17 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' `Name` for the `FilterVariable` and any of the following strings for the
 #' `Prefix`:
 #' 
-#' - 2014-09
+#' -   2014-09
 #' 
-#' - 2014-09-09
+#' -   2014-09-09
 #' 
-#' - 2014-09-09-Holiday
+#' -   2014-09-09-Holiday
 #' @param SortOrder A two-value parameter that determines the sequence of the resulting list
 #' of `Evaluation`.
 #' 
-#' - `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
 #' 
-#' - `dsc` - Arranges the list in descending order (Z-A, 9-0).
+#' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken The ID of the page in the paginated results.
@@ -1671,8 +1661,7 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_evaluations_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_evaluations_output()
@@ -1696,30 +1685,31 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #'
 #' @param FilterVariable Use one of the following variables to filter a list of `MLModel`:
 #' 
-#' - `CreatedAt` - Sets the search criteria to `MLModel` creation date.
+#' -   `CreatedAt` - Sets the search criteria to `MLModel` creation date.
 #' 
-#' - `Status` - Sets the search criteria to `MLModel` status.
+#' -   `Status` - Sets the search criteria to `MLModel` status.
 #' 
-#' - `Name` - Sets the search criteria to the contents of `MLModel` `Name`.
+#' -   `Name` - Sets the search criteria to the contents of `MLModel`
+#'     `Name`.
 #' 
-#' - `IAMUser` - Sets the search criteria to the user account that invoked
-#'   the `MLModel` creation.
+#' -   `IAMUser` - Sets the search criteria to the user account that
+#'     invoked the `MLModel` creation.
 #' 
-#' - `TrainingDataSourceId` - Sets the search criteria to the `DataSource`
-#'   used to train one or more `MLModel`.
+#' -   `TrainingDataSourceId` - Sets the search criteria to the
+#'     `DataSource` used to train one or more `MLModel`.
 #' 
-#' - `RealtimeEndpointStatus` - Sets the search criteria to the `MLModel`
-#'   real-time endpoint status.
+#' -   `RealtimeEndpointStatus` - Sets the search criteria to the `MLModel`
+#'     real-time endpoint status.
 #' 
-#' - `MLModelType` - Sets the search criteria to `MLModel` type: binary,
-#'   regression, or multi-class.
+#' -   `MLModelType` - Sets the search criteria to `MLModel` type: binary,
+#'     regression, or multi-class.
 #' 
-#' - `Algorithm` - Sets the search criteria to the algorithm that the
-#'   `MLModel` uses.
+#' -   `Algorithm` - Sets the search criteria to the algorithm that the
+#'     `MLModel` uses.
 #' 
-#' - `TrainingDataURI` - Sets the search criteria to the data file(s) used
-#'   in training a `MLModel`. The URL can identify either a file or an
-#'   Amazon Simple Storage Service (Amazon S3) bucket or directory.
+#' -   `TrainingDataURI` - Sets the search criteria to the data file(s)
+#'     used in training a `MLModel`. The URL can identify either a file or
+#'     an Amazon Simple Storage Service (Amazon S3) bucket or directory.
 #' @param EQ The equal to operator. The `MLModel` results will have `FilterVariable`
 #' values that exactly match the value specified with `EQ`.
 #' @param GT The greater than operator. The `MLModel` results will have
@@ -1743,17 +1733,17 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 #' `Name` for the `FilterVariable` and any of the following strings for the
 #' `Prefix`:
 #' 
-#' - 2014-09
+#' -   2014-09
 #' 
-#' - 2014-09-09
+#' -   2014-09-09
 #' 
-#' - 2014-09-09-Holiday
+#' -   2014-09-09-Holiday
 #' @param SortOrder A two-value parameter that determines the sequence of the resulting list
 #' of `MLModel`.
 #' 
-#' - `asc` - Arranges the list in ascending order (A-Z, 0-9).
+#' -   `asc` - Arranges the list in ascending order (A-Z, 0-9).
 #' 
-#' - `dsc` - Arranges the list in descending order (Z-A, 9-0).
+#' -   `dsc` - Arranges the list in descending order (Z-A, 9-0).
 #' 
 #' Results are sorted by `FilterVariable`.
 #' @param NextToken The ID of the page in the paginated results.
@@ -1838,8 +1828,7 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_ml_models_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_ml_models_output()
@@ -1896,8 +1885,7 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$describe_tags_input(ResourceId = ResourceId, ResourceType = ResourceType)
   output <- .machinelearning$describe_tags_output()
@@ -1971,8 +1959,7 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$get_batch_prediction_input(BatchPredictionId = BatchPredictionId)
   output <- .machinelearning$get_batch_prediction_output()
@@ -2078,8 +2065,7 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$get_data_source_input(DataSourceId = DataSourceId, Verbose = Verbose)
   output <- .machinelearning$get_data_source_output()
@@ -2157,8 +2143,7 @@ machinelearning_get_evaluation <- function(EvaluationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$get_evaluation_input(EvaluationId = EvaluationId)
   output <- .machinelearning$get_evaluation_output()
@@ -2257,8 +2242,7 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$get_ml_model_input(MLModelId = MLModelId, Verbose = Verbose)
   output <- .machinelearning$get_ml_model_output()
@@ -2325,8 +2309,7 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$predict_input(MLModelId = MLModelId, Record = Record, PredictEndpoint = PredictEndpoint)
   output <- .machinelearning$predict_output()
@@ -2381,8 +2364,7 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$update_batch_prediction_input(BatchPredictionId = BatchPredictionId, BatchPredictionName = BatchPredictionName)
   output <- .machinelearning$update_batch_prediction_output()
@@ -2436,8 +2418,7 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$update_data_source_input(DataSourceId = DataSourceId, DataSourceName = DataSourceName)
   output <- .machinelearning$update_data_source_output()
@@ -2491,8 +2472,7 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$update_evaluation_input(EvaluationId = EvaluationId, EvaluationName = EvaluationName)
   output <- .machinelearning$update_evaluation_output()
@@ -2553,8 +2533,7 @@ machinelearning_update_ml_model <- function(MLModelId, MLModelName = NULL, Score
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .machinelearning$update_ml_model_input(MLModelId = MLModelId, MLModelName = MLModelName, ScoreThreshold = ScoreThreshold)
   output <- .machinelearning$update_ml_model_output()

@@ -64,8 +64,7 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$batch_detect_dominant_language_input(TextList = TextList)
   output <- .comprehend$batch_detect_dominant_language_output()
@@ -159,8 +158,7 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$batch_detect_entities_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_entities_output()
@@ -235,8 +233,7 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$batch_detect_key_phrases_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_key_phrases_output()
@@ -312,8 +309,7 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$batch_detect_sentiment_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_sentiment_output()
@@ -398,8 +394,7 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$batch_detect_syntax_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_syntax_output()
@@ -497,8 +492,7 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$batch_detect_targeted_sentiment_input(TextList = TextList, LanguageCode = LanguageCode)
   output <- .comprehend$batch_detect_targeted_sentiment_output()
@@ -518,20 +512,20 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
 #' real-time. [`classify_document`][comprehend_classify_document] supports
 #' the following model types:
 #' 
-#' - Custom classifier - a custom model that you have created and trained.
-#'   For input, you can provide plain text, a single-page document (PDF,
-#'   Word, or image), or Amazon Textract API output. For more information,
-#'   see [Custom
-#'   classification](https://docs.aws.amazon.com/comprehend/latest/dg/how-document-classification.html)
-#'   in the *Amazon Comprehend Developer Guide*.
+#' -   Custom classifier - a custom model that you have created and
+#'     trained. For input, you can provide plain text, a single-page
+#'     document (PDF, Word, or image), or Amazon Textract API output. For
+#'     more information, see [Custom
+#'     classification](https://docs.aws.amazon.com/comprehend/latest/dg/how-document-classification.html)
+#'     in the *Amazon Comprehend Developer Guide*.
 #' 
-#' - Prompt safety classifier - Amazon Comprehend provides a pre-trained
-#'   model for classifying input prompts for generative AI applications.
-#'   For input, you provide English plain text input. For prompt safety
-#'   classification, the response includes only the `Classes` field. For
-#'   more information about prompt safety classifiers, see [Prompt safety
-#'   classification](https://docs.aws.amazon.com/comprehend/latest/dg/trust-safety.html#prompt-classification)
-#'   in the *Amazon Comprehend Developer Guide*.
+#' -   Prompt safety classifier - Amazon Comprehend provides a pre-trained
+#'     model for classifying input prompts for generative AI applications.
+#'     For input, you provide English plain text input. For prompt safety
+#'     classification, the response includes only the `Classes` field. For
+#'     more information about prompt safety classifiers, see [Prompt safety
+#'     classification](https://docs.aws.amazon.com/comprehend/latest/dg/trust-safety.html#prompt-classification)
+#'     in the *Amazon Comprehend Developer Guide*.
 #' 
 #' If the system detects errors while processing a page in the input
 #' document, the API response includes an `Errors` field that describes the
@@ -659,8 +653,7 @@ comprehend_classify_document <- function(Text = NULL, EndpointArn, Bytes = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$classify_document_input(Text = Text, EndpointArn = EndpointArn, Bytes = Bytes, DocumentReaderConfig = DocumentReaderConfig)
   output <- .comprehend$classify_document_output()
@@ -719,8 +712,7 @@ comprehend_contains_pii_entities <- function(Text, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$contains_pii_entities_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$contains_pii_entities_output()
@@ -824,8 +816,7 @@ comprehend_create_dataset <- function(FlywheelArn, DatasetName, DatasetType = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$create_dataset_input(FlywheelArn = FlywheelArn, DatasetName = DatasetName, DatasetType = DatasetType, Description = Description, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .comprehend$create_dataset_output()
@@ -880,10 +871,10 @@ comprehend_create_dataset <- function(FlywheelArn, DatasetName, DatasetType = NU
 #' the ML compute instance(s) that process the analysis job. The
 #' VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
 #' (VPC) containing the resources you are using for your custom classifier.
 #' For more information, see [Amazon
@@ -898,10 +889,10 @@ comprehend_create_dataset <- function(FlywheelArn, DatasetName, DatasetType = NU
 #' @param ModelKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
 #' models. The ModelKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param ModelPolicy The resource-based policy to attach to your custom document classifier
 #' model. You can use this policy to allow another Amazon Web Services
 #' account to import your custom model.
@@ -1002,8 +993,7 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, Versio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$create_document_classifier_input(DocumentClassifierName = DocumentClassifierName, VersionName = VersionName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Mode = Mode, ModelKmsKeyId = ModelKmsKeyId, ModelPolicy = ModelPolicy)
   output <- .comprehend$create_document_classifier_output()
@@ -1088,8 +1078,7 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn = NULL, DesiredInf
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$create_endpoint_input(EndpointName = EndpointName, ModelArn = ModelArn, DesiredInferenceUnits = DesiredInferenceUnits, ClientRequestToken = ClientRequestToken, Tags = Tags, DataAccessRoleArn = DataAccessRoleArn, FlywheelArn = FlywheelArn)
   output <- .comprehend$create_endpoint_output()
@@ -1144,10 +1133,10 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn = NULL, DesiredInf
 #' the ML compute instance(s) that process the analysis job. The
 #' VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
 #' (VPC) containing the resources you are using for your custom entity
 #' recognizer. For more information, see [Amazon
@@ -1155,10 +1144,10 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn = NULL, DesiredInf
 #' @param ModelKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
 #' models. The ModelKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param ModelPolicy The JSON resource-based policy to attach to your custom entity
 #' recognizer model. You can use this policy to allow another Amazon Web
 #' Services account to import your custom model.
@@ -1255,8 +1244,7 @@ comprehend_create_entity_recognizer <- function(RecognizerName, VersionName = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$create_entity_recognizer_input(RecognizerName = RecognizerName, VersionName = VersionName, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags, InputDataConfig = InputDataConfig, ClientRequestToken = ClientRequestToken, LanguageCode = LanguageCode, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, ModelKmsKeyId = ModelKmsKeyId, ModelPolicy = ModelPolicy)
   output <- .comprehend$create_entity_recognizer_output()
@@ -1384,8 +1372,7 @@ comprehend_create_flywheel <- function(FlywheelName, ActiveModelArn = NULL, Data
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$create_flywheel_input(FlywheelName = FlywheelName, ActiveModelArn = ActiveModelArn, DataAccessRoleArn = DataAccessRoleArn, TaskConfig = TaskConfig, ModelType = ModelType, DataLakeS3Uri = DataLakeS3Uri, DataSecurityConfig = DataSecurityConfig, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .comprehend$create_flywheel_output()
@@ -1437,8 +1424,7 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$delete_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
   output <- .comprehend$delete_document_classifier_output()
@@ -1484,8 +1470,7 @@ comprehend_delete_endpoint <- function(EndpointArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$delete_endpoint_input(EndpointArn = EndpointArn)
   output <- .comprehend$delete_endpoint_output()
@@ -1537,8 +1522,7 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$delete_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
   output <- .comprehend$delete_entity_recognizer_output()
@@ -1586,8 +1570,7 @@ comprehend_delete_flywheel <- function(FlywheelArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$delete_flywheel_input(FlywheelArn = FlywheelArn)
   output <- .comprehend$delete_flywheel_output()
@@ -1633,8 +1616,7 @@ comprehend_delete_resource_policy <- function(ResourceArn, PolicyRevisionId = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$delete_resource_policy_input(ResourceArn = ResourceArn, PolicyRevisionId = PolicyRevisionId)
   output <- .comprehend$delete_resource_policy_output()
@@ -1700,8 +1682,7 @@ comprehend_describe_dataset <- function(DatasetArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_dataset_input(DatasetArn = DatasetArn)
   output <- .comprehend$describe_dataset_output()
@@ -1791,8 +1772,7 @@ comprehend_describe_document_classification_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_document_classification_job_input(JobId = JobId)
   output <- .comprehend$describe_document_classification_job_output()
@@ -1925,8 +1905,7 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
   output <- .comprehend$describe_document_classifier_output()
@@ -2014,8 +1993,7 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_dominant_language_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_dominant_language_detection_job_output()
@@ -2083,8 +2061,7 @@ comprehend_describe_endpoint <- function(EndpointArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_endpoint_input(EndpointArn = EndpointArn)
   output <- .comprehend$describe_endpoint_output()
@@ -2175,8 +2152,7 @@ comprehend_describe_entities_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_entities_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_entities_detection_job_output()
@@ -2312,8 +2288,7 @@ comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
   output <- .comprehend$describe_entity_recognizer_output()
@@ -2393,8 +2368,7 @@ comprehend_describe_events_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_events_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_events_detection_job_output()
@@ -2489,8 +2463,7 @@ comprehend_describe_flywheel <- function(FlywheelArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_flywheel_input(FlywheelArn = FlywheelArn)
   output <- .comprehend$describe_flywheel_output()
@@ -2569,8 +2542,7 @@ comprehend_describe_flywheel_iteration <- function(FlywheelArn, FlywheelIteratio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_flywheel_iteration_input(FlywheelArn = FlywheelArn, FlywheelIterationId = FlywheelIterationId)
   output <- .comprehend$describe_flywheel_iteration_output()
@@ -2659,8 +2631,7 @@ comprehend_describe_key_phrases_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_key_phrases_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_key_phrases_detection_job_output()
@@ -2747,8 +2718,7 @@ comprehend_describe_pii_entities_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_pii_entities_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_pii_entities_detection_job_output()
@@ -2806,8 +2776,7 @@ comprehend_describe_resource_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_resource_policy_input(ResourceArn = ResourceArn)
   output <- .comprehend$describe_resource_policy_output()
@@ -2895,8 +2864,7 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_sentiment_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_sentiment_detection_job_output()
@@ -2985,8 +2953,7 @@ comprehend_describe_targeted_sentiment_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_targeted_sentiment_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_targeted_sentiment_detection_job_output()
@@ -3073,8 +3040,7 @@ comprehend_describe_topics_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$describe_topics_detection_job_input(JobId = JobId)
   output <- .comprehend$describe_topics_detection_job_output()
@@ -3131,8 +3097,7 @@ comprehend_detect_dominant_language <- function(Text) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$detect_dominant_language_input(Text = Text)
   output <- .comprehend$detect_dominant_language_output()
@@ -3327,8 +3292,7 @@ comprehend_detect_entities <- function(Text = NULL, LanguageCode = NULL, Endpoin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$detect_entities_input(Text = Text, LanguageCode = LanguageCode, EndpointArn = EndpointArn, Bytes = Bytes, DocumentReaderConfig = DocumentReaderConfig)
   output <- .comprehend$detect_entities_output()
@@ -3388,8 +3352,7 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$detect_key_phrases_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_key_phrases_output()
@@ -3449,8 +3412,7 @@ comprehend_detect_pii_entities <- function(Text, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$detect_pii_entities_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_pii_entities_output()
@@ -3510,8 +3472,7 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$detect_sentiment_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_sentiment_output()
@@ -3578,8 +3539,7 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$detect_syntax_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_syntax_output()
@@ -3661,8 +3621,7 @@ comprehend_detect_targeted_sentiment <- function(Text, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$detect_targeted_sentiment_input(Text = Text, LanguageCode = LanguageCode)
   output <- .comprehend$detect_targeted_sentiment_output()
@@ -3733,8 +3692,7 @@ comprehend_detect_toxic_content <- function(TextSegments, LanguageCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$detect_toxic_content_input(TextSegments = TextSegments, LanguageCode = LanguageCode)
   output <- .comprehend$detect_toxic_content_output()
@@ -3776,10 +3734,10 @@ comprehend_detect_toxic_content <- function(TextSegments, LanguageCode) {
 #' @param ModelKmsKeyId ID for the KMS key that Amazon Comprehend uses to encrypt trained custom
 #' models. The ModelKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param DataAccessRoleArn The Amazon Resource Name (ARN) of the IAM role that grants Amazon
 #' Comprehend permission to use Amazon Key Management Service (KMS) to
 #' encrypt or decrypt the custom model.
@@ -3824,8 +3782,7 @@ comprehend_import_model <- function(SourceModelArn, ModelName = NULL, VersionNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$import_model_input(SourceModelArn = SourceModelArn, ModelName = ModelName, VersionName = VersionName, ModelKmsKeyId = ModelKmsKeyId, DataAccessRoleArn = DataAccessRoleArn, Tags = Tags)
   output <- .comprehend$import_model_output()
@@ -3909,8 +3866,7 @@ comprehend_list_datasets <- function(FlywheelArn = NULL, Filter = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_datasets_input(FlywheelArn = FlywheelArn, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_datasets_output()
@@ -4019,8 +3975,7 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_document_classification_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_document_classification_jobs_output()
@@ -4084,8 +4039,7 @@ comprehend_list_document_classifier_summaries <- function(NextToken = NULL, MaxR
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_document_classifier_summaries_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_document_classifier_summaries_output()
@@ -4234,8 +4188,7 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_document_classifiers_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_document_classifiers_output()
@@ -4342,8 +4295,7 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_dominant_language_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_dominant_language_detection_jobs_output()
@@ -4429,8 +4381,7 @@ comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EndpointPropertiesList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EndpointPropertiesList")
   )
   input <- .comprehend$list_endpoints_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_endpoints_output()
@@ -4537,8 +4488,7 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_entities_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_entities_detection_jobs_output()
@@ -4602,8 +4552,7 @@ comprehend_list_entity_recognizer_summaries <- function(NextToken = NULL, MaxRes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_entity_recognizer_summaries_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_entity_recognizer_summaries_output()
@@ -4764,8 +4713,7 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_entity_recognizers_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_entity_recognizers_output()
@@ -4863,8 +4811,7 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_events_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_events_detection_jobs_output()
@@ -4958,8 +4905,7 @@ comprehend_list_flywheel_iteration_history <- function(FlywheelArn, Filter = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_flywheel_iteration_history_input(FlywheelArn = FlywheelArn, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_flywheel_iteration_history_output()
@@ -5038,8 +4984,7 @@ comprehend_list_flywheels <- function(Filter = NULL, NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_flywheels_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_flywheels_output()
@@ -5145,8 +5090,7 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_key_phrases_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_key_phrases_detection_jobs_output()
@@ -5250,8 +5194,7 @@ comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PiiEntitiesDetectionJobPropertiesList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PiiEntitiesDetectionJobPropertiesList")
   )
   input <- .comprehend$list_pii_entities_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_pii_entities_detection_jobs_output()
@@ -5356,8 +5299,7 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_sentiment_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_sentiment_detection_jobs_output()
@@ -5412,8 +5354,7 @@ comprehend_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .comprehend$list_tags_for_resource_output()
@@ -5520,8 +5461,7 @@ comprehend_list_targeted_sentiment_detection_jobs <- function(Filter = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_targeted_sentiment_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_targeted_sentiment_detection_jobs_output()
@@ -5626,8 +5566,7 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .comprehend$list_topics_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehend$list_topics_detection_jobs_output()
@@ -5698,8 +5637,7 @@ comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$put_resource_policy_input(ResourceArn = ResourceArn, ResourcePolicy = ResourcePolicy, PolicyRevisionId = PolicyRevisionId)
   output <- .comprehend$put_resource_policy_output()
@@ -5740,10 +5678,10 @@ comprehend_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRe
 #' the ML compute instance(s) that process the analysis job. The
 #' VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
 #' (VPC) containing the resources you are using for your document
 #' classification job. For more information, see [Amazon
@@ -5818,8 +5756,7 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_document_classification_job_input(JobName = JobName, DocumentClassifierArn = DocumentClassifierArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags, FlywheelArn = FlywheelArn)
   output <- .comprehend$start_document_classification_job_output()
@@ -5857,10 +5794,10 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' the ML compute instance(s) that process the analysis job. The
 #' VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
 #' (VPC) containing the resources you are using for your dominant language
 #' detection job. For more information, see [Amazon
@@ -5930,8 +5867,7 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_dominant_language_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_dominant_language_detection_job_output()
@@ -5984,10 +5920,10 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' the ML compute instance(s) that process the analysis job. The
 #' VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
 #' (VPC) containing the resources you are using for your entity detection
 #' job. For more information, see [Amazon
@@ -6063,8 +5999,7 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, EntityRecognizerArn = EntityRecognizerArn, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags, FlywheelArn = FlywheelArn)
   output <- .comprehend$start_entities_detection_job_output()
@@ -6156,8 +6091,7 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_events_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, TargetEventTypes = TargetEventTypes, Tags = Tags)
   output <- .comprehend$start_events_detection_job_output()
@@ -6213,8 +6147,7 @@ comprehend_start_flywheel_iteration <- function(FlywheelArn, ClientRequestToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_flywheel_iteration_input(FlywheelArn = FlywheelArn, ClientRequestToken = ClientRequestToken)
   output <- .comprehend$start_flywheel_iteration_output()
@@ -6255,10 +6188,10 @@ comprehend_start_flywheel_iteration <- function(FlywheelArn, ClientRequestToken 
 #' the ML compute instance(s) that process the analysis job. The
 #' VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
 #' (VPC) containing the resources you are using for your key phrases
 #' detection job. For more information, see [Amazon
@@ -6329,8 +6262,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_key_phrases_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_key_phrases_detection_job_output()
@@ -6436,8 +6368,7 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_pii_entities_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, Mode = Mode, RedactionConfig = RedactionConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .comprehend$start_pii_entities_detection_job_output()
@@ -6478,10 +6409,10 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' the ML compute instance(s) that process the analysis job. The
 #' VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
 #' (VPC) containing the resources you are using for your sentiment
 #' detection job. For more information, see [Amazon
@@ -6552,8 +6483,7 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_sentiment_detection_job_output()
@@ -6594,10 +6524,10 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' storage volume attached to the ML compute instance(s) that process the
 #' analysis job. The VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig 
 #' @param Tags Tags to associate with the targeted sentiment detection job. A tag is a
 #' key-value pair that adds metadata to a resource used by Amazon
@@ -6665,8 +6595,7 @@ comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, O
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_targeted_sentiment_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, LanguageCode = LanguageCode, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_targeted_sentiment_detection_job_output()
@@ -6707,10 +6636,10 @@ comprehend_start_targeted_sentiment_detection_job <- function(InputDataConfig, O
 #' the ML compute instance(s) that process the analysis job. The
 #' VolumeKmsKeyId can be either of the following formats:
 #' 
-#' - KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   KMS Key ID: `"1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' 
-#' - Amazon Resource Name (ARN) of a KMS Key:
-#'   `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
+#' -   Amazon Resource Name (ARN) of a KMS Key:
+#'     `"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"`
 #' @param VpcConfig Configuration parameters for an optional private Virtual Private Cloud
 #' (VPC) containing the resources you are using for your topic detection
 #' job. For more information, see [Amazon
@@ -6781,8 +6710,7 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$start_topics_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, NumberOfTopics = NumberOfTopics, ClientRequestToken = ClientRequestToken, VolumeKmsKeyId = VolumeKmsKeyId, VpcConfig = VpcConfig, Tags = Tags)
   output <- .comprehend$start_topics_detection_job_output()
@@ -6843,8 +6771,7 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_dominant_language_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_dominant_language_detection_job_output()
@@ -6905,8 +6832,7 @@ comprehend_stop_entities_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_entities_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_entities_detection_job_output()
@@ -6955,8 +6881,7 @@ comprehend_stop_events_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_events_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_events_detection_job_output()
@@ -7017,8 +6942,7 @@ comprehend_stop_key_phrases_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_key_phrases_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_key_phrases_detection_job_output()
@@ -7067,8 +6991,7 @@ comprehend_stop_pii_entities_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_pii_entities_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_pii_entities_detection_job_output()
@@ -7129,8 +7052,7 @@ comprehend_stop_sentiment_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_sentiment_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_sentiment_detection_job_output()
@@ -7191,8 +7113,7 @@ comprehend_stop_targeted_sentiment_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_targeted_sentiment_detection_job_input(JobId = JobId)
   output <- .comprehend$stop_targeted_sentiment_detection_job_output()
@@ -7242,8 +7163,7 @@ comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_training_document_classifier_input(DocumentClassifierArn = DocumentClassifierArn)
   output <- .comprehend$stop_training_document_classifier_output()
@@ -7294,8 +7214,7 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$stop_training_entity_recognizer_input(EntityRecognizerArn = EntityRecognizerArn)
   output <- .comprehend$stop_training_entity_recognizer_output()
@@ -7351,8 +7270,7 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .comprehend$tag_resource_output()
@@ -7403,8 +7321,7 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .comprehend$untag_resource_output()
@@ -7466,8 +7383,7 @@ comprehend_update_endpoint <- function(EndpointArn, DesiredModelArn = NULL, Desi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$update_endpoint_input(EndpointArn = EndpointArn, DesiredModelArn = DesiredModelArn, DesiredInferenceUnits = DesiredInferenceUnits, DesiredDataAccessRoleArn = DesiredDataAccessRoleArn, FlywheelArn = FlywheelArn)
   output <- .comprehend$update_endpoint_output()
@@ -7578,8 +7494,7 @@ comprehend_update_flywheel <- function(FlywheelArn, ActiveModelArn = NULL, DataA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehend$update_flywheel_input(FlywheelArn = FlywheelArn, ActiveModelArn = ActiveModelArn, DataAccessRoleArn = DataAccessRoleArn, DataSecurityConfig = DataSecurityConfig)
   output <- .comprehend$update_flywheel_output()

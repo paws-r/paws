@@ -47,8 +47,8 @@ summary information about.
 Valid values include:
 \itemize{
 \item \code{LIVE}: The extension version is registered and can be used in
-CloudFormation operations, dependent on its provisioning behavior and
-visibility scope.
+CloudFormation operations, dependent on its provisioning behavior
+and visibility scope.
 \item \code{DEPRECATED}: The extension version has been deregistered and can no
 longer be used in CloudFormation operations.
 }

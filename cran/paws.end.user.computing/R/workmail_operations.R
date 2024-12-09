@@ -16,22 +16,22 @@ NULL
 #' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Resource ID: r-0123456789a0123456789b0123456789
+#' -   Resource ID: r-0123456789a0123456789b0123456789
 #' 
-#' - Email address: resource@@domain.tld
+#' -   Email address: resource@@domain.tld
 #' 
-#' - Resource name: resource
+#' -   Resource name: resource
 #' @param EntityId &#91;required&#93; The member (user or group) to associate to the resource.
 #' 
 #' The entity ID can accept *UserId or GroupID*, *Username or Groupname*,
 #' or *email*.
 #' 
-#' - Entity: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity: entity
+#' -   Entity: entity
 #'
 #' @keywords internal
 #'
@@ -42,8 +42,7 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$associate_delegate_to_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, EntityId = EntityId)
   output <- .workmail$associate_delegate_to_resource_output()
@@ -68,23 +67,23 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 #' The identifier can accept *GroupId*, *Groupname*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Group ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: group@@domain.tld
+#' -   Email address: group@@domain.tld
 #' 
-#' - Group name: group
+#' -   Group name: group
 #' @param MemberId &#91;required&#93; The member (user or group) to associate to the group.
 #' 
 #' The member ID can accept *UserID or GroupId*, *Username or Groupname*,
 #' or *email*.
 #' 
-#' - Member: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Member: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: member@@domain.tld
+#' -   Email address: member@@domain.tld
 #' 
-#' - Member name: member
+#' -   Member name: member
 #'
 #' @keywords internal
 #'
@@ -95,8 +94,7 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$associate_member_to_group_input(OrganizationId = OrganizationId, GroupId = GroupId, MemberId = MemberId)
   output <- .workmail$associate_member_to_group_output()
@@ -128,8 +126,7 @@ workmail_assume_impersonation_role <- function(OrganizationId, ImpersonationRole
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$assume_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$assume_impersonation_role_output()
@@ -161,8 +158,7 @@ workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$cancel_mailbox_export_job_input(ClientToken = ClientToken, JobId = JobId, OrganizationId = OrganizationId)
   output <- .workmail$cancel_mailbox_export_job_output()
@@ -194,8 +190,7 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$create_alias_input(OrganizationId = OrganizationId, EntityId = EntityId, Alias = Alias)
   output <- .workmail$create_alias_output()
@@ -236,8 +231,7 @@ workmail_create_availability_configuration <- function(ClientToken = NULL, Organ
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$create_availability_configuration_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$create_availability_configuration_output()
@@ -271,8 +265,7 @@ workmail_create_group <- function(OrganizationId, Name, HiddenFromGlobalAddressL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$create_group_input(OrganizationId = OrganizationId, Name = Name, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_group_output()
@@ -308,8 +301,7 @@ workmail_create_impersonation_role <- function(ClientToken = NULL, OrganizationI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$create_impersonation_role_input(ClientToken = ClientToken, OrganizationId = OrganizationId, Name = Name, Type = Type, Description = Description, Rules = Rules)
   output <- .workmail$create_impersonation_role_output()
@@ -357,8 +349,7 @@ workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$create_mobile_device_access_rule_input(OrganizationId = OrganizationId, ClientToken = ClientToken, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
   output <- .workmail$create_mobile_device_access_rule_output()
@@ -395,8 +386,7 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$create_organization_input(DirectoryId = DirectoryId, Alias = Alias, ClientToken = ClientToken, Domains = Domains, KmsKeyArn = KmsKeyArn, EnableInteroperability = EnableInteroperability)
   output <- .workmail$create_organization_output()
@@ -433,8 +423,7 @@ workmail_create_resource <- function(OrganizationId, Name, Type, Description = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$create_resource_input(OrganizationId = OrganizationId, Name = Name, Type = Type, Description = Description, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_resource_output()
@@ -478,8 +467,7 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$create_user_input(OrganizationId = OrganizationId, Name = Name, DisplayName = DisplayName, Password = Password, Role = Role, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_user_output()
@@ -510,8 +498,7 @@ workmail_delete_access_control_rule <- function(OrganizationId, Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_access_control_rule_input(OrganizationId = OrganizationId, Name = Name)
   output <- .workmail$delete_access_control_rule_output()
@@ -547,8 +534,7 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_alias_input(OrganizationId = OrganizationId, EntityId = EntityId, Alias = Alias)
   output <- .workmail$delete_alias_output()
@@ -581,8 +567,7 @@ workmail_delete_availability_configuration <- function(OrganizationId, DomainNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$delete_availability_configuration_output()
@@ -613,8 +598,7 @@ workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_email_monitoring_configuration_input(OrganizationId = OrganizationId)
   output <- .workmail$delete_email_monitoring_configuration_output()
@@ -639,10 +623,10 @@ workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
 #' The identifier can be the *GroupId*, or *Groupname*. The following
 #' identity formats are available:
 #' 
-#' - Group ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Group name: group
+#' -   Group name: group
 #'
 #' @keywords internal
 #'
@@ -653,8 +637,7 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_group_input(OrganizationId = OrganizationId, GroupId = GroupId)
   output <- .workmail$delete_group_output()
@@ -685,8 +668,7 @@ workmail_delete_impersonation_role <- function(OrganizationId, ImpersonationRole
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$delete_impersonation_role_output()
@@ -712,25 +694,25 @@ workmail_delete_impersonation_role <- function(OrganizationId, ImpersonationRole
 #' The identifier can be *UserId or Group Id*, *Username or Groupname*, or
 #' *email*.
 #' 
-#' - Entity ID: 12345678-1234-1234-1234-123456789012,
-#'   r-0123456789a0123456789b0123456789, or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity name: entity
+#' -   Entity name: entity
 #' @param GranteeId &#91;required&#93; The identifier of the entity for which to delete granted permissions.
 #' 
 #' The identifier can be *UserId, ResourceID, or Group Id*, *Username or
 #' Groupname*, or *email*.
 #' 
-#' - Grantee ID:
-#'   12345678-1234-1234-1234-123456789012,r-0123456789a0123456789b0123456789,
-#'   or S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Grantee ID:
+#'     12345678-1234-1234-1234-123456789012,r-0123456789a0123456789b0123456789,
+#'     or S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: grantee@@domain.tld
+#' -   Email address: grantee@@domain.tld
 #' 
-#' - Grantee name: grantee
+#' -   Grantee name: grantee
 #'
 #' @keywords internal
 #'
@@ -741,8 +723,7 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, GranteeId = GranteeId)
   output <- .workmail$delete_mailbox_permissions_output()
@@ -766,12 +747,12 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
 #' @param UserId &#91;required&#93; The WorkMail user for which you want to delete the override. Accepts the
 #' following types of user identities:
 #' 
-#' - User ID: `12345678-1234-1234-1234-123456789012` or
-#'   `S-1-1-12-1234567890-123456789-123456789-1234`
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
 #' 
-#' - Email address: `user@@domain.tld`
+#' -   Email address: `user@@domain.tld`
 #' 
-#' - User name: `user`
+#' -   User name: `user`
 #' @param DeviceId &#91;required&#93; The mobile device for which you delete the override. `DeviceId` is case
 #' insensitive.
 #'
@@ -784,8 +765,7 @@ workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId)
   output <- .workmail$delete_mobile_device_access_override_output()
@@ -817,8 +797,7 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId)
   output <- .workmail$delete_mobile_device_access_rule_output()
@@ -854,8 +833,7 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_organization_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DeleteDirectory = DeleteDirectory, ForceDelete = ForceDelete)
   output <- .workmail$delete_organization_output()
@@ -881,9 +859,9 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
 #' The identifier can accept *ResourceId*, or *Resourcename*. The following
 #' identity formats are available:
 #' 
-#' - Resource ID: r-0123456789a0123456789b0123456789
+#' -   Resource ID: r-0123456789a0123456789b0123456789
 #' 
-#' - Resource name: resource
+#' -   Resource name: resource
 #'
 #' @keywords internal
 #'
@@ -894,8 +872,7 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId)
   output <- .workmail$delete_resource_output()
@@ -926,8 +903,7 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_retention_policy_input(OrganizationId = OrganizationId, Id = Id)
   output <- .workmail$delete_retention_policy_output()
@@ -952,10 +928,10 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
 #' The identifier can be the *UserId* or *Username*. The following identity
 #' formats are available:
 #' 
-#' - User ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - User name: user
+#' -   User name: user
 #'
 #' @keywords internal
 #'
@@ -966,8 +942,7 @@ workmail_delete_user <- function(OrganizationId, UserId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$delete_user_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$delete_user_output()
@@ -993,13 +968,13 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 #' The identifier can be *UserId, ResourceId, or Group Id*, *Username,
 #' Resourcename, or Groupname*, or *email*.
 #' 
-#' - Entity ID: 12345678-1234-1234-1234-123456789012,
-#'   r-0123456789a0123456789b0123456789, or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity name: entity
+#' -   Entity name: entity
 #'
 #' @keywords internal
 #'
@@ -1010,8 +985,7 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$deregister_from_work_mail_input(OrganizationId = OrganizationId, EntityId = EntityId)
   output <- .workmail$deregister_from_work_mail_output()
@@ -1043,8 +1017,7 @@ workmail_deregister_mail_domain <- function(OrganizationId, DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$deregister_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$deregister_mail_domain_output()
@@ -1076,8 +1049,7 @@ workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$describe_email_monitoring_configuration_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_email_monitoring_configuration_output()
@@ -1108,8 +1080,7 @@ workmail_describe_entity <- function(OrganizationId, Email) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$describe_entity_input(OrganizationId = OrganizationId, Email = Email)
   output <- .workmail$describe_entity_output()
@@ -1134,12 +1105,12 @@ workmail_describe_entity <- function(OrganizationId, Email) {
 #' The identifier can accept *GroupId*, *Groupname*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Group ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: group@@domain.tld
+#' -   Email address: group@@domain.tld
 #' 
-#' - Group name: group
+#' -   Group name: group
 #'
 #' @keywords internal
 #'
@@ -1150,8 +1121,7 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$describe_group_input(OrganizationId = OrganizationId, GroupId = GroupId)
   output <- .workmail$describe_group_output()
@@ -1181,8 +1151,7 @@ workmail_describe_inbound_dmarc_settings <- function(OrganizationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$describe_inbound_dmarc_settings_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_inbound_dmarc_settings_output()
@@ -1213,8 +1182,7 @@ workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$describe_mailbox_export_job_input(JobId = JobId, OrganizationId = OrganizationId)
   output <- .workmail$describe_mailbox_export_job_output()
@@ -1245,8 +1213,7 @@ workmail_describe_organization <- function(OrganizationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$describe_organization_input(OrganizationId = OrganizationId)
   output <- .workmail$describe_organization_output()
@@ -1272,11 +1239,11 @@ workmail_describe_organization <- function(OrganizationId) {
 #' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Resource ID: r-0123456789a0123456789b0123456789
+#' -   Resource ID: r-0123456789a0123456789b0123456789
 #' 
-#' - Email address: resource@@domain.tld
+#' -   Email address: resource@@domain.tld
 #' 
-#' - Resource name: resource
+#' -   Resource name: resource
 #'
 #' @keywords internal
 #'
@@ -1287,8 +1254,7 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$describe_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId)
   output <- .workmail$describe_resource_output()
@@ -1313,12 +1279,12 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
 #' The identifier can be the *UserId*, *Username*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - User ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: user@@domain.tld
+#' -   Email address: user@@domain.tld
 #' 
-#' - User name: user
+#' -   User name: user
 #'
 #' @keywords internal
 #'
@@ -1329,8 +1295,7 @@ workmail_describe_user <- function(OrganizationId, UserId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$describe_user_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$describe_user_output()
@@ -1356,23 +1321,23 @@ workmail_describe_user <- function(OrganizationId, UserId) {
 #' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Resource ID: r-0123456789a0123456789b0123456789
+#' -   Resource ID: r-0123456789a0123456789b0123456789
 #' 
-#' - Email address: resource@@domain.tld
+#' -   Email address: resource@@domain.tld
 #' 
-#' - Resource name: resource
+#' -   Resource name: resource
 #' @param EntityId &#91;required&#93; The identifier for the member (user, group) to be removed from the
 #' resource's delegates.
 #' 
 #' The entity ID can accept *UserId or GroupID*, *Username or Groupname*,
 #' or *email*.
 #' 
-#' - Entity: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity: entity
+#' -   Entity: entity
 #'
 #' @keywords internal
 #'
@@ -1383,8 +1348,7 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$disassociate_delegate_from_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, EntityId = EntityId)
   output <- .workmail$disassociate_delegate_from_resource_output()
@@ -1409,23 +1373,23 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
 #' The identifier can accept *GroupId*, *Groupname*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Group ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: group@@domain.tld
+#' -   Email address: group@@domain.tld
 #' 
-#' - Group name: group
+#' -   Group name: group
 #' @param MemberId &#91;required&#93; The identifier for the member to be removed from the group.
 #' 
 #' The member ID can accept *UserID or GroupId*, *Username or Groupname*,
 #' or *email*.
 #' 
-#' - Member ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Member ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: member@@domain.tld
+#' -   Email address: member@@domain.tld
 #' 
-#' - Member name: member
+#' -   Member name: member
 #'
 #' @keywords internal
 #'
@@ -1436,8 +1400,7 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$disassociate_member_from_group_input(OrganizationId = OrganizationId, GroupId = GroupId, MemberId = MemberId)
   output <- .workmail$disassociate_member_from_group_output()
@@ -1474,8 +1437,7 @@ workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$get_access_control_effect_input(OrganizationId = OrganizationId, IpAddress = IpAddress, Action = Action, UserId = UserId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$get_access_control_effect_output()
@@ -1505,8 +1467,7 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$get_default_retention_policy_input(OrganizationId = OrganizationId)
   output <- .workmail$get_default_retention_policy_output()
@@ -1537,8 +1498,7 @@ workmail_get_impersonation_role <- function(OrganizationId, ImpersonationRoleId)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$get_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId)
   output <- .workmail$get_impersonation_role_output()
@@ -1562,12 +1522,12 @@ workmail_get_impersonation_role <- function(OrganizationId, ImpersonationRoleId)
 #' @param TargetUser &#91;required&#93; The WorkMail organization user chosen to test the impersonation role.
 #' The following identity formats are available:
 #' 
-#' - User ID: `12345678-1234-1234-1234-123456789012` or
-#'   `S-1-1-12-1234567890-123456789-123456789-1234`
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
 #' 
-#' - Email address: `user@@domain.tld`
+#' -   Email address: `user@@domain.tld`
 #' 
-#' - User name: `user`
+#' -   User name: `user`
 #'
 #' @keywords internal
 #'
@@ -1578,8 +1538,7 @@ workmail_get_impersonation_role_effect <- function(OrganizationId, Impersonation
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$get_impersonation_role_effect_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId, TargetUser = TargetUser)
   output <- .workmail$get_impersonation_role_effect_output()
@@ -1611,8 +1570,7 @@ workmail_get_mail_domain <- function(OrganizationId, DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$get_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$get_mail_domain_output()
@@ -1638,12 +1596,12 @@ workmail_get_mail_domain <- function(OrganizationId, DomainName) {
 #' The identifier can be the *UserId*, *Username*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - User ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: user@@domain.tld
+#' -   Email address: user@@domain.tld
 #' 
-#' - User name: user
+#' -   User name: user
 #'
 #' @keywords internal
 #'
@@ -1654,8 +1612,7 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$get_mailbox_details_input(OrganizationId = OrganizationId, UserId = UserId)
   output <- .workmail$get_mailbox_details_output()
@@ -1690,8 +1647,7 @@ workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$get_mobile_device_access_effect_input(OrganizationId = OrganizationId, DeviceType = DeviceType, DeviceModel = DeviceModel, DeviceOperatingSystem = DeviceOperatingSystem, DeviceUserAgent = DeviceUserAgent)
   output <- .workmail$get_mobile_device_access_effect_output()
@@ -1715,12 +1671,12 @@ workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType 
 #' @param UserId &#91;required&#93; Identifies the WorkMail user for the override. Accepts the following
 #' types of user identities:
 #' 
-#' - User ID: `12345678-1234-1234-1234-123456789012` or
-#'   `S-1-1-12-1234567890-123456789-123456789-1234`
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
 #' 
-#' - Email address: `user@@domain.tld`
+#' -   Email address: `user@@domain.tld`
 #' 
-#' - User name: `user`
+#' -   User name: `user`
 #' @param DeviceId &#91;required&#93; The mobile device to which the override applies. `DeviceId` is case
 #' insensitive.
 #'
@@ -1733,8 +1689,7 @@ workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$get_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId)
   output <- .workmail$get_mobile_device_access_override_output()
@@ -1764,8 +1719,7 @@ workmail_list_access_control_rules <- function(OrganizationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$list_access_control_rules_input(OrganizationId = OrganizationId)
   output <- .workmail$list_access_control_rules_output()
@@ -1800,8 +1754,7 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_aliases_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_aliases_output()
@@ -1836,8 +1789,7 @@ workmail_list_availability_configurations <- function(OrganizationId, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AvailabilityConfigurations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AvailabilityConfigurations")
   )
   input <- .workmail$list_availability_configurations_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workmail$list_availability_configurations_output()
@@ -1863,12 +1815,12 @@ workmail_list_availability_configurations <- function(OrganizationId, MaxResults
 #' The identifier can accept *GroupId*, *Groupname*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Group ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: group@@domain.tld
+#' -   Email address: group@@domain.tld
 #' 
-#' - Group name: group
+#' -   Group name: group
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
@@ -1882,8 +1834,7 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_group_members_input(OrganizationId = OrganizationId, GroupId = GroupId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_group_members_output()
@@ -1918,8 +1869,7 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_groups_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_groups_output()
@@ -1944,12 +1894,12 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 #' The entity ID can accept *UserId or GroupID*, *Username or Groupname*,
 #' or *email*.
 #' 
-#' - Entity ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity name: entity
+#' -   Entity name: entity
 #' @param Filters Limit the search results based on the filter criteria.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
@@ -1964,8 +1914,7 @@ workmail_list_groups_for_entity <- function(OrganizationId, EntityId, Filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_groups_for_entity_input(OrganizationId = OrganizationId, EntityId = EntityId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_groups_for_entity_output()
@@ -1999,8 +1948,7 @@ workmail_list_impersonation_roles <- function(OrganizationId, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_impersonation_roles_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_impersonation_roles_output()
@@ -2033,8 +1981,7 @@ workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mail_domains_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workmail$list_mail_domains_output()
@@ -2067,8 +2014,7 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mailbox_export_jobs_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mailbox_export_jobs_output()
@@ -2096,12 +2042,12 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
 #' The entity ID can accept *UserId or ResourceId*, *Username or
 #' Resourcename*, or *email*.
 #' 
-#' - Entity ID: 12345678-1234-1234-1234-123456789012, or
-#'   r-0123456789a0123456789b0123456789
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012, or
+#'     r-0123456789a0123456789b0123456789
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity name: entity
+#' -   Entity name: entity
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
@@ -2115,8 +2061,7 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mailbox_permissions_output()
@@ -2141,12 +2086,12 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 #' @param UserId The WorkMail user under which you list the mobile device access
 #' overrides. Accepts the following types of user identities:
 #' 
-#' - User ID: `12345678-1234-1234-1234-123456789012` or
-#'   `S-1-1-12-1234567890-123456789-123456789-1234`
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
 #' 
-#' - Email address: `user@@domain.tld`
+#' -   Email address: `user@@domain.tld`
 #' 
-#' - User name: `user`
+#' -   User name: `user`
 #' @param DeviceId The mobile device to which the access override applies.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not require a token.
@@ -2161,8 +2106,7 @@ workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mobile_device_access_overrides_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mobile_device_access_overrides_output()
@@ -2193,8 +2137,7 @@ workmail_list_mobile_device_access_rules <- function(OrganizationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$list_mobile_device_access_rules_input(OrganizationId = OrganizationId)
   output <- .workmail$list_mobile_device_access_rules_output()
@@ -2226,8 +2169,7 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_organizations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_organizations_output()
@@ -2253,11 +2195,11 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
 #' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Resource ID: r-0123456789a0123456789b0123456789
+#' -   Resource ID: r-0123456789a0123456789b0123456789
 #' 
-#' - Email address: resource@@domain.tld
+#' -   Email address: resource@@domain.tld
 #' 
-#' - Resource name: resource
+#' -   Resource name: resource
 #' @param NextToken The token used to paginate through the delegates associated with a
 #' resource.
 #' @param MaxResults The number of maximum results in a page.
@@ -2271,8 +2213,7 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_resource_delegates_input(OrganizationId = OrganizationId, ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_resource_delegates_output()
@@ -2307,8 +2248,7 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_resources_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_resources_output()
@@ -2338,8 +2278,7 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$list_tags_for_resource_input(ResourceARN = ResourceARN)
   output <- .workmail$list_tags_for_resource_output()
@@ -2374,8 +2313,7 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_users_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_users_output()
@@ -2420,8 +2358,7 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$put_access_control_rule_input(Name = Name, Effect = Effect, Description = Description, IpRanges = IpRanges, NotIpRanges = NotIpRanges, Actions = Actions, NotActions = NotActions, UserIds = UserIds, NotUserIds = NotUserIds, OrganizationId = OrganizationId, ImpersonationRoleIds = ImpersonationRoleIds, NotImpersonationRoleIds = NotImpersonationRoleIds)
   output <- .workmail$put_access_control_rule_output()
@@ -2457,8 +2394,7 @@ workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$put_email_monitoring_configuration_input(OrganizationId = OrganizationId, RoleArn = RoleArn, LogGroupArn = LogGroupArn)
   output <- .workmail$put_email_monitoring_configuration_output()
@@ -2489,8 +2425,7 @@ workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$put_inbound_dmarc_settings_input(OrganizationId = OrganizationId, Enforced = Enforced)
   output <- .workmail$put_inbound_dmarc_settings_output()
@@ -2517,26 +2452,26 @@ workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
 #' The identifier can be *UserId, ResourceID, or Group Id*, *Username,
 #' Resourcename, or Groupname*, or *email*.
 #' 
-#' - Entity ID: 12345678-1234-1234-1234-123456789012,
-#'   r-0123456789a0123456789b0123456789, or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity name: entity
+#' -   Entity name: entity
 #' @param GranteeId &#91;required&#93; The identifier of the user, group, or resource to which to grant the
 #' permissions.
 #' 
 #' The identifier can be *UserId, ResourceID, or Group Id*, *Username,
 #' Resourcename, or Groupname*, or *email*.
 #' 
-#' - Grantee ID: 12345678-1234-1234-1234-123456789012,
-#'   r-0123456789a0123456789b0123456789, or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Grantee ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: grantee@@domain.tld
+#' -   Email address: grantee@@domain.tld
 #' 
-#' - Grantee name: grantee
+#' -   Grantee name: grantee
 #' @param PermissionValues &#91;required&#93; The permissions granted to the grantee. SEND_AS allows the grantee to
 #' send email as the owner of the mailbox (the grantee is not mentioned on
 #' these emails). SEND_ON_BEHALF allows the grantee to send email on behalf
@@ -2554,8 +2489,7 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$put_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, GranteeId = GranteeId, PermissionValues = PermissionValues)
   output <- .workmail$put_mailbox_permissions_output()
@@ -2579,12 +2513,12 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 #' @param UserId &#91;required&#93; The WorkMail user for which you create the override. Accepts the
 #' following types of user identities:
 #' 
-#' - User ID: `12345678-1234-1234-1234-123456789012` or
-#'   `S-1-1-12-1234567890-123456789-123456789-1234`
+#' -   User ID: `12345678-1234-1234-1234-123456789012` or
+#'     `S-1-1-12-1234567890-123456789-123456789-1234`
 #' 
-#' - Email address: `user@@domain.tld`
+#' -   Email address: `user@@domain.tld`
 #' 
-#' - User name: `user`
+#' -   User name: `user`
 #' @param DeviceId &#91;required&#93; The mobile device for which you create the override. `DeviceId` is case
 #' insensitive.
 #' @param Effect &#91;required&#93; The effect of the override, `ALLOW` or `DENY`.
@@ -2599,8 +2533,7 @@ workmail_put_mobile_device_access_override <- function(OrganizationId, UserId, D
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$put_mobile_device_access_override_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, Effect = Effect, Description = Description)
   output <- .workmail$put_mobile_device_access_override_output()
@@ -2634,8 +2567,7 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$put_retention_policy_input(OrganizationId = OrganizationId, Id = Id, Name = Name, Description = Description, FolderConfigurations = FolderConfigurations)
   output <- .workmail$put_retention_policy_output()
@@ -2668,8 +2600,7 @@ workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, Do
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$register_mail_domain_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$register_mail_domain_output()
@@ -2697,11 +2628,11 @@ workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, Do
 #' *Username, Resourcename, or Groupname*. The following identity formats
 #' are available:
 #' 
-#' - Entity ID: 12345678-1234-1234-1234-123456789012,
-#'   r-0123456789a0123456789b0123456789, or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Entity name: entity
+#' -   Entity name: entity
 #' @param Email &#91;required&#93; The email for the user, group, or resource to be updated.
 #'
 #' @keywords internal
@@ -2713,8 +2644,7 @@ workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$register_to_work_mail_input(OrganizationId = OrganizationId, EntityId = EntityId, Email = Email)
   output <- .workmail$register_to_work_mail_output()
@@ -2747,8 +2677,7 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$reset_password_input(OrganizationId = OrganizationId, UserId = UserId, Password = Password)
   output <- .workmail$reset_password_output()
@@ -2776,13 +2705,13 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 #' The identifier can accept *UserId or ResourceId*, *Username or
 #' Resourcename*, or *email*. The following identity formats are available:
 #' 
-#' - Entity ID: 12345678-1234-1234-1234-123456789012,
-#'   r-0123456789a0123456789b0123456789 , or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789 , or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity name: entity
+#' -   Entity name: entity
 #' @param Description The mailbox export job description.
 #' @param RoleArn &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that grants
 #' write permission to the S3 bucket.
@@ -2800,8 +2729,7 @@ workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, Entit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$start_mailbox_export_job_input(ClientToken = ClientToken, OrganizationId = OrganizationId, EntityId = EntityId, Description = Description, RoleArn = RoleArn, KmsKeyArn = KmsKeyArn, S3BucketName = S3BucketName, S3Prefix = S3Prefix)
   output <- .workmail$start_mailbox_export_job_output()
@@ -2833,8 +2761,7 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
   output <- .workmail$tag_resource_output()
@@ -2871,8 +2798,7 @@ workmail_test_availability_configuration <- function(OrganizationId, DomainName 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$test_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$test_availability_configuration_output()
@@ -2904,8 +2830,7 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .workmail$untag_resource_output()
@@ -2946,8 +2871,7 @@ workmail_update_availability_configuration <- function(OrganizationId, DomainNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_availability_configuration_input(OrganizationId = OrganizationId, DomainName = DomainName, EwsProvider = EwsProvider, LambdaProvider = LambdaProvider)
   output <- .workmail$update_availability_configuration_output()
@@ -2978,8 +2902,7 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_default_mail_domain_input(OrganizationId = OrganizationId, DomainName = DomainName)
   output <- .workmail$update_default_mail_domain_output()
@@ -3004,12 +2927,12 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
 #' The identifier can accept *GroupId*, *Groupname*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Group ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: group@@domain.tld
+#' -   Email address: group@@domain.tld
 #' 
-#' - Group name: group
+#' -   Group name: group
 #' @param HiddenFromGlobalAddressList If enabled, the group is hidden from the global address list.
 #'
 #' @keywords internal
@@ -3021,8 +2944,7 @@ workmail_update_group <- function(OrganizationId, GroupId, HiddenFromGlobalAddre
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_group_input(OrganizationId = OrganizationId, GroupId = GroupId, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$update_group_output()
@@ -3058,8 +2980,7 @@ workmail_update_impersonation_role <- function(OrganizationId, ImpersonationRole
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_impersonation_role_input(OrganizationId = OrganizationId, ImpersonationRoleId = ImpersonationRoleId, Name = Name, Type = Type, Description = Description, Rules = Rules)
   output <- .workmail$update_impersonation_role_output()
@@ -3086,12 +3007,12 @@ workmail_update_impersonation_role <- function(OrganizationId, ImpersonationRole
 #' The identifier can be the *UserId*, *Username*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - User ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: user@@domain.tld
+#' -   Email address: user@@domain.tld
 #' 
-#' - User name: user
+#' -   User name: user
 #' @param MailboxQuota &#91;required&#93; The updated mailbox quota, in MB, for the specified user.
 #'
 #' @keywords internal
@@ -3103,8 +3024,7 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_mailbox_quota_input(OrganizationId = OrganizationId, UserId = UserId, MailboxQuota = MailboxQuota)
   output <- .workmail$update_mailbox_quota_output()
@@ -3152,8 +3072,7 @@ workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDevi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_mobile_device_access_rule_input(OrganizationId = OrganizationId, MobileDeviceAccessRuleId = MobileDeviceAccessRuleId, Name = Name, Description = Description, Effect = Effect, DeviceTypes = DeviceTypes, NotDeviceTypes = NotDeviceTypes, DeviceModels = DeviceModels, NotDeviceModels = NotDeviceModels, DeviceOperatingSystems = DeviceOperatingSystems, NotDeviceOperatingSystems = NotDeviceOperatingSystems, DeviceUserAgents = DeviceUserAgents, NotDeviceUserAgents = NotDeviceUserAgents)
   output <- .workmail$update_mobile_device_access_rule_output()
@@ -3179,13 +3098,13 @@ workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #' Resourcename, or Groupname*, or *email*. The following identity formats
 #' are available:
 #' 
-#' - Entity ID: 12345678-1234-1234-1234-123456789012,
-#'   r-0123456789a0123456789b0123456789, or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: entity@@domain.tld
+#' -   Email address: entity@@domain.tld
 #' 
-#' - Entity name: entity
+#' -   Entity name: entity
 #' @param Email &#91;required&#93; The value of the email to be updated as primary.
 #'
 #' @keywords internal
@@ -3197,8 +3116,7 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_primary_email_address_input(OrganizationId = OrganizationId, EntityId = EntityId, Email = Email)
   output <- .workmail$update_primary_email_address_output()
@@ -3224,11 +3142,11 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 #' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - Resource ID: r-0123456789a0123456789b0123456789
+#' -   Resource ID: r-0123456789a0123456789b0123456789
 #' 
-#' - Email address: resource@@domain.tld
+#' -   Email address: resource@@domain.tld
 #' 
-#' - Resource name: resource
+#' -   Resource name: resource
 #' @param Name The name of the resource to be updated.
 #' @param BookingOptions The resource's booking options to be updated.
 #' @param Description Updates the resource description.
@@ -3244,8 +3162,7 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, Name = Name, BookingOptions = BookingOptions, Description = Description, Type = Type, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$update_resource_output()
@@ -3270,12 +3187,12 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
 #' The identifier can be the *UserId*, *Username*, or *email*. The
 #' following identity formats are available:
 #' 
-#' - User ID: 12345678-1234-1234-1234-123456789012 or
-#'   S-1-1-12-1234567890-123456789-123456789-1234
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
 #' 
-#' - Email address: user@@domain.tld
+#' -   Email address: user@@domain.tld
 #' 
-#' - User name: user
+#' -   User name: user
 #' @param Role Updates the user role.
 #' 
 #' You cannot pass *SYSTEM_USER* or *RESOURCE*.
@@ -3303,8 +3220,7 @@ workmail_update_user <- function(OrganizationId, UserId, Role = NULL, DisplayNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .workmail$update_user_input(OrganizationId = OrganizationId, UserId = UserId, Role = Role, DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList, Initials = Initials, Telephone = Telephone, Street = Street, JobTitle = JobTitle, City = City, Company = Company, ZipCode = ZipCode, Department = Department, Country = Country, Office = Office)
   output <- .workmail$update_user_output()

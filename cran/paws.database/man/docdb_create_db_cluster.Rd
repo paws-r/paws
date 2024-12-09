@@ -133,8 +133,8 @@ ARN for the KMS encryption key.
 
 If an encryption key is not specified in \code{KmsKeyId}:
 \itemize{
-\item If the \code{StorageEncrypted} parameter is \code{true}, Amazon DocumentDB uses
-your default encryption key.
+\item If the \code{StorageEncrypted} parameter is \code{true}, Amazon DocumentDB
+uses your default encryption key.
 }
 
 KMS creates the default encryption key for your Amazon Web Services

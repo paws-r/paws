@@ -33,8 +33,8 @@ populates this field. For more information about idempotency, see
 \itemize{
 \item Use \verb{application/x.quickresponse;format=plain} for a quick response
 written in plain text.
-\item Use \verb{application/x.quickresponse;format=markdown} for a quick response
-written in richtext.
+\item Use \verb{application/x.quickresponse;format=markdown} for a quick
+response written in richtext.
 }}
 
 \item{description}{The description of the quick response.}

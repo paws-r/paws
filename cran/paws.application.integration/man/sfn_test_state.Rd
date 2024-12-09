@@ -24,10 +24,10 @@ IAM permissions for the state.}
 \item{inspectionLevel}{Determines the values to return when a state is tested. You can specify
 one of the following types:
 \itemize{
-\item \code{INFO}: Shows the final state output. By default, Step Functions sets
-\code{inspectionLevel} to \code{INFO} if you don't specify a level.
-\item \code{DEBUG}: Shows the final state output along with the input and output
-data processing result.
+\item \code{INFO}: Shows the final state output. By default, Step Functions
+sets \code{inspectionLevel} to \code{INFO} if you don't specify a level.
+\item \code{DEBUG}: Shows the final state output along with the input and
+output data processing result.
 \item \code{TRACE}: Shows the HTTP request and response for an HTTP Task. This
 level also shows the final state output along with the input and
 output data processing result.

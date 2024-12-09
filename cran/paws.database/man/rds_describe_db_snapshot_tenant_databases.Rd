@@ -41,8 +41,8 @@ following values:
 Amazon RDS for my Amazon Web Services account.
 \item \code{manual} – All DB snapshots that have been taken by my Amazon Web
 Services account.
-\item \code{shared} – All manual DB snapshots that have been shared to my Amazon
-Web Services account.
+\item \code{shared} – All manual DB snapshots that have been shared to my
+Amazon Web Services account.
 \item \code{public} – All DB snapshots that have been marked as public.
 \item \code{awsbackup} – All DB snapshots managed by the Amazon Web Services
 Backup service.
@@ -55,13 +55,13 @@ Supported filters:
 \item \code{tenant-db-name} - Tenant database names. The results list only
 includes information about the tenant databases that match these
 tenant DB names.
-\item \code{tenant-database-resource-id} - Tenant database resource identifiers.
-The results list only includes information about the tenant databases
-contained within the DB snapshots.
-\item \code{dbi-resource-id} - DB instance resource identifiers. The results list
-only includes information about snapshots containing tenant databases
-contained within the DB instances identified by these resource
-identifiers.
+\item \code{tenant-database-resource-id} - Tenant database resource
+identifiers. The results list only includes information about the
+tenant databases contained within the DB snapshots.
+\item \code{dbi-resource-id} - DB instance resource identifiers. The results
+list only includes information about snapshots containing tenant
+databases contained within the DB instances identified by these
+resource identifiers.
 \item \code{db-instance-id} - Accepts DB instance identifiers and DB instance
 Amazon Resource Names (ARNs).
 \item \code{db-snapshot-id} - Accepts DB snapshot identifiers.

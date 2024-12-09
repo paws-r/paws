@@ -48,8 +48,8 @@ this property.}
 \item ONE_TIME - Run the job only once. If you specify this value, don't
 specify a value for the scheduleFrequency property.
 \item SCHEDULED - Run the job on a daily, weekly, or monthly basis. If you
-specify this value, use the scheduleFrequency property to specify the
-recurrence pattern for the job.
+specify this value, use the scheduleFrequency property to specify
+the recurrence pattern for the job.
 }}
 
 \item{managedDataIdentifierIds}{An array of unique identifiers, one for each managed data identifier for
@@ -71,8 +71,8 @@ by the managedDataIdentifierIds property.
 managedDataIdentifierIds property.
 \item NONE - Don't use any managed data identifiers. If you specify this
 value, specify at least one value for the customDataIdentifierIds
-property and don't specify any values for the managedDataIdentifierIds
-property.
+property and don't specify any values for the
+managedDataIdentifierIds property.
 \item RECOMMENDED (default) - Use the recommended set of managed data
 identifiers. If you specify this value, don't specify any values for
 the managedDataIdentifierIds property.

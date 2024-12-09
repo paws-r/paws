@@ -40,8 +40,8 @@ The wrapping algorithms that you can use depend on the type of key
 material that you are importing. To import an RSA private key, you must
 use an RSA_AES wrapping algorithm.
 \itemize{
-\item \strong{RSA_AES_KEY_WRAP_SHA_256} — Supported for wrapping RSA and ECC key
-material.
+\item \strong{RSA_AES_KEY_WRAP_SHA_256} — Supported for wrapping RSA and ECC
+key material.
 \item \strong{RSA_AES_KEY_WRAP_SHA_1} — Supported for wrapping RSA and ECC key
 material.
 \item \strong{RSAES_OAEP_SHA_256} — Supported for all types of key material,
@@ -49,8 +49,8 @@ except RSA key material (private key).
 
 You cannot use the RSAES_OAEP_SHA_256 wrapping algorithm with the
 RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
-\item \strong{RSAES_OAEP_SHA_1} — Supported for all types of key material, except
-RSA key material (private key).
+\item \strong{RSAES_OAEP_SHA_1} — Supported for all types of key material,
+except RSA key material (private key).
 
 You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the
 RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.

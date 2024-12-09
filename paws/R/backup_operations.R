@@ -40,8 +40,7 @@ backup_cancel_legal_hold <- function(LegalHoldId, CancelDescription, RetainRecor
     http_method = "DELETE",
     http_path = "/legal-holds/{legalHoldId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$cancel_legal_hold_input(LegalHoldId = LegalHoldId, CancelDescription = CancelDescription, RetainRecordInDays = RetainRecordInDays)
   output <- .backup$cancel_legal_hold_output()
@@ -160,8 +159,7 @@ backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, Creator
     http_method = "PUT",
     http_path = "/backup/plans/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_backup_plan_input(BackupPlan = BackupPlan, BackupPlanTags = BackupPlanTags, CreatorRequestId = CreatorRequestId)
   output <- .backup$create_backup_plan_output()
@@ -268,8 +266,7 @@ backup_create_backup_selection <- function(BackupPlanId, BackupSelection, Creato
     http_method = "PUT",
     http_path = "/backup/plans/{backupPlanId}/selections/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_backup_selection_input(BackupPlanId = BackupPlanId, BackupSelection = BackupSelection, CreatorRequestId = CreatorRequestId)
   output <- .backup$create_backup_selection_output()
@@ -346,8 +343,7 @@ backup_create_backup_vault <- function(BackupVaultName, BackupVaultTags = NULL, 
     http_method = "PUT",
     http_path = "/backup-vaults/{backupVaultName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultTags = BackupVaultTags, EncryptionKeyArn = EncryptionKeyArn, CreatorRequestId = CreatorRequestId)
   output <- .backup$create_backup_vault_output()
@@ -439,8 +435,7 @@ backup_create_framework <- function(FrameworkName, FrameworkDescription = NULL, 
     http_method = "POST",
     http_path = "/audit/frameworks",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_framework_input(FrameworkName = FrameworkName, FrameworkDescription = FrameworkDescription, FrameworkControls = FrameworkControls, IdempotencyToken = IdempotencyToken, FrameworkTags = FrameworkTags)
   output <- .backup$create_framework_output()
@@ -547,8 +542,7 @@ backup_create_legal_hold <- function(Title, Description, IdempotencyToken = NULL
     http_method = "POST",
     http_path = "/legal-holds/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_legal_hold_input(Title = Title, Description = Description, IdempotencyToken = IdempotencyToken, RecoveryPointSelection = RecoveryPointSelection, Tags = Tags)
   output <- .backup$create_legal_hold_output()
@@ -627,8 +621,7 @@ backup_create_logically_air_gapped_backup_vault <- function(BackupVaultName, Bac
     http_method = "PUT",
     http_path = "/logically-air-gapped-backup-vaults/{backupVaultName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_logically_air_gapped_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultTags = BackupVaultTags, CreatorRequestId = CreatorRequestId, MinRetentionDays = MinRetentionDays, MaxRetentionDays = MaxRetentionDays)
   output <- .backup$create_logically_air_gapped_backup_vault_output()
@@ -735,8 +728,7 @@ backup_create_report_plan <- function(ReportPlanName, ReportPlanDescription = NU
     http_method = "POST",
     http_path = "/audit/report-plans",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_report_plan_input(ReportPlanName = ReportPlanName, ReportPlanDescription = ReportPlanDescription, ReportDeliveryChannel = ReportDeliveryChannel, ReportSetting = ReportSetting, ReportPlanTags = ReportPlanTags, IdempotencyToken = IdempotencyToken)
   output <- .backup$create_report_plan_output()
@@ -827,8 +819,7 @@ backup_create_restore_testing_plan <- function(CreatorRequestId = NULL, RestoreT
     http_method = "PUT",
     http_path = "/restore-testing/plans",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_restore_testing_plan_input(CreatorRequestId = CreatorRequestId, RestoreTestingPlan = RestoreTestingPlan, Tags = Tags)
   output <- .backup$create_restore_testing_plan_output()
@@ -851,9 +842,9 @@ backup_create_restore_testing_plan <- function(CreatorRequestId = NULL, RestoreT
 #' This consists of `RestoreTestingSelectionName`, `ProtectedResourceType`,
 #' and one of the following:
 #' 
-#' - `ProtectedResourceArns`
+#' -   `ProtectedResourceArns`
 #' 
-#' - `ProtectedResourceConditions`
+#' -   `ProtectedResourceConditions`
 #' 
 #' Each protected resource type can have one single value.
 #' 
@@ -878,9 +869,9 @@ backup_create_restore_testing_plan <- function(CreatorRequestId = NULL, RestoreT
 #' @param RestoreTestingSelection &#91;required&#93; This consists of `RestoreTestingSelectionName`, `ProtectedResourceType`,
 #' and one of the following:
 #' 
-#' - `ProtectedResourceArns`
+#' -   `ProtectedResourceArns`
 #' 
-#' - `ProtectedResourceConditions`
+#' -   `ProtectedResourceConditions`
 #' 
 #' Each protected resource type can have one single value.
 #' 
@@ -947,8 +938,7 @@ backup_create_restore_testing_selection <- function(CreatorRequestId = NULL, Res
     http_method = "PUT",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$create_restore_testing_selection_input(CreatorRequestId = CreatorRequestId, RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelection = RestoreTestingSelection)
   output <- .backup$create_restore_testing_selection_output()
@@ -1004,8 +994,7 @@ backup_delete_backup_plan <- function(BackupPlanId) {
     http_method = "DELETE",
     http_path = "/backup/plans/{backupPlanId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_backup_plan_input(BackupPlanId = BackupPlanId)
   output <- .backup$delete_backup_plan_output()
@@ -1053,8 +1042,7 @@ backup_delete_backup_selection <- function(BackupPlanId, SelectionId) {
     http_method = "DELETE",
     http_path = "/backup/plans/{backupPlanId}/selections/{selectionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_backup_selection_input(BackupPlanId = BackupPlanId, SelectionId = SelectionId)
   output <- .backup$delete_backup_selection_output()
@@ -1100,8 +1088,7 @@ backup_delete_backup_vault <- function(BackupVaultName) {
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_backup_vault_input(BackupVaultName = BackupVaultName)
   output <- .backup$delete_backup_vault_output()
@@ -1147,8 +1134,7 @@ backup_delete_backup_vault_access_policy <- function(BackupVaultName) {
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/access-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_backup_vault_access_policy_input(BackupVaultName = BackupVaultName)
   output <- .backup$delete_backup_vault_access_policy_output()
@@ -1200,8 +1186,7 @@ backup_delete_backup_vault_lock_configuration <- function(BackupVaultName) {
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/vault-lock",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_backup_vault_lock_configuration_input(BackupVaultName = BackupVaultName)
   output <- .backup$delete_backup_vault_lock_configuration_output()
@@ -1246,8 +1231,7 @@ backup_delete_backup_vault_notifications <- function(BackupVaultName) {
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/notification-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_backup_vault_notifications_input(BackupVaultName = BackupVaultName)
   output <- .backup$delete_backup_vault_notifications_output()
@@ -1290,8 +1274,7 @@ backup_delete_framework <- function(FrameworkName) {
     http_method = "DELETE",
     http_path = "/audit/frameworks/{frameworkName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_framework_input(FrameworkName = FrameworkName)
   output <- .backup$delete_framework_output()
@@ -1357,8 +1340,7 @@ backup_delete_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
   output <- .backup$delete_recovery_point_output()
@@ -1401,8 +1383,7 @@ backup_delete_report_plan <- function(ReportPlanName) {
     http_method = "DELETE",
     http_path = "/audit/report-plans/{reportPlanName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_report_plan_input(ReportPlanName = ReportPlanName)
   output <- .backup$delete_report_plan_output()
@@ -1448,8 +1429,7 @@ backup_delete_restore_testing_plan <- function(RestoreTestingPlanName) {
     http_method = "DELETE",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_restore_testing_plan_input(RestoreTestingPlanName = RestoreTestingPlanName)
   output <- .backup$delete_restore_testing_plan_output()
@@ -1500,8 +1480,7 @@ backup_delete_restore_testing_selection <- function(RestoreTestingPlanName, Rest
     http_method = "DELETE",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$delete_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelectionName = RestoreTestingSelectionName)
   output <- .backup$delete_restore_testing_selection_output()
@@ -1594,8 +1573,7 @@ backup_describe_backup_job <- function(BackupJobId) {
     http_method = "GET",
     http_path = "/backup-jobs/{backupJobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_backup_job_input(BackupJobId = BackupJobId)
   output <- .backup$describe_backup_job_output()
@@ -1662,8 +1640,7 @@ backup_describe_backup_vault <- function(BackupVaultName, BackupVaultAccountId =
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$describe_backup_vault_output()
@@ -1745,8 +1722,7 @@ backup_describe_copy_job <- function(CopyJobId) {
     http_method = "GET",
     http_path = "/copy-jobs/{copyJobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_copy_job_input(CopyJobId = CopyJobId)
   output <- .backup$describe_copy_job_output()
@@ -1824,8 +1800,7 @@ backup_describe_framework <- function(FrameworkName) {
     http_method = "GET",
     http_path = "/audit/frameworks/{frameworkName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_framework_input(FrameworkName = FrameworkName)
   output <- .backup$describe_framework_output()
@@ -1880,8 +1855,7 @@ backup_describe_global_settings <- function() {
     http_method = "GET",
     http_path = "/global-settings",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_global_settings_input()
   output <- .backup$describe_global_settings_output()
@@ -1948,8 +1922,7 @@ backup_describe_protected_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/resources/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_protected_resource_input(ResourceArn = ResourceArn)
   output <- .backup$describe_protected_resource_output()
@@ -2053,8 +2026,7 @@ backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn, Ba
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$describe_recovery_point_output()
@@ -2109,8 +2081,7 @@ backup_describe_region_settings <- function() {
     http_method = "GET",
     http_path = "/account-settings",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_region_settings_input()
   output <- .backup$describe_region_settings_output()
@@ -2180,8 +2151,7 @@ backup_describe_report_job <- function(ReportJobId) {
     http_method = "GET",
     http_path = "/audit/report-jobs/{reportJobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_report_job_input(ReportJobId = ReportJobId)
   output <- .backup$describe_report_job_output()
@@ -2268,8 +2238,7 @@ backup_describe_report_plan <- function(ReportPlanName) {
     http_method = "GET",
     http_path = "/audit/report-plans/{reportPlanName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_report_plan_input(ReportPlanName = ReportPlanName)
   output <- .backup$describe_report_plan_output()
@@ -2345,8 +2314,7 @@ backup_describe_restore_job <- function(RestoreJobId) {
     http_method = "GET",
     http_path = "/restore-jobs/{restoreJobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$describe_restore_job_input(RestoreJobId = RestoreJobId)
   output <- .backup$describe_restore_job_output()
@@ -2400,8 +2368,7 @@ backup_disassociate_recovery_point <- function(BackupVaultName, RecoveryPointArn
     http_method = "POST",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/disassociate",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$disassociate_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
   output <- .backup$disassociate_recovery_point_output()
@@ -2456,8 +2423,7 @@ backup_disassociate_recovery_point_from_parent <- function(BackupVaultName, Reco
     http_method = "DELETE",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/parentAssociation",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$disassociate_recovery_point_from_parent_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
   output <- .backup$disassociate_recovery_point_from_parent_output()
@@ -2507,8 +2473,7 @@ backup_export_backup_plan_template <- function(BackupPlanId) {
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/toTemplate/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$export_backup_plan_template_input(BackupPlanId = BackupPlanId)
   output <- .backup$export_backup_plan_template_output()
@@ -2622,8 +2587,7 @@ backup_get_backup_plan <- function(BackupPlanId, VersionId = NULL) {
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_backup_plan_input(BackupPlanId = BackupPlanId, VersionId = VersionId)
   output <- .backup$get_backup_plan_output()
@@ -2711,8 +2675,7 @@ backup_get_backup_plan_from_json <- function(BackupPlanTemplateJson) {
     http_method = "POST",
     http_path = "/backup/template/json/toPlan",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_backup_plan_from_json_input(BackupPlanTemplateJson = BackupPlanTemplateJson)
   output <- .backup$get_backup_plan_from_json_output()
@@ -2800,8 +2763,7 @@ backup_get_backup_plan_from_template <- function(BackupPlanTemplateId) {
     http_method = "GET",
     http_path = "/backup/template/plans/{templateId}/toPlan",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_backup_plan_from_template_input(BackupPlanTemplateId = BackupPlanTemplateId)
   output <- .backup$get_backup_plan_from_template_output()
@@ -2902,8 +2864,7 @@ backup_get_backup_selection <- function(BackupPlanId, SelectionId) {
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/selections/{selectionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_backup_selection_input(BackupPlanId = BackupPlanId, SelectionId = SelectionId)
   output <- .backup$get_backup_selection_output()
@@ -2957,8 +2918,7 @@ backup_get_backup_vault_access_policy <- function(BackupVaultName) {
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/access-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_backup_vault_access_policy_input(BackupVaultName = BackupVaultName)
   output <- .backup$get_backup_vault_access_policy_output()
@@ -3013,8 +2973,7 @@ backup_get_backup_vault_notifications <- function(BackupVaultName) {
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/notification-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_backup_vault_notifications_input(BackupVaultName = BackupVaultName)
   output <- .backup$get_backup_vault_notifications_output()
@@ -3093,8 +3052,7 @@ backup_get_legal_hold <- function(LegalHoldId) {
     http_method = "GET",
     http_path = "/legal-holds/{legalHoldId}/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_legal_hold_input(LegalHoldId = LegalHoldId)
   output <- .backup$get_legal_hold_output()
@@ -3158,8 +3116,7 @@ backup_get_recovery_point_restore_metadata <- function(BackupVaultName, Recovery
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/restore-metadata",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_recovery_point_restore_metadata_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$get_recovery_point_restore_metadata_output()
@@ -3210,8 +3167,7 @@ backup_get_restore_job_metadata <- function(RestoreJobId) {
     http_method = "GET",
     http_path = "/restore-jobs/{restoreJobId}/metadata",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_restore_job_metadata_input(RestoreJobId = RestoreJobId)
   output <- .backup$get_restore_job_metadata_output()
@@ -3275,8 +3231,7 @@ backup_get_restore_testing_inferred_metadata <- function(BackupVaultAccountId = 
     http_method = "GET",
     http_path = "/restore-testing/inferred-metadata",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_restore_testing_inferred_metadata_input(BackupVaultAccountId = BackupVaultAccountId, BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
   output <- .backup$get_restore_testing_inferred_metadata_output()
@@ -3356,8 +3311,7 @@ backup_get_restore_testing_plan <- function(RestoreTestingPlanName) {
     http_method = "GET",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_restore_testing_plan_input(RestoreTestingPlanName = RestoreTestingPlanName)
   output <- .backup$get_restore_testing_plan_output()
@@ -3440,8 +3394,7 @@ backup_get_restore_testing_selection <- function(RestoreTestingPlanName, Restore
     http_method = "GET",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelectionName = RestoreTestingSelectionName)
   output <- .backup$get_restore_testing_selection_output()
@@ -3486,8 +3439,7 @@ backup_get_supported_resource_types <- function() {
     http_method = "GET",
     http_path = "/supported-resource-types",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$get_supported_resource_types_input()
   output <- .backup$get_supported_resource_types_output()
@@ -3571,11 +3523,11 @@ backup_get_supported_resource_types <- function() {
 #' returns the sum.
 #' @param AggregationPeriod The period for the returned results.
 #' 
-#' - `ONE_DAY` - The daily job count for the prior 14 days.
+#' -   `ONE_DAY` - The daily job count for the prior 14 days.
 #' 
-#' - `SEVEN_DAYS` - The aggregated job count for the prior 7 days.
+#' -   `SEVEN_DAYS` - The aggregated job count for the prior 7 days.
 #' 
-#' - `FOURTEEN_DAYS` - The aggregated job count for prior 14 days.
+#' -   `FOURTEEN_DAYS` - The aggregated job count for prior 14 days.
 #' @param MaxResults The maximum number of items to be returned.
 #' 
 #' The value is an integer. Range of accepted values is from 1 to 500.
@@ -3633,8 +3585,7 @@ backup_list_backup_job_summaries <- function(AccountId = NULL, State = NULL, Res
     http_method = "GET",
     http_path = "/audit/backup-job-summaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_backup_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_backup_job_summaries_output()
@@ -3689,38 +3640,38 @@ backup_list_backup_job_summaries <- function(AccountId = NULL, State = NULL, Res
 #' @param ByCreatedAfter Returns only backup jobs that were created after the specified date.
 #' @param ByResourceType Returns only backup jobs for the specified resources:
 #' 
-#' - `Aurora` for Amazon Aurora
+#' -   `Aurora` for Amazon Aurora
 #' 
-#' - `CloudFormation` for CloudFormation
+#' -   `CloudFormation` for CloudFormation
 #' 
-#' - `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
+#' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
 #' 
-#' - `DynamoDB` for Amazon DynamoDB
+#' -   `DynamoDB` for Amazon DynamoDB
 #' 
-#' - `EBS` for Amazon Elastic Block Store
+#' -   `EBS` for Amazon Elastic Block Store
 #' 
-#' - `EC2` for Amazon Elastic Compute Cloud
+#' -   `EC2` for Amazon Elastic Compute Cloud
 #' 
-#' - `EFS` for Amazon Elastic File System
+#' -   `EFS` for Amazon Elastic File System
 #' 
-#' - `FSx` for Amazon FSx
+#' -   `FSx` for Amazon FSx
 #' 
-#' - `Neptune` for Amazon Neptune
+#' -   `Neptune` for Amazon Neptune
 #' 
-#' - `RDS` for Amazon Relational Database Service
+#' -   `RDS` for Amazon Relational Database Service
 #' 
-#' - `Redshift` for Amazon Redshift
+#' -   `Redshift` for Amazon Redshift
 #' 
-#' - `S3` for Amazon Simple Storage Service (Amazon S3)
+#' -   `S3` for Amazon Simple Storage Service (Amazon S3)
 #' 
-#' - `SAP HANA on Amazon EC2` for SAP HANA databases on Amazon Elastic
-#'   Compute Cloud instances
+#' -   `SAP HANA on Amazon EC2` for SAP HANA databases on Amazon Elastic
+#'     Compute Cloud instances
 #' 
-#' - `Storage Gateway` for Storage Gateway
+#' -   `Storage Gateway` for Storage Gateway
 #' 
-#' - `Timestream` for Amazon Timestream
+#' -   `Timestream` for Amazon Timestream
 #' 
-#' - `VirtualMachine` for VMware virtual machines
+#' -   `VirtualMachine` for VMware virtual machines
 #' @param ByAccountId The account ID to list the jobs from. Returns only backup jobs
 #' associated with the specified account ID.
 #' 
@@ -3837,8 +3788,7 @@ backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResou
     http_method = "GET",
     http_path = "/backup-jobs/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupJobs")
   )
   input <- .backup$list_backup_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByBackupVaultName = ByBackupVaultName, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByAccountId = ByAccountId, ByCompleteAfter = ByCompleteAfter, ByCompleteBefore = ByCompleteBefore, ByParentJobId = ByParentJobId, ByMessageCategory = ByMessageCategory)
   output <- .backup$list_backup_jobs_output()
@@ -3897,8 +3847,7 @@ backup_list_backup_plan_templates <- function(NextToken = NULL, MaxResults = NUL
     http_method = "GET",
     http_path = "/backup/template/plans",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlanTemplatesList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlanTemplatesList")
   )
   input <- .backup$list_backup_plan_templates_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_plan_templates_output()
@@ -3983,8 +3932,7 @@ backup_list_backup_plan_versions <- function(BackupPlanId, NextToken = NULL, Max
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/versions/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlanVersionsList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlanVersionsList")
   )
   input <- .backup$list_backup_plan_versions_input(BackupPlanId = BackupPlanId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_plan_versions_output()
@@ -4066,8 +4014,7 @@ backup_list_backup_plans <- function(NextToken = NULL, MaxResults = NULL, Includ
     http_method = "GET",
     http_path = "/backup/plans/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlansList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupPlansList")
   )
   input <- .backup$list_backup_plans_input(NextToken = NextToken, MaxResults = MaxResults, IncludeDeleted = IncludeDeleted)
   output <- .backup$list_backup_plans_output()
@@ -4136,8 +4083,7 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
     http_method = "GET",
     http_path = "/backup/plans/{backupPlanId}/selections/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupSelectionsList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupSelectionsList")
   )
   input <- .backup$list_backup_selections_input(BackupPlanId = BackupPlanId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_selections_output()
@@ -4216,8 +4162,7 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
     http_method = "GET",
     http_path = "/backup-vaults/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupVaultList"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupVaultList")
   )
   input <- .backup$list_backup_vaults_input(ByVaultType = ByVaultType, ByShared = ByShared, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_vaults_output()
@@ -4288,11 +4233,11 @@ backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextT
 #' returns the sum.
 #' @param AggregationPeriod The period for the returned results.
 #' 
-#' - `ONE_DAY` - The daily job count for the prior 14 days.
+#' -   `ONE_DAY` - The daily job count for the prior 14 days.
 #' 
-#' - `SEVEN_DAYS` - The aggregated job count for the prior 7 days.
+#' -   `SEVEN_DAYS` - The aggregated job count for the prior 7 days.
 #' 
-#' - `FOURTEEN_DAYS` - The aggregated job count for prior 14 days.
+#' -   `FOURTEEN_DAYS` - The aggregated job count for prior 14 days.
 #' @param MaxResults This parameter sets the maximum number of items to be returned.
 #' 
 #' The value is an integer. Range of accepted values is from 1 to 500.
@@ -4350,8 +4295,7 @@ backup_list_copy_job_summaries <- function(AccountId = NULL, State = NULL, Resou
     http_method = "GET",
     http_path = "/audit/copy-job-summaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_copy_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, MessageCategory = MessageCategory, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_copy_job_summaries_output()
@@ -4386,38 +4330,38 @@ backup_list_copy_job_summaries <- function(AccountId = NULL, State = NULL, Resou
 #' @param ByCreatedAfter Returns only copy jobs that were created after the specified date.
 #' @param ByResourceType Returns only backup jobs for the specified resources:
 #' 
-#' - `Aurora` for Amazon Aurora
+#' -   `Aurora` for Amazon Aurora
 #' 
-#' - `CloudFormation` for CloudFormation
+#' -   `CloudFormation` for CloudFormation
 #' 
-#' - `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
+#' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
 #' 
-#' - `DynamoDB` for Amazon DynamoDB
+#' -   `DynamoDB` for Amazon DynamoDB
 #' 
-#' - `EBS` for Amazon Elastic Block Store
+#' -   `EBS` for Amazon Elastic Block Store
 #' 
-#' - `EC2` for Amazon Elastic Compute Cloud
+#' -   `EC2` for Amazon Elastic Compute Cloud
 #' 
-#' - `EFS` for Amazon Elastic File System
+#' -   `EFS` for Amazon Elastic File System
 #' 
-#' - `FSx` for Amazon FSx
+#' -   `FSx` for Amazon FSx
 #' 
-#' - `Neptune` for Amazon Neptune
+#' -   `Neptune` for Amazon Neptune
 #' 
-#' - `RDS` for Amazon Relational Database Service
+#' -   `RDS` for Amazon Relational Database Service
 #' 
-#' - `Redshift` for Amazon Redshift
+#' -   `Redshift` for Amazon Redshift
 #' 
-#' - `S3` for Amazon Simple Storage Service (Amazon S3)
+#' -   `S3` for Amazon Simple Storage Service (Amazon S3)
 #' 
-#' - `SAP HANA on Amazon EC2` for SAP HANA databases on Amazon Elastic
-#'   Compute Cloud instances
+#' -   `SAP HANA on Amazon EC2` for SAP HANA databases on Amazon Elastic
+#'     Compute Cloud instances
 #' 
-#' - `Storage Gateway` for Storage Gateway
+#' -   `Storage Gateway` for Storage Gateway
 #' 
-#' - `Timestream` for Amazon Timestream
+#' -   `Timestream` for Amazon Timestream
 #' 
-#' - `VirtualMachine` for VMware virtual machines
+#' -   `VirtualMachine` for VMware virtual machines
 #' @param ByDestinationVaultArn An Amazon Resource Name (ARN) that uniquely identifies a source backup
 #' vault to copy from; for example,
 #' `arn:aws:backup:us-east-1:123456789012:backup-vault:aBackupVault`.
@@ -4526,8 +4470,7 @@ backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourc
     http_method = "GET",
     http_path = "/copy-jobs/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CopyJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CopyJobs")
   )
   input <- .backup$list_copy_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByState = ByState, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByResourceType = ByResourceType, ByDestinationVaultArn = ByDestinationVaultArn, ByAccountId = ByAccountId, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByParentJobId = ByParentJobId, ByMessageCategory = ByMessageCategory)
   output <- .backup$list_copy_jobs_output()
@@ -4594,8 +4537,7 @@ backup_list_frameworks <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/audit/frameworks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_frameworks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_frameworks_output()
@@ -4663,8 +4605,7 @@ backup_list_legal_holds <- function(NextToken = NULL, MaxResults = NULL) {
     http_method = "GET",
     http_path = "/legal-holds/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LegalHolds"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LegalHolds")
   )
   input <- .backup$list_legal_holds_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_legal_holds_output()
@@ -4733,8 +4674,7 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
     http_method = "GET",
     http_path = "/resources/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results")
   )
   input <- .backup$list_protected_resources_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_protected_resources_output()
@@ -4808,8 +4748,7 @@ backup_list_protected_resources_by_backup_vault <- function(BackupVaultName, Bac
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/resources/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results")
   )
   input <- .backup$list_protected_resources_by_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_protected_resources_by_backup_vault_output()
@@ -4850,38 +4789,38 @@ backup_list_protected_resources_by_backup_vault <- function(BackupVaultName, Bac
 #' Resource Name (ARN).
 #' @param ByResourceType Returns only recovery points that match the specified resource type(s):
 #' 
-#' - `Aurora` for Amazon Aurora
+#' -   `Aurora` for Amazon Aurora
 #' 
-#' - `CloudFormation` for CloudFormation
+#' -   `CloudFormation` for CloudFormation
 #' 
-#' - `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
+#' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
 #' 
-#' - `DynamoDB` for Amazon DynamoDB
+#' -   `DynamoDB` for Amazon DynamoDB
 #' 
-#' - `EBS` for Amazon Elastic Block Store
+#' -   `EBS` for Amazon Elastic Block Store
 #' 
-#' - `EC2` for Amazon Elastic Compute Cloud
+#' -   `EC2` for Amazon Elastic Compute Cloud
 #' 
-#' - `EFS` for Amazon Elastic File System
+#' -   `EFS` for Amazon Elastic File System
 #' 
-#' - `FSx` for Amazon FSx
+#' -   `FSx` for Amazon FSx
 #' 
-#' - `Neptune` for Amazon Neptune
+#' -   `Neptune` for Amazon Neptune
 #' 
-#' - `RDS` for Amazon Relational Database Service
+#' -   `RDS` for Amazon Relational Database Service
 #' 
-#' - `Redshift` for Amazon Redshift
+#' -   `Redshift` for Amazon Redshift
 #' 
-#' - `S3` for Amazon Simple Storage Service (Amazon S3)
+#' -   `S3` for Amazon Simple Storage Service (Amazon S3)
 #' 
-#' - `SAP HANA on Amazon EC2` for SAP HANA databases on Amazon Elastic
-#'   Compute Cloud instances
+#' -   `SAP HANA on Amazon EC2` for SAP HANA databases on Amazon Elastic
+#'     Compute Cloud instances
 #' 
-#' - `Storage Gateway` for Storage Gateway
+#' -   `Storage Gateway` for Storage Gateway
 #' 
-#' - `Timestream` for Amazon Timestream
+#' -   `Timestream` for Amazon Timestream
 #' 
-#' - `VirtualMachine` for VMware virtual machines
+#' -   `VirtualMachine` for VMware virtual machines
 #' @param ByBackupPlanId Returns only recovery points that match the specified backup plan ID.
 #' @param ByCreatedBefore Returns only recovery points that were created before the specified
 #' timestamp.
@@ -4978,8 +4917,7 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, BackupV
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId, NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByResourceType = ByResourceType, ByBackupPlanId = ByBackupPlanId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByParentRecoveryPointArn = ByParentRecoveryPointArn)
   output <- .backup$list_recovery_points_by_backup_vault_output()
@@ -5045,8 +4983,7 @@ backup_list_recovery_points_by_legal_hold <- function(LegalHoldId, NextToken = N
     http_method = "GET",
     http_path = "/legal-holds/{legalHoldId}/recovery-points",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_legal_hold_input(LegalHoldId = LegalHoldId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_recovery_points_by_legal_hold_output()
@@ -5137,8 +5074,7 @@ backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NUL
     http_method = "GET",
     http_path = "/resources/{resourceArn}/recovery-points/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
   input <- .backup$list_recovery_points_by_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults, ManagedByAWSBackupOnly = ManagedByAWSBackupOnly)
   output <- .backup$list_recovery_points_by_resource_output()
@@ -5234,8 +5170,7 @@ backup_list_report_jobs <- function(ByReportPlanName = NULL, ByCreationBefore = 
     http_method = "GET",
     http_path = "/audit/report-jobs",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_report_jobs_input(ByReportPlanName = ByReportPlanName, ByCreationBefore = ByCreationBefore, ByCreationAfter = ByCreationAfter, ByStatus = ByStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_report_jobs_output()
@@ -5330,8 +5265,7 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "GET",
     http_path = "/audit/report-plans",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_report_plans_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_report_plans_output()
@@ -5391,11 +5325,11 @@ backup_list_report_plans <- function(MaxResults = NULL, NextToken = NULL) {
 #' Relational Database Service (Amazon RDS) database.
 #' @param AggregationPeriod The period for the returned results.
 #' 
-#' - `ONE_DAY` - The daily job count for the prior 14 days.
+#' -   `ONE_DAY` - The daily job count for the prior 14 days.
 #' 
-#' - `SEVEN_DAYS` - The aggregated job count for the prior 7 days.
+#' -   `SEVEN_DAYS` - The aggregated job count for the prior 7 days.
 #' 
-#' - `FOURTEEN_DAYS` - The aggregated job count for prior 14 days.
+#' -   `FOURTEEN_DAYS` - The aggregated job count for prior 14 days.
 #' @param MaxResults This parameter sets the maximum number of items to be returned.
 #' 
 #' The value is an integer. Range of accepted values is from 1 to 500.
@@ -5451,8 +5385,7 @@ backup_list_restore_job_summaries <- function(AccountId = NULL, State = NULL, Re
     http_method = "GET",
     http_path = "/audit/restore-job-summaries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_restore_job_summaries_input(AccountId = AccountId, State = State, ResourceType = ResourceType, AggregationPeriod = AggregationPeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_restore_job_summaries_output()
@@ -5486,38 +5419,38 @@ backup_list_restore_job_summaries <- function(AccountId = NULL, State = NULL, Re
 #' @param ByResourceType Include this parameter to return only restore jobs for the specified
 #' resources:
 #' 
-#' - `Aurora` for Amazon Aurora
+#' -   `Aurora` for Amazon Aurora
 #' 
-#' - `CloudFormation` for CloudFormation
+#' -   `CloudFormation` for CloudFormation
 #' 
-#' - `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
+#' -   `DocumentDB` for Amazon DocumentDB (with MongoDB compatibility)
 #' 
-#' - `DynamoDB` for Amazon DynamoDB
+#' -   `DynamoDB` for Amazon DynamoDB
 #' 
-#' - `EBS` for Amazon Elastic Block Store
+#' -   `EBS` for Amazon Elastic Block Store
 #' 
-#' - `EC2` for Amazon Elastic Compute Cloud
+#' -   `EC2` for Amazon Elastic Compute Cloud
 #' 
-#' - `EFS` for Amazon Elastic File System
+#' -   `EFS` for Amazon Elastic File System
 #' 
-#' - `FSx` for Amazon FSx
+#' -   `FSx` for Amazon FSx
 #' 
-#' - `Neptune` for Amazon Neptune
+#' -   `Neptune` for Amazon Neptune
 #' 
-#' - `RDS` for Amazon Relational Database Service
+#' -   `RDS` for Amazon Relational Database Service
 #' 
-#' - `Redshift` for Amazon Redshift
+#' -   `Redshift` for Amazon Redshift
 #' 
-#' - `S3` for Amazon Simple Storage Service (Amazon S3)
+#' -   `S3` for Amazon Simple Storage Service (Amazon S3)
 #' 
-#' - `SAP HANA on Amazon EC2` for SAP HANA databases on Amazon Elastic
-#'   Compute Cloud instances
+#' -   `SAP HANA on Amazon EC2` for SAP HANA databases on Amazon Elastic
+#'     Compute Cloud instances
 #' 
-#' - `Storage Gateway` for Storage Gateway
+#' -   `Storage Gateway` for Storage Gateway
 #' 
-#' - `Timestream` for Amazon Timestream
+#' -   `Timestream` for Amazon Timestream
 #' 
-#' - `VirtualMachine` for VMware virtual machines
+#' -   `VirtualMachine` for VMware virtual machines
 #' @param ByCreatedBefore Returns only restore jobs that were created before the specified date.
 #' @param ByCreatedAfter Returns only restore jobs that were created after the specified date.
 #' @param ByStatus Returns only restore jobs associated with the specified job status.
@@ -5602,8 +5535,7 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAcco
     http_method = "GET",
     http_path = "/restore-jobs/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs")
   )
   input <- .backup$list_restore_jobs_input(NextToken = NextToken, MaxResults = MaxResults, ByAccountId = ByAccountId, ByResourceType = ByResourceType, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByStatus = ByStatus, ByCompleteBefore = ByCompleteBefore, ByCompleteAfter = ByCompleteAfter, ByRestoreTestingPlanArn = ByRestoreTestingPlanArn)
   output <- .backup$list_restore_jobs_output()
@@ -5708,8 +5640,7 @@ backup_list_restore_jobs_by_protected_resource <- function(ResourceArn, ByStatus
     http_method = "GET",
     http_path = "/resources/{resourceArn}/restore-jobs/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreJobs")
   )
   input <- .backup$list_restore_jobs_by_protected_resource_input(ResourceArn = ResourceArn, ByStatus = ByStatus, ByRecoveryPointCreationDateAfter = ByRecoveryPointCreationDateAfter, ByRecoveryPointCreationDateBefore = ByRecoveryPointCreationDateBefore, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_restore_jobs_by_protected_resource_output()
@@ -5780,8 +5711,7 @@ backup_list_restore_testing_plans <- function(MaxResults = NULL, NextToken = NUL
     http_method = "GET",
     http_path = "/restore-testing/plans",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreTestingPlans"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreTestingPlans")
   )
   input <- .backup$list_restore_testing_plans_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .backup$list_restore_testing_plans_output()
@@ -5851,8 +5781,7 @@ backup_list_restore_testing_selections <- function(MaxResults = NULL, NextToken 
     http_method = "GET",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreTestingSelections"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RestoreTestingSelections")
   )
   input <- .backup$list_restore_testing_selections_input(MaxResults = MaxResults, NextToken = NextToken, RestoreTestingPlanName = RestoreTestingPlanName)
   output <- .backup$list_restore_testing_selections_output()
@@ -5915,8 +5844,7 @@ backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backup$list_tags_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_tags_output()
@@ -5966,8 +5894,7 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
     http_method = "PUT",
     http_path = "/backup-vaults/{backupVaultName}/access-policy",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$put_backup_vault_access_policy_input(BackupVaultName = BackupVaultName, Policy = Policy)
   output <- .backup$put_backup_vault_access_policy_output()
@@ -6088,8 +6015,7 @@ backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinReten
     http_method = "PUT",
     http_path = "/backup-vaults/{backupVaultName}/vault-lock",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$put_backup_vault_lock_configuration_input(BackupVaultName = BackupVaultName, MinRetentionDays = MinRetentionDays, MaxRetentionDays = MaxRetentionDays, ChangeableForDays = ChangeableForDays)
   output <- .backup$put_backup_vault_lock_configuration_output()
@@ -6126,14 +6052,14 @@ backup_put_backup_vault_lock_configuration <- function(BackupVaultName, MinReten
 #' 
 #' The following events are supported:
 #' 
-#' - `BACKUP_JOB_STARTED` | `BACKUP_JOB_COMPLETED`
+#' -   `BACKUP_JOB_STARTED` | `BACKUP_JOB_COMPLETED`
 #' 
-#' - `COPY_JOB_STARTED` | `COPY_JOB_SUCCESSFUL` | `COPY_JOB_FAILED`
+#' -   `COPY_JOB_STARTED` | `COPY_JOB_SUCCESSFUL` | `COPY_JOB_FAILED`
 #' 
-#' - `RESTORE_JOB_STARTED` | `RESTORE_JOB_COMPLETED` |
-#'   `RECOVERY_POINT_MODIFIED`
+#' -   `RESTORE_JOB_STARTED` | `RESTORE_JOB_COMPLETED` |
+#'     `RECOVERY_POINT_MODIFIED`
 #' 
-#' - `S3_BACKUP_OBJECT_FAILED` | `S3_RESTORE_OBJECT_FAILED`
+#' -   `S3_BACKUP_OBJECT_FAILED` | `S3_RESTORE_OBJECT_FAILED`
 #' 
 #' The list below includes both supported events and deprecated events that
 #' are no longer in use (for reference). Deprecated events do not return
@@ -6165,8 +6091,7 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
     http_method = "PUT",
     http_path = "/backup-vaults/{backupVaultName}/notification-configuration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$put_backup_vault_notifications_input(BackupVaultName = BackupVaultName, SNSTopicArn = SNSTopicArn, BackupVaultEvents = BackupVaultEvents)
   output <- .backup$put_backup_vault_notifications_output()
@@ -6218,8 +6143,7 @@ backup_put_restore_validation_result <- function(RestoreJobId, ValidationStatus,
     http_method = "PUT",
     http_path = "/restore-jobs/{restoreJobId}/validations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$put_restore_validation_result_input(RestoreJobId = RestoreJobId, ValidationStatus = ValidationStatus, ValidationStatusMessage = ValidationStatusMessage)
   output <- .backup$put_restore_validation_result_output()
@@ -6348,8 +6272,7 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
     http_method = "PUT",
     http_path = "/backup-jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$start_backup_job_input(BackupVaultName = BackupVaultName, ResourceArn = ResourceArn, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, StartWindowMinutes = StartWindowMinutes, CompleteWindowMinutes = CompleteWindowMinutes, Lifecycle = Lifecycle, RecoveryPointTags = RecoveryPointTags, BackupOptions = BackupOptions)
   output <- .backup$start_backup_job_output()
@@ -6428,8 +6351,7 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
     http_method = "PUT",
     http_path = "/copy-jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$start_copy_job_input(RecoveryPointArn = RecoveryPointArn, SourceBackupVaultName = SourceBackupVaultName, DestinationBackupVaultArn = DestinationBackupVaultArn, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, Lifecycle = Lifecycle)
   output <- .backup$start_copy_job_output()
@@ -6482,8 +6404,7 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
     http_method = "POST",
     http_path = "/audit/report-jobs/{reportPlanName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$start_report_job_input(ReportPlanName = ReportPlanName, IdempotencyToken = IdempotencyToken)
   output <- .backup$start_report_job_output()
@@ -6519,50 +6440,50 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #' For more information about the metadata for each resource, see the
 #' following:
 #' 
-#' - [Metadata for Amazon
-#'   Aurora](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-aur.html#aur-restore-cli)
+#' -   [Metadata for Amazon
+#'     Aurora](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-aur.html#aur-restore-cli)
 #' 
-#' - [Metadata for Amazon
-#'   DocumentDB](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-docdb.html#docdb-restore-cli)
+#' -   [Metadata for Amazon
+#'     DocumentDB](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-docdb.html#docdb-restore-cli)
 #' 
-#' - [Metadata for
-#'   CloudFormation](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-application-stacks.html#restoring-cfn-cli)
+#' -   [Metadata for
+#'     CloudFormation](https://docs.aws.amazon.com/aws-backup/latest/devguide/restore-application-stacks.html#restoring-cfn-cli)
 #' 
-#' - [Metadata for Amazon
-#'   DynamoDB](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-dynamodb.html#ddb-restore-cli)
+#' -   [Metadata for Amazon
+#'     DynamoDB](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-dynamodb.html#ddb-restore-cli)
 #' 
-#' - [Metadata for Amazon
-#'   EBS](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-ebs.html#ebs-restore-cli)
+#' -   [Metadata for Amazon
+#'     EBS](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-ebs.html#ebs-restore-cli)
 #' 
-#' - [Metadata for Amazon
-#'   EC2](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-ec2.html#restoring-ec2-cli)
+#' -   [Metadata for Amazon
+#'     EC2](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-ec2.html#restoring-ec2-cli)
 #' 
-#' - [Metadata for Amazon
-#'   EFS](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-efs.html#efs-restore-cli)
+#' -   [Metadata for Amazon
+#'     EFS](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-efs.html#efs-restore-cli)
 #' 
-#' - [Metadata for Amazon
-#'   FSx](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-fsx.html#fsx-restore-cli)
+#' -   [Metadata for Amazon
+#'     FSx](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-fsx.html#fsx-restore-cli)
 #' 
-#' - [Metadata for Amazon
-#'   Neptune](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-nep.html#nep-restore-cli)
+#' -   [Metadata for Amazon
+#'     Neptune](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-nep.html#nep-restore-cli)
 #' 
-#' - [Metadata for Amazon
-#'   RDS](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-rds.html#rds-restore-cli)
+#' -   [Metadata for Amazon
+#'     RDS](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-rds.html#rds-restore-cli)
 #' 
-#' - [Metadata for Amazon
-#'   Redshift](https://docs.aws.amazon.com/aws-backup/latest/devguide/redshift-restores.html#redshift-restore-api)
+#' -   [Metadata for Amazon
+#'     Redshift](https://docs.aws.amazon.com/aws-backup/latest/devguide/redshift-restores.html#redshift-restore-api)
 #' 
-#' - [Metadata for Storage
-#'   Gateway](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-storage-gateway.html#restoring-sgw-cli)
+#' -   [Metadata for Storage
+#'     Gateway](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-storage-gateway.html#restoring-sgw-cli)
 #' 
-#' - [Metadata for Amazon
-#'   S3](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-s3.html#s3-restore-cli)
+#' -   [Metadata for Amazon
+#'     S3](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-s3.html#s3-restore-cli)
 #' 
-#' - [Metadata for Amazon
-#'   Timestream](https://docs.aws.amazon.com/aws-backup/latest/devguide/timestream-restore.html#timestream-restore-api)
+#' -   [Metadata for Amazon
+#'     Timestream](https://docs.aws.amazon.com/aws-backup/latest/devguide/timestream-restore.html#timestream-restore-api)
 #' 
-#' - [Metadata for virtual
-#'   machines](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-vm.html#vm-restore-cli)
+#' -   [Metadata for virtual
+#'     machines](https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-vm.html#vm-restore-cli)
 #' @param IamRoleArn The Amazon Resource Name (ARN) of the IAM role that Backup uses to
 #' create the target resource; for example:
 #' `arn:aws:iam::123456789012:role/S3Access`.
@@ -6574,35 +6495,35 @@ backup_start_report_job <- function(ReportPlanName, IdempotencyToken = NULL) {
 #' @param ResourceType Starts a job to restore a recovery point for one of the following
 #' resources:
 #' 
-#' - `Aurora` - Amazon Aurora
+#' -   `Aurora` - Amazon Aurora
 #' 
-#' - `DocumentDB` - Amazon DocumentDB
+#' -   `DocumentDB` - Amazon DocumentDB
 #' 
-#' - `CloudFormation` - CloudFormation
+#' -   `CloudFormation` - CloudFormation
 #' 
-#' - `DynamoDB` - Amazon DynamoDB
+#' -   `DynamoDB` - Amazon DynamoDB
 #' 
-#' - `EBS` - Amazon Elastic Block Store
+#' -   `EBS` - Amazon Elastic Block Store
 #' 
-#' - `EC2` - Amazon Elastic Compute Cloud
+#' -   `EC2` - Amazon Elastic Compute Cloud
 #' 
-#' - `EFS` - Amazon Elastic File System
+#' -   `EFS` - Amazon Elastic File System
 #' 
-#' - `FSx` - Amazon FSx
+#' -   `FSx` - Amazon FSx
 #' 
-#' - `Neptune` - Amazon Neptune
+#' -   `Neptune` - Amazon Neptune
 #' 
-#' - `RDS` - Amazon Relational Database Service
+#' -   `RDS` - Amazon Relational Database Service
 #' 
-#' - `Redshift` - Amazon Redshift
+#' -   `Redshift` - Amazon Redshift
 #' 
-#' - `Storage Gateway` - Storage Gateway
+#' -   `Storage Gateway` - Storage Gateway
 #' 
-#' - `S3` - Amazon Simple Storage Service
+#' -   `S3` - Amazon Simple Storage Service
 #' 
-#' - `Timestream` - Amazon Timestream
+#' -   `Timestream` - Amazon Timestream
 #' 
-#' - `VirtualMachine` - Virtual machines
+#' -   `VirtualMachine` - Virtual machines
 #' @param CopySourceTagsToRestoredResource This is an optional parameter. If this equals `True`, tags included in
 #' the backup will be copied to the restored resource.
 #' 
@@ -6641,8 +6562,7 @@ backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn = NU
     http_method = "PUT",
     http_path = "/restore-jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$start_restore_job_input(RecoveryPointArn = RecoveryPointArn, Metadata = Metadata, IamRoleArn = IamRoleArn, IdempotencyToken = IdempotencyToken, ResourceType = ResourceType, CopySourceTagsToRestoredResource = CopySourceTagsToRestoredResource)
   output <- .backup$start_restore_job_output()
@@ -6690,8 +6610,7 @@ backup_stop_backup_job <- function(BackupJobId) {
     http_method = "POST",
     http_path = "/backup-jobs/{backupJobId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$stop_backup_job_input(BackupJobId = BackupJobId)
   output <- .backup$stop_backup_job_output()
@@ -6754,8 +6673,7 @@ backup_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .backup$tag_resource_output()
@@ -6816,8 +6734,7 @@ backup_untag_resource <- function(ResourceArn, TagKeyList) {
     http_method = "POST",
     http_path = "/untag/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$untag_resource_input(ResourceArn = ResourceArn, TagKeyList = TagKeyList)
   output <- .backup$untag_resource_output()
@@ -6921,8 +6838,7 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
     http_method = "POST",
     http_path = "/backup/plans/{backupPlanId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$update_backup_plan_input(BackupPlanId = BackupPlanId, BackupPlan = BackupPlan)
   output <- .backup$update_backup_plan_output()
@@ -7009,8 +6925,7 @@ backup_update_framework <- function(FrameworkName, FrameworkDescription = NULL, 
     http_method = "PUT",
     http_path = "/audit/frameworks/{frameworkName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$update_framework_input(FrameworkName = FrameworkName, FrameworkDescription = FrameworkDescription, FrameworkControls = FrameworkControls, IdempotencyToken = IdempotencyToken)
   output <- .backup$update_framework_output()
@@ -7061,8 +6976,7 @@ backup_update_global_settings <- function(GlobalSettings = NULL) {
     http_method = "PUT",
     http_path = "/global-settings",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$update_global_settings_input(GlobalSettings = GlobalSettings)
   output <- .backup$update_global_settings_output()
@@ -7167,8 +7081,7 @@ backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPoin
     http_method = "POST",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$update_recovery_point_lifecycle_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, Lifecycle = Lifecycle)
   output <- .backup$update_recovery_point_lifecycle_output()
@@ -7236,8 +7149,7 @@ backup_update_region_settings <- function(ResourceTypeOptInPreference = NULL, Re
     http_method = "PUT",
     http_path = "/account-settings",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$update_region_settings_input(ResourceTypeOptInPreference = ResourceTypeOptInPreference, ResourceTypeManagementPreference = ResourceTypeManagementPreference)
   output <- .backup$update_region_settings_output()
@@ -7333,8 +7245,7 @@ backup_update_report_plan <- function(ReportPlanName, ReportPlanDescription = NU
     http_method = "PUT",
     http_path = "/audit/report-plans/{reportPlanName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$update_report_plan_input(ReportPlanName = ReportPlanName, ReportPlanDescription = ReportPlanDescription, ReportDeliveryChannel = ReportDeliveryChannel, ReportSetting = ReportSetting, IdempotencyToken = IdempotencyToken)
   output <- .backup$update_report_plan_output()
@@ -7354,15 +7265,15 @@ backup_update_report_plan <- function(ReportPlanName, ReportPlanDescription = NU
 #' 
 #' `RecoveryPointSelection` can contain:
 #' 
-#' - `Algorithm`
+#' -   `Algorithm`
 #' 
-#' - `ExcludeVaults`
+#' -   `ExcludeVaults`
 #' 
-#' - `IncludeVaults`
+#' -   `IncludeVaults`
 #' 
-#' - `RecoveryPointTypes`
+#' -   `RecoveryPointTypes`
 #' 
-#' - `SelectionWindowDays`
+#' -   `SelectionWindowDays`
 #'
 #' @usage
 #' backup_update_restore_testing_plan(RestoreTestingPlan,
@@ -7422,8 +7333,7 @@ backup_update_restore_testing_plan <- function(RestoreTestingPlan, RestoreTestin
     http_method = "PUT",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$update_restore_testing_plan_input(RestoreTestingPlan = RestoreTestingPlan, RestoreTestingPlanName = RestoreTestingPlanName)
   output <- .backup$update_restore_testing_plan_output()
@@ -7517,8 +7427,7 @@ backup_update_restore_testing_selection <- function(RestoreTestingPlanName, Rest
     http_method = "PUT",
     http_path = "/restore-testing/plans/{RestoreTestingPlanName}/selections/{RestoreTestingSelectionName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .backup$update_restore_testing_selection_input(RestoreTestingPlanName = RestoreTestingPlanName, RestoreTestingSelection = RestoreTestingSelection, RestoreTestingSelectionName = RestoreTestingSelectionName)
   output <- .backup$update_restore_testing_selection_output()

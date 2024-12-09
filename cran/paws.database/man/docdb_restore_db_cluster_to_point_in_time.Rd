@@ -63,7 +63,8 @@ Constraints:
 provided.
 \item Cannot be specified if the \code{UseLatestRestorableTime} parameter is
 \code{true}.
-\item Cannot be specified if the \code{RestoreType} parameter is \code{copy-on-write}.
+\item Cannot be specified if the \code{RestoreType} parameter is
+\code{copy-on-write}.
 }
 
 Example: \verb{2015-03-07T23:45:00Z}}

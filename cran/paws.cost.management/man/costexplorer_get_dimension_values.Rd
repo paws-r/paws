@@ -50,12 +50,12 @@ with. Possible values are the following:
 \- Amazon Web Services(Amazon Web Services): The entity that sells
 Amazon Web Services.
 
-\- AISPL (Amazon Internet Services Pvt. Ltd.): The local Indian entity
-that's an acting reseller for Amazon Web Services in India.
+\- AISPL (Amazon Internet Services Pvt. Ltd.): The local Indian
+entity that's an acting reseller for Amazon Web Services in India.
 
-\- Amazon Web Services Marketplace: The entity that supports the sale
-of solutions that are built on Amazon Web Services by third-party
-software providers.
+\- Amazon Web Services Marketplace: The entity that supports the
+sale of solutions that are built on Amazon Web Services by
+third-party software providers.
 \item CACHE_ENGINE - The Amazon ElastiCache operating system. Examples are
 Windows or Linux.
 \item DEPLOYMENT_OPTION - The scope of Amazon Relational Database Service
@@ -70,8 +70,8 @@ different use cases. Examples are \verb{Compute Optimized} (for example,
 \code{R4}, \code{R5n}, \code{R5b}, and \code{R6g}).
 \item INVOICING_ENTITY - The name of the entity that issues the Amazon Web
 Services invoice.
-\item LEGAL_ENTITY_NAME - The name of the organization that sells you Amazon
-Web Services services, such as Amazon Web Services.
+\item LEGAL_ENTITY_NAME - The name of the organization that sells you
+Amazon Web Services services, such as Amazon Web Services.
 \item LINKED_ACCOUNT - The description in the attribute map that includes
 the full name of the member account. The value field contains the
 Amazon Web Services ID of the member account.
@@ -87,21 +87,23 @@ Reserved Instances.
 \item RESERVATION_ID - The unique identifier for an Amazon Web Services
 Reservation Instance.
 \item SAVINGS_PLAN_ARN - The unique identifier for your Savings Plans.
-\item SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or Compute).
+\item SAVINGS_PLANS_TYPE - Type of Savings Plans (EC2 Instance or
+Compute).
 \item SERVICE - The Amazon Web Services service such as Amazon DynamoDB.
-\item TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+\item TENANCY - The tenancy of a resource. Examples are shared or
+dedicated.
 \item USAGE_TYPE - The type of usage. An example is DataTransfer-In-Bytes.
 The response for the
-\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation
-includes a unit attribute. Examples include GB and Hrs.
+\code{\link[=costexplorer_get_dimension_values]{get_dimension_values}}
+operation includes a unit attribute. Examples include GB and Hrs.
 \item USAGE_TYPE_GROUP - The grouping of common usage types. An example is
 Amazon EC2: CloudWatch – Alarms. The response for this operation
 includes a unit attribute.
 \item REGION - The Amazon Web Services Region.
-\item RECORD_TYPE - The different types of charges such as Reserved Instance
-(RI) fees, usage costs, tax refunds, and credits.
-\item RESOURCE_ID - The unique identifier of the resource. ResourceId is an
-opt-in feature only available for last 14 days for EC2-Compute
+\item RECORD_TYPE - The different types of charges such as Reserved
+Instance (RI) fees, usage costs, tax refunds, and credits.
+\item RESOURCE_ID - The unique identifier of the resource. ResourceId is
+an opt-in feature only available for last 14 days for EC2-Compute
 Service.
 }
 
@@ -125,7 +127,8 @@ Linux.
 Values are regional or a single Availability Zone.
 \item TAG (Coverage only) - The tags that are associated with a Reserved
 Instance (RI).
-\item TENANCY - The tenancy of a resource. Examples are shared or dedicated.
+\item TENANCY - The tenancy of a resource. Examples are shared or
+dedicated.
 }
 
 If you set the context to \code{SAVINGS_PLANS}, you can use the following

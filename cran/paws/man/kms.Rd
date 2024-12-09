@@ -93,7 +93,7 @@ can use the access key ID and secret access key for an IAM user or you
 can use the Security Token Service (STS) to generate temporary security
 credentials and use those to sign requests.
 
-All KMS requests must be signed with \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4}.
+All KMS requests must be signed with \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4}.
 
 \strong{Logging API Requests}
 
@@ -111,14 +111,14 @@ For more information about credentials and request signing, see the
 following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html}{Amazon Web Services Security Credentials} -
-This topic provides general information about the types of credentials
-used to access Amazon Web Services.
+This topic provides general information about the types of
+credentials used to access Amazon Web Services.
 \item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html}{Temporary Security Credentials} -
 This section of the \emph{IAM User Guide} describes how to create and use
 temporary security credentials.
-\item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html}{Signature Version 4 Signing Process} -
-This set of topics walks you through the process of signing a request
-using an access key ID and a secret access key.
+\item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html}{Signature Version 4 Signing Process} -
+This set of topics walks you through the process of signing a
+request using an access key ID and a secret access key.
 }
 
 \strong{Commonly Used API Operations}

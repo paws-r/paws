@@ -13,9 +13,9 @@ NULL
 #' 
 #' Data API is available with the following types of Aurora databases:
 #' 
-#' - Aurora PostgreSQL - Serverless v2, Serverless v1, and provisioned
+#' -   Aurora PostgreSQL - Serverless v2, Serverless v1, and provisioned
 #' 
-#' - Aurora MySQL - Serverless v1 only
+#' -   Aurora MySQL - Serverless v1 only
 #' 
 #' For more information about the Data API, see [Using RDS Data
 #' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)

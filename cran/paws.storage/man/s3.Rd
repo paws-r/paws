@@ -94,11 +94,11 @@ Amazon Simple Storage Service
 \link[=s3_copy_object]{copy_object} \tab Creates a copy of an object that is already stored in Amazon S3\cr
 \link[=s3_create_bucket]{create_bucket} \tab This action creates an Amazon S3 bucket\cr
 \link[=s3_create_multipart_upload]{create_multipart_upload} \tab This action initiates a multipart upload and returns an upload ID\cr
-\link[=s3_create_session]{create_session} \tab Creates a session that establishes temporary security credentials to support fast authentication and authorization for the Zonal endpoint API operations on directory buckets\cr
+\link[=s3_create_session]{create_session} \tab Creates a session that establishes temporary security credentials to support fast authentication and authorization for the Zonal endpoint APIs on directory buckets\cr
 \link[=s3_delete_bucket]{delete_bucket} \tab Deletes the S3 bucket\cr
 \link[=s3_delete_bucket_analytics_configuration]{delete_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_delete_bucket_cors]{delete_bucket_cors} \tab This operation is not supported by directory buckets\cr
-\link[=s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3)\cr
+\link[=s3_delete_bucket_encryption]{delete_bucket_encryption} \tab This operation is not supported by directory buckets\cr
 \link[=s3_delete_bucket_intelligent_tiering_configuration]{delete_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_delete_bucket_inventory_configuration]{delete_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_delete_bucket_lifecycle]{delete_bucket_lifecycle} \tab This operation is not supported by directory buckets\cr
@@ -118,7 +118,7 @@ Amazon Simple Storage Service
 \link[=s3_get_bucket_acl]{get_bucket_acl} \tab This operation is not supported by directory buckets\cr
 \link[=s3_get_bucket_analytics_configuration]{get_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_get_bucket_cors]{get_bucket_cors} \tab This operation is not supported by directory buckets\cr
-\link[=s3_get_bucket_encryption]{get_bucket_encryption} \tab Returns the default encryption configuration for an Amazon S3 bucket\cr
+\link[=s3_get_bucket_encryption]{get_bucket_encryption} \tab This operation is not supported by directory buckets\cr
 \link[=s3_get_bucket_intelligent_tiering_configuration]{get_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_get_bucket_inventory_configuration]{get_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_get_bucket_lifecycle]{get_bucket_lifecycle} \tab For an updated version of this API, see GetBucketLifecycleConfiguration\cr
@@ -162,7 +162,7 @@ Amazon Simple Storage Service
 \link[=s3_put_bucket_acl]{put_bucket_acl} \tab This operation is not supported by directory buckets\cr
 \link[=s3_put_bucket_analytics_configuration]{put_bucket_analytics_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_put_bucket_cors]{put_bucket_cors} \tab This operation is not supported by directory buckets\cr
-\link[=s3_put_bucket_encryption]{put_bucket_encryption} \tab This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket\cr
+\link[=s3_put_bucket_encryption]{put_bucket_encryption} \tab This operation is not supported by directory buckets\cr
 \link[=s3_put_bucket_intelligent_tiering_configuration]{put_bucket_intelligent_tiering_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_put_bucket_inventory_configuration]{put_bucket_inventory_configuration} \tab This operation is not supported by directory buckets\cr
 \link[=s3_put_bucket_lifecycle]{put_bucket_lifecycle} \tab This operation is not supported by directory buckets\cr

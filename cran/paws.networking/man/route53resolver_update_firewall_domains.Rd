@@ -18,10 +18,10 @@ providing:
 \itemize{
 \item \code{ADD} - Add the domains to the ones that are already in the domain
 list.
-\item \code{REMOVE} - Search the domain list for the domains and remove them from
-the list.
-\item \code{REPLACE} - Update the domain list to exactly match the list that you
-are providing.
+\item \code{REMOVE} - Search the domain list for the domains and remove them
+from the list.
+\item \code{REPLACE} - Update the domain list to exactly match the list that
+you are providing.
 }}
 
 \item{Domains}{[required] A list of domains to use in the update operation.

@@ -170,8 +170,8 @@ When you don't specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier} is
-encrypted, then the restored DB cluster is encrypted using the KMS key
-that was used to encrypt the DB snapshot or DB cluster snapshot.
+encrypted, then the restored DB cluster is encrypted using the KMS
+key that was used to encrypt the DB snapshot or DB cluster snapshot.
 \item If the DB snapshot or DB cluster snapshot in \code{SnapshotIdentifier}
 isn't encrypted, then the restored DB cluster isn't encrypted.
 }
@@ -196,8 +196,8 @@ Default: 0
 
 Constraints:
 \itemize{
-\item If specified, this value must be set to a number from 0 to 259,200 (72
-hours).
+\item If specified, this value must be set to a number from 0 to 259,200
+(72 hours).
 }
 
 Valid for: Aurora DB clusters only}
@@ -348,10 +348,10 @@ attached to it, the DB cluster is public.
 If \code{DBSubnetGroupName} is specified, and \code{PubliclyAccessible} isn't
 specified, the following applies:
 \itemize{
-\item If the subnets are part of a VPC that doesn’t have an internet gateway
-attached to it, the DB cluster is private.
-\item If the subnets are part of a VPC that has an internet gateway attached
-to it, the DB cluster is public.
+\item If the subnets are part of a VPC that doesn’t have an internet
+gateway attached to it, the DB cluster is private.
+\item If the subnets are part of a VPC that has an internet gateway
+attached to it, the DB cluster is public.
 }
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}

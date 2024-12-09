@@ -53,8 +53,8 @@ keys in the \code{addPublicKeys} attribute.}
 \item{WorkerType}{The type of predefined worker that is allocated to the development
 endpoint. Accepts a value of Standard, G.1X, or G.2X.
 \itemize{
-\item For the \code{Standard} worker type, each worker provides 4 vCPU, 16 GB of
-memory and a 50GB disk, and 2 executors per worker.
+\item For the \code{Standard} worker type, each worker provides 4 vCPU, 16 GB
+of memory and a 50GB disk, and 2 executors per worker.
 \item For the \code{G.1X} worker type, each worker maps to 1 DPU (4 vCPU, 16 GB
 of memory, 64 GB disk), and provides 1 executor per worker. We
 recommend this worker type for memory-intensive jobs.

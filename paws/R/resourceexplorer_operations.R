@@ -53,8 +53,7 @@ resourceexplorer_associate_default_view <- function(ViewArn) {
     http_method = "POST",
     http_path = "/AssociateDefaultView",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$associate_default_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$associate_default_view_output()
@@ -129,8 +128,7 @@ resourceexplorer_batch_get_view <- function(ViewArns = NULL) {
     http_method = "POST",
     http_path = "/BatchGetView",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$batch_get_view_input(ViewArns = ViewArns)
   output <- .resourceexplorer$batch_get_view_output()
@@ -175,32 +173,32 @@ resourceexplorer_batch_get_view <- function(ViewArns = NULL) {
 #' in your Amazon Web Services account that allows Resource Explorer to
 #' enumerate your resources to populate the index.
 #' 
-#' - **Action**: `resource-explorer-2:CreateIndex`
+#' -   **Action**: `resource-explorer-2:CreateIndex`
 #' 
-#'   **Resource**: The ARN of the index (as it will exist after the
-#'   operation completes) in the Amazon Web Services Region and account in
-#'   which you're trying to create the index. Use the wildcard character
-#'   (`*`) at the end of the string to match the eventual UUID. For
-#'   example, the following `Resource` element restricts the role or user
-#'   to creating an index in only the `us-east-2` Region of the specified
-#'   account.
+#'     **Resource**: The ARN of the index (as it will exist after the
+#'     operation completes) in the Amazon Web Services Region and account
+#'     in which you're trying to create the index. Use the wildcard
+#'     character (`*`) at the end of the string to match the eventual UUID.
+#'     For example, the following `Resource` element restricts the role or
+#'     user to creating an index in only the `us-east-2` Region of the
+#'     specified account.
 #' 
-#'   `"Resource": "arn:aws:resource-explorer-2:us-west-2:<account-id>:index/*"`
+#'     `"Resource": "arn:aws:resource-explorer-2:us-west-2:<account-id>:index/*"`
 #' 
-#'   Alternatively, you can use `"Resource": "*"` to allow the role or user
-#'   to create an index in any Region.
+#'     Alternatively, you can use `"Resource": "*"` to allow the role or
+#'     user to create an index in any Region.
 #' 
-#' - **Action**: `iam:CreateServiceLinkedRole`
+#' -   **Action**: `iam:CreateServiceLinkedRole`
 #' 
-#'   **Resource**: No specific resource (*).
+#'     **Resource**: No specific resource (*).
 #' 
-#'   This permission is required only the first time you create an index to
-#'   turn on Resource Explorer in the account. Resource Explorer uses this
-#'   to create the [service-linked role needed to index the resources in
-#'   your
-#'   account](https://docs.aws.amazon.com/resource-explorer/latest/userguide/security_iam_service-linked-roles.html).
-#'   Resource Explorer uses the same service-linked role for all additional
-#'   indexes you create afterwards.
+#'     This permission is required only the first time you create an index
+#'     to turn on Resource Explorer in the account. Resource Explorer uses
+#'     this to create the [service-linked role needed to index the
+#'     resources in your
+#'     account](https://docs.aws.amazon.com/resource-explorer/latest/userguide/security_iam_service-linked-roles.html).
+#'     Resource Explorer uses the same service-linked role for all
+#'     additional indexes you create afterwards.
 #'
 #' @usage
 #' resourceexplorer_create_index(ClientToken, Tags)
@@ -247,8 +245,7 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
     http_method = "POST",
     http_path = "/CreateIndex",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$create_index_input(ClientToken = ClientToken, Tags = Tags)
   output <- .resourceexplorer$create_index_output()
@@ -268,7 +265,7 @@ resourceexplorer_create_index <- function(ClientToken = NULL, Tags = NULL) {
 #' you make using this view include only resources that match the view's
 #' `Filters`. For more information about Amazon Web Services Resource
 #' Explorer views, see [Managing
-#' views](https://docs.aws.amazon.com/resource-explorer/latest/userguide/)
+#' views](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-views.html)
 #' in the *Amazon Web Services Resource Explorer User Guide*.
 #' 
 #' Only the principals with an IAM identity-based policy that grants
@@ -376,8 +373,7 @@ resourceexplorer_create_view <- function(ClientToken = NULL, Filters = NULL, Inc
     http_method = "POST",
     http_path = "/CreateView",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$create_view_input(ClientToken = ClientToken, Filters = Filters, IncludedProperties = IncludedProperties, Scope = Scope, Tags = Tags, ViewName = ViewName)
   output <- .resourceexplorer$create_view_output()
@@ -445,8 +441,7 @@ resourceexplorer_delete_index <- function(Arn) {
     http_method = "POST",
     http_path = "/DeleteIndex",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$delete_index_input(Arn = Arn)
   output <- .resourceexplorer$delete_index_output()
@@ -503,8 +498,7 @@ resourceexplorer_delete_view <- function(ViewArn) {
     http_method = "POST",
     http_path = "/DeleteView",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$delete_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$delete_view_output()
@@ -552,8 +546,7 @@ resourceexplorer_disassociate_default_view <- function() {
     http_method = "POST",
     http_path = "/DisassociateDefaultView",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$disassociate_default_view_input()
   output <- .resourceexplorer$disassociate_default_view_output()
@@ -604,8 +597,7 @@ resourceexplorer_get_account_level_service_configuration <- function() {
     http_method = "POST",
     http_path = "/GetAccountLevelServiceConfiguration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$get_account_level_service_configuration_input()
   output <- .resourceexplorer$get_account_level_service_configuration_output()
@@ -652,8 +644,7 @@ resourceexplorer_get_default_view <- function() {
     http_method = "POST",
     http_path = "/GetDefaultView",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$get_default_view_input()
   output <- .resourceexplorer$get_default_view_output()
@@ -715,8 +706,7 @@ resourceexplorer_get_index <- function() {
     http_method = "POST",
     http_path = "/GetIndex",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$get_index_input()
   output <- .resourceexplorer$get_index_output()
@@ -784,8 +774,7 @@ resourceexplorer_get_view <- function(ViewArn) {
     http_method = "POST",
     http_path = "/GetView",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$get_view_input(ViewArn = ViewArn)
   output <- .resourceexplorer$get_view_output()
@@ -870,8 +859,7 @@ resourceexplorer_list_indexes <- function(MaxResults = NULL, NextToken = NULL, R
     http_method = "POST",
     http_path = "/ListIndexes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes")
   )
   input <- .resourceexplorer$list_indexes_input(MaxResults = MaxResults, NextToken = NextToken, Regions = Regions, Type = Type)
   output <- .resourceexplorer$list_indexes_output()
@@ -955,8 +943,7 @@ resourceexplorer_list_indexes_for_members <- function(AccountIdList, MaxResults 
     http_method = "POST",
     http_path = "/ListIndexesForMembers",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Indexes")
   )
   input <- .resourceexplorer$list_indexes_for_members_input(AccountIdList = AccountIdList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_indexes_for_members_output()
@@ -1028,8 +1015,7 @@ resourceexplorer_list_supported_resource_types <- function(MaxResults = NULL, Ne
     http_method = "POST",
     http_path = "/ListSupportedResourceTypes",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceTypes"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceTypes")
   )
   input <- .resourceexplorer$list_supported_resource_types_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_supported_resource_types_output()
@@ -1081,8 +1067,7 @@ resourceexplorer_list_tags_for_resource <- function(resourceArn) {
     http_method = "GET",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$list_tags_for_resource_input(resourceArn = resourceArn)
   output <- .resourceexplorer$list_tags_for_resource_output()
@@ -1159,8 +1144,7 @@ resourceexplorer_list_views <- function(MaxResults = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/ListViews",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Views"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Views")
   )
   input <- .resourceexplorer$list_views_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourceexplorer$list_views_output()
@@ -1290,8 +1274,7 @@ resourceexplorer_search <- function(MaxResults = NULL, NextToken = NULL, QuerySt
     http_method = "POST",
     http_path = "/Search",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources")
   )
   input <- .resourceexplorer$search_input(MaxResults = MaxResults, NextToken = NextToken, QueryString = QueryString, ViewArn = ViewArn)
   output <- .resourceexplorer$search_output()
@@ -1342,8 +1325,7 @@ resourceexplorer_tag_resource <- function(Tags = NULL, resourceArn) {
     http_method = "POST",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$tag_resource_input(Tags = Tags, resourceArn = resourceArn)
   output <- .resourceexplorer$tag_resource_output()
@@ -1394,8 +1376,7 @@ resourceexplorer_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .resourceexplorer$untag_resource_output()
@@ -1418,57 +1399,58 @@ resourceexplorer_untag_resource <- function(resourceArn, tagKeys) {
 #' index](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html)
 #' in the *Amazon Web Services Resource Explorer User Guide*.
 #' 
-#' - **`AGGREGATOR` index type**
+#' -   **`AGGREGATOR` index type**
 #' 
-#'   The index contains information about resources from all Amazon Web
-#'   Services Regions in the Amazon Web Services account in which you've
-#'   created a Resource Explorer index. Resource information from all other
-#'   Regions is replicated to this Region's index.
+#'     The index contains information about resources from all Amazon Web
+#'     Services Regions in the Amazon Web Services account in which you've
+#'     created a Resource Explorer index. Resource information from all
+#'     other Regions is replicated to this Region's index.
 #' 
-#'   When you change the index type to `AGGREGATOR`, Resource Explorer
-#'   turns on replication of all discovered resource information from the
-#'   other Amazon Web Services Regions in your account to this index. You
-#'   can then, from this Region only, perform resource search queries that
-#'   span all Amazon Web Services Regions in the Amazon Web Services
-#'   account. Turning on replication from all other Regions is performed by
-#'   asynchronous background tasks. You can check the status of the
-#'   asynchronous tasks by using the
-#'   [`get_index`][resourceexplorer_get_index] operation. When the
-#'   asynchronous tasks complete, the `Status` response of that operation
-#'   changes from `UPDATING` to `ACTIVE`. After that, you can start to see
-#'   results from other Amazon Web Services Regions in query results.
-#'   However, it can take several hours for replication from all other
-#'   Regions to complete.
+#'     When you change the index type to `AGGREGATOR`, Resource Explorer
+#'     turns on replication of all discovered resource information from the
+#'     other Amazon Web Services Regions in your account to this index. You
+#'     can then, from this Region only, perform resource search queries
+#'     that span all Amazon Web Services Regions in the Amazon Web Services
+#'     account. Turning on replication from all other Regions is performed
+#'     by asynchronous background tasks. You can check the status of the
+#'     asynchronous tasks by using the
+#'     [`get_index`][resourceexplorer_get_index] operation. When the
+#'     asynchronous tasks complete, the `Status` response of that operation
+#'     changes from `UPDATING` to `ACTIVE`. After that, you can start to
+#'     see results from other Amazon Web Services Regions in query results.
+#'     However, it can take several hours for replication from all other
+#'     Regions to complete.
 #' 
-#'   You can have only one aggregator index per Amazon Web Services
-#'   account. Before you can promote a different index to be the aggregator
-#'   index for the account, you must first demote the existing aggregator
-#'   index to type `LOCAL`.
+#'     You can have only one aggregator index per Amazon Web Services
+#'     account. Before you can promote a different index to be the
+#'     aggregator index for the account, you must first demote the existing
+#'     aggregator index to type `LOCAL`.
 #' 
-#' - **`LOCAL` index type**
+#' -   **`LOCAL` index type**
 #' 
-#'   The index contains information about resources in only the Amazon Web
-#'   Services Region in which the index exists. If an aggregator index in
-#'   another Region exists, then information in this local index is
-#'   replicated to the aggregator index.
+#'     The index contains information about resources in only the Amazon
+#'     Web Services Region in which the index exists. If an aggregator
+#'     index in another Region exists, then information in this local index
+#'     is replicated to the aggregator index.
 #' 
-#'   When you change the index type to `LOCAL`, Resource Explorer turns off
-#'   the replication of resource information from all other Amazon Web
-#'   Services Regions in the Amazon Web Services account to this Region.
-#'   The aggregator index remains in the `UPDATING` state until all
-#'   replication with other Regions successfully stops. You can check the
-#'   status of the asynchronous task by using the
-#'   [`get_index`][resourceexplorer_get_index] operation. When Resource
-#'   Explorer successfully stops all replication with other Regions, the
-#'   `Status` response of that operation changes from `UPDATING` to
-#'   `ACTIVE`. Separately, the resource information from other Regions that
-#'   was previously stored in the index is deleted within 30 days by
-#'   another background task. Until that asynchronous task completes, some
-#'   results from other Regions can continue to appear in search results.
+#'     When you change the index type to `LOCAL`, Resource Explorer turns
+#'     off the replication of resource information from all other Amazon
+#'     Web Services Regions in the Amazon Web Services account to this
+#'     Region. The aggregator index remains in the `UPDATING` state until
+#'     all replication with other Regions successfully stops. You can check
+#'     the status of the asynchronous task by using the
+#'     [`get_index`][resourceexplorer_get_index] operation. When Resource
+#'     Explorer successfully stops all replication with other Regions, the
+#'     `Status` response of that operation changes from `UPDATING` to
+#'     `ACTIVE`. Separately, the resource information from other Regions
+#'     that was previously stored in the index is deleted within 30 days by
+#'     another background task. Until that asynchronous task completes,
+#'     some results from other Regions can continue to appear in search
+#'     results.
 #' 
-#'   After you demote an aggregator index to a local index, you must wait
-#'   24 hours before you can promote another index to be the new aggregator
-#'   index for the account.
+#'     After you demote an aggregator index to a local index, you must wait
+#'     24 hours before you can promote another index to be the new
+#'     aggregator index for the account.
 #'
 #' @usage
 #' resourceexplorer_update_index_type(Arn, Type)
@@ -1513,8 +1495,7 @@ resourceexplorer_update_index_type <- function(Arn, Type) {
     http_method = "POST",
     http_path = "/UpdateIndexType",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$update_index_type_input(Arn = Arn, Type = Type)
   output <- .resourceexplorer$update_index_type_output()
@@ -1614,8 +1595,7 @@ resourceexplorer_update_view <- function(Filters = NULL, IncludedProperties = NU
     http_method = "POST",
     http_path = "/UpdateView",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .resourceexplorer$update_view_input(Filters = Filters, IncludedProperties = IncludedProperties, ViewArn = ViewArn)
   output <- .resourceexplorer$update_view_output()

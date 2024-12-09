@@ -23,8 +23,7 @@ comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$describe_entities_detection_v2_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_entities_detection_v2_job_output()
@@ -56,8 +55,7 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$describe_icd10cm_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_icd10cm_inference_job_output()
@@ -90,8 +88,7 @@ comprehendmedical_describe_phi_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$describe_phi_detection_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_phi_detection_job_output()
@@ -123,8 +120,7 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$describe_rx_norm_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_rx_norm_inference_job_output()
@@ -156,8 +152,7 @@ comprehendmedical_describe_snomedct_inference_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$describe_snomedct_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$describe_snomedct_inference_job_output()
@@ -188,8 +183,7 @@ comprehendmedical_detect_entities <- function(Text) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$detect_entities_input(Text = Text)
   output <- .comprehendmedical$detect_entities_output()
@@ -222,8 +216,7 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$detect_entities_v2_input(Text = Text)
   output <- .comprehendmedical$detect_entities_v2_output()
@@ -256,8 +249,7 @@ comprehendmedical_detect_phi <- function(Text) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$detect_phi_input(Text = Text)
   output <- .comprehendmedical$detect_phi_output()
@@ -289,8 +281,7 @@ comprehendmedical_infer_icd10cm <- function(Text) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$infer_icd10cm_input(Text = Text)
   output <- .comprehendmedical$infer_icd10cm_output()
@@ -322,8 +313,7 @@ comprehendmedical_infer_rx_norm <- function(Text) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$infer_rx_norm_input(Text = Text)
   output <- .comprehendmedical$infer_rx_norm_output()
@@ -355,8 +345,7 @@ comprehendmedical_infer_snomedct <- function(Text) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$infer_snomedct_input(Text = Text)
   output <- .comprehendmedical$infer_snomedct_output()
@@ -391,8 +380,7 @@ comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$list_entities_detection_v2_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_entities_detection_v2_jobs_output()
@@ -427,8 +415,7 @@ comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$list_icd10cm_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_icd10cm_inference_jobs_output()
@@ -464,8 +451,7 @@ comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$list_phi_detection_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_phi_detection_jobs_output()
@@ -499,8 +485,7 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$list_rx_norm_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_rx_norm_inference_jobs_output()
@@ -533,8 +518,7 @@ comprehendmedical_list_snomedct_inference_jobs <- function(Filter = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$list_snomedct_inference_jobs_input(Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .comprehendmedical$list_snomedct_inference_jobs_output()
@@ -579,8 +563,7 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$start_entities_detection_v2_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_entities_detection_v2_job_output()
@@ -624,8 +607,7 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$start_icd10cm_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_icd10cm_inference_job_output()
@@ -668,8 +650,7 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$start_phi_detection_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_phi_detection_job_output()
@@ -713,8 +694,7 @@ comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, Outpu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$start_rx_norm_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_rx_norm_inference_job_output()
@@ -756,8 +736,7 @@ comprehendmedical_start_snomedct_inference_job <- function(InputDataConfig, Outp
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$start_snomedct_inference_job_input(InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, DataAccessRoleArn = DataAccessRoleArn, JobName = JobName, ClientRequestToken = ClientRequestToken, KMSKey = KMSKey, LanguageCode = LanguageCode)
   output <- .comprehendmedical$start_snomedct_inference_job_output()
@@ -787,8 +766,7 @@ comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$stop_entities_detection_v2_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_entities_detection_v2_job_output()
@@ -818,8 +796,7 @@ comprehendmedical_stop_icd10cm_inference_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$stop_icd10cm_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_icd10cm_inference_job_output()
@@ -849,8 +826,7 @@ comprehendmedical_stop_phi_detection_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$stop_phi_detection_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_phi_detection_job_output()
@@ -880,8 +856,7 @@ comprehendmedical_stop_rx_norm_inference_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$stop_rx_norm_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_rx_norm_inference_job_output()
@@ -911,8 +886,7 @@ comprehendmedical_stop_snomedct_inference_job <- function(JobId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .comprehendmedical$stop_snomedct_inference_job_input(JobId = JobId)
   output <- .comprehendmedical$stop_snomedct_inference_job_output()

@@ -119,8 +119,7 @@ autoscalingplans_create_scaling_plan <- function(ScalingPlanName, ApplicationSou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .autoscalingplans$create_scaling_plan_input(ScalingPlanName = ScalingPlanName, ApplicationSource = ApplicationSource, ScalingInstructions = ScalingInstructions)
   output <- .autoscalingplans$create_scaling_plan_output()
@@ -173,8 +172,7 @@ autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .autoscalingplans$delete_scaling_plan_input(ScalingPlanName = ScalingPlanName, ScalingPlanVersion = ScalingPlanVersion)
   output <- .autoscalingplans$delete_scaling_plan_output()
@@ -271,8 +269,7 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .autoscalingplans$describe_scaling_plan_resources_input(ScalingPlanName = ScalingPlanName, ScalingPlanVersion = ScalingPlanVersion, MaxResults = MaxResults, NextToken = NextToken)
   output <- .autoscalingplans$describe_scaling_plan_resources_output()
@@ -431,8 +428,7 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .autoscalingplans$describe_scaling_plans_input(ScalingPlanNames = ScalingPlanNames, ScalingPlanVersion = ScalingPlanVersion, ApplicationSources = ApplicationSources, MaxResults = MaxResults, NextToken = NextToken)
   output <- .autoscalingplans$describe_scaling_plans_output()
@@ -469,18 +465,19 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
 #' `autoscaling:autoScalingGroup:DesiredCapacity`.
 #' @param ForecastDataType &#91;required&#93; The type of forecast data to get.
 #' 
-#' - `LoadForecast`: The load metric forecast.
+#' -   `LoadForecast`: The load metric forecast.
 #' 
-#' - `CapacityForecast`: The capacity forecast.
+#' -   `CapacityForecast`: The capacity forecast.
 #' 
-#' - `ScheduledActionMinCapacity`: The minimum capacity for each scheduled
-#'   scaling action. This data is calculated as the larger of two values:
-#'   the capacity forecast or the minimum capacity in the scaling
-#'   instruction.
+#' -   `ScheduledActionMinCapacity`: The minimum capacity for each
+#'     scheduled scaling action. This data is calculated as the larger of
+#'     two values: the capacity forecast or the minimum capacity in the
+#'     scaling instruction.
 #' 
-#' - `ScheduledActionMaxCapacity`: The maximum capacity for each scheduled
-#'   scaling action. The calculation used is determined by the predictive
-#'   scaling maximum capacity behavior setting in the scaling instruction.
+#' -   `ScheduledActionMaxCapacity`: The maximum capacity for each
+#'     scheduled scaling action. The calculation used is determined by the
+#'     predictive scaling maximum capacity behavior setting in the scaling
+#'     instruction.
 #' @param StartTime &#91;required&#93; The inclusive start time of the time range for the forecast data to get.
 #' The date and time can be at most 56 days before the current date and
 #' time.
@@ -535,8 +532,7 @@ autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlan
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .autoscalingplans$get_scaling_plan_resource_forecast_data_input(ScalingPlanName = ScalingPlanName, ScalingPlanVersion = ScalingPlanVersion, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, ForecastDataType = ForecastDataType, StartTime = StartTime, EndTime = EndTime)
   output <- .autoscalingplans$get_scaling_plan_resource_forecast_data_output()
@@ -663,8 +659,7 @@ autoscalingplans_update_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .autoscalingplans$update_scaling_plan_input(ScalingPlanName = ScalingPlanName, ScalingPlanVersion = ScalingPlanVersion, ApplicationSource = ApplicationSource, ScalingInstructions = ScalingInstructions)
   output <- .autoscalingplans$update_scaling_plan_output()

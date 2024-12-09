@@ -28,7 +28,7 @@ The \code{sequenceToken} parameter is now ignored in
 accepted and never return \code{InvalidSequenceTokenException} or
 \code{DataAlreadyAcceptedException} even if the sequence token is not valid.}
 
-\item{entity}{Reserved for internal use.}
+\item{entity}{Reserved for future use.}
 }
 \description{
 Uploads a batch of log events to the specified log stream.

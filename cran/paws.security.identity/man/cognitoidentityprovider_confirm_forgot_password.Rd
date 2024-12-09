@@ -62,13 +62,13 @@ in the \emph{Amazon Cognito Developer Guide}.
 When you use the ClientMetadata parameter, remember that Amazon Cognito
 won't do the following:
 \itemize{
-\item Store the ClientMetadata value. This data is available only to Lambda
-triggers that are assigned to a user pool to support custom workflows.
-If your user pool configuration doesn't include triggers, the
-ClientMetadata parameter serves no purpose.
+\item Store the ClientMetadata value. This data is available only to
+Lambda triggers that are assigned to a user pool to support custom
+workflows. If your user pool configuration doesn't include triggers,
+the ClientMetadata parameter serves no purpose.
 \item Validate the ClientMetadata value.
-\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to provide
-sensitive information.
+\item Encrypt the ClientMetadata value. Don't use Amazon Cognito to
+provide sensitive information.
 }}
 }
 \description{

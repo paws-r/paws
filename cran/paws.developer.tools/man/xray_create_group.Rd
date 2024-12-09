@@ -19,11 +19,11 @@ names must be unique.}
 
 \item{InsightsConfiguration}{The structure containing configurations related to insights.
 \itemize{
-\item The InsightsEnabled boolean can be set to true to enable insights for
-the new group or false to disable insights for the new group.
-\item The NotificationsEnabled boolean can be set to true to enable insights
-notifications for the new group. Notifications may only be enabled on
-a group with InsightsEnabled set to true.
+\item The InsightsEnabled boolean can be set to true to enable insights
+for the new group or false to disable insights for the new group.
+\item The NotificationsEnabled boolean can be set to true to enable
+insights notifications for the new group. Notifications may only be
+enabled on a group with InsightsEnabled set to true.
 }}
 
 \item{Tags}{A map that contains one or more tag keys and tag values to attach to an

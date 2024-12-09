@@ -38,7 +38,7 @@ NULL
 #' 
 #' For authentication of requests, Health uses the [Signature Version 4
 #' Signing
-#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+#' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
 #' 
 #' If your Amazon Web Services account is part of Organizations, you can
 #' use the Health organizational view feature. This feature provides a
@@ -54,17 +54,17 @@ NULL
 #' When you use the Health API operations to return Health events, see the
 #' following recommendations:
 #' 
-#' - Use the
-#'   [eventScopeCode](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode)
-#'   parameter to specify whether to return Health events that are public
-#'   or account-specific.
+#' -   Use the
+#'     [eventScopeCode](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode)
+#'     parameter to specify whether to return Health events that are public
+#'     or account-specific.
 #' 
-#' - Use pagination to view all events from the response. For example, if
-#'   you call the
-#'   [`describe_events_for_organization`][health_describe_events_for_organization]
-#'   operation to get all events in your organization, you might receive
-#'   several page results. Specify the `nextToken` in the next request to
-#'   return more results.
+#' -   Use pagination to view all events from the response. For example, if
+#'     you call the
+#'     [`describe_events_for_organization`][health_describe_events_for_organization]
+#'     operation to get all events in your organization, you might receive
+#'     several page results. Specify the `nextToken` in the next request to
+#'     return more results.
 #'
 #' @param
 #' config

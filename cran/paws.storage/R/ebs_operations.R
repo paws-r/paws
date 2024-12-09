@@ -34,8 +34,7 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
     http_method = "POST",
     http_path = "/snapshots/completion/{snapshotId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ebs$complete_snapshot_input(SnapshotId = SnapshotId, ChangedBlocksCount = ChangedBlocksCount, Checksum = Checksum, ChecksumAlgorithm = ChecksumAlgorithm, ChecksumAggregationMethod = ChecksumAggregationMethod)
   output <- .ebs$complete_snapshot_output()
@@ -80,8 +79,7 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
     http_method = "GET",
     http_path = "/snapshots/{snapshotId}/blocks/{blockIndex}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ebs$get_snapshot_block_input(SnapshotId = SnapshotId, BlockIndex = BlockIndex, BlockToken = BlockToken)
   output <- .ebs$get_snapshot_block_output()
@@ -137,8 +135,7 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
     http_method = "GET",
     http_path = "/snapshots/{secondSnapshotId}/changedblocks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .ebs$list_changed_blocks_input(FirstSnapshotId = FirstSnapshotId, SecondSnapshotId = SecondSnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
   output <- .ebs$list_changed_blocks_output()
@@ -186,8 +183,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
     http_method = "GET",
     http_path = "/snapshots/{snapshotId}/blocks",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .ebs$list_snapshot_blocks_input(SnapshotId = SnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
   output <- .ebs$list_snapshot_blocks_output()
@@ -251,8 +247,7 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
     http_method = "PUT",
     http_path = "/snapshots/{snapshotId}/blocks/{blockIndex}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ebs$put_snapshot_block_input(SnapshotId = SnapshotId, BlockIndex = BlockIndex, BlockData = BlockData, DataLength = DataLength, Progress = Progress, Checksum = Checksum, ChecksumAlgorithm = ChecksumAlgorithm)
   output <- .ebs$put_snapshot_block_output()
@@ -347,9 +342,9 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' @param Timeout The amount of time (in minutes) after which the snapshot is
 #' automatically cancelled if:
 #' 
-#' - No blocks are written to the snapshot.
+#' -   No blocks are written to the snapshot.
 #' 
-#' - The snapshot is not completed after writing the last block of data.
+#' -   The snapshot is not completed after writing the last block of data.
 #' 
 #' If no value is specified, the timeout defaults to `60` minutes.
 #'
@@ -362,8 +357,7 @@ ebs_start_snapshot <- function(VolumeSize, ParentSnapshotId = NULL, Tags = NULL,
     http_method = "POST",
     http_path = "/snapshots",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .ebs$start_snapshot_input(VolumeSize = VolumeSize, ParentSnapshotId = ParentSnapshotId, Tags = Tags, Description = Description, ClientToken = ClientToken, Encrypted = Encrypted, KmsKeyArn = KmsKeyArn, Timeout = Timeout)
   output <- .ebs$start_snapshot_output()

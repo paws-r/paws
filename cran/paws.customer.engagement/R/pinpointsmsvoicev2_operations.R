@@ -34,8 +34,7 @@ pinpointsmsvoicev2_associate_origination_identity <- function(PoolId, Originatio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$associate_origination_identity_input(PoolId = PoolId, OriginationIdentity = OriginationIdentity, IsoCountryCode = IsoCountryCode, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$associate_origination_identity_output()
@@ -66,8 +65,7 @@ pinpointsmsvoicev2_associate_protect_configuration <- function(ProtectConfigurat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$associate_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId, ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoicev2$associate_protect_configuration_output()
@@ -102,8 +100,7 @@ pinpointsmsvoicev2_create_configuration_set <- function(ConfigurationSetName, Ta
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_configuration_set_input(ConfigurationSetName = ConfigurationSetName, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$create_configuration_set_output()
@@ -151,8 +148,7 @@ pinpointsmsvoicev2_create_event_destination <- function(ConfigurationSetName, Ev
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName, MatchingEventTypes = MatchingEventTypes, CloudWatchLogsDestination = CloudWatchLogsDestination, KinesisFirehoseDestination = KinesisFirehoseDestination, SnsDestination = SnsDestination, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$create_event_destination_output()
@@ -187,8 +183,7 @@ pinpointsmsvoicev2_create_opt_out_list <- function(OptOutListName, Tags = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_opt_out_list_input(OptOutListName = OptOutListName, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$create_opt_out_list_output()
@@ -241,8 +236,7 @@ pinpointsmsvoicev2_create_pool <- function(OriginationIdentity, IsoCountryCode, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_pool_input(OriginationIdentity = OriginationIdentity, IsoCountryCode = IsoCountryCode, MessageType = MessageType, DeletionProtectionEnabled = DeletionProtectionEnabled, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$create_pool_output()
@@ -278,8 +272,7 @@ pinpointsmsvoicev2_create_protect_configuration <- function(ClientToken = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_protect_configuration_input(ClientToken = ClientToken, DeletionProtectionEnabled = DeletionProtectionEnabled, Tags = Tags)
   output <- .pinpointsmsvoicev2$create_protect_configuration_output()
@@ -317,8 +310,7 @@ pinpointsmsvoicev2_create_registration <- function(RegistrationType, Tags = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_registration_input(RegistrationType = RegistrationType, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$create_registration_output()
@@ -351,8 +343,7 @@ pinpointsmsvoicev2_create_registration_association <- function(RegistrationId, R
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_registration_association_input(RegistrationId = RegistrationId, ResourceId = ResourceId)
   output <- .pinpointsmsvoicev2$create_registration_association_output()
@@ -391,8 +382,7 @@ pinpointsmsvoicev2_create_registration_attachment <- function(AttachmentBody = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_registration_attachment_input(AttachmentBody = AttachmentBody, AttachmentUrl = AttachmentUrl, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$create_registration_attachment_output()
@@ -422,8 +412,7 @@ pinpointsmsvoicev2_create_registration_version <- function(RegistrationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_registration_version_input(RegistrationId = RegistrationId)
   output <- .pinpointsmsvoicev2$create_registration_version_output()
@@ -459,8 +448,7 @@ pinpointsmsvoicev2_create_verified_destination_number <- function(DestinationPho
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$create_verified_destination_number_input(DestinationPhoneNumber = DestinationPhoneNumber, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$create_verified_destination_number_output()
@@ -490,8 +478,7 @@ pinpointsmsvoicev2_delete_account_default_protect_configuration <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_account_default_protect_configuration_input()
   output <- .pinpointsmsvoicev2$delete_account_default_protect_configuration_output()
@@ -525,8 +512,7 @@ pinpointsmsvoicev2_delete_configuration_set <- function(ConfigurationSetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_configuration_set_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoicev2$delete_configuration_set_output()
@@ -560,8 +546,7 @@ pinpointsmsvoicev2_delete_default_message_type <- function(ConfigurationSetName)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_default_message_type_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoicev2$delete_default_message_type_output()
@@ -595,8 +580,7 @@ pinpointsmsvoicev2_delete_default_sender_id <- function(ConfigurationSetName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_default_sender_id_input(ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoicev2$delete_default_sender_id_output()
@@ -631,8 +615,7 @@ pinpointsmsvoicev2_delete_event_destination <- function(ConfigurationSetName, Ev
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName)
   output <- .pinpointsmsvoicev2$delete_event_destination_output()
@@ -668,8 +651,7 @@ pinpointsmsvoicev2_delete_keyword <- function(OriginationIdentity, Keyword) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_keyword_input(OriginationIdentity = OriginationIdentity, Keyword = Keyword)
   output <- .pinpointsmsvoicev2$delete_keyword_output()
@@ -700,8 +682,7 @@ pinpointsmsvoicev2_delete_media_message_spend_limit_override <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_media_message_spend_limit_override_input()
   output <- .pinpointsmsvoicev2$delete_media_message_spend_limit_override_output()
@@ -734,8 +715,7 @@ pinpointsmsvoicev2_delete_opt_out_list <- function(OptOutListName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_opt_out_list_input(OptOutListName = OptOutListName)
   output <- .pinpointsmsvoicev2$delete_opt_out_list_output()
@@ -767,8 +747,7 @@ pinpointsmsvoicev2_delete_opted_out_number <- function(OptOutListName, OptedOutN
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_opted_out_number_input(OptOutListName = OptOutListName, OptedOutNumber = OptedOutNumber)
   output <- .pinpointsmsvoicev2$delete_opted_out_number_output()
@@ -800,8 +779,7 @@ pinpointsmsvoicev2_delete_pool <- function(PoolId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_pool_input(PoolId = PoolId)
   output <- .pinpointsmsvoicev2$delete_pool_output()
@@ -831,8 +809,7 @@ pinpointsmsvoicev2_delete_protect_configuration <- function(ProtectConfiguration
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId)
   output <- .pinpointsmsvoicev2$delete_protect_configuration_output()
@@ -862,8 +839,7 @@ pinpointsmsvoicev2_delete_registration <- function(RegistrationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_registration_input(RegistrationId = RegistrationId)
   output <- .pinpointsmsvoicev2$delete_registration_output()
@@ -893,8 +869,7 @@ pinpointsmsvoicev2_delete_registration_attachment <- function(RegistrationAttach
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_registration_attachment_input(RegistrationAttachmentId = RegistrationAttachmentId)
   output <- .pinpointsmsvoicev2$delete_registration_attachment_output()
@@ -927,8 +902,7 @@ pinpointsmsvoicev2_delete_registration_field_value <- function(RegistrationId, F
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_registration_field_value_input(RegistrationId = RegistrationId, FieldPath = FieldPath)
   output <- .pinpointsmsvoicev2$delete_registration_field_value_output()
@@ -959,8 +933,7 @@ pinpointsmsvoicev2_delete_text_message_spend_limit_override <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_text_message_spend_limit_override_input()
   output <- .pinpointsmsvoicev2$delete_text_message_spend_limit_override_output()
@@ -990,8 +963,7 @@ pinpointsmsvoicev2_delete_verified_destination_number <- function(VerifiedDestin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_verified_destination_number_input(VerifiedDestinationNumberId = VerifiedDestinationNumberId)
   output <- .pinpointsmsvoicev2$delete_verified_destination_number_output()
@@ -1022,8 +994,7 @@ pinpointsmsvoicev2_delete_voice_message_spend_limit_override <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$delete_voice_message_spend_limit_override_input()
   output <- .pinpointsmsvoicev2$delete_voice_message_spend_limit_override_output()
@@ -1055,8 +1026,7 @@ pinpointsmsvoicev2_describe_account_attributes <- function(NextToken = NULL, Max
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAttributes"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountAttributes")
   )
   input <- .pinpointsmsvoicev2$describe_account_attributes_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_account_attributes_output()
@@ -1089,8 +1059,7 @@ pinpointsmsvoicev2_describe_account_limits <- function(NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountLimits"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccountLimits")
   )
   input <- .pinpointsmsvoicev2$describe_account_limits_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_account_limits_output()
@@ -1125,8 +1094,7 @@ pinpointsmsvoicev2_describe_configuration_sets <- function(ConfigurationSetNames
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationSets"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConfigurationSets")
   )
   input <- .pinpointsmsvoicev2$describe_configuration_sets_input(ConfigurationSetNames = ConfigurationSetNames, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_configuration_sets_output()
@@ -1167,8 +1135,7 @@ pinpointsmsvoicev2_describe_keywords <- function(OriginationIdentity, Keywords =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Keywords"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Keywords")
   )
   input <- .pinpointsmsvoicev2$describe_keywords_input(OriginationIdentity = OriginationIdentity, Keywords = Keywords, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_keywords_output()
@@ -1203,8 +1170,7 @@ pinpointsmsvoicev2_describe_opt_out_lists <- function(OptOutListNames = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OptOutLists"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OptOutLists")
   )
   input <- .pinpointsmsvoicev2$describe_opt_out_lists_input(OptOutListNames = OptOutListNames, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_opt_out_lists_output()
@@ -1242,8 +1208,7 @@ pinpointsmsvoicev2_describe_opted_out_numbers <- function(OptOutListName, OptedO
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OptedOutNumbers"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OptedOutNumbers")
   )
   input <- .pinpointsmsvoicev2$describe_opted_out_numbers_input(OptOutListName = OptOutListName, OptedOutNumbers = OptedOutNumbers, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_opted_out_numbers_output()
@@ -1280,8 +1245,7 @@ pinpointsmsvoicev2_describe_phone_numbers <- function(PhoneNumberIds = NULL, Fil
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PhoneNumbers"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PhoneNumbers")
   )
   input <- .pinpointsmsvoicev2$describe_phone_numbers_input(PhoneNumberIds = PhoneNumberIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_phone_numbers_output()
@@ -1317,8 +1281,7 @@ pinpointsmsvoicev2_describe_pools <- function(PoolIds = NULL, Filters = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Pools"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Pools")
   )
   input <- .pinpointsmsvoicev2$describe_pools_input(PoolIds = PoolIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_pools_output()
@@ -1352,8 +1315,7 @@ pinpointsmsvoicev2_describe_protect_configurations <- function(ProtectConfigurat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProtectConfigurations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProtectConfigurations")
   )
   input <- .pinpointsmsvoicev2$describe_protect_configurations_input(ProtectConfigurationIds = ProtectConfigurationIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_protect_configurations_output()
@@ -1389,8 +1351,7 @@ pinpointsmsvoicev2_describe_registration_attachments <- function(RegistrationAtt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationAttachments"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationAttachments")
   )
   input <- .pinpointsmsvoicev2$describe_registration_attachments_input(RegistrationAttachmentIds = RegistrationAttachmentIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_registration_attachments_output()
@@ -1428,8 +1389,7 @@ pinpointsmsvoicev2_describe_registration_field_definitions <- function(Registrat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationFieldDefinitions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationFieldDefinitions")
   )
   input <- .pinpointsmsvoicev2$describe_registration_field_definitions_input(RegistrationType = RegistrationType, SectionPath = SectionPath, FieldPaths = FieldPaths, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_registration_field_definitions_output()
@@ -1465,8 +1425,7 @@ pinpointsmsvoicev2_describe_registration_field_values <- function(RegistrationId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationFieldValues"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationFieldValues")
   )
   input <- .pinpointsmsvoicev2$describe_registration_field_values_input(RegistrationId = RegistrationId, VersionNumber = VersionNumber, SectionPath = SectionPath, FieldPaths = FieldPaths, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_registration_field_values_output()
@@ -1503,8 +1462,7 @@ pinpointsmsvoicev2_describe_registration_section_definitions <- function(Registr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationSectionDefinitions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationSectionDefinitions")
   )
   input <- .pinpointsmsvoicev2$describe_registration_section_definitions_input(RegistrationType = RegistrationType, SectionPaths = SectionPaths, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_registration_section_definitions_output()
@@ -1541,8 +1499,7 @@ pinpointsmsvoicev2_describe_registration_type_definitions <- function(Registrati
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationTypeDefinitions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationTypeDefinitions")
   )
   input <- .pinpointsmsvoicev2$describe_registration_type_definitions_input(RegistrationTypes = RegistrationTypes, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_registration_type_definitions_output()
@@ -1577,8 +1534,7 @@ pinpointsmsvoicev2_describe_registration_versions <- function(RegistrationId, Ve
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationVersions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationVersions")
   )
   input <- .pinpointsmsvoicev2$describe_registration_versions_input(RegistrationId = RegistrationId, VersionNumbers = VersionNumbers, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_registration_versions_output()
@@ -1612,8 +1568,7 @@ pinpointsmsvoicev2_describe_registrations <- function(RegistrationIds = NULL, Fi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Registrations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Registrations")
   )
   input <- .pinpointsmsvoicev2$describe_registrations_input(RegistrationIds = RegistrationIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_registrations_output()
@@ -1648,8 +1603,7 @@ pinpointsmsvoicev2_describe_sender_ids <- function(SenderIds = NULL, Filters = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SenderIds"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SenderIds")
   )
   input <- .pinpointsmsvoicev2$describe_sender_ids_input(SenderIds = SenderIds, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_sender_ids_output()
@@ -1682,8 +1636,7 @@ pinpointsmsvoicev2_describe_spend_limits <- function(NextToken = NULL, MaxResult
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SpendLimits"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SpendLimits")
   )
   input <- .pinpointsmsvoicev2$describe_spend_limits_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_spend_limits_output()
@@ -1719,8 +1672,7 @@ pinpointsmsvoicev2_describe_verified_destination_numbers <- function(VerifiedDes
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VerifiedDestinationNumbers"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VerifiedDestinationNumbers")
   )
   input <- .pinpointsmsvoicev2$describe_verified_destination_numbers_input(VerifiedDestinationNumberIds = VerifiedDestinationNumberIds, DestinationPhoneNumbers = DestinationPhoneNumbers, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$describe_verified_destination_numbers_output()
@@ -1762,8 +1714,7 @@ pinpointsmsvoicev2_disassociate_origination_identity <- function(PoolId, Origina
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$disassociate_origination_identity_input(PoolId = PoolId, OriginationIdentity = OriginationIdentity, IsoCountryCode = IsoCountryCode, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$disassociate_origination_identity_output()
@@ -1794,8 +1745,7 @@ pinpointsmsvoicev2_disassociate_protect_configuration <- function(ProtectConfigu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$disassociate_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId, ConfigurationSetName = ConfigurationSetName)
   output <- .pinpointsmsvoicev2$disassociate_protect_configuration_output()
@@ -1825,8 +1775,7 @@ pinpointsmsvoicev2_discard_registration_version <- function(RegistrationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$discard_registration_version_input(RegistrationId = RegistrationId)
   output <- .pinpointsmsvoicev2$discard_registration_version_output()
@@ -1859,8 +1808,7 @@ pinpointsmsvoicev2_get_protect_configuration_country_rule_set <- function(Protec
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$get_protect_configuration_country_rule_set_input(ProtectConfigurationId = ProtectConfigurationId, NumberCapability = NumberCapability)
   output <- .pinpointsmsvoicev2$get_protect_configuration_country_rule_set_output()
@@ -1896,8 +1844,7 @@ pinpointsmsvoicev2_list_pool_origination_identities <- function(PoolId, Filters 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OriginationIdentities"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "OriginationIdentities")
   )
   input <- .pinpointsmsvoicev2$list_pool_origination_identities_input(PoolId = PoolId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$list_pool_origination_identities_output()
@@ -1933,8 +1880,7 @@ pinpointsmsvoicev2_list_registration_associations <- function(RegistrationId, Fi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationAssociations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RegistrationAssociations")
   )
   input <- .pinpointsmsvoicev2$list_registration_associations_input(RegistrationId = RegistrationId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pinpointsmsvoicev2$list_registration_associations_output()
@@ -1964,8 +1910,7 @@ pinpointsmsvoicev2_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .pinpointsmsvoicev2$list_tags_for_resource_output()
@@ -1995,11 +1940,11 @@ pinpointsmsvoicev2_list_tags_for_resource <- function(ResourceArn) {
 #' @param KeywordMessage &#91;required&#93; The message associated with the keyword.
 #' @param KeywordAction The action to perform for the new keyword when it is received.
 #' 
-#' - AUTOMATIC_RESPONSE: A message is sent to the recipient.
+#' -   AUTOMATIC_RESPONSE: A message is sent to the recipient.
 #' 
-#' - OPT_OUT: Keeps the recipient from receiving future messages.
+#' -   OPT_OUT: Keeps the recipient from receiving future messages.
 #' 
-#' - OPT_IN: The recipient wants to receive future messages.
+#' -   OPT_IN: The recipient wants to receive future messages.
 #'
 #' @keywords internal
 #'
@@ -2010,8 +1955,7 @@ pinpointsmsvoicev2_put_keyword <- function(OriginationIdentity, Keyword, Keyword
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$put_keyword_input(OriginationIdentity = OriginationIdentity, Keyword = Keyword, KeywordMessage = KeywordMessage, KeywordAction = KeywordAction)
   output <- .pinpointsmsvoicev2$put_keyword_output()
@@ -2042,8 +1986,7 @@ pinpointsmsvoicev2_put_opted_out_number <- function(OptOutListName, OptedOutNumb
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$put_opted_out_number_input(OptOutListName = OptOutListName, OptedOutNumber = OptedOutNumber)
   output <- .pinpointsmsvoicev2$put_opted_out_number_output()
@@ -2079,8 +2022,7 @@ pinpointsmsvoicev2_put_registration_field_value <- function(RegistrationId, Fiel
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$put_registration_field_value_input(RegistrationId = RegistrationId, FieldPath = FieldPath, SelectChoices = SelectChoices, TextValue = TextValue, RegistrationAttachmentId = RegistrationAttachmentId)
   output <- .pinpointsmsvoicev2$put_registration_field_value_output()
@@ -2113,8 +2055,7 @@ pinpointsmsvoicev2_release_phone_number <- function(PhoneNumberId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$release_phone_number_input(PhoneNumberId = PhoneNumberId)
   output <- .pinpointsmsvoicev2$release_phone_number_output()
@@ -2146,8 +2087,7 @@ pinpointsmsvoicev2_release_sender_id <- function(SenderId, IsoCountryCode) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$release_sender_id_input(SenderId = SenderId, IsoCountryCode = IsoCountryCode)
   output <- .pinpointsmsvoicev2$release_sender_id_output()
@@ -2197,8 +2137,7 @@ pinpointsmsvoicev2_request_phone_number <- function(IsoCountryCode, MessageType,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$request_phone_number_input(IsoCountryCode = IsoCountryCode, MessageType = MessageType, NumberCapabilities = NumberCapabilities, NumberType = NumberType, OptOutListName = OptOutListName, PoolId = PoolId, RegistrationId = RegistrationId, DeletionProtectionEnabled = DeletionProtectionEnabled, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$request_phone_number_output()
@@ -2239,8 +2178,7 @@ pinpointsmsvoicev2_request_sender_id <- function(SenderId, IsoCountryCode, Messa
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$request_sender_id_input(SenderId = SenderId, IsoCountryCode = IsoCountryCode, MessageTypes = MessageTypes, DeletionProtectionEnabled = DeletionProtectionEnabled, Tags = Tags, ClientToken = ClientToken)
   output <- .pinpointsmsvoicev2$request_sender_id_output()
@@ -2285,8 +2223,7 @@ pinpointsmsvoicev2_send_destination_number_verification_code <- function(Verifie
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$send_destination_number_verification_code_input(VerifiedDestinationNumberId = VerifiedDestinationNumberId, VerificationChannel = VerificationChannel, LanguageCode = LanguageCode, OriginationIdentity = OriginationIdentity, ConfigurationSetName = ConfigurationSetName, Context = Context, DestinationCountryParameters = DestinationCountryParameters)
   output <- .pinpointsmsvoicev2$send_destination_number_verification_code_output()
@@ -2343,8 +2280,7 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$send_media_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, MessageBody = MessageBody, MediaUrls = MediaUrls, ConfigurationSetName = ConfigurationSetName, MaxPrice = MaxPrice, TimeToLive = TimeToLive, Context = Context, DryRun = DryRun, ProtectConfigurationId = ProtectConfigurationId)
   output <- .pinpointsmsvoicev2$send_media_message_output()
@@ -2389,16 +2325,16 @@ pinpointsmsvoicev2_send_media_message <- function(DestinationPhoneNumber, Origin
 #' requirements for sending SMS messages to recipients in
 #' India](https://docs.aws.amazon.com/sms-voice/latest/userguide/registrations-sms-senderid-india.html).
 #' 
-#' - `IN_ENTITY_ID` The entity ID or Principal Entity (PE) ID that you
-#'   received after completing the sender ID registration process.
+#' -   `IN_ENTITY_ID` The entity ID or Principal Entity (PE) ID that you
+#'     received after completing the sender ID registration process.
 #' 
-#' - `IN_TEMPLATE_ID` The template ID that you received after completing
-#'   the sender ID registration process.
+#' -   `IN_TEMPLATE_ID` The template ID that you received after completing
+#'     the sender ID registration process.
 #' 
-#'   Make sure that the Template ID that you specify matches your message
-#'   template exactly. If your message doesn't match the template that you
-#'   provided during the registration process, the mobile carriers might
-#'   reject your message.
+#'     Make sure that the Template ID that you specify matches your message
+#'     template exactly. If your message doesn't match the template that
+#'     you provided during the registration process, the mobile carriers
+#'     might reject your message.
 #' @param DryRun When set to true, the message is checked and validated, but isn't sent
 #' to the end recipient. You are not charged for using `DryRun`.
 #' 
@@ -2419,8 +2355,7 @@ pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, Origina
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$send_text_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, MessageBody = MessageBody, MessageType = MessageType, Keyword = Keyword, ConfigurationSetName = ConfigurationSetName, MaxPrice = MaxPrice, TimeToLive = TimeToLive, Context = Context, DestinationCountryParameters = DestinationCountryParameters, DryRun = DryRun, ProtectConfigurationId = ProtectConfigurationId)
   output <- .pinpointsmsvoicev2$send_text_message_output()
@@ -2447,11 +2382,11 @@ pinpointsmsvoicev2_send_text_message <- function(DestinationPhoneNumber, Origina
 #' markup language
 #' (SSML)](https://docs.aws.amazon.com/polly/latest/dg/what-is.html).
 #' 
-#' - TEXT: This is the default value. When used the maximum character limit
-#'   is 3000.
+#' -   TEXT: This is the default value. When used the maximum character
+#'     limit is 3000.
 #' 
-#' - SSML: When used the maximum character limit is 6000 including SSML
-#'   tagging.
+#' -   SSML: When used the maximum character limit is 6000 including SSML
+#'     tagging.
 #' @param VoiceId The voice for the [Amazon
 #' Polly](https://docs.aws.amazon.com/polly/latest/dg/what-is.html) service
 #' to use. By default this is set to "MATTHEW".
@@ -2474,8 +2409,7 @@ pinpointsmsvoicev2_send_voice_message <- function(DestinationPhoneNumber, Origin
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$send_voice_message_input(DestinationPhoneNumber = DestinationPhoneNumber, OriginationIdentity = OriginationIdentity, MessageBody = MessageBody, MessageBodyTextType = MessageBodyTextType, VoiceId = VoiceId, ConfigurationSetName = ConfigurationSetName, MaxPricePerMinute = MaxPricePerMinute, TimeToLive = TimeToLive, Context = Context, DryRun = DryRun, ProtectConfigurationId = ProtectConfigurationId)
   output <- .pinpointsmsvoicev2$send_voice_message_output()
@@ -2505,8 +2439,7 @@ pinpointsmsvoicev2_set_account_default_protect_configuration <- function(Protect
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$set_account_default_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId)
   output <- .pinpointsmsvoicev2$set_account_default_protect_configuration_output()
@@ -2540,8 +2473,7 @@ pinpointsmsvoicev2_set_default_message_type <- function(ConfigurationSetName, Me
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$set_default_message_type_input(ConfigurationSetName = ConfigurationSetName, MessageType = MessageType)
   output <- .pinpointsmsvoicev2$set_default_message_type_output()
@@ -2579,8 +2511,7 @@ pinpointsmsvoicev2_set_default_sender_id <- function(ConfigurationSetName, Sende
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$set_default_sender_id_input(ConfigurationSetName = ConfigurationSetName, SenderId = SenderId)
   output <- .pinpointsmsvoicev2$set_default_sender_id_output()
@@ -2611,8 +2542,7 @@ pinpointsmsvoicev2_set_media_message_spend_limit_override <- function(MonthlyLim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$set_media_message_spend_limit_override_input(MonthlyLimit = MonthlyLimit)
   output <- .pinpointsmsvoicev2$set_media_message_spend_limit_override_output()
@@ -2643,8 +2573,7 @@ pinpointsmsvoicev2_set_text_message_spend_limit_override <- function(MonthlyLimi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$set_text_message_spend_limit_override_input(MonthlyLimit = MonthlyLimit)
   output <- .pinpointsmsvoicev2$set_text_message_spend_limit_override_output()
@@ -2675,8 +2604,7 @@ pinpointsmsvoicev2_set_voice_message_spend_limit_override <- function(MonthlyLim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$set_voice_message_spend_limit_override_input(MonthlyLimit = MonthlyLimit)
   output <- .pinpointsmsvoicev2$set_voice_message_spend_limit_override_output()
@@ -2706,8 +2634,7 @@ pinpointsmsvoicev2_submit_registration_version <- function(RegistrationId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$submit_registration_version_input(RegistrationId = RegistrationId)
   output <- .pinpointsmsvoicev2$submit_registration_version_output()
@@ -2739,8 +2666,7 @@ pinpointsmsvoicev2_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .pinpointsmsvoicev2$tag_resource_output()
@@ -2771,8 +2697,7 @@ pinpointsmsvoicev2_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .pinpointsmsvoicev2$untag_resource_output()
@@ -2814,8 +2739,7 @@ pinpointsmsvoicev2_update_event_destination <- function(ConfigurationSetName, Ev
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$update_event_destination_input(ConfigurationSetName = ConfigurationSetName, EventDestinationName = EventDestinationName, Enabled = Enabled, MatchingEventTypes = MatchingEventTypes, CloudWatchLogsDestination = CloudWatchLogsDestination, KinesisFirehoseDestination = KinesisFirehoseDestination, SnsDestination = SnsDestination)
   output <- .pinpointsmsvoicev2$update_event_destination_output()
@@ -2861,8 +2785,7 @@ pinpointsmsvoicev2_update_phone_number <- function(PhoneNumberId, TwoWayEnabled 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$update_phone_number_input(PhoneNumberId = PhoneNumberId, TwoWayEnabled = TwoWayEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, OptOutListName = OptOutListName, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .pinpointsmsvoicev2$update_phone_number_output()
@@ -2908,8 +2831,7 @@ pinpointsmsvoicev2_update_pool <- function(PoolId, TwoWayEnabled = NULL, TwoWayC
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$update_pool_input(PoolId = PoolId, TwoWayEnabled = TwoWayEnabled, TwoWayChannelArn = TwoWayChannelArn, TwoWayChannelRole = TwoWayChannelRole, SelfManagedOptOutsEnabled = SelfManagedOptOutsEnabled, OptOutListName = OptOutListName, SharedRoutesEnabled = SharedRoutesEnabled, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .pinpointsmsvoicev2$update_pool_output()
@@ -2941,8 +2863,7 @@ pinpointsmsvoicev2_update_protect_configuration <- function(ProtectConfiguration
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$update_protect_configuration_input(ProtectConfigurationId = ProtectConfigurationId, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .pinpointsmsvoicev2$update_protect_configuration_output()
@@ -2980,8 +2901,7 @@ pinpointsmsvoicev2_update_protect_configuration_country_rule_set <- function(Pro
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$update_protect_configuration_country_rule_set_input(ProtectConfigurationId = ProtectConfigurationId, NumberCapability = NumberCapability, CountryRuleSetUpdates = CountryRuleSetUpdates)
   output <- .pinpointsmsvoicev2$update_protect_configuration_country_rule_set_output()
@@ -3015,8 +2935,7 @@ pinpointsmsvoicev2_update_sender_id <- function(SenderId, IsoCountryCode, Deleti
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$update_sender_id_input(SenderId = SenderId, IsoCountryCode = IsoCountryCode, DeletionProtectionEnabled = DeletionProtectionEnabled)
   output <- .pinpointsmsvoicev2$update_sender_id_output()
@@ -3050,8 +2969,7 @@ pinpointsmsvoicev2_verify_destination_number <- function(VerifiedDestinationNumb
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pinpointsmsvoicev2$verify_destination_number_input(VerifiedDestinationNumberId = VerifiedDestinationNumberId, VerificationCode = VerificationCode)
   output <- .pinpointsmsvoicev2$verify_destination_number_output()

@@ -23,11 +23,12 @@ is provided, the Amazon Web Services account ID is used by default.}
 \item{ResourceShareType}{Allows you to specify that you want to list the databases shared with
 your account. The allowable values are \code{FEDERATED}, \code{FOREIGN} or \code{ALL}.
 \itemize{
-\item If set to \code{FEDERATED}, will list the federated databases (referencing
-an external entity) shared with your account.
-\item If set to \code{FOREIGN}, will list the databases shared with your account.
-\item If set to \code{ALL}, will list the databases shared with your account, as
-well as the databases in yor local account.
+\item If set to \code{FEDERATED}, will list the federated databases
+(referencing an external entity) shared with your account.
+\item If set to \code{FOREIGN}, will list the databases shared with your
+account.
+\item If set to \code{ALL}, will list the databases shared with your account,
+as well as the databases in yor local account.
 }}
 
 \item{AttributesToGet}{Specifies the database fields returned by the

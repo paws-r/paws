@@ -32,7 +32,7 @@ Default: \code{1}}
 A tag key must be accompanied by a tag value, although null is accepted.}
 }
 \description{
-Allows you to purchase a reserved cache node offering. Reserved nodes are not eligible for cancellation and are non-refundable. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/}{Managing Costs with Reserved Nodes} for Redis OSS or \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/}{Managing Costs with Reserved Nodes} for Memcached.
+Allows you to purchase a reserved cache node offering. Reserved nodes are not eligible for cancellation and are non-refundable. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Managing Costs with Reserved Nodes} for Redis OSS or \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/}{Managing Costs with Reserved Nodes} for Memcached.
 
 See \url{https://www.paws-r-sdk.com/docs/elasticache_purchase_reserved_cache_nodes_offering/} for full documentation.
 }

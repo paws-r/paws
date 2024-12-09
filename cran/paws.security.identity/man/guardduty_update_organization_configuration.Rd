@@ -34,24 +34,25 @@ accounts in the organization. You must provide a value for either
 Use one of the following configuration values for
 \code{autoEnableOrganizationMembers}:
 \itemize{
-\item \code{NEW}: Indicates that when a new account joins the organization, they
-will have GuardDuty enabled automatically.
-\item \code{ALL}: Indicates that all accounts in the organization have GuardDuty
-enabled automatically. This includes \code{NEW} accounts that join the
-organization and accounts that may have been suspended or removed from
-the organization in GuardDuty.
+\item \code{NEW}: Indicates that when a new account joins the organization,
+they will have GuardDuty enabled automatically.
+\item \code{ALL}: Indicates that all accounts in the organization have
+GuardDuty enabled automatically. This includes \code{NEW} accounts that
+join the organization and accounts that may have been suspended or
+removed from the organization in GuardDuty.
 
 It may take up to 24 hours to update the configuration for all the
 member accounts.
-\item \code{NONE}: Indicates that GuardDuty will not be automatically enabled for
-any account in the organization. The administrator must manage
+\item \code{NONE}: Indicates that GuardDuty will not be automatically enabled
+for any account in the organization. The administrator must manage
 GuardDuty for each account in the organization individually.
 
-When you update the auto-enable setting from \code{ALL} or \code{NEW} to \code{NONE},
-this action doesn't disable the corresponding option for your existing
-accounts. This configuration will apply to the new accounts that join
-the organization. After you update the auto-enable settings, no new
-account will have the corresponding option as enabled.
+When you update the auto-enable setting from \code{ALL} or \code{NEW} to
+\code{NONE}, this action doesn't disable the corresponding option for
+your existing accounts. This configuration will apply to the new
+accounts that join the organization. After you update the
+auto-enable settings, no new account will have the corresponding
+option as enabled.
 }}
 }
 \description{

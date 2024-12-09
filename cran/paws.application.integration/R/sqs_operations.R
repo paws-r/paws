@@ -48,8 +48,7 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$add_permission_input(QueueUrl = QueueUrl, Label = Label, AWSAccountIds = AWSAccountIds, Actions = Actions)
   output <- .sqs$add_permission_output()
@@ -79,8 +78,7 @@ sqs_cancel_message_move_task <- function(TaskHandle) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$cancel_message_move_task_input(TaskHandle = TaskHandle)
   output <- .sqs$cancel_message_move_task_output()
@@ -118,8 +116,7 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$change_message_visibility_input(QueueUrl = QueueUrl, ReceiptHandle = ReceiptHandle, VisibilityTimeout = VisibilityTimeout)
   output <- .sqs$change_message_visibility_output()
@@ -153,8 +150,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$change_message_visibility_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$change_message_visibility_batch_output()
@@ -175,12 +171,12 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'
 #' @param QueueName &#91;required&#93; The name of the new queue. The following limits apply to this name:
 #' 
-#' - A queue name can have up to 80 characters.
+#' -   A queue name can have up to 80 characters.
 #' 
-#' - Valid values: alphanumeric characters, hyphens (`-`), and underscores
-#'   (`_`).
+#' -   Valid values: alphanumeric characters, hyphens (`-`), and
+#'     underscores (`_`).
 #' 
-#' - A FIFO queue name must end with the `.fifo` suffix.
+#' -   A FIFO queue name must end with the `.fifo` suffix.
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param Attributes A map of attributes with their corresponding values.
@@ -189,87 +185,87 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' request parameters that the [`create_queue`][sqs_create_queue] action
 #' uses:
 #' 
-#' - `DelaySeconds` – The length of time, in seconds, for which the
-#'   delivery of all messages in the queue is delayed. Valid values: An
-#'   integer from 0 to 900 seconds (15 minutes). Default: 0.
+#' -   `DelaySeconds` – The length of time, in seconds, for which the
+#'     delivery of all messages in the queue is delayed. Valid values: An
+#'     integer from 0 to 900 seconds (15 minutes). Default: 0.
 #' 
-#' - `MaximumMessageSize` – The limit of how many bytes a message can
-#'   contain before Amazon SQS rejects it. Valid values: An integer from
-#'   1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144 (256
-#'   KiB).
+#' -   `MaximumMessageSize` – The limit of how many bytes a message can
+#'     contain before Amazon SQS rejects it. Valid values: An integer from
+#'     1,024 bytes (1 KiB) to 262,144 bytes (256 KiB). Default: 262,144
+#'     (256 KiB).
 #' 
-#' - `MessageRetentionPeriod` – The length of time, in seconds, for which
-#'   Amazon SQS retains a message. Valid values: An integer from 60 seconds
-#'   (1 minute) to 1,209,600 seconds (14 days). Default: 345,600 (4 days).
-#'   When you change a queue's attributes, the change can take up to 60
-#'   seconds for most of the attributes to propagate throughout the Amazon
-#'   SQS system. Changes made to the `MessageRetentionPeriod` attribute can
-#'   take up to 15 minutes and will impact existing messages in the queue
-#'   potentially causing them to be expired and deleted if the
-#'   `MessageRetentionPeriod` is reduced below the age of existing
-#'   messages.
+#' -   `MessageRetentionPeriod` – The length of time, in seconds, for which
+#'     Amazon SQS retains a message. Valid values: An integer from 60
+#'     seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600
+#'     (4 days). When you change a queue's attributes, the change can take
+#'     up to 60 seconds for most of the attributes to propagate throughout
+#'     the Amazon SQS system. Changes made to the `MessageRetentionPeriod`
+#'     attribute can take up to 15 minutes and will impact existing
+#'     messages in the queue potentially causing them to be expired and
+#'     deleted if the `MessageRetentionPeriod` is reduced below the age of
+#'     existing messages.
 #' 
-#' - `Policy` – The queue's policy. A valid Amazon Web Services policy. For
-#'   more information about policy structure, see [Overview of Amazon Web
-#'   Services IAM
-#'   Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
-#'   in the *IAM User Guide*.
+#' -   `Policy` – The queue's policy. A valid Amazon Web Services policy.
+#'     For more information about policy structure, see [Overview of Amazon
+#'     Web Services IAM
+#'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
+#'     in the *IAM User Guide*.
 #' 
-#' - `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds, for
-#'   which a [`receive_message`][sqs_receive_message] action waits for a
-#'   message to arrive. Valid values: An integer from 0 to 20 (seconds).
-#'   Default: 0.
+#' -   `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds,
+#'     for which a [`receive_message`][sqs_receive_message] action waits
+#'     for a message to arrive. Valid values: An integer from 0 to 20
+#'     (seconds). Default: 0.
 #' 
-#' - `VisibilityTimeout` – The visibility timeout for the queue, in
-#'   seconds. Valid values: An integer from 0 to 43,200 (12 hours).
-#'   Default: 30. For more information about the visibility timeout, see
-#'   [Visibility
-#'   Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-#'   in the *Amazon SQS Developer Guide*.
+#' -   `VisibilityTimeout` – The visibility timeout for the queue, in
+#'     seconds. Valid values: An integer from 0 to 43,200 (12 hours).
+#'     Default: 30. For more information about the visibility timeout, see
+#'     [Visibility
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     in the *Amazon SQS Developer Guide*.
 #' 
 #' The following attributes apply only to [dead-letter
 #' queues:](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
-#' - `RedrivePolicy` – The string that includes the parameters for the
-#'   dead-letter queue functionality of the source queue as a JSON object.
-#'   The parameters are as follows:
+#' -   `RedrivePolicy` – The string that includes the parameters for the
+#'     dead-letter queue functionality of the source queue as a JSON
+#'     object. The parameters are as follows:
 #' 
-#'   - `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
-#'     dead-letter queue to which Amazon SQS moves messages after the value
-#'     of `maxReceiveCount` is exceeded.
+#'     -   `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
+#'         dead-letter queue to which Amazon SQS moves messages after the
+#'         value of `maxReceiveCount` is exceeded.
 #' 
-#'   - `maxReceiveCount` – The number of times a message is delivered to
-#'     the source queue before being moved to the dead-letter queue.
-#'     Default: 10. When the `ReceiveCount` for a message exceeds the
-#'     `maxReceiveCount` for a queue, Amazon SQS moves the message to the
-#'     dead-letter-queue.
+#'     -   `maxReceiveCount` – The number of times a message is delivered
+#'         to the source queue before being moved to the dead-letter queue.
+#'         Default: 10. When the `ReceiveCount` for a message exceeds the
+#'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
+#'         the dead-letter-queue.
 #' 
-#' - `RedriveAllowPolicy` – The string that includes the parameters for the
-#'   permissions for the dead-letter queue redrive permission and which
-#'   source queues can specify dead-letter queues as a JSON object. The
-#'   parameters are as follows:
+#' -   `RedriveAllowPolicy` – The string that includes the parameters for
+#'     the permissions for the dead-letter queue redrive permission and
+#'     which source queues can specify dead-letter queues as a JSON object.
+#'     The parameters are as follows:
 #' 
-#'   - `redrivePermission` – The permission type that defines which source
-#'     queues can specify the current queue as the dead-letter queue. Valid
-#'     values are:
+#'     -   `redrivePermission` – The permission type that defines which
+#'         source queues can specify the current queue as the dead-letter
+#'         queue. Valid values are:
 #' 
-#'     - `allowAll` – (Default) Any source queues in this Amazon Web
-#'       Services account in the same Region can specify this queue as the
-#'       dead-letter queue.
+#'         -   `allowAll` – (Default) Any source queues in this Amazon Web
+#'             Services account in the same Region can specify this queue
+#'             as the dead-letter queue.
 #' 
-#'     - `denyAll` – No source queues can specify this queue as the
-#'       dead-letter queue.
+#'         -   `denyAll` – No source queues can specify this queue as the
+#'             dead-letter queue.
 #' 
-#'     - `byQueue` – Only queues specified by the `sourceQueueArns`
-#'       parameter can specify this queue as the dead-letter queue.
+#'         -   `byQueue` – Only queues specified by the `sourceQueueArns`
+#'             parameter can specify this queue as the dead-letter queue.
 #' 
-#'   - `sourceQueueArns` – The Amazon Resource Names (ARN)s of the source
-#'     queues that can specify this queue as the dead-letter queue and
-#'     redrive messages. You can specify this parameter only when the
-#'     `redrivePermission` parameter is set to `byQueue`. You can specify
-#'     up to 10 source queue ARNs. To allow more than 10 source queues to
-#'     specify dead-letter queues, set the `redrivePermission` parameter to
-#'     `allowAll`.
+#'     -   `sourceQueueArns` – The Amazon Resource Names (ARN)s of the
+#'         source queues that can specify this queue as the dead-letter
+#'         queue and redrive messages. You can specify this parameter only
+#'         when the `redrivePermission` parameter is set to `byQueue`. You
+#'         can specify up to 10 source queue ARNs. To allow more than 10
+#'         source queues to specify dead-letter queues, set the
+#'         `redrivePermission` parameter to `allowAll`.
 #' 
 #' The dead-letter queue of a FIFO queue must also be a FIFO queue.
 #' Similarly, the dead-letter queue of a standard queue must also be a
@@ -278,98 +274,100 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
-#' - `KmsMasterKeyId` – The ID of an Amazon Web Services managed customer
-#'   master key (CMK) for Amazon SQS or a custom CMK. For more information,
-#'   see [Key
-#'   Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-#'   While the alias of the Amazon Web Services managed CMK for Amazon SQS
-#'   is always `alias/aws/sqs`, the alias of a custom CMK can, for example,
-#'   be `alias/MyAlias `. For more examples, see
-#'   [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
-#'   in the *Key Management Service API Reference*.
+#' -   `KmsMasterKeyId` – The ID of an Amazon Web Services managed customer
+#'     master key (CMK) for Amazon SQS or a custom CMK. For more
+#'     information, see [Key
+#'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
+#'     While the alias of the Amazon Web Services managed CMK for Amazon
+#'     SQS is always `alias/aws/sqs`, the alias of a custom CMK can, for
+#'     example, be `alias/MyAlias `. For more examples, see
+#'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+#'     in the *Key Management Service API Reference*.
 #' 
-#' - `KmsDataKeyReusePeriodSeconds` – The length of time, in seconds, for
-#'   which Amazon SQS can reuse a [data
-#'   key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
-#'   to encrypt or decrypt messages before calling KMS again. An integer
-#'   representing seconds, between 60 seconds (1 minute) and 86,400 seconds
-#'   (24 hours). Default: 300 (5 minutes). A shorter time period provides
-#'   better security but results in more calls to KMS which might incur
-#'   charges after Free Tier. For more information, see [How Does the Data
-#'   Key Reuse Period
-#'   Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work)
+#' -   `KmsDataKeyReusePeriodSeconds` – The length of time, in seconds, for
+#'     which Amazon SQS can reuse a [data
+#'     key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
+#'     to encrypt or decrypt messages before calling KMS again. An integer
+#'     representing seconds, between 60 seconds (1 minute) and 86,400
+#'     seconds (24 hours). Default: 300 (5 minutes). A shorter time period
+#'     provides better security but results in more calls to KMS which
+#'     might incur charges after Free Tier. For more information, see [How
+#'     Does the Data Key Reuse Period
+#'     Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work)
 #' 
-#' - `SqsManagedSseEnabled` – Enables server-side queue encryption using
-#'   SQS owned encryption keys. Only one server-side encryption option is
-#'   supported per queue (for example,
-#'   [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
-#'   or
-#'   [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
+#' -   `SqsManagedSseEnabled` – Enables server-side queue encryption using
+#'     SQS owned encryption keys. Only one server-side encryption option is
+#'     supported per queue (for example,
+#'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
+#'     or
+#'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
 #' 
 #' The following attributes apply only to [FIFO (first-in-first-out)
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/):
 #' 
-#' - `FifoQueue` – Designates a queue as FIFO. Valid values are `true` and
-#'   `false`. If you don't specify the `FifoQueue` attribute, Amazon SQS
-#'   creates a standard queue. You can provide this attribute only during
-#'   queue creation. You can't change it for an existing queue. When you
-#'   set this attribute, you must also provide the `MessageGroupId` for
-#'   your messages explicitly.
+#' -   `FifoQueue` – Designates a queue as FIFO. Valid values are `true`
+#'     and `false`. If you don't specify the `FifoQueue` attribute, Amazon
+#'     SQS creates a standard queue. You can provide this attribute only
+#'     during queue creation. You can't change it for an existing queue.
+#'     When you set this attribute, you must also provide the
+#'     `MessageGroupId` for your messages explicitly.
 #' 
-#'   For more information, see [FIFO queue
-#'   logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html)
-#'   in the *Amazon SQS Developer Guide*.
+#'     For more information, see [FIFO queue
+#'     logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html)
+#'     in the *Amazon SQS Developer Guide*.
 #' 
-#' - `ContentBasedDeduplication` – Enables content-based deduplication.
-#'   Valid values are `true` and `false`. For more information, see
-#'   [Exactly-once
-#'   processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
-#'   in the *Amazon SQS Developer Guide*. Note the following:
+#' -   `ContentBasedDeduplication` – Enables content-based deduplication.
+#'     Valid values are `true` and `false`. For more information, see
+#'     [Exactly-once
+#'     processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
+#'     in the *Amazon SQS Developer Guide*. Note the following:
 #' 
-#'   - Every message must have a unique `MessageDeduplicationId`.
+#'     -   Every message must have a unique `MessageDeduplicationId`.
 #' 
-#'     - You may provide a `MessageDeduplicationId` explicitly.
+#'         -   You may provide a `MessageDeduplicationId` explicitly.
 #' 
-#'     - If you aren't able to provide a `MessageDeduplicationId` and you
-#'       enable `ContentBasedDeduplication` for your queue, Amazon SQS uses
-#'       a SHA-256 hash to generate the `MessageDeduplicationId` using the
-#'       body of the message (but not the attributes of the message).
+#'         -   If you aren't able to provide a `MessageDeduplicationId` and
+#'             you enable `ContentBasedDeduplication` for your queue,
+#'             Amazon SQS uses a SHA-256 hash to generate the
+#'             `MessageDeduplicationId` using the body of the message (but
+#'             not the attributes of the message).
 #' 
-#'     - If you don't provide a `MessageDeduplicationId` and the queue
-#'       doesn't have `ContentBasedDeduplication` set, the action fails
-#'       with an error.
+#'         -   If you don't provide a `MessageDeduplicationId` and the
+#'             queue doesn't have `ContentBasedDeduplication` set, the
+#'             action fails with an error.
 #' 
-#'     - If the queue has `ContentBasedDeduplication` set, your
-#'       `MessageDeduplicationId` overrides the generated one.
+#'         -   If the queue has `ContentBasedDeduplication` set, your
+#'             `MessageDeduplicationId` overrides the generated one.
 #' 
-#'   - When `ContentBasedDeduplication` is in effect, messages with
-#'     identical content sent within the deduplication interval are treated
-#'     as duplicates and only one copy of the message is delivered.
+#'     -   When `ContentBasedDeduplication` is in effect, messages with
+#'         identical content sent within the deduplication interval are
+#'         treated as duplicates and only one copy of the message is
+#'         delivered.
 #' 
-#'   - If you send one message with `ContentBasedDeduplication` enabled and
-#'     then another message with a `MessageDeduplicationId` that is the
-#'     same as the one generated for the first `MessageDeduplicationId`,
-#'     the two messages are treated as duplicates and only one copy of the
-#'     message is delivered.
+#'     -   If you send one message with `ContentBasedDeduplication` enabled
+#'         and then another message with a `MessageDeduplicationId` that is
+#'         the same as the one generated for the first
+#'         `MessageDeduplicationId`, the two messages are treated as
+#'         duplicates and only one copy of the message is delivered.
 #' 
 #' The following attributes apply only to [high throughput for FIFO
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html):
 #' 
-#' - `DeduplicationScope` – Specifies whether message deduplication occurs
-#'   at the message group or queue level. Valid values are `messageGroup`
-#'   and `queue`.
+#' -   `DeduplicationScope` – Specifies whether message deduplication
+#'     occurs at the message group or queue level. Valid values are
+#'     `messageGroup` and `queue`.
 #' 
-#' - `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
-#'   quota applies to the entire queue or per message group. Valid values
-#'   are `perQueue` and `perMessageGroupId`. The `perMessageGroupId` value
-#'   is allowed only when the value for `DeduplicationScope` is
-#'   `messageGroup`.
+#' -   `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
+#'     quota applies to the entire queue or per message group. Valid values
+#'     are `perQueue` and `perMessageGroupId`. The `perMessageGroupId`
+#'     value is allowed only when the value for `DeduplicationScope` is
+#'     `messageGroup`.
 #' 
 #' To enable high throughput for FIFO queues, do the following:
 #' 
-#' - Set `DeduplicationScope` to `messageGroup`.
+#' -   Set `DeduplicationScope` to `messageGroup`.
 #' 
-#' - Set `FifoThroughputLimit` to `perMessageGroupId`.
+#' -   Set `FifoThroughputLimit` to `perMessageGroupId`.
 #' 
 #' If you set these attributes to anything other than the values shown for
 #' enabling high throughput, normal throughput is in effect and
@@ -385,15 +383,15 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' 
 #' When you use queue tags, keep the following guidelines in mind:
 #' 
-#' - Adding more than 50 tags to a queue isn't recommended.
+#' -   Adding more than 50 tags to a queue isn't recommended.
 #' 
-#' - Tags don't have any semantic meaning. Amazon SQS interprets tags as
-#'   character strings.
+#' -   Tags don't have any semantic meaning. Amazon SQS interprets tags as
+#'     character strings.
 #' 
-#' - Tags are case-sensitive.
+#' -   Tags are case-sensitive.
 #' 
-#' - A new tag with a key identical to that of an existing tag overwrites
-#'   the existing tag.
+#' -   A new tag with a key identical to that of an existing tag overwrites
+#'     the existing tag.
 #' 
 #' For a full list of tag restrictions, see [Quotas related to
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#limits-queues)
@@ -416,8 +414,7 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$create_queue_input(QueueName = QueueName, Attributes = Attributes, tags = tags)
   output <- .sqs$create_queue_output()
@@ -450,8 +447,7 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$delete_message_input(QueueUrl = QueueUrl, ReceiptHandle = ReceiptHandle)
   output <- .sqs$delete_message_output()
@@ -484,8 +480,7 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$delete_message_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$delete_message_batch_output()
@@ -518,8 +513,7 @@ sqs_delete_queue <- function(QueueUrl) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$delete_queue_input(QueueUrl = QueueUrl)
   output <- .sqs$delete_queue_output()
@@ -559,98 +553,100 @@ sqs_delete_queue <- function(QueueUrl) {
 #' at least 1 minute after the producers stop sending messages. This period
 #' is required for the queue metadata to reach eventual consistency.
 #' 
-#' - `All` – Returns all values.
+#' -   `All` – Returns all values.
 #' 
-#' - `ApproximateNumberOfMessages` – Returns the approximate number of
-#'   messages available for retrieval from the queue.
+#' -   `ApproximateNumberOfMessages` – Returns the approximate number of
+#'     messages available for retrieval from the queue.
 #' 
-#' - `ApproximateNumberOfMessagesDelayed` – Returns the approximate number
-#'   of messages in the queue that are delayed and not available for
-#'   reading immediately. This can happen when the queue is configured as a
-#'   delay queue or when a message has been sent with a delay parameter.
+#' -   `ApproximateNumberOfMessagesDelayed` – Returns the approximate
+#'     number of messages in the queue that are delayed and not available
+#'     for reading immediately. This can happen when the queue is
+#'     configured as a delay queue or when a message has been sent with a
+#'     delay parameter.
 #' 
-#' - `ApproximateNumberOfMessagesNotVisible` – Returns the approximate
-#'   number of messages that are in flight. Messages are considered to be
-#'   *in flight* if they have been sent to a client but have not yet been
-#'   deleted or have not yet reached the end of their visibility window.
+#' -   `ApproximateNumberOfMessagesNotVisible` – Returns the approximate
+#'     number of messages that are in flight. Messages are considered to be
+#'     *in flight* if they have been sent to a client but have not yet been
+#'     deleted or have not yet reached the end of their visibility window.
 #' 
-#' - `CreatedTimestamp` – Returns the time when the queue was created in
-#'   seconds ([epoch time](https://en.wikipedia.org/wiki/Unix_time)).
+#' -   `CreatedTimestamp` – Returns the time when the queue was created in
+#'     seconds ([epoch time](https://en.wikipedia.org/wiki/Unix_time)).
 #' 
-#' - `DelaySeconds` – Returns the default delay on the queue in seconds.
+#' -   `DelaySeconds` – Returns the default delay on the queue in seconds.
 #' 
-#' - `LastModifiedTimestamp` – Returns the time when the queue was last
-#'   changed in seconds ([epoch
-#'   time](https://en.wikipedia.org/wiki/Unix_time)).
+#' -   `LastModifiedTimestamp` – Returns the time when the queue was last
+#'     changed in seconds ([epoch
+#'     time](https://en.wikipedia.org/wiki/Unix_time)).
 #' 
-#' - `MaximumMessageSize` – Returns the limit of how many bytes a message
-#'   can contain before Amazon SQS rejects it.
+#' -   `MaximumMessageSize` – Returns the limit of how many bytes a message
+#'     can contain before Amazon SQS rejects it.
 #' 
-#' - `MessageRetentionPeriod` – Returns the length of time, in seconds, for
-#'   which Amazon SQS retains a message. When you change a queue's
-#'   attributes, the change can take up to 60 seconds for most of the
-#'   attributes to propagate throughout the Amazon SQS system. Changes made
-#'   to the `MessageRetentionPeriod` attribute can take up to 15 minutes
-#'   and will impact existing messages in the queue potentially causing
-#'   them to be expired and deleted if the `MessageRetentionPeriod` is
-#'   reduced below the age of existing messages.
+#' -   `MessageRetentionPeriod` – Returns the length of time, in seconds,
+#'     for which Amazon SQS retains a message. When you change a queue's
+#'     attributes, the change can take up to 60 seconds for most of the
+#'     attributes to propagate throughout the Amazon SQS system. Changes
+#'     made to the `MessageRetentionPeriod` attribute can take up to 15
+#'     minutes and will impact existing messages in the queue potentially
+#'     causing them to be expired and deleted if the
+#'     `MessageRetentionPeriod` is reduced below the age of existing
+#'     messages.
 #' 
-#' - `Policy` – Returns the policy of the queue.
+#' -   `Policy` – Returns the policy of the queue.
 #' 
-#' - `QueueArn` – Returns the Amazon resource name (ARN) of the queue.
+#' -   `QueueArn` – Returns the Amazon resource name (ARN) of the queue.
 #' 
-#' - `ReceiveMessageWaitTimeSeconds` – Returns the length of time, in
-#'   seconds, for which the [`receive_message`][sqs_receive_message] action
-#'   waits for a message to arrive.
+#' -   `ReceiveMessageWaitTimeSeconds` – Returns the length of time, in
+#'     seconds, for which the [`receive_message`][sqs_receive_message]
+#'     action waits for a message to arrive.
 #' 
-#' - `VisibilityTimeout` – Returns the visibility timeout for the queue.
-#'   For more information about the visibility timeout, see [Visibility
-#'   Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-#'   in the *Amazon SQS Developer Guide*.
+#' -   `VisibilityTimeout` – Returns the visibility timeout for the queue.
+#'     For more information about the visibility timeout, see [Visibility
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     in the *Amazon SQS Developer Guide*.
 #' 
 #' The following attributes apply only to [dead-letter
 #' queues:](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
-#' - `RedrivePolicy` – The string that includes the parameters for the
-#'   dead-letter queue functionality of the source queue as a JSON object.
-#'   The parameters are as follows:
+#' -   `RedrivePolicy` – The string that includes the parameters for the
+#'     dead-letter queue functionality of the source queue as a JSON
+#'     object. The parameters are as follows:
 #' 
-#'   - `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
-#'     dead-letter queue to which Amazon SQS moves messages after the value
-#'     of `maxReceiveCount` is exceeded.
+#'     -   `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
+#'         dead-letter queue to which Amazon SQS moves messages after the
+#'         value of `maxReceiveCount` is exceeded.
 #' 
-#'   - `maxReceiveCount` – The number of times a message is delivered to
-#'     the source queue before being moved to the dead-letter queue.
-#'     Default: 10. When the `ReceiveCount` for a message exceeds the
-#'     `maxReceiveCount` for a queue, Amazon SQS moves the message to the
-#'     dead-letter-queue.
+#'     -   `maxReceiveCount` – The number of times a message is delivered
+#'         to the source queue before being moved to the dead-letter queue.
+#'         Default: 10. When the `ReceiveCount` for a message exceeds the
+#'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
+#'         the dead-letter-queue.
 #' 
-#' - `RedriveAllowPolicy` – The string that includes the parameters for the
-#'   permissions for the dead-letter queue redrive permission and which
-#'   source queues can specify dead-letter queues as a JSON object. The
-#'   parameters are as follows:
+#' -   `RedriveAllowPolicy` – The string that includes the parameters for
+#'     the permissions for the dead-letter queue redrive permission and
+#'     which source queues can specify dead-letter queues as a JSON object.
+#'     The parameters are as follows:
 #' 
-#'   - `redrivePermission` – The permission type that defines which source
-#'     queues can specify the current queue as the dead-letter queue. Valid
-#'     values are:
+#'     -   `redrivePermission` – The permission type that defines which
+#'         source queues can specify the current queue as the dead-letter
+#'         queue. Valid values are:
 #' 
-#'     - `allowAll` – (Default) Any source queues in this Amazon Web
-#'       Services account in the same Region can specify this queue as the
-#'       dead-letter queue.
+#'         -   `allowAll` – (Default) Any source queues in this Amazon Web
+#'             Services account in the same Region can specify this queue
+#'             as the dead-letter queue.
 #' 
-#'     - `denyAll` – No source queues can specify this queue as the
-#'       dead-letter queue.
+#'         -   `denyAll` – No source queues can specify this queue as the
+#'             dead-letter queue.
 #' 
-#'     - `byQueue` – Only queues specified by the `sourceQueueArns`
-#'       parameter can specify this queue as the dead-letter queue.
+#'         -   `byQueue` – Only queues specified by the `sourceQueueArns`
+#'             parameter can specify this queue as the dead-letter queue.
 #' 
-#'   - `sourceQueueArns` – The Amazon Resource Names (ARN)s of the source
-#'     queues that can specify this queue as the dead-letter queue and
-#'     redrive messages. You can specify this parameter only when the
-#'     `redrivePermission` parameter is set to `byQueue`. You can specify
-#'     up to 10 source queue ARNs. To allow more than 10 source queues to
-#'     specify dead-letter queues, set the `redrivePermission` parameter to
-#'     `allowAll`.
+#'     -   `sourceQueueArns` – The Amazon Resource Names (ARN)s of the
+#'         source queues that can specify this queue as the dead-letter
+#'         queue and redrive messages. You can specify this parameter only
+#'         when the `redrivePermission` parameter is set to `byQueue`. You
+#'         can specify up to 10 source queue ARNs. To allow more than 10
+#'         source queues to specify dead-letter queues, set the
+#'         `redrivePermission` parameter to `allowAll`.
 #' 
 #' The dead-letter queue of a FIFO queue must also be a FIFO queue.
 #' Similarly, the dead-letter queue of a standard queue must also be a
@@ -659,60 +655,61 @@ sqs_delete_queue <- function(QueueUrl) {
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
-#' - `KmsMasterKeyId` – Returns the ID of an Amazon Web Services managed
-#'   customer master key (CMK) for Amazon SQS or a custom CMK. For more
-#'   information, see [Key
-#'   Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
+#' -   `KmsMasterKeyId` – Returns the ID of an Amazon Web Services managed
+#'     customer master key (CMK) for Amazon SQS or a custom CMK. For more
+#'     information, see [Key
+#'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 #' 
-#' - `KmsDataKeyReusePeriodSeconds` – Returns the length of time, in
-#'   seconds, for which Amazon SQS can reuse a data key to encrypt or
-#'   decrypt messages before calling KMS again. For more information, see
-#'   [How Does the Data Key Reuse Period
-#'   Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
+#' -   `KmsDataKeyReusePeriodSeconds` – Returns the length of time, in
+#'     seconds, for which Amazon SQS can reuse a data key to encrypt or
+#'     decrypt messages before calling KMS again. For more information, see
+#'     [How Does the Data Key Reuse Period
+#'     Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 #' 
-#' - `SqsManagedSseEnabled` – Returns information about whether the queue
-#'   is using SSE-SQS encryption using SQS owned encryption keys. Only one
-#'   server-side encryption option is supported per queue (for example,
-#'   [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
-#'   or
-#'   [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
+#' -   `SqsManagedSseEnabled` – Returns information about whether the queue
+#'     is using SSE-SQS encryption using SQS owned encryption keys. Only
+#'     one server-side encryption option is supported per queue (for
+#'     example,
+#'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
+#'     or
+#'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
 #' 
 #' The following attributes apply only to [FIFO (first-in-first-out)
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/):
 #' 
-#' - `FifoQueue` – Returns information about whether the queue is FIFO. For
-#'   more information, see [FIFO queue
-#'   logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html)
-#'   in the *Amazon SQS Developer Guide*.
+#' -   `FifoQueue` – Returns information about whether the queue is FIFO.
+#'     For more information, see [FIFO queue
+#'     logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html)
+#'     in the *Amazon SQS Developer Guide*.
 #' 
-#'   To determine whether a queue is
-#'   [FIFO](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/),
-#'   you can check whether `QueueName` ends with the `.fifo` suffix.
+#'     To determine whether a queue is
+#'     [FIFO](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/),
+#'     you can check whether `QueueName` ends with the `.fifo` suffix.
 #' 
-#' - `ContentBasedDeduplication` – Returns whether content-based
-#'   deduplication is enabled for the queue. For more information, see
-#'   [Exactly-once
-#'   processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
-#'   in the *Amazon SQS Developer Guide*.
+#' -   `ContentBasedDeduplication` – Returns whether content-based
+#'     deduplication is enabled for the queue. For more information, see
+#'     [Exactly-once
+#'     processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
+#'     in the *Amazon SQS Developer Guide*.
 #' 
 #' The following attributes apply only to [high throughput for FIFO
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html):
 #' 
-#' - `DeduplicationScope` – Specifies whether message deduplication occurs
-#'   at the message group or queue level. Valid values are `messageGroup`
-#'   and `queue`.
+#' -   `DeduplicationScope` – Specifies whether message deduplication
+#'     occurs at the message group or queue level. Valid values are
+#'     `messageGroup` and `queue`.
 #' 
-#' - `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
-#'   quota applies to the entire queue or per message group. Valid values
-#'   are `perQueue` and `perMessageGroupId`. The `perMessageGroupId` value
-#'   is allowed only when the value for `DeduplicationScope` is
-#'   `messageGroup`.
+#' -   `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
+#'     quota applies to the entire queue or per message group. Valid values
+#'     are `perQueue` and `perMessageGroupId`. The `perMessageGroupId`
+#'     value is allowed only when the value for `DeduplicationScope` is
+#'     `messageGroup`.
 #' 
 #' To enable high throughput for FIFO queues, do the following:
 #' 
-#' - Set `DeduplicationScope` to `messageGroup`.
+#' -   Set `DeduplicationScope` to `messageGroup`.
 #' 
-#' - Set `FifoThroughputLimit` to `perMessageGroupId`.
+#' -   Set `FifoThroughputLimit` to `perMessageGroupId`.
 #' 
 #' If you set these attributes to anything other than the values shown for
 #' enabling high throughput, normal throughput is in effect and
@@ -731,8 +728,7 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$get_queue_attributes_input(QueueUrl = QueueUrl, AttributeNames = AttributeNames)
   output <- .sqs$get_queue_attributes_output()
@@ -768,8 +764,7 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$get_queue_url_input(QueueName = QueueName, QueueOwnerAWSAccountId = QueueOwnerAWSAccountId)
   output <- .sqs$get_queue_url_output()
@@ -806,8 +801,7 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "queueUrls"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "queueUrls")
   )
   input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_dead_letter_source_queues_output()
@@ -841,8 +835,7 @@ sqs_list_message_move_tasks <- function(SourceArn, MaxResults = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$list_message_move_tasks_input(SourceArn = SourceArn, MaxResults = MaxResults)
   output <- .sqs$list_message_move_tasks_output()
@@ -872,8 +865,7 @@ sqs_list_queue_tags <- function(QueueUrl) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$list_queue_tags_input(QueueUrl = QueueUrl)
   output <- .sqs$list_queue_tags_output()
@@ -910,8 +902,7 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "QueueUrls"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "QueueUrls")
   )
   input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_queues_output()
@@ -945,8 +936,7 @@ sqs_purge_queue <- function(QueueUrl) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$purge_queue_input(QueueUrl = QueueUrl)
   output <- .sqs$purge_queue_output()
@@ -975,100 +965,100 @@ sqs_purge_queue <- function(QueueUrl) {
 #' A list of attributes that need to be returned along with each message.
 #' These attributes include:
 #' 
-#' - `All` – Returns all values.
+#' -   `All` – Returns all values.
 #' 
-#' - `ApproximateFirstReceiveTimestamp` – Returns the time the message was
-#'   first received from the queue ([epoch
-#'   time](https://en.wikipedia.org/wiki/Unix_time) in milliseconds).
+#' -   `ApproximateFirstReceiveTimestamp` – Returns the time the message
+#'     was first received from the queue ([epoch
+#'     time](https://en.wikipedia.org/wiki/Unix_time) in milliseconds).
 #' 
-#' - `ApproximateReceiveCount` – Returns the number of times a message has
-#'   been received across all queues but not deleted.
+#' -   `ApproximateReceiveCount` – Returns the number of times a message
+#'     has been received across all queues but not deleted.
 #' 
-#' - `AWSTraceHeader` – Returns the X-Ray trace header string.
+#' -   `AWSTraceHeader` – Returns the X-Ray trace header string.
 #' 
-#' - `SenderId`
+#' -   `SenderId`
 #' 
-#'   - For a user, returns the user ID, for example
-#'     `ABCDEFGHI1JKLMNOPQ23R`.
+#'     -   For a user, returns the user ID, for example
+#'         `ABCDEFGHI1JKLMNOPQ23R`.
 #' 
-#'   - For an IAM role, returns the IAM role ID, for example
-#'     `ABCDE1F2GH3I4JK5LMNOP:i-a123b456`.
+#'     -   For an IAM role, returns the IAM role ID, for example
+#'         `ABCDE1F2GH3I4JK5LMNOP:i-a123b456`.
 #' 
-#' - `SentTimestamp` – Returns the time the message was sent to the queue
-#'   ([epoch time](https://en.wikipedia.org/wiki/Unix_time) in
-#'   milliseconds).
+#' -   `SentTimestamp` – Returns the time the message was sent to the queue
+#'     ([epoch time](https://en.wikipedia.org/wiki/Unix_time) in
+#'     milliseconds).
 #' 
-#' - `SqsManagedSseEnabled` – Enables server-side queue encryption using
-#'   SQS owned encryption keys. Only one server-side encryption option is
-#'   supported per queue (for example,
-#'   [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
-#'   or
-#'   [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
+#' -   `SqsManagedSseEnabled` – Enables server-side queue encryption using
+#'     SQS owned encryption keys. Only one server-side encryption option is
+#'     supported per queue (for example,
+#'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
+#'     or
+#'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
 #' 
-#' - `MessageDeduplicationId` – Returns the value provided by the producer
-#'   that calls the [`send_message`][sqs_send_message] action.
+#' -   `MessageDeduplicationId` – Returns the value provided by the
+#'     producer that calls the [`send_message`][sqs_send_message] action.
 #' 
-#' - `MessageGroupId` – Returns the value provided by the producer that
-#'   calls the [`send_message`][sqs_send_message] action. Messages with the
-#'   same `MessageGroupId` are returned in sequence.
+#' -   `MessageGroupId` – Returns the value provided by the producer that
+#'     calls the [`send_message`][sqs_send_message] action. Messages with
+#'     the same `MessageGroupId` are returned in sequence.
 #' 
-#' - `SequenceNumber` – Returns the value provided by Amazon SQS.
+#' -   `SequenceNumber` – Returns the value provided by Amazon SQS.
 #' @param MessageSystemAttributeNames A list of attributes that need to be returned along with each message.
 #' These attributes include:
 #' 
-#' - `All` – Returns all values.
+#' -   `All` – Returns all values.
 #' 
-#' - `ApproximateFirstReceiveTimestamp` – Returns the time the message was
-#'   first received from the queue ([epoch
-#'   time](https://en.wikipedia.org/wiki/Unix_time) in milliseconds).
+#' -   `ApproximateFirstReceiveTimestamp` – Returns the time the message
+#'     was first received from the queue ([epoch
+#'     time](https://en.wikipedia.org/wiki/Unix_time) in milliseconds).
 #' 
-#' - `ApproximateReceiveCount` – Returns the number of times a message has
-#'   been received across all queues but not deleted.
+#' -   `ApproximateReceiveCount` – Returns the number of times a message
+#'     has been received across all queues but not deleted.
 #' 
-#' - `AWSTraceHeader` – Returns the X-Ray trace header string.
+#' -   `AWSTraceHeader` – Returns the X-Ray trace header string.
 #' 
-#' - `SenderId`
+#' -   `SenderId`
 #' 
-#'   - For a user, returns the user ID, for example
-#'     `ABCDEFGHI1JKLMNOPQ23R`.
+#'     -   For a user, returns the user ID, for example
+#'         `ABCDEFGHI1JKLMNOPQ23R`.
 #' 
-#'   - For an IAM role, returns the IAM role ID, for example
-#'     `ABCDE1F2GH3I4JK5LMNOP:i-a123b456`.
+#'     -   For an IAM role, returns the IAM role ID, for example
+#'         `ABCDE1F2GH3I4JK5LMNOP:i-a123b456`.
 #' 
-#' - `SentTimestamp` – Returns the time the message was sent to the queue
-#'   ([epoch time](https://en.wikipedia.org/wiki/Unix_time) in
-#'   milliseconds).
+#' -   `SentTimestamp` – Returns the time the message was sent to the queue
+#'     ([epoch time](https://en.wikipedia.org/wiki/Unix_time) in
+#'     milliseconds).
 #' 
-#' - `SqsManagedSseEnabled` – Enables server-side queue encryption using
-#'   SQS owned encryption keys. Only one server-side encryption option is
-#'   supported per queue (for example,
-#'   [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
-#'   or
-#'   [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
+#' -   `SqsManagedSseEnabled` – Enables server-side queue encryption using
+#'     SQS owned encryption keys. Only one server-side encryption option is
+#'     supported per queue (for example,
+#'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
+#'     or
+#'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
 #' 
-#' - `MessageDeduplicationId` – Returns the value provided by the producer
-#'   that calls the [`send_message`][sqs_send_message] action.
+#' -   `MessageDeduplicationId` – Returns the value provided by the
+#'     producer that calls the [`send_message`][sqs_send_message] action.
 #' 
-#' - `MessageGroupId` – Returns the value provided by the producer that
-#'   calls the [`send_message`][sqs_send_message] action. Messages with the
-#'   same `MessageGroupId` are returned in sequence.
+#' -   `MessageGroupId` – Returns the value provided by the producer that
+#'     calls the [`send_message`][sqs_send_message] action. Messages with
+#'     the same `MessageGroupId` are returned in sequence.
 #' 
-#' - `SequenceNumber` – Returns the value provided by Amazon SQS.
+#' -   `SequenceNumber` – Returns the value provided by Amazon SQS.
 #' @param MessageAttributeNames The name of the message attribute, where *N* is the index.
 #' 
-#' - The name can contain alphanumeric characters and the underscore (`_`),
-#'   hyphen (`-`), and period (`.`).
+#' -   The name can contain alphanumeric characters and the underscore
+#'     (`_`), hyphen (`-`), and period (`.`).
 #' 
-#' - The name is case-sensitive and must be unique among all attribute
-#'   names for the message.
+#' -   The name is case-sensitive and must be unique among all attribute
+#'     names for the message.
 #' 
-#' - The name must not start with AWS-reserved prefixes such as `AWS.` or
-#'   `Amazon.` (or any casing variants).
+#' -   The name must not start with AWS-reserved prefixes such as `AWS.` or
+#'     `Amazon.` (or any casing variants).
 #' 
-#' - The name must not start or end with a period (`.`), and it should not
-#'   have periods in succession (`..`).
+#' -   The name must not start or end with a period (`.`), and it should
+#'     not have periods in succession (`..`).
 #' 
-#' - The name can be up to 256 characters long.
+#' -   The name can be up to 256 characters long.
 #' 
 #' When using [`receive_message`][sqs_receive_message], you can send a list
 #' of attribute names to receive, or you can return all of the attributes
@@ -1103,45 +1093,46 @@ sqs_purge_queue <- function(QueueUrl) {
 #' retrieve the same set of messages, even if their visibility timeout has
 #' not yet expired.
 #' 
-#' - You can use `ReceiveRequestAttemptId` only for 5 minutes after a
-#'   [`receive_message`][sqs_receive_message] action.
+#' -   You can use `ReceiveRequestAttemptId` only for 5 minutes after a
+#'     [`receive_message`][sqs_receive_message] action.
 #' 
-#' - When you set `FifoQueue`, a caller of the
-#'   [`receive_message`][sqs_receive_message] action can provide a
-#'   `ReceiveRequestAttemptId` explicitly.
+#' -   When you set `FifoQueue`, a caller of the
+#'     [`receive_message`][sqs_receive_message] action can provide a
+#'     `ReceiveRequestAttemptId` explicitly.
 #' 
-#' - It is possible to retry the [`receive_message`][sqs_receive_message]
-#'   action with the same `ReceiveRequestAttemptId` if none of the messages
-#'   have been modified (deleted or had their visibility changes).
+#' -   It is possible to retry the [`receive_message`][sqs_receive_message]
+#'     action with the same `ReceiveRequestAttemptId` if none of the
+#'     messages have been modified (deleted or had their visibility
+#'     changes).
 #' 
-#' - During a visibility timeout, subsequent calls with the same
-#'   `ReceiveRequestAttemptId` return the same messages and receipt
-#'   handles. If a retry occurs within the deduplication interval, it
-#'   resets the visibility timeout. For more information, see [Visibility
-#'   Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-#'   in the *Amazon SQS Developer Guide*.
+#' -   During a visibility timeout, subsequent calls with the same
+#'     `ReceiveRequestAttemptId` return the same messages and receipt
+#'     handles. If a retry occurs within the deduplication interval, it
+#'     resets the visibility timeout. For more information, see [Visibility
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     in the *Amazon SQS Developer Guide*.
 #' 
-#'   If a caller of the [`receive_message`][sqs_receive_message] action
-#'   still processes messages when the visibility timeout expires and
-#'   messages become visible, another worker consuming from the same queue
-#'   can receive the same messages and therefore process duplicates. Also,
-#'   if a consumer whose message processing time is longer than the
-#'   visibility timeout tries to delete the processed messages, the action
-#'   fails with an error.
+#'     If a caller of the [`receive_message`][sqs_receive_message] action
+#'     still processes messages when the visibility timeout expires and
+#'     messages become visible, another worker consuming from the same
+#'     queue can receive the same messages and therefore process
+#'     duplicates. Also, if a consumer whose message processing time is
+#'     longer than the visibility timeout tries to delete the processed
+#'     messages, the action fails with an error.
 #' 
-#'   To mitigate this effect, ensure that your application observes a safe
-#'   threshold before the visibility timeout expires and extend the
-#'   visibility timeout as necessary.
+#'     To mitigate this effect, ensure that your application observes a
+#'     safe threshold before the visibility timeout expires and extend the
+#'     visibility timeout as necessary.
 #' 
-#' - While messages with a particular `MessageGroupId` are invisible, no
-#'   more messages belonging to the same `MessageGroupId` are returned
-#'   until the visibility timeout expires. You can still receive messages
-#'   with another `MessageGroupId` as long as it is also visible.
+#' -   While messages with a particular `MessageGroupId` are invisible, no
+#'     more messages belonging to the same `MessageGroupId` are returned
+#'     until the visibility timeout expires. You can still receive messages
+#'     with another `MessageGroupId` as long as it is also visible.
 #' 
-#' - If a caller of [`receive_message`][sqs_receive_message] can't track
-#'   the `ReceiveRequestAttemptId`, no retries work until the original
-#'   visibility timeout expires. As a result, delays might occur but the
-#'   messages in the queue remain in a strict order.
+#' -   If a caller of [`receive_message`][sqs_receive_message] can't track
+#'     the `ReceiveRequestAttemptId`, no retries work until the original
+#'     visibility timeout expires. As a result, delays might occur but the
+#'     messages in the queue remain in a strict order.
 #' 
 #' The maximum length of `ReceiveRequestAttemptId` is 128 characters.
 #' `ReceiveRequestAttemptId` can contain alphanumeric characters (`a-z`,
@@ -1162,8 +1153,7 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageSystemAt
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$receive_message_input(QueueUrl = QueueUrl, AttributeNames = AttributeNames, MessageSystemAttributeNames = MessageSystemAttributeNames, MessageAttributeNames = MessageAttributeNames, MaxNumberOfMessages = MaxNumberOfMessages, VisibilityTimeout = VisibilityTimeout, WaitTimeSeconds = WaitTimeSeconds, ReceiveRequestAttemptId = ReceiveRequestAttemptId)
   output <- .sqs$receive_message_output()
@@ -1198,8 +1188,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$remove_permission_input(QueueUrl = QueueUrl, Label = Label)
   output <- .sqs$remove_permission_output()
@@ -1251,12 +1240,12 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' @param MessageSystemAttributes The message system attribute to send. Each message system attribute
 #' consists of a `Name`, `Type`, and `Value`.
 #' 
-#' - Currently, the only supported message system attribute is
-#'   `AWSTraceHeader`. Its type must be `String` and its value must be a
-#'   correctly formatted X-Ray trace header string.
+#' -   Currently, the only supported message system attribute is
+#'     `AWSTraceHeader`. Its type must be `String` and its value must be a
+#'     correctly formatted X-Ray trace header string.
 #' 
-#' - The size of a message system attribute doesn't count towards the total
-#'   size of a message.
+#' -   The size of a message system attribute doesn't count towards the
+#'     total size of a message.
 #' @param MessageDeduplicationId This parameter applies only to FIFO (first-in-first-out) queues.
 #' 
 #' The token used for deduplication of sent messages. If a message with a
@@ -1267,31 +1256,32 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
 #' in the *Amazon SQS Developer Guide*.
 #' 
-#' - Every message must have a unique `MessageDeduplicationId`,
+#' -   Every message must have a unique `MessageDeduplicationId`,
 #' 
-#'   - You may provide a `MessageDeduplicationId` explicitly.
+#'     -   You may provide a `MessageDeduplicationId` explicitly.
 #' 
-#'   - If you aren't able to provide a `MessageDeduplicationId` and you
-#'     enable `ContentBasedDeduplication` for your queue, Amazon SQS uses a
-#'     SHA-256 hash to generate the `MessageDeduplicationId` using the body
-#'     of the message (but not the attributes of the message).
+#'     -   If you aren't able to provide a `MessageDeduplicationId` and you
+#'         enable `ContentBasedDeduplication` for your queue, Amazon SQS
+#'         uses a SHA-256 hash to generate the `MessageDeduplicationId`
+#'         using the body of the message (but not the attributes of the
+#'         message).
 #' 
-#'   - If you don't provide a `MessageDeduplicationId` and the queue
-#'     doesn't have `ContentBasedDeduplication` set, the action fails with
-#'     an error.
+#'     -   If you don't provide a `MessageDeduplicationId` and the queue
+#'         doesn't have `ContentBasedDeduplication` set, the action fails
+#'         with an error.
 #' 
-#'   - If the queue has `ContentBasedDeduplication` set, your
-#'     `MessageDeduplicationId` overrides the generated one.
+#'     -   If the queue has `ContentBasedDeduplication` set, your
+#'         `MessageDeduplicationId` overrides the generated one.
 #' 
-#' - When `ContentBasedDeduplication` is in effect, messages with identical
-#'   content sent within the deduplication interval are treated as
-#'   duplicates and only one copy of the message is delivered.
+#' -   When `ContentBasedDeduplication` is in effect, messages with
+#'     identical content sent within the deduplication interval are treated
+#'     as duplicates and only one copy of the message is delivered.
 #' 
-#' - If you send one message with `ContentBasedDeduplication` enabled and
-#'   then another message with a `MessageDeduplicationId` that is the same
-#'   as the one generated for the first `MessageDeduplicationId`, the two
-#'   messages are treated as duplicates and only one copy of the message is
-#'   delivered.
+#' -   If you send one message with `ContentBasedDeduplication` enabled and
+#'     then another message with a `MessageDeduplicationId` that is the
+#'     same as the one generated for the first `MessageDeduplicationId`,
+#'     the two messages are treated as duplicates and only one copy of the
+#'     message is delivered.
 #' 
 #' The `MessageDeduplicationId` is available to the consumer of the message
 #' (this can be useful for troubleshooting delivery issues).
@@ -1322,13 +1312,13 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' multiple users). In this scenario, multiple consumers can process the
 #' queue, but the session data of each user is processed in a FIFO fashion.
 #' 
-#' - You must associate a non-empty `MessageGroupId` with a message. If you
-#'   don't provide a `MessageGroupId`, the action fails.
+#' -   You must associate a non-empty `MessageGroupId` with a message. If
+#'     you don't provide a `MessageGroupId`, the action fails.
 #' 
-#' - [`receive_message`][sqs_receive_message] might return messages with
-#'   multiple `MessageGroupId` values. For each `MessageGroupId`, the
-#'   messages are sorted by time sent. The caller can't specify a
-#'   `MessageGroupId`.
+#' -   [`receive_message`][sqs_receive_message] might return messages with
+#'     multiple `MessageGroupId` values. For each `MessageGroupId`, the
+#'     messages are sorted by time sent. The caller can't specify a
+#'     `MessageGroupId`.
 #' 
 #' The maximum length of `MessageGroupId` is 128 characters. Valid values:
 #' alphanumeric characters and punctuation
@@ -1351,8 +1341,7 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$send_message_input(QueueUrl = QueueUrl, MessageBody = MessageBody, DelaySeconds = DelaySeconds, MessageAttributes = MessageAttributes, MessageSystemAttributes = MessageSystemAttributes, MessageDeduplicationId = MessageDeduplicationId, MessageGroupId = MessageGroupId)
   output <- .sqs$send_message_output()
@@ -1387,8 +1376,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$send_message_batch_input(QueueUrl = QueueUrl, Entries = Entries)
   output <- .sqs$send_message_batch_output()
@@ -1416,87 +1404,87 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' request parameters that the
 #' [`set_queue_attributes`][sqs_set_queue_attributes] action uses:
 #' 
-#' - `DelaySeconds` – The length of time, in seconds, for which the
-#'   delivery of all messages in the queue is delayed. Valid values: An
-#'   integer from 0 to 900 (15 minutes). Default: 0.
+#' -   `DelaySeconds` – The length of time, in seconds, for which the
+#'     delivery of all messages in the queue is delayed. Valid values: An
+#'     integer from 0 to 900 (15 minutes). Default: 0.
 #' 
-#' - `MaximumMessageSize` – The limit of how many bytes a message can
-#'   contain before Amazon SQS rejects it. Valid values: An integer from
-#'   1,024 bytes (1 KiB) up to 262,144 bytes (256 KiB). Default: 262,144
-#'   (256 KiB).
+#' -   `MaximumMessageSize` – The limit of how many bytes a message can
+#'     contain before Amazon SQS rejects it. Valid values: An integer from
+#'     1,024 bytes (1 KiB) up to 262,144 bytes (256 KiB). Default: 262,144
+#'     (256 KiB).
 #' 
-#' - `MessageRetentionPeriod` – The length of time, in seconds, for which
-#'   Amazon SQS retains a message. Valid values: An integer representing
-#'   seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
-#'   (4 days). When you change a queue's attributes, the change can take up
-#'   to 60 seconds for most of the attributes to propagate throughout the
-#'   Amazon SQS system. Changes made to the `MessageRetentionPeriod`
-#'   attribute can take up to 15 minutes and will impact existing messages
-#'   in the queue potentially causing them to be expired and deleted if the
-#'   `MessageRetentionPeriod` is reduced below the age of existing
-#'   messages.
+#' -   `MessageRetentionPeriod` – The length of time, in seconds, for which
+#'     Amazon SQS retains a message. Valid values: An integer representing
+#'     seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
+#'     (4 days). When you change a queue's attributes, the change can take
+#'     up to 60 seconds for most of the attributes to propagate throughout
+#'     the Amazon SQS system. Changes made to the `MessageRetentionPeriod`
+#'     attribute can take up to 15 minutes and will impact existing
+#'     messages in the queue potentially causing them to be expired and
+#'     deleted if the `MessageRetentionPeriod` is reduced below the age of
+#'     existing messages.
 #' 
-#' - `Policy` – The queue's policy. A valid Amazon Web Services policy. For
-#'   more information about policy structure, see [Overview of Amazon Web
-#'   Services IAM
-#'   Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
-#'   in the *Identity and Access Management User Guide*.
+#' -   `Policy` – The queue's policy. A valid Amazon Web Services policy.
+#'     For more information about policy structure, see [Overview of Amazon
+#'     Web Services IAM
+#'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
+#'     in the *Identity and Access Management User Guide*.
 #' 
-#' - `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds, for
-#'   which a [`receive_message`][sqs_receive_message] action waits for a
-#'   message to arrive. Valid values: An integer from 0 to 20 (seconds).
-#'   Default: 0.
+#' -   `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds,
+#'     for which a [`receive_message`][sqs_receive_message] action waits
+#'     for a message to arrive. Valid values: An integer from 0 to 20
+#'     (seconds). Default: 0.
 #' 
-#' - `VisibilityTimeout` – The visibility timeout for the queue, in
-#'   seconds. Valid values: An integer from 0 to 43,200 (12 hours).
-#'   Default: 30. For more information about the visibility timeout, see
-#'   [Visibility
-#'   Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-#'   in the *Amazon SQS Developer Guide*.
+#' -   `VisibilityTimeout` – The visibility timeout for the queue, in
+#'     seconds. Valid values: An integer from 0 to 43,200 (12 hours).
+#'     Default: 30. For more information about the visibility timeout, see
+#'     [Visibility
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     in the *Amazon SQS Developer Guide*.
 #' 
 #' The following attributes apply only to [dead-letter
 #' queues:](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
-#' - `RedrivePolicy` – The string that includes the parameters for the
-#'   dead-letter queue functionality of the source queue as a JSON object.
-#'   The parameters are as follows:
+#' -   `RedrivePolicy` – The string that includes the parameters for the
+#'     dead-letter queue functionality of the source queue as a JSON
+#'     object. The parameters are as follows:
 #' 
-#'   - `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
-#'     dead-letter queue to which Amazon SQS moves messages after the value
-#'     of `maxReceiveCount` is exceeded.
+#'     -   `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
+#'         dead-letter queue to which Amazon SQS moves messages after the
+#'         value of `maxReceiveCount` is exceeded.
 #' 
-#'   - `maxReceiveCount` – The number of times a message is delivered to
-#'     the source queue before being moved to the dead-letter queue.
-#'     Default: 10. When the `ReceiveCount` for a message exceeds the
-#'     `maxReceiveCount` for a queue, Amazon SQS moves the message to the
-#'     dead-letter-queue.
+#'     -   `maxReceiveCount` – The number of times a message is delivered
+#'         to the source queue before being moved to the dead-letter queue.
+#'         Default: 10. When the `ReceiveCount` for a message exceeds the
+#'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
+#'         the dead-letter-queue.
 #' 
-#' - `RedriveAllowPolicy` – The string that includes the parameters for the
-#'   permissions for the dead-letter queue redrive permission and which
-#'   source queues can specify dead-letter queues as a JSON object. The
-#'   parameters are as follows:
+#' -   `RedriveAllowPolicy` – The string that includes the parameters for
+#'     the permissions for the dead-letter queue redrive permission and
+#'     which source queues can specify dead-letter queues as a JSON object.
+#'     The parameters are as follows:
 #' 
-#'   - `redrivePermission` – The permission type that defines which source
-#'     queues can specify the current queue as the dead-letter queue. Valid
-#'     values are:
+#'     -   `redrivePermission` – The permission type that defines which
+#'         source queues can specify the current queue as the dead-letter
+#'         queue. Valid values are:
 #' 
-#'     - `allowAll` – (Default) Any source queues in this Amazon Web
-#'       Services account in the same Region can specify this queue as the
-#'       dead-letter queue.
+#'         -   `allowAll` – (Default) Any source queues in this Amazon Web
+#'             Services account in the same Region can specify this queue
+#'             as the dead-letter queue.
 #' 
-#'     - `denyAll` – No source queues can specify this queue as the
-#'       dead-letter queue.
+#'         -   `denyAll` – No source queues can specify this queue as the
+#'             dead-letter queue.
 #' 
-#'     - `byQueue` – Only queues specified by the `sourceQueueArns`
-#'       parameter can specify this queue as the dead-letter queue.
+#'         -   `byQueue` – Only queues specified by the `sourceQueueArns`
+#'             parameter can specify this queue as the dead-letter queue.
 #' 
-#'   - `sourceQueueArns` – The Amazon Resource Names (ARN)s of the source
-#'     queues that can specify this queue as the dead-letter queue and
-#'     redrive messages. You can specify this parameter only when the
-#'     `redrivePermission` parameter is set to `byQueue`. You can specify
-#'     up to 10 source queue ARNs. To allow more than 10 source queues to
-#'     specify dead-letter queues, set the `redrivePermission` parameter to
-#'     `allowAll`.
+#'     -   `sourceQueueArns` – The Amazon Resource Names (ARN)s of the
+#'         source queues that can specify this queue as the dead-letter
+#'         queue and redrive messages. You can specify this parameter only
+#'         when the `redrivePermission` parameter is set to `byQueue`. You
+#'         can specify up to 10 source queue ARNs. To allow more than 10
+#'         source queues to specify dead-letter queues, set the
+#'         `redrivePermission` parameter to `allowAll`.
 #' 
 #' The dead-letter queue of a FIFO queue must also be a FIFO queue.
 #' Similarly, the dead-letter queue of a standard queue must also be a
@@ -1505,86 +1493,88 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
 #' 
-#' - `KmsMasterKeyId` – The ID of an Amazon Web Services managed customer
-#'   master key (CMK) for Amazon SQS or a custom CMK. For more information,
-#'   see [Key
-#'   Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
-#'   While the alias of the AWS-managed CMK for Amazon SQS is always
-#'   `alias/aws/sqs`, the alias of a custom CMK can, for example, be
-#'   `alias/MyAlias `. For more examples, see
-#'   [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
-#'   in the *Key Management Service API Reference*.
+#' -   `KmsMasterKeyId` – The ID of an Amazon Web Services managed customer
+#'     master key (CMK) for Amazon SQS or a custom CMK. For more
+#'     information, see [Key
+#'     Terms](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
+#'     While the alias of the AWS-managed CMK for Amazon SQS is always
+#'     `alias/aws/sqs`, the alias of a custom CMK can, for example, be
+#'     `alias/MyAlias `. For more examples, see
+#'     [KeyId](https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
+#'     in the *Key Management Service API Reference*.
 #' 
-#' - `KmsDataKeyReusePeriodSeconds` – The length of time, in seconds, for
-#'   which Amazon SQS can reuse a [data
-#'   key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
-#'   to encrypt or decrypt messages before calling KMS again. An integer
-#'   representing seconds, between 60 seconds (1 minute) and 86,400 seconds
-#'   (24 hours). Default: 300 (5 minutes). A shorter time period provides
-#'   better security but results in more calls to KMS which might incur
-#'   charges after Free Tier. For more information, see [How Does the Data
-#'   Key Reuse Period
-#'   Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
+#' -   `KmsDataKeyReusePeriodSeconds` – The length of time, in seconds, for
+#'     which Amazon SQS can reuse a [data
+#'     key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#data-keys)
+#'     to encrypt or decrypt messages before calling KMS again. An integer
+#'     representing seconds, between 60 seconds (1 minute) and 86,400
+#'     seconds (24 hours). Default: 300 (5 minutes). A shorter time period
+#'     provides better security but results in more calls to KMS which
+#'     might incur charges after Free Tier. For more information, see [How
+#'     Does the Data Key Reuse Period
+#'     Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 #' 
-#' - `SqsManagedSseEnabled` – Enables server-side queue encryption using
-#'   SQS owned encryption keys. Only one server-side encryption option is
-#'   supported per queue (for example,
-#'   [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
-#'   or
-#'   [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
+#' -   `SqsManagedSseEnabled` – Enables server-side queue encryption using
+#'     SQS owned encryption keys. Only one server-side encryption option is
+#'     supported per queue (for example,
+#'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
+#'     or
+#'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
 #' 
 #' The following attribute applies only to [FIFO (first-in-first-out)
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/):
 #' 
-#' - `ContentBasedDeduplication` – Enables content-based deduplication. For
-#'   more information, see [Exactly-once
-#'   processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
-#'   in the *Amazon SQS Developer Guide*. Note the following:
+#' -   `ContentBasedDeduplication` – Enables content-based deduplication.
+#'     For more information, see [Exactly-once
+#'     processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
+#'     in the *Amazon SQS Developer Guide*. Note the following:
 #' 
-#'   - Every message must have a unique `MessageDeduplicationId`.
+#'     -   Every message must have a unique `MessageDeduplicationId`.
 #' 
-#'     - You may provide a `MessageDeduplicationId` explicitly.
+#'         -   You may provide a `MessageDeduplicationId` explicitly.
 #' 
-#'     - If you aren't able to provide a `MessageDeduplicationId` and you
-#'       enable `ContentBasedDeduplication` for your queue, Amazon SQS uses
-#'       a SHA-256 hash to generate the `MessageDeduplicationId` using the
-#'       body of the message (but not the attributes of the message).
+#'         -   If you aren't able to provide a `MessageDeduplicationId` and
+#'             you enable `ContentBasedDeduplication` for your queue,
+#'             Amazon SQS uses a SHA-256 hash to generate the
+#'             `MessageDeduplicationId` using the body of the message (but
+#'             not the attributes of the message).
 #' 
-#'     - If you don't provide a `MessageDeduplicationId` and the queue
-#'       doesn't have `ContentBasedDeduplication` set, the action fails
-#'       with an error.
+#'         -   If you don't provide a `MessageDeduplicationId` and the
+#'             queue doesn't have `ContentBasedDeduplication` set, the
+#'             action fails with an error.
 #' 
-#'     - If the queue has `ContentBasedDeduplication` set, your
-#'       `MessageDeduplicationId` overrides the generated one.
+#'         -   If the queue has `ContentBasedDeduplication` set, your
+#'             `MessageDeduplicationId` overrides the generated one.
 #' 
-#'   - When `ContentBasedDeduplication` is in effect, messages with
-#'     identical content sent within the deduplication interval are treated
-#'     as duplicates and only one copy of the message is delivered.
+#'     -   When `ContentBasedDeduplication` is in effect, messages with
+#'         identical content sent within the deduplication interval are
+#'         treated as duplicates and only one copy of the message is
+#'         delivered.
 #' 
-#'   - If you send one message with `ContentBasedDeduplication` enabled and
-#'     then another message with a `MessageDeduplicationId` that is the
-#'     same as the one generated for the first `MessageDeduplicationId`,
-#'     the two messages are treated as duplicates and only one copy of the
-#'     message is delivered.
+#'     -   If you send one message with `ContentBasedDeduplication` enabled
+#'         and then another message with a `MessageDeduplicationId` that is
+#'         the same as the one generated for the first
+#'         `MessageDeduplicationId`, the two messages are treated as
+#'         duplicates and only one copy of the message is delivered.
 #' 
 #' The following attributes apply only to [high throughput for FIFO
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html):
 #' 
-#' - `DeduplicationScope` – Specifies whether message deduplication occurs
-#'   at the message group or queue level. Valid values are `messageGroup`
-#'   and `queue`.
+#' -   `DeduplicationScope` – Specifies whether message deduplication
+#'     occurs at the message group or queue level. Valid values are
+#'     `messageGroup` and `queue`.
 #' 
-#' - `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
-#'   quota applies to the entire queue or per message group. Valid values
-#'   are `perQueue` and `perMessageGroupId`. The `perMessageGroupId` value
-#'   is allowed only when the value for `DeduplicationScope` is
-#'   `messageGroup`.
+#' -   `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
+#'     quota applies to the entire queue or per message group. Valid values
+#'     are `perQueue` and `perMessageGroupId`. The `perMessageGroupId`
+#'     value is allowed only when the value for `DeduplicationScope` is
+#'     `messageGroup`.
 #' 
 #' To enable high throughput for FIFO queues, do the following:
 #' 
-#' - Set `DeduplicationScope` to `messageGroup`.
+#' -   Set `DeduplicationScope` to `messageGroup`.
 #' 
-#' - Set `FifoThroughputLimit` to `perMessageGroupId`.
+#' -   Set `FifoThroughputLimit` to `perMessageGroupId`.
 #' 
 #' If you set these attributes to anything other than the values shown for
 #' enabling high throughput, normal throughput is in effect and
@@ -1603,8 +1593,7 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$set_queue_attributes_input(QueueUrl = QueueUrl, Attributes = Attributes)
   output <- .sqs$set_queue_attributes_output()
@@ -1649,8 +1638,7 @@ sqs_start_message_move_task <- function(SourceArn, DestinationArn = NULL, MaxNum
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$start_message_move_task_input(SourceArn = SourceArn, DestinationArn = DestinationArn, MaxNumberOfMessagesPerSecond = MaxNumberOfMessagesPerSecond)
   output <- .sqs$start_message_move_task_output()
@@ -1681,8 +1669,7 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$tag_queue_input(QueueUrl = QueueUrl, Tags = Tags)
   output <- .sqs$tag_queue_output()
@@ -1713,8 +1700,7 @@ sqs_untag_queue <- function(QueueUrl, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sqs$untag_queue_input(QueueUrl = QueueUrl, TagKeys = TagKeys)
   output <- .sqs$untag_queue_output()

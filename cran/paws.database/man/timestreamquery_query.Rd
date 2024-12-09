@@ -29,11 +29,11 @@ SDK generates a \code{ClientToken} on your behalf.
 \item If the \code{\link[=timestreamquery_query]{query}} invocation only contains the
 \code{ClientToken} but does not include a \code{NextToken}, that invocation of
 \code{\link[=timestreamquery_query]{query}} is assumed to be a new query run.
-\item If the invocation contains \code{NextToken}, that particular invocation is
-assumed to be a subsequent invocation of a prior call to the Query
-API, and a result set is returned.
-\item After 4 hours, any request with the same \code{ClientToken} is treated as a
-new request.
+\item If the invocation contains \code{NextToken}, that particular invocation
+is assumed to be a subsequent invocation of a prior call to the
+Query API, and a result set is returned.
+\item After 4 hours, any request with the same \code{ClientToken} is treated as
+a new request.
 }}
 
 \item{NextToken}{A pagination token used to return a set of results. When the
@@ -47,23 +47,23 @@ only contains the \code{ClientToken}, that invocation of
 Note the following when using NextToken in a query:
 \itemize{
 \item A pagination token can be used for up to five
-\code{\link[=timestreamquery_query]{query}} invocations, OR for a duration of up
-to 1 hour – whichever comes first.
+\code{\link[=timestreamquery_query]{query}} invocations, OR for a duration of
+up to 1 hour – whichever comes first.
 \item Using the same \code{NextToken} will return the same set of records. To
 keep paginating through the result set, you must to use the most
 recent \code{nextToken}.
 \item Suppose a \code{\link[=timestreamquery_query]{query}} invocation returns two
 \code{NextToken} values, \code{TokenA} and \code{TokenB}. If \code{TokenB} is used in a
-subsequent \code{\link[=timestreamquery_query]{query}} invocation, then \code{TokenA}
-is invalidated and cannot be reused.
+subsequent \code{\link[=timestreamquery_query]{query}} invocation, then
+\code{TokenA} is invalidated and cannot be reused.
 \item To request a previous result set from a query after pagination has
 begun, you must re-invoke the Query API.
 \item The latest \code{NextToken} should be used to paginate until \code{null} is
 returned, at which point a new \code{NextToken} should be used.
-\item If the IAM principal of the query initiator and the result reader are
-not the same and/or the query initiator and the result reader do not
-have the same query string in the query requests, the query will fail
-with an \verb{Invalid pagination token} error.
+\item If the IAM principal of the query initiator and the result reader
+are not the same and/or the query initiator and the result reader do
+not have the same query string in the query requests, the query will
+fail with an \verb{Invalid pagination token} error.
 }}
 
 \item{MaxRows}{The total number of rows to be returned in the

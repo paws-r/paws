@@ -39,20 +39,20 @@ reduces the risk that the KMS key becomes unmanageable. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
 in the \emph{Key Management Service Developer Guide}. (To omit this
 condition, set \code{BypassPolicyLockoutSafetyCheck} to true.)
-\item Each statement in the key policy must contain one or more principals.
-The principals in the key policy must exist and be visible to KMS.
-When you create a new Amazon Web Services principal, you might need to
-enforce a delay before including the new principal in a key policy
-because the new principal might not be immediately visible to KMS. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
+\item Each statement in the key policy must contain one or more
+principals. The principals in the key policy must exist and be
+visible to KMS. When you create a new Amazon Web Services principal,
+you might need to enforce a delay before including the new principal
+in a key policy because the new principal might not be immediately
+visible to KMS. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
 in the \emph{Amazon Web Services Identity and Access Management User
 Guide}.
 }
 
 A key policy document can include only the following characters:
 \itemize{
-\item Printable ASCII characters from the space character (\code{U+0020}) through
-the end of the ASCII character range.
+\item Printable ASCII characters from the space character (\code{U+0020})
+through the end of the ASCII character range.
 \item Printable characters in the Basic Latin and Latin-1 Supplement
 character set (through \verb{U+00FF}).
 \item The tab (\code{U+0009}), line feed (\verb{U+000A}), and carriage return

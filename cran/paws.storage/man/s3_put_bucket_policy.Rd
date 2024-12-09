@@ -44,10 +44,10 @@ code \verb{400 Bad Request}.
 For the \code{x-amz-checksum-algorithm } header, replace \code{algorithm} with
 the supported algorithm from the following list:
 \itemize{
-\item \code{CRC32}
-\item \code{CRC32C}
-\item \code{SHA1}
-\item \code{SHA256}
+\item CRC32
+\item CRC32C
+\item SHA1
+\item SHA256
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/checking-object-integrity.html}{Checking object integrity}

@@ -18,8 +18,8 @@ ec2_describe_coip_pools(
 
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{coip-pool.local-gateway-route-table-id} - The ID of the local gateway
-route table.
+\item \code{coip-pool.local-gateway-route-table-id} - The ID of the local
+gateway route table.
 \item \code{coip-pool.pool-id} - The ID of the address pool.
 }}
 

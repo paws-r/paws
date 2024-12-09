@@ -15,8 +15,8 @@ connectparticipant_send_event(
 \item{ContentType}{[required] The content type of the request. Supported types are:
 \itemize{
 \item application/vnd.amazonaws.connect.event.typing
-\item application/vnd.amazonaws.connect.event.connection.acknowledged (will
-be deprecated on December 31, 2024)
+\item application/vnd.amazonaws.connect.event.connection.acknowledged
+(will be deprecated on December 31, 2024)
 \item application/vnd.amazonaws.connect.event.message.delivered
 \item application/vnd.amazonaws.connect.event.message.read
 }}
@@ -26,7 +26,7 @@ content related to message receipts, this is supported in the form of a
 JSON string.
 
 Sample Content:
-"\\messageId\\:\\11111111-aaaa-bbbb-cccc-EXAMPLE01234\\"}
+"\{\\"messageId\\":\\"11111111-aaaa-bbbb-cccc-EXAMPLE01234\\"\}"}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK

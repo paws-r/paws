@@ -20,8 +20,8 @@ ec2_describe_transit_gateway_multicast_domains(
 \item \code{state} - The state of the transit gateway multicast domain. Valid
 values are \code{pending} | \code{available} | \code{deleting} | \code{deleted}.
 \item \code{transit-gateway-id} - The ID of the transit gateway.
-\item \code{transit-gateway-multicast-domain-id} - The ID of the transit gateway
-multicast domain.
+\item \code{transit-gateway-multicast-domain-id} - The ID of the transit
+gateway multicast domain.
 }}
 
 \item{MaxResults}{The maximum number of results to return with a single call. To retrieve

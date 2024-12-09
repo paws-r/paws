@@ -22,8 +22,8 @@ The \code{appTemplateBody} JSON string has the following structure:
 \itemize{
 \item \strong{\code{resources}}
 
-The list of logical resources that must be included in the Resilience
-Hub application.
+The list of logical resources that must be included in the
+Resilience Hub application.
 
 Type: Array
 
@@ -46,7 +46,8 @@ Identifier of the resource.
 Type: String
 \item \code{logicalStackName}
 
-The name of the CloudFormation stack this resource belongs to.
+The name of the CloudFormation stack this resource belongs
+to.
 
 Type: String
 \item \code{resourceGroupName}
@@ -56,7 +57,8 @@ The name of the resource group this resource belongs to.
 Type: String
 \item \code{terraformSourceName}
 
-The name of the Terraform S3 state file this resource belongs to.
+The name of the Terraform S3 state file this resource
+belongs to.
 
 Type: String
 \item \code{eksSourceName}
@@ -64,7 +66,8 @@ Type: String
 Name of the Amazon Elastic Kubernetes Service cluster and
 namespace this resource belongs to.
 
-This parameter accepts values in "eks-cluster/namespace" format.
+This parameter accepts values in "eks-cluster/namespace"
+format.
 
 Type: String
 }
@@ -81,11 +84,13 @@ Type: String
 \item \code{additionalInfo}
 
 Additional configuration parameters for an Resilience Hub
-application. If you want to implement \code{additionalInfo} through the
-Resilience Hub console rather than using an API call, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
+application. If you want to implement \code{additionalInfo} through
+the Resilience Hub console rather than using an API call, see
+\href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
 
-Currently, this parameter accepts a key-value mapping (in a string
-format) of only one failover region and one associated account.
+Currently, this parameter accepts a key-value mapping (in a
+string format) of only one failover region and one associated
+account.
 
 Key: \code{"failover-regions"}
 
@@ -109,24 +114,26 @@ Name of the Application Component.
 Type: String
 \item \code{type}
 
-Type of Application Component. For more information about the types
-of Application Component, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/AppComponent.grouping.html}{Grouping resources in an AppComponent}.
+Type of Application Component. For more information about the
+types of Application Component, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/AppComponent.grouping.html}{Grouping resources in an AppComponent}.
 
 Type: String
 \item \code{resourceNames}
 
-The list of included resources that are assigned to the Application
-Component.
+The list of included resources that are assigned to the
+Application Component.
 
 Type: Array of strings
 \item \code{additionalInfo}
 
 Additional configuration parameters for an Resilience Hub
-application. If you want to implement \code{additionalInfo} through the
-Resilience Hub console rather than using an API call, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
+application. If you want to implement \code{additionalInfo} through
+the Resilience Hub console rather than using an API call, see
+\href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
 
-Currently, this parameter accepts a key-value mapping (in a string
-format) of only one failover region and one associated account.
+Currently, this parameter accepts a key-value mapping (in a
+string format) of only one failover region and one associated
+account.
 
 Key: \code{"failover-regions"}
 
@@ -167,7 +174,8 @@ Identifier of the resource.
 Type: String
 \item \code{logicalStackName}
 
-The name of the CloudFormation stack this resource belongs to.
+The name of the CloudFormation stack this resource belongs
+to.
 
 Type: String
 \item \code{resourceGroupName}
@@ -177,7 +185,8 @@ The name of the resource group this resource belongs to.
 Type: String
 \item \code{terraformSourceName}
 
-The name of the Terraform S3 state file this resource belongs to.
+The name of the Terraform S3 state file this resource
+belongs to.
 
 Type: String
 \item \code{eksSourceName}
@@ -185,7 +194,8 @@ Type: String
 Name of the Amazon Elastic Kubernetes Service cluster and
 namespace this resource belongs to.
 
-This parameter accepts values in "eks-cluster/namespace" format.
+This parameter accepts values in "eks-cluster/namespace"
+format.
 
 Type: String
 }
@@ -195,16 +205,17 @@ Type: String
 Resilience Hub application version.
 \item \code{additionalInfo}
 
-Additional configuration parameters for an Resilience Hub application.
-If you want to implement \code{additionalInfo} through the Resilience Hub
-console rather than using an API call, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
+Additional configuration parameters for an Resilience Hub
+application. If you want to implement \code{additionalInfo} through the
+Resilience Hub console rather than using an API call, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/app-config-param.html}{Configure the application configuration parameters}.
 
 Currently, this parameter accepts a key-value mapping (in a string
 format) of only one failover region and one associated account.
 
 Key: \code{"failover-regions"}
 
-Value: \verb{"[\{"region":"<REGION>", "accounts":[\{"id":"<ACCOUNT_ID>"\}]\}]"}
+Value:
+\verb{"[\{"region":"<REGION>", "accounts":[\{"id":"<ACCOUNT_ID>"\}]\}]"}
 }}
 }
 \description{

@@ -16,8 +16,8 @@ Valid values are:
 \itemize{
 \item \code{managed} – Returns only the managed policies created by Amazon Web
 Services.
-\item \code{custom} – Returns only the custom policies created in your Amazon Web
-Services account.
+\item \code{custom} – Returns only the custom policies created in your Amazon
+Web Services account.
 }}
 
 \item{Marker}{Use this field when paginating results to indicate where to begin in

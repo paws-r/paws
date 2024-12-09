@@ -17,8 +17,8 @@ Constraints:
 \itemize{
 \item If the source type is a DB instance, a \code{DBInstanceIdentifier} value
 must be supplied.
-\item If the source type is a DB cluster, a \code{DBClusterIdentifier} value must
-be supplied.
+\item If the source type is a DB cluster, a \code{DBClusterIdentifier} value
+must be supplied.
 \item If the source type is a DB parameter group, a \code{DBParameterGroupName}
 value must be supplied.
 \item If the source type is a DB security group, a \code{DBSecurityGroupName}

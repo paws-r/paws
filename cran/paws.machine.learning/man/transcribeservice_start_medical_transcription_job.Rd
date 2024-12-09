@@ -68,8 +68,8 @@ For example, if you want your output stored in
 \code{DOC-EXAMPLE-BUCKET} and \code{OutputKey} to \verb{test-files/}.
 
 Note that Amazon Transcribe must have permission to use the specified
-location. You can change Amazon S3 permissions using the Amazon Web
-Services Management Console. See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.}
+location. You can change Amazon S3 permissions using the \href{https://console.aws.amazon.com/s3/home}{Amazon Web Services Management Console}.
+See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.}
 
 \item{OutputKey}{Use in combination with \code{OutputBucketName} to specify the output
 location of your transcript and, optionally, a unique name for your
@@ -88,13 +88,13 @@ path is \verb{s3://DOC-EXAMPLE-BUCKET/my-transcript.json}.
 transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json}.
 \item If you specify 'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName} and
-'test-files/my-transcript.json' as the \code{OutputKey}, your transcription
-output path is
+'test-files/my-transcript.json' as the \code{OutputKey}, your
+transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json}.
 \item If you specify 'my-first-transcription' as the
 \code{MedicalTranscriptionJobName}, 'DOC-EXAMPLE-BUCKET' as the
-\code{OutputBucketName}, and 'test-files/my-transcript' as the \code{OutputKey},
-your transcription output path is
+\code{OutputBucketName}, and 'test-files/my-transcript' as the
+\code{OutputKey}, your transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json}.
 }
 

@@ -28,8 +28,8 @@ Use one of the following options to specify this parameter:
 Amazon Web Services on your behalf.
 \item \strong{Undefined}: Make no changes to the KMS key of the ledger.
 \item \strong{A valid symmetric customer managed KMS key}: Use the specified
-symmetric encryption KMS key in your account that you create, own, and
-manage.
+symmetric encryption KMS key in your account that you create, own,
+and manage.
 
 Amazon QLDB does not support asymmetric keys. For more information,
 see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using symmetric and asymmetric keys}

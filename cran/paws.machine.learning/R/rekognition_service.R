@@ -18,151 +18,151 @@ NULL
 #' 
 #' **Amazon Rekognition Image**
 #' 
-#' - [`associate_faces`][rekognition_associate_faces]
+#' -   [`associate_faces`][rekognition_associate_faces]
 #' 
-#' - [`compare_faces`][rekognition_compare_faces]
+#' -   [`compare_faces`][rekognition_compare_faces]
 #' 
-#' - [`create_collection`][rekognition_create_collection]
+#' -   [`create_collection`][rekognition_create_collection]
 #' 
-#' - [`create_user`][rekognition_create_user]
+#' -   [`create_user`][rekognition_create_user]
 #' 
-#' - [`delete_collection`][rekognition_delete_collection]
+#' -   [`delete_collection`][rekognition_delete_collection]
 #' 
-#' - [`delete_faces`][rekognition_delete_faces]
+#' -   [`delete_faces`][rekognition_delete_faces]
 #' 
-#' - [`delete_user`][rekognition_delete_user]
+#' -   [`delete_user`][rekognition_delete_user]
 #' 
-#' - [`describe_collection`][rekognition_describe_collection]
+#' -   [`describe_collection`][rekognition_describe_collection]
 #' 
-#' - [`detect_faces`][rekognition_detect_faces]
+#' -   [`detect_faces`][rekognition_detect_faces]
 #' 
-#' - [`detect_labels`][rekognition_detect_labels]
+#' -   [`detect_labels`][rekognition_detect_labels]
 #' 
-#' - [`detect_moderation_labels`][rekognition_detect_moderation_labels]
+#' -   [`detect_moderation_labels`][rekognition_detect_moderation_labels]
 #' 
-#' - [`detect_protective_equipment`][rekognition_detect_protective_equipment]
+#' -   [`detect_protective_equipment`][rekognition_detect_protective_equipment]
 #' 
-#' - [`detect_text`][rekognition_detect_text]
+#' -   [`detect_text`][rekognition_detect_text]
 #' 
-#' - [`disassociate_faces`][rekognition_disassociate_faces]
+#' -   [`disassociate_faces`][rekognition_disassociate_faces]
 #' 
-#' - [`get_celebrity_info`][rekognition_get_celebrity_info]
+#' -   [`get_celebrity_info`][rekognition_get_celebrity_info]
 #' 
-#' - [`get_media_analysis_job`][rekognition_get_media_analysis_job]
+#' -   [`get_media_analysis_job`][rekognition_get_media_analysis_job]
 #' 
-#' - [`index_faces`][rekognition_index_faces]
+#' -   [`index_faces`][rekognition_index_faces]
 #' 
-#' - [`list_collections`][rekognition_list_collections]
+#' -   [`list_collections`][rekognition_list_collections]
 #' 
-#' - [ListMediaAnalysisJob](https://docs.aws.amazon.com/rekognition/latest/APIReference/)
+#' -   [ListMediaAnalysisJob](https://docs.aws.amazon.com/rekognition/latest/APIReference/)
 #' 
-#' - [`list_faces`][rekognition_list_faces]
+#' -   [`list_faces`][rekognition_list_faces]
 #' 
-#' - [`list_users`][rekognition_list_users]
+#' -   [`list_users`][rekognition_list_users]
 #' 
-#' - [`recognize_celebrities`][rekognition_recognize_celebrities]
+#' -   [`recognize_celebrities`][rekognition_recognize_celebrities]
 #' 
-#' - [`search_faces`][rekognition_search_faces]
+#' -   [`search_faces`][rekognition_search_faces]
 #' 
-#' - [`search_faces_by_image`][rekognition_search_faces_by_image]
+#' -   [`search_faces_by_image`][rekognition_search_faces_by_image]
 #' 
-#' - [`search_users`][rekognition_search_users]
+#' -   [`search_users`][rekognition_search_users]
 #' 
-#' - [`search_users_by_image`][rekognition_search_users_by_image]
+#' -   [`search_users_by_image`][rekognition_search_users_by_image]
 #' 
-#' - [`start_media_analysis_job`][rekognition_start_media_analysis_job]
+#' -   [`start_media_analysis_job`][rekognition_start_media_analysis_job]
 #' 
 #' **Amazon Rekognition Custom Labels**
 #' 
-#' - [`copy_project_version`][rekognition_copy_project_version]
+#' -   [`copy_project_version`][rekognition_copy_project_version]
 #' 
-#' - [`create_dataset`][rekognition_create_dataset]
+#' -   [`create_dataset`][rekognition_create_dataset]
 #' 
-#' - [`create_project`][rekognition_create_project]
+#' -   [`create_project`][rekognition_create_project]
 #' 
-#' - [`create_project_version`][rekognition_create_project_version]
+#' -   [`create_project_version`][rekognition_create_project_version]
 #' 
-#' - [`delete_dataset`][rekognition_delete_dataset]
+#' -   [`delete_dataset`][rekognition_delete_dataset]
 #' 
-#' - [`delete_project`][rekognition_delete_project]
+#' -   [`delete_project`][rekognition_delete_project]
 #' 
-#' - [`delete_project_policy`][rekognition_delete_project_policy]
+#' -   [`delete_project_policy`][rekognition_delete_project_policy]
 #' 
-#' - [`delete_project_version`][rekognition_delete_project_version]
+#' -   [`delete_project_version`][rekognition_delete_project_version]
 #' 
-#' - [`describe_dataset`][rekognition_describe_dataset]
+#' -   [`describe_dataset`][rekognition_describe_dataset]
 #' 
-#' - [`describe_projects`][rekognition_describe_projects]
+#' -   [`describe_projects`][rekognition_describe_projects]
 #' 
-#' - [`describe_project_versions`][rekognition_describe_project_versions]
+#' -   [`describe_project_versions`][rekognition_describe_project_versions]
 #' 
-#' - [`detect_custom_labels`][rekognition_detect_custom_labels]
+#' -   [`detect_custom_labels`][rekognition_detect_custom_labels]
 #' 
-#' - [`distribute_dataset_entries`][rekognition_distribute_dataset_entries]
+#' -   [`distribute_dataset_entries`][rekognition_distribute_dataset_entries]
 #' 
-#' - [`list_dataset_entries`][rekognition_list_dataset_entries]
+#' -   [`list_dataset_entries`][rekognition_list_dataset_entries]
 #' 
-#' - [`list_dataset_labels`][rekognition_list_dataset_labels]
+#' -   [`list_dataset_labels`][rekognition_list_dataset_labels]
 #' 
-#' - [`list_project_policies`][rekognition_list_project_policies]
+#' -   [`list_project_policies`][rekognition_list_project_policies]
 #' 
-#' - [`put_project_policy`][rekognition_put_project_policy]
+#' -   [`put_project_policy`][rekognition_put_project_policy]
 #' 
-#' - [`start_project_version`][rekognition_start_project_version]
+#' -   [`start_project_version`][rekognition_start_project_version]
 #' 
-#' - [`stop_project_version`][rekognition_stop_project_version]
+#' -   [`stop_project_version`][rekognition_stop_project_version]
 #' 
-#' - [`update_dataset_entries`][rekognition_update_dataset_entries]
+#' -   [`update_dataset_entries`][rekognition_update_dataset_entries]
 #' 
 #' **Amazon Rekognition Video Stored Video**
 #' 
-#' - [`get_celebrity_recognition`][rekognition_get_celebrity_recognition]
+#' -   [`get_celebrity_recognition`][rekognition_get_celebrity_recognition]
 #' 
-#' - [`get_content_moderation`][rekognition_get_content_moderation]
+#' -   [`get_content_moderation`][rekognition_get_content_moderation]
 #' 
-#' - [`get_face_detection`][rekognition_get_face_detection]
+#' -   [`get_face_detection`][rekognition_get_face_detection]
 #' 
-#' - [`get_face_search`][rekognition_get_face_search]
+#' -   [`get_face_search`][rekognition_get_face_search]
 #' 
-#' - [`get_label_detection`][rekognition_get_label_detection]
+#' -   [`get_label_detection`][rekognition_get_label_detection]
 #' 
-#' - [`get_person_tracking`][rekognition_get_person_tracking]
+#' -   [`get_person_tracking`][rekognition_get_person_tracking]
 #' 
-#' - [`get_segment_detection`][rekognition_get_segment_detection]
+#' -   [`get_segment_detection`][rekognition_get_segment_detection]
 #' 
-#' - [`get_text_detection`][rekognition_get_text_detection]
+#' -   [`get_text_detection`][rekognition_get_text_detection]
 #' 
-#' - [`start_celebrity_recognition`][rekognition_start_celebrity_recognition]
+#' -   [`start_celebrity_recognition`][rekognition_start_celebrity_recognition]
 #' 
-#' - [`start_content_moderation`][rekognition_start_content_moderation]
+#' -   [`start_content_moderation`][rekognition_start_content_moderation]
 #' 
-#' - [`start_face_detection`][rekognition_start_face_detection]
+#' -   [`start_face_detection`][rekognition_start_face_detection]
 #' 
-#' - [`start_face_search`][rekognition_start_face_search]
+#' -   [`start_face_search`][rekognition_start_face_search]
 #' 
-#' - [`start_label_detection`][rekognition_start_label_detection]
+#' -   [`start_label_detection`][rekognition_start_label_detection]
 #' 
-#' - [`start_person_tracking`][rekognition_start_person_tracking]
+#' -   [`start_person_tracking`][rekognition_start_person_tracking]
 #' 
-#' - [`start_segment_detection`][rekognition_start_segment_detection]
+#' -   [`start_segment_detection`][rekognition_start_segment_detection]
 #' 
-#' - [`start_text_detection`][rekognition_start_text_detection]
+#' -   [`start_text_detection`][rekognition_start_text_detection]
 #' 
 #' **Amazon Rekognition Video Streaming Video**
 #' 
-#' - [`create_stream_processor`][rekognition_create_stream_processor]
+#' -   [`create_stream_processor`][rekognition_create_stream_processor]
 #' 
-#' - [`delete_stream_processor`][rekognition_delete_stream_processor]
+#' -   [`delete_stream_processor`][rekognition_delete_stream_processor]
 #' 
-#' - [`describe_stream_processor`][rekognition_describe_stream_processor]
+#' -   [`describe_stream_processor`][rekognition_describe_stream_processor]
 #' 
-#' - [`list_stream_processors`][rekognition_list_stream_processors]
+#' -   [`list_stream_processors`][rekognition_list_stream_processors]
 #' 
-#' - [`start_stream_processor`][rekognition_start_stream_processor]
+#' -   [`start_stream_processor`][rekognition_start_stream_processor]
 #' 
-#' - [`stop_stream_processor`][rekognition_stop_stream_processor]
+#' -   [`stop_stream_processor`][rekognition_stop_stream_processor]
 #' 
-#' - [`update_stream_processor`][rekognition_update_stream_processor]
+#' -   [`update_stream_processor`][rekognition_update_stream_processor]
 #'
 #' @param
 #' config

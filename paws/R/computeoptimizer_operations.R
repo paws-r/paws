@@ -62,8 +62,7 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$delete_recommendation_preferences_input(resourceType = resourceType, scope = scope, recommendationPreferenceNames = recommendationPreferenceNames)
   output <- .computeoptimizer$delete_recommendation_preferences_output()
@@ -169,8 +168,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationExportJobs"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationExportJobs")
   )
   input <- .computeoptimizer$describe_recommendation_export_jobs_input(jobIds = jobIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$describe_recommendation_export_jobs_output()
@@ -315,8 +313,7 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$export_auto_scaling_group_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$export_auto_scaling_group_recommendations_output()
@@ -441,8 +438,7 @@ computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$export_ebs_volume_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_ebs_volume_recommendations_output()
@@ -584,8 +580,7 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$export_ec2_instance_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$export_ec2_instance_recommendations_output()
@@ -707,8 +702,7 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$export_ecs_service_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_ecs_service_recommendations_output()
@@ -834,8 +828,7 @@ computeoptimizer_export_lambda_function_recommendations <- function(accountIds =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$export_lambda_function_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_lambda_function_recommendations_output()
@@ -957,8 +950,7 @@ computeoptimizer_export_license_recommendations <- function(accountIds = NULL, f
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$export_license_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$export_license_recommendations_output()
@@ -1090,8 +1082,7 @@ computeoptimizer_export_rds_database_recommendations <- function(accountIds = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$export_rds_database_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$export_rds_database_recommendations_output()
@@ -1310,8 +1301,7 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_auto_scaling_group_recommendations_input(accountIds = accountIds, autoScalingGroupArns = autoScalingGroupArns, nextToken = nextToken, maxResults = maxResults, filters = filters, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_auto_scaling_group_recommendations_output()
@@ -1473,8 +1463,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_ebs_volume_recommendations_input(volumeArns = volumeArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_ebs_volume_recommendations_output()
@@ -1705,8 +1694,7 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_ec2_instance_recommendations_input(instanceArns = instanceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_ec2_instance_recommendations_output()
@@ -1802,8 +1790,7 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_ec2_recommendation_projected_metrics_input(instanceArn = instanceArn, stat = stat, period = period, startTime = startTime, endTime = endTime, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_ec2_recommendation_projected_metrics_output()
@@ -1889,8 +1876,7 @@ computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(se
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_input(serviceArn = serviceArn, stat = stat, period = period, startTime = startTime, endTime = endTime)
   output <- .computeoptimizer$get_ecs_service_recommendation_projected_metrics_output()
@@ -2076,8 +2062,7 @@ computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_ecs_service_recommendations_input(serviceArns = serviceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_ecs_service_recommendations_output()
@@ -2162,8 +2147,7 @@ computeoptimizer_get_effective_recommendation_preferences <- function(resourceAr
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_effective_recommendation_preferences_input(resourceArn = resourceArn)
   output <- .computeoptimizer$get_effective_recommendation_preferences_output()
@@ -2224,8 +2208,7 @@ computeoptimizer_get_enrollment_status <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_enrollment_status_input()
   output <- .computeoptimizer$get_enrollment_status_output()
@@ -2307,8 +2290,7 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountEnrollmentStatuses"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountEnrollmentStatuses")
   )
   input <- .computeoptimizer$get_enrollment_statuses_for_organization_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_enrollment_statuses_for_organization_output()
@@ -2467,8 +2449,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lambdaFunctionRecommendations"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lambdaFunctionRecommendations")
   )
   input <- .computeoptimizer$get_lambda_function_recommendations_input(functionArns = functionArns, accountIds = accountIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_lambda_function_recommendations_output()
@@ -2617,8 +2598,7 @@ computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_license_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
   output <- .computeoptimizer$get_license_recommendations_output()
@@ -2708,8 +2688,7 @@ computeoptimizer_get_rds_database_recommendation_projected_metrics <- function(r
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_rds_database_recommendation_projected_metrics_input(resourceArn = resourceArn, stat = stat, period = period, startTime = startTime, endTime = endTime, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_rds_database_recommendation_projected_metrics_output()
@@ -2922,8 +2901,7 @@ computeoptimizer_get_rds_database_recommendations <- function(resourceArns = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$get_rds_database_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds, recommendationPreferences = recommendationPreferences)
   output <- .computeoptimizer$get_rds_database_recommendations_output()
@@ -3048,8 +3026,7 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationPreferencesDetails"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationPreferencesDetails")
   )
   input <- .computeoptimizer$get_recommendation_preferences_input(resourceType = resourceType, scope = scope, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_preferences_output()
@@ -3068,20 +3045,20 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #' 
 #' It returns the number of:
 #' 
-#' - Amazon EC2 instances in an account that are `Underprovisioned`,
-#'   `Overprovisioned`, or `Optimized`.
+#' -   Amazon EC2 instances in an account that are `Underprovisioned`,
+#'     `Overprovisioned`, or `Optimized`.
 #' 
-#' - Auto Scaling groups in an account that are `NotOptimized`, or
-#'   `Optimized`.
+#' -   Auto Scaling groups in an account that are `NotOptimized`, or
+#'     `Optimized`.
 #' 
-#' - Amazon EBS volumes in an account that are `NotOptimized`, or
-#'   `Optimized`.
+#' -   Amazon EBS volumes in an account that are `NotOptimized`, or
+#'     `Optimized`.
 #' 
-#' - Lambda functions in an account that are `NotOptimized`, or
-#'   `Optimized`.
+#' -   Lambda functions in an account that are `NotOptimized`, or
+#'     `Optimized`.
 #' 
-#' - Amazon ECS services in an account that are `Underprovisioned`,
-#'   `Overprovisioned`, or `Optimized`.
+#' -   Amazon ECS services in an account that are `Underprovisioned`,
+#'     `Overprovisioned`, or `Optimized`.
 #'
 #' @usage
 #' computeoptimizer_get_recommendation_summaries(accountIds, nextToken,
@@ -3174,8 +3151,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationSummaries")
   )
   input <- .computeoptimizer$get_recommendation_summaries_input(accountIds = accountIds, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_summaries_output()
@@ -3270,30 +3246,30 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' You can only set this preference for the Amazon EC2 instance and Auto
 #' Scaling group resource types.
 #' 
-#' - Amazon EC2 instance lookback preferences can be set at the
-#'   organization, account, and resource levels.
+#' -   Amazon EC2 instance lookback preferences can be set at the
+#'     organization, account, and resource levels.
 #' 
-#' - Auto Scaling group lookback preferences can only be set at the
-#'   resource level.
+#' -   Auto Scaling group lookback preferences can only be set at the
+#'     resource level.
 #' @param utilizationPreferences The preference to control the resource’s CPU utilization threshold, CPU
 #' utilization headroom, and memory utilization headroom. When this
 #' preference isn't specified, we use the following default values.
 #' 
 #' CPU utilization:
 #' 
-#' - `P99_5` for threshold
+#' -   `P99_5` for threshold
 #' 
-#' - `PERCENT_20` for headroom
+#' -   `PERCENT_20` for headroom
 #' 
 #' Memory utilization:
 #' 
-#' - `PERCENT_20` for headroom
+#' -   `PERCENT_20` for headroom
 #' 
 #' 
-#' - You can only set CPU and memory utilization preferences for the Amazon
-#'   EC2 instance resource type.
+#' -   You can only set CPU and memory utilization preferences for the
+#'     Amazon EC2 instance resource type.
 #' 
-#' - The threshold setting isn’t available for memory utilization.
+#' -   The threshold setting isn’t available for memory utilization.
 #' @param preferredResources The preference to control which resource type values are considered when
 #' generating rightsizing recommendations. You can specify this preference
 #' as a combination of include and exclude lists. You must specify either
@@ -3367,8 +3343,7 @@ computeoptimizer_put_recommendation_preferences <- function(resourceType, scope 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$put_recommendation_preferences_input(resourceType = resourceType, scope = scope, enhancedInfrastructureMetrics = enhancedInfrastructureMetrics, inferredWorkloadTypes = inferredWorkloadTypes, externalMetricsPreference = externalMetricsPreference, lookBackPeriod = lookBackPeriod, utilizationPreferences = utilizationPreferences, preferredResources = preferredResources, savingsEstimationMode = savingsEstimationMode)
   output <- .computeoptimizer$put_recommendation_preferences_output()
@@ -3410,16 +3385,16 @@ computeoptimizer_put_recommendation_preferences <- function(resourceType, scope 
 #' 
 #' The following status options are available:
 #' 
-#' - `Active` - Opts in your account to the Compute Optimizer service.
-#'   Compute Optimizer begins analyzing the configuration and utilization
-#'   metrics of your Amazon Web Services resources after you opt in. For
-#'   more information, see [Metrics analyzed by Compute
-#'   Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html)
-#'   in the *Compute Optimizer User Guide*.
+#' -   `Active` - Opts in your account to the Compute Optimizer service.
+#'     Compute Optimizer begins analyzing the configuration and utilization
+#'     metrics of your Amazon Web Services resources after you opt in. For
+#'     more information, see [Metrics analyzed by Compute
+#'     Optimizer](https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html)
+#'     in the *Compute Optimizer User Guide*.
 #' 
-#' - `Inactive` - Opts out your account from the Compute Optimizer service.
-#'   Your account's recommendations and related metrics data will be
-#'   deleted from Compute Optimizer after you opt out.
+#' -   `Inactive` - Opts out your account from the Compute Optimizer
+#'     service. Your account's recommendations and related metrics data
+#'     will be deleted from Compute Optimizer after you opt out.
 #' 
 #' The `Pending` and `Failed` options cannot be used to update the
 #' enrollment status of an account. They are returned in the response of a
@@ -3455,8 +3430,7 @@ computeoptimizer_update_enrollment_status <- function(status, includeMemberAccou
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .computeoptimizer$update_enrollment_status_input(status = status, includeMemberAccounts = includeMemberAccounts)
   output <- .computeoptimizer$update_enrollment_status_output()

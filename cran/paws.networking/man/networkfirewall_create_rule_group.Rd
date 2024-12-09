@@ -71,11 +71,12 @@ capacity requirement values of each of the rule's match settings:
 \itemize{
 \item A match setting with no criteria specified has a value of 1.
 \item A match setting with \code{Any} specified has a value of 1.
-\item All other match settings have a value equal to the number of elements
-provided in the setting. For example, a protocol setting ["UDP"] and
-a source setting ["10.0.0.0/24"] each have a value of 1. A protocol
-setting ["UDP","TCP"] has a value of 2. A source setting
-["10.0.0.0/24","10.0.0.1/24","10.0.0.2/24"] has a value of 3.
+\item All other match settings have a value equal to the number of
+elements provided in the setting. For example, a protocol setting
+["UDP"] and a source setting ["10.0.0.0/24"] each have a value
+of 1. A protocol setting ["UDP","TCP"] has a value of 2. A source
+setting ["10.0.0.0/24","10.0.0.1/24","10.0.0.2/24"] has a value of
+3.
 }
 
 A rule with no criteria specified in any of its match settings has a

@@ -28,7 +28,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 and end time.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
+For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 This API is in preview release for Amazon Connect and is subject to change.

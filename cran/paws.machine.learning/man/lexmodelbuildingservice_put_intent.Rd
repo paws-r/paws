@@ -31,8 +31,8 @@ with "AMAZON." removed. For example, because there is a built-in intent
 called \code{AMAZON.HelpIntent}, you can't create a custom intent called
 \code{HelpIntent}.
 
-For a list of built-in intents, see Standard Built-in Intents in the
-\emph{Alexa Skills Kit}.}
+For a list of built-in intents, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
+in the \emph{Alexa Skills Kit}.}
 
 \item{description}{A description of the intent.}
 
@@ -41,8 +41,8 @@ values from the user using prompts defined in the slots. For more
 information, see how-it-works.}
 
 \item{sampleUtterances}{An array of utterances (strings) that a user might say to signal the
-intent. For example, "I want \\PizzaSize\\ pizza", "Order \\Quantity\\
-\\PizzaSize\\ pizzas".
+intent. For example, "I want \{PizzaSize\} pizza", "Order
+\{Quantity\} \{PizzaSize\} pizzas".
 
 In each utterance, a slot name is enclosed in curly braces.}
 
@@ -73,14 +73,14 @@ fulfilled, you might prompt the user to order a drink.
 The action that Amazon Lex takes depends on the user's response, as
 follows:
 \itemize{
-\item If the user says "Yes" it responds with the clarification prompt that
-is configured for the bot.
+\item If the user says "Yes" it responds with the clarification prompt
+that is configured for the bot.
 \item if the user says "Yes" and continues with an utterance that triggers
 an intent it starts a conversation for the intent.
 \item If the user says "No" it responds with the rejection statement
 configured for the the follow-up prompt.
-\item If it doesn't recognize the utterance it repeats the follow-up prompt
-again.
+\item If it doesn't recognize the utterance it repeats the follow-up
+prompt again.
 }
 
 The \code{followUpPrompt} field and the \code{conclusionStatement} field are
@@ -116,8 +116,8 @@ to the client application, or direct it to invoke a Lambda function that
 can process the intent (for example, place an order with a pizzeria).}
 
 \item{parentIntentSignature}{A unique identifier for the built-in intent to base this intent on. To
-find the signature for an intent, see Standard Built-in Intents in the
-\emph{Alexa Skills Kit}.}
+find the signature for an intent, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
+in the \emph{Alexa Skills Kit}.}
 
 \item{checksum}{Identifies a specific revision of the \verb{$LATEST} version.
 

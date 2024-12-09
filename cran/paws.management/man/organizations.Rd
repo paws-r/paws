@@ -78,24 +78,25 @@ can do this in the CLI by using these parameters and commands:
 \item Use the following parameter with each command to specify both the
 endpoint and its region:
 
-\verb{--endpoint-url https://organizations.us-east-1.amazonaws.com} \emph{(from
-commercial Amazon Web Services Regions outside of China)}
+\verb{--endpoint-url https://organizations.us-east-1.amazonaws.com}
+\emph{(from commercial Amazon Web Services Regions outside of China)}
 
 or
 
 \verb{--endpoint-url https://organizations.cn-northwest-1.amazonaws.com.cn}
 \emph{(from Amazon Web Services Regions in China)}
-\item Use the default endpoint, but configure your default region with this
-command:
+\item Use the default endpoint, but configure your default region with
+this command:
 
-\verb{aws configure set default.region us-east-1} \emph{(from commercial Amazon
-Web Services Regions outside of China)}
+\verb{aws configure set default.region us-east-1} \emph{(from commercial
+Amazon Web Services Regions outside of China)}
 
 or
 
 \verb{aws configure set default.region cn-northwest-1} \emph{(from Amazon Web
 Services Regions in China)}
-\item Use the following parameter with each command to specify the endpoint:
+\item Use the following parameter with each command to specify the
+endpoint:
 
 \verb{--region us-east-1} \emph{(from commercial Amazon Web Services Regions
 outside of China)}

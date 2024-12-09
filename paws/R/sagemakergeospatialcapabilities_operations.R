@@ -35,8 +35,7 @@ sagemakergeospatialcapabilities_delete_earth_observation_job <- function(Arn) {
     http_method = "DELETE",
     http_path = "/earth-observation-jobs/{Arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$delete_earth_observation_job_input(Arn = Arn)
   output <- .sagemakergeospatialcapabilities$delete_earth_observation_job_output()
@@ -80,8 +79,7 @@ sagemakergeospatialcapabilities_delete_vector_enrichment_job <- function(Arn) {
     http_method = "DELETE",
     http_path = "/vector-enrichment-jobs/{Arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$delete_vector_enrichment_job_input(Arn = Arn)
   output <- .sagemakergeospatialcapabilities$delete_vector_enrichment_job_output()
@@ -161,8 +159,7 @@ sagemakergeospatialcapabilities_export_earth_observation_job <- function(Arn, Cl
     http_method = "POST",
     http_path = "/export-earth-observation-job",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$export_earth_observation_job_input(Arn = Arn, ClientToken = ClientToken, ExecutionRoleArn = ExecutionRoleArn, ExportSourceImages = ExportSourceImages, OutputConfig = OutputConfig)
   output <- .sagemakergeospatialcapabilities$export_earth_observation_job_output()
@@ -236,8 +233,7 @@ sagemakergeospatialcapabilities_export_vector_enrichment_job <- function(Arn, Cl
     http_method = "POST",
     http_path = "/export-vector-enrichment-jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$export_vector_enrichment_job_input(Arn = Arn, ClientToken = ClientToken, ExecutionRoleArn = ExecutionRoleArn, OutputConfig = OutputConfig)
   output <- .sagemakergeospatialcapabilities$export_vector_enrichment_job_output()
@@ -463,8 +459,7 @@ sagemakergeospatialcapabilities_get_earth_observation_job <- function(Arn) {
     http_method = "GET",
     http_path = "/earth-observation-jobs/{Arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$get_earth_observation_job_input(Arn = Arn)
   output <- .sagemakergeospatialcapabilities$get_earth_observation_job_output()
@@ -530,8 +525,7 @@ sagemakergeospatialcapabilities_get_raster_data_collection <- function(Arn) {
     http_method = "GET",
     http_path = "/raster-data-collection/{Arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$get_raster_data_collection_input(Arn = Arn)
   output <- .sagemakergeospatialcapabilities$get_raster_data_collection_output()
@@ -607,8 +601,7 @@ sagemakergeospatialcapabilities_get_tile <- function(Arn, ExecutionRoleArn = NUL
     http_method = "GET",
     http_path = "/tile/{z}/{x}/{y}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$get_tile_input(Arn = Arn, ExecutionRoleArn = ExecutionRoleArn, ImageAssets = ImageAssets, ImageMask = ImageMask, OutputDataType = OutputDataType, OutputFormat = OutputFormat, PropertyFilters = PropertyFilters, Target = Target, TimeRangeFilter = TimeRangeFilter, x = x, y = y, z = z)
   output <- .sagemakergeospatialcapabilities$get_tile_output()
@@ -700,8 +693,7 @@ sagemakergeospatialcapabilities_get_vector_enrichment_job <- function(Arn) {
     http_method = "GET",
     http_path = "/vector-enrichment-jobs/{Arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$get_vector_enrichment_job_input(Arn = Arn)
   output <- .sagemakergeospatialcapabilities$get_vector_enrichment_job_output()
@@ -777,8 +769,7 @@ sagemakergeospatialcapabilities_list_earth_observation_jobs <- function(MaxResul
     http_method = "POST",
     http_path = "/list-earth-observation-jobs",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EarthObservationJobSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EarthObservationJobSummaries")
   )
   input <- .sagemakergeospatialcapabilities$list_earth_observation_jobs_input(MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder, StatusEquals = StatusEquals)
   output <- .sagemakergeospatialcapabilities$list_earth_observation_jobs_output()
@@ -850,8 +841,7 @@ sagemakergeospatialcapabilities_list_raster_data_collections <- function(MaxResu
     http_method = "GET",
     http_path = "/raster-data-collections",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RasterDataCollectionSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RasterDataCollectionSummaries")
   )
   input <- .sagemakergeospatialcapabilities$list_raster_data_collections_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemakergeospatialcapabilities$list_raster_data_collections_output()
@@ -901,8 +891,7 @@ sagemakergeospatialcapabilities_list_tags_for_resource <- function(ResourceArn) 
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .sagemakergeospatialcapabilities$list_tags_for_resource_output()
@@ -976,8 +965,7 @@ sagemakergeospatialcapabilities_list_vector_enrichment_jobs <- function(MaxResul
     http_method = "POST",
     http_path = "/list-vector-enrichment-jobs",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VectorEnrichmentJobSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "VectorEnrichmentJobSummaries")
   )
   input <- .sagemakergeospatialcapabilities$list_vector_enrichment_jobs_input(MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder, StatusEquals = StatusEquals)
   output <- .sagemakergeospatialcapabilities$list_vector_enrichment_jobs_output()
@@ -1140,8 +1128,7 @@ sagemakergeospatialcapabilities_search_raster_data_collection <- function(Arn, N
     http_method = "POST",
     http_path = "/search-raster-data-collection",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .sagemakergeospatialcapabilities$search_raster_data_collection_input(Arn = Arn, NextToken = NextToken, RasterDataCollectionQuery = RasterDataCollectionQuery)
   output <- .sagemakergeospatialcapabilities$search_raster_data_collection_output()
@@ -1505,8 +1492,7 @@ sagemakergeospatialcapabilities_start_earth_observation_job <- function(ClientTo
     http_method = "POST",
     http_path = "/earth-observation-jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$start_earth_observation_job_input(ClientToken = ClientToken, ExecutionRoleArn = ExecutionRoleArn, InputConfig = InputConfig, JobConfig = JobConfig, KmsKeyId = KmsKeyId, Name = Name, Tags = Tags)
   output <- .sagemakergeospatialcapabilities$start_earth_observation_job_output()
@@ -1623,8 +1609,7 @@ sagemakergeospatialcapabilities_start_vector_enrichment_job <- function(ClientTo
     http_method = "POST",
     http_path = "/vector-enrichment-jobs",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$start_vector_enrichment_job_input(ClientToken = ClientToken, ExecutionRoleArn = ExecutionRoleArn, InputConfig = InputConfig, JobConfig = JobConfig, KmsKeyId = KmsKeyId, Name = Name, Tags = Tags)
   output <- .sagemakergeospatialcapabilities$start_vector_enrichment_job_output()
@@ -1668,8 +1653,7 @@ sagemakergeospatialcapabilities_stop_earth_observation_job <- function(Arn) {
     http_method = "POST",
     http_path = "/earth-observation-jobs/stop",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$stop_earth_observation_job_input(Arn = Arn)
   output <- .sagemakergeospatialcapabilities$stop_earth_observation_job_output()
@@ -1712,8 +1696,7 @@ sagemakergeospatialcapabilities_stop_vector_enrichment_job <- function(Arn) {
     http_method = "POST",
     http_path = "/vector-enrichment-jobs/stop",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$stop_vector_enrichment_job_input(Arn = Arn)
   output <- .sagemakergeospatialcapabilities$stop_vector_enrichment_job_output()
@@ -1760,8 +1743,7 @@ sagemakergeospatialcapabilities_tag_resource <- function(ResourceArn, Tags) {
     http_method = "PUT",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .sagemakergeospatialcapabilities$tag_resource_output()
@@ -1808,8 +1790,7 @@ sagemakergeospatialcapabilities_untag_resource <- function(ResourceArn, TagKeys)
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakergeospatialcapabilities$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .sagemakergeospatialcapabilities$untag_resource_output()

@@ -28,12 +28,12 @@ creation date.
 \item \code{Status} - Sets the search criteria to the \code{BatchPrediction} status.
 \item \code{Name} - Sets the search criteria to the contents of the
 \code{BatchPrediction} \code{Name}.
-\item \code{IAMUser} - Sets the search criteria to the user account that invoked
-the \code{BatchPrediction} creation.
+\item \code{IAMUser} - Sets the search criteria to the user account that
+invoked the \code{BatchPrediction} creation.
 \item \code{MLModelId} - Sets the search criteria to the \code{MLModel} used in the
 \code{BatchPrediction}.
-\item \code{DataSourceId} - Sets the search criteria to the \code{DataSource} used in
-the \code{BatchPrediction}.
+\item \code{DataSourceId} - Sets the search criteria to the \code{DataSource} used
+in the \code{BatchPrediction}.
 \item \code{DataURI} - Sets the search criteria to the data file(s) used in the
 \code{BatchPrediction}. The URL can identify either a file or an Amazon
 Simple Storage Solution (Amazon S3) bucket or directory.

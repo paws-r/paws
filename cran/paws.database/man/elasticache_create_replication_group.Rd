@@ -78,7 +78,7 @@ enabled) replication groups.
 Default: false}
 
 \item{MultiAZEnabled}{A flag indicating if you have Multi-AZ enabled to enhance fault
-tolerance. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
+tolerance. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
 
 \item{NumCacheClusters}{The number of clusters this replication group initially has.
 
@@ -147,7 +147,7 @@ previous generation counterparts.
 \code{cache.m7g.2xlarge}, \code{cache.m7g.4xlarge}, \code{cache.m7g.8xlarge},
 \code{cache.m7g.12xlarge}, \code{cache.m7g.16xlarge}
 
-For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{M6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -171,9 +171,9 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 
 \strong{T2 node types:} \code{cache.t2.micro}, \code{cache.t2.small},
 \code{cache.t2.medium}
-\item Previous generation: (not recommended. Existing clusters are still
-supported but creation of new clusters is not supported for these
-types.)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{T1 node types:} \code{cache.t1.micro}
 
@@ -185,9 +185,9 @@ types.)
 }
 \item Compute optimized:
 \itemize{
-\item Previous generation: (not recommended. Existing clusters are still
-supported but creation of new clusters is not supported for these
-types.)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{C1 node types:} \code{cache.c1.xlarge}
 }
@@ -199,7 +199,7 @@ types.)
 \code{cache.r7g.2xlarge}, \code{cache.r7g.4xlarge}, \code{cache.r7g.8xlarge},
 \code{cache.r7g.12xlarge}, \code{cache.r7g.16xlarge}
 
-For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
+For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion}{Supported Node Types}
 
 \strong{R6g node types} (available only for Redis OSS engine version
 5.0.6 onward and for Memcached engine version 1.5.16 onward):
@@ -214,9 +214,9 @@ For region availability, see \href{https://docs.aws.amazon.com/AmazonElastiCache
 \strong{R4 node types:} \code{cache.r4.large}, \code{cache.r4.xlarge},
 \code{cache.r4.2xlarge}, \code{cache.r4.4xlarge}, \code{cache.r4.8xlarge},
 \code{cache.r4.16xlarge}
-\item Previous generation: (not recommended. Existing clusters are still
-supported but creation of new clusters is not supported for these
-types.)
+\item Previous generation: (not recommended. Existing clusters are
+still supported but creation of new clusters is not supported
+for these types.)
 
 \strong{M2 node types:} \code{cache.m2.xlarge}, \code{cache.m2.2xlarge},
 \code{cache.m2.4xlarge}
@@ -247,7 +247,7 @@ the
 \code{\link[=elasticache_describe_cache_engine_versions]{describe_cache_engine_versions}}
 operation.
 
-\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version})
+\strong{Important:} You can upgrade to a newer engine version (see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SelectEngine.html#VersionManagement}{Selecting a Cache Engine and Version})
 in the \emph{ElastiCache User Guide}, but you cannot downgrade to an earlier
 engine version. If you want to use an earlier engine version, you must
 delete the existing cluster or replication group and create it anew with
@@ -271,7 +271,7 @@ you specify the parameter group by name.
 
 If you're going to launch your cluster in an Amazon VPC, you need to
 create a subnet group before you start creating a cluster. For more
-information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/SubnetGroups.html}{Subnets and Subnet Groups}.}
+information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.html}{Subnets and Subnet Groups}.}
 
 \item{CacheSecurityGroupNames}{A list of cache security group names to associate with this replication
 group.}
@@ -407,7 +407,7 @@ Default: \code{false}}
 
 \item{DataTieringEnabled}{Enables data tiering. Data tiering is only supported for replication
 groups using the r6gd node type. This parameter must be set to true when
-using r6gd nodes. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/data-tiering.html}{Data tiering}.}
+using r6gd nodes. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/data-tiering.html}{Data tiering}.}
 
 \item{NetworkType}{Must be either \code{ipv4} | \code{ipv6} | \code{dual_stack}. IPv6 is supported for
 workloads using Redis OSS engine version 6.2 onward or Memcached engine

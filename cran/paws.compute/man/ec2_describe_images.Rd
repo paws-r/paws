@@ -22,38 +22,39 @@ ec2_describe_images(
 Amazon Web Services account ID, \code{self} (the sender of the request), or
 \code{all} (public AMIs).
 \itemize{
-\item If you specify an Amazon Web Services account ID that is not your own,
-only AMIs shared with that specific Amazon Web Services account ID are
-returned. However, AMIs that are shared with the account’s
+\item If you specify an Amazon Web Services account ID that is not your
+own, only AMIs shared with that specific Amazon Web Services account
+ID are returned. However, AMIs that are shared with the account’s
 organization or organizational unit (OU) are not returned.
-\item If you specify \code{self} or your own Amazon Web Services account ID, AMIs
-shared with your account are returned. In addition, AMIs that are
-shared with the organization or OU of which you are member are also
-returned.
+\item If you specify \code{self} or your own Amazon Web Services account ID,
+AMIs shared with your account are returned. In addition, AMIs that
+are shared with the organization or OU of which you are member are
+also returned.
 \item If you specify \code{all}, all public AMIs are returned.
 }}
 
 \item{Filters}{The filters.
 \itemize{
-\item \code{architecture} - The image architecture (\code{i386} | \code{x86_64} | \code{arm64} |
-\code{x86_64_mac} | \code{arm64_mac}).
+\item \code{architecture} - The image architecture (\code{i386} | \code{x86_64} | \code{arm64}
+| \code{x86_64_mac} | \code{arm64_mac}).
 \item \code{block-device-mapping.delete-on-termination} - A Boolean value that
 indicates whether the Amazon EBS volume is deleted on instance
 termination.
-\item \code{block-device-mapping.device-name} - The device name specified in the
-block device mapping (for example, \verb{/dev/sdh} or \code{xvdh}).
+\item \code{block-device-mapping.device-name} - The device name specified in
+the block device mapping (for example, \verb{/dev/sdh} or \code{xvdh}).
 \item \code{block-device-mapping.snapshot-id} - The ID of the snapshot used for
 the Amazon EBS volume.
-\item \code{block-device-mapping.volume-size} - The volume size of the Amazon EBS
-volume, in GiB.
-\item \code{block-device-mapping.volume-type} - The volume type of the Amazon EBS
-volume (\code{io1} | \code{io2} | \code{gp2} | \code{gp3} | \code{sc1 }| \code{st1} | \code{standard}).
+\item \code{block-device-mapping.volume-size} - The volume size of the Amazon
+EBS volume, in GiB.
+\item \code{block-device-mapping.volume-type} - The volume type of the Amazon
+EBS volume (\code{io1} | \code{io2} | \code{gp2} | \code{gp3} | \code{sc1 }| \code{st1} |
+\code{standard}).
 \item \code{block-device-mapping.encrypted} - A Boolean that indicates whether
 the Amazon EBS volume is encrypted.
-\item \code{creation-date} - The time when the image was created, in the ISO 8601
-format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for example,
-\verb{2021-09-29T11:04:43.305Z}. You can use a wildcard (\code{*}), for example,
-\verb{2021-09-29T*}, which matches an entire day.
+\item \code{creation-date} - The time when the image was created, in the ISO
+8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for
+example, \verb{2021-09-29T11:04:43.305Z}. You can use a wildcard (\code{*}),
+for example, \verb{2021-09-29T*}, which matches an entire day.
 \item \code{description} - The description of the image (provided during image
 creation).
 \item \code{ena-support} - A Boolean that indicates whether enhanced networking
@@ -71,8 +72,8 @@ the Amazon Web Services account alias that can be set using the IAM
 console. We recommend that you use the \strong{Owner} request parameter
 instead of this filter.
 \item \code{owner-id} - The Amazon Web Services account ID of the owner. We
-recommend that you use the \strong{Owner} request parameter instead of this
-filter.
+recommend that you use the \strong{Owner} request parameter instead of
+this filter.
 \item \code{platform} - The platform. The only supported value is \code{windows}.
 \item \code{product-code} - The product code.
 \item \code{product-code.type} - The type of the product code (\code{marketplace}).
@@ -81,23 +82,24 @@ filter.
 example, \verb{/dev/sda1}).
 \item \code{root-device-type} - The type of the root device volume (\code{ebs} |
 \code{instance-store}).
-\item \code{source-instance-id} - The ID of the instance that the AMI was created
-from if the AMI was created using CreateImage. This filter is
-applicable only if the AMI was created using
+\item \code{source-instance-id} - The ID of the instance that the AMI was
+created from if the AMI was created using CreateImage. This filter
+is applicable only if the AMI was created using
 \code{\link[=ec2_create_image]{create_image}}.
-\item \code{state} - The state of the image (\code{available} | \code{pending} | \code{failed}).
+\item \code{state} - The state of the image (\code{available} | \code{pending} |
+\code{failed}).
 \item \code{state-reason-code} - The reason code for the state change.
 \item \code{state-reason-message} - The message for the state change.
 \item \code{sriov-net-support} - A value of \code{simple} indicates that enhanced
 networking with the Intel 82599 VF interface is enabled.
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
-resource. Use the tag key in the filter name and the tag value as the
-filter value. For example, to find all resources that have a tag with
-the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for the
-filter name and \code{TeamA} for the filter value.
-\item \code{tag-key} - The key of a tag assigned to the resource. Use this filter
-to find all resources assigned a tag with a specific key, regardless
-of the tag value.
+resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key \code{Owner} and the value \code{TeamA}, specify \code{tag:Owner} for
+the filter name and \code{TeamA} for the filter value.
+\item \code{tag-key} - The key of a tag assigned to the resource. Use this
+filter to find all resources assigned a tag with a specific key,
+regardless of the tag value.
 \item \code{virtualization-type} - The virtualization type (\code{paravirtual} |
 \code{hvm}).
 }}

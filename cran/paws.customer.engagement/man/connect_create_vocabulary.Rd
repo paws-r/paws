@@ -37,7 +37,7 @@ Separate the fields with TAB characters. The size limit is 50KB. For
 more information, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html#create-vocabulary-table}{Create a custom vocabulary using a table}.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
-For example, \\ "Tags": \\"key1":"value1", "key2":"value2"\\ \\.}
+For example, \{ "Tags": \{"key1":"value1", "key2":"value2"\} \}.}
 }
 \description{
 Creates a custom vocabulary associated with your Amazon Connect instance. You can set a custom vocabulary to be your default vocabulary for a given language. Contact Lens for Amazon Connect uses the default vocabulary in post-call and real-time contact analysis sessions for that language.

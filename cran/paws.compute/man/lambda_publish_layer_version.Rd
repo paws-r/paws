@@ -29,8 +29,8 @@ see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runt
 
 \item{LicenseInfo}{The layer's software license. It can be any of the following:
 \itemize{
-\item An \href{https://spdx.org/licenses/}{SPDX license identifier}. For example,
-\code{MIT}.
+\item An \href{https://spdx.org/licenses/}{SPDX license identifier}. For
+example, \code{MIT}.
 \item The URL of a license hosted on the internet. For example,
 \verb{https://opensource.org/licenses/MIT}.
 \item The full text of the license.

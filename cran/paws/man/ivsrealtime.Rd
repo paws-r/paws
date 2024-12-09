@@ -62,20 +62,21 @@ including errors.
 \itemize{
 \item \strong{Stage} — A virtual space where participants can exchange video in
 real time.
-\item \strong{Participant token} — A token that authenticates a participant when
-they join a stage.
-\item \strong{Participant object} — Represents participants (people) in the stage
-and contains information about them. When a token is created, it
-includes a participant ID; when a participant uses that token to join
-a stage, the participant is associated with that participant ID. There
-is a 1:1 mapping between participant tokens and participants.
+\item \strong{Participant token} — A token that authenticates a participant
+when they join a stage.
+\item \strong{Participant object} — Represents participants (people) in the
+stage and contains information about them. When a token is created,
+it includes a participant ID; when a participant uses that token to
+join a stage, the participant is associated with that participant
+ID. There is a 1:1 mapping between participant tokens and
+participants.
 }
 
 For server-side composition:
 \itemize{
 \item \strong{Composition process} — Composites participants of a stage into a
-single video and forwards it to a set of outputs (e.g., IVS channels).
-Composition endpoints support this process.
+single video and forwards it to a set of outputs (e.g., IVS
+channels). Composition endpoints support this process.
 \item \strong{Composition} — Controls the look of the outputs, including how
 participants are positioned in the video.
 }

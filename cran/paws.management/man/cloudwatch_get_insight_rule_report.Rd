@@ -38,14 +38,14 @@ the report. You can specify one or more of the following metrics:
 \item \code{UniqueContributors} -- the number of unique contributors for each
 data point.
 \item \code{MaxContributorValue} -- the value of the top contributor for each
-data point. The identity of the contributor might change for each data
-point in the graph.
+data point. The identity of the contributor might change for each
+data point in the graph.
 
 If this rule aggregates by COUNT, the top contributor for each data
-point is the contributor with the most occurrences in that period. If
-the rule aggregates by SUM, the top contributor is the contributor
-with the highest sum in the log field specified by the rule's \code{Value},
-during that period.
+point is the contributor with the most occurrences in that period.
+If the rule aggregates by SUM, the top contributor is the
+contributor with the highest sum in the log field specified by the
+rule's \code{Value}, during that period.
 \item \code{SampleCount} -- the number of data points matched by the rule.
 \item \code{Sum} -- the sum of the values from all contributors during the time
 period represented by that data point.

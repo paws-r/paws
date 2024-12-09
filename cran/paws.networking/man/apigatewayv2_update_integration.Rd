@@ -131,8 +131,8 @@ integration request parameter name and the associated value is a method
 request parameter value or static value that must be enclosed within
 single quotes and pre-encoded as required by the backend. The method
 request parameter value must match the pattern of
-method.request.\\location\\.\\name\\ , where \\location\\ is
-querystring, path, or header; and \\name\\ must be a valid and unique
+method.request.\{location\}.\{name\} , where \{location\} is
+querystring, path, or header; and \{name\} must be a valid and unique
 method request parameter name.
 
 For HTTP API integrations with a specified integrationSubtype, request

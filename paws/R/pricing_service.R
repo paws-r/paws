@@ -13,14 +13,14 @@ NULL
 #' level. You can use the Amazon Web Services Price List to do the
 #' following:
 #' 
-#' - Build cost control and scenario planning tools
+#' -   Build cost control and scenario planning tools
 #' 
-#' - Reconcile billing data
+#' -   Reconcile billing data
 #' 
-#' - Forecast future spend for budgeting purposes
+#' -   Forecast future spend for budgeting purposes
 #' 
-#' - Provide cost benefit analysis that compare your internal workloads
-#'   with Amazon Web Services
+#' -   Provide cost benefit analysis that compare your internal workloads
+#'     with Amazon Web Services
 #' 
 #' Use `GetServices` without a service code to retrieve the service codes
 #' for all Amazon Web Services, then `GetServices` with a service code to

@@ -34,7 +34,7 @@ maximum of 32 characters.}
 name, which is used internally by OpsWorks Stacks and by Chef. The short
 name is also used as the name for the directory where your app files are
 installed. It can have a maximum of 32 characters and must be in the
-following format: /\\A[a-z0-9\]+\\Z/.
+following format: /\\A[a-z0-9\\-_\\.]+\\Z/.
 
 Built-in layer short names are defined by OpsWorks Stacks. For more
 information, see the \href{https://docs.aws.amazon.com/opsworks/latest/userguide/layers.html}{Layer reference}

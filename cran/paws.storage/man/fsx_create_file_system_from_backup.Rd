@@ -55,11 +55,11 @@ name.}
 \item{StorageType}{Sets the storage type for the Windows or OpenZFS file system that you're
 creating from a backup. Valid values are \code{SSD} and \code{HDD}.
 \itemize{
-\item Set to \code{SSD} to use solid state drive storage. SSD is supported on all
-Windows and OpenZFS deployment types.
+\item Set to \code{SSD} to use solid state drive storage. SSD is supported on
+all Windows and OpenZFS deployment types.
 \item Set to \code{HDD} to use hard disk drive storage. HDD is supported on
-\code{SINGLE_AZ_2} and \code{MULTI_AZ_1} FSx for Windows File Server file system
-deployment types.
+\code{SINGLE_AZ_2} and \code{MULTI_AZ_1} FSx for Windows File Server file
+system deployment types.
 }
 
 The default value is \code{SSD}.

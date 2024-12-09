@@ -17,7 +17,7 @@ efs_put_file_system_policy(
 \item{Policy}{[required] The \code{FileSystemPolicy} that you're creating. Accepts a JSON formatted
 policy definition. EFS file system policies have a 20,000 character
 limit. To find out more about the elements that make up a file system
-policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#access-control-manage-access-intro-resource-policies}{EFS Resource-based Policies}.}
+policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/#access-control-manage-access-intro-resource-policies}{EFS Resource-based Policies}.}
 
 \item{BypassPolicyLockoutSafetyCheck}{(Optional) A boolean that specifies whether or not to bypass the
 \code{FileSystemPolicy} lockout safety check. The lockout safety check

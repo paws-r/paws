@@ -26,8 +26,7 @@ pcaconnectorad_create_connector <- function(CertificateAuthorityArn, ClientToken
     http_method = "POST",
     http_path = "/connectors",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$create_connector_input(CertificateAuthorityArn = CertificateAuthorityArn, ClientToken = ClientToken, DirectoryId = DirectoryId, Tags = Tags, VpcInformation = VpcInformation)
   output <- .pcaconnectorad$create_connector_output()
@@ -61,8 +60,7 @@ pcaconnectorad_create_directory_registration <- function(ClientToken = NULL, Dir
     http_method = "POST",
     http_path = "/directoryRegistrations",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$create_directory_registration_input(ClientToken = ClientToken, DirectoryId = DirectoryId, Tags = Tags)
   output <- .pcaconnectorad$create_directory_registration_output()
@@ -97,8 +95,7 @@ pcaconnectorad_create_service_principal_name <- function(ClientToken = NULL, Con
     http_method = "POST",
     http_path = "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$create_service_principal_name_input(ClientToken = ClientToken, ConnectorArn = ConnectorArn, DirectoryRegistrationArn = DirectoryRegistrationArn)
   output <- .pcaconnectorad$create_service_principal_name_output()
@@ -136,8 +133,7 @@ pcaconnectorad_create_template <- function(ClientToken = NULL, ConnectorArn, Def
     http_method = "POST",
     http_path = "/templates",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$create_template_input(ClientToken = ClientToken, ConnectorArn = ConnectorArn, Definition = Definition, Name = Name, Tags = Tags)
   output <- .pcaconnectorad$create_template_output()
@@ -175,8 +171,7 @@ pcaconnectorad_create_template_group_access_control_entry <- function(AccessRigh
     http_method = "POST",
     http_path = "/templates/{TemplateArn}/accessControlEntries",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$create_template_group_access_control_entry_input(AccessRights = AccessRights, ClientToken = ClientToken, GroupDisplayName = GroupDisplayName, GroupSecurityIdentifier = GroupSecurityIdentifier, TemplateArn = TemplateArn)
   output <- .pcaconnectorad$create_template_group_access_control_entry_output()
@@ -207,8 +202,7 @@ pcaconnectorad_delete_connector <- function(ConnectorArn) {
     http_method = "DELETE",
     http_path = "/connectors/{ConnectorArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$delete_connector_input(ConnectorArn = ConnectorArn)
   output <- .pcaconnectorad$delete_connector_output()
@@ -239,8 +233,7 @@ pcaconnectorad_delete_directory_registration <- function(DirectoryRegistrationAr
     http_method = "DELETE",
     http_path = "/directoryRegistrations/{DirectoryRegistrationArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$delete_directory_registration_input(DirectoryRegistrationArn = DirectoryRegistrationArn)
   output <- .pcaconnectorad$delete_directory_registration_output()
@@ -274,8 +267,7 @@ pcaconnectorad_delete_service_principal_name <- function(ConnectorArn, Directory
     http_method = "DELETE",
     http_path = "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$delete_service_principal_name_input(ConnectorArn = ConnectorArn, DirectoryRegistrationArn = DirectoryRegistrationArn)
   output <- .pcaconnectorad$delete_service_principal_name_output()
@@ -306,8 +298,7 @@ pcaconnectorad_delete_template <- function(TemplateArn) {
     http_method = "DELETE",
     http_path = "/templates/{TemplateArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$delete_template_input(TemplateArn = TemplateArn)
   output <- .pcaconnectorad$delete_template_output()
@@ -340,8 +331,7 @@ pcaconnectorad_delete_template_group_access_control_entry <- function(GroupSecur
     http_method = "DELETE",
     http_path = "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$delete_template_group_access_control_entry_input(GroupSecurityIdentifier = GroupSecurityIdentifier, TemplateArn = TemplateArn)
   output <- .pcaconnectorad$delete_template_group_access_control_entry_output()
@@ -372,8 +362,7 @@ pcaconnectorad_get_connector <- function(ConnectorArn) {
     http_method = "GET",
     http_path = "/connectors/{ConnectorArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$get_connector_input(ConnectorArn = ConnectorArn)
   output <- .pcaconnectorad$get_connector_output()
@@ -404,8 +393,7 @@ pcaconnectorad_get_directory_registration <- function(DirectoryRegistrationArn) 
     http_method = "GET",
     http_path = "/directoryRegistrations/{DirectoryRegistrationArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$get_directory_registration_input(DirectoryRegistrationArn = DirectoryRegistrationArn)
   output <- .pcaconnectorad$get_directory_registration_output()
@@ -439,8 +427,7 @@ pcaconnectorad_get_service_principal_name <- function(ConnectorArn, DirectoryReg
     http_method = "GET",
     http_path = "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames/{ConnectorArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$get_service_principal_name_input(ConnectorArn = ConnectorArn, DirectoryRegistrationArn = DirectoryRegistrationArn)
   output <- .pcaconnectorad$get_service_principal_name_output()
@@ -472,8 +459,7 @@ pcaconnectorad_get_template <- function(TemplateArn) {
     http_method = "GET",
     http_path = "/templates/{TemplateArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$get_template_input(TemplateArn = TemplateArn)
   output <- .pcaconnectorad$get_template_output()
@@ -506,8 +492,7 @@ pcaconnectorad_get_template_group_access_control_entry <- function(GroupSecurity
     http_method = "GET",
     http_path = "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$get_template_group_access_control_entry_input(GroupSecurityIdentifier = GroupSecurityIdentifier, TemplateArn = TemplateArn)
   output <- .pcaconnectorad$get_template_group_access_control_entry_output()
@@ -544,8 +529,7 @@ pcaconnectorad_list_connectors <- function(MaxResults = NULL, NextToken = NULL) 
     http_method = "GET",
     http_path = "/connectors",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Connectors"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Connectors")
   )
   input <- .pcaconnectorad$list_connectors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .pcaconnectorad$list_connectors_output()
@@ -583,8 +567,7 @@ pcaconnectorad_list_directory_registrations <- function(MaxResults = NULL, NextT
     http_method = "GET",
     http_path = "/directoryRegistrations",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DirectoryRegistrations"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DirectoryRegistrations")
   )
   input <- .pcaconnectorad$list_directory_registrations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .pcaconnectorad$list_directory_registrations_output()
@@ -624,8 +607,7 @@ pcaconnectorad_list_service_principal_names <- function(DirectoryRegistrationArn
     http_method = "GET",
     http_path = "/directoryRegistrations/{DirectoryRegistrationArn}/servicePrincipalNames",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServicePrincipalNames"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ServicePrincipalNames")
   )
   input <- .pcaconnectorad$list_service_principal_names_input(DirectoryRegistrationArn = DirectoryRegistrationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pcaconnectorad$list_service_principal_names_output()
@@ -656,8 +638,7 @@ pcaconnectorad_list_tags_for_resource <- function(ResourceArn) {
     http_method = "GET",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .pcaconnectorad$list_tags_for_resource_output()
@@ -696,8 +677,7 @@ pcaconnectorad_list_template_group_access_control_entries <- function(MaxResults
     http_method = "GET",
     http_path = "/templates/{TemplateArn}/accessControlEntries",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccessControlEntries"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AccessControlEntries")
   )
   input <- .pcaconnectorad$list_template_group_access_control_entries_input(MaxResults = MaxResults, NextToken = NextToken, TemplateArn = TemplateArn)
   output <- .pcaconnectorad$list_template_group_access_control_entries_output()
@@ -736,8 +716,7 @@ pcaconnectorad_list_templates <- function(ConnectorArn, MaxResults = NULL, NextT
     http_method = "GET",
     http_path = "/templates",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Templates"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Templates")
   )
   input <- .pcaconnectorad$list_templates_input(ConnectorArn = ConnectorArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pcaconnectorad$list_templates_output()
@@ -770,8 +749,7 @@ pcaconnectorad_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .pcaconnectorad$tag_resource_output()
@@ -804,8 +782,7 @@ pcaconnectorad_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{ResourceArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .pcaconnectorad$untag_resource_output()
@@ -845,8 +822,7 @@ pcaconnectorad_update_template <- function(Definition = NULL, ReenrollAllCertifi
     http_method = "PATCH",
     http_path = "/templates/{TemplateArn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$update_template_input(Definition = Definition, ReenrollAllCertificateHolders = ReenrollAllCertificateHolders, TemplateArn = TemplateArn)
   output <- .pcaconnectorad$update_template_output()
@@ -884,8 +860,7 @@ pcaconnectorad_update_template_group_access_control_entry <- function(AccessRigh
     http_method = "PATCH",
     http_path = "/templates/{TemplateArn}/accessControlEntries/{GroupSecurityIdentifier}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pcaconnectorad$update_template_group_access_control_entry_input(AccessRights = AccessRights, GroupDisplayName = GroupDisplayName, GroupSecurityIdentifier = GroupSecurityIdentifier, TemplateArn = TemplateArn)
   output <- .pcaconnectorad$update_template_group_access_control_entry_output()

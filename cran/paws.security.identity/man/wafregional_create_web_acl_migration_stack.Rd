@@ -19,10 +19,10 @@ in. The S3 bucket must be configured as follows for the migration:
 \itemize{
 \item The bucket name must start with \verb{aws-waf-migration-}. For example,
 \code{aws-waf-migration-my-web-acl}.
-\item The bucket must be in the Region where you are deploying the template.
-For example, for a web ACL in us-west-2, you must use an Amazon S3
-bucket in us-west-2 and you must deploy the template stack to
-us-west-2.
+\item The bucket must be in the Region where you are deploying the
+template. For example, for a web ACL in us-west-2, you must use an
+Amazon S3 bucket in us-west-2 and you must deploy the template stack
+to us-west-2.
 \item The bucket policies must permit the migration process to write data.
 For listings of the bucket policies, see the Examples section.
 }}

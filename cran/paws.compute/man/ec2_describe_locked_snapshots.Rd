@@ -15,8 +15,8 @@ ec2_describe_locked_snapshots(
 \arguments{
 \item{Filters}{The filters.
 \itemize{
-\item \code{lock-state} - The state of the snapshot lock (\code{compliance-cooloff} |
-\code{governance} | \code{compliance} | \code{expired}).
+\item \code{lock-state} - The state of the snapshot lock (\code{compliance-cooloff}
+| \code{governance} | \code{compliance} | \code{expired}).
 }}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next

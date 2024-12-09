@@ -54,7 +54,8 @@ Constraints:
 \item Alphabetic characters must be lowercase.
 \item First character must be a letter.
 \item Cannot end with a hyphen or contain two consecutive hyphens.
-\item Must be unique for all clusters within an Amazon Web Services account.
+\item Must be unique for all clusters within an Amazon Web Services
+account.
 }}
 
 \item{SnapshotIdentifier}{The name of the snapshot from which to create the new cluster. This

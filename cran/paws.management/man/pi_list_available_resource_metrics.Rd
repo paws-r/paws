@@ -30,8 +30,8 @@ array include the following:
 \item \code{db} (DB load metrics) - All engines except for Amazon DocumentDB
 \item \code{db.sql.stats} (per-SQL metrics) - All engines except for Amazon
 DocumentDB
-\item \code{db.sql_tokenized.stats} (per-SQL digest metrics) - All engines except
-for Amazon DocumentDB
+\item \code{db.sql_tokenized.stats} (per-SQL digest metrics) - All engines
+except for Amazon DocumentDB
 }}
 
 \item{NextToken}{An optional pagination token provided by a previous request. If this

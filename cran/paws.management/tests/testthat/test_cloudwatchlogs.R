@@ -1,9 +1,5 @@
 svc <- paws::cloudwatchlogs()
 
-test_that("describe_configuration_templates", {
-  expect_error(svc$describe_configuration_templates(), NA)
-})
-
 test_that("describe_deliveries", {
   expect_error(svc$describe_deliveries(), NA)
 })

@@ -34,11 +34,12 @@ lambda_create_event_source_mapping(
 \arguments{
 \item{EventSourceArn}{The Amazon Resource Name (ARN) of the event source.
 \itemize{
-\item \strong{Amazon Kinesis} – The ARN of the data stream or a stream consumer.
+\item \strong{Amazon Kinesis} – The ARN of the data stream or a stream
+consumer.
 \item \strong{Amazon DynamoDB Streams} – The ARN of the stream.
 \item \strong{Amazon Simple Queue Service} – The ARN of the queue.
-\item \strong{Amazon Managed Streaming for Apache Kafka} – The ARN of the cluster
-or the ARN of the VPC connection (for \href{https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#msk-multi-vpc}{cross-account event source mappings}).
+\item \strong{Amazon Managed Streaming for Apache Kafka} – The ARN of the
+cluster or the ARN of the VPC connection (for \href{https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html#msk-multi-vpc}{cross-account event source mappings}).
 \item \strong{Amazon MQ} – The ARN of the broker.
 \item \strong{Amazon DocumentDB} – The ARN of the DocumentDB change stream.
 }}
@@ -70,8 +71,8 @@ limit for synchronous invocation (6 MB).
 \itemize{
 \item \strong{Amazon Kinesis} – Default 100. Max 10,000.
 \item \strong{Amazon DynamoDB Streams} – Default 100. Max 10,000.
-\item \strong{Amazon Simple Queue Service} – Default 10. For standard queues the
-max is 10,000. For FIFO queues the max is 10.
+\item \strong{Amazon Simple Queue Service} – Default 10. For standard queues
+the max is 10,000. For FIFO queues the max is 10.
 \item \strong{Amazon Managed Streaming for Apache Kafka} – Default 100. Max
 10,000.
 \item \strong{Self-managed Apache Kafka} – Default 100. Max 10,000.

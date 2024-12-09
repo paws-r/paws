@@ -35,9 +35,9 @@ otherwise it does not appear in the response.}
 \itemize{
 \item \code{activity-status} - The progress of the EC2 Fleet ( \code{error} |
 \code{pending-fulfillment} | \code{pending-termination} | \code{fulfilled}).
-\item \code{excess-capacity-termination-policy} - Indicates whether to terminate
-running instances if the target capacity is decreased below the
-current EC2 Fleet size (\code{true} | \code{false}).
+\item \code{excess-capacity-termination-policy} - Indicates whether to
+terminate running instances if the target capacity is decreased
+below the current EC2 Fleet size (\code{true} | \code{false}).
 \item \code{fleet-state} - The state of the EC2 Fleet (\code{submitted} | \code{active} |
 \code{deleted} | \code{failed} | \code{deleted-running} | \code{deleted-terminating} |
 \code{modifying}).

@@ -17,8 +17,8 @@ locationservice_create_route_calculator(
 
 Requirements:
 \itemize{
-\item Can use alphanumeric characters (A–Z, a–z, 0–9) , hyphens (-), periods
-(.), and underscores (_).
+\item Can use alphanumeric characters (A–Z, a–z, 0–9) , hyphens (-),
+periods (.), and underscores (_).
 \item Must be a unique Route calculator resource name.
 \item No spaces allowed. For example, \code{ExampleRouteCalculator}.
 }}
@@ -31,21 +31,21 @@ example, entering \code{HERE} returns an error.
 Valid values include:
 \itemize{
 \item \code{Esri} – For additional information about
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{Esri}'s
+\href{https://docs.aws.amazon.com/location/latest/developerguide/esri.html}{Esri}'s
 coverage in your region of interest, see \href{https://doc.arcgis.com/en/arcgis-online/reference/network-coverage.htm}{Esri details on street networks and traffic coverage}.
 
-Route calculators that use Esri as a data source only calculate routes
-that are shorter than 400 km.
+Route calculators that use Esri as a data source only calculate
+routes that are shorter than 400 km.
 \item \code{Grab} – Grab provides routing functionality for Southeast Asia. For
 additional information about
-\href{https://docs.aws.amazon.com/location/latest/developerguide/}{GrabMaps}'
-coverage, see \href{https://docs.aws.amazon.com/location/latest/developerguide/#grab-coverage-area}{GrabMaps countries and areas covered}.
-\item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/latest/developerguide/}{HERE Technologies}'
-coverage in your region of interest, see HERE car routing coverage and
-HERE truck routing coverage.
+\href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}'
+coverage, see \href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
+\item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/latest/developerguide/HERE.html}{HERE Technologies}'
+coverage in your region of interest, see HERE car routing coverage
+and HERE truck routing coverage.
 }
 
-For additional information , see \href{https://docs.aws.amazon.com/location/latest/developerguide/}{Data providers}
+For additional information , see \href{https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html}{Data providers}
 on the \emph{Amazon Location Service Developer Guide}.}
 
 \item{PricingPlan}{No longer used. If included, the only allowed value is
@@ -57,7 +57,7 @@ on the \emph{Amazon Location Service Developer Guide}.}
 key-value pair helps manage, identify, search, and filter your resources
 by labelling them.
 \itemize{
-\item For example: \\ \code{"tag1" : "value1"}, \code{"tag2" : "value2"}\\
+\item For example: \{ \code{"tag1" : "value1"}, \code{"tag2" : "value2"}\}
 }
 
 Format: \code{"key" : "value"}

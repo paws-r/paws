@@ -47,8 +47,7 @@ identitystore_create_group <- function(IdentityStoreId, DisplayName = NULL, Desc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$create_group_input(IdentityStoreId = IdentityStoreId, DisplayName = DisplayName, Description = Description)
   output <- .identitystore$create_group_output()
@@ -108,8 +107,7 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$create_group_membership_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MemberId = MemberId)
   output <- .identitystore$create_group_membership_output()
@@ -229,8 +227,7 @@ identitystore_create_user <- function(IdentityStoreId, UserName = NULL, Name = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$create_user_input(IdentityStoreId = IdentityStoreId, UserName = UserName, Name = Name, DisplayName = DisplayName, NickName = NickName, ProfileUrl = ProfileUrl, Emails = Emails, Addresses = Addresses, PhoneNumbers = PhoneNumbers, UserType = UserType, Title = Title, PreferredLanguage = PreferredLanguage, Locale = Locale, Timezone = Timezone)
   output <- .identitystore$create_user_output()
@@ -275,8 +272,7 @@ identitystore_delete_group <- function(IdentityStoreId, GroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$delete_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId)
   output <- .identitystore$delete_group_output()
@@ -321,8 +317,7 @@ identitystore_delete_group_membership <- function(IdentityStoreId, MembershipId)
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$delete_group_membership_input(IdentityStoreId = IdentityStoreId, MembershipId = MembershipId)
   output <- .identitystore$delete_group_membership_output()
@@ -367,8 +362,7 @@ identitystore_delete_user <- function(IdentityStoreId, UserId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$delete_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId)
   output <- .identitystore$delete_user_output()
@@ -438,8 +432,7 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$describe_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId)
   output <- .identitystore$describe_group_output()
@@ -501,8 +494,7 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$describe_group_membership_input(IdentityStoreId = IdentityStoreId, MembershipId = MembershipId)
   output <- .identitystore$describe_group_membership_output()
@@ -613,8 +605,7 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$describe_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId)
   output <- .identitystore$describe_user_output()
@@ -683,8 +674,7 @@ identitystore_get_group_id <- function(IdentityStoreId, AlternateIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$get_group_id_input(IdentityStoreId = IdentityStoreId, AlternateIdentifier = AlternateIdentifier)
   output <- .identitystore$get_group_id_output()
@@ -747,8 +737,7 @@ identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, Memb
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$get_group_membership_id_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MemberId = MemberId)
   output <- .identitystore$get_group_membership_id_output()
@@ -817,8 +806,7 @@ identitystore_get_user_id <- function(IdentityStoreId, AlternateIdentifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$get_user_id_input(IdentityStoreId = IdentityStoreId, AlternateIdentifier = AlternateIdentifier)
   output <- .identitystore$get_user_id_output()
@@ -889,8 +877,7 @@ identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$is_member_in_groups_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, GroupIds = GroupIds)
   output <- .identitystore$is_member_in_groups_output()
@@ -973,8 +960,7 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships")
   )
   input <- .identitystore$list_group_memberships_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .identitystore$list_group_memberships_output()
@@ -1062,8 +1048,7 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GroupMemberships")
   )
   input <- .identitystore$list_group_memberships_for_member_input(IdentityStoreId = IdentityStoreId, MemberId = MemberId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .identitystore$list_group_memberships_for_member_output()
@@ -1160,8 +1145,7 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Groups"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Groups")
   )
   input <- .identitystore$list_groups_input(IdentityStoreId = IdentityStoreId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_groups_output()
@@ -1299,8 +1283,7 @@ identitystore_list_users <- function(IdentityStoreId, MaxResults = NULL, NextTok
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Users"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Users")
   )
   input <- .identitystore$list_users_input(IdentityStoreId = IdentityStoreId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .identitystore$list_users_output()
@@ -1355,8 +1338,7 @@ identitystore_update_group <- function(IdentityStoreId, GroupId, Operations) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$update_group_input(IdentityStoreId = IdentityStoreId, GroupId = GroupId, Operations = Operations)
   output <- .identitystore$update_group_output()
@@ -1411,8 +1393,7 @@ identitystore_update_user <- function(IdentityStoreId, UserId, Operations) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .identitystore$update_user_input(IdentityStoreId = IdentityStoreId, UserId = UserId, Operations = Operations)
   output <- .identitystore$update_user_output()

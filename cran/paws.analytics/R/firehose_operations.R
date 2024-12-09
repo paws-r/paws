@@ -17,11 +17,11 @@ NULL
 #' @param DeliveryStreamType The delivery stream type. This parameter can be one of the following
 #' values:
 #' 
-#' - `DirectPut`: Provider applications access the delivery stream
-#'   directly.
+#' -   `DirectPut`: Provider applications access the delivery stream
+#'     directly.
 #' 
-#' - `KinesisStreamAsSource`: The delivery stream uses a Kinesis data
-#'   stream as a source.
+#' -   `KinesisStreamAsSource`: The delivery stream uses a Kinesis data
+#'     stream as a source.
 #' @param KinesisStreamSourceConfiguration When a Kinesis data stream is used as the source for the delivery
 #' stream, a KinesisStreamSourceConfiguration containing the Kinesis data
 #' stream Amazon Resource Name (ARN) and the role ARN for the source
@@ -84,8 +84,7 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, AmazonopensearchserviceDestinationConfiguration = AmazonopensearchserviceDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags, AmazonOpenSearchServerlessDestinationConfiguration = AmazonOpenSearchServerlessDestinationConfiguration, MSKSourceConfiguration = MSKSourceConfiguration, SnowflakeDestinationConfiguration = SnowflakeDestinationConfiguration, IcebergDestinationConfiguration = IcebergDestinationConfiguration)
   output <- .firehose$create_delivery_stream_output()
@@ -126,8 +125,7 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$delete_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, AllowForceDelete = AllowForceDelete)
   output <- .firehose$delete_delivery_stream_output()
@@ -161,8 +159,7 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$describe_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, Limit = Limit, ExclusiveStartDestinationId = ExclusiveStartDestinationId)
   output <- .firehose$describe_delivery_stream_output()
@@ -184,11 +181,11 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 #' @param Limit The maximum number of delivery streams to list. The default value is 10.
 #' @param DeliveryStreamType The delivery stream type. This can be one of the following values:
 #' 
-#' - `DirectPut`: Provider applications access the delivery stream
-#'   directly.
+#' -   `DirectPut`: Provider applications access the delivery stream
+#'     directly.
 #' 
-#' - `KinesisStreamAsSource`: The delivery stream uses a Kinesis data
-#'   stream as a source.
+#' -   `KinesisStreamAsSource`: The delivery stream uses a Kinesis data
+#'     stream as a source.
 #' 
 #' This parameter is optional. If this parameter is omitted, delivery
 #' streams of all types are returned.
@@ -206,8 +203,7 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$list_delivery_streams_input(Limit = Limit, DeliveryStreamType = DeliveryStreamType, ExclusiveStartDeliveryStreamName = ExclusiveStartDeliveryStreamName)
   output <- .firehose$list_delivery_streams_output()
@@ -245,8 +241,7 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$list_tags_for_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, ExclusiveStartTagKey = ExclusiveStartTagKey, Limit = Limit)
   output <- .firehose$list_tags_for_delivery_stream_output()
@@ -277,8 +272,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$put_record_input(DeliveryStreamName = DeliveryStreamName, Record = Record)
   output <- .firehose$put_record_output()
@@ -311,8 +305,7 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$put_record_batch_input(DeliveryStreamName = DeliveryStreamName, Records = Records)
   output <- .firehose$put_record_batch_output()
@@ -345,8 +338,7 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$start_delivery_stream_encryption_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput)
   output <- .firehose$start_delivery_stream_encryption_output()
@@ -377,8 +369,7 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$stop_delivery_stream_encryption_input(DeliveryStreamName = DeliveryStreamName)
   output <- .firehose$stop_delivery_stream_encryption_output()
@@ -409,8 +400,7 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$tag_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, Tags = Tags)
   output <- .firehose$tag_delivery_stream_output()
@@ -442,8 +432,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$untag_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, TagKeys = TagKeys)
   output <- .firehose$untag_delivery_stream_output()
@@ -494,8 +483,7 @@ firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStrea
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, AmazonopensearchserviceDestinationUpdate = AmazonopensearchserviceDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate, AmazonOpenSearchServerlessDestinationUpdate = AmazonOpenSearchServerlessDestinationUpdate, SnowflakeDestinationUpdate = SnowflakeDestinationUpdate, IcebergDestinationUpdate = IcebergDestinationUpdate)
   output <- .firehose$update_destination_output()

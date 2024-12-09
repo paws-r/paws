@@ -66,8 +66,7 @@ pi_create_performance_analysis_report <- function(ServiceType, Identifier, Start
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pi$create_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Tags = Tags)
   output <- .pi$create_performance_analysis_report_output()
@@ -123,8 +122,7 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pi$delete_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, AnalysisReportId = AnalysisReportId)
   output <- .pi$delete_performance_analysis_report_output()
@@ -154,9 +152,9 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights will
 #' return metrics. Valid values are as follows:
 #' 
-#' - `RDS`
+#' -   `RDS`
 #' 
-#' - `DOCDB`
+#' -   `DOCDB`
 #' @param Identifier &#91;required&#93; An immutable, Amazon Web Services Region-unique identifier for a data
 #' source. Performance Insights gathers metrics from this data source.
 #' 
@@ -178,11 +176,11 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
 #' 
 #' Valid values for `Metric` are:
 #' 
-#' - `db.load.avg` - A scaled representation of the number of active
-#'   sessions for the database engine.
+#' -   `db.load.avg` - A scaled representation of the number of active
+#'     sessions for the database engine.
 #' 
-#' - `db.sampledload.avg` - The raw number of active sessions for the
-#'   database engine.
+#' -   `db.sampledload.avg` - The raw number of active sessions for the
+#'     database engine.
 #' 
 #' If the number of active sessions is less than an internal Performance
 #' Insights threshold, `db.load.avg` and `db.sampledload.avg` are the same
@@ -195,15 +193,15 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
 #' Performance Insights. A period can be as short as one second, or as long
 #' as one day (86400 seconds). Valid values are:
 #' 
-#' - `1` (one second)
+#' -   `1` (one second)
 #' 
-#' - `60` (one minute)
+#' -   `60` (one minute)
 #' 
-#' - `300` (five minutes)
+#' -   `300` (five minutes)
 #' 
-#' - `3600` (one hour)
+#' -   `3600` (one hour)
 #' 
-#' - `86400` (twenty-four hours)
+#' -   `86400` (twenty-four hours)
 #' 
 #' If you don't specify `PeriodInSeconds`, then Performance Insights
 #' chooses a value for you, with a goal of returning roughly 100-200 data
@@ -222,10 +220,10 @@ pi_delete_performance_analysis_report <- function(ServiceType, Identifier, Analy
 #' to further subdivide the partition keys in the response.
 #' @param Filter One or more filters to apply in the request. Restrictions:
 #' 
-#' - Any number of filters by the same dimension, as specified in the
-#'   `GroupBy` or `Partition` parameters.
+#' -   Any number of filters by the same dimension, as specified in the
+#'     `GroupBy` or `Partition` parameters.
 #' 
-#' - A single filter for any other dimension in this dimension group.
+#' -   A single filter for any other dimension in this dimension group.
 #' 
 #' The `db.sql.db_id` filter isn't available for RDS for SQL Server DB
 #' instances.
@@ -320,8 +318,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$describe_dimension_keys_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Metric = Metric, PeriodInSeconds = PeriodInSeconds, GroupBy = GroupBy, AdditionalMetrics = AdditionalMetrics, PartitionBy = PartitionBy, Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pi$describe_dimension_keys_output()
@@ -360,27 +357,27 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' specified group for the dimension group ID. The following group name
 #' values are valid:
 #' 
-#' - `db.query` (Amazon DocumentDB only)
+#' -   `db.query` (Amazon DocumentDB only)
 #' 
-#' - `db.sql` (Amazon RDS and Aurora only)
+#' -   `db.sql` (Amazon RDS and Aurora only)
 #' @param GroupIdentifier &#91;required&#93; The ID of the dimension group from which to retrieve dimension details.
 #' For dimension group `db.sql`, the group ID is `db.sql.id`. The following
 #' group ID values are valid:
 #' 
-#' - `db.sql.id` for dimension group `db.sql` (Aurora and RDS only)
+#' -   `db.sql.id` for dimension group `db.sql` (Aurora and RDS only)
 #' 
-#' - `db.query.id` for dimension group `db.query` (DocumentDB only)
+#' -   `db.query.id` for dimension group `db.query` (DocumentDB only)
 #' @param RequestedDimensions A list of dimensions to retrieve the detail data for within the given
 #' dimension group. If you don't specify this parameter, Performance
 #' Insights returns all dimension data within the specified dimension
 #' group. Specify dimension names for the following dimension groups:
 #' 
-#' - `db.sql` - Specify either the full dimension name `db.sql.statement`
-#'   or the short dimension name `statement` (Aurora and RDS only).
+#' -   `db.sql` - Specify either the full dimension name `db.sql.statement`
+#'     or the short dimension name `statement` (Aurora and RDS only).
 #' 
-#' - `db.query` - Specify either the full dimension name
-#'   `db.query.statement` or the short dimension name `statement`
-#'   (DocumentDB only).
+#' -   `db.query` - Specify either the full dimension name
+#'     `db.query.statement` or the short dimension name `statement`
+#'     (DocumentDB only).
 #'
 #' @return
 #' A list with the following syntax:
@@ -420,8 +417,7 @@ pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupId
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pi$get_dimension_key_details_input(ServiceType = ServiceType, Identifier = Identifier, Group = Group, GroupIdentifier = GroupIdentifier, RequestedDimensions = RequestedDimensions)
   output <- .pi$get_dimension_key_details_output()
@@ -553,8 +549,7 @@ pi_get_performance_analysis_report <- function(ServiceType, Identifier, Analysis
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pi$get_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, AnalysisReportId = AnalysisReportId, TextFormat = TextFormat, AcceptLanguage = AcceptLanguage)
   output <- .pi$get_performance_analysis_report_output()
@@ -616,8 +611,7 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pi$get_resource_metadata_input(ServiceType = ServiceType, Identifier = Identifier)
   output <- .pi$get_resource_metadata_output()
@@ -649,9 +643,9 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
 #' metrics. Valid values are as follows:
 #' 
-#' - `RDS`
+#' -   `RDS`
 #' 
-#' - `DOCDB`
+#' -   `DOCDB`
 #' @param Identifier &#91;required&#93; An immutable identifier for a data source that is unique for an Amazon
 #' Web Services Region. Performance Insights gathers metrics from this data
 #' source. In the console, the identifier is shown as *ResourceID*. When
@@ -683,15 +677,15 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' Performance Insights. A period can be as short as one second, or as long
 #' as one day (86400 seconds). Valid values are:
 #' 
-#' - `1` (one second)
+#' -   `1` (one second)
 #' 
-#' - `60` (one minute)
+#' -   `60` (one minute)
 #' 
-#' - `300` (five minutes)
+#' -   `300` (five minutes)
 #' 
-#' - `3600` (one hour)
+#' -   `3600` (one hour)
 #' 
-#' - `86400` (twenty-four hours)
+#' -   `86400` (twenty-four hours)
 #' 
 #' If you don't specify `PeriodInSeconds`, then Performance Insights will
 #' choose a value for you, with a goal of returning roughly 100-200 data
@@ -782,8 +776,7 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$get_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricQueries = MetricQueries, StartTime = StartTime, EndTime = EndTime, PeriodInSeconds = PeriodInSeconds, MaxResults = MaxResults, NextToken = NextToken, PeriodAlignment = PeriodAlignment)
   output <- .pi$get_resource_metrics_output()
@@ -879,8 +872,7 @@ pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metri
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_available_resource_dimensions_input(ServiceType = ServiceType, Identifier = Identifier, Metrics = Metrics, MaxResults = MaxResults, NextToken = NextToken, AuthorizedActions = AuthorizedActions)
   output <- .pi$list_available_resource_dimensions_output()
@@ -913,15 +905,15 @@ pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metri
 #' @param MetricTypes &#91;required&#93; The types of metrics to return in the response. Valid values in the
 #' array include the following:
 #' 
-#' - `os` (OS counter metrics) - All engines
+#' -   `os` (OS counter metrics) - All engines
 #' 
-#' - `db` (DB load metrics) - All engines except for Amazon DocumentDB
+#' -   `db` (DB load metrics) - All engines except for Amazon DocumentDB
 #' 
-#' - `db.sql.stats` (per-SQL metrics) - All engines except for Amazon
-#'   DocumentDB
+#' -   `db.sql.stats` (per-SQL metrics) - All engines except for Amazon
+#'     DocumentDB
 #' 
-#' - `db.sql_tokenized.stats` (per-SQL digest metrics) - All engines except
-#'   for Amazon DocumentDB
+#' -   `db.sql_tokenized.stats` (per-SQL digest metrics) - All engines
+#'     except for Amazon DocumentDB
 #' @param NextToken An optional pagination token provided by a previous request. If this
 #' parameter is specified, the response includes only records beyond the
 #' token, up to the value specified by `MaxRecords`.
@@ -968,8 +960,7 @@ pi_list_available_resource_metrics <- function(ServiceType, Identifier, MetricTy
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_available_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricTypes = MetricTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pi$list_available_resource_metrics_output()
@@ -1060,8 +1051,7 @@ pi_list_performance_analysis_reports <- function(ServiceType, Identifier, NextTo
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_performance_analysis_reports_input(ServiceType = ServiceType, Identifier = Identifier, NextToken = NextToken, MaxResults = MaxResults, ListTags = ListTags)
   output <- .pi$list_performance_analysis_reports_output()
@@ -1122,8 +1112,7 @@ pi_list_tags_for_resource <- function(ServiceType, ResourceARN) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pi$list_tags_for_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN)
   output <- .pi$list_tags_for_resource_output()
@@ -1180,8 +1169,7 @@ pi_tag_resource <- function(ServiceType, ResourceARN, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pi$tag_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN, Tags = Tags)
   output <- .pi$tag_resource_output()
@@ -1237,8 +1225,7 @@ pi_untag_resource <- function(ServiceType, ResourceARN, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .pi$untag_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN, TagKeys = TagKeys)
   output <- .pi$untag_resource_output()

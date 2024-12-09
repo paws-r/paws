@@ -20,15 +20,15 @@ The IAM policy below can be added to IAM policies when you want to limit
 resource-level permissions and avoid returning a response when no
 parameter is sent in the request:
 
-\\ "Version": "2012-10-17", "Statement": [\\ "Effect": "Deny",
+\{ "Version": "2012-10-17", "Statement": [\{ "Effect": "Deny",
 "Action": "cloudformation:DescribeStacks", "NotResource":
-"arn:aws:cloudformation:\emph{:}:stack/\emph{/}" \] \\
+"arn:aws:cloudformation:\emph{:}:stack/\emph{/}" \}] \}
 
 The name or the unique stack ID that's associated with the stack, which
 aren't always interchangeable:
 \itemize{
-\item Running stacks: You can specify either the stack's name or its unique
-stack ID.
+\item Running stacks: You can specify either the stack's name or its
+unique stack ID.
 \item Deleted stacks: You must specify the unique stack ID.
 }
 

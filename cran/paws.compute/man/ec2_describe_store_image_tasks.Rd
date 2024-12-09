@@ -25,8 +25,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \itemize{
 \item \code{task-state} - Returns tasks in a certain state (\code{InProgress} |
 \code{Completed} | \code{Failed})
-\item \code{bucket} - Returns task information for tasks that targeted a specific
-bucket. For the filter value, specify the bucket name.
+\item \code{bucket} - Returns task information for tasks that targeted a
+specific bucket. For the filter value, specify the bucket name.
 }
 
 When you specify the \code{ImageIds} parameter, any filters that you specify

@@ -24,8 +24,7 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
     http_method = "DELETE",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$delete_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId)
   output <- .lexruntimev2$delete_session_output()
@@ -58,8 +57,7 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
     http_method = "GET",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$get_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId)
   output <- .lexruntimev2$get_session_output()
@@ -97,8 +95,8 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
 #' @param responseContentType The message that Amazon Lex V2 returns in the response can be either
 #' text or speech depending on the value of this parameter.
 #' 
-#' - If the value is `text/plain; charset=utf-8`, Amazon Lex V2 returns
-#'   text in the response.
+#' -   If the value is `text/plain; charset=utf-8`, Amazon Lex V2 returns
+#'     text in the response.
 #'
 #' @keywords internal
 #'
@@ -109,8 +107,7 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$put_session_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, messages = messages, sessionState = sessionState, requestAttributes = requestAttributes, responseContentType = responseContentType)
   output <- .lexruntimev2$put_session_output()
@@ -150,8 +147,7 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/text",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$recognize_text_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, text = text, sessionState = sessionState, requestAttributes = requestAttributes)
   output <- .lexruntimev2$recognize_text_output()
@@ -192,48 +188,49 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' @param requestContentType &#91;required&#93; Indicates the format for audio input or that the content is text. The
 #' header must start with one of the following prefixes:
 #' 
-#' - PCM format, audio data must be in little-endian byte order.
+#' -   PCM format, audio data must be in little-endian byte order.
 #' 
-#'   - audio/l16; rate=16000; channels=1
+#'     -   audio/l16; rate=16000; channels=1
 #' 
-#'   - audio/x-l16; sample-rate=16000; channel-count=1
+#'     -   audio/x-l16; sample-rate=16000; channel-count=1
 #' 
-#'   - audio/lpcm; sample-rate=8000; sample-size-bits=16; channel-count=1;
-#'     is-big-endian=false
+#'     -   audio/lpcm; sample-rate=8000; sample-size-bits=16;
+#'         channel-count=1; is-big-endian=false
 #' 
-#' - Opus format
+#' -   Opus format
 #' 
-#'   - audio/x-cbr-opus-with-preamble;preamble-size=0;bit-rate=256000;frame-size-milliseconds=4
+#'     -   audio/x-cbr-opus-with-preamble;preamble-size=0;bit-rate=256000;frame-size-milliseconds=4
 #' 
-#' - Text format
+#' -   Text format
 #' 
-#'   - text/plain; charset=utf-8
+#'     -   text/plain; charset=utf-8
 #' @param responseContentType The message that Amazon Lex V2 returns in the response can be either
 #' text or speech based on the `responseContentType` value.
 #' 
-#' - If the value is `text/plain;charset=utf-8`, Amazon Lex V2 returns text
-#'   in the response.
+#' -   If the value is `text/plain;charset=utf-8`, Amazon Lex V2 returns
+#'     text in the response.
 #' 
-#' - If the value begins with `audio/`, Amazon Lex V2 returns speech in the
-#'   response. Amazon Lex V2 uses Amazon Polly to generate the speech using
-#'   the configuration that you specified in the `responseContentType`
-#'   parameter. For example, if you specify `audio/mpeg` as the value,
-#'   Amazon Lex V2 returns speech in the MPEG format.
+#' -   If the value begins with `audio/`, Amazon Lex V2 returns speech in
+#'     the response. Amazon Lex V2 uses Amazon Polly to generate the speech
+#'     using the configuration that you specified in the
+#'     `responseContentType` parameter. For example, if you specify
+#'     `audio/mpeg` as the value, Amazon Lex V2 returns speech in the MPEG
+#'     format.
 #' 
-#' - If the value is `audio/pcm`, the speech returned is `audio/pcm` at 16
-#'   KHz in 16-bit, little-endian format.
+#' -   If the value is `audio/pcm`, the speech returned is `audio/pcm` at
+#'     16 KHz in 16-bit, little-endian format.
 #' 
-#' - The following are the accepted values:
+#' -   The following are the accepted values:
 #' 
-#'   - audio/mpeg
+#'     -   audio/mpeg
 #' 
-#'   - audio/ogg
+#'     -   audio/ogg
 #' 
-#'   - audio/pcm (16 KHz)
+#'     -   audio/pcm (16 KHz)
 #' 
-#'   - audio/* (defaults to mpeg)
+#'     -   audio/* (defaults to mpeg)
 #' 
-#'   - text/plain; charset=utf-8
+#'     -   text/plain; charset=utf-8
 #' @param inputStream User input in PCM or Opus audio format or text format as described in
 #' the `requestContentType` parameter.
 #'
@@ -246,8 +243,7 @@ lexruntimev2_recognize_utterance <- function(botId, botAliasId, localeId, sessio
     http_method = "POST",
     http_path = "/bots/{botId}/botAliases/{botAliasId}/botLocales/{localeId}/sessions/{sessionId}/utterance",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .lexruntimev2$recognize_utterance_input(botId = botId, botAliasId = botAliasId, localeId = localeId, sessionId = sessionId, sessionState = sessionState, requestAttributes = requestAttributes, requestContentType = requestContentType, responseContentType = responseContentType, inputStream = inputStream)
   output <- .lexruntimev2$recognize_utterance_output()

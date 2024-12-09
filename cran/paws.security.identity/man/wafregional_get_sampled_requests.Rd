@@ -13,13 +13,13 @@ sample of requests.}
 
 \item{RuleId}{[required] \code{RuleId} is one of three values:
 \itemize{
-\item The \code{RuleId} of the \code{Rule} or the \code{RuleGroupId} of the \code{RuleGroup} for
-which you want
-\code{\link[=wafregional_get_sampled_requests]{get_sampled_requests}} to return a
-sample of requests.
+\item The \code{RuleId} of the \code{Rule} or the \code{RuleGroupId} of the \code{RuleGroup}
+for which you want
+\code{\link[=wafregional_get_sampled_requests]{get_sampled_requests}} to return
+a sample of requests.
 \item \code{Default_Action}, which causes
-\code{\link[=wafregional_get_sampled_requests]{get_sampled_requests}} to return a
-sample of the requests that didn't match any of the rules in the
+\code{\link[=wafregional_get_sampled_requests]{get_sampled_requests}} to return
+a sample of the requests that didn't match any of the rules in the
 specified \code{WebACL}.
 }}
 

@@ -45,8 +45,7 @@ appstream_associate_app_block_builder_app_block <- function(AppBlockArn, AppBloc
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$associate_app_block_builder_app_block_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName)
   output <- .appstream$associate_app_block_builder_app_block_output()
@@ -100,8 +99,7 @@ appstream_associate_application_fleet <- function(FleetName, ApplicationArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$associate_application_fleet_input(FleetName = FleetName, ApplicationArn = ApplicationArn)
   output <- .appstream$associate_application_fleet_output()
@@ -149,8 +147,7 @@ appstream_associate_application_to_entitlement <- function(StackName, Entitlemen
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$associate_application_to_entitlement_input(StackName = StackName, EntitlementName = EntitlementName, ApplicationIdentifier = ApplicationIdentifier)
   output <- .appstream$associate_application_to_entitlement_output()
@@ -195,8 +192,7 @@ appstream_associate_fleet <- function(FleetName, StackName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$associate_fleet_input(FleetName = FleetName, StackName = StackName)
   output <- .appstream$associate_fleet_output()
@@ -264,8 +260,7 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$batch_associate_user_stack_input(UserStackAssociations = UserStackAssociations)
   output <- .appstream$batch_associate_user_stack_output()
@@ -331,8 +326,7 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$batch_disassociate_user_stack_input(UserStackAssociations = UserStackAssociations)
   output <- .appstream$batch_disassociate_user_stack_output()
@@ -392,8 +386,7 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$copy_image_input(SourceImageName = SourceImageName, DestinationImageName = DestinationImageName, DestinationRegion = DestinationRegion, DestinationImageDescription = DestinationImageDescription)
   output <- .appstream$copy_image_output()
@@ -527,8 +520,7 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_app_block_input(Name = Name, Description = Description, DisplayName = DisplayName, SourceS3Location = SourceS3Location, SetupScriptDetails = SetupScriptDetails, Tags = Tags, PostSetupScriptDetails = PostSetupScriptDetails, PackagingType = PackagingType)
   output <- .appstream$create_app_block_output()
@@ -573,15 +565,15 @@ appstream_create_app_block <- function(Name, Description = NULL, DisplayName = N
 #' @param InstanceType &#91;required&#93; The instance type to use when launching the app block builder. The
 #' following instance types are available:
 #' 
-#' - stream.standard.small
+#' -   stream.standard.small
 #' 
-#' - stream.standard.medium
+#' -   stream.standard.medium
 #' 
-#' - stream.standard.large
+#' -   stream.standard.large
 #' 
-#' - stream.standard.xlarge
+#' -   stream.standard.xlarge
 #' 
-#' - stream.standard.2xlarge
+#' -   stream.standard.2xlarge
 #' @param VpcConfig &#91;required&#93; The VPC configuration for the app block builder.
 #' 
 #' App block builders require that you specify at least two subnets in
@@ -692,8 +684,7 @@ appstream_create_app_block_builder <- function(Name, Description = NULL, Display
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Tags = Tags, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints)
   output <- .appstream$create_app_block_builder_output()
@@ -748,8 +739,7 @@ appstream_create_app_block_builder_streaming_url <- function(AppBlockBuilderName
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_app_block_builder_streaming_url_input(AppBlockBuilderName = AppBlockBuilderName, Validity = Validity)
   output <- .appstream$create_app_block_builder_streaming_url_output()
@@ -868,8 +858,7 @@ appstream_create_application <- function(Name, DisplayName = NULL, Description =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_application_input(Name = Name, DisplayName = DisplayName, Description = Description, IconS3Location = IconS3Location, LaunchPath = LaunchPath, WorkingDirectory = WorkingDirectory, LaunchParameters = LaunchParameters, Platforms = Platforms, InstanceFamilies = InstanceFamilies, AppBlockArn = AppBlockArn, Tags = Tags)
   output <- .appstream$create_application_output()
@@ -963,8 +952,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$create_directory_config_output()
@@ -1049,8 +1037,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_entitlement_input(Name = Name, StackName = StackName, Description = Description, AppVisibility = AppVisibility, Attributes = Attributes)
   output <- .appstream$create_entitlement_output()
@@ -1083,101 +1070,101 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' @param InstanceType &#91;required&#93; The instance type to use when launching fleet instances. The following
 #' instance types are available:
 #' 
-#' - stream.standard.small
+#' -   stream.standard.small
 #' 
-#' - stream.standard.medium
+#' -   stream.standard.medium
 #' 
-#' - stream.standard.large
+#' -   stream.standard.large
 #' 
-#' - stream.standard.xlarge
+#' -   stream.standard.xlarge
 #' 
-#' - stream.standard.2xlarge
+#' -   stream.standard.2xlarge
 #' 
-#' - stream.compute.large
+#' -   stream.compute.large
 #' 
-#' - stream.compute.xlarge
+#' -   stream.compute.xlarge
 #' 
-#' - stream.compute.2xlarge
+#' -   stream.compute.2xlarge
 #' 
-#' - stream.compute.4xlarge
+#' -   stream.compute.4xlarge
 #' 
-#' - stream.compute.8xlarge
+#' -   stream.compute.8xlarge
 #' 
-#' - stream.memory.large
+#' -   stream.memory.large
 #' 
-#' - stream.memory.xlarge
+#' -   stream.memory.xlarge
 #' 
-#' - stream.memory.2xlarge
+#' -   stream.memory.2xlarge
 #' 
-#' - stream.memory.4xlarge
+#' -   stream.memory.4xlarge
 #' 
-#' - stream.memory.8xlarge
+#' -   stream.memory.8xlarge
 #' 
-#' - stream.memory.z1d.large
+#' -   stream.memory.z1d.large
 #' 
-#' - stream.memory.z1d.xlarge
+#' -   stream.memory.z1d.xlarge
 #' 
-#' - stream.memory.z1d.2xlarge
+#' -   stream.memory.z1d.2xlarge
 #' 
-#' - stream.memory.z1d.3xlarge
+#' -   stream.memory.z1d.3xlarge
 #' 
-#' - stream.memory.z1d.6xlarge
+#' -   stream.memory.z1d.6xlarge
 #' 
-#' - stream.memory.z1d.12xlarge
+#' -   stream.memory.z1d.12xlarge
 #' 
-#' - stream.graphics-design.large
+#' -   stream.graphics-design.large
 #' 
-#' - stream.graphics-design.xlarge
+#' -   stream.graphics-design.xlarge
 #' 
-#' - stream.graphics-design.2xlarge
+#' -   stream.graphics-design.2xlarge
 #' 
-#' - stream.graphics-design.4xlarge
+#' -   stream.graphics-design.4xlarge
 #' 
-#' - stream.graphics-desktop.2xlarge
+#' -   stream.graphics-desktop.2xlarge
 #' 
-#' - stream.graphics.g4dn.xlarge
+#' -   stream.graphics.g4dn.xlarge
 #' 
-#' - stream.graphics.g4dn.2xlarge
+#' -   stream.graphics.g4dn.2xlarge
 #' 
-#' - stream.graphics.g4dn.4xlarge
+#' -   stream.graphics.g4dn.4xlarge
 #' 
-#' - stream.graphics.g4dn.8xlarge
+#' -   stream.graphics.g4dn.8xlarge
 #' 
-#' - stream.graphics.g4dn.12xlarge
+#' -   stream.graphics.g4dn.12xlarge
 #' 
-#' - stream.graphics.g4dn.16xlarge
+#' -   stream.graphics.g4dn.16xlarge
 #' 
-#' - stream.graphics.g5.xlarge
+#' -   stream.graphics.g5.xlarge
 #' 
-#' - stream.graphics.g5.2xlarge
+#' -   stream.graphics.g5.2xlarge
 #' 
-#' - stream.graphics.g5.4xlarge
+#' -   stream.graphics.g5.4xlarge
 #' 
-#' - stream.graphics.g5.8xlarge
+#' -   stream.graphics.g5.8xlarge
 #' 
-#' - stream.graphics.g5.12xlarge
+#' -   stream.graphics.g5.12xlarge
 #' 
-#' - stream.graphics.g5.16xlarge
+#' -   stream.graphics.g5.16xlarge
 #' 
-#' - stream.graphics.g5.24xlarge
+#' -   stream.graphics.g5.24xlarge
 #' 
-#' - stream.graphics-pro.4xlarge
+#' -   stream.graphics-pro.4xlarge
 #' 
-#' - stream.graphics-pro.8xlarge
+#' -   stream.graphics-pro.8xlarge
 #' 
-#' - stream.graphics-pro.16xlarge
+#' -   stream.graphics-pro.16xlarge
 #' 
 #' The following instance types are available for Elastic fleets:
 #' 
-#' - stream.standard.small
+#' -   stream.standard.small
 #' 
-#' - stream.standard.medium
+#' -   stream.standard.medium
 #' 
-#' - stream.standard.large
+#' -   stream.standard.large
 #' 
-#' - stream.standard.xlarge
+#' -   stream.standard.xlarge
 #' 
-#' - stream.standard.2xlarge
+#' -   stream.standard.2xlarge
 #' @param FleetType The fleet type.
 #' 
 #' **ALWAYS_ON**
@@ -1408,8 +1395,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance)
   output <- .appstream$create_fleet_output()
@@ -1442,71 +1428,71 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 #' @param InstanceType &#91;required&#93; The instance type to use when launching the image builder. The following
 #' instance types are available:
 #' 
-#' - stream.standard.small
+#' -   stream.standard.small
 #' 
-#' - stream.standard.medium
+#' -   stream.standard.medium
 #' 
-#' - stream.standard.large
+#' -   stream.standard.large
 #' 
-#' - stream.compute.large
+#' -   stream.compute.large
 #' 
-#' - stream.compute.xlarge
+#' -   stream.compute.xlarge
 #' 
-#' - stream.compute.2xlarge
+#' -   stream.compute.2xlarge
 #' 
-#' - stream.compute.4xlarge
+#' -   stream.compute.4xlarge
 #' 
-#' - stream.compute.8xlarge
+#' -   stream.compute.8xlarge
 #' 
-#' - stream.memory.large
+#' -   stream.memory.large
 #' 
-#' - stream.memory.xlarge
+#' -   stream.memory.xlarge
 #' 
-#' - stream.memory.2xlarge
+#' -   stream.memory.2xlarge
 #' 
-#' - stream.memory.4xlarge
+#' -   stream.memory.4xlarge
 #' 
-#' - stream.memory.8xlarge
+#' -   stream.memory.8xlarge
 #' 
-#' - stream.memory.z1d.large
+#' -   stream.memory.z1d.large
 #' 
-#' - stream.memory.z1d.xlarge
+#' -   stream.memory.z1d.xlarge
 #' 
-#' - stream.memory.z1d.2xlarge
+#' -   stream.memory.z1d.2xlarge
 #' 
-#' - stream.memory.z1d.3xlarge
+#' -   stream.memory.z1d.3xlarge
 #' 
-#' - stream.memory.z1d.6xlarge
+#' -   stream.memory.z1d.6xlarge
 #' 
-#' - stream.memory.z1d.12xlarge
+#' -   stream.memory.z1d.12xlarge
 #' 
-#' - stream.graphics-design.large
+#' -   stream.graphics-design.large
 #' 
-#' - stream.graphics-design.xlarge
+#' -   stream.graphics-design.xlarge
 #' 
-#' - stream.graphics-design.2xlarge
+#' -   stream.graphics-design.2xlarge
 #' 
-#' - stream.graphics-design.4xlarge
+#' -   stream.graphics-design.4xlarge
 #' 
-#' - stream.graphics-desktop.2xlarge
+#' -   stream.graphics-desktop.2xlarge
 #' 
-#' - stream.graphics.g4dn.xlarge
+#' -   stream.graphics.g4dn.xlarge
 #' 
-#' - stream.graphics.g4dn.2xlarge
+#' -   stream.graphics.g4dn.2xlarge
 #' 
-#' - stream.graphics.g4dn.4xlarge
+#' -   stream.graphics.g4dn.4xlarge
 #' 
-#' - stream.graphics.g4dn.8xlarge
+#' -   stream.graphics.g4dn.8xlarge
 #' 
-#' - stream.graphics.g4dn.12xlarge
+#' -   stream.graphics.g4dn.12xlarge
 #' 
-#' - stream.graphics.g4dn.16xlarge
+#' -   stream.graphics.g4dn.16xlarge
 #' 
-#' - stream.graphics-pro.4xlarge
+#' -   stream.graphics-pro.4xlarge
 #' 
-#' - stream.graphics-pro.8xlarge
+#' -   stream.graphics-pro.8xlarge
 #' 
-#' - stream.graphics-pro.16xlarge
+#' -   stream.graphics-pro.16xlarge
 #' @param Description The description to display.
 #' @param DisplayName The image builder name to display.
 #' @param VpcConfig The VPC configuration for the image builder. You can specify only one
@@ -1652,8 +1638,7 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_image_builder_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, Description = Description, DisplayName = DisplayName, VpcConfig = VpcConfig, IamRoleArn = IamRoleArn, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, AppstreamAgentVersion = AppstreamAgentVersion, Tags = Tags, AccessEndpoints = AccessEndpoints)
   output <- .appstream$create_image_builder_output()
@@ -1707,8 +1692,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_image_builder_streaming_url_input(Name = Name, Validity = Validity)
   output <- .appstream$create_image_builder_streaming_url_output()
@@ -1883,8 +1867,7 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_stack_input(Name = Name, Description = Description, DisplayName = DisplayName, StorageConnectors = StorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, Tags = Tags, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings)
   output <- .appstream$create_stack_output()
@@ -1955,8 +1938,7 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_streaming_url_input(StackName = StackName, FleetName = FleetName, UserId = UserId, ApplicationId = ApplicationId, Validity = Validity, SessionContext = SessionContext)
   output <- .appstream$create_streaming_url_output()
@@ -2053,8 +2035,7 @@ appstream_create_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_theme_for_stack_input(StackName = StackName, FooterLinks = FooterLinks, TitleText = TitleText, ThemeStyling = ThemeStyling, OrganizationLogoS3Location = OrganizationLogoS3Location, FaviconS3Location = FaviconS3Location)
   output <- .appstream$create_theme_for_stack_output()
@@ -2213,8 +2194,7 @@ appstream_create_updated_image <- function(existingImageName, newImageName, newI
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_updated_image_input(existingImageName = existingImageName, newImageName = newImageName, newImageDescription = newImageDescription, newImageDisplayName = newImageDisplayName, newImageTags = newImageTags, dryRun = dryRun)
   output <- .appstream$create_updated_image_output()
@@ -2261,8 +2241,7 @@ appstream_create_usage_report_subscription <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_usage_report_subscription_input()
   output <- .appstream$create_usage_report_subscription_output()
@@ -2326,8 +2305,7 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$create_user_input(UserName = UserName, MessageAction = MessageAction, FirstName = FirstName, LastName = LastName, AuthenticationType = AuthenticationType)
   output <- .appstream$create_user_output()
@@ -2370,8 +2348,7 @@ appstream_delete_app_block <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_app_block_input(Name = Name)
   output <- .appstream$delete_app_block_output()
@@ -2417,8 +2394,7 @@ appstream_delete_app_block_builder <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_app_block_builder_input(Name = Name)
   output <- .appstream$delete_app_block_builder_output()
@@ -2461,8 +2437,7 @@ appstream_delete_application <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_application_input(Name = Name)
   output <- .appstream$delete_application_output()
@@ -2507,8 +2482,7 @@ appstream_delete_directory_config <- function(DirectoryName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_directory_config_input(DirectoryName = DirectoryName)
   output <- .appstream$delete_directory_config_output()
@@ -2553,8 +2527,7 @@ appstream_delete_entitlement <- function(Name, StackName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_entitlement_input(Name = Name, StackName = StackName)
   output <- .appstream$delete_entitlement_output()
@@ -2597,8 +2570,7 @@ appstream_delete_fleet <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_fleet_input(Name = Name)
   output <- .appstream$delete_fleet_output()
@@ -2719,8 +2691,7 @@ appstream_delete_image <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_image_input(Name = Name)
   output <- .appstream$delete_image_output()
@@ -2819,8 +2790,7 @@ appstream_delete_image_builder <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_image_builder_input(Name = Name)
   output <- .appstream$delete_image_builder_output()
@@ -2868,8 +2838,7 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_image_permissions_input(Name = Name, SharedAccountId = SharedAccountId)
   output <- .appstream$delete_image_permissions_output()
@@ -2915,8 +2884,7 @@ appstream_delete_stack <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_stack_input(Name = Name)
   output <- .appstream$delete_stack_output()
@@ -2961,8 +2929,7 @@ appstream_delete_theme_for_stack <- function(StackName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_theme_for_stack_input(StackName = StackName)
   output <- .appstream$delete_theme_for_stack_output()
@@ -3003,8 +2970,7 @@ appstream_delete_usage_report_subscription <- function() {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_usage_report_subscription_input()
   output <- .appstream$delete_usage_report_subscription_output()
@@ -3051,8 +3017,7 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$delete_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$delete_user_output()
@@ -3116,8 +3081,7 @@ appstream_describe_app_block_builder_app_block_associations <- function(AppBlock
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_app_block_builder_app_block_associations_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_app_block_builder_app_block_associations_output()
@@ -3215,8 +3179,7 @@ appstream_describe_app_block_builders <- function(Names = NULL, NextToken = NULL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_app_block_builders_input(Names = Names, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_app_block_builders_output()
@@ -3312,8 +3275,7 @@ appstream_describe_app_blocks <- function(Arns = NULL, NextToken = NULL, MaxResu
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_app_blocks_input(Arns = Arns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_app_blocks_output()
@@ -3377,8 +3339,7 @@ appstream_describe_application_fleet_associations <- function(FleetName = NULL, 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_application_fleet_associations_input(FleetName = FleetName, ApplicationArn = ApplicationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_application_fleet_associations_output()
@@ -3463,8 +3424,7 @@ appstream_describe_applications <- function(Arns = NULL, NextToken = NULL, MaxRe
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_applications_input(Arns = Arns, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_applications_output()
@@ -3547,8 +3507,7 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_directory_configs_input(DirectoryNames = DirectoryNames, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_directory_configs_output()
@@ -3623,8 +3582,7 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_entitlements_input(Name = Name, StackName = StackName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_entitlements_output()
@@ -3740,8 +3698,7 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_fleets_input(Names = Names, NextToken = NextToken)
   output <- .appstream$describe_fleets_output()
@@ -3853,8 +3810,7 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_image_builders_input(Names = Names, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_image_builders_output()
@@ -3926,8 +3882,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_image_permissions_input(Name = Name, MaxResults = MaxResults, SharedAwsAccountIds = SharedAwsAccountIds, NextToken = NextToken)
   output <- .appstream$describe_image_permissions_output()
@@ -4065,8 +4020,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .appstream$describe_images_input(Names = Names, Arns = Arns, Type = Type, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$describe_images_output()
@@ -4159,8 +4113,7 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_sessions_input(StackName = StackName, FleetName = FleetName, UserId = UserId, NextToken = NextToken, Limit = Limit, AuthenticationType = AuthenticationType, InstanceId = InstanceId)
   output <- .appstream$describe_sessions_output()
@@ -4268,8 +4221,7 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_stacks_input(Names = Names, NextToken = NextToken)
   output <- .appstream$describe_stacks_output()
@@ -4335,8 +4287,7 @@ appstream_describe_theme_for_stack <- function(StackName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_theme_for_stack_input(StackName = StackName)
   output <- .appstream$describe_theme_for_stack_output()
@@ -4402,8 +4353,7 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_usage_report_subscriptions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_usage_report_subscriptions_output()
@@ -4421,10 +4371,10 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 #' Retrieves a list that describes the UserStackAssociation objects. You
 #' must specify either or both of the following:
 #' 
-#' - The stack name
+#' -   The stack name
 #' 
-#' - The user name (email address of the user associated with the stack)
-#'   and the authentication type for the user
+#' -   The user name (email address of the user associated with the stack)
+#'     and the authentication type for the user
 #'
 #' @usage
 #' appstream_describe_user_stack_associations(StackName, UserName,
@@ -4478,8 +4428,7 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_user_stack_associations_input(StackName = StackName, UserName = UserName, AuthenticationType = AuthenticationType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_user_stack_associations_output()
@@ -4549,8 +4498,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$describe_users_input(AuthenticationType = AuthenticationType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .appstream$describe_users_output()
@@ -4599,8 +4547,7 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$disable_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$disable_user_output()
@@ -4646,8 +4593,7 @@ appstream_disassociate_app_block_builder_app_block <- function(AppBlockArn, AppB
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$disassociate_app_block_builder_app_block_input(AppBlockArn = AppBlockArn, AppBlockBuilderName = AppBlockBuilderName)
   output <- .appstream$disassociate_app_block_builder_app_block_output()
@@ -4692,8 +4638,7 @@ appstream_disassociate_application_fleet <- function(FleetName, ApplicationArn) 
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$disassociate_application_fleet_input(FleetName = FleetName, ApplicationArn = ApplicationArn)
   output <- .appstream$disassociate_application_fleet_output()
@@ -4741,8 +4686,7 @@ appstream_disassociate_application_from_entitlement <- function(StackName, Entit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$disassociate_application_from_entitlement_input(StackName = StackName, EntitlementName = EntitlementName, ApplicationIdentifier = ApplicationIdentifier)
   output <- .appstream$disassociate_application_from_entitlement_output()
@@ -4787,8 +4731,7 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$disassociate_fleet_input(FleetName = FleetName, StackName = StackName)
   output <- .appstream$disassociate_fleet_output()
@@ -4840,8 +4783,7 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$enable_user_input(UserName = UserName, AuthenticationType = AuthenticationType)
   output <- .appstream$enable_user_output()
@@ -4884,8 +4826,7 @@ appstream_expire_session <- function(SessionId) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$expire_session_input(SessionId = SessionId)
   output <- .appstream$expire_session_output()
@@ -4941,8 +4882,7 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$list_associated_fleets_input(StackName = StackName, NextToken = NextToken)
   output <- .appstream$list_associated_fleets_output()
@@ -4998,8 +4938,7 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$list_associated_stacks_input(FleetName = FleetName, NextToken = NextToken)
   output <- .appstream$list_associated_stacks_output()
@@ -5060,8 +4999,7 @@ appstream_list_entitled_applications <- function(StackName, EntitlementName, Nex
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$list_entitled_applications_input(StackName = StackName, EntitlementName = EntitlementName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .appstream$list_entitled_applications_output()
@@ -5116,8 +5054,7 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$list_tags_for_resource_input(ResourceArn = ResourceArn)
   output <- .appstream$list_tags_for_resource_output()
@@ -5212,8 +5149,7 @@ appstream_start_app_block_builder <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$start_app_block_builder_input(Name = Name)
   output <- .appstream$start_app_block_builder_output()
@@ -5256,8 +5192,7 @@ appstream_start_fleet <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$start_fleet_input(Name = Name)
   output <- .appstream$start_fleet_output()
@@ -5359,8 +5294,7 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$start_image_builder_input(Name = Name, AppstreamAgentVersion = AppstreamAgentVersion)
   output <- .appstream$start_image_builder_output()
@@ -5451,8 +5385,7 @@ appstream_stop_app_block_builder <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$stop_app_block_builder_input(Name = Name)
   output <- .appstream$stop_app_block_builder_output()
@@ -5495,8 +5428,7 @@ appstream_stop_fleet <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$stop_fleet_input(Name = Name)
   output <- .appstream$stop_fleet_output()
@@ -5595,8 +5527,7 @@ appstream_stop_image_builder <- function(Name) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$stop_image_builder_input(Name = Name)
   output <- .appstream$stop_image_builder_output()
@@ -5666,8 +5597,7 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
   output <- .appstream$tag_resource_output()
@@ -5722,8 +5652,7 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
   output <- .appstream$untag_resource_output()
@@ -5760,15 +5689,15 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 #' @param InstanceType The instance type to use when launching the app block builder. The
 #' following instance types are available:
 #' 
-#' - stream.standard.small
+#' -   stream.standard.small
 #' 
-#' - stream.standard.medium
+#' -   stream.standard.medium
 #' 
-#' - stream.standard.large
+#' -   stream.standard.large
 #' 
-#' - stream.standard.xlarge
+#' -   stream.standard.xlarge
 #' 
-#' - stream.standard.2xlarge
+#' -   stream.standard.2xlarge
 #' @param VpcConfig The VPC configuration for the app block builder.
 #' 
 #' App block builders require that you specify at least two subnets in
@@ -5880,8 +5809,7 @@ appstream_update_app_block_builder <- function(Name, Description = NULL, Display
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$update_app_block_builder_input(Name = Name, Description = Description, DisplayName = DisplayName, Platform = Platform, InstanceType = InstanceType, VpcConfig = VpcConfig, EnableDefaultInternetAccess = EnableDefaultInternetAccess, IamRoleArn = IamRoleArn, AccessEndpoints = AccessEndpoints, AttributesToDelete = AttributesToDelete)
   output <- .appstream$update_app_block_builder_output()
@@ -5981,8 +5909,7 @@ appstream_update_application <- function(Name, DisplayName = NULL, Description =
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$update_application_input(Name = Name, DisplayName = DisplayName, Description = Description, IconS3Location = IconS3Location, LaunchPath = LaunchPath, WorkingDirectory = WorkingDirectory, LaunchParameters = LaunchParameters, AppBlockArn = AppBlockArn, AttributesToDelete = AttributesToDelete)
   output <- .appstream$update_application_output()
@@ -6075,8 +6002,7 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$update_directory_config_input(DirectoryName = DirectoryName, OrganizationalUnitDistinguishedNames = OrganizationalUnitDistinguishedNames, ServiceAccountCredentials = ServiceAccountCredentials, CertificateBasedAuthProperties = CertificateBasedAuthProperties)
   output <- .appstream$update_directory_config_output()
@@ -6155,8 +6081,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$update_entitlement_input(Name = Name, StackName = StackName, Description = Description, AppVisibility = AppVisibility, Attributes = Attributes)
   output <- .appstream$update_entitlement_output()
@@ -6179,17 +6104,17 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' If the fleet is in the `RUNNING` state, you can update the following
 #' based on the fleet type:
 #' 
-#' - Always-On and On-Demand fleet types
+#' -   Always-On and On-Demand fleet types
 #' 
-#'   You can update the `DisplayName`, `ComputeCapacity`, `ImageARN`,
-#'   `ImageName`, `IdleDisconnectTimeoutInSeconds`, and
-#'   `DisconnectTimeoutInSeconds` attributes.
+#'     You can update the `DisplayName`, `ComputeCapacity`, `ImageARN`,
+#'     `ImageName`, `IdleDisconnectTimeoutInSeconds`, and
+#'     `DisconnectTimeoutInSeconds` attributes.
 #' 
-#' - Elastic fleet type
+#' -   Elastic fleet type
 #' 
-#'   You can update the `DisplayName`, `IdleDisconnectTimeoutInSeconds`,
-#'   `DisconnectTimeoutInSeconds`, `MaxConcurrentSessions`,
-#'   `SessionScriptS3Location` and `UsbDeviceFilterStrings` attributes.
+#'     You can update the `DisplayName`, `IdleDisconnectTimeoutInSeconds`,
+#'     `DisconnectTimeoutInSeconds`, `MaxConcurrentSessions`,
+#'     `SessionScriptS3Location` and `UsbDeviceFilterStrings` attributes.
 #' 
 #' If the fleet is in the `STARTING` or `STOPPED` state, you can't update
 #' it.
@@ -6209,87 +6134,87 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' @param InstanceType The instance type to use when launching fleet instances. The following
 #' instance types are available:
 #' 
-#' - stream.standard.small
+#' -   stream.standard.small
 #' 
-#' - stream.standard.medium
+#' -   stream.standard.medium
 #' 
-#' - stream.standard.large
+#' -   stream.standard.large
 #' 
-#' - stream.standard.xlarge
+#' -   stream.standard.xlarge
 #' 
-#' - stream.standard.2xlarge
+#' -   stream.standard.2xlarge
 #' 
-#' - stream.compute.large
+#' -   stream.compute.large
 #' 
-#' - stream.compute.xlarge
+#' -   stream.compute.xlarge
 #' 
-#' - stream.compute.2xlarge
+#' -   stream.compute.2xlarge
 #' 
-#' - stream.compute.4xlarge
+#' -   stream.compute.4xlarge
 #' 
-#' - stream.compute.8xlarge
+#' -   stream.compute.8xlarge
 #' 
-#' - stream.memory.large
+#' -   stream.memory.large
 #' 
-#' - stream.memory.xlarge
+#' -   stream.memory.xlarge
 #' 
-#' - stream.memory.2xlarge
+#' -   stream.memory.2xlarge
 #' 
-#' - stream.memory.4xlarge
+#' -   stream.memory.4xlarge
 #' 
-#' - stream.memory.8xlarge
+#' -   stream.memory.8xlarge
 #' 
-#' - stream.memory.z1d.large
+#' -   stream.memory.z1d.large
 #' 
-#' - stream.memory.z1d.xlarge
+#' -   stream.memory.z1d.xlarge
 #' 
-#' - stream.memory.z1d.2xlarge
+#' -   stream.memory.z1d.2xlarge
 #' 
-#' - stream.memory.z1d.3xlarge
+#' -   stream.memory.z1d.3xlarge
 #' 
-#' - stream.memory.z1d.6xlarge
+#' -   stream.memory.z1d.6xlarge
 #' 
-#' - stream.memory.z1d.12xlarge
+#' -   stream.memory.z1d.12xlarge
 #' 
-#' - stream.graphics-design.large
+#' -   stream.graphics-design.large
 #' 
-#' - stream.graphics-design.xlarge
+#' -   stream.graphics-design.xlarge
 #' 
-#' - stream.graphics-design.2xlarge
+#' -   stream.graphics-design.2xlarge
 #' 
-#' - stream.graphics-design.4xlarge
+#' -   stream.graphics-design.4xlarge
 #' 
-#' - stream.graphics-desktop.2xlarge
+#' -   stream.graphics-desktop.2xlarge
 #' 
-#' - stream.graphics.g4dn.xlarge
+#' -   stream.graphics.g4dn.xlarge
 #' 
-#' - stream.graphics.g4dn.2xlarge
+#' -   stream.graphics.g4dn.2xlarge
 #' 
-#' - stream.graphics.g4dn.4xlarge
+#' -   stream.graphics.g4dn.4xlarge
 #' 
-#' - stream.graphics.g4dn.8xlarge
+#' -   stream.graphics.g4dn.8xlarge
 #' 
-#' - stream.graphics.g4dn.12xlarge
+#' -   stream.graphics.g4dn.12xlarge
 #' 
-#' - stream.graphics.g4dn.16xlarge
+#' -   stream.graphics.g4dn.16xlarge
 #' 
-#' - stream.graphics-pro.4xlarge
+#' -   stream.graphics-pro.4xlarge
 #' 
-#' - stream.graphics-pro.8xlarge
+#' -   stream.graphics-pro.8xlarge
 #' 
-#' - stream.graphics-pro.16xlarge
+#' -   stream.graphics-pro.16xlarge
 #' 
 #' The following instance types are available for Elastic fleets:
 #' 
-#' - stream.standard.small
+#' -   stream.standard.small
 #' 
-#' - stream.standard.medium
+#' -   stream.standard.medium
 #' 
-#' - stream.standard.large
+#' -   stream.standard.large
 #' 
-#' - stream.standard.xlarge
+#' -   stream.standard.xlarge
 #' 
-#' - stream.standard.2xlarge
+#' -   stream.standard.2xlarge
 #' @param ComputeCapacity The desired capacity for the fleet. This is not allowed for Elastic
 #' fleets.
 #' @param VpcConfig The VPC configuration for the fleet. This is required for Elastic
@@ -6492,8 +6417,7 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance)
   output <- .appstream$update_fleet_output()
@@ -6545,8 +6469,7 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$update_image_permissions_input(Name = Name, SharedAccountId = SharedAccountId, ImagePermissions = ImagePermissions)
   output <- .appstream$update_image_permissions_output()
@@ -6708,8 +6631,7 @@ appstream_update_stack <- function(DisplayName = NULL, Description = NULL, Name,
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$update_stack_input(DisplayName = DisplayName, Description = Description, Name = Name, StorageConnectors = StorageConnectors, DeleteStorageConnectors = DeleteStorageConnectors, RedirectURL = RedirectURL, FeedbackURL = FeedbackURL, AttributesToDelete = AttributesToDelete, UserSettings = UserSettings, ApplicationSettings = ApplicationSettings, AccessEndpoints = AccessEndpoints, EmbedHostDomains = EmbedHostDomains, StreamingExperienceSettings = StreamingExperienceSettings)
   output <- .appstream$update_stack_output()
@@ -6814,8 +6736,7 @@ appstream_update_theme_for_stack <- function(StackName, FooterLinks = NULL, Titl
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .appstream$update_theme_for_stack_input(StackName = StackName, FooterLinks = FooterLinks, TitleText = TitleText, ThemeStyling = ThemeStyling, OrganizationLogoS3Location = OrganizationLogoS3Location, FaviconS3Location = FaviconS3Location, State = State, AttributesToDelete = AttributesToDelete)
   output <- .appstream$update_theme_for_stack_output()

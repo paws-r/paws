@@ -28,8 +28,8 @@ Constraints:
 \item Specified in Coordinated Universal Time (UTC).
 \item Specified in the Unix time format.
 
-For example, if you wish to use a start time of October 1, 2018, at 8
-PM UTC, then you input \code{1538424000} as the start time.
+For example, if you wish to use a start time of October 1, 2018, at
+8 PM UTC, then you input \code{1538424000} as the start time.
 }}
 
 \item{endTime}{The end of the time interval from which to get log events.

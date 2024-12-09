@@ -79,10 +79,10 @@ previously loaded data from your Neptune cluster, that data is not
 reloaded in this mode. If a previous load job loaded all files from
 the same source successfully, nothing is reloaded, and the loader
 returns success.
-\item \code{NEW}   –   In NEW mode, the creates a new load request regardless of
-any previous loads. You can use this mode to reload all the data from
-a source after dropping previously loaded data from your Neptune
-cluster, or to load new data available at the same source.
+\item \code{NEW}   –   In NEW mode, the creates a new load request regardless
+of any previous loads. You can use this mode to reload all the data
+from a source after dropping previously loaded data from your
+Neptune cluster, or to load new data available at the same source.
 \item \code{AUTO}   –   In AUTO mode, the loader looks for a previous load job
 from the same source, and if it finds one, resumes that job, just as
 in \code{RESUME} mode.
@@ -108,8 +108,8 @@ threads used by the bulk load process.
 
 \emph{Allowed values}:
 \itemize{
-\item \code{LOW} –   The number of threads used is the number of available vCPUs
-divided by 8.
+\item \code{LOW} –   The number of threads used is the number of available
+vCPUs divided by 8.
 \item \code{MEDIUM} –   The number of threads used is the number of available
 vCPUs divided by 2.
 \item \code{HIGH} –   The number of threads used is the same as the number of
@@ -118,9 +118,10 @@ available vCPUs.
 available vCPUs multiplied by 2. If this value is used, the bulk
 loader takes up all available resources.
 
-This does not mean, however, that the \code{OVERSUBSCRIBE} setting results
-in 100\% CPU utilization. Because the load operation is I/O bound, the
-highest CPU utilization to expect is in the 60\% to 70\% range.
+This does not mean, however, that the \code{OVERSUBSCRIBE} setting
+results in 100\% CPU utilization. Because the load operation is I/O
+bound, the highest CPU utilization to expect is in the 60\% to 70\%
+range.
 }
 
 \emph{Default value}: \code{HIGH}
@@ -135,8 +136,8 @@ parser configuration values. Each of the child parameters is also
 optional:
 \itemize{
 \item \strong{\code{namedGraphUri}}   –   The default graph for all RDF formats when
-no graph is specified (for non-quads formats and NQUAD entries with no
-graph).
+no graph is specified (for non-quads formats and NQUAD entries with
+no graph).
 
 The default is
 \verb{https://aws.amazon.com/neptune/vocab/v01/DefaultNamedGraph}.

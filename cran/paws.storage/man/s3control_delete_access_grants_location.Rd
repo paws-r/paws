@@ -7,7 +7,7 @@
 s3control_delete_access_grants_location(AccountId, AccessGrantsLocationId)
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
+\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
 
 \item{AccessGrantsLocationId}{[required] The ID of the registered location that you are deregistering from your
 S3 Access Grants instance. S3 Access Grants assigned this ID when you

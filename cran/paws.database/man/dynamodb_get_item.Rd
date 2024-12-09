@@ -54,8 +54,8 @@ The following are some use cases for using \code{ExpressionAttributeNames}:
 \itemize{
 \item To access an attribute whose name conflicts with a DynamoDB reserved
 word.
-\item To create a placeholder for repeating occurrences of an attribute name
-in an expression.
+\item To create a placeholder for repeating occurrences of an attribute
+name in an expression.
 \item To prevent special characters in an attribute name from being
 misinterpreted in an expression.
 }

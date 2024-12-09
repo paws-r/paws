@@ -45,7 +45,7 @@ WebSocket APIs.}
 
 \item{DisableExecuteApiEndpoint}{Specifies whether clients can invoke your API by using the default
 execute-api endpoint. By default, clients can invoke your API with the
-default https://\\api_id\\.execute-api.\\region\\.amazonaws.com
+default https://\{api_id\}.execute-api.\{region\}.amazonaws.com
 endpoint. To require that clients use a custom domain name to invoke
 your API, disable the default endpoint.}
 
@@ -57,9 +57,9 @@ route key of the quick create route. Additional routes may still be
 added after the API is updated. Supported only for HTTP APIs.}
 
 \item{RouteSelectionExpression}{The route selection expression for the API. For HTTP APIs, the
-routeSelectionExpression must be $\\request.method\\ $\\request.path\\.
-If not provided, this will be the default for HTTP APIs. This property
-is required for WebSocket APIs.}
+routeSelectionExpression must be $\{request.method\}
+$\{request.path\}. If not provided, this will be the default for HTTP
+APIs. This property is required for WebSocket APIs.}
 
 \item{Target}{This property is part of quick create. For HTTP integrations, specify a
 fully qualified URL. For Lambda integrations, specify a function ARN.

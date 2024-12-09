@@ -86,8 +86,8 @@ For example, if you want your output stored in
 \code{DOC-EXAMPLE-BUCKET} and \code{OutputKey} to \verb{test-files/}.
 
 Note that Amazon Transcribe must have permission to use the specified
-location. You can change Amazon S3 permissions using the Amazon Web
-Services Management Console. See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
+location. You can change Amazon S3 permissions using the \href{https://console.aws.amazon.com/s3/home}{Amazon Web Services Management Console}.
+See also \href{https://docs.aws.amazon.com/transcribe/latest/dg/security_iam_id-based-policy-examples.html#auth-role-iam-user}{Permissions Required for IAM User Roles}.
 
 If you do not specify \code{OutputBucketName}, your transcript is placed in a
 service-managed Amazon S3 bucket and you are provided with a URI to
@@ -104,18 +104,19 @@ Here are some examples of how you can use \code{OutputKey}:
 \item If you specify 'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName} and
 'my-transcript.json' as the \code{OutputKey}, your transcription output
 path is \verb{s3://DOC-EXAMPLE-BUCKET/my-transcript.json}.
-\item If you specify 'my-first-transcription' as the \code{TranscriptionJobName},
-'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName}, and 'my-transcript' as
-the \code{OutputKey}, your transcription output path is
+\item If you specify 'my-first-transcription' as the
+\code{TranscriptionJobName}, 'DOC-EXAMPLE-BUCKET' as the
+\code{OutputBucketName}, and 'my-transcript' as the \code{OutputKey}, your
+transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/my-transcript/my-first-transcription.json}.
 \item If you specify 'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName} and
-'test-files/my-transcript.json' as the \code{OutputKey}, your transcription
-output path is
+'test-files/my-transcript.json' as the \code{OutputKey}, your
+transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript.json}.
-\item If you specify 'my-first-transcription' as the \code{TranscriptionJobName},
-'DOC-EXAMPLE-BUCKET' as the \code{OutputBucketName}, and
-'test-files/my-transcript' as the \code{OutputKey}, your transcription
-output path is
+\item If you specify 'my-first-transcription' as the
+\code{TranscriptionJobName}, 'DOC-EXAMPLE-BUCKET' as the
+\code{OutputBucketName}, and 'test-files/my-transcript' as the
+\code{OutputKey}, your transcription output path is
 \verb{s3://DOC-EXAMPLE-BUCKET/test-files/my-transcript/my-first-transcription.json}.
 }
 
@@ -171,8 +172,8 @@ language identification, use \code{Settings} with the \code{VocabularyName} or
 
 If you're using automatic language identification with your request and
 want to include a custom language model, a custom vocabulary, or a
-custom vocabulary filter, use instead the parameter with the
-\code{LanguageModelName}, \code{VocabularyName} or \code{VocabularyFilterName}
+custom vocabulary filter, use instead the `` parameter with the
+\code{LanguageModelName}, `VocabularyName` or `VocabularyFilterName`
 sub-parameters.}
 
 \item{ModelSettings}{Specify the custom language model you want to include with your
@@ -284,11 +285,8 @@ to your transcription.
 
 If you want to include a custom language model with your request but
 \strong{do not} want to use automatic language identification, use instead
-the parameter with the \code{LanguageModelName} sub-parameter. If you want to
-include a custom vocabulary or a custom vocabulary filter (or both) with
-your request but \strong{do not} want to use automatic language
-identification, use instead the parameter with the \code{VocabularyName} or
-\code{VocabularyFilterName} (or both) sub-parameter.}
+the \verb{parameter with the `LanguageModelName` sub-parameter. If you want to include a custom vocabulary or a custom vocabulary filter (or both) with your request but **do not** want to use automatic language identification, use instead the} parameter with the \code{VocabularyName}
+or \code{VocabularyFilterName} (or both) sub-parameter.}
 
 \item{ToxicityDetection}{Enables toxic speech detection in your transcript. If you include
 \code{ToxicityDetection} in your request, you must also include

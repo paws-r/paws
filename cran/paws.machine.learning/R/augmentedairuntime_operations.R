@@ -21,8 +21,7 @@ augmentedairuntime_delete_human_loop <- function(HumanLoopName) {
     http_method = "DELETE",
     http_path = "/human-loops/{HumanLoopName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .augmentedairuntime$delete_human_loop_input(HumanLoopName = HumanLoopName)
   output <- .augmentedairuntime$delete_human_loop_output()
@@ -52,8 +51,7 @@ augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
     http_method = "GET",
     http_path = "/human-loops/{HumanLoopName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .augmentedairuntime$describe_human_loop_input(HumanLoopName = HumanLoopName)
   output <- .augmentedairuntime$describe_human_loop_output()
@@ -94,8 +92,7 @@ augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, Creati
     http_method = "GET",
     http_path = "/human-loops",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HumanLoopSummaries"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HumanLoopSummaries")
   )
   input <- .augmentedairuntime$list_human_loops_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, FlowDefinitionArn = FlowDefinitionArn, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .augmentedairuntime$list_human_loops_output()
@@ -132,8 +129,7 @@ augmentedairuntime_start_human_loop <- function(HumanLoopName, FlowDefinitionArn
     http_method = "POST",
     http_path = "/human-loops",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .augmentedairuntime$start_human_loop_input(HumanLoopName = HumanLoopName, FlowDefinitionArn = FlowDefinitionArn, HumanLoopInput = HumanLoopInput, DataAttributes = DataAttributes)
   output <- .augmentedairuntime$start_human_loop_output()
@@ -163,8 +159,7 @@ augmentedairuntime_stop_human_loop <- function(HumanLoopName) {
     http_method = "POST",
     http_path = "/human-loops/stop",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .augmentedairuntime$stop_human_loop_input(HumanLoopName = HumanLoopName)
   output <- .augmentedairuntime$stop_human_loop_output()

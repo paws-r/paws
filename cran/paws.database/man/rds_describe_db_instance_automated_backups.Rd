@@ -34,9 +34,9 @@ automated snapshot to be available.
 \item \code{retained} - Automated backups for deleted instances and after
 backup replication is stopped.
 }
-\item \code{db-instance-id} - Accepts DB instance identifiers and Amazon Resource
-Names (ARNs). The results list includes only information about the DB
-instance automated backups identified by these ARNs.
+\item \code{db-instance-id} - Accepts DB instance identifiers and Amazon
+Resource Names (ARNs). The results list includes only information
+about the DB instance automated backups identified by these ARNs.
 \item \code{dbi-resource-id} - Accepts DB resource identifiers and Amazon
 Resource Names (ARNs). The results list includes only information
 about the DB instance resources identified by these ARNs.

@@ -7,7 +7,7 @@
 s3control_delete_access_grants_instance(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
+\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
 }
 \description{
 Deletes your S3 Access Grants instance. You must first delete the access grants and locations before S3 Access Grants can delete the instance. See \code{\link[=s3control_delete_access_grant]{delete_access_grant}} and \code{\link[=s3control_delete_access_grants_location]{delete_access_grants_location}}. If you have associated an IAM Identity Center instance with your S3 Access Grants instance, you must first dissassociate the Identity Center instance from the S3 Access Grants instance before you can delete the S3 Access Grants instance. See \code{\link[=s3control_associate_access_grants_identity_center]{associate_access_grants_identity_center}} and \code{\link[=s3control_dissociate_access_grants_identity_center]{dissociate_access_grants_identity_center}}.

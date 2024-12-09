@@ -12,7 +12,7 @@ s3control_create_access_grants_instance(
 )
 }
 \arguments{
-\item{AccountId}{[required] The Amazon Web Services account ID of the S3 Access Grants instance.}
+\item{AccountId}{[required] The ID of the Amazon Web Services account that is making this request.}
 
 \item{IdentityCenterArn}{If you would like to associate your S3 Access Grants instance with an
 Amazon Web Services IAM Identity Center instance, use this field to pass

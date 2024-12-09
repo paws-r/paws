@@ -89,9 +89,10 @@ The supported child policies are:
 \item \code{TERMINATE} – The child executions are terminated.
 \item \code{REQUEST_CANCEL} – A request to cancel is attempted for each child
 execution by recording a \code{WorkflowExecutionCancelRequested} event in
-its history. It is up to the decider to take appropriate actions when
-it receives an execution history with this event.
-\item \code{ABANDON} – No action is taken. The child executions continue to run.
+its history. It is up to the decider to take appropriate actions
+when it receives an execution history with this event.
+\item \code{ABANDON} – No action is taken. The child executions continue to
+run.
 }}
 
 \item{defaultLambdaRole}{The default IAM role attached to this workflow type.

@@ -2,8 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_put_bucket_encryption}
 \alias{s3_put_bucket_encryption}
-\title{This operation configures default encryption and Amazon S3 Bucket Keys
-for an existing bucket}
+\title{This operation is not supported by directory buckets}
 \usage{
 s3_put_bucket_encryption(
   Bucket,
@@ -15,26 +14,20 @@ s3_put_bucket_encryption(
 }
 \arguments{
 \item{Bucket}{[required] Specifies default encryption for a bucket using server-side encryption
-with different key options.
-
-\strong{Directory buckets} - When you use this operation with a directory
-bucket, you must use path-style requests in the format
-\verb{https://s3express-control.region_code.amazonaws.com/bucket-name }.
-Virtual-hosted-style requests aren't supported. Directory bucket names
-must be unique in the chosen Availability Zone. Bucket names must also
-follow the format \code{ bucket_base_name--az_id--x-s3} (for example,
-\code{ DOC-EXAMPLE-BUCKET--usw2-az1--x-s3}). For information about bucket
-naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/directory-bucket-naming-rules.html}{Directory bucket naming rules}
-in the \emph{Amazon S3 User Guide}}
+with different key options. By default, all buckets have a default
+encryption configuration that uses server-side encryption with Amazon S3
+managed keys (SSE-S3). You can optionally configure default encryption
+for a bucket by using server-side encryption with an Amazon Web Services
+KMS key (SSE-KMS) or a customer-provided key (SSE-C). For information
+about the bucket default encryption feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html}{Amazon S3 Bucket Default Encryption}
+in the \emph{Amazon S3 User Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the server-side encryption
 configuration.
 
 For requests made using the Amazon Web Services Command Line Interface
 (CLI) or Amazon Web Services SDKs, this field is calculated
-automatically.
-
-This functionality is not supported for directory buckets.}
+automatically.}
 
 \item{ChecksumAlgorithm}{Indicates the algorithm used to create the checksum for the object when
 you use the SDK. This header will not provide any additional
@@ -45,23 +38,16 @@ Otherwise, Amazon S3 fails the request with the HTTP status code
 in the \emph{Amazon S3 User Guide}.
 
 If you provide an individual checksum, Amazon S3 ignores any provided
-\code{ChecksumAlgorithm} parameter.
-
-For directory buckets, when you use Amazon Web Services SDKs, \code{CRC32} is
-the default checksum algorithm that's used for performance.}
+\code{ChecksumAlgorithm} parameter.}
 
 \item{ServerSideEncryptionConfiguration}{[required]}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the account ID that you
 provide does not match the actual owner of the bucket, the request fails
-with the HTTP status code \verb{403 Forbidden} (access denied).
-
-For directory buckets, this header is not supported in this API
-operation. If you specify this header, the request fails with the HTTP
-status code \verb{501 Not Implemented}.}
+with the HTTP status code \verb{403 Forbidden} (access denied).}
 }
 \description{
-This operation configures default encryption and Amazon S3 Bucket Keys for an existing bucket.
+This operation is not supported by directory buckets.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/} for full documentation.
 }

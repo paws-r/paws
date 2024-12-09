@@ -84,8 +84,7 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
     http_method = "POST",
     http_path = "/apikeys",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_api_key_input(name = name, description = description, enabled = enabled, generateDistinctId = generateDistinctId, value = value, stageKeys = stageKeys, customerId = customerId, tags = tags)
   output <- .apigateway$create_api_key_output()
@@ -215,8 +214,7 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/authorizers",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_authorizer_input(restApiId = restApiId, name = name, type = type, providerARNs = providerARNs, authType = authType, authorizerUri = authorizerUri, authorizerCredentials = authorizerCredentials, identitySource = identitySource, identityValidationExpression = identityValidationExpression, authorizerResultTtlInSeconds = authorizerResultTtlInSeconds)
   output <- .apigateway$create_authorizer_output()
@@ -278,8 +276,7 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
     http_method = "POST",
     http_path = "/domainnames/{domain_name}/basepathmappings",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_base_path_mapping_input(domainName = domainName, basePath = basePath, restApiId = restApiId, stage = stage)
   output <- .apigateway$create_base_path_mapping_output()
@@ -374,8 +371,7 @@ apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescr
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/deployments",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_deployment_input(restApiId = restApiId, stageName = stageName, stageDescription = stageDescription, description = description, cacheClusterEnabled = cacheClusterEnabled, cacheClusterSize = cacheClusterSize, variables = variables, canarySettings = canarySettings, tracingEnabled = tracingEnabled)
   output <- .apigateway$create_deployment_output()
@@ -444,8 +440,7 @@ apigateway_create_documentation_part <- function(restApiId, location, properties
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/documentation/parts",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_documentation_part_input(restApiId = restApiId, location = location, properties = properties)
   output <- .apigateway$create_documentation_part_output()
@@ -504,8 +499,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/documentation/versions",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_documentation_version_input(restApiId = restApiId, documentationVersion = documentationVersion, stageName = stageName, description = description)
   output <- .apigateway$create_documentation_version_output()
@@ -648,8 +642,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
     http_method = "POST",
     http_path = "/domainnames",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_domain_name_input(domainName = domainName, certificateName = certificateName, certificateBody = certificateBody, certificatePrivateKey = certificatePrivateKey, certificateChain = certificateChain, certificateArn = certificateArn, regionalCertificateName = regionalCertificateName, regionalCertificateArn = regionalCertificateArn, endpointConfiguration = endpointConfiguration, tags = tags, securityPolicy = securityPolicy, mutualTlsAuthentication = mutualTlsAuthentication, ownershipVerificationCertificateArn = ownershipVerificationCertificateArn)
   output <- .apigateway$create_domain_name_output()
@@ -711,8 +704,7 @@ apigateway_create_model <- function(restApiId, name, description = NULL, schema 
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/models",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_model_input(restApiId = restApiId, name = name, description = description, schema = schema, contentType = contentType)
   output <- .apigateway$create_model_output()
@@ -772,8 +764,7 @@ apigateway_create_request_validator <- function(restApiId, name = NULL, validate
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/requestvalidators",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_request_validator_input(restApiId = restApiId, name = name, validateRequestBody = validateRequestBody, validateRequestParameters = validateRequestParameters)
   output <- .apigateway$create_request_validator_output()
@@ -895,8 +886,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/resources/{parent_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_resource_input(restApiId = restApiId, parentId = parentId, pathPart = pathPart)
   output <- .apigateway$create_resource_output()
@@ -1022,8 +1012,7 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
     http_method = "POST",
     http_path = "/restapis",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_rest_api_input(name = name, description = description, version = version, cloneFrom = cloneFrom, binaryMediaTypes = binaryMediaTypes, minimumCompressionSize = minimumCompressionSize, apiKeySource = apiKeySource, endpointConfiguration = endpointConfiguration, policy = policy, tags = tags, disableExecuteApiEndpoint = disableExecuteApiEndpoint)
   output <- .apigateway$create_rest_api_output()
@@ -1161,8 +1150,7 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/stages",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_stage_input(restApiId = restApiId, stageName = stageName, deploymentId = deploymentId, description = description, cacheClusterEnabled = cacheClusterEnabled, cacheClusterSize = cacheClusterSize, variables = variables, documentationVersion = documentationVersion, canarySettings = canarySettings, tracingEnabled = tracingEnabled, tags = tags)
   output <- .apigateway$create_stage_output()
@@ -1272,8 +1260,7 @@ apigateway_create_usage_plan <- function(name, description = NULL, apiStages = N
     http_method = "POST",
     http_path = "/usageplans",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_usage_plan_input(name = name, description = description, apiStages = apiStages, throttle = throttle, quota = quota, tags = tags)
   output <- .apigateway$create_usage_plan_output()
@@ -1329,8 +1316,7 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
     http_method = "POST",
     http_path = "/usageplans/{usageplanId}/keys",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_usage_plan_key_input(usagePlanId = usagePlanId, keyId = keyId, keyType = keyType)
   output <- .apigateway$create_usage_plan_key_output()
@@ -1407,8 +1393,7 @@ apigateway_create_vpc_link <- function(name, description = NULL, targetArns, tag
     http_method = "POST",
     http_path = "/vpclinks",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$create_vpc_link_input(name = name, description = description, targetArns = targetArns, tags = tags)
   output <- .apigateway$create_vpc_link_output()
@@ -1451,8 +1436,7 @@ apigateway_delete_api_key <- function(apiKey) {
     http_method = "DELETE",
     http_path = "/apikeys/{api_Key}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_api_key_input(apiKey = apiKey)
   output <- .apigateway$delete_api_key_output()
@@ -1497,8 +1481,7 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/authorizers/{authorizer_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_authorizer_input(restApiId = restApiId, authorizerId = authorizerId)
   output <- .apigateway$delete_authorizer_output()
@@ -1545,8 +1528,7 @@ apigateway_delete_base_path_mapping <- function(domainName, basePath) {
     http_method = "DELETE",
     http_path = "/domainnames/{domain_name}/basepathmappings/{base_path}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_base_path_mapping_input(domainName = domainName, basePath = basePath)
   output <- .apigateway$delete_base_path_mapping_output()
@@ -1589,8 +1571,7 @@ apigateway_delete_client_certificate <- function(clientCertificateId) {
     http_method = "DELETE",
     http_path = "/clientcertificates/{clientcertificate_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_client_certificate_input(clientCertificateId = clientCertificateId)
   output <- .apigateway$delete_client_certificate_output()
@@ -1636,8 +1617,7 @@ apigateway_delete_deployment <- function(restApiId, deploymentId) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/deployments/{deployment_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_deployment_input(restApiId = restApiId, deploymentId = deploymentId)
   output <- .apigateway$delete_deployment_output()
@@ -1682,8 +1662,7 @@ apigateway_delete_documentation_part <- function(restApiId, documentationPartId)
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/documentation/parts/{part_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_documentation_part_input(restApiId = restApiId, documentationPartId = documentationPartId)
   output <- .apigateway$delete_documentation_part_output()
@@ -1728,8 +1707,7 @@ apigateway_delete_documentation_version <- function(restApiId, documentationVers
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/documentation/versions/{doc_version}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_documentation_version_input(restApiId = restApiId, documentationVersion = documentationVersion)
   output <- .apigateway$delete_documentation_version_output()
@@ -1772,8 +1750,7 @@ apigateway_delete_domain_name <- function(domainName) {
     http_method = "DELETE",
     http_path = "/domainnames/{domain_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_domain_name_input(domainName = domainName)
   output <- .apigateway$delete_domain_name_output()
@@ -1820,8 +1797,7 @@ apigateway_delete_gateway_response <- function(restApiId, responseType) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/gatewayresponses/{response_type}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_gateway_response_input(restApiId = restApiId, responseType = responseType)
   output <- .apigateway$delete_gateway_response_output()
@@ -1868,8 +1844,7 @@ apigateway_delete_integration <- function(restApiId, resourceId, httpMethod) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod)
   output <- .apigateway$delete_integration_output()
@@ -1919,8 +1894,7 @@ apigateway_delete_integration_response <- function(restApiId, resourceId, httpMe
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_integration_response_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, statusCode = statusCode)
   output <- .apigateway$delete_integration_response_output()
@@ -1967,8 +1941,7 @@ apigateway_delete_method <- function(restApiId, resourceId, httpMethod) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_method_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod)
   output <- .apigateway$delete_method_output()
@@ -2018,8 +1991,7 @@ apigateway_delete_method_response <- function(restApiId, resourceId, httpMethod,
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_method_response_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, statusCode = statusCode)
   output <- .apigateway$delete_method_response_output()
@@ -2064,8 +2036,7 @@ apigateway_delete_model <- function(restApiId, modelName) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/models/{model_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_model_input(restApiId = restApiId, modelName = modelName)
   output <- .apigateway$delete_model_output()
@@ -2110,8 +2081,7 @@ apigateway_delete_request_validator <- function(restApiId, requestValidatorId) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_request_validator_input(restApiId = restApiId, requestValidatorId = requestValidatorId)
   output <- .apigateway$delete_request_validator_output()
@@ -2156,8 +2126,7 @@ apigateway_delete_resource <- function(restApiId, resourceId) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_resource_input(restApiId = restApiId, resourceId = resourceId)
   output <- .apigateway$delete_resource_output()
@@ -2200,8 +2169,7 @@ apigateway_delete_rest_api <- function(restApiId) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_rest_api_input(restApiId = restApiId)
   output <- .apigateway$delete_rest_api_output()
@@ -2246,8 +2214,7 @@ apigateway_delete_stage <- function(restApiId, stageName) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/stages/{stage_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_stage_input(restApiId = restApiId, stageName = stageName)
   output <- .apigateway$delete_stage_output()
@@ -2290,8 +2257,7 @@ apigateway_delete_usage_plan <- function(usagePlanId) {
     http_method = "DELETE",
     http_path = "/usageplans/{usageplanId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_usage_plan_input(usagePlanId = usagePlanId)
   output <- .apigateway$delete_usage_plan_output()
@@ -2339,8 +2305,7 @@ apigateway_delete_usage_plan_key <- function(usagePlanId, keyId) {
     http_method = "DELETE",
     http_path = "/usageplans/{usageplanId}/keys/{keyId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_usage_plan_key_input(usagePlanId = usagePlanId, keyId = keyId)
   output <- .apigateway$delete_usage_plan_key_output()
@@ -2384,8 +2349,7 @@ apigateway_delete_vpc_link <- function(vpcLinkId) {
     http_method = "DELETE",
     http_path = "/vpclinks/{vpclink_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$delete_vpc_link_input(vpcLinkId = vpcLinkId)
   output <- .apigateway$delete_vpc_link_output()
@@ -2430,8 +2394,7 @@ apigateway_flush_stage_authorizers_cache <- function(restApiId, stageName) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/stages/{stage_name}/cache/authorizers",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$flush_stage_authorizers_cache_input(restApiId = restApiId, stageName = stageName)
   output <- .apigateway$flush_stage_authorizers_cache_output()
@@ -2476,8 +2439,7 @@ apigateway_flush_stage_cache <- function(restApiId, stageName) {
     http_method = "DELETE",
     http_path = "/restapis/{restapi_id}/stages/{stage_name}/cache/data",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$flush_stage_cache_input(restApiId = restApiId, stageName = stageName)
   output <- .apigateway$flush_stage_cache_output()
@@ -2542,8 +2504,7 @@ apigateway_generate_client_certificate <- function(description = NULL, tags = NU
     http_method = "POST",
     http_path = "/clientcertificates",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$generate_client_certificate_input(description = description, tags = tags)
   output <- .apigateway$generate_client_certificate_output()
@@ -2597,8 +2558,7 @@ apigateway_get_account <- function() {
     http_method = "GET",
     http_path = "/account",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_account_input()
   output <- .apigateway$get_account_output()
@@ -2666,8 +2626,7 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
     http_method = "GET",
     http_path = "/apikeys/{api_Key}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_api_key_input(apiKey = apiKey, includeValue = includeValue)
   output <- .apigateway$get_api_key_output()
@@ -2752,8 +2711,7 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
     http_method = "GET",
     http_path = "/apikeys",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_api_keys_input(position = position, limit = limit, nameQuery = nameQuery, customerId = customerId, includeValues = includeValues)
   output <- .apigateway$get_api_keys_output()
@@ -2814,8 +2772,7 @@ apigateway_get_authorizer <- function(restApiId, authorizerId) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/authorizers/{authorizer_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_authorizer_input(restApiId = restApiId, authorizerId = authorizerId)
   output <- .apigateway$get_authorizer_output()
@@ -2884,8 +2841,7 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/authorizers",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_authorizers_input(restApiId = restApiId, position = position, limit = limit)
   output <- .apigateway$get_authorizers_output()
@@ -2940,8 +2896,7 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
     http_method = "GET",
     http_path = "/domainnames/{domain_name}/basepathmappings/{base_path}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_base_path_mapping_input(domainName = domainName, basePath = basePath)
   output <- .apigateway$get_base_path_mapping_output()
@@ -3001,8 +2956,7 @@ apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit
     http_method = "GET",
     http_path = "/domainnames/{domain_name}/basepathmappings",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_base_path_mappings_input(domainName = domainName, position = position, limit = limit)
   output <- .apigateway$get_base_path_mappings_output()
@@ -3061,8 +3015,7 @@ apigateway_get_client_certificate <- function(clientCertificateId) {
     http_method = "GET",
     http_path = "/clientcertificates/{clientcertificate_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_client_certificate_input(clientCertificateId = clientCertificateId)
   output <- .apigateway$get_client_certificate_output()
@@ -3129,8 +3082,7 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/clientcertificates",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_client_certificates_input(position = position, limit = limit)
   output <- .apigateway$get_client_certificates_output()
@@ -3205,8 +3157,7 @@ apigateway_get_deployment <- function(restApiId, deploymentId, embed = NULL) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/deployments/{deployment_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_deployment_input(restApiId = restApiId, deploymentId = deploymentId, embed = embed)
   output <- .apigateway$get_deployment_output()
@@ -3276,8 +3227,7 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/deployments",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_deployments_input(restApiId = restApiId, position = position, limit = limit)
   output <- .apigateway$get_deployments_output()
@@ -3335,8 +3285,7 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/documentation/parts/{part_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_documentation_part_input(restApiId = restApiId, documentationPartId = documentationPartId)
   output <- .apigateway$get_documentation_part_output()
@@ -3413,8 +3362,7 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/documentation/parts",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_documentation_parts_input(restApiId = restApiId, type = type, nameQuery = nameQuery, path = path, position = position, limit = limit, locationStatus = locationStatus)
   output <- .apigateway$get_documentation_parts_output()
@@ -3468,8 +3416,7 @@ apigateway_get_documentation_version <- function(restApiId, documentationVersion
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/documentation/versions/{doc_version}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_documentation_version_input(restApiId = restApiId, documentationVersion = documentationVersion)
   output <- .apigateway$get_documentation_version_output()
@@ -3531,8 +3478,7 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/documentation/versions",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_documentation_versions_input(restApiId = restApiId, position = position, limit = limit)
   output <- .apigateway$get_documentation_versions_output()
@@ -3615,8 +3561,7 @@ apigateway_get_domain_name <- function(domainName) {
     http_method = "GET",
     http_path = "/domainnames/{domain_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_domain_name_input(domainName = domainName)
   output <- .apigateway$get_domain_name_output()
@@ -3705,8 +3650,7 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/domainnames",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_domain_names_input(position = position, limit = limit)
   output <- .apigateway$get_domain_names_output()
@@ -3778,8 +3722,7 @@ apigateway_get_export <- function(restApiId, stageName, exportType, parameters =
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/stages/{stage_name}/exports/{export_type}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_export_input(restApiId = restApiId, stageName = stageName, exportType = exportType, parameters = parameters, accepts = accepts)
   output <- .apigateway$get_export_output()
@@ -3838,8 +3781,7 @@ apigateway_get_gateway_response <- function(restApiId, responseType) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/gatewayresponses/{response_type}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_gateway_response_input(restApiId = restApiId, responseType = responseType)
   output <- .apigateway$get_gateway_response_output()
@@ -3911,8 +3853,7 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/gatewayresponses",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_gateway_responses_input(restApiId = restApiId, position = position, limit = limit)
   output <- .apigateway$get_gateway_responses_output()
@@ -3998,8 +3939,7 @@ apigateway_get_integration <- function(restApiId, resourceId, httpMethod) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod)
   output <- .apigateway$get_integration_output()
@@ -4062,8 +4002,7 @@ apigateway_get_integration_response <- function(restApiId, resourceId, httpMetho
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_integration_response_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, statusCode = statusCode)
   output <- .apigateway$get_integration_response_output()
@@ -4177,8 +4116,7 @@ apigateway_get_method <- function(restApiId, resourceId, httpMethod) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_method_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod)
   output <- .apigateway$get_method_output()
@@ -4239,8 +4177,7 @@ apigateway_get_method_response <- function(restApiId, resourceId, httpMethod, st
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_method_response_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, statusCode = statusCode)
   output <- .apigateway$get_method_response_output()
@@ -4298,8 +4235,7 @@ apigateway_get_model <- function(restApiId, modelName, flatten = NULL) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/models/{model_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_model_input(restApiId = restApiId, modelName = modelName, flatten = flatten)
   output <- .apigateway$get_model_output()
@@ -4351,8 +4287,7 @@ apigateway_get_model_template <- function(restApiId, modelName) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/models/{model_name}/default_template",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_model_template_input(restApiId = restApiId, modelName = modelName)
   output <- .apigateway$get_model_template_output()
@@ -4414,8 +4349,7 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/models",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_models_input(restApiId = restApiId, position = position, limit = limit)
   output <- .apigateway$get_models_output()
@@ -4468,8 +4402,7 @@ apigateway_get_request_validator <- function(restApiId, requestValidatorId) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_request_validator_input(restApiId = restApiId, requestValidatorId = requestValidatorId)
   output <- .apigateway$get_request_validator_output()
@@ -4530,8 +4463,7 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/requestvalidators",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_request_validators_input(restApiId = restApiId, position = position, limit = limit)
   output <- .apigateway$get_request_validators_output()
@@ -4661,8 +4593,7 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_resource_input(restApiId = restApiId, resourceId = resourceId, embed = embed)
   output <- .apigateway$get_resource_output()
@@ -4800,8 +4731,7 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/resources",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_resources_input(restApiId = restApiId, position = position, limit = limit, embed = embed)
   output <- .apigateway$get_resources_output()
@@ -4877,8 +4807,7 @@ apigateway_get_rest_api <- function(restApiId) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_rest_api_input(restApiId = restApiId)
   output <- .apigateway$get_rest_api_output()
@@ -4962,8 +4891,7 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/restapis",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_rest_apis_input(position = position, limit = limit)
   output <- .apigateway$get_rest_apis_output()
@@ -5028,8 +4956,7 @@ apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL)
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/stages/{stage_name}/sdks/{sdk_type}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_sdk_input(restApiId = restApiId, stageName = stageName, sdkType = sdkType, parameters = parameters)
   output <- .apigateway$get_sdk_output()
@@ -5088,8 +5015,7 @@ apigateway_get_sdk_type <- function(id) {
     http_method = "GET",
     http_path = "/sdktypes/{sdktype_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_sdk_type_input(id = id)
   output <- .apigateway$get_sdk_type_output()
@@ -5156,8 +5082,7 @@ apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/sdktypes",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_sdk_types_input(position = position, limit = limit)
   output <- .apigateway$get_sdk_types_output()
@@ -5254,8 +5179,7 @@ apigateway_get_stage <- function(restApiId, stageName) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/stages/{stage_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_stage_input(restApiId = restApiId, stageName = stageName)
   output <- .apigateway$get_stage_output()
@@ -5356,8 +5280,7 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
     http_method = "GET",
     http_path = "/restapis/{restapi_id}/stages",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_stages_input(restApiId = restApiId, deploymentId = deploymentId)
   output <- .apigateway$get_stages_output()
@@ -5413,8 +5336,7 @@ apigateway_get_tags <- function(resourceArn, position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/tags/{resource_arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_tags_input(resourceArn = resourceArn, position = position, limit = limit)
   output <- .apigateway$get_tags_output()
@@ -5484,8 +5406,7 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
     http_method = "GET",
     http_path = "/usageplans/{usageplanId}/usage",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", non_aggregate_keys = list( "usagePlanId", "startDate", "endDate"), output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", non_aggregate_keys = list( "usagePlanId", "startDate", "endDate"), output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_usage_input(usagePlanId = usagePlanId, keyId = keyId, startDate = startDate, endDate = endDate, position = position, limit = limit)
   output <- .apigateway$get_usage_output()
@@ -5560,8 +5481,7 @@ apigateway_get_usage_plan <- function(usagePlanId) {
     http_method = "GET",
     http_path = "/usageplans/{usageplanId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_usage_plan_input(usagePlanId = usagePlanId)
   output <- .apigateway$get_usage_plan_output()
@@ -5616,8 +5536,7 @@ apigateway_get_usage_plan_key <- function(usagePlanId, keyId) {
     http_method = "GET",
     http_path = "/usageplans/{usageplanId}/keys/{keyId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_usage_plan_key_input(usagePlanId = usagePlanId, keyId = keyId)
   output <- .apigateway$get_usage_plan_key_output()
@@ -5684,8 +5603,7 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
     http_method = "GET",
     http_path = "/usageplans/{usageplanId}/keys",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_usage_plan_keys_input(usagePlanId = usagePlanId, position = position, limit = limit, nameQuery = nameQuery)
   output <- .apigateway$get_usage_plan_keys_output()
@@ -5770,8 +5688,7 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
     http_method = "GET",
     http_path = "/usageplans",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_usage_plans_input(position = position, keyId = keyId, limit = limit)
   output <- .apigateway$get_usage_plans_output()
@@ -5830,8 +5747,7 @@ apigateway_get_vpc_link <- function(vpcLinkId) {
     http_method = "GET",
     http_path = "/vpclinks/{vpclink_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$get_vpc_link_input(vpcLinkId = vpcLinkId)
   output <- .apigateway$get_vpc_link_output()
@@ -5899,8 +5815,7 @@ apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
     http_method = "GET",
     http_path = "/vpclinks",
     host_prefix = "",
-    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items"),
-    stream_api = FALSE
+    paginator = list(input_token = "position", limit_key = "limit", output_token = "position", result_key = "items")
   )
   input <- .apigateway$get_vpc_links_input(position = position, limit = limit)
   output <- .apigateway$get_vpc_links_output()
@@ -5960,8 +5875,7 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
     http_method = "POST",
     http_path = "/apikeys?mode=import",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$import_api_keys_input(body = body, format = format, failOnWarnings = failOnWarnings)
   output <- .apigateway$import_api_keys_output()
@@ -6026,8 +5940,7 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
     http_method = "PUT",
     http_path = "/restapis/{restapi_id}/documentation/parts",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$import_documentation_parts_input(restApiId = restApiId, mode = mode, failOnWarnings = failOnWarnings, body = body)
   output <- .apigateway$import_documentation_parts_output()
@@ -6129,8 +6042,7 @@ apigateway_import_rest_api <- function(failOnWarnings = NULL, parameters = NULL,
     http_method = "POST",
     http_path = "/restapis?mode=import",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$import_rest_api_input(failOnWarnings = failOnWarnings, parameters = parameters, body = body)
   output <- .apigateway$import_rest_api_output()
@@ -6203,8 +6115,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
     http_method = "PUT",
     http_path = "/restapis/{restapi_id}/gatewayresponses/{response_type}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$put_gateway_response_input(restApiId = restApiId, responseType = responseType, statusCode = statusCode, responseParameters = responseParameters, responseTemplates = responseTemplates)
   output <- .apigateway$put_gateway_response_output()
@@ -6240,19 +6151,20 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 #' private integration, where `connectionType` is `VPC_LINK`. For a private
 #' HTTP integration, the URI is not used for routing. For `AWS` or
 #' `AWS_PROXY` integrations, the URI is of the form
-#' `arn:aws:apigateway:\{region\}:\{subdomain.service|service\}:path|action/\{service_api`\\.
-#' Here, \\Region\\ is the API Gateway region (e.g., us-east-1);
-#' \\service\\ is the name of the integrated Amazon Web Services service
-#' (e.g., s3); and \\subdomain\\ is a designated subdomain supported by
+#' `arn:aws:apigateway:\{region\}:\{subdomain.service|service\}:path|action/\{service_api`\}.
+#' Here, \{Region\} is the API Gateway region (e.g., us-east-1);
+#' \{service\} is the name of the integrated Amazon Web Services service
+#' (e.g., s3); and \{subdomain\} is a designated subdomain supported by
 #' certain Amazon Web Services service for fast host-name lookup. action
 #' can be used for an Amazon Web Services service action-based API, using
-#' an Action=\\name\\&\\p1\\=\\v1\\&p2=\\v2\\... query string. The ensuing
-#' \\service_api\\ refers to a supported action \\name\\ plus any required
-#' input parameters. Alternatively, path can be used for an Amazon Web
-#' Services service path-based API. The ensuing service_api refers to the
-#' path to an Amazon Web Services service resource, including the region of
-#' the integrated Amazon Web Services service, if applicable. For example,
-#' for integration with the S3 API of `GetObject`, the `uri` can be either
+#' an Action=\{name\}&\{p1\}=\{v1\}&p2=\{v2\}... query string. The
+#' ensuing \{service_api\} refers to a supported action \{name\} plus
+#' any required input parameters. Alternatively, path can be used for an
+#' Amazon Web Services service path-based API. The ensuing service_api
+#' refers to the path to an Amazon Web Services service resource, including
+#' the region of the integrated Amazon Web Services service, if applicable.
+#' For example, for integration with the S3 API of `GetObject`, the `uri`
+#' can be either
 #' `arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}`
 #' or `arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}`.
 #' @param connectionType The type of the network connection to the integration endpoint. The
@@ -6382,8 +6294,7 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
     http_method = "PUT",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$put_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, type = type, integrationHttpMethod = integrationHttpMethod, uri = uri, connectionType = connectionType, connectionId = connectionId, credentials = credentials, requestParameters = requestParameters, requestTemplates = requestTemplates, passthroughBehavior = passthroughBehavior, cacheNamespace = cacheNamespace, cacheKeyParameters = cacheKeyParameters, contentHandling = contentHandling, timeoutInMillis = timeoutInMillis, tlsConfig = tlsConfig)
   output <- .apigateway$put_integration_output()
@@ -6476,8 +6387,7 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
     http_method = "PUT",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$put_integration_response_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, statusCode = statusCode, selectionPattern = selectionPattern, responseParameters = responseParameters, responseTemplates = responseTemplates, contentHandling = contentHandling)
   output <- .apigateway$put_integration_response_output()
@@ -6640,8 +6550,7 @@ apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizati
     http_method = "PUT",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$put_method_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, authorizationType = authorizationType, authorizerId = authorizerId, apiKeyRequired = apiKeyRequired, operationName = operationName, requestParameters = requestParameters, requestModels = requestModels, requestValidatorId = requestValidatorId, authorizationScopes = authorizationScopes)
   output <- .apigateway$put_method_output()
@@ -6724,8 +6633,7 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
     http_method = "PUT",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$put_method_response_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, statusCode = statusCode, responseParameters = responseParameters, responseModels = responseModels)
   output <- .apigateway$put_method_response_output()
@@ -6824,8 +6732,7 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
     http_method = "PUT",
     http_path = "/restapis/{restapi_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$put_rest_api_input(restApiId = restApiId, mode = mode, failOnWarnings = failOnWarnings, parameters = parameters, body = body)
   output <- .apigateway$put_rest_api_output()
@@ -6874,8 +6781,7 @@ apigateway_tag_resource <- function(resourceArn, tags) {
     http_method = "PUT",
     http_path = "/tags/{resource_arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$tag_resource_input(resourceArn = resourceArn, tags = tags)
   output <- .apigateway$tag_resource_output()
@@ -6970,8 +6876,7 @@ apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers =
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/authorizers/{authorizer_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$test_invoke_authorizer_input(restApiId = restApiId, authorizerId = authorizerId, headers = headers, multiValueHeaders = multiValueHeaders, pathWithQueryString = pathWithQueryString, body = body, stageVariables = stageVariables, additionalContext = additionalContext)
   output <- .apigateway$test_invoke_authorizer_output()
@@ -7064,8 +6969,7 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
     http_method = "POST",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$test_invoke_method_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, pathWithQueryString = pathWithQueryString, body = body, headers = headers, multiValueHeaders = multiValueHeaders, clientCertificateId = clientCertificateId, stageVariables = stageVariables)
   output <- .apigateway$test_invoke_method_output()
@@ -7112,8 +7016,7 @@ apigateway_untag_resource <- function(resourceArn, tagKeys) {
     http_method = "DELETE",
     http_path = "/tags/{resource_arn}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$untag_resource_input(resourceArn = resourceArn, tagKeys = tagKeys)
   output <- .apigateway$untag_resource_output()
@@ -7177,8 +7080,7 @@ apigateway_update_account <- function(patchOperations = NULL) {
     http_method = "PATCH",
     http_path = "/account",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_account_input(patchOperations = patchOperations)
   output <- .apigateway$update_account_output()
@@ -7253,8 +7155,7 @@ apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
     http_method = "PATCH",
     http_path = "/apikeys/{api_Key}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_api_key_input(apiKey = apiKey, patchOperations = patchOperations)
   output <- .apigateway$update_api_key_output()
@@ -7325,8 +7226,7 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/authorizers/{authorizer_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_authorizer_input(restApiId = restApiId, authorizerId = authorizerId, patchOperations = patchOperations)
   output <- .apigateway$update_authorizer_output()
@@ -7391,8 +7291,7 @@ apigateway_update_base_path_mapping <- function(domainName, basePath, patchOpera
     http_method = "PATCH",
     http_path = "/domainnames/{domain_name}/basepathmappings/{base_path}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_base_path_mapping_input(domainName = domainName, basePath = basePath, patchOperations = patchOperations)
   output <- .apigateway$update_base_path_mapping_output()
@@ -7462,8 +7361,7 @@ apigateway_update_client_certificate <- function(clientCertificateId, patchOpera
     http_method = "PATCH",
     http_path = "/clientcertificates/{clientcertificate_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_client_certificate_input(clientCertificateId = clientCertificateId, patchOperations = patchOperations)
   output <- .apigateway$update_client_certificate_output()
@@ -7536,8 +7434,7 @@ apigateway_update_deployment <- function(restApiId, deploymentId, patchOperation
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/deployments/{deployment_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_deployment_input(restApiId = restApiId, deploymentId = deploymentId, patchOperations = patchOperations)
   output <- .apigateway$update_deployment_output()
@@ -7606,8 +7503,7 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/documentation/parts/{part_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_documentation_part_input(restApiId = restApiId, documentationPartId = documentationPartId, patchOperations = patchOperations)
   output <- .apigateway$update_documentation_part_output()
@@ -7672,8 +7568,7 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/documentation/versions/{doc_version}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_documentation_version_input(restApiId = restApiId, documentationVersion = documentationVersion, patchOperations = patchOperations)
   output <- .apigateway$update_documentation_version_output()
@@ -7764,8 +7659,7 @@ apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
     http_method = "PATCH",
     http_path = "/domainnames/{domain_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_domain_name_input(domainName = domainName, patchOperations = patchOperations)
   output <- .apigateway$update_domain_name_output()
@@ -7836,8 +7730,7 @@ apigateway_update_gateway_response <- function(restApiId, responseType, patchOpe
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/gatewayresponses/{response_type}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_gateway_response_input(restApiId = restApiId, responseType = responseType, patchOperations = patchOperations)
   output <- .apigateway$update_gateway_response_output()
@@ -7934,8 +7827,7 @@ apigateway_update_integration <- function(restApiId, resourceId, httpMethod, pat
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_integration_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, patchOperations = patchOperations)
   output <- .apigateway$update_integration_output()
@@ -8008,8 +7900,7 @@ apigateway_update_integration_response <- function(restApiId, resourceId, httpMe
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/integration/responses/{status_code}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_integration_response_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, statusCode = statusCode, patchOperations = patchOperations)
   output <- .apigateway$update_integration_response_output()
@@ -8134,8 +8025,7 @@ apigateway_update_method <- function(restApiId, resourceId, httpMethod, patchOpe
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_method_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, patchOperations = patchOperations)
   output <- .apigateway$update_method_output()
@@ -8206,8 +8096,7 @@ apigateway_update_method_response <- function(restApiId, resourceId, httpMethod,
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}/methods/{http_method}/responses/{status_code}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_method_response_input(restApiId = restApiId, resourceId = resourceId, httpMethod = httpMethod, statusCode = statusCode, patchOperations = patchOperations)
   output <- .apigateway$update_method_response_output()
@@ -8272,8 +8161,7 @@ apigateway_update_model <- function(restApiId, modelName, patchOperations = NULL
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/models/{model_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_model_input(restApiId = restApiId, modelName = modelName, patchOperations = patchOperations)
   output <- .apigateway$update_model_output()
@@ -8337,8 +8225,7 @@ apigateway_update_request_validator <- function(restApiId, requestValidatorId, p
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/requestvalidators/{requestvalidator_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_request_validator_input(restApiId = restApiId, requestValidatorId = requestValidatorId, patchOperations = patchOperations)
   output <- .apigateway$update_request_validator_output()
@@ -8468,8 +8355,7 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/resources/{resource_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_resource_input(restApiId = restApiId, resourceId = resourceId, patchOperations = patchOperations)
   output <- .apigateway$update_resource_output()
@@ -8555,8 +8441,7 @@ apigateway_update_rest_api <- function(restApiId, patchOperations = NULL) {
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_rest_api_input(restApiId = restApiId, patchOperations = patchOperations)
   output <- .apigateway$update_rest_api_output()
@@ -8663,8 +8548,7 @@ apigateway_update_stage <- function(restApiId, stageName, patchOperations = NULL
     http_method = "PATCH",
     http_path = "/restapis/{restapi_id}/stages/{stage_name}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_stage_input(restApiId = restApiId, stageName = stageName, patchOperations = patchOperations)
   output <- .apigateway$update_stage_output()
@@ -8737,8 +8621,7 @@ apigateway_update_usage <- function(usagePlanId, keyId, patchOperations = NULL) 
     http_method = "PATCH",
     http_path = "/usageplans/{usageplanId}/keys/{keyId}/usage",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_usage_input(usagePlanId = usagePlanId, keyId = keyId, patchOperations = patchOperations)
   output <- .apigateway$update_usage_output()
@@ -8823,8 +8706,7 @@ apigateway_update_usage_plan <- function(usagePlanId, patchOperations = NULL) {
     http_method = "PATCH",
     http_path = "/usageplans/{usageplanId}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_usage_plan_input(usagePlanId = usagePlanId, patchOperations = patchOperations)
   output <- .apigateway$update_usage_plan_output()
@@ -8893,8 +8775,7 @@ apigateway_update_vpc_link <- function(vpcLinkId, patchOperations = NULL) {
     http_method = "PATCH",
     http_path = "/vpclinks/{vpclink_id}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .apigateway$update_vpc_link_input(vpcLinkId = vpcLinkId, patchOperations = patchOperations)
   output <- .apigateway$update_vpc_link_output()

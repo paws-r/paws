@@ -48,8 +48,8 @@ same effect as making a single request.
 \itemize{
 \item If CreateScheduledQuery is called without a \code{ClientToken}, the Query
 SDK generates a \code{ClientToken} on your behalf.
-\item After 8 hours, any request with the same \code{ClientToken} is treated as a
-new request.
+\item After 8 hours, any request with the same \code{ClientToken} is treated as
+a new request.
 }}
 
 \item{ScheduledQueryExecutionRoleArn}{[required] The ARN for the IAM role that Timestream will assume when running the

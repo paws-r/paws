@@ -30,12 +30,12 @@ reduces the risk that the KMS key becomes unmanageable. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-policy-default.html#prevent-unmanageable-key}{Default key policy}
 in the \emph{Key Management Service Developer Guide}. (To omit this
 condition, set \code{BypassPolicyLockoutSafetyCheck} to true.)
-\item Each statement in the key policy must contain one or more principals.
-The principals in the key policy must exist and be visible to KMS.
-When you create a new Amazon Web Services principal, you might need to
-enforce a delay before including the new principal in a key policy
-because the new principal might not be immediately visible to KMS. For
-more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
+\item Each statement in the key policy must contain one or more
+principals. The principals in the key policy must exist and be
+visible to KMS. When you create a new Amazon Web Services principal,
+you might need to enforce a delay before including the new principal
+in a key policy because the new principal might not be immediately
+visible to KMS. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/troubleshoot.html#troubleshoot_general_eventual-consistency}{Changes that I make are not always immediately visible}
 in the \emph{Amazon Web Services Identity and Access Management User
 Guide}.
 }
@@ -70,8 +70,8 @@ Select only one valid value.
 \item For symmetric encryption KMS keys, omit the parameter or specify
 \code{ENCRYPT_DECRYPT}.
 \item For HMAC KMS keys (symmetric), specify \code{GENERATE_VERIFY_MAC}.
-\item For asymmetric KMS keys with RSA key pairs, specify \code{ENCRYPT_DECRYPT}
-or \code{SIGN_VERIFY}.
+\item For asymmetric KMS keys with RSA key pairs, specify
+\code{ENCRYPT_DECRYPT} or \code{SIGN_VERIFY}.
 \item For asymmetric KMS keys with NIST-recommended elliptic curve key
 pairs, specify \code{SIGN_VERIFY} or \code{KEY_AGREEMENT}.
 \item For asymmetric KMS keys with \code{ECC_SECG_P256K1} key pairs specify
@@ -91,7 +91,7 @@ parameters.}
 \code{SYMMETRIC_DEFAULT}, creates a KMS key with a 256-bit AES-GCM key that
 is used for encryption and decryption, except in China Regions, where it
 creates a 128-bit symmetric key that uses SM4 encryption. For help
-choosing a key spec for your KMS key, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symm-asymm-choose}{Choosing a KMS key type}
+choosing a key spec for your KMS key, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-types.html#symm-asymm-choose}{Choosing a KMS key type}
 in the \emph{Key Management Service Developer Guide} .
 
 The \code{KeySpec} determines whether the KMS key contains a symmetric key or
@@ -138,10 +138,11 @@ verification -or- deriving shared secrets)
 }
 \item Other asymmetric elliptic curve key pairs (signing and verification)
 \itemize{
-\item \code{ECC_SECG_P256K1} (secp256k1), commonly used for cryptocurrencies.
+\item \code{ECC_SECG_P256K1} (secp256k1), commonly used for
+cryptocurrencies.
 }
-\item SM2 key pairs (encryption and decryption -or- signing and verification
--or- deriving shared secrets)
+\item SM2 key pairs (encryption and decryption -or- signing and
+verification -or- deriving shared secrets)
 \itemize{
 \item \code{SM2} (China Regions only)
 }
@@ -169,9 +170,9 @@ set this value to \code{EXTERNAL_KEY_STORE}. You must also use the
 \code{XksKeyId} parameter to identify the associated external key. The
 \code{KeySpec} value must be \code{SYMMETRIC_DEFAULT}.}
 
-\item{CustomKeyStoreId}{Creates the KMS key in the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/}{custom key store}. The
-\code{ConnectionState} of the custom key store must be \code{CONNECTED}. To find
-the CustomKeyStoreID and ConnectionState use the
+\item{CustomKeyStoreId}{Creates the KMS key in the specified \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
+The \code{ConnectionState} of the custom key store must be \code{CONNECTED}. To
+find the CustomKeyStoreID and ConnectionState use the
 \code{\link[=kms_describe_custom_key_stores]{describe_custom_key_stores}}
 operation.
 

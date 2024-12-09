@@ -42,8 +42,8 @@ paginate through the full list of items.}
 escaped using the backslash (\verb{\\}) character. For example,
 \verb{"family_name = \\"Reddy\\""}.
 \itemize{
-\item \emph{AttributeName}: The name of the attribute to search for. You can only
-search for one attribute at a time.
+\item \emph{AttributeName}: The name of the attribute to search for. You can
+only search for one attribute at a time.
 \item \emph{Filter-Type}: For an exact match, use \code{=}, for example,
 "\verb{given_name = \\"Jon\\"}". For a prefix ("starts with") match, use
 \verb{^=}, for example, "\verb{given_name ^= \\"Jon\\"}".

@@ -48,7 +48,8 @@ following options:
 \itemize{
 \item Brevity: not supported.
 \item Formality: sets the formality level of the output text.
-\item Profanity: masks profane words and phrases in your translation output.
+\item Profanity: masks profane words and phrases in your translation
+output.
 }}
 }
 \description{

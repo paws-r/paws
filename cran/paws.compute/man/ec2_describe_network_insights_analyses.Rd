@@ -27,8 +27,8 @@ analysis IDs or a path ID.}
 
 \item{Filters}{The filters. The following are the possible values:
 \itemize{
-\item path-found - A Boolean value that indicates whether a feasible path is
-found.
+\item path-found - A Boolean value that indicates whether a feasible path
+is found.
 \item status - The status of the analysis (running | succeeded | failed).
 }}
 

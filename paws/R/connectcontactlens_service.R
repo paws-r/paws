@@ -5,11 +5,11 @@ NULL
 #' Amazon Connect Contact Lens
 #'
 #' @description
-#' - [Contact Lens
-#'   actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Contact_Lens.html)
+#' -   [Contact Lens
+#'     actions](https://docs.aws.amazon.com/connect/latest/APIReference/API_Operations_Amazon_Connect_Contact_Lens.html)
 #' 
-#' - [Contact Lens data
-#'   types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Contact_Lens.html)
+#' -   [Contact Lens data
+#'     types](https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Contact_Lens.html)
 #' 
 #' Amazon Connect Contact Lens enables you to analyze conversations between
 #' customer and agents, by using speech transcription, natural language

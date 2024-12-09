@@ -45,21 +45,21 @@ NULL
 #' 
 #' The following requirements apply to revocation configurations.
 #' 
-#' - A configuration disabling CRLs or OCSP must contain only the
-#'   `Enabled=False` parameter, and will fail if other parameters such as
-#'   `CustomCname` or `ExpirationInDays` are included.
+#' -   A configuration disabling CRLs or OCSP must contain only the
+#'     `Enabled=False` parameter, and will fail if other parameters such as
+#'     `CustomCname` or `ExpirationInDays` are included.
 #' 
-#' - In a CRL configuration, the `S3BucketName` parameter must conform to
-#'   [Amazon S3 bucket naming
-#'   rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
+#' -   In a CRL configuration, the `S3BucketName` parameter must conform to
+#'     [Amazon S3 bucket naming
+#'     rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' 
-#' - A configuration containing a custom Canonical Name (CNAME) parameter
-#'   for CRLs or OCSP must conform to
-#'   [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the
-#'   use of special characters in a CNAME.
+#' -   A configuration containing a custom Canonical Name (CNAME) parameter
+#'     for CRLs or OCSP must conform to
+#'     [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the
+#'     use of special characters in a CNAME.
 #' 
-#' - In a CRL or OCSP configuration, the value of a CNAME parameter must
-#'   not include a protocol prefix such as "http://" or "https://".
+#' -   In a CRL or OCSP configuration, the value of a CNAME parameter must
+#'     not include a protocol prefix such as "http://" or "https://".
 #' 
 #' For more information, see the
 #' [OcspConfiguration](https://docs.aws.amazon.com/privateca/latest/APIReference/API_OcspConfiguration.html)
@@ -238,8 +238,7 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$create_certificate_authority_input(CertificateAuthorityConfiguration = CertificateAuthorityConfiguration, RevocationConfiguration = RevocationConfiguration, CertificateAuthorityType = CertificateAuthorityType, IdempotencyToken = IdempotencyToken, KeyStorageSecurityStandard = KeyStorageSecurityStandard, Tags = Tags, UsageMode = UsageMode)
   output <- .acmpca$create_certificate_authority_output()
@@ -316,8 +315,7 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$create_certificate_authority_audit_report_input(CertificateAuthorityArn = CertificateAuthorityArn, S3BucketName = S3BucketName, AuditReportResponseFormat = AuditReportResponseFormat)
   output <- .acmpca$create_certificate_authority_audit_report_output()
@@ -344,22 +342,22 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' 
 #' **About Permissions**
 #' 
-#' - If the private CA and the certificates it issues reside in the same
-#'   account, you can use [`create_permission`][acmpca_create_permission]
-#'   to grant permissions for ACM to carry out automatic certificate
-#'   renewals.
+#' -   If the private CA and the certificates it issues reside in the same
+#'     account, you can use [`create_permission`][acmpca_create_permission]
+#'     to grant permissions for ACM to carry out automatic certificate
+#'     renewals.
 #' 
-#' - For automatic certificate renewal to succeed, the ACM service
-#'   principal needs permissions to create, retrieve, and list
-#'   certificates.
+#' -   For automatic certificate renewal to succeed, the ACM service
+#'     principal needs permissions to create, retrieve, and list
+#'     certificates.
 #' 
-#' - If the private CA and the ACM certificates reside in different
-#'   accounts, then permissions cannot be used to enable automatic
-#'   renewals. Instead, the ACM certificate owner must set up a
-#'   resource-based policy to enable cross-account issuance and renewals.
-#'   For more information, see [Using a Resource Based Policy with Amazon
-#'   Web Services Private
-#'   CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
+#' -   If the private CA and the ACM certificates reside in different
+#'     accounts, then permissions cannot be used to enable automatic
+#'     renewals. Instead, the ACM certificate owner must set up a
+#'     resource-based policy to enable cross-account issuance and renewals.
+#'     For more information, see [Using a Resource Based Policy with Amazon
+#'     Web Services Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #'
 #' @usage
 #' acmpca_create_permission(CertificateAuthorityArn, Principal,
@@ -406,8 +404,7 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$create_permission_input(CertificateAuthorityArn = CertificateAuthorityArn, Principal = Principal, SourceAccount = SourceAccount, Actions = Actions)
   output <- .acmpca$create_permission_output()
@@ -490,8 +487,7 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$delete_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, PermanentDeletionTimeInDays = PermanentDeletionTimeInDays)
   output <- .acmpca$delete_certificate_authority_output()
@@ -521,22 +517,22 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #' 
 #' **About Permissions**
 #' 
-#' - If the private CA and the certificates it issues reside in the same
-#'   account, you can use [`create_permission`][acmpca_create_permission]
-#'   to grant permissions for ACM to carry out automatic certificate
-#'   renewals.
+#' -   If the private CA and the certificates it issues reside in the same
+#'     account, you can use [`create_permission`][acmpca_create_permission]
+#'     to grant permissions for ACM to carry out automatic certificate
+#'     renewals.
 #' 
-#' - For automatic certificate renewal to succeed, the ACM service
-#'   principal needs permissions to create, retrieve, and list
-#'   certificates.
+#' -   For automatic certificate renewal to succeed, the ACM service
+#'     principal needs permissions to create, retrieve, and list
+#'     certificates.
 #' 
-#' - If the private CA and the ACM certificates reside in different
-#'   accounts, then permissions cannot be used to enable automatic
-#'   renewals. Instead, the ACM certificate owner must set up a
-#'   resource-based policy to enable cross-account issuance and renewals.
-#'   For more information, see [Using a Resource Based Policy with Amazon
-#'   Web Services Private
-#'   CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
+#' -   If the private CA and the ACM certificates reside in different
+#'     accounts, then permissions cannot be used to enable automatic
+#'     renewals. Instead, the ACM certificate owner must set up a
+#'     resource-based policy to enable cross-account issuance and renewals.
+#'     For more information, see [Using a Resource Based Policy with Amazon
+#'     Web Services Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #'
 #' @usage
 #' acmpca_delete_permission(CertificateAuthorityArn, Principal,
@@ -576,8 +572,7 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$delete_permission_input(CertificateAuthorityArn = CertificateAuthorityArn, Principal = Principal, SourceAccount = SourceAccount)
   output <- .acmpca$delete_permission_output()
@@ -608,27 +603,27 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' 
 #' **About Policies**
 #' 
-#' - A policy grants access on a private CA to an Amazon Web Services
-#'   customer account, to Amazon Web Services Organizations, or to an
-#'   Amazon Web Services Organizations unit. Policies are under the control
-#'   of a CA administrator. For more information, see [Using a Resource
-#'   Based Policy with Amazon Web Services Private
-#'   CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
+#' -   A policy grants access on a private CA to an Amazon Web Services
+#'     customer account, to Amazon Web Services Organizations, or to an
+#'     Amazon Web Services Organizations unit. Policies are under the
+#'     control of a CA administrator. For more information, see [Using a
+#'     Resource Based Policy with Amazon Web Services Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #' 
-#' - A policy permits a user of Certificate Manager (ACM) to issue ACM
-#'   certificates signed by a CA in another account.
+#' -   A policy permits a user of Certificate Manager (ACM) to issue ACM
+#'     certificates signed by a CA in another account.
 #' 
-#' - For ACM to manage automatic renewal of these certificates, the ACM
-#'   user must configure a Service Linked Role (SLR). The SLR allows the
-#'   ACM service to assume the identity of the user, subject to
-#'   confirmation against the Amazon Web Services Private CA policy. For
-#'   more information, see [Using a Service Linked Role with
-#'   ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
+#' -   For ACM to manage automatic renewal of these certificates, the ACM
+#'     user must configure a Service Linked Role (SLR). The SLR allows the
+#'     ACM service to assume the identity of the user, subject to
+#'     confirmation against the Amazon Web Services Private CA policy. For
+#'     more information, see [Using a Service Linked Role with
+#'     ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
 #' 
-#' - Updates made in Amazon Web Services Resource Manager (RAM) are
-#'   reflected in policies. For more information, see [Attach a Policy for
-#'   Cross-Account
-#'   Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
+#' -   Updates made in Amazon Web Services Resource Manager (RAM) are
+#'     reflected in policies. For more information, see [Attach a Policy
+#'     for Cross-Account
+#'     Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
 #'
 #' @usage
 #' acmpca_delete_policy(ResourceArn)
@@ -660,8 +655,7 @@ acmpca_delete_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$delete_policy_input(ResourceArn = ResourceArn)
   output <- .acmpca$delete_policy_output()
@@ -682,28 +676,28 @@ acmpca_delete_policy <- function(ResourceArn) {
 #' its ARN (Amazon Resource Name). The output contains the status of your
 #' CA. This can be any of the following:
 #' 
-#' - `CREATING` - Amazon Web Services Private CA is creating your private
-#'   certificate authority.
+#' -   `CREATING` - Amazon Web Services Private CA is creating your private
+#'     certificate authority.
 #' 
-#' - `PENDING_CERTIFICATE` - The certificate is pending. You must use your
-#'   Amazon Web Services Private CA-hosted or on-premises root or
-#'   subordinate CA to sign your private CA CSR and then import it into
-#'   Amazon Web Services Private CA.
+#' -   `PENDING_CERTIFICATE` - The certificate is pending. You must use
+#'     your Amazon Web Services Private CA-hosted or on-premises root or
+#'     subordinate CA to sign your private CA CSR and then import it into
+#'     Amazon Web Services Private CA.
 #' 
-#' - `ACTIVE` - Your private CA is active.
+#' -   `ACTIVE` - Your private CA is active.
 #' 
-#' - `DISABLED` - Your private CA has been disabled.
+#' -   `DISABLED` - Your private CA has been disabled.
 #' 
-#' - `EXPIRED` - Your private CA certificate has expired.
+#' -   `EXPIRED` - Your private CA certificate has expired.
 #' 
-#' - `FAILED` - Your private CA has failed. Your CA can fail because of
-#'   problems such a network outage or back-end Amazon Web Services failure
-#'   or other errors. A failed CA can never return to the pending state.
-#'   You must create a new CA.
+#' -   `FAILED` - Your private CA has failed. Your CA can fail because of
+#'     problems such a network outage or back-end Amazon Web Services
+#'     failure or other errors. A failed CA can never return to the pending
+#'     state. You must create a new CA.
 #' 
-#' - `DELETED` - Your private CA is within the restoration period, after
-#'   which it is permanently deleted. The length of time remaining in the
-#'   CA's restoration period is also included in this action's output.
+#' -   `DELETED` - Your private CA is within the restoration period, after
+#'     which it is permanently deleted. The length of time remaining in the
+#'     CA's restoration period is also included in this action's output.
 #'
 #' @usage
 #' acmpca_describe_certificate_authority(CertificateAuthorityArn)
@@ -864,8 +858,7 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$describe_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$describe_certificate_authority_output()
@@ -932,8 +925,7 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$describe_certificate_authority_audit_report_input(CertificateAuthorityArn = CertificateAuthorityArn, AuditReportId = AuditReportId)
   output <- .acmpca$describe_certificate_authority_audit_report_output()
@@ -1000,8 +992,7 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$get_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, CertificateArn = CertificateArn)
   output <- .acmpca$get_certificate_output()
@@ -1057,8 +1048,7 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$get_certificate_authority_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$get_certificate_authority_certificate_output()
@@ -1118,8 +1108,7 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$get_certificate_authority_csr_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$get_certificate_authority_csr_output()
@@ -1144,27 +1133,27 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' 
 #' **About Policies**
 #' 
-#' - A policy grants access on a private CA to an Amazon Web Services
-#'   customer account, to Amazon Web Services Organizations, or to an
-#'   Amazon Web Services Organizations unit. Policies are under the control
-#'   of a CA administrator. For more information, see [Using a Resource
-#'   Based Policy with Amazon Web Services Private
-#'   CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
+#' -   A policy grants access on a private CA to an Amazon Web Services
+#'     customer account, to Amazon Web Services Organizations, or to an
+#'     Amazon Web Services Organizations unit. Policies are under the
+#'     control of a CA administrator. For more information, see [Using a
+#'     Resource Based Policy with Amazon Web Services Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #' 
-#' - A policy permits a user of Certificate Manager (ACM) to issue ACM
-#'   certificates signed by a CA in another account.
+#' -   A policy permits a user of Certificate Manager (ACM) to issue ACM
+#'     certificates signed by a CA in another account.
 #' 
-#' - For ACM to manage automatic renewal of these certificates, the ACM
-#'   user must configure a Service Linked Role (SLR). The SLR allows the
-#'   ACM service to assume the identity of the user, subject to
-#'   confirmation against the Amazon Web Services Private CA policy. For
-#'   more information, see [Using a Service Linked Role with
-#'   ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
+#' -   For ACM to manage automatic renewal of these certificates, the ACM
+#'     user must configure a Service Linked Role (SLR). The SLR allows the
+#'     ACM service to assume the identity of the user, subject to
+#'     confirmation against the Amazon Web Services Private CA policy. For
+#'     more information, see [Using a Service Linked Role with
+#'     ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
 #' 
-#' - Updates made in Amazon Web Services Resource Manager (RAM) are
-#'   reflected in policies. For more information, see [Attach a Policy for
-#'   Cross-Account
-#'   Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
+#' -   Updates made in Amazon Web Services Resource Manager (RAM) are
+#'     reflected in policies. For more information, see [Attach a Policy
+#'     for Cross-Account
+#'     Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
 #'
 #' @usage
 #' acmpca_get_policy(ResourceArn)
@@ -1201,8 +1190,7 @@ acmpca_get_policy <- function(ResourceArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$get_policy_input(ResourceArn = ResourceArn)
   output <- .acmpca$get_policy_output()
@@ -1241,79 +1229,79 @@ acmpca_get_policy <- function(ResourceArn) {
 #' Amazon Web Services Private CA supports three scenarios for installing a
 #' CA certificate:
 #' 
-#' - Installing a certificate for a root CA hosted by Amazon Web Services
-#'   Private CA.
+#' -   Installing a certificate for a root CA hosted by Amazon Web Services
+#'     Private CA.
 #' 
-#' - Installing a subordinate CA certificate whose parent authority is
-#'   hosted by Amazon Web Services Private CA.
+#' -   Installing a subordinate CA certificate whose parent authority is
+#'     hosted by Amazon Web Services Private CA.
 #' 
-#' - Installing a subordinate CA certificate whose parent authority is
-#'   externally hosted.
+#' -   Installing a subordinate CA certificate whose parent authority is
+#'     externally hosted.
 #' 
 #' The following additional requirements apply when you import a CA
 #' certificate.
 #' 
-#' - Only a self-signed certificate can be imported as a root CA.
+#' -   Only a self-signed certificate can be imported as a root CA.
 #' 
-#' - A self-signed certificate cannot be imported as a subordinate CA.
+#' -   A self-signed certificate cannot be imported as a subordinate CA.
 #' 
-#' - Your certificate chain must not include the private CA certificate
-#'   that you are importing.
+#' -   Your certificate chain must not include the private CA certificate
+#'     that you are importing.
 #' 
-#' - Your root CA must be the last certificate in your chain. The
-#'   subordinate certificate, if any, that your root CA signed must be next
-#'   to last. The subordinate certificate signed by the preceding
-#'   subordinate CA must come next, and so on until your chain is built.
+#' -   Your root CA must be the last certificate in your chain. The
+#'     subordinate certificate, if any, that your root CA signed must be
+#'     next to last. The subordinate certificate signed by the preceding
+#'     subordinate CA must come next, and so on until your chain is built.
 #' 
-#' - The chain must be PEM-encoded.
+#' -   The chain must be PEM-encoded.
 #' 
-#' - The maximum allowed size of a certificate is 32 KB.
+#' -   The maximum allowed size of a certificate is 32 KB.
 #' 
-#' - The maximum allowed size of a certificate chain is 2 MB.
+#' -   The maximum allowed size of a certificate chain is 2 MB.
 #' 
 #' *Enforcement of Critical Constraints*
 #' 
 #' Amazon Web Services Private CA allows the following extensions to be
 #' marked critical in the imported CA certificate or chain.
 #' 
-#' - Basic constraints (*must* be marked critical)
+#' -   Basic constraints (*must* be marked critical)
 #' 
-#' - Subject alternative names
+#' -   Subject alternative names
 #' 
-#' - Key usage
+#' -   Key usage
 #' 
-#' - Extended key usage
+#' -   Extended key usage
 #' 
-#' - Authority key identifier
+#' -   Authority key identifier
 #' 
-#' - Subject key identifier
+#' -   Subject key identifier
 #' 
-#' - Issuer alternative name
+#' -   Issuer alternative name
 #' 
-#' - Subject directory attributes
+#' -   Subject directory attributes
 #' 
-#' - Subject information access
+#' -   Subject information access
 #' 
-#' - Certificate policies
+#' -   Certificate policies
 #' 
-#' - Policy mappings
+#' -   Policy mappings
 #' 
-#' - Inhibit anyPolicy
+#' -   Inhibit anyPolicy
 #' 
 #' Amazon Web Services Private CA rejects the following extensions when
 #' they are marked critical in an imported CA certificate or chain.
 #' 
-#' - Name constraints
+#' -   Name constraints
 #' 
-#' - Policy constraints
+#' -   Policy constraints
 #' 
-#' - CRL distribution points
+#' -   CRL distribution points
 #' 
-#' - Authority information access
+#' -   Authority information access
 #' 
-#' - Freshest CRL
+#' -   Freshest CRL
 #' 
-#' - Any other extension
+#' -   Any other extension
 #'
 #' @usage
 #' acmpca_import_certificate_authority_certificate(CertificateAuthorityArn,
@@ -1359,8 +1347,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$import_certificate_authority_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, Certificate = Certificate, CertificateChain = CertificateChain)
   output <- .acmpca$import_certificate_authority_certificate_output()
@@ -1631,8 +1618,7 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$issue_certificate_input(ApiPassthrough = ApiPassthrough, CertificateAuthorityArn = CertificateAuthorityArn, Csr = Csr, SigningAlgorithm = SigningAlgorithm, TemplateArn = TemplateArn, Validity = Validity, ValidityNotBefore = ValidityNotBefore, IdempotencyToken = IdempotencyToken)
   output <- .acmpca$issue_certificate_output()
@@ -1825,8 +1811,7 @@ acmpca_list_certificate_authorities <- function(MaxResults = NULL, NextToken = N
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CertificateAuthorities"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CertificateAuthorities")
   )
   input <- .acmpca$list_certificate_authorities_input(MaxResults = MaxResults, NextToken = NextToken, ResourceOwner = ResourceOwner)
   output <- .acmpca$list_certificate_authorities_output()
@@ -1854,22 +1839,22 @@ acmpca_list_certificate_authorities <- function(MaxResults = NULL, NextToken = N
 #' 
 #' **About Permissions**
 #' 
-#' - If the private CA and the certificates it issues reside in the same
-#'   account, you can use [`create_permission`][acmpca_create_permission]
-#'   to grant permissions for ACM to carry out automatic certificate
-#'   renewals.
+#' -   If the private CA and the certificates it issues reside in the same
+#'     account, you can use [`create_permission`][acmpca_create_permission]
+#'     to grant permissions for ACM to carry out automatic certificate
+#'     renewals.
 #' 
-#' - For automatic certificate renewal to succeed, the ACM service
-#'   principal needs permissions to create, retrieve, and list
-#'   certificates.
+#' -   For automatic certificate renewal to succeed, the ACM service
+#'     principal needs permissions to create, retrieve, and list
+#'     certificates.
 #' 
-#' - If the private CA and the ACM certificates reside in different
-#'   accounts, then permissions cannot be used to enable automatic
-#'   renewals. Instead, the ACM certificate owner must set up a
-#'   resource-based policy to enable cross-account issuance and renewals.
-#'   For more information, see [Using a Resource Based Policy with Amazon
-#'   Web Services Private
-#'   CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
+#' -   If the private CA and the ACM certificates reside in different
+#'     accounts, then permissions cannot be used to enable automatic
+#'     renewals. Instead, the ACM certificate owner must set up a
+#'     resource-based policy to enable cross-account issuance and renewals.
+#'     For more information, see [Using a Resource Based Policy with Amazon
+#'     Web Services Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #'
 #' @usage
 #' acmpca_list_permissions(MaxResults, NextToken, CertificateAuthorityArn)
@@ -1933,8 +1918,7 @@ acmpca_list_permissions <- function(MaxResults = NULL, NextToken = NULL, Certifi
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Permissions"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Permissions")
   )
   input <- .acmpca$list_permissions_input(MaxResults = MaxResults, NextToken = NextToken, CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$list_permissions_output()
@@ -2010,8 +1994,7 @@ acmpca_list_tags <- function(MaxResults = NULL, NextToken = NULL, CertificateAut
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags"),
-    stream_api = FALSE
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
   input <- .acmpca$list_tags_input(MaxResults = MaxResults, NextToken = NextToken, CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$list_tags_output()
@@ -2038,27 +2021,27 @@ acmpca_list_tags <- function(MaxResults = NULL, NextToken = NULL, CertificateAut
 #' 
 #' **About Policies**
 #' 
-#' - A policy grants access on a private CA to an Amazon Web Services
-#'   customer account, to Amazon Web Services Organizations, or to an
-#'   Amazon Web Services Organizations unit. Policies are under the control
-#'   of a CA administrator. For more information, see [Using a Resource
-#'   Based Policy with Amazon Web Services Private
-#'   CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
+#' -   A policy grants access on a private CA to an Amazon Web Services
+#'     customer account, to Amazon Web Services Organizations, or to an
+#'     Amazon Web Services Organizations unit. Policies are under the
+#'     control of a CA administrator. For more information, see [Using a
+#'     Resource Based Policy with Amazon Web Services Private
+#'     CA](https://docs.aws.amazon.com/privateca/latest/userguide/pca-rbp.html).
 #' 
-#' - A policy permits a user of Certificate Manager (ACM) to issue ACM
-#'   certificates signed by a CA in another account.
+#' -   A policy permits a user of Certificate Manager (ACM) to issue ACM
+#'     certificates signed by a CA in another account.
 #' 
-#' - For ACM to manage automatic renewal of these certificates, the ACM
-#'   user must configure a Service Linked Role (SLR). The SLR allows the
-#'   ACM service to assume the identity of the user, subject to
-#'   confirmation against the Amazon Web Services Private CA policy. For
-#'   more information, see [Using a Service Linked Role with
-#'   ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
+#' -   For ACM to manage automatic renewal of these certificates, the ACM
+#'     user must configure a Service Linked Role (SLR). The SLR allows the
+#'     ACM service to assume the identity of the user, subject to
+#'     confirmation against the Amazon Web Services Private CA policy. For
+#'     more information, see [Using a Service Linked Role with
+#'     ACM](https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
 #' 
-#' - Updates made in Amazon Web Services Resource Manager (RAM) are
-#'   reflected in policies. For more information, see [Attach a Policy for
-#'   Cross-Account
-#'   Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
+#' -   Updates made in Amazon Web Services Resource Manager (RAM) are
+#'     reflected in policies. For more information, see [Attach a Policy
+#'     for Cross-Account
+#'     Access](https://docs.aws.amazon.com/privateca/latest/userguide/pca-ram.html).
 #'
 #' @usage
 #' acmpca_put_policy(ResourceArn, Policy)
@@ -2097,8 +2080,7 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$put_policy_input(ResourceArn = ResourceArn, Policy = Policy)
   output <- .acmpca$put_policy_output()
@@ -2165,8 +2147,7 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$restore_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn)
   output <- .acmpca$restore_certificate_authority_output()
@@ -2253,8 +2234,7 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$revoke_certificate_input(CertificateAuthorityArn = CertificateAuthorityArn, CertificateSerial = CertificateSerial, RevocationReason = RevocationReason)
   output <- .acmpca$revoke_certificate_output()
@@ -2325,8 +2305,7 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$tag_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags)
   output <- .acmpca$tag_certificate_authority_output()
@@ -2387,8 +2366,7 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$untag_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, Tags = Tags)
   output <- .acmpca$untag_certificate_authority_output()
@@ -2435,21 +2413,21 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' 
 #' The following requirements apply to revocation configurations.
 #' 
-#' - A configuration disabling CRLs or OCSP must contain only the
-#'   `Enabled=False` parameter, and will fail if other parameters such as
-#'   `CustomCname` or `ExpirationInDays` are included.
+#' -   A configuration disabling CRLs or OCSP must contain only the
+#'     `Enabled=False` parameter, and will fail if other parameters such as
+#'     `CustomCname` or `ExpirationInDays` are included.
 #' 
-#' - In a CRL configuration, the `S3BucketName` parameter must conform to
-#'   [Amazon S3 bucket naming
-#'   rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
+#' -   In a CRL configuration, the `S3BucketName` parameter must conform to
+#'     [Amazon S3 bucket naming
+#'     rules](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html).
 #' 
-#' - A configuration containing a custom Canonical Name (CNAME) parameter
-#'   for CRLs or OCSP must conform to
-#'   [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the
-#'   use of special characters in a CNAME.
+#' -   A configuration containing a custom Canonical Name (CNAME) parameter
+#'     for CRLs or OCSP must conform to
+#'     [RFC2396](https://www.ietf.org/rfc/rfc2396.txt) restrictions on the
+#'     use of special characters in a CNAME.
 #' 
-#' - In a CRL or OCSP configuration, the value of a CNAME parameter must
-#'   not include a protocol prefix such as "http://" or "https://".
+#' -   In a CRL or OCSP configuration, the value of a CNAME parameter must
+#'     not include a protocol prefix such as "http://" or "https://".
 #' @param Status Status of your private CA.
 #'
 #' @return
@@ -2490,8 +2468,7 @@ acmpca_update_certificate_authority <- function(CertificateAuthorityArn, Revocat
     http_method = "POST",
     http_path = "/",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .acmpca$update_certificate_authority_input(CertificateAuthorityArn = CertificateAuthorityArn, RevocationConfiguration = RevocationConfiguration, Status = Status)
   output <- .acmpca$update_certificate_authority_output()

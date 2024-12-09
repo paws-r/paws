@@ -24,9 +24,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item \code{service-id} - The ID of the service.
 \item \code{vpc-endpoint-owner} - The ID of the Amazon Web Services account ID
 that owns the endpoint.
-\item \code{vpc-endpoint-state} - The state of the endpoint (\code{pendingAcceptance}
-| \code{pending} | \code{available} | \code{deleting} | \code{deleted} | \code{rejected} |
-\code{failed}).
+\item \code{vpc-endpoint-state} - The state of the endpoint
+(\code{pendingAcceptance} | \code{pending} | \code{available} | \code{deleting} |
+\code{deleted} | \code{rejected} | \code{failed}).
 \item \code{vpc-endpoint-id} - The ID of the endpoint.
 }}
 

@@ -18,19 +18,19 @@ Each element in the map of items to retrieve consists of the following:
 \item \code{ConsistentRead} - If \code{true}, a strongly consistent read is used; if
 \code{false} (the default), an eventually consistent read is used.
 \item \code{ExpressionAttributeNames} - One or more substitution tokens for
-attribute names in the \code{ProjectionExpression} parameter. The following
-are some use cases for using \code{ExpressionAttributeNames}:
+attribute names in the \code{ProjectionExpression} parameter. The
+following are some use cases for using \code{ExpressionAttributeNames}:
 \itemize{
-\item To access an attribute whose name conflicts with a DynamoDB reserved
-word.
-\item To create a placeholder for repeating occurrences of an attribute
-name in an expression.
+\item To access an attribute whose name conflicts with a DynamoDB
+reserved word.
+\item To create a placeholder for repeating occurrences of an
+attribute name in an expression.
 \item To prevent special characters in an attribute name from being
 misinterpreted in an expression.
 }
 
-Use the \strong{#} character in an expression to dereference an attribute
-name. For example, consider the following attribute name:
+Use the \strong{#} character in an expression to dereference an
+attribute name. For example, consider the following attribute name:
 \itemize{
 \item \code{Percentile}
 }
@@ -53,21 +53,23 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information about expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Accessing Item Attributes}
+For more information about expression attribute names, see
+\href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.
-\item \code{Keys} - An array of primary key attribute values that define specific
-items in the table. For each primary key, you must provide \emph{all} of
-the key attributes. For example, with a simple primary key, you only
-need to provide the partition key value. For a composite key, you must
-provide \emph{both} the partition key value and the sort key value.
+\item \code{Keys} - An array of primary key attribute values that define
+specific items in the table. For each primary key, you must provide
+\emph{all} of the key attributes. For example, with a simple primary key,
+you only need to provide the partition key value. For a composite
+key, you must provide \emph{both} the partition key value and the sort
+key value.
 \item \code{ProjectionExpression} - A string that identifies one or more
 attributes to retrieve from the table. These attributes can include
 scalars, sets, or elements of a JSON document. The attributes in the
 expression must be separated by commas.
 
-If no attribute names are specified, then all attributes are returned.
-If any of the requested attributes are not found, they do not appear
-in the result.
+If no attribute names are specified, then all attributes are
+returned. If any of the requested attributes are not found, they do
+not appear in the result.
 
 For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Accessing Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.

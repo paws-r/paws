@@ -34,8 +34,8 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 Reservations in the Fleet inherit this tenancy. The Capacity Reservation
 Fleet can have one of the following tenancy settings:
 \itemize{
-\item \code{default} - The Capacity Reservation Fleet is created on hardware that
-is shared with other Amazon Web Services accounts.
+\item \code{default} - The Capacity Reservation Fleet is created on hardware
+that is shared with other Amazon Web Services accounts.
 \item \code{dedicated} - The Capacity Reservations are created on single-tenant
 hardware that is dedicated to a single Amazon Web Services account.
 }}

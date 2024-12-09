@@ -29,8 +29,7 @@ sagemakerfeaturestoreruntime_batch_get_record <- function(Identifiers, Expiratio
     http_method = "POST",
     http_path = "/BatchGetRecord",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakerfeaturestoreruntime$batch_get_record_input(Identifiers = Identifiers, ExpirationTimeResponse = ExpirationTimeResponse)
   output <- .sagemakerfeaturestoreruntime$batch_get_record_output()
@@ -70,8 +69,7 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
     http_method = "DELETE",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakerfeaturestoreruntime$delete_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, EventTime = EventTime, TargetStores = TargetStores, DeletionMode = DeletionMode)
   output <- .sagemakerfeaturestoreruntime$delete_record_output()
@@ -111,8 +109,7 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
     http_method = "GET",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakerfeaturestoreruntime$get_record_input(FeatureGroupName = FeatureGroupName, RecordIdentifierValueAsString = RecordIdentifierValueAsString, FeatureNames = FeatureNames, ExpirationTimeResponse = ExpirationTimeResponse)
   output <- .sagemakerfeaturestoreruntime$get_record_output()
@@ -137,14 +134,14 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #' @param Record &#91;required&#93; List of FeatureValues to be inserted. This will be a full over-write. If
 #' you only want to update few of the feature values, do the following:
 #' 
-#' - Use [`get_record`][sagemakerfeaturestoreruntime_get_record] to
-#'   retrieve the latest record.
+#' -   Use [`get_record`][sagemakerfeaturestoreruntime_get_record] to
+#'     retrieve the latest record.
 #' 
-#' - Update the record returned from
-#'   [`get_record`][sagemakerfeaturestoreruntime_get_record].
+#' -   Update the record returned from
+#'     [`get_record`][sagemakerfeaturestoreruntime_get_record].
 #' 
-#' - Use [`put_record`][sagemakerfeaturestoreruntime_put_record] to update
-#'   feature values.
+#' -   Use [`put_record`][sagemakerfeaturestoreruntime_put_record] to
+#'     update feature values.
 #' @param TargetStores A list of stores to which you're adding the record. By default, Feature
 #' Store adds the record to all of the stores that you're using for the
 #' `FeatureGroup`.
@@ -163,8 +160,7 @@ sagemakerfeaturestoreruntime_put_record <- function(FeatureGroupName, Record, Ta
     http_method = "PUT",
     http_path = "/FeatureGroup/{FeatureGroupName}",
     host_prefix = "",
-    paginator = list(),
-    stream_api = FALSE
+    paginator = list()
   )
   input <- .sagemakerfeaturestoreruntime$put_record_input(FeatureGroupName = FeatureGroupName, Record = Record, TargetStores = TargetStores, TtlDuration = TtlDuration)
   output <- .sagemakerfeaturestoreruntime$put_record_output()
