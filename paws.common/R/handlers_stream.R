@@ -1,7 +1,7 @@
 #' @importFrom digest digest
 
 
-.PAYLOAD_KB = 1024 * 65
+.PAYLOAD_KB <- 1024 * 65
 
 
 #' @title Iterate over AWS Event Stream connection
@@ -92,9 +92,7 @@ print.PawsStreamHandler <- function(x, ...) {
     metadata$service_name,
     op_name
   )
-  cli::cat_line(
-    c(msg[1:2], cli::style_hyperlink(msg[3], msg[3]))
-  )
+  cat(msg, sep = "\n")
 }
 
 #' @name paws_stream
