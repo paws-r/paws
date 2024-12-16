@@ -4,10 +4,10 @@
 \alias{category_service_ops_count}
 \title{Helper function to count all operations by service and category}
 \usage{
-category_service_ops_count(in_dir = "../vendor/aws-sdk-js")
+category_service_ops_count(in_dir = "../vendor/botocore")
 }
 \arguments{
-\item{in_dir}{Directory containing aws js sdk.}
+\item{in_dir}{Directory containing botocore.}
 }
 \description{
 Helper function to count all operations by service and category

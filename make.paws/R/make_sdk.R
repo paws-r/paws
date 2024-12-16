@@ -12,14 +12,14 @@
 #' @name make_sdk
 #' @export
 make_sdk <- function(
-    in_dir = "./vendor/aws-sdk-js",
+    in_dir = "./vendor/botocore",
     out_sdk_dir = "./cran",
     out_doc_dir = "./paws",
     apis = character(0),
     only_cran = TRUE,
     cache_dir = "./cache") {
   if (length(apis) == 0) {
-    apis <- list_apis(file.path(in_dir, "apis"))
+    apis <- list_apis(fs::path(in_dir, "botocore", "data"))
   }
 
   # Get the category-level packages that the SDK is separated into.
@@ -97,11 +97,16 @@ write_skeleton <- function(path, version) {
 }
 
 # Return the names of the APIs available in the given directory.
-list_apis <- function(path) {
+list_apis_old <- function(path) {
   files <- list.files(file.path(path), pattern = ".*\\.normal\\.json")
   apis <- unique(gsub("(.+)-\\d{4}.*", "\\1", files))
   return(apis)
 }
+
+list_apis <- function(path) {
+  return(fs::path_file(fs::dir_ls(path, type = "dir")))
+}
+
 
 # Create the package's R directory.
 use_r_dir <- function(path) {
@@ -145,7 +150,7 @@ use_package_doc <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/package.R", package = package)
   to <- file.path(path, "R", paste0(basename(path), "_package.R"))
-  fs::file_copy(template, to, overwrite = T)
+  fs::file_copy(template, to, overwrite = TRUE)
 }
 
 # Create a dummy NAMESPACE file.
@@ -153,7 +158,7 @@ use_namespace <- function(path) {
   package <- methods::getPackageName()
   template <- system_file("templates/NAMESPACE", package = package)
   to <- file.path(path, "NAMESPACE")
-  fs::file_copy(template, to, overwrite = T)
+  fs::file_copy(template, to, overwrite = TRUE)
 }
 
 # Return the authors from this package.

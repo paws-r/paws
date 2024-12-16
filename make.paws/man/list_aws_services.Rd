@@ -2,13 +2,13 @@
 % Please edit documentation in R/aws_services.R
 \name{list_aws_services}
 \alias{list_aws_services}
-\title{Helper function to list all aws services and operations from awds js sdk}
+\title{Helper function to list all aws services and operations from aws botocore}
 \usage{
-list_aws_services(in_dir = "../vendor/aws-sdk-js")
+list_aws_services(in_dir = "../vendor/botocore")
 }
 \arguments{
-\item{in_dir}{Directory containing aws js sdk.}
+\item{in_dir}{Directory containing aws botocore.}
 }
 \description{
-Helper function to list all aws services and operations from awds js sdk
+Helper function to list all aws services and operations from aws botocore
 }

@@ -1,7 +1,7 @@
 # Read a given API's definition and documentation files.
 # aws-sdk-js deprecated and apis is not being updated
 # TODO: short term migrate to botocore jsons
-read_api <- function(api_name, path) {
+read_api_old <- function(api_name, path) {
   api_path <- file.path(path, "apis")
   region_config_path <- file.path(path, "lib/region_config_data.json")
 
@@ -28,12 +28,45 @@ read_api <- function(api_name, path) {
   return(api)
 }
 
+read_api <- function(api_name, path) {
+  api_path <- file.path(path, "botocore", "data")
+  region_config_path <- file.path(api_path, "endpoints.json")
+
+  version <- get_latest_api_version_v2(api_name, api_path)
+  files <- get_api_files_v2(version, api_name, api_path)
+  if (length(version) == 0 || length(files) == 0) stop("Invalid API")
+
+  api <- jsonlite::read_json(files$service)
+  api <- fix_operation_names(api)
+
+  if (!is.null(files$examples)) {
+    examples <- jsonlite::read_json(files$examples)
+    api <- merge_examples(api, examples$examples)
+  }
+  if (!is.null(files$paginators)) {
+    paginators <- jsonlite::read_json(files$paginators)
+    api <- merge_paginators(api, paginators$pagination)
+  }
+  api <- merge_eventstream(api)
+  region_config <- jsonlite::read_json(region_config_path)
+  api <- merge_region_config_v2(api, region_config)
+  api <- fix_region_config(api)
+
+  return(api)
+}
+
 # Returns the latest version of the given API.
 get_latest_api_version <- function(name, path) {
   files <- list.files(path, pattern = sprintf("^%s-.{10}.normal.json", name))
   versions <- unique(gsub("^(.+)\\..+\\..+", "\\1", files))
   latest <- utils::tail(sort(versions), 1)
   return(latest)
+}
+
+get_latest_api_version_v2 <- function(api_name, path) {
+  dir_ls <- list.files(file.path(path, api_name))
+  if (length(dir_ls) == 0) stop("Invalid API")
+  return(max(as.Date(dir_ls)))
 }
 
 # Returns a list of API files for a given API version.
@@ -43,6 +76,13 @@ get_api_files <- function(version, path) {
   files <- as.list(files)
   names(files) <- types
   return(files)
+}
+
+get_api_files_v2 <- function(version, api_name, api_path) {
+  files <- list.files(file.path(api_path, api_name, version), full.names = TRUE)
+  types <- gsub("(-\\d.json)$", "", basename(files))
+  names(files) <- types
+  return(as.list(files))
 }
 
 # Returns an API object with examples merged into the corresponding operations.
@@ -67,18 +107,18 @@ merge_paginators <- function(api, paginators) {
 
 merge_eventstream <- function(api) {
   flat_shape <- unlist(api$shapes)
-  eventstream <- flat_shape[endsWith(names(flat_shape),"eventstream")]
+  eventstream <- flat_shape[endsWith(names(flat_shape), "eventstream")]
   names(eventstream) <- stringr::str_extract(names(eventstream), "([a-zA-Z]+)")
 
   shape <- flat_shape[endsWith(names(flat_shape), "shape")]
   shape <- shape[shape %in% names(eventstream)]
   names(shape) <- gsub(
-    "Output$|Response$", "", stringr::str_extract(names(shape), "([a-zA-Z]+)")
+    "Output$|Response$|Request$", "", stringr::str_extract(names(shape), "([a-zA-Z]+)")
   )
   names(eventstream) <- names(shape)
 
-  for (nms in names(eventstream)) {
-    api$operations[[nms]]$eventstream <- eventstream[nms]
+  for (nms in unique(names(eventstream))) {
+    api$operations[[nms]]$eventstream <- eventstream[[nms]]
   }
   return(api)
 }
@@ -109,6 +149,34 @@ merge_region_config <- function(api, region_config) {
 
   api$region_config <- rules
   return(api)
+}
+
+merge_region_config_v2 <- function(api, region_config) {
+  service <- service_name(api)
+  endpoint_prefix <- api$metadata$endpointPrefix
+  ep <- list()
+  for (partition in region_config$partitions) {
+    dnsSuffix <- partition$dnsSuffix
+    hostname <- partition$defaults$hostname
+    region_regex <- gsub("\\", "\\\\", partition$regionRegex, fixed = T)
+    if (!is.null(global <- partition$services[[endpoint_prefix]]$endpoints[["aws-global"]])) {
+      endpoint <- build_endpoint(endpoint_prefix, global$hostname, dnsSuffix)
+      endpoint <- list(endpoint = endpoint, global = TRUE)
+      ep[["aws-global"]] <- endpoint
+      if (!is.null(region_name <- global$credentialScope$region)) {
+        ep[[region_name]] <- endpoint
+      }
+    }
+    endpoint <- list(endpoint = build_endpoint(endpoint_prefix, hostname, dnsSuffix), global = FALSE)
+    ep[[region_regex]] <- endpoint
+  }
+  api$region_config <- ep
+  return(api)
+}
+
+build_endpoint <- function(service, hostname, dnsSuffix) {
+  endpoint <- gsub("{service}", service, hostname, fixed = TRUE)
+  gsub("{dnsSuffix}", dnsSuffix, endpoint, fixed = TRUE)
 }
 
 # Make sure each operation has an exportable name. CloudFront's operation `name`

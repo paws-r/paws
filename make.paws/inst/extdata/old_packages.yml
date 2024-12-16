@@ -28,9 +28,10 @@
 - name: storage
   services:
     - backup
+    - backupstorage
     - dlm
     - ebs
-    - efs
+    - elasticfilesystem
     - finspace-data
     - fsx
     - glacier
@@ -51,7 +52,7 @@
     - docdb
     - docdb-elastic
     - dynamodb
-    - dynamodbstreams
+    - streams.dynamodb
     - elasticache
     - keyspaces
     - lakeformation
@@ -86,7 +87,7 @@
     - importexport
     - m2
     - mgn
-    - mgh
+    - AWSMigrationHub
     - migrationhub-config
     - migration-hub-refactor-spaces
     - migrationhuborchestrator
@@ -111,16 +112,14 @@
     - arc-zonal-shift
     - backup-gateway
     - cloudfront
-    - cloudfront-keyvaluestore
     - directconnect
-    - elb
-    - elbv2
+    - elasticloadbalancing
+    - elasticloadbalancingv2
     - globalaccelerator
     - network-firewall
     - networkmanager
     - route53
     - route53domains
-    - route53profiles
     - route53-recovery-cluster
     - route53-recovery-control-config
     - route53-recovery-readiness
@@ -147,7 +146,7 @@
     - codeguru-reviewer
     - codeguru-security
     - codepipeline
-    - codeconnections
+    - codestar
     - codestar-connections
     - codestar-notifications
     - drs
@@ -194,7 +193,6 @@
     - amp
     - application-autoscaling
     - application-insights
-    - application-signals
     - applicationcostprofiler
     - auditmanager
     - autoscaling
@@ -204,6 +202,7 @@
     - cloudtrail-data
     - config
     - controltower
+    - events
     - evidently
     - finspace
     - grafana
@@ -213,7 +212,7 @@
     - license-manager-linux-subscriptions
     - logs
     - internetmonitor
-    - cloudwatch
+    - monitoring
     - oam
     - opsworks
     - opsworkscm
@@ -272,9 +271,9 @@
     - forecast
     - frauddetector
     - lex-models
-    - lexv2-models
-    - lex-runtime
-    - lexv2-runtime
+    - models.lex.v2
+    - runtime.lex
+    - runtime.lex.v2
     - lookoutequipment
     - lookoutmetrics
     - machinelearning
@@ -290,14 +289,12 @@
     - sagemaker-featurestore-runtime
     - sagemaker-geospatial
     - sagemaker-metrics
-    - sagemaker-runtime
+    - runtime.sagemaker
     - textract
     - transcribe
     - translate
     - voice-id
     - bedrock
-    - bedrock-agent
-    - bedrock-agent-runtime
     - bedrock-runtime
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
@@ -314,7 +311,7 @@
     - datapipeline
     - datazone
     - es
-    - emr
+    - elasticmapreduce
     - entityresolution
     - firehose
     - glue
@@ -329,7 +326,7 @@
     - kinesis
     - kinesisanalytics
     - kinesisanalyticsv2
-    - mturk
+    - mturk-requester
     - opensearch
     - opensearchserverless
     - osis
@@ -346,7 +343,6 @@
     - account
     - acm
     - acm-pca
-    - cleanroomsml
     - clouddirectory
     - cloudhsm
     - cloudhsmv2
@@ -362,6 +358,7 @@
     - inspector
     - inspector2
     - kms
+    - macie
     - macie2
     - pca-connector-ad
     - ram
@@ -394,6 +391,9 @@
     - appconfigdata
     - appsync
     - devicefarm
+    - honeycode
+    - mobile
+    - mobileanalytics
     - privatenetworks
   title: "'Amazon Web Services' Mobile Services"
   description: >-
@@ -408,7 +408,7 @@
 
 - name: application.integration
   services:
-    - events
+    - eventbridge
     - location
     - mq
     - mwaa
@@ -416,7 +416,7 @@
     - resource-explorer-2
     - schemas
     - scheduler
-    - stepfunctions
+    - states
     - sns
     - sqs
     - swf
@@ -430,13 +430,12 @@
 - name: cost.management
   services:
     - billingconductor
-    - billing
     - budgets
     - cur
     - ce
     - marketplace-catalog
     - marketplacecommerceanalytics
-    - marketplace-entitlement
+    - entitlement.marketplace
     - meteringmarketplace
     - pricing
     - savingsplans
@@ -452,16 +451,15 @@
   services:
     - connect
     - connectcampaigns
-    - connectcampaignsv2
     - connectcases
     - connect-contact-lens
     - connectparticipant
+    - email
     - wisdom
     - customer-profiles
     - pinpoint
     - pinpoint-email
     - pinpoint-sms-voice-v2
-    - ses
     - sesv2
     - sms-voice
   title: "'Amazon Web Services' Customer Engagement Services"
@@ -472,6 +470,7 @@
 
 - name: business.applications
   services:
+    - alexaforbusiness
     - chime
     - chime-sdk-identity
     - chime-sdk-media-pipelines
@@ -491,9 +490,10 @@
 - name: end.user.computing
   services:
     - appstream
-    - chatbot
     - ivschat
+    - nimble
     - workdocs
+    - worklink
     - workmail
     - workmailmessageflow
     - workspaces
@@ -519,6 +519,7 @@
     - iotfleethub
     - iotfleetwise
     - iot-jobs-data
+    - iot-roborunner
     - iotsecuretunneling
     - iotsitewise
     - iotthingsgraph
@@ -534,6 +535,7 @@
 - name: game.development
   services:
     - gamelift
+    - gamesparks
     - simspaceweaver
   title: "'Amazon Web Services' Game Development Services"
   description: >-

@@ -1,3 +1,3 @@
-[submodule "vendor/aws-sdk-js"]
-	path = vendor/aws-sdk-js
-	url = https://github.com/aws/aws-sdk-js
+[submodule "vendor/botocore"]
+	path = vendor/botocore
+	url = https://github.com/boto/botocore

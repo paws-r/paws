@@ -3,13 +3,13 @@ NULL
 
 #' @import data.table
 
-#' @title Helper function to list all aws services and operations from awds js sdk
+#' @title Helper function to list all aws services and operations from aws botocore
 #'
-#' @param in_dir Directory containing aws js sdk.
+#' @param in_dir Directory containing aws botocore.
 #'
 #' @export
-list_aws_services <- function(in_dir = "../vendor/aws-sdk-js") {
-  apis <- list_apis(file.path(in_dir, "apis"))
+list_aws_services <- function(in_dir = "../vendor/botocore") {
+  apis <- list_apis(fs::path(in_dir, "botocore", "data"))
   aws_service_ops <- lapply(apis, function(x) {
     api <- read_api(x, in_dir)
     data.frame(
@@ -24,10 +24,10 @@ list_aws_services <- function(in_dir = "../vendor/aws-sdk-js") {
 
 #' @title Helper function to count all operations by service and category
 #'
-#' @param in_dir Directory containing aws js sdk.
+#' @param in_dir Directory containing aws botocore.
 #'
 #' @export
-category_service_ops_count <- function(in_dir = "../vendor/aws-sdk-js") {
+category_service_ops_count <- function(in_dir = "../vendor/botocore") {
   aws_service_ops <- list_aws_services(in_dir)
   paws_cat <- lapply(get_categories(), function(x) {
     data.frame(name = rep(x$name, length(x$services)), services = x$services)
