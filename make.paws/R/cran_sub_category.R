@@ -1,6 +1,6 @@
 # Make the categories from collection of sub-categories
 make_category_collection <- function(sdk_dir, out_dir, categories, package, service_names) {
-  version <- get_version(sdk_dir)
+  version <- get_version(minor = 1)
   package <- sprintf("paws.%s", package)
   package_dir <- file.path(out_dir, package)
   write_skeleton_category(package_dir)

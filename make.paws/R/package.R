@@ -53,8 +53,19 @@ get_description <- function(path) {
 }
 
 # Get the version number from the package in the given path.
-get_version <- function(path) {
-  desc::desc_get("Version", file.path(path, "DESCRIPTION"))
+# get_version <- function(path) {
+#   desc::desc_get("Version", file.path(path, "DESCRIPTION"))
+# }
+cache_env <- new.env(parent = emptyenv())
+get_version <- function(major = 0, minor = 0, patch = 0) {
+  if (is.null(cache_env$version)) {
+    df <- as.data.frame(utils::available.packages(repos = "https://cran.rstudio.com"))
+    cache_env$version <- package_version(df[df$Package == "paws", "Version"])
+    cache_env$version[[c(1,1)]] <- cache_env$version$major + major
+    cache_env$version[[c(1,2)]] <- cache_env$version$minor + minor
+    cache_env$version[[c(1,3)]] <- cache_env$version$patch + patch
+  }
+  return(cache_env$version)
 }
 
 # Delete all files in a folder, with some given exceptions.

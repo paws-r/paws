@@ -43,12 +43,7 @@ make_sdk <- function(
   with_cache_dir(cache_dir, {
     clear_dir(temp_dir)
     clear_dir(out_doc_dir)
-    version <- tryCatch(
-      get_version(out_doc_dir),
-      error = function(e) {
-        return("0.0.1")
-      }
-    )
+    version <- get_version(minor = 1)
     write_skeleton(temp_dir, version)
     write_skeleton(out_doc_dir, version)
     for (api in apis) {
