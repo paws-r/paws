@@ -4,8 +4,7 @@
 \alias{list_aws_services}
 \title{Helper function to list all aws services and operations from aws botocore}
 \usage{
-list_aws_services(in_dir = "../vendor/botocore
-")
+list_aws_services(in_dir = "../vendor/botocore")
 }
 \arguments{
 \item{in_dir}{Directory containing aws botocore.}
