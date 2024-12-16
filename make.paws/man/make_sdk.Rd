@@ -5,7 +5,7 @@
 \title{Make the AWS SDK R package}
 \usage{
 make_sdk(
-  in_dir = "./vendor/aws-sdk-js",
+  in_dir = "./vendor/botocore",
   out_sdk_dir = "./cran",
   out_doc_dir = "./paws",
   apis = character(0),

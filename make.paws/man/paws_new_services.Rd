@@ -4,7 +4,7 @@
 \alias{paws_new_services}
 \title{lists new services from AWS}
 \usage{
-paws_new_services(in_dir = "../vendor/aws-sdk-js")
+paws_new_services(in_dir = "../vendor/botocore")
 }
 \arguments{
 \item{in_dir}{Directory containing AWS API input files.}
