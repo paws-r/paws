@@ -17,7 +17,7 @@ make_category <- function(category, service_names, sdk_dir, out_dir) {
   title <- category$title
   description <- category$description
   imports <- .paws.common.import.version
-  version <- get_version(sdk_dir)
+  version <- get_version(minor = 1)
 
   if (is.null(name) || is.null(title) || is.null(description)) {
     stop("missing name, title, or description")
