@@ -1,4 +1,4 @@
-IN_DIR := ./vendor/aws-sdk-js
+IN_DIR := ./vendor/botocore
 OUT_DIR := ./cran
 DOC_DIR := ./paws
 CRAN_DIR := ./cran
