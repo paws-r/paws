@@ -3,9 +3,9 @@ NULL
 
 #' @import data.table
 
-#' @title Helper function to list all aws services and operations from awds js sdk
+#' @title Helper function to list all aws services and operations from aws botocore
 #'
-#' @param in_dir Directory containing aws js sdk.
+#' @param in_dir Directory containing aws botocore.
 #'
 #' @export
 list_aws_services <- function(in_dir = "../vendor/botocore") {
@@ -24,7 +24,7 @@ list_aws_services <- function(in_dir = "../vendor/botocore") {
 
 #' @title Helper function to count all operations by service and category
 #'
-#' @param in_dir Directory containing aws js sdk.
+#' @param in_dir Directory containing aws botocore.
 #'
 #' @export
 category_service_ops_count <- function(in_dir = "../vendor/botocore") {
