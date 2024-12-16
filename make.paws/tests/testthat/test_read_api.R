@@ -1,36 +1,55 @@
 write_json <- function(x, file) jsonlite::write_json(x, file, auto_unbox = TRUE)
 
+
 test_that("read_api", {
   path <- tempdir()
-  api_path <- file.path(path, "apis")
-  dir.create(api_path)
+  api_path <- file.path(path, "botocore", "data")
+  dir.create(api_path, recursive = TRUE)
 
-  write_json(list(foo = "examples"), file.path(api_path, "foo-2018-11-01.examples.json"))
-  write_json(list(foo = "min"), file.path(api_path, "foo-2018-11-01.min.json"))
+  # create api directory
+  api_dir <- file.path(api_path, "foo")
+  dir.create(api_dir, recursive = TRUE)
+
+  # create different version directory
+  fs::dir_create(api_dir, "2018-11-01")
+  fs::dir_create(api_dir, "2017-11-01")
+
+  write_json(list(foo = "examples"), file.path(api_dir, "2018-11-01", "examples-1.json"))
+
   write_json(
-    list(foo = "normal", name = "foo", metadata = list(endpointPrefix = "baz"), shapes = list(foo = list(eventstream = "TRUE"))),
-    file.path(api_path, "foo-2018-11-01.normal.json")
+    list(foo = "normal", name = "foo", metadata = list(endpointPrefix = "baz"), shapes = list(
+      fooOutput = list(members = list(Payload = list(shape = "fooStream"))),
+      fooStream = list(eventstream = "TRUE"))
+    ),
+    file.path(api_dir, "2018-11-01", "service-2.json")
   )
-  write_json(list(foo = "paginators"), file.path(api_path, "foo-2018-11-01.paginators.json"))
+  write_json(list(foo = "paginators"), file.path(api_dir, "2018-11-01", "paginators-1.json"))
 
-  write_json(list(foo = "wrong1"), file.path(api_path, "foo-2017-11-01.examples.json"))
-  write_json(list(foo = "wrong2"), file.path(api_path, "foo-2017-11-01.min.json"))
-  write_json(list(foo = "wrong3"), file.path(api_path, "foo-2017-11-01.normal.json"))
-  write_json(list(foo = "wrong4"), file.path(api_path, "foo-2017-11-01.paginators.json"))
+  write_json(list(foo = "wrong1"), file.path(api_dir, "2017-11-01", "examples-1.json"))
+  write_json(list(foo = "wrong3"), file.path(api_dir, "2017-11-01", "service-2.json"))
+  write_json(list(foo = "wrong4"), file.path(api_dir, "2017-11-01", "paginators-1.json"))
 
-  region_path <- file.path(path, "lib")
-  dir.create(region_path)
   write_json(
-    list(rules = list("*/*" = list(endpoint = "bar"), "*/foo" = list(endpoint = "{service}.endpoint", globalEndpoint = TRUE))),
-    file.path(region_path, "region_config_data.json")
+    list(
+      partitions = list(list(
+          defaults=list(hostname="{service}.{region}.{dnsSuffix}"),
+          dnsSuffix = "amazonaws.com",
+          regionRegex = "^(us|eu|ap|sa|ca|me|af|il|mx)\\-\\w+\\-\\d+$",
+          services = list(baz = list(endpoints = list("aws-global" = list(hostname = "baz.us-east-1.amazonaws.com",credentialScope = list(region = "us-east-1")))))
+        )
+      )
+    ),
+    file.path(api_path, "endpoints.json")
   )
 
   api <- read_api("foo", path)
 
   expect_equal(api$name, "foo")
-  expect_equal(api$region_config$`*`, list(endpoint = "baz.endpoint", global = TRUE))
-
-  expect_error(read_api("bar", api_path))
+  expect_equal(api$operations$foo$eventstream, "TRUE")
+  expect_equal(api$region_config[["aws-global"]], list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE))
+  expect_equal(api$region_config[["us-east-1"]], list(endpoint = "baz.us-east-1.amazonaws.com", global = TRUE))
+  expect_equal(api$region_config[["^(us|eu|ap|sa|ca|me|af|il|mx)\\\\-\\\\w+\\\\-\\\\d+$"]], list(endpoint = "baz.{region}.amazonaws.com", global = FALSE))
+  expect_error(read_api("bar", path))
 })
 
 test_that("merge_examples", {

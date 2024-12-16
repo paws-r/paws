@@ -63,8 +63,9 @@ api <- list(
   ),
   documentation = "AWS Foo is an example AWS API."
 )
-api_path <- file.path(path_in, "apis", "foo-2018-11-01.normal.json")
-dir.create(dirname(api_path), recursive = TRUE)
+
+api_path <- file.path(path_in, "botocore",  "data","foo", "2018-11-01", "service-2.json")
+dir.create(dirname(api_path), recursive = TRUE, showWarnings = FALSE)
 jsonlite::write_json(api, api_path, auto_unbox = TRUE)
 
 region_config <- list(
@@ -74,8 +75,8 @@ region_config <- list(
     )
   )
 )
-region_config_path <- file.path(path_in, "lib", "region_config_data.json")
-dir.create(dirname(region_config_path), recursive = TRUE)
+region_config_path <- file.path(path_in, "botocore",  "data", "endpoints.json")
+dir.create(dirname(region_config_path), recursive = TRUE, showWarnings = FALSE)
 jsonlite::write_json(region_config, region_config_path, auto_unbox = TRUE)
 
 path_out <- file.path(path, "out")
@@ -160,12 +161,10 @@ test_that("make_sdk with sub categories", {
 
 test_that("list_apis", {
   temp <- tempdir()
+  fs::dir_create(fs::path(temp, "data", c("api1", "api2")))
+  write("skip", file.path(temp, "data", "skip.json"))
 
-  write("", file.path(temp, "api1-2018-01-01.normal.json"))
-  write("", file.path(temp, "api2-2018-01-01.normal.json"))
-  write("skip", file.path(temp, "skip.json"))
-
-  actual <- list_apis(temp)
+  actual <- list_apis(file.path(temp, "data"))
   expected <- c("api1", "api2")
   expect_equal(actual, expected)
 })
